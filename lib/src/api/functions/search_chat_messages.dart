@@ -11,7 +11,7 @@ class SearchChatMessages extends TdFunction {
   SearchChatMessages(
       {required this.chatId,
       required this.query,
-      required this.sender,
+      this.sender,
       required this.fromMessageId,
       required this.offset,
       required this.limit,
@@ -26,7 +26,7 @@ class SearchChatMessages extends TdFunction {
 
   /// [sender] If not null, only messages sent by the specified sender will be
   /// returned. Not supported in secret chats
-  final MessageSender sender;
+  final MessageSender? sender;
 
   /// [fromMessageId] Identifier of the message starting from which history must
   /// be fetched; use 0 to get results from the last message
@@ -57,7 +57,7 @@ class SearchChatMessages extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'query': this.query,
-        'sender': this.sender.toJson(),
+        'sender': this.sender?.toJson(),
         'from_message_id': this.fromMessageId,
         'offset': this.offset,
         'limit': this.limit,
