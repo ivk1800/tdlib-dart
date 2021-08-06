@@ -22,23 +22,29 @@ class Client {
 
   Stream<TdObject> get updates => _updatesSubject;
 
-  Future<T> send<T extends TdObject>(TdFunction object) async {
-    final Map<String, dynamic> jsonAsMap = object.toJson();
+  Future<T> send<T extends TdObject>(TdFunction function) async {
+    final Map<String, dynamic> jsonAsMap = function.toJson();
     final dynamic extra = ++_extraCount;
     jsonAsMap['@extra'] = extra;
     _jsonBindings.send(_client, json.encode(jsonAsMap));
 
     return _rawResultsSubject
         .where((event) => event['@extra'] == extra)
-        .map((event) => _handleTdObject<T>(event.toTdObject()))
+        .map((event) => _handleTdObject<T>(
+              tdObject: event.toTdObject(),
+              function: function,
+            ))
         .take(1)
         .single;
   }
 
-  Future<T> execute<T extends TdObject>(TdFunction object) async {
+  Future<T> execute<T extends TdObject>(TdFunction function) async {
     return _jsonBindings
-        .execute(_client, json.encode(object.toJson()))
-        .then((event) => _handleTdObject<T>(event.toTdObject()));
+        .execute(_client, json.encode(function.toJson()))
+        .then((event) => _handleTdObject<T>(
+              tdObject: event.toTdObject(),
+              function: function,
+            ));
   }
 
   Future<void> create() async {
@@ -73,12 +79,15 @@ class Client {
     _jsonBindings.destroy(_client);
   }
 
-  T _handleTdObject<T extends TdObject>(TdObject? tdObject) {
+  T _handleTdObject<T extends TdObject>({
+    required TdObject? tdObject,
+    required TdFunction function,
+  }) {
     if (tdObject != null) {
       if (tdObject is T) {
         return tdObject;
       } else if (tdObject is TdError) {
-        throw TdException(error: tdObject);
+        throw TdFunctionError(function: function, error: tdObject);
       }
     }
 
@@ -203,11 +212,16 @@ class _JsonBindings {
 //   }
 // }
 
-class TdException implements Exception {
-  TdException({required this.error});
+class TdFunctionError extends Error {
+  TdFunctionError({
+    required this.error,
+    required this.function,
+  });
 
+  final TdFunction function;
   final TdError error;
 
   @override
-  String toString() => 'TdException(${error.toJson()})';
+  String toString() =>
+      'TdFunctionError(function: ${function.toJson()}, error: ${error.toJson()})';
 }
