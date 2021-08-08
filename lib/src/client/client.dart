@@ -188,7 +188,7 @@ class _JsonBindings {
     if (Platform.isAndroid) {
       return "libtdjsonandroid.so";
     } else if (Platform.isWindows) {
-      return "";
+      return "tdjson.dll";
     }
     throw UnsupportedError('unsupported for current platform');
   }
