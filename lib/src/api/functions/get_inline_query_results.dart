@@ -8,7 +8,7 @@ class GetInlineQueryResults extends TdFunction {
   GetInlineQueryResults(
       {required this.botUserId,
       required this.chatId,
-      required this.userLocation,
+      this.userLocation,
       required this.query,
       required this.offset});
 
@@ -19,7 +19,7 @@ class GetInlineQueryResults extends TdFunction {
   final int chatId;
 
   /// [userLocation] Location of the user, only if needed
-  final Location userLocation;
+  final Location? userLocation;
 
   /// [query] Text of the query
   final String query;
@@ -35,7 +35,7 @@ class GetInlineQueryResults extends TdFunction {
   Map<String, dynamic> toJson() => {
         'bot_user_id': this.botUserId,
         'chat_id': this.chatId,
-        'user_location': this.userLocation.toJson(),
+        'user_location': this.userLocation?.toJson(),
         'query': this.query,
         'offset': this.offset,
         '@type': CONSTRUCTOR
