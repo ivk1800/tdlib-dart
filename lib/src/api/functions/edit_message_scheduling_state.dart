@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 class EditMessageSchedulingState extends TdFunction {
   EditMessageSchedulingState(
-      {required this.chatId,
-      required this.messageId,
-      required this.schedulingState});
+      {required this.chatId, required this.messageId, this.schedulingState});
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -18,7 +16,7 @@ class EditMessageSchedulingState extends TdFunction {
 
   /// [schedulingState] The new message scheduling state. Pass null to send the
   /// message immediately
-  final MessageSchedulingState schedulingState;
+  final MessageSchedulingState? schedulingState;
 
   static const String CONSTRUCTOR = 'editMessageSchedulingState';
 
@@ -28,7 +26,7 @@ class EditMessageSchedulingState extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'scheduling_state': this.schedulingState.toJson(),
+        'scheduling_state': this.schedulingState?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

@@ -4,13 +4,13 @@ import '../tdapi.dart';
 /// and channels. Requires can_change_info administrator right
 /// Returns [Ok]
 class SetChatPhoto extends TdFunction {
-  SetChatPhoto({required this.chatId, required this.photo});
+  SetChatPhoto({required this.chatId, this.photo});
 
   /// [chatId] Chat identifier
   final int chatId;
 
   /// [photo] New chat photo. Pass null to delete the chat photo
-  final InputChatPhoto photo;
+  final InputChatPhoto? photo;
 
   static const String CONSTRUCTOR = 'setChatPhoto';
 
@@ -19,7 +19,7 @@ class SetChatPhoto extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
-        'photo': this.photo.toJson(),
+        'photo': this.photo?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

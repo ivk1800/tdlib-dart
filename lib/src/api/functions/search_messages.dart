@@ -7,7 +7,7 @@ import '../tdapi.dart';
 /// Returns [Messages]
 class SearchMessages extends TdFunction {
   SearchMessages(
-      {required this.chatList,
+      {this.chatList,
       required this.query,
       required this.offsetDate,
       required this.offsetChatId,
@@ -20,7 +20,7 @@ class SearchMessages extends TdFunction {
   /// [chatList] Chat list in which to search messages; pass null to search in
   /// all chats regardless of their chat list. Only Main and Archive chat lists
   /// are supported
-  final ChatList chatList;
+  final ChatList? chatList;
 
   /// [query] Query to search for
   final String query;
@@ -62,7 +62,7 @@ class SearchMessages extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'chat_list': this.chatList.toJson(),
+        'chat_list': this.chatList?.toJson(),
         'query': this.query,
         'offset_date': this.offsetDate,
         'offset_chat_id': this.offsetChatId,
