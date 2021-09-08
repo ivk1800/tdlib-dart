@@ -8,9 +8,9 @@ class InputMessagePoll extends InputMessageContent {
       required this.options,
       required this.isAnonymous,
       required this.type,
-      required this.openPeriod,
-      required this.closeDate,
-      required this.isClosed});
+      this.openPeriod,
+      this.closeDate,
+      this.isClosed});
 
   /// [question] Poll question; 1-255 characters (up to 300 characters for bots)
   ///
@@ -28,15 +28,15 @@ class InputMessagePoll extends InputMessageContent {
 
   /// [openPeriod] Amount of time the poll will be active after creation, in
   /// seconds; for bots only
-  final int openPeriod;
+  final int? openPeriod;
 
   /// [closeDate] Point in time (Unix timestamp) when the poll will be
   /// automatically closed; for bots only
-  final int closeDate;
+  final int? closeDate;
 
   /// [isClosed] True, if the poll needs to be sent already closed; for bots
   /// only
-  final bool isClosed;
+  final bool? isClosed;
 
   static const String CONSTRUCTOR = 'inputMessagePoll';
 

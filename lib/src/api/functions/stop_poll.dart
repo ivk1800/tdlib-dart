@@ -4,10 +4,7 @@ import '../tdapi.dart';
 /// can_be_edited flag set
 /// Returns [Ok]
 class StopPoll extends TdFunction {
-  StopPoll(
-      {required this.chatId,
-      required this.messageId,
-      required this.replyMarkup});
+  StopPoll({required this.chatId, required this.messageId, this.replyMarkup});
 
   /// [chatId] Identifier of the chat to which the poll belongs
   final int chatId;
@@ -16,7 +13,7 @@ class StopPoll extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   static const String CONSTRUCTOR = 'stopPoll';
 
@@ -26,7 +23,7 @@ class StopPoll extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

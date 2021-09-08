@@ -11,7 +11,7 @@ class EditMessageMedia extends TdFunction {
   EditMessageMedia(
       {required this.chatId,
       required this.messageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       required this.inputMessageContent});
 
   /// [chatId] The chat the message belongs to
@@ -21,7 +21,7 @@ class EditMessageMedia extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New content of the message. Must be one of the
   /// following types: InputMessageAnimation, InputMessageAudio,
@@ -36,7 +36,7 @@ class EditMessageMedia extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };

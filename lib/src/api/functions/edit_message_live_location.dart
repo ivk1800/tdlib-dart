@@ -8,7 +8,7 @@ class EditMessageLiveLocation extends TdFunction {
   EditMessageLiveLocation(
       {required this.chatId,
       required this.messageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       this.location,
       required this.heading,
       required this.proximityAlertRadius});
@@ -20,7 +20,7 @@ class EditMessageLiveLocation extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [location] New location content of the message; may be null. Pass null to
   /// stop sharing the live location
@@ -42,7 +42,7 @@ class EditMessageLiveLocation extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'location': this.location?.toJson(),
         'heading': this.heading,
         'proximity_alert_radius': this.proximityAlertRadius,

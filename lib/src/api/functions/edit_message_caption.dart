@@ -7,7 +7,7 @@ class EditMessageCaption extends TdFunction {
   EditMessageCaption(
       {required this.chatId,
       required this.messageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       required this.caption});
 
   /// [chatId] The chat the message belongs to
@@ -17,7 +17,7 @@ class EditMessageCaption extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [caption] New message content caption;
   /// 0-GetOption("message_caption_length_max") characters
@@ -31,7 +31,7 @@ class EditMessageCaption extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'caption': this.caption.toJson(),
         '@type': CONSTRUCTOR
       };
