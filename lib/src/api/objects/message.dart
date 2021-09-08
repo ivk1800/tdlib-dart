@@ -28,7 +28,7 @@ class Message extends TdObject {
       required this.ttl,
       required this.ttlExpiresIn,
       required this.viaBotUserId,
-      required this.authorSignature,
+      this.authorSignature,
       required this.mediaAlbumId,
       required this.restrictionReason,
       required this.content,
@@ -127,7 +127,7 @@ class Message extends TdObject {
 
   /// [authorSignature] For channel posts and anonymous group messages, optional
   /// author signature
-  final String authorSignature;
+  final String? authorSignature;
 
   /// [mediaAlbumId] Unique identifier of an album this message belongs to. Only
   /// audios, documents, photos and videos can be grouped together in albums

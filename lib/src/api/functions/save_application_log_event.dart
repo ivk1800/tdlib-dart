@@ -5,13 +5,13 @@ import '../tdapi.dart';
 /// Returns [Ok]
 class SaveApplicationLogEvent extends TdFunction {
   SaveApplicationLogEvent(
-      {required this.type, required this.chatId, required this.data});
+      {required this.type, this.chatId, required this.data});
 
   /// [type] Event type
   final String type;
 
   /// [chatId] Optional chat identifier, associated with the event
-  final int chatId;
+  final int? chatId;
 
   /// [data] The log event data
   final JsonValue data;

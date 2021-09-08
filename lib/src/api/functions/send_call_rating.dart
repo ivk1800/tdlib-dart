@@ -6,7 +6,7 @@ class SendCallRating extends TdFunction {
   SendCallRating(
       {required this.callId,
       required this.rating,
-      required this.comment,
+      this.comment,
       required this.problems});
 
   /// [callId] Call identifier
@@ -16,7 +16,7 @@ class SendCallRating extends TdFunction {
   final int rating;
 
   /// [comment] An optional user comment if the rating is less than 5
-  final String comment;
+  final String? comment;
 
   /// [problems] List of the exact types of problems with the call, specified by
   /// the user

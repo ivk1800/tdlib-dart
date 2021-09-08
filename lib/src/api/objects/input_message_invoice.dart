@@ -7,7 +7,7 @@ class InputMessageInvoice extends InputMessageContent {
       {required this.invoice,
       required this.title,
       required this.description,
-      required this.photoUrl,
+      this.photoUrl,
       required this.photoSize,
       required this.photoWidth,
       required this.photoHeight,
@@ -26,7 +26,7 @@ class InputMessageInvoice extends InputMessageContent {
   final String description;
 
   /// [photoUrl] Product photo URL; optional
-  final String photoUrl;
+  final String? photoUrl;
 
   /// [photoSize] Product photo size
   final int photoSize;
