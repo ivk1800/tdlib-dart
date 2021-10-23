@@ -62,6 +62,39 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(AuthenticationCodeTypeTelegramMessage value)?
+          telegramMessage,
+      TResult Function(AuthenticationCodeTypeSms value)? sms,
+      TResult Function(AuthenticationCodeTypeCall value)? call,
+      TResult Function(AuthenticationCodeTypeFlashCall value)? flashCall,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
+        if (telegramMessage != null) {
+          return telegramMessage
+              .call(this as AuthenticationCodeTypeTelegramMessage);
+        }
+        break;
+      case AuthenticationCodeTypeSms.CONSTRUCTOR:
+        if (sms != null) {
+          return sms.call(this as AuthenticationCodeTypeSms);
+        }
+        break;
+      case AuthenticationCodeTypeCall.CONSTRUCTOR:
+        if (call != null) {
+          return call.call(this as AuthenticationCodeTypeCall);
+        }
+        break;
+      case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
+        if (flashCall != null) {
+          return flashCall.call(this as AuthenticationCodeTypeFlashCall);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension AuthenticationCodeTypeTelegramMessageExtensions
@@ -185,6 +218,89 @@ extension AuthorizationStateExtensions on AuthorizationState {
         return closed.call(this as AuthorizationStateClosed);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(AuthorizationStateWaitTdlibParameters value)?
+          waitTdlibParameters,
+      TResult Function(AuthorizationStateWaitEncryptionKey value)?
+          waitEncryptionKey,
+      TResult Function(AuthorizationStateWaitPhoneNumber value)?
+          waitPhoneNumber,
+      TResult Function(AuthorizationStateWaitCode value)? waitCode,
+      TResult Function(AuthorizationStateWaitOtherDeviceConfirmation value)?
+          waitOtherDeviceConfirmation,
+      TResult Function(AuthorizationStateWaitRegistration value)?
+          waitRegistration,
+      TResult Function(AuthorizationStateWaitPassword value)? waitPassword,
+      TResult Function(AuthorizationStateReady value)? ready,
+      TResult Function(AuthorizationStateLoggingOut value)? loggingOut,
+      TResult Function(AuthorizationStateClosing value)? closing,
+      TResult Function(AuthorizationStateClosed value)? closed,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
+        if (waitTdlibParameters != null) {
+          return waitTdlibParameters
+              .call(this as AuthorizationStateWaitTdlibParameters);
+        }
+        break;
+      case AuthorizationStateWaitEncryptionKey.CONSTRUCTOR:
+        if (waitEncryptionKey != null) {
+          return waitEncryptionKey
+              .call(this as AuthorizationStateWaitEncryptionKey);
+        }
+        break;
+      case AuthorizationStateWaitPhoneNumber.CONSTRUCTOR:
+        if (waitPhoneNumber != null) {
+          return waitPhoneNumber
+              .call(this as AuthorizationStateWaitPhoneNumber);
+        }
+        break;
+      case AuthorizationStateWaitCode.CONSTRUCTOR:
+        if (waitCode != null) {
+          return waitCode.call(this as AuthorizationStateWaitCode);
+        }
+        break;
+      case AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR:
+        if (waitOtherDeviceConfirmation != null) {
+          return waitOtherDeviceConfirmation
+              .call(this as AuthorizationStateWaitOtherDeviceConfirmation);
+        }
+        break;
+      case AuthorizationStateWaitRegistration.CONSTRUCTOR:
+        if (waitRegistration != null) {
+          return waitRegistration
+              .call(this as AuthorizationStateWaitRegistration);
+        }
+        break;
+      case AuthorizationStateWaitPassword.CONSTRUCTOR:
+        if (waitPassword != null) {
+          return waitPassword.call(this as AuthorizationStateWaitPassword);
+        }
+        break;
+      case AuthorizationStateReady.CONSTRUCTOR:
+        if (ready != null) {
+          return ready.call(this as AuthorizationStateReady);
+        }
+        break;
+      case AuthorizationStateLoggingOut.CONSTRUCTOR:
+        if (loggingOut != null) {
+          return loggingOut.call(this as AuthorizationStateLoggingOut);
+        }
+        break;
+      case AuthorizationStateClosing.CONSTRUCTOR:
+        if (closing != null) {
+          return closing.call(this as AuthorizationStateClosing);
+        }
+        break;
+      case AuthorizationStateClosed.CONSTRUCTOR:
+        if (closed != null) {
+          return closed.call(this as AuthorizationStateClosed);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -330,6 +446,37 @@ extension InputFileExtensions on InputFile {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputFileId value)? id,
+      TResult Function(InputFileRemote value)? remote,
+      TResult Function(InputFileLocal value)? local,
+      TResult Function(InputFileGenerated value)? generated,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputFileId.CONSTRUCTOR:
+        if (id != null) {
+          return id.call(this as InputFileId);
+        }
+        break;
+      case InputFileRemote.CONSTRUCTOR:
+        if (remote != null) {
+          return remote.call(this as InputFileRemote);
+        }
+        break;
+      case InputFileLocal.CONSTRUCTOR:
+        if (local != null) {
+          return local.call(this as InputFileLocal);
+        }
+        break;
+      case InputFileGenerated.CONSTRUCTOR:
+        if (generated != null) {
+          return generated.call(this as InputFileGenerated);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InputFileIdExtensions on InputFileId {
@@ -400,6 +547,49 @@ extension ThumbnailFormatExtensions on ThumbnailFormat {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ThumbnailFormatJpeg value)? jpeg,
+      TResult Function(ThumbnailFormatPng value)? png,
+      TResult Function(ThumbnailFormatWebp value)? webp,
+      TResult Function(ThumbnailFormatGif value)? gif,
+      TResult Function(ThumbnailFormatTgs value)? tgs,
+      TResult Function(ThumbnailFormatMpeg4 value)? mpeg4,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ThumbnailFormatJpeg.CONSTRUCTOR:
+        if (jpeg != null) {
+          return jpeg.call(this as ThumbnailFormatJpeg);
+        }
+        break;
+      case ThumbnailFormatPng.CONSTRUCTOR:
+        if (png != null) {
+          return png.call(this as ThumbnailFormatPng);
+        }
+        break;
+      case ThumbnailFormatWebp.CONSTRUCTOR:
+        if (webp != null) {
+          return webp.call(this as ThumbnailFormatWebp);
+        }
+        break;
+      case ThumbnailFormatGif.CONSTRUCTOR:
+        if (gif != null) {
+          return gif.call(this as ThumbnailFormatGif);
+        }
+        break;
+      case ThumbnailFormatTgs.CONSTRUCTOR:
+        if (tgs != null) {
+          return tgs.call(this as ThumbnailFormatTgs);
+        }
+        break;
+      case ThumbnailFormatMpeg4.CONSTRUCTOR:
+        if (mpeg4 != null) {
+          return mpeg4.call(this as ThumbnailFormatMpeg4);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ThumbnailExtensions on Thumbnail {
@@ -429,6 +619,37 @@ extension MaskPointExtensions on MaskPoint {
         return chin.call(this as MaskPointChin);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MaskPointForehead value)? forehead,
+      TResult Function(MaskPointEyes value)? eyes,
+      TResult Function(MaskPointMouth value)? mouth,
+      TResult Function(MaskPointChin value)? chin,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MaskPointForehead.CONSTRUCTOR:
+        if (forehead != null) {
+          return forehead.call(this as MaskPointForehead);
+        }
+        break;
+      case MaskPointEyes.CONSTRUCTOR:
+        if (eyes != null) {
+          return eyes.call(this as MaskPointEyes);
+        }
+        break;
+      case MaskPointMouth.CONSTRUCTOR:
+        if (mouth != null) {
+          return mouth.call(this as MaskPointMouth);
+        }
+        break;
+      case MaskPointChin.CONSTRUCTOR:
+        if (chin != null) {
+          return chin.call(this as MaskPointChin);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -473,6 +694,25 @@ extension PollTypeExtensions on PollType {
         return quiz.call(this as PollTypeQuiz);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PollTypeRegular value)? regular,
+      TResult Function(PollTypeQuiz value)? quiz,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PollTypeRegular.CONSTRUCTOR:
+        if (regular != null) {
+          return regular.call(this as PollTypeRegular);
+        }
+        break;
+      case PollTypeQuiz.CONSTRUCTOR:
+        if (quiz != null) {
+          return quiz.call(this as PollTypeQuiz);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -754,6 +994,37 @@ extension UserTypeExtensions on UserType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(UserTypeRegular value)? regular,
+      TResult Function(UserTypeDeleted value)? deleted,
+      TResult Function(UserTypeBot value)? bot,
+      TResult Function(UserTypeUnknown value)? unknown,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case UserTypeRegular.CONSTRUCTOR:
+        if (regular != null) {
+          return regular.call(this as UserTypeRegular);
+        }
+        break;
+      case UserTypeDeleted.CONSTRUCTOR:
+        if (deleted != null) {
+          return deleted.call(this as UserTypeDeleted);
+        }
+        break;
+      case UserTypeBot.CONSTRUCTOR:
+        if (bot != null) {
+          return bot.call(this as UserTypeBot);
+        }
+        break;
+      case UserTypeUnknown.CONSTRUCTOR:
+        if (unknown != null) {
+          return unknown.call(this as UserTypeUnknown);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension UserTypeBotExtensions on UserTypeBot {
@@ -833,6 +1104,31 @@ extension InputChatPhotoExtensions on InputChatPhoto {
         return animation.call(this as InputChatPhotoAnimation);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputChatPhotoPrevious value)? previous,
+      TResult Function(InputChatPhotoStatic value)? static,
+      TResult Function(InputChatPhotoAnimation value)? animation,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputChatPhotoPrevious.CONSTRUCTOR:
+        if (previous != null) {
+          return previous.call(this as InputChatPhotoPrevious);
+        }
+        break;
+      case InputChatPhotoStatic.CONSTRUCTOR:
+        if (static != null) {
+          return static.call(this as InputChatPhotoStatic);
+        }
+        break;
+      case InputChatPhotoAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as InputChatPhotoAnimation);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -987,6 +1283,49 @@ extension ChatMemberStatusExtensions on ChatMemberStatus {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatMemberStatusCreator value)? creator,
+      TResult Function(ChatMemberStatusAdministrator value)? administrator,
+      TResult Function(ChatMemberStatusMember value)? member,
+      TResult Function(ChatMemberStatusRestricted value)? restricted,
+      TResult Function(ChatMemberStatusLeft value)? left,
+      TResult Function(ChatMemberStatusBanned value)? banned,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatMemberStatusCreator.CONSTRUCTOR:
+        if (creator != null) {
+          return creator.call(this as ChatMemberStatusCreator);
+        }
+        break;
+      case ChatMemberStatusAdministrator.CONSTRUCTOR:
+        if (administrator != null) {
+          return administrator.call(this as ChatMemberStatusAdministrator);
+        }
+        break;
+      case ChatMemberStatusMember.CONSTRUCTOR:
+        if (member != null) {
+          return member.call(this as ChatMemberStatusMember);
+        }
+        break;
+      case ChatMemberStatusRestricted.CONSTRUCTOR:
+        if (restricted != null) {
+          return restricted.call(this as ChatMemberStatusRestricted);
+        }
+        break;
+      case ChatMemberStatusLeft.CONSTRUCTOR:
+        if (left != null) {
+          return left.call(this as ChatMemberStatusLeft);
+        }
+        break;
+      case ChatMemberStatusBanned.CONSTRUCTOR:
+        if (banned != null) {
+          return banned.call(this as ChatMemberStatusBanned);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatMemberStatusCreatorExtensions on ChatMemberStatusCreator {
@@ -1095,6 +1434,55 @@ extension ChatMembersFilterExtensions on ChatMembersFilter {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatMembersFilterContacts value)? contacts,
+      TResult Function(ChatMembersFilterAdministrators value)? administrators,
+      TResult Function(ChatMembersFilterMembers value)? members,
+      TResult Function(ChatMembersFilterMention value)? mention,
+      TResult Function(ChatMembersFilterRestricted value)? restricted,
+      TResult Function(ChatMembersFilterBanned value)? banned,
+      TResult Function(ChatMembersFilterBots value)? bots,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatMembersFilterContacts.CONSTRUCTOR:
+        if (contacts != null) {
+          return contacts.call(this as ChatMembersFilterContacts);
+        }
+        break;
+      case ChatMembersFilterAdministrators.CONSTRUCTOR:
+        if (administrators != null) {
+          return administrators.call(this as ChatMembersFilterAdministrators);
+        }
+        break;
+      case ChatMembersFilterMembers.CONSTRUCTOR:
+        if (members != null) {
+          return members.call(this as ChatMembersFilterMembers);
+        }
+        break;
+      case ChatMembersFilterMention.CONSTRUCTOR:
+        if (mention != null) {
+          return mention.call(this as ChatMembersFilterMention);
+        }
+        break;
+      case ChatMembersFilterRestricted.CONSTRUCTOR:
+        if (restricted != null) {
+          return restricted.call(this as ChatMembersFilterRestricted);
+        }
+        break;
+      case ChatMembersFilterBanned.CONSTRUCTOR:
+        if (banned != null) {
+          return banned.call(this as ChatMembersFilterBanned);
+        }
+        break;
+      case ChatMembersFilterBots.CONSTRUCTOR:
+        if (bots != null) {
+          return bots.call(this as ChatMembersFilterBots);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatMembersFilterMentionExtensions on ChatMembersFilterMention {
@@ -1135,6 +1523,63 @@ extension SupergroupMembersFilterExtensions on SupergroupMembersFilter {
         return bots.call(this as SupergroupMembersFilterBots);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(SupergroupMembersFilterRecent value)? recent,
+      TResult Function(SupergroupMembersFilterContacts value)? contacts,
+      TResult Function(SupergroupMembersFilterAdministrators value)?
+          administrators,
+      TResult Function(SupergroupMembersFilterSearch value)? search,
+      TResult Function(SupergroupMembersFilterRestricted value)? restricted,
+      TResult Function(SupergroupMembersFilterBanned value)? banned,
+      TResult Function(SupergroupMembersFilterMention value)? mention,
+      TResult Function(SupergroupMembersFilterBots value)? bots,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case SupergroupMembersFilterRecent.CONSTRUCTOR:
+        if (recent != null) {
+          return recent.call(this as SupergroupMembersFilterRecent);
+        }
+        break;
+      case SupergroupMembersFilterContacts.CONSTRUCTOR:
+        if (contacts != null) {
+          return contacts.call(this as SupergroupMembersFilterContacts);
+        }
+        break;
+      case SupergroupMembersFilterAdministrators.CONSTRUCTOR:
+        if (administrators != null) {
+          return administrators
+              .call(this as SupergroupMembersFilterAdministrators);
+        }
+        break;
+      case SupergroupMembersFilterSearch.CONSTRUCTOR:
+        if (search != null) {
+          return search.call(this as SupergroupMembersFilterSearch);
+        }
+        break;
+      case SupergroupMembersFilterRestricted.CONSTRUCTOR:
+        if (restricted != null) {
+          return restricted.call(this as SupergroupMembersFilterRestricted);
+        }
+        break;
+      case SupergroupMembersFilterBanned.CONSTRUCTOR:
+        if (banned != null) {
+          return banned.call(this as SupergroupMembersFilterBanned);
+        }
+        break;
+      case SupergroupMembersFilterMention.CONSTRUCTOR:
+        if (mention != null) {
+          return mention.call(this as SupergroupMembersFilterMention);
+        }
+        break;
+      case SupergroupMembersFilterBots.CONSTRUCTOR:
+        if (bots != null) {
+          return bots.call(this as SupergroupMembersFilterBots);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1382,6 +1827,31 @@ extension SecretChatStateExtensions on SecretChatState {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(SecretChatStatePending value)? pending,
+      TResult Function(SecretChatStateReady value)? ready,
+      TResult Function(SecretChatStateClosed value)? closed,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case SecretChatStatePending.CONSTRUCTOR:
+        if (pending != null) {
+          return pending.call(this as SecretChatStatePending);
+        }
+        break;
+      case SecretChatStateReady.CONSTRUCTOR:
+        if (ready != null) {
+          return ready.call(this as SecretChatStateReady);
+        }
+        break;
+      case SecretChatStateClosed.CONSTRUCTOR:
+        if (closed != null) {
+          return closed.call(this as SecretChatStateClosed);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension SecretChatExtensions on SecretChat {
@@ -1412,6 +1882,25 @@ extension MessageSenderExtensions on MessageSender {
         return chat.call(this as MessageSenderChat);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageSenderUser value)? user,
+      TResult Function(MessageSenderChat value)? chat,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageSenderUser.CONSTRUCTOR:
+        if (user != null) {
+          return user.call(this as MessageSenderUser);
+        }
+        break;
+      case MessageSenderChat.CONSTRUCTOR:
+        if (chat != null) {
+          return chat.call(this as MessageSenderChat);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1454,6 +1943,43 @@ extension MessageForwardOriginExtensions on MessageForwardOrigin {
         return messageImport.call(this as MessageForwardOriginMessageImport);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageForwardOriginUser value)? user,
+      TResult Function(MessageForwardOriginChat value)? chat,
+      TResult Function(MessageForwardOriginHiddenUser value)? hiddenUser,
+      TResult Function(MessageForwardOriginChannel value)? channel,
+      TResult Function(MessageForwardOriginMessageImport value)? messageImport,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageForwardOriginUser.CONSTRUCTOR:
+        if (user != null) {
+          return user.call(this as MessageForwardOriginUser);
+        }
+        break;
+      case MessageForwardOriginChat.CONSTRUCTOR:
+        if (chat != null) {
+          return chat.call(this as MessageForwardOriginChat);
+        }
+        break;
+      case MessageForwardOriginHiddenUser.CONSTRUCTOR:
+        if (hiddenUser != null) {
+          return hiddenUser.call(this as MessageForwardOriginHiddenUser);
+        }
+        break;
+      case MessageForwardOriginChannel.CONSTRUCTOR:
+        if (channel != null) {
+          return channel.call(this as MessageForwardOriginChannel);
+        }
+        break;
+      case MessageForwardOriginMessageImport.CONSTRUCTOR:
+        if (messageImport != null) {
+          return messageImport.call(this as MessageForwardOriginMessageImport);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1544,6 +2070,25 @@ extension MessageSendingStateExtensions on MessageSendingState {
         return failed.call(this as MessageSendingStateFailed);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageSendingStatePending value)? pending,
+      TResult Function(MessageSendingStateFailed value)? failed,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageSendingStatePending.CONSTRUCTOR:
+        if (pending != null) {
+          return pending.call(this as MessageSendingStatePending);
+        }
+        break;
+      case MessageSendingStateFailed.CONSTRUCTOR:
+        if (failed != null) {
+          return failed.call(this as MessageSendingStateFailed);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1661,6 +2206,35 @@ extension NotificationSettingsScopeExtensions on NotificationSettingsScope {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(NotificationSettingsScopePrivateChats value)?
+          privateChats,
+      TResult Function(NotificationSettingsScopeGroupChats value)? groupChats,
+      TResult Function(NotificationSettingsScopeChannelChats value)?
+          channelChats,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case NotificationSettingsScopePrivateChats.CONSTRUCTOR:
+        if (privateChats != null) {
+          return privateChats
+              .call(this as NotificationSettingsScopePrivateChats);
+        }
+        break;
+      case NotificationSettingsScopeGroupChats.CONSTRUCTOR:
+        if (groupChats != null) {
+          return groupChats.call(this as NotificationSettingsScopeGroupChats);
+        }
+        break;
+      case NotificationSettingsScopeChannelChats.CONSTRUCTOR:
+        if (channelChats != null) {
+          return channelChats
+              .call(this as NotificationSettingsScopeChannelChats);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatNotificationSettingsExtensions on ChatNotificationSettings {
@@ -1742,6 +2316,37 @@ extension ChatTypeExtensions on ChatType {
         return secret.call(this as ChatTypeSecret);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatTypePrivate value)? private,
+      TResult Function(ChatTypeBasicGroup value)? basicGroup,
+      TResult Function(ChatTypeSupergroup value)? supergroup,
+      TResult Function(ChatTypeSecret value)? secret,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatTypePrivate.CONSTRUCTOR:
+        if (private != null) {
+          return private.call(this as ChatTypePrivate);
+        }
+        break;
+      case ChatTypeBasicGroup.CONSTRUCTOR:
+        if (basicGroup != null) {
+          return basicGroup.call(this as ChatTypeBasicGroup);
+        }
+        break;
+      case ChatTypeSupergroup.CONSTRUCTOR:
+        if (supergroup != null) {
+          return supergroup.call(this as ChatTypeSupergroup);
+        }
+        break;
+      case ChatTypeSecret.CONSTRUCTOR:
+        if (secret != null) {
+          return secret.call(this as ChatTypeSecret);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1834,6 +2439,31 @@ extension ChatListExtensions on ChatList {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatListMain value)? main,
+      TResult Function(ChatListArchive value)? archive,
+      TResult Function(ChatListFilter value)? filter,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatListMain.CONSTRUCTOR:
+        if (main != null) {
+          return main.call(this as ChatListMain);
+        }
+        break;
+      case ChatListArchive.CONSTRUCTOR:
+        if (archive != null) {
+          return archive.call(this as ChatListArchive);
+        }
+        break;
+      case ChatListFilter.CONSTRUCTOR:
+        if (filter != null) {
+          return filter.call(this as ChatListFilter);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatListFilterExtensions on ChatListFilter {
@@ -1859,6 +2489,27 @@ extension ChatSourceExtensions on ChatSource {
             .call(this as ChatSourcePublicServiceAnnouncement);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatSourceMtprotoProxy value)? mtprotoProxy,
+      TResult Function(ChatSourcePublicServiceAnnouncement value)?
+          publicServiceAnnouncement,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatSourceMtprotoProxy.CONSTRUCTOR:
+        if (mtprotoProxy != null) {
+          return mtprotoProxy.call(this as ChatSourceMtprotoProxy);
+        }
+        break;
+      case ChatSourcePublicServiceAnnouncement.CONSTRUCTOR:
+        if (publicServiceAnnouncement != null) {
+          return publicServiceAnnouncement
+              .call(this as ChatSourcePublicServiceAnnouncement);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -1987,6 +2638,25 @@ extension PublicChatTypeExtensions on PublicChatType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PublicChatTypeHasUsername value)? hasUsername,
+      TResult Function(PublicChatTypeIsLocationBased value)? isLocationBased,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PublicChatTypeHasUsername.CONSTRUCTOR:
+        if (hasUsername != null) {
+          return hasUsername.call(this as PublicChatTypeHasUsername);
+        }
+        break;
+      case PublicChatTypeIsLocationBased.CONSTRUCTOR:
+        if (isLocationBased != null) {
+          return isLocationBased.call(this as PublicChatTypeIsLocationBased);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatActionBarExtensions on ChatActionBar {
@@ -2016,6 +2686,51 @@ extension ChatActionBarExtensions on ChatActionBar {
         return sharePhoneNumber.call(this as ChatActionBarSharePhoneNumber);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatActionBarReportSpam value)? reportSpam,
+      TResult Function(ChatActionBarReportUnrelatedLocation value)?
+          reportUnrelatedLocation,
+      TResult Function(ChatActionBarInviteMembers value)? inviteMembers,
+      TResult Function(ChatActionBarReportAddBlock value)? reportAddBlock,
+      TResult Function(ChatActionBarAddContact value)? addContact,
+      TResult Function(ChatActionBarSharePhoneNumber value)? sharePhoneNumber,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatActionBarReportSpam.CONSTRUCTOR:
+        if (reportSpam != null) {
+          return reportSpam.call(this as ChatActionBarReportSpam);
+        }
+        break;
+      case ChatActionBarReportUnrelatedLocation.CONSTRUCTOR:
+        if (reportUnrelatedLocation != null) {
+          return reportUnrelatedLocation
+              .call(this as ChatActionBarReportUnrelatedLocation);
+        }
+        break;
+      case ChatActionBarInviteMembers.CONSTRUCTOR:
+        if (inviteMembers != null) {
+          return inviteMembers.call(this as ChatActionBarInviteMembers);
+        }
+        break;
+      case ChatActionBarReportAddBlock.CONSTRUCTOR:
+        if (reportAddBlock != null) {
+          return reportAddBlock.call(this as ChatActionBarReportAddBlock);
+        }
+        break;
+      case ChatActionBarAddContact.CONSTRUCTOR:
+        if (addContact != null) {
+          return addContact.call(this as ChatActionBarAddContact);
+        }
+        break;
+      case ChatActionBarSharePhoneNumber.CONSTRUCTOR:
+        if (sharePhoneNumber != null) {
+          return sharePhoneNumber.call(this as ChatActionBarSharePhoneNumber);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2052,6 +2767,41 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
         return requestPoll.call(this as KeyboardButtonTypeRequestPoll);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(KeyboardButtonTypeText value)? text,
+      TResult Function(KeyboardButtonTypeRequestPhoneNumber value)?
+          requestPhoneNumber,
+      TResult Function(KeyboardButtonTypeRequestLocation value)?
+          requestLocation,
+      TResult Function(KeyboardButtonTypeRequestPoll value)? requestPoll,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case KeyboardButtonTypeText.CONSTRUCTOR:
+        if (text != null) {
+          return text.call(this as KeyboardButtonTypeText);
+        }
+        break;
+      case KeyboardButtonTypeRequestPhoneNumber.CONSTRUCTOR:
+        if (requestPhoneNumber != null) {
+          return requestPhoneNumber
+              .call(this as KeyboardButtonTypeRequestPhoneNumber);
+        }
+        break;
+      case KeyboardButtonTypeRequestLocation.CONSTRUCTOR:
+        if (requestLocation != null) {
+          return requestLocation
+              .call(this as KeyboardButtonTypeRequestLocation);
+        }
+        break;
+      case KeyboardButtonTypeRequestPoll.CONSTRUCTOR:
+        if (requestPoll != null) {
+          return requestPoll.call(this as KeyboardButtonTypeRequestPoll);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2101,6 +2851,61 @@ extension InlineKeyboardButtonTypeExtensions on InlineKeyboardButtonType {
         return buy.call(this as InlineKeyboardButtonTypeBuy);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InlineKeyboardButtonTypeUrl value)? url,
+      TResult Function(InlineKeyboardButtonTypeLoginUrl value)? loginUrl,
+      TResult Function(InlineKeyboardButtonTypeCallback value)? callback,
+      TResult Function(InlineKeyboardButtonTypeCallbackWithPassword value)?
+          callbackWithPassword,
+      TResult Function(InlineKeyboardButtonTypeCallbackGame value)?
+          callbackGame,
+      TResult Function(InlineKeyboardButtonTypeSwitchInline value)?
+          switchInline,
+      TResult Function(InlineKeyboardButtonTypeBuy value)? buy,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
+        if (url != null) {
+          return url.call(this as InlineKeyboardButtonTypeUrl);
+        }
+        break;
+      case InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR:
+        if (loginUrl != null) {
+          return loginUrl.call(this as InlineKeyboardButtonTypeLoginUrl);
+        }
+        break;
+      case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
+        if (callback != null) {
+          return callback.call(this as InlineKeyboardButtonTypeCallback);
+        }
+        break;
+      case InlineKeyboardButtonTypeCallbackWithPassword.CONSTRUCTOR:
+        if (callbackWithPassword != null) {
+          return callbackWithPassword
+              .call(this as InlineKeyboardButtonTypeCallbackWithPassword);
+        }
+        break;
+      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
+        if (callbackGame != null) {
+          return callbackGame
+              .call(this as InlineKeyboardButtonTypeCallbackGame);
+        }
+        break;
+      case InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR:
+        if (switchInline != null) {
+          return switchInline
+              .call(this as InlineKeyboardButtonTypeSwitchInline);
+        }
+        break;
+      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
+        if (buy != null) {
+          return buy.call(this as InlineKeyboardButtonTypeBuy);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2165,6 +2970,37 @@ extension ReplyMarkupExtensions on ReplyMarkup {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ReplyMarkupRemoveKeyboard value)? removeKeyboard,
+      TResult Function(ReplyMarkupForceReply value)? forceReply,
+      TResult Function(ReplyMarkupShowKeyboard value)? showKeyboard,
+      TResult Function(ReplyMarkupInlineKeyboard value)? inlineKeyboard,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ReplyMarkupRemoveKeyboard.CONSTRUCTOR:
+        if (removeKeyboard != null) {
+          return removeKeyboard.call(this as ReplyMarkupRemoveKeyboard);
+        }
+        break;
+      case ReplyMarkupForceReply.CONSTRUCTOR:
+        if (forceReply != null) {
+          return forceReply.call(this as ReplyMarkupForceReply);
+        }
+        break;
+      case ReplyMarkupShowKeyboard.CONSTRUCTOR:
+        if (showKeyboard != null) {
+          return showKeyboard.call(this as ReplyMarkupShowKeyboard);
+        }
+        break;
+      case ReplyMarkupInlineKeyboard.CONSTRUCTOR:
+        if (inlineKeyboard != null) {
+          return inlineKeyboard.call(this as ReplyMarkupInlineKeyboard);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ReplyMarkupRemoveKeyboardExtensions on ReplyMarkupRemoveKeyboard {
@@ -2208,6 +3044,27 @@ extension LoginUrlInfoExtensions on LoginUrlInfo {
             .call(this as LoginUrlInfoRequestConfirmation);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(LoginUrlInfoOpen value)? open,
+      TResult Function(LoginUrlInfoRequestConfirmation value)?
+          requestConfirmation,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case LoginUrlInfoOpen.CONSTRUCTOR:
+        if (open != null) {
+          return open.call(this as LoginUrlInfoOpen);
+        }
+        break;
+      case LoginUrlInfoRequestConfirmation.CONSTRUCTOR:
+        if (requestConfirmation != null) {
+          return requestConfirmation
+              .call(this as LoginUrlInfoRequestConfirmation);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2301,6 +3158,115 @@ extension RichTextExtensions on RichText {
         return s.call(this as RichTexts);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(RichTextPlain value)? plain,
+      TResult Function(RichTextBold value)? bold,
+      TResult Function(RichTextItalic value)? italic,
+      TResult Function(RichTextUnderline value)? underline,
+      TResult Function(RichTextStrikethrough value)? strikethrough,
+      TResult Function(RichTextFixed value)? fixed,
+      TResult Function(RichTextUrl value)? url,
+      TResult Function(RichTextEmailAddress value)? emailAddress,
+      TResult Function(RichTextSubscript value)? subscript,
+      TResult Function(RichTextSuperscript value)? superscript,
+      TResult Function(RichTextMarked value)? marked,
+      TResult Function(RichTextPhoneNumber value)? phoneNumber,
+      TResult Function(RichTextIcon value)? icon,
+      TResult Function(RichTextReference value)? reference,
+      TResult Function(RichTextAnchor value)? anchor,
+      TResult Function(RichTextAnchorLink value)? anchorLink,
+      TResult Function(RichTexts value)? s,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case RichTextPlain.CONSTRUCTOR:
+        if (plain != null) {
+          return plain.call(this as RichTextPlain);
+        }
+        break;
+      case RichTextBold.CONSTRUCTOR:
+        if (bold != null) {
+          return bold.call(this as RichTextBold);
+        }
+        break;
+      case RichTextItalic.CONSTRUCTOR:
+        if (italic != null) {
+          return italic.call(this as RichTextItalic);
+        }
+        break;
+      case RichTextUnderline.CONSTRUCTOR:
+        if (underline != null) {
+          return underline.call(this as RichTextUnderline);
+        }
+        break;
+      case RichTextStrikethrough.CONSTRUCTOR:
+        if (strikethrough != null) {
+          return strikethrough.call(this as RichTextStrikethrough);
+        }
+        break;
+      case RichTextFixed.CONSTRUCTOR:
+        if (fixed != null) {
+          return fixed.call(this as RichTextFixed);
+        }
+        break;
+      case RichTextUrl.CONSTRUCTOR:
+        if (url != null) {
+          return url.call(this as RichTextUrl);
+        }
+        break;
+      case RichTextEmailAddress.CONSTRUCTOR:
+        if (emailAddress != null) {
+          return emailAddress.call(this as RichTextEmailAddress);
+        }
+        break;
+      case RichTextSubscript.CONSTRUCTOR:
+        if (subscript != null) {
+          return subscript.call(this as RichTextSubscript);
+        }
+        break;
+      case RichTextSuperscript.CONSTRUCTOR:
+        if (superscript != null) {
+          return superscript.call(this as RichTextSuperscript);
+        }
+        break;
+      case RichTextMarked.CONSTRUCTOR:
+        if (marked != null) {
+          return marked.call(this as RichTextMarked);
+        }
+        break;
+      case RichTextPhoneNumber.CONSTRUCTOR:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as RichTextPhoneNumber);
+        }
+        break;
+      case RichTextIcon.CONSTRUCTOR:
+        if (icon != null) {
+          return icon.call(this as RichTextIcon);
+        }
+        break;
+      case RichTextReference.CONSTRUCTOR:
+        if (reference != null) {
+          return reference.call(this as RichTextReference);
+        }
+        break;
+      case RichTextAnchor.CONSTRUCTOR:
+        if (anchor != null) {
+          return anchor.call(this as RichTextAnchor);
+        }
+        break;
+      case RichTextAnchorLink.CONSTRUCTOR:
+        if (anchorLink != null) {
+          return anchorLink.call(this as RichTextAnchorLink);
+        }
+        break;
+      case RichTexts.CONSTRUCTOR:
+        if (s != null) {
+          return s.call(this as RichTexts);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2433,6 +3399,31 @@ extension PageBlockHorizontalAlignmentExtensions
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PageBlockHorizontalAlignmentLeft value)? left,
+      TResult Function(PageBlockHorizontalAlignmentCenter value)? center,
+      TResult Function(PageBlockHorizontalAlignmentRight value)? right,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PageBlockHorizontalAlignmentLeft.CONSTRUCTOR:
+        if (left != null) {
+          return left.call(this as PageBlockHorizontalAlignmentLeft);
+        }
+        break;
+      case PageBlockHorizontalAlignmentCenter.CONSTRUCTOR:
+        if (center != null) {
+          return center.call(this as PageBlockHorizontalAlignmentCenter);
+        }
+        break;
+      case PageBlockHorizontalAlignmentRight.CONSTRUCTOR:
+        if (right != null) {
+          return right.call(this as PageBlockHorizontalAlignmentRight);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension PageBlockVerticalAlignmentExtensions on PageBlockVerticalAlignment {
@@ -2450,6 +3441,31 @@ extension PageBlockVerticalAlignmentExtensions on PageBlockVerticalAlignment {
         return bottom.call(this as PageBlockVerticalAlignmentBottom);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PageBlockVerticalAlignmentTop value)? top,
+      TResult Function(PageBlockVerticalAlignmentMiddle value)? middle,
+      TResult Function(PageBlockVerticalAlignmentBottom value)? bottom,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PageBlockVerticalAlignmentTop.CONSTRUCTOR:
+        if (top != null) {
+          return top.call(this as PageBlockVerticalAlignmentTop);
+        }
+        break;
+      case PageBlockVerticalAlignmentMiddle.CONSTRUCTOR:
+        if (middle != null) {
+          return middle.call(this as PageBlockVerticalAlignmentMiddle);
+        }
+        break;
+      case PageBlockVerticalAlignmentBottom.CONSTRUCTOR:
+        if (bottom != null) {
+          return bottom.call(this as PageBlockVerticalAlignmentBottom);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -2579,6 +3595,187 @@ extension PageBlockExtensions on PageBlock {
         return map.call(this as PageBlockMap);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PageBlockTitle value)? title,
+      TResult Function(PageBlockSubtitle value)? subtitle,
+      TResult Function(PageBlockAuthorDate value)? authorDate,
+      TResult Function(PageBlockHeader value)? header,
+      TResult Function(PageBlockSubheader value)? subheader,
+      TResult Function(PageBlockKicker value)? kicker,
+      TResult Function(PageBlockParagraph value)? paragraph,
+      TResult Function(PageBlockPreformatted value)? preformatted,
+      TResult Function(PageBlockFooter value)? footer,
+      TResult Function(PageBlockDivider value)? divider,
+      TResult Function(PageBlockAnchor value)? anchor,
+      TResult Function(PageBlockList value)? list,
+      TResult Function(PageBlockBlockQuote value)? blockQuote,
+      TResult Function(PageBlockPullQuote value)? pullQuote,
+      TResult Function(PageBlockAnimation value)? animation,
+      TResult Function(PageBlockAudio value)? audio,
+      TResult Function(PageBlockPhoto value)? photo,
+      TResult Function(PageBlockVideo value)? video,
+      TResult Function(PageBlockVoiceNote value)? voiceNote,
+      TResult Function(PageBlockCover value)? cover,
+      TResult Function(PageBlockEmbedded value)? embedded,
+      TResult Function(PageBlockEmbeddedPost value)? embeddedPost,
+      TResult Function(PageBlockCollage value)? collage,
+      TResult Function(PageBlockSlideshow value)? slideshow,
+      TResult Function(PageBlockChatLink value)? chatLink,
+      TResult Function(PageBlockTable value)? table,
+      TResult Function(PageBlockDetails value)? details,
+      TResult Function(PageBlockRelatedArticles value)? relatedArticles,
+      TResult Function(PageBlockMap value)? map,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PageBlockTitle.CONSTRUCTOR:
+        if (title != null) {
+          return title.call(this as PageBlockTitle);
+        }
+        break;
+      case PageBlockSubtitle.CONSTRUCTOR:
+        if (subtitle != null) {
+          return subtitle.call(this as PageBlockSubtitle);
+        }
+        break;
+      case PageBlockAuthorDate.CONSTRUCTOR:
+        if (authorDate != null) {
+          return authorDate.call(this as PageBlockAuthorDate);
+        }
+        break;
+      case PageBlockHeader.CONSTRUCTOR:
+        if (header != null) {
+          return header.call(this as PageBlockHeader);
+        }
+        break;
+      case PageBlockSubheader.CONSTRUCTOR:
+        if (subheader != null) {
+          return subheader.call(this as PageBlockSubheader);
+        }
+        break;
+      case PageBlockKicker.CONSTRUCTOR:
+        if (kicker != null) {
+          return kicker.call(this as PageBlockKicker);
+        }
+        break;
+      case PageBlockParagraph.CONSTRUCTOR:
+        if (paragraph != null) {
+          return paragraph.call(this as PageBlockParagraph);
+        }
+        break;
+      case PageBlockPreformatted.CONSTRUCTOR:
+        if (preformatted != null) {
+          return preformatted.call(this as PageBlockPreformatted);
+        }
+        break;
+      case PageBlockFooter.CONSTRUCTOR:
+        if (footer != null) {
+          return footer.call(this as PageBlockFooter);
+        }
+        break;
+      case PageBlockDivider.CONSTRUCTOR:
+        if (divider != null) {
+          return divider.call(this as PageBlockDivider);
+        }
+        break;
+      case PageBlockAnchor.CONSTRUCTOR:
+        if (anchor != null) {
+          return anchor.call(this as PageBlockAnchor);
+        }
+        break;
+      case PageBlockList.CONSTRUCTOR:
+        if (list != null) {
+          return list.call(this as PageBlockList);
+        }
+        break;
+      case PageBlockBlockQuote.CONSTRUCTOR:
+        if (blockQuote != null) {
+          return blockQuote.call(this as PageBlockBlockQuote);
+        }
+        break;
+      case PageBlockPullQuote.CONSTRUCTOR:
+        if (pullQuote != null) {
+          return pullQuote.call(this as PageBlockPullQuote);
+        }
+        break;
+      case PageBlockAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as PageBlockAnimation);
+        }
+        break;
+      case PageBlockAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as PageBlockAudio);
+        }
+        break;
+      case PageBlockPhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as PageBlockPhoto);
+        }
+        break;
+      case PageBlockVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as PageBlockVideo);
+        }
+        break;
+      case PageBlockVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as PageBlockVoiceNote);
+        }
+        break;
+      case PageBlockCover.CONSTRUCTOR:
+        if (cover != null) {
+          return cover.call(this as PageBlockCover);
+        }
+        break;
+      case PageBlockEmbedded.CONSTRUCTOR:
+        if (embedded != null) {
+          return embedded.call(this as PageBlockEmbedded);
+        }
+        break;
+      case PageBlockEmbeddedPost.CONSTRUCTOR:
+        if (embeddedPost != null) {
+          return embeddedPost.call(this as PageBlockEmbeddedPost);
+        }
+        break;
+      case PageBlockCollage.CONSTRUCTOR:
+        if (collage != null) {
+          return collage.call(this as PageBlockCollage);
+        }
+        break;
+      case PageBlockSlideshow.CONSTRUCTOR:
+        if (slideshow != null) {
+          return slideshow.call(this as PageBlockSlideshow);
+        }
+        break;
+      case PageBlockChatLink.CONSTRUCTOR:
+        if (chatLink != null) {
+          return chatLink.call(this as PageBlockChatLink);
+        }
+        break;
+      case PageBlockTable.CONSTRUCTOR:
+        if (table != null) {
+          return table.call(this as PageBlockTable);
+        }
+        break;
+      case PageBlockDetails.CONSTRUCTOR:
+        if (details != null) {
+          return details.call(this as PageBlockDetails);
+        }
+        break;
+      case PageBlockRelatedArticles.CONSTRUCTOR:
+        if (relatedArticles != null) {
+          return relatedArticles.call(this as PageBlockRelatedArticles);
+        }
+        break;
+      case PageBlockMap.CONSTRUCTOR:
+        if (map != null) {
+          return map.call(this as PageBlockMap);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -3008,6 +4205,37 @@ extension InputCredentialsExtensions on InputCredentials {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputCredentialsSaved value)? saved,
+      TResult Function(InputCredentialsNew value)? $new,
+      TResult Function(InputCredentialsApplePay value)? applePay,
+      TResult Function(InputCredentialsGooglePay value)? googlePay,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputCredentialsSaved.CONSTRUCTOR:
+        if (saved != null) {
+          return saved.call(this as InputCredentialsSaved);
+        }
+        break;
+      case InputCredentialsNew.CONSTRUCTOR:
+        if ($new != null) {
+          return $new.call(this as InputCredentialsNew);
+        }
+        break;
+      case InputCredentialsApplePay.CONSTRUCTOR:
+        if (applePay != null) {
+          return applePay.call(this as InputCredentialsApplePay);
+        }
+        break;
+      case InputCredentialsGooglePay.CONSTRUCTOR:
+        if (googlePay != null) {
+          return googlePay.call(this as InputCredentialsGooglePay);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InputCredentialsSavedExtensions on InputCredentialsSaved {
@@ -3160,6 +4388,101 @@ extension PassportElementTypeExtensions on PassportElementType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PassportElementTypePersonalDetails value)?
+          personalDetails,
+      TResult Function(PassportElementTypePassport value)? passport,
+      TResult Function(PassportElementTypeDriverLicense value)? driverLicense,
+      TResult Function(PassportElementTypeIdentityCard value)? identityCard,
+      TResult Function(PassportElementTypeInternalPassport value)?
+          internalPassport,
+      TResult Function(PassportElementTypeAddress value)? address,
+      TResult Function(PassportElementTypeUtilityBill value)? utilityBill,
+      TResult Function(PassportElementTypeBankStatement value)? bankStatement,
+      TResult Function(PassportElementTypeRentalAgreement value)?
+          rentalAgreement,
+      TResult Function(PassportElementTypePassportRegistration value)?
+          passportRegistration,
+      TResult Function(PassportElementTypeTemporaryRegistration value)?
+          temporaryRegistration,
+      TResult Function(PassportElementTypePhoneNumber value)? phoneNumber,
+      TResult Function(PassportElementTypeEmailAddress value)? emailAddress,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PassportElementTypePersonalDetails.CONSTRUCTOR:
+        if (personalDetails != null) {
+          return personalDetails
+              .call(this as PassportElementTypePersonalDetails);
+        }
+        break;
+      case PassportElementTypePassport.CONSTRUCTOR:
+        if (passport != null) {
+          return passport.call(this as PassportElementTypePassport);
+        }
+        break;
+      case PassportElementTypeDriverLicense.CONSTRUCTOR:
+        if (driverLicense != null) {
+          return driverLicense.call(this as PassportElementTypeDriverLicense);
+        }
+        break;
+      case PassportElementTypeIdentityCard.CONSTRUCTOR:
+        if (identityCard != null) {
+          return identityCard.call(this as PassportElementTypeIdentityCard);
+        }
+        break;
+      case PassportElementTypeInternalPassport.CONSTRUCTOR:
+        if (internalPassport != null) {
+          return internalPassport
+              .call(this as PassportElementTypeInternalPassport);
+        }
+        break;
+      case PassportElementTypeAddress.CONSTRUCTOR:
+        if (address != null) {
+          return address.call(this as PassportElementTypeAddress);
+        }
+        break;
+      case PassportElementTypeUtilityBill.CONSTRUCTOR:
+        if (utilityBill != null) {
+          return utilityBill.call(this as PassportElementTypeUtilityBill);
+        }
+        break;
+      case PassportElementTypeBankStatement.CONSTRUCTOR:
+        if (bankStatement != null) {
+          return bankStatement.call(this as PassportElementTypeBankStatement);
+        }
+        break;
+      case PassportElementTypeRentalAgreement.CONSTRUCTOR:
+        if (rentalAgreement != null) {
+          return rentalAgreement
+              .call(this as PassportElementTypeRentalAgreement);
+        }
+        break;
+      case PassportElementTypePassportRegistration.CONSTRUCTOR:
+        if (passportRegistration != null) {
+          return passportRegistration
+              .call(this as PassportElementTypePassportRegistration);
+        }
+        break;
+      case PassportElementTypeTemporaryRegistration.CONSTRUCTOR:
+        if (temporaryRegistration != null) {
+          return temporaryRegistration
+              .call(this as PassportElementTypeTemporaryRegistration);
+        }
+        break;
+      case PassportElementTypePhoneNumber.CONSTRUCTOR:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as PassportElementTypePhoneNumber);
+        }
+        break;
+      case PassportElementTypeEmailAddress.CONSTRUCTOR:
+        if (emailAddress != null) {
+          return emailAddress.call(this as PassportElementTypeEmailAddress);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension DateExtensions on Date {
@@ -3299,6 +4622,95 @@ extension PassportElementExtensions on PassportElement {
         return emailAddress.call(this as PassportElementEmailAddress);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PassportElementPersonalDetails value)? personalDetails,
+      TResult Function(PassportElementPassport value)? passport,
+      TResult Function(PassportElementDriverLicense value)? driverLicense,
+      TResult Function(PassportElementIdentityCard value)? identityCard,
+      TResult Function(PassportElementInternalPassport value)? internalPassport,
+      TResult Function(PassportElementAddress value)? address,
+      TResult Function(PassportElementUtilityBill value)? utilityBill,
+      TResult Function(PassportElementBankStatement value)? bankStatement,
+      TResult Function(PassportElementRentalAgreement value)? rentalAgreement,
+      TResult Function(PassportElementPassportRegistration value)?
+          passportRegistration,
+      TResult Function(PassportElementTemporaryRegistration value)?
+          temporaryRegistration,
+      TResult Function(PassportElementPhoneNumber value)? phoneNumber,
+      TResult Function(PassportElementEmailAddress value)? emailAddress,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PassportElementPersonalDetails.CONSTRUCTOR:
+        if (personalDetails != null) {
+          return personalDetails.call(this as PassportElementPersonalDetails);
+        }
+        break;
+      case PassportElementPassport.CONSTRUCTOR:
+        if (passport != null) {
+          return passport.call(this as PassportElementPassport);
+        }
+        break;
+      case PassportElementDriverLicense.CONSTRUCTOR:
+        if (driverLicense != null) {
+          return driverLicense.call(this as PassportElementDriverLicense);
+        }
+        break;
+      case PassportElementIdentityCard.CONSTRUCTOR:
+        if (identityCard != null) {
+          return identityCard.call(this as PassportElementIdentityCard);
+        }
+        break;
+      case PassportElementInternalPassport.CONSTRUCTOR:
+        if (internalPassport != null) {
+          return internalPassport.call(this as PassportElementInternalPassport);
+        }
+        break;
+      case PassportElementAddress.CONSTRUCTOR:
+        if (address != null) {
+          return address.call(this as PassportElementAddress);
+        }
+        break;
+      case PassportElementUtilityBill.CONSTRUCTOR:
+        if (utilityBill != null) {
+          return utilityBill.call(this as PassportElementUtilityBill);
+        }
+        break;
+      case PassportElementBankStatement.CONSTRUCTOR:
+        if (bankStatement != null) {
+          return bankStatement.call(this as PassportElementBankStatement);
+        }
+        break;
+      case PassportElementRentalAgreement.CONSTRUCTOR:
+        if (rentalAgreement != null) {
+          return rentalAgreement.call(this as PassportElementRentalAgreement);
+        }
+        break;
+      case PassportElementPassportRegistration.CONSTRUCTOR:
+        if (passportRegistration != null) {
+          return passportRegistration
+              .call(this as PassportElementPassportRegistration);
+        }
+        break;
+      case PassportElementTemporaryRegistration.CONSTRUCTOR:
+        if (temporaryRegistration != null) {
+          return temporaryRegistration
+              .call(this as PassportElementTemporaryRegistration);
+        }
+        break;
+      case PassportElementPhoneNumber.CONSTRUCTOR:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as PassportElementPhoneNumber);
+        }
+        break;
+      case PassportElementEmailAddress.CONSTRUCTOR:
+        if (emailAddress != null) {
+          return emailAddress.call(this as PassportElementEmailAddress);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -3448,6 +4860,101 @@ extension InputPassportElementExtensions on InputPassportElement {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputPassportElementPersonalDetails value)?
+          personalDetails,
+      TResult Function(InputPassportElementPassport value)? passport,
+      TResult Function(InputPassportElementDriverLicense value)? driverLicense,
+      TResult Function(InputPassportElementIdentityCard value)? identityCard,
+      TResult Function(InputPassportElementInternalPassport value)?
+          internalPassport,
+      TResult Function(InputPassportElementAddress value)? address,
+      TResult Function(InputPassportElementUtilityBill value)? utilityBill,
+      TResult Function(InputPassportElementBankStatement value)? bankStatement,
+      TResult Function(InputPassportElementRentalAgreement value)?
+          rentalAgreement,
+      TResult Function(InputPassportElementPassportRegistration value)?
+          passportRegistration,
+      TResult Function(InputPassportElementTemporaryRegistration value)?
+          temporaryRegistration,
+      TResult Function(InputPassportElementPhoneNumber value)? phoneNumber,
+      TResult Function(InputPassportElementEmailAddress value)? emailAddress,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputPassportElementPersonalDetails.CONSTRUCTOR:
+        if (personalDetails != null) {
+          return personalDetails
+              .call(this as InputPassportElementPersonalDetails);
+        }
+        break;
+      case InputPassportElementPassport.CONSTRUCTOR:
+        if (passport != null) {
+          return passport.call(this as InputPassportElementPassport);
+        }
+        break;
+      case InputPassportElementDriverLicense.CONSTRUCTOR:
+        if (driverLicense != null) {
+          return driverLicense.call(this as InputPassportElementDriverLicense);
+        }
+        break;
+      case InputPassportElementIdentityCard.CONSTRUCTOR:
+        if (identityCard != null) {
+          return identityCard.call(this as InputPassportElementIdentityCard);
+        }
+        break;
+      case InputPassportElementInternalPassport.CONSTRUCTOR:
+        if (internalPassport != null) {
+          return internalPassport
+              .call(this as InputPassportElementInternalPassport);
+        }
+        break;
+      case InputPassportElementAddress.CONSTRUCTOR:
+        if (address != null) {
+          return address.call(this as InputPassportElementAddress);
+        }
+        break;
+      case InputPassportElementUtilityBill.CONSTRUCTOR:
+        if (utilityBill != null) {
+          return utilityBill.call(this as InputPassportElementUtilityBill);
+        }
+        break;
+      case InputPassportElementBankStatement.CONSTRUCTOR:
+        if (bankStatement != null) {
+          return bankStatement.call(this as InputPassportElementBankStatement);
+        }
+        break;
+      case InputPassportElementRentalAgreement.CONSTRUCTOR:
+        if (rentalAgreement != null) {
+          return rentalAgreement
+              .call(this as InputPassportElementRentalAgreement);
+        }
+        break;
+      case InputPassportElementPassportRegistration.CONSTRUCTOR:
+        if (passportRegistration != null) {
+          return passportRegistration
+              .call(this as InputPassportElementPassportRegistration);
+        }
+        break;
+      case InputPassportElementTemporaryRegistration.CONSTRUCTOR:
+        if (temporaryRegistration != null) {
+          return temporaryRegistration
+              .call(this as InputPassportElementTemporaryRegistration);
+        }
+        break;
+      case InputPassportElementPhoneNumber.CONSTRUCTOR:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as InputPassportElementPhoneNumber);
+        }
+        break;
+      case InputPassportElementEmailAddress.CONSTRUCTOR:
+        if (emailAddress != null) {
+          return emailAddress.call(this as InputPassportElementEmailAddress);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InputPassportElementPersonalDetailsExtensions
@@ -3594,6 +5101,75 @@ extension PassportElementErrorSourceExtensions on PassportElementErrorSource {
         return files.call(this as PassportElementErrorSourceFiles);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PassportElementErrorSourceUnspecified value)?
+          unspecified,
+      TResult Function(PassportElementErrorSourceDataField value)? dataField,
+      TResult Function(PassportElementErrorSourceFrontSide value)? frontSide,
+      TResult Function(PassportElementErrorSourceReverseSide value)?
+          reverseSide,
+      TResult Function(PassportElementErrorSourceSelfie value)? selfie,
+      TResult Function(PassportElementErrorSourceTranslationFile value)?
+          translationFile,
+      TResult Function(PassportElementErrorSourceTranslationFiles value)?
+          translationFiles,
+      TResult Function(PassportElementErrorSourceFile value)? file,
+      TResult Function(PassportElementErrorSourceFiles value)? files,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PassportElementErrorSourceUnspecified.CONSTRUCTOR:
+        if (unspecified != null) {
+          return unspecified
+              .call(this as PassportElementErrorSourceUnspecified);
+        }
+        break;
+      case PassportElementErrorSourceDataField.CONSTRUCTOR:
+        if (dataField != null) {
+          return dataField.call(this as PassportElementErrorSourceDataField);
+        }
+        break;
+      case PassportElementErrorSourceFrontSide.CONSTRUCTOR:
+        if (frontSide != null) {
+          return frontSide.call(this as PassportElementErrorSourceFrontSide);
+        }
+        break;
+      case PassportElementErrorSourceReverseSide.CONSTRUCTOR:
+        if (reverseSide != null) {
+          return reverseSide
+              .call(this as PassportElementErrorSourceReverseSide);
+        }
+        break;
+      case PassportElementErrorSourceSelfie.CONSTRUCTOR:
+        if (selfie != null) {
+          return selfie.call(this as PassportElementErrorSourceSelfie);
+        }
+        break;
+      case PassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        if (translationFile != null) {
+          return translationFile
+              .call(this as PassportElementErrorSourceTranslationFile);
+        }
+        break;
+      case PassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+        if (translationFiles != null) {
+          return translationFiles
+              .call(this as PassportElementErrorSourceTranslationFiles);
+        }
+        break;
+      case PassportElementErrorSourceFile.CONSTRUCTOR:
+        if (file != null) {
+          return file.call(this as PassportElementErrorSourceFile);
+        }
+        break;
+      case PassportElementErrorSourceFiles.CONSTRUCTOR:
+        if (files != null) {
+          return files.call(this as PassportElementErrorSourceFiles);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -3749,6 +5325,79 @@ extension InputPassportElementErrorSourceExtensions
         return files.call(this as InputPassportElementErrorSourceFiles);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputPassportElementErrorSourceUnspecified value)?
+          unspecified,
+      TResult Function(InputPassportElementErrorSourceDataField value)?
+          dataField,
+      TResult Function(InputPassportElementErrorSourceFrontSide value)?
+          frontSide,
+      TResult Function(InputPassportElementErrorSourceReverseSide value)?
+          reverseSide,
+      TResult Function(InputPassportElementErrorSourceSelfie value)? selfie,
+      TResult Function(InputPassportElementErrorSourceTranslationFile value)?
+          translationFile,
+      TResult Function(InputPassportElementErrorSourceTranslationFiles value)?
+          translationFiles,
+      TResult Function(InputPassportElementErrorSourceFile value)? file,
+      TResult Function(InputPassportElementErrorSourceFiles value)? files,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputPassportElementErrorSourceUnspecified.CONSTRUCTOR:
+        if (unspecified != null) {
+          return unspecified
+              .call(this as InputPassportElementErrorSourceUnspecified);
+        }
+        break;
+      case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
+        if (dataField != null) {
+          return dataField
+              .call(this as InputPassportElementErrorSourceDataField);
+        }
+        break;
+      case InputPassportElementErrorSourceFrontSide.CONSTRUCTOR:
+        if (frontSide != null) {
+          return frontSide
+              .call(this as InputPassportElementErrorSourceFrontSide);
+        }
+        break;
+      case InputPassportElementErrorSourceReverseSide.CONSTRUCTOR:
+        if (reverseSide != null) {
+          return reverseSide
+              .call(this as InputPassportElementErrorSourceReverseSide);
+        }
+        break;
+      case InputPassportElementErrorSourceSelfie.CONSTRUCTOR:
+        if (selfie != null) {
+          return selfie.call(this as InputPassportElementErrorSourceSelfie);
+        }
+        break;
+      case InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        if (translationFile != null) {
+          return translationFile
+              .call(this as InputPassportElementErrorSourceTranslationFile);
+        }
+        break;
+      case InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+        if (translationFiles != null) {
+          return translationFiles
+              .call(this as InputPassportElementErrorSourceTranslationFiles);
+        }
+        break;
+      case InputPassportElementErrorSourceFile.CONSTRUCTOR:
+        if (file != null) {
+          return file.call(this as InputPassportElementErrorSourceFile);
+        }
+        break;
+      case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
+        if (files != null) {
+          return files.call(this as InputPassportElementErrorSourceFiles);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -3997,6 +5646,301 @@ extension MessageContentExtensions on MessageContent {
         return messageUnsupported.call(this as MessageUnsupported);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageText value)? messageText,
+      TResult Function(MessageAnimation value)? messageAnimation,
+      TResult Function(MessageAudio value)? messageAudio,
+      TResult Function(MessageDocument value)? messageDocument,
+      TResult Function(MessagePhoto value)? messagePhoto,
+      TResult Function(MessageExpiredPhoto value)? messageExpiredPhoto,
+      TResult Function(MessageSticker value)? messageSticker,
+      TResult Function(MessageVideo value)? messageVideo,
+      TResult Function(MessageExpiredVideo value)? messageExpiredVideo,
+      TResult Function(MessageVideoNote value)? messageVideoNote,
+      TResult Function(MessageVoiceNote value)? messageVoiceNote,
+      TResult Function(MessageLocation value)? messageLocation,
+      TResult Function(MessageVenue value)? messageVenue,
+      TResult Function(MessageContact value)? messageContact,
+      TResult Function(MessageDice value)? messageDice,
+      TResult Function(MessageGame value)? messageGame,
+      TResult Function(MessagePoll value)? messagePoll,
+      TResult Function(MessageInvoice value)? messageInvoice,
+      TResult Function(MessageCall value)? messageCall,
+      TResult Function(MessageVoiceChatStarted value)? messageVoiceChatStarted,
+      TResult Function(MessageVoiceChatEnded value)? messageVoiceChatEnded,
+      TResult Function(MessageInviteVoiceChatParticipants value)?
+          messageInviteVoiceChatParticipants,
+      TResult Function(MessageBasicGroupChatCreate value)?
+          messageBasicGroupChatCreate,
+      TResult Function(MessageSupergroupChatCreate value)?
+          messageSupergroupChatCreate,
+      TResult Function(MessageChatChangeTitle value)? messageChatChangeTitle,
+      TResult Function(MessageChatChangePhoto value)? messageChatChangePhoto,
+      TResult Function(MessageChatDeletePhoto value)? messageChatDeletePhoto,
+      TResult Function(MessageChatAddMembers value)? messageChatAddMembers,
+      TResult Function(MessageChatJoinByLink value)? messageChatJoinByLink,
+      TResult Function(MessageChatDeleteMember value)? messageChatDeleteMember,
+      TResult Function(MessageChatUpgradeTo value)? messageChatUpgradeTo,
+      TResult Function(MessageChatUpgradeFrom value)? messageChatUpgradeFrom,
+      TResult Function(MessagePinMessage value)? messagePinMessage,
+      TResult Function(MessageScreenshotTaken value)? messageScreenshotTaken,
+      TResult Function(MessageChatSetTtl value)? messageChatSetTtl,
+      TResult Function(MessageCustomServiceAction value)?
+          messageCustomServiceAction,
+      TResult Function(MessageGameScore value)? messageGameScore,
+      TResult Function(MessagePaymentSuccessful value)?
+          messagePaymentSuccessful,
+      TResult Function(MessagePaymentSuccessfulBot value)?
+          messagePaymentSuccessfulBot,
+      TResult Function(MessageContactRegistered value)?
+          messageContactRegistered,
+      TResult Function(MessageWebsiteConnected value)? messageWebsiteConnected,
+      TResult Function(MessagePassportDataSent value)? messagePassportDataSent,
+      TResult Function(MessagePassportDataReceived value)?
+          messagePassportDataReceived,
+      TResult Function(MessageProximityAlertTriggered value)?
+          messageProximityAlertTriggered,
+      TResult Function(MessageUnsupported value)? messageUnsupported,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageText.CONSTRUCTOR:
+        if (messageText != null) {
+          return messageText.call(this as MessageText);
+        }
+        break;
+      case MessageAnimation.CONSTRUCTOR:
+        if (messageAnimation != null) {
+          return messageAnimation.call(this as MessageAnimation);
+        }
+        break;
+      case MessageAudio.CONSTRUCTOR:
+        if (messageAudio != null) {
+          return messageAudio.call(this as MessageAudio);
+        }
+        break;
+      case MessageDocument.CONSTRUCTOR:
+        if (messageDocument != null) {
+          return messageDocument.call(this as MessageDocument);
+        }
+        break;
+      case MessagePhoto.CONSTRUCTOR:
+        if (messagePhoto != null) {
+          return messagePhoto.call(this as MessagePhoto);
+        }
+        break;
+      case MessageExpiredPhoto.CONSTRUCTOR:
+        if (messageExpiredPhoto != null) {
+          return messageExpiredPhoto.call(this as MessageExpiredPhoto);
+        }
+        break;
+      case MessageSticker.CONSTRUCTOR:
+        if (messageSticker != null) {
+          return messageSticker.call(this as MessageSticker);
+        }
+        break;
+      case MessageVideo.CONSTRUCTOR:
+        if (messageVideo != null) {
+          return messageVideo.call(this as MessageVideo);
+        }
+        break;
+      case MessageExpiredVideo.CONSTRUCTOR:
+        if (messageExpiredVideo != null) {
+          return messageExpiredVideo.call(this as MessageExpiredVideo);
+        }
+        break;
+      case MessageVideoNote.CONSTRUCTOR:
+        if (messageVideoNote != null) {
+          return messageVideoNote.call(this as MessageVideoNote);
+        }
+        break;
+      case MessageVoiceNote.CONSTRUCTOR:
+        if (messageVoiceNote != null) {
+          return messageVoiceNote.call(this as MessageVoiceNote);
+        }
+        break;
+      case MessageLocation.CONSTRUCTOR:
+        if (messageLocation != null) {
+          return messageLocation.call(this as MessageLocation);
+        }
+        break;
+      case MessageVenue.CONSTRUCTOR:
+        if (messageVenue != null) {
+          return messageVenue.call(this as MessageVenue);
+        }
+        break;
+      case MessageContact.CONSTRUCTOR:
+        if (messageContact != null) {
+          return messageContact.call(this as MessageContact);
+        }
+        break;
+      case MessageDice.CONSTRUCTOR:
+        if (messageDice != null) {
+          return messageDice.call(this as MessageDice);
+        }
+        break;
+      case MessageGame.CONSTRUCTOR:
+        if (messageGame != null) {
+          return messageGame.call(this as MessageGame);
+        }
+        break;
+      case MessagePoll.CONSTRUCTOR:
+        if (messagePoll != null) {
+          return messagePoll.call(this as MessagePoll);
+        }
+        break;
+      case MessageInvoice.CONSTRUCTOR:
+        if (messageInvoice != null) {
+          return messageInvoice.call(this as MessageInvoice);
+        }
+        break;
+      case MessageCall.CONSTRUCTOR:
+        if (messageCall != null) {
+          return messageCall.call(this as MessageCall);
+        }
+        break;
+      case MessageVoiceChatStarted.CONSTRUCTOR:
+        if (messageVoiceChatStarted != null) {
+          return messageVoiceChatStarted.call(this as MessageVoiceChatStarted);
+        }
+        break;
+      case MessageVoiceChatEnded.CONSTRUCTOR:
+        if (messageVoiceChatEnded != null) {
+          return messageVoiceChatEnded.call(this as MessageVoiceChatEnded);
+        }
+        break;
+      case MessageInviteVoiceChatParticipants.CONSTRUCTOR:
+        if (messageInviteVoiceChatParticipants != null) {
+          return messageInviteVoiceChatParticipants
+              .call(this as MessageInviteVoiceChatParticipants);
+        }
+        break;
+      case MessageBasicGroupChatCreate.CONSTRUCTOR:
+        if (messageBasicGroupChatCreate != null) {
+          return messageBasicGroupChatCreate
+              .call(this as MessageBasicGroupChatCreate);
+        }
+        break;
+      case MessageSupergroupChatCreate.CONSTRUCTOR:
+        if (messageSupergroupChatCreate != null) {
+          return messageSupergroupChatCreate
+              .call(this as MessageSupergroupChatCreate);
+        }
+        break;
+      case MessageChatChangeTitle.CONSTRUCTOR:
+        if (messageChatChangeTitle != null) {
+          return messageChatChangeTitle.call(this as MessageChatChangeTitle);
+        }
+        break;
+      case MessageChatChangePhoto.CONSTRUCTOR:
+        if (messageChatChangePhoto != null) {
+          return messageChatChangePhoto.call(this as MessageChatChangePhoto);
+        }
+        break;
+      case MessageChatDeletePhoto.CONSTRUCTOR:
+        if (messageChatDeletePhoto != null) {
+          return messageChatDeletePhoto.call(this as MessageChatDeletePhoto);
+        }
+        break;
+      case MessageChatAddMembers.CONSTRUCTOR:
+        if (messageChatAddMembers != null) {
+          return messageChatAddMembers.call(this as MessageChatAddMembers);
+        }
+        break;
+      case MessageChatJoinByLink.CONSTRUCTOR:
+        if (messageChatJoinByLink != null) {
+          return messageChatJoinByLink.call(this as MessageChatJoinByLink);
+        }
+        break;
+      case MessageChatDeleteMember.CONSTRUCTOR:
+        if (messageChatDeleteMember != null) {
+          return messageChatDeleteMember.call(this as MessageChatDeleteMember);
+        }
+        break;
+      case MessageChatUpgradeTo.CONSTRUCTOR:
+        if (messageChatUpgradeTo != null) {
+          return messageChatUpgradeTo.call(this as MessageChatUpgradeTo);
+        }
+        break;
+      case MessageChatUpgradeFrom.CONSTRUCTOR:
+        if (messageChatUpgradeFrom != null) {
+          return messageChatUpgradeFrom.call(this as MessageChatUpgradeFrom);
+        }
+        break;
+      case MessagePinMessage.CONSTRUCTOR:
+        if (messagePinMessage != null) {
+          return messagePinMessage.call(this as MessagePinMessage);
+        }
+        break;
+      case MessageScreenshotTaken.CONSTRUCTOR:
+        if (messageScreenshotTaken != null) {
+          return messageScreenshotTaken.call(this as MessageScreenshotTaken);
+        }
+        break;
+      case MessageChatSetTtl.CONSTRUCTOR:
+        if (messageChatSetTtl != null) {
+          return messageChatSetTtl.call(this as MessageChatSetTtl);
+        }
+        break;
+      case MessageCustomServiceAction.CONSTRUCTOR:
+        if (messageCustomServiceAction != null) {
+          return messageCustomServiceAction
+              .call(this as MessageCustomServiceAction);
+        }
+        break;
+      case MessageGameScore.CONSTRUCTOR:
+        if (messageGameScore != null) {
+          return messageGameScore.call(this as MessageGameScore);
+        }
+        break;
+      case MessagePaymentSuccessful.CONSTRUCTOR:
+        if (messagePaymentSuccessful != null) {
+          return messagePaymentSuccessful
+              .call(this as MessagePaymentSuccessful);
+        }
+        break;
+      case MessagePaymentSuccessfulBot.CONSTRUCTOR:
+        if (messagePaymentSuccessfulBot != null) {
+          return messagePaymentSuccessfulBot
+              .call(this as MessagePaymentSuccessfulBot);
+        }
+        break;
+      case MessageContactRegistered.CONSTRUCTOR:
+        if (messageContactRegistered != null) {
+          return messageContactRegistered
+              .call(this as MessageContactRegistered);
+        }
+        break;
+      case MessageWebsiteConnected.CONSTRUCTOR:
+        if (messageWebsiteConnected != null) {
+          return messageWebsiteConnected.call(this as MessageWebsiteConnected);
+        }
+        break;
+      case MessagePassportDataSent.CONSTRUCTOR:
+        if (messagePassportDataSent != null) {
+          return messagePassportDataSent.call(this as MessagePassportDataSent);
+        }
+        break;
+      case MessagePassportDataReceived.CONSTRUCTOR:
+        if (messagePassportDataReceived != null) {
+          return messagePassportDataReceived
+              .call(this as MessagePassportDataReceived);
+        }
+        break;
+      case MessageProximityAlertTriggered.CONSTRUCTOR:
+        if (messageProximityAlertTriggered != null) {
+          return messageProximityAlertTriggered
+              .call(this as MessageProximityAlertTriggered);
+        }
+        break;
+      case MessageUnsupported.CONSTRUCTOR:
+        if (messageUnsupported != null) {
+          return messageUnsupported.call(this as MessageUnsupported);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -4351,6 +6295,115 @@ extension TextEntityTypeExtensions on TextEntityType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(TextEntityTypeMention value)? mention,
+      TResult Function(TextEntityTypeHashtag value)? hashtag,
+      TResult Function(TextEntityTypeCashtag value)? cashtag,
+      TResult Function(TextEntityTypeBotCommand value)? botCommand,
+      TResult Function(TextEntityTypeUrl value)? url,
+      TResult Function(TextEntityTypeEmailAddress value)? emailAddress,
+      TResult Function(TextEntityTypePhoneNumber value)? phoneNumber,
+      TResult Function(TextEntityTypeBankCardNumber value)? bankCardNumber,
+      TResult Function(TextEntityTypeBold value)? bold,
+      TResult Function(TextEntityTypeItalic value)? italic,
+      TResult Function(TextEntityTypeUnderline value)? underline,
+      TResult Function(TextEntityTypeStrikethrough value)? strikethrough,
+      TResult Function(TextEntityTypeCode value)? code,
+      TResult Function(TextEntityTypePre value)? pre,
+      TResult Function(TextEntityTypePreCode value)? preCode,
+      TResult Function(TextEntityTypeTextUrl value)? textUrl,
+      TResult Function(TextEntityTypeMentionName value)? mentionName,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case TextEntityTypeMention.CONSTRUCTOR:
+        if (mention != null) {
+          return mention.call(this as TextEntityTypeMention);
+        }
+        break;
+      case TextEntityTypeHashtag.CONSTRUCTOR:
+        if (hashtag != null) {
+          return hashtag.call(this as TextEntityTypeHashtag);
+        }
+        break;
+      case TextEntityTypeCashtag.CONSTRUCTOR:
+        if (cashtag != null) {
+          return cashtag.call(this as TextEntityTypeCashtag);
+        }
+        break;
+      case TextEntityTypeBotCommand.CONSTRUCTOR:
+        if (botCommand != null) {
+          return botCommand.call(this as TextEntityTypeBotCommand);
+        }
+        break;
+      case TextEntityTypeUrl.CONSTRUCTOR:
+        if (url != null) {
+          return url.call(this as TextEntityTypeUrl);
+        }
+        break;
+      case TextEntityTypeEmailAddress.CONSTRUCTOR:
+        if (emailAddress != null) {
+          return emailAddress.call(this as TextEntityTypeEmailAddress);
+        }
+        break;
+      case TextEntityTypePhoneNumber.CONSTRUCTOR:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as TextEntityTypePhoneNumber);
+        }
+        break;
+      case TextEntityTypeBankCardNumber.CONSTRUCTOR:
+        if (bankCardNumber != null) {
+          return bankCardNumber.call(this as TextEntityTypeBankCardNumber);
+        }
+        break;
+      case TextEntityTypeBold.CONSTRUCTOR:
+        if (bold != null) {
+          return bold.call(this as TextEntityTypeBold);
+        }
+        break;
+      case TextEntityTypeItalic.CONSTRUCTOR:
+        if (italic != null) {
+          return italic.call(this as TextEntityTypeItalic);
+        }
+        break;
+      case TextEntityTypeUnderline.CONSTRUCTOR:
+        if (underline != null) {
+          return underline.call(this as TextEntityTypeUnderline);
+        }
+        break;
+      case TextEntityTypeStrikethrough.CONSTRUCTOR:
+        if (strikethrough != null) {
+          return strikethrough.call(this as TextEntityTypeStrikethrough);
+        }
+        break;
+      case TextEntityTypeCode.CONSTRUCTOR:
+        if (code != null) {
+          return code.call(this as TextEntityTypeCode);
+        }
+        break;
+      case TextEntityTypePre.CONSTRUCTOR:
+        if (pre != null) {
+          return pre.call(this as TextEntityTypePre);
+        }
+        break;
+      case TextEntityTypePreCode.CONSTRUCTOR:
+        if (preCode != null) {
+          return preCode.call(this as TextEntityTypePreCode);
+        }
+        break;
+      case TextEntityTypeTextUrl.CONSTRUCTOR:
+        if (textUrl != null) {
+          return textUrl.call(this as TextEntityTypeTextUrl);
+        }
+        break;
+      case TextEntityTypeMentionName.CONSTRUCTOR:
+        if (mentionName != null) {
+          return mentionName.call(this as TextEntityTypeMentionName);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension TextEntityTypePreCodeExtensions on TextEntityTypePreCode {
@@ -4390,6 +6443,27 @@ extension MessageSchedulingStateExtensions on MessageSchedulingState {
             .call(this as MessageSchedulingStateSendWhenOnline);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageSchedulingStateSendAtDate value)? sendAtDate,
+      TResult Function(MessageSchedulingStateSendWhenOnline value)?
+          sendWhenOnline,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageSchedulingStateSendAtDate.CONSTRUCTOR:
+        if (sendAtDate != null) {
+          return sendAtDate.call(this as MessageSchedulingStateSendAtDate);
+        }
+        break;
+      case MessageSchedulingStateSendWhenOnline.CONSTRUCTOR:
+        if (sendWhenOnline != null) {
+          return sendWhenOnline
+              .call(this as MessageSchedulingStateSendWhenOnline);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -4481,6 +6555,115 @@ extension InputMessageContentExtensions on InputMessageContent {
         return inputMessageForwarded.call(this as InputMessageForwarded);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputMessageText value)? inputMessageText,
+      TResult Function(InputMessageAnimation value)? inputMessageAnimation,
+      TResult Function(InputMessageAudio value)? inputMessageAudio,
+      TResult Function(InputMessageDocument value)? inputMessageDocument,
+      TResult Function(InputMessagePhoto value)? inputMessagePhoto,
+      TResult Function(InputMessageSticker value)? inputMessageSticker,
+      TResult Function(InputMessageVideo value)? inputMessageVideo,
+      TResult Function(InputMessageVideoNote value)? inputMessageVideoNote,
+      TResult Function(InputMessageVoiceNote value)? inputMessageVoiceNote,
+      TResult Function(InputMessageLocation value)? inputMessageLocation,
+      TResult Function(InputMessageVenue value)? inputMessageVenue,
+      TResult Function(InputMessageContact value)? inputMessageContact,
+      TResult Function(InputMessageDice value)? inputMessageDice,
+      TResult Function(InputMessageGame value)? inputMessageGame,
+      TResult Function(InputMessageInvoice value)? inputMessageInvoice,
+      TResult Function(InputMessagePoll value)? inputMessagePoll,
+      TResult Function(InputMessageForwarded value)? inputMessageForwarded,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputMessageText.CONSTRUCTOR:
+        if (inputMessageText != null) {
+          return inputMessageText.call(this as InputMessageText);
+        }
+        break;
+      case InputMessageAnimation.CONSTRUCTOR:
+        if (inputMessageAnimation != null) {
+          return inputMessageAnimation.call(this as InputMessageAnimation);
+        }
+        break;
+      case InputMessageAudio.CONSTRUCTOR:
+        if (inputMessageAudio != null) {
+          return inputMessageAudio.call(this as InputMessageAudio);
+        }
+        break;
+      case InputMessageDocument.CONSTRUCTOR:
+        if (inputMessageDocument != null) {
+          return inputMessageDocument.call(this as InputMessageDocument);
+        }
+        break;
+      case InputMessagePhoto.CONSTRUCTOR:
+        if (inputMessagePhoto != null) {
+          return inputMessagePhoto.call(this as InputMessagePhoto);
+        }
+        break;
+      case InputMessageSticker.CONSTRUCTOR:
+        if (inputMessageSticker != null) {
+          return inputMessageSticker.call(this as InputMessageSticker);
+        }
+        break;
+      case InputMessageVideo.CONSTRUCTOR:
+        if (inputMessageVideo != null) {
+          return inputMessageVideo.call(this as InputMessageVideo);
+        }
+        break;
+      case InputMessageVideoNote.CONSTRUCTOR:
+        if (inputMessageVideoNote != null) {
+          return inputMessageVideoNote.call(this as InputMessageVideoNote);
+        }
+        break;
+      case InputMessageVoiceNote.CONSTRUCTOR:
+        if (inputMessageVoiceNote != null) {
+          return inputMessageVoiceNote.call(this as InputMessageVoiceNote);
+        }
+        break;
+      case InputMessageLocation.CONSTRUCTOR:
+        if (inputMessageLocation != null) {
+          return inputMessageLocation.call(this as InputMessageLocation);
+        }
+        break;
+      case InputMessageVenue.CONSTRUCTOR:
+        if (inputMessageVenue != null) {
+          return inputMessageVenue.call(this as InputMessageVenue);
+        }
+        break;
+      case InputMessageContact.CONSTRUCTOR:
+        if (inputMessageContact != null) {
+          return inputMessageContact.call(this as InputMessageContact);
+        }
+        break;
+      case InputMessageDice.CONSTRUCTOR:
+        if (inputMessageDice != null) {
+          return inputMessageDice.call(this as InputMessageDice);
+        }
+        break;
+      case InputMessageGame.CONSTRUCTOR:
+        if (inputMessageGame != null) {
+          return inputMessageGame.call(this as InputMessageGame);
+        }
+        break;
+      case InputMessageInvoice.CONSTRUCTOR:
+        if (inputMessageInvoice != null) {
+          return inputMessageInvoice.call(this as InputMessageInvoice);
+        }
+        break;
+      case InputMessagePoll.CONSTRUCTOR:
+        if (inputMessagePoll != null) {
+          return inputMessagePoll.call(this as InputMessagePoll);
+        }
+        break;
+      case InputMessageForwarded.CONSTRUCTOR:
+        if (inputMessageForwarded != null) {
+          return inputMessageForwarded.call(this as InputMessageForwarded);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -4790,6 +6973,123 @@ extension SearchMessagesFilterExtensions on SearchMessagesFilter {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(SearchMessagesFilterEmpty value)? empty,
+      TResult Function(SearchMessagesFilterAnimation value)? animation,
+      TResult Function(SearchMessagesFilterAudio value)? audio,
+      TResult Function(SearchMessagesFilterDocument value)? document,
+      TResult Function(SearchMessagesFilterPhoto value)? photo,
+      TResult Function(SearchMessagesFilterVideo value)? video,
+      TResult Function(SearchMessagesFilterVoiceNote value)? voiceNote,
+      TResult Function(SearchMessagesFilterPhotoAndVideo value)? photoAndVideo,
+      TResult Function(SearchMessagesFilterUrl value)? url,
+      TResult Function(SearchMessagesFilterChatPhoto value)? chatPhoto,
+      TResult Function(SearchMessagesFilterCall value)? call,
+      TResult Function(SearchMessagesFilterMissedCall value)? missedCall,
+      TResult Function(SearchMessagesFilterVideoNote value)? videoNote,
+      TResult Function(SearchMessagesFilterVoiceAndVideoNote value)?
+          voiceAndVideoNote,
+      TResult Function(SearchMessagesFilterMention value)? mention,
+      TResult Function(SearchMessagesFilterUnreadMention value)? unreadMention,
+      TResult Function(SearchMessagesFilterFailedToSend value)? failedToSend,
+      TResult Function(SearchMessagesFilterPinned value)? pinned,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case SearchMessagesFilterEmpty.CONSTRUCTOR:
+        if (empty != null) {
+          return empty.call(this as SearchMessagesFilterEmpty);
+        }
+        break;
+      case SearchMessagesFilterAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as SearchMessagesFilterAnimation);
+        }
+        break;
+      case SearchMessagesFilterAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as SearchMessagesFilterAudio);
+        }
+        break;
+      case SearchMessagesFilterDocument.CONSTRUCTOR:
+        if (document != null) {
+          return document.call(this as SearchMessagesFilterDocument);
+        }
+        break;
+      case SearchMessagesFilterPhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as SearchMessagesFilterPhoto);
+        }
+        break;
+      case SearchMessagesFilterVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as SearchMessagesFilterVideo);
+        }
+        break;
+      case SearchMessagesFilterVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as SearchMessagesFilterVoiceNote);
+        }
+        break;
+      case SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR:
+        if (photoAndVideo != null) {
+          return photoAndVideo.call(this as SearchMessagesFilterPhotoAndVideo);
+        }
+        break;
+      case SearchMessagesFilterUrl.CONSTRUCTOR:
+        if (url != null) {
+          return url.call(this as SearchMessagesFilterUrl);
+        }
+        break;
+      case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
+        if (chatPhoto != null) {
+          return chatPhoto.call(this as SearchMessagesFilterChatPhoto);
+        }
+        break;
+      case SearchMessagesFilterCall.CONSTRUCTOR:
+        if (call != null) {
+          return call.call(this as SearchMessagesFilterCall);
+        }
+        break;
+      case SearchMessagesFilterMissedCall.CONSTRUCTOR:
+        if (missedCall != null) {
+          return missedCall.call(this as SearchMessagesFilterMissedCall);
+        }
+        break;
+      case SearchMessagesFilterVideoNote.CONSTRUCTOR:
+        if (videoNote != null) {
+          return videoNote.call(this as SearchMessagesFilterVideoNote);
+        }
+        break;
+      case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:
+        if (voiceAndVideoNote != null) {
+          return voiceAndVideoNote
+              .call(this as SearchMessagesFilterVoiceAndVideoNote);
+        }
+        break;
+      case SearchMessagesFilterMention.CONSTRUCTOR:
+        if (mention != null) {
+          return mention.call(this as SearchMessagesFilterMention);
+        }
+        break;
+      case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
+        if (unreadMention != null) {
+          return unreadMention.call(this as SearchMessagesFilterUnreadMention);
+        }
+        break;
+      case SearchMessagesFilterFailedToSend.CONSTRUCTOR:
+        if (failedToSend != null) {
+          return failedToSend.call(this as SearchMessagesFilterFailedToSend);
+        }
+        break;
+      case SearchMessagesFilterPinned.CONSTRUCTOR:
+        if (pinned != null) {
+          return pinned.call(this as SearchMessagesFilterPinned);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatActionExtensions on ChatAction {
@@ -4845,6 +7145,91 @@ extension ChatActionExtensions on ChatAction {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatActionTyping value)? typing,
+      TResult Function(ChatActionRecordingVideo value)? recordingVideo,
+      TResult Function(ChatActionUploadingVideo value)? uploadingVideo,
+      TResult Function(ChatActionRecordingVoiceNote value)? recordingVoiceNote,
+      TResult Function(ChatActionUploadingVoiceNote value)? uploadingVoiceNote,
+      TResult Function(ChatActionUploadingPhoto value)? uploadingPhoto,
+      TResult Function(ChatActionUploadingDocument value)? uploadingDocument,
+      TResult Function(ChatActionChoosingLocation value)? choosingLocation,
+      TResult Function(ChatActionChoosingContact value)? choosingContact,
+      TResult Function(ChatActionStartPlayingGame value)? startPlayingGame,
+      TResult Function(ChatActionRecordingVideoNote value)? recordingVideoNote,
+      TResult Function(ChatActionUploadingVideoNote value)? uploadingVideoNote,
+      TResult Function(ChatActionCancel value)? cancel,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatActionTyping.CONSTRUCTOR:
+        if (typing != null) {
+          return typing.call(this as ChatActionTyping);
+        }
+        break;
+      case ChatActionRecordingVideo.CONSTRUCTOR:
+        if (recordingVideo != null) {
+          return recordingVideo.call(this as ChatActionRecordingVideo);
+        }
+        break;
+      case ChatActionUploadingVideo.CONSTRUCTOR:
+        if (uploadingVideo != null) {
+          return uploadingVideo.call(this as ChatActionUploadingVideo);
+        }
+        break;
+      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
+        if (recordingVoiceNote != null) {
+          return recordingVoiceNote.call(this as ChatActionRecordingVoiceNote);
+        }
+        break;
+      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
+        if (uploadingVoiceNote != null) {
+          return uploadingVoiceNote.call(this as ChatActionUploadingVoiceNote);
+        }
+        break;
+      case ChatActionUploadingPhoto.CONSTRUCTOR:
+        if (uploadingPhoto != null) {
+          return uploadingPhoto.call(this as ChatActionUploadingPhoto);
+        }
+        break;
+      case ChatActionUploadingDocument.CONSTRUCTOR:
+        if (uploadingDocument != null) {
+          return uploadingDocument.call(this as ChatActionUploadingDocument);
+        }
+        break;
+      case ChatActionChoosingLocation.CONSTRUCTOR:
+        if (choosingLocation != null) {
+          return choosingLocation.call(this as ChatActionChoosingLocation);
+        }
+        break;
+      case ChatActionChoosingContact.CONSTRUCTOR:
+        if (choosingContact != null) {
+          return choosingContact.call(this as ChatActionChoosingContact);
+        }
+        break;
+      case ChatActionStartPlayingGame.CONSTRUCTOR:
+        if (startPlayingGame != null) {
+          return startPlayingGame.call(this as ChatActionStartPlayingGame);
+        }
+        break;
+      case ChatActionRecordingVideoNote.CONSTRUCTOR:
+        if (recordingVideoNote != null) {
+          return recordingVideoNote.call(this as ChatActionRecordingVideoNote);
+        }
+        break;
+      case ChatActionUploadingVideoNote.CONSTRUCTOR:
+        if (uploadingVideoNote != null) {
+          return uploadingVideoNote.call(this as ChatActionUploadingVideoNote);
+        }
+        break;
+      case ChatActionCancel.CONSTRUCTOR:
+        if (cancel != null) {
+          return cancel.call(this as ChatActionCancel);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ChatActionUploadingVideoExtensions on ChatActionUploadingVideo {
@@ -4897,6 +7282,49 @@ extension UserStatusExtensions on UserStatus {
         return lastMonth.call(this as UserStatusLastMonth);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(UserStatusEmpty value)? empty,
+      TResult Function(UserStatusOnline value)? online,
+      TResult Function(UserStatusOffline value)? offline,
+      TResult Function(UserStatusRecently value)? recently,
+      TResult Function(UserStatusLastWeek value)? lastWeek,
+      TResult Function(UserStatusLastMonth value)? lastMonth,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case UserStatusEmpty.CONSTRUCTOR:
+        if (empty != null) {
+          return empty.call(this as UserStatusEmpty);
+        }
+        break;
+      case UserStatusOnline.CONSTRUCTOR:
+        if (online != null) {
+          return online.call(this as UserStatusOnline);
+        }
+        break;
+      case UserStatusOffline.CONSTRUCTOR:
+        if (offline != null) {
+          return offline.call(this as UserStatusOffline);
+        }
+        break;
+      case UserStatusRecently.CONSTRUCTOR:
+        if (recently != null) {
+          return recently.call(this as UserStatusRecently);
+        }
+        break;
+      case UserStatusLastWeek.CONSTRUCTOR:
+        if (lastWeek != null) {
+          return lastWeek.call(this as UserStatusLastWeek);
+        }
+        break;
+      case UserStatusLastMonth.CONSTRUCTOR:
+        if (lastMonth != null) {
+          return lastMonth.call(this as UserStatusLastMonth);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -5009,6 +7437,43 @@ extension CallDiscardReasonExtensions on CallDiscardReason {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CallDiscardReasonEmpty value)? empty,
+      TResult Function(CallDiscardReasonMissed value)? missed,
+      TResult Function(CallDiscardReasonDeclined value)? declined,
+      TResult Function(CallDiscardReasonDisconnected value)? disconnected,
+      TResult Function(CallDiscardReasonHungUp value)? hungUp,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CallDiscardReasonEmpty.CONSTRUCTOR:
+        if (empty != null) {
+          return empty.call(this as CallDiscardReasonEmpty);
+        }
+        break;
+      case CallDiscardReasonMissed.CONSTRUCTOR:
+        if (missed != null) {
+          return missed.call(this as CallDiscardReasonMissed);
+        }
+        break;
+      case CallDiscardReasonDeclined.CONSTRUCTOR:
+        if (declined != null) {
+          return declined.call(this as CallDiscardReasonDeclined);
+        }
+        break;
+      case CallDiscardReasonDisconnected.CONSTRUCTOR:
+        if (disconnected != null) {
+          return disconnected.call(this as CallDiscardReasonDisconnected);
+        }
+        break;
+      case CallDiscardReasonHungUp.CONSTRUCTOR:
+        if (hungUp != null) {
+          return hungUp.call(this as CallDiscardReasonHungUp);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension CallProtocolExtensions on CallProtocol {
@@ -5038,6 +7503,27 @@ extension CallServerTypeExtensions on CallServerType {
         return webrtc.call(this as CallServerTypeWebrtc);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CallServerTypeTelegramReflector value)?
+          telegramReflector,
+      TResult Function(CallServerTypeWebrtc value)? webrtc,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CallServerTypeTelegramReflector.CONSTRUCTOR:
+        if (telegramReflector != null) {
+          return telegramReflector
+              .call(this as CallServerTypeTelegramReflector);
+        }
+        break;
+      case CallServerTypeWebrtc.CONSTRUCTOR:
+        if (webrtc != null) {
+          return webrtc.call(this as CallServerTypeWebrtc);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -5106,6 +7592,49 @@ extension CallStateExtensions on CallState {
         return error.call(this as CallStateError);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CallStatePending value)? pending,
+      TResult Function(CallStateExchangingKeys value)? exchangingKeys,
+      TResult Function(CallStateReady value)? ready,
+      TResult Function(CallStateHangingUp value)? hangingUp,
+      TResult Function(CallStateDiscarded value)? discarded,
+      TResult Function(CallStateError value)? error,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CallStatePending.CONSTRUCTOR:
+        if (pending != null) {
+          return pending.call(this as CallStatePending);
+        }
+        break;
+      case CallStateExchangingKeys.CONSTRUCTOR:
+        if (exchangingKeys != null) {
+          return exchangingKeys.call(this as CallStateExchangingKeys);
+        }
+        break;
+      case CallStateReady.CONSTRUCTOR:
+        if (ready != null) {
+          return ready.call(this as CallStateReady);
+        }
+        break;
+      case CallStateHangingUp.CONSTRUCTOR:
+        if (hangingUp != null) {
+          return hangingUp.call(this as CallStateHangingUp);
+        }
+        break;
+      case CallStateDiscarded.CONSTRUCTOR:
+        if (discarded != null) {
+          return discarded.call(this as CallStateDiscarded);
+        }
+        break;
+      case CallStateError.CONSTRUCTOR:
+        if (error != null) {
+          return error.call(this as CallStateError);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -5256,6 +7785,25 @@ extension GroupCallJoinResponseExtensions on GroupCallJoinResponse {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(GroupCallJoinResponseWebrtc value)? webrtc,
+      TResult Function(GroupCallJoinResponseStream value)? stream,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case GroupCallJoinResponseWebrtc.CONSTRUCTOR:
+        if (webrtc != null) {
+          return webrtc.call(this as GroupCallJoinResponseWebrtc);
+        }
+        break;
+      case GroupCallJoinResponseStream.CONSTRUCTOR:
+        if (stream != null) {
+          return stream.call(this as GroupCallJoinResponseStream);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension GroupCallJoinResponseWebrtcExtensions on GroupCallJoinResponseWebrtc {
@@ -5342,6 +7890,67 @@ extension CallProblemExtensions on CallProblem {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CallProblemEcho value)? echo,
+      TResult Function(CallProblemNoise value)? noise,
+      TResult Function(CallProblemInterruptions value)? interruptions,
+      TResult Function(CallProblemDistortedSpeech value)? distortedSpeech,
+      TResult Function(CallProblemSilentLocal value)? silentLocal,
+      TResult Function(CallProblemSilentRemote value)? silentRemote,
+      TResult Function(CallProblemDropped value)? dropped,
+      TResult Function(CallProblemDistortedVideo value)? distortedVideo,
+      TResult Function(CallProblemPixelatedVideo value)? pixelatedVideo,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CallProblemEcho.CONSTRUCTOR:
+        if (echo != null) {
+          return echo.call(this as CallProblemEcho);
+        }
+        break;
+      case CallProblemNoise.CONSTRUCTOR:
+        if (noise != null) {
+          return noise.call(this as CallProblemNoise);
+        }
+        break;
+      case CallProblemInterruptions.CONSTRUCTOR:
+        if (interruptions != null) {
+          return interruptions.call(this as CallProblemInterruptions);
+        }
+        break;
+      case CallProblemDistortedSpeech.CONSTRUCTOR:
+        if (distortedSpeech != null) {
+          return distortedSpeech.call(this as CallProblemDistortedSpeech);
+        }
+        break;
+      case CallProblemSilentLocal.CONSTRUCTOR:
+        if (silentLocal != null) {
+          return silentLocal.call(this as CallProblemSilentLocal);
+        }
+        break;
+      case CallProblemSilentRemote.CONSTRUCTOR:
+        if (silentRemote != null) {
+          return silentRemote.call(this as CallProblemSilentRemote);
+        }
+        break;
+      case CallProblemDropped.CONSTRUCTOR:
+        if (dropped != null) {
+          return dropped.call(this as CallProblemDropped);
+        }
+        break;
+      case CallProblemDistortedVideo.CONSTRUCTOR:
+        if (distortedVideo != null) {
+          return distortedVideo.call(this as CallProblemDistortedVideo);
+        }
+        break;
+      case CallProblemPixelatedVideo.CONSTRUCTOR:
+        if (pixelatedVideo != null) {
+          return pixelatedVideo.call(this as CallProblemPixelatedVideo);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension CallExtensions on Call {
@@ -5389,6 +7998,25 @@ extension DiceStickersExtensions on DiceStickers {
         return slotMachine.call(this as DiceStickersSlotMachine);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(DiceStickersRegular value)? regular,
+      TResult Function(DiceStickersSlotMachine value)? slotMachine,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case DiceStickersRegular.CONSTRUCTOR:
+        if (regular != null) {
+          return regular.call(this as DiceStickersRegular);
+        }
+        break;
+      case DiceStickersSlotMachine.CONSTRUCTOR:
+        if (slotMachine != null) {
+          return slotMachine.call(this as DiceStickersSlotMachine);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -5466,6 +8094,85 @@ extension InputInlineQueryResultExtensions on InputInlineQueryResult {
         return voiceNote.call(this as InputInlineQueryResultVoiceNote);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputInlineQueryResultAnimation value)? animation,
+      TResult Function(InputInlineQueryResultArticle value)? article,
+      TResult Function(InputInlineQueryResultAudio value)? audio,
+      TResult Function(InputInlineQueryResultContact value)? contact,
+      TResult Function(InputInlineQueryResultDocument value)? document,
+      TResult Function(InputInlineQueryResultGame value)? game,
+      TResult Function(InputInlineQueryResultLocation value)? location,
+      TResult Function(InputInlineQueryResultPhoto value)? photo,
+      TResult Function(InputInlineQueryResultSticker value)? sticker,
+      TResult Function(InputInlineQueryResultVenue value)? venue,
+      TResult Function(InputInlineQueryResultVideo value)? video,
+      TResult Function(InputInlineQueryResultVoiceNote value)? voiceNote,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputInlineQueryResultAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as InputInlineQueryResultAnimation);
+        }
+        break;
+      case InputInlineQueryResultArticle.CONSTRUCTOR:
+        if (article != null) {
+          return article.call(this as InputInlineQueryResultArticle);
+        }
+        break;
+      case InputInlineQueryResultAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as InputInlineQueryResultAudio);
+        }
+        break;
+      case InputInlineQueryResultContact.CONSTRUCTOR:
+        if (contact != null) {
+          return contact.call(this as InputInlineQueryResultContact);
+        }
+        break;
+      case InputInlineQueryResultDocument.CONSTRUCTOR:
+        if (document != null) {
+          return document.call(this as InputInlineQueryResultDocument);
+        }
+        break;
+      case InputInlineQueryResultGame.CONSTRUCTOR:
+        if (game != null) {
+          return game.call(this as InputInlineQueryResultGame);
+        }
+        break;
+      case InputInlineQueryResultLocation.CONSTRUCTOR:
+        if (location != null) {
+          return location.call(this as InputInlineQueryResultLocation);
+        }
+        break;
+      case InputInlineQueryResultPhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as InputInlineQueryResultPhoto);
+        }
+        break;
+      case InputInlineQueryResultSticker.CONSTRUCTOR:
+        if (sticker != null) {
+          return sticker.call(this as InputInlineQueryResultSticker);
+        }
+        break;
+      case InputInlineQueryResultVenue.CONSTRUCTOR:
+        if (venue != null) {
+          return venue.call(this as InputInlineQueryResultVenue);
+        }
+        break;
+      case InputInlineQueryResultVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as InputInlineQueryResultVideo);
+        }
+        break;
+      case InputInlineQueryResultVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as InputInlineQueryResultVoiceNote);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -5770,6 +8477,85 @@ extension InlineQueryResultExtensions on InlineQueryResult {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InlineQueryResultArticle value)? article,
+      TResult Function(InlineQueryResultContact value)? contact,
+      TResult Function(InlineQueryResultLocation value)? location,
+      TResult Function(InlineQueryResultVenue value)? venue,
+      TResult Function(InlineQueryResultGame value)? game,
+      TResult Function(InlineQueryResultAnimation value)? animation,
+      TResult Function(InlineQueryResultAudio value)? audio,
+      TResult Function(InlineQueryResultDocument value)? document,
+      TResult Function(InlineQueryResultPhoto value)? photo,
+      TResult Function(InlineQueryResultSticker value)? sticker,
+      TResult Function(InlineQueryResultVideo value)? video,
+      TResult Function(InlineQueryResultVoiceNote value)? voiceNote,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InlineQueryResultArticle.CONSTRUCTOR:
+        if (article != null) {
+          return article.call(this as InlineQueryResultArticle);
+        }
+        break;
+      case InlineQueryResultContact.CONSTRUCTOR:
+        if (contact != null) {
+          return contact.call(this as InlineQueryResultContact);
+        }
+        break;
+      case InlineQueryResultLocation.CONSTRUCTOR:
+        if (location != null) {
+          return location.call(this as InlineQueryResultLocation);
+        }
+        break;
+      case InlineQueryResultVenue.CONSTRUCTOR:
+        if (venue != null) {
+          return venue.call(this as InlineQueryResultVenue);
+        }
+        break;
+      case InlineQueryResultGame.CONSTRUCTOR:
+        if (game != null) {
+          return game.call(this as InlineQueryResultGame);
+        }
+        break;
+      case InlineQueryResultAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as InlineQueryResultAnimation);
+        }
+        break;
+      case InlineQueryResultAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as InlineQueryResultAudio);
+        }
+        break;
+      case InlineQueryResultDocument.CONSTRUCTOR:
+        if (document != null) {
+          return document.call(this as InlineQueryResultDocument);
+        }
+        break;
+      case InlineQueryResultPhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as InlineQueryResultPhoto);
+        }
+        break;
+      case InlineQueryResultSticker.CONSTRUCTOR:
+        if (sticker != null) {
+          return sticker.call(this as InlineQueryResultSticker);
+        }
+        break;
+      case InlineQueryResultVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as InlineQueryResultVideo);
+        }
+        break;
+      case InlineQueryResultVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as InlineQueryResultVoiceNote);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InlineQueryResultArticleExtensions on InlineQueryResultArticle {
@@ -5918,6 +8704,33 @@ extension CallbackQueryPayloadExtensions on CallbackQueryPayload {
         return game.call(this as CallbackQueryPayloadGame);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CallbackQueryPayloadData value)? data,
+      TResult Function(CallbackQueryPayloadDataWithPassword value)?
+          dataWithPassword,
+      TResult Function(CallbackQueryPayloadGame value)? game,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CallbackQueryPayloadData.CONSTRUCTOR:
+        if (data != null) {
+          return data.call(this as CallbackQueryPayloadData);
+        }
+        break;
+      case CallbackQueryPayloadDataWithPassword.CONSTRUCTOR:
+        if (dataWithPassword != null) {
+          return dataWithPassword
+              .call(this as CallbackQueryPayloadDataWithPassword);
+        }
+        break;
+      case CallbackQueryPayloadGame.CONSTRUCTOR:
+        if (game != null) {
+          return game.call(this as CallbackQueryPayloadGame);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -6117,6 +8930,247 @@ extension ChatEventActionExtensions on ChatEventAction {
             .call(this as ChatEventVoiceChatMuteNewParticipantsToggled);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatEventMessageEdited value)? chatEventMessageEdited,
+      TResult Function(ChatEventMessageDeleted value)? chatEventMessageDeleted,
+      TResult Function(ChatEventPollStopped value)? chatEventPollStopped,
+      TResult Function(ChatEventMessagePinned value)? chatEventMessagePinned,
+      TResult Function(ChatEventMessageUnpinned value)?
+          chatEventMessageUnpinned,
+      TResult Function(ChatEventMemberJoined value)? chatEventMemberJoined,
+      TResult Function(ChatEventMemberJoinedByInviteLink value)?
+          chatEventMemberJoinedByInviteLink,
+      TResult Function(ChatEventMemberLeft value)? chatEventMemberLeft,
+      TResult Function(ChatEventMemberInvited value)? chatEventMemberInvited,
+      TResult Function(ChatEventMemberPromoted value)? chatEventMemberPromoted,
+      TResult Function(ChatEventMemberRestricted value)?
+          chatEventMemberRestricted,
+      TResult Function(ChatEventTitleChanged value)? chatEventTitleChanged,
+      TResult Function(ChatEventPermissionsChanged value)?
+          chatEventPermissionsChanged,
+      TResult Function(ChatEventDescriptionChanged value)?
+          chatEventDescriptionChanged,
+      TResult Function(ChatEventUsernameChanged value)?
+          chatEventUsernameChanged,
+      TResult Function(ChatEventPhotoChanged value)? chatEventPhotoChanged,
+      TResult Function(ChatEventInvitesToggled value)? chatEventInvitesToggled,
+      TResult Function(ChatEventLinkedChatChanged value)?
+          chatEventLinkedChatChanged,
+      TResult Function(ChatEventSlowModeDelayChanged value)?
+          chatEventSlowModeDelayChanged,
+      TResult Function(ChatEventMessageTtlSettingChanged value)?
+          chatEventMessageTtlSettingChanged,
+      TResult Function(ChatEventSignMessagesToggled value)?
+          chatEventSignMessagesToggled,
+      TResult Function(ChatEventStickerSetChanged value)?
+          chatEventStickerSetChanged,
+      TResult Function(ChatEventLocationChanged value)?
+          chatEventLocationChanged,
+      TResult Function(ChatEventIsAllHistoryAvailableToggled value)?
+          chatEventIsAllHistoryAvailableToggled,
+      TResult Function(ChatEventInviteLinkEdited value)?
+          chatEventInviteLinkEdited,
+      TResult Function(ChatEventInviteLinkRevoked value)?
+          chatEventInviteLinkRevoked,
+      TResult Function(ChatEventInviteLinkDeleted value)?
+          chatEventInviteLinkDeleted,
+      TResult Function(ChatEventVoiceChatCreated value)?
+          chatEventVoiceChatCreated,
+      TResult Function(ChatEventVoiceChatDiscarded value)?
+          chatEventVoiceChatDiscarded,
+      TResult Function(ChatEventVoiceChatParticipantIsMutedToggled value)?
+          chatEventVoiceChatParticipantIsMutedToggled,
+      TResult Function(ChatEventVoiceChatParticipantVolumeLevelChanged value)?
+          chatEventVoiceChatParticipantVolumeLevelChanged,
+      TResult Function(ChatEventVoiceChatMuteNewParticipantsToggled value)?
+          chatEventVoiceChatMuteNewParticipantsToggled,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatEventMessageEdited.CONSTRUCTOR:
+        if (chatEventMessageEdited != null) {
+          return chatEventMessageEdited.call(this as ChatEventMessageEdited);
+        }
+        break;
+      case ChatEventMessageDeleted.CONSTRUCTOR:
+        if (chatEventMessageDeleted != null) {
+          return chatEventMessageDeleted.call(this as ChatEventMessageDeleted);
+        }
+        break;
+      case ChatEventPollStopped.CONSTRUCTOR:
+        if (chatEventPollStopped != null) {
+          return chatEventPollStopped.call(this as ChatEventPollStopped);
+        }
+        break;
+      case ChatEventMessagePinned.CONSTRUCTOR:
+        if (chatEventMessagePinned != null) {
+          return chatEventMessagePinned.call(this as ChatEventMessagePinned);
+        }
+        break;
+      case ChatEventMessageUnpinned.CONSTRUCTOR:
+        if (chatEventMessageUnpinned != null) {
+          return chatEventMessageUnpinned
+              .call(this as ChatEventMessageUnpinned);
+        }
+        break;
+      case ChatEventMemberJoined.CONSTRUCTOR:
+        if (chatEventMemberJoined != null) {
+          return chatEventMemberJoined.call(this as ChatEventMemberJoined);
+        }
+        break;
+      case ChatEventMemberJoinedByInviteLink.CONSTRUCTOR:
+        if (chatEventMemberJoinedByInviteLink != null) {
+          return chatEventMemberJoinedByInviteLink
+              .call(this as ChatEventMemberJoinedByInviteLink);
+        }
+        break;
+      case ChatEventMemberLeft.CONSTRUCTOR:
+        if (chatEventMemberLeft != null) {
+          return chatEventMemberLeft.call(this as ChatEventMemberLeft);
+        }
+        break;
+      case ChatEventMemberInvited.CONSTRUCTOR:
+        if (chatEventMemberInvited != null) {
+          return chatEventMemberInvited.call(this as ChatEventMemberInvited);
+        }
+        break;
+      case ChatEventMemberPromoted.CONSTRUCTOR:
+        if (chatEventMemberPromoted != null) {
+          return chatEventMemberPromoted.call(this as ChatEventMemberPromoted);
+        }
+        break;
+      case ChatEventMemberRestricted.CONSTRUCTOR:
+        if (chatEventMemberRestricted != null) {
+          return chatEventMemberRestricted
+              .call(this as ChatEventMemberRestricted);
+        }
+        break;
+      case ChatEventTitleChanged.CONSTRUCTOR:
+        if (chatEventTitleChanged != null) {
+          return chatEventTitleChanged.call(this as ChatEventTitleChanged);
+        }
+        break;
+      case ChatEventPermissionsChanged.CONSTRUCTOR:
+        if (chatEventPermissionsChanged != null) {
+          return chatEventPermissionsChanged
+              .call(this as ChatEventPermissionsChanged);
+        }
+        break;
+      case ChatEventDescriptionChanged.CONSTRUCTOR:
+        if (chatEventDescriptionChanged != null) {
+          return chatEventDescriptionChanged
+              .call(this as ChatEventDescriptionChanged);
+        }
+        break;
+      case ChatEventUsernameChanged.CONSTRUCTOR:
+        if (chatEventUsernameChanged != null) {
+          return chatEventUsernameChanged
+              .call(this as ChatEventUsernameChanged);
+        }
+        break;
+      case ChatEventPhotoChanged.CONSTRUCTOR:
+        if (chatEventPhotoChanged != null) {
+          return chatEventPhotoChanged.call(this as ChatEventPhotoChanged);
+        }
+        break;
+      case ChatEventInvitesToggled.CONSTRUCTOR:
+        if (chatEventInvitesToggled != null) {
+          return chatEventInvitesToggled.call(this as ChatEventInvitesToggled);
+        }
+        break;
+      case ChatEventLinkedChatChanged.CONSTRUCTOR:
+        if (chatEventLinkedChatChanged != null) {
+          return chatEventLinkedChatChanged
+              .call(this as ChatEventLinkedChatChanged);
+        }
+        break;
+      case ChatEventSlowModeDelayChanged.CONSTRUCTOR:
+        if (chatEventSlowModeDelayChanged != null) {
+          return chatEventSlowModeDelayChanged
+              .call(this as ChatEventSlowModeDelayChanged);
+        }
+        break;
+      case ChatEventMessageTtlSettingChanged.CONSTRUCTOR:
+        if (chatEventMessageTtlSettingChanged != null) {
+          return chatEventMessageTtlSettingChanged
+              .call(this as ChatEventMessageTtlSettingChanged);
+        }
+        break;
+      case ChatEventSignMessagesToggled.CONSTRUCTOR:
+        if (chatEventSignMessagesToggled != null) {
+          return chatEventSignMessagesToggled
+              .call(this as ChatEventSignMessagesToggled);
+        }
+        break;
+      case ChatEventStickerSetChanged.CONSTRUCTOR:
+        if (chatEventStickerSetChanged != null) {
+          return chatEventStickerSetChanged
+              .call(this as ChatEventStickerSetChanged);
+        }
+        break;
+      case ChatEventLocationChanged.CONSTRUCTOR:
+        if (chatEventLocationChanged != null) {
+          return chatEventLocationChanged
+              .call(this as ChatEventLocationChanged);
+        }
+        break;
+      case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
+        if (chatEventIsAllHistoryAvailableToggled != null) {
+          return chatEventIsAllHistoryAvailableToggled
+              .call(this as ChatEventIsAllHistoryAvailableToggled);
+        }
+        break;
+      case ChatEventInviteLinkEdited.CONSTRUCTOR:
+        if (chatEventInviteLinkEdited != null) {
+          return chatEventInviteLinkEdited
+              .call(this as ChatEventInviteLinkEdited);
+        }
+        break;
+      case ChatEventInviteLinkRevoked.CONSTRUCTOR:
+        if (chatEventInviteLinkRevoked != null) {
+          return chatEventInviteLinkRevoked
+              .call(this as ChatEventInviteLinkRevoked);
+        }
+        break;
+      case ChatEventInviteLinkDeleted.CONSTRUCTOR:
+        if (chatEventInviteLinkDeleted != null) {
+          return chatEventInviteLinkDeleted
+              .call(this as ChatEventInviteLinkDeleted);
+        }
+        break;
+      case ChatEventVoiceChatCreated.CONSTRUCTOR:
+        if (chatEventVoiceChatCreated != null) {
+          return chatEventVoiceChatCreated
+              .call(this as ChatEventVoiceChatCreated);
+        }
+        break;
+      case ChatEventVoiceChatDiscarded.CONSTRUCTOR:
+        if (chatEventVoiceChatDiscarded != null) {
+          return chatEventVoiceChatDiscarded
+              .call(this as ChatEventVoiceChatDiscarded);
+        }
+        break;
+      case ChatEventVoiceChatParticipantIsMutedToggled.CONSTRUCTOR:
+        if (chatEventVoiceChatParticipantIsMutedToggled != null) {
+          return chatEventVoiceChatParticipantIsMutedToggled
+              .call(this as ChatEventVoiceChatParticipantIsMutedToggled);
+        }
+        break;
+      case ChatEventVoiceChatParticipantVolumeLevelChanged.CONSTRUCTOR:
+        if (chatEventVoiceChatParticipantVolumeLevelChanged != null) {
+          return chatEventVoiceChatParticipantVolumeLevelChanged
+              .call(this as ChatEventVoiceChatParticipantVolumeLevelChanged);
+        }
+        break;
+      case ChatEventVoiceChatMuteNewParticipantsToggled.CONSTRUCTOR:
+        if (chatEventVoiceChatMuteNewParticipantsToggled != null) {
+          return chatEventVoiceChatMuteNewParticipantsToggled
+              .call(this as ChatEventVoiceChatMuteNewParticipantsToggled);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -6399,6 +9453,31 @@ extension LanguagePackStringValueExtensions on LanguagePackStringValue {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(LanguagePackStringValueOrdinary value)? ordinary,
+      TResult Function(LanguagePackStringValuePluralized value)? pluralized,
+      TResult Function(LanguagePackStringValueDeleted value)? deleted,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case LanguagePackStringValueOrdinary.CONSTRUCTOR:
+        if (ordinary != null) {
+          return ordinary.call(this as LanguagePackStringValueOrdinary);
+        }
+        break;
+      case LanguagePackStringValuePluralized.CONSTRUCTOR:
+        if (pluralized != null) {
+          return pluralized.call(this as LanguagePackStringValuePluralized);
+        }
+        break;
+      case LanguagePackStringValueDeleted.CONSTRUCTOR:
+        if (deleted != null) {
+          return deleted.call(this as LanguagePackStringValueDeleted);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension LanguagePackStringValueOrdinaryExtensions
@@ -6515,6 +9594,81 @@ extension DeviceTokenExtensions on DeviceToken {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(DeviceTokenFirebaseCloudMessaging value)?
+          firebaseCloudMessaging,
+      TResult Function(DeviceTokenApplePush value)? applePush,
+      TResult Function(DeviceTokenApplePushVoIP value)? applePushVoIP,
+      TResult Function(DeviceTokenWindowsPush value)? windowsPush,
+      TResult Function(DeviceTokenMicrosoftPush value)? microsoftPush,
+      TResult Function(DeviceTokenMicrosoftPushVoIP value)? microsoftPushVoIP,
+      TResult Function(DeviceTokenWebPush value)? webPush,
+      TResult Function(DeviceTokenSimplePush value)? simplePush,
+      TResult Function(DeviceTokenUbuntuPush value)? ubuntuPush,
+      TResult Function(DeviceTokenBlackBerryPush value)? blackBerryPush,
+      TResult Function(DeviceTokenTizenPush value)? tizenPush,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
+        if (firebaseCloudMessaging != null) {
+          return firebaseCloudMessaging
+              .call(this as DeviceTokenFirebaseCloudMessaging);
+        }
+        break;
+      case DeviceTokenApplePush.CONSTRUCTOR:
+        if (applePush != null) {
+          return applePush.call(this as DeviceTokenApplePush);
+        }
+        break;
+      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
+        if (applePushVoIP != null) {
+          return applePushVoIP.call(this as DeviceTokenApplePushVoIP);
+        }
+        break;
+      case DeviceTokenWindowsPush.CONSTRUCTOR:
+        if (windowsPush != null) {
+          return windowsPush.call(this as DeviceTokenWindowsPush);
+        }
+        break;
+      case DeviceTokenMicrosoftPush.CONSTRUCTOR:
+        if (microsoftPush != null) {
+          return microsoftPush.call(this as DeviceTokenMicrosoftPush);
+        }
+        break;
+      case DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR:
+        if (microsoftPushVoIP != null) {
+          return microsoftPushVoIP.call(this as DeviceTokenMicrosoftPushVoIP);
+        }
+        break;
+      case DeviceTokenWebPush.CONSTRUCTOR:
+        if (webPush != null) {
+          return webPush.call(this as DeviceTokenWebPush);
+        }
+        break;
+      case DeviceTokenSimplePush.CONSTRUCTOR:
+        if (simplePush != null) {
+          return simplePush.call(this as DeviceTokenSimplePush);
+        }
+        break;
+      case DeviceTokenUbuntuPush.CONSTRUCTOR:
+        if (ubuntuPush != null) {
+          return ubuntuPush.call(this as DeviceTokenUbuntuPush);
+        }
+        break;
+      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
+        if (blackBerryPush != null) {
+          return blackBerryPush.call(this as DeviceTokenBlackBerryPush);
+        }
+        break;
+      case DeviceTokenTizenPush.CONSTRUCTOR:
+        if (tizenPush != null) {
+          return tizenPush.call(this as DeviceTokenTizenPush);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension DeviceTokenFirebaseCloudMessagingExtensions
@@ -6601,6 +9755,25 @@ extension BackgroundFillExtensions on BackgroundFill {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(BackgroundFillSolid value)? solid,
+      TResult Function(BackgroundFillGradient value)? gradient,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case BackgroundFillSolid.CONSTRUCTOR:
+        if (solid != null) {
+          return solid.call(this as BackgroundFillSolid);
+        }
+        break;
+      case BackgroundFillGradient.CONSTRUCTOR:
+        if (gradient != null) {
+          return gradient.call(this as BackgroundFillGradient);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension BackgroundFillSolidExtensions on BackgroundFillSolid {
@@ -6631,6 +9804,31 @@ extension BackgroundTypeExtensions on BackgroundType {
         return fill.call(this as BackgroundTypeFill);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(BackgroundTypeWallpaper value)? wallpaper,
+      TResult Function(BackgroundTypePattern value)? pattern,
+      TResult Function(BackgroundTypeFill value)? fill,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case BackgroundTypeWallpaper.CONSTRUCTOR:
+        if (wallpaper != null) {
+          return wallpaper.call(this as BackgroundTypeWallpaper);
+        }
+        break;
+      case BackgroundTypePattern.CONSTRUCTOR:
+        if (pattern != null) {
+          return pattern.call(this as BackgroundTypePattern);
+        }
+        break;
+      case BackgroundTypeFill.CONSTRUCTOR:
+        if (fill != null) {
+          return fill.call(this as BackgroundTypeFill);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -6689,6 +9887,25 @@ extension InputBackgroundExtensions on InputBackground {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputBackgroundLocal value)? local,
+      TResult Function(InputBackgroundRemote value)? remote,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputBackgroundLocal.CONSTRUCTOR:
+        if (local != null) {
+          return local.call(this as InputBackgroundLocal);
+        }
+        break;
+      case InputBackgroundRemote.CONSTRUCTOR:
+        if (remote != null) {
+          return remote.call(this as InputBackgroundRemote);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InputBackgroundLocalExtensions on InputBackgroundLocal {
@@ -6730,6 +9947,43 @@ extension CanTransferOwnershipResultExtensions on CanTransferOwnershipResult {
             .call(this as CanTransferOwnershipResultSessionTooFresh);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CanTransferOwnershipResultOk value)? ok,
+      TResult Function(CanTransferOwnershipResultPasswordNeeded value)?
+          passwordNeeded,
+      TResult Function(CanTransferOwnershipResultPasswordTooFresh value)?
+          passwordTooFresh,
+      TResult Function(CanTransferOwnershipResultSessionTooFresh value)?
+          sessionTooFresh,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CanTransferOwnershipResultOk.CONSTRUCTOR:
+        if (ok != null) {
+          return ok.call(this as CanTransferOwnershipResultOk);
+        }
+        break;
+      case CanTransferOwnershipResultPasswordNeeded.CONSTRUCTOR:
+        if (passwordNeeded != null) {
+          return passwordNeeded
+              .call(this as CanTransferOwnershipResultPasswordNeeded);
+        }
+        break;
+      case CanTransferOwnershipResultPasswordTooFresh.CONSTRUCTOR:
+        if (passwordTooFresh != null) {
+          return passwordTooFresh
+              .call(this as CanTransferOwnershipResultPasswordTooFresh);
+        }
+        break;
+      case CanTransferOwnershipResultSessionTooFresh.CONSTRUCTOR:
+        if (sessionTooFresh != null) {
+          return sessionTooFresh
+              .call(this as CanTransferOwnershipResultSessionTooFresh);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -6777,6 +10031,51 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(CheckChatUsernameResultOk value)? ok,
+      TResult Function(CheckChatUsernameResultUsernameInvalid value)?
+          usernameInvalid,
+      TResult Function(CheckChatUsernameResultUsernameOccupied value)?
+          usernameOccupied,
+      TResult Function(CheckChatUsernameResultPublicChatsTooMuch value)?
+          publicChatsTooMuch,
+      TResult Function(CheckChatUsernameResultPublicGroupsUnavailable value)?
+          publicGroupsUnavailable,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case CheckChatUsernameResultOk.CONSTRUCTOR:
+        if (ok != null) {
+          return ok.call(this as CheckChatUsernameResultOk);
+        }
+        break;
+      case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
+        if (usernameInvalid != null) {
+          return usernameInvalid
+              .call(this as CheckChatUsernameResultUsernameInvalid);
+        }
+        break;
+      case CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR:
+        if (usernameOccupied != null) {
+          return usernameOccupied
+              .call(this as CheckChatUsernameResultUsernameOccupied);
+        }
+        break;
+      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
+        if (publicChatsTooMuch != null) {
+          return publicChatsTooMuch
+              .call(this as CheckChatUsernameResultPublicChatsTooMuch);
+        }
+        break;
+      case CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR:
+        if (publicGroupsUnavailable != null) {
+          return publicGroupsUnavailable
+              .call(this as CheckChatUsernameResultPublicGroupsUnavailable);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension MessageFileTypeExtensions on MessageFileType {
@@ -6793,6 +10092,31 @@ extension MessageFileTypeExtensions on MessageFileType {
         return unknown.call(this as MessageFileTypeUnknown);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(MessageFileTypePrivate value)? private,
+      TResult Function(MessageFileTypeGroup value)? group,
+      TResult Function(MessageFileTypeUnknown value)? unknown,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case MessageFileTypePrivate.CONSTRUCTOR:
+        if (private != null) {
+          return private.call(this as MessageFileTypePrivate);
+        }
+        break;
+      case MessageFileTypeGroup.CONSTRUCTOR:
+        if (group != null) {
+          return group.call(this as MessageFileTypeGroup);
+        }
+        break;
+      case MessageFileTypeUnknown.CONSTRUCTOR:
+        if (unknown != null) {
+          return unknown.call(this as MessageFileTypeUnknown);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -6902,6 +10226,183 @@ extension PushMessageContentExtensions on PushMessageContent {
         return mediaAlbum.call(this as PushMessageContentMediaAlbum);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(PushMessageContentHidden value)? hidden,
+      TResult Function(PushMessageContentAnimation value)? animation,
+      TResult Function(PushMessageContentAudio value)? audio,
+      TResult Function(PushMessageContentContact value)? contact,
+      TResult Function(PushMessageContentContactRegistered value)?
+          contactRegistered,
+      TResult Function(PushMessageContentDocument value)? document,
+      TResult Function(PushMessageContentGame value)? game,
+      TResult Function(PushMessageContentGameScore value)? gameScore,
+      TResult Function(PushMessageContentInvoice value)? invoice,
+      TResult Function(PushMessageContentLocation value)? location,
+      TResult Function(PushMessageContentPhoto value)? photo,
+      TResult Function(PushMessageContentPoll value)? poll,
+      TResult Function(PushMessageContentScreenshotTaken value)?
+          screenshotTaken,
+      TResult Function(PushMessageContentSticker value)? sticker,
+      TResult Function(PushMessageContentText value)? text,
+      TResult Function(PushMessageContentVideo value)? video,
+      TResult Function(PushMessageContentVideoNote value)? videoNote,
+      TResult Function(PushMessageContentVoiceNote value)? voiceNote,
+      TResult Function(PushMessageContentBasicGroupChatCreate value)?
+          basicGroupChatCreate,
+      TResult Function(PushMessageContentChatAddMembers value)? chatAddMembers,
+      TResult Function(PushMessageContentChatChangePhoto value)?
+          chatChangePhoto,
+      TResult Function(PushMessageContentChatChangeTitle value)?
+          chatChangeTitle,
+      TResult Function(PushMessageContentChatDeleteMember value)?
+          chatDeleteMember,
+      TResult Function(PushMessageContentChatJoinByLink value)? chatJoinByLink,
+      TResult Function(PushMessageContentMessageForwards value)?
+          messageForwards,
+      TResult Function(PushMessageContentMediaAlbum value)? mediaAlbum,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case PushMessageContentHidden.CONSTRUCTOR:
+        if (hidden != null) {
+          return hidden.call(this as PushMessageContentHidden);
+        }
+        break;
+      case PushMessageContentAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as PushMessageContentAnimation);
+        }
+        break;
+      case PushMessageContentAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as PushMessageContentAudio);
+        }
+        break;
+      case PushMessageContentContact.CONSTRUCTOR:
+        if (contact != null) {
+          return contact.call(this as PushMessageContentContact);
+        }
+        break;
+      case PushMessageContentContactRegistered.CONSTRUCTOR:
+        if (contactRegistered != null) {
+          return contactRegistered
+              .call(this as PushMessageContentContactRegistered);
+        }
+        break;
+      case PushMessageContentDocument.CONSTRUCTOR:
+        if (document != null) {
+          return document.call(this as PushMessageContentDocument);
+        }
+        break;
+      case PushMessageContentGame.CONSTRUCTOR:
+        if (game != null) {
+          return game.call(this as PushMessageContentGame);
+        }
+        break;
+      case PushMessageContentGameScore.CONSTRUCTOR:
+        if (gameScore != null) {
+          return gameScore.call(this as PushMessageContentGameScore);
+        }
+        break;
+      case PushMessageContentInvoice.CONSTRUCTOR:
+        if (invoice != null) {
+          return invoice.call(this as PushMessageContentInvoice);
+        }
+        break;
+      case PushMessageContentLocation.CONSTRUCTOR:
+        if (location != null) {
+          return location.call(this as PushMessageContentLocation);
+        }
+        break;
+      case PushMessageContentPhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as PushMessageContentPhoto);
+        }
+        break;
+      case PushMessageContentPoll.CONSTRUCTOR:
+        if (poll != null) {
+          return poll.call(this as PushMessageContentPoll);
+        }
+        break;
+      case PushMessageContentScreenshotTaken.CONSTRUCTOR:
+        if (screenshotTaken != null) {
+          return screenshotTaken
+              .call(this as PushMessageContentScreenshotTaken);
+        }
+        break;
+      case PushMessageContentSticker.CONSTRUCTOR:
+        if (sticker != null) {
+          return sticker.call(this as PushMessageContentSticker);
+        }
+        break;
+      case PushMessageContentText.CONSTRUCTOR:
+        if (text != null) {
+          return text.call(this as PushMessageContentText);
+        }
+        break;
+      case PushMessageContentVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as PushMessageContentVideo);
+        }
+        break;
+      case PushMessageContentVideoNote.CONSTRUCTOR:
+        if (videoNote != null) {
+          return videoNote.call(this as PushMessageContentVideoNote);
+        }
+        break;
+      case PushMessageContentVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as PushMessageContentVoiceNote);
+        }
+        break;
+      case PushMessageContentBasicGroupChatCreate.CONSTRUCTOR:
+        if (basicGroupChatCreate != null) {
+          return basicGroupChatCreate
+              .call(this as PushMessageContentBasicGroupChatCreate);
+        }
+        break;
+      case PushMessageContentChatAddMembers.CONSTRUCTOR:
+        if (chatAddMembers != null) {
+          return chatAddMembers.call(this as PushMessageContentChatAddMembers);
+        }
+        break;
+      case PushMessageContentChatChangePhoto.CONSTRUCTOR:
+        if (chatChangePhoto != null) {
+          return chatChangePhoto
+              .call(this as PushMessageContentChatChangePhoto);
+        }
+        break;
+      case PushMessageContentChatChangeTitle.CONSTRUCTOR:
+        if (chatChangeTitle != null) {
+          return chatChangeTitle
+              .call(this as PushMessageContentChatChangeTitle);
+        }
+        break;
+      case PushMessageContentChatDeleteMember.CONSTRUCTOR:
+        if (chatDeleteMember != null) {
+          return chatDeleteMember
+              .call(this as PushMessageContentChatDeleteMember);
+        }
+        break;
+      case PushMessageContentChatJoinByLink.CONSTRUCTOR:
+        if (chatJoinByLink != null) {
+          return chatJoinByLink.call(this as PushMessageContentChatJoinByLink);
+        }
+        break;
+      case PushMessageContentMessageForwards.CONSTRUCTOR:
+        if (messageForwards != null) {
+          return messageForwards
+              .call(this as PushMessageContentMessageForwards);
+        }
+        break;
+      case PushMessageContentMediaAlbum.CONSTRUCTOR:
+        if (mediaAlbum != null) {
+          return mediaAlbum.call(this as PushMessageContentMediaAlbum);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7092,6 +10593,37 @@ extension NotificationTypeExtensions on NotificationType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(NotificationTypeNewMessage value)? newMessage,
+      TResult Function(NotificationTypeNewSecretChat value)? newSecretChat,
+      TResult Function(NotificationTypeNewCall value)? newCall,
+      TResult Function(NotificationTypeNewPushMessage value)? newPushMessage,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case NotificationTypeNewMessage.CONSTRUCTOR:
+        if (newMessage != null) {
+          return newMessage.call(this as NotificationTypeNewMessage);
+        }
+        break;
+      case NotificationTypeNewSecretChat.CONSTRUCTOR:
+        if (newSecretChat != null) {
+          return newSecretChat.call(this as NotificationTypeNewSecretChat);
+        }
+        break;
+      case NotificationTypeNewCall.CONSTRUCTOR:
+        if (newCall != null) {
+          return newCall.call(this as NotificationTypeNewCall);
+        }
+        break;
+      case NotificationTypeNewPushMessage.CONSTRUCTOR:
+        if (newPushMessage != null) {
+          return newPushMessage.call(this as NotificationTypeNewPushMessage);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension NotificationTypeNewMessageExtensions on NotificationTypeNewMessage {
@@ -7139,6 +10671,37 @@ extension NotificationGroupTypeExtensions on NotificationGroupType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(NotificationGroupTypeMessages value)? messages,
+      TResult Function(NotificationGroupTypeMentions value)? mentions,
+      TResult Function(NotificationGroupTypeSecretChat value)? secretChat,
+      TResult Function(NotificationGroupTypeCalls value)? calls,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case NotificationGroupTypeMessages.CONSTRUCTOR:
+        if (messages != null) {
+          return messages.call(this as NotificationGroupTypeMessages);
+        }
+        break;
+      case NotificationGroupTypeMentions.CONSTRUCTOR:
+        if (mentions != null) {
+          return mentions.call(this as NotificationGroupTypeMentions);
+        }
+        break;
+      case NotificationGroupTypeSecretChat.CONSTRUCTOR:
+        if (secretChat != null) {
+          return secretChat.call(this as NotificationGroupTypeSecretChat);
+        }
+        break;
+      case NotificationGroupTypeCalls.CONSTRUCTOR:
+        if (calls != null) {
+          return calls.call(this as NotificationGroupTypeCalls);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension NotificationExtensions on Notification {
@@ -7183,6 +10746,37 @@ extension OptionValueExtensions on OptionValue {
         return $string.call(this as OptionValueString);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(OptionValueBoolean value)? $boolean,
+      TResult Function(OptionValueEmpty value)? empty,
+      TResult Function(OptionValueInteger value)? integer,
+      TResult Function(OptionValueString value)? $string,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case OptionValueBoolean.CONSTRUCTOR:
+        if ($boolean != null) {
+          return $boolean.call(this as OptionValueBoolean);
+        }
+        break;
+      case OptionValueEmpty.CONSTRUCTOR:
+        if (empty != null) {
+          return empty.call(this as OptionValueEmpty);
+        }
+        break;
+      case OptionValueInteger.CONSTRUCTOR:
+        if (integer != null) {
+          return integer.call(this as OptionValueInteger);
+        }
+        break;
+      case OptionValueString.CONSTRUCTOR:
+        if ($string != null) {
+          return $string.call(this as OptionValueString);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7229,6 +10823,49 @@ extension JsonValueExtensions on JsonValue {
         return $object.call(this as JsonValueObject);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(JsonValueNull value)? $null,
+      TResult Function(JsonValueBoolean value)? $boolean,
+      TResult Function(JsonValueNumber value)? number,
+      TResult Function(JsonValueString value)? $string,
+      TResult Function(JsonValueArray value)? array,
+      TResult Function(JsonValueObject value)? $object,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case JsonValueNull.CONSTRUCTOR:
+        if ($null != null) {
+          return $null.call(this as JsonValueNull);
+        }
+        break;
+      case JsonValueBoolean.CONSTRUCTOR:
+        if ($boolean != null) {
+          return $boolean.call(this as JsonValueBoolean);
+        }
+        break;
+      case JsonValueNumber.CONSTRUCTOR:
+        if (number != null) {
+          return number.call(this as JsonValueNumber);
+        }
+        break;
+      case JsonValueString.CONSTRUCTOR:
+        if ($string != null) {
+          return $string.call(this as JsonValueString);
+        }
+        break;
+      case JsonValueArray.CONSTRUCTOR:
+        if (array != null) {
+          return array.call(this as JsonValueArray);
+        }
+        break;
+      case JsonValueObject.CONSTRUCTOR:
+        if ($object != null) {
+          return $object.call(this as JsonValueObject);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7296,6 +10933,71 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
             .call(this as UserPrivacySettingRuleRestrictChatMembers);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(UserPrivacySettingRuleAllowAll value)? allowAll,
+      TResult Function(UserPrivacySettingRuleAllowContacts value)?
+          allowContacts,
+      TResult Function(UserPrivacySettingRuleAllowUsers value)? allowUsers,
+      TResult Function(UserPrivacySettingRuleAllowChatMembers value)?
+          allowChatMembers,
+      TResult Function(UserPrivacySettingRuleRestrictAll value)? restrictAll,
+      TResult Function(UserPrivacySettingRuleRestrictContacts value)?
+          restrictContacts,
+      TResult Function(UserPrivacySettingRuleRestrictUsers value)?
+          restrictUsers,
+      TResult Function(UserPrivacySettingRuleRestrictChatMembers value)?
+          restrictChatMembers,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
+        if (allowAll != null) {
+          return allowAll.call(this as UserPrivacySettingRuleAllowAll);
+        }
+        break;
+      case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
+        if (allowContacts != null) {
+          return allowContacts
+              .call(this as UserPrivacySettingRuleAllowContacts);
+        }
+        break;
+      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
+        if (allowUsers != null) {
+          return allowUsers.call(this as UserPrivacySettingRuleAllowUsers);
+        }
+        break;
+      case UserPrivacySettingRuleAllowChatMembers.CONSTRUCTOR:
+        if (allowChatMembers != null) {
+          return allowChatMembers
+              .call(this as UserPrivacySettingRuleAllowChatMembers);
+        }
+        break;
+      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
+        if (restrictAll != null) {
+          return restrictAll.call(this as UserPrivacySettingRuleRestrictAll);
+        }
+        break;
+      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
+        if (restrictContacts != null) {
+          return restrictContacts
+              .call(this as UserPrivacySettingRuleRestrictContacts);
+        }
+        break;
+      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
+        if (restrictUsers != null) {
+          return restrictUsers
+              .call(this as UserPrivacySettingRuleRestrictUsers);
+        }
+        break;
+      case UserPrivacySettingRuleRestrictChatMembers.CONSTRUCTOR:
+        if (restrictChatMembers != null) {
+          return restrictChatMembers
+              .call(this as UserPrivacySettingRuleRestrictChatMembers);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7371,6 +11073,73 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
             .call(this as UserPrivacySettingAllowFindingByPhoneNumber);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(UserPrivacySettingShowStatus value)? showStatus,
+      TResult Function(UserPrivacySettingShowProfilePhoto value)?
+          showProfilePhoto,
+      TResult Function(UserPrivacySettingShowLinkInForwardedMessages value)?
+          showLinkInForwardedMessages,
+      TResult Function(UserPrivacySettingShowPhoneNumber value)?
+          showPhoneNumber,
+      TResult Function(UserPrivacySettingAllowChatInvites value)?
+          allowChatInvites,
+      TResult Function(UserPrivacySettingAllowCalls value)? allowCalls,
+      TResult Function(UserPrivacySettingAllowPeerToPeerCalls value)?
+          allowPeerToPeerCalls,
+      TResult Function(UserPrivacySettingAllowFindingByPhoneNumber value)?
+          allowFindingByPhoneNumber,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case UserPrivacySettingShowStatus.CONSTRUCTOR:
+        if (showStatus != null) {
+          return showStatus.call(this as UserPrivacySettingShowStatus);
+        }
+        break;
+      case UserPrivacySettingShowProfilePhoto.CONSTRUCTOR:
+        if (showProfilePhoto != null) {
+          return showProfilePhoto
+              .call(this as UserPrivacySettingShowProfilePhoto);
+        }
+        break;
+      case UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR:
+        if (showLinkInForwardedMessages != null) {
+          return showLinkInForwardedMessages
+              .call(this as UserPrivacySettingShowLinkInForwardedMessages);
+        }
+        break;
+      case UserPrivacySettingShowPhoneNumber.CONSTRUCTOR:
+        if (showPhoneNumber != null) {
+          return showPhoneNumber
+              .call(this as UserPrivacySettingShowPhoneNumber);
+        }
+        break;
+      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
+        if (allowChatInvites != null) {
+          return allowChatInvites
+              .call(this as UserPrivacySettingAllowChatInvites);
+        }
+        break;
+      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
+        if (allowCalls != null) {
+          return allowCalls.call(this as UserPrivacySettingAllowCalls);
+        }
+        break;
+      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
+        if (allowPeerToPeerCalls != null) {
+          return allowPeerToPeerCalls
+              .call(this as UserPrivacySettingAllowPeerToPeerCalls);
+        }
+        break;
+      case UserPrivacySettingAllowFindingByPhoneNumber.CONSTRUCTOR:
+        if (allowFindingByPhoneNumber != null) {
+          return allowFindingByPhoneNumber
+              .call(this as UserPrivacySettingAllowFindingByPhoneNumber);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7479,6 +11248,63 @@ extension ChatReportReasonExtensions on ChatReportReason {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatReportReasonSpam value)? spam,
+      TResult Function(ChatReportReasonViolence value)? violence,
+      TResult Function(ChatReportReasonPornography value)? pornography,
+      TResult Function(ChatReportReasonChildAbuse value)? childAbuse,
+      TResult Function(ChatReportReasonCopyright value)? copyright,
+      TResult Function(ChatReportReasonUnrelatedLocation value)?
+          unrelatedLocation,
+      TResult Function(ChatReportReasonFake value)? fake,
+      TResult Function(ChatReportReasonCustom value)? custom,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatReportReasonSpam.CONSTRUCTOR:
+        if (spam != null) {
+          return spam.call(this as ChatReportReasonSpam);
+        }
+        break;
+      case ChatReportReasonViolence.CONSTRUCTOR:
+        if (violence != null) {
+          return violence.call(this as ChatReportReasonViolence);
+        }
+        break;
+      case ChatReportReasonPornography.CONSTRUCTOR:
+        if (pornography != null) {
+          return pornography.call(this as ChatReportReasonPornography);
+        }
+        break;
+      case ChatReportReasonChildAbuse.CONSTRUCTOR:
+        if (childAbuse != null) {
+          return childAbuse.call(this as ChatReportReasonChildAbuse);
+        }
+        break;
+      case ChatReportReasonCopyright.CONSTRUCTOR:
+        if (copyright != null) {
+          return copyright.call(this as ChatReportReasonCopyright);
+        }
+        break;
+      case ChatReportReasonUnrelatedLocation.CONSTRUCTOR:
+        if (unrelatedLocation != null) {
+          return unrelatedLocation
+              .call(this as ChatReportReasonUnrelatedLocation);
+        }
+        break;
+      case ChatReportReasonFake.CONSTRUCTOR:
+        if (fake != null) {
+          return fake.call(this as ChatReportReasonFake);
+        }
+        break;
+      case ChatReportReasonCustom.CONSTRUCTOR:
+        if (custom != null) {
+          return custom.call(this as ChatReportReasonCustom);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension MessageLinkExtensions on MessageLink {
@@ -7559,6 +11385,109 @@ extension FileTypeExtensions on FileType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(FileTypeNone value)? none,
+      TResult Function(FileTypeAnimation value)? animation,
+      TResult Function(FileTypeAudio value)? audio,
+      TResult Function(FileTypeDocument value)? document,
+      TResult Function(FileTypePhoto value)? photo,
+      TResult Function(FileTypeProfilePhoto value)? profilePhoto,
+      TResult Function(FileTypeSecret value)? secret,
+      TResult Function(FileTypeSecretThumbnail value)? secretThumbnail,
+      TResult Function(FileTypeSecure value)? secure,
+      TResult Function(FileTypeSticker value)? sticker,
+      TResult Function(FileTypeThumbnail value)? thumbnail,
+      TResult Function(FileTypeUnknown value)? unknown,
+      TResult Function(FileTypeVideo value)? video,
+      TResult Function(FileTypeVideoNote value)? videoNote,
+      TResult Function(FileTypeVoiceNote value)? voiceNote,
+      TResult Function(FileTypeWallpaper value)? wallpaper,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case FileTypeNone.CONSTRUCTOR:
+        if (none != null) {
+          return none.call(this as FileTypeNone);
+        }
+        break;
+      case FileTypeAnimation.CONSTRUCTOR:
+        if (animation != null) {
+          return animation.call(this as FileTypeAnimation);
+        }
+        break;
+      case FileTypeAudio.CONSTRUCTOR:
+        if (audio != null) {
+          return audio.call(this as FileTypeAudio);
+        }
+        break;
+      case FileTypeDocument.CONSTRUCTOR:
+        if (document != null) {
+          return document.call(this as FileTypeDocument);
+        }
+        break;
+      case FileTypePhoto.CONSTRUCTOR:
+        if (photo != null) {
+          return photo.call(this as FileTypePhoto);
+        }
+        break;
+      case FileTypeProfilePhoto.CONSTRUCTOR:
+        if (profilePhoto != null) {
+          return profilePhoto.call(this as FileTypeProfilePhoto);
+        }
+        break;
+      case FileTypeSecret.CONSTRUCTOR:
+        if (secret != null) {
+          return secret.call(this as FileTypeSecret);
+        }
+        break;
+      case FileTypeSecretThumbnail.CONSTRUCTOR:
+        if (secretThumbnail != null) {
+          return secretThumbnail.call(this as FileTypeSecretThumbnail);
+        }
+        break;
+      case FileTypeSecure.CONSTRUCTOR:
+        if (secure != null) {
+          return secure.call(this as FileTypeSecure);
+        }
+        break;
+      case FileTypeSticker.CONSTRUCTOR:
+        if (sticker != null) {
+          return sticker.call(this as FileTypeSticker);
+        }
+        break;
+      case FileTypeThumbnail.CONSTRUCTOR:
+        if (thumbnail != null) {
+          return thumbnail.call(this as FileTypeThumbnail);
+        }
+        break;
+      case FileTypeUnknown.CONSTRUCTOR:
+        if (unknown != null) {
+          return unknown.call(this as FileTypeUnknown);
+        }
+        break;
+      case FileTypeVideo.CONSTRUCTOR:
+        if (video != null) {
+          return video.call(this as FileTypeVideo);
+        }
+        break;
+      case FileTypeVideoNote.CONSTRUCTOR:
+        if (videoNote != null) {
+          return videoNote.call(this as FileTypeVideoNote);
+        }
+        break;
+      case FileTypeVoiceNote.CONSTRUCTOR:
+        if (voiceNote != null) {
+          return voiceNote.call(this as FileTypeVoiceNote);
+        }
+        break;
+      case FileTypeWallpaper.CONSTRUCTOR:
+        if (wallpaper != null) {
+          return wallpaper.call(this as FileTypeWallpaper);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension StorageStatisticsByFileTypeExtensions on StorageStatisticsByFileType {
@@ -7634,6 +11563,43 @@ extension NetworkTypeExtensions on NetworkType {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(NetworkTypeNone value)? none,
+      TResult Function(NetworkTypeMobile value)? mobile,
+      TResult Function(NetworkTypeMobileRoaming value)? mobileRoaming,
+      TResult Function(NetworkTypeWiFi value)? wiFi,
+      TResult Function(NetworkTypeOther value)? other,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case NetworkTypeNone.CONSTRUCTOR:
+        if (none != null) {
+          return none.call(this as NetworkTypeNone);
+        }
+        break;
+      case NetworkTypeMobile.CONSTRUCTOR:
+        if (mobile != null) {
+          return mobile.call(this as NetworkTypeMobile);
+        }
+        break;
+      case NetworkTypeMobileRoaming.CONSTRUCTOR:
+        if (mobileRoaming != null) {
+          return mobileRoaming.call(this as NetworkTypeMobileRoaming);
+        }
+        break;
+      case NetworkTypeWiFi.CONSTRUCTOR:
+        if (wiFi != null) {
+          return wiFi.call(this as NetworkTypeWiFi);
+        }
+        break;
+      case NetworkTypeOther.CONSTRUCTOR:
+        if (other != null) {
+          return other.call(this as NetworkTypeOther);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension NetworkStatisticsEntryExtensions on NetworkStatisticsEntry {
@@ -7647,6 +11613,25 @@ extension NetworkStatisticsEntryExtensions on NetworkStatisticsEntry {
         return call.call(this as NetworkStatisticsEntryCall);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(NetworkStatisticsEntryFile value)? file,
+      TResult Function(NetworkStatisticsEntryCall value)? call,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case NetworkStatisticsEntryFile.CONSTRUCTOR:
+        if (file != null) {
+          return file.call(this as NetworkStatisticsEntryFile);
+        }
+        break;
+      case NetworkStatisticsEntryCall.CONSTRUCTOR:
+        if (call != null) {
+          return call.call(this as NetworkStatisticsEntryCall);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7740,6 +11725,47 @@ extension ConnectionStateExtensions on ConnectionState {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ConnectionStateWaitingForNetwork value)?
+          waitingForNetwork,
+      TResult Function(ConnectionStateConnectingToProxy value)?
+          connectingToProxy,
+      TResult Function(ConnectionStateConnecting value)? connecting,
+      TResult Function(ConnectionStateUpdating value)? updating,
+      TResult Function(ConnectionStateReady value)? ready,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
+        if (waitingForNetwork != null) {
+          return waitingForNetwork
+              .call(this as ConnectionStateWaitingForNetwork);
+        }
+        break;
+      case ConnectionStateConnectingToProxy.CONSTRUCTOR:
+        if (connectingToProxy != null) {
+          return connectingToProxy
+              .call(this as ConnectionStateConnectingToProxy);
+        }
+        break;
+      case ConnectionStateConnecting.CONSTRUCTOR:
+        if (connecting != null) {
+          return connecting.call(this as ConnectionStateConnecting);
+        }
+        break;
+      case ConnectionStateUpdating.CONSTRUCTOR:
+        if (updating != null) {
+          return updating.call(this as ConnectionStateUpdating);
+        }
+        break;
+      case ConnectionStateReady.CONSTRUCTOR:
+        if (ready != null) {
+          return ready.call(this as ConnectionStateReady);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension TopChatCategoryExtensions on TopChatCategory {
@@ -7770,6 +11796,55 @@ extension TopChatCategoryExtensions on TopChatCategory {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(TopChatCategoryUsers value)? users,
+      TResult Function(TopChatCategoryBots value)? bots,
+      TResult Function(TopChatCategoryGroups value)? groups,
+      TResult Function(TopChatCategoryChannels value)? channels,
+      TResult Function(TopChatCategoryInlineBots value)? inlineBots,
+      TResult Function(TopChatCategoryCalls value)? calls,
+      TResult Function(TopChatCategoryForwardChats value)? forwardChats,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case TopChatCategoryUsers.CONSTRUCTOR:
+        if (users != null) {
+          return users.call(this as TopChatCategoryUsers);
+        }
+        break;
+      case TopChatCategoryBots.CONSTRUCTOR:
+        if (bots != null) {
+          return bots.call(this as TopChatCategoryBots);
+        }
+        break;
+      case TopChatCategoryGroups.CONSTRUCTOR:
+        if (groups != null) {
+          return groups.call(this as TopChatCategoryGroups);
+        }
+        break;
+      case TopChatCategoryChannels.CONSTRUCTOR:
+        if (channels != null) {
+          return channels.call(this as TopChatCategoryChannels);
+        }
+        break;
+      case TopChatCategoryInlineBots.CONSTRUCTOR:
+        if (inlineBots != null) {
+          return inlineBots.call(this as TopChatCategoryInlineBots);
+        }
+        break;
+      case TopChatCategoryCalls.CONSTRUCTOR:
+        if (calls != null) {
+          return calls.call(this as TopChatCategoryCalls);
+        }
+        break;
+      case TopChatCategoryForwardChats.CONSTRUCTOR:
+        if (forwardChats != null) {
+          return forwardChats.call(this as TopChatCategoryForwardChats);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension TMeUrlTypeExtensions on TMeUrlType {
@@ -7789,6 +11864,37 @@ extension TMeUrlTypeExtensions on TMeUrlType {
         return stickerSet.call(this as TMeUrlTypeStickerSet);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(TMeUrlTypeUser value)? user,
+      TResult Function(TMeUrlTypeSupergroup value)? supergroup,
+      TResult Function(TMeUrlTypeChatInvite value)? chatInvite,
+      TResult Function(TMeUrlTypeStickerSet value)? stickerSet,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case TMeUrlTypeUser.CONSTRUCTOR:
+        if (user != null) {
+          return user.call(this as TMeUrlTypeUser);
+        }
+        break;
+      case TMeUrlTypeSupergroup.CONSTRUCTOR:
+        if (supergroup != null) {
+          return supergroup.call(this as TMeUrlTypeSupergroup);
+        }
+        break;
+      case TMeUrlTypeChatInvite.CONSTRUCTOR:
+        if (chatInvite != null) {
+          return chatInvite.call(this as TMeUrlTypeChatInvite);
+        }
+        break;
+      case TMeUrlTypeStickerSet.CONSTRUCTOR:
+        if (stickerSet != null) {
+          return stickerSet.call(this as TMeUrlTypeStickerSet);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7845,6 +11951,41 @@ extension SuggestedActionExtensions on SuggestedAction {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(SuggestedActionEnableArchiveAndMuteNewChats value)?
+          enableArchiveAndMuteNewChats,
+      TResult Function(SuggestedActionCheckPhoneNumber value)? checkPhoneNumber,
+      TResult Function(SuggestedActionSeeTicksHint value)? seeTicksHint,
+      TResult Function(SuggestedActionConvertToBroadcastGroup value)?
+          convertToBroadcastGroup,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case SuggestedActionEnableArchiveAndMuteNewChats.CONSTRUCTOR:
+        if (enableArchiveAndMuteNewChats != null) {
+          return enableArchiveAndMuteNewChats
+              .call(this as SuggestedActionEnableArchiveAndMuteNewChats);
+        }
+        break;
+      case SuggestedActionCheckPhoneNumber.CONSTRUCTOR:
+        if (checkPhoneNumber != null) {
+          return checkPhoneNumber.call(this as SuggestedActionCheckPhoneNumber);
+        }
+        break;
+      case SuggestedActionSeeTicksHint.CONSTRUCTOR:
+        if (seeTicksHint != null) {
+          return seeTicksHint.call(this as SuggestedActionSeeTicksHint);
+        }
+        break;
+      case SuggestedActionConvertToBroadcastGroup.CONSTRUCTOR:
+        if (convertToBroadcastGroup != null) {
+          return convertToBroadcastGroup
+              .call(this as SuggestedActionConvertToBroadcastGroup);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension SuggestedActionConvertToBroadcastGroupExtensions
@@ -7886,6 +12027,25 @@ extension TextParseModeExtensions on TextParseMode {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(TextParseModeMarkdown value)? markdown,
+      TResult Function(TextParseModeHTML value)? hTML,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case TextParseModeMarkdown.CONSTRUCTOR:
+        if (markdown != null) {
+          return markdown.call(this as TextParseModeMarkdown);
+        }
+        break;
+      case TextParseModeHTML.CONSTRUCTOR:
+        if (hTML != null) {
+          return hTML.call(this as TextParseModeHTML);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension TextParseModeMarkdownExtensions on TextParseModeMarkdown {
@@ -7907,6 +12067,31 @@ extension ProxyTypeExtensions on ProxyType {
         return mtproto.call(this as ProxyTypeMtproto);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ProxyTypeSocks5 value)? socks5,
+      TResult Function(ProxyTypeHttp value)? http,
+      TResult Function(ProxyTypeMtproto value)? mtproto,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ProxyTypeSocks5.CONSTRUCTOR:
+        if (socks5 != null) {
+          return socks5.call(this as ProxyTypeSocks5);
+        }
+        break;
+      case ProxyTypeHttp.CONSTRUCTOR:
+        if (http != null) {
+          return http.call(this as ProxyTypeHttp);
+        }
+        break;
+      case ProxyTypeMtproto.CONSTRUCTOR:
+        if (mtproto != null) {
+          return mtproto.call(this as ProxyTypeMtproto);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -7962,6 +12147,25 @@ extension InputStickerExtensions on InputSticker {
     }
     throw StateError('not handled type ${this.runtimeType}');
   }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(InputStickerStatic value)? static,
+      TResult Function(InputStickerAnimated value)? animated,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case InputStickerStatic.CONSTRUCTOR:
+        if (static != null) {
+          return static.call(this as InputStickerStatic);
+        }
+        break;
+      case InputStickerAnimated.CONSTRUCTOR:
+        if (animated != null) {
+          return animated.call(this as InputStickerAnimated);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension InputStickerStaticExtensions on InputStickerStatic {
@@ -8010,6 +12214,31 @@ extension StatisticalGraphExtensions on StatisticalGraph {
         return error.call(this as StatisticalGraphError);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(StatisticalGraphData value)? data,
+      TResult Function(StatisticalGraphAsync value)? async,
+      TResult Function(StatisticalGraphError value)? error,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case StatisticalGraphData.CONSTRUCTOR:
+        if (data != null) {
+          return data.call(this as StatisticalGraphData);
+        }
+        break;
+      case StatisticalGraphAsync.CONSTRUCTOR:
+        if (async != null) {
+          return async.call(this as StatisticalGraphAsync);
+        }
+        break;
+      case StatisticalGraphError.CONSTRUCTOR:
+        if (error != null) {
+          return error.call(this as StatisticalGraphError);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -8083,6 +12312,25 @@ extension ChatStatisticsExtensions on ChatStatistics {
         return channel.call(this as ChatStatisticsChannel);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(ChatStatisticsSupergroup value)? supergroup,
+      TResult Function(ChatStatisticsChannel value)? channel,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case ChatStatisticsSupergroup.CONSTRUCTOR:
+        if (supergroup != null) {
+          return supergroup.call(this as ChatStatisticsSupergroup);
+        }
+        break;
+      case ChatStatisticsChannel.CONSTRUCTOR:
+        if (channel != null) {
+          return channel.call(this as ChatStatisticsChannel);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -8188,6 +12436,27 @@ extension VectorPathCommandExtensions on VectorPathCommand {
         return cubicBezierCurve.call(this as VectorPathCommandCubicBezierCurve);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(VectorPathCommandLine value)? line,
+      TResult Function(VectorPathCommandCubicBezierCurve value)?
+          cubicBezierCurve,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case VectorPathCommandLine.CONSTRUCTOR:
+        if (line != null) {
+          return line.call(this as VectorPathCommandLine);
+        }
+        break;
+      case VectorPathCommandCubicBezierCurve.CONSTRUCTOR:
+        if (cubicBezierCurve != null) {
+          return cubicBezierCurve
+              .call(this as VectorPathCommandCubicBezierCurve);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -8516,6 +12785,553 @@ extension UpdateExtensions on Update {
         return chatMember.call(this as UpdateChatMember);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(UpdateAuthorizationState value)? authorizationState,
+      TResult Function(UpdateNewMessage value)? newMessage,
+      TResult Function(UpdateMessageSendAcknowledged value)?
+          messageSendAcknowledged,
+      TResult Function(UpdateMessageSendSucceeded value)? messageSendSucceeded,
+      TResult Function(UpdateMessageSendFailed value)? messageSendFailed,
+      TResult Function(UpdateMessageContent value)? messageContent,
+      TResult Function(UpdateMessageEdited value)? messageEdited,
+      TResult Function(UpdateMessageIsPinned value)? messageIsPinned,
+      TResult Function(UpdateMessageInteractionInfo value)?
+          messageInteractionInfo,
+      TResult Function(UpdateMessageContentOpened value)? messageContentOpened,
+      TResult Function(UpdateMessageMentionRead value)? messageMentionRead,
+      TResult Function(UpdateMessageLiveLocationViewed value)?
+          messageLiveLocationViewed,
+      TResult Function(UpdateNewChat value)? newChat,
+      TResult Function(UpdateChatTitle value)? chatTitle,
+      TResult Function(UpdateChatPhoto value)? chatPhoto,
+      TResult Function(UpdateChatPermissions value)? chatPermissions,
+      TResult Function(UpdateChatLastMessage value)? chatLastMessage,
+      TResult Function(UpdateChatPosition value)? chatPosition,
+      TResult Function(UpdateChatIsMarkedAsUnread value)? chatIsMarkedAsUnread,
+      TResult Function(UpdateChatIsBlocked value)? chatIsBlocked,
+      TResult Function(UpdateChatHasScheduledMessages value)?
+          chatHasScheduledMessages,
+      TResult Function(UpdateChatVoiceChat value)? chatVoiceChat,
+      TResult Function(UpdateChatDefaultDisableNotification value)?
+          chatDefaultDisableNotification,
+      TResult Function(UpdateChatReadInbox value)? chatReadInbox,
+      TResult Function(UpdateChatReadOutbox value)? chatReadOutbox,
+      TResult Function(UpdateChatUnreadMentionCount value)?
+          chatUnreadMentionCount,
+      TResult Function(UpdateChatNotificationSettings value)?
+          chatNotificationSettings,
+      TResult Function(UpdateScopeNotificationSettings value)?
+          scopeNotificationSettings,
+      TResult Function(UpdateChatMessageTtlSetting value)?
+          chatMessageTtlSetting,
+      TResult Function(UpdateChatActionBar value)? chatActionBar,
+      TResult Function(UpdateChatReplyMarkup value)? chatReplyMarkup,
+      TResult Function(UpdateChatDraftMessage value)? chatDraftMessage,
+      TResult Function(UpdateChatFilters value)? chatFilters,
+      TResult Function(UpdateChatOnlineMemberCount value)?
+          chatOnlineMemberCount,
+      TResult Function(UpdateNotification value)? notification,
+      TResult Function(UpdateNotificationGroup value)? notificationGroup,
+      TResult Function(UpdateActiveNotifications value)? activeNotifications,
+      TResult Function(UpdateHavePendingNotifications value)?
+          havePendingNotifications,
+      TResult Function(UpdateDeleteMessages value)? deleteMessages,
+      TResult Function(UpdateUserChatAction value)? userChatAction,
+      TResult Function(UpdateUserStatus value)? userStatus,
+      TResult Function(UpdateUser value)? user,
+      TResult Function(UpdateBasicGroup value)? basicGroup,
+      TResult Function(UpdateSupergroup value)? supergroup,
+      TResult Function(UpdateSecretChat value)? secretChat,
+      TResult Function(UpdateUserFullInfo value)? userFullInfo,
+      TResult Function(UpdateBasicGroupFullInfo value)? basicGroupFullInfo,
+      TResult Function(UpdateSupergroupFullInfo value)? supergroupFullInfo,
+      TResult Function(UpdateServiceNotification value)? serviceNotification,
+      TResult Function(UpdateFile value)? file,
+      TResult Function(UpdateFileGenerationStart value)? fileGenerationStart,
+      TResult Function(UpdateFileGenerationStop value)? fileGenerationStop,
+      TResult Function(UpdateCall value)? call,
+      TResult Function(UpdateGroupCall value)? groupCall,
+      TResult Function(UpdateGroupCallParticipant value)? groupCallParticipant,
+      TResult Function(UpdateNewCallSignalingData value)? newCallSignalingData,
+      TResult Function(UpdateUserPrivacySettingRules value)?
+          userPrivacySettingRules,
+      TResult Function(UpdateUnreadMessageCount value)? unreadMessageCount,
+      TResult Function(UpdateUnreadChatCount value)? unreadChatCount,
+      TResult Function(UpdateOption value)? option,
+      TResult Function(UpdateStickerSet value)? stickerSet,
+      TResult Function(UpdateInstalledStickerSets value)? installedStickerSets,
+      TResult Function(UpdateTrendingStickerSets value)? trendingStickerSets,
+      TResult Function(UpdateRecentStickers value)? recentStickers,
+      TResult Function(UpdateFavoriteStickers value)? favoriteStickers,
+      TResult Function(UpdateSavedAnimations value)? savedAnimations,
+      TResult Function(UpdateSelectedBackground value)? selectedBackground,
+      TResult Function(UpdateLanguagePackStrings value)? languagePackStrings,
+      TResult Function(UpdateConnectionState value)? connectionState,
+      TResult Function(UpdateTermsOfService value)? termsOfService,
+      TResult Function(UpdateUsersNearby value)? usersNearby,
+      TResult Function(UpdateDiceEmojis value)? diceEmojis,
+      TResult Function(UpdateAnimationSearchParameters value)?
+          animationSearchParameters,
+      TResult Function(UpdateSuggestedActions value)? suggestedActions,
+      TResult Function(UpdateNewInlineQuery value)? newInlineQuery,
+      TResult Function(UpdateNewChosenInlineResult value)?
+          newChosenInlineResult,
+      TResult Function(UpdateNewCallbackQuery value)? newCallbackQuery,
+      TResult Function(UpdateNewInlineCallbackQuery value)?
+          newInlineCallbackQuery,
+      TResult Function(UpdateNewShippingQuery value)? newShippingQuery,
+      TResult Function(UpdateNewPreCheckoutQuery value)? newPreCheckoutQuery,
+      TResult Function(UpdateNewCustomEvent value)? newCustomEvent,
+      TResult Function(UpdateNewCustomQuery value)? newCustomQuery,
+      TResult Function(UpdatePoll value)? poll,
+      TResult Function(UpdatePollAnswer value)? pollAnswer,
+      TResult Function(UpdateChatMember value)? chatMember,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case UpdateAuthorizationState.CONSTRUCTOR:
+        if (authorizationState != null) {
+          return authorizationState.call(this as UpdateAuthorizationState);
+        }
+        break;
+      case UpdateNewMessage.CONSTRUCTOR:
+        if (newMessage != null) {
+          return newMessage.call(this as UpdateNewMessage);
+        }
+        break;
+      case UpdateMessageSendAcknowledged.CONSTRUCTOR:
+        if (messageSendAcknowledged != null) {
+          return messageSendAcknowledged
+              .call(this as UpdateMessageSendAcknowledged);
+        }
+        break;
+      case UpdateMessageSendSucceeded.CONSTRUCTOR:
+        if (messageSendSucceeded != null) {
+          return messageSendSucceeded.call(this as UpdateMessageSendSucceeded);
+        }
+        break;
+      case UpdateMessageSendFailed.CONSTRUCTOR:
+        if (messageSendFailed != null) {
+          return messageSendFailed.call(this as UpdateMessageSendFailed);
+        }
+        break;
+      case UpdateMessageContent.CONSTRUCTOR:
+        if (messageContent != null) {
+          return messageContent.call(this as UpdateMessageContent);
+        }
+        break;
+      case UpdateMessageEdited.CONSTRUCTOR:
+        if (messageEdited != null) {
+          return messageEdited.call(this as UpdateMessageEdited);
+        }
+        break;
+      case UpdateMessageIsPinned.CONSTRUCTOR:
+        if (messageIsPinned != null) {
+          return messageIsPinned.call(this as UpdateMessageIsPinned);
+        }
+        break;
+      case UpdateMessageInteractionInfo.CONSTRUCTOR:
+        if (messageInteractionInfo != null) {
+          return messageInteractionInfo
+              .call(this as UpdateMessageInteractionInfo);
+        }
+        break;
+      case UpdateMessageContentOpened.CONSTRUCTOR:
+        if (messageContentOpened != null) {
+          return messageContentOpened.call(this as UpdateMessageContentOpened);
+        }
+        break;
+      case UpdateMessageMentionRead.CONSTRUCTOR:
+        if (messageMentionRead != null) {
+          return messageMentionRead.call(this as UpdateMessageMentionRead);
+        }
+        break;
+      case UpdateMessageLiveLocationViewed.CONSTRUCTOR:
+        if (messageLiveLocationViewed != null) {
+          return messageLiveLocationViewed
+              .call(this as UpdateMessageLiveLocationViewed);
+        }
+        break;
+      case UpdateNewChat.CONSTRUCTOR:
+        if (newChat != null) {
+          return newChat.call(this as UpdateNewChat);
+        }
+        break;
+      case UpdateChatTitle.CONSTRUCTOR:
+        if (chatTitle != null) {
+          return chatTitle.call(this as UpdateChatTitle);
+        }
+        break;
+      case UpdateChatPhoto.CONSTRUCTOR:
+        if (chatPhoto != null) {
+          return chatPhoto.call(this as UpdateChatPhoto);
+        }
+        break;
+      case UpdateChatPermissions.CONSTRUCTOR:
+        if (chatPermissions != null) {
+          return chatPermissions.call(this as UpdateChatPermissions);
+        }
+        break;
+      case UpdateChatLastMessage.CONSTRUCTOR:
+        if (chatLastMessage != null) {
+          return chatLastMessage.call(this as UpdateChatLastMessage);
+        }
+        break;
+      case UpdateChatPosition.CONSTRUCTOR:
+        if (chatPosition != null) {
+          return chatPosition.call(this as UpdateChatPosition);
+        }
+        break;
+      case UpdateChatIsMarkedAsUnread.CONSTRUCTOR:
+        if (chatIsMarkedAsUnread != null) {
+          return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
+        }
+        break;
+      case UpdateChatIsBlocked.CONSTRUCTOR:
+        if (chatIsBlocked != null) {
+          return chatIsBlocked.call(this as UpdateChatIsBlocked);
+        }
+        break;
+      case UpdateChatHasScheduledMessages.CONSTRUCTOR:
+        if (chatHasScheduledMessages != null) {
+          return chatHasScheduledMessages
+              .call(this as UpdateChatHasScheduledMessages);
+        }
+        break;
+      case UpdateChatVoiceChat.CONSTRUCTOR:
+        if (chatVoiceChat != null) {
+          return chatVoiceChat.call(this as UpdateChatVoiceChat);
+        }
+        break;
+      case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
+        if (chatDefaultDisableNotification != null) {
+          return chatDefaultDisableNotification
+              .call(this as UpdateChatDefaultDisableNotification);
+        }
+        break;
+      case UpdateChatReadInbox.CONSTRUCTOR:
+        if (chatReadInbox != null) {
+          return chatReadInbox.call(this as UpdateChatReadInbox);
+        }
+        break;
+      case UpdateChatReadOutbox.CONSTRUCTOR:
+        if (chatReadOutbox != null) {
+          return chatReadOutbox.call(this as UpdateChatReadOutbox);
+        }
+        break;
+      case UpdateChatUnreadMentionCount.CONSTRUCTOR:
+        if (chatUnreadMentionCount != null) {
+          return chatUnreadMentionCount
+              .call(this as UpdateChatUnreadMentionCount);
+        }
+        break;
+      case UpdateChatNotificationSettings.CONSTRUCTOR:
+        if (chatNotificationSettings != null) {
+          return chatNotificationSettings
+              .call(this as UpdateChatNotificationSettings);
+        }
+        break;
+      case UpdateScopeNotificationSettings.CONSTRUCTOR:
+        if (scopeNotificationSettings != null) {
+          return scopeNotificationSettings
+              .call(this as UpdateScopeNotificationSettings);
+        }
+        break;
+      case UpdateChatMessageTtlSetting.CONSTRUCTOR:
+        if (chatMessageTtlSetting != null) {
+          return chatMessageTtlSetting
+              .call(this as UpdateChatMessageTtlSetting);
+        }
+        break;
+      case UpdateChatActionBar.CONSTRUCTOR:
+        if (chatActionBar != null) {
+          return chatActionBar.call(this as UpdateChatActionBar);
+        }
+        break;
+      case UpdateChatReplyMarkup.CONSTRUCTOR:
+        if (chatReplyMarkup != null) {
+          return chatReplyMarkup.call(this as UpdateChatReplyMarkup);
+        }
+        break;
+      case UpdateChatDraftMessage.CONSTRUCTOR:
+        if (chatDraftMessage != null) {
+          return chatDraftMessage.call(this as UpdateChatDraftMessage);
+        }
+        break;
+      case UpdateChatFilters.CONSTRUCTOR:
+        if (chatFilters != null) {
+          return chatFilters.call(this as UpdateChatFilters);
+        }
+        break;
+      case UpdateChatOnlineMemberCount.CONSTRUCTOR:
+        if (chatOnlineMemberCount != null) {
+          return chatOnlineMemberCount
+              .call(this as UpdateChatOnlineMemberCount);
+        }
+        break;
+      case UpdateNotification.CONSTRUCTOR:
+        if (notification != null) {
+          return notification.call(this as UpdateNotification);
+        }
+        break;
+      case UpdateNotificationGroup.CONSTRUCTOR:
+        if (notificationGroup != null) {
+          return notificationGroup.call(this as UpdateNotificationGroup);
+        }
+        break;
+      case UpdateActiveNotifications.CONSTRUCTOR:
+        if (activeNotifications != null) {
+          return activeNotifications.call(this as UpdateActiveNotifications);
+        }
+        break;
+      case UpdateHavePendingNotifications.CONSTRUCTOR:
+        if (havePendingNotifications != null) {
+          return havePendingNotifications
+              .call(this as UpdateHavePendingNotifications);
+        }
+        break;
+      case UpdateDeleteMessages.CONSTRUCTOR:
+        if (deleteMessages != null) {
+          return deleteMessages.call(this as UpdateDeleteMessages);
+        }
+        break;
+      case UpdateUserChatAction.CONSTRUCTOR:
+        if (userChatAction != null) {
+          return userChatAction.call(this as UpdateUserChatAction);
+        }
+        break;
+      case UpdateUserStatus.CONSTRUCTOR:
+        if (userStatus != null) {
+          return userStatus.call(this as UpdateUserStatus);
+        }
+        break;
+      case UpdateUser.CONSTRUCTOR:
+        if (user != null) {
+          return user.call(this as UpdateUser);
+        }
+        break;
+      case UpdateBasicGroup.CONSTRUCTOR:
+        if (basicGroup != null) {
+          return basicGroup.call(this as UpdateBasicGroup);
+        }
+        break;
+      case UpdateSupergroup.CONSTRUCTOR:
+        if (supergroup != null) {
+          return supergroup.call(this as UpdateSupergroup);
+        }
+        break;
+      case UpdateSecretChat.CONSTRUCTOR:
+        if (secretChat != null) {
+          return secretChat.call(this as UpdateSecretChat);
+        }
+        break;
+      case UpdateUserFullInfo.CONSTRUCTOR:
+        if (userFullInfo != null) {
+          return userFullInfo.call(this as UpdateUserFullInfo);
+        }
+        break;
+      case UpdateBasicGroupFullInfo.CONSTRUCTOR:
+        if (basicGroupFullInfo != null) {
+          return basicGroupFullInfo.call(this as UpdateBasicGroupFullInfo);
+        }
+        break;
+      case UpdateSupergroupFullInfo.CONSTRUCTOR:
+        if (supergroupFullInfo != null) {
+          return supergroupFullInfo.call(this as UpdateSupergroupFullInfo);
+        }
+        break;
+      case UpdateServiceNotification.CONSTRUCTOR:
+        if (serviceNotification != null) {
+          return serviceNotification.call(this as UpdateServiceNotification);
+        }
+        break;
+      case UpdateFile.CONSTRUCTOR:
+        if (file != null) {
+          return file.call(this as UpdateFile);
+        }
+        break;
+      case UpdateFileGenerationStart.CONSTRUCTOR:
+        if (fileGenerationStart != null) {
+          return fileGenerationStart.call(this as UpdateFileGenerationStart);
+        }
+        break;
+      case UpdateFileGenerationStop.CONSTRUCTOR:
+        if (fileGenerationStop != null) {
+          return fileGenerationStop.call(this as UpdateFileGenerationStop);
+        }
+        break;
+      case UpdateCall.CONSTRUCTOR:
+        if (call != null) {
+          return call.call(this as UpdateCall);
+        }
+        break;
+      case UpdateGroupCall.CONSTRUCTOR:
+        if (groupCall != null) {
+          return groupCall.call(this as UpdateGroupCall);
+        }
+        break;
+      case UpdateGroupCallParticipant.CONSTRUCTOR:
+        if (groupCallParticipant != null) {
+          return groupCallParticipant.call(this as UpdateGroupCallParticipant);
+        }
+        break;
+      case UpdateNewCallSignalingData.CONSTRUCTOR:
+        if (newCallSignalingData != null) {
+          return newCallSignalingData.call(this as UpdateNewCallSignalingData);
+        }
+        break;
+      case UpdateUserPrivacySettingRules.CONSTRUCTOR:
+        if (userPrivacySettingRules != null) {
+          return userPrivacySettingRules
+              .call(this as UpdateUserPrivacySettingRules);
+        }
+        break;
+      case UpdateUnreadMessageCount.CONSTRUCTOR:
+        if (unreadMessageCount != null) {
+          return unreadMessageCount.call(this as UpdateUnreadMessageCount);
+        }
+        break;
+      case UpdateUnreadChatCount.CONSTRUCTOR:
+        if (unreadChatCount != null) {
+          return unreadChatCount.call(this as UpdateUnreadChatCount);
+        }
+        break;
+      case UpdateOption.CONSTRUCTOR:
+        if (option != null) {
+          return option.call(this as UpdateOption);
+        }
+        break;
+      case UpdateStickerSet.CONSTRUCTOR:
+        if (stickerSet != null) {
+          return stickerSet.call(this as UpdateStickerSet);
+        }
+        break;
+      case UpdateInstalledStickerSets.CONSTRUCTOR:
+        if (installedStickerSets != null) {
+          return installedStickerSets.call(this as UpdateInstalledStickerSets);
+        }
+        break;
+      case UpdateTrendingStickerSets.CONSTRUCTOR:
+        if (trendingStickerSets != null) {
+          return trendingStickerSets.call(this as UpdateTrendingStickerSets);
+        }
+        break;
+      case UpdateRecentStickers.CONSTRUCTOR:
+        if (recentStickers != null) {
+          return recentStickers.call(this as UpdateRecentStickers);
+        }
+        break;
+      case UpdateFavoriteStickers.CONSTRUCTOR:
+        if (favoriteStickers != null) {
+          return favoriteStickers.call(this as UpdateFavoriteStickers);
+        }
+        break;
+      case UpdateSavedAnimations.CONSTRUCTOR:
+        if (savedAnimations != null) {
+          return savedAnimations.call(this as UpdateSavedAnimations);
+        }
+        break;
+      case UpdateSelectedBackground.CONSTRUCTOR:
+        if (selectedBackground != null) {
+          return selectedBackground.call(this as UpdateSelectedBackground);
+        }
+        break;
+      case UpdateLanguagePackStrings.CONSTRUCTOR:
+        if (languagePackStrings != null) {
+          return languagePackStrings.call(this as UpdateLanguagePackStrings);
+        }
+        break;
+      case UpdateConnectionState.CONSTRUCTOR:
+        if (connectionState != null) {
+          return connectionState.call(this as UpdateConnectionState);
+        }
+        break;
+      case UpdateTermsOfService.CONSTRUCTOR:
+        if (termsOfService != null) {
+          return termsOfService.call(this as UpdateTermsOfService);
+        }
+        break;
+      case UpdateUsersNearby.CONSTRUCTOR:
+        if (usersNearby != null) {
+          return usersNearby.call(this as UpdateUsersNearby);
+        }
+        break;
+      case UpdateDiceEmojis.CONSTRUCTOR:
+        if (diceEmojis != null) {
+          return diceEmojis.call(this as UpdateDiceEmojis);
+        }
+        break;
+      case UpdateAnimationSearchParameters.CONSTRUCTOR:
+        if (animationSearchParameters != null) {
+          return animationSearchParameters
+              .call(this as UpdateAnimationSearchParameters);
+        }
+        break;
+      case UpdateSuggestedActions.CONSTRUCTOR:
+        if (suggestedActions != null) {
+          return suggestedActions.call(this as UpdateSuggestedActions);
+        }
+        break;
+      case UpdateNewInlineQuery.CONSTRUCTOR:
+        if (newInlineQuery != null) {
+          return newInlineQuery.call(this as UpdateNewInlineQuery);
+        }
+        break;
+      case UpdateNewChosenInlineResult.CONSTRUCTOR:
+        if (newChosenInlineResult != null) {
+          return newChosenInlineResult
+              .call(this as UpdateNewChosenInlineResult);
+        }
+        break;
+      case UpdateNewCallbackQuery.CONSTRUCTOR:
+        if (newCallbackQuery != null) {
+          return newCallbackQuery.call(this as UpdateNewCallbackQuery);
+        }
+        break;
+      case UpdateNewInlineCallbackQuery.CONSTRUCTOR:
+        if (newInlineCallbackQuery != null) {
+          return newInlineCallbackQuery
+              .call(this as UpdateNewInlineCallbackQuery);
+        }
+        break;
+      case UpdateNewShippingQuery.CONSTRUCTOR:
+        if (newShippingQuery != null) {
+          return newShippingQuery.call(this as UpdateNewShippingQuery);
+        }
+        break;
+      case UpdateNewPreCheckoutQuery.CONSTRUCTOR:
+        if (newPreCheckoutQuery != null) {
+          return newPreCheckoutQuery.call(this as UpdateNewPreCheckoutQuery);
+        }
+        break;
+      case UpdateNewCustomEvent.CONSTRUCTOR:
+        if (newCustomEvent != null) {
+          return newCustomEvent.call(this as UpdateNewCustomEvent);
+        }
+        break;
+      case UpdateNewCustomQuery.CONSTRUCTOR:
+        if (newCustomQuery != null) {
+          return newCustomQuery.call(this as UpdateNewCustomQuery);
+        }
+        break;
+      case UpdatePoll.CONSTRUCTOR:
+        if (poll != null) {
+          return poll.call(this as UpdatePoll);
+        }
+        break;
+      case UpdatePollAnswer.CONSTRUCTOR:
+        if (pollAnswer != null) {
+          return pollAnswer.call(this as UpdatePollAnswer);
+        }
+        break;
+      case UpdateChatMember.CONSTRUCTOR:
+        if (chatMember != null) {
+          return chatMember.call(this as UpdateChatMember);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
@@ -9255,6 +14071,31 @@ extension LogStreamExtensions on LogStream {
         return empty.call(this as LogStreamEmpty);
     }
     throw StateError('not handled type ${this.runtimeType}');
+  }
+
+  TResult maybeMap<TResult extends Object?>(
+      {TResult Function(LogStreamDefault value)? $default,
+      TResult Function(LogStreamFile value)? file,
+      TResult Function(LogStreamEmpty value)? empty,
+      required TResult orElse()}) {
+    switch (this.getConstructor()) {
+      case LogStreamDefault.CONSTRUCTOR:
+        if ($default != null) {
+          return $default.call(this as LogStreamDefault);
+        }
+        break;
+      case LogStreamFile.CONSTRUCTOR:
+        if (file != null) {
+          return file.call(this as LogStreamFile);
+        }
+        break;
+      case LogStreamEmpty.CONSTRUCTOR:
+        if (empty != null) {
+          return empty.call(this as LogStreamEmpty);
+        }
+        break;
+    }
+    return orElse.call();
   }
 }
 
