@@ -1,11 +1,11 @@
 import 'package:tdlib/td_api.dart';
 
-extension TdErrorCopyExtension on TdError {
+extension TdErrorExtensions on TdError {
   TdError copy({int? code, String? message}) =>
       TdError(code: code ?? this.code, message: message ?? this.message);
 }
 
-extension TdlibParametersCopyExtension on TdlibParameters {
+extension TdlibParametersExtensions on TdlibParameters {
   TdlibParameters copy(
           {bool? useTestDc,
           String? databaseDirectory,
@@ -41,30 +41,52 @@ extension TdlibParametersCopyExtension on TdlibParameters {
           ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames);
 }
 
-extension AuthenticationCodeTypeTelegramMessageCopyExtension
+extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(AuthenticationCodeTypeTelegramMessage value)
+          telegramMessage,
+      required TResult Function(AuthenticationCodeTypeSms value) sms,
+      required TResult Function(AuthenticationCodeTypeCall value) call,
+      required TResult Function(AuthenticationCodeTypeFlashCall value)
+          flashCall}) {
+    switch (this.getConstructor()) {
+      case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
+        return telegramMessage
+            .call(this as AuthenticationCodeTypeTelegramMessage);
+      case AuthenticationCodeTypeSms.CONSTRUCTOR:
+        return sms.call(this as AuthenticationCodeTypeSms);
+      case AuthenticationCodeTypeCall.CONSTRUCTOR:
+        return call.call(this as AuthenticationCodeTypeCall);
+      case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
+        return flashCall.call(this as AuthenticationCodeTypeFlashCall);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension AuthenticationCodeTypeTelegramMessageExtensions
     on AuthenticationCodeTypeTelegramMessage {
   AuthenticationCodeTypeTelegramMessage copy({int? length}) =>
       AuthenticationCodeTypeTelegramMessage(length: length ?? this.length);
 }
 
-extension AuthenticationCodeTypeSmsCopyExtension on AuthenticationCodeTypeSms {
+extension AuthenticationCodeTypeSmsExtensions on AuthenticationCodeTypeSms {
   AuthenticationCodeTypeSms copy({int? length}) =>
       AuthenticationCodeTypeSms(length: length ?? this.length);
 }
 
-extension AuthenticationCodeTypeCallCopyExtension
-    on AuthenticationCodeTypeCall {
+extension AuthenticationCodeTypeCallExtensions on AuthenticationCodeTypeCall {
   AuthenticationCodeTypeCall copy({int? length}) =>
       AuthenticationCodeTypeCall(length: length ?? this.length);
 }
 
-extension AuthenticationCodeTypeFlashCallCopyExtension
+extension AuthenticationCodeTypeFlashCallExtensions
     on AuthenticationCodeTypeFlashCall {
   AuthenticationCodeTypeFlashCall copy({String? pattern}) =>
       AuthenticationCodeTypeFlashCall(pattern: pattern ?? this.pattern);
 }
 
-extension AuthenticationCodeInfoCopyExtension on AuthenticationCodeInfo {
+extension AuthenticationCodeInfoExtensions on AuthenticationCodeInfo {
   AuthenticationCodeInfo copy(
           {String? phoneNumber,
           AuthenticationCodeType? type,
@@ -77,7 +99,7 @@ extension AuthenticationCodeInfoCopyExtension on AuthenticationCodeInfo {
           timeout: timeout ?? this.timeout);
 }
 
-extension EmailAddressAuthenticationCodeInfoCopyExtension
+extension EmailAddressAuthenticationCodeInfoExtensions
     on EmailAddressAuthenticationCodeInfo {
   EmailAddressAuthenticationCodeInfo copy(
           {String? emailAddressPattern, int? length}) =>
@@ -86,7 +108,7 @@ extension EmailAddressAuthenticationCodeInfoCopyExtension
           length: length ?? this.length);
 }
 
-extension TextEntityCopyExtension on TextEntity {
+extension TextEntityExtensions on TextEntity {
   TextEntity copy({int? offset, int? length, TextEntityType? type}) =>
       TextEntity(
           offset: offset ?? this.offset,
@@ -94,18 +116,18 @@ extension TextEntityCopyExtension on TextEntity {
           type: type ?? this.type);
 }
 
-extension TextEntitiesCopyExtension on TextEntities {
+extension TextEntitiesExtensions on TextEntities {
   TextEntities copy({List<TextEntity>? entities}) =>
       TextEntities(entities: entities ?? this.entities);
 }
 
-extension FormattedTextCopyExtension on FormattedText {
+extension FormattedTextExtensions on FormattedText {
   FormattedText copy({String? text, List<TextEntity>? entities}) =>
       FormattedText(
           text: text ?? this.text, entities: entities ?? this.entities);
 }
 
-extension TermsOfServiceCopyExtension on TermsOfService {
+extension TermsOfServiceExtensions on TermsOfService {
   TermsOfService copy(
           {FormattedText? text, int? minUserAge, bool? showPopup}) =>
       TermsOfService(
@@ -114,33 +136,84 @@ extension TermsOfServiceCopyExtension on TermsOfService {
           showPopup: showPopup ?? this.showPopup);
 }
 
-extension AuthorizationStateWaitEncryptionKeyCopyExtension
+extension AuthorizationStateExtensions on AuthorizationState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(AuthorizationStateWaitTdlibParameters value)
+          waitTdlibParameters,
+      required TResult Function(AuthorizationStateWaitEncryptionKey value)
+          waitEncryptionKey,
+      required TResult Function(AuthorizationStateWaitPhoneNumber value)
+          waitPhoneNumber,
+      required TResult Function(AuthorizationStateWaitCode value) waitCode,
+      required TResult Function(
+              AuthorizationStateWaitOtherDeviceConfirmation value)
+          waitOtherDeviceConfirmation,
+      required TResult Function(AuthorizationStateWaitRegistration value)
+          waitRegistration,
+      required TResult Function(AuthorizationStateWaitPassword value)
+          waitPassword,
+      required TResult Function(AuthorizationStateReady value) ready,
+      required TResult Function(AuthorizationStateLoggingOut value) loggingOut,
+      required TResult Function(AuthorizationStateClosing value) closing,
+      required TResult Function(AuthorizationStateClosed value) closed}) {
+    switch (this.getConstructor()) {
+      case AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
+        return waitTdlibParameters
+            .call(this as AuthorizationStateWaitTdlibParameters);
+      case AuthorizationStateWaitEncryptionKey.CONSTRUCTOR:
+        return waitEncryptionKey
+            .call(this as AuthorizationStateWaitEncryptionKey);
+      case AuthorizationStateWaitPhoneNumber.CONSTRUCTOR:
+        return waitPhoneNumber.call(this as AuthorizationStateWaitPhoneNumber);
+      case AuthorizationStateWaitCode.CONSTRUCTOR:
+        return waitCode.call(this as AuthorizationStateWaitCode);
+      case AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR:
+        return waitOtherDeviceConfirmation
+            .call(this as AuthorizationStateWaitOtherDeviceConfirmation);
+      case AuthorizationStateWaitRegistration.CONSTRUCTOR:
+        return waitRegistration
+            .call(this as AuthorizationStateWaitRegistration);
+      case AuthorizationStateWaitPassword.CONSTRUCTOR:
+        return waitPassword.call(this as AuthorizationStateWaitPassword);
+      case AuthorizationStateReady.CONSTRUCTOR:
+        return ready.call(this as AuthorizationStateReady);
+      case AuthorizationStateLoggingOut.CONSTRUCTOR:
+        return loggingOut.call(this as AuthorizationStateLoggingOut);
+      case AuthorizationStateClosing.CONSTRUCTOR:
+        return closing.call(this as AuthorizationStateClosing);
+      case AuthorizationStateClosed.CONSTRUCTOR:
+        return closed.call(this as AuthorizationStateClosed);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension AuthorizationStateWaitEncryptionKeyExtensions
     on AuthorizationStateWaitEncryptionKey {
   AuthorizationStateWaitEncryptionKey copy({bool? isEncrypted}) =>
       AuthorizationStateWaitEncryptionKey(
           isEncrypted: isEncrypted ?? this.isEncrypted);
 }
 
-extension AuthorizationStateWaitCodeCopyExtension
-    on AuthorizationStateWaitCode {
+extension AuthorizationStateWaitCodeExtensions on AuthorizationStateWaitCode {
   AuthorizationStateWaitCode copy({AuthenticationCodeInfo? codeInfo}) =>
       AuthorizationStateWaitCode(codeInfo: codeInfo ?? this.codeInfo);
 }
 
-extension AuthorizationStateWaitOtherDeviceConfirmationCopyExtension
+extension AuthorizationStateWaitOtherDeviceConfirmationExtensions
     on AuthorizationStateWaitOtherDeviceConfirmation {
   AuthorizationStateWaitOtherDeviceConfirmation copy({String? link}) =>
       AuthorizationStateWaitOtherDeviceConfirmation(link: link ?? this.link);
 }
 
-extension AuthorizationStateWaitRegistrationCopyExtension
+extension AuthorizationStateWaitRegistrationExtensions
     on AuthorizationStateWaitRegistration {
   AuthorizationStateWaitRegistration copy({TermsOfService? termsOfService}) =>
       AuthorizationStateWaitRegistration(
           termsOfService: termsOfService ?? this.termsOfService);
 }
 
-extension AuthorizationStateWaitPasswordCopyExtension
+extension AuthorizationStateWaitPasswordExtensions
     on AuthorizationStateWaitPassword {
   AuthorizationStateWaitPassword copy(
           {String? passwordHint,
@@ -154,7 +227,7 @@ extension AuthorizationStateWaitPasswordCopyExtension
               recoveryEmailAddressPattern ?? this.recoveryEmailAddressPattern);
 }
 
-extension PasswordStateCopyExtension on PasswordState {
+extension PasswordStateExtensions on PasswordState {
   PasswordState copy(
           {bool? hasPassword,
           String? passwordHint,
@@ -171,21 +244,21 @@ extension PasswordStateCopyExtension on PasswordState {
               this.recoveryEmailAddressCodeInfo);
 }
 
-extension RecoveryEmailAddressCopyExtension on RecoveryEmailAddress {
+extension RecoveryEmailAddressExtensions on RecoveryEmailAddress {
   RecoveryEmailAddress copy({String? recoveryEmailAddress}) =>
       RecoveryEmailAddress(
           recoveryEmailAddress:
               recoveryEmailAddress ?? this.recoveryEmailAddress);
 }
 
-extension TemporaryPasswordStateCopyExtension on TemporaryPasswordState {
+extension TemporaryPasswordStateExtensions on TemporaryPasswordState {
   TemporaryPasswordState copy({bool? hasPassword, int? validFor}) =>
       TemporaryPasswordState(
           hasPassword: hasPassword ?? this.hasPassword,
           validFor: validFor ?? this.validFor);
 }
 
-extension LocalFileCopyExtension on LocalFile {
+extension LocalFileExtensions on LocalFile {
   LocalFile copy(
           {String? path,
           bool? canBeDownloaded,
@@ -208,7 +281,7 @@ extension LocalFileCopyExtension on LocalFile {
           downloadedSize: downloadedSize ?? this.downloadedSize);
 }
 
-extension RemoteFileCopyExtension on RemoteFile {
+extension RemoteFileExtensions on RemoteFile {
   RemoteFile copy(
           {String? id,
           String? uniqueId,
@@ -224,7 +297,7 @@ extension RemoteFileCopyExtension on RemoteFile {
           uploadedSize: uploadedSize ?? this.uploadedSize);
 }
 
-extension FileCopyExtension on File {
+extension FileExtensions on File {
   File copy(
           {int? id,
           int? size,
@@ -239,20 +312,40 @@ extension FileCopyExtension on File {
           remote: remote ?? this.remote);
 }
 
-extension InputFileIdCopyExtension on InputFileId {
+extension InputFileExtensions on InputFile {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputFileId value) id,
+      required TResult Function(InputFileRemote value) remote,
+      required TResult Function(InputFileLocal value) local,
+      required TResult Function(InputFileGenerated value) generated}) {
+    switch (this.getConstructor()) {
+      case InputFileId.CONSTRUCTOR:
+        return id.call(this as InputFileId);
+      case InputFileRemote.CONSTRUCTOR:
+        return remote.call(this as InputFileRemote);
+      case InputFileLocal.CONSTRUCTOR:
+        return local.call(this as InputFileLocal);
+      case InputFileGenerated.CONSTRUCTOR:
+        return generated.call(this as InputFileGenerated);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputFileIdExtensions on InputFileId {
   InputFileId copy({int? id}) => InputFileId(id: id ?? this.id);
 }
 
-extension InputFileRemoteCopyExtension on InputFileRemote {
+extension InputFileRemoteExtensions on InputFileRemote {
   InputFileRemote copy({String? id}) => InputFileRemote(id: id ?? this.id);
 }
 
-extension InputFileLocalCopyExtension on InputFileLocal {
+extension InputFileLocalExtensions on InputFileLocal {
   InputFileLocal copy({String? path}) =>
       InputFileLocal(path: path ?? this.path);
 }
 
-extension InputFileGeneratedCopyExtension on InputFileGenerated {
+extension InputFileGeneratedExtensions on InputFileGenerated {
   InputFileGenerated copy(
           {String? originalPath, String? conversion, int? expectedSize}) =>
       InputFileGenerated(
@@ -261,7 +354,7 @@ extension InputFileGeneratedCopyExtension on InputFileGenerated {
           expectedSize: expectedSize ?? this.expectedSize);
 }
 
-extension PhotoSizeCopyExtension on PhotoSize {
+extension PhotoSizeExtensions on PhotoSize {
   PhotoSize copy(
           {String? type,
           File? photo,
@@ -276,14 +369,40 @@ extension PhotoSizeCopyExtension on PhotoSize {
           progressiveSizes: progressiveSizes ?? this.progressiveSizes);
 }
 
-extension MinithumbnailCopyExtension on Minithumbnail {
+extension MinithumbnailExtensions on Minithumbnail {
   Minithumbnail copy({int? width, int? height, String? data}) => Minithumbnail(
       width: width ?? this.width,
       height: height ?? this.height,
       data: data ?? this.data);
 }
 
-extension ThumbnailCopyExtension on Thumbnail {
+extension ThumbnailFormatExtensions on ThumbnailFormat {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ThumbnailFormatJpeg value) jpeg,
+      required TResult Function(ThumbnailFormatPng value) png,
+      required TResult Function(ThumbnailFormatWebp value) webp,
+      required TResult Function(ThumbnailFormatGif value) gif,
+      required TResult Function(ThumbnailFormatTgs value) tgs,
+      required TResult Function(ThumbnailFormatMpeg4 value) mpeg4}) {
+    switch (this.getConstructor()) {
+      case ThumbnailFormatJpeg.CONSTRUCTOR:
+        return jpeg.call(this as ThumbnailFormatJpeg);
+      case ThumbnailFormatPng.CONSTRUCTOR:
+        return png.call(this as ThumbnailFormatPng);
+      case ThumbnailFormatWebp.CONSTRUCTOR:
+        return webp.call(this as ThumbnailFormatWebp);
+      case ThumbnailFormatGif.CONSTRUCTOR:
+        return gif.call(this as ThumbnailFormatGif);
+      case ThumbnailFormatTgs.CONSTRUCTOR:
+        return tgs.call(this as ThumbnailFormatTgs);
+      case ThumbnailFormatMpeg4.CONSTRUCTOR:
+        return mpeg4.call(this as ThumbnailFormatMpeg4);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ThumbnailExtensions on Thumbnail {
   Thumbnail copy(
           {ThumbnailFormat? format, int? width, int? height, File? file}) =>
       Thumbnail(
@@ -293,7 +412,27 @@ extension ThumbnailCopyExtension on Thumbnail {
           file: file ?? this.file);
 }
 
-extension MaskPositionCopyExtension on MaskPosition {
+extension MaskPointExtensions on MaskPoint {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MaskPointForehead value) forehead,
+      required TResult Function(MaskPointEyes value) eyes,
+      required TResult Function(MaskPointMouth value) mouth,
+      required TResult Function(MaskPointChin value) chin}) {
+    switch (this.getConstructor()) {
+      case MaskPointForehead.CONSTRUCTOR:
+        return forehead.call(this as MaskPointForehead);
+      case MaskPointEyes.CONSTRUCTOR:
+        return eyes.call(this as MaskPointEyes);
+      case MaskPointMouth.CONSTRUCTOR:
+        return mouth.call(this as MaskPointMouth);
+      case MaskPointChin.CONSTRUCTOR:
+        return chin.call(this as MaskPointChin);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MaskPositionExtensions on MaskPosition {
   MaskPosition copy(
           {MaskPoint? point, double? xShift, double? yShift, double? scale}) =>
       MaskPosition(
@@ -303,12 +442,12 @@ extension MaskPositionCopyExtension on MaskPosition {
           scale: scale ?? this.scale);
 }
 
-extension ClosedVectorPathCopyExtension on ClosedVectorPath {
+extension ClosedVectorPathExtensions on ClosedVectorPath {
   ClosedVectorPath copy({List<VectorPathCommand>? commands}) =>
       ClosedVectorPath(commands: commands ?? this.commands);
 }
 
-extension PollOptionCopyExtension on PollOption {
+extension PollOptionExtensions on PollOption {
   PollOption copy(
           {String? text,
           int? voterCount,
@@ -323,19 +462,33 @@ extension PollOptionCopyExtension on PollOption {
           isBeingChosen: isBeingChosen ?? this.isBeingChosen);
 }
 
-extension PollTypeRegularCopyExtension on PollTypeRegular {
+extension PollTypeExtensions on PollType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PollTypeRegular value) regular,
+      required TResult Function(PollTypeQuiz value) quiz}) {
+    switch (this.getConstructor()) {
+      case PollTypeRegular.CONSTRUCTOR:
+        return regular.call(this as PollTypeRegular);
+      case PollTypeQuiz.CONSTRUCTOR:
+        return quiz.call(this as PollTypeQuiz);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PollTypeRegularExtensions on PollTypeRegular {
   PollTypeRegular copy({bool? allowMultipleAnswers}) => PollTypeRegular(
       allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers);
 }
 
-extension PollTypeQuizCopyExtension on PollTypeQuiz {
+extension PollTypeQuizExtensions on PollTypeQuiz {
   PollTypeQuiz copy({int? correctOptionId, FormattedText? explanation}) =>
       PollTypeQuiz(
           correctOptionId: correctOptionId ?? this.correctOptionId,
           explanation: explanation ?? this.explanation);
 }
 
-extension AnimationCopyExtension on Animation {
+extension AnimationExtensions on Animation {
   Animation copy(
           {int? duration,
           int? width,
@@ -358,7 +511,7 @@ extension AnimationCopyExtension on Animation {
           animation: animation ?? this.animation);
 }
 
-extension AudioCopyExtension on Audio {
+extension AudioExtensions on Audio {
   Audio copy(
           {int? duration,
           String? title,
@@ -380,7 +533,7 @@ extension AudioCopyExtension on Audio {
           audio: audio ?? this.audio);
 }
 
-extension DocumentCopyExtension on Document {
+extension DocumentExtensions on Document {
   Document copy(
           {String? fileName,
           String? mimeType,
@@ -395,7 +548,7 @@ extension DocumentCopyExtension on Document {
           document: document ?? this.document);
 }
 
-extension PhotoCopyExtension on Photo {
+extension PhotoExtensions on Photo {
   Photo copy(
           {bool? hasStickers,
           Minithumbnail? minithumbnail,
@@ -406,7 +559,7 @@ extension PhotoCopyExtension on Photo {
           sizes: sizes ?? this.sizes);
 }
 
-extension StickerCopyExtension on Sticker {
+extension StickerExtensions on Sticker {
   Sticker copy(
           {int? setId,
           int? width,
@@ -431,7 +584,7 @@ extension StickerCopyExtension on Sticker {
           sticker: sticker ?? this.sticker);
 }
 
-extension VideoCopyExtension on Video {
+extension VideoExtensions on Video {
   Video copy(
           {int? duration,
           int? width,
@@ -456,7 +609,7 @@ extension VideoCopyExtension on Video {
           video: video ?? this.video);
 }
 
-extension VideoNoteCopyExtension on VideoNote {
+extension VideoNoteExtensions on VideoNote {
   VideoNote copy(
           {int? duration,
           int? length,
@@ -471,7 +624,7 @@ extension VideoNoteCopyExtension on VideoNote {
           video: video ?? this.video);
 }
 
-extension VoiceNoteCopyExtension on VoiceNote {
+extension VoiceNoteExtensions on VoiceNote {
   VoiceNote copy(
           {int? duration, String? waveform, String? mimeType, File? voice}) =>
       VoiceNote(
@@ -481,7 +634,7 @@ extension VoiceNoteCopyExtension on VoiceNote {
           voice: voice ?? this.voice);
 }
 
-extension ContactCopyExtension on Contact {
+extension ContactExtensions on Contact {
   Contact copy(
           {String? phoneNumber,
           String? firstName,
@@ -496,7 +649,7 @@ extension ContactCopyExtension on Contact {
           userId: userId ?? this.userId);
 }
 
-extension LocationCopyExtension on Location {
+extension LocationExtensions on Location {
   Location copy(
           {double? latitude, double? longitude, double? horizontalAccuracy}) =>
       Location(
@@ -505,7 +658,7 @@ extension LocationCopyExtension on Location {
           horizontalAccuracy: horizontalAccuracy ?? this.horizontalAccuracy);
 }
 
-extension VenueCopyExtension on Venue {
+extension VenueExtensions on Venue {
   Venue copy(
           {Location? location,
           String? title,
@@ -522,7 +675,7 @@ extension VenueCopyExtension on Venue {
           type: type ?? this.type);
 }
 
-extension GameCopyExtension on Game {
+extension GameExtensions on Game {
   Game copy(
           {int? id,
           String? shortName,
@@ -541,7 +694,7 @@ extension GameCopyExtension on Game {
           animation: animation ?? this.animation);
 }
 
-extension PollCopyExtension on Poll {
+extension PollExtensions on Poll {
   Poll copy(
           {int? id,
           String? question,
@@ -566,7 +719,7 @@ extension PollCopyExtension on Poll {
           isClosed: isClosed ?? this.isClosed);
 }
 
-extension ProfilePhotoCopyExtension on ProfilePhoto {
+extension ProfilePhotoExtensions on ProfilePhoto {
   ProfilePhoto copy({int? id, File? small, File? big, bool? hasAnimation}) =>
       ProfilePhoto(
           id: id ?? this.id,
@@ -575,7 +728,7 @@ extension ProfilePhotoCopyExtension on ProfilePhoto {
           hasAnimation: hasAnimation ?? this.hasAnimation);
 }
 
-extension ChatPhotoInfoCopyExtension on ChatPhotoInfo {
+extension ChatPhotoInfoExtensions on ChatPhotoInfo {
   ChatPhotoInfo copy({File? small, File? big, bool? hasAnimation}) =>
       ChatPhotoInfo(
           small: small ?? this.small,
@@ -583,7 +736,27 @@ extension ChatPhotoInfoCopyExtension on ChatPhotoInfo {
           hasAnimation: hasAnimation ?? this.hasAnimation);
 }
 
-extension UserTypeBotCopyExtension on UserTypeBot {
+extension UserTypeExtensions on UserType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(UserTypeRegular value) regular,
+      required TResult Function(UserTypeDeleted value) deleted,
+      required TResult Function(UserTypeBot value) bot,
+      required TResult Function(UserTypeUnknown value) unknown}) {
+    switch (this.getConstructor()) {
+      case UserTypeRegular.CONSTRUCTOR:
+        return regular.call(this as UserTypeRegular);
+      case UserTypeDeleted.CONSTRUCTOR:
+        return deleted.call(this as UserTypeDeleted);
+      case UserTypeBot.CONSTRUCTOR:
+        return bot.call(this as UserTypeBot);
+      case UserTypeUnknown.CONSTRUCTOR:
+        return unknown.call(this as UserTypeUnknown);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension UserTypeBotExtensions on UserTypeBot {
   UserTypeBot copy(
           {bool? canJoinGroups,
           bool? canReadAllGroupMessages,
@@ -600,24 +773,24 @@ extension UserTypeBotCopyExtension on UserTypeBot {
           needLocation: needLocation ?? this.needLocation);
 }
 
-extension BotCommandCopyExtension on BotCommand {
+extension BotCommandExtensions on BotCommand {
   BotCommand copy({String? command, String? description}) => BotCommand(
       command: command ?? this.command,
       description: description ?? this.description);
 }
 
-extension BotInfoCopyExtension on BotInfo {
+extension BotInfoExtensions on BotInfo {
   BotInfo copy({String? description, List<BotCommand>? commands}) => BotInfo(
       description: description ?? this.description,
       commands: commands ?? this.commands);
 }
 
-extension ChatLocationCopyExtension on ChatLocation {
+extension ChatLocationExtensions on ChatLocation {
   ChatLocation copy({Location? location, String? address}) => ChatLocation(
       location: location ?? this.location, address: address ?? this.address);
 }
 
-extension AnimatedChatPhotoCopyExtension on AnimatedChatPhoto {
+extension AnimatedChatPhotoExtensions on AnimatedChatPhoto {
   AnimatedChatPhoto copy(
           {int? length, File? file, double? mainFrameTimestamp}) =>
       AnimatedChatPhoto(
@@ -626,7 +799,7 @@ extension AnimatedChatPhotoCopyExtension on AnimatedChatPhoto {
           mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp);
 }
 
-extension ChatPhotoCopyExtension on ChatPhoto {
+extension ChatPhotoExtensions on ChatPhoto {
   ChatPhoto copy(
           {int? id,
           int? addedDate,
@@ -641,22 +814,39 @@ extension ChatPhotoCopyExtension on ChatPhoto {
           animation: animation ?? this.animation);
 }
 
-extension ChatPhotosCopyExtension on ChatPhotos {
+extension ChatPhotosExtensions on ChatPhotos {
   ChatPhotos copy({int? totalCount, List<ChatPhoto>? photos}) => ChatPhotos(
       totalCount: totalCount ?? this.totalCount, photos: photos ?? this.photos);
 }
 
-extension InputChatPhotoPreviousCopyExtension on InputChatPhotoPrevious {
+extension InputChatPhotoExtensions on InputChatPhoto {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputChatPhotoPrevious value) previous,
+      required TResult Function(InputChatPhotoStatic value) static,
+      required TResult Function(InputChatPhotoAnimation value) animation}) {
+    switch (this.getConstructor()) {
+      case InputChatPhotoPrevious.CONSTRUCTOR:
+        return previous.call(this as InputChatPhotoPrevious);
+      case InputChatPhotoStatic.CONSTRUCTOR:
+        return static.call(this as InputChatPhotoStatic);
+      case InputChatPhotoAnimation.CONSTRUCTOR:
+        return animation.call(this as InputChatPhotoAnimation);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputChatPhotoPreviousExtensions on InputChatPhotoPrevious {
   InputChatPhotoPrevious copy({int? chatPhotoId}) =>
       InputChatPhotoPrevious(chatPhotoId: chatPhotoId ?? this.chatPhotoId);
 }
 
-extension InputChatPhotoStaticCopyExtension on InputChatPhotoStatic {
+extension InputChatPhotoStaticExtensions on InputChatPhotoStatic {
   InputChatPhotoStatic copy({InputFile? photo}) =>
       InputChatPhotoStatic(photo: photo ?? this.photo);
 }
 
-extension InputChatPhotoAnimationCopyExtension on InputChatPhotoAnimation {
+extension InputChatPhotoAnimationExtensions on InputChatPhotoAnimation {
   InputChatPhotoAnimation copy(
           {InputFile? animation, double? mainFrameTimestamp}) =>
       InputChatPhotoAnimation(
@@ -664,7 +854,7 @@ extension InputChatPhotoAnimationCopyExtension on InputChatPhotoAnimation {
           mainFrameTimestamp: mainFrameTimestamp ?? this.mainFrameTimestamp);
 }
 
-extension UserCopyExtension on User {
+extension UserExtensions on User {
   User copy(
           {int? id,
           String? firstName,
@@ -703,7 +893,7 @@ extension UserCopyExtension on User {
           languageCode: languageCode ?? this.languageCode);
 }
 
-extension UserFullInfoCopyExtension on UserFullInfo {
+extension UserFullInfoExtensions on UserFullInfo {
   UserFullInfo copy(
           {ChatPhoto? photo,
           bool? isBlocked,
@@ -729,13 +919,13 @@ extension UserFullInfoCopyExtension on UserFullInfo {
           botInfo: botInfo ?? this.botInfo);
 }
 
-extension UsersCopyExtension on Users {
+extension UsersExtensions on Users {
   Users copy({int? totalCount, List<int>? userIds}) => Users(
       totalCount: totalCount ?? this.totalCount,
       userIds: userIds ?? this.userIds);
 }
 
-extension ChatAdministratorCopyExtension on ChatAdministrator {
+extension ChatAdministratorExtensions on ChatAdministrator {
   ChatAdministrator copy({int? userId, String? customTitle, bool? isOwner}) =>
       ChatAdministrator(
           userId: userId ?? this.userId,
@@ -743,12 +933,12 @@ extension ChatAdministratorCopyExtension on ChatAdministrator {
           isOwner: isOwner ?? this.isOwner);
 }
 
-extension ChatAdministratorsCopyExtension on ChatAdministrators {
+extension ChatAdministratorsExtensions on ChatAdministrators {
   ChatAdministrators copy({List<ChatAdministrator>? administrators}) =>
       ChatAdministrators(administrators: administrators ?? this.administrators);
 }
 
-extension ChatPermissionsCopyExtension on ChatPermissions {
+extension ChatPermissionsExtensions on ChatPermissions {
   ChatPermissions copy(
           {bool? canSendMessages,
           bool? canSendMediaMessages,
@@ -772,7 +962,34 @@ extension ChatPermissionsCopyExtension on ChatPermissions {
           canPinMessages: canPinMessages ?? this.canPinMessages);
 }
 
-extension ChatMemberStatusCreatorCopyExtension on ChatMemberStatusCreator {
+extension ChatMemberStatusExtensions on ChatMemberStatus {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatMemberStatusCreator value) creator,
+      required TResult Function(ChatMemberStatusAdministrator value)
+          administrator,
+      required TResult Function(ChatMemberStatusMember value) member,
+      required TResult Function(ChatMemberStatusRestricted value) restricted,
+      required TResult Function(ChatMemberStatusLeft value) left,
+      required TResult Function(ChatMemberStatusBanned value) banned}) {
+    switch (this.getConstructor()) {
+      case ChatMemberStatusCreator.CONSTRUCTOR:
+        return creator.call(this as ChatMemberStatusCreator);
+      case ChatMemberStatusAdministrator.CONSTRUCTOR:
+        return administrator.call(this as ChatMemberStatusAdministrator);
+      case ChatMemberStatusMember.CONSTRUCTOR:
+        return member.call(this as ChatMemberStatusMember);
+      case ChatMemberStatusRestricted.CONSTRUCTOR:
+        return restricted.call(this as ChatMemberStatusRestricted);
+      case ChatMemberStatusLeft.CONSTRUCTOR:
+        return left.call(this as ChatMemberStatusLeft);
+      case ChatMemberStatusBanned.CONSTRUCTOR:
+        return banned.call(this as ChatMemberStatusBanned);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatMemberStatusCreatorExtensions on ChatMemberStatusCreator {
   ChatMemberStatusCreator copy(
           {String? customTitle, bool? isAnonymous, bool? isMember}) =>
       ChatMemberStatusCreator(
@@ -781,7 +998,7 @@ extension ChatMemberStatusCreatorCopyExtension on ChatMemberStatusCreator {
           isMember: isMember ?? this.isMember);
 }
 
-extension ChatMemberStatusAdministratorCopyExtension
+extension ChatMemberStatusAdministratorExtensions
     on ChatMemberStatusAdministrator {
   ChatMemberStatusAdministrator copy(
           {String? customTitle,
@@ -813,8 +1030,7 @@ extension ChatMemberStatusAdministratorCopyExtension
           isAnonymous: isAnonymous ?? this.isAnonymous);
 }
 
-extension ChatMemberStatusRestrictedCopyExtension
-    on ChatMemberStatusRestricted {
+extension ChatMemberStatusRestrictedExtensions on ChatMemberStatusRestricted {
   ChatMemberStatusRestricted copy(
           {bool? isMember,
           int? restrictedUntilDate,
@@ -825,12 +1041,12 @@ extension ChatMemberStatusRestrictedCopyExtension
           permissions: permissions ?? this.permissions);
 }
 
-extension ChatMemberStatusBannedCopyExtension on ChatMemberStatusBanned {
+extension ChatMemberStatusBannedExtensions on ChatMemberStatusBanned {
   ChatMemberStatusBanned copy({int? bannedUntilDate}) => ChatMemberStatusBanned(
       bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate);
 }
 
-extension ChatMemberCopyExtension on ChatMember {
+extension ChatMemberExtensions on ChatMember {
   ChatMember copy(
           {int? userId,
           int? inviterUserId,
@@ -845,43 +1061,108 @@ extension ChatMemberCopyExtension on ChatMember {
           botInfo: botInfo ?? this.botInfo);
 }
 
-extension ChatMembersCopyExtension on ChatMembers {
+extension ChatMembersExtensions on ChatMembers {
   ChatMembers copy({int? totalCount, List<ChatMember>? members}) => ChatMembers(
       totalCount: totalCount ?? this.totalCount,
       members: members ?? this.members);
 }
 
-extension ChatMembersFilterMentionCopyExtension on ChatMembersFilterMention {
+extension ChatMembersFilterExtensions on ChatMembersFilter {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatMembersFilterContacts value) contacts,
+      required TResult Function(ChatMembersFilterAdministrators value)
+          administrators,
+      required TResult Function(ChatMembersFilterMembers value) members,
+      required TResult Function(ChatMembersFilterMention value) mention,
+      required TResult Function(ChatMembersFilterRestricted value) restricted,
+      required TResult Function(ChatMembersFilterBanned value) banned,
+      required TResult Function(ChatMembersFilterBots value) bots}) {
+    switch (this.getConstructor()) {
+      case ChatMembersFilterContacts.CONSTRUCTOR:
+        return contacts.call(this as ChatMembersFilterContacts);
+      case ChatMembersFilterAdministrators.CONSTRUCTOR:
+        return administrators.call(this as ChatMembersFilterAdministrators);
+      case ChatMembersFilterMembers.CONSTRUCTOR:
+        return members.call(this as ChatMembersFilterMembers);
+      case ChatMembersFilterMention.CONSTRUCTOR:
+        return mention.call(this as ChatMembersFilterMention);
+      case ChatMembersFilterRestricted.CONSTRUCTOR:
+        return restricted.call(this as ChatMembersFilterRestricted);
+      case ChatMembersFilterBanned.CONSTRUCTOR:
+        return banned.call(this as ChatMembersFilterBanned);
+      case ChatMembersFilterBots.CONSTRUCTOR:
+        return bots.call(this as ChatMembersFilterBots);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatMembersFilterMentionExtensions on ChatMembersFilterMention {
   ChatMembersFilterMention copy({int? messageThreadId}) =>
       ChatMembersFilterMention(
           messageThreadId: messageThreadId ?? this.messageThreadId);
 }
 
-extension SupergroupMembersFilterContactsCopyExtension
+extension SupergroupMembersFilterExtensions on SupergroupMembersFilter {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(SupergroupMembersFilterRecent value) recent,
+      required TResult Function(SupergroupMembersFilterContacts value) contacts,
+      required TResult Function(SupergroupMembersFilterAdministrators value)
+          administrators,
+      required TResult Function(SupergroupMembersFilterSearch value) search,
+      required TResult Function(SupergroupMembersFilterRestricted value)
+          restricted,
+      required TResult Function(SupergroupMembersFilterBanned value) banned,
+      required TResult Function(SupergroupMembersFilterMention value) mention,
+      required TResult Function(SupergroupMembersFilterBots value) bots}) {
+    switch (this.getConstructor()) {
+      case SupergroupMembersFilterRecent.CONSTRUCTOR:
+        return recent.call(this as SupergroupMembersFilterRecent);
+      case SupergroupMembersFilterContacts.CONSTRUCTOR:
+        return contacts.call(this as SupergroupMembersFilterContacts);
+      case SupergroupMembersFilterAdministrators.CONSTRUCTOR:
+        return administrators
+            .call(this as SupergroupMembersFilterAdministrators);
+      case SupergroupMembersFilterSearch.CONSTRUCTOR:
+        return search.call(this as SupergroupMembersFilterSearch);
+      case SupergroupMembersFilterRestricted.CONSTRUCTOR:
+        return restricted.call(this as SupergroupMembersFilterRestricted);
+      case SupergroupMembersFilterBanned.CONSTRUCTOR:
+        return banned.call(this as SupergroupMembersFilterBanned);
+      case SupergroupMembersFilterMention.CONSTRUCTOR:
+        return mention.call(this as SupergroupMembersFilterMention);
+      case SupergroupMembersFilterBots.CONSTRUCTOR:
+        return bots.call(this as SupergroupMembersFilterBots);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension SupergroupMembersFilterContactsExtensions
     on SupergroupMembersFilterContacts {
   SupergroupMembersFilterContacts copy({String? query}) =>
       SupergroupMembersFilterContacts(query: query ?? this.query);
 }
 
-extension SupergroupMembersFilterSearchCopyExtension
+extension SupergroupMembersFilterSearchExtensions
     on SupergroupMembersFilterSearch {
   SupergroupMembersFilterSearch copy({String? query}) =>
       SupergroupMembersFilterSearch(query: query ?? this.query);
 }
 
-extension SupergroupMembersFilterRestrictedCopyExtension
+extension SupergroupMembersFilterRestrictedExtensions
     on SupergroupMembersFilterRestricted {
   SupergroupMembersFilterRestricted copy({String? query}) =>
       SupergroupMembersFilterRestricted(query: query ?? this.query);
 }
 
-extension SupergroupMembersFilterBannedCopyExtension
+extension SupergroupMembersFilterBannedExtensions
     on SupergroupMembersFilterBanned {
   SupergroupMembersFilterBanned copy({String? query}) =>
       SupergroupMembersFilterBanned(query: query ?? this.query);
 }
 
-extension SupergroupMembersFilterMentionCopyExtension
+extension SupergroupMembersFilterMentionExtensions
     on SupergroupMembersFilterMention {
   SupergroupMembersFilterMention copy({String? query, int? messageThreadId}) =>
       SupergroupMembersFilterMention(
@@ -889,7 +1170,7 @@ extension SupergroupMembersFilterMentionCopyExtension
           messageThreadId: messageThreadId ?? this.messageThreadId);
 }
 
-extension ChatInviteLinkCopyExtension on ChatInviteLink {
+extension ChatInviteLinkExtensions on ChatInviteLink {
   ChatInviteLink copy(
           {String? inviteLink,
           int? creatorUserId,
@@ -912,14 +1193,14 @@ extension ChatInviteLinkCopyExtension on ChatInviteLink {
           isRevoked: isRevoked ?? this.isRevoked);
 }
 
-extension ChatInviteLinksCopyExtension on ChatInviteLinks {
+extension ChatInviteLinksExtensions on ChatInviteLinks {
   ChatInviteLinks copy({int? totalCount, List<ChatInviteLink>? inviteLinks}) =>
       ChatInviteLinks(
           totalCount: totalCount ?? this.totalCount,
           inviteLinks: inviteLinks ?? this.inviteLinks);
 }
 
-extension ChatInviteLinkCountCopyExtension on ChatInviteLinkCount {
+extension ChatInviteLinkCountExtensions on ChatInviteLinkCount {
   ChatInviteLinkCount copy(
           {int? userId, int? inviteLinkCount, int? revokedInviteLinkCount}) =>
       ChatInviteLinkCount(
@@ -929,20 +1210,20 @@ extension ChatInviteLinkCountCopyExtension on ChatInviteLinkCount {
               revokedInviteLinkCount ?? this.revokedInviteLinkCount);
 }
 
-extension ChatInviteLinkCountsCopyExtension on ChatInviteLinkCounts {
+extension ChatInviteLinkCountsExtensions on ChatInviteLinkCounts {
   ChatInviteLinkCounts copy({List<ChatInviteLinkCount>? inviteLinkCounts}) =>
       ChatInviteLinkCounts(
           inviteLinkCounts: inviteLinkCounts ?? this.inviteLinkCounts);
 }
 
-extension ChatInviteLinkMemberCopyExtension on ChatInviteLinkMember {
+extension ChatInviteLinkMemberExtensions on ChatInviteLinkMember {
   ChatInviteLinkMember copy({int? userId, int? joinedChatDate}) =>
       ChatInviteLinkMember(
           userId: userId ?? this.userId,
           joinedChatDate: joinedChatDate ?? this.joinedChatDate);
 }
 
-extension ChatInviteLinkMembersCopyExtension on ChatInviteLinkMembers {
+extension ChatInviteLinkMembersExtensions on ChatInviteLinkMembers {
   ChatInviteLinkMembers copy(
           {int? totalCount, List<ChatInviteLinkMember>? members}) =>
       ChatInviteLinkMembers(
@@ -950,7 +1231,7 @@ extension ChatInviteLinkMembersCopyExtension on ChatInviteLinkMembers {
           members: members ?? this.members);
 }
 
-extension ChatInviteLinkInfoCopyExtension on ChatInviteLinkInfo {
+extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
   ChatInviteLinkInfo copy(
           {int? chatId,
           int? accessibleFor,
@@ -971,7 +1252,7 @@ extension ChatInviteLinkInfoCopyExtension on ChatInviteLinkInfo {
           isPublic: isPublic ?? this.isPublic);
 }
 
-extension BasicGroupCopyExtension on BasicGroup {
+extension BasicGroupExtensions on BasicGroup {
   BasicGroup copy(
           {int? id,
           int? memberCount,
@@ -987,7 +1268,7 @@ extension BasicGroupCopyExtension on BasicGroup {
               upgradedToSupergroupId ?? this.upgradedToSupergroupId);
 }
 
-extension BasicGroupFullInfoCopyExtension on BasicGroupFullInfo {
+extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
   BasicGroupFullInfo copy(
           {ChatPhoto? photo,
           String? description,
@@ -1002,7 +1283,7 @@ extension BasicGroupFullInfoCopyExtension on BasicGroupFullInfo {
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension SupergroupCopyExtension on Supergroup {
+extension SupergroupExtensions on Supergroup {
   Supergroup copy(
           {int? id,
           String? username,
@@ -1037,7 +1318,7 @@ extension SupergroupCopyExtension on Supergroup {
           isFake: isFake ?? this.isFake);
 }
 
-extension SupergroupFullInfoCopyExtension on SupergroupFullInfo {
+extension SupergroupFullInfoExtensions on SupergroupFullInfo {
   SupergroupFullInfo copy(
           {ChatPhoto? photo,
           String? description,
@@ -1086,7 +1367,24 @@ extension SupergroupFullInfoCopyExtension on SupergroupFullInfo {
               upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId);
 }
 
-extension SecretChatCopyExtension on SecretChat {
+extension SecretChatStateExtensions on SecretChatState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(SecretChatStatePending value) pending,
+      required TResult Function(SecretChatStateReady value) ready,
+      required TResult Function(SecretChatStateClosed value) closed}) {
+    switch (this.getConstructor()) {
+      case SecretChatStatePending.CONSTRUCTOR:
+        return pending.call(this as SecretChatStatePending);
+      case SecretChatStateReady.CONSTRUCTOR:
+        return ready.call(this as SecretChatStateReady);
+      case SecretChatStateClosed.CONSTRUCTOR:
+        return closed.call(this as SecretChatStateClosed);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension SecretChatExtensions on SecretChat {
   SecretChat copy(
           {int? id,
           int? userId,
@@ -1103,43 +1401,81 @@ extension SecretChatCopyExtension on SecretChat {
           layer: layer ?? this.layer);
 }
 
-extension MessageSenderUserCopyExtension on MessageSenderUser {
+extension MessageSenderExtensions on MessageSender {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageSenderUser value) user,
+      required TResult Function(MessageSenderChat value) chat}) {
+    switch (this.getConstructor()) {
+      case MessageSenderUser.CONSTRUCTOR:
+        return user.call(this as MessageSenderUser);
+      case MessageSenderChat.CONSTRUCTOR:
+        return chat.call(this as MessageSenderChat);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageSenderUserExtensions on MessageSenderUser {
   MessageSenderUser copy({int? userId}) =>
       MessageSenderUser(userId: userId ?? this.userId);
 }
 
-extension MessageSenderChatCopyExtension on MessageSenderChat {
+extension MessageSenderChatExtensions on MessageSenderChat {
   MessageSenderChat copy({int? chatId}) =>
       MessageSenderChat(chatId: chatId ?? this.chatId);
 }
 
-extension MessageSendersCopyExtension on MessageSenders {
+extension MessageSendersExtensions on MessageSenders {
   MessageSenders copy({int? totalCount, List<MessageSender>? senders}) =>
       MessageSenders(
           totalCount: totalCount ?? this.totalCount,
           senders: senders ?? this.senders);
 }
 
-extension MessageForwardOriginUserCopyExtension on MessageForwardOriginUser {
+extension MessageForwardOriginExtensions on MessageForwardOrigin {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageForwardOriginUser value) user,
+      required TResult Function(MessageForwardOriginChat value) chat,
+      required TResult Function(MessageForwardOriginHiddenUser value)
+          hiddenUser,
+      required TResult Function(MessageForwardOriginChannel value) channel,
+      required TResult Function(MessageForwardOriginMessageImport value)
+          messageImport}) {
+    switch (this.getConstructor()) {
+      case MessageForwardOriginUser.CONSTRUCTOR:
+        return user.call(this as MessageForwardOriginUser);
+      case MessageForwardOriginChat.CONSTRUCTOR:
+        return chat.call(this as MessageForwardOriginChat);
+      case MessageForwardOriginHiddenUser.CONSTRUCTOR:
+        return hiddenUser.call(this as MessageForwardOriginHiddenUser);
+      case MessageForwardOriginChannel.CONSTRUCTOR:
+        return channel.call(this as MessageForwardOriginChannel);
+      case MessageForwardOriginMessageImport.CONSTRUCTOR:
+        return messageImport.call(this as MessageForwardOriginMessageImport);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageForwardOriginUserExtensions on MessageForwardOriginUser {
   MessageForwardOriginUser copy({int? senderUserId}) =>
       MessageForwardOriginUser(senderUserId: senderUserId ?? this.senderUserId);
 }
 
-extension MessageForwardOriginChatCopyExtension on MessageForwardOriginChat {
+extension MessageForwardOriginChatExtensions on MessageForwardOriginChat {
   MessageForwardOriginChat copy({int? senderChatId, String? authorSignature}) =>
       MessageForwardOriginChat(
           senderChatId: senderChatId ?? this.senderChatId,
           authorSignature: authorSignature ?? this.authorSignature);
 }
 
-extension MessageForwardOriginHiddenUserCopyExtension
+extension MessageForwardOriginHiddenUserExtensions
     on MessageForwardOriginHiddenUser {
   MessageForwardOriginHiddenUser copy({String? senderName}) =>
       MessageForwardOriginHiddenUser(senderName: senderName ?? this.senderName);
 }
 
-extension MessageForwardOriginChannelCopyExtension
-    on MessageForwardOriginChannel {
+extension MessageForwardOriginChannelExtensions on MessageForwardOriginChannel {
   MessageForwardOriginChannel copy(
           {int? chatId, int? messageId, String? authorSignature}) =>
       MessageForwardOriginChannel(
@@ -1148,14 +1484,14 @@ extension MessageForwardOriginChannelCopyExtension
           authorSignature: authorSignature ?? this.authorSignature);
 }
 
-extension MessageForwardOriginMessageImportCopyExtension
+extension MessageForwardOriginMessageImportExtensions
     on MessageForwardOriginMessageImport {
   MessageForwardOriginMessageImport copy({String? senderName}) =>
       MessageForwardOriginMessageImport(
           senderName: senderName ?? this.senderName);
 }
 
-extension MessageForwardInfoCopyExtension on MessageForwardInfo {
+extension MessageForwardInfoExtensions on MessageForwardInfo {
   MessageForwardInfo copy(
           {MessageForwardOrigin? origin,
           int? date,
@@ -1171,7 +1507,7 @@ extension MessageForwardInfoCopyExtension on MessageForwardInfo {
           fromMessageId: fromMessageId ?? this.fromMessageId);
 }
 
-extension MessageReplyInfoCopyExtension on MessageReplyInfo {
+extension MessageReplyInfoExtensions on MessageReplyInfo {
   MessageReplyInfo copy(
           {int? replyCount,
           List<MessageSender>? recentRepliers,
@@ -1188,7 +1524,7 @@ extension MessageReplyInfoCopyExtension on MessageReplyInfo {
           lastMessageId: lastMessageId ?? this.lastMessageId);
 }
 
-extension MessageInteractionInfoCopyExtension on MessageInteractionInfo {
+extension MessageInteractionInfoExtensions on MessageInteractionInfo {
   MessageInteractionInfo copy(
           {int? viewCount, int? forwardCount, MessageReplyInfo? replyInfo}) =>
       MessageInteractionInfo(
@@ -1197,7 +1533,21 @@ extension MessageInteractionInfoCopyExtension on MessageInteractionInfo {
           replyInfo: replyInfo ?? this.replyInfo);
 }
 
-extension MessageSendingStateFailedCopyExtension on MessageSendingStateFailed {
+extension MessageSendingStateExtensions on MessageSendingState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageSendingStatePending value) pending,
+      required TResult Function(MessageSendingStateFailed value) failed}) {
+    switch (this.getConstructor()) {
+      case MessageSendingStatePending.CONSTRUCTOR:
+        return pending.call(this as MessageSendingStatePending);
+      case MessageSendingStateFailed.CONSTRUCTOR:
+        return failed.call(this as MessageSendingStateFailed);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageSendingStateFailedExtensions on MessageSendingStateFailed {
   MessageSendingStateFailed copy(
           {int? errorCode,
           String? errorMessage,
@@ -1210,7 +1560,7 @@ extension MessageSendingStateFailedCopyExtension on MessageSendingStateFailed {
           retryAfter: retryAfter ?? this.retryAfter);
 }
 
-extension MessageCopyExtension on Message {
+extension MessageExtensions on Message {
   Message copy(
           {int? id,
           MessageSender? sender,
@@ -1278,13 +1628,13 @@ extension MessageCopyExtension on Message {
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension MessagesCopyExtension on Messages {
+extension MessagesExtensions on Messages {
   Messages copy({int? totalCount, List<Message>? messages}) => Messages(
       totalCount: totalCount ?? this.totalCount,
       messages: messages ?? this.messages);
 }
 
-extension FoundMessagesCopyExtension on FoundMessages {
+extension FoundMessagesExtensions on FoundMessages {
   FoundMessages copy(
           {int? totalCount, List<Message>? messages, String? nextOffset}) =>
       FoundMessages(
@@ -1293,7 +1643,27 @@ extension FoundMessagesCopyExtension on FoundMessages {
           nextOffset: nextOffset ?? this.nextOffset);
 }
 
-extension ChatNotificationSettingsCopyExtension on ChatNotificationSettings {
+extension NotificationSettingsScopeExtensions on NotificationSettingsScope {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(NotificationSettingsScopePrivateChats value)
+          privateChats,
+      required TResult Function(NotificationSettingsScopeGroupChats value)
+          groupChats,
+      required TResult Function(NotificationSettingsScopeChannelChats value)
+          channelChats}) {
+    switch (this.getConstructor()) {
+      case NotificationSettingsScopePrivateChats.CONSTRUCTOR:
+        return privateChats.call(this as NotificationSettingsScopePrivateChats);
+      case NotificationSettingsScopeGroupChats.CONSTRUCTOR:
+        return groupChats.call(this as NotificationSettingsScopeGroupChats);
+      case NotificationSettingsScopeChannelChats.CONSTRUCTOR:
+        return channelChats.call(this as NotificationSettingsScopeChannelChats);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatNotificationSettingsExtensions on ChatNotificationSettings {
   ChatNotificationSettings copy(
           {bool? useDefaultMuteFor,
           int? muteFor,
@@ -1326,7 +1696,7 @@ extension ChatNotificationSettingsCopyExtension on ChatNotificationSettings {
               disableMentionNotifications ?? this.disableMentionNotifications);
 }
 
-extension ScopeNotificationSettingsCopyExtension on ScopeNotificationSettings {
+extension ScopeNotificationSettingsExtensions on ScopeNotificationSettings {
   ScopeNotificationSettings copy(
           {int? muteFor,
           String? sound,
@@ -1344,7 +1714,7 @@ extension ScopeNotificationSettingsCopyExtension on ScopeNotificationSettings {
               disableMentionNotifications ?? this.disableMentionNotifications);
 }
 
-extension DraftMessageCopyExtension on DraftMessage {
+extension DraftMessageExtensions on DraftMessage {
   DraftMessage copy(
           {int? replyToMessageId,
           int? date,
@@ -1355,30 +1725,50 @@ extension DraftMessageCopyExtension on DraftMessage {
           inputMessageText: inputMessageText ?? this.inputMessageText);
 }
 
-extension ChatTypePrivateCopyExtension on ChatTypePrivate {
+extension ChatTypeExtensions on ChatType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatTypePrivate value) private,
+      required TResult Function(ChatTypeBasicGroup value) basicGroup,
+      required TResult Function(ChatTypeSupergroup value) supergroup,
+      required TResult Function(ChatTypeSecret value) secret}) {
+    switch (this.getConstructor()) {
+      case ChatTypePrivate.CONSTRUCTOR:
+        return private.call(this as ChatTypePrivate);
+      case ChatTypeBasicGroup.CONSTRUCTOR:
+        return basicGroup.call(this as ChatTypeBasicGroup);
+      case ChatTypeSupergroup.CONSTRUCTOR:
+        return supergroup.call(this as ChatTypeSupergroup);
+      case ChatTypeSecret.CONSTRUCTOR:
+        return secret.call(this as ChatTypeSecret);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatTypePrivateExtensions on ChatTypePrivate {
   ChatTypePrivate copy({int? userId}) =>
       ChatTypePrivate(userId: userId ?? this.userId);
 }
 
-extension ChatTypeBasicGroupCopyExtension on ChatTypeBasicGroup {
+extension ChatTypeBasicGroupExtensions on ChatTypeBasicGroup {
   ChatTypeBasicGroup copy({int? basicGroupId}) =>
       ChatTypeBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
-extension ChatTypeSupergroupCopyExtension on ChatTypeSupergroup {
+extension ChatTypeSupergroupExtensions on ChatTypeSupergroup {
   ChatTypeSupergroup copy({int? supergroupId, bool? isChannel}) =>
       ChatTypeSupergroup(
           supergroupId: supergroupId ?? this.supergroupId,
           isChannel: isChannel ?? this.isChannel);
 }
 
-extension ChatTypeSecretCopyExtension on ChatTypeSecret {
+extension ChatTypeSecretExtensions on ChatTypeSecret {
   ChatTypeSecret copy({int? secretChatId, int? userId}) => ChatTypeSecret(
       secretChatId: secretChatId ?? this.secretChatId,
       userId: userId ?? this.userId);
 }
 
-extension ChatFilterCopyExtension on ChatFilter {
+extension ChatFilterExtensions on ChatFilter {
   ChatFilter copy(
           {String? title,
           String? iconName,
@@ -1409,7 +1799,7 @@ extension ChatFilterCopyExtension on ChatFilter {
           includeChannels: includeChannels ?? this.includeChannels);
 }
 
-extension ChatFilterInfoCopyExtension on ChatFilterInfo {
+extension ChatFilterInfoExtensions on ChatFilterInfo {
   ChatFilterInfo copy({int? id, String? title, String? iconName}) =>
       ChatFilterInfo(
           id: id ?? this.id,
@@ -1417,36 +1807,69 @@ extension ChatFilterInfoCopyExtension on ChatFilterInfo {
           iconName: iconName ?? this.iconName);
 }
 
-extension RecommendedChatFilterCopyExtension on RecommendedChatFilter {
+extension RecommendedChatFilterExtensions on RecommendedChatFilter {
   RecommendedChatFilter copy({ChatFilter? filter, String? description}) =>
       RecommendedChatFilter(
           filter: filter ?? this.filter,
           description: description ?? this.description);
 }
 
-extension RecommendedChatFiltersCopyExtension on RecommendedChatFilters {
+extension RecommendedChatFiltersExtensions on RecommendedChatFilters {
   RecommendedChatFilters copy({List<RecommendedChatFilter>? chatFilters}) =>
       RecommendedChatFilters(chatFilters: chatFilters ?? this.chatFilters);
 }
 
-extension ChatListFilterCopyExtension on ChatListFilter {
+extension ChatListExtensions on ChatList {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatListMain value) main,
+      required TResult Function(ChatListArchive value) archive,
+      required TResult Function(ChatListFilter value) filter}) {
+    switch (this.getConstructor()) {
+      case ChatListMain.CONSTRUCTOR:
+        return main.call(this as ChatListMain);
+      case ChatListArchive.CONSTRUCTOR:
+        return archive.call(this as ChatListArchive);
+      case ChatListFilter.CONSTRUCTOR:
+        return filter.call(this as ChatListFilter);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatListFilterExtensions on ChatListFilter {
   ChatListFilter copy({int? chatFilterId}) =>
       ChatListFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
-extension ChatListsCopyExtension on ChatLists {
+extension ChatListsExtensions on ChatLists {
   ChatLists copy({List<ChatList>? chatLists}) =>
       ChatLists(chatLists: chatLists ?? this.chatLists);
 }
 
-extension ChatSourcePublicServiceAnnouncementCopyExtension
+extension ChatSourceExtensions on ChatSource {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatSourceMtprotoProxy value) mtprotoProxy,
+      required TResult Function(ChatSourcePublicServiceAnnouncement value)
+          publicServiceAnnouncement}) {
+    switch (this.getConstructor()) {
+      case ChatSourceMtprotoProxy.CONSTRUCTOR:
+        return mtprotoProxy.call(this as ChatSourceMtprotoProxy);
+      case ChatSourcePublicServiceAnnouncement.CONSTRUCTOR:
+        return publicServiceAnnouncement
+            .call(this as ChatSourcePublicServiceAnnouncement);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatSourcePublicServiceAnnouncementExtensions
     on ChatSourcePublicServiceAnnouncement {
   ChatSourcePublicServiceAnnouncement copy({String? type, String? text}) =>
       ChatSourcePublicServiceAnnouncement(
           type: type ?? this.type, text: text ?? this.text);
 }
 
-extension ChatPositionCopyExtension on ChatPosition {
+extension ChatPositionExtensions on ChatPosition {
   ChatPosition copy(
           {ChatList? list, int? order, bool? isPinned, ChatSource? source}) =>
       ChatPosition(
@@ -1456,7 +1879,7 @@ extension ChatPositionCopyExtension on ChatPosition {
           source: source ?? this.source);
 }
 
-extension VoiceChatCopyExtension on VoiceChat {
+extension VoiceChatExtensions on VoiceChat {
   VoiceChat copy(
           {int? groupCallId,
           bool? hasParticipants,
@@ -1468,7 +1891,7 @@ extension VoiceChatCopyExtension on VoiceChat {
               defaultParticipantAlias ?? this.defaultParticipantAlias);
 }
 
-extension ChatCopyExtension on Chat {
+extension ChatExtensions on Chat {
   Chat copy(
           {int? id,
           ChatType? type,
@@ -1531,18 +1954,18 @@ extension ChatCopyExtension on Chat {
           clientData: clientData ?? this.clientData);
 }
 
-extension ChatsCopyExtension on Chats {
+extension ChatsExtensions on Chats {
   Chats copy({int? totalCount, List<int>? chatIds}) => Chats(
       totalCount: totalCount ?? this.totalCount,
       chatIds: chatIds ?? this.chatIds);
 }
 
-extension ChatNearbyCopyExtension on ChatNearby {
+extension ChatNearbyExtensions on ChatNearby {
   ChatNearby copy({int? chatId, int? distance}) => ChatNearby(
       chatId: chatId ?? this.chatId, distance: distance ?? this.distance);
 }
 
-extension ChatsNearbyCopyExtension on ChatsNearby {
+extension ChatsNearbyExtensions on ChatsNearby {
   ChatsNearby copy(
           {List<ChatNearby>? usersNearby,
           List<ChatNearby>? supergroupsNearby}) =>
@@ -1551,20 +1974,88 @@ extension ChatsNearbyCopyExtension on ChatsNearby {
           supergroupsNearby: supergroupsNearby ?? this.supergroupsNearby);
 }
 
-extension ChatActionBarReportSpamCopyExtension on ChatActionBarReportSpam {
+extension PublicChatTypeExtensions on PublicChatType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PublicChatTypeHasUsername value) hasUsername,
+      required TResult Function(PublicChatTypeIsLocationBased value)
+          isLocationBased}) {
+    switch (this.getConstructor()) {
+      case PublicChatTypeHasUsername.CONSTRUCTOR:
+        return hasUsername.call(this as PublicChatTypeHasUsername);
+      case PublicChatTypeIsLocationBased.CONSTRUCTOR:
+        return isLocationBased.call(this as PublicChatTypeIsLocationBased);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatActionBarExtensions on ChatActionBar {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatActionBarReportSpam value) reportSpam,
+      required TResult Function(ChatActionBarReportUnrelatedLocation value)
+          reportUnrelatedLocation,
+      required TResult Function(ChatActionBarInviteMembers value) inviteMembers,
+      required TResult Function(ChatActionBarReportAddBlock value)
+          reportAddBlock,
+      required TResult Function(ChatActionBarAddContact value) addContact,
+      required TResult Function(ChatActionBarSharePhoneNumber value)
+          sharePhoneNumber}) {
+    switch (this.getConstructor()) {
+      case ChatActionBarReportSpam.CONSTRUCTOR:
+        return reportSpam.call(this as ChatActionBarReportSpam);
+      case ChatActionBarReportUnrelatedLocation.CONSTRUCTOR:
+        return reportUnrelatedLocation
+            .call(this as ChatActionBarReportUnrelatedLocation);
+      case ChatActionBarInviteMembers.CONSTRUCTOR:
+        return inviteMembers.call(this as ChatActionBarInviteMembers);
+      case ChatActionBarReportAddBlock.CONSTRUCTOR:
+        return reportAddBlock.call(this as ChatActionBarReportAddBlock);
+      case ChatActionBarAddContact.CONSTRUCTOR:
+        return addContact.call(this as ChatActionBarAddContact);
+      case ChatActionBarSharePhoneNumber.CONSTRUCTOR:
+        return sharePhoneNumber.call(this as ChatActionBarSharePhoneNumber);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatActionBarReportSpamExtensions on ChatActionBarReportSpam {
   ChatActionBarReportSpam copy({bool? canUnarchive}) =>
       ChatActionBarReportSpam(canUnarchive: canUnarchive ?? this.canUnarchive);
 }
 
-extension ChatActionBarReportAddBlockCopyExtension
-    on ChatActionBarReportAddBlock {
+extension ChatActionBarReportAddBlockExtensions on ChatActionBarReportAddBlock {
   ChatActionBarReportAddBlock copy({bool? canUnarchive, int? distance}) =>
       ChatActionBarReportAddBlock(
           canUnarchive: canUnarchive ?? this.canUnarchive,
           distance: distance ?? this.distance);
 }
 
-extension KeyboardButtonTypeRequestPollCopyExtension
+extension KeyboardButtonTypeExtensions on KeyboardButtonType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(KeyboardButtonTypeText value) text,
+      required TResult Function(KeyboardButtonTypeRequestPhoneNumber value)
+          requestPhoneNumber,
+      required TResult Function(KeyboardButtonTypeRequestLocation value)
+          requestLocation,
+      required TResult Function(KeyboardButtonTypeRequestPoll value)
+          requestPoll}) {
+    switch (this.getConstructor()) {
+      case KeyboardButtonTypeText.CONSTRUCTOR:
+        return text.call(this as KeyboardButtonTypeText);
+      case KeyboardButtonTypeRequestPhoneNumber.CONSTRUCTOR:
+        return requestPhoneNumber
+            .call(this as KeyboardButtonTypeRequestPhoneNumber);
+      case KeyboardButtonTypeRequestLocation.CONSTRUCTOR:
+        return requestLocation.call(this as KeyboardButtonTypeRequestLocation);
+      case KeyboardButtonTypeRequestPoll.CONSTRUCTOR:
+        return requestPoll.call(this as KeyboardButtonTypeRequestPoll);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension KeyboardButtonTypeRequestPollExtensions
     on KeyboardButtonTypeRequestPoll {
   KeyboardButtonTypeRequestPoll copy({bool? forceRegular, bool? forceQuiz}) =>
       KeyboardButtonTypeRequestPoll(
@@ -1572,18 +2063,53 @@ extension KeyboardButtonTypeRequestPollCopyExtension
           forceQuiz: forceQuiz ?? this.forceQuiz);
 }
 
-extension KeyboardButtonCopyExtension on KeyboardButton {
+extension KeyboardButtonExtensions on KeyboardButton {
   KeyboardButton copy({String? text, KeyboardButtonType? type}) =>
       KeyboardButton(text: text ?? this.text, type: type ?? this.type);
 }
 
-extension InlineKeyboardButtonTypeUrlCopyExtension
-    on InlineKeyboardButtonTypeUrl {
+extension InlineKeyboardButtonTypeExtensions on InlineKeyboardButtonType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InlineKeyboardButtonTypeUrl value) url,
+      required TResult Function(InlineKeyboardButtonTypeLoginUrl value)
+          loginUrl,
+      required TResult Function(InlineKeyboardButtonTypeCallback value)
+          callback,
+      required TResult Function(
+              InlineKeyboardButtonTypeCallbackWithPassword value)
+          callbackWithPassword,
+      required TResult Function(InlineKeyboardButtonTypeCallbackGame value)
+          callbackGame,
+      required TResult Function(InlineKeyboardButtonTypeSwitchInline value)
+          switchInline,
+      required TResult Function(InlineKeyboardButtonTypeBuy value) buy}) {
+    switch (this.getConstructor()) {
+      case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
+        return url.call(this as InlineKeyboardButtonTypeUrl);
+      case InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR:
+        return loginUrl.call(this as InlineKeyboardButtonTypeLoginUrl);
+      case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
+        return callback.call(this as InlineKeyboardButtonTypeCallback);
+      case InlineKeyboardButtonTypeCallbackWithPassword.CONSTRUCTOR:
+        return callbackWithPassword
+            .call(this as InlineKeyboardButtonTypeCallbackWithPassword);
+      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
+        return callbackGame.call(this as InlineKeyboardButtonTypeCallbackGame);
+      case InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR:
+        return switchInline.call(this as InlineKeyboardButtonTypeSwitchInline);
+      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
+        return buy.call(this as InlineKeyboardButtonTypeBuy);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InlineKeyboardButtonTypeUrlExtensions on InlineKeyboardButtonTypeUrl {
   InlineKeyboardButtonTypeUrl copy({String? url}) =>
       InlineKeyboardButtonTypeUrl(url: url ?? this.url);
 }
 
-extension InlineKeyboardButtonTypeLoginUrlCopyExtension
+extension InlineKeyboardButtonTypeLoginUrlExtensions
     on InlineKeyboardButtonTypeLoginUrl {
   InlineKeyboardButtonTypeLoginUrl copy(
           {String? url, int? id, String? forwardText}) =>
@@ -1593,19 +2119,19 @@ extension InlineKeyboardButtonTypeLoginUrlCopyExtension
           forwardText: forwardText ?? this.forwardText);
 }
 
-extension InlineKeyboardButtonTypeCallbackCopyExtension
+extension InlineKeyboardButtonTypeCallbackExtensions
     on InlineKeyboardButtonTypeCallback {
   InlineKeyboardButtonTypeCallback copy({String? data}) =>
       InlineKeyboardButtonTypeCallback(data: data ?? this.data);
 }
 
-extension InlineKeyboardButtonTypeCallbackWithPasswordCopyExtension
+extension InlineKeyboardButtonTypeCallbackWithPasswordExtensions
     on InlineKeyboardButtonTypeCallbackWithPassword {
   InlineKeyboardButtonTypeCallbackWithPassword copy({String? data}) =>
       InlineKeyboardButtonTypeCallbackWithPassword(data: data ?? this.data);
 }
 
-extension InlineKeyboardButtonTypeSwitchInlineCopyExtension
+extension InlineKeyboardButtonTypeSwitchInlineExtensions
     on InlineKeyboardButtonTypeSwitchInline {
   InlineKeyboardButtonTypeSwitchInline copy(
           {String? query, bool? inCurrentChat}) =>
@@ -1614,22 +2140,44 @@ extension InlineKeyboardButtonTypeSwitchInlineCopyExtension
           inCurrentChat: inCurrentChat ?? this.inCurrentChat);
 }
 
-extension InlineKeyboardButtonCopyExtension on InlineKeyboardButton {
+extension InlineKeyboardButtonExtensions on InlineKeyboardButton {
   InlineKeyboardButton copy({String? text, InlineKeyboardButtonType? type}) =>
       InlineKeyboardButton(text: text ?? this.text, type: type ?? this.type);
 }
 
-extension ReplyMarkupRemoveKeyboardCopyExtension on ReplyMarkupRemoveKeyboard {
+extension ReplyMarkupExtensions on ReplyMarkup {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ReplyMarkupRemoveKeyboard value)
+          removeKeyboard,
+      required TResult Function(ReplyMarkupForceReply value) forceReply,
+      required TResult Function(ReplyMarkupShowKeyboard value) showKeyboard,
+      required TResult Function(ReplyMarkupInlineKeyboard value)
+          inlineKeyboard}) {
+    switch (this.getConstructor()) {
+      case ReplyMarkupRemoveKeyboard.CONSTRUCTOR:
+        return removeKeyboard.call(this as ReplyMarkupRemoveKeyboard);
+      case ReplyMarkupForceReply.CONSTRUCTOR:
+        return forceReply.call(this as ReplyMarkupForceReply);
+      case ReplyMarkupShowKeyboard.CONSTRUCTOR:
+        return showKeyboard.call(this as ReplyMarkupShowKeyboard);
+      case ReplyMarkupInlineKeyboard.CONSTRUCTOR:
+        return inlineKeyboard.call(this as ReplyMarkupInlineKeyboard);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ReplyMarkupRemoveKeyboardExtensions on ReplyMarkupRemoveKeyboard {
   ReplyMarkupRemoveKeyboard copy({bool? isPersonal}) =>
       ReplyMarkupRemoveKeyboard(isPersonal: isPersonal ?? this.isPersonal);
 }
 
-extension ReplyMarkupForceReplyCopyExtension on ReplyMarkupForceReply {
+extension ReplyMarkupForceReplyExtensions on ReplyMarkupForceReply {
   ReplyMarkupForceReply copy({bool? isPersonal}) =>
       ReplyMarkupForceReply(isPersonal: isPersonal ?? this.isPersonal);
 }
 
-extension ReplyMarkupShowKeyboardCopyExtension on ReplyMarkupShowKeyboard {
+extension ReplyMarkupShowKeyboardExtensions on ReplyMarkupShowKeyboard {
   ReplyMarkupShowKeyboard copy(
           {List<List<KeyboardButton>>? rows,
           bool? resizeKeyboard,
@@ -1642,17 +2190,33 @@ extension ReplyMarkupShowKeyboardCopyExtension on ReplyMarkupShowKeyboard {
           isPersonal: isPersonal ?? this.isPersonal);
 }
 
-extension ReplyMarkupInlineKeyboardCopyExtension on ReplyMarkupInlineKeyboard {
+extension ReplyMarkupInlineKeyboardExtensions on ReplyMarkupInlineKeyboard {
   ReplyMarkupInlineKeyboard copy({List<List<InlineKeyboardButton>>? rows}) =>
       ReplyMarkupInlineKeyboard(rows: rows ?? this.rows);
 }
 
-extension LoginUrlInfoOpenCopyExtension on LoginUrlInfoOpen {
+extension LoginUrlInfoExtensions on LoginUrlInfo {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(LoginUrlInfoOpen value) open,
+      required TResult Function(LoginUrlInfoRequestConfirmation value)
+          requestConfirmation}) {
+    switch (this.getConstructor()) {
+      case LoginUrlInfoOpen.CONSTRUCTOR:
+        return open.call(this as LoginUrlInfoOpen);
+      case LoginUrlInfoRequestConfirmation.CONSTRUCTOR:
+        return requestConfirmation
+            .call(this as LoginUrlInfoRequestConfirmation);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension LoginUrlInfoOpenExtensions on LoginUrlInfoOpen {
   LoginUrlInfoOpen copy({String? url, bool? skipConfirm}) => LoginUrlInfoOpen(
       url: url ?? this.url, skipConfirm: skipConfirm ?? this.skipConfirm);
 }
 
-extension LoginUrlInfoRequestConfirmationCopyExtension
+extension LoginUrlInfoRequestConfirmationExtensions
     on LoginUrlInfoRequestConfirmation {
   LoginUrlInfoRequestConfirmation copy(
           {String? url,
@@ -1666,7 +2230,7 @@ extension LoginUrlInfoRequestConfirmationCopyExtension
           requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess);
 }
 
-extension MessageThreadInfoCopyExtension on MessageThreadInfo {
+extension MessageThreadInfoExtensions on MessageThreadInfo {
   MessageThreadInfo copy(
           {int? chatId,
           int? messageThreadId,
@@ -1681,35 +2245,94 @@ extension MessageThreadInfoCopyExtension on MessageThreadInfo {
           draftMessage: draftMessage ?? this.draftMessage);
 }
 
-extension RichTextPlainCopyExtension on RichTextPlain {
+extension RichTextExtensions on RichText {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(RichTextPlain value) plain,
+      required TResult Function(RichTextBold value) bold,
+      required TResult Function(RichTextItalic value) italic,
+      required TResult Function(RichTextUnderline value) underline,
+      required TResult Function(RichTextStrikethrough value) strikethrough,
+      required TResult Function(RichTextFixed value) fixed,
+      required TResult Function(RichTextUrl value) url,
+      required TResult Function(RichTextEmailAddress value) emailAddress,
+      required TResult Function(RichTextSubscript value) subscript,
+      required TResult Function(RichTextSuperscript value) superscript,
+      required TResult Function(RichTextMarked value) marked,
+      required TResult Function(RichTextPhoneNumber value) phoneNumber,
+      required TResult Function(RichTextIcon value) icon,
+      required TResult Function(RichTextReference value) reference,
+      required TResult Function(RichTextAnchor value) anchor,
+      required TResult Function(RichTextAnchorLink value) anchorLink,
+      required TResult Function(RichTexts value) s}) {
+    switch (this.getConstructor()) {
+      case RichTextPlain.CONSTRUCTOR:
+        return plain.call(this as RichTextPlain);
+      case RichTextBold.CONSTRUCTOR:
+        return bold.call(this as RichTextBold);
+      case RichTextItalic.CONSTRUCTOR:
+        return italic.call(this as RichTextItalic);
+      case RichTextUnderline.CONSTRUCTOR:
+        return underline.call(this as RichTextUnderline);
+      case RichTextStrikethrough.CONSTRUCTOR:
+        return strikethrough.call(this as RichTextStrikethrough);
+      case RichTextFixed.CONSTRUCTOR:
+        return fixed.call(this as RichTextFixed);
+      case RichTextUrl.CONSTRUCTOR:
+        return url.call(this as RichTextUrl);
+      case RichTextEmailAddress.CONSTRUCTOR:
+        return emailAddress.call(this as RichTextEmailAddress);
+      case RichTextSubscript.CONSTRUCTOR:
+        return subscript.call(this as RichTextSubscript);
+      case RichTextSuperscript.CONSTRUCTOR:
+        return superscript.call(this as RichTextSuperscript);
+      case RichTextMarked.CONSTRUCTOR:
+        return marked.call(this as RichTextMarked);
+      case RichTextPhoneNumber.CONSTRUCTOR:
+        return phoneNumber.call(this as RichTextPhoneNumber);
+      case RichTextIcon.CONSTRUCTOR:
+        return icon.call(this as RichTextIcon);
+      case RichTextReference.CONSTRUCTOR:
+        return reference.call(this as RichTextReference);
+      case RichTextAnchor.CONSTRUCTOR:
+        return anchor.call(this as RichTextAnchor);
+      case RichTextAnchorLink.CONSTRUCTOR:
+        return anchorLink.call(this as RichTextAnchorLink);
+      case RichTexts.CONSTRUCTOR:
+        return s.call(this as RichTexts);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension RichTextPlainExtensions on RichTextPlain {
   RichTextPlain copy({String? text}) => RichTextPlain(text: text ?? this.text);
 }
 
-extension RichTextBoldCopyExtension on RichTextBold {
+extension RichTextBoldExtensions on RichTextBold {
   RichTextBold copy({RichText? text}) => RichTextBold(text: text ?? this.text);
 }
 
-extension RichTextItalicCopyExtension on RichTextItalic {
+extension RichTextItalicExtensions on RichTextItalic {
   RichTextItalic copy({RichText? text}) =>
       RichTextItalic(text: text ?? this.text);
 }
 
-extension RichTextUnderlineCopyExtension on RichTextUnderline {
+extension RichTextUnderlineExtensions on RichTextUnderline {
   RichTextUnderline copy({RichText? text}) =>
       RichTextUnderline(text: text ?? this.text);
 }
 
-extension RichTextStrikethroughCopyExtension on RichTextStrikethrough {
+extension RichTextStrikethroughExtensions on RichTextStrikethrough {
   RichTextStrikethrough copy({RichText? text}) =>
       RichTextStrikethrough(text: text ?? this.text);
 }
 
-extension RichTextFixedCopyExtension on RichTextFixed {
+extension RichTextFixedExtensions on RichTextFixed {
   RichTextFixed copy({RichText? text}) =>
       RichTextFixed(text: text ?? this.text);
 }
 
-extension RichTextUrlCopyExtension on RichTextUrl {
+extension RichTextUrlExtensions on RichTextUrl {
   RichTextUrl copy({RichText? text, String? url, bool? isCached}) =>
       RichTextUrl(
           text: text ?? this.text,
@@ -1717,36 +2340,36 @@ extension RichTextUrlCopyExtension on RichTextUrl {
           isCached: isCached ?? this.isCached);
 }
 
-extension RichTextEmailAddressCopyExtension on RichTextEmailAddress {
+extension RichTextEmailAddressExtensions on RichTextEmailAddress {
   RichTextEmailAddress copy({RichText? text, String? emailAddress}) =>
       RichTextEmailAddress(
           text: text ?? this.text,
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
-extension RichTextSubscriptCopyExtension on RichTextSubscript {
+extension RichTextSubscriptExtensions on RichTextSubscript {
   RichTextSubscript copy({RichText? text}) =>
       RichTextSubscript(text: text ?? this.text);
 }
 
-extension RichTextSuperscriptCopyExtension on RichTextSuperscript {
+extension RichTextSuperscriptExtensions on RichTextSuperscript {
   RichTextSuperscript copy({RichText? text}) =>
       RichTextSuperscript(text: text ?? this.text);
 }
 
-extension RichTextMarkedCopyExtension on RichTextMarked {
+extension RichTextMarkedExtensions on RichTextMarked {
   RichTextMarked copy({RichText? text}) =>
       RichTextMarked(text: text ?? this.text);
 }
 
-extension RichTextPhoneNumberCopyExtension on RichTextPhoneNumber {
+extension RichTextPhoneNumberExtensions on RichTextPhoneNumber {
   RichTextPhoneNumber copy({RichText? text, String? phoneNumber}) =>
       RichTextPhoneNumber(
           text: text ?? this.text,
           phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
-extension RichTextIconCopyExtension on RichTextIcon {
+extension RichTextIconExtensions on RichTextIcon {
   RichTextIcon copy({Document? document, int? width, int? height}) =>
       RichTextIcon(
           document: document ?? this.document,
@@ -1754,7 +2377,7 @@ extension RichTextIconCopyExtension on RichTextIcon {
           height: height ?? this.height);
 }
 
-extension RichTextReferenceCopyExtension on RichTextReference {
+extension RichTextReferenceExtensions on RichTextReference {
   RichTextReference copy({RichText? text, String? anchorName, String? url}) =>
       RichTextReference(
           text: text ?? this.text,
@@ -1762,12 +2385,12 @@ extension RichTextReferenceCopyExtension on RichTextReference {
           url: url ?? this.url);
 }
 
-extension RichTextAnchorCopyExtension on RichTextAnchor {
+extension RichTextAnchorExtensions on RichTextAnchor {
   RichTextAnchor copy({String? name}) =>
       RichTextAnchor(name: name ?? this.name);
 }
 
-extension RichTextAnchorLinkCopyExtension on RichTextAnchorLink {
+extension RichTextAnchorLinkExtensions on RichTextAnchorLink {
   RichTextAnchorLink copy({RichText? text, String? anchorName, String? url}) =>
       RichTextAnchorLink(
           text: text ?? this.text,
@@ -1775,24 +2398,62 @@ extension RichTextAnchorLinkCopyExtension on RichTextAnchorLink {
           url: url ?? this.url);
 }
 
-extension RichTextsCopyExtension on RichTexts {
+extension RichTextsExtensions on RichTexts {
   RichTexts copy({List<RichText>? texts}) =>
       RichTexts(texts: texts ?? this.texts);
 }
 
-extension PageBlockCaptionCopyExtension on PageBlockCaption {
+extension PageBlockCaptionExtensions on PageBlockCaption {
   PageBlockCaption copy({RichText? text, RichText? credit}) =>
       PageBlockCaption(text: text ?? this.text, credit: credit ?? this.credit);
 }
 
-extension PageBlockListItemCopyExtension on PageBlockListItem {
+extension PageBlockListItemExtensions on PageBlockListItem {
   PageBlockListItem copy({String? label, List<PageBlock>? pageBlocks}) =>
       PageBlockListItem(
           label: label ?? this.label,
           pageBlocks: pageBlocks ?? this.pageBlocks);
 }
 
-extension PageBlockTableCellCopyExtension on PageBlockTableCell {
+extension PageBlockHorizontalAlignmentExtensions
+    on PageBlockHorizontalAlignment {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PageBlockHorizontalAlignmentLeft value) left,
+      required TResult Function(PageBlockHorizontalAlignmentCenter value)
+          center,
+      required TResult Function(PageBlockHorizontalAlignmentRight value)
+          right}) {
+    switch (this.getConstructor()) {
+      case PageBlockHorizontalAlignmentLeft.CONSTRUCTOR:
+        return left.call(this as PageBlockHorizontalAlignmentLeft);
+      case PageBlockHorizontalAlignmentCenter.CONSTRUCTOR:
+        return center.call(this as PageBlockHorizontalAlignmentCenter);
+      case PageBlockHorizontalAlignmentRight.CONSTRUCTOR:
+        return right.call(this as PageBlockHorizontalAlignmentRight);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PageBlockVerticalAlignmentExtensions on PageBlockVerticalAlignment {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PageBlockVerticalAlignmentTop value) top,
+      required TResult Function(PageBlockVerticalAlignmentMiddle value) middle,
+      required TResult Function(PageBlockVerticalAlignmentBottom value)
+          bottom}) {
+    switch (this.getConstructor()) {
+      case PageBlockVerticalAlignmentTop.CONSTRUCTOR:
+        return top.call(this as PageBlockVerticalAlignmentTop);
+      case PageBlockVerticalAlignmentMiddle.CONSTRUCTOR:
+        return middle.call(this as PageBlockVerticalAlignmentMiddle);
+      case PageBlockVerticalAlignmentBottom.CONSTRUCTOR:
+        return bottom.call(this as PageBlockVerticalAlignmentBottom);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PageBlockTableCellExtensions on PageBlockTableCell {
   PageBlockTableCell copy(
           {RichText? text,
           bool? isHeader,
@@ -1809,7 +2470,7 @@ extension PageBlockTableCellCopyExtension on PageBlockTableCell {
           valign: valign ?? this.valign);
 }
 
-extension PageBlockRelatedArticleCopyExtension on PageBlockRelatedArticle {
+extension PageBlockRelatedArticleExtensions on PageBlockRelatedArticle {
   PageBlockRelatedArticle copy(
           {String? url,
           String? title,
@@ -1826,77 +2487,172 @@ extension PageBlockRelatedArticleCopyExtension on PageBlockRelatedArticle {
           publishDate: publishDate ?? this.publishDate);
 }
 
-extension PageBlockTitleCopyExtension on PageBlockTitle {
+extension PageBlockExtensions on PageBlock {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PageBlockTitle value) title,
+      required TResult Function(PageBlockSubtitle value) subtitle,
+      required TResult Function(PageBlockAuthorDate value) authorDate,
+      required TResult Function(PageBlockHeader value) header,
+      required TResult Function(PageBlockSubheader value) subheader,
+      required TResult Function(PageBlockKicker value) kicker,
+      required TResult Function(PageBlockParagraph value) paragraph,
+      required TResult Function(PageBlockPreformatted value) preformatted,
+      required TResult Function(PageBlockFooter value) footer,
+      required TResult Function(PageBlockDivider value) divider,
+      required TResult Function(PageBlockAnchor value) anchor,
+      required TResult Function(PageBlockList value) list,
+      required TResult Function(PageBlockBlockQuote value) blockQuote,
+      required TResult Function(PageBlockPullQuote value) pullQuote,
+      required TResult Function(PageBlockAnimation value) animation,
+      required TResult Function(PageBlockAudio value) audio,
+      required TResult Function(PageBlockPhoto value) photo,
+      required TResult Function(PageBlockVideo value) video,
+      required TResult Function(PageBlockVoiceNote value) voiceNote,
+      required TResult Function(PageBlockCover value) cover,
+      required TResult Function(PageBlockEmbedded value) embedded,
+      required TResult Function(PageBlockEmbeddedPost value) embeddedPost,
+      required TResult Function(PageBlockCollage value) collage,
+      required TResult Function(PageBlockSlideshow value) slideshow,
+      required TResult Function(PageBlockChatLink value) chatLink,
+      required TResult Function(PageBlockTable value) table,
+      required TResult Function(PageBlockDetails value) details,
+      required TResult Function(PageBlockRelatedArticles value) relatedArticles,
+      required TResult Function(PageBlockMap value) map}) {
+    switch (this.getConstructor()) {
+      case PageBlockTitle.CONSTRUCTOR:
+        return title.call(this as PageBlockTitle);
+      case PageBlockSubtitle.CONSTRUCTOR:
+        return subtitle.call(this as PageBlockSubtitle);
+      case PageBlockAuthorDate.CONSTRUCTOR:
+        return authorDate.call(this as PageBlockAuthorDate);
+      case PageBlockHeader.CONSTRUCTOR:
+        return header.call(this as PageBlockHeader);
+      case PageBlockSubheader.CONSTRUCTOR:
+        return subheader.call(this as PageBlockSubheader);
+      case PageBlockKicker.CONSTRUCTOR:
+        return kicker.call(this as PageBlockKicker);
+      case PageBlockParagraph.CONSTRUCTOR:
+        return paragraph.call(this as PageBlockParagraph);
+      case PageBlockPreformatted.CONSTRUCTOR:
+        return preformatted.call(this as PageBlockPreformatted);
+      case PageBlockFooter.CONSTRUCTOR:
+        return footer.call(this as PageBlockFooter);
+      case PageBlockDivider.CONSTRUCTOR:
+        return divider.call(this as PageBlockDivider);
+      case PageBlockAnchor.CONSTRUCTOR:
+        return anchor.call(this as PageBlockAnchor);
+      case PageBlockList.CONSTRUCTOR:
+        return list.call(this as PageBlockList);
+      case PageBlockBlockQuote.CONSTRUCTOR:
+        return blockQuote.call(this as PageBlockBlockQuote);
+      case PageBlockPullQuote.CONSTRUCTOR:
+        return pullQuote.call(this as PageBlockPullQuote);
+      case PageBlockAnimation.CONSTRUCTOR:
+        return animation.call(this as PageBlockAnimation);
+      case PageBlockAudio.CONSTRUCTOR:
+        return audio.call(this as PageBlockAudio);
+      case PageBlockPhoto.CONSTRUCTOR:
+        return photo.call(this as PageBlockPhoto);
+      case PageBlockVideo.CONSTRUCTOR:
+        return video.call(this as PageBlockVideo);
+      case PageBlockVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as PageBlockVoiceNote);
+      case PageBlockCover.CONSTRUCTOR:
+        return cover.call(this as PageBlockCover);
+      case PageBlockEmbedded.CONSTRUCTOR:
+        return embedded.call(this as PageBlockEmbedded);
+      case PageBlockEmbeddedPost.CONSTRUCTOR:
+        return embeddedPost.call(this as PageBlockEmbeddedPost);
+      case PageBlockCollage.CONSTRUCTOR:
+        return collage.call(this as PageBlockCollage);
+      case PageBlockSlideshow.CONSTRUCTOR:
+        return slideshow.call(this as PageBlockSlideshow);
+      case PageBlockChatLink.CONSTRUCTOR:
+        return chatLink.call(this as PageBlockChatLink);
+      case PageBlockTable.CONSTRUCTOR:
+        return table.call(this as PageBlockTable);
+      case PageBlockDetails.CONSTRUCTOR:
+        return details.call(this as PageBlockDetails);
+      case PageBlockRelatedArticles.CONSTRUCTOR:
+        return relatedArticles.call(this as PageBlockRelatedArticles);
+      case PageBlockMap.CONSTRUCTOR:
+        return map.call(this as PageBlockMap);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PageBlockTitleExtensions on PageBlockTitle {
   PageBlockTitle copy({RichText? title}) =>
       PageBlockTitle(title: title ?? this.title);
 }
 
-extension PageBlockSubtitleCopyExtension on PageBlockSubtitle {
+extension PageBlockSubtitleExtensions on PageBlockSubtitle {
   PageBlockSubtitle copy({RichText? subtitle}) =>
       PageBlockSubtitle(subtitle: subtitle ?? this.subtitle);
 }
 
-extension PageBlockAuthorDateCopyExtension on PageBlockAuthorDate {
+extension PageBlockAuthorDateExtensions on PageBlockAuthorDate {
   PageBlockAuthorDate copy({RichText? author, int? publishDate}) =>
       PageBlockAuthorDate(
           author: author ?? this.author,
           publishDate: publishDate ?? this.publishDate);
 }
 
-extension PageBlockHeaderCopyExtension on PageBlockHeader {
+extension PageBlockHeaderExtensions on PageBlockHeader {
   PageBlockHeader copy({RichText? header}) =>
       PageBlockHeader(header: header ?? this.header);
 }
 
-extension PageBlockSubheaderCopyExtension on PageBlockSubheader {
+extension PageBlockSubheaderExtensions on PageBlockSubheader {
   PageBlockSubheader copy({RichText? subheader}) =>
       PageBlockSubheader(subheader: subheader ?? this.subheader);
 }
 
-extension PageBlockKickerCopyExtension on PageBlockKicker {
+extension PageBlockKickerExtensions on PageBlockKicker {
   PageBlockKicker copy({RichText? kicker}) =>
       PageBlockKicker(kicker: kicker ?? this.kicker);
 }
 
-extension PageBlockParagraphCopyExtension on PageBlockParagraph {
+extension PageBlockParagraphExtensions on PageBlockParagraph {
   PageBlockParagraph copy({RichText? text}) =>
       PageBlockParagraph(text: text ?? this.text);
 }
 
-extension PageBlockPreformattedCopyExtension on PageBlockPreformatted {
+extension PageBlockPreformattedExtensions on PageBlockPreformatted {
   PageBlockPreformatted copy({RichText? text, String? language}) =>
       PageBlockPreformatted(
           text: text ?? this.text, language: language ?? this.language);
 }
 
-extension PageBlockFooterCopyExtension on PageBlockFooter {
+extension PageBlockFooterExtensions on PageBlockFooter {
   PageBlockFooter copy({RichText? footer}) =>
       PageBlockFooter(footer: footer ?? this.footer);
 }
 
-extension PageBlockAnchorCopyExtension on PageBlockAnchor {
+extension PageBlockAnchorExtensions on PageBlockAnchor {
   PageBlockAnchor copy({String? name}) =>
       PageBlockAnchor(name: name ?? this.name);
 }
 
-extension PageBlockListCopyExtension on PageBlockList {
+extension PageBlockListExtensions on PageBlockList {
   PageBlockList copy({List<PageBlockListItem>? items}) =>
       PageBlockList(items: items ?? this.items);
 }
 
-extension PageBlockBlockQuoteCopyExtension on PageBlockBlockQuote {
+extension PageBlockBlockQuoteExtensions on PageBlockBlockQuote {
   PageBlockBlockQuote copy({RichText? text, RichText? credit}) =>
       PageBlockBlockQuote(
           text: text ?? this.text, credit: credit ?? this.credit);
 }
 
-extension PageBlockPullQuoteCopyExtension on PageBlockPullQuote {
+extension PageBlockPullQuoteExtensions on PageBlockPullQuote {
   PageBlockPullQuote copy({RichText? text, RichText? credit}) =>
       PageBlockPullQuote(
           text: text ?? this.text, credit: credit ?? this.credit);
 }
 
-extension PageBlockAnimationCopyExtension on PageBlockAnimation {
+extension PageBlockAnimationExtensions on PageBlockAnimation {
   PageBlockAnimation copy(
           {Animation? animation,
           PageBlockCaption? caption,
@@ -1907,13 +2663,13 @@ extension PageBlockAnimationCopyExtension on PageBlockAnimation {
           needAutoplay: needAutoplay ?? this.needAutoplay);
 }
 
-extension PageBlockAudioCopyExtension on PageBlockAudio {
+extension PageBlockAudioExtensions on PageBlockAudio {
   PageBlockAudio copy({Audio? audio, PageBlockCaption? caption}) =>
       PageBlockAudio(
           audio: audio ?? this.audio, caption: caption ?? this.caption);
 }
 
-extension PageBlockPhotoCopyExtension on PageBlockPhoto {
+extension PageBlockPhotoExtensions on PageBlockPhoto {
   PageBlockPhoto copy({Photo? photo, PageBlockCaption? caption, String? url}) =>
       PageBlockPhoto(
           photo: photo ?? this.photo,
@@ -1921,7 +2677,7 @@ extension PageBlockPhotoCopyExtension on PageBlockPhoto {
           url: url ?? this.url);
 }
 
-extension PageBlockVideoCopyExtension on PageBlockVideo {
+extension PageBlockVideoExtensions on PageBlockVideo {
   PageBlockVideo copy(
           {Video? video,
           PageBlockCaption? caption,
@@ -1934,19 +2690,19 @@ extension PageBlockVideoCopyExtension on PageBlockVideo {
           isLooped: isLooped ?? this.isLooped);
 }
 
-extension PageBlockVoiceNoteCopyExtension on PageBlockVoiceNote {
+extension PageBlockVoiceNoteExtensions on PageBlockVoiceNote {
   PageBlockVoiceNote copy({VoiceNote? voiceNote, PageBlockCaption? caption}) =>
       PageBlockVoiceNote(
           voiceNote: voiceNote ?? this.voiceNote,
           caption: caption ?? this.caption);
 }
 
-extension PageBlockCoverCopyExtension on PageBlockCover {
+extension PageBlockCoverExtensions on PageBlockCover {
   PageBlockCover copy({PageBlock? cover}) =>
       PageBlockCover(cover: cover ?? this.cover);
 }
 
-extension PageBlockEmbeddedCopyExtension on PageBlockEmbedded {
+extension PageBlockEmbeddedExtensions on PageBlockEmbedded {
   PageBlockEmbedded copy(
           {String? url,
           String? html,
@@ -1967,7 +2723,7 @@ extension PageBlockEmbeddedCopyExtension on PageBlockEmbedded {
           allowScrolling: allowScrolling ?? this.allowScrolling);
 }
 
-extension PageBlockEmbeddedPostCopyExtension on PageBlockEmbeddedPost {
+extension PageBlockEmbeddedPostExtensions on PageBlockEmbeddedPost {
   PageBlockEmbeddedPost copy(
           {String? url,
           String? author,
@@ -1984,7 +2740,7 @@ extension PageBlockEmbeddedPostCopyExtension on PageBlockEmbeddedPost {
           caption: caption ?? this.caption);
 }
 
-extension PageBlockCollageCopyExtension on PageBlockCollage {
+extension PageBlockCollageExtensions on PageBlockCollage {
   PageBlockCollage copy(
           {List<PageBlock>? pageBlocks, PageBlockCaption? caption}) =>
       PageBlockCollage(
@@ -1992,7 +2748,7 @@ extension PageBlockCollageCopyExtension on PageBlockCollage {
           caption: caption ?? this.caption);
 }
 
-extension PageBlockSlideshowCopyExtension on PageBlockSlideshow {
+extension PageBlockSlideshowExtensions on PageBlockSlideshow {
   PageBlockSlideshow copy(
           {List<PageBlock>? pageBlocks, PageBlockCaption? caption}) =>
       PageBlockSlideshow(
@@ -2000,7 +2756,7 @@ extension PageBlockSlideshowCopyExtension on PageBlockSlideshow {
           caption: caption ?? this.caption);
 }
 
-extension PageBlockChatLinkCopyExtension on PageBlockChatLink {
+extension PageBlockChatLinkExtensions on PageBlockChatLink {
   PageBlockChatLink copy(
           {String? title, ChatPhotoInfo? photo, String? username}) =>
       PageBlockChatLink(
@@ -2009,7 +2765,7 @@ extension PageBlockChatLinkCopyExtension on PageBlockChatLink {
           username: username ?? this.username);
 }
 
-extension PageBlockTableCopyExtension on PageBlockTable {
+extension PageBlockTableExtensions on PageBlockTable {
   PageBlockTable copy(
           {RichText? caption,
           List<List<PageBlockTableCell>>? cells,
@@ -2022,7 +2778,7 @@ extension PageBlockTableCopyExtension on PageBlockTable {
           isStriped: isStriped ?? this.isStriped);
 }
 
-extension PageBlockDetailsCopyExtension on PageBlockDetails {
+extension PageBlockDetailsExtensions on PageBlockDetails {
   PageBlockDetails copy(
           {RichText? header, List<PageBlock>? pageBlocks, bool? isOpen}) =>
       PageBlockDetails(
@@ -2031,14 +2787,14 @@ extension PageBlockDetailsCopyExtension on PageBlockDetails {
           isOpen: isOpen ?? this.isOpen);
 }
 
-extension PageBlockRelatedArticlesCopyExtension on PageBlockRelatedArticles {
+extension PageBlockRelatedArticlesExtensions on PageBlockRelatedArticles {
   PageBlockRelatedArticles copy(
           {RichText? header, List<PageBlockRelatedArticle>? articles}) =>
       PageBlockRelatedArticles(
           header: header ?? this.header, articles: articles ?? this.articles);
 }
 
-extension PageBlockMapCopyExtension on PageBlockMap {
+extension PageBlockMapExtensions on PageBlockMap {
   PageBlockMap copy(
           {Location? location,
           int? zoom,
@@ -2053,7 +2809,7 @@ extension PageBlockMapCopyExtension on PageBlockMap {
           caption: caption ?? this.caption);
 }
 
-extension WebPageInstantViewCopyExtension on WebPageInstantView {
+extension WebPageInstantViewExtensions on WebPageInstantView {
   WebPageInstantView copy(
           {List<PageBlock>? pageBlocks,
           int? viewCount,
@@ -2068,7 +2824,7 @@ extension WebPageInstantViewCopyExtension on WebPageInstantView {
           isFull: isFull ?? this.isFull);
 }
 
-extension WebPageCopyExtension on WebPage {
+extension WebPageExtensions on WebPage {
   WebPage copy(
           {String? url,
           String? displayUrl,
@@ -2115,7 +2871,7 @@ extension WebPageCopyExtension on WebPage {
           instantViewVersion: instantViewVersion ?? this.instantViewVersion);
 }
 
-extension CountryInfoCopyExtension on CountryInfo {
+extension CountryInfoExtensions on CountryInfo {
   CountryInfo copy(
           {String? countryCode,
           String? name,
@@ -2130,12 +2886,12 @@ extension CountryInfoCopyExtension on CountryInfo {
           callingCodes: callingCodes ?? this.callingCodes);
 }
 
-extension CountriesCopyExtension on Countries {
+extension CountriesExtensions on Countries {
   Countries copy({List<CountryInfo>? countries}) =>
       Countries(countries: countries ?? this.countries);
 }
 
-extension PhoneNumberInfoCopyExtension on PhoneNumberInfo {
+extension PhoneNumberInfoExtensions on PhoneNumberInfo {
   PhoneNumberInfo copy(
           {CountryInfo? country,
           String? countryCallingCode,
@@ -2147,18 +2903,18 @@ extension PhoneNumberInfoCopyExtension on PhoneNumberInfo {
               formattedPhoneNumber ?? this.formattedPhoneNumber);
 }
 
-extension BankCardActionOpenUrlCopyExtension on BankCardActionOpenUrl {
+extension BankCardActionOpenUrlExtensions on BankCardActionOpenUrl {
   BankCardActionOpenUrl copy({String? text, String? url}) =>
       BankCardActionOpenUrl(text: text ?? this.text, url: url ?? this.url);
 }
 
-extension BankCardInfoCopyExtension on BankCardInfo {
+extension BankCardInfoExtensions on BankCardInfo {
   BankCardInfo copy({String? title, List<BankCardActionOpenUrl>? actions}) =>
       BankCardInfo(
           title: title ?? this.title, actions: actions ?? this.actions);
 }
 
-extension AddressCopyExtension on Address {
+extension AddressExtensions on Address {
   Address copy(
           {String? countryCode,
           String? state,
@@ -2175,12 +2931,12 @@ extension AddressCopyExtension on Address {
           postalCode: postalCode ?? this.postalCode);
 }
 
-extension LabeledPricePartCopyExtension on LabeledPricePart {
+extension LabeledPricePartExtensions on LabeledPricePart {
   LabeledPricePart copy({String? label, int? amount}) => LabeledPricePart(
       label: label ?? this.label, amount: amount ?? this.amount);
 }
 
-extension InvoiceCopyExtension on Invoice {
+extension InvoiceExtensions on Invoice {
   Invoice copy(
           {String? currency,
           List<LabeledPricePart>? priceParts,
@@ -2207,7 +2963,7 @@ extension InvoiceCopyExtension on Invoice {
           isFlexible: isFlexible ?? this.isFlexible);
 }
 
-extension OrderInfoCopyExtension on OrderInfo {
+extension OrderInfoExtensions on OrderInfo {
   OrderInfo copy(
           {String? name,
           String? phoneNumber,
@@ -2220,7 +2976,7 @@ extension OrderInfoCopyExtension on OrderInfo {
           shippingAddress: shippingAddress ?? this.shippingAddress);
 }
 
-extension ShippingOptionCopyExtension on ShippingOption {
+extension ShippingOptionExtensions on ShippingOption {
   ShippingOption copy(
           {String? id, String? title, List<LabeledPricePart>? priceParts}) =>
       ShippingOption(
@@ -2229,34 +2985,54 @@ extension ShippingOptionCopyExtension on ShippingOption {
           priceParts: priceParts ?? this.priceParts);
 }
 
-extension SavedCredentialsCopyExtension on SavedCredentials {
+extension SavedCredentialsExtensions on SavedCredentials {
   SavedCredentials copy({String? id, String? title}) =>
       SavedCredentials(id: id ?? this.id, title: title ?? this.title);
 }
 
-extension InputCredentialsSavedCopyExtension on InputCredentialsSaved {
+extension InputCredentialsExtensions on InputCredentials {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputCredentialsSaved value) saved,
+      required TResult Function(InputCredentialsNew value) $new,
+      required TResult Function(InputCredentialsApplePay value) applePay,
+      required TResult Function(InputCredentialsGooglePay value) googlePay}) {
+    switch (this.getConstructor()) {
+      case InputCredentialsSaved.CONSTRUCTOR:
+        return saved.call(this as InputCredentialsSaved);
+      case InputCredentialsNew.CONSTRUCTOR:
+        return $new.call(this as InputCredentialsNew);
+      case InputCredentialsApplePay.CONSTRUCTOR:
+        return applePay.call(this as InputCredentialsApplePay);
+      case InputCredentialsGooglePay.CONSTRUCTOR:
+        return googlePay.call(this as InputCredentialsGooglePay);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputCredentialsSavedExtensions on InputCredentialsSaved {
   InputCredentialsSaved copy({String? savedCredentialsId}) =>
       InputCredentialsSaved(
           savedCredentialsId: savedCredentialsId ?? this.savedCredentialsId);
 }
 
-extension InputCredentialsNewCopyExtension on InputCredentialsNew {
+extension InputCredentialsNewExtensions on InputCredentialsNew {
   InputCredentialsNew copy({String? data, bool? allowSave}) =>
       InputCredentialsNew(
           data: data ?? this.data, allowSave: allowSave ?? this.allowSave);
 }
 
-extension InputCredentialsApplePayCopyExtension on InputCredentialsApplePay {
+extension InputCredentialsApplePayExtensions on InputCredentialsApplePay {
   InputCredentialsApplePay copy({String? data}) =>
       InputCredentialsApplePay(data: data ?? this.data);
 }
 
-extension InputCredentialsGooglePayCopyExtension on InputCredentialsGooglePay {
+extension InputCredentialsGooglePayExtensions on InputCredentialsGooglePay {
   InputCredentialsGooglePay copy({String? data}) =>
       InputCredentialsGooglePay(data: data ?? this.data);
 }
 
-extension PaymentsProviderStripeCopyExtension on PaymentsProviderStripe {
+extension PaymentsProviderStripeExtensions on PaymentsProviderStripe {
   PaymentsProviderStripe copy(
           {String? publishableKey,
           bool? needCountry,
@@ -2269,7 +3045,7 @@ extension PaymentsProviderStripeCopyExtension on PaymentsProviderStripe {
           needCardholderName: needCardholderName ?? this.needCardholderName);
 }
 
-extension PaymentFormCopyExtension on PaymentForm {
+extension PaymentFormExtensions on PaymentForm {
   PaymentForm copy(
           {Invoice? invoice,
           String? url,
@@ -2288,7 +3064,7 @@ extension PaymentFormCopyExtension on PaymentForm {
           needPassword: needPassword ?? this.needPassword);
 }
 
-extension ValidatedOrderInfoCopyExtension on ValidatedOrderInfo {
+extension ValidatedOrderInfoExtensions on ValidatedOrderInfo {
   ValidatedOrderInfo copy(
           {String? orderInfoId, List<ShippingOption>? shippingOptions}) =>
       ValidatedOrderInfo(
@@ -2296,13 +3072,13 @@ extension ValidatedOrderInfoCopyExtension on ValidatedOrderInfo {
           shippingOptions: shippingOptions ?? this.shippingOptions);
 }
 
-extension PaymentResultCopyExtension on PaymentResult {
+extension PaymentResultExtensions on PaymentResult {
   PaymentResult copy({bool? success, String? verificationUrl}) => PaymentResult(
       success: success ?? this.success,
       verificationUrl: verificationUrl ?? this.verificationUrl);
 }
 
-extension PaymentReceiptCopyExtension on PaymentReceipt {
+extension PaymentReceiptExtensions on PaymentReceipt {
   PaymentReceipt copy(
           {int? date,
           int? paymentsProviderUserId,
@@ -2320,19 +3096,80 @@ extension PaymentReceiptCopyExtension on PaymentReceipt {
           credentialsTitle: credentialsTitle ?? this.credentialsTitle);
 }
 
-extension DatedFileCopyExtension on DatedFile {
+extension DatedFileExtensions on DatedFile {
   DatedFile copy({File? file, int? date}) =>
       DatedFile(file: file ?? this.file, date: date ?? this.date);
 }
 
-extension DateCopyExtension on Date {
+extension PassportElementTypeExtensions on PassportElementType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PassportElementTypePersonalDetails value)
+          personalDetails,
+      required TResult Function(PassportElementTypePassport value) passport,
+      required TResult Function(PassportElementTypeDriverLicense value)
+          driverLicense,
+      required TResult Function(PassportElementTypeIdentityCard value)
+          identityCard,
+      required TResult Function(PassportElementTypeInternalPassport value)
+          internalPassport,
+      required TResult Function(PassportElementTypeAddress value) address,
+      required TResult Function(PassportElementTypeUtilityBill value)
+          utilityBill,
+      required TResult Function(PassportElementTypeBankStatement value)
+          bankStatement,
+      required TResult Function(PassportElementTypeRentalAgreement value)
+          rentalAgreement,
+      required TResult Function(PassportElementTypePassportRegistration value)
+          passportRegistration,
+      required TResult Function(PassportElementTypeTemporaryRegistration value)
+          temporaryRegistration,
+      required TResult Function(PassportElementTypePhoneNumber value)
+          phoneNumber,
+      required TResult Function(PassportElementTypeEmailAddress value)
+          emailAddress}) {
+    switch (this.getConstructor()) {
+      case PassportElementTypePersonalDetails.CONSTRUCTOR:
+        return personalDetails.call(this as PassportElementTypePersonalDetails);
+      case PassportElementTypePassport.CONSTRUCTOR:
+        return passport.call(this as PassportElementTypePassport);
+      case PassportElementTypeDriverLicense.CONSTRUCTOR:
+        return driverLicense.call(this as PassportElementTypeDriverLicense);
+      case PassportElementTypeIdentityCard.CONSTRUCTOR:
+        return identityCard.call(this as PassportElementTypeIdentityCard);
+      case PassportElementTypeInternalPassport.CONSTRUCTOR:
+        return internalPassport
+            .call(this as PassportElementTypeInternalPassport);
+      case PassportElementTypeAddress.CONSTRUCTOR:
+        return address.call(this as PassportElementTypeAddress);
+      case PassportElementTypeUtilityBill.CONSTRUCTOR:
+        return utilityBill.call(this as PassportElementTypeUtilityBill);
+      case PassportElementTypeBankStatement.CONSTRUCTOR:
+        return bankStatement.call(this as PassportElementTypeBankStatement);
+      case PassportElementTypeRentalAgreement.CONSTRUCTOR:
+        return rentalAgreement.call(this as PassportElementTypeRentalAgreement);
+      case PassportElementTypePassportRegistration.CONSTRUCTOR:
+        return passportRegistration
+            .call(this as PassportElementTypePassportRegistration);
+      case PassportElementTypeTemporaryRegistration.CONSTRUCTOR:
+        return temporaryRegistration
+            .call(this as PassportElementTypeTemporaryRegistration);
+      case PassportElementTypePhoneNumber.CONSTRUCTOR:
+        return phoneNumber.call(this as PassportElementTypePhoneNumber);
+      case PassportElementTypeEmailAddress.CONSTRUCTOR:
+        return emailAddress.call(this as PassportElementTypeEmailAddress);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension DateExtensions on Date {
   Date copy({int? day, int? month, int? year}) => Date(
       day: day ?? this.day,
       month: month ?? this.month,
       year: year ?? this.year);
 }
 
-extension PersonalDetailsCopyExtension on PersonalDetails {
+extension PersonalDetailsExtensions on PersonalDetails {
   PersonalDetails copy(
           {String? firstName,
           String? middleName,
@@ -2358,7 +3195,7 @@ extension PersonalDetailsCopyExtension on PersonalDetails {
               residenceCountryCode ?? this.residenceCountryCode);
 }
 
-extension IdentityDocumentCopyExtension on IdentityDocument {
+extension IdentityDocumentExtensions on IdentityDocument {
   IdentityDocument copy(
           {String? number,
           Date? expiryDate,
@@ -2375,7 +3212,7 @@ extension IdentityDocumentCopyExtension on IdentityDocument {
           translation: translation ?? this.translation);
 }
 
-extension InputIdentityDocumentCopyExtension on InputIdentityDocument {
+extension InputIdentityDocumentExtensions on InputIdentityDocument {
   InputIdentityDocument copy(
           {String? number,
           Date? expiryDate,
@@ -2392,7 +3229,7 @@ extension InputIdentityDocumentCopyExtension on InputIdentityDocument {
           translation: translation ?? this.translation);
 }
 
-extension PersonalDocumentCopyExtension on PersonalDocument {
+extension PersonalDocumentExtensions on PersonalDocument {
   PersonalDocument copy(
           {List<DatedFile>? files, List<DatedFile>? translation}) =>
       PersonalDocument(
@@ -2400,7 +3237,7 @@ extension PersonalDocumentCopyExtension on PersonalDocument {
           translation: translation ?? this.translation);
 }
 
-extension InputPersonalDocumentCopyExtension on InputPersonalDocument {
+extension InputPersonalDocumentExtensions on InputPersonalDocument {
   InputPersonalDocument copy(
           {List<InputFile>? files, List<InputFile>? translation}) =>
       InputPersonalDocument(
@@ -2408,65 +3245,120 @@ extension InputPersonalDocumentCopyExtension on InputPersonalDocument {
           translation: translation ?? this.translation);
 }
 
-extension PassportElementPersonalDetailsCopyExtension
+extension PassportElementExtensions on PassportElement {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PassportElementPersonalDetails value)
+          personalDetails,
+      required TResult Function(PassportElementPassport value) passport,
+      required TResult Function(PassportElementDriverLicense value)
+          driverLicense,
+      required TResult Function(PassportElementIdentityCard value) identityCard,
+      required TResult Function(PassportElementInternalPassport value)
+          internalPassport,
+      required TResult Function(PassportElementAddress value) address,
+      required TResult Function(PassportElementUtilityBill value) utilityBill,
+      required TResult Function(PassportElementBankStatement value)
+          bankStatement,
+      required TResult Function(PassportElementRentalAgreement value)
+          rentalAgreement,
+      required TResult Function(PassportElementPassportRegistration value)
+          passportRegistration,
+      required TResult Function(PassportElementTemporaryRegistration value)
+          temporaryRegistration,
+      required TResult Function(PassportElementPhoneNumber value) phoneNumber,
+      required TResult Function(PassportElementEmailAddress value)
+          emailAddress}) {
+    switch (this.getConstructor()) {
+      case PassportElementPersonalDetails.CONSTRUCTOR:
+        return personalDetails.call(this as PassportElementPersonalDetails);
+      case PassportElementPassport.CONSTRUCTOR:
+        return passport.call(this as PassportElementPassport);
+      case PassportElementDriverLicense.CONSTRUCTOR:
+        return driverLicense.call(this as PassportElementDriverLicense);
+      case PassportElementIdentityCard.CONSTRUCTOR:
+        return identityCard.call(this as PassportElementIdentityCard);
+      case PassportElementInternalPassport.CONSTRUCTOR:
+        return internalPassport.call(this as PassportElementInternalPassport);
+      case PassportElementAddress.CONSTRUCTOR:
+        return address.call(this as PassportElementAddress);
+      case PassportElementUtilityBill.CONSTRUCTOR:
+        return utilityBill.call(this as PassportElementUtilityBill);
+      case PassportElementBankStatement.CONSTRUCTOR:
+        return bankStatement.call(this as PassportElementBankStatement);
+      case PassportElementRentalAgreement.CONSTRUCTOR:
+        return rentalAgreement.call(this as PassportElementRentalAgreement);
+      case PassportElementPassportRegistration.CONSTRUCTOR:
+        return passportRegistration
+            .call(this as PassportElementPassportRegistration);
+      case PassportElementTemporaryRegistration.CONSTRUCTOR:
+        return temporaryRegistration
+            .call(this as PassportElementTemporaryRegistration);
+      case PassportElementPhoneNumber.CONSTRUCTOR:
+        return phoneNumber.call(this as PassportElementPhoneNumber);
+      case PassportElementEmailAddress.CONSTRUCTOR:
+        return emailAddress.call(this as PassportElementEmailAddress);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PassportElementPersonalDetailsExtensions
     on PassportElementPersonalDetails {
   PassportElementPersonalDetails copy({PersonalDetails? personalDetails}) =>
       PassportElementPersonalDetails(
           personalDetails: personalDetails ?? this.personalDetails);
 }
 
-extension PassportElementPassportCopyExtension on PassportElementPassport {
+extension PassportElementPassportExtensions on PassportElementPassport {
   PassportElementPassport copy({IdentityDocument? passport}) =>
       PassportElementPassport(passport: passport ?? this.passport);
 }
 
-extension PassportElementDriverLicenseCopyExtension
+extension PassportElementDriverLicenseExtensions
     on PassportElementDriverLicense {
   PassportElementDriverLicense copy({IdentityDocument? driverLicense}) =>
       PassportElementDriverLicense(
           driverLicense: driverLicense ?? this.driverLicense);
 }
 
-extension PassportElementIdentityCardCopyExtension
-    on PassportElementIdentityCard {
+extension PassportElementIdentityCardExtensions on PassportElementIdentityCard {
   PassportElementIdentityCard copy({IdentityDocument? identityCard}) =>
       PassportElementIdentityCard(
           identityCard: identityCard ?? this.identityCard);
 }
 
-extension PassportElementInternalPassportCopyExtension
+extension PassportElementInternalPassportExtensions
     on PassportElementInternalPassport {
   PassportElementInternalPassport copy({IdentityDocument? internalPassport}) =>
       PassportElementInternalPassport(
           internalPassport: internalPassport ?? this.internalPassport);
 }
 
-extension PassportElementAddressCopyExtension on PassportElementAddress {
+extension PassportElementAddressExtensions on PassportElementAddress {
   PassportElementAddress copy({Address? address}) =>
       PassportElementAddress(address: address ?? this.address);
 }
 
-extension PassportElementUtilityBillCopyExtension
-    on PassportElementUtilityBill {
+extension PassportElementUtilityBillExtensions on PassportElementUtilityBill {
   PassportElementUtilityBill copy({PersonalDocument? utilityBill}) =>
       PassportElementUtilityBill(utilityBill: utilityBill ?? this.utilityBill);
 }
 
-extension PassportElementBankStatementCopyExtension
+extension PassportElementBankStatementExtensions
     on PassportElementBankStatement {
   PassportElementBankStatement copy({PersonalDocument? bankStatement}) =>
       PassportElementBankStatement(
           bankStatement: bankStatement ?? this.bankStatement);
 }
 
-extension PassportElementRentalAgreementCopyExtension
+extension PassportElementRentalAgreementExtensions
     on PassportElementRentalAgreement {
   PassportElementRentalAgreement copy({PersonalDocument? rentalAgreement}) =>
       PassportElementRentalAgreement(
           rentalAgreement: rentalAgreement ?? this.rentalAgreement);
 }
 
-extension PassportElementPassportRegistrationCopyExtension
+extension PassportElementPassportRegistrationExtensions
     on PassportElementPassportRegistration {
   PassportElementPassportRegistration copy(
           {PersonalDocument? passportRegistration}) =>
@@ -2475,7 +3367,7 @@ extension PassportElementPassportRegistrationCopyExtension
               passportRegistration ?? this.passportRegistration);
 }
 
-extension PassportElementTemporaryRegistrationCopyExtension
+extension PassportElementTemporaryRegistrationExtensions
     on PassportElementTemporaryRegistration {
   PassportElementTemporaryRegistration copy(
           {PersonalDocument? temporaryRegistration}) =>
@@ -2484,20 +3376,81 @@ extension PassportElementTemporaryRegistrationCopyExtension
               temporaryRegistration ?? this.temporaryRegistration);
 }
 
-extension PassportElementPhoneNumberCopyExtension
-    on PassportElementPhoneNumber {
+extension PassportElementPhoneNumberExtensions on PassportElementPhoneNumber {
   PassportElementPhoneNumber copy({String? phoneNumber}) =>
       PassportElementPhoneNumber(phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
-extension PassportElementEmailAddressCopyExtension
-    on PassportElementEmailAddress {
+extension PassportElementEmailAddressExtensions on PassportElementEmailAddress {
   PassportElementEmailAddress copy({String? emailAddress}) =>
       PassportElementEmailAddress(
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
-extension InputPassportElementPersonalDetailsCopyExtension
+extension InputPassportElementExtensions on InputPassportElement {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputPassportElementPersonalDetails value)
+          personalDetails,
+      required TResult Function(InputPassportElementPassport value) passport,
+      required TResult Function(InputPassportElementDriverLicense value)
+          driverLicense,
+      required TResult Function(InputPassportElementIdentityCard value)
+          identityCard,
+      required TResult Function(InputPassportElementInternalPassport value)
+          internalPassport,
+      required TResult Function(InputPassportElementAddress value) address,
+      required TResult Function(InputPassportElementUtilityBill value)
+          utilityBill,
+      required TResult Function(InputPassportElementBankStatement value)
+          bankStatement,
+      required TResult Function(InputPassportElementRentalAgreement value)
+          rentalAgreement,
+      required TResult Function(InputPassportElementPassportRegistration value)
+          passportRegistration,
+      required TResult Function(InputPassportElementTemporaryRegistration value)
+          temporaryRegistration,
+      required TResult Function(InputPassportElementPhoneNumber value)
+          phoneNumber,
+      required TResult Function(InputPassportElementEmailAddress value)
+          emailAddress}) {
+    switch (this.getConstructor()) {
+      case InputPassportElementPersonalDetails.CONSTRUCTOR:
+        return personalDetails
+            .call(this as InputPassportElementPersonalDetails);
+      case InputPassportElementPassport.CONSTRUCTOR:
+        return passport.call(this as InputPassportElementPassport);
+      case InputPassportElementDriverLicense.CONSTRUCTOR:
+        return driverLicense.call(this as InputPassportElementDriverLicense);
+      case InputPassportElementIdentityCard.CONSTRUCTOR:
+        return identityCard.call(this as InputPassportElementIdentityCard);
+      case InputPassportElementInternalPassport.CONSTRUCTOR:
+        return internalPassport
+            .call(this as InputPassportElementInternalPassport);
+      case InputPassportElementAddress.CONSTRUCTOR:
+        return address.call(this as InputPassportElementAddress);
+      case InputPassportElementUtilityBill.CONSTRUCTOR:
+        return utilityBill.call(this as InputPassportElementUtilityBill);
+      case InputPassportElementBankStatement.CONSTRUCTOR:
+        return bankStatement.call(this as InputPassportElementBankStatement);
+      case InputPassportElementRentalAgreement.CONSTRUCTOR:
+        return rentalAgreement
+            .call(this as InputPassportElementRentalAgreement);
+      case InputPassportElementPassportRegistration.CONSTRUCTOR:
+        return passportRegistration
+            .call(this as InputPassportElementPassportRegistration);
+      case InputPassportElementTemporaryRegistration.CONSTRUCTOR:
+        return temporaryRegistration
+            .call(this as InputPassportElementTemporaryRegistration);
+      case InputPassportElementPhoneNumber.CONSTRUCTOR:
+        return phoneNumber.call(this as InputPassportElementPhoneNumber);
+      case InputPassportElementEmailAddress.CONSTRUCTOR:
+        return emailAddress.call(this as InputPassportElementEmailAddress);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputPassportElementPersonalDetailsExtensions
     on InputPassportElementPersonalDetails {
   InputPassportElementPersonalDetails copy(
           {PersonalDetails? personalDetails}) =>
@@ -2505,13 +3458,13 @@ extension InputPassportElementPersonalDetailsCopyExtension
           personalDetails: personalDetails ?? this.personalDetails);
 }
 
-extension InputPassportElementPassportCopyExtension
+extension InputPassportElementPassportExtensions
     on InputPassportElementPassport {
   InputPassportElementPassport copy({InputIdentityDocument? passport}) =>
       InputPassportElementPassport(passport: passport ?? this.passport);
 }
 
-extension InputPassportElementDriverLicenseCopyExtension
+extension InputPassportElementDriverLicenseExtensions
     on InputPassportElementDriverLicense {
   InputPassportElementDriverLicense copy(
           {InputIdentityDocument? driverLicense}) =>
@@ -2519,7 +3472,7 @@ extension InputPassportElementDriverLicenseCopyExtension
           driverLicense: driverLicense ?? this.driverLicense);
 }
 
-extension InputPassportElementIdentityCardCopyExtension
+extension InputPassportElementIdentityCardExtensions
     on InputPassportElementIdentityCard {
   InputPassportElementIdentityCard copy(
           {InputIdentityDocument? identityCard}) =>
@@ -2527,7 +3480,7 @@ extension InputPassportElementIdentityCardCopyExtension
           identityCard: identityCard ?? this.identityCard);
 }
 
-extension InputPassportElementInternalPassportCopyExtension
+extension InputPassportElementInternalPassportExtensions
     on InputPassportElementInternalPassport {
   InputPassportElementInternalPassport copy(
           {InputIdentityDocument? internalPassport}) =>
@@ -2535,20 +3488,19 @@ extension InputPassportElementInternalPassportCopyExtension
           internalPassport: internalPassport ?? this.internalPassport);
 }
 
-extension InputPassportElementAddressCopyExtension
-    on InputPassportElementAddress {
+extension InputPassportElementAddressExtensions on InputPassportElementAddress {
   InputPassportElementAddress copy({Address? address}) =>
       InputPassportElementAddress(address: address ?? this.address);
 }
 
-extension InputPassportElementUtilityBillCopyExtension
+extension InputPassportElementUtilityBillExtensions
     on InputPassportElementUtilityBill {
   InputPassportElementUtilityBill copy({InputPersonalDocument? utilityBill}) =>
       InputPassportElementUtilityBill(
           utilityBill: utilityBill ?? this.utilityBill);
 }
 
-extension InputPassportElementBankStatementCopyExtension
+extension InputPassportElementBankStatementExtensions
     on InputPassportElementBankStatement {
   InputPassportElementBankStatement copy(
           {InputPersonalDocument? bankStatement}) =>
@@ -2556,7 +3508,7 @@ extension InputPassportElementBankStatementCopyExtension
           bankStatement: bankStatement ?? this.bankStatement);
 }
 
-extension InputPassportElementRentalAgreementCopyExtension
+extension InputPassportElementRentalAgreementExtensions
     on InputPassportElementRentalAgreement {
   InputPassportElementRentalAgreement copy(
           {InputPersonalDocument? rentalAgreement}) =>
@@ -2564,7 +3516,7 @@ extension InputPassportElementRentalAgreementCopyExtension
           rentalAgreement: rentalAgreement ?? this.rentalAgreement);
 }
 
-extension InputPassportElementPassportRegistrationCopyExtension
+extension InputPassportElementPassportRegistrationExtensions
     on InputPassportElementPassportRegistration {
   InputPassportElementPassportRegistration copy(
           {InputPersonalDocument? passportRegistration}) =>
@@ -2573,7 +3525,7 @@ extension InputPassportElementPassportRegistrationCopyExtension
               passportRegistration ?? this.passportRegistration);
 }
 
-extension InputPassportElementTemporaryRegistrationCopyExtension
+extension InputPassportElementTemporaryRegistrationExtensions
     on InputPassportElementTemporaryRegistration {
   InputPassportElementTemporaryRegistration copy(
           {InputPersonalDocument? temporaryRegistration}) =>
@@ -2582,46 +3534,90 @@ extension InputPassportElementTemporaryRegistrationCopyExtension
               temporaryRegistration ?? this.temporaryRegistration);
 }
 
-extension InputPassportElementPhoneNumberCopyExtension
+extension InputPassportElementPhoneNumberExtensions
     on InputPassportElementPhoneNumber {
   InputPassportElementPhoneNumber copy({String? phoneNumber}) =>
       InputPassportElementPhoneNumber(
           phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
-extension InputPassportElementEmailAddressCopyExtension
+extension InputPassportElementEmailAddressExtensions
     on InputPassportElementEmailAddress {
   InputPassportElementEmailAddress copy({String? emailAddress}) =>
       InputPassportElementEmailAddress(
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
-extension PassportElementsCopyExtension on PassportElements {
+extension PassportElementsExtensions on PassportElements {
   PassportElements copy({List<PassportElement>? elements}) =>
       PassportElements(elements: elements ?? this.elements);
 }
 
-extension PassportElementErrorSourceDataFieldCopyExtension
+extension PassportElementErrorSourceExtensions on PassportElementErrorSource {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PassportElementErrorSourceUnspecified value)
+          unspecified,
+      required TResult Function(PassportElementErrorSourceDataField value)
+          dataField,
+      required TResult Function(PassportElementErrorSourceFrontSide value)
+          frontSide,
+      required TResult Function(PassportElementErrorSourceReverseSide value)
+          reverseSide,
+      required TResult Function(PassportElementErrorSourceSelfie value) selfie,
+      required TResult Function(PassportElementErrorSourceTranslationFile value)
+          translationFile,
+      required TResult Function(
+              PassportElementErrorSourceTranslationFiles value)
+          translationFiles,
+      required TResult Function(PassportElementErrorSourceFile value) file,
+      required TResult Function(PassportElementErrorSourceFiles value) files}) {
+    switch (this.getConstructor()) {
+      case PassportElementErrorSourceUnspecified.CONSTRUCTOR:
+        return unspecified.call(this as PassportElementErrorSourceUnspecified);
+      case PassportElementErrorSourceDataField.CONSTRUCTOR:
+        return dataField.call(this as PassportElementErrorSourceDataField);
+      case PassportElementErrorSourceFrontSide.CONSTRUCTOR:
+        return frontSide.call(this as PassportElementErrorSourceFrontSide);
+      case PassportElementErrorSourceReverseSide.CONSTRUCTOR:
+        return reverseSide.call(this as PassportElementErrorSourceReverseSide);
+      case PassportElementErrorSourceSelfie.CONSTRUCTOR:
+        return selfie.call(this as PassportElementErrorSourceSelfie);
+      case PassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        return translationFile
+            .call(this as PassportElementErrorSourceTranslationFile);
+      case PassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+        return translationFiles
+            .call(this as PassportElementErrorSourceTranslationFiles);
+      case PassportElementErrorSourceFile.CONSTRUCTOR:
+        return file.call(this as PassportElementErrorSourceFile);
+      case PassportElementErrorSourceFiles.CONSTRUCTOR:
+        return files.call(this as PassportElementErrorSourceFiles);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PassportElementErrorSourceDataFieldExtensions
     on PassportElementErrorSourceDataField {
   PassportElementErrorSourceDataField copy({String? fieldName}) =>
       PassportElementErrorSourceDataField(
           fieldName: fieldName ?? this.fieldName);
 }
 
-extension PassportElementErrorSourceTranslationFileCopyExtension
+extension PassportElementErrorSourceTranslationFileExtensions
     on PassportElementErrorSourceTranslationFile {
   PassportElementErrorSourceTranslationFile copy({int? fileIndex}) =>
       PassportElementErrorSourceTranslationFile(
           fileIndex: fileIndex ?? this.fileIndex);
 }
 
-extension PassportElementErrorSourceFileCopyExtension
+extension PassportElementErrorSourceFileExtensions
     on PassportElementErrorSourceFile {
   PassportElementErrorSourceFile copy({int? fileIndex}) =>
       PassportElementErrorSourceFile(fileIndex: fileIndex ?? this.fileIndex);
 }
 
-extension PassportElementErrorCopyExtension on PassportElementError {
+extension PassportElementErrorExtensions on PassportElementError {
   PassportElementError copy(
           {PassportElementType? type,
           String? message,
@@ -2632,7 +3628,7 @@ extension PassportElementErrorCopyExtension on PassportElementError {
           source: source ?? this.source);
 }
 
-extension PassportSuitableElementCopyExtension on PassportSuitableElement {
+extension PassportSuitableElementExtensions on PassportSuitableElement {
   PassportSuitableElement copy(
           {PassportElementType? type,
           bool? isSelfieRequired,
@@ -2647,14 +3643,14 @@ extension PassportSuitableElementCopyExtension on PassportSuitableElement {
               isNativeNameRequired ?? this.isNativeNameRequired);
 }
 
-extension PassportRequiredElementCopyExtension on PassportRequiredElement {
+extension PassportRequiredElementExtensions on PassportRequiredElement {
   PassportRequiredElement copy(
           {List<PassportSuitableElement>? suitableElements}) =>
       PassportRequiredElement(
           suitableElements: suitableElements ?? this.suitableElements);
 }
 
-extension PassportAuthorizationFormCopyExtension on PassportAuthorizationForm {
+extension PassportAuthorizationFormExtensions on PassportAuthorizationForm {
   PassportAuthorizationForm copy(
           {int? id,
           List<PassportRequiredElement>? requiredElements,
@@ -2665,8 +3661,7 @@ extension PassportAuthorizationFormCopyExtension on PassportAuthorizationForm {
           privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl);
 }
 
-extension PassportElementsWithErrorsCopyExtension
-    on PassportElementsWithErrors {
+extension PassportElementsWithErrorsExtensions on PassportElementsWithErrors {
   PassportElementsWithErrors copy(
           {List<PassportElement>? elements,
           List<PassportElementError>? errors}) =>
@@ -2674,7 +3669,7 @@ extension PassportElementsWithErrorsCopyExtension
           elements: elements ?? this.elements, errors: errors ?? this.errors);
 }
 
-extension EncryptedCredentialsCopyExtension on EncryptedCredentials {
+extension EncryptedCredentialsExtensions on EncryptedCredentials {
   EncryptedCredentials copy({String? data, String? hash, String? secret}) =>
       EncryptedCredentials(
           data: data ?? this.data,
@@ -2682,7 +3677,7 @@ extension EncryptedCredentialsCopyExtension on EncryptedCredentials {
           secret: secret ?? this.secret);
 }
 
-extension EncryptedPassportElementCopyExtension on EncryptedPassportElement {
+extension EncryptedPassportElementExtensions on EncryptedPassportElement {
   EncryptedPassportElement copy(
           {PassportElementType? type,
           String? data,
@@ -2705,14 +3700,66 @@ extension EncryptedPassportElementCopyExtension on EncryptedPassportElement {
           hash: hash ?? this.hash);
 }
 
-extension InputPassportElementErrorSourceUnspecifiedCopyExtension
+extension InputPassportElementErrorSourceExtensions
+    on InputPassportElementErrorSource {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(
+              InputPassportElementErrorSourceUnspecified value)
+          unspecified,
+      required TResult Function(InputPassportElementErrorSourceDataField value)
+          dataField,
+      required TResult Function(InputPassportElementErrorSourceFrontSide value)
+          frontSide,
+      required TResult Function(
+              InputPassportElementErrorSourceReverseSide value)
+          reverseSide,
+      required TResult Function(InputPassportElementErrorSourceSelfie value)
+          selfie,
+      required TResult Function(
+              InputPassportElementErrorSourceTranslationFile value)
+          translationFile,
+      required TResult Function(
+              InputPassportElementErrorSourceTranslationFiles value)
+          translationFiles,
+      required TResult Function(InputPassportElementErrorSourceFile value) file,
+      required TResult Function(InputPassportElementErrorSourceFiles value)
+          files}) {
+    switch (this.getConstructor()) {
+      case InputPassportElementErrorSourceUnspecified.CONSTRUCTOR:
+        return unspecified
+            .call(this as InputPassportElementErrorSourceUnspecified);
+      case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
+        return dataField.call(this as InputPassportElementErrorSourceDataField);
+      case InputPassportElementErrorSourceFrontSide.CONSTRUCTOR:
+        return frontSide.call(this as InputPassportElementErrorSourceFrontSide);
+      case InputPassportElementErrorSourceReverseSide.CONSTRUCTOR:
+        return reverseSide
+            .call(this as InputPassportElementErrorSourceReverseSide);
+      case InputPassportElementErrorSourceSelfie.CONSTRUCTOR:
+        return selfie.call(this as InputPassportElementErrorSourceSelfie);
+      case InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        return translationFile
+            .call(this as InputPassportElementErrorSourceTranslationFile);
+      case InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+        return translationFiles
+            .call(this as InputPassportElementErrorSourceTranslationFiles);
+      case InputPassportElementErrorSourceFile.CONSTRUCTOR:
+        return file.call(this as InputPassportElementErrorSourceFile);
+      case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
+        return files.call(this as InputPassportElementErrorSourceFiles);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputPassportElementErrorSourceUnspecifiedExtensions
     on InputPassportElementErrorSourceUnspecified {
   InputPassportElementErrorSourceUnspecified copy({String? elementHash}) =>
       InputPassportElementErrorSourceUnspecified(
           elementHash: elementHash ?? this.elementHash);
 }
 
-extension InputPassportElementErrorSourceDataFieldCopyExtension
+extension InputPassportElementErrorSourceDataFieldExtensions
     on InputPassportElementErrorSourceDataField {
   InputPassportElementErrorSourceDataField copy(
           {String? fieldName, String? dataHash}) =>
@@ -2721,35 +3768,35 @@ extension InputPassportElementErrorSourceDataFieldCopyExtension
           dataHash: dataHash ?? this.dataHash);
 }
 
-extension InputPassportElementErrorSourceFrontSideCopyExtension
+extension InputPassportElementErrorSourceFrontSideExtensions
     on InputPassportElementErrorSourceFrontSide {
   InputPassportElementErrorSourceFrontSide copy({String? fileHash}) =>
       InputPassportElementErrorSourceFrontSide(
           fileHash: fileHash ?? this.fileHash);
 }
 
-extension InputPassportElementErrorSourceReverseSideCopyExtension
+extension InputPassportElementErrorSourceReverseSideExtensions
     on InputPassportElementErrorSourceReverseSide {
   InputPassportElementErrorSourceReverseSide copy({String? fileHash}) =>
       InputPassportElementErrorSourceReverseSide(
           fileHash: fileHash ?? this.fileHash);
 }
 
-extension InputPassportElementErrorSourceSelfieCopyExtension
+extension InputPassportElementErrorSourceSelfieExtensions
     on InputPassportElementErrorSourceSelfie {
   InputPassportElementErrorSourceSelfie copy({String? fileHash}) =>
       InputPassportElementErrorSourceSelfie(
           fileHash: fileHash ?? this.fileHash);
 }
 
-extension InputPassportElementErrorSourceTranslationFileCopyExtension
+extension InputPassportElementErrorSourceTranslationFileExtensions
     on InputPassportElementErrorSourceTranslationFile {
   InputPassportElementErrorSourceTranslationFile copy({String? fileHash}) =>
       InputPassportElementErrorSourceTranslationFile(
           fileHash: fileHash ?? this.fileHash);
 }
 
-extension InputPassportElementErrorSourceTranslationFilesCopyExtension
+extension InputPassportElementErrorSourceTranslationFilesExtensions
     on InputPassportElementErrorSourceTranslationFiles {
   InputPassportElementErrorSourceTranslationFiles copy(
           {List<String>? fileHashes}) =>
@@ -2757,20 +3804,20 @@ extension InputPassportElementErrorSourceTranslationFilesCopyExtension
           fileHashes: fileHashes ?? this.fileHashes);
 }
 
-extension InputPassportElementErrorSourceFileCopyExtension
+extension InputPassportElementErrorSourceFileExtensions
     on InputPassportElementErrorSourceFile {
   InputPassportElementErrorSourceFile copy({String? fileHash}) =>
       InputPassportElementErrorSourceFile(fileHash: fileHash ?? this.fileHash);
 }
 
-extension InputPassportElementErrorSourceFilesCopyExtension
+extension InputPassportElementErrorSourceFilesExtensions
     on InputPassportElementErrorSourceFiles {
   InputPassportElementErrorSourceFiles copy({List<String>? fileHashes}) =>
       InputPassportElementErrorSourceFiles(
           fileHashes: fileHashes ?? this.fileHashes);
 }
 
-extension InputPassportElementErrorCopyExtension on InputPassportElementError {
+extension InputPassportElementErrorExtensions on InputPassportElementError {
   InputPassportElementError copy(
           {PassportElementType? type,
           String? message,
@@ -2781,12 +3828,184 @@ extension InputPassportElementErrorCopyExtension on InputPassportElementError {
           source: source ?? this.source);
 }
 
-extension MessageTextCopyExtension on MessageText {
+extension MessageContentExtensions on MessageContent {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageText value) messageText,
+      required TResult Function(MessageAnimation value) messageAnimation,
+      required TResult Function(MessageAudio value) messageAudio,
+      required TResult Function(MessageDocument value) messageDocument,
+      required TResult Function(MessagePhoto value) messagePhoto,
+      required TResult Function(MessageExpiredPhoto value) messageExpiredPhoto,
+      required TResult Function(MessageSticker value) messageSticker,
+      required TResult Function(MessageVideo value) messageVideo,
+      required TResult Function(MessageExpiredVideo value) messageExpiredVideo,
+      required TResult Function(MessageVideoNote value) messageVideoNote,
+      required TResult Function(MessageVoiceNote value) messageVoiceNote,
+      required TResult Function(MessageLocation value) messageLocation,
+      required TResult Function(MessageVenue value) messageVenue,
+      required TResult Function(MessageContact value) messageContact,
+      required TResult Function(MessageDice value) messageDice,
+      required TResult Function(MessageGame value) messageGame,
+      required TResult Function(MessagePoll value) messagePoll,
+      required TResult Function(MessageInvoice value) messageInvoice,
+      required TResult Function(MessageCall value) messageCall,
+      required TResult Function(MessageVoiceChatStarted value)
+          messageVoiceChatStarted,
+      required TResult Function(MessageVoiceChatEnded value)
+          messageVoiceChatEnded,
+      required TResult Function(MessageInviteVoiceChatParticipants value)
+          messageInviteVoiceChatParticipants,
+      required TResult Function(MessageBasicGroupChatCreate value)
+          messageBasicGroupChatCreate,
+      required TResult Function(MessageSupergroupChatCreate value)
+          messageSupergroupChatCreate,
+      required TResult Function(MessageChatChangeTitle value)
+          messageChatChangeTitle,
+      required TResult Function(MessageChatChangePhoto value)
+          messageChatChangePhoto,
+      required TResult Function(MessageChatDeletePhoto value)
+          messageChatDeletePhoto,
+      required TResult Function(MessageChatAddMembers value)
+          messageChatAddMembers,
+      required TResult Function(MessageChatJoinByLink value)
+          messageChatJoinByLink,
+      required TResult Function(MessageChatDeleteMember value)
+          messageChatDeleteMember,
+      required TResult Function(MessageChatUpgradeTo value)
+          messageChatUpgradeTo,
+      required TResult Function(MessageChatUpgradeFrom value)
+          messageChatUpgradeFrom,
+      required TResult Function(MessagePinMessage value) messagePinMessage,
+      required TResult Function(MessageScreenshotTaken value)
+          messageScreenshotTaken,
+      required TResult Function(MessageChatSetTtl value) messageChatSetTtl,
+      required TResult Function(MessageCustomServiceAction value)
+          messageCustomServiceAction,
+      required TResult Function(MessageGameScore value) messageGameScore,
+      required TResult Function(MessagePaymentSuccessful value)
+          messagePaymentSuccessful,
+      required TResult Function(MessagePaymentSuccessfulBot value)
+          messagePaymentSuccessfulBot,
+      required TResult Function(MessageContactRegistered value)
+          messageContactRegistered,
+      required TResult Function(MessageWebsiteConnected value)
+          messageWebsiteConnected,
+      required TResult Function(MessagePassportDataSent value)
+          messagePassportDataSent,
+      required TResult Function(MessagePassportDataReceived value)
+          messagePassportDataReceived,
+      required TResult Function(MessageProximityAlertTriggered value)
+          messageProximityAlertTriggered,
+      required TResult Function(MessageUnsupported value) messageUnsupported}) {
+    switch (this.getConstructor()) {
+      case MessageText.CONSTRUCTOR:
+        return messageText.call(this as MessageText);
+      case MessageAnimation.CONSTRUCTOR:
+        return messageAnimation.call(this as MessageAnimation);
+      case MessageAudio.CONSTRUCTOR:
+        return messageAudio.call(this as MessageAudio);
+      case MessageDocument.CONSTRUCTOR:
+        return messageDocument.call(this as MessageDocument);
+      case MessagePhoto.CONSTRUCTOR:
+        return messagePhoto.call(this as MessagePhoto);
+      case MessageExpiredPhoto.CONSTRUCTOR:
+        return messageExpiredPhoto.call(this as MessageExpiredPhoto);
+      case MessageSticker.CONSTRUCTOR:
+        return messageSticker.call(this as MessageSticker);
+      case MessageVideo.CONSTRUCTOR:
+        return messageVideo.call(this as MessageVideo);
+      case MessageExpiredVideo.CONSTRUCTOR:
+        return messageExpiredVideo.call(this as MessageExpiredVideo);
+      case MessageVideoNote.CONSTRUCTOR:
+        return messageVideoNote.call(this as MessageVideoNote);
+      case MessageVoiceNote.CONSTRUCTOR:
+        return messageVoiceNote.call(this as MessageVoiceNote);
+      case MessageLocation.CONSTRUCTOR:
+        return messageLocation.call(this as MessageLocation);
+      case MessageVenue.CONSTRUCTOR:
+        return messageVenue.call(this as MessageVenue);
+      case MessageContact.CONSTRUCTOR:
+        return messageContact.call(this as MessageContact);
+      case MessageDice.CONSTRUCTOR:
+        return messageDice.call(this as MessageDice);
+      case MessageGame.CONSTRUCTOR:
+        return messageGame.call(this as MessageGame);
+      case MessagePoll.CONSTRUCTOR:
+        return messagePoll.call(this as MessagePoll);
+      case MessageInvoice.CONSTRUCTOR:
+        return messageInvoice.call(this as MessageInvoice);
+      case MessageCall.CONSTRUCTOR:
+        return messageCall.call(this as MessageCall);
+      case MessageVoiceChatStarted.CONSTRUCTOR:
+        return messageVoiceChatStarted.call(this as MessageVoiceChatStarted);
+      case MessageVoiceChatEnded.CONSTRUCTOR:
+        return messageVoiceChatEnded.call(this as MessageVoiceChatEnded);
+      case MessageInviteVoiceChatParticipants.CONSTRUCTOR:
+        return messageInviteVoiceChatParticipants
+            .call(this as MessageInviteVoiceChatParticipants);
+      case MessageBasicGroupChatCreate.CONSTRUCTOR:
+        return messageBasicGroupChatCreate
+            .call(this as MessageBasicGroupChatCreate);
+      case MessageSupergroupChatCreate.CONSTRUCTOR:
+        return messageSupergroupChatCreate
+            .call(this as MessageSupergroupChatCreate);
+      case MessageChatChangeTitle.CONSTRUCTOR:
+        return messageChatChangeTitle.call(this as MessageChatChangeTitle);
+      case MessageChatChangePhoto.CONSTRUCTOR:
+        return messageChatChangePhoto.call(this as MessageChatChangePhoto);
+      case MessageChatDeletePhoto.CONSTRUCTOR:
+        return messageChatDeletePhoto.call(this as MessageChatDeletePhoto);
+      case MessageChatAddMembers.CONSTRUCTOR:
+        return messageChatAddMembers.call(this as MessageChatAddMembers);
+      case MessageChatJoinByLink.CONSTRUCTOR:
+        return messageChatJoinByLink.call(this as MessageChatJoinByLink);
+      case MessageChatDeleteMember.CONSTRUCTOR:
+        return messageChatDeleteMember.call(this as MessageChatDeleteMember);
+      case MessageChatUpgradeTo.CONSTRUCTOR:
+        return messageChatUpgradeTo.call(this as MessageChatUpgradeTo);
+      case MessageChatUpgradeFrom.CONSTRUCTOR:
+        return messageChatUpgradeFrom.call(this as MessageChatUpgradeFrom);
+      case MessagePinMessage.CONSTRUCTOR:
+        return messagePinMessage.call(this as MessagePinMessage);
+      case MessageScreenshotTaken.CONSTRUCTOR:
+        return messageScreenshotTaken.call(this as MessageScreenshotTaken);
+      case MessageChatSetTtl.CONSTRUCTOR:
+        return messageChatSetTtl.call(this as MessageChatSetTtl);
+      case MessageCustomServiceAction.CONSTRUCTOR:
+        return messageCustomServiceAction
+            .call(this as MessageCustomServiceAction);
+      case MessageGameScore.CONSTRUCTOR:
+        return messageGameScore.call(this as MessageGameScore);
+      case MessagePaymentSuccessful.CONSTRUCTOR:
+        return messagePaymentSuccessful.call(this as MessagePaymentSuccessful);
+      case MessagePaymentSuccessfulBot.CONSTRUCTOR:
+        return messagePaymentSuccessfulBot
+            .call(this as MessagePaymentSuccessfulBot);
+      case MessageContactRegistered.CONSTRUCTOR:
+        return messageContactRegistered.call(this as MessageContactRegistered);
+      case MessageWebsiteConnected.CONSTRUCTOR:
+        return messageWebsiteConnected.call(this as MessageWebsiteConnected);
+      case MessagePassportDataSent.CONSTRUCTOR:
+        return messagePassportDataSent.call(this as MessagePassportDataSent);
+      case MessagePassportDataReceived.CONSTRUCTOR:
+        return messagePassportDataReceived
+            .call(this as MessagePassportDataReceived);
+      case MessageProximityAlertTriggered.CONSTRUCTOR:
+        return messageProximityAlertTriggered
+            .call(this as MessageProximityAlertTriggered);
+      case MessageUnsupported.CONSTRUCTOR:
+        return messageUnsupported.call(this as MessageUnsupported);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageTextExtensions on MessageText {
   MessageText copy({FormattedText? text, WebPage? webPage}) =>
       MessageText(text: text ?? this.text, webPage: webPage ?? this.webPage);
 }
 
-extension MessageAnimationCopyExtension on MessageAnimation {
+extension MessageAnimationExtensions on MessageAnimation {
   MessageAnimation copy(
           {Animation? animation, FormattedText? caption, bool? isSecret}) =>
       MessageAnimation(
@@ -2795,19 +4014,19 @@ extension MessageAnimationCopyExtension on MessageAnimation {
           isSecret: isSecret ?? this.isSecret);
 }
 
-extension MessageAudioCopyExtension on MessageAudio {
+extension MessageAudioExtensions on MessageAudio {
   MessageAudio copy({Audio? audio, FormattedText? caption}) => MessageAudio(
       audio: audio ?? this.audio, caption: caption ?? this.caption);
 }
 
-extension MessageDocumentCopyExtension on MessageDocument {
+extension MessageDocumentExtensions on MessageDocument {
   MessageDocument copy({Document? document, FormattedText? caption}) =>
       MessageDocument(
           document: document ?? this.document,
           caption: caption ?? this.caption);
 }
 
-extension MessagePhotoCopyExtension on MessagePhoto {
+extension MessagePhotoExtensions on MessagePhoto {
   MessagePhoto copy({Photo? photo, FormattedText? caption, bool? isSecret}) =>
       MessagePhoto(
           photo: photo ?? this.photo,
@@ -2815,12 +4034,12 @@ extension MessagePhotoCopyExtension on MessagePhoto {
           isSecret: isSecret ?? this.isSecret);
 }
 
-extension MessageStickerCopyExtension on MessageSticker {
+extension MessageStickerExtensions on MessageSticker {
   MessageSticker copy({Sticker? sticker}) =>
       MessageSticker(sticker: sticker ?? this.sticker);
 }
 
-extension MessageVideoCopyExtension on MessageVideo {
+extension MessageVideoExtensions on MessageVideo {
   MessageVideo copy({Video? video, FormattedText? caption, bool? isSecret}) =>
       MessageVideo(
           video: video ?? this.video,
@@ -2828,7 +4047,7 @@ extension MessageVideoCopyExtension on MessageVideo {
           isSecret: isSecret ?? this.isSecret);
 }
 
-extension MessageVideoNoteCopyExtension on MessageVideoNote {
+extension MessageVideoNoteExtensions on MessageVideoNote {
   MessageVideoNote copy(
           {VideoNote? videoNote, bool? isViewed, bool? isSecret}) =>
       MessageVideoNote(
@@ -2837,7 +4056,7 @@ extension MessageVideoNoteCopyExtension on MessageVideoNote {
           isSecret: isSecret ?? this.isSecret);
 }
 
-extension MessageVoiceNoteCopyExtension on MessageVoiceNote {
+extension MessageVoiceNoteExtensions on MessageVoiceNote {
   MessageVoiceNote copy(
           {VoiceNote? voiceNote, FormattedText? caption, bool? isListened}) =>
       MessageVoiceNote(
@@ -2846,7 +4065,7 @@ extension MessageVoiceNoteCopyExtension on MessageVoiceNote {
           isListened: isListened ?? this.isListened);
 }
 
-extension MessageLocationCopyExtension on MessageLocation {
+extension MessageLocationExtensions on MessageLocation {
   MessageLocation copy(
           {Location? location,
           int? livePeriod,
@@ -2862,16 +4081,16 @@ extension MessageLocationCopyExtension on MessageLocation {
               proximityAlertRadius ?? this.proximityAlertRadius);
 }
 
-extension MessageVenueCopyExtension on MessageVenue {
+extension MessageVenueExtensions on MessageVenue {
   MessageVenue copy({Venue? venue}) => MessageVenue(venue: venue ?? this.venue);
 }
 
-extension MessageContactCopyExtension on MessageContact {
+extension MessageContactExtensions on MessageContact {
   MessageContact copy({Contact? contact}) =>
       MessageContact(contact: contact ?? this.contact);
 }
 
-extension MessageDiceCopyExtension on MessageDice {
+extension MessageDiceExtensions on MessageDice {
   MessageDice copy(
           {DiceStickers? initialState,
           DiceStickers? finalState,
@@ -2887,15 +4106,15 @@ extension MessageDiceCopyExtension on MessageDice {
               successAnimationFrameNumber ?? this.successAnimationFrameNumber);
 }
 
-extension MessageGameCopyExtension on MessageGame {
+extension MessageGameExtensions on MessageGame {
   MessageGame copy({Game? game}) => MessageGame(game: game ?? this.game);
 }
 
-extension MessagePollCopyExtension on MessagePoll {
+extension MessagePollExtensions on MessagePoll {
   MessagePoll copy({Poll? poll}) => MessagePoll(poll: poll ?? this.poll);
 }
 
-extension MessageInvoiceCopyExtension on MessageInvoice {
+extension MessageInvoiceExtensions on MessageInvoice {
   MessageInvoice copy(
           {String? title,
           String? description,
@@ -2918,7 +4137,7 @@ extension MessageInvoiceCopyExtension on MessageInvoice {
           receiptMessageId: receiptMessageId ?? this.receiptMessageId);
 }
 
-extension MessageCallCopyExtension on MessageCall {
+extension MessageCallExtensions on MessageCall {
   MessageCall copy(
           {bool? isVideo, CallDiscardReason? discardReason, int? duration}) =>
       MessageCall(
@@ -2927,17 +4146,17 @@ extension MessageCallCopyExtension on MessageCall {
           duration: duration ?? this.duration);
 }
 
-extension MessageVoiceChatStartedCopyExtension on MessageVoiceChatStarted {
+extension MessageVoiceChatStartedExtensions on MessageVoiceChatStarted {
   MessageVoiceChatStarted copy({int? groupCallId}) =>
       MessageVoiceChatStarted(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension MessageVoiceChatEndedCopyExtension on MessageVoiceChatEnded {
+extension MessageVoiceChatEndedExtensions on MessageVoiceChatEnded {
   MessageVoiceChatEnded copy({int? duration}) =>
       MessageVoiceChatEnded(duration: duration ?? this.duration);
 }
 
-extension MessageInviteVoiceChatParticipantsCopyExtension
+extension MessageInviteVoiceChatParticipantsExtensions
     on MessageInviteVoiceChatParticipants {
   MessageInviteVoiceChatParticipants copy(
           {int? groupCallId, List<int>? userIds}) =>
@@ -2946,68 +4165,65 @@ extension MessageInviteVoiceChatParticipantsCopyExtension
           userIds: userIds ?? this.userIds);
 }
 
-extension MessageBasicGroupChatCreateCopyExtension
-    on MessageBasicGroupChatCreate {
+extension MessageBasicGroupChatCreateExtensions on MessageBasicGroupChatCreate {
   MessageBasicGroupChatCreate copy({String? title, List<int>? memberUserIds}) =>
       MessageBasicGroupChatCreate(
           title: title ?? this.title,
           memberUserIds: memberUserIds ?? this.memberUserIds);
 }
 
-extension MessageSupergroupChatCreateCopyExtension
-    on MessageSupergroupChatCreate {
+extension MessageSupergroupChatCreateExtensions on MessageSupergroupChatCreate {
   MessageSupergroupChatCreate copy({String? title}) =>
       MessageSupergroupChatCreate(title: title ?? this.title);
 }
 
-extension MessageChatChangeTitleCopyExtension on MessageChatChangeTitle {
+extension MessageChatChangeTitleExtensions on MessageChatChangeTitle {
   MessageChatChangeTitle copy({String? title}) =>
       MessageChatChangeTitle(title: title ?? this.title);
 }
 
-extension MessageChatChangePhotoCopyExtension on MessageChatChangePhoto {
+extension MessageChatChangePhotoExtensions on MessageChatChangePhoto {
   MessageChatChangePhoto copy({ChatPhoto? photo}) =>
       MessageChatChangePhoto(photo: photo ?? this.photo);
 }
 
-extension MessageChatAddMembersCopyExtension on MessageChatAddMembers {
+extension MessageChatAddMembersExtensions on MessageChatAddMembers {
   MessageChatAddMembers copy({List<int>? memberUserIds}) =>
       MessageChatAddMembers(memberUserIds: memberUserIds ?? this.memberUserIds);
 }
 
-extension MessageChatDeleteMemberCopyExtension on MessageChatDeleteMember {
+extension MessageChatDeleteMemberExtensions on MessageChatDeleteMember {
   MessageChatDeleteMember copy({int? userId}) =>
       MessageChatDeleteMember(userId: userId ?? this.userId);
 }
 
-extension MessageChatUpgradeToCopyExtension on MessageChatUpgradeTo {
+extension MessageChatUpgradeToExtensions on MessageChatUpgradeTo {
   MessageChatUpgradeTo copy({int? supergroupId}) =>
       MessageChatUpgradeTo(supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension MessageChatUpgradeFromCopyExtension on MessageChatUpgradeFrom {
+extension MessageChatUpgradeFromExtensions on MessageChatUpgradeFrom {
   MessageChatUpgradeFrom copy({String? title, int? basicGroupId}) =>
       MessageChatUpgradeFrom(
           title: title ?? this.title,
           basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
-extension MessagePinMessageCopyExtension on MessagePinMessage {
+extension MessagePinMessageExtensions on MessagePinMessage {
   MessagePinMessage copy({int? messageId}) =>
       MessagePinMessage(messageId: messageId ?? this.messageId);
 }
 
-extension MessageChatSetTtlCopyExtension on MessageChatSetTtl {
+extension MessageChatSetTtlExtensions on MessageChatSetTtl {
   MessageChatSetTtl copy({int? ttl}) => MessageChatSetTtl(ttl: ttl ?? this.ttl);
 }
 
-extension MessageCustomServiceActionCopyExtension
-    on MessageCustomServiceAction {
+extension MessageCustomServiceActionExtensions on MessageCustomServiceAction {
   MessageCustomServiceAction copy({String? text}) =>
       MessageCustomServiceAction(text: text ?? this.text);
 }
 
-extension MessageGameScoreCopyExtension on MessageGameScore {
+extension MessageGameScoreExtensions on MessageGameScore {
   MessageGameScore copy({int? gameMessageId, int? gameId, int? score}) =>
       MessageGameScore(
           gameMessageId: gameMessageId ?? this.gameMessageId,
@@ -3015,7 +4231,7 @@ extension MessageGameScoreCopyExtension on MessageGameScore {
           score: score ?? this.score);
 }
 
-extension MessagePaymentSuccessfulCopyExtension on MessagePaymentSuccessful {
+extension MessagePaymentSuccessfulExtensions on MessagePaymentSuccessful {
   MessagePaymentSuccessful copy(
           {int? invoiceMessageId, String? currency, int? totalAmount}) =>
       MessagePaymentSuccessful(
@@ -3024,8 +4240,7 @@ extension MessagePaymentSuccessfulCopyExtension on MessagePaymentSuccessful {
           totalAmount: totalAmount ?? this.totalAmount);
 }
 
-extension MessagePaymentSuccessfulBotCopyExtension
-    on MessagePaymentSuccessfulBot {
+extension MessagePaymentSuccessfulBotExtensions on MessagePaymentSuccessfulBot {
   MessagePaymentSuccessfulBot copy(
           {int? invoiceMessageId,
           String? currency,
@@ -3048,18 +4263,17 @@ extension MessagePaymentSuccessfulBotCopyExtension
               providerPaymentChargeId ?? this.providerPaymentChargeId);
 }
 
-extension MessageWebsiteConnectedCopyExtension on MessageWebsiteConnected {
+extension MessageWebsiteConnectedExtensions on MessageWebsiteConnected {
   MessageWebsiteConnected copy({String? domainName}) =>
       MessageWebsiteConnected(domainName: domainName ?? this.domainName);
 }
 
-extension MessagePassportDataSentCopyExtension on MessagePassportDataSent {
+extension MessagePassportDataSentExtensions on MessagePassportDataSent {
   MessagePassportDataSent copy({List<PassportElementType>? types}) =>
       MessagePassportDataSent(types: types ?? this.types);
 }
 
-extension MessagePassportDataReceivedCopyExtension
-    on MessagePassportDataReceived {
+extension MessagePassportDataReceivedExtensions on MessagePassportDataReceived {
   MessagePassportDataReceived copy(
           {List<EncryptedPassportElement>? elements,
           EncryptedCredentials? credentials}) =>
@@ -3068,7 +4282,7 @@ extension MessagePassportDataReceivedCopyExtension
           credentials: credentials ?? this.credentials);
 }
 
-extension MessageProximityAlertTriggeredCopyExtension
+extension MessageProximityAlertTriggeredExtensions
     on MessageProximityAlertTriggered {
   MessageProximityAlertTriggered copy(
           {MessageSender? traveler, MessageSender? watcher, int? distance}) =>
@@ -3078,22 +4292,83 @@ extension MessageProximityAlertTriggeredCopyExtension
           distance: distance ?? this.distance);
 }
 
-extension TextEntityTypePreCodeCopyExtension on TextEntityTypePreCode {
+extension TextEntityTypeExtensions on TextEntityType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(TextEntityTypeMention value) mention,
+      required TResult Function(TextEntityTypeHashtag value) hashtag,
+      required TResult Function(TextEntityTypeCashtag value) cashtag,
+      required TResult Function(TextEntityTypeBotCommand value) botCommand,
+      required TResult Function(TextEntityTypeUrl value) url,
+      required TResult Function(TextEntityTypeEmailAddress value) emailAddress,
+      required TResult Function(TextEntityTypePhoneNumber value) phoneNumber,
+      required TResult Function(TextEntityTypeBankCardNumber value)
+          bankCardNumber,
+      required TResult Function(TextEntityTypeBold value) bold,
+      required TResult Function(TextEntityTypeItalic value) italic,
+      required TResult Function(TextEntityTypeUnderline value) underline,
+      required TResult Function(TextEntityTypeStrikethrough value)
+          strikethrough,
+      required TResult Function(TextEntityTypeCode value) code,
+      required TResult Function(TextEntityTypePre value) pre,
+      required TResult Function(TextEntityTypePreCode value) preCode,
+      required TResult Function(TextEntityTypeTextUrl value) textUrl,
+      required TResult Function(TextEntityTypeMentionName value) mentionName}) {
+    switch (this.getConstructor()) {
+      case TextEntityTypeMention.CONSTRUCTOR:
+        return mention.call(this as TextEntityTypeMention);
+      case TextEntityTypeHashtag.CONSTRUCTOR:
+        return hashtag.call(this as TextEntityTypeHashtag);
+      case TextEntityTypeCashtag.CONSTRUCTOR:
+        return cashtag.call(this as TextEntityTypeCashtag);
+      case TextEntityTypeBotCommand.CONSTRUCTOR:
+        return botCommand.call(this as TextEntityTypeBotCommand);
+      case TextEntityTypeUrl.CONSTRUCTOR:
+        return url.call(this as TextEntityTypeUrl);
+      case TextEntityTypeEmailAddress.CONSTRUCTOR:
+        return emailAddress.call(this as TextEntityTypeEmailAddress);
+      case TextEntityTypePhoneNumber.CONSTRUCTOR:
+        return phoneNumber.call(this as TextEntityTypePhoneNumber);
+      case TextEntityTypeBankCardNumber.CONSTRUCTOR:
+        return bankCardNumber.call(this as TextEntityTypeBankCardNumber);
+      case TextEntityTypeBold.CONSTRUCTOR:
+        return bold.call(this as TextEntityTypeBold);
+      case TextEntityTypeItalic.CONSTRUCTOR:
+        return italic.call(this as TextEntityTypeItalic);
+      case TextEntityTypeUnderline.CONSTRUCTOR:
+        return underline.call(this as TextEntityTypeUnderline);
+      case TextEntityTypeStrikethrough.CONSTRUCTOR:
+        return strikethrough.call(this as TextEntityTypeStrikethrough);
+      case TextEntityTypeCode.CONSTRUCTOR:
+        return code.call(this as TextEntityTypeCode);
+      case TextEntityTypePre.CONSTRUCTOR:
+        return pre.call(this as TextEntityTypePre);
+      case TextEntityTypePreCode.CONSTRUCTOR:
+        return preCode.call(this as TextEntityTypePreCode);
+      case TextEntityTypeTextUrl.CONSTRUCTOR:
+        return textUrl.call(this as TextEntityTypeTextUrl);
+      case TextEntityTypeMentionName.CONSTRUCTOR:
+        return mentionName.call(this as TextEntityTypeMentionName);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension TextEntityTypePreCodeExtensions on TextEntityTypePreCode {
   TextEntityTypePreCode copy({String? language}) =>
       TextEntityTypePreCode(language: language ?? this.language);
 }
 
-extension TextEntityTypeTextUrlCopyExtension on TextEntityTypeTextUrl {
+extension TextEntityTypeTextUrlExtensions on TextEntityTypeTextUrl {
   TextEntityTypeTextUrl copy({String? url}) =>
       TextEntityTypeTextUrl(url: url ?? this.url);
 }
 
-extension TextEntityTypeMentionNameCopyExtension on TextEntityTypeMentionName {
+extension TextEntityTypeMentionNameExtensions on TextEntityTypeMentionName {
   TextEntityTypeMentionName copy({int? userId}) =>
       TextEntityTypeMentionName(userId: userId ?? this.userId);
 }
 
-extension InputThumbnailCopyExtension on InputThumbnail {
+extension InputThumbnailExtensions on InputThumbnail {
   InputThumbnail copy({InputFile? thumbnail, int? width, int? height}) =>
       InputThumbnail(
           thumbnail: thumbnail ?? this.thumbnail,
@@ -3101,13 +4376,30 @@ extension InputThumbnailCopyExtension on InputThumbnail {
           height: height ?? this.height);
 }
 
-extension MessageSchedulingStateSendAtDateCopyExtension
+extension MessageSchedulingStateExtensions on MessageSchedulingState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageSchedulingStateSendAtDate value)
+          sendAtDate,
+      required TResult Function(MessageSchedulingStateSendWhenOnline value)
+          sendWhenOnline}) {
+    switch (this.getConstructor()) {
+      case MessageSchedulingStateSendAtDate.CONSTRUCTOR:
+        return sendAtDate.call(this as MessageSchedulingStateSendAtDate);
+      case MessageSchedulingStateSendWhenOnline.CONSTRUCTOR:
+        return sendWhenOnline
+            .call(this as MessageSchedulingStateSendWhenOnline);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageSchedulingStateSendAtDateExtensions
     on MessageSchedulingStateSendAtDate {
   MessageSchedulingStateSendAtDate copy({int? sendDate}) =>
       MessageSchedulingStateSendAtDate(sendDate: sendDate ?? this.sendDate);
 }
 
-extension MessageSendOptionsCopyExtension on MessageSendOptions {
+extension MessageSendOptionsExtensions on MessageSendOptions {
   MessageSendOptions copy(
           {bool? disableNotification,
           bool? fromBackground,
@@ -3118,7 +4410,7 @@ extension MessageSendOptionsCopyExtension on MessageSendOptions {
           schedulingState: schedulingState ?? this.schedulingState);
 }
 
-extension MessageCopyOptionsCopyExtension on MessageCopyOptions {
+extension MessageCopyOptionsExtensions on MessageCopyOptions {
   MessageCopyOptions copy(
           {bool? sendCopy, bool? replaceCaption, FormattedText? newCaption}) =>
       MessageCopyOptions(
@@ -3127,7 +4419,72 @@ extension MessageCopyOptionsCopyExtension on MessageCopyOptions {
           newCaption: newCaption ?? this.newCaption);
 }
 
-extension InputMessageTextCopyExtension on InputMessageText {
+extension InputMessageContentExtensions on InputMessageContent {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputMessageText value) inputMessageText,
+      required TResult Function(InputMessageAnimation value)
+          inputMessageAnimation,
+      required TResult Function(InputMessageAudio value) inputMessageAudio,
+      required TResult Function(InputMessageDocument value)
+          inputMessageDocument,
+      required TResult Function(InputMessagePhoto value) inputMessagePhoto,
+      required TResult Function(InputMessageSticker value) inputMessageSticker,
+      required TResult Function(InputMessageVideo value) inputMessageVideo,
+      required TResult Function(InputMessageVideoNote value)
+          inputMessageVideoNote,
+      required TResult Function(InputMessageVoiceNote value)
+          inputMessageVoiceNote,
+      required TResult Function(InputMessageLocation value)
+          inputMessageLocation,
+      required TResult Function(InputMessageVenue value) inputMessageVenue,
+      required TResult Function(InputMessageContact value) inputMessageContact,
+      required TResult Function(InputMessageDice value) inputMessageDice,
+      required TResult Function(InputMessageGame value) inputMessageGame,
+      required TResult Function(InputMessageInvoice value) inputMessageInvoice,
+      required TResult Function(InputMessagePoll value) inputMessagePoll,
+      required TResult Function(InputMessageForwarded value)
+          inputMessageForwarded}) {
+    switch (this.getConstructor()) {
+      case InputMessageText.CONSTRUCTOR:
+        return inputMessageText.call(this as InputMessageText);
+      case InputMessageAnimation.CONSTRUCTOR:
+        return inputMessageAnimation.call(this as InputMessageAnimation);
+      case InputMessageAudio.CONSTRUCTOR:
+        return inputMessageAudio.call(this as InputMessageAudio);
+      case InputMessageDocument.CONSTRUCTOR:
+        return inputMessageDocument.call(this as InputMessageDocument);
+      case InputMessagePhoto.CONSTRUCTOR:
+        return inputMessagePhoto.call(this as InputMessagePhoto);
+      case InputMessageSticker.CONSTRUCTOR:
+        return inputMessageSticker.call(this as InputMessageSticker);
+      case InputMessageVideo.CONSTRUCTOR:
+        return inputMessageVideo.call(this as InputMessageVideo);
+      case InputMessageVideoNote.CONSTRUCTOR:
+        return inputMessageVideoNote.call(this as InputMessageVideoNote);
+      case InputMessageVoiceNote.CONSTRUCTOR:
+        return inputMessageVoiceNote.call(this as InputMessageVoiceNote);
+      case InputMessageLocation.CONSTRUCTOR:
+        return inputMessageLocation.call(this as InputMessageLocation);
+      case InputMessageVenue.CONSTRUCTOR:
+        return inputMessageVenue.call(this as InputMessageVenue);
+      case InputMessageContact.CONSTRUCTOR:
+        return inputMessageContact.call(this as InputMessageContact);
+      case InputMessageDice.CONSTRUCTOR:
+        return inputMessageDice.call(this as InputMessageDice);
+      case InputMessageGame.CONSTRUCTOR:
+        return inputMessageGame.call(this as InputMessageGame);
+      case InputMessageInvoice.CONSTRUCTOR:
+        return inputMessageInvoice.call(this as InputMessageInvoice);
+      case InputMessagePoll.CONSTRUCTOR:
+        return inputMessagePoll.call(this as InputMessagePoll);
+      case InputMessageForwarded.CONSTRUCTOR:
+        return inputMessageForwarded.call(this as InputMessageForwarded);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputMessageTextExtensions on InputMessageText {
   InputMessageText copy(
           {FormattedText? text,
           bool? disableWebPagePreview,
@@ -3139,7 +4496,7 @@ extension InputMessageTextCopyExtension on InputMessageText {
           clearDraft: clearDraft ?? this.clearDraft);
 }
 
-extension InputMessageAnimationCopyExtension on InputMessageAnimation {
+extension InputMessageAnimationExtensions on InputMessageAnimation {
   InputMessageAnimation copy(
           {InputFile? animation,
           InputThumbnail? thumbnail,
@@ -3158,7 +4515,7 @@ extension InputMessageAnimationCopyExtension on InputMessageAnimation {
           caption: caption ?? this.caption);
 }
 
-extension InputMessageAudioCopyExtension on InputMessageAudio {
+extension InputMessageAudioExtensions on InputMessageAudio {
   InputMessageAudio copy(
           {InputFile? audio,
           InputThumbnail? albumCoverThumbnail,
@@ -3175,7 +4532,7 @@ extension InputMessageAudioCopyExtension on InputMessageAudio {
           caption: caption ?? this.caption);
 }
 
-extension InputMessageDocumentCopyExtension on InputMessageDocument {
+extension InputMessageDocumentExtensions on InputMessageDocument {
   InputMessageDocument copy(
           {InputFile? document,
           InputThumbnail? thumbnail,
@@ -3189,7 +4546,7 @@ extension InputMessageDocumentCopyExtension on InputMessageDocument {
           caption: caption ?? this.caption);
 }
 
-extension InputMessagePhotoCopyExtension on InputMessagePhoto {
+extension InputMessagePhotoExtensions on InputMessagePhoto {
   InputMessagePhoto copy(
           {InputFile? photo,
           InputThumbnail? thumbnail,
@@ -3208,7 +4565,7 @@ extension InputMessagePhotoCopyExtension on InputMessagePhoto {
           ttl: ttl ?? this.ttl);
 }
 
-extension InputMessageStickerCopyExtension on InputMessageSticker {
+extension InputMessageStickerExtensions on InputMessageSticker {
   InputMessageSticker copy(
           {InputFile? sticker,
           InputThumbnail? thumbnail,
@@ -3223,7 +4580,7 @@ extension InputMessageStickerCopyExtension on InputMessageSticker {
           emoji: emoji ?? this.emoji);
 }
 
-extension InputMessageVideoCopyExtension on InputMessageVideo {
+extension InputMessageVideoExtensions on InputMessageVideo {
   InputMessageVideo copy(
           {InputFile? video,
           InputThumbnail? thumbnail,
@@ -3246,7 +4603,7 @@ extension InputMessageVideoCopyExtension on InputMessageVideo {
           ttl: ttl ?? this.ttl);
 }
 
-extension InputMessageVideoNoteCopyExtension on InputMessageVideoNote {
+extension InputMessageVideoNoteExtensions on InputMessageVideoNote {
   InputMessageVideoNote copy(
           {InputFile? videoNote,
           InputThumbnail? thumbnail,
@@ -3259,7 +4616,7 @@ extension InputMessageVideoNoteCopyExtension on InputMessageVideoNote {
           length: length ?? this.length);
 }
 
-extension InputMessageVoiceNoteCopyExtension on InputMessageVoiceNote {
+extension InputMessageVoiceNoteExtensions on InputMessageVoiceNote {
   InputMessageVoiceNote copy(
           {InputFile? voiceNote,
           int? duration,
@@ -3272,7 +4629,7 @@ extension InputMessageVoiceNoteCopyExtension on InputMessageVoiceNote {
           caption: caption ?? this.caption);
 }
 
-extension InputMessageLocationCopyExtension on InputMessageLocation {
+extension InputMessageLocationExtensions on InputMessageLocation {
   InputMessageLocation copy(
           {Location? location,
           int? livePeriod,
@@ -3286,29 +4643,29 @@ extension InputMessageLocationCopyExtension on InputMessageLocation {
               proximityAlertRadius ?? this.proximityAlertRadius);
 }
 
-extension InputMessageVenueCopyExtension on InputMessageVenue {
+extension InputMessageVenueExtensions on InputMessageVenue {
   InputMessageVenue copy({Venue? venue}) =>
       InputMessageVenue(venue: venue ?? this.venue);
 }
 
-extension InputMessageContactCopyExtension on InputMessageContact {
+extension InputMessageContactExtensions on InputMessageContact {
   InputMessageContact copy({Contact? contact}) =>
       InputMessageContact(contact: contact ?? this.contact);
 }
 
-extension InputMessageDiceCopyExtension on InputMessageDice {
+extension InputMessageDiceExtensions on InputMessageDice {
   InputMessageDice copy({String? emoji, bool? clearDraft}) => InputMessageDice(
       emoji: emoji ?? this.emoji, clearDraft: clearDraft ?? this.clearDraft);
 }
 
-extension InputMessageGameCopyExtension on InputMessageGame {
+extension InputMessageGameExtensions on InputMessageGame {
   InputMessageGame copy({int? botUserId, String? gameShortName}) =>
       InputMessageGame(
           botUserId: botUserId ?? this.botUserId,
           gameShortName: gameShortName ?? this.gameShortName);
 }
 
-extension InputMessageInvoiceCopyExtension on InputMessageInvoice {
+extension InputMessageInvoiceExtensions on InputMessageInvoice {
   InputMessageInvoice copy(
           {Invoice? invoice,
           String? title,
@@ -3335,7 +4692,7 @@ extension InputMessageInvoiceCopyExtension on InputMessageInvoice {
           startParameter: startParameter ?? this.startParameter);
 }
 
-extension InputMessagePollCopyExtension on InputMessagePoll {
+extension InputMessagePollExtensions on InputMessagePoll {
   InputMessagePoll copy(
           {String? question,
           List<String>? options,
@@ -3354,7 +4711,7 @@ extension InputMessagePollCopyExtension on InputMessagePoll {
           isClosed: isClosed ?? this.isClosed);
 }
 
-extension InputMessageForwardedCopyExtension on InputMessageForwarded {
+extension InputMessageForwardedExtensions on InputMessageForwarded {
   InputMessageForwarded copy(
           {int? fromChatId,
           int? messageId,
@@ -3367,54 +4724,202 @@ extension InputMessageForwardedCopyExtension on InputMessageForwarded {
           copyOptions: copyOptions ?? this.copyOptions);
 }
 
-extension ChatActionUploadingVideoCopyExtension on ChatActionUploadingVideo {
+extension SearchMessagesFilterExtensions on SearchMessagesFilter {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(SearchMessagesFilterEmpty value) empty,
+      required TResult Function(SearchMessagesFilterAnimation value) animation,
+      required TResult Function(SearchMessagesFilterAudio value) audio,
+      required TResult Function(SearchMessagesFilterDocument value) document,
+      required TResult Function(SearchMessagesFilterPhoto value) photo,
+      required TResult Function(SearchMessagesFilterVideo value) video,
+      required TResult Function(SearchMessagesFilterVoiceNote value) voiceNote,
+      required TResult Function(SearchMessagesFilterPhotoAndVideo value)
+          photoAndVideo,
+      required TResult Function(SearchMessagesFilterUrl value) url,
+      required TResult Function(SearchMessagesFilterChatPhoto value) chatPhoto,
+      required TResult Function(SearchMessagesFilterCall value) call,
+      required TResult Function(SearchMessagesFilterMissedCall value)
+          missedCall,
+      required TResult Function(SearchMessagesFilterVideoNote value) videoNote,
+      required TResult Function(SearchMessagesFilterVoiceAndVideoNote value)
+          voiceAndVideoNote,
+      required TResult Function(SearchMessagesFilterMention value) mention,
+      required TResult Function(SearchMessagesFilterUnreadMention value)
+          unreadMention,
+      required TResult Function(SearchMessagesFilterFailedToSend value)
+          failedToSend,
+      required TResult Function(SearchMessagesFilterPinned value) pinned}) {
+    switch (this.getConstructor()) {
+      case SearchMessagesFilterEmpty.CONSTRUCTOR:
+        return empty.call(this as SearchMessagesFilterEmpty);
+      case SearchMessagesFilterAnimation.CONSTRUCTOR:
+        return animation.call(this as SearchMessagesFilterAnimation);
+      case SearchMessagesFilterAudio.CONSTRUCTOR:
+        return audio.call(this as SearchMessagesFilterAudio);
+      case SearchMessagesFilterDocument.CONSTRUCTOR:
+        return document.call(this as SearchMessagesFilterDocument);
+      case SearchMessagesFilterPhoto.CONSTRUCTOR:
+        return photo.call(this as SearchMessagesFilterPhoto);
+      case SearchMessagesFilterVideo.CONSTRUCTOR:
+        return video.call(this as SearchMessagesFilterVideo);
+      case SearchMessagesFilterVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as SearchMessagesFilterVoiceNote);
+      case SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR:
+        return photoAndVideo.call(this as SearchMessagesFilterPhotoAndVideo);
+      case SearchMessagesFilterUrl.CONSTRUCTOR:
+        return url.call(this as SearchMessagesFilterUrl);
+      case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
+        return chatPhoto.call(this as SearchMessagesFilterChatPhoto);
+      case SearchMessagesFilterCall.CONSTRUCTOR:
+        return call.call(this as SearchMessagesFilterCall);
+      case SearchMessagesFilterMissedCall.CONSTRUCTOR:
+        return missedCall.call(this as SearchMessagesFilterMissedCall);
+      case SearchMessagesFilterVideoNote.CONSTRUCTOR:
+        return videoNote.call(this as SearchMessagesFilterVideoNote);
+      case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:
+        return voiceAndVideoNote
+            .call(this as SearchMessagesFilterVoiceAndVideoNote);
+      case SearchMessagesFilterMention.CONSTRUCTOR:
+        return mention.call(this as SearchMessagesFilterMention);
+      case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
+        return unreadMention.call(this as SearchMessagesFilterUnreadMention);
+      case SearchMessagesFilterFailedToSend.CONSTRUCTOR:
+        return failedToSend.call(this as SearchMessagesFilterFailedToSend);
+      case SearchMessagesFilterPinned.CONSTRUCTOR:
+        return pinned.call(this as SearchMessagesFilterPinned);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatActionExtensions on ChatAction {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatActionTyping value) typing,
+      required TResult Function(ChatActionRecordingVideo value) recordingVideo,
+      required TResult Function(ChatActionUploadingVideo value) uploadingVideo,
+      required TResult Function(ChatActionRecordingVoiceNote value)
+          recordingVoiceNote,
+      required TResult Function(ChatActionUploadingVoiceNote value)
+          uploadingVoiceNote,
+      required TResult Function(ChatActionUploadingPhoto value) uploadingPhoto,
+      required TResult Function(ChatActionUploadingDocument value)
+          uploadingDocument,
+      required TResult Function(ChatActionChoosingLocation value)
+          choosingLocation,
+      required TResult Function(ChatActionChoosingContact value)
+          choosingContact,
+      required TResult Function(ChatActionStartPlayingGame value)
+          startPlayingGame,
+      required TResult Function(ChatActionRecordingVideoNote value)
+          recordingVideoNote,
+      required TResult Function(ChatActionUploadingVideoNote value)
+          uploadingVideoNote,
+      required TResult Function(ChatActionCancel value) cancel}) {
+    switch (this.getConstructor()) {
+      case ChatActionTyping.CONSTRUCTOR:
+        return typing.call(this as ChatActionTyping);
+      case ChatActionRecordingVideo.CONSTRUCTOR:
+        return recordingVideo.call(this as ChatActionRecordingVideo);
+      case ChatActionUploadingVideo.CONSTRUCTOR:
+        return uploadingVideo.call(this as ChatActionUploadingVideo);
+      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
+        return recordingVoiceNote.call(this as ChatActionRecordingVoiceNote);
+      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
+        return uploadingVoiceNote.call(this as ChatActionUploadingVoiceNote);
+      case ChatActionUploadingPhoto.CONSTRUCTOR:
+        return uploadingPhoto.call(this as ChatActionUploadingPhoto);
+      case ChatActionUploadingDocument.CONSTRUCTOR:
+        return uploadingDocument.call(this as ChatActionUploadingDocument);
+      case ChatActionChoosingLocation.CONSTRUCTOR:
+        return choosingLocation.call(this as ChatActionChoosingLocation);
+      case ChatActionChoosingContact.CONSTRUCTOR:
+        return choosingContact.call(this as ChatActionChoosingContact);
+      case ChatActionStartPlayingGame.CONSTRUCTOR:
+        return startPlayingGame.call(this as ChatActionStartPlayingGame);
+      case ChatActionRecordingVideoNote.CONSTRUCTOR:
+        return recordingVideoNote.call(this as ChatActionRecordingVideoNote);
+      case ChatActionUploadingVideoNote.CONSTRUCTOR:
+        return uploadingVideoNote.call(this as ChatActionUploadingVideoNote);
+      case ChatActionCancel.CONSTRUCTOR:
+        return cancel.call(this as ChatActionCancel);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatActionUploadingVideoExtensions on ChatActionUploadingVideo {
   ChatActionUploadingVideo copy({int? progress}) =>
       ChatActionUploadingVideo(progress: progress ?? this.progress);
 }
 
-extension ChatActionUploadingVoiceNoteCopyExtension
+extension ChatActionUploadingVoiceNoteExtensions
     on ChatActionUploadingVoiceNote {
   ChatActionUploadingVoiceNote copy({int? progress}) =>
       ChatActionUploadingVoiceNote(progress: progress ?? this.progress);
 }
 
-extension ChatActionUploadingPhotoCopyExtension on ChatActionUploadingPhoto {
+extension ChatActionUploadingPhotoExtensions on ChatActionUploadingPhoto {
   ChatActionUploadingPhoto copy({int? progress}) =>
       ChatActionUploadingPhoto(progress: progress ?? this.progress);
 }
 
-extension ChatActionUploadingDocumentCopyExtension
-    on ChatActionUploadingDocument {
+extension ChatActionUploadingDocumentExtensions on ChatActionUploadingDocument {
   ChatActionUploadingDocument copy({int? progress}) =>
       ChatActionUploadingDocument(progress: progress ?? this.progress);
 }
 
-extension ChatActionUploadingVideoNoteCopyExtension
+extension ChatActionUploadingVideoNoteExtensions
     on ChatActionUploadingVideoNote {
   ChatActionUploadingVideoNote copy({int? progress}) =>
       ChatActionUploadingVideoNote(progress: progress ?? this.progress);
 }
 
-extension UserStatusOnlineCopyExtension on UserStatusOnline {
+extension UserStatusExtensions on UserStatus {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(UserStatusEmpty value) empty,
+      required TResult Function(UserStatusOnline value) online,
+      required TResult Function(UserStatusOffline value) offline,
+      required TResult Function(UserStatusRecently value) recently,
+      required TResult Function(UserStatusLastWeek value) lastWeek,
+      required TResult Function(UserStatusLastMonth value) lastMonth}) {
+    switch (this.getConstructor()) {
+      case UserStatusEmpty.CONSTRUCTOR:
+        return empty.call(this as UserStatusEmpty);
+      case UserStatusOnline.CONSTRUCTOR:
+        return online.call(this as UserStatusOnline);
+      case UserStatusOffline.CONSTRUCTOR:
+        return offline.call(this as UserStatusOffline);
+      case UserStatusRecently.CONSTRUCTOR:
+        return recently.call(this as UserStatusRecently);
+      case UserStatusLastWeek.CONSTRUCTOR:
+        return lastWeek.call(this as UserStatusLastWeek);
+      case UserStatusLastMonth.CONSTRUCTOR:
+        return lastMonth.call(this as UserStatusLastMonth);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension UserStatusOnlineExtensions on UserStatusOnline {
   UserStatusOnline copy({int? expires}) =>
       UserStatusOnline(expires: expires ?? this.expires);
 }
 
-extension UserStatusOfflineCopyExtension on UserStatusOffline {
+extension UserStatusOfflineExtensions on UserStatusOffline {
   UserStatusOffline copy({int? wasOnline}) =>
       UserStatusOffline(wasOnline: wasOnline ?? this.wasOnline);
 }
 
-extension StickersCopyExtension on Stickers {
+extension StickersExtensions on Stickers {
   Stickers copy({List<Sticker>? stickers}) =>
       Stickers(stickers: stickers ?? this.stickers);
 }
 
-extension EmojisCopyExtension on Emojis {
+extension EmojisExtensions on Emojis {
   Emojis copy({List<String>? emojis}) => Emojis(emojis: emojis ?? this.emojis);
 }
 
-extension StickerSetCopyExtension on StickerSet {
+extension StickerSetExtensions on StickerSet {
   StickerSet copy(
           {int? id,
           String? title,
@@ -3445,7 +4950,7 @@ extension StickerSetCopyExtension on StickerSet {
           emojis: emojis ?? this.emojis);
 }
 
-extension StickerSetInfoCopyExtension on StickerSetInfo {
+extension StickerSetInfoExtensions on StickerSetInfo {
   StickerSetInfo copy(
           {int? id,
           String? title,
@@ -3476,13 +4981,37 @@ extension StickerSetInfoCopyExtension on StickerSetInfo {
           covers: covers ?? this.covers);
 }
 
-extension StickerSetsCopyExtension on StickerSets {
+extension StickerSetsExtensions on StickerSets {
   StickerSets copy({int? totalCount, List<StickerSetInfo>? sets}) =>
       StickerSets(
           totalCount: totalCount ?? this.totalCount, sets: sets ?? this.sets);
 }
 
-extension CallProtocolCopyExtension on CallProtocol {
+extension CallDiscardReasonExtensions on CallDiscardReason {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CallDiscardReasonEmpty value) empty,
+      required TResult Function(CallDiscardReasonMissed value) missed,
+      required TResult Function(CallDiscardReasonDeclined value) declined,
+      required TResult Function(CallDiscardReasonDisconnected value)
+          disconnected,
+      required TResult Function(CallDiscardReasonHungUp value) hungUp}) {
+    switch (this.getConstructor()) {
+      case CallDiscardReasonEmpty.CONSTRUCTOR:
+        return empty.call(this as CallDiscardReasonEmpty);
+      case CallDiscardReasonMissed.CONSTRUCTOR:
+        return missed.call(this as CallDiscardReasonMissed);
+      case CallDiscardReasonDeclined.CONSTRUCTOR:
+        return declined.call(this as CallDiscardReasonDeclined);
+      case CallDiscardReasonDisconnected.CONSTRUCTOR:
+        return disconnected.call(this as CallDiscardReasonDisconnected);
+      case CallDiscardReasonHungUp.CONSTRUCTOR:
+        return hungUp.call(this as CallDiscardReasonHungUp);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CallProtocolExtensions on CallProtocol {
   CallProtocol copy(
           {bool? udpP2p,
           bool? udpReflector,
@@ -3497,13 +5026,28 @@ extension CallProtocolCopyExtension on CallProtocol {
           libraryVersions: libraryVersions ?? this.libraryVersions);
 }
 
-extension CallServerTypeTelegramReflectorCopyExtension
+extension CallServerTypeExtensions on CallServerType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CallServerTypeTelegramReflector value)
+          telegramReflector,
+      required TResult Function(CallServerTypeWebrtc value) webrtc}) {
+    switch (this.getConstructor()) {
+      case CallServerTypeTelegramReflector.CONSTRUCTOR:
+        return telegramReflector.call(this as CallServerTypeTelegramReflector);
+      case CallServerTypeWebrtc.CONSTRUCTOR:
+        return webrtc.call(this as CallServerTypeWebrtc);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CallServerTypeTelegramReflectorExtensions
     on CallServerTypeTelegramReflector {
   CallServerTypeTelegramReflector copy({String? peerTag}) =>
       CallServerTypeTelegramReflector(peerTag: peerTag ?? this.peerTag);
 }
 
-extension CallServerTypeWebrtcCopyExtension on CallServerTypeWebrtc {
+extension CallServerTypeWebrtcExtensions on CallServerTypeWebrtc {
   CallServerTypeWebrtc copy(
           {String? username,
           String? password,
@@ -3516,7 +5060,7 @@ extension CallServerTypeWebrtcCopyExtension on CallServerTypeWebrtc {
           supportsStun: supportsStun ?? this.supportsStun);
 }
 
-extension CallServerCopyExtension on CallServer {
+extension CallServerExtensions on CallServer {
   CallServer copy(
           {int? id,
           String? ipAddress,
@@ -3531,22 +5075,48 @@ extension CallServerCopyExtension on CallServer {
           type: type ?? this.type);
 }
 
-extension CallIdCopyExtension on CallId {
+extension CallIdExtensions on CallId {
   CallId copy({int? id}) => CallId(id: id ?? this.id);
 }
 
-extension GroupCallIdCopyExtension on GroupCallId {
+extension GroupCallIdExtensions on GroupCallId {
   GroupCallId copy({int? id}) => GroupCallId(id: id ?? this.id);
 }
 
-extension CallStatePendingCopyExtension on CallStatePending {
+extension CallStateExtensions on CallState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CallStatePending value) pending,
+      required TResult Function(CallStateExchangingKeys value) exchangingKeys,
+      required TResult Function(CallStateReady value) ready,
+      required TResult Function(CallStateHangingUp value) hangingUp,
+      required TResult Function(CallStateDiscarded value) discarded,
+      required TResult Function(CallStateError value) error}) {
+    switch (this.getConstructor()) {
+      case CallStatePending.CONSTRUCTOR:
+        return pending.call(this as CallStatePending);
+      case CallStateExchangingKeys.CONSTRUCTOR:
+        return exchangingKeys.call(this as CallStateExchangingKeys);
+      case CallStateReady.CONSTRUCTOR:
+        return ready.call(this as CallStateReady);
+      case CallStateHangingUp.CONSTRUCTOR:
+        return hangingUp.call(this as CallStateHangingUp);
+      case CallStateDiscarded.CONSTRUCTOR:
+        return discarded.call(this as CallStateDiscarded);
+      case CallStateError.CONSTRUCTOR:
+        return error.call(this as CallStateError);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CallStatePendingExtensions on CallStatePending {
   CallStatePending copy({bool? isCreated, bool? isReceived}) =>
       CallStatePending(
           isCreated: isCreated ?? this.isCreated,
           isReceived: isReceived ?? this.isReceived);
 }
 
-extension CallStateReadyCopyExtension on CallStateReady {
+extension CallStateReadyExtensions on CallStateReady {
   CallStateReady copy(
           {CallProtocol? protocol,
           List<CallServer>? servers,
@@ -3563,7 +5133,7 @@ extension CallStateReadyCopyExtension on CallStateReady {
           allowP2p: allowP2p ?? this.allowP2p);
 }
 
-extension CallStateDiscardedCopyExtension on CallStateDiscarded {
+extension CallStateDiscardedExtensions on CallStateDiscarded {
   CallStateDiscarded copy(
           {CallDiscardReason? reason,
           bool? needRating,
@@ -3575,19 +5145,19 @@ extension CallStateDiscardedCopyExtension on CallStateDiscarded {
               needDebugInformation ?? this.needDebugInformation);
 }
 
-extension CallStateErrorCopyExtension on CallStateError {
+extension CallStateErrorExtensions on CallStateError {
   CallStateError copy({TdError? error}) =>
       CallStateError(error: error ?? this.error);
 }
 
-extension GroupCallRecentSpeakerCopyExtension on GroupCallRecentSpeaker {
+extension GroupCallRecentSpeakerExtensions on GroupCallRecentSpeaker {
   GroupCallRecentSpeaker copy({MessageSender? speaker, bool? isSpeaking}) =>
       GroupCallRecentSpeaker(
           speaker: speaker ?? this.speaker,
           isSpeaking: isSpeaking ?? this.isSpeaking);
 }
 
-extension GroupCallCopyExtension on GroupCall {
+extension GroupCallExtensions on GroupCall {
   GroupCall copy(
           {int? id,
           String? title,
@@ -3622,8 +5192,7 @@ extension GroupCallCopyExtension on GroupCall {
           duration: duration ?? this.duration);
 }
 
-extension GroupCallPayloadFingerprintCopyExtension
-    on GroupCallPayloadFingerprint {
+extension GroupCallPayloadFingerprintExtensions on GroupCallPayloadFingerprint {
   GroupCallPayloadFingerprint copy(
           {String? hash, String? setup, String? fingerprint}) =>
       GroupCallPayloadFingerprint(
@@ -3632,7 +5201,7 @@ extension GroupCallPayloadFingerprintCopyExtension
           fingerprint: fingerprint ?? this.fingerprint);
 }
 
-extension GroupCallPayloadCopyExtension on GroupCallPayload {
+extension GroupCallPayloadExtensions on GroupCallPayload {
   GroupCallPayload copy(
           {String? ufrag,
           String? pwd,
@@ -3643,7 +5212,7 @@ extension GroupCallPayloadCopyExtension on GroupCallPayload {
           fingerprints: fingerprints ?? this.fingerprints);
 }
 
-extension GroupCallJoinResponseCandidateCopyExtension
+extension GroupCallJoinResponseCandidateExtensions
     on GroupCallJoinResponseCandidate {
   GroupCallJoinResponseCandidate copy(
           {String? port,
@@ -3675,8 +5244,21 @@ extension GroupCallJoinResponseCandidateCopyExtension
           relPort: relPort ?? this.relPort);
 }
 
-extension GroupCallJoinResponseWebrtcCopyExtension
-    on GroupCallJoinResponseWebrtc {
+extension GroupCallJoinResponseExtensions on GroupCallJoinResponse {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(GroupCallJoinResponseWebrtc value) webrtc,
+      required TResult Function(GroupCallJoinResponseStream value) stream}) {
+    switch (this.getConstructor()) {
+      case GroupCallJoinResponseWebrtc.CONSTRUCTOR:
+        return webrtc.call(this as GroupCallJoinResponseWebrtc);
+      case GroupCallJoinResponseStream.CONSTRUCTOR:
+        return stream.call(this as GroupCallJoinResponseStream);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension GroupCallJoinResponseWebrtcExtensions on GroupCallJoinResponseWebrtc {
   GroupCallJoinResponseWebrtc copy(
           {GroupCallPayload? payload,
           List<GroupCallJoinResponseCandidate>? candidates}) =>
@@ -3685,7 +5267,7 @@ extension GroupCallJoinResponseWebrtcCopyExtension
           candidates: candidates ?? this.candidates);
 }
 
-extension GroupCallParticipantCopyExtension on GroupCallParticipant {
+extension GroupCallParticipantExtensions on GroupCallParticipant {
   GroupCallParticipant copy(
           {MessageSender? participant,
           int? source,
@@ -3725,7 +5307,44 @@ extension GroupCallParticipantCopyExtension on GroupCallParticipant {
           order: order ?? this.order);
 }
 
-extension CallCopyExtension on Call {
+extension CallProblemExtensions on CallProblem {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CallProblemEcho value) echo,
+      required TResult Function(CallProblemNoise value) noise,
+      required TResult Function(CallProblemInterruptions value) interruptions,
+      required TResult Function(CallProblemDistortedSpeech value)
+          distortedSpeech,
+      required TResult Function(CallProblemSilentLocal value) silentLocal,
+      required TResult Function(CallProblemSilentRemote value) silentRemote,
+      required TResult Function(CallProblemDropped value) dropped,
+      required TResult Function(CallProblemDistortedVideo value) distortedVideo,
+      required TResult Function(CallProblemPixelatedVideo value)
+          pixelatedVideo}) {
+    switch (this.getConstructor()) {
+      case CallProblemEcho.CONSTRUCTOR:
+        return echo.call(this as CallProblemEcho);
+      case CallProblemNoise.CONSTRUCTOR:
+        return noise.call(this as CallProblemNoise);
+      case CallProblemInterruptions.CONSTRUCTOR:
+        return interruptions.call(this as CallProblemInterruptions);
+      case CallProblemDistortedSpeech.CONSTRUCTOR:
+        return distortedSpeech.call(this as CallProblemDistortedSpeech);
+      case CallProblemSilentLocal.CONSTRUCTOR:
+        return silentLocal.call(this as CallProblemSilentLocal);
+      case CallProblemSilentRemote.CONSTRUCTOR:
+        return silentRemote.call(this as CallProblemSilentRemote);
+      case CallProblemDropped.CONSTRUCTOR:
+        return dropped.call(this as CallProblemDropped);
+      case CallProblemDistortedVideo.CONSTRUCTOR:
+        return distortedVideo.call(this as CallProblemDistortedVideo);
+      case CallProblemPixelatedVideo.CONSTRUCTOR:
+        return pixelatedVideo.call(this as CallProblemPixelatedVideo);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CallExtensions on Call {
   Call copy(
           {int? id,
           int? userId,
@@ -3740,7 +5359,7 @@ extension CallCopyExtension on Call {
           state: state ?? this.state);
 }
 
-extension PhoneNumberAuthenticationSettingsCopyExtension
+extension PhoneNumberAuthenticationSettingsExtensions
     on PhoneNumberAuthenticationSettings {
   PhoneNumberAuthenticationSettings copy(
           {bool? allowFlashCall,
@@ -3754,17 +5373,31 @@ extension PhoneNumberAuthenticationSettingsCopyExtension
               allowSmsRetrieverApi ?? this.allowSmsRetrieverApi);
 }
 
-extension AnimationsCopyExtension on Animations {
+extension AnimationsExtensions on Animations {
   Animations copy({List<Animation>? animations}) =>
       Animations(animations: animations ?? this.animations);
 }
 
-extension DiceStickersRegularCopyExtension on DiceStickersRegular {
+extension DiceStickersExtensions on DiceStickers {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(DiceStickersRegular value) regular,
+      required TResult Function(DiceStickersSlotMachine value) slotMachine}) {
+    switch (this.getConstructor()) {
+      case DiceStickersRegular.CONSTRUCTOR:
+        return regular.call(this as DiceStickersRegular);
+      case DiceStickersSlotMachine.CONSTRUCTOR:
+        return slotMachine.call(this as DiceStickersSlotMachine);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension DiceStickersRegularExtensions on DiceStickersRegular {
   DiceStickersRegular copy({Sticker? sticker}) =>
       DiceStickersRegular(sticker: sticker ?? this.sticker);
 }
 
-extension DiceStickersSlotMachineCopyExtension on DiceStickersSlotMachine {
+extension DiceStickersSlotMachineExtensions on DiceStickersSlotMachine {
   DiceStickersSlotMachine copy(
           {Sticker? background,
           Sticker? lever,
@@ -3779,18 +5412,64 @@ extension DiceStickersSlotMachineCopyExtension on DiceStickersSlotMachine {
           rightReel: rightReel ?? this.rightReel);
 }
 
-extension ImportedContactsCopyExtension on ImportedContacts {
+extension ImportedContactsExtensions on ImportedContacts {
   ImportedContacts copy({List<int>? userIds, List<int>? importerCount}) =>
       ImportedContacts(
           userIds: userIds ?? this.userIds,
           importerCount: importerCount ?? this.importerCount);
 }
 
-extension HttpUrlCopyExtension on HttpUrl {
+extension HttpUrlExtensions on HttpUrl {
   HttpUrl copy({String? url}) => HttpUrl(url: url ?? this.url);
 }
 
-extension InputInlineQueryResultAnimationCopyExtension
+extension InputInlineQueryResultExtensions on InputInlineQueryResult {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputInlineQueryResultAnimation value)
+          animation,
+      required TResult Function(InputInlineQueryResultArticle value) article,
+      required TResult Function(InputInlineQueryResultAudio value) audio,
+      required TResult Function(InputInlineQueryResultContact value) contact,
+      required TResult Function(InputInlineQueryResultDocument value) document,
+      required TResult Function(InputInlineQueryResultGame value) game,
+      required TResult Function(InputInlineQueryResultLocation value) location,
+      required TResult Function(InputInlineQueryResultPhoto value) photo,
+      required TResult Function(InputInlineQueryResultSticker value) sticker,
+      required TResult Function(InputInlineQueryResultVenue value) venue,
+      required TResult Function(InputInlineQueryResultVideo value) video,
+      required TResult Function(InputInlineQueryResultVoiceNote value)
+          voiceNote}) {
+    switch (this.getConstructor()) {
+      case InputInlineQueryResultAnimation.CONSTRUCTOR:
+        return animation.call(this as InputInlineQueryResultAnimation);
+      case InputInlineQueryResultArticle.CONSTRUCTOR:
+        return article.call(this as InputInlineQueryResultArticle);
+      case InputInlineQueryResultAudio.CONSTRUCTOR:
+        return audio.call(this as InputInlineQueryResultAudio);
+      case InputInlineQueryResultContact.CONSTRUCTOR:
+        return contact.call(this as InputInlineQueryResultContact);
+      case InputInlineQueryResultDocument.CONSTRUCTOR:
+        return document.call(this as InputInlineQueryResultDocument);
+      case InputInlineQueryResultGame.CONSTRUCTOR:
+        return game.call(this as InputInlineQueryResultGame);
+      case InputInlineQueryResultLocation.CONSTRUCTOR:
+        return location.call(this as InputInlineQueryResultLocation);
+      case InputInlineQueryResultPhoto.CONSTRUCTOR:
+        return photo.call(this as InputInlineQueryResultPhoto);
+      case InputInlineQueryResultSticker.CONSTRUCTOR:
+        return sticker.call(this as InputInlineQueryResultSticker);
+      case InputInlineQueryResultVenue.CONSTRUCTOR:
+        return venue.call(this as InputInlineQueryResultVenue);
+      case InputInlineQueryResultVideo.CONSTRUCTOR:
+        return video.call(this as InputInlineQueryResultVideo);
+      case InputInlineQueryResultVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as InputInlineQueryResultVoiceNote);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputInlineQueryResultAnimationExtensions
     on InputInlineQueryResultAnimation {
   InputInlineQueryResultAnimation copy(
           {String? id,
@@ -3818,7 +5497,7 @@ extension InputInlineQueryResultAnimationCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultArticleCopyExtension
+extension InputInlineQueryResultArticleExtensions
     on InputInlineQueryResultArticle {
   InputInlineQueryResultArticle copy(
           {String? id,
@@ -3844,8 +5523,7 @@ extension InputInlineQueryResultArticleCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultAudioCopyExtension
-    on InputInlineQueryResultAudio {
+extension InputInlineQueryResultAudioExtensions on InputInlineQueryResultAudio {
   InputInlineQueryResultAudio copy(
           {String? id,
           String? title,
@@ -3864,7 +5542,7 @@ extension InputInlineQueryResultAudioCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultContactCopyExtension
+extension InputInlineQueryResultContactExtensions
     on InputInlineQueryResultContact {
   InputInlineQueryResultContact copy(
           {String? id,
@@ -3884,7 +5562,7 @@ extension InputInlineQueryResultContactCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultDocumentCopyExtension
+extension InputInlineQueryResultDocumentExtensions
     on InputInlineQueryResultDocument {
   InputInlineQueryResultDocument copy(
           {String? id,
@@ -3910,8 +5588,7 @@ extension InputInlineQueryResultDocumentCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultGameCopyExtension
-    on InputInlineQueryResultGame {
+extension InputInlineQueryResultGameExtensions on InputInlineQueryResultGame {
   InputInlineQueryResultGame copy(
           {String? id, String? gameShortName, ReplyMarkup? replyMarkup}) =>
       InputInlineQueryResultGame(
@@ -3920,7 +5597,7 @@ extension InputInlineQueryResultGameCopyExtension
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension InputInlineQueryResultLocationCopyExtension
+extension InputInlineQueryResultLocationExtensions
     on InputInlineQueryResultLocation {
   InputInlineQueryResultLocation copy(
           {String? id,
@@ -3944,8 +5621,7 @@ extension InputInlineQueryResultLocationCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultPhotoCopyExtension
-    on InputInlineQueryResultPhoto {
+extension InputInlineQueryResultPhotoExtensions on InputInlineQueryResultPhoto {
   InputInlineQueryResultPhoto copy(
           {String? id,
           String? title,
@@ -3968,7 +5644,7 @@ extension InputInlineQueryResultPhotoCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultStickerCopyExtension
+extension InputInlineQueryResultStickerExtensions
     on InputInlineQueryResultSticker {
   InputInlineQueryResultSticker copy(
           {String? id,
@@ -3988,8 +5664,7 @@ extension InputInlineQueryResultStickerCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultVenueCopyExtension
-    on InputInlineQueryResultVenue {
+extension InputInlineQueryResultVenueExtensions on InputInlineQueryResultVenue {
   InputInlineQueryResultVenue copy(
           {String? id,
           Venue? venue,
@@ -4008,8 +5683,7 @@ extension InputInlineQueryResultVenueCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultVideoCopyExtension
-    on InputInlineQueryResultVideo {
+extension InputInlineQueryResultVideoExtensions on InputInlineQueryResultVideo {
   InputInlineQueryResultVideo copy(
           {String? id,
           String? title,
@@ -4036,7 +5710,7 @@ extension InputInlineQueryResultVideoCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InputInlineQueryResultVoiceNoteCopyExtension
+extension InputInlineQueryResultVoiceNoteExtensions
     on InputInlineQueryResultVoiceNote {
   InputInlineQueryResultVoiceNote copy(
           {String? id,
@@ -4054,7 +5728,51 @@ extension InputInlineQueryResultVoiceNoteCopyExtension
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension InlineQueryResultArticleCopyExtension on InlineQueryResultArticle {
+extension InlineQueryResultExtensions on InlineQueryResult {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InlineQueryResultArticle value) article,
+      required TResult Function(InlineQueryResultContact value) contact,
+      required TResult Function(InlineQueryResultLocation value) location,
+      required TResult Function(InlineQueryResultVenue value) venue,
+      required TResult Function(InlineQueryResultGame value) game,
+      required TResult Function(InlineQueryResultAnimation value) animation,
+      required TResult Function(InlineQueryResultAudio value) audio,
+      required TResult Function(InlineQueryResultDocument value) document,
+      required TResult Function(InlineQueryResultPhoto value) photo,
+      required TResult Function(InlineQueryResultSticker value) sticker,
+      required TResult Function(InlineQueryResultVideo value) video,
+      required TResult Function(InlineQueryResultVoiceNote value) voiceNote}) {
+    switch (this.getConstructor()) {
+      case InlineQueryResultArticle.CONSTRUCTOR:
+        return article.call(this as InlineQueryResultArticle);
+      case InlineQueryResultContact.CONSTRUCTOR:
+        return contact.call(this as InlineQueryResultContact);
+      case InlineQueryResultLocation.CONSTRUCTOR:
+        return location.call(this as InlineQueryResultLocation);
+      case InlineQueryResultVenue.CONSTRUCTOR:
+        return venue.call(this as InlineQueryResultVenue);
+      case InlineQueryResultGame.CONSTRUCTOR:
+        return game.call(this as InlineQueryResultGame);
+      case InlineQueryResultAnimation.CONSTRUCTOR:
+        return animation.call(this as InlineQueryResultAnimation);
+      case InlineQueryResultAudio.CONSTRUCTOR:
+        return audio.call(this as InlineQueryResultAudio);
+      case InlineQueryResultDocument.CONSTRUCTOR:
+        return document.call(this as InlineQueryResultDocument);
+      case InlineQueryResultPhoto.CONSTRUCTOR:
+        return photo.call(this as InlineQueryResultPhoto);
+      case InlineQueryResultSticker.CONSTRUCTOR:
+        return sticker.call(this as InlineQueryResultSticker);
+      case InlineQueryResultVideo.CONSTRUCTOR:
+        return video.call(this as InlineQueryResultVideo);
+      case InlineQueryResultVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as InlineQueryResultVoiceNote);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InlineQueryResultArticleExtensions on InlineQueryResultArticle {
   InlineQueryResultArticle copy(
           {String? id,
           String? url,
@@ -4071,7 +5789,7 @@ extension InlineQueryResultArticleCopyExtension on InlineQueryResultArticle {
           thumbnail: thumbnail ?? this.thumbnail);
 }
 
-extension InlineQueryResultContactCopyExtension on InlineQueryResultContact {
+extension InlineQueryResultContactExtensions on InlineQueryResultContact {
   InlineQueryResultContact copy(
           {String? id, Contact? contact, Thumbnail? thumbnail}) =>
       InlineQueryResultContact(
@@ -4080,7 +5798,7 @@ extension InlineQueryResultContactCopyExtension on InlineQueryResultContact {
           thumbnail: thumbnail ?? this.thumbnail);
 }
 
-extension InlineQueryResultLocationCopyExtension on InlineQueryResultLocation {
+extension InlineQueryResultLocationExtensions on InlineQueryResultLocation {
   InlineQueryResultLocation copy(
           {String? id,
           Location? location,
@@ -4093,7 +5811,7 @@ extension InlineQueryResultLocationCopyExtension on InlineQueryResultLocation {
           thumbnail: thumbnail ?? this.thumbnail);
 }
 
-extension InlineQueryResultVenueCopyExtension on InlineQueryResultVenue {
+extension InlineQueryResultVenueExtensions on InlineQueryResultVenue {
   InlineQueryResultVenue copy(
           {String? id, Venue? venue, Thumbnail? thumbnail}) =>
       InlineQueryResultVenue(
@@ -4102,13 +5820,12 @@ extension InlineQueryResultVenueCopyExtension on InlineQueryResultVenue {
           thumbnail: thumbnail ?? this.thumbnail);
 }
 
-extension InlineQueryResultGameCopyExtension on InlineQueryResultGame {
+extension InlineQueryResultGameExtensions on InlineQueryResultGame {
   InlineQueryResultGame copy({String? id, Game? game}) =>
       InlineQueryResultGame(id: id ?? this.id, game: game ?? this.game);
 }
 
-extension InlineQueryResultAnimationCopyExtension
-    on InlineQueryResultAnimation {
+extension InlineQueryResultAnimationExtensions on InlineQueryResultAnimation {
   InlineQueryResultAnimation copy(
           {String? id, Animation? animation, String? title}) =>
       InlineQueryResultAnimation(
@@ -4117,12 +5834,12 @@ extension InlineQueryResultAnimationCopyExtension
           title: title ?? this.title);
 }
 
-extension InlineQueryResultAudioCopyExtension on InlineQueryResultAudio {
+extension InlineQueryResultAudioExtensions on InlineQueryResultAudio {
   InlineQueryResultAudio copy({String? id, Audio? audio}) =>
       InlineQueryResultAudio(id: id ?? this.id, audio: audio ?? this.audio);
 }
 
-extension InlineQueryResultDocumentCopyExtension on InlineQueryResultDocument {
+extension InlineQueryResultDocumentExtensions on InlineQueryResultDocument {
   InlineQueryResultDocument copy(
           {String? id,
           Document? document,
@@ -4135,7 +5852,7 @@ extension InlineQueryResultDocumentCopyExtension on InlineQueryResultDocument {
           description: description ?? this.description);
 }
 
-extension InlineQueryResultPhotoCopyExtension on InlineQueryResultPhoto {
+extension InlineQueryResultPhotoExtensions on InlineQueryResultPhoto {
   InlineQueryResultPhoto copy(
           {String? id, Photo? photo, String? title, String? description}) =>
       InlineQueryResultPhoto(
@@ -4145,13 +5862,13 @@ extension InlineQueryResultPhotoCopyExtension on InlineQueryResultPhoto {
           description: description ?? this.description);
 }
 
-extension InlineQueryResultStickerCopyExtension on InlineQueryResultSticker {
+extension InlineQueryResultStickerExtensions on InlineQueryResultSticker {
   InlineQueryResultSticker copy({String? id, Sticker? sticker}) =>
       InlineQueryResultSticker(
           id: id ?? this.id, sticker: sticker ?? this.sticker);
 }
 
-extension InlineQueryResultVideoCopyExtension on InlineQueryResultVideo {
+extension InlineQueryResultVideoExtensions on InlineQueryResultVideo {
   InlineQueryResultVideo copy(
           {String? id, Video? video, String? title, String? description}) =>
       InlineQueryResultVideo(
@@ -4161,8 +5878,7 @@ extension InlineQueryResultVideoCopyExtension on InlineQueryResultVideo {
           description: description ?? this.description);
 }
 
-extension InlineQueryResultVoiceNoteCopyExtension
-    on InlineQueryResultVoiceNote {
+extension InlineQueryResultVoiceNoteExtensions on InlineQueryResultVoiceNote {
   InlineQueryResultVoiceNote copy(
           {String? id, VoiceNote? voiceNote, String? title}) =>
       InlineQueryResultVoiceNote(
@@ -4171,7 +5887,7 @@ extension InlineQueryResultVoiceNoteCopyExtension
           title: title ?? this.title);
 }
 
-extension InlineQueryResultsCopyExtension on InlineQueryResults {
+extension InlineQueryResultsExtensions on InlineQueryResults {
   InlineQueryResults copy(
           {int? inlineQueryId,
           String? nextOffset,
@@ -4186,25 +5902,44 @@ extension InlineQueryResultsCopyExtension on InlineQueryResults {
           switchPmParameter: switchPmParameter ?? this.switchPmParameter);
 }
 
-extension CallbackQueryPayloadDataCopyExtension on CallbackQueryPayloadData {
+extension CallbackQueryPayloadExtensions on CallbackQueryPayload {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CallbackQueryPayloadData value) data,
+      required TResult Function(CallbackQueryPayloadDataWithPassword value)
+          dataWithPassword,
+      required TResult Function(CallbackQueryPayloadGame value) game}) {
+    switch (this.getConstructor()) {
+      case CallbackQueryPayloadData.CONSTRUCTOR:
+        return data.call(this as CallbackQueryPayloadData);
+      case CallbackQueryPayloadDataWithPassword.CONSTRUCTOR:
+        return dataWithPassword
+            .call(this as CallbackQueryPayloadDataWithPassword);
+      case CallbackQueryPayloadGame.CONSTRUCTOR:
+        return game.call(this as CallbackQueryPayloadGame);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CallbackQueryPayloadDataExtensions on CallbackQueryPayloadData {
   CallbackQueryPayloadData copy({String? data}) =>
       CallbackQueryPayloadData(data: data ?? this.data);
 }
 
-extension CallbackQueryPayloadDataWithPasswordCopyExtension
+extension CallbackQueryPayloadDataWithPasswordExtensions
     on CallbackQueryPayloadDataWithPassword {
   CallbackQueryPayloadDataWithPassword copy({String? password, String? data}) =>
       CallbackQueryPayloadDataWithPassword(
           password: password ?? this.password, data: data ?? this.data);
 }
 
-extension CallbackQueryPayloadGameCopyExtension on CallbackQueryPayloadGame {
+extension CallbackQueryPayloadGameExtensions on CallbackQueryPayloadGame {
   CallbackQueryPayloadGame copy({String? gameShortName}) =>
       CallbackQueryPayloadGame(
           gameShortName: gameShortName ?? this.gameShortName);
 }
 
-extension CallbackQueryAnswerCopyExtension on CallbackQueryAnswer {
+extension CallbackQueryAnswerExtensions on CallbackQueryAnswer {
   CallbackQueryAnswer copy({String? text, bool? showAlert, String? url}) =>
       CallbackQueryAnswer(
           text: text ?? this.text,
@@ -4212,64 +5947,220 @@ extension CallbackQueryAnswerCopyExtension on CallbackQueryAnswer {
           url: url ?? this.url);
 }
 
-extension CustomRequestResultCopyExtension on CustomRequestResult {
+extension CustomRequestResultExtensions on CustomRequestResult {
   CustomRequestResult copy({String? result}) =>
       CustomRequestResult(result: result ?? this.result);
 }
 
-extension GameHighScoreCopyExtension on GameHighScore {
+extension GameHighScoreExtensions on GameHighScore {
   GameHighScore copy({int? position, int? userId, int? score}) => GameHighScore(
       position: position ?? this.position,
       userId: userId ?? this.userId,
       score: score ?? this.score);
 }
 
-extension GameHighScoresCopyExtension on GameHighScores {
+extension GameHighScoresExtensions on GameHighScores {
   GameHighScores copy({List<GameHighScore>? scores}) =>
       GameHighScores(scores: scores ?? this.scores);
 }
 
-extension ChatEventMessageEditedCopyExtension on ChatEventMessageEdited {
+extension ChatEventActionExtensions on ChatEventAction {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatEventMessageEdited value)
+          chatEventMessageEdited,
+      required TResult Function(ChatEventMessageDeleted value)
+          chatEventMessageDeleted,
+      required TResult Function(ChatEventPollStopped value)
+          chatEventPollStopped,
+      required TResult Function(ChatEventMessagePinned value)
+          chatEventMessagePinned,
+      required TResult Function(ChatEventMessageUnpinned value)
+          chatEventMessageUnpinned,
+      required TResult Function(ChatEventMemberJoined value)
+          chatEventMemberJoined,
+      required TResult Function(ChatEventMemberJoinedByInviteLink value)
+          chatEventMemberJoinedByInviteLink,
+      required TResult Function(ChatEventMemberLeft value) chatEventMemberLeft,
+      required TResult Function(ChatEventMemberInvited value)
+          chatEventMemberInvited,
+      required TResult Function(ChatEventMemberPromoted value)
+          chatEventMemberPromoted,
+      required TResult Function(ChatEventMemberRestricted value)
+          chatEventMemberRestricted,
+      required TResult Function(ChatEventTitleChanged value)
+          chatEventTitleChanged,
+      required TResult Function(ChatEventPermissionsChanged value)
+          chatEventPermissionsChanged,
+      required TResult Function(ChatEventDescriptionChanged value)
+          chatEventDescriptionChanged,
+      required TResult Function(ChatEventUsernameChanged value)
+          chatEventUsernameChanged,
+      required TResult Function(ChatEventPhotoChanged value)
+          chatEventPhotoChanged,
+      required TResult Function(ChatEventInvitesToggled value)
+          chatEventInvitesToggled,
+      required TResult Function(ChatEventLinkedChatChanged value)
+          chatEventLinkedChatChanged,
+      required TResult Function(ChatEventSlowModeDelayChanged value)
+          chatEventSlowModeDelayChanged,
+      required TResult Function(ChatEventMessageTtlSettingChanged value)
+          chatEventMessageTtlSettingChanged,
+      required TResult Function(ChatEventSignMessagesToggled value)
+          chatEventSignMessagesToggled,
+      required TResult Function(ChatEventStickerSetChanged value)
+          chatEventStickerSetChanged,
+      required TResult Function(ChatEventLocationChanged value)
+          chatEventLocationChanged,
+      required TResult Function(ChatEventIsAllHistoryAvailableToggled value)
+          chatEventIsAllHistoryAvailableToggled,
+      required TResult Function(ChatEventInviteLinkEdited value)
+          chatEventInviteLinkEdited,
+      required TResult Function(ChatEventInviteLinkRevoked value)
+          chatEventInviteLinkRevoked,
+      required TResult Function(ChatEventInviteLinkDeleted value)
+          chatEventInviteLinkDeleted,
+      required TResult Function(ChatEventVoiceChatCreated value)
+          chatEventVoiceChatCreated,
+      required TResult Function(ChatEventVoiceChatDiscarded value)
+          chatEventVoiceChatDiscarded,
+      required TResult Function(
+              ChatEventVoiceChatParticipantIsMutedToggled value)
+          chatEventVoiceChatParticipantIsMutedToggled,
+      required TResult Function(
+              ChatEventVoiceChatParticipantVolumeLevelChanged value)
+          chatEventVoiceChatParticipantVolumeLevelChanged,
+      required TResult Function(
+              ChatEventVoiceChatMuteNewParticipantsToggled value)
+          chatEventVoiceChatMuteNewParticipantsToggled}) {
+    switch (this.getConstructor()) {
+      case ChatEventMessageEdited.CONSTRUCTOR:
+        return chatEventMessageEdited.call(this as ChatEventMessageEdited);
+      case ChatEventMessageDeleted.CONSTRUCTOR:
+        return chatEventMessageDeleted.call(this as ChatEventMessageDeleted);
+      case ChatEventPollStopped.CONSTRUCTOR:
+        return chatEventPollStopped.call(this as ChatEventPollStopped);
+      case ChatEventMessagePinned.CONSTRUCTOR:
+        return chatEventMessagePinned.call(this as ChatEventMessagePinned);
+      case ChatEventMessageUnpinned.CONSTRUCTOR:
+        return chatEventMessageUnpinned.call(this as ChatEventMessageUnpinned);
+      case ChatEventMemberJoined.CONSTRUCTOR:
+        return chatEventMemberJoined.call(this as ChatEventMemberJoined);
+      case ChatEventMemberJoinedByInviteLink.CONSTRUCTOR:
+        return chatEventMemberJoinedByInviteLink
+            .call(this as ChatEventMemberJoinedByInviteLink);
+      case ChatEventMemberLeft.CONSTRUCTOR:
+        return chatEventMemberLeft.call(this as ChatEventMemberLeft);
+      case ChatEventMemberInvited.CONSTRUCTOR:
+        return chatEventMemberInvited.call(this as ChatEventMemberInvited);
+      case ChatEventMemberPromoted.CONSTRUCTOR:
+        return chatEventMemberPromoted.call(this as ChatEventMemberPromoted);
+      case ChatEventMemberRestricted.CONSTRUCTOR:
+        return chatEventMemberRestricted
+            .call(this as ChatEventMemberRestricted);
+      case ChatEventTitleChanged.CONSTRUCTOR:
+        return chatEventTitleChanged.call(this as ChatEventTitleChanged);
+      case ChatEventPermissionsChanged.CONSTRUCTOR:
+        return chatEventPermissionsChanged
+            .call(this as ChatEventPermissionsChanged);
+      case ChatEventDescriptionChanged.CONSTRUCTOR:
+        return chatEventDescriptionChanged
+            .call(this as ChatEventDescriptionChanged);
+      case ChatEventUsernameChanged.CONSTRUCTOR:
+        return chatEventUsernameChanged.call(this as ChatEventUsernameChanged);
+      case ChatEventPhotoChanged.CONSTRUCTOR:
+        return chatEventPhotoChanged.call(this as ChatEventPhotoChanged);
+      case ChatEventInvitesToggled.CONSTRUCTOR:
+        return chatEventInvitesToggled.call(this as ChatEventInvitesToggled);
+      case ChatEventLinkedChatChanged.CONSTRUCTOR:
+        return chatEventLinkedChatChanged
+            .call(this as ChatEventLinkedChatChanged);
+      case ChatEventSlowModeDelayChanged.CONSTRUCTOR:
+        return chatEventSlowModeDelayChanged
+            .call(this as ChatEventSlowModeDelayChanged);
+      case ChatEventMessageTtlSettingChanged.CONSTRUCTOR:
+        return chatEventMessageTtlSettingChanged
+            .call(this as ChatEventMessageTtlSettingChanged);
+      case ChatEventSignMessagesToggled.CONSTRUCTOR:
+        return chatEventSignMessagesToggled
+            .call(this as ChatEventSignMessagesToggled);
+      case ChatEventStickerSetChanged.CONSTRUCTOR:
+        return chatEventStickerSetChanged
+            .call(this as ChatEventStickerSetChanged);
+      case ChatEventLocationChanged.CONSTRUCTOR:
+        return chatEventLocationChanged.call(this as ChatEventLocationChanged);
+      case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
+        return chatEventIsAllHistoryAvailableToggled
+            .call(this as ChatEventIsAllHistoryAvailableToggled);
+      case ChatEventInviteLinkEdited.CONSTRUCTOR:
+        return chatEventInviteLinkEdited
+            .call(this as ChatEventInviteLinkEdited);
+      case ChatEventInviteLinkRevoked.CONSTRUCTOR:
+        return chatEventInviteLinkRevoked
+            .call(this as ChatEventInviteLinkRevoked);
+      case ChatEventInviteLinkDeleted.CONSTRUCTOR:
+        return chatEventInviteLinkDeleted
+            .call(this as ChatEventInviteLinkDeleted);
+      case ChatEventVoiceChatCreated.CONSTRUCTOR:
+        return chatEventVoiceChatCreated
+            .call(this as ChatEventVoiceChatCreated);
+      case ChatEventVoiceChatDiscarded.CONSTRUCTOR:
+        return chatEventVoiceChatDiscarded
+            .call(this as ChatEventVoiceChatDiscarded);
+      case ChatEventVoiceChatParticipantIsMutedToggled.CONSTRUCTOR:
+        return chatEventVoiceChatParticipantIsMutedToggled
+            .call(this as ChatEventVoiceChatParticipantIsMutedToggled);
+      case ChatEventVoiceChatParticipantVolumeLevelChanged.CONSTRUCTOR:
+        return chatEventVoiceChatParticipantVolumeLevelChanged
+            .call(this as ChatEventVoiceChatParticipantVolumeLevelChanged);
+      case ChatEventVoiceChatMuteNewParticipantsToggled.CONSTRUCTOR:
+        return chatEventVoiceChatMuteNewParticipantsToggled
+            .call(this as ChatEventVoiceChatMuteNewParticipantsToggled);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatEventMessageEditedExtensions on ChatEventMessageEdited {
   ChatEventMessageEdited copy({Message? oldMessage, Message? newMessage}) =>
       ChatEventMessageEdited(
           oldMessage: oldMessage ?? this.oldMessage,
           newMessage: newMessage ?? this.newMessage);
 }
 
-extension ChatEventMessageDeletedCopyExtension on ChatEventMessageDeleted {
+extension ChatEventMessageDeletedExtensions on ChatEventMessageDeleted {
   ChatEventMessageDeleted copy({Message? message}) =>
       ChatEventMessageDeleted(message: message ?? this.message);
 }
 
-extension ChatEventPollStoppedCopyExtension on ChatEventPollStopped {
+extension ChatEventPollStoppedExtensions on ChatEventPollStopped {
   ChatEventPollStopped copy({Message? message}) =>
       ChatEventPollStopped(message: message ?? this.message);
 }
 
-extension ChatEventMessagePinnedCopyExtension on ChatEventMessagePinned {
+extension ChatEventMessagePinnedExtensions on ChatEventMessagePinned {
   ChatEventMessagePinned copy({Message? message}) =>
       ChatEventMessagePinned(message: message ?? this.message);
 }
 
-extension ChatEventMessageUnpinnedCopyExtension on ChatEventMessageUnpinned {
+extension ChatEventMessageUnpinnedExtensions on ChatEventMessageUnpinned {
   ChatEventMessageUnpinned copy({Message? message}) =>
       ChatEventMessageUnpinned(message: message ?? this.message);
 }
 
-extension ChatEventMemberJoinedByInviteLinkCopyExtension
+extension ChatEventMemberJoinedByInviteLinkExtensions
     on ChatEventMemberJoinedByInviteLink {
   ChatEventMemberJoinedByInviteLink copy({ChatInviteLink? inviteLink}) =>
       ChatEventMemberJoinedByInviteLink(
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension ChatEventMemberInvitedCopyExtension on ChatEventMemberInvited {
+extension ChatEventMemberInvitedExtensions on ChatEventMemberInvited {
   ChatEventMemberInvited copy({int? userId, ChatMemberStatus? status}) =>
       ChatEventMemberInvited(
           userId: userId ?? this.userId, status: status ?? this.status);
 }
 
-extension ChatEventMemberPromotedCopyExtension on ChatEventMemberPromoted {
+extension ChatEventMemberPromotedExtensions on ChatEventMemberPromoted {
   ChatEventMemberPromoted copy(
           {int? userId,
           ChatMemberStatus? oldStatus,
@@ -4280,7 +6171,7 @@ extension ChatEventMemberPromotedCopyExtension on ChatEventMemberPromoted {
           newStatus: newStatus ?? this.newStatus);
 }
 
-extension ChatEventMemberRestrictedCopyExtension on ChatEventMemberRestricted {
+extension ChatEventMemberRestrictedExtensions on ChatEventMemberRestricted {
   ChatEventMemberRestricted copy(
           {int? userId,
           ChatMemberStatus? oldStatus,
@@ -4291,15 +6182,14 @@ extension ChatEventMemberRestrictedCopyExtension on ChatEventMemberRestricted {
           newStatus: newStatus ?? this.newStatus);
 }
 
-extension ChatEventTitleChangedCopyExtension on ChatEventTitleChanged {
+extension ChatEventTitleChangedExtensions on ChatEventTitleChanged {
   ChatEventTitleChanged copy({String? oldTitle, String? newTitle}) =>
       ChatEventTitleChanged(
           oldTitle: oldTitle ?? this.oldTitle,
           newTitle: newTitle ?? this.newTitle);
 }
 
-extension ChatEventPermissionsChangedCopyExtension
-    on ChatEventPermissionsChanged {
+extension ChatEventPermissionsChangedExtensions on ChatEventPermissionsChanged {
   ChatEventPermissionsChanged copy(
           {ChatPermissions? oldPermissions, ChatPermissions? newPermissions}) =>
       ChatEventPermissionsChanged(
@@ -4307,8 +6197,7 @@ extension ChatEventPermissionsChangedCopyExtension
           newPermissions: newPermissions ?? this.newPermissions);
 }
 
-extension ChatEventDescriptionChangedCopyExtension
-    on ChatEventDescriptionChanged {
+extension ChatEventDescriptionChangedExtensions on ChatEventDescriptionChanged {
   ChatEventDescriptionChanged copy(
           {String? oldDescription, String? newDescription}) =>
       ChatEventDescriptionChanged(
@@ -4316,28 +6205,27 @@ extension ChatEventDescriptionChangedCopyExtension
           newDescription: newDescription ?? this.newDescription);
 }
 
-extension ChatEventUsernameChangedCopyExtension on ChatEventUsernameChanged {
+extension ChatEventUsernameChangedExtensions on ChatEventUsernameChanged {
   ChatEventUsernameChanged copy({String? oldUsername, String? newUsername}) =>
       ChatEventUsernameChanged(
           oldUsername: oldUsername ?? this.oldUsername,
           newUsername: newUsername ?? this.newUsername);
 }
 
-extension ChatEventPhotoChangedCopyExtension on ChatEventPhotoChanged {
+extension ChatEventPhotoChangedExtensions on ChatEventPhotoChanged {
   ChatEventPhotoChanged copy({ChatPhoto? oldPhoto, ChatPhoto? newPhoto}) =>
       ChatEventPhotoChanged(
           oldPhoto: oldPhoto ?? this.oldPhoto,
           newPhoto: newPhoto ?? this.newPhoto);
 }
 
-extension ChatEventInvitesToggledCopyExtension on ChatEventInvitesToggled {
+extension ChatEventInvitesToggledExtensions on ChatEventInvitesToggled {
   ChatEventInvitesToggled copy({bool? canInviteUsers}) =>
       ChatEventInvitesToggled(
           canInviteUsers: canInviteUsers ?? this.canInviteUsers);
 }
 
-extension ChatEventLinkedChatChangedCopyExtension
-    on ChatEventLinkedChatChanged {
+extension ChatEventLinkedChatChangedExtensions on ChatEventLinkedChatChanged {
   ChatEventLinkedChatChanged copy(
           {int? oldLinkedChatId, int? newLinkedChatId}) =>
       ChatEventLinkedChatChanged(
@@ -4345,7 +6233,7 @@ extension ChatEventLinkedChatChangedCopyExtension
           newLinkedChatId: newLinkedChatId ?? this.newLinkedChatId);
 }
 
-extension ChatEventSlowModeDelayChangedCopyExtension
+extension ChatEventSlowModeDelayChangedExtensions
     on ChatEventSlowModeDelayChanged {
   ChatEventSlowModeDelayChanged copy(
           {int? oldSlowModeDelay, int? newSlowModeDelay}) =>
@@ -4354,7 +6242,7 @@ extension ChatEventSlowModeDelayChangedCopyExtension
           newSlowModeDelay: newSlowModeDelay ?? this.newSlowModeDelay);
 }
 
-extension ChatEventMessageTtlSettingChangedCopyExtension
+extension ChatEventMessageTtlSettingChangedExtensions
     on ChatEventMessageTtlSettingChanged {
   ChatEventMessageTtlSettingChanged copy(
           {int? oldMessageTtlSetting, int? newMessageTtlSetting}) =>
@@ -4365,15 +6253,14 @@ extension ChatEventMessageTtlSettingChangedCopyExtension
               newMessageTtlSetting ?? this.newMessageTtlSetting);
 }
 
-extension ChatEventSignMessagesToggledCopyExtension
+extension ChatEventSignMessagesToggledExtensions
     on ChatEventSignMessagesToggled {
   ChatEventSignMessagesToggled copy({bool? signMessages}) =>
       ChatEventSignMessagesToggled(
           signMessages: signMessages ?? this.signMessages);
 }
 
-extension ChatEventStickerSetChangedCopyExtension
-    on ChatEventStickerSetChanged {
+extension ChatEventStickerSetChangedExtensions on ChatEventStickerSetChanged {
   ChatEventStickerSetChanged copy(
           {int? oldStickerSetId, int? newStickerSetId}) =>
       ChatEventStickerSetChanged(
@@ -4381,7 +6268,7 @@ extension ChatEventStickerSetChangedCopyExtension
           newStickerSetId: newStickerSetId ?? this.newStickerSetId);
 }
 
-extension ChatEventLocationChangedCopyExtension on ChatEventLocationChanged {
+extension ChatEventLocationChangedExtensions on ChatEventLocationChanged {
   ChatEventLocationChanged copy(
           {ChatLocation? oldLocation, ChatLocation? newLocation}) =>
       ChatEventLocationChanged(
@@ -4389,7 +6276,7 @@ extension ChatEventLocationChangedCopyExtension on ChatEventLocationChanged {
           newLocation: newLocation ?? this.newLocation);
 }
 
-extension ChatEventIsAllHistoryAvailableToggledCopyExtension
+extension ChatEventIsAllHistoryAvailableToggledExtensions
     on ChatEventIsAllHistoryAvailableToggled {
   ChatEventIsAllHistoryAvailableToggled copy({bool? isAllHistoryAvailable}) =>
       ChatEventIsAllHistoryAvailableToggled(
@@ -4397,7 +6284,7 @@ extension ChatEventIsAllHistoryAvailableToggledCopyExtension
               isAllHistoryAvailable ?? this.isAllHistoryAvailable);
 }
 
-extension ChatEventInviteLinkEditedCopyExtension on ChatEventInviteLinkEdited {
+extension ChatEventInviteLinkEditedExtensions on ChatEventInviteLinkEdited {
   ChatEventInviteLinkEdited copy(
           {ChatInviteLink? oldInviteLink, ChatInviteLink? newInviteLink}) =>
       ChatEventInviteLinkEdited(
@@ -4405,30 +6292,27 @@ extension ChatEventInviteLinkEditedCopyExtension on ChatEventInviteLinkEdited {
           newInviteLink: newInviteLink ?? this.newInviteLink);
 }
 
-extension ChatEventInviteLinkRevokedCopyExtension
-    on ChatEventInviteLinkRevoked {
+extension ChatEventInviteLinkRevokedExtensions on ChatEventInviteLinkRevoked {
   ChatEventInviteLinkRevoked copy({ChatInviteLink? inviteLink}) =>
       ChatEventInviteLinkRevoked(inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension ChatEventInviteLinkDeletedCopyExtension
-    on ChatEventInviteLinkDeleted {
+extension ChatEventInviteLinkDeletedExtensions on ChatEventInviteLinkDeleted {
   ChatEventInviteLinkDeleted copy({ChatInviteLink? inviteLink}) =>
       ChatEventInviteLinkDeleted(inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension ChatEventVoiceChatCreatedCopyExtension on ChatEventVoiceChatCreated {
+extension ChatEventVoiceChatCreatedExtensions on ChatEventVoiceChatCreated {
   ChatEventVoiceChatCreated copy({int? groupCallId}) =>
       ChatEventVoiceChatCreated(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension ChatEventVoiceChatDiscardedCopyExtension
-    on ChatEventVoiceChatDiscarded {
+extension ChatEventVoiceChatDiscardedExtensions on ChatEventVoiceChatDiscarded {
   ChatEventVoiceChatDiscarded copy({int? groupCallId}) =>
       ChatEventVoiceChatDiscarded(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension ChatEventVoiceChatParticipantIsMutedToggledCopyExtension
+extension ChatEventVoiceChatParticipantIsMutedToggledExtensions
     on ChatEventVoiceChatParticipantIsMutedToggled {
   ChatEventVoiceChatParticipantIsMutedToggled copy(
           {MessageSender? participant, bool? isMuted}) =>
@@ -4437,7 +6321,7 @@ extension ChatEventVoiceChatParticipantIsMutedToggledCopyExtension
           isMuted: isMuted ?? this.isMuted);
 }
 
-extension ChatEventVoiceChatParticipantVolumeLevelChangedCopyExtension
+extension ChatEventVoiceChatParticipantVolumeLevelChangedExtensions
     on ChatEventVoiceChatParticipantVolumeLevelChanged {
   ChatEventVoiceChatParticipantVolumeLevelChanged copy(
           {MessageSender? participant, int? volumeLevel}) =>
@@ -4446,7 +6330,7 @@ extension ChatEventVoiceChatParticipantVolumeLevelChangedCopyExtension
           volumeLevel: volumeLevel ?? this.volumeLevel);
 }
 
-extension ChatEventVoiceChatMuteNewParticipantsToggledCopyExtension
+extension ChatEventVoiceChatMuteNewParticipantsToggledExtensions
     on ChatEventVoiceChatMuteNewParticipantsToggled {
   ChatEventVoiceChatMuteNewParticipantsToggled copy(
           {bool? muteNewParticipants}) =>
@@ -4454,7 +6338,7 @@ extension ChatEventVoiceChatMuteNewParticipantsToggledCopyExtension
           muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants);
 }
 
-extension ChatEventCopyExtension on ChatEvent {
+extension ChatEventExtensions on ChatEvent {
   ChatEvent copy({int? id, int? date, int? userId, ChatEventAction? action}) =>
       ChatEvent(
           id: id ?? this.id,
@@ -4463,12 +6347,12 @@ extension ChatEventCopyExtension on ChatEvent {
           action: action ?? this.action);
 }
 
-extension ChatEventsCopyExtension on ChatEvents {
+extension ChatEventsExtensions on ChatEvents {
   ChatEvents copy({List<ChatEvent>? events}) =>
       ChatEvents(events: events ?? this.events);
 }
 
-extension ChatEventLogFiltersCopyExtension on ChatEventLogFilters {
+extension ChatEventLogFiltersExtensions on ChatEventLogFilters {
   ChatEventLogFilters copy(
           {bool? messageEdits,
           bool? messageDeletions,
@@ -4497,13 +6381,33 @@ extension ChatEventLogFiltersCopyExtension on ChatEventLogFilters {
           voiceChatChanges: voiceChatChanges ?? this.voiceChatChanges);
 }
 
-extension LanguagePackStringValueOrdinaryCopyExtension
+extension LanguagePackStringValueExtensions on LanguagePackStringValue {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(LanguagePackStringValueOrdinary value)
+          ordinary,
+      required TResult Function(LanguagePackStringValuePluralized value)
+          pluralized,
+      required TResult Function(LanguagePackStringValueDeleted value)
+          deleted}) {
+    switch (this.getConstructor()) {
+      case LanguagePackStringValueOrdinary.CONSTRUCTOR:
+        return ordinary.call(this as LanguagePackStringValueOrdinary);
+      case LanguagePackStringValuePluralized.CONSTRUCTOR:
+        return pluralized.call(this as LanguagePackStringValuePluralized);
+      case LanguagePackStringValueDeleted.CONSTRUCTOR:
+        return deleted.call(this as LanguagePackStringValueDeleted);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension LanguagePackStringValueOrdinaryExtensions
     on LanguagePackStringValueOrdinary {
   LanguagePackStringValueOrdinary copy({String? value}) =>
       LanguagePackStringValueOrdinary(value: value ?? this.value);
 }
 
-extension LanguagePackStringValuePluralizedCopyExtension
+extension LanguagePackStringValuePluralizedExtensions
     on LanguagePackStringValuePluralized {
   LanguagePackStringValuePluralized copy(
           {String? zeroValue,
@@ -4521,17 +6425,17 @@ extension LanguagePackStringValuePluralizedCopyExtension
           otherValue: otherValue ?? this.otherValue);
 }
 
-extension LanguagePackStringCopyExtension on LanguagePackString {
+extension LanguagePackStringExtensions on LanguagePackString {
   LanguagePackString copy({String? key, LanguagePackStringValue? value}) =>
       LanguagePackString(key: key ?? this.key, value: value ?? this.value);
 }
 
-extension LanguagePackStringsCopyExtension on LanguagePackStrings {
+extension LanguagePackStringsExtensions on LanguagePackStrings {
   LanguagePackStrings copy({List<LanguagePackString>? strings}) =>
       LanguagePackStrings(strings: strings ?? this.strings);
 }
 
-extension LanguagePackInfoCopyExtension on LanguagePackInfo {
+extension LanguagePackInfoExtensions on LanguagePackInfo {
   LanguagePackInfo copy(
           {String? id,
           String? baseLanguagePackId,
@@ -4563,27 +6467,71 @@ extension LanguagePackInfoCopyExtension on LanguagePackInfo {
           translationUrl: translationUrl ?? this.translationUrl);
 }
 
-extension LocalizationTargetInfoCopyExtension on LocalizationTargetInfo {
+extension LocalizationTargetInfoExtensions on LocalizationTargetInfo {
   LocalizationTargetInfo copy({List<LanguagePackInfo>? languagePacks}) =>
       LocalizationTargetInfo(
           languagePacks: languagePacks ?? this.languagePacks);
 }
 
-extension DeviceTokenFirebaseCloudMessagingCopyExtension
+extension DeviceTokenExtensions on DeviceToken {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(DeviceTokenFirebaseCloudMessaging value)
+          firebaseCloudMessaging,
+      required TResult Function(DeviceTokenApplePush value) applePush,
+      required TResult Function(DeviceTokenApplePushVoIP value) applePushVoIP,
+      required TResult Function(DeviceTokenWindowsPush value) windowsPush,
+      required TResult Function(DeviceTokenMicrosoftPush value) microsoftPush,
+      required TResult Function(DeviceTokenMicrosoftPushVoIP value)
+          microsoftPushVoIP,
+      required TResult Function(DeviceTokenWebPush value) webPush,
+      required TResult Function(DeviceTokenSimplePush value) simplePush,
+      required TResult Function(DeviceTokenUbuntuPush value) ubuntuPush,
+      required TResult Function(DeviceTokenBlackBerryPush value) blackBerryPush,
+      required TResult Function(DeviceTokenTizenPush value) tizenPush}) {
+    switch (this.getConstructor()) {
+      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
+        return firebaseCloudMessaging
+            .call(this as DeviceTokenFirebaseCloudMessaging);
+      case DeviceTokenApplePush.CONSTRUCTOR:
+        return applePush.call(this as DeviceTokenApplePush);
+      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
+        return applePushVoIP.call(this as DeviceTokenApplePushVoIP);
+      case DeviceTokenWindowsPush.CONSTRUCTOR:
+        return windowsPush.call(this as DeviceTokenWindowsPush);
+      case DeviceTokenMicrosoftPush.CONSTRUCTOR:
+        return microsoftPush.call(this as DeviceTokenMicrosoftPush);
+      case DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR:
+        return microsoftPushVoIP.call(this as DeviceTokenMicrosoftPushVoIP);
+      case DeviceTokenWebPush.CONSTRUCTOR:
+        return webPush.call(this as DeviceTokenWebPush);
+      case DeviceTokenSimplePush.CONSTRUCTOR:
+        return simplePush.call(this as DeviceTokenSimplePush);
+      case DeviceTokenUbuntuPush.CONSTRUCTOR:
+        return ubuntuPush.call(this as DeviceTokenUbuntuPush);
+      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
+        return blackBerryPush.call(this as DeviceTokenBlackBerryPush);
+      case DeviceTokenTizenPush.CONSTRUCTOR:
+        return tizenPush.call(this as DeviceTokenTizenPush);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension DeviceTokenFirebaseCloudMessagingExtensions
     on DeviceTokenFirebaseCloudMessaging {
   DeviceTokenFirebaseCloudMessaging copy({String? token, bool? encrypt}) =>
       DeviceTokenFirebaseCloudMessaging(
           token: token ?? this.token, encrypt: encrypt ?? this.encrypt);
 }
 
-extension DeviceTokenApplePushCopyExtension on DeviceTokenApplePush {
+extension DeviceTokenApplePushExtensions on DeviceTokenApplePush {
   DeviceTokenApplePush copy({String? deviceToken, bool? isAppSandbox}) =>
       DeviceTokenApplePush(
           deviceToken: deviceToken ?? this.deviceToken,
           isAppSandbox: isAppSandbox ?? this.isAppSandbox);
 }
 
-extension DeviceTokenApplePushVoIPCopyExtension on DeviceTokenApplePushVoIP {
+extension DeviceTokenApplePushVoIPExtensions on DeviceTokenApplePushVoIP {
   DeviceTokenApplePushVoIP copy(
           {String? deviceToken, bool? isAppSandbox, bool? encrypt}) =>
       DeviceTokenApplePushVoIP(
@@ -4592,23 +6540,23 @@ extension DeviceTokenApplePushVoIPCopyExtension on DeviceTokenApplePushVoIP {
           encrypt: encrypt ?? this.encrypt);
 }
 
-extension DeviceTokenWindowsPushCopyExtension on DeviceTokenWindowsPush {
+extension DeviceTokenWindowsPushExtensions on DeviceTokenWindowsPush {
   DeviceTokenWindowsPush copy({String? accessToken}) =>
       DeviceTokenWindowsPush(accessToken: accessToken ?? this.accessToken);
 }
 
-extension DeviceTokenMicrosoftPushCopyExtension on DeviceTokenMicrosoftPush {
+extension DeviceTokenMicrosoftPushExtensions on DeviceTokenMicrosoftPush {
   DeviceTokenMicrosoftPush copy({String? channelUri}) =>
       DeviceTokenMicrosoftPush(channelUri: channelUri ?? this.channelUri);
 }
 
-extension DeviceTokenMicrosoftPushVoIPCopyExtension
+extension DeviceTokenMicrosoftPushVoIPExtensions
     on DeviceTokenMicrosoftPushVoIP {
   DeviceTokenMicrosoftPushVoIP copy({String? channelUri}) =>
       DeviceTokenMicrosoftPushVoIP(channelUri: channelUri ?? this.channelUri);
 }
 
-extension DeviceTokenWebPushCopyExtension on DeviceTokenWebPush {
+extension DeviceTokenWebPushExtensions on DeviceTokenWebPush {
   DeviceTokenWebPush copy(
           {String? endpoint, String? p256dhBase64url, String? authBase64url}) =>
       DeviceTokenWebPush(
@@ -4617,36 +6565,50 @@ extension DeviceTokenWebPushCopyExtension on DeviceTokenWebPush {
           authBase64url: authBase64url ?? this.authBase64url);
 }
 
-extension DeviceTokenSimplePushCopyExtension on DeviceTokenSimplePush {
+extension DeviceTokenSimplePushExtensions on DeviceTokenSimplePush {
   DeviceTokenSimplePush copy({String? endpoint}) =>
       DeviceTokenSimplePush(endpoint: endpoint ?? this.endpoint);
 }
 
-extension DeviceTokenUbuntuPushCopyExtension on DeviceTokenUbuntuPush {
+extension DeviceTokenUbuntuPushExtensions on DeviceTokenUbuntuPush {
   DeviceTokenUbuntuPush copy({String? token}) =>
       DeviceTokenUbuntuPush(token: token ?? this.token);
 }
 
-extension DeviceTokenBlackBerryPushCopyExtension on DeviceTokenBlackBerryPush {
+extension DeviceTokenBlackBerryPushExtensions on DeviceTokenBlackBerryPush {
   DeviceTokenBlackBerryPush copy({String? token}) =>
       DeviceTokenBlackBerryPush(token: token ?? this.token);
 }
 
-extension DeviceTokenTizenPushCopyExtension on DeviceTokenTizenPush {
+extension DeviceTokenTizenPushExtensions on DeviceTokenTizenPush {
   DeviceTokenTizenPush copy({String? regId}) =>
       DeviceTokenTizenPush(regId: regId ?? this.regId);
 }
 
-extension PushReceiverIdCopyExtension on PushReceiverId {
+extension PushReceiverIdExtensions on PushReceiverId {
   PushReceiverId copy({int? id}) => PushReceiverId(id: id ?? this.id);
 }
 
-extension BackgroundFillSolidCopyExtension on BackgroundFillSolid {
+extension BackgroundFillExtensions on BackgroundFill {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(BackgroundFillSolid value) solid,
+      required TResult Function(BackgroundFillGradient value) gradient}) {
+    switch (this.getConstructor()) {
+      case BackgroundFillSolid.CONSTRUCTOR:
+        return solid.call(this as BackgroundFillSolid);
+      case BackgroundFillGradient.CONSTRUCTOR:
+        return gradient.call(this as BackgroundFillGradient);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension BackgroundFillSolidExtensions on BackgroundFillSolid {
   BackgroundFillSolid copy({int? color}) =>
       BackgroundFillSolid(color: color ?? this.color);
 }
 
-extension BackgroundFillGradientCopyExtension on BackgroundFillGradient {
+extension BackgroundFillGradientExtensions on BackgroundFillGradient {
   BackgroundFillGradient copy(
           {int? topColor, int? bottomColor, int? rotationAngle}) =>
       BackgroundFillGradient(
@@ -4655,14 +6617,31 @@ extension BackgroundFillGradientCopyExtension on BackgroundFillGradient {
           rotationAngle: rotationAngle ?? this.rotationAngle);
 }
 
-extension BackgroundTypeWallpaperCopyExtension on BackgroundTypeWallpaper {
+extension BackgroundTypeExtensions on BackgroundType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(BackgroundTypeWallpaper value) wallpaper,
+      required TResult Function(BackgroundTypePattern value) pattern,
+      required TResult Function(BackgroundTypeFill value) fill}) {
+    switch (this.getConstructor()) {
+      case BackgroundTypeWallpaper.CONSTRUCTOR:
+        return wallpaper.call(this as BackgroundTypeWallpaper);
+      case BackgroundTypePattern.CONSTRUCTOR:
+        return pattern.call(this as BackgroundTypePattern);
+      case BackgroundTypeFill.CONSTRUCTOR:
+        return fill.call(this as BackgroundTypeFill);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension BackgroundTypeWallpaperExtensions on BackgroundTypeWallpaper {
   BackgroundTypeWallpaper copy({bool? isBlurred, bool? isMoving}) =>
       BackgroundTypeWallpaper(
           isBlurred: isBlurred ?? this.isBlurred,
           isMoving: isMoving ?? this.isMoving);
 }
 
-extension BackgroundTypePatternCopyExtension on BackgroundTypePattern {
+extension BackgroundTypePatternExtensions on BackgroundTypePattern {
   BackgroundTypePattern copy(
           {BackgroundFill? fill, int? intensity, bool? isMoving}) =>
       BackgroundTypePattern(
@@ -4671,12 +6650,12 @@ extension BackgroundTypePatternCopyExtension on BackgroundTypePattern {
           isMoving: isMoving ?? this.isMoving);
 }
 
-extension BackgroundTypeFillCopyExtension on BackgroundTypeFill {
+extension BackgroundTypeFillExtensions on BackgroundTypeFill {
   BackgroundTypeFill copy({BackgroundFill? fill}) =>
       BackgroundTypeFill(fill: fill ?? this.fill);
 }
 
-extension BackgroundCopyExtension on Background {
+extension BackgroundExtensions on Background {
   Background copy(
           {int? id,
           bool? isDefault,
@@ -4693,57 +6672,245 @@ extension BackgroundCopyExtension on Background {
           type: type ?? this.type);
 }
 
-extension BackgroundsCopyExtension on Backgrounds {
+extension BackgroundsExtensions on Backgrounds {
   Backgrounds copy({List<Background>? backgrounds}) =>
       Backgrounds(backgrounds: backgrounds ?? this.backgrounds);
 }
 
-extension InputBackgroundLocalCopyExtension on InputBackgroundLocal {
+extension InputBackgroundExtensions on InputBackground {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputBackgroundLocal value) local,
+      required TResult Function(InputBackgroundRemote value) remote}) {
+    switch (this.getConstructor()) {
+      case InputBackgroundLocal.CONSTRUCTOR:
+        return local.call(this as InputBackgroundLocal);
+      case InputBackgroundRemote.CONSTRUCTOR:
+        return remote.call(this as InputBackgroundRemote);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputBackgroundLocalExtensions on InputBackgroundLocal {
   InputBackgroundLocal copy({InputFile? background}) =>
       InputBackgroundLocal(background: background ?? this.background);
 }
 
-extension InputBackgroundRemoteCopyExtension on InputBackgroundRemote {
+extension InputBackgroundRemoteExtensions on InputBackgroundRemote {
   InputBackgroundRemote copy({int? backgroundId}) =>
       InputBackgroundRemote(backgroundId: backgroundId ?? this.backgroundId);
 }
 
-extension HashtagsCopyExtension on Hashtags {
+extension HashtagsExtensions on Hashtags {
   Hashtags copy({List<String>? hashtags}) =>
       Hashtags(hashtags: hashtags ?? this.hashtags);
 }
 
-extension CanTransferOwnershipResultPasswordTooFreshCopyExtension
+extension CanTransferOwnershipResultExtensions on CanTransferOwnershipResult {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CanTransferOwnershipResultOk value) ok,
+      required TResult Function(CanTransferOwnershipResultPasswordNeeded value)
+          passwordNeeded,
+      required TResult Function(
+              CanTransferOwnershipResultPasswordTooFresh value)
+          passwordTooFresh,
+      required TResult Function(CanTransferOwnershipResultSessionTooFresh value)
+          sessionTooFresh}) {
+    switch (this.getConstructor()) {
+      case CanTransferOwnershipResultOk.CONSTRUCTOR:
+        return ok.call(this as CanTransferOwnershipResultOk);
+      case CanTransferOwnershipResultPasswordNeeded.CONSTRUCTOR:
+        return passwordNeeded
+            .call(this as CanTransferOwnershipResultPasswordNeeded);
+      case CanTransferOwnershipResultPasswordTooFresh.CONSTRUCTOR:
+        return passwordTooFresh
+            .call(this as CanTransferOwnershipResultPasswordTooFresh);
+      case CanTransferOwnershipResultSessionTooFresh.CONSTRUCTOR:
+        return sessionTooFresh
+            .call(this as CanTransferOwnershipResultSessionTooFresh);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension CanTransferOwnershipResultPasswordTooFreshExtensions
     on CanTransferOwnershipResultPasswordTooFresh {
   CanTransferOwnershipResultPasswordTooFresh copy({int? retryAfter}) =>
       CanTransferOwnershipResultPasswordTooFresh(
           retryAfter: retryAfter ?? this.retryAfter);
 }
 
-extension CanTransferOwnershipResultSessionTooFreshCopyExtension
+extension CanTransferOwnershipResultSessionTooFreshExtensions
     on CanTransferOwnershipResultSessionTooFresh {
   CanTransferOwnershipResultSessionTooFresh copy({int? retryAfter}) =>
       CanTransferOwnershipResultSessionTooFresh(
           retryAfter: retryAfter ?? this.retryAfter);
 }
 
-extension MessageFileTypePrivateCopyExtension on MessageFileTypePrivate {
+extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(CheckChatUsernameResultOk value) ok,
+      required TResult Function(CheckChatUsernameResultUsernameInvalid value)
+          usernameInvalid,
+      required TResult Function(CheckChatUsernameResultUsernameOccupied value)
+          usernameOccupied,
+      required TResult Function(CheckChatUsernameResultPublicChatsTooMuch value)
+          publicChatsTooMuch,
+      required TResult Function(
+              CheckChatUsernameResultPublicGroupsUnavailable value)
+          publicGroupsUnavailable}) {
+    switch (this.getConstructor()) {
+      case CheckChatUsernameResultOk.CONSTRUCTOR:
+        return ok.call(this as CheckChatUsernameResultOk);
+      case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
+        return usernameInvalid
+            .call(this as CheckChatUsernameResultUsernameInvalid);
+      case CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR:
+        return usernameOccupied
+            .call(this as CheckChatUsernameResultUsernameOccupied);
+      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
+        return publicChatsTooMuch
+            .call(this as CheckChatUsernameResultPublicChatsTooMuch);
+      case CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR:
+        return publicGroupsUnavailable
+            .call(this as CheckChatUsernameResultPublicGroupsUnavailable);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageFileTypeExtensions on MessageFileType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(MessageFileTypePrivate value) private,
+      required TResult Function(MessageFileTypeGroup value) group,
+      required TResult Function(MessageFileTypeUnknown value) unknown}) {
+    switch (this.getConstructor()) {
+      case MessageFileTypePrivate.CONSTRUCTOR:
+        return private.call(this as MessageFileTypePrivate);
+      case MessageFileTypeGroup.CONSTRUCTOR:
+        return group.call(this as MessageFileTypeGroup);
+      case MessageFileTypeUnknown.CONSTRUCTOR:
+        return unknown.call(this as MessageFileTypeUnknown);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageFileTypePrivateExtensions on MessageFileTypePrivate {
   MessageFileTypePrivate copy({String? name}) =>
       MessageFileTypePrivate(name: name ?? this.name);
 }
 
-extension MessageFileTypeGroupCopyExtension on MessageFileTypeGroup {
+extension MessageFileTypeGroupExtensions on MessageFileTypeGroup {
   MessageFileTypeGroup copy({String? title}) =>
       MessageFileTypeGroup(title: title ?? this.title);
 }
 
-extension PushMessageContentHiddenCopyExtension on PushMessageContentHidden {
+extension PushMessageContentExtensions on PushMessageContent {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(PushMessageContentHidden value) hidden,
+      required TResult Function(PushMessageContentAnimation value) animation,
+      required TResult Function(PushMessageContentAudio value) audio,
+      required TResult Function(PushMessageContentContact value) contact,
+      required TResult Function(PushMessageContentContactRegistered value)
+          contactRegistered,
+      required TResult Function(PushMessageContentDocument value) document,
+      required TResult Function(PushMessageContentGame value) game,
+      required TResult Function(PushMessageContentGameScore value) gameScore,
+      required TResult Function(PushMessageContentInvoice value) invoice,
+      required TResult Function(PushMessageContentLocation value) location,
+      required TResult Function(PushMessageContentPhoto value) photo,
+      required TResult Function(PushMessageContentPoll value) poll,
+      required TResult Function(PushMessageContentScreenshotTaken value)
+          screenshotTaken,
+      required TResult Function(PushMessageContentSticker value) sticker,
+      required TResult Function(PushMessageContentText value) text,
+      required TResult Function(PushMessageContentVideo value) video,
+      required TResult Function(PushMessageContentVideoNote value) videoNote,
+      required TResult Function(PushMessageContentVoiceNote value) voiceNote,
+      required TResult Function(PushMessageContentBasicGroupChatCreate value)
+          basicGroupChatCreate,
+      required TResult Function(PushMessageContentChatAddMembers value)
+          chatAddMembers,
+      required TResult Function(PushMessageContentChatChangePhoto value)
+          chatChangePhoto,
+      required TResult Function(PushMessageContentChatChangeTitle value)
+          chatChangeTitle,
+      required TResult Function(PushMessageContentChatDeleteMember value)
+          chatDeleteMember,
+      required TResult Function(PushMessageContentChatJoinByLink value)
+          chatJoinByLink,
+      required TResult Function(PushMessageContentMessageForwards value)
+          messageForwards,
+      required TResult Function(PushMessageContentMediaAlbum value)
+          mediaAlbum}) {
+    switch (this.getConstructor()) {
+      case PushMessageContentHidden.CONSTRUCTOR:
+        return hidden.call(this as PushMessageContentHidden);
+      case PushMessageContentAnimation.CONSTRUCTOR:
+        return animation.call(this as PushMessageContentAnimation);
+      case PushMessageContentAudio.CONSTRUCTOR:
+        return audio.call(this as PushMessageContentAudio);
+      case PushMessageContentContact.CONSTRUCTOR:
+        return contact.call(this as PushMessageContentContact);
+      case PushMessageContentContactRegistered.CONSTRUCTOR:
+        return contactRegistered
+            .call(this as PushMessageContentContactRegistered);
+      case PushMessageContentDocument.CONSTRUCTOR:
+        return document.call(this as PushMessageContentDocument);
+      case PushMessageContentGame.CONSTRUCTOR:
+        return game.call(this as PushMessageContentGame);
+      case PushMessageContentGameScore.CONSTRUCTOR:
+        return gameScore.call(this as PushMessageContentGameScore);
+      case PushMessageContentInvoice.CONSTRUCTOR:
+        return invoice.call(this as PushMessageContentInvoice);
+      case PushMessageContentLocation.CONSTRUCTOR:
+        return location.call(this as PushMessageContentLocation);
+      case PushMessageContentPhoto.CONSTRUCTOR:
+        return photo.call(this as PushMessageContentPhoto);
+      case PushMessageContentPoll.CONSTRUCTOR:
+        return poll.call(this as PushMessageContentPoll);
+      case PushMessageContentScreenshotTaken.CONSTRUCTOR:
+        return screenshotTaken.call(this as PushMessageContentScreenshotTaken);
+      case PushMessageContentSticker.CONSTRUCTOR:
+        return sticker.call(this as PushMessageContentSticker);
+      case PushMessageContentText.CONSTRUCTOR:
+        return text.call(this as PushMessageContentText);
+      case PushMessageContentVideo.CONSTRUCTOR:
+        return video.call(this as PushMessageContentVideo);
+      case PushMessageContentVideoNote.CONSTRUCTOR:
+        return videoNote.call(this as PushMessageContentVideoNote);
+      case PushMessageContentVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as PushMessageContentVoiceNote);
+      case PushMessageContentBasicGroupChatCreate.CONSTRUCTOR:
+        return basicGroupChatCreate
+            .call(this as PushMessageContentBasicGroupChatCreate);
+      case PushMessageContentChatAddMembers.CONSTRUCTOR:
+        return chatAddMembers.call(this as PushMessageContentChatAddMembers);
+      case PushMessageContentChatChangePhoto.CONSTRUCTOR:
+        return chatChangePhoto.call(this as PushMessageContentChatChangePhoto);
+      case PushMessageContentChatChangeTitle.CONSTRUCTOR:
+        return chatChangeTitle.call(this as PushMessageContentChatChangeTitle);
+      case PushMessageContentChatDeleteMember.CONSTRUCTOR:
+        return chatDeleteMember
+            .call(this as PushMessageContentChatDeleteMember);
+      case PushMessageContentChatJoinByLink.CONSTRUCTOR:
+        return chatJoinByLink.call(this as PushMessageContentChatJoinByLink);
+      case PushMessageContentMessageForwards.CONSTRUCTOR:
+        return messageForwards.call(this as PushMessageContentMessageForwards);
+      case PushMessageContentMediaAlbum.CONSTRUCTOR:
+        return mediaAlbum.call(this as PushMessageContentMediaAlbum);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension PushMessageContentHiddenExtensions on PushMessageContentHidden {
   PushMessageContentHidden copy({bool? isPinned}) =>
       PushMessageContentHidden(isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentAnimationCopyExtension
-    on PushMessageContentAnimation {
+extension PushMessageContentAnimationExtensions on PushMessageContentAnimation {
   PushMessageContentAnimation copy(
           {Animation? animation, String? caption, bool? isPinned}) =>
       PushMessageContentAnimation(
@@ -4752,34 +6919,32 @@ extension PushMessageContentAnimationCopyExtension
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentAudioCopyExtension on PushMessageContentAudio {
+extension PushMessageContentAudioExtensions on PushMessageContentAudio {
   PushMessageContentAudio copy({Audio? audio, bool? isPinned}) =>
       PushMessageContentAudio(
           audio: audio ?? this.audio, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentContactCopyExtension on PushMessageContentContact {
+extension PushMessageContentContactExtensions on PushMessageContentContact {
   PushMessageContentContact copy({String? name, bool? isPinned}) =>
       PushMessageContentContact(
           name: name ?? this.name, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentDocumentCopyExtension
-    on PushMessageContentDocument {
+extension PushMessageContentDocumentExtensions on PushMessageContentDocument {
   PushMessageContentDocument copy({Document? document, bool? isPinned}) =>
       PushMessageContentDocument(
           document: document ?? this.document,
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentGameCopyExtension on PushMessageContentGame {
+extension PushMessageContentGameExtensions on PushMessageContentGame {
   PushMessageContentGame copy({String? title, bool? isPinned}) =>
       PushMessageContentGame(
           title: title ?? this.title, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentGameScoreCopyExtension
-    on PushMessageContentGameScore {
+extension PushMessageContentGameScoreExtensions on PushMessageContentGameScore {
   PushMessageContentGameScore copy(
           {String? title, int? score, bool? isPinned}) =>
       PushMessageContentGameScore(
@@ -4788,20 +6953,19 @@ extension PushMessageContentGameScoreCopyExtension
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentInvoiceCopyExtension on PushMessageContentInvoice {
+extension PushMessageContentInvoiceExtensions on PushMessageContentInvoice {
   PushMessageContentInvoice copy({String? price, bool? isPinned}) =>
       PushMessageContentInvoice(
           price: price ?? this.price, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentLocationCopyExtension
-    on PushMessageContentLocation {
+extension PushMessageContentLocationExtensions on PushMessageContentLocation {
   PushMessageContentLocation copy({bool? isLive, bool? isPinned}) =>
       PushMessageContentLocation(
           isLive: isLive ?? this.isLive, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentPhotoCopyExtension on PushMessageContentPhoto {
+extension PushMessageContentPhotoExtensions on PushMessageContentPhoto {
   PushMessageContentPhoto copy(
           {Photo? photo, String? caption, bool? isSecret, bool? isPinned}) =>
       PushMessageContentPhoto(
@@ -4811,7 +6975,7 @@ extension PushMessageContentPhotoCopyExtension on PushMessageContentPhoto {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentPollCopyExtension on PushMessageContentPoll {
+extension PushMessageContentPollExtensions on PushMessageContentPoll {
   PushMessageContentPoll copy(
           {String? question, bool? isRegular, bool? isPinned}) =>
       PushMessageContentPoll(
@@ -4820,7 +6984,7 @@ extension PushMessageContentPollCopyExtension on PushMessageContentPoll {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentStickerCopyExtension on PushMessageContentSticker {
+extension PushMessageContentStickerExtensions on PushMessageContentSticker {
   PushMessageContentSticker copy(
           {Sticker? sticker, String? emoji, bool? isPinned}) =>
       PushMessageContentSticker(
@@ -4829,13 +6993,13 @@ extension PushMessageContentStickerCopyExtension on PushMessageContentSticker {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentTextCopyExtension on PushMessageContentText {
+extension PushMessageContentTextExtensions on PushMessageContentText {
   PushMessageContentText copy({String? text, bool? isPinned}) =>
       PushMessageContentText(
           text: text ?? this.text, isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentVideoCopyExtension on PushMessageContentVideo {
+extension PushMessageContentVideoExtensions on PushMessageContentVideo {
   PushMessageContentVideo copy(
           {Video? video, String? caption, bool? isSecret, bool? isPinned}) =>
       PushMessageContentVideo(
@@ -4845,23 +7009,21 @@ extension PushMessageContentVideoCopyExtension on PushMessageContentVideo {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentVideoNoteCopyExtension
-    on PushMessageContentVideoNote {
+extension PushMessageContentVideoNoteExtensions on PushMessageContentVideoNote {
   PushMessageContentVideoNote copy({VideoNote? videoNote, bool? isPinned}) =>
       PushMessageContentVideoNote(
           videoNote: videoNote ?? this.videoNote,
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentVoiceNoteCopyExtension
-    on PushMessageContentVoiceNote {
+extension PushMessageContentVoiceNoteExtensions on PushMessageContentVoiceNote {
   PushMessageContentVoiceNote copy({VoiceNote? voiceNote, bool? isPinned}) =>
       PushMessageContentVoiceNote(
           voiceNote: voiceNote ?? this.voiceNote,
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension PushMessageContentChatAddMembersCopyExtension
+extension PushMessageContentChatAddMembersExtensions
     on PushMessageContentChatAddMembers {
   PushMessageContentChatAddMembers copy(
           {String? memberName, bool? isCurrentUser, bool? isReturned}) =>
@@ -4871,13 +7033,13 @@ extension PushMessageContentChatAddMembersCopyExtension
           isReturned: isReturned ?? this.isReturned);
 }
 
-extension PushMessageContentChatChangeTitleCopyExtension
+extension PushMessageContentChatChangeTitleExtensions
     on PushMessageContentChatChangeTitle {
   PushMessageContentChatChangeTitle copy({String? title}) =>
       PushMessageContentChatChangeTitle(title: title ?? this.title);
 }
 
-extension PushMessageContentChatDeleteMemberCopyExtension
+extension PushMessageContentChatDeleteMemberExtensions
     on PushMessageContentChatDeleteMember {
   PushMessageContentChatDeleteMember copy(
           {String? memberName, bool? isCurrentUser, bool? isLeft}) =>
@@ -4887,14 +7049,14 @@ extension PushMessageContentChatDeleteMemberCopyExtension
           isLeft: isLeft ?? this.isLeft);
 }
 
-extension PushMessageContentMessageForwardsCopyExtension
+extension PushMessageContentMessageForwardsExtensions
     on PushMessageContentMessageForwards {
   PushMessageContentMessageForwards copy({int? totalCount}) =>
       PushMessageContentMessageForwards(
           totalCount: totalCount ?? this.totalCount);
 }
 
-extension PushMessageContentMediaAlbumCopyExtension
+extension PushMessageContentMediaAlbumExtensions
     on PushMessageContentMediaAlbum {
   PushMessageContentMediaAlbum copy(
           {int? totalCount,
@@ -4910,18 +7072,39 @@ extension PushMessageContentMediaAlbumCopyExtension
           hasDocuments: hasDocuments ?? this.hasDocuments);
 }
 
-extension NotificationTypeNewMessageCopyExtension
-    on NotificationTypeNewMessage {
+extension NotificationTypeExtensions on NotificationType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(NotificationTypeNewMessage value) newMessage,
+      required TResult Function(NotificationTypeNewSecretChat value)
+          newSecretChat,
+      required TResult Function(NotificationTypeNewCall value) newCall,
+      required TResult Function(NotificationTypeNewPushMessage value)
+          newPushMessage}) {
+    switch (this.getConstructor()) {
+      case NotificationTypeNewMessage.CONSTRUCTOR:
+        return newMessage.call(this as NotificationTypeNewMessage);
+      case NotificationTypeNewSecretChat.CONSTRUCTOR:
+        return newSecretChat.call(this as NotificationTypeNewSecretChat);
+      case NotificationTypeNewCall.CONSTRUCTOR:
+        return newCall.call(this as NotificationTypeNewCall);
+      case NotificationTypeNewPushMessage.CONSTRUCTOR:
+        return newPushMessage.call(this as NotificationTypeNewPushMessage);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension NotificationTypeNewMessageExtensions on NotificationTypeNewMessage {
   NotificationTypeNewMessage copy({Message? message}) =>
       NotificationTypeNewMessage(message: message ?? this.message);
 }
 
-extension NotificationTypeNewCallCopyExtension on NotificationTypeNewCall {
+extension NotificationTypeNewCallExtensions on NotificationTypeNewCall {
   NotificationTypeNewCall copy({int? callId}) =>
       NotificationTypeNewCall(callId: callId ?? this.callId);
 }
 
-extension NotificationTypeNewPushMessageCopyExtension
+extension NotificationTypeNewPushMessageExtensions
     on NotificationTypeNewPushMessage {
   NotificationTypeNewPushMessage copy(
           {int? messageId,
@@ -4937,7 +7120,28 @@ extension NotificationTypeNewPushMessageCopyExtension
           content: content ?? this.content);
 }
 
-extension NotificationCopyExtension on Notification {
+extension NotificationGroupTypeExtensions on NotificationGroupType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(NotificationGroupTypeMessages value) messages,
+      required TResult Function(NotificationGroupTypeMentions value) mentions,
+      required TResult Function(NotificationGroupTypeSecretChat value)
+          secretChat,
+      required TResult Function(NotificationGroupTypeCalls value) calls}) {
+    switch (this.getConstructor()) {
+      case NotificationGroupTypeMessages.CONSTRUCTOR:
+        return messages.call(this as NotificationGroupTypeMessages);
+      case NotificationGroupTypeMentions.CONSTRUCTOR:
+        return mentions.call(this as NotificationGroupTypeMentions);
+      case NotificationGroupTypeSecretChat.CONSTRUCTOR:
+        return secretChat.call(this as NotificationGroupTypeSecretChat);
+      case NotificationGroupTypeCalls.CONSTRUCTOR:
+        return calls.call(this as NotificationGroupTypeCalls);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension NotificationExtensions on Notification {
   Notification copy(
           {int? id, int? date, bool? isSilent, NotificationType? type}) =>
       Notification(
@@ -4947,7 +7151,7 @@ extension NotificationCopyExtension on Notification {
           type: type ?? this.type);
 }
 
-extension NotificationGroupCopyExtension on NotificationGroup {
+extension NotificationGroupExtensions on NotificationGroup {
   NotificationGroup copy(
           {int? id,
           NotificationGroupType? type,
@@ -4962,86 +7166,219 @@ extension NotificationGroupCopyExtension on NotificationGroup {
           notifications: notifications ?? this.notifications);
 }
 
-extension OptionValueBooleanCopyExtension on OptionValueBoolean {
+extension OptionValueExtensions on OptionValue {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(OptionValueBoolean value) $boolean,
+      required TResult Function(OptionValueEmpty value) empty,
+      required TResult Function(OptionValueInteger value) integer,
+      required TResult Function(OptionValueString value) $string}) {
+    switch (this.getConstructor()) {
+      case OptionValueBoolean.CONSTRUCTOR:
+        return $boolean.call(this as OptionValueBoolean);
+      case OptionValueEmpty.CONSTRUCTOR:
+        return empty.call(this as OptionValueEmpty);
+      case OptionValueInteger.CONSTRUCTOR:
+        return integer.call(this as OptionValueInteger);
+      case OptionValueString.CONSTRUCTOR:
+        return $string.call(this as OptionValueString);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension OptionValueBooleanExtensions on OptionValueBoolean {
   OptionValueBoolean copy({bool? value}) =>
       OptionValueBoolean(value: value ?? this.value);
 }
 
-extension OptionValueIntegerCopyExtension on OptionValueInteger {
+extension OptionValueIntegerExtensions on OptionValueInteger {
   OptionValueInteger copy({int? value}) =>
       OptionValueInteger(value: value ?? this.value);
 }
 
-extension OptionValueStringCopyExtension on OptionValueString {
+extension OptionValueStringExtensions on OptionValueString {
   OptionValueString copy({String? value}) =>
       OptionValueString(value: value ?? this.value);
 }
 
-extension JsonObjectMemberCopyExtension on JsonObjectMember {
+extension JsonObjectMemberExtensions on JsonObjectMember {
   JsonObjectMember copy({String? key, JsonValue? value}) =>
       JsonObjectMember(key: key ?? this.key, value: value ?? this.value);
 }
 
-extension JsonValueBooleanCopyExtension on JsonValueBoolean {
+extension JsonValueExtensions on JsonValue {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(JsonValueNull value) $null,
+      required TResult Function(JsonValueBoolean value) $boolean,
+      required TResult Function(JsonValueNumber value) number,
+      required TResult Function(JsonValueString value) $string,
+      required TResult Function(JsonValueArray value) array,
+      required TResult Function(JsonValueObject value) $object}) {
+    switch (this.getConstructor()) {
+      case JsonValueNull.CONSTRUCTOR:
+        return $null.call(this as JsonValueNull);
+      case JsonValueBoolean.CONSTRUCTOR:
+        return $boolean.call(this as JsonValueBoolean);
+      case JsonValueNumber.CONSTRUCTOR:
+        return number.call(this as JsonValueNumber);
+      case JsonValueString.CONSTRUCTOR:
+        return $string.call(this as JsonValueString);
+      case JsonValueArray.CONSTRUCTOR:
+        return array.call(this as JsonValueArray);
+      case JsonValueObject.CONSTRUCTOR:
+        return $object.call(this as JsonValueObject);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension JsonValueBooleanExtensions on JsonValueBoolean {
   JsonValueBoolean copy({bool? value}) =>
       JsonValueBoolean(value: value ?? this.value);
 }
 
-extension JsonValueNumberCopyExtension on JsonValueNumber {
+extension JsonValueNumberExtensions on JsonValueNumber {
   JsonValueNumber copy({double? value}) =>
       JsonValueNumber(value: value ?? this.value);
 }
 
-extension JsonValueStringCopyExtension on JsonValueString {
+extension JsonValueStringExtensions on JsonValueString {
   JsonValueString copy({String? value}) =>
       JsonValueString(value: value ?? this.value);
 }
 
-extension JsonValueArrayCopyExtension on JsonValueArray {
+extension JsonValueArrayExtensions on JsonValueArray {
   JsonValueArray copy({List<JsonValue>? values}) =>
       JsonValueArray(values: values ?? this.values);
 }
 
-extension JsonValueObjectCopyExtension on JsonValueObject {
+extension JsonValueObjectExtensions on JsonValueObject {
   JsonValueObject copy({List<JsonObjectMember>? members}) =>
       JsonValueObject(members: members ?? this.members);
 }
 
-extension UserPrivacySettingRuleAllowUsersCopyExtension
+extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(UserPrivacySettingRuleAllowAll value) allowAll,
+      required TResult Function(UserPrivacySettingRuleAllowContacts value)
+          allowContacts,
+      required TResult Function(UserPrivacySettingRuleAllowUsers value)
+          allowUsers,
+      required TResult Function(UserPrivacySettingRuleAllowChatMembers value)
+          allowChatMembers,
+      required TResult Function(UserPrivacySettingRuleRestrictAll value)
+          restrictAll,
+      required TResult Function(UserPrivacySettingRuleRestrictContacts value)
+          restrictContacts,
+      required TResult Function(UserPrivacySettingRuleRestrictUsers value)
+          restrictUsers,
+      required TResult Function(UserPrivacySettingRuleRestrictChatMembers value)
+          restrictChatMembers}) {
+    switch (this.getConstructor()) {
+      case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
+        return allowAll.call(this as UserPrivacySettingRuleAllowAll);
+      case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
+        return allowContacts.call(this as UserPrivacySettingRuleAllowContacts);
+      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
+        return allowUsers.call(this as UserPrivacySettingRuleAllowUsers);
+      case UserPrivacySettingRuleAllowChatMembers.CONSTRUCTOR:
+        return allowChatMembers
+            .call(this as UserPrivacySettingRuleAllowChatMembers);
+      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
+        return restrictAll.call(this as UserPrivacySettingRuleRestrictAll);
+      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
+        return restrictContacts
+            .call(this as UserPrivacySettingRuleRestrictContacts);
+      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
+        return restrictUsers.call(this as UserPrivacySettingRuleRestrictUsers);
+      case UserPrivacySettingRuleRestrictChatMembers.CONSTRUCTOR:
+        return restrictChatMembers
+            .call(this as UserPrivacySettingRuleRestrictChatMembers);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension UserPrivacySettingRuleAllowUsersExtensions
     on UserPrivacySettingRuleAllowUsers {
   UserPrivacySettingRuleAllowUsers copy({List<int>? userIds}) =>
       UserPrivacySettingRuleAllowUsers(userIds: userIds ?? this.userIds);
 }
 
-extension UserPrivacySettingRuleAllowChatMembersCopyExtension
+extension UserPrivacySettingRuleAllowChatMembersExtensions
     on UserPrivacySettingRuleAllowChatMembers {
   UserPrivacySettingRuleAllowChatMembers copy({List<int>? chatIds}) =>
       UserPrivacySettingRuleAllowChatMembers(chatIds: chatIds ?? this.chatIds);
 }
 
-extension UserPrivacySettingRuleRestrictUsersCopyExtension
+extension UserPrivacySettingRuleRestrictUsersExtensions
     on UserPrivacySettingRuleRestrictUsers {
   UserPrivacySettingRuleRestrictUsers copy({List<int>? userIds}) =>
       UserPrivacySettingRuleRestrictUsers(userIds: userIds ?? this.userIds);
 }
 
-extension UserPrivacySettingRuleRestrictChatMembersCopyExtension
+extension UserPrivacySettingRuleRestrictChatMembersExtensions
     on UserPrivacySettingRuleRestrictChatMembers {
   UserPrivacySettingRuleRestrictChatMembers copy({List<int>? chatIds}) =>
       UserPrivacySettingRuleRestrictChatMembers(
           chatIds: chatIds ?? this.chatIds);
 }
 
-extension UserPrivacySettingRulesCopyExtension on UserPrivacySettingRules {
+extension UserPrivacySettingRulesExtensions on UserPrivacySettingRules {
   UserPrivacySettingRules copy({List<UserPrivacySettingRule>? rules}) =>
       UserPrivacySettingRules(rules: rules ?? this.rules);
 }
 
-extension AccountTtlCopyExtension on AccountTtl {
+extension UserPrivacySettingExtensions on UserPrivacySetting {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(UserPrivacySettingShowStatus value) showStatus,
+      required TResult Function(UserPrivacySettingShowProfilePhoto value)
+          showProfilePhoto,
+      required TResult Function(
+              UserPrivacySettingShowLinkInForwardedMessages value)
+          showLinkInForwardedMessages,
+      required TResult Function(UserPrivacySettingShowPhoneNumber value)
+          showPhoneNumber,
+      required TResult Function(UserPrivacySettingAllowChatInvites value)
+          allowChatInvites,
+      required TResult Function(UserPrivacySettingAllowCalls value) allowCalls,
+      required TResult Function(UserPrivacySettingAllowPeerToPeerCalls value)
+          allowPeerToPeerCalls,
+      required TResult Function(
+              UserPrivacySettingAllowFindingByPhoneNumber value)
+          allowFindingByPhoneNumber}) {
+    switch (this.getConstructor()) {
+      case UserPrivacySettingShowStatus.CONSTRUCTOR:
+        return showStatus.call(this as UserPrivacySettingShowStatus);
+      case UserPrivacySettingShowProfilePhoto.CONSTRUCTOR:
+        return showProfilePhoto
+            .call(this as UserPrivacySettingShowProfilePhoto);
+      case UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR:
+        return showLinkInForwardedMessages
+            .call(this as UserPrivacySettingShowLinkInForwardedMessages);
+      case UserPrivacySettingShowPhoneNumber.CONSTRUCTOR:
+        return showPhoneNumber.call(this as UserPrivacySettingShowPhoneNumber);
+      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
+        return allowChatInvites
+            .call(this as UserPrivacySettingAllowChatInvites);
+      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
+        return allowCalls.call(this as UserPrivacySettingAllowCalls);
+      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
+        return allowPeerToPeerCalls
+            .call(this as UserPrivacySettingAllowPeerToPeerCalls);
+      case UserPrivacySettingAllowFindingByPhoneNumber.CONSTRUCTOR:
+        return allowFindingByPhoneNumber
+            .call(this as UserPrivacySettingAllowFindingByPhoneNumber);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension AccountTtlExtensions on AccountTtl {
   AccountTtl copy({int? days}) => AccountTtl(days: days ?? this.days);
 }
 
-extension SessionCopyExtension on Session {
+extension SessionExtensions on Session {
   Session copy(
           {int? id,
           bool? isCurrent,
@@ -5077,12 +7414,12 @@ extension SessionCopyExtension on Session {
           region: region ?? this.region);
 }
 
-extension SessionsCopyExtension on Sessions {
+extension SessionsExtensions on Sessions {
   Sessions copy({List<Session>? sessions}) =>
       Sessions(sessions: sessions ?? this.sessions);
 }
 
-extension ConnectedWebsiteCopyExtension on ConnectedWebsite {
+extension ConnectedWebsiteExtensions on ConnectedWebsite {
   ConnectedWebsite copy(
           {int? id,
           String? domainName,
@@ -5105,17 +7442,51 @@ extension ConnectedWebsiteCopyExtension on ConnectedWebsite {
           location: location ?? this.location);
 }
 
-extension ConnectedWebsitesCopyExtension on ConnectedWebsites {
+extension ConnectedWebsitesExtensions on ConnectedWebsites {
   ConnectedWebsites copy({List<ConnectedWebsite>? websites}) =>
       ConnectedWebsites(websites: websites ?? this.websites);
 }
 
-extension MessageLinkCopyExtension on MessageLink {
+extension ChatReportReasonExtensions on ChatReportReason {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatReportReasonSpam value) spam,
+      required TResult Function(ChatReportReasonViolence value) violence,
+      required TResult Function(ChatReportReasonPornography value) pornography,
+      required TResult Function(ChatReportReasonChildAbuse value) childAbuse,
+      required TResult Function(ChatReportReasonCopyright value) copyright,
+      required TResult Function(ChatReportReasonUnrelatedLocation value)
+          unrelatedLocation,
+      required TResult Function(ChatReportReasonFake value) fake,
+      required TResult Function(ChatReportReasonCustom value) custom}) {
+    switch (this.getConstructor()) {
+      case ChatReportReasonSpam.CONSTRUCTOR:
+        return spam.call(this as ChatReportReasonSpam);
+      case ChatReportReasonViolence.CONSTRUCTOR:
+        return violence.call(this as ChatReportReasonViolence);
+      case ChatReportReasonPornography.CONSTRUCTOR:
+        return pornography.call(this as ChatReportReasonPornography);
+      case ChatReportReasonChildAbuse.CONSTRUCTOR:
+        return childAbuse.call(this as ChatReportReasonChildAbuse);
+      case ChatReportReasonCopyright.CONSTRUCTOR:
+        return copyright.call(this as ChatReportReasonCopyright);
+      case ChatReportReasonUnrelatedLocation.CONSTRUCTOR:
+        return unrelatedLocation
+            .call(this as ChatReportReasonUnrelatedLocation);
+      case ChatReportReasonFake.CONSTRUCTOR:
+        return fake.call(this as ChatReportReasonFake);
+      case ChatReportReasonCustom.CONSTRUCTOR:
+        return custom.call(this as ChatReportReasonCustom);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension MessageLinkExtensions on MessageLink {
   MessageLink copy({String? link, bool? isPublic}) =>
       MessageLink(link: link ?? this.link, isPublic: isPublic ?? this.isPublic);
 }
 
-extension MessageLinkInfoCopyExtension on MessageLinkInfo {
+extension MessageLinkInfoExtensions on MessageLinkInfo {
   MessageLinkInfo copy(
           {bool? isPublic,
           int? chatId,
@@ -5130,12 +7501,67 @@ extension MessageLinkInfoCopyExtension on MessageLinkInfo {
           forComment: forComment ?? this.forComment);
 }
 
-extension FilePartCopyExtension on FilePart {
+extension FilePartExtensions on FilePart {
   FilePart copy({String? data}) => FilePart(data: data ?? this.data);
 }
 
-extension StorageStatisticsByFileTypeCopyExtension
-    on StorageStatisticsByFileType {
+extension FileTypeExtensions on FileType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(FileTypeNone value) none,
+      required TResult Function(FileTypeAnimation value) animation,
+      required TResult Function(FileTypeAudio value) audio,
+      required TResult Function(FileTypeDocument value) document,
+      required TResult Function(FileTypePhoto value) photo,
+      required TResult Function(FileTypeProfilePhoto value) profilePhoto,
+      required TResult Function(FileTypeSecret value) secret,
+      required TResult Function(FileTypeSecretThumbnail value) secretThumbnail,
+      required TResult Function(FileTypeSecure value) secure,
+      required TResult Function(FileTypeSticker value) sticker,
+      required TResult Function(FileTypeThumbnail value) thumbnail,
+      required TResult Function(FileTypeUnknown value) unknown,
+      required TResult Function(FileTypeVideo value) video,
+      required TResult Function(FileTypeVideoNote value) videoNote,
+      required TResult Function(FileTypeVoiceNote value) voiceNote,
+      required TResult Function(FileTypeWallpaper value) wallpaper}) {
+    switch (this.getConstructor()) {
+      case FileTypeNone.CONSTRUCTOR:
+        return none.call(this as FileTypeNone);
+      case FileTypeAnimation.CONSTRUCTOR:
+        return animation.call(this as FileTypeAnimation);
+      case FileTypeAudio.CONSTRUCTOR:
+        return audio.call(this as FileTypeAudio);
+      case FileTypeDocument.CONSTRUCTOR:
+        return document.call(this as FileTypeDocument);
+      case FileTypePhoto.CONSTRUCTOR:
+        return photo.call(this as FileTypePhoto);
+      case FileTypeProfilePhoto.CONSTRUCTOR:
+        return profilePhoto.call(this as FileTypeProfilePhoto);
+      case FileTypeSecret.CONSTRUCTOR:
+        return secret.call(this as FileTypeSecret);
+      case FileTypeSecretThumbnail.CONSTRUCTOR:
+        return secretThumbnail.call(this as FileTypeSecretThumbnail);
+      case FileTypeSecure.CONSTRUCTOR:
+        return secure.call(this as FileTypeSecure);
+      case FileTypeSticker.CONSTRUCTOR:
+        return sticker.call(this as FileTypeSticker);
+      case FileTypeThumbnail.CONSTRUCTOR:
+        return thumbnail.call(this as FileTypeThumbnail);
+      case FileTypeUnknown.CONSTRUCTOR:
+        return unknown.call(this as FileTypeUnknown);
+      case FileTypeVideo.CONSTRUCTOR:
+        return video.call(this as FileTypeVideo);
+      case FileTypeVideoNote.CONSTRUCTOR:
+        return videoNote.call(this as FileTypeVideoNote);
+      case FileTypeVoiceNote.CONSTRUCTOR:
+        return voiceNote.call(this as FileTypeVoiceNote);
+      case FileTypeWallpaper.CONSTRUCTOR:
+        return wallpaper.call(this as FileTypeWallpaper);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension StorageStatisticsByFileTypeExtensions on StorageStatisticsByFileType {
   StorageStatisticsByFileType copy(
           {FileType? fileType, int? size, int? count}) =>
       StorageStatisticsByFileType(
@@ -5144,7 +7570,7 @@ extension StorageStatisticsByFileTypeCopyExtension
           count: count ?? this.count);
 }
 
-extension StorageStatisticsByChatCopyExtension on StorageStatisticsByChat {
+extension StorageStatisticsByChatExtensions on StorageStatisticsByChat {
   StorageStatisticsByChat copy(
           {int? chatId,
           int? size,
@@ -5157,7 +7583,7 @@ extension StorageStatisticsByChatCopyExtension on StorageStatisticsByChat {
           byFileType: byFileType ?? this.byFileType);
 }
 
-extension StorageStatisticsCopyExtension on StorageStatistics {
+extension StorageStatisticsExtensions on StorageStatistics {
   StorageStatistics copy(
           {int? size, int? count, List<StorageStatisticsByChat>? byChat}) =>
       StorageStatistics(
@@ -5166,7 +7592,7 @@ extension StorageStatisticsCopyExtension on StorageStatistics {
           byChat: byChat ?? this.byChat);
 }
 
-extension StorageStatisticsFastCopyExtension on StorageStatisticsFast {
+extension StorageStatisticsFastExtensions on StorageStatisticsFast {
   StorageStatisticsFast copy(
           {int? filesSize,
           int? fileCount,
@@ -5182,13 +7608,49 @@ extension StorageStatisticsFastCopyExtension on StorageStatisticsFast {
           logSize: logSize ?? this.logSize);
 }
 
-extension DatabaseStatisticsCopyExtension on DatabaseStatistics {
+extension DatabaseStatisticsExtensions on DatabaseStatistics {
   DatabaseStatistics copy({String? statistics}) =>
       DatabaseStatistics(statistics: statistics ?? this.statistics);
 }
 
-extension NetworkStatisticsEntryFileCopyExtension
-    on NetworkStatisticsEntryFile {
+extension NetworkTypeExtensions on NetworkType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(NetworkTypeNone value) none,
+      required TResult Function(NetworkTypeMobile value) mobile,
+      required TResult Function(NetworkTypeMobileRoaming value) mobileRoaming,
+      required TResult Function(NetworkTypeWiFi value) wiFi,
+      required TResult Function(NetworkTypeOther value) other}) {
+    switch (this.getConstructor()) {
+      case NetworkTypeNone.CONSTRUCTOR:
+        return none.call(this as NetworkTypeNone);
+      case NetworkTypeMobile.CONSTRUCTOR:
+        return mobile.call(this as NetworkTypeMobile);
+      case NetworkTypeMobileRoaming.CONSTRUCTOR:
+        return mobileRoaming.call(this as NetworkTypeMobileRoaming);
+      case NetworkTypeWiFi.CONSTRUCTOR:
+        return wiFi.call(this as NetworkTypeWiFi);
+      case NetworkTypeOther.CONSTRUCTOR:
+        return other.call(this as NetworkTypeOther);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension NetworkStatisticsEntryExtensions on NetworkStatisticsEntry {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(NetworkStatisticsEntryFile value) file,
+      required TResult Function(NetworkStatisticsEntryCall value) call}) {
+    switch (this.getConstructor()) {
+      case NetworkStatisticsEntryFile.CONSTRUCTOR:
+        return file.call(this as NetworkStatisticsEntryFile);
+      case NetworkStatisticsEntryCall.CONSTRUCTOR:
+        return call.call(this as NetworkStatisticsEntryCall);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension NetworkStatisticsEntryFileExtensions on NetworkStatisticsEntryFile {
   NetworkStatisticsEntryFile copy(
           {FileType? fileType,
           NetworkType? networkType,
@@ -5201,8 +7663,7 @@ extension NetworkStatisticsEntryFileCopyExtension
           receivedBytes: receivedBytes ?? this.receivedBytes);
 }
 
-extension NetworkStatisticsEntryCallCopyExtension
-    on NetworkStatisticsEntryCall {
+extension NetworkStatisticsEntryCallExtensions on NetworkStatisticsEntryCall {
   NetworkStatisticsEntryCall copy(
           {NetworkType? networkType,
           int? sentBytes,
@@ -5215,7 +7676,7 @@ extension NetworkStatisticsEntryCallCopyExtension
           duration: duration ?? this.duration);
 }
 
-extension NetworkStatisticsCopyExtension on NetworkStatistics {
+extension NetworkStatisticsExtensions on NetworkStatistics {
   NetworkStatistics copy(
           {int? sinceDate, List<NetworkStatisticsEntry>? entries}) =>
       NetworkStatistics(
@@ -5223,7 +7684,7 @@ extension NetworkStatisticsCopyExtension on NetworkStatistics {
           entries: entries ?? this.entries);
 }
 
-extension AutoDownloadSettingsCopyExtension on AutoDownloadSettings {
+extension AutoDownloadSettingsExtensions on AutoDownloadSettings {
   AutoDownloadSettings copy(
           {bool? isAutoDownloadEnabled,
           int? maxPhotoFileSize,
@@ -5245,8 +7706,7 @@ extension AutoDownloadSettingsCopyExtension on AutoDownloadSettings {
           useLessDataForCalls: useLessDataForCalls ?? this.useLessDataForCalls);
 }
 
-extension AutoDownloadSettingsPresetsCopyExtension
-    on AutoDownloadSettingsPresets {
+extension AutoDownloadSettingsPresetsExtensions on AutoDownloadSettingsPresets {
   AutoDownloadSettingsPresets copy(
           {AutoDownloadSettings? low,
           AutoDownloadSettings? medium,
@@ -5257,55 +7717,156 @@ extension AutoDownloadSettingsPresetsCopyExtension
           high: high ?? this.high);
 }
 
-extension TMeUrlTypeUserCopyExtension on TMeUrlTypeUser {
+extension ConnectionStateExtensions on ConnectionState {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ConnectionStateWaitingForNetwork value)
+          waitingForNetwork,
+      required TResult Function(ConnectionStateConnectingToProxy value)
+          connectingToProxy,
+      required TResult Function(ConnectionStateConnecting value) connecting,
+      required TResult Function(ConnectionStateUpdating value) updating,
+      required TResult Function(ConnectionStateReady value) ready}) {
+    switch (this.getConstructor()) {
+      case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
+        return waitingForNetwork.call(this as ConnectionStateWaitingForNetwork);
+      case ConnectionStateConnectingToProxy.CONSTRUCTOR:
+        return connectingToProxy.call(this as ConnectionStateConnectingToProxy);
+      case ConnectionStateConnecting.CONSTRUCTOR:
+        return connecting.call(this as ConnectionStateConnecting);
+      case ConnectionStateUpdating.CONSTRUCTOR:
+        return updating.call(this as ConnectionStateUpdating);
+      case ConnectionStateReady.CONSTRUCTOR:
+        return ready.call(this as ConnectionStateReady);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension TopChatCategoryExtensions on TopChatCategory {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(TopChatCategoryUsers value) users,
+      required TResult Function(TopChatCategoryBots value) bots,
+      required TResult Function(TopChatCategoryGroups value) groups,
+      required TResult Function(TopChatCategoryChannels value) channels,
+      required TResult Function(TopChatCategoryInlineBots value) inlineBots,
+      required TResult Function(TopChatCategoryCalls value) calls,
+      required TResult Function(TopChatCategoryForwardChats value)
+          forwardChats}) {
+    switch (this.getConstructor()) {
+      case TopChatCategoryUsers.CONSTRUCTOR:
+        return users.call(this as TopChatCategoryUsers);
+      case TopChatCategoryBots.CONSTRUCTOR:
+        return bots.call(this as TopChatCategoryBots);
+      case TopChatCategoryGroups.CONSTRUCTOR:
+        return groups.call(this as TopChatCategoryGroups);
+      case TopChatCategoryChannels.CONSTRUCTOR:
+        return channels.call(this as TopChatCategoryChannels);
+      case TopChatCategoryInlineBots.CONSTRUCTOR:
+        return inlineBots.call(this as TopChatCategoryInlineBots);
+      case TopChatCategoryCalls.CONSTRUCTOR:
+        return calls.call(this as TopChatCategoryCalls);
+      case TopChatCategoryForwardChats.CONSTRUCTOR:
+        return forwardChats.call(this as TopChatCategoryForwardChats);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension TMeUrlTypeExtensions on TMeUrlType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(TMeUrlTypeUser value) user,
+      required TResult Function(TMeUrlTypeSupergroup value) supergroup,
+      required TResult Function(TMeUrlTypeChatInvite value) chatInvite,
+      required TResult Function(TMeUrlTypeStickerSet value) stickerSet}) {
+    switch (this.getConstructor()) {
+      case TMeUrlTypeUser.CONSTRUCTOR:
+        return user.call(this as TMeUrlTypeUser);
+      case TMeUrlTypeSupergroup.CONSTRUCTOR:
+        return supergroup.call(this as TMeUrlTypeSupergroup);
+      case TMeUrlTypeChatInvite.CONSTRUCTOR:
+        return chatInvite.call(this as TMeUrlTypeChatInvite);
+      case TMeUrlTypeStickerSet.CONSTRUCTOR:
+        return stickerSet.call(this as TMeUrlTypeStickerSet);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension TMeUrlTypeUserExtensions on TMeUrlTypeUser {
   TMeUrlTypeUser copy({int? userId}) =>
       TMeUrlTypeUser(userId: userId ?? this.userId);
 }
 
-extension TMeUrlTypeSupergroupCopyExtension on TMeUrlTypeSupergroup {
+extension TMeUrlTypeSupergroupExtensions on TMeUrlTypeSupergroup {
   TMeUrlTypeSupergroup copy({int? supergroupId}) =>
       TMeUrlTypeSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension TMeUrlTypeChatInviteCopyExtension on TMeUrlTypeChatInvite {
+extension TMeUrlTypeChatInviteExtensions on TMeUrlTypeChatInvite {
   TMeUrlTypeChatInvite copy({ChatInviteLinkInfo? info}) =>
       TMeUrlTypeChatInvite(info: info ?? this.info);
 }
 
-extension TMeUrlTypeStickerSetCopyExtension on TMeUrlTypeStickerSet {
+extension TMeUrlTypeStickerSetExtensions on TMeUrlTypeStickerSet {
   TMeUrlTypeStickerSet copy({int? stickerSetId}) =>
       TMeUrlTypeStickerSet(stickerSetId: stickerSetId ?? this.stickerSetId);
 }
 
-extension TMeUrlCopyExtension on TMeUrl {
+extension TMeUrlExtensions on TMeUrl {
   TMeUrl copy({String? url, TMeUrlType? type}) =>
       TMeUrl(url: url ?? this.url, type: type ?? this.type);
 }
 
-extension TMeUrlsCopyExtension on TMeUrls {
+extension TMeUrlsExtensions on TMeUrls {
   TMeUrls copy({List<TMeUrl>? urls}) => TMeUrls(urls: urls ?? this.urls);
 }
 
-extension SuggestedActionConvertToBroadcastGroupCopyExtension
+extension SuggestedActionExtensions on SuggestedAction {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(
+              SuggestedActionEnableArchiveAndMuteNewChats value)
+          enableArchiveAndMuteNewChats,
+      required TResult Function(SuggestedActionCheckPhoneNumber value)
+          checkPhoneNumber,
+      required TResult Function(SuggestedActionSeeTicksHint value) seeTicksHint,
+      required TResult Function(SuggestedActionConvertToBroadcastGroup value)
+          convertToBroadcastGroup}) {
+    switch (this.getConstructor()) {
+      case SuggestedActionEnableArchiveAndMuteNewChats.CONSTRUCTOR:
+        return enableArchiveAndMuteNewChats
+            .call(this as SuggestedActionEnableArchiveAndMuteNewChats);
+      case SuggestedActionCheckPhoneNumber.CONSTRUCTOR:
+        return checkPhoneNumber.call(this as SuggestedActionCheckPhoneNumber);
+      case SuggestedActionSeeTicksHint.CONSTRUCTOR:
+        return seeTicksHint.call(this as SuggestedActionSeeTicksHint);
+      case SuggestedActionConvertToBroadcastGroup.CONSTRUCTOR:
+        return convertToBroadcastGroup
+            .call(this as SuggestedActionConvertToBroadcastGroup);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension SuggestedActionConvertToBroadcastGroupExtensions
     on SuggestedActionConvertToBroadcastGroup {
   SuggestedActionConvertToBroadcastGroup copy({int? supergroupId}) =>
       SuggestedActionConvertToBroadcastGroup(
           supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension CountCopyExtension on Count {
+extension CountExtensions on Count {
   Count copy({int? count}) => Count(count: count ?? this.count);
 }
 
-extension TextCopyExtension on Text {
+extension TextExtensions on Text {
   Text copy({String? text}) => Text(text: text ?? this.text);
 }
 
-extension SecondsCopyExtension on Seconds {
+extension SecondsExtensions on Seconds {
   Seconds copy({double? seconds}) => Seconds(seconds: seconds ?? this.seconds);
 }
 
-extension DeepLinkInfoCopyExtension on DeepLinkInfo {
+extension DeepLinkInfoExtensions on DeepLinkInfo {
   DeepLinkInfo copy({FormattedText? text, bool? needUpdateApplication}) =>
       DeepLinkInfo(
           text: text ?? this.text,
@@ -5313,17 +7874,48 @@ extension DeepLinkInfoCopyExtension on DeepLinkInfo {
               needUpdateApplication ?? this.needUpdateApplication);
 }
 
-extension TextParseModeMarkdownCopyExtension on TextParseModeMarkdown {
+extension TextParseModeExtensions on TextParseMode {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(TextParseModeMarkdown value) markdown,
+      required TResult Function(TextParseModeHTML value) hTML}) {
+    switch (this.getConstructor()) {
+      case TextParseModeMarkdown.CONSTRUCTOR:
+        return markdown.call(this as TextParseModeMarkdown);
+      case TextParseModeHTML.CONSTRUCTOR:
+        return hTML.call(this as TextParseModeHTML);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension TextParseModeMarkdownExtensions on TextParseModeMarkdown {
   TextParseModeMarkdown copy({int? version}) =>
       TextParseModeMarkdown(version: version ?? this.version);
 }
 
-extension ProxyTypeSocks5CopyExtension on ProxyTypeSocks5 {
+extension ProxyTypeExtensions on ProxyType {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ProxyTypeSocks5 value) socks5,
+      required TResult Function(ProxyTypeHttp value) http,
+      required TResult Function(ProxyTypeMtproto value) mtproto}) {
+    switch (this.getConstructor()) {
+      case ProxyTypeSocks5.CONSTRUCTOR:
+        return socks5.call(this as ProxyTypeSocks5);
+      case ProxyTypeHttp.CONSTRUCTOR:
+        return http.call(this as ProxyTypeHttp);
+      case ProxyTypeMtproto.CONSTRUCTOR:
+        return mtproto.call(this as ProxyTypeMtproto);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ProxyTypeSocks5Extensions on ProxyTypeSocks5 {
   ProxyTypeSocks5 copy({String? username, String? password}) => ProxyTypeSocks5(
       username: username ?? this.username, password: password ?? this.password);
 }
 
-extension ProxyTypeHttpCopyExtension on ProxyTypeHttp {
+extension ProxyTypeHttpExtensions on ProxyTypeHttp {
   ProxyTypeHttp copy({String? username, String? password, bool? httpOnly}) =>
       ProxyTypeHttp(
           username: username ?? this.username,
@@ -5331,12 +7923,12 @@ extension ProxyTypeHttpCopyExtension on ProxyTypeHttp {
           httpOnly: httpOnly ?? this.httpOnly);
 }
 
-extension ProxyTypeMtprotoCopyExtension on ProxyTypeMtproto {
+extension ProxyTypeMtprotoExtensions on ProxyTypeMtproto {
   ProxyTypeMtproto copy({String? secret}) =>
       ProxyTypeMtproto(secret: secret ?? this.secret);
 }
 
-extension ProxyCopyExtension on Proxy {
+extension ProxyExtensions on Proxy {
   Proxy copy(
           {int? id,
           String? server,
@@ -5353,12 +7945,26 @@ extension ProxyCopyExtension on Proxy {
           type: type ?? this.type);
 }
 
-extension ProxiesCopyExtension on Proxies {
+extension ProxiesExtensions on Proxies {
   Proxies copy({List<Proxy>? proxies}) =>
       Proxies(proxies: proxies ?? this.proxies);
 }
 
-extension InputStickerStaticCopyExtension on InputStickerStatic {
+extension InputStickerExtensions on InputSticker {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(InputStickerStatic value) static,
+      required TResult Function(InputStickerAnimated value) animated}) {
+    switch (this.getConstructor()) {
+      case InputStickerStatic.CONSTRUCTOR:
+        return static.call(this as InputStickerStatic);
+      case InputStickerAnimated.CONSTRUCTOR:
+        return animated.call(this as InputStickerAnimated);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension InputStickerStaticExtensions on InputStickerStatic {
   InputStickerStatic copy(
           {InputFile? sticker, String? emojis, MaskPosition? maskPosition}) =>
       InputStickerStatic(
@@ -5367,18 +7973,18 @@ extension InputStickerStaticCopyExtension on InputStickerStatic {
           maskPosition: maskPosition ?? this.maskPosition);
 }
 
-extension InputStickerAnimatedCopyExtension on InputStickerAnimated {
+extension InputStickerAnimatedExtensions on InputStickerAnimated {
   InputStickerAnimated copy({InputFile? sticker, String? emojis}) =>
       InputStickerAnimated(
           sticker: sticker ?? this.sticker, emojis: emojis ?? this.emojis);
 }
 
-extension DateRangeCopyExtension on DateRange {
+extension DateRangeExtensions on DateRange {
   DateRange copy({int? startDate, int? endDate}) => DateRange(
       startDate: startDate ?? this.startDate, endDate: endDate ?? this.endDate);
 }
 
-extension StatisticalValueCopyExtension on StatisticalValue {
+extension StatisticalValueExtensions on StatisticalValue {
   StatisticalValue copy(
           {double? value,
           double? previousValue,
@@ -5390,24 +7996,41 @@ extension StatisticalValueCopyExtension on StatisticalValue {
               growthRatePercentage ?? this.growthRatePercentage);
 }
 
-extension StatisticalGraphDataCopyExtension on StatisticalGraphData {
+extension StatisticalGraphExtensions on StatisticalGraph {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(StatisticalGraphData value) data,
+      required TResult Function(StatisticalGraphAsync value) async,
+      required TResult Function(StatisticalGraphError value) error}) {
+    switch (this.getConstructor()) {
+      case StatisticalGraphData.CONSTRUCTOR:
+        return data.call(this as StatisticalGraphData);
+      case StatisticalGraphAsync.CONSTRUCTOR:
+        return async.call(this as StatisticalGraphAsync);
+      case StatisticalGraphError.CONSTRUCTOR:
+        return error.call(this as StatisticalGraphError);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension StatisticalGraphDataExtensions on StatisticalGraphData {
   StatisticalGraphData copy({String? jsonData, String? zoomToken}) =>
       StatisticalGraphData(
           jsonData: jsonData ?? this.jsonData,
           zoomToken: zoomToken ?? this.zoomToken);
 }
 
-extension StatisticalGraphAsyncCopyExtension on StatisticalGraphAsync {
+extension StatisticalGraphAsyncExtensions on StatisticalGraphAsync {
   StatisticalGraphAsync copy({String? token}) =>
       StatisticalGraphAsync(token: token ?? this.token);
 }
 
-extension StatisticalGraphErrorCopyExtension on StatisticalGraphError {
+extension StatisticalGraphErrorExtensions on StatisticalGraphError {
   StatisticalGraphError copy({String? errorMessage}) =>
       StatisticalGraphError(errorMessage: errorMessage ?? this.errorMessage);
 }
 
-extension ChatStatisticsMessageInteractionInfoCopyExtension
+extension ChatStatisticsMessageInteractionInfoExtensions
     on ChatStatisticsMessageInteractionInfo {
   ChatStatisticsMessageInteractionInfo copy(
           {int? messageId, int? viewCount, int? forwardCount}) =>
@@ -5417,7 +8040,7 @@ extension ChatStatisticsMessageInteractionInfoCopyExtension
           forwardCount: forwardCount ?? this.forwardCount);
 }
 
-extension ChatStatisticsMessageSenderInfoCopyExtension
+extension ChatStatisticsMessageSenderInfoExtensions
     on ChatStatisticsMessageSenderInfo {
   ChatStatisticsMessageSenderInfo copy(
           {int? userId, int? sentMessageCount, int? averageCharacterCount}) =>
@@ -5428,7 +8051,7 @@ extension ChatStatisticsMessageSenderInfoCopyExtension
               averageCharacterCount ?? this.averageCharacterCount);
 }
 
-extension ChatStatisticsAdministratorActionsInfoCopyExtension
+extension ChatStatisticsAdministratorActionsInfoExtensions
     on ChatStatisticsAdministratorActionsInfo {
   ChatStatisticsAdministratorActionsInfo copy(
           {int? userId,
@@ -5442,14 +8065,28 @@ extension ChatStatisticsAdministratorActionsInfoCopyExtension
           restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount);
 }
 
-extension ChatStatisticsInviterInfoCopyExtension on ChatStatisticsInviterInfo {
+extension ChatStatisticsInviterInfoExtensions on ChatStatisticsInviterInfo {
   ChatStatisticsInviterInfo copy({int? userId, int? addedMemberCount}) =>
       ChatStatisticsInviterInfo(
           userId: userId ?? this.userId,
           addedMemberCount: addedMemberCount ?? this.addedMemberCount);
 }
 
-extension ChatStatisticsSupergroupCopyExtension on ChatStatisticsSupergroup {
+extension ChatStatisticsExtensions on ChatStatistics {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(ChatStatisticsSupergroup value) supergroup,
+      required TResult Function(ChatStatisticsChannel value) channel}) {
+    switch (this.getConstructor()) {
+      case ChatStatisticsSupergroup.CONSTRUCTOR:
+        return supergroup.call(this as ChatStatisticsSupergroup);
+      case ChatStatisticsChannel.CONSTRUCTOR:
+        return channel.call(this as ChatStatisticsChannel);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension ChatStatisticsSupergroupExtensions on ChatStatisticsSupergroup {
   ChatStatisticsSupergroup copy(
           {DateRange? period,
           StatisticalValue? memberCount,
@@ -5486,7 +8123,7 @@ extension ChatStatisticsSupergroupCopyExtension on ChatStatisticsSupergroup {
           topInviters: topInviters ?? this.topInviters);
 }
 
-extension ChatStatisticsChannelCopyExtension on ChatStatisticsChannel {
+extension ChatStatisticsChannelExtensions on ChatStatisticsChannel {
   ChatStatisticsChannel copy(
           {DateRange? period,
           StatisticalValue? memberCount,
@@ -5528,23 +8165,38 @@ extension ChatStatisticsChannelCopyExtension on ChatStatisticsChannel {
               recentMessageInteractions ?? this.recentMessageInteractions);
 }
 
-extension MessageStatisticsCopyExtension on MessageStatistics {
+extension MessageStatisticsExtensions on MessageStatistics {
   MessageStatistics copy({StatisticalGraph? messageInteractionGraph}) =>
       MessageStatistics(
           messageInteractionGraph:
               messageInteractionGraph ?? this.messageInteractionGraph);
 }
 
-extension PointCopyExtension on Point {
+extension PointExtensions on Point {
   Point copy({double? x, double? y}) => Point(x: x ?? this.x, y: y ?? this.y);
 }
 
-extension VectorPathCommandLineCopyExtension on VectorPathCommandLine {
+extension VectorPathCommandExtensions on VectorPathCommand {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(VectorPathCommandLine value) line,
+      required TResult Function(VectorPathCommandCubicBezierCurve value)
+          cubicBezierCurve}) {
+    switch (this.getConstructor()) {
+      case VectorPathCommandLine.CONSTRUCTOR:
+        return line.call(this as VectorPathCommandLine);
+      case VectorPathCommandCubicBezierCurve.CONSTRUCTOR:
+        return cubicBezierCurve.call(this as VectorPathCommandCubicBezierCurve);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension VectorPathCommandLineExtensions on VectorPathCommandLine {
   VectorPathCommandLine copy({Point? endPoint}) =>
       VectorPathCommandLine(endPoint: endPoint ?? this.endPoint);
 }
 
-extension VectorPathCommandCubicBezierCurveCopyExtension
+extension VectorPathCommandCubicBezierCurveExtensions
     on VectorPathCommandCubicBezierCurve {
   VectorPathCommandCubicBezierCurve copy(
           {Point? startControlPoint,
@@ -5556,18 +8208,329 @@ extension VectorPathCommandCubicBezierCurveCopyExtension
           endPoint: endPoint ?? this.endPoint);
 }
 
-extension UpdateAuthorizationStateCopyExtension on UpdateAuthorizationState {
+extension UpdateExtensions on Update {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(UpdateAuthorizationState value)
+          authorizationState,
+      required TResult Function(UpdateNewMessage value) newMessage,
+      required TResult Function(UpdateMessageSendAcknowledged value)
+          messageSendAcknowledged,
+      required TResult Function(UpdateMessageSendSucceeded value)
+          messageSendSucceeded,
+      required TResult Function(UpdateMessageSendFailed value)
+          messageSendFailed,
+      required TResult Function(UpdateMessageContent value) messageContent,
+      required TResult Function(UpdateMessageEdited value) messageEdited,
+      required TResult Function(UpdateMessageIsPinned value) messageIsPinned,
+      required TResult Function(UpdateMessageInteractionInfo value)
+          messageInteractionInfo,
+      required TResult Function(UpdateMessageContentOpened value)
+          messageContentOpened,
+      required TResult Function(UpdateMessageMentionRead value)
+          messageMentionRead,
+      required TResult Function(UpdateMessageLiveLocationViewed value)
+          messageLiveLocationViewed,
+      required TResult Function(UpdateNewChat value) newChat,
+      required TResult Function(UpdateChatTitle value) chatTitle,
+      required TResult Function(UpdateChatPhoto value) chatPhoto,
+      required TResult Function(UpdateChatPermissions value) chatPermissions,
+      required TResult Function(UpdateChatLastMessage value) chatLastMessage,
+      required TResult Function(UpdateChatPosition value) chatPosition,
+      required TResult Function(UpdateChatIsMarkedAsUnread value)
+          chatIsMarkedAsUnread,
+      required TResult Function(UpdateChatIsBlocked value) chatIsBlocked,
+      required TResult Function(UpdateChatHasScheduledMessages value)
+          chatHasScheduledMessages,
+      required TResult Function(UpdateChatVoiceChat value) chatVoiceChat,
+      required TResult Function(UpdateChatDefaultDisableNotification value)
+          chatDefaultDisableNotification,
+      required TResult Function(UpdateChatReadInbox value) chatReadInbox,
+      required TResult Function(UpdateChatReadOutbox value) chatReadOutbox,
+      required TResult Function(UpdateChatUnreadMentionCount value)
+          chatUnreadMentionCount,
+      required TResult Function(UpdateChatNotificationSettings value)
+          chatNotificationSettings,
+      required TResult Function(UpdateScopeNotificationSettings value)
+          scopeNotificationSettings,
+      required TResult Function(UpdateChatMessageTtlSetting value)
+          chatMessageTtlSetting,
+      required TResult Function(UpdateChatActionBar value) chatActionBar,
+      required TResult Function(UpdateChatReplyMarkup value) chatReplyMarkup,
+      required TResult Function(UpdateChatDraftMessage value) chatDraftMessage,
+      required TResult Function(UpdateChatFilters value) chatFilters,
+      required TResult Function(UpdateChatOnlineMemberCount value)
+          chatOnlineMemberCount,
+      required TResult Function(UpdateNotification value) notification,
+      required TResult Function(UpdateNotificationGroup value)
+          notificationGroup,
+      required TResult Function(UpdateActiveNotifications value)
+          activeNotifications,
+      required TResult Function(UpdateHavePendingNotifications value)
+          havePendingNotifications,
+      required TResult Function(UpdateDeleteMessages value) deleteMessages,
+      required TResult Function(UpdateUserChatAction value) userChatAction,
+      required TResult Function(UpdateUserStatus value) userStatus,
+      required TResult Function(UpdateUser value) user,
+      required TResult Function(UpdateBasicGroup value) basicGroup,
+      required TResult Function(UpdateSupergroup value) supergroup,
+      required TResult Function(UpdateSecretChat value) secretChat,
+      required TResult Function(UpdateUserFullInfo value) userFullInfo,
+      required TResult Function(UpdateBasicGroupFullInfo value)
+          basicGroupFullInfo,
+      required TResult Function(UpdateSupergroupFullInfo value)
+          supergroupFullInfo,
+      required TResult Function(UpdateServiceNotification value)
+          serviceNotification,
+      required TResult Function(UpdateFile value) file,
+      required TResult Function(UpdateFileGenerationStart value)
+          fileGenerationStart,
+      required TResult Function(UpdateFileGenerationStop value)
+          fileGenerationStop,
+      required TResult Function(UpdateCall value) call,
+      required TResult Function(UpdateGroupCall value) groupCall,
+      required TResult Function(UpdateGroupCallParticipant value)
+          groupCallParticipant,
+      required TResult Function(UpdateNewCallSignalingData value)
+          newCallSignalingData,
+      required TResult Function(UpdateUserPrivacySettingRules value)
+          userPrivacySettingRules,
+      required TResult Function(UpdateUnreadMessageCount value)
+          unreadMessageCount,
+      required TResult Function(UpdateUnreadChatCount value) unreadChatCount,
+      required TResult Function(UpdateOption value) option,
+      required TResult Function(UpdateStickerSet value) stickerSet,
+      required TResult Function(UpdateInstalledStickerSets value)
+          installedStickerSets,
+      required TResult Function(UpdateTrendingStickerSets value)
+          trendingStickerSets,
+      required TResult Function(UpdateRecentStickers value) recentStickers,
+      required TResult Function(UpdateFavoriteStickers value) favoriteStickers,
+      required TResult Function(UpdateSavedAnimations value) savedAnimations,
+      required TResult Function(UpdateSelectedBackground value)
+          selectedBackground,
+      required TResult Function(UpdateLanguagePackStrings value)
+          languagePackStrings,
+      required TResult Function(UpdateConnectionState value) connectionState,
+      required TResult Function(UpdateTermsOfService value) termsOfService,
+      required TResult Function(UpdateUsersNearby value) usersNearby,
+      required TResult Function(UpdateDiceEmojis value) diceEmojis,
+      required TResult Function(UpdateAnimationSearchParameters value)
+          animationSearchParameters,
+      required TResult Function(UpdateSuggestedActions value) suggestedActions,
+      required TResult Function(UpdateNewInlineQuery value) newInlineQuery,
+      required TResult Function(UpdateNewChosenInlineResult value)
+          newChosenInlineResult,
+      required TResult Function(UpdateNewCallbackQuery value) newCallbackQuery,
+      required TResult Function(UpdateNewInlineCallbackQuery value)
+          newInlineCallbackQuery,
+      required TResult Function(UpdateNewShippingQuery value) newShippingQuery,
+      required TResult Function(UpdateNewPreCheckoutQuery value)
+          newPreCheckoutQuery,
+      required TResult Function(UpdateNewCustomEvent value) newCustomEvent,
+      required TResult Function(UpdateNewCustomQuery value) newCustomQuery,
+      required TResult Function(UpdatePoll value) poll,
+      required TResult Function(UpdatePollAnswer value) pollAnswer,
+      required TResult Function(UpdateChatMember value) chatMember}) {
+    switch (this.getConstructor()) {
+      case UpdateAuthorizationState.CONSTRUCTOR:
+        return authorizationState.call(this as UpdateAuthorizationState);
+      case UpdateNewMessage.CONSTRUCTOR:
+        return newMessage.call(this as UpdateNewMessage);
+      case UpdateMessageSendAcknowledged.CONSTRUCTOR:
+        return messageSendAcknowledged
+            .call(this as UpdateMessageSendAcknowledged);
+      case UpdateMessageSendSucceeded.CONSTRUCTOR:
+        return messageSendSucceeded.call(this as UpdateMessageSendSucceeded);
+      case UpdateMessageSendFailed.CONSTRUCTOR:
+        return messageSendFailed.call(this as UpdateMessageSendFailed);
+      case UpdateMessageContent.CONSTRUCTOR:
+        return messageContent.call(this as UpdateMessageContent);
+      case UpdateMessageEdited.CONSTRUCTOR:
+        return messageEdited.call(this as UpdateMessageEdited);
+      case UpdateMessageIsPinned.CONSTRUCTOR:
+        return messageIsPinned.call(this as UpdateMessageIsPinned);
+      case UpdateMessageInteractionInfo.CONSTRUCTOR:
+        return messageInteractionInfo
+            .call(this as UpdateMessageInteractionInfo);
+      case UpdateMessageContentOpened.CONSTRUCTOR:
+        return messageContentOpened.call(this as UpdateMessageContentOpened);
+      case UpdateMessageMentionRead.CONSTRUCTOR:
+        return messageMentionRead.call(this as UpdateMessageMentionRead);
+      case UpdateMessageLiveLocationViewed.CONSTRUCTOR:
+        return messageLiveLocationViewed
+            .call(this as UpdateMessageLiveLocationViewed);
+      case UpdateNewChat.CONSTRUCTOR:
+        return newChat.call(this as UpdateNewChat);
+      case UpdateChatTitle.CONSTRUCTOR:
+        return chatTitle.call(this as UpdateChatTitle);
+      case UpdateChatPhoto.CONSTRUCTOR:
+        return chatPhoto.call(this as UpdateChatPhoto);
+      case UpdateChatPermissions.CONSTRUCTOR:
+        return chatPermissions.call(this as UpdateChatPermissions);
+      case UpdateChatLastMessage.CONSTRUCTOR:
+        return chatLastMessage.call(this as UpdateChatLastMessage);
+      case UpdateChatPosition.CONSTRUCTOR:
+        return chatPosition.call(this as UpdateChatPosition);
+      case UpdateChatIsMarkedAsUnread.CONSTRUCTOR:
+        return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
+      case UpdateChatIsBlocked.CONSTRUCTOR:
+        return chatIsBlocked.call(this as UpdateChatIsBlocked);
+      case UpdateChatHasScheduledMessages.CONSTRUCTOR:
+        return chatHasScheduledMessages
+            .call(this as UpdateChatHasScheduledMessages);
+      case UpdateChatVoiceChat.CONSTRUCTOR:
+        return chatVoiceChat.call(this as UpdateChatVoiceChat);
+      case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
+        return chatDefaultDisableNotification
+            .call(this as UpdateChatDefaultDisableNotification);
+      case UpdateChatReadInbox.CONSTRUCTOR:
+        return chatReadInbox.call(this as UpdateChatReadInbox);
+      case UpdateChatReadOutbox.CONSTRUCTOR:
+        return chatReadOutbox.call(this as UpdateChatReadOutbox);
+      case UpdateChatUnreadMentionCount.CONSTRUCTOR:
+        return chatUnreadMentionCount
+            .call(this as UpdateChatUnreadMentionCount);
+      case UpdateChatNotificationSettings.CONSTRUCTOR:
+        return chatNotificationSettings
+            .call(this as UpdateChatNotificationSettings);
+      case UpdateScopeNotificationSettings.CONSTRUCTOR:
+        return scopeNotificationSettings
+            .call(this as UpdateScopeNotificationSettings);
+      case UpdateChatMessageTtlSetting.CONSTRUCTOR:
+        return chatMessageTtlSetting.call(this as UpdateChatMessageTtlSetting);
+      case UpdateChatActionBar.CONSTRUCTOR:
+        return chatActionBar.call(this as UpdateChatActionBar);
+      case UpdateChatReplyMarkup.CONSTRUCTOR:
+        return chatReplyMarkup.call(this as UpdateChatReplyMarkup);
+      case UpdateChatDraftMessage.CONSTRUCTOR:
+        return chatDraftMessage.call(this as UpdateChatDraftMessage);
+      case UpdateChatFilters.CONSTRUCTOR:
+        return chatFilters.call(this as UpdateChatFilters);
+      case UpdateChatOnlineMemberCount.CONSTRUCTOR:
+        return chatOnlineMemberCount.call(this as UpdateChatOnlineMemberCount);
+      case UpdateNotification.CONSTRUCTOR:
+        return notification.call(this as UpdateNotification);
+      case UpdateNotificationGroup.CONSTRUCTOR:
+        return notificationGroup.call(this as UpdateNotificationGroup);
+      case UpdateActiveNotifications.CONSTRUCTOR:
+        return activeNotifications.call(this as UpdateActiveNotifications);
+      case UpdateHavePendingNotifications.CONSTRUCTOR:
+        return havePendingNotifications
+            .call(this as UpdateHavePendingNotifications);
+      case UpdateDeleteMessages.CONSTRUCTOR:
+        return deleteMessages.call(this as UpdateDeleteMessages);
+      case UpdateUserChatAction.CONSTRUCTOR:
+        return userChatAction.call(this as UpdateUserChatAction);
+      case UpdateUserStatus.CONSTRUCTOR:
+        return userStatus.call(this as UpdateUserStatus);
+      case UpdateUser.CONSTRUCTOR:
+        return user.call(this as UpdateUser);
+      case UpdateBasicGroup.CONSTRUCTOR:
+        return basicGroup.call(this as UpdateBasicGroup);
+      case UpdateSupergroup.CONSTRUCTOR:
+        return supergroup.call(this as UpdateSupergroup);
+      case UpdateSecretChat.CONSTRUCTOR:
+        return secretChat.call(this as UpdateSecretChat);
+      case UpdateUserFullInfo.CONSTRUCTOR:
+        return userFullInfo.call(this as UpdateUserFullInfo);
+      case UpdateBasicGroupFullInfo.CONSTRUCTOR:
+        return basicGroupFullInfo.call(this as UpdateBasicGroupFullInfo);
+      case UpdateSupergroupFullInfo.CONSTRUCTOR:
+        return supergroupFullInfo.call(this as UpdateSupergroupFullInfo);
+      case UpdateServiceNotification.CONSTRUCTOR:
+        return serviceNotification.call(this as UpdateServiceNotification);
+      case UpdateFile.CONSTRUCTOR:
+        return file.call(this as UpdateFile);
+      case UpdateFileGenerationStart.CONSTRUCTOR:
+        return fileGenerationStart.call(this as UpdateFileGenerationStart);
+      case UpdateFileGenerationStop.CONSTRUCTOR:
+        return fileGenerationStop.call(this as UpdateFileGenerationStop);
+      case UpdateCall.CONSTRUCTOR:
+        return call.call(this as UpdateCall);
+      case UpdateGroupCall.CONSTRUCTOR:
+        return groupCall.call(this as UpdateGroupCall);
+      case UpdateGroupCallParticipant.CONSTRUCTOR:
+        return groupCallParticipant.call(this as UpdateGroupCallParticipant);
+      case UpdateNewCallSignalingData.CONSTRUCTOR:
+        return newCallSignalingData.call(this as UpdateNewCallSignalingData);
+      case UpdateUserPrivacySettingRules.CONSTRUCTOR:
+        return userPrivacySettingRules
+            .call(this as UpdateUserPrivacySettingRules);
+      case UpdateUnreadMessageCount.CONSTRUCTOR:
+        return unreadMessageCount.call(this as UpdateUnreadMessageCount);
+      case UpdateUnreadChatCount.CONSTRUCTOR:
+        return unreadChatCount.call(this as UpdateUnreadChatCount);
+      case UpdateOption.CONSTRUCTOR:
+        return option.call(this as UpdateOption);
+      case UpdateStickerSet.CONSTRUCTOR:
+        return stickerSet.call(this as UpdateStickerSet);
+      case UpdateInstalledStickerSets.CONSTRUCTOR:
+        return installedStickerSets.call(this as UpdateInstalledStickerSets);
+      case UpdateTrendingStickerSets.CONSTRUCTOR:
+        return trendingStickerSets.call(this as UpdateTrendingStickerSets);
+      case UpdateRecentStickers.CONSTRUCTOR:
+        return recentStickers.call(this as UpdateRecentStickers);
+      case UpdateFavoriteStickers.CONSTRUCTOR:
+        return favoriteStickers.call(this as UpdateFavoriteStickers);
+      case UpdateSavedAnimations.CONSTRUCTOR:
+        return savedAnimations.call(this as UpdateSavedAnimations);
+      case UpdateSelectedBackground.CONSTRUCTOR:
+        return selectedBackground.call(this as UpdateSelectedBackground);
+      case UpdateLanguagePackStrings.CONSTRUCTOR:
+        return languagePackStrings.call(this as UpdateLanguagePackStrings);
+      case UpdateConnectionState.CONSTRUCTOR:
+        return connectionState.call(this as UpdateConnectionState);
+      case UpdateTermsOfService.CONSTRUCTOR:
+        return termsOfService.call(this as UpdateTermsOfService);
+      case UpdateUsersNearby.CONSTRUCTOR:
+        return usersNearby.call(this as UpdateUsersNearby);
+      case UpdateDiceEmojis.CONSTRUCTOR:
+        return diceEmojis.call(this as UpdateDiceEmojis);
+      case UpdateAnimationSearchParameters.CONSTRUCTOR:
+        return animationSearchParameters
+            .call(this as UpdateAnimationSearchParameters);
+      case UpdateSuggestedActions.CONSTRUCTOR:
+        return suggestedActions.call(this as UpdateSuggestedActions);
+      case UpdateNewInlineQuery.CONSTRUCTOR:
+        return newInlineQuery.call(this as UpdateNewInlineQuery);
+      case UpdateNewChosenInlineResult.CONSTRUCTOR:
+        return newChosenInlineResult.call(this as UpdateNewChosenInlineResult);
+      case UpdateNewCallbackQuery.CONSTRUCTOR:
+        return newCallbackQuery.call(this as UpdateNewCallbackQuery);
+      case UpdateNewInlineCallbackQuery.CONSTRUCTOR:
+        return newInlineCallbackQuery
+            .call(this as UpdateNewInlineCallbackQuery);
+      case UpdateNewShippingQuery.CONSTRUCTOR:
+        return newShippingQuery.call(this as UpdateNewShippingQuery);
+      case UpdateNewPreCheckoutQuery.CONSTRUCTOR:
+        return newPreCheckoutQuery.call(this as UpdateNewPreCheckoutQuery);
+      case UpdateNewCustomEvent.CONSTRUCTOR:
+        return newCustomEvent.call(this as UpdateNewCustomEvent);
+      case UpdateNewCustomQuery.CONSTRUCTOR:
+        return newCustomQuery.call(this as UpdateNewCustomQuery);
+      case UpdatePoll.CONSTRUCTOR:
+        return poll.call(this as UpdatePoll);
+      case UpdatePollAnswer.CONSTRUCTOR:
+        return pollAnswer.call(this as UpdatePollAnswer);
+      case UpdateChatMember.CONSTRUCTOR:
+        return chatMember.call(this as UpdateChatMember);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension UpdateAuthorizationStateExtensions on UpdateAuthorizationState {
   UpdateAuthorizationState copy({AuthorizationState? authorizationState}) =>
       UpdateAuthorizationState(
           authorizationState: authorizationState ?? this.authorizationState);
 }
 
-extension UpdateNewMessageCopyExtension on UpdateNewMessage {
+extension UpdateNewMessageExtensions on UpdateNewMessage {
   UpdateNewMessage copy({Message? message}) =>
       UpdateNewMessage(message: message ?? this.message);
 }
 
-extension UpdateMessageSendAcknowledgedCopyExtension
+extension UpdateMessageSendAcknowledgedExtensions
     on UpdateMessageSendAcknowledged {
   UpdateMessageSendAcknowledged copy({int? chatId, int? messageId}) =>
       UpdateMessageSendAcknowledged(
@@ -5575,15 +8538,14 @@ extension UpdateMessageSendAcknowledgedCopyExtension
           messageId: messageId ?? this.messageId);
 }
 
-extension UpdateMessageSendSucceededCopyExtension
-    on UpdateMessageSendSucceeded {
+extension UpdateMessageSendSucceededExtensions on UpdateMessageSendSucceeded {
   UpdateMessageSendSucceeded copy({Message? message, int? oldMessageId}) =>
       UpdateMessageSendSucceeded(
           message: message ?? this.message,
           oldMessageId: oldMessageId ?? this.oldMessageId);
 }
 
-extension UpdateMessageSendFailedCopyExtension on UpdateMessageSendFailed {
+extension UpdateMessageSendFailedExtensions on UpdateMessageSendFailed {
   UpdateMessageSendFailed copy(
           {Message? message,
           int? oldMessageId,
@@ -5596,7 +8558,7 @@ extension UpdateMessageSendFailedCopyExtension on UpdateMessageSendFailed {
           errorMessage: errorMessage ?? this.errorMessage);
 }
 
-extension UpdateMessageContentCopyExtension on UpdateMessageContent {
+extension UpdateMessageContentExtensions on UpdateMessageContent {
   UpdateMessageContent copy(
           {int? chatId, int? messageId, MessageContent? newContent}) =>
       UpdateMessageContent(
@@ -5605,7 +8567,7 @@ extension UpdateMessageContentCopyExtension on UpdateMessageContent {
           newContent: newContent ?? this.newContent);
 }
 
-extension UpdateMessageEditedCopyExtension on UpdateMessageEdited {
+extension UpdateMessageEditedExtensions on UpdateMessageEdited {
   UpdateMessageEdited copy(
           {int? chatId,
           int? messageId,
@@ -5618,7 +8580,7 @@ extension UpdateMessageEditedCopyExtension on UpdateMessageEdited {
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension UpdateMessageIsPinnedCopyExtension on UpdateMessageIsPinned {
+extension UpdateMessageIsPinnedExtensions on UpdateMessageIsPinned {
   UpdateMessageIsPinned copy({int? chatId, int? messageId, bool? isPinned}) =>
       UpdateMessageIsPinned(
           chatId: chatId ?? this.chatId,
@@ -5626,7 +8588,7 @@ extension UpdateMessageIsPinnedCopyExtension on UpdateMessageIsPinned {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension UpdateMessageInteractionInfoCopyExtension
+extension UpdateMessageInteractionInfoExtensions
     on UpdateMessageInteractionInfo {
   UpdateMessageInteractionInfo copy(
           {int? chatId,
@@ -5638,15 +8600,14 @@ extension UpdateMessageInteractionInfoCopyExtension
           interactionInfo: interactionInfo ?? this.interactionInfo);
 }
 
-extension UpdateMessageContentOpenedCopyExtension
-    on UpdateMessageContentOpened {
+extension UpdateMessageContentOpenedExtensions on UpdateMessageContentOpened {
   UpdateMessageContentOpened copy({int? chatId, int? messageId}) =>
       UpdateMessageContentOpened(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
-extension UpdateMessageMentionReadCopyExtension on UpdateMessageMentionRead {
+extension UpdateMessageMentionReadExtensions on UpdateMessageMentionRead {
   UpdateMessageMentionRead copy(
           {int? chatId, int? messageId, int? unreadMentionCount}) =>
       UpdateMessageMentionRead(
@@ -5655,7 +8616,7 @@ extension UpdateMessageMentionReadCopyExtension on UpdateMessageMentionRead {
           unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount);
 }
 
-extension UpdateMessageLiveLocationViewedCopyExtension
+extension UpdateMessageLiveLocationViewedExtensions
     on UpdateMessageLiveLocationViewed {
   UpdateMessageLiveLocationViewed copy({int? chatId, int? messageId}) =>
       UpdateMessageLiveLocationViewed(
@@ -5663,28 +8624,28 @@ extension UpdateMessageLiveLocationViewedCopyExtension
           messageId: messageId ?? this.messageId);
 }
 
-extension UpdateNewChatCopyExtension on UpdateNewChat {
+extension UpdateNewChatExtensions on UpdateNewChat {
   UpdateNewChat copy({Chat? chat}) => UpdateNewChat(chat: chat ?? this.chat);
 }
 
-extension UpdateChatTitleCopyExtension on UpdateChatTitle {
+extension UpdateChatTitleExtensions on UpdateChatTitle {
   UpdateChatTitle copy({int? chatId, String? title}) => UpdateChatTitle(
       chatId: chatId ?? this.chatId, title: title ?? this.title);
 }
 
-extension UpdateChatPhotoCopyExtension on UpdateChatPhoto {
+extension UpdateChatPhotoExtensions on UpdateChatPhoto {
   UpdateChatPhoto copy({int? chatId, ChatPhotoInfo? photo}) => UpdateChatPhoto(
       chatId: chatId ?? this.chatId, photo: photo ?? this.photo);
 }
 
-extension UpdateChatPermissionsCopyExtension on UpdateChatPermissions {
+extension UpdateChatPermissionsExtensions on UpdateChatPermissions {
   UpdateChatPermissions copy({int? chatId, ChatPermissions? permissions}) =>
       UpdateChatPermissions(
           chatId: chatId ?? this.chatId,
           permissions: permissions ?? this.permissions);
 }
 
-extension UpdateChatLastMessageCopyExtension on UpdateChatLastMessage {
+extension UpdateChatLastMessageExtensions on UpdateChatLastMessage {
   UpdateChatLastMessage copy(
           {int? chatId, Message? lastMessage, List<ChatPosition>? positions}) =>
       UpdateChatLastMessage(
@@ -5693,28 +8654,27 @@ extension UpdateChatLastMessageCopyExtension on UpdateChatLastMessage {
           positions: positions ?? this.positions);
 }
 
-extension UpdateChatPositionCopyExtension on UpdateChatPosition {
+extension UpdateChatPositionExtensions on UpdateChatPosition {
   UpdateChatPosition copy({int? chatId, ChatPosition? position}) =>
       UpdateChatPosition(
           chatId: chatId ?? this.chatId, position: position ?? this.position);
 }
 
-extension UpdateChatIsMarkedAsUnreadCopyExtension
-    on UpdateChatIsMarkedAsUnread {
+extension UpdateChatIsMarkedAsUnreadExtensions on UpdateChatIsMarkedAsUnread {
   UpdateChatIsMarkedAsUnread copy({int? chatId, bool? isMarkedAsUnread}) =>
       UpdateChatIsMarkedAsUnread(
           chatId: chatId ?? this.chatId,
           isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread);
 }
 
-extension UpdateChatIsBlockedCopyExtension on UpdateChatIsBlocked {
+extension UpdateChatIsBlockedExtensions on UpdateChatIsBlocked {
   UpdateChatIsBlocked copy({int? chatId, bool? isBlocked}) =>
       UpdateChatIsBlocked(
           chatId: chatId ?? this.chatId,
           isBlocked: isBlocked ?? this.isBlocked);
 }
 
-extension UpdateChatHasScheduledMessagesCopyExtension
+extension UpdateChatHasScheduledMessagesExtensions
     on UpdateChatHasScheduledMessages {
   UpdateChatHasScheduledMessages copy(
           {int? chatId, bool? hasScheduledMessages}) =>
@@ -5724,14 +8684,14 @@ extension UpdateChatHasScheduledMessagesCopyExtension
               hasScheduledMessages ?? this.hasScheduledMessages);
 }
 
-extension UpdateChatVoiceChatCopyExtension on UpdateChatVoiceChat {
+extension UpdateChatVoiceChatExtensions on UpdateChatVoiceChat {
   UpdateChatVoiceChat copy({int? chatId, VoiceChat? voiceChat}) =>
       UpdateChatVoiceChat(
           chatId: chatId ?? this.chatId,
           voiceChat: voiceChat ?? this.voiceChat);
 }
 
-extension UpdateChatDefaultDisableNotificationCopyExtension
+extension UpdateChatDefaultDisableNotificationExtensions
     on UpdateChatDefaultDisableNotification {
   UpdateChatDefaultDisableNotification copy(
           {int? chatId, bool? defaultDisableNotification}) =>
@@ -5741,7 +8701,7 @@ extension UpdateChatDefaultDisableNotificationCopyExtension
               defaultDisableNotification ?? this.defaultDisableNotification);
 }
 
-extension UpdateChatReadInboxCopyExtension on UpdateChatReadInbox {
+extension UpdateChatReadInboxExtensions on UpdateChatReadInbox {
   UpdateChatReadInbox copy(
           {int? chatId, int? lastReadInboxMessageId, int? unreadCount}) =>
       UpdateChatReadInbox(
@@ -5751,7 +8711,7 @@ extension UpdateChatReadInboxCopyExtension on UpdateChatReadInbox {
           unreadCount: unreadCount ?? this.unreadCount);
 }
 
-extension UpdateChatReadOutboxCopyExtension on UpdateChatReadOutbox {
+extension UpdateChatReadOutboxExtensions on UpdateChatReadOutbox {
   UpdateChatReadOutbox copy({int? chatId, int? lastReadOutboxMessageId}) =>
       UpdateChatReadOutbox(
           chatId: chatId ?? this.chatId,
@@ -5759,7 +8719,7 @@ extension UpdateChatReadOutboxCopyExtension on UpdateChatReadOutbox {
               lastReadOutboxMessageId ?? this.lastReadOutboxMessageId);
 }
 
-extension UpdateChatUnreadMentionCountCopyExtension
+extension UpdateChatUnreadMentionCountExtensions
     on UpdateChatUnreadMentionCount {
   UpdateChatUnreadMentionCount copy({int? chatId, int? unreadMentionCount}) =>
       UpdateChatUnreadMentionCount(
@@ -5767,7 +8727,7 @@ extension UpdateChatUnreadMentionCountCopyExtension
           unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount);
 }
 
-extension UpdateChatNotificationSettingsCopyExtension
+extension UpdateChatNotificationSettingsExtensions
     on UpdateChatNotificationSettings {
   UpdateChatNotificationSettings copy(
           {int? chatId, ChatNotificationSettings? notificationSettings}) =>
@@ -5777,7 +8737,7 @@ extension UpdateChatNotificationSettingsCopyExtension
               notificationSettings ?? this.notificationSettings);
 }
 
-extension UpdateScopeNotificationSettingsCopyExtension
+extension UpdateScopeNotificationSettingsExtensions
     on UpdateScopeNotificationSettings {
   UpdateScopeNotificationSettings copy(
           {NotificationSettingsScope? scope,
@@ -5788,22 +8748,21 @@ extension UpdateScopeNotificationSettingsCopyExtension
               notificationSettings ?? this.notificationSettings);
 }
 
-extension UpdateChatMessageTtlSettingCopyExtension
-    on UpdateChatMessageTtlSetting {
+extension UpdateChatMessageTtlSettingExtensions on UpdateChatMessageTtlSetting {
   UpdateChatMessageTtlSetting copy({int? chatId, int? messageTtlSetting}) =>
       UpdateChatMessageTtlSetting(
           chatId: chatId ?? this.chatId,
           messageTtlSetting: messageTtlSetting ?? this.messageTtlSetting);
 }
 
-extension UpdateChatActionBarCopyExtension on UpdateChatActionBar {
+extension UpdateChatActionBarExtensions on UpdateChatActionBar {
   UpdateChatActionBar copy({int? chatId, ChatActionBar? actionBar}) =>
       UpdateChatActionBar(
           chatId: chatId ?? this.chatId,
           actionBar: actionBar ?? this.actionBar);
 }
 
-extension UpdateChatReplyMarkupCopyExtension on UpdateChatReplyMarkup {
+extension UpdateChatReplyMarkupExtensions on UpdateChatReplyMarkup {
   UpdateChatReplyMarkup copy({int? chatId, int? replyMarkupMessageId}) =>
       UpdateChatReplyMarkup(
           chatId: chatId ?? this.chatId,
@@ -5811,7 +8770,7 @@ extension UpdateChatReplyMarkupCopyExtension on UpdateChatReplyMarkup {
               replyMarkupMessageId ?? this.replyMarkupMessageId);
 }
 
-extension UpdateChatDraftMessageCopyExtension on UpdateChatDraftMessage {
+extension UpdateChatDraftMessageExtensions on UpdateChatDraftMessage {
   UpdateChatDraftMessage copy(
           {int? chatId,
           DraftMessage? draftMessage,
@@ -5822,20 +8781,19 @@ extension UpdateChatDraftMessageCopyExtension on UpdateChatDraftMessage {
           positions: positions ?? this.positions);
 }
 
-extension UpdateChatFiltersCopyExtension on UpdateChatFilters {
+extension UpdateChatFiltersExtensions on UpdateChatFilters {
   UpdateChatFilters copy({List<ChatFilterInfo>? chatFilters}) =>
       UpdateChatFilters(chatFilters: chatFilters ?? this.chatFilters);
 }
 
-extension UpdateChatOnlineMemberCountCopyExtension
-    on UpdateChatOnlineMemberCount {
+extension UpdateChatOnlineMemberCountExtensions on UpdateChatOnlineMemberCount {
   UpdateChatOnlineMemberCount copy({int? chatId, int? onlineMemberCount}) =>
       UpdateChatOnlineMemberCount(
           chatId: chatId ?? this.chatId,
           onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount);
 }
 
-extension UpdateNotificationCopyExtension on UpdateNotification {
+extension UpdateNotificationExtensions on UpdateNotification {
   UpdateNotification copy(
           {int? notificationGroupId, Notification? notification}) =>
       UpdateNotification(
@@ -5843,7 +8801,7 @@ extension UpdateNotificationCopyExtension on UpdateNotification {
           notification: notification ?? this.notification);
 }
 
-extension UpdateNotificationGroupCopyExtension on UpdateNotificationGroup {
+extension UpdateNotificationGroupExtensions on UpdateNotificationGroup {
   UpdateNotificationGroup copy(
           {int? notificationGroupId,
           NotificationGroupType? type,
@@ -5866,12 +8824,12 @@ extension UpdateNotificationGroupCopyExtension on UpdateNotificationGroup {
               removedNotificationIds ?? this.removedNotificationIds);
 }
 
-extension UpdateActiveNotificationsCopyExtension on UpdateActiveNotifications {
+extension UpdateActiveNotificationsExtensions on UpdateActiveNotifications {
   UpdateActiveNotifications copy({List<NotificationGroup>? groups}) =>
       UpdateActiveNotifications(groups: groups ?? this.groups);
 }
 
-extension UpdateHavePendingNotificationsCopyExtension
+extension UpdateHavePendingNotificationsExtensions
     on UpdateHavePendingNotifications {
   UpdateHavePendingNotifications copy(
           {bool? haveDelayedNotifications,
@@ -5883,7 +8841,7 @@ extension UpdateHavePendingNotificationsCopyExtension
               haveUnreceivedNotifications ?? this.haveUnreceivedNotifications);
 }
 
-extension UpdateDeleteMessagesCopyExtension on UpdateDeleteMessages {
+extension UpdateDeleteMessagesExtensions on UpdateDeleteMessages {
   UpdateDeleteMessages copy(
           {int? chatId,
           List<int>? messageIds,
@@ -5896,7 +8854,7 @@ extension UpdateDeleteMessagesCopyExtension on UpdateDeleteMessages {
           fromCache: fromCache ?? this.fromCache);
 }
 
-extension UpdateUserChatActionCopyExtension on UpdateUserChatAction {
+extension UpdateUserChatActionExtensions on UpdateUserChatAction {
   UpdateUserChatAction copy(
           {int? chatId,
           int? messageThreadId,
@@ -5909,38 +8867,38 @@ extension UpdateUserChatActionCopyExtension on UpdateUserChatAction {
           action: action ?? this.action);
 }
 
-extension UpdateUserStatusCopyExtension on UpdateUserStatus {
+extension UpdateUserStatusExtensions on UpdateUserStatus {
   UpdateUserStatus copy({int? userId, UserStatus? status}) => UpdateUserStatus(
       userId: userId ?? this.userId, status: status ?? this.status);
 }
 
-extension UpdateUserCopyExtension on UpdateUser {
+extension UpdateUserExtensions on UpdateUser {
   UpdateUser copy({User? user}) => UpdateUser(user: user ?? this.user);
 }
 
-extension UpdateBasicGroupCopyExtension on UpdateBasicGroup {
+extension UpdateBasicGroupExtensions on UpdateBasicGroup {
   UpdateBasicGroup copy({BasicGroup? basicGroup}) =>
       UpdateBasicGroup(basicGroup: basicGroup ?? this.basicGroup);
 }
 
-extension UpdateSupergroupCopyExtension on UpdateSupergroup {
+extension UpdateSupergroupExtensions on UpdateSupergroup {
   UpdateSupergroup copy({Supergroup? supergroup}) =>
       UpdateSupergroup(supergroup: supergroup ?? this.supergroup);
 }
 
-extension UpdateSecretChatCopyExtension on UpdateSecretChat {
+extension UpdateSecretChatExtensions on UpdateSecretChat {
   UpdateSecretChat copy({SecretChat? secretChat}) =>
       UpdateSecretChat(secretChat: secretChat ?? this.secretChat);
 }
 
-extension UpdateUserFullInfoCopyExtension on UpdateUserFullInfo {
+extension UpdateUserFullInfoExtensions on UpdateUserFullInfo {
   UpdateUserFullInfo copy({int? userId, UserFullInfo? userFullInfo}) =>
       UpdateUserFullInfo(
           userId: userId ?? this.userId,
           userFullInfo: userFullInfo ?? this.userFullInfo);
 }
 
-extension UpdateBasicGroupFullInfoCopyExtension on UpdateBasicGroupFullInfo {
+extension UpdateBasicGroupFullInfoExtensions on UpdateBasicGroupFullInfo {
   UpdateBasicGroupFullInfo copy(
           {int? basicGroupId, BasicGroupFullInfo? basicGroupFullInfo}) =>
       UpdateBasicGroupFullInfo(
@@ -5948,7 +8906,7 @@ extension UpdateBasicGroupFullInfoCopyExtension on UpdateBasicGroupFullInfo {
           basicGroupFullInfo: basicGroupFullInfo ?? this.basicGroupFullInfo);
 }
 
-extension UpdateSupergroupFullInfoCopyExtension on UpdateSupergroupFullInfo {
+extension UpdateSupergroupFullInfoExtensions on UpdateSupergroupFullInfo {
   UpdateSupergroupFullInfo copy(
           {int? supergroupId, SupergroupFullInfo? supergroupFullInfo}) =>
       UpdateSupergroupFullInfo(
@@ -5956,17 +8914,17 @@ extension UpdateSupergroupFullInfoCopyExtension on UpdateSupergroupFullInfo {
           supergroupFullInfo: supergroupFullInfo ?? this.supergroupFullInfo);
 }
 
-extension UpdateServiceNotificationCopyExtension on UpdateServiceNotification {
+extension UpdateServiceNotificationExtensions on UpdateServiceNotification {
   UpdateServiceNotification copy({String? type, MessageContent? content}) =>
       UpdateServiceNotification(
           type: type ?? this.type, content: content ?? this.content);
 }
 
-extension UpdateFileCopyExtension on UpdateFile {
+extension UpdateFileExtensions on UpdateFile {
   UpdateFile copy({File? file}) => UpdateFile(file: file ?? this.file);
 }
 
-extension UpdateFileGenerationStartCopyExtension on UpdateFileGenerationStart {
+extension UpdateFileGenerationStartExtensions on UpdateFileGenerationStart {
   UpdateFileGenerationStart copy(
           {int? generationId,
           String? originalPath,
@@ -5979,22 +8937,21 @@ extension UpdateFileGenerationStartCopyExtension on UpdateFileGenerationStart {
           conversion: conversion ?? this.conversion);
 }
 
-extension UpdateFileGenerationStopCopyExtension on UpdateFileGenerationStop {
+extension UpdateFileGenerationStopExtensions on UpdateFileGenerationStop {
   UpdateFileGenerationStop copy({int? generationId}) =>
       UpdateFileGenerationStop(generationId: generationId ?? this.generationId);
 }
 
-extension UpdateCallCopyExtension on UpdateCall {
+extension UpdateCallExtensions on UpdateCall {
   UpdateCall copy({Call? call}) => UpdateCall(call: call ?? this.call);
 }
 
-extension UpdateGroupCallCopyExtension on UpdateGroupCall {
+extension UpdateGroupCallExtensions on UpdateGroupCall {
   UpdateGroupCall copy({GroupCall? groupCall}) =>
       UpdateGroupCall(groupCall: groupCall ?? this.groupCall);
 }
 
-extension UpdateGroupCallParticipantCopyExtension
-    on UpdateGroupCallParticipant {
+extension UpdateGroupCallParticipantExtensions on UpdateGroupCallParticipant {
   UpdateGroupCallParticipant copy(
           {int? groupCallId, GroupCallParticipant? participant}) =>
       UpdateGroupCallParticipant(
@@ -6002,14 +8959,13 @@ extension UpdateGroupCallParticipantCopyExtension
           participant: participant ?? this.participant);
 }
 
-extension UpdateNewCallSignalingDataCopyExtension
-    on UpdateNewCallSignalingData {
+extension UpdateNewCallSignalingDataExtensions on UpdateNewCallSignalingData {
   UpdateNewCallSignalingData copy({int? callId, String? data}) =>
       UpdateNewCallSignalingData(
           callId: callId ?? this.callId, data: data ?? this.data);
 }
 
-extension UpdateUserPrivacySettingRulesCopyExtension
+extension UpdateUserPrivacySettingRulesExtensions
     on UpdateUserPrivacySettingRules {
   UpdateUserPrivacySettingRules copy(
           {UserPrivacySetting? setting, UserPrivacySettingRules? rules}) =>
@@ -6017,7 +8973,7 @@ extension UpdateUserPrivacySettingRulesCopyExtension
           setting: setting ?? this.setting, rules: rules ?? this.rules);
 }
 
-extension UpdateUnreadMessageCountCopyExtension on UpdateUnreadMessageCount {
+extension UpdateUnreadMessageCountExtensions on UpdateUnreadMessageCount {
   UpdateUnreadMessageCount copy(
           {ChatList? chatList, int? unreadCount, int? unreadUnmutedCount}) =>
       UpdateUnreadMessageCount(
@@ -6026,7 +8982,7 @@ extension UpdateUnreadMessageCountCopyExtension on UpdateUnreadMessageCount {
           unreadUnmutedCount: unreadUnmutedCount ?? this.unreadUnmutedCount);
 }
 
-extension UpdateUnreadChatCountCopyExtension on UpdateUnreadChatCount {
+extension UpdateUnreadChatCountExtensions on UpdateUnreadChatCount {
   UpdateUnreadChatCount copy(
           {ChatList? chatList,
           int? totalCount,
@@ -6044,54 +9000,53 @@ extension UpdateUnreadChatCountCopyExtension on UpdateUnreadChatCount {
               markedAsUnreadUnmutedCount ?? this.markedAsUnreadUnmutedCount);
 }
 
-extension UpdateOptionCopyExtension on UpdateOption {
+extension UpdateOptionExtensions on UpdateOption {
   UpdateOption copy({String? name, OptionValue? value}) =>
       UpdateOption(name: name ?? this.name, value: value ?? this.value);
 }
 
-extension UpdateStickerSetCopyExtension on UpdateStickerSet {
+extension UpdateStickerSetExtensions on UpdateStickerSet {
   UpdateStickerSet copy({StickerSet? stickerSet}) =>
       UpdateStickerSet(stickerSet: stickerSet ?? this.stickerSet);
 }
 
-extension UpdateInstalledStickerSetsCopyExtension
-    on UpdateInstalledStickerSets {
+extension UpdateInstalledStickerSetsExtensions on UpdateInstalledStickerSets {
   UpdateInstalledStickerSets copy({bool? isMasks, List<int>? stickerSetIds}) =>
       UpdateInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
-extension UpdateTrendingStickerSetsCopyExtension on UpdateTrendingStickerSets {
+extension UpdateTrendingStickerSetsExtensions on UpdateTrendingStickerSets {
   UpdateTrendingStickerSets copy({StickerSets? stickerSets}) =>
       UpdateTrendingStickerSets(stickerSets: stickerSets ?? this.stickerSets);
 }
 
-extension UpdateRecentStickersCopyExtension on UpdateRecentStickers {
+extension UpdateRecentStickersExtensions on UpdateRecentStickers {
   UpdateRecentStickers copy({bool? isAttached, List<int>? stickerIds}) =>
       UpdateRecentStickers(
           isAttached: isAttached ?? this.isAttached,
           stickerIds: stickerIds ?? this.stickerIds);
 }
 
-extension UpdateFavoriteStickersCopyExtension on UpdateFavoriteStickers {
+extension UpdateFavoriteStickersExtensions on UpdateFavoriteStickers {
   UpdateFavoriteStickers copy({List<int>? stickerIds}) =>
       UpdateFavoriteStickers(stickerIds: stickerIds ?? this.stickerIds);
 }
 
-extension UpdateSavedAnimationsCopyExtension on UpdateSavedAnimations {
+extension UpdateSavedAnimationsExtensions on UpdateSavedAnimations {
   UpdateSavedAnimations copy({List<int>? animationIds}) =>
       UpdateSavedAnimations(animationIds: animationIds ?? this.animationIds);
 }
 
-extension UpdateSelectedBackgroundCopyExtension on UpdateSelectedBackground {
+extension UpdateSelectedBackgroundExtensions on UpdateSelectedBackground {
   UpdateSelectedBackground copy({bool? forDarkTheme, Background? background}) =>
       UpdateSelectedBackground(
           forDarkTheme: forDarkTheme ?? this.forDarkTheme,
           background: background ?? this.background);
 }
 
-extension UpdateLanguagePackStringsCopyExtension on UpdateLanguagePackStrings {
+extension UpdateLanguagePackStringsExtensions on UpdateLanguagePackStrings {
   UpdateLanguagePackStrings copy(
           {String? localizationTarget,
           String? languagePackId,
@@ -6102,12 +9057,12 @@ extension UpdateLanguagePackStringsCopyExtension on UpdateLanguagePackStrings {
           strings: strings ?? this.strings);
 }
 
-extension UpdateConnectionStateCopyExtension on UpdateConnectionState {
+extension UpdateConnectionStateExtensions on UpdateConnectionState {
   UpdateConnectionState copy({ConnectionState? state}) =>
       UpdateConnectionState(state: state ?? this.state);
 }
 
-extension UpdateTermsOfServiceCopyExtension on UpdateTermsOfService {
+extension UpdateTermsOfServiceExtensions on UpdateTermsOfService {
   UpdateTermsOfService copy(
           {String? termsOfServiceId, TermsOfService? termsOfService}) =>
       UpdateTermsOfService(
@@ -6115,17 +9070,17 @@ extension UpdateTermsOfServiceCopyExtension on UpdateTermsOfService {
           termsOfService: termsOfService ?? this.termsOfService);
 }
 
-extension UpdateUsersNearbyCopyExtension on UpdateUsersNearby {
+extension UpdateUsersNearbyExtensions on UpdateUsersNearby {
   UpdateUsersNearby copy({List<ChatNearby>? usersNearby}) =>
       UpdateUsersNearby(usersNearby: usersNearby ?? this.usersNearby);
 }
 
-extension UpdateDiceEmojisCopyExtension on UpdateDiceEmojis {
+extension UpdateDiceEmojisExtensions on UpdateDiceEmojis {
   UpdateDiceEmojis copy({List<String>? emojis}) =>
       UpdateDiceEmojis(emojis: emojis ?? this.emojis);
 }
 
-extension UpdateAnimationSearchParametersCopyExtension
+extension UpdateAnimationSearchParametersExtensions
     on UpdateAnimationSearchParameters {
   UpdateAnimationSearchParameters copy(
           {String? provider, List<String>? emojis}) =>
@@ -6133,7 +9088,7 @@ extension UpdateAnimationSearchParametersCopyExtension
           provider: provider ?? this.provider, emojis: emojis ?? this.emojis);
 }
 
-extension UpdateSuggestedActionsCopyExtension on UpdateSuggestedActions {
+extension UpdateSuggestedActionsExtensions on UpdateSuggestedActions {
   UpdateSuggestedActions copy(
           {List<SuggestedAction>? addedActions,
           List<SuggestedAction>? removedActions}) =>
@@ -6142,7 +9097,7 @@ extension UpdateSuggestedActionsCopyExtension on UpdateSuggestedActions {
           removedActions: removedActions ?? this.removedActions);
 }
 
-extension UpdateNewInlineQueryCopyExtension on UpdateNewInlineQuery {
+extension UpdateNewInlineQueryExtensions on UpdateNewInlineQuery {
   UpdateNewInlineQuery copy(
           {int? id,
           int? senderUserId,
@@ -6159,8 +9114,7 @@ extension UpdateNewInlineQueryCopyExtension on UpdateNewInlineQuery {
           offset: offset ?? this.offset);
 }
 
-extension UpdateNewChosenInlineResultCopyExtension
-    on UpdateNewChosenInlineResult {
+extension UpdateNewChosenInlineResultExtensions on UpdateNewChosenInlineResult {
   UpdateNewChosenInlineResult copy(
           {int? senderUserId,
           Location? userLocation,
@@ -6175,7 +9129,7 @@ extension UpdateNewChosenInlineResultCopyExtension
           inlineMessageId: inlineMessageId ?? this.inlineMessageId);
 }
 
-extension UpdateNewCallbackQueryCopyExtension on UpdateNewCallbackQuery {
+extension UpdateNewCallbackQueryExtensions on UpdateNewCallbackQuery {
   UpdateNewCallbackQuery copy(
           {int? id,
           int? senderUserId,
@@ -6192,7 +9146,7 @@ extension UpdateNewCallbackQueryCopyExtension on UpdateNewCallbackQuery {
           payload: payload ?? this.payload);
 }
 
-extension UpdateNewInlineCallbackQueryCopyExtension
+extension UpdateNewInlineCallbackQueryExtensions
     on UpdateNewInlineCallbackQuery {
   UpdateNewInlineCallbackQuery copy(
           {int? id,
@@ -6208,7 +9162,7 @@ extension UpdateNewInlineCallbackQueryCopyExtension
           payload: payload ?? this.payload);
 }
 
-extension UpdateNewShippingQueryCopyExtension on UpdateNewShippingQuery {
+extension UpdateNewShippingQueryExtensions on UpdateNewShippingQuery {
   UpdateNewShippingQuery copy(
           {int? id,
           int? senderUserId,
@@ -6221,7 +9175,7 @@ extension UpdateNewShippingQueryCopyExtension on UpdateNewShippingQuery {
           shippingAddress: shippingAddress ?? this.shippingAddress);
 }
 
-extension UpdateNewPreCheckoutQueryCopyExtension on UpdateNewPreCheckoutQuery {
+extension UpdateNewPreCheckoutQueryExtensions on UpdateNewPreCheckoutQuery {
   UpdateNewPreCheckoutQuery copy(
           {int? id,
           int? senderUserId,
@@ -6240,12 +9194,12 @@ extension UpdateNewPreCheckoutQueryCopyExtension on UpdateNewPreCheckoutQuery {
           orderInfo: orderInfo ?? this.orderInfo);
 }
 
-extension UpdateNewCustomEventCopyExtension on UpdateNewCustomEvent {
+extension UpdateNewCustomEventExtensions on UpdateNewCustomEvent {
   UpdateNewCustomEvent copy({String? event}) =>
       UpdateNewCustomEvent(event: event ?? this.event);
 }
 
-extension UpdateNewCustomQueryCopyExtension on UpdateNewCustomQuery {
+extension UpdateNewCustomQueryExtensions on UpdateNewCustomQuery {
   UpdateNewCustomQuery copy({int? id, String? data, int? timeout}) =>
       UpdateNewCustomQuery(
           id: id ?? this.id,
@@ -6253,11 +9207,11 @@ extension UpdateNewCustomQueryCopyExtension on UpdateNewCustomQuery {
           timeout: timeout ?? this.timeout);
 }
 
-extension UpdatePollCopyExtension on UpdatePoll {
+extension UpdatePollExtensions on UpdatePoll {
   UpdatePoll copy({Poll? poll}) => UpdatePoll(poll: poll ?? this.poll);
 }
 
-extension UpdatePollAnswerCopyExtension on UpdatePollAnswer {
+extension UpdatePollAnswerExtensions on UpdatePollAnswer {
   UpdatePollAnswer copy({int? pollId, int? userId, List<int>? optionIds}) =>
       UpdatePollAnswer(
           pollId: pollId ?? this.pollId,
@@ -6265,7 +9219,7 @@ extension UpdatePollAnswerCopyExtension on UpdatePollAnswer {
           optionIds: optionIds ?? this.optionIds);
 }
 
-extension UpdateChatMemberCopyExtension on UpdateChatMember {
+extension UpdateChatMemberExtensions on UpdateChatMember {
   UpdateChatMember copy(
           {int? chatId,
           int? actorUserId,
@@ -6282,12 +9236,29 @@ extension UpdateChatMemberCopyExtension on UpdateChatMember {
           newChatMember: newChatMember ?? this.newChatMember);
 }
 
-extension UpdatesCopyExtension on Updates {
+extension UpdatesExtensions on Updates {
   Updates copy({List<Update>? updates}) =>
       Updates(updates: updates ?? this.updates);
 }
 
-extension LogStreamFileCopyExtension on LogStreamFile {
+extension LogStreamExtensions on LogStream {
+  TResult map<TResult extends Object?>(
+      {required TResult Function(LogStreamDefault value) $default,
+      required TResult Function(LogStreamFile value) file,
+      required TResult Function(LogStreamEmpty value) empty}) {
+    switch (this.getConstructor()) {
+      case LogStreamDefault.CONSTRUCTOR:
+        return $default.call(this as LogStreamDefault);
+      case LogStreamFile.CONSTRUCTOR:
+        return file.call(this as LogStreamFile);
+      case LogStreamEmpty.CONSTRUCTOR:
+        return empty.call(this as LogStreamEmpty);
+    }
+    throw StateError('not handled type ${this.runtimeType}');
+  }
+}
+
+extension LogStreamFileExtensions on LogStreamFile {
   LogStreamFile copy({String? path, int? maxFileSize, bool? redirectStderr}) =>
       LogStreamFile(
           path: path ?? this.path,
@@ -6295,60 +9266,59 @@ extension LogStreamFileCopyExtension on LogStreamFile {
           redirectStderr: redirectStderr ?? this.redirectStderr);
 }
 
-extension LogVerbosityLevelCopyExtension on LogVerbosityLevel {
+extension LogVerbosityLevelExtensions on LogVerbosityLevel {
   LogVerbosityLevel copy({int? verbosityLevel}) =>
       LogVerbosityLevel(verbosityLevel: verbosityLevel ?? this.verbosityLevel);
 }
 
-extension LogTagsCopyExtension on LogTags {
+extension LogTagsExtensions on LogTags {
   LogTags copy({List<String>? tags}) => LogTags(tags: tags ?? this.tags);
 }
 
-extension TestIntCopyExtension on TestInt {
+extension TestIntExtensions on TestInt {
   TestInt copy({int? value}) => TestInt(value: value ?? this.value);
 }
 
-extension TestStringCopyExtension on TestString {
+extension TestStringExtensions on TestString {
   TestString copy({String? value}) => TestString(value: value ?? this.value);
 }
 
-extension TestBytesCopyExtension on TestBytes {
+extension TestBytesExtensions on TestBytes {
   TestBytes copy({String? value}) => TestBytes(value: value ?? this.value);
 }
 
-extension TestVectorIntCopyExtension on TestVectorInt {
+extension TestVectorIntExtensions on TestVectorInt {
   TestVectorInt copy({List<int>? value}) =>
       TestVectorInt(value: value ?? this.value);
 }
 
-extension TestVectorIntObjectCopyExtension on TestVectorIntObject {
+extension TestVectorIntObjectExtensions on TestVectorIntObject {
   TestVectorIntObject copy({List<TestInt>? value}) =>
       TestVectorIntObject(value: value ?? this.value);
 }
 
-extension TestVectorStringCopyExtension on TestVectorString {
+extension TestVectorStringExtensions on TestVectorString {
   TestVectorString copy({List<String>? value}) =>
       TestVectorString(value: value ?? this.value);
 }
 
-extension TestVectorStringObjectCopyExtension on TestVectorStringObject {
+extension TestVectorStringObjectExtensions on TestVectorStringObject {
   TestVectorStringObject copy({List<TestString>? value}) =>
       TestVectorStringObject(value: value ?? this.value);
 }
 
-extension SetTdlibParametersCopyExtension on SetTdlibParameters {
+extension SetTdlibParametersExtensions on SetTdlibParameters {
   SetTdlibParameters copy({TdlibParameters? parameters}) =>
       SetTdlibParameters(parameters: parameters ?? this.parameters);
 }
 
-extension CheckDatabaseEncryptionKeyCopyExtension
-    on CheckDatabaseEncryptionKey {
+extension CheckDatabaseEncryptionKeyExtensions on CheckDatabaseEncryptionKey {
   CheckDatabaseEncryptionKey copy({String? encryptionKey}) =>
       CheckDatabaseEncryptionKey(
           encryptionKey: encryptionKey ?? this.encryptionKey);
 }
 
-extension SetAuthenticationPhoneNumberCopyExtension
+extension SetAuthenticationPhoneNumberExtensions
     on SetAuthenticationPhoneNumber {
   SetAuthenticationPhoneNumber copy(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
@@ -6357,56 +9327,52 @@ extension SetAuthenticationPhoneNumberCopyExtension
           settings: settings ?? this.settings);
 }
 
-extension CheckAuthenticationCodeCopyExtension on CheckAuthenticationCode {
+extension CheckAuthenticationCodeExtensions on CheckAuthenticationCode {
   CheckAuthenticationCode copy({String? code}) =>
       CheckAuthenticationCode(code: code ?? this.code);
 }
 
-extension RequestQrCodeAuthenticationCopyExtension
-    on RequestQrCodeAuthentication {
+extension RequestQrCodeAuthenticationExtensions on RequestQrCodeAuthentication {
   RequestQrCodeAuthentication copy({List<int>? otherUserIds}) =>
       RequestQrCodeAuthentication(
           otherUserIds: otherUserIds ?? this.otherUserIds);
 }
 
-extension RegisterUserCopyExtension on RegisterUser {
+extension RegisterUserExtensions on RegisterUser {
   RegisterUser copy({String? firstName, String? lastName}) => RegisterUser(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName);
 }
 
-extension CheckAuthenticationPasswordCopyExtension
-    on CheckAuthenticationPassword {
+extension CheckAuthenticationPasswordExtensions on CheckAuthenticationPassword {
   CheckAuthenticationPassword copy({String? password}) =>
       CheckAuthenticationPassword(password: password ?? this.password);
 }
 
-extension RecoverAuthenticationPasswordCopyExtension
+extension RecoverAuthenticationPasswordExtensions
     on RecoverAuthenticationPassword {
   RecoverAuthenticationPassword copy({String? recoveryCode}) =>
       RecoverAuthenticationPassword(
           recoveryCode: recoveryCode ?? this.recoveryCode);
 }
 
-extension CheckAuthenticationBotTokenCopyExtension
-    on CheckAuthenticationBotToken {
+extension CheckAuthenticationBotTokenExtensions on CheckAuthenticationBotToken {
   CheckAuthenticationBotToken copy({String? token}) =>
       CheckAuthenticationBotToken(token: token ?? this.token);
 }
 
-extension ConfirmQrCodeAuthenticationCopyExtension
-    on ConfirmQrCodeAuthentication {
+extension ConfirmQrCodeAuthenticationExtensions on ConfirmQrCodeAuthentication {
   ConfirmQrCodeAuthentication copy({String? link}) =>
       ConfirmQrCodeAuthentication(link: link ?? this.link);
 }
 
-extension SetDatabaseEncryptionKeyCopyExtension on SetDatabaseEncryptionKey {
+extension SetDatabaseEncryptionKeyExtensions on SetDatabaseEncryptionKey {
   SetDatabaseEncryptionKey copy({String? newEncryptionKey}) =>
       SetDatabaseEncryptionKey(
           newEncryptionKey: newEncryptionKey ?? this.newEncryptionKey);
 }
 
-extension SetPasswordCopyExtension on SetPassword {
+extension SetPasswordExtensions on SetPassword {
   SetPassword copy(
           {String? oldPassword,
           String? newPassword,
@@ -6423,12 +9389,12 @@ extension SetPasswordCopyExtension on SetPassword {
               newRecoveryEmailAddress ?? this.newRecoveryEmailAddress);
 }
 
-extension GetRecoveryEmailAddressCopyExtension on GetRecoveryEmailAddress {
+extension GetRecoveryEmailAddressExtensions on GetRecoveryEmailAddress {
   GetRecoveryEmailAddress copy({String? password}) =>
       GetRecoveryEmailAddress(password: password ?? this.password);
 }
 
-extension SetRecoveryEmailAddressCopyExtension on SetRecoveryEmailAddress {
+extension SetRecoveryEmailAddressExtensions on SetRecoveryEmailAddress {
   SetRecoveryEmailAddress copy(
           {String? password, String? newRecoveryEmailAddress}) =>
       SetRecoveryEmailAddress(
@@ -6437,83 +9403,83 @@ extension SetRecoveryEmailAddressCopyExtension on SetRecoveryEmailAddress {
               newRecoveryEmailAddress ?? this.newRecoveryEmailAddress);
 }
 
-extension CheckRecoveryEmailAddressCodeCopyExtension
+extension CheckRecoveryEmailAddressCodeExtensions
     on CheckRecoveryEmailAddressCode {
   CheckRecoveryEmailAddressCode copy({String? code}) =>
       CheckRecoveryEmailAddressCode(code: code ?? this.code);
 }
 
-extension RecoverPasswordCopyExtension on RecoverPassword {
+extension RecoverPasswordExtensions on RecoverPassword {
   RecoverPassword copy({String? recoveryCode}) =>
       RecoverPassword(recoveryCode: recoveryCode ?? this.recoveryCode);
 }
 
-extension CreateTemporaryPasswordCopyExtension on CreateTemporaryPassword {
+extension CreateTemporaryPasswordExtensions on CreateTemporaryPassword {
   CreateTemporaryPassword copy({String? password, int? validFor}) =>
       CreateTemporaryPassword(
           password: password ?? this.password,
           validFor: validFor ?? this.validFor);
 }
 
-extension GetUserCopyExtension on GetUser {
+extension GetUserExtensions on GetUser {
   GetUser copy({int? userId}) => GetUser(userId: userId ?? this.userId);
 }
 
-extension GetUserFullInfoCopyExtension on GetUserFullInfo {
+extension GetUserFullInfoExtensions on GetUserFullInfo {
   GetUserFullInfo copy({int? userId}) =>
       GetUserFullInfo(userId: userId ?? this.userId);
 }
 
-extension GetBasicGroupCopyExtension on GetBasicGroup {
+extension GetBasicGroupExtensions on GetBasicGroup {
   GetBasicGroup copy({int? basicGroupId}) =>
       GetBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
-extension GetBasicGroupFullInfoCopyExtension on GetBasicGroupFullInfo {
+extension GetBasicGroupFullInfoExtensions on GetBasicGroupFullInfo {
   GetBasicGroupFullInfo copy({int? basicGroupId}) =>
       GetBasicGroupFullInfo(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
-extension GetSupergroupCopyExtension on GetSupergroup {
+extension GetSupergroupExtensions on GetSupergroup {
   GetSupergroup copy({int? supergroupId}) =>
       GetSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension GetSupergroupFullInfoCopyExtension on GetSupergroupFullInfo {
+extension GetSupergroupFullInfoExtensions on GetSupergroupFullInfo {
   GetSupergroupFullInfo copy({int? supergroupId}) =>
       GetSupergroupFullInfo(supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension GetSecretChatCopyExtension on GetSecretChat {
+extension GetSecretChatExtensions on GetSecretChat {
   GetSecretChat copy({int? secretChatId}) =>
       GetSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
-extension GetChatCopyExtension on GetChat {
+extension GetChatExtensions on GetChat {
   GetChat copy({int? chatId}) => GetChat(chatId: chatId ?? this.chatId);
 }
 
-extension GetMessageCopyExtension on GetMessage {
+extension GetMessageExtensions on GetMessage {
   GetMessage copy({int? chatId, int? messageId}) => GetMessage(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetMessageLocallyCopyExtension on GetMessageLocally {
+extension GetMessageLocallyExtensions on GetMessageLocally {
   GetMessageLocally copy({int? chatId, int? messageId}) => GetMessageLocally(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetRepliedMessageCopyExtension on GetRepliedMessage {
+extension GetRepliedMessageExtensions on GetRepliedMessage {
   GetRepliedMessage copy({int? chatId, int? messageId}) => GetRepliedMessage(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetChatPinnedMessageCopyExtension on GetChatPinnedMessage {
+extension GetChatPinnedMessageExtensions on GetChatPinnedMessage {
   GetChatPinnedMessage copy({int? chatId}) =>
       GetChatPinnedMessage(chatId: chatId ?? this.chatId);
 }
 
-extension GetCallbackQueryMessageCopyExtension on GetCallbackQueryMessage {
+extension GetCallbackQueryMessageExtensions on GetCallbackQueryMessage {
   GetCallbackQueryMessage copy(
           {int? chatId, int? messageId, int? callbackQueryId}) =>
       GetCallbackQueryMessage(
@@ -6522,28 +9488,28 @@ extension GetCallbackQueryMessageCopyExtension on GetCallbackQueryMessage {
           callbackQueryId: callbackQueryId ?? this.callbackQueryId);
 }
 
-extension GetMessagesCopyExtension on GetMessages {
+extension GetMessagesExtensions on GetMessages {
   GetMessages copy({int? chatId, List<int>? messageIds}) => GetMessages(
       chatId: chatId ?? this.chatId, messageIds: messageIds ?? this.messageIds);
 }
 
-extension GetMessageThreadCopyExtension on GetMessageThread {
+extension GetMessageThreadExtensions on GetMessageThread {
   GetMessageThread copy({int? chatId, int? messageId}) => GetMessageThread(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetFileCopyExtension on GetFile {
+extension GetFileExtensions on GetFile {
   GetFile copy({int? fileId}) => GetFile(fileId: fileId ?? this.fileId);
 }
 
-extension GetRemoteFileCopyExtension on GetRemoteFile {
+extension GetRemoteFileExtensions on GetRemoteFile {
   GetRemoteFile copy({String? remoteFileId, FileType? fileType}) =>
       GetRemoteFile(
           remoteFileId: remoteFileId ?? this.remoteFileId,
           fileType: fileType ?? this.fileType);
 }
 
-extension GetChatsCopyExtension on GetChats {
+extension GetChatsExtensions on GetChats {
   GetChats copy(
           {ChatList? chatList,
           int? offsetOrder,
@@ -6556,68 +9522,68 @@ extension GetChatsCopyExtension on GetChats {
           limit: limit ?? this.limit);
 }
 
-extension SearchPublicChatCopyExtension on SearchPublicChat {
+extension SearchPublicChatExtensions on SearchPublicChat {
   SearchPublicChat copy({String? username}) =>
       SearchPublicChat(username: username ?? this.username);
 }
 
-extension SearchPublicChatsCopyExtension on SearchPublicChats {
+extension SearchPublicChatsExtensions on SearchPublicChats {
   SearchPublicChats copy({String? query}) =>
       SearchPublicChats(query: query ?? this.query);
 }
 
-extension SearchChatsCopyExtension on SearchChats {
+extension SearchChatsExtensions on SearchChats {
   SearchChats copy({String? query, int? limit}) =>
       SearchChats(query: query ?? this.query, limit: limit ?? this.limit);
 }
 
-extension SearchChatsOnServerCopyExtension on SearchChatsOnServer {
+extension SearchChatsOnServerExtensions on SearchChatsOnServer {
   SearchChatsOnServer copy({String? query, int? limit}) => SearchChatsOnServer(
       query: query ?? this.query, limit: limit ?? this.limit);
 }
 
-extension SearchChatsNearbyCopyExtension on SearchChatsNearby {
+extension SearchChatsNearbyExtensions on SearchChatsNearby {
   SearchChatsNearby copy({Location? location}) =>
       SearchChatsNearby(location: location ?? this.location);
 }
 
-extension GetTopChatsCopyExtension on GetTopChats {
+extension GetTopChatsExtensions on GetTopChats {
   GetTopChats copy({TopChatCategory? category, int? limit}) => GetTopChats(
       category: category ?? this.category, limit: limit ?? this.limit);
 }
 
-extension RemoveTopChatCopyExtension on RemoveTopChat {
+extension RemoveTopChatExtensions on RemoveTopChat {
   RemoveTopChat copy({TopChatCategory? category, int? chatId}) => RemoveTopChat(
       category: category ?? this.category, chatId: chatId ?? this.chatId);
 }
 
-extension AddRecentlyFoundChatCopyExtension on AddRecentlyFoundChat {
+extension AddRecentlyFoundChatExtensions on AddRecentlyFoundChat {
   AddRecentlyFoundChat copy({int? chatId}) =>
       AddRecentlyFoundChat(chatId: chatId ?? this.chatId);
 }
 
-extension RemoveRecentlyFoundChatCopyExtension on RemoveRecentlyFoundChat {
+extension RemoveRecentlyFoundChatExtensions on RemoveRecentlyFoundChat {
   RemoveRecentlyFoundChat copy({int? chatId}) =>
       RemoveRecentlyFoundChat(chatId: chatId ?? this.chatId);
 }
 
-extension CheckChatUsernameCopyExtension on CheckChatUsername {
+extension CheckChatUsernameExtensions on CheckChatUsername {
   CheckChatUsername copy({int? chatId, String? username}) => CheckChatUsername(
       chatId: chatId ?? this.chatId, username: username ?? this.username);
 }
 
-extension GetCreatedPublicChatsCopyExtension on GetCreatedPublicChats {
+extension GetCreatedPublicChatsExtensions on GetCreatedPublicChats {
   GetCreatedPublicChats copy({PublicChatType? type}) =>
       GetCreatedPublicChats(type: type ?? this.type);
 }
 
-extension CheckCreatedPublicChatsLimitCopyExtension
+extension CheckCreatedPublicChatsLimitExtensions
     on CheckCreatedPublicChatsLimit {
   CheckCreatedPublicChatsLimit copy({PublicChatType? type}) =>
       CheckCreatedPublicChatsLimit(type: type ?? this.type);
 }
 
-extension GetGroupsInCommonCopyExtension on GetGroupsInCommon {
+extension GetGroupsInCommonExtensions on GetGroupsInCommon {
   GetGroupsInCommon copy({int? userId, int? offsetChatId, int? limit}) =>
       GetGroupsInCommon(
           userId: userId ?? this.userId,
@@ -6625,7 +9591,7 @@ extension GetGroupsInCommonCopyExtension on GetGroupsInCommon {
           limit: limit ?? this.limit);
 }
 
-extension GetChatHistoryCopyExtension on GetChatHistory {
+extension GetChatHistoryExtensions on GetChatHistory {
   GetChatHistory copy(
           {int? chatId,
           int? fromMessageId,
@@ -6640,7 +9606,7 @@ extension GetChatHistoryCopyExtension on GetChatHistory {
           onlyLocal: onlyLocal ?? this.onlyLocal);
 }
 
-extension GetMessageThreadHistoryCopyExtension on GetMessageThreadHistory {
+extension GetMessageThreadHistoryExtensions on GetMessageThreadHistory {
   GetMessageThreadHistory copy(
           {int? chatId,
           int? messageId,
@@ -6655,7 +9621,7 @@ extension GetMessageThreadHistoryCopyExtension on GetMessageThreadHistory {
           limit: limit ?? this.limit);
 }
 
-extension DeleteChatHistoryCopyExtension on DeleteChatHistory {
+extension DeleteChatHistoryExtensions on DeleteChatHistory {
   DeleteChatHistory copy(
           {int? chatId, bool? removeFromChatList, bool? revoke}) =>
       DeleteChatHistory(
@@ -6664,11 +9630,11 @@ extension DeleteChatHistoryCopyExtension on DeleteChatHistory {
           revoke: revoke ?? this.revoke);
 }
 
-extension DeleteChatCopyExtension on DeleteChat {
+extension DeleteChatExtensions on DeleteChat {
   DeleteChat copy({int? chatId}) => DeleteChat(chatId: chatId ?? this.chatId);
 }
 
-extension SearchChatMessagesCopyExtension on SearchChatMessages {
+extension SearchChatMessagesExtensions on SearchChatMessages {
   SearchChatMessages copy(
           {int? chatId,
           String? query,
@@ -6689,7 +9655,7 @@ extension SearchChatMessagesCopyExtension on SearchChatMessages {
           messageThreadId: messageThreadId ?? this.messageThreadId);
 }
 
-extension SearchMessagesCopyExtension on SearchMessages {
+extension SearchMessagesExtensions on SearchMessages {
   SearchMessages copy(
           {ChatList? chatList,
           String? query,
@@ -6712,7 +9678,7 @@ extension SearchMessagesCopyExtension on SearchMessages {
           maxDate: maxDate ?? this.maxDate);
 }
 
-extension SearchSecretMessagesCopyExtension on SearchSecretMessages {
+extension SearchSecretMessagesExtensions on SearchSecretMessages {
   SearchSecretMessages copy(
           {int? chatId,
           String? query,
@@ -6727,7 +9693,7 @@ extension SearchSecretMessagesCopyExtension on SearchSecretMessages {
           filter: filter ?? this.filter);
 }
 
-extension SearchCallMessagesCopyExtension on SearchCallMessages {
+extension SearchCallMessagesExtensions on SearchCallMessages {
   SearchCallMessages copy({int? fromMessageId, int? limit, bool? onlyMissed}) =>
       SearchCallMessages(
           fromMessageId: fromMessageId ?? this.fromMessageId,
@@ -6735,24 +9701,24 @@ extension SearchCallMessagesCopyExtension on SearchCallMessages {
           onlyMissed: onlyMissed ?? this.onlyMissed);
 }
 
-extension DeleteAllCallMessagesCopyExtension on DeleteAllCallMessages {
+extension DeleteAllCallMessagesExtensions on DeleteAllCallMessages {
   DeleteAllCallMessages copy({bool? revoke}) =>
       DeleteAllCallMessages(revoke: revoke ?? this.revoke);
 }
 
-extension SearchChatRecentLocationMessagesCopyExtension
+extension SearchChatRecentLocationMessagesExtensions
     on SearchChatRecentLocationMessages {
   SearchChatRecentLocationMessages copy({int? chatId, int? limit}) =>
       SearchChatRecentLocationMessages(
           chatId: chatId ?? this.chatId, limit: limit ?? this.limit);
 }
 
-extension GetChatMessageByDateCopyExtension on GetChatMessageByDate {
+extension GetChatMessageByDateExtensions on GetChatMessageByDate {
   GetChatMessageByDate copy({int? chatId, int? date}) => GetChatMessageByDate(
       chatId: chatId ?? this.chatId, date: date ?? this.date);
 }
 
-extension GetChatMessageCountCopyExtension on GetChatMessageCount {
+extension GetChatMessageCountExtensions on GetChatMessageCount {
   GetChatMessageCount copy(
           {int? chatId, SearchMessagesFilter? filter, bool? returnLocal}) =>
       GetChatMessageCount(
@@ -6761,12 +9727,12 @@ extension GetChatMessageCountCopyExtension on GetChatMessageCount {
           returnLocal: returnLocal ?? this.returnLocal);
 }
 
-extension GetChatScheduledMessagesCopyExtension on GetChatScheduledMessages {
+extension GetChatScheduledMessagesExtensions on GetChatScheduledMessages {
   GetChatScheduledMessages copy({int? chatId}) =>
       GetChatScheduledMessages(chatId: chatId ?? this.chatId);
 }
 
-extension GetMessagePublicForwardsCopyExtension on GetMessagePublicForwards {
+extension GetMessagePublicForwardsExtensions on GetMessagePublicForwards {
   GetMessagePublicForwards copy(
           {int? chatId, int? messageId, String? offset, int? limit}) =>
       GetMessagePublicForwards(
@@ -6776,14 +9742,14 @@ extension GetMessagePublicForwardsCopyExtension on GetMessagePublicForwards {
           limit: limit ?? this.limit);
 }
 
-extension RemoveNotificationCopyExtension on RemoveNotification {
+extension RemoveNotificationExtensions on RemoveNotification {
   RemoveNotification copy({int? notificationGroupId, int? notificationId}) =>
       RemoveNotification(
           notificationGroupId: notificationGroupId ?? this.notificationGroupId,
           notificationId: notificationId ?? this.notificationId);
 }
 
-extension RemoveNotificationGroupCopyExtension on RemoveNotificationGroup {
+extension RemoveNotificationGroupExtensions on RemoveNotificationGroup {
   RemoveNotificationGroup copy(
           {int? notificationGroupId, int? maxNotificationId}) =>
       RemoveNotificationGroup(
@@ -6791,7 +9757,7 @@ extension RemoveNotificationGroupCopyExtension on RemoveNotificationGroup {
           maxNotificationId: maxNotificationId ?? this.maxNotificationId);
 }
 
-extension GetMessageLinkCopyExtension on GetMessageLink {
+extension GetMessageLinkExtensions on GetMessageLink {
   GetMessageLink copy(
           {int? chatId, int? messageId, bool? forAlbum, bool? forComment}) =>
       GetMessageLink(
@@ -6801,7 +9767,7 @@ extension GetMessageLinkCopyExtension on GetMessageLink {
           forComment: forComment ?? this.forComment);
 }
 
-extension GetMessageEmbeddingCodeCopyExtension on GetMessageEmbeddingCode {
+extension GetMessageEmbeddingCodeExtensions on GetMessageEmbeddingCode {
   GetMessageEmbeddingCode copy({int? chatId, int? messageId, bool? forAlbum}) =>
       GetMessageEmbeddingCode(
           chatId: chatId ?? this.chatId,
@@ -6809,12 +9775,12 @@ extension GetMessageEmbeddingCodeCopyExtension on GetMessageEmbeddingCode {
           forAlbum: forAlbum ?? this.forAlbum);
 }
 
-extension GetMessageLinkInfoCopyExtension on GetMessageLinkInfo {
+extension GetMessageLinkInfoExtensions on GetMessageLinkInfo {
   GetMessageLinkInfo copy({String? url}) =>
       GetMessageLinkInfo(url: url ?? this.url);
 }
 
-extension SendMessageCopyExtension on SendMessage {
+extension SendMessageExtensions on SendMessage {
   SendMessage copy(
           {int? chatId,
           int? messageThreadId,
@@ -6831,7 +9797,7 @@ extension SendMessageCopyExtension on SendMessage {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension SendMessageAlbumCopyExtension on SendMessageAlbum {
+extension SendMessageAlbumExtensions on SendMessageAlbum {
   SendMessageAlbum copy(
           {int? chatId,
           int? messageThreadId,
@@ -6847,7 +9813,7 @@ extension SendMessageAlbumCopyExtension on SendMessageAlbum {
               inputMessageContents ?? this.inputMessageContents);
 }
 
-extension SendBotStartMessageCopyExtension on SendBotStartMessage {
+extension SendBotStartMessageExtensions on SendBotStartMessage {
   SendBotStartMessage copy({int? botUserId, int? chatId, String? parameter}) =>
       SendBotStartMessage(
           botUserId: botUserId ?? this.botUserId,
@@ -6855,7 +9821,7 @@ extension SendBotStartMessageCopyExtension on SendBotStartMessage {
           parameter: parameter ?? this.parameter);
 }
 
-extension SendInlineQueryResultMessageCopyExtension
+extension SendInlineQueryResultMessageExtensions
     on SendInlineQueryResultMessage {
   SendInlineQueryResultMessage copy(
           {int? chatId,
@@ -6875,7 +9841,7 @@ extension SendInlineQueryResultMessageCopyExtension
           hideViaBot: hideViaBot ?? this.hideViaBot);
 }
 
-extension ForwardMessagesCopyExtension on ForwardMessages {
+extension ForwardMessagesExtensions on ForwardMessages {
   ForwardMessages copy(
           {int? chatId,
           int? fromChatId,
@@ -6892,18 +9858,18 @@ extension ForwardMessagesCopyExtension on ForwardMessages {
           removeCaption: removeCaption ?? this.removeCaption);
 }
 
-extension ResendMessagesCopyExtension on ResendMessages {
+extension ResendMessagesExtensions on ResendMessages {
   ResendMessages copy({int? chatId, List<int>? messageIds}) => ResendMessages(
       chatId: chatId ?? this.chatId, messageIds: messageIds ?? this.messageIds);
 }
 
-extension SendChatScreenshotTakenNotificationCopyExtension
+extension SendChatScreenshotTakenNotificationExtensions
     on SendChatScreenshotTakenNotification {
   SendChatScreenshotTakenNotification copy({int? chatId}) =>
       SendChatScreenshotTakenNotification(chatId: chatId ?? this.chatId);
 }
 
-extension AddLocalMessageCopyExtension on AddLocalMessage {
+extension AddLocalMessageExtensions on AddLocalMessage {
   AddLocalMessage copy(
           {int? chatId,
           MessageSender? sender,
@@ -6918,7 +9884,7 @@ extension AddLocalMessageCopyExtension on AddLocalMessage {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension DeleteMessagesCopyExtension on DeleteMessages {
+extension DeleteMessagesExtensions on DeleteMessages {
   DeleteMessages copy({int? chatId, List<int>? messageIds, bool? revoke}) =>
       DeleteMessages(
           chatId: chatId ?? this.chatId,
@@ -6926,14 +9892,13 @@ extension DeleteMessagesCopyExtension on DeleteMessages {
           revoke: revoke ?? this.revoke);
 }
 
-extension DeleteChatMessagesFromUserCopyExtension
-    on DeleteChatMessagesFromUser {
+extension DeleteChatMessagesFromUserExtensions on DeleteChatMessagesFromUser {
   DeleteChatMessagesFromUser copy({int? chatId, int? userId}) =>
       DeleteChatMessagesFromUser(
           chatId: chatId ?? this.chatId, userId: userId ?? this.userId);
 }
 
-extension EditMessageTextCopyExtension on EditMessageText {
+extension EditMessageTextExtensions on EditMessageText {
   EditMessageText copy(
           {int? chatId,
           int? messageId,
@@ -6946,7 +9911,7 @@ extension EditMessageTextCopyExtension on EditMessageText {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension EditMessageLiveLocationCopyExtension on EditMessageLiveLocation {
+extension EditMessageLiveLocationExtensions on EditMessageLiveLocation {
   EditMessageLiveLocation copy(
           {int? chatId,
           int? messageId,
@@ -6964,7 +9929,7 @@ extension EditMessageLiveLocationCopyExtension on EditMessageLiveLocation {
               proximityAlertRadius ?? this.proximityAlertRadius);
 }
 
-extension EditMessageMediaCopyExtension on EditMessageMedia {
+extension EditMessageMediaExtensions on EditMessageMedia {
   EditMessageMedia copy(
           {int? chatId,
           int? messageId,
@@ -6977,7 +9942,7 @@ extension EditMessageMediaCopyExtension on EditMessageMedia {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension EditMessageCaptionCopyExtension on EditMessageCaption {
+extension EditMessageCaptionExtensions on EditMessageCaption {
   EditMessageCaption copy(
           {int? chatId,
           int? messageId,
@@ -6990,7 +9955,7 @@ extension EditMessageCaptionCopyExtension on EditMessageCaption {
           caption: caption ?? this.caption);
 }
 
-extension EditMessageReplyMarkupCopyExtension on EditMessageReplyMarkup {
+extension EditMessageReplyMarkupExtensions on EditMessageReplyMarkup {
   EditMessageReplyMarkup copy(
           {int? chatId, int? messageId, ReplyMarkup? replyMarkup}) =>
       EditMessageReplyMarkup(
@@ -6999,7 +9964,7 @@ extension EditMessageReplyMarkupCopyExtension on EditMessageReplyMarkup {
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension EditInlineMessageTextCopyExtension on EditInlineMessageText {
+extension EditInlineMessageTextExtensions on EditInlineMessageText {
   EditInlineMessageText copy(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
@@ -7010,7 +9975,7 @@ extension EditInlineMessageTextCopyExtension on EditInlineMessageText {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension EditInlineMessageLiveLocationCopyExtension
+extension EditInlineMessageLiveLocationExtensions
     on EditInlineMessageLiveLocation {
   EditInlineMessageLiveLocation copy(
           {String? inlineMessageId,
@@ -7027,7 +9992,7 @@ extension EditInlineMessageLiveLocationCopyExtension
               proximityAlertRadius ?? this.proximityAlertRadius);
 }
 
-extension EditInlineMessageMediaCopyExtension on EditInlineMessageMedia {
+extension EditInlineMessageMediaExtensions on EditInlineMessageMedia {
   EditInlineMessageMedia copy(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
@@ -7038,7 +10003,7 @@ extension EditInlineMessageMediaCopyExtension on EditInlineMessageMedia {
           inputMessageContent: inputMessageContent ?? this.inputMessageContent);
 }
 
-extension EditInlineMessageCaptionCopyExtension on EditInlineMessageCaption {
+extension EditInlineMessageCaptionExtensions on EditInlineMessageCaption {
   EditInlineMessageCaption copy(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
@@ -7049,7 +10014,7 @@ extension EditInlineMessageCaptionCopyExtension on EditInlineMessageCaption {
           caption: caption ?? this.caption);
 }
 
-extension EditInlineMessageReplyMarkupCopyExtension
+extension EditInlineMessageReplyMarkupExtensions
     on EditInlineMessageReplyMarkup {
   EditInlineMessageReplyMarkup copy(
           {String? inlineMessageId, ReplyMarkup? replyMarkup}) =>
@@ -7058,8 +10023,7 @@ extension EditInlineMessageReplyMarkupCopyExtension
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension EditMessageSchedulingStateCopyExtension
-    on EditMessageSchedulingState {
+extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
   EditMessageSchedulingState copy(
           {int? chatId,
           int? messageId,
@@ -7070,43 +10034,43 @@ extension EditMessageSchedulingStateCopyExtension
           schedulingState: schedulingState ?? this.schedulingState);
 }
 
-extension GetTextEntitiesCopyExtension on GetTextEntities {
+extension GetTextEntitiesExtensions on GetTextEntities {
   GetTextEntities copy({String? text}) =>
       GetTextEntities(text: text ?? this.text);
 }
 
-extension ParseTextEntitiesCopyExtension on ParseTextEntities {
+extension ParseTextEntitiesExtensions on ParseTextEntities {
   ParseTextEntities copy({String? text, TextParseMode? parseMode}) =>
       ParseTextEntities(
           text: text ?? this.text, parseMode: parseMode ?? this.parseMode);
 }
 
-extension ParseMarkdownCopyExtension on ParseMarkdown {
+extension ParseMarkdownExtensions on ParseMarkdown {
   ParseMarkdown copy({FormattedText? text}) =>
       ParseMarkdown(text: text ?? this.text);
 }
 
-extension GetMarkdownTextCopyExtension on GetMarkdownText {
+extension GetMarkdownTextExtensions on GetMarkdownText {
   GetMarkdownText copy({FormattedText? text}) =>
       GetMarkdownText(text: text ?? this.text);
 }
 
-extension GetFileMimeTypeCopyExtension on GetFileMimeType {
+extension GetFileMimeTypeExtensions on GetFileMimeType {
   GetFileMimeType copy({String? fileName}) =>
       GetFileMimeType(fileName: fileName ?? this.fileName);
 }
 
-extension GetFileExtensionCopyExtension on GetFileExtension {
+extension GetFileExtensionExtensions on GetFileExtension {
   GetFileExtension copy({String? mimeType}) =>
       GetFileExtension(mimeType: mimeType ?? this.mimeType);
 }
 
-extension CleanFileNameCopyExtension on CleanFileName {
+extension CleanFileNameExtensions on CleanFileName {
   CleanFileName copy({String? fileName}) =>
       CleanFileName(fileName: fileName ?? this.fileName);
 }
 
-extension GetLanguagePackStringCopyExtension on GetLanguagePackString {
+extension GetLanguagePackStringExtensions on GetLanguagePackString {
   GetLanguagePackString copy(
           {String? languagePackDatabasePath,
           String? localizationTarget,
@@ -7120,16 +10084,16 @@ extension GetLanguagePackStringCopyExtension on GetLanguagePackString {
           key: key ?? this.key);
 }
 
-extension GetJsonValueCopyExtension on GetJsonValue {
+extension GetJsonValueExtensions on GetJsonValue {
   GetJsonValue copy({String? json}) => GetJsonValue(json: json ?? this.json);
 }
 
-extension GetJsonStringCopyExtension on GetJsonString {
+extension GetJsonStringExtensions on GetJsonString {
   GetJsonString copy({JsonValue? jsonValue}) =>
       GetJsonString(jsonValue: jsonValue ?? this.jsonValue);
 }
 
-extension SetPollAnswerCopyExtension on SetPollAnswer {
+extension SetPollAnswerExtensions on SetPollAnswer {
   SetPollAnswer copy({int? chatId, int? messageId, List<int>? optionIds}) =>
       SetPollAnswer(
           chatId: chatId ?? this.chatId,
@@ -7137,7 +10101,7 @@ extension SetPollAnswerCopyExtension on SetPollAnswer {
           optionIds: optionIds ?? this.optionIds);
 }
 
-extension GetPollVotersCopyExtension on GetPollVoters {
+extension GetPollVotersExtensions on GetPollVoters {
   GetPollVoters copy(
           {int? chatId,
           int? messageId,
@@ -7152,7 +10116,7 @@ extension GetPollVotersCopyExtension on GetPollVoters {
           limit: limit ?? this.limit);
 }
 
-extension StopPollCopyExtension on StopPoll {
+extension StopPollExtensions on StopPoll {
   StopPoll copy({int? chatId, int? messageId, ReplyMarkup? replyMarkup}) =>
       StopPoll(
           chatId: chatId ?? this.chatId,
@@ -7160,12 +10124,12 @@ extension StopPollCopyExtension on StopPoll {
           replyMarkup: replyMarkup ?? this.replyMarkup);
 }
 
-extension HideSuggestedActionCopyExtension on HideSuggestedAction {
+extension HideSuggestedActionExtensions on HideSuggestedAction {
   HideSuggestedAction copy({SuggestedAction? action}) =>
       HideSuggestedAction(action: action ?? this.action);
 }
 
-extension GetLoginUrlInfoCopyExtension on GetLoginUrlInfo {
+extension GetLoginUrlInfoExtensions on GetLoginUrlInfo {
   GetLoginUrlInfo copy({int? chatId, int? messageId, int? buttonId}) =>
       GetLoginUrlInfo(
           chatId: chatId ?? this.chatId,
@@ -7173,7 +10137,7 @@ extension GetLoginUrlInfoCopyExtension on GetLoginUrlInfo {
           buttonId: buttonId ?? this.buttonId);
 }
 
-extension GetLoginUrlCopyExtension on GetLoginUrl {
+extension GetLoginUrlExtensions on GetLoginUrl {
   GetLoginUrl copy(
           {int? chatId,
           int? messageId,
@@ -7186,7 +10150,7 @@ extension GetLoginUrlCopyExtension on GetLoginUrl {
           allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess);
 }
 
-extension GetInlineQueryResultsCopyExtension on GetInlineQueryResults {
+extension GetInlineQueryResultsExtensions on GetInlineQueryResults {
   GetInlineQueryResults copy(
           {int? botUserId,
           int? chatId,
@@ -7201,7 +10165,7 @@ extension GetInlineQueryResultsCopyExtension on GetInlineQueryResults {
           offset: offset ?? this.offset);
 }
 
-extension AnswerInlineQueryCopyExtension on AnswerInlineQuery {
+extension AnswerInlineQueryExtensions on AnswerInlineQuery {
   AnswerInlineQuery copy(
           {int? inlineQueryId,
           bool? isPersonal,
@@ -7220,7 +10184,7 @@ extension AnswerInlineQueryCopyExtension on AnswerInlineQuery {
           switchPmParameter: switchPmParameter ?? this.switchPmParameter);
 }
 
-extension GetCallbackQueryAnswerCopyExtension on GetCallbackQueryAnswer {
+extension GetCallbackQueryAnswerExtensions on GetCallbackQueryAnswer {
   GetCallbackQueryAnswer copy(
           {int? chatId, int? messageId, CallbackQueryPayload? payload}) =>
       GetCallbackQueryAnswer(
@@ -7229,7 +10193,7 @@ extension GetCallbackQueryAnswerCopyExtension on GetCallbackQueryAnswer {
           payload: payload ?? this.payload);
 }
 
-extension AnswerCallbackQueryCopyExtension on AnswerCallbackQuery {
+extension AnswerCallbackQueryExtensions on AnswerCallbackQuery {
   AnswerCallbackQuery copy(
           {int? callbackQueryId,
           String? text,
@@ -7244,7 +10208,7 @@ extension AnswerCallbackQueryCopyExtension on AnswerCallbackQuery {
           cacheTime: cacheTime ?? this.cacheTime);
 }
 
-extension AnswerShippingQueryCopyExtension on AnswerShippingQuery {
+extension AnswerShippingQueryExtensions on AnswerShippingQuery {
   AnswerShippingQuery copy(
           {int? shippingQueryId,
           List<ShippingOption>? shippingOptions,
@@ -7255,7 +10219,7 @@ extension AnswerShippingQueryCopyExtension on AnswerShippingQuery {
           errorMessage: errorMessage ?? this.errorMessage);
 }
 
-extension AnswerPreCheckoutQueryCopyExtension on AnswerPreCheckoutQuery {
+extension AnswerPreCheckoutQueryExtensions on AnswerPreCheckoutQuery {
   AnswerPreCheckoutQuery copy(
           {int? preCheckoutQueryId, String? errorMessage}) =>
       AnswerPreCheckoutQuery(
@@ -7263,7 +10227,7 @@ extension AnswerPreCheckoutQueryCopyExtension on AnswerPreCheckoutQuery {
           errorMessage: errorMessage ?? this.errorMessage);
 }
 
-extension SetGameScoreCopyExtension on SetGameScore {
+extension SetGameScoreExtensions on SetGameScore {
   SetGameScore copy(
           {int? chatId,
           int? messageId,
@@ -7280,7 +10244,7 @@ extension SetGameScoreCopyExtension on SetGameScore {
           force: force ?? this.force);
 }
 
-extension SetInlineGameScoreCopyExtension on SetInlineGameScore {
+extension SetInlineGameScoreExtensions on SetInlineGameScore {
   SetInlineGameScore copy(
           {String? inlineMessageId,
           bool? editMessage,
@@ -7295,7 +10259,7 @@ extension SetInlineGameScoreCopyExtension on SetInlineGameScore {
           force: force ?? this.force);
 }
 
-extension GetGameHighScoresCopyExtension on GetGameHighScores {
+extension GetGameHighScoresExtensions on GetGameHighScores {
   GetGameHighScores copy({int? chatId, int? messageId, int? userId}) =>
       GetGameHighScores(
           chatId: chatId ?? this.chatId,
@@ -7303,21 +10267,21 @@ extension GetGameHighScoresCopyExtension on GetGameHighScores {
           userId: userId ?? this.userId);
 }
 
-extension GetInlineGameHighScoresCopyExtension on GetInlineGameHighScores {
+extension GetInlineGameHighScoresExtensions on GetInlineGameHighScores {
   GetInlineGameHighScores copy({String? inlineMessageId, int? userId}) =>
       GetInlineGameHighScores(
           inlineMessageId: inlineMessageId ?? this.inlineMessageId,
           userId: userId ?? this.userId);
 }
 
-extension DeleteChatReplyMarkupCopyExtension on DeleteChatReplyMarkup {
+extension DeleteChatReplyMarkupExtensions on DeleteChatReplyMarkup {
   DeleteChatReplyMarkup copy({int? chatId, int? messageId}) =>
       DeleteChatReplyMarkup(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
-extension SendChatActionCopyExtension on SendChatAction {
+extension SendChatActionExtensions on SendChatAction {
   SendChatAction copy(
           {int? chatId, int? messageThreadId, ChatAction? action}) =>
       SendChatAction(
@@ -7326,15 +10290,15 @@ extension SendChatActionCopyExtension on SendChatAction {
           action: action ?? this.action);
 }
 
-extension OpenChatCopyExtension on OpenChat {
+extension OpenChatExtensions on OpenChat {
   OpenChat copy({int? chatId}) => OpenChat(chatId: chatId ?? this.chatId);
 }
 
-extension CloseChatCopyExtension on CloseChat {
+extension CloseChatExtensions on CloseChat {
   CloseChat copy({int? chatId}) => CloseChat(chatId: chatId ?? this.chatId);
 }
 
-extension ViewMessagesCopyExtension on ViewMessages {
+extension ViewMessagesExtensions on ViewMessages {
   ViewMessages copy(
           {int? chatId,
           int? messageThreadId,
@@ -7347,59 +10311,59 @@ extension ViewMessagesCopyExtension on ViewMessages {
           forceRead: forceRead ?? this.forceRead);
 }
 
-extension OpenMessageContentCopyExtension on OpenMessageContent {
+extension OpenMessageContentExtensions on OpenMessageContent {
   OpenMessageContent copy({int? chatId, int? messageId}) => OpenMessageContent(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetExternalLinkInfoCopyExtension on GetExternalLinkInfo {
+extension GetExternalLinkInfoExtensions on GetExternalLinkInfo {
   GetExternalLinkInfo copy({String? link}) =>
       GetExternalLinkInfo(link: link ?? this.link);
 }
 
-extension GetExternalLinkCopyExtension on GetExternalLink {
+extension GetExternalLinkExtensions on GetExternalLink {
   GetExternalLink copy({String? link, bool? allowWriteAccess}) =>
       GetExternalLink(
           link: link ?? this.link,
           allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess);
 }
 
-extension ReadAllChatMentionsCopyExtension on ReadAllChatMentions {
+extension ReadAllChatMentionsExtensions on ReadAllChatMentions {
   ReadAllChatMentions copy({int? chatId}) =>
       ReadAllChatMentions(chatId: chatId ?? this.chatId);
 }
 
-extension CreatePrivateChatCopyExtension on CreatePrivateChat {
+extension CreatePrivateChatExtensions on CreatePrivateChat {
   CreatePrivateChat copy({int? userId, bool? force}) => CreatePrivateChat(
       userId: userId ?? this.userId, force: force ?? this.force);
 }
 
-extension CreateBasicGroupChatCopyExtension on CreateBasicGroupChat {
+extension CreateBasicGroupChatExtensions on CreateBasicGroupChat {
   CreateBasicGroupChat copy({int? basicGroupId, bool? force}) =>
       CreateBasicGroupChat(
           basicGroupId: basicGroupId ?? this.basicGroupId,
           force: force ?? this.force);
 }
 
-extension CreateSupergroupChatCopyExtension on CreateSupergroupChat {
+extension CreateSupergroupChatExtensions on CreateSupergroupChat {
   CreateSupergroupChat copy({int? supergroupId, bool? force}) =>
       CreateSupergroupChat(
           supergroupId: supergroupId ?? this.supergroupId,
           force: force ?? this.force);
 }
 
-extension CreateSecretChatCopyExtension on CreateSecretChat {
+extension CreateSecretChatExtensions on CreateSecretChat {
   CreateSecretChat copy({int? secretChatId}) =>
       CreateSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
-extension CreateNewBasicGroupChatCopyExtension on CreateNewBasicGroupChat {
+extension CreateNewBasicGroupChatExtensions on CreateNewBasicGroupChat {
   CreateNewBasicGroupChat copy({List<int>? userIds, String? title}) =>
       CreateNewBasicGroupChat(
           userIds: userIds ?? this.userIds, title: title ?? this.title);
 }
 
-extension CreateNewSupergroupChatCopyExtension on CreateNewSupergroupChat {
+extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
   CreateNewSupergroupChat copy(
           {String? title,
           bool? isChannel,
@@ -7414,84 +10378,84 @@ extension CreateNewSupergroupChatCopyExtension on CreateNewSupergroupChat {
           forImport: forImport ?? this.forImport);
 }
 
-extension CreateNewSecretChatCopyExtension on CreateNewSecretChat {
+extension CreateNewSecretChatExtensions on CreateNewSecretChat {
   CreateNewSecretChat copy({int? userId}) =>
       CreateNewSecretChat(userId: userId ?? this.userId);
 }
 
-extension UpgradeBasicGroupChatToSupergroupChatCopyExtension
+extension UpgradeBasicGroupChatToSupergroupChatExtensions
     on UpgradeBasicGroupChatToSupergroupChat {
   UpgradeBasicGroupChatToSupergroupChat copy({int? chatId}) =>
       UpgradeBasicGroupChatToSupergroupChat(chatId: chatId ?? this.chatId);
 }
 
-extension GetChatListsToAddChatCopyExtension on GetChatListsToAddChat {
+extension GetChatListsToAddChatExtensions on GetChatListsToAddChat {
   GetChatListsToAddChat copy({int? chatId}) =>
       GetChatListsToAddChat(chatId: chatId ?? this.chatId);
 }
 
-extension AddChatToListCopyExtension on AddChatToList {
+extension AddChatToListExtensions on AddChatToList {
   AddChatToList copy({int? chatId, ChatList? chatList}) => AddChatToList(
       chatId: chatId ?? this.chatId, chatList: chatList ?? this.chatList);
 }
 
-extension GetChatFilterCopyExtension on GetChatFilter {
+extension GetChatFilterExtensions on GetChatFilter {
   GetChatFilter copy({int? chatFilterId}) =>
       GetChatFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
-extension CreateChatFilterCopyExtension on CreateChatFilter {
+extension CreateChatFilterExtensions on CreateChatFilter {
   CreateChatFilter copy({ChatFilter? filter}) =>
       CreateChatFilter(filter: filter ?? this.filter);
 }
 
-extension EditChatFilterCopyExtension on EditChatFilter {
+extension EditChatFilterExtensions on EditChatFilter {
   EditChatFilter copy({int? chatFilterId, ChatFilter? filter}) =>
       EditChatFilter(
           chatFilterId: chatFilterId ?? this.chatFilterId,
           filter: filter ?? this.filter);
 }
 
-extension DeleteChatFilterCopyExtension on DeleteChatFilter {
+extension DeleteChatFilterExtensions on DeleteChatFilter {
   DeleteChatFilter copy({int? chatFilterId}) =>
       DeleteChatFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
-extension ReorderChatFiltersCopyExtension on ReorderChatFilters {
+extension ReorderChatFiltersExtensions on ReorderChatFilters {
   ReorderChatFilters copy({List<int>? chatFilterIds}) =>
       ReorderChatFilters(chatFilterIds: chatFilterIds ?? this.chatFilterIds);
 }
 
-extension GetChatFilterDefaultIconNameCopyExtension
+extension GetChatFilterDefaultIconNameExtensions
     on GetChatFilterDefaultIconName {
   GetChatFilterDefaultIconName copy({ChatFilter? filter}) =>
       GetChatFilterDefaultIconName(filter: filter ?? this.filter);
 }
 
-extension SetChatTitleCopyExtension on SetChatTitle {
+extension SetChatTitleExtensions on SetChatTitle {
   SetChatTitle copy({int? chatId, String? title}) =>
       SetChatTitle(chatId: chatId ?? this.chatId, title: title ?? this.title);
 }
 
-extension SetChatPhotoCopyExtension on SetChatPhoto {
+extension SetChatPhotoExtensions on SetChatPhoto {
   SetChatPhoto copy({int? chatId, InputChatPhoto? photo}) =>
       SetChatPhoto(chatId: chatId ?? this.chatId, photo: photo ?? this.photo);
 }
 
-extension SetChatMessageTtlSettingCopyExtension on SetChatMessageTtlSetting {
+extension SetChatMessageTtlSettingExtensions on SetChatMessageTtlSetting {
   SetChatMessageTtlSetting copy({int? chatId, int? ttl}) =>
       SetChatMessageTtlSetting(
           chatId: chatId ?? this.chatId, ttl: ttl ?? this.ttl);
 }
 
-extension SetChatPermissionsCopyExtension on SetChatPermissions {
+extension SetChatPermissionsExtensions on SetChatPermissions {
   SetChatPermissions copy({int? chatId, ChatPermissions? permissions}) =>
       SetChatPermissions(
           chatId: chatId ?? this.chatId,
           permissions: permissions ?? this.permissions);
 }
 
-extension SetChatDraftMessageCopyExtension on SetChatDraftMessage {
+extension SetChatDraftMessageExtensions on SetChatDraftMessage {
   SetChatDraftMessage copy(
           {int? chatId, int? messageThreadId, DraftMessage? draftMessage}) =>
       SetChatDraftMessage(
@@ -7500,8 +10464,7 @@ extension SetChatDraftMessageCopyExtension on SetChatDraftMessage {
           draftMessage: draftMessage ?? this.draftMessage);
 }
 
-extension SetChatNotificationSettingsCopyExtension
-    on SetChatNotificationSettings {
+extension SetChatNotificationSettingsExtensions on SetChatNotificationSettings {
   SetChatNotificationSettings copy(
           {int? chatId, ChatNotificationSettings? notificationSettings}) =>
       SetChatNotificationSettings(
@@ -7510,15 +10473,14 @@ extension SetChatNotificationSettingsCopyExtension
               notificationSettings ?? this.notificationSettings);
 }
 
-extension ToggleChatIsMarkedAsUnreadCopyExtension
-    on ToggleChatIsMarkedAsUnread {
+extension ToggleChatIsMarkedAsUnreadExtensions on ToggleChatIsMarkedAsUnread {
   ToggleChatIsMarkedAsUnread copy({int? chatId, bool? isMarkedAsUnread}) =>
       ToggleChatIsMarkedAsUnread(
           chatId: chatId ?? this.chatId,
           isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread);
 }
 
-extension ToggleChatDefaultDisableNotificationCopyExtension
+extension ToggleChatDefaultDisableNotificationExtensions
     on ToggleChatDefaultDisableNotification {
   ToggleChatDefaultDisableNotification copy(
           {int? chatId, bool? defaultDisableNotification}) =>
@@ -7528,41 +10490,41 @@ extension ToggleChatDefaultDisableNotificationCopyExtension
               defaultDisableNotification ?? this.defaultDisableNotification);
 }
 
-extension SetChatClientDataCopyExtension on SetChatClientData {
+extension SetChatClientDataExtensions on SetChatClientData {
   SetChatClientData copy({int? chatId, String? clientData}) =>
       SetChatClientData(
           chatId: chatId ?? this.chatId,
           clientData: clientData ?? this.clientData);
 }
 
-extension SetChatDescriptionCopyExtension on SetChatDescription {
+extension SetChatDescriptionExtensions on SetChatDescription {
   SetChatDescription copy({int? chatId, String? description}) =>
       SetChatDescription(
           chatId: chatId ?? this.chatId,
           description: description ?? this.description);
 }
 
-extension SetChatDiscussionGroupCopyExtension on SetChatDiscussionGroup {
+extension SetChatDiscussionGroupExtensions on SetChatDiscussionGroup {
   SetChatDiscussionGroup copy({int? chatId, int? discussionChatId}) =>
       SetChatDiscussionGroup(
           chatId: chatId ?? this.chatId,
           discussionChatId: discussionChatId ?? this.discussionChatId);
 }
 
-extension SetChatLocationCopyExtension on SetChatLocation {
+extension SetChatLocationExtensions on SetChatLocation {
   SetChatLocation copy({int? chatId, ChatLocation? location}) =>
       SetChatLocation(
           chatId: chatId ?? this.chatId, location: location ?? this.location);
 }
 
-extension SetChatSlowModeDelayCopyExtension on SetChatSlowModeDelay {
+extension SetChatSlowModeDelayExtensions on SetChatSlowModeDelay {
   SetChatSlowModeDelay copy({int? chatId, int? slowModeDelay}) =>
       SetChatSlowModeDelay(
           chatId: chatId ?? this.chatId,
           slowModeDelay: slowModeDelay ?? this.slowModeDelay);
 }
 
-extension PinChatMessageCopyExtension on PinChatMessage {
+extension PinChatMessageExtensions on PinChatMessage {
   PinChatMessage copy(
           {int? chatId,
           int? messageId,
@@ -7575,25 +10537,25 @@ extension PinChatMessageCopyExtension on PinChatMessage {
           onlyForSelf: onlyForSelf ?? this.onlyForSelf);
 }
 
-extension UnpinChatMessageCopyExtension on UnpinChatMessage {
+extension UnpinChatMessageExtensions on UnpinChatMessage {
   UnpinChatMessage copy({int? chatId, int? messageId}) => UnpinChatMessage(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension UnpinAllChatMessagesCopyExtension on UnpinAllChatMessages {
+extension UnpinAllChatMessagesExtensions on UnpinAllChatMessages {
   UnpinAllChatMessages copy({int? chatId}) =>
       UnpinAllChatMessages(chatId: chatId ?? this.chatId);
 }
 
-extension JoinChatCopyExtension on JoinChat {
+extension JoinChatExtensions on JoinChat {
   JoinChat copy({int? chatId}) => JoinChat(chatId: chatId ?? this.chatId);
 }
 
-extension LeaveChatCopyExtension on LeaveChat {
+extension LeaveChatExtensions on LeaveChat {
   LeaveChat copy({int? chatId}) => LeaveChat(chatId: chatId ?? this.chatId);
 }
 
-extension AddChatMemberCopyExtension on AddChatMember {
+extension AddChatMemberExtensions on AddChatMember {
   AddChatMember copy({int? chatId, int? userId, int? forwardLimit}) =>
       AddChatMember(
           chatId: chatId ?? this.chatId,
@@ -7601,12 +10563,12 @@ extension AddChatMemberCopyExtension on AddChatMember {
           forwardLimit: forwardLimit ?? this.forwardLimit);
 }
 
-extension AddChatMembersCopyExtension on AddChatMembers {
+extension AddChatMembersExtensions on AddChatMembers {
   AddChatMembers copy({int? chatId, List<int>? userIds}) => AddChatMembers(
       chatId: chatId ?? this.chatId, userIds: userIds ?? this.userIds);
 }
 
-extension SetChatMemberStatusCopyExtension on SetChatMemberStatus {
+extension SetChatMemberStatusExtensions on SetChatMemberStatus {
   SetChatMemberStatus copy(
           {int? chatId, int? userId, ChatMemberStatus? status}) =>
       SetChatMemberStatus(
@@ -7615,7 +10577,7 @@ extension SetChatMemberStatusCopyExtension on SetChatMemberStatus {
           status: status ?? this.status);
 }
 
-extension BanChatMemberCopyExtension on BanChatMember {
+extension BanChatMemberExtensions on BanChatMember {
   BanChatMember copy(
           {int? chatId,
           int? userId,
@@ -7628,7 +10590,7 @@ extension BanChatMemberCopyExtension on BanChatMember {
           revokeMessages: revokeMessages ?? this.revokeMessages);
 }
 
-extension TransferChatOwnershipCopyExtension on TransferChatOwnership {
+extension TransferChatOwnershipExtensions on TransferChatOwnership {
   TransferChatOwnership copy({int? chatId, int? userId, String? password}) =>
       TransferChatOwnership(
           chatId: chatId ?? this.chatId,
@@ -7636,12 +10598,12 @@ extension TransferChatOwnershipCopyExtension on TransferChatOwnership {
           password: password ?? this.password);
 }
 
-extension GetChatMemberCopyExtension on GetChatMember {
+extension GetChatMemberExtensions on GetChatMember {
   GetChatMember copy({int? chatId, int? userId}) => GetChatMember(
       chatId: chatId ?? this.chatId, userId: userId ?? this.userId);
 }
 
-extension SearchChatMembersCopyExtension on SearchChatMembers {
+extension SearchChatMembersExtensions on SearchChatMembers {
   SearchChatMembers copy(
           {int? chatId,
           String? query,
@@ -7654,18 +10616,18 @@ extension SearchChatMembersCopyExtension on SearchChatMembers {
           filter: filter ?? this.filter);
 }
 
-extension GetChatAdministratorsCopyExtension on GetChatAdministrators {
+extension GetChatAdministratorsExtensions on GetChatAdministrators {
   GetChatAdministrators copy({int? chatId}) =>
       GetChatAdministrators(chatId: chatId ?? this.chatId);
 }
 
-extension ClearAllDraftMessagesCopyExtension on ClearAllDraftMessages {
+extension ClearAllDraftMessagesExtensions on ClearAllDraftMessages {
   ClearAllDraftMessages copy({bool? excludeSecretChats}) =>
       ClearAllDraftMessages(
           excludeSecretChats: excludeSecretChats ?? this.excludeSecretChats);
 }
 
-extension GetChatNotificationSettingsExceptionsCopyExtension
+extension GetChatNotificationSettingsExceptionsExtensions
     on GetChatNotificationSettingsExceptions {
   GetChatNotificationSettingsExceptions copy(
           {NotificationSettingsScope? scope, bool? compareSound}) =>
@@ -7674,13 +10636,13 @@ extension GetChatNotificationSettingsExceptionsCopyExtension
           compareSound: compareSound ?? this.compareSound);
 }
 
-extension GetScopeNotificationSettingsCopyExtension
+extension GetScopeNotificationSettingsExtensions
     on GetScopeNotificationSettings {
   GetScopeNotificationSettings copy({NotificationSettingsScope? scope}) =>
       GetScopeNotificationSettings(scope: scope ?? this.scope);
 }
 
-extension SetScopeNotificationSettingsCopyExtension
+extension SetScopeNotificationSettingsExtensions
     on SetScopeNotificationSettings {
   SetScopeNotificationSettings copy(
           {NotificationSettingsScope? scope,
@@ -7691,7 +10653,7 @@ extension SetScopeNotificationSettingsCopyExtension
               notificationSettings ?? this.notificationSettings);
 }
 
-extension ToggleChatIsPinnedCopyExtension on ToggleChatIsPinned {
+extension ToggleChatIsPinnedExtensions on ToggleChatIsPinned {
   ToggleChatIsPinned copy({ChatList? chatList, int? chatId, bool? isPinned}) =>
       ToggleChatIsPinned(
           chatList: chatList ?? this.chatList,
@@ -7699,14 +10661,14 @@ extension ToggleChatIsPinnedCopyExtension on ToggleChatIsPinned {
           isPinned: isPinned ?? this.isPinned);
 }
 
-extension SetPinnedChatsCopyExtension on SetPinnedChats {
+extension SetPinnedChatsExtensions on SetPinnedChats {
   SetPinnedChats copy({ChatList? chatList, List<int>? chatIds}) =>
       SetPinnedChats(
           chatList: chatList ?? this.chatList,
           chatIds: chatIds ?? this.chatIds);
 }
 
-extension DownloadFileCopyExtension on DownloadFile {
+extension DownloadFileExtensions on DownloadFile {
   DownloadFile copy(
           {int? fileId,
           int? priority,
@@ -7721,21 +10683,20 @@ extension DownloadFileCopyExtension on DownloadFile {
           synchronous: synchronous ?? this.synchronous);
 }
 
-extension GetFileDownloadedPrefixSizeCopyExtension
-    on GetFileDownloadedPrefixSize {
+extension GetFileDownloadedPrefixSizeExtensions on GetFileDownloadedPrefixSize {
   GetFileDownloadedPrefixSize copy({int? fileId, int? offset}) =>
       GetFileDownloadedPrefixSize(
           fileId: fileId ?? this.fileId, offset: offset ?? this.offset);
 }
 
-extension CancelDownloadFileCopyExtension on CancelDownloadFile {
+extension CancelDownloadFileExtensions on CancelDownloadFile {
   CancelDownloadFile copy({int? fileId, bool? onlyIfPending}) =>
       CancelDownloadFile(
           fileId: fileId ?? this.fileId,
           onlyIfPending: onlyIfPending ?? this.onlyIfPending);
 }
 
-extension UploadFileCopyExtension on UploadFile {
+extension UploadFileExtensions on UploadFile {
   UploadFile copy({InputFile? file, FileType? fileType, int? priority}) =>
       UploadFile(
           file: file ?? this.file,
@@ -7743,12 +10704,12 @@ extension UploadFileCopyExtension on UploadFile {
           priority: priority ?? this.priority);
 }
 
-extension CancelUploadFileCopyExtension on CancelUploadFile {
+extension CancelUploadFileExtensions on CancelUploadFile {
   CancelUploadFile copy({int? fileId}) =>
       CancelUploadFile(fileId: fileId ?? this.fileId);
 }
 
-extension WriteGeneratedFilePartCopyExtension on WriteGeneratedFilePart {
+extension WriteGeneratedFilePartExtensions on WriteGeneratedFilePart {
   WriteGeneratedFilePart copy({int? generationId, int? offset, String? data}) =>
       WriteGeneratedFilePart(
           generationId: generationId ?? this.generationId,
@@ -7756,7 +10717,7 @@ extension WriteGeneratedFilePartCopyExtension on WriteGeneratedFilePart {
           data: data ?? this.data);
 }
 
-extension SetFileGenerationProgressCopyExtension on SetFileGenerationProgress {
+extension SetFileGenerationProgressExtensions on SetFileGenerationProgress {
   SetFileGenerationProgress copy(
           {int? generationId, int? expectedSize, int? localPrefixSize}) =>
       SetFileGenerationProgress(
@@ -7765,36 +10726,36 @@ extension SetFileGenerationProgressCopyExtension on SetFileGenerationProgress {
           localPrefixSize: localPrefixSize ?? this.localPrefixSize);
 }
 
-extension FinishFileGenerationCopyExtension on FinishFileGeneration {
+extension FinishFileGenerationExtensions on FinishFileGeneration {
   FinishFileGeneration copy({int? generationId, TdError? error}) =>
       FinishFileGeneration(
           generationId: generationId ?? this.generationId,
           error: error ?? this.error);
 }
 
-extension ReadFilePartCopyExtension on ReadFilePart {
+extension ReadFilePartExtensions on ReadFilePart {
   ReadFilePart copy({int? fileId, int? offset, int? count}) => ReadFilePart(
       fileId: fileId ?? this.fileId,
       offset: offset ?? this.offset,
       count: count ?? this.count);
 }
 
-extension DeleteFileCopyExtension on DeleteFile {
+extension DeleteFileExtensions on DeleteFile {
   DeleteFile copy({int? fileId}) => DeleteFile(fileId: fileId ?? this.fileId);
 }
 
-extension GetMessageFileTypeCopyExtension on GetMessageFileType {
+extension GetMessageFileTypeExtensions on GetMessageFileType {
   GetMessageFileType copy({String? messageFileHead}) => GetMessageFileType(
       messageFileHead: messageFileHead ?? this.messageFileHead);
 }
 
-extension GetMessageImportConfirmationTextCopyExtension
+extension GetMessageImportConfirmationTextExtensions
     on GetMessageImportConfirmationText {
   GetMessageImportConfirmationText copy({int? chatId}) =>
       GetMessageImportConfirmationText(chatId: chatId ?? this.chatId);
 }
 
-extension ImportMessagesCopyExtension on ImportMessages {
+extension ImportMessagesExtensions on ImportMessages {
   ImportMessages copy(
           {int? chatId,
           InputFile? messageFile,
@@ -7805,13 +10766,13 @@ extension ImportMessagesCopyExtension on ImportMessages {
           attachedFiles: attachedFiles ?? this.attachedFiles);
 }
 
-extension ReplacePrimaryChatInviteLinkCopyExtension
+extension ReplacePrimaryChatInviteLinkExtensions
     on ReplacePrimaryChatInviteLink {
   ReplacePrimaryChatInviteLink copy({int? chatId}) =>
       ReplacePrimaryChatInviteLink(chatId: chatId ?? this.chatId);
 }
 
-extension CreateChatInviteLinkCopyExtension on CreateChatInviteLink {
+extension CreateChatInviteLinkExtensions on CreateChatInviteLink {
   CreateChatInviteLink copy({int? chatId, int? expireDate, int? memberLimit}) =>
       CreateChatInviteLink(
           chatId: chatId ?? this.chatId,
@@ -7819,7 +10780,7 @@ extension CreateChatInviteLinkCopyExtension on CreateChatInviteLink {
           memberLimit: memberLimit ?? this.memberLimit);
 }
 
-extension EditChatInviteLinkCopyExtension on EditChatInviteLink {
+extension EditChatInviteLinkExtensions on EditChatInviteLink {
   EditChatInviteLink copy(
           {int? chatId,
           String? inviteLink,
@@ -7832,19 +10793,19 @@ extension EditChatInviteLinkCopyExtension on EditChatInviteLink {
           memberLimit: memberLimit ?? this.memberLimit);
 }
 
-extension GetChatInviteLinkCopyExtension on GetChatInviteLink {
+extension GetChatInviteLinkExtensions on GetChatInviteLink {
   GetChatInviteLink copy({int? chatId, String? inviteLink}) =>
       GetChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension GetChatInviteLinkCountsCopyExtension on GetChatInviteLinkCounts {
+extension GetChatInviteLinkCountsExtensions on GetChatInviteLinkCounts {
   GetChatInviteLinkCounts copy({int? chatId}) =>
       GetChatInviteLinkCounts(chatId: chatId ?? this.chatId);
 }
 
-extension GetChatInviteLinksCopyExtension on GetChatInviteLinks {
+extension GetChatInviteLinksExtensions on GetChatInviteLinks {
   GetChatInviteLinks copy(
           {int? chatId,
           int? creatorUserId,
@@ -7861,7 +10822,7 @@ extension GetChatInviteLinksCopyExtension on GetChatInviteLinks {
           limit: limit ?? this.limit);
 }
 
-extension GetChatInviteLinkMembersCopyExtension on GetChatInviteLinkMembers {
+extension GetChatInviteLinkMembersExtensions on GetChatInviteLinkMembers {
   GetChatInviteLinkMembers copy(
           {int? chatId,
           String? inviteLink,
@@ -7874,22 +10835,21 @@ extension GetChatInviteLinkMembersCopyExtension on GetChatInviteLinkMembers {
           limit: limit ?? this.limit);
 }
 
-extension RevokeChatInviteLinkCopyExtension on RevokeChatInviteLink {
+extension RevokeChatInviteLinkExtensions on RevokeChatInviteLink {
   RevokeChatInviteLink copy({int? chatId, String? inviteLink}) =>
       RevokeChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension DeleteRevokedChatInviteLinkCopyExtension
-    on DeleteRevokedChatInviteLink {
+extension DeleteRevokedChatInviteLinkExtensions on DeleteRevokedChatInviteLink {
   DeleteRevokedChatInviteLink copy({int? chatId, String? inviteLink}) =>
       DeleteRevokedChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension DeleteAllRevokedChatInviteLinksCopyExtension
+extension DeleteAllRevokedChatInviteLinksExtensions
     on DeleteAllRevokedChatInviteLinks {
   DeleteAllRevokedChatInviteLinks copy({int? chatId, int? creatorUserId}) =>
       DeleteAllRevokedChatInviteLinks(
@@ -7897,17 +10857,17 @@ extension DeleteAllRevokedChatInviteLinksCopyExtension
           creatorUserId: creatorUserId ?? this.creatorUserId);
 }
 
-extension CheckChatInviteLinkCopyExtension on CheckChatInviteLink {
+extension CheckChatInviteLinkExtensions on CheckChatInviteLink {
   CheckChatInviteLink copy({String? inviteLink}) =>
       CheckChatInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension JoinChatByInviteLinkCopyExtension on JoinChatByInviteLink {
+extension JoinChatByInviteLinkExtensions on JoinChatByInviteLink {
   JoinChatByInviteLink copy({String? inviteLink}) =>
       JoinChatByInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 }
 
-extension CreateCallCopyExtension on CreateCall {
+extension CreateCallExtensions on CreateCall {
   CreateCall copy({int? userId, CallProtocol? protocol, bool? isVideo}) =>
       CreateCall(
           userId: userId ?? this.userId,
@@ -7915,18 +10875,18 @@ extension CreateCallCopyExtension on CreateCall {
           isVideo: isVideo ?? this.isVideo);
 }
 
-extension AcceptCallCopyExtension on AcceptCall {
+extension AcceptCallExtensions on AcceptCall {
   AcceptCall copy({int? callId, CallProtocol? protocol}) => AcceptCall(
       callId: callId ?? this.callId, protocol: protocol ?? this.protocol);
 }
 
-extension SendCallSignalingDataCopyExtension on SendCallSignalingData {
+extension SendCallSignalingDataExtensions on SendCallSignalingData {
   SendCallSignalingData copy({int? callId, String? data}) =>
       SendCallSignalingData(
           callId: callId ?? this.callId, data: data ?? this.data);
 }
 
-extension DiscardCallCopyExtension on DiscardCall {
+extension DiscardCallExtensions on DiscardCall {
   DiscardCall copy(
           {int? callId,
           bool? isDisconnected,
@@ -7941,7 +10901,7 @@ extension DiscardCallCopyExtension on DiscardCall {
           connectionId: connectionId ?? this.connectionId);
 }
 
-extension SendCallRatingCopyExtension on SendCallRating {
+extension SendCallRatingExtensions on SendCallRating {
   SendCallRating copy(
           {int? callId,
           int? rating,
@@ -7954,30 +10914,30 @@ extension SendCallRatingCopyExtension on SendCallRating {
           problems: problems ?? this.problems);
 }
 
-extension SendCallDebugInformationCopyExtension on SendCallDebugInformation {
+extension SendCallDebugInformationExtensions on SendCallDebugInformation {
   SendCallDebugInformation copy({int? callId, String? debugInformation}) =>
       SendCallDebugInformation(
           callId: callId ?? this.callId,
           debugInformation: debugInformation ?? this.debugInformation);
 }
 
-extension GetAvailableVoiceChatAliasesCopyExtension
+extension GetAvailableVoiceChatAliasesExtensions
     on GetAvailableVoiceChatAliases {
   GetAvailableVoiceChatAliases copy({int? chatId}) =>
       GetAvailableVoiceChatAliases(chatId: chatId ?? this.chatId);
 }
 
-extension CreateVoiceChatCopyExtension on CreateVoiceChat {
+extension CreateVoiceChatExtensions on CreateVoiceChat {
   CreateVoiceChat copy({int? chatId}) =>
       CreateVoiceChat(chatId: chatId ?? this.chatId);
 }
 
-extension GetGroupCallCopyExtension on GetGroupCall {
+extension GetGroupCallExtensions on GetGroupCall {
   GetGroupCall copy({int? groupCallId}) =>
       GetGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension JoinGroupCallCopyExtension on JoinGroupCall {
+extension JoinGroupCallExtensions on JoinGroupCall {
   JoinGroupCall copy(
           {int? groupCallId,
           MessageSender? participantAlias,
@@ -7994,14 +10954,14 @@ extension JoinGroupCallCopyExtension on JoinGroupCall {
           inviteHash: inviteHash ?? this.inviteHash);
 }
 
-extension SetGroupCallTitleCopyExtension on SetGroupCallTitle {
+extension SetGroupCallTitleExtensions on SetGroupCallTitle {
   SetGroupCallTitle copy({int? groupCallId, String? title}) =>
       SetGroupCallTitle(
           groupCallId: groupCallId ?? this.groupCallId,
           title: title ?? this.title);
 }
 
-extension ToggleGroupCallMuteNewParticipantsCopyExtension
+extension ToggleGroupCallMuteNewParticipantsExtensions
     on ToggleGroupCallMuteNewParticipants {
   ToggleGroupCallMuteNewParticipants copy(
           {int? groupCallId, bool? muteNewParticipants}) =>
@@ -8010,39 +10970,38 @@ extension ToggleGroupCallMuteNewParticipantsCopyExtension
           muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants);
 }
 
-extension RevokeGroupCallInviteLinkCopyExtension on RevokeGroupCallInviteLink {
+extension RevokeGroupCallInviteLinkExtensions on RevokeGroupCallInviteLink {
   RevokeGroupCallInviteLink copy({int? groupCallId}) =>
       RevokeGroupCallInviteLink(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension InviteGroupCallParticipantsCopyExtension
-    on InviteGroupCallParticipants {
+extension InviteGroupCallParticipantsExtensions on InviteGroupCallParticipants {
   InviteGroupCallParticipants copy({int? groupCallId, List<int>? userIds}) =>
       InviteGroupCallParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
           userIds: userIds ?? this.userIds);
 }
 
-extension GetGroupCallInviteLinkCopyExtension on GetGroupCallInviteLink {
+extension GetGroupCallInviteLinkExtensions on GetGroupCallInviteLink {
   GetGroupCallInviteLink copy({int? groupCallId, bool? canSelfUnmute}) =>
       GetGroupCallInviteLink(
           groupCallId: groupCallId ?? this.groupCallId,
           canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute);
 }
 
-extension StartGroupCallRecordingCopyExtension on StartGroupCallRecording {
+extension StartGroupCallRecordingExtensions on StartGroupCallRecording {
   StartGroupCallRecording copy({int? groupCallId, String? title}) =>
       StartGroupCallRecording(
           groupCallId: groupCallId ?? this.groupCallId,
           title: title ?? this.title);
 }
 
-extension EndGroupCallRecordingCopyExtension on EndGroupCallRecording {
+extension EndGroupCallRecordingExtensions on EndGroupCallRecording {
   EndGroupCallRecording copy({int? groupCallId}) =>
       EndGroupCallRecording(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension SetGroupCallParticipantIsSpeakingCopyExtension
+extension SetGroupCallParticipantIsSpeakingExtensions
     on SetGroupCallParticipantIsSpeaking {
   SetGroupCallParticipantIsSpeaking copy(
           {int? groupCallId, int? source, bool? isSpeaking}) =>
@@ -8052,7 +11011,7 @@ extension SetGroupCallParticipantIsSpeakingCopyExtension
           isSpeaking: isSpeaking ?? this.isSpeaking);
 }
 
-extension ToggleGroupCallParticipantIsMutedCopyExtension
+extension ToggleGroupCallParticipantIsMutedExtensions
     on ToggleGroupCallParticipantIsMuted {
   ToggleGroupCallParticipantIsMuted copy(
           {int? groupCallId, MessageSender? participant, bool? isMuted}) =>
@@ -8062,7 +11021,7 @@ extension ToggleGroupCallParticipantIsMutedCopyExtension
           isMuted: isMuted ?? this.isMuted);
 }
 
-extension SetGroupCallParticipantVolumeLevelCopyExtension
+extension SetGroupCallParticipantVolumeLevelExtensions
     on SetGroupCallParticipantVolumeLevel {
   SetGroupCallParticipantVolumeLevel copy(
           {int? groupCallId, MessageSender? participant, int? volumeLevel}) =>
@@ -8072,7 +11031,7 @@ extension SetGroupCallParticipantVolumeLevelCopyExtension
           volumeLevel: volumeLevel ?? this.volumeLevel);
 }
 
-extension ToggleGroupCallParticipantIsHandRaisedCopyExtension
+extension ToggleGroupCallParticipantIsHandRaisedExtensions
     on ToggleGroupCallParticipantIsHandRaised {
   ToggleGroupCallParticipantIsHandRaised copy(
           {int? groupCallId, MessageSender? participant, bool? isHandRaised}) =>
@@ -8082,24 +11041,24 @@ extension ToggleGroupCallParticipantIsHandRaisedCopyExtension
           isHandRaised: isHandRaised ?? this.isHandRaised);
 }
 
-extension LoadGroupCallParticipantsCopyExtension on LoadGroupCallParticipants {
+extension LoadGroupCallParticipantsExtensions on LoadGroupCallParticipants {
   LoadGroupCallParticipants copy({int? groupCallId, int? limit}) =>
       LoadGroupCallParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
           limit: limit ?? this.limit);
 }
 
-extension LeaveGroupCallCopyExtension on LeaveGroupCall {
+extension LeaveGroupCallExtensions on LeaveGroupCall {
   LeaveGroupCall copy({int? groupCallId}) =>
       LeaveGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension DiscardGroupCallCopyExtension on DiscardGroupCall {
+extension DiscardGroupCallExtensions on DiscardGroupCall {
   DiscardGroupCall copy({int? groupCallId}) =>
       DiscardGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
-extension GetGroupCallStreamSegmentCopyExtension on GetGroupCallStreamSegment {
+extension GetGroupCallStreamSegmentExtensions on GetGroupCallStreamSegment {
   GetGroupCallStreamSegment copy(
           {int? groupCallId, int? timeOffset, int? scale}) =>
       GetGroupCallStreamSegment(
@@ -8108,7 +11067,7 @@ extension GetGroupCallStreamSegmentCopyExtension on GetGroupCallStreamSegment {
           scale: scale ?? this.scale);
 }
 
-extension ToggleMessageSenderIsBlockedCopyExtension
+extension ToggleMessageSenderIsBlockedExtensions
     on ToggleMessageSenderIsBlocked {
   ToggleMessageSenderIsBlocked copy({MessageSender? sender, bool? isBlocked}) =>
       ToggleMessageSenderIsBlocked(
@@ -8116,7 +11075,7 @@ extension ToggleMessageSenderIsBlockedCopyExtension
           isBlocked: isBlocked ?? this.isBlocked);
 }
 
-extension BlockMessageSenderFromRepliesCopyExtension
+extension BlockMessageSenderFromRepliesExtensions
     on BlockMessageSenderFromReplies {
   BlockMessageSenderFromReplies copy(
           {int? messageId,
@@ -8130,44 +11089,44 @@ extension BlockMessageSenderFromRepliesCopyExtension
           reportSpam: reportSpam ?? this.reportSpam);
 }
 
-extension GetBlockedMessageSendersCopyExtension on GetBlockedMessageSenders {
+extension GetBlockedMessageSendersExtensions on GetBlockedMessageSenders {
   GetBlockedMessageSenders copy({int? offset, int? limit}) =>
       GetBlockedMessageSenders(
           offset: offset ?? this.offset, limit: limit ?? this.limit);
 }
 
-extension AddContactCopyExtension on AddContact {
+extension AddContactExtensions on AddContact {
   AddContact copy({Contact? contact, bool? sharePhoneNumber}) => AddContact(
       contact: contact ?? this.contact,
       sharePhoneNumber: sharePhoneNumber ?? this.sharePhoneNumber);
 }
 
-extension ImportContactsCopyExtension on ImportContacts {
+extension ImportContactsExtensions on ImportContacts {
   ImportContacts copy({List<Contact>? contacts}) =>
       ImportContacts(contacts: contacts ?? this.contacts);
 }
 
-extension SearchContactsCopyExtension on SearchContacts {
+extension SearchContactsExtensions on SearchContacts {
   SearchContacts copy({String? query, int? limit}) =>
       SearchContacts(query: query ?? this.query, limit: limit ?? this.limit);
 }
 
-extension RemoveContactsCopyExtension on RemoveContacts {
+extension RemoveContactsExtensions on RemoveContacts {
   RemoveContacts copy({List<int>? userIds}) =>
       RemoveContacts(userIds: userIds ?? this.userIds);
 }
 
-extension ChangeImportedContactsCopyExtension on ChangeImportedContacts {
+extension ChangeImportedContactsExtensions on ChangeImportedContacts {
   ChangeImportedContacts copy({List<Contact>? contacts}) =>
       ChangeImportedContacts(contacts: contacts ?? this.contacts);
 }
 
-extension SharePhoneNumberCopyExtension on SharePhoneNumber {
+extension SharePhoneNumberExtensions on SharePhoneNumber {
   SharePhoneNumber copy({int? userId}) =>
       SharePhoneNumber(userId: userId ?? this.userId);
 }
 
-extension GetUserProfilePhotosCopyExtension on GetUserProfilePhotos {
+extension GetUserProfilePhotosExtensions on GetUserProfilePhotos {
   GetUserProfilePhotos copy({int? userId, int? offset, int? limit}) =>
       GetUserProfilePhotos(
           userId: userId ?? this.userId,
@@ -8175,22 +11134,22 @@ extension GetUserProfilePhotosCopyExtension on GetUserProfilePhotos {
           limit: limit ?? this.limit);
 }
 
-extension GetStickersCopyExtension on GetStickers {
+extension GetStickersExtensions on GetStickers {
   GetStickers copy({String? emoji, int? limit}) =>
       GetStickers(emoji: emoji ?? this.emoji, limit: limit ?? this.limit);
 }
 
-extension SearchStickersCopyExtension on SearchStickers {
+extension SearchStickersExtensions on SearchStickers {
   SearchStickers copy({String? emoji, int? limit}) =>
       SearchStickers(emoji: emoji ?? this.emoji, limit: limit ?? this.limit);
 }
 
-extension GetInstalledStickerSetsCopyExtension on GetInstalledStickerSets {
+extension GetInstalledStickerSetsExtensions on GetInstalledStickerSets {
   GetInstalledStickerSets copy({bool? isMasks}) =>
       GetInstalledStickerSets(isMasks: isMasks ?? this.isMasks);
 }
 
-extension GetArchivedStickerSetsCopyExtension on GetArchivedStickerSets {
+extension GetArchivedStickerSetsExtensions on GetArchivedStickerSets {
   GetArchivedStickerSets copy(
           {bool? isMasks, int? offsetStickerSetId, int? limit}) =>
       GetArchivedStickerSets(
@@ -8199,28 +11158,27 @@ extension GetArchivedStickerSetsCopyExtension on GetArchivedStickerSets {
           limit: limit ?? this.limit);
 }
 
-extension GetTrendingStickerSetsCopyExtension on GetTrendingStickerSets {
+extension GetTrendingStickerSetsExtensions on GetTrendingStickerSets {
   GetTrendingStickerSets copy({int? offset, int? limit}) =>
       GetTrendingStickerSets(
           offset: offset ?? this.offset, limit: limit ?? this.limit);
 }
 
-extension GetAttachedStickerSetsCopyExtension on GetAttachedStickerSets {
+extension GetAttachedStickerSetsExtensions on GetAttachedStickerSets {
   GetAttachedStickerSets copy({int? fileId}) =>
       GetAttachedStickerSets(fileId: fileId ?? this.fileId);
 }
 
-extension GetStickerSetCopyExtension on GetStickerSet {
+extension GetStickerSetExtensions on GetStickerSet {
   GetStickerSet copy({int? setId}) => GetStickerSet(setId: setId ?? this.setId);
 }
 
-extension SearchStickerSetCopyExtension on SearchStickerSet {
+extension SearchStickerSetExtensions on SearchStickerSet {
   SearchStickerSet copy({String? name}) =>
       SearchStickerSet(name: name ?? this.name);
 }
 
-extension SearchInstalledStickerSetsCopyExtension
-    on SearchInstalledStickerSets {
+extension SearchInstalledStickerSetsExtensions on SearchInstalledStickerSets {
   SearchInstalledStickerSets copy({bool? isMasks, String? query, int? limit}) =>
       SearchInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
@@ -8228,12 +11186,12 @@ extension SearchInstalledStickerSetsCopyExtension
           limit: limit ?? this.limit);
 }
 
-extension SearchStickerSetsCopyExtension on SearchStickerSets {
+extension SearchStickerSetsExtensions on SearchStickerSets {
   SearchStickerSets copy({String? query}) =>
       SearchStickerSets(query: query ?? this.query);
 }
 
-extension ChangeStickerSetCopyExtension on ChangeStickerSet {
+extension ChangeStickerSetExtensions on ChangeStickerSet {
   ChangeStickerSet copy({int? setId, bool? isInstalled, bool? isArchived}) =>
       ChangeStickerSet(
           setId: setId ?? this.setId,
@@ -8241,60 +11199,59 @@ extension ChangeStickerSetCopyExtension on ChangeStickerSet {
           isArchived: isArchived ?? this.isArchived);
 }
 
-extension ViewTrendingStickerSetsCopyExtension on ViewTrendingStickerSets {
+extension ViewTrendingStickerSetsExtensions on ViewTrendingStickerSets {
   ViewTrendingStickerSets copy({List<int>? stickerSetIds}) =>
       ViewTrendingStickerSets(
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
-extension ReorderInstalledStickerSetsCopyExtension
-    on ReorderInstalledStickerSets {
+extension ReorderInstalledStickerSetsExtensions on ReorderInstalledStickerSets {
   ReorderInstalledStickerSets copy({bool? isMasks, List<int>? stickerSetIds}) =>
       ReorderInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
-extension GetRecentStickersCopyExtension on GetRecentStickers {
+extension GetRecentStickersExtensions on GetRecentStickers {
   GetRecentStickers copy({bool? isAttached}) =>
       GetRecentStickers(isAttached: isAttached ?? this.isAttached);
 }
 
-extension AddRecentStickerCopyExtension on AddRecentSticker {
+extension AddRecentStickerExtensions on AddRecentSticker {
   AddRecentSticker copy({bool? isAttached, InputFile? sticker}) =>
       AddRecentSticker(
           isAttached: isAttached ?? this.isAttached,
           sticker: sticker ?? this.sticker);
 }
 
-extension RemoveRecentStickerCopyExtension on RemoveRecentSticker {
+extension RemoveRecentStickerExtensions on RemoveRecentSticker {
   RemoveRecentSticker copy({bool? isAttached, InputFile? sticker}) =>
       RemoveRecentSticker(
           isAttached: isAttached ?? this.isAttached,
           sticker: sticker ?? this.sticker);
 }
 
-extension ClearRecentStickersCopyExtension on ClearRecentStickers {
+extension ClearRecentStickersExtensions on ClearRecentStickers {
   ClearRecentStickers copy({bool? isAttached}) =>
       ClearRecentStickers(isAttached: isAttached ?? this.isAttached);
 }
 
-extension AddFavoriteStickerCopyExtension on AddFavoriteSticker {
+extension AddFavoriteStickerExtensions on AddFavoriteSticker {
   AddFavoriteSticker copy({InputFile? sticker}) =>
       AddFavoriteSticker(sticker: sticker ?? this.sticker);
 }
 
-extension RemoveFavoriteStickerCopyExtension on RemoveFavoriteSticker {
+extension RemoveFavoriteStickerExtensions on RemoveFavoriteSticker {
   RemoveFavoriteSticker copy({InputFile? sticker}) =>
       RemoveFavoriteSticker(sticker: sticker ?? this.sticker);
 }
 
-extension GetStickerEmojisCopyExtension on GetStickerEmojis {
+extension GetStickerEmojisExtensions on GetStickerEmojis {
   GetStickerEmojis copy({InputFile? sticker}) =>
       GetStickerEmojis(sticker: sticker ?? this.sticker);
 }
 
-extension SearchEmojisCopyExtension on SearchEmojis {
+extension SearchEmojisExtensions on SearchEmojis {
   SearchEmojis copy(
           {String? text, bool? exactMatch, List<String>? inputLanguageCodes}) =>
       SearchEmojis(
@@ -8303,73 +11260,73 @@ extension SearchEmojisCopyExtension on SearchEmojis {
           inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes);
 }
 
-extension GetEmojiSuggestionsUrlCopyExtension on GetEmojiSuggestionsUrl {
+extension GetEmojiSuggestionsUrlExtensions on GetEmojiSuggestionsUrl {
   GetEmojiSuggestionsUrl copy({String? languageCode}) =>
       GetEmojiSuggestionsUrl(languageCode: languageCode ?? this.languageCode);
 }
 
-extension AddSavedAnimationCopyExtension on AddSavedAnimation {
+extension AddSavedAnimationExtensions on AddSavedAnimation {
   AddSavedAnimation copy({InputFile? animation}) =>
       AddSavedAnimation(animation: animation ?? this.animation);
 }
 
-extension RemoveSavedAnimationCopyExtension on RemoveSavedAnimation {
+extension RemoveSavedAnimationExtensions on RemoveSavedAnimation {
   RemoveSavedAnimation copy({InputFile? animation}) =>
       RemoveSavedAnimation(animation: animation ?? this.animation);
 }
 
-extension SearchHashtagsCopyExtension on SearchHashtags {
+extension SearchHashtagsExtensions on SearchHashtags {
   SearchHashtags copy({String? prefix, int? limit}) =>
       SearchHashtags(prefix: prefix ?? this.prefix, limit: limit ?? this.limit);
 }
 
-extension RemoveRecentHashtagCopyExtension on RemoveRecentHashtag {
+extension RemoveRecentHashtagExtensions on RemoveRecentHashtag {
   RemoveRecentHashtag copy({String? hashtag}) =>
       RemoveRecentHashtag(hashtag: hashtag ?? this.hashtag);
 }
 
-extension GetWebPagePreviewCopyExtension on GetWebPagePreview {
+extension GetWebPagePreviewExtensions on GetWebPagePreview {
   GetWebPagePreview copy({FormattedText? text}) =>
       GetWebPagePreview(text: text ?? this.text);
 }
 
-extension GetWebPageInstantViewCopyExtension on GetWebPageInstantView {
+extension GetWebPageInstantViewExtensions on GetWebPageInstantView {
   GetWebPageInstantView copy({String? url, bool? forceFull}) =>
       GetWebPageInstantView(
           url: url ?? this.url, forceFull: forceFull ?? this.forceFull);
 }
 
-extension SetProfilePhotoCopyExtension on SetProfilePhoto {
+extension SetProfilePhotoExtensions on SetProfilePhoto {
   SetProfilePhoto copy({InputChatPhoto? photo}) =>
       SetProfilePhoto(photo: photo ?? this.photo);
 }
 
-extension DeleteProfilePhotoCopyExtension on DeleteProfilePhoto {
+extension DeleteProfilePhotoExtensions on DeleteProfilePhoto {
   DeleteProfilePhoto copy({int? profilePhotoId}) =>
       DeleteProfilePhoto(profilePhotoId: profilePhotoId ?? this.profilePhotoId);
 }
 
-extension SetNameCopyExtension on SetName {
+extension SetNameExtensions on SetName {
   SetName copy({String? firstName, String? lastName}) => SetName(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName);
 }
 
-extension SetBioCopyExtension on SetBio {
+extension SetBioExtensions on SetBio {
   SetBio copy({String? bio}) => SetBio(bio: bio ?? this.bio);
 }
 
-extension SetUsernameCopyExtension on SetUsername {
+extension SetUsernameExtensions on SetUsername {
   SetUsername copy({String? username}) =>
       SetUsername(username: username ?? this.username);
 }
 
-extension SetLocationCopyExtension on SetLocation {
+extension SetLocationExtensions on SetLocation {
   SetLocation copy({Location? location}) =>
       SetLocation(location: location ?? this.location);
 }
 
-extension ChangePhoneNumberCopyExtension on ChangePhoneNumber {
+extension ChangePhoneNumberExtensions on ChangePhoneNumber {
   ChangePhoneNumber copy(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
       ChangePhoneNumber(
@@ -8377,42 +11334,41 @@ extension ChangePhoneNumberCopyExtension on ChangePhoneNumber {
           settings: settings ?? this.settings);
 }
 
-extension CheckChangePhoneNumberCodeCopyExtension
-    on CheckChangePhoneNumberCode {
+extension CheckChangePhoneNumberCodeExtensions on CheckChangePhoneNumberCode {
   CheckChangePhoneNumberCode copy({String? code}) =>
       CheckChangePhoneNumberCode(code: code ?? this.code);
 }
 
-extension SetCommandsCopyExtension on SetCommands {
+extension SetCommandsExtensions on SetCommands {
   SetCommands copy({List<BotCommand>? commands}) =>
       SetCommands(commands: commands ?? this.commands);
 }
 
-extension TerminateSessionCopyExtension on TerminateSession {
+extension TerminateSessionExtensions on TerminateSession {
   TerminateSession copy({int? sessionId}) =>
       TerminateSession(sessionId: sessionId ?? this.sessionId);
 }
 
-extension DisconnectWebsiteCopyExtension on DisconnectWebsite {
+extension DisconnectWebsiteExtensions on DisconnectWebsite {
   DisconnectWebsite copy({int? websiteId}) =>
       DisconnectWebsite(websiteId: websiteId ?? this.websiteId);
 }
 
-extension SetSupergroupUsernameCopyExtension on SetSupergroupUsername {
+extension SetSupergroupUsernameExtensions on SetSupergroupUsername {
   SetSupergroupUsername copy({int? supergroupId, String? username}) =>
       SetSupergroupUsername(
           supergroupId: supergroupId ?? this.supergroupId,
           username: username ?? this.username);
 }
 
-extension SetSupergroupStickerSetCopyExtension on SetSupergroupStickerSet {
+extension SetSupergroupStickerSetExtensions on SetSupergroupStickerSet {
   SetSupergroupStickerSet copy({int? supergroupId, int? stickerSetId}) =>
       SetSupergroupStickerSet(
           supergroupId: supergroupId ?? this.supergroupId,
           stickerSetId: stickerSetId ?? this.stickerSetId);
 }
 
-extension ToggleSupergroupSignMessagesCopyExtension
+extension ToggleSupergroupSignMessagesExtensions
     on ToggleSupergroupSignMessages {
   ToggleSupergroupSignMessages copy({int? supergroupId, bool? signMessages}) =>
       ToggleSupergroupSignMessages(
@@ -8420,7 +11376,7 @@ extension ToggleSupergroupSignMessagesCopyExtension
           signMessages: signMessages ?? this.signMessages);
 }
 
-extension ToggleSupergroupIsAllHistoryAvailableCopyExtension
+extension ToggleSupergroupIsAllHistoryAvailableExtensions
     on ToggleSupergroupIsAllHistoryAvailable {
   ToggleSupergroupIsAllHistoryAvailable copy(
           {int? supergroupId, bool? isAllHistoryAvailable}) =>
@@ -8430,14 +11386,14 @@ extension ToggleSupergroupIsAllHistoryAvailableCopyExtension
               isAllHistoryAvailable ?? this.isAllHistoryAvailable);
 }
 
-extension ToggleSupergroupIsBroadcastGroupCopyExtension
+extension ToggleSupergroupIsBroadcastGroupExtensions
     on ToggleSupergroupIsBroadcastGroup {
   ToggleSupergroupIsBroadcastGroup copy({int? supergroupId}) =>
       ToggleSupergroupIsBroadcastGroup(
           supergroupId: supergroupId ?? this.supergroupId);
 }
 
-extension ReportSupergroupSpamCopyExtension on ReportSupergroupSpam {
+extension ReportSupergroupSpamExtensions on ReportSupergroupSpam {
   ReportSupergroupSpam copy(
           {int? supergroupId, int? userId, List<int>? messageIds}) =>
       ReportSupergroupSpam(
@@ -8446,7 +11402,7 @@ extension ReportSupergroupSpamCopyExtension on ReportSupergroupSpam {
           messageIds: messageIds ?? this.messageIds);
 }
 
-extension GetSupergroupMembersCopyExtension on GetSupergroupMembers {
+extension GetSupergroupMembersExtensions on GetSupergroupMembers {
   GetSupergroupMembers copy(
           {int? supergroupId,
           SupergroupMembersFilter? filter,
@@ -8459,12 +11415,12 @@ extension GetSupergroupMembersCopyExtension on GetSupergroupMembers {
           limit: limit ?? this.limit);
 }
 
-extension CloseSecretChatCopyExtension on CloseSecretChat {
+extension CloseSecretChatExtensions on CloseSecretChat {
   CloseSecretChat copy({int? secretChatId}) =>
       CloseSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
-extension GetChatEventLogCopyExtension on GetChatEventLog {
+extension GetChatEventLogExtensions on GetChatEventLog {
   GetChatEventLog copy(
           {int? chatId,
           String? query,
@@ -8481,12 +11437,12 @@ extension GetChatEventLogCopyExtension on GetChatEventLog {
           userIds: userIds ?? this.userIds);
 }
 
-extension GetPaymentFormCopyExtension on GetPaymentForm {
+extension GetPaymentFormExtensions on GetPaymentForm {
   GetPaymentForm copy({int? chatId, int? messageId}) => GetPaymentForm(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension ValidateOrderInfoCopyExtension on ValidateOrderInfo {
+extension ValidateOrderInfoExtensions on ValidateOrderInfo {
   ValidateOrderInfo copy(
           {int? chatId,
           int? messageId,
@@ -8499,7 +11455,7 @@ extension ValidateOrderInfoCopyExtension on ValidateOrderInfo {
           allowSave: allowSave ?? this.allowSave);
 }
 
-extension SendPaymentFormCopyExtension on SendPaymentForm {
+extension SendPaymentFormExtensions on SendPaymentForm {
   SendPaymentForm copy(
           {int? chatId,
           int? messageId,
@@ -8514,27 +11470,27 @@ extension SendPaymentFormCopyExtension on SendPaymentForm {
           credentials: credentials ?? this.credentials);
 }
 
-extension GetPaymentReceiptCopyExtension on GetPaymentReceipt {
+extension GetPaymentReceiptExtensions on GetPaymentReceipt {
   GetPaymentReceipt copy({int? chatId, int? messageId}) => GetPaymentReceipt(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
-extension GetBackgroundsCopyExtension on GetBackgrounds {
+extension GetBackgroundsExtensions on GetBackgrounds {
   GetBackgrounds copy({bool? forDarkTheme}) =>
       GetBackgrounds(forDarkTheme: forDarkTheme ?? this.forDarkTheme);
 }
 
-extension GetBackgroundUrlCopyExtension on GetBackgroundUrl {
+extension GetBackgroundUrlExtensions on GetBackgroundUrl {
   GetBackgroundUrl copy({String? name, BackgroundType? type}) =>
       GetBackgroundUrl(name: name ?? this.name, type: type ?? this.type);
 }
 
-extension SearchBackgroundCopyExtension on SearchBackground {
+extension SearchBackgroundExtensions on SearchBackground {
   SearchBackground copy({String? name}) =>
       SearchBackground(name: name ?? this.name);
 }
 
-extension SetBackgroundCopyExtension on SetBackground {
+extension SetBackgroundExtensions on SetBackground {
   SetBackground copy(
           {InputBackground? background,
           BackgroundType? type,
@@ -8545,56 +11501,53 @@ extension SetBackgroundCopyExtension on SetBackground {
           forDarkTheme: forDarkTheme ?? this.forDarkTheme);
 }
 
-extension RemoveBackgroundCopyExtension on RemoveBackground {
+extension RemoveBackgroundExtensions on RemoveBackground {
   RemoveBackground copy({int? backgroundId}) =>
       RemoveBackground(backgroundId: backgroundId ?? this.backgroundId);
 }
 
-extension GetLocalizationTargetInfoCopyExtension on GetLocalizationTargetInfo {
+extension GetLocalizationTargetInfoExtensions on GetLocalizationTargetInfo {
   GetLocalizationTargetInfo copy({bool? onlyLocal}) =>
       GetLocalizationTargetInfo(onlyLocal: onlyLocal ?? this.onlyLocal);
 }
 
-extension GetLanguagePackInfoCopyExtension on GetLanguagePackInfo {
+extension GetLanguagePackInfoExtensions on GetLanguagePackInfo {
   GetLanguagePackInfo copy({String? languagePackId}) => GetLanguagePackInfo(
       languagePackId: languagePackId ?? this.languagePackId);
 }
 
-extension GetLanguagePackStringsCopyExtension on GetLanguagePackStrings {
+extension GetLanguagePackStringsExtensions on GetLanguagePackStrings {
   GetLanguagePackStrings copy({String? languagePackId, List<String>? keys}) =>
       GetLanguagePackStrings(
           languagePackId: languagePackId ?? this.languagePackId,
           keys: keys ?? this.keys);
 }
 
-extension SynchronizeLanguagePackCopyExtension on SynchronizeLanguagePack {
+extension SynchronizeLanguagePackExtensions on SynchronizeLanguagePack {
   SynchronizeLanguagePack copy({String? languagePackId}) =>
       SynchronizeLanguagePack(
           languagePackId: languagePackId ?? this.languagePackId);
 }
 
-extension AddCustomServerLanguagePackCopyExtension
-    on AddCustomServerLanguagePack {
+extension AddCustomServerLanguagePackExtensions on AddCustomServerLanguagePack {
   AddCustomServerLanguagePack copy({String? languagePackId}) =>
       AddCustomServerLanguagePack(
           languagePackId: languagePackId ?? this.languagePackId);
 }
 
-extension SetCustomLanguagePackCopyExtension on SetCustomLanguagePack {
+extension SetCustomLanguagePackExtensions on SetCustomLanguagePack {
   SetCustomLanguagePack copy(
           {LanguagePackInfo? info, List<LanguagePackString>? strings}) =>
       SetCustomLanguagePack(
           info: info ?? this.info, strings: strings ?? this.strings);
 }
 
-extension EditCustomLanguagePackInfoCopyExtension
-    on EditCustomLanguagePackInfo {
+extension EditCustomLanguagePackInfoExtensions on EditCustomLanguagePackInfo {
   EditCustomLanguagePackInfo copy({LanguagePackInfo? info}) =>
       EditCustomLanguagePackInfo(info: info ?? this.info);
 }
 
-extension SetCustomLanguagePackStringCopyExtension
-    on SetCustomLanguagePackString {
+extension SetCustomLanguagePackStringExtensions on SetCustomLanguagePackString {
   SetCustomLanguagePackString copy(
           {String? languagePackId, LanguagePackString? newString}) =>
       SetCustomLanguagePackString(
@@ -8602,71 +11555,69 @@ extension SetCustomLanguagePackStringCopyExtension
           newString: newString ?? this.newString);
 }
 
-extension DeleteLanguagePackCopyExtension on DeleteLanguagePack {
+extension DeleteLanguagePackExtensions on DeleteLanguagePack {
   DeleteLanguagePack copy({String? languagePackId}) =>
       DeleteLanguagePack(languagePackId: languagePackId ?? this.languagePackId);
 }
 
-extension RegisterDeviceCopyExtension on RegisterDevice {
+extension RegisterDeviceExtensions on RegisterDevice {
   RegisterDevice copy({DeviceToken? deviceToken, List<int>? otherUserIds}) =>
       RegisterDevice(
           deviceToken: deviceToken ?? this.deviceToken,
           otherUserIds: otherUserIds ?? this.otherUserIds);
 }
 
-extension ProcessPushNotificationCopyExtension on ProcessPushNotification {
+extension ProcessPushNotificationExtensions on ProcessPushNotification {
   ProcessPushNotification copy({String? payload}) =>
       ProcessPushNotification(payload: payload ?? this.payload);
 }
 
-extension GetPushReceiverIdCopyExtension on GetPushReceiverId {
+extension GetPushReceiverIdExtensions on GetPushReceiverId {
   GetPushReceiverId copy({String? payload}) =>
       GetPushReceiverId(payload: payload ?? this.payload);
 }
 
-extension GetRecentlyVisitedTMeUrlsCopyExtension on GetRecentlyVisitedTMeUrls {
+extension GetRecentlyVisitedTMeUrlsExtensions on GetRecentlyVisitedTMeUrls {
   GetRecentlyVisitedTMeUrls copy({String? referrer}) =>
       GetRecentlyVisitedTMeUrls(referrer: referrer ?? this.referrer);
 }
 
-extension SetUserPrivacySettingRulesCopyExtension
-    on SetUserPrivacySettingRules {
+extension SetUserPrivacySettingRulesExtensions on SetUserPrivacySettingRules {
   SetUserPrivacySettingRules copy(
           {UserPrivacySetting? setting, UserPrivacySettingRules? rules}) =>
       SetUserPrivacySettingRules(
           setting: setting ?? this.setting, rules: rules ?? this.rules);
 }
 
-extension GetUserPrivacySettingRulesCopyExtension
-    on GetUserPrivacySettingRules {
+extension GetUserPrivacySettingRulesExtensions on GetUserPrivacySettingRules {
   GetUserPrivacySettingRules copy({UserPrivacySetting? setting}) =>
       GetUserPrivacySettingRules(setting: setting ?? this.setting);
 }
 
-extension GetOptionCopyExtension on GetOption {
+extension GetOptionExtensions on GetOption {
   GetOption copy({String? name}) => GetOption(name: name ?? this.name);
 }
 
-extension SetOptionCopyExtension on SetOption {
+extension SetOptionExtensions on SetOption {
   SetOption copy({String? name, OptionValue? value}) =>
       SetOption(name: name ?? this.name, value: value ?? this.value);
 }
 
-extension SetAccountTtlCopyExtension on SetAccountTtl {
+extension SetAccountTtlExtensions on SetAccountTtl {
   SetAccountTtl copy({AccountTtl? ttl}) => SetAccountTtl(ttl: ttl ?? this.ttl);
 }
 
-extension DeleteAccountCopyExtension on DeleteAccount {
+extension DeleteAccountExtensions on DeleteAccount {
   DeleteAccount copy({String? reason}) =>
       DeleteAccount(reason: reason ?? this.reason);
 }
 
-extension RemoveChatActionBarCopyExtension on RemoveChatActionBar {
+extension RemoveChatActionBarExtensions on RemoveChatActionBar {
   RemoveChatActionBar copy({int? chatId}) =>
       RemoveChatActionBar(chatId: chatId ?? this.chatId);
 }
 
-extension ReportChatCopyExtension on ReportChat {
+extension ReportChatExtensions on ReportChat {
   ReportChat copy(
           {int? chatId,
           List<int>? messageIds,
@@ -8679,7 +11630,7 @@ extension ReportChatCopyExtension on ReportChat {
           text: text ?? this.text);
 }
 
-extension ReportChatPhotoCopyExtension on ReportChatPhoto {
+extension ReportChatPhotoExtensions on ReportChatPhoto {
   ReportChatPhoto copy(
           {int? chatId, int? fileId, ChatReportReason? reason, String? text}) =>
       ReportChatPhoto(
@@ -8689,7 +11640,7 @@ extension ReportChatPhotoCopyExtension on ReportChatPhoto {
           text: text ?? this.text);
 }
 
-extension GetChatStatisticsUrlCopyExtension on GetChatStatisticsUrl {
+extension GetChatStatisticsUrlExtensions on GetChatStatisticsUrl {
   GetChatStatisticsUrl copy({int? chatId, String? parameters, bool? isDark}) =>
       GetChatStatisticsUrl(
           chatId: chatId ?? this.chatId,
@@ -8697,12 +11648,12 @@ extension GetChatStatisticsUrlCopyExtension on GetChatStatisticsUrl {
           isDark: isDark ?? this.isDark);
 }
 
-extension GetChatStatisticsCopyExtension on GetChatStatistics {
+extension GetChatStatisticsExtensions on GetChatStatistics {
   GetChatStatistics copy({int? chatId, bool? isDark}) => GetChatStatistics(
       chatId: chatId ?? this.chatId, isDark: isDark ?? this.isDark);
 }
 
-extension GetMessageStatisticsCopyExtension on GetMessageStatistics {
+extension GetMessageStatisticsExtensions on GetMessageStatistics {
   GetMessageStatistics copy({int? chatId, int? messageId, bool? isDark}) =>
       GetMessageStatistics(
           chatId: chatId ?? this.chatId,
@@ -8710,7 +11661,7 @@ extension GetMessageStatisticsCopyExtension on GetMessageStatistics {
           isDark: isDark ?? this.isDark);
 }
 
-extension GetStatisticalGraphCopyExtension on GetStatisticalGraph {
+extension GetStatisticalGraphExtensions on GetStatisticalGraph {
   GetStatisticalGraph copy({int? chatId, String? token, int? x}) =>
       GetStatisticalGraph(
           chatId: chatId ?? this.chatId,
@@ -8718,12 +11669,12 @@ extension GetStatisticalGraphCopyExtension on GetStatisticalGraph {
           x: x ?? this.x);
 }
 
-extension GetStorageStatisticsCopyExtension on GetStorageStatistics {
+extension GetStorageStatisticsExtensions on GetStorageStatistics {
   GetStorageStatistics copy({int? chatLimit}) =>
       GetStorageStatistics(chatLimit: chatLimit ?? this.chatLimit);
 }
 
-extension OptimizeStorageCopyExtension on OptimizeStorage {
+extension OptimizeStorageExtensions on OptimizeStorage {
   OptimizeStorage copy(
           {int? size,
           int? ttl,
@@ -8747,70 +11698,69 @@ extension OptimizeStorageCopyExtension on OptimizeStorage {
           chatLimit: chatLimit ?? this.chatLimit);
 }
 
-extension SetNetworkTypeCopyExtension on SetNetworkType {
+extension SetNetworkTypeExtensions on SetNetworkType {
   SetNetworkType copy({NetworkType? type}) =>
       SetNetworkType(type: type ?? this.type);
 }
 
-extension GetNetworkStatisticsCopyExtension on GetNetworkStatistics {
+extension GetNetworkStatisticsExtensions on GetNetworkStatistics {
   GetNetworkStatistics copy({bool? onlyCurrent}) =>
       GetNetworkStatistics(onlyCurrent: onlyCurrent ?? this.onlyCurrent);
 }
 
-extension AddNetworkStatisticsCopyExtension on AddNetworkStatistics {
+extension AddNetworkStatisticsExtensions on AddNetworkStatistics {
   AddNetworkStatistics copy({NetworkStatisticsEntry? entry}) =>
       AddNetworkStatistics(entry: entry ?? this.entry);
 }
 
-extension SetAutoDownloadSettingsCopyExtension on SetAutoDownloadSettings {
+extension SetAutoDownloadSettingsExtensions on SetAutoDownloadSettings {
   SetAutoDownloadSettings copy(
           {AutoDownloadSettings? settings, NetworkType? type}) =>
       SetAutoDownloadSettings(
           settings: settings ?? this.settings, type: type ?? this.type);
 }
 
-extension GetBankCardInfoCopyExtension on GetBankCardInfo {
+extension GetBankCardInfoExtensions on GetBankCardInfo {
   GetBankCardInfo copy({String? bankCardNumber}) =>
       GetBankCardInfo(bankCardNumber: bankCardNumber ?? this.bankCardNumber);
 }
 
-extension GetPassportElementCopyExtension on GetPassportElement {
+extension GetPassportElementExtensions on GetPassportElement {
   GetPassportElement copy({PassportElementType? type, String? password}) =>
       GetPassportElement(
           type: type ?? this.type, password: password ?? this.password);
 }
 
-extension GetAllPassportElementsCopyExtension on GetAllPassportElements {
+extension GetAllPassportElementsExtensions on GetAllPassportElements {
   GetAllPassportElements copy({String? password}) =>
       GetAllPassportElements(password: password ?? this.password);
 }
 
-extension SetPassportElementCopyExtension on SetPassportElement {
+extension SetPassportElementExtensions on SetPassportElement {
   SetPassportElement copy({InputPassportElement? element, String? password}) =>
       SetPassportElement(
           element: element ?? this.element,
           password: password ?? this.password);
 }
 
-extension DeletePassportElementCopyExtension on DeletePassportElement {
+extension DeletePassportElementExtensions on DeletePassportElement {
   DeletePassportElement copy({PassportElementType? type}) =>
       DeletePassportElement(type: type ?? this.type);
 }
 
-extension SetPassportElementErrorsCopyExtension on SetPassportElementErrors {
+extension SetPassportElementErrorsExtensions on SetPassportElementErrors {
   SetPassportElementErrors copy(
           {int? userId, List<InputPassportElementError>? errors}) =>
       SetPassportElementErrors(
           userId: userId ?? this.userId, errors: errors ?? this.errors);
 }
 
-extension GetPreferredCountryLanguageCopyExtension
-    on GetPreferredCountryLanguage {
+extension GetPreferredCountryLanguageExtensions on GetPreferredCountryLanguage {
   GetPreferredCountryLanguage copy({String? countryCode}) =>
       GetPreferredCountryLanguage(countryCode: countryCode ?? this.countryCode);
 }
 
-extension SendPhoneNumberVerificationCodeCopyExtension
+extension SendPhoneNumberVerificationCodeExtensions
     on SendPhoneNumberVerificationCode {
   SendPhoneNumberVerificationCode copy(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
@@ -8819,26 +11769,26 @@ extension SendPhoneNumberVerificationCodeCopyExtension
           settings: settings ?? this.settings);
 }
 
-extension CheckPhoneNumberVerificationCodeCopyExtension
+extension CheckPhoneNumberVerificationCodeExtensions
     on CheckPhoneNumberVerificationCode {
   CheckPhoneNumberVerificationCode copy({String? code}) =>
       CheckPhoneNumberVerificationCode(code: code ?? this.code);
 }
 
-extension SendEmailAddressVerificationCodeCopyExtension
+extension SendEmailAddressVerificationCodeExtensions
     on SendEmailAddressVerificationCode {
   SendEmailAddressVerificationCode copy({String? emailAddress}) =>
       SendEmailAddressVerificationCode(
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
-extension CheckEmailAddressVerificationCodeCopyExtension
+extension CheckEmailAddressVerificationCodeExtensions
     on CheckEmailAddressVerificationCode {
   CheckEmailAddressVerificationCode copy({String? code}) =>
       CheckEmailAddressVerificationCode(code: code ?? this.code);
 }
 
-extension GetPassportAuthorizationFormCopyExtension
+extension GetPassportAuthorizationFormExtensions
     on GetPassportAuthorizationForm {
   GetPassportAuthorizationForm copy(
           {int? botUserId, String? scope, String? publicKey, String? nonce}) =>
@@ -8849,7 +11799,7 @@ extension GetPassportAuthorizationFormCopyExtension
           nonce: nonce ?? this.nonce);
 }
 
-extension GetPassportAuthorizationFormAvailableElementsCopyExtension
+extension GetPassportAuthorizationFormAvailableElementsExtensions
     on GetPassportAuthorizationFormAvailableElements {
   GetPassportAuthorizationFormAvailableElements copy(
           {int? autorizationFormId, String? password}) =>
@@ -8858,7 +11808,7 @@ extension GetPassportAuthorizationFormAvailableElementsCopyExtension
           password: password ?? this.password);
 }
 
-extension SendPassportAuthorizationFormCopyExtension
+extension SendPassportAuthorizationFormExtensions
     on SendPassportAuthorizationForm {
   SendPassportAuthorizationForm copy(
           {int? autorizationFormId, List<PassportElementType>? types}) =>
@@ -8867,7 +11817,7 @@ extension SendPassportAuthorizationFormCopyExtension
           types: types ?? this.types);
 }
 
-extension SendPhoneNumberConfirmationCodeCopyExtension
+extension SendPhoneNumberConfirmationCodeExtensions
     on SendPhoneNumberConfirmationCode {
   SendPhoneNumberConfirmationCode copy(
           {String? hash,
@@ -8879,27 +11829,27 @@ extension SendPhoneNumberConfirmationCodeCopyExtension
           settings: settings ?? this.settings);
 }
 
-extension CheckPhoneNumberConfirmationCodeCopyExtension
+extension CheckPhoneNumberConfirmationCodeExtensions
     on CheckPhoneNumberConfirmationCode {
   CheckPhoneNumberConfirmationCode copy({String? code}) =>
       CheckPhoneNumberConfirmationCode(code: code ?? this.code);
 }
 
-extension SetBotUpdatesStatusCopyExtension on SetBotUpdatesStatus {
+extension SetBotUpdatesStatusExtensions on SetBotUpdatesStatus {
   SetBotUpdatesStatus copy({int? pendingUpdateCount, String? errorMessage}) =>
       SetBotUpdatesStatus(
           pendingUpdateCount: pendingUpdateCount ?? this.pendingUpdateCount,
           errorMessage: errorMessage ?? this.errorMessage);
 }
 
-extension UploadStickerFileCopyExtension on UploadStickerFile {
+extension UploadStickerFileExtensions on UploadStickerFile {
   UploadStickerFile copy({int? userId, InputFile? pngSticker}) =>
       UploadStickerFile(
           userId: userId ?? this.userId,
           pngSticker: pngSticker ?? this.pngSticker);
 }
 
-extension CreateNewStickerSetCopyExtension on CreateNewStickerSet {
+extension CreateNewStickerSetExtensions on CreateNewStickerSet {
   CreateNewStickerSet copy(
           {int? userId,
           String? title,
@@ -8914,7 +11864,7 @@ extension CreateNewStickerSetCopyExtension on CreateNewStickerSet {
           stickers: stickers ?? this.stickers);
 }
 
-extension AddStickerToSetCopyExtension on AddStickerToSet {
+extension AddStickerToSetExtensions on AddStickerToSet {
   AddStickerToSet copy({int? userId, String? name, InputSticker? sticker}) =>
       AddStickerToSet(
           userId: userId ?? this.userId,
@@ -8922,7 +11872,7 @@ extension AddStickerToSetCopyExtension on AddStickerToSet {
           sticker: sticker ?? this.sticker);
 }
 
-extension SetStickerSetThumbnailCopyExtension on SetStickerSetThumbnail {
+extension SetStickerSetThumbnailExtensions on SetStickerSetThumbnail {
   SetStickerSetThumbnail copy(
           {int? userId, String? name, InputFile? thumbnail}) =>
       SetStickerSetThumbnail(
@@ -8931,19 +11881,19 @@ extension SetStickerSetThumbnailCopyExtension on SetStickerSetThumbnail {
           thumbnail: thumbnail ?? this.thumbnail);
 }
 
-extension SetStickerPositionInSetCopyExtension on SetStickerPositionInSet {
+extension SetStickerPositionInSetExtensions on SetStickerPositionInSet {
   SetStickerPositionInSet copy({InputFile? sticker, int? position}) =>
       SetStickerPositionInSet(
           sticker: sticker ?? this.sticker,
           position: position ?? this.position);
 }
 
-extension RemoveStickerFromSetCopyExtension on RemoveStickerFromSet {
+extension RemoveStickerFromSetExtensions on RemoveStickerFromSet {
   RemoveStickerFromSet copy({InputFile? sticker}) =>
       RemoveStickerFromSet(sticker: sticker ?? this.sticker);
 }
 
-extension GetMapThumbnailFileCopyExtension on GetMapThumbnailFile {
+extension GetMapThumbnailFileExtensions on GetMapThumbnailFile {
   GetMapThumbnailFile copy(
           {Location? location,
           int? zoom,
@@ -8960,41 +11910,41 @@ extension GetMapThumbnailFileCopyExtension on GetMapThumbnailFile {
           chatId: chatId ?? this.chatId);
 }
 
-extension AcceptTermsOfServiceCopyExtension on AcceptTermsOfService {
+extension AcceptTermsOfServiceExtensions on AcceptTermsOfService {
   AcceptTermsOfService copy({String? termsOfServiceId}) => AcceptTermsOfService(
       termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId);
 }
 
-extension SendCustomRequestCopyExtension on SendCustomRequest {
+extension SendCustomRequestExtensions on SendCustomRequest {
   SendCustomRequest copy({String? method, String? parameters}) =>
       SendCustomRequest(
           method: method ?? this.method,
           parameters: parameters ?? this.parameters);
 }
 
-extension AnswerCustomQueryCopyExtension on AnswerCustomQuery {
+extension AnswerCustomQueryExtensions on AnswerCustomQuery {
   AnswerCustomQuery copy({int? customQueryId, String? data}) =>
       AnswerCustomQuery(
           customQueryId: customQueryId ?? this.customQueryId,
           data: data ?? this.data);
 }
 
-extension SetAlarmCopyExtension on SetAlarm {
+extension SetAlarmExtensions on SetAlarm {
   SetAlarm copy({double? seconds}) =>
       SetAlarm(seconds: seconds ?? this.seconds);
 }
 
-extension GetPhoneNumberInfoCopyExtension on GetPhoneNumberInfo {
+extension GetPhoneNumberInfoExtensions on GetPhoneNumberInfo {
   GetPhoneNumberInfo copy({String? phoneNumberPrefix}) => GetPhoneNumberInfo(
       phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix);
 }
 
-extension GetDeepLinkInfoCopyExtension on GetDeepLinkInfo {
+extension GetDeepLinkInfoExtensions on GetDeepLinkInfo {
   GetDeepLinkInfo copy({String? link}) =>
       GetDeepLinkInfo(link: link ?? this.link);
 }
 
-extension SaveApplicationLogEventCopyExtension on SaveApplicationLogEvent {
+extension SaveApplicationLogEventExtensions on SaveApplicationLogEvent {
   SaveApplicationLogEvent copy({String? type, int? chatId, JsonValue? data}) =>
       SaveApplicationLogEvent(
           type: type ?? this.type,
@@ -9002,7 +11952,7 @@ extension SaveApplicationLogEventCopyExtension on SaveApplicationLogEvent {
           data: data ?? this.data);
 }
 
-extension AddProxyCopyExtension on AddProxy {
+extension AddProxyExtensions on AddProxy {
   AddProxy copy({String? server, int? port, bool? enable, ProxyType? type}) =>
       AddProxy(
           server: server ?? this.server,
@@ -9011,7 +11961,7 @@ extension AddProxyCopyExtension on AddProxy {
           type: type ?? this.type);
 }
 
-extension EditProxyCopyExtension on EditProxy {
+extension EditProxyExtensions on EditProxy {
   EditProxy copy(
           {int? proxyId,
           String? server,
@@ -9026,86 +11976,85 @@ extension EditProxyCopyExtension on EditProxy {
           type: type ?? this.type);
 }
 
-extension EnableProxyCopyExtension on EnableProxy {
+extension EnableProxyExtensions on EnableProxy {
   EnableProxy copy({int? proxyId}) =>
       EnableProxy(proxyId: proxyId ?? this.proxyId);
 }
 
-extension RemoveProxyCopyExtension on RemoveProxy {
+extension RemoveProxyExtensions on RemoveProxy {
   RemoveProxy copy({int? proxyId}) =>
       RemoveProxy(proxyId: proxyId ?? this.proxyId);
 }
 
-extension GetProxyLinkCopyExtension on GetProxyLink {
+extension GetProxyLinkExtensions on GetProxyLink {
   GetProxyLink copy({int? proxyId}) =>
       GetProxyLink(proxyId: proxyId ?? this.proxyId);
 }
 
-extension PingProxyCopyExtension on PingProxy {
+extension PingProxyExtensions on PingProxy {
   PingProxy copy({int? proxyId}) => PingProxy(proxyId: proxyId ?? this.proxyId);
 }
 
-extension SetLogStreamCopyExtension on SetLogStream {
+extension SetLogStreamExtensions on SetLogStream {
   SetLogStream copy({LogStream? logStream}) =>
       SetLogStream(logStream: logStream ?? this.logStream);
 }
 
-extension SetLogVerbosityLevelCopyExtension on SetLogVerbosityLevel {
+extension SetLogVerbosityLevelExtensions on SetLogVerbosityLevel {
   SetLogVerbosityLevel copy({int? newVerbosityLevel}) => SetLogVerbosityLevel(
       newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel);
 }
 
-extension SetLogTagVerbosityLevelCopyExtension on SetLogTagVerbosityLevel {
+extension SetLogTagVerbosityLevelExtensions on SetLogTagVerbosityLevel {
   SetLogTagVerbosityLevel copy({String? tag, int? newVerbosityLevel}) =>
       SetLogTagVerbosityLevel(
           tag: tag ?? this.tag,
           newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel);
 }
 
-extension GetLogTagVerbosityLevelCopyExtension on GetLogTagVerbosityLevel {
+extension GetLogTagVerbosityLevelExtensions on GetLogTagVerbosityLevel {
   GetLogTagVerbosityLevel copy({String? tag}) =>
       GetLogTagVerbosityLevel(tag: tag ?? this.tag);
 }
 
-extension AddLogMessageCopyExtension on AddLogMessage {
+extension AddLogMessageExtensions on AddLogMessage {
   AddLogMessage copy({int? verbosityLevel, String? text}) => AddLogMessage(
       verbosityLevel: verbosityLevel ?? this.verbosityLevel,
       text: text ?? this.text);
 }
 
-extension TestCallStringCopyExtension on TestCallString {
+extension TestCallStringExtensions on TestCallString {
   TestCallString copy({String? x}) => TestCallString(x: x ?? this.x);
 }
 
-extension TestCallBytesCopyExtension on TestCallBytes {
+extension TestCallBytesExtensions on TestCallBytes {
   TestCallBytes copy({String? x}) => TestCallBytes(x: x ?? this.x);
 }
 
-extension TestCallVectorIntCopyExtension on TestCallVectorInt {
+extension TestCallVectorIntExtensions on TestCallVectorInt {
   TestCallVectorInt copy({List<int>? x}) => TestCallVectorInt(x: x ?? this.x);
 }
 
-extension TestCallVectorIntObjectCopyExtension on TestCallVectorIntObject {
+extension TestCallVectorIntObjectExtensions on TestCallVectorIntObject {
   TestCallVectorIntObject copy({List<TestInt>? x}) =>
       TestCallVectorIntObject(x: x ?? this.x);
 }
 
-extension TestCallVectorStringCopyExtension on TestCallVectorString {
+extension TestCallVectorStringExtensions on TestCallVectorString {
   TestCallVectorString copy({List<String>? x}) =>
       TestCallVectorString(x: x ?? this.x);
 }
 
-extension TestCallVectorStringObjectCopyExtension
-    on TestCallVectorStringObject {
+extension TestCallVectorStringObjectExtensions on TestCallVectorStringObject {
   TestCallVectorStringObject copy({List<TestString>? x}) =>
       TestCallVectorStringObject(x: x ?? this.x);
 }
 
-extension TestSquareIntCopyExtension on TestSquareInt {
+extension TestSquareIntExtensions on TestSquareInt {
   TestSquareInt copy({int? x}) => TestSquareInt(x: x ?? this.x);
 }
 
-extension TestProxyCopyExtension on TestProxy {
+extension TestProxyExtensions on TestProxy {
   TestProxy copy(
           {String? server,
           int? port,
@@ -9120,7 +12069,7 @@ extension TestProxyCopyExtension on TestProxy {
           timeout: timeout ?? this.timeout);
 }
 
-extension TestReturnErrorCopyExtension on TestReturnError {
+extension TestReturnErrorExtensions on TestReturnError {
   TestReturnError copy({TdError? error}) =>
       TestReturnError(error: error ?? this.error);
 }
