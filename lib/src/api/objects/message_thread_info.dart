@@ -6,6 +6,7 @@ class MessageThreadInfo extends TdObject {
       {required this.chatId,
       required this.messageThreadId,
       required this.replyInfo,
+      required this.unreadMessageCount,
       required this.messages,
       this.draftMessage});
 
@@ -15,8 +16,12 @@ class MessageThreadInfo extends TdObject {
   /// [messageThreadId] Message thread identifier, unique within the chat
   final int messageThreadId;
 
-  /// [replyInfo] Contains information about the message thread
+  /// [replyInfo] Information about the message thread
   final MessageReplyInfo replyInfo;
+
+  /// [unreadMessageCount] Approximate number of unread messages in the message
+  /// thread
+  final int unreadMessageCount;
 
   /// [messages] The messages from which the thread starts. The messages are
   /// returned in a reverse chronological order (i.e., in order of decreasing
@@ -37,6 +42,7 @@ class MessageThreadInfo extends TdObject {
         chatId: json['chat_id'],
         messageThreadId: json['message_thread_id'],
         replyInfo: MessageReplyInfo.fromJson(json['reply_info'])!,
+        unreadMessageCount: json['unread_message_count'],
         messages: List<Message>.from((json['messages'] ?? [])
             .map((item) => Message.fromJson(item))
             .toList()),
@@ -50,6 +56,7 @@ class MessageThreadInfo extends TdObject {
         'chat_id': this.chatId,
         'message_thread_id': this.messageThreadId,
         'reply_info': this.replyInfo.toJson(),
+        'unread_message_count': this.unreadMessageCount,
         'messages': messages.map((item) => item.toJson()).toList(),
         'draft_message': this.draftMessage?.toJson(),
         '@type': CONSTRUCTOR

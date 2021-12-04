@@ -7,7 +7,8 @@ class PasswordState extends TdObject {
       required this.passwordHint,
       required this.hasRecoveryEmailAddress,
       required this.hasPassportData,
-      this.recoveryEmailAddressCodeInfo});
+      this.recoveryEmailAddressCodeInfo,
+      required this.pendingResetDate});
 
   /// [hasPassword] True, if a 2-step verification password is set
   final bool hasPassword;
@@ -25,6 +26,10 @@ class PasswordState extends TdObject {
   /// address to which the confirmation email was sent; may be null
   final EmailAddressAuthenticationCodeInfo? recoveryEmailAddressCodeInfo;
 
+  /// [pendingResetDate] If not 0, point in time (Unix timestamp) after which
+  /// the password can be reset immediately using resetPassword
+  final int pendingResetDate;
+
   static const String CONSTRUCTOR = 'passwordState';
 
   static PasswordState? fromJson(Map<String, dynamic>? json) {
@@ -39,7 +44,8 @@ class PasswordState extends TdObject {
         hasPassportData: json['has_passport_data'],
         recoveryEmailAddressCodeInfo:
             EmailAddressAuthenticationCodeInfo.fromJson(
-                json['recovery_email_address_code_info']));
+                json['recovery_email_address_code_info']),
+        pendingResetDate: json['pending_reset_date']);
   }
 
   @override
@@ -52,6 +58,7 @@ class PasswordState extends TdObject {
         'has_passport_data': this.hasPassportData,
         'recovery_email_address_code_info':
             this.recoveryEmailAddressCodeInfo?.toJson(),
+        'pending_reset_date': this.pendingResetDate,
         '@type': CONSTRUCTOR
       };
 }

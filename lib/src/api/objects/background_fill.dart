@@ -9,6 +9,7 @@ abstract class BackgroundFill extends TdObject {
   /// Inherited by:
   /// [BackgroundFillSolid]
   /// [BackgroundFillGradient]
+  /// [BackgroundFillFreeformGradient]
   static BackgroundFill? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -19,6 +20,8 @@ abstract class BackgroundFill extends TdObject {
         return BackgroundFillSolid.fromJson(json);
       case BackgroundFillGradient.CONSTRUCTOR:
         return BackgroundFillGradient.fromJson(json);
+      case BackgroundFillFreeformGradient.CONSTRUCTOR:
+        return BackgroundFillFreeformGradient.fromJson(json);
       default:
         return null;
     }

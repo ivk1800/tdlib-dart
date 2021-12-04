@@ -6,7 +6,8 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
       {required this.rows,
       required this.resizeKeyboard,
       required this.oneTime,
-      required this.isPersonal});
+      required this.isPersonal,
+      required this.inputFieldPlaceholder});
 
   /// [rows] A list of rows of bot keyboard buttons
   final List<List<KeyboardButton>> rows;
@@ -22,6 +23,10 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   /// current user. For outgoing messages, specify true to show the keyboard
   /// only for the mentioned users and for the target user of a reply
   final bool isPersonal;
+
+  /// [inputFieldPlaceholder] If non-empty, the placeholder to be shown in the
+  /// input field when the keyboard is active; 0-64 characters
+  final String inputFieldPlaceholder;
 
   static const String CONSTRUCTOR = 'replyMarkupShowKeyboard';
 
@@ -39,7 +44,8 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
             .toList()),
         resizeKeyboard: json['resize_keyboard'],
         oneTime: json['one_time'],
-        isPersonal: json['is_personal']);
+        isPersonal: json['is_personal'],
+        inputFieldPlaceholder: json['input_field_placeholder']);
   }
 
   @override
@@ -52,6 +58,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
         'resize_keyboard': this.resizeKeyboard,
         'one_time': this.oneTime,
         'is_personal': this.isPersonal,
+        'input_field_placeholder': this.inputFieldPlaceholder,
         '@type': CONSTRUCTOR
       };
 }

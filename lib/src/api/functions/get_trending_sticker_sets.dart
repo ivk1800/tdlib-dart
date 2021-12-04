@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
-/// Returns a list of trending sticker sets. For the optimal performance the
-/// number of returned sticker sets is chosen by the library
+/// Returns a list of trending sticker sets. For optimal performance, the
+/// number of returned sticker sets is chosen by TDLib
 /// Returns [StickerSets]
 class GetTrendingStickerSets extends TdFunction {
   GetTrendingStickerSets({required this.offset, required this.limit});
@@ -10,9 +10,10 @@ class GetTrendingStickerSets extends TdFunction {
   /// non-negative
   final int offset;
 
-  /// [limit] The maximum number of sticker sets to be returned; must be
-  /// non-negative. Fewer sticker sets may be returned than specified by the
-  /// limit, even if the end of the list has not been reached
+  /// [limit] The maximum number of sticker sets to be returned; up to 100. For
+  /// optimal performance, the number of returned sticker sets is chosen by
+  /// TDLib and can be smaller than the specified limit, even if the end of the
+  /// list has not been reached
   final int limit;
 
   static const String CONSTRUCTOR = 'getTrendingStickerSets';

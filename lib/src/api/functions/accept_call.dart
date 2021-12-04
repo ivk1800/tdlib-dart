@@ -8,7 +8,7 @@ class AcceptCall extends TdFunction {
   /// [callId] Call identifier
   final int callId;
 
-  /// [protocol] Description of the call protocols supported by the application
+  /// [protocol] The call protocols supported by the application
   final CallProtocol protocol;
 
   static const String CONSTRUCTOR = 'acceptCall';

@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The user is a member of a chat, without any additional privileges or
+/// The user is a member of the chat, without any additional privileges or
 /// restrictions
 class ChatMemberStatusMember extends ChatMemberStatus {
   const ChatMemberStatusMember();

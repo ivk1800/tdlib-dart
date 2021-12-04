@@ -28,7 +28,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatIsMarkedAsUnread]
   /// [UpdateChatIsBlocked]
   /// [UpdateChatHasScheduledMessages]
-  /// [UpdateChatVoiceChat]
+  /// [UpdateChatVideoChat]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatReadInbox]
   /// [UpdateChatReadOutbox]
@@ -37,6 +37,8 @@ abstract class Update extends TdObject {
   /// [UpdateScopeNotificationSettings]
   /// [UpdateChatMessageTtlSetting]
   /// [UpdateChatActionBar]
+  /// [UpdateChatTheme]
+  /// [UpdateChatPendingJoinRequests]
   /// [UpdateChatReplyMarkup]
   /// [UpdateChatDraftMessage]
   /// [UpdateChatFilters]
@@ -74,11 +76,13 @@ abstract class Update extends TdObject {
   /// [UpdateFavoriteStickers]
   /// [UpdateSavedAnimations]
   /// [UpdateSelectedBackground]
+  /// [UpdateChatThemes]
   /// [UpdateLanguagePackStrings]
   /// [UpdateConnectionState]
   /// [UpdateTermsOfService]
   /// [UpdateUsersNearby]
   /// [UpdateDiceEmojis]
+  /// [UpdateAnimatedEmojiMessageClicked]
   /// [UpdateAnimationSearchParameters]
   /// [UpdateSuggestedActions]
   /// [UpdateNewInlineQuery]
@@ -92,6 +96,7 @@ abstract class Update extends TdObject {
   /// [UpdatePoll]
   /// [UpdatePollAnswer]
   /// [UpdateChatMember]
+  /// [UpdateNewChatJoinRequest]
   static Update? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -140,8 +145,8 @@ abstract class Update extends TdObject {
         return UpdateChatIsBlocked.fromJson(json);
       case UpdateChatHasScheduledMessages.CONSTRUCTOR:
         return UpdateChatHasScheduledMessages.fromJson(json);
-      case UpdateChatVoiceChat.CONSTRUCTOR:
-        return UpdateChatVoiceChat.fromJson(json);
+      case UpdateChatVideoChat.CONSTRUCTOR:
+        return UpdateChatVideoChat.fromJson(json);
       case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatReadInbox.CONSTRUCTOR:
@@ -158,6 +163,10 @@ abstract class Update extends TdObject {
         return UpdateChatMessageTtlSetting.fromJson(json);
       case UpdateChatActionBar.CONSTRUCTOR:
         return UpdateChatActionBar.fromJson(json);
+      case UpdateChatTheme.CONSTRUCTOR:
+        return UpdateChatTheme.fromJson(json);
+      case UpdateChatPendingJoinRequests.CONSTRUCTOR:
+        return UpdateChatPendingJoinRequests.fromJson(json);
       case UpdateChatReplyMarkup.CONSTRUCTOR:
         return UpdateChatReplyMarkup.fromJson(json);
       case UpdateChatDraftMessage.CONSTRUCTOR:
@@ -232,6 +241,8 @@ abstract class Update extends TdObject {
         return UpdateSavedAnimations.fromJson(json);
       case UpdateSelectedBackground.CONSTRUCTOR:
         return UpdateSelectedBackground.fromJson(json);
+      case UpdateChatThemes.CONSTRUCTOR:
+        return UpdateChatThemes.fromJson(json);
       case UpdateLanguagePackStrings.CONSTRUCTOR:
         return UpdateLanguagePackStrings.fromJson(json);
       case UpdateConnectionState.CONSTRUCTOR:
@@ -242,6 +253,8 @@ abstract class Update extends TdObject {
         return UpdateUsersNearby.fromJson(json);
       case UpdateDiceEmojis.CONSTRUCTOR:
         return UpdateDiceEmojis.fromJson(json);
+      case UpdateAnimatedEmojiMessageClicked.CONSTRUCTOR:
+        return UpdateAnimatedEmojiMessageClicked.fromJson(json);
       case UpdateAnimationSearchParameters.CONSTRUCTOR:
         return UpdateAnimationSearchParameters.fromJson(json);
       case UpdateSuggestedActions.CONSTRUCTOR:
@@ -268,6 +281,8 @@ abstract class Update extends TdObject {
         return UpdatePollAnswer.fromJson(json);
       case UpdateChatMember.CONSTRUCTOR:
         return UpdateChatMember.fromJson(json);
+      case UpdateNewChatJoinRequest.CONSTRUCTOR:
+        return UpdateNewChatJoinRequest.fromJson(json);
       default:
         return null;
     }

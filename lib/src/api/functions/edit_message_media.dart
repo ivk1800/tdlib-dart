@@ -1,11 +1,12 @@
 import '../tdapi.dart';
 
 /// Edits the content of a message with an animation, an audio, a document, a
-/// photo or a video. The media in the message can't be replaced if the
-/// message was set to self-destruct. Media can't be replaced by
-/// self-destructing media. Media in an album can be edited only to contain a
-/// photo or a video. Returns the edited message after the edit is completed
-/// on the server side
+/// photo or a video, including message caption. If only the caption needs to
+/// be edited, use editMessageCaption instead.. The media can't be edited if
+/// the message was set to self-destruct or to a self-destructing media. The
+/// type of message content in an album can't be changed with exception of
+/// replacing a photo with a video or vice versa. Returns the edited message
+/// after the edit is completed on the server side
 /// Returns [Message]
 class EditMessageMedia extends TdFunction {
   EditMessageMedia(
@@ -20,12 +21,13 @@ class EditMessageMedia extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
   final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New content of the message. Must be one of the
-  /// following types: InputMessageAnimation, InputMessageAudio,
-  /// InputMessageDocument, InputMessagePhoto or InputMessageVideo
+  /// following types: inputMessageAnimation, inputMessageAudio,
+  /// inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'editMessageMedia';

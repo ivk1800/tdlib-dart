@@ -11,8 +11,9 @@ class UserFullInfo extends TdObject {
       required this.needPhoneNumberPrivacyException,
       required this.bio,
       required this.shareText,
+      required this.description,
       required this.groupInCommonCount,
-      this.botInfo});
+      required this.commands});
 
   /// [photo] User profile photo; may be null
   final ChatPhoto? photo;
@@ -38,16 +39,20 @@ class UserFullInfo extends TdObject {
   /// [bio] A short user bio
   final String bio;
 
-  /// [shareText] For bots, the text that is included with the link when users
-  /// share the bot
+  /// [shareText] For bots, the text that is shown on the bot's profile page and
+  /// is sent together with the link when users share the bot
   final String shareText;
+
+  /// param_[description] For bots, the text shown in the chat with the bot if
+  /// the chat is empty
+  final String description;
 
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
-  /// [botInfo] If the user is a bot, information about the bot; may be null
-  final BotInfo? botInfo;
+  /// [commands] For bots, list of the bot commands
+  final List<BotCommand> commands;
 
   static const String CONSTRUCTOR = 'userFullInfo';
 
@@ -66,8 +71,11 @@ class UserFullInfo extends TdObject {
             json['need_phone_number_privacy_exception'],
         bio: json['bio'],
         shareText: json['share_text'],
+        description: json['description'],
         groupInCommonCount: json['group_in_common_count'],
-        botInfo: BotInfo.fromJson(json['bot_info']));
+        commands: List<BotCommand>.from((json['commands'] ?? [])
+            .map((item) => BotCommand.fromJson(item))
+            .toList()));
   }
 
   @override
@@ -83,8 +91,9 @@ class UserFullInfo extends TdObject {
             this.needPhoneNumberPrivacyException,
         'bio': this.bio,
         'share_text': this.shareText,
+        'description': this.description,
         'group_in_common_count': this.groupInCommonCount,
-        'bot_info': this.botInfo?.toJson(),
+        'commands': commands.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
 }

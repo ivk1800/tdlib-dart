@@ -5,16 +5,16 @@ import '../tdapi.dart';
 class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
   ToggleGroupCallParticipantIsHandRaised(
       {required this.groupCallId,
-      required this.participant,
+      required this.participantId,
       required this.isHandRaised});
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
-  /// [participant] Participant identifier
-  final MessageSender participant;
+  /// [participantId] Participant identifier
+  final MessageSender participantId;
 
-  /// [isHandRaised] Pass true if the user's hand should be raised. Only self
+  /// [isHandRaised] Pass true if the user's hand needs to be raised. Only self
   /// hand can be raised. Requires groupCall.can_be_managed group call flag to
   /// lower other's hand
   final bool isHandRaised;
@@ -26,7 +26,7 @@ class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'group_call_id': this.groupCallId,
-        'participant': this.participant.toJson(),
+        'participant_id': this.participantId.toJson(),
         'is_hand_raised': this.isHandRaised,
         '@type': CONSTRUCTOR
       };

@@ -2,7 +2,7 @@ import '../tdapi.dart';
 
 /// A chat draft has changed. Be aware that the update may come in the
 /// currently opened chat but with old content of the draft. If the user has
-/// changed the content of the draft, this update shouldn't be applied
+/// changed the content of the draft, this update mustn't be applied
 class UpdateChatDraftMessage extends Update {
   UpdateChatDraftMessage(
       {required this.chatId, this.draftMessage, required this.positions});

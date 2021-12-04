@@ -55,7 +55,7 @@ class Supergroup extends TdObject {
   /// supergroup is a location-based supergroup
   final bool hasLocation;
 
-  /// [signMessages] True, if messages sent to the channel should contain
+  /// [signMessages] True, if messages sent to the channel need to contain
   /// information about the sender. This field is only applicable to channels
   final bool signMessages;
 

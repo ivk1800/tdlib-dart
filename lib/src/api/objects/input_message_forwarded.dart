@@ -6,7 +6,7 @@ class InputMessageForwarded extends InputMessageContent {
       {required this.fromChatId,
       required this.messageId,
       required this.inGameShare,
-      required this.copyOptions});
+      this.copyOptions});
 
   /// [fromChatId] Identifier for the chat this forwarded message came from
   final int fromChatId;
@@ -14,13 +14,14 @@ class InputMessageForwarded extends InputMessageContent {
   /// [messageId] Identifier of the message to forward
   final int messageId;
 
-  /// [inGameShare] True, if a game message should be shared within a launched
+  /// [inGameShare] True, if a game message is being shared from a launched
   /// game; applies only to game messages
   final bool inGameShare;
 
-  /// [copyOptions] Options to be used to copy content of the message without a
-  /// link to the original message
-  final MessageCopyOptions copyOptions;
+  /// [copyOptions] Options to be used to copy content of the message without
+  /// reference to the original sender; pass null to try to forward the message
+  /// as usual
+  final MessageCopyOptions? copyOptions;
 
   static const String CONSTRUCTOR = 'inputMessageForwarded';
 
@@ -33,7 +34,7 @@ class InputMessageForwarded extends InputMessageContent {
         fromChatId: json['from_chat_id'],
         messageId: json['message_id'],
         inGameShare: json['in_game_share'],
-        copyOptions: MessageCopyOptions.fromJson(json['copy_options'])!);
+        copyOptions: MessageCopyOptions.fromJson(json['copy_options']));
   }
 
   @override
@@ -43,7 +44,7 @@ class InputMessageForwarded extends InputMessageContent {
         'from_chat_id': this.fromChatId,
         'message_id': this.messageId,
         'in_game_share': this.inGameShare,
-        'copy_options': this.copyOptions.toJson(),
+        'copy_options': this.copyOptions?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

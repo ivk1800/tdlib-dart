@@ -13,7 +13,8 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
   /// [sentMessageCount] Number of sent messages
   final int sentMessageCount;
 
-  /// [averageCharacterCount] Average number of characters in sent messages
+  /// [averageCharacterCount] Average number of characters in sent messages; 0
+  /// if unknown
   final int averageCharacterCount;
 
   static const String CONSTRUCTOR = 'chatStatisticsMessageSenderInfo';

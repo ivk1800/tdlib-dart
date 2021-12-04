@@ -5,8 +5,7 @@ import '../tdapi.dart';
 class JoinChatByInviteLink extends TdFunction {
   JoinChatByInviteLink({required this.inviteLink});
 
-  /// [inviteLink] Invite link to import; must have URL "t.me", "telegram.me",
-  /// or "telegram.dog" and query beginning with "/joinchat/" or "/+"
+  /// [inviteLink] Invite link to use
   final String inviteLink;
 
   static const String CONSTRUCTOR = 'joinChatByInviteLink';

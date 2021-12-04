@@ -8,7 +8,7 @@ class GetChatInviteLinkMembers extends TdFunction {
   GetChatInviteLinkMembers(
       {required this.chatId,
       required this.inviteLink,
-      required this.offsetMember,
+      this.offsetMember,
       required this.limit});
 
   /// [chatId] Chat identifier
@@ -17,11 +17,11 @@ class GetChatInviteLinkMembers extends TdFunction {
   /// [inviteLink] Invite link for which to return chat members
   final String inviteLink;
 
-  /// [offsetMember] A chat member from which to return next chat members; use
+  /// [offsetMember] A chat member from which to return next chat members; pass
   /// null to get results from the beginning
-  final ChatInviteLinkMember offsetMember;
+  final ChatInviteLinkMember? offsetMember;
 
-  /// [limit] Maximum number of chat members to return
+  /// [limit] The maximum number of chat members to return; up to 100
   final int limit;
 
   static const String CONSTRUCTOR = 'getChatInviteLinkMembers';
@@ -32,7 +32,7 @@ class GetChatInviteLinkMembers extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'invite_link': this.inviteLink,
-        'offset_member': this.offsetMember.toJson(),
+        'offset_member': this.offsetMember?.toJson(),
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };

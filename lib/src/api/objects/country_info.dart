@@ -18,7 +18,7 @@ class CountryInfo extends TdObject {
   /// [englishName] English name of the country
   final String englishName;
 
-  /// [isHidden] True, if the country should be hidden from the list of all
+  /// [isHidden] True, if the country must be hidden from the list of all
   /// countries
   final bool isHidden;
 

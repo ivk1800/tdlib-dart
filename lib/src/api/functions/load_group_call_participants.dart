@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
-/// Loads more group call participants. The loaded participants will be
+/// Loads more participants of a group call. The loaded participants will be
 /// received through updates. Use the field groupCall.loaded_all_participants
-/// to check whether all participants has already been loaded
+/// to check whether all participants have already been loaded
 /// Returns [Ok]
 class LoadGroupCallParticipants extends TdFunction {
   LoadGroupCallParticipants({required this.groupCallId, required this.limit});
@@ -11,7 +11,7 @@ class LoadGroupCallParticipants extends TdFunction {
   /// received through getGroupCall and must be joined or being joined
   final int groupCallId;
 
-  /// [limit] Maximum number of participants to load
+  /// [limit] The maximum number of participants to load; up to 100
   final int limit;
 
   static const String CONSTRUCTOR = 'loadGroupCallParticipants';

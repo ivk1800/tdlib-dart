@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A mask should be placed relatively to the mouth
+/// The mask is placed relatively to the mouth
 class MaskPointMouth extends MaskPoint {
   const MaskPointMouth();
 

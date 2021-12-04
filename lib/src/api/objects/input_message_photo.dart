@@ -4,19 +4,19 @@ import '../tdapi.dart';
 class InputMessagePhoto extends InputMessageContent {
   InputMessagePhoto(
       {required this.photo,
-      required this.thumbnail,
+      this.thumbnail,
       required this.addedStickerFileIds,
       required this.width,
       required this.height,
-      required this.caption,
+      this.caption,
       required this.ttl});
 
   /// [photo] Photo to send
   final InputFile photo;
 
-  /// [thumbnail] Photo thumbnail to be sent, this is sent to the other party in
-  /// secret chats only
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Photo thumbnail to be sent; pass null to skip thumbnail
+  /// uploading. The thumbnail is sent to the other party only in secret chats
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the photo,
   /// if applicable
@@ -28,9 +28,9 @@ class InputMessagePhoto extends InputMessageContent {
   /// [height] Photo height
   final int height;
 
-  /// [caption] Photo caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Photo caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be
   /// specified only in private chats
@@ -45,14 +45,14 @@ class InputMessagePhoto extends InputMessageContent {
 
     return InputMessagePhoto(
         photo: InputFile.fromJson(json['photo'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         addedStickerFileIds: List<int>.from(
             (json['added_sticker_file_ids'] ?? [])
                 .map((item) => item)
                 .toList()),
         width: json['width'],
         height: json['height'],
-        caption: FormattedText.fromJson(json['caption'])!,
+        caption: FormattedText.fromJson(json['caption']),
         ttl: json['ttl']);
   }
 
@@ -61,12 +61,12 @@ class InputMessagePhoto extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'photo': this.photo.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
         'width': this.width,
         'height': this.height,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         'ttl': this.ttl,
         '@type': CONSTRUCTOR
       };

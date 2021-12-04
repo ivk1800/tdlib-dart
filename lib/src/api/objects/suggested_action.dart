@@ -8,6 +8,7 @@ abstract class SuggestedAction extends TdObject {
 
   /// Inherited by:
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
+  /// [SuggestedActionCheckPassword]
   /// [SuggestedActionCheckPhoneNumber]
   /// [SuggestedActionSeeTicksHint]
   /// [SuggestedActionConvertToBroadcastGroup]
@@ -19,6 +20,8 @@ abstract class SuggestedAction extends TdObject {
     switch (json["@type"]) {
       case SuggestedActionEnableArchiveAndMuteNewChats.CONSTRUCTOR:
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
+      case SuggestedActionCheckPassword.CONSTRUCTOR:
+        return SuggestedActionCheckPassword.fromJson(json);
       case SuggestedActionCheckPhoneNumber.CONSTRUCTOR:
         return SuggestedActionCheckPhoneNumber.fromJson(json);
       case SuggestedActionSeeTicksHint.CONSTRUCTOR:

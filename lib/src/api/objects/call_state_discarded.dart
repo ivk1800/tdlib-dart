@@ -10,11 +10,11 @@ class CallStateDiscarded extends CallState {
   /// [reason] The reason, why the call has ended
   final CallDiscardReason reason;
 
-  /// [needRating] True, if the call rating should be sent to the server
+  /// [needRating] True, if the call rating must be sent to the server
   final bool needRating;
 
-  /// [needDebugInformation] True, if the call debug information should be sent
-  /// to the server
+  /// [needDebugInformation] True, if the call debug information must be sent to
+  /// the server
   final bool needDebugInformation;
 
   static const String CONSTRUCTOR = 'callStateDiscarded';

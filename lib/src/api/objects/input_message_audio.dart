@@ -4,17 +4,18 @@ import '../tdapi.dart';
 class InputMessageAudio extends InputMessageContent {
   InputMessageAudio(
       {required this.audio,
-      required this.albumCoverThumbnail,
+      this.albumCoverThumbnail,
       required this.duration,
       required this.title,
       required this.performer,
-      required this.caption});
+      this.caption});
 
   /// [audio] Audio file to be sent
   final InputFile audio;
 
-  /// [albumCoverThumbnail] Thumbnail of the cover for the album, if available
-  final InputThumbnail albumCoverThumbnail;
+  /// [albumCoverThumbnail] Thumbnail of the cover for the album; pass null to
+  /// skip thumbnail uploading
+  final InputThumbnail? albumCoverThumbnail;
 
   /// [duration] Duration of the audio, in seconds; may be replaced by the
   /// server
@@ -27,9 +28,9 @@ class InputMessageAudio extends InputMessageContent {
   /// the server
   final String performer;
 
-  /// [caption] Audio caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Audio caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'inputMessageAudio';
 
@@ -41,11 +42,11 @@ class InputMessageAudio extends InputMessageContent {
     return InputMessageAudio(
         audio: InputFile.fromJson(json['audio'])!,
         albumCoverThumbnail:
-            InputThumbnail.fromJson(json['album_cover_thumbnail'])!,
+            InputThumbnail.fromJson(json['album_cover_thumbnail']),
         duration: json['duration'],
         title: json['title'],
         performer: json['performer'],
-        caption: FormattedText.fromJson(json['caption'])!);
+        caption: FormattedText.fromJson(json['caption']));
   }
 
   @override
@@ -53,11 +54,11 @@ class InputMessageAudio extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'audio': this.audio.toJson(),
-        'album_cover_thumbnail': this.albumCoverThumbnail.toJson(),
+        'album_cover_thumbnail': this.albumCoverThumbnail?.toJson(),
         'duration': this.duration,
         'title': this.title,
         'performer': this.performer,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

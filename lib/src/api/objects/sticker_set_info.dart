@@ -58,9 +58,9 @@ class StickerSetInfo extends TdObject {
   /// [size] Total number of stickers in the set
   final int size;
 
-  /// [covers] Contains up to the first 5 stickers from the set, depending on
-  /// the context. If the application needs more stickers the full set should be
-  /// requested
+  /// [covers] Up to the first 5 stickers from the set, depending on the
+  /// context. If the application needs more stickers the full sticker set needs
+  /// to be requested
   final List<Sticker> covers;
 
   static const String CONSTRUCTOR = 'stickerSetInfo';

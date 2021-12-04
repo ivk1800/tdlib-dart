@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class InputMessageSticker extends InputMessageContent {
   InputMessageSticker(
       {required this.sticker,
-      required this.thumbnail,
+      this.thumbnail,
       required this.width,
       required this.height,
       required this.emoji});
@@ -12,8 +12,8 @@ class InputMessageSticker extends InputMessageContent {
   /// [sticker] Sticker to be sent
   final InputFile sticker;
 
-  /// [thumbnail] Sticker thumbnail, if available
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Sticker thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
   /// [width] Sticker width
   final int width;
@@ -33,7 +33,7 @@ class InputMessageSticker extends InputMessageContent {
 
     return InputMessageSticker(
         sticker: InputFile.fromJson(json['sticker'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         width: json['width'],
         height: json['height'],
         emoji: json['emoji']);
@@ -44,7 +44,7 @@ class InputMessageSticker extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'sticker': this.sticker.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'width': this.width,
         'height': this.height,
         'emoji': this.emoji,

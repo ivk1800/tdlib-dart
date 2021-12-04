@@ -11,14 +11,13 @@ class AuthenticationCodeInfo extends TdObject {
   /// [phoneNumber] A phone number that is being authenticated
   final String phoneNumber;
 
-  /// [type] Describes the way the code was sent to the user
+  /// [type] The way the code was sent to the user
   final AuthenticationCodeType type;
 
-  /// [nextType] Describes the way the next code will be sent to the user; may
-  /// be null
+  /// [nextType] The way the next code will be sent to the user; may be null
   final AuthenticationCodeType? nextType;
 
-  /// [timeout] Timeout before the code should be re-sent, in seconds
+  /// [timeout] Timeout before the code can be re-sent, in seconds
   final int timeout;
 
   static const String CONSTRUCTOR = 'authenticationCodeInfo';

@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
 /// Searches for messages in secret chats. Returns the results in reverse
-/// chronological order. For optimal performance the number of returned
-/// messages is chosen by the library
+/// chronological order. For optimal performance, the number of returned
+/// messages is chosen by TDLib
 /// Returns [FoundMessages]
 class SearchSecretMessages extends TdFunction {
   SearchSecretMessages(
@@ -10,13 +10,13 @@ class SearchSecretMessages extends TdFunction {
       required this.query,
       required this.offset,
       required this.limit,
-      required this.filter});
+      this.filter});
 
   /// [chatId] Identifier of the chat in which to search. Specify 0 to search in
   /// all secret chats
   final int chatId;
 
-  /// [query] Query to search for. If empty, searchChatMessages should be used
+  /// [query] Query to search for. If empty, searchChatMessages must be used
   /// instead
   final String query;
 
@@ -24,13 +24,14 @@ class SearchSecretMessages extends TdFunction {
   /// request; use empty string to get first chunk of results
   final String offset;
 
-  /// [limit] The maximum number of messages to be returned; up to 100. Fewer
-  /// messages may be returned than specified by the limit, even if the end of
-  /// the message history has not been reached
+  /// [limit] The maximum number of messages to be returned; up to 100. For
+  /// optimal performance, the number of returned messages is chosen by TDLib
+  /// and can be smaller than the specified limit
   final int limit;
 
-  /// [filter] A filter for message content in the search results
-  final SearchMessagesFilter filter;
+  /// [filter] Additional filter for messages to search; pass null to search for
+  /// all messages
+  final SearchMessagesFilter? filter;
 
   static const String CONSTRUCTOR = 'searchSecretMessages';
 
@@ -42,7 +43,7 @@ class SearchSecretMessages extends TdFunction {
         'query': this.query,
         'offset': this.offset,
         'limit': this.limit,
-        'filter': this.filter.toJson(),
+        'filter': this.filter?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

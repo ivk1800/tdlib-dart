@@ -9,7 +9,7 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   /// [query] Inline query to be sent to the bot
   final String query;
 
-  /// [inCurrentChat] True, if the inline query should be sent from the current
+  /// [inCurrentChat] True, if the inline query must be sent from the current
   /// chat
   final bool inCurrentChat;
 

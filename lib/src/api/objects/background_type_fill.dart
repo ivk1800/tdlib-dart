@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class BackgroundTypeFill extends BackgroundType {
   BackgroundTypeFill({required this.fill});
 
-  /// [fill] Description of the background fill
+  /// [fill] The background fill
   final BackgroundFill fill;
 
   static const String CONSTRUCTOR = 'backgroundTypeFill';

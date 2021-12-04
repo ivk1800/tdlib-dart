@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Represents a link to an animated GIF or an animated (i.e. without sound)
+/// Represents a link to an animated GIF or an animated (i.e., without sound)
 /// H.264/MPEG-4 AVC video
 class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   InputInlineQueryResultAnimation(
@@ -46,13 +46,14 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   /// [videoHeight] Height of the video
   final int videoHeight;
 
-  /// [replyMarkup] The message reply markup. Must be of type
+  /// [replyMarkup] The message reply markup; pass null if none. Must be of type
   /// replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one
-  /// of the following types: InputMessageText, InputMessageAnimation,
-  /// InputMessageLocation, InputMessageVenue or InputMessageContact
+  /// of the following types: inputMessageText, inputMessageAnimation,
+  /// inputMessageInvoice, inputMessageLocation, inputMessageVenue or
+  /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'inputInlineQueryResultAnimation';

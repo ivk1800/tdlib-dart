@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
-/// A bot command, beginning with "/". This shouldn't be highlighted if there
-/// are no bots in the chat
+/// A bot command, beginning with "/"
 class TextEntityTypeBotCommand extends TextEntityType {
   const TextEntityTypeBotCommand();
 

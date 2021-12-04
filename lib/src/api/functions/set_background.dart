@@ -4,17 +4,15 @@ import '../tdapi.dart';
 /// of installed backgrounds
 /// Returns [Background]
 class SetBackground extends TdFunction {
-  SetBackground(
-      {required this.background,
-      required this.type,
-      required this.forDarkTheme});
+  SetBackground({this.background, this.type, required this.forDarkTheme});
 
-  /// [background] The input background to use, null for filled backgrounds
-  final InputBackground background;
+  /// [background] The input background to use; pass null to create a new filled
+  /// backgrounds or to remove the current background
+  final InputBackground? background;
 
-  /// [type] Background type; null for default background. The method will
-  /// return error 404 if type is null
-  final BackgroundType type;
+  /// [type] Background type; pass null to use the default type of the remote
+  /// background or to remove the current background
+  final BackgroundType? type;
 
   /// [forDarkTheme] True, if the background is chosen for dark theme
   final bool forDarkTheme;
@@ -25,8 +23,8 @@ class SetBackground extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'background': this.background.toJson(),
-        'type': this.type.toJson(),
+        'background': this.background?.toJson(),
+        'type': this.type?.toJson(),
         'for_dark_theme': this.forDarkTheme,
         '@type': CONSTRUCTOR
       };

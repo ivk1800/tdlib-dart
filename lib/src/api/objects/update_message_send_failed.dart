@@ -10,7 +10,7 @@ class UpdateMessageSendFailed extends Update {
       required this.errorCode,
       required this.errorMessage});
 
-  /// [message] Contains information about the message which failed to send
+  /// [message] The failed to send message
   final Message message;
 
   /// [oldMessageId] The previous temporary message identifier

@@ -10,7 +10,7 @@ class StorageStatisticsFast extends TdObject {
       required this.languagePackDatabaseSize,
       required this.logSize});
 
-  /// [filesSize] Approximate total size of files
+  /// [filesSize] Approximate total size of files, in bytes
   final int filesSize;
 
   /// [fileCount] Approximate number of files

@@ -15,7 +15,7 @@ class AddLocalMessage extends TdFunction {
   /// [chatId] Target chat
   final int chatId;
 
-  /// [sender] The sender sender of the message
+  /// [sender] The sender of the message
   final MessageSender sender;
 
   /// [replyToMessageId] Identifier of the message to reply to or 0

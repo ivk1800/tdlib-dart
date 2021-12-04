@@ -10,17 +10,17 @@ class PageBlockTableCell extends TdObject {
       required this.align,
       required this.valign});
 
-  /// [text] Cell text; may be null. If the text is null, then the cell should
-  /// be invisible
+  /// [text] Cell text; may be null. If the text is null, then the cell must be
+  /// invisible
   final RichText? text;
 
   /// [isHeader] True, if it is a header cell
   final bool isHeader;
 
-  /// [colspan] The number of columns the cell should span
+  /// [colspan] The number of columns the cell spans
   final int colspan;
 
-  /// [rowspan] The number of rows the cell should span
+  /// [rowspan] The number of rows the cell spans
   final int rowspan;
 
   /// [align] Horizontal cell content alignment

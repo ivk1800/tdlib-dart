@@ -29,7 +29,7 @@ class AnswerInlineQuery extends TdFunction {
   /// there are no more results
   final String nextOffset;
 
-  /// [switchPmText] If non-empty, this text should be shown on the button that
+  /// [switchPmText] If non-empty, this text must be shown on the button that
   /// opens a private chat with the bot and sends a start message to the bot
   /// with the parameter switch_pm_parameter
   final String switchPmText;

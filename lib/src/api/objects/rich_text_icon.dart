@@ -9,11 +9,11 @@ class RichTextIcon extends RichText {
   /// JPEG or PNG format
   final Document document;
 
-  /// [width] Width of a bounding box in which the image should be shown; 0 if
+  /// [width] Width of a bounding box in which the image must be shown; 0 if
   /// unknown
   final int width;
 
-  /// [height] Height of a bounding box in which the image should be shown; 0 if
+  /// [height] Height of a bounding box in which the image must be shown; 0 if
   /// unknown
   final int height;
 

@@ -9,7 +9,7 @@ class CreateTemporaryPassword extends TdFunction {
   final String password;
 
   /// [validFor] Time during which the temporary password will be valid, in
-  /// seconds; should be between 60 and 86400
+  /// seconds; must be between 60 and 86400
   final int validFor;
 
   static const String CONSTRUCTOR = 'createTemporaryPassword';

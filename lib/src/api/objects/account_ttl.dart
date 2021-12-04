@@ -6,7 +6,7 @@ class AccountTtl extends TdObject {
   AccountTtl({required this.days});
 
   /// [days] Number of days of inactivity before the account will be flagged for
-  /// deletion; should range from 30-366 days
+  /// deletion; 30-366 days
   final int days;
 
   static const String CONSTRUCTOR = 'accountTtl';

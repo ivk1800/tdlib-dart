@@ -5,8 +5,8 @@ import '../tdapi.dart';
 class CheckChatUsername extends TdFunction {
   CheckChatUsername({required this.chatId, required this.username});
 
-  /// [chatId] Chat identifier; should be identifier of a supergroup chat, or a
-  /// channel chat, or a private chat with self, or zero if chat is being
+  /// [chatId] Chat identifier; must be identifier of a supergroup chat, or a
+  /// channel chat, or a private chat with self, or zero if the chat is being
   /// created
   final int chatId;
 

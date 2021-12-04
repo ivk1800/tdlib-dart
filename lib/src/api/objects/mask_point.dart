@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Part of the face, relative to which a mask should be placed
+/// Part of the face, relative to which a mask is placed
 abstract class MaskPoint extends TdObject {
   const MaskPoint();
 

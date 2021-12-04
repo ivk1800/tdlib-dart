@@ -21,14 +21,16 @@ abstract class MessageContent extends TdObject {
   /// [MessageLocation]
   /// [MessageVenue]
   /// [MessageContact]
+  /// [MessageAnimatedEmoji]
   /// [MessageDice]
   /// [MessageGame]
   /// [MessagePoll]
   /// [MessageInvoice]
   /// [MessageCall]
-  /// [MessageVoiceChatStarted]
-  /// [MessageVoiceChatEnded]
-  /// [MessageInviteVoiceChatParticipants]
+  /// [MessageVideoChatScheduled]
+  /// [MessageVideoChatStarted]
+  /// [MessageVideoChatEnded]
+  /// [MessageInviteVideoChatParticipants]
   /// [MessageBasicGroupChatCreate]
   /// [MessageSupergroupChatCreate]
   /// [MessageChatChangeTitle]
@@ -36,11 +38,13 @@ abstract class MessageContent extends TdObject {
   /// [MessageChatDeletePhoto]
   /// [MessageChatAddMembers]
   /// [MessageChatJoinByLink]
+  /// [MessageChatJoinByRequest]
   /// [MessageChatDeleteMember]
   /// [MessageChatUpgradeTo]
   /// [MessageChatUpgradeFrom]
   /// [MessagePinMessage]
   /// [MessageScreenshotTaken]
+  /// [MessageChatSetTheme]
   /// [MessageChatSetTtl]
   /// [MessageCustomServiceAction]
   /// [MessageGameScore]
@@ -86,6 +90,8 @@ abstract class MessageContent extends TdObject {
         return MessageVenue.fromJson(json);
       case MessageContact.CONSTRUCTOR:
         return MessageContact.fromJson(json);
+      case MessageAnimatedEmoji.CONSTRUCTOR:
+        return MessageAnimatedEmoji.fromJson(json);
       case MessageDice.CONSTRUCTOR:
         return MessageDice.fromJson(json);
       case MessageGame.CONSTRUCTOR:
@@ -96,12 +102,14 @@ abstract class MessageContent extends TdObject {
         return MessageInvoice.fromJson(json);
       case MessageCall.CONSTRUCTOR:
         return MessageCall.fromJson(json);
-      case MessageVoiceChatStarted.CONSTRUCTOR:
-        return MessageVoiceChatStarted.fromJson(json);
-      case MessageVoiceChatEnded.CONSTRUCTOR:
-        return MessageVoiceChatEnded.fromJson(json);
-      case MessageInviteVoiceChatParticipants.CONSTRUCTOR:
-        return MessageInviteVoiceChatParticipants.fromJson(json);
+      case MessageVideoChatScheduled.CONSTRUCTOR:
+        return MessageVideoChatScheduled.fromJson(json);
+      case MessageVideoChatStarted.CONSTRUCTOR:
+        return MessageVideoChatStarted.fromJson(json);
+      case MessageVideoChatEnded.CONSTRUCTOR:
+        return MessageVideoChatEnded.fromJson(json);
+      case MessageInviteVideoChatParticipants.CONSTRUCTOR:
+        return MessageInviteVideoChatParticipants.fromJson(json);
       case MessageBasicGroupChatCreate.CONSTRUCTOR:
         return MessageBasicGroupChatCreate.fromJson(json);
       case MessageSupergroupChatCreate.CONSTRUCTOR:
@@ -116,6 +124,8 @@ abstract class MessageContent extends TdObject {
         return MessageChatAddMembers.fromJson(json);
       case MessageChatJoinByLink.CONSTRUCTOR:
         return MessageChatJoinByLink.fromJson(json);
+      case MessageChatJoinByRequest.CONSTRUCTOR:
+        return MessageChatJoinByRequest.fromJson(json);
       case MessageChatDeleteMember.CONSTRUCTOR:
         return MessageChatDeleteMember.fromJson(json);
       case MessageChatUpgradeTo.CONSTRUCTOR:
@@ -126,6 +136,8 @@ abstract class MessageContent extends TdObject {
         return MessagePinMessage.fromJson(json);
       case MessageScreenshotTaken.CONSTRUCTOR:
         return MessageScreenshotTaken.fromJson(json);
+      case MessageChatSetTheme.CONSTRUCTOR:
+        return MessageChatSetTheme.fromJson(json);
       case MessageChatSetTtl.CONSTRUCTOR:
         return MessageChatSetTtl.fromJson(json);
       case MessageCustomServiceAction.CONSTRUCTOR:

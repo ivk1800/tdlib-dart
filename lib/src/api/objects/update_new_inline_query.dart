@@ -19,8 +19,8 @@ class UpdateNewInlineQuery extends Update {
   /// [userLocation] User location; may be null
   final Location? userLocation;
 
-  /// [chatType] Contains information about the type of the chat, from which the
-  /// query originated; may be null if unknown
+  /// [chatType] The type of the chat, from which the query originated; may be
+  /// null if unknown
   final ChatType? chatType;
 
   /// [query] Text of the query

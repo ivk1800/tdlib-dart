@@ -11,7 +11,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   /// [gameShortName] Short name of the game
   final String gameShortName;
 
-  /// [replyMarkup] Message reply markup. Must be of type
+  /// [replyMarkup] The message reply markup; pass null if none. Must be of type
   /// replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 

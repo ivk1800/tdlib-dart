@@ -1,19 +1,20 @@
 import '../tdapi.dart';
 
 /// Changes the status of a chat member, needs appropriate privileges. This
-/// function is currently not suitable for adding new members to the chat and
-/// transferring chat ownership; instead, use addChatMember or
-/// transferChatOwnership
+/// function is currently not suitable for transferring chat ownership; use
+/// transferChatOwnership instead. Use addChatMember or banChatMember if some
+/// additional parameters needs to be passed
 /// Returns [Ok]
 class SetChatMemberStatus extends TdFunction {
   SetChatMemberStatus(
-      {required this.chatId, required this.userId, required this.status});
+      {required this.chatId, required this.memberId, required this.status});
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [userId] User identifier
-  final int userId;
+  /// [memberId] Member identifier. Chats can be only banned and unbanned in
+  /// supergroups and channels
+  final MessageSender memberId;
 
   /// [status] The new status of the member in the chat
   final ChatMemberStatus status;
@@ -25,7 +26,7 @@ class SetChatMemberStatus extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
-        'user_id': this.userId,
+        'member_id': this.memberId.toJson(),
         'status': this.status.toJson(),
         '@type': CONSTRUCTOR
       };

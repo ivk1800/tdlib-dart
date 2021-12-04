@@ -33,7 +33,8 @@ class SecretChat extends TdObject {
   final String keyHash;
 
   /// [layer] Secret chat layer; determines features supported by the chat
-  /// partner's application. Video notes are supported if the layer
+  /// partner's application. Nested text entities and underline and
+  /// strikethrough entities are supported if the layer
   final int layer;
 
   static const String CONSTRUCTOR = 'secretChat';

@@ -25,7 +25,7 @@ class MessageInvoice extends MessageContent {
   /// [currency] Currency for the product price
   final String currency;
 
-  /// [totalAmount] Product total price in the minimal quantity of the currency
+  /// [totalAmount] Product total price in the smallest units of the currency
   final int totalAmount;
 
   /// [startParameter] Unique invoice bot start_parameter. To share an invoice
@@ -35,7 +35,7 @@ class MessageInvoice extends MessageContent {
   /// [isTest] True, if the invoice is a test invoice
   final bool isTest;
 
-  /// [needShippingAddress] True, if the shipping address should be specified
+  /// [needShippingAddress] True, if the shipping address must be specified
   final bool needShippingAddress;
 
   /// [receiptMessageId] The identifier of the message with the receipt, after

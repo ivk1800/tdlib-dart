@@ -16,6 +16,9 @@ class Message extends TdObject {
       required this.canBeDeletedForAllUsers,
       required this.canGetStatistics,
       required this.canGetMessageThread,
+      required this.canGetViewers,
+      required this.canGetMediaTimestampLinks,
+      required this.hasTimestampedMedia,
       required this.isChannelPost,
       required this.containsUnreadMention,
       required this.date,
@@ -43,12 +46,10 @@ class Message extends TdObject {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [sendingState] Information about the sending state of the message; may be
-  /// null
+  /// [sendingState] The sending state of the message; may be null
   final MessageSendingState? sendingState;
 
-  /// [schedulingState] Information about the scheduling state of the message;
-  /// may be null
+  /// [schedulingState] The scheduling state of the message; may be null
   final MessageSchedulingState? schedulingState;
 
   /// [isOutgoing] True, if the message is outgoing
@@ -78,6 +79,19 @@ class Message extends TdObject {
 
   /// [canGetMessageThread] True, if the message thread info is available
   final bool canGetMessageThread;
+
+  /// [canGetViewers] True, if chat members already viewed the message can be
+  /// received through getMessageViewers
+  final bool canGetViewers;
+
+  /// [canGetMediaTimestampLinks] True, if media timestamp links can be
+  /// generated for media timestamp entities in the message text, caption or web
+  /// page description
+  final bool canGetMediaTimestampLinks;
+
+  /// [hasTimestampedMedia] True, if media timestamp entities refers to a media
+  /// in this message as opposed to a media in the replied message
+  final bool hasTimestampedMedia;
 
   /// [isChannelPost] True, if the message is a channel post. All messages to
   /// channels are channel posts, all other messages are not channel posts
@@ -118,7 +132,8 @@ class Message extends TdObject {
   /// updateMessageContent once the TTL expires
   final int ttl;
 
-  /// [ttlExpiresIn] Time left before the message expires, in seconds
+  /// [ttlExpiresIn] Time left before the message expires, in seconds. If the
+  /// TTL timer isn't started yet, equals to the value of the ttl field
   final double ttlExpiresIn;
 
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which
@@ -165,6 +180,9 @@ class Message extends TdObject {
         canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
         canGetStatistics: json['can_get_statistics'],
         canGetMessageThread: json['can_get_message_thread'],
+        canGetViewers: json['can_get_viewers'],
+        canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
+        hasTimestampedMedia: json['has_timestamped_media'],
         isChannelPost: json['is_channel_post'],
         containsUnreadMention: json['contains_unread_mention'],
         date: json['date'],
@@ -202,6 +220,9 @@ class Message extends TdObject {
         'can_be_deleted_for_all_users': this.canBeDeletedForAllUsers,
         'can_get_statistics': this.canGetStatistics,
         'can_get_message_thread': this.canGetMessageThread,
+        'can_get_viewers': this.canGetViewers,
+        'can_get_media_timestamp_links': this.canGetMediaTimestampLinks,
+        'has_timestamped_media': this.hasTimestampedMedia,
         'is_channel_post': this.isChannelPost,
         'contains_unread_mention': this.containsUnreadMention,
         'date': this.date,

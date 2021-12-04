@@ -4,19 +4,17 @@ import '../tdapi.dart';
 /// Returns [Ok]
 class EditInlineMessageCaption extends TdFunction {
   EditInlineMessageCaption(
-      {required this.inlineMessageId,
-      required this.replyMarkup,
-      required this.caption});
+      {required this.inlineMessageId, this.replyMarkup, this.caption});
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup? replyMarkup;
 
-  /// [caption] New message content caption;
+  /// [caption] New message content caption; pass null to remove caption;
   /// 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'editInlineMessageCaption';
 
@@ -25,8 +23,8 @@ class EditInlineMessageCaption extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup.toJson(),
-        'caption': this.caption.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

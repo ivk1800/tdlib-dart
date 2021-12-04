@@ -16,10 +16,10 @@ class GetPassportAuthorizationForm extends TdFunction {
   /// [scope] Telegram Passport element types requested by the service
   final String scope;
 
-  /// [publicKey] Service's public_key
+  /// [publicKey] Service's public key
   final String publicKey;
 
-  /// [nonce] Authorization form nonce provided by the service
+  /// [nonce] Unique request identifier provided by the service
   final String nonce;
 
   static const String CONSTRUCTOR = 'getPassportAuthorizationForm';

@@ -25,8 +25,8 @@ class UserTypeBot extends UserType {
   /// application input field)
   final String inlineQueryPlaceholder;
 
-  /// [needLocation] True, if the location of the user should be sent with every
-  /// inline query to this bot
+  /// [needLocation] True, if the location of the user is expected to be sent
+  /// with every inline query to this bot
   final bool needLocation;
 
   static const String CONSTRUCTOR = 'userTypeBot';

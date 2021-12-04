@@ -9,7 +9,7 @@ class SetChatPhoto extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [photo] New chat photo. Pass null to delete the chat photo
+  /// [photo] New chat photo; pass null to delete the chat photo
   final InputChatPhoto? photo;
 
   static const String CONSTRUCTOR = 'setChatPhoto';

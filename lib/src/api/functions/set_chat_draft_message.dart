@@ -13,7 +13,7 @@ class SetChatDraftMessage extends TdFunction {
   /// was changed
   final int messageThreadId;
 
-  /// [draftMessage] New draft message; may be null
+  /// [draftMessage] New draft message; pass null to remove the draft
   final DraftMessage? draftMessage;
 
   static const String CONSTRUCTOR = 'setChatDraftMessage';

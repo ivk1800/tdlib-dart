@@ -17,7 +17,7 @@ class RemoteFile extends TdObject {
   /// only their URL is known.. If downloadFile is called on such a file or if
   /// it is sent to a secret chat, TDLib starts a file generation process by
   /// sending updateFileGenerationStart to the application with the HTTP URL in
-  /// the original_path and "#url#" as the conversion string. Application should
+  /// the original_path and "#url#" as the conversion string. Application must
   /// generate the file by downloading it to the specified location
   final String id;
 
@@ -33,7 +33,8 @@ class RemoteFile extends TdObject {
   /// [isUploadingCompleted] True, if a remote copy is fully available
   final bool isUploadingCompleted;
 
-  /// [uploadedSize] Size of the remote available part of the file; 0 if unknown
+  /// [uploadedSize] Size of the remote available part of the file, in bytes; 0
+  /// if unknown
   final int uploadedSize;
 
   static const String CONSTRUCTOR = 'remoteFile';

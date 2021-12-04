@@ -9,7 +9,7 @@ class AddSavedAnimation extends TdFunction {
   AddSavedAnimation({required this.animation});
 
   /// [animation] The animation file to be added. Only animations known to the
-  /// server (i.e. successfully sent via a message) can be added to the list
+  /// server (i.e., successfully sent via a message) can be added to the list
   final InputFile animation;
 
   static const String CONSTRUCTOR = 'addSavedAnimation';

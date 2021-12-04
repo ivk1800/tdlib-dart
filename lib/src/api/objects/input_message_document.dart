@@ -4,24 +4,24 @@ import '../tdapi.dart';
 class InputMessageDocument extends InputMessageContent {
   InputMessageDocument(
       {required this.document,
-      required this.thumbnail,
+      this.thumbnail,
       required this.disableContentTypeDetection,
-      required this.caption});
+      this.caption});
 
   /// [document] Document to be sent
   final InputFile document;
 
-  /// [thumbnail] Document thumbnail, if available
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Document thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
   /// [disableContentTypeDetection] If true, automatic file type detection will
   /// be disabled and the document will be always sent as file. Always true for
   /// files sent to secret chats
   final bool disableContentTypeDetection;
 
-  /// [caption] Document caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Document caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'inputMessageDocument';
 
@@ -32,9 +32,9 @@ class InputMessageDocument extends InputMessageContent {
 
     return InputMessageDocument(
         document: InputFile.fromJson(json['document'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         disableContentTypeDetection: json['disable_content_type_detection'],
-        caption: FormattedText.fromJson(json['caption'])!);
+        caption: FormattedText.fromJson(json['caption']));
   }
 
   @override
@@ -42,9 +42,9 @@ class InputMessageDocument extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'document': this.document.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'disable_content_type_detection': this.disableContentTypeDetection,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

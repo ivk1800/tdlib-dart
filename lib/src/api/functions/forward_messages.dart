@@ -9,9 +9,10 @@ class ForwardMessages extends TdFunction {
       {required this.chatId,
       required this.fromChatId,
       required this.messageIds,
-      required this.options,
+      this.options,
       required this.sendCopy,
-      required this.removeCaption});
+      required this.removeCaption,
+      required this.onlyPreview});
 
   /// [chatId] Identifier of the chat to which to forward messages
   final int chatId;
@@ -24,17 +25,22 @@ class ForwardMessages extends TdFunction {
   /// forwarded simultaneously
   final List<int> messageIds;
 
-  /// [options] Options to be used to send the messages
-  final MessageSendOptions options;
+  /// [options] Options to be used to send the messages; pass null to use
+  /// default options
+  final MessageSendOptions? options;
 
-  /// [sendCopy] True, if content of the messages needs to be copied without
-  /// links to the original messages. Always true if the messages are forwarded
-  /// to a secret chat
+  /// [sendCopy] If true, content of the messages will be copied without
+  /// reference to the original sender. Always true if the messages are
+  /// forwarded to a secret chat or are local
   final bool sendCopy;
 
-  /// [removeCaption] True, if media caption of message copies needs to be
-  /// removed. Ignored if send_copy is false
+  /// [removeCaption] If true, media caption of message copies will be removed.
+  /// Ignored if send_copy is false
   final bool removeCaption;
+
+  /// [onlyPreview] If true, messages will not be forwarded and instead fake
+  /// messages will be returned
+  final bool onlyPreview;
 
   static const String CONSTRUCTOR = 'forwardMessages';
 
@@ -45,9 +51,10 @@ class ForwardMessages extends TdFunction {
         'chat_id': this.chatId,
         'from_chat_id': this.fromChatId,
         'message_ids': messageIds.map((item) => item).toList(),
-        'options': this.options.toJson(),
+        'options': this.options?.toJson(),
         'send_copy': this.sendCopy,
         'remove_caption': this.removeCaption,
+        'only_preview': this.onlyPreview,
         '@type': CONSTRUCTOR
       };
 }

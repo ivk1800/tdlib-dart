@@ -14,10 +14,10 @@ class PageBlockVideo extends PageBlock {
   /// [caption] Video caption
   final PageBlockCaption caption;
 
-  /// [needAutoplay] True, if the video should be played automatically
+  /// [needAutoplay] True, if the video must be played automatically
   final bool needAutoplay;
 
-  /// [isLooped] True, if the video should be looped
+  /// [isLooped] True, if the video must be looped
   final bool isLooped;
 
   static const String CONSTRUCTOR = 'pageBlockVideo';

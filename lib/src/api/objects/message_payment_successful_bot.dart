@@ -3,8 +3,7 @@ import '../tdapi.dart';
 /// A payment has been completed; for bots only
 class MessagePaymentSuccessfulBot extends MessageContent {
   MessagePaymentSuccessfulBot(
-      {required this.invoiceMessageId,
-      required this.currency,
+      {required this.currency,
       required this.totalAmount,
       required this.invoicePayload,
       required this.shippingOptionId,
@@ -12,14 +11,10 @@ class MessagePaymentSuccessfulBot extends MessageContent {
       required this.telegramPaymentChargeId,
       required this.providerPaymentChargeId});
 
-  /// [invoiceMessageId] Identifier of the message with the corresponding
-  /// invoice; can be an identifier of a deleted message
-  final int invoiceMessageId;
-
   /// [currency] Currency for price of the product
   final String currency;
 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the
+  /// [totalAmount] Total price for the product, in the smallest units of the
   /// currency
   final int totalAmount;
 
@@ -47,7 +42,6 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     }
 
     return MessagePaymentSuccessfulBot(
-        invoiceMessageId: json['invoice_message_id'],
         currency: json['currency'],
         totalAmount: json['total_amount'],
         invoicePayload: json['invoice_payload'],
@@ -61,7 +55,6 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'invoice_message_id': this.invoiceMessageId,
         'currency': this.currency,
         'total_amount': this.totalAmount,
         'invoice_payload': this.invoicePayload,

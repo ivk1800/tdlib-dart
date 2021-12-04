@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A mask should be placed relatively to the forehead
+/// The mask is placed relatively to the forehead
 class MaskPointForehead extends MaskPoint {
   const MaskPointForehead();
 

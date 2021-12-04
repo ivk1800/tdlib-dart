@@ -16,8 +16,7 @@ class ScopeNotificationSettings extends TdObject {
   /// applies to iOS applications
   final String sound;
 
-  /// [showPreview] True, if message content should be displayed in
-  /// notifications
+  /// [showPreview] True, if message content must be displayed in notifications
   final bool showPreview;
 
   /// [disablePinnedMessageNotifications] True, if notifications for incoming

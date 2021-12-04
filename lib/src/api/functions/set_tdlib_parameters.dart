@@ -6,7 +6,7 @@ import '../tdapi.dart';
 class SetTdlibParameters extends TdFunction {
   SetTdlibParameters({required this.parameters});
 
-  /// [parameters] Parameters
+  /// [parameters] Parameters for TDLib initialization
   final TdlibParameters parameters;
 
   static const String CONSTRUCTOR = 'setTdlibParameters';

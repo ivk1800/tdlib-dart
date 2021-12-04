@@ -2,10 +2,11 @@ import '../tdapi.dart';
 
 /// Describes a recently speaking participant in a group call
 class GroupCallRecentSpeaker extends TdObject {
-  GroupCallRecentSpeaker({required this.speaker, required this.isSpeaking});
+  GroupCallRecentSpeaker(
+      {required this.participantId, required this.isSpeaking});
 
-  /// [speaker] Speaking participantt
-  final MessageSender speaker;
+  /// [participantId] Group call participant identifier
+  final MessageSender participantId;
 
   /// [isSpeaking] True, is the user has spoken recently
   final bool isSpeaking;
@@ -18,7 +19,7 @@ class GroupCallRecentSpeaker extends TdObject {
     }
 
     return GroupCallRecentSpeaker(
-        speaker: MessageSender.fromJson(json['speaker'])!,
+        participantId: MessageSender.fromJson(json['participant_id'])!,
         isSpeaking: json['is_speaking']);
   }
 
@@ -26,7 +27,7 @@ class GroupCallRecentSpeaker extends TdObject {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'speaker': this.speaker.toJson(),
+        'participant_id': this.participantId.toJson(),
         'is_speaking': this.isSpeaking,
         '@type': CONSTRUCTOR
       };

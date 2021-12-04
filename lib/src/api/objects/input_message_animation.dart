@@ -4,18 +4,18 @@ import '../tdapi.dart';
 class InputMessageAnimation extends InputMessageContent {
   InputMessageAnimation(
       {required this.animation,
-      required this.thumbnail,
+      this.thumbnail,
       required this.addedStickerFileIds,
       required this.duration,
       required this.width,
       required this.height,
-      required this.caption});
+      this.caption});
 
   /// [animation] Animation file to be sent
   final InputFile animation;
 
-  /// [thumbnail] Animation thumbnail, if available
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Animation thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the
   /// animation, if applicable
@@ -30,9 +30,9 @@ class InputMessageAnimation extends InputMessageContent {
   /// [height] Height of the animation; may be replaced by the server
   final int height;
 
-  /// [caption] Animation caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Animation caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'inputMessageAnimation';
 
@@ -43,7 +43,7 @@ class InputMessageAnimation extends InputMessageContent {
 
     return InputMessageAnimation(
         animation: InputFile.fromJson(json['animation'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         addedStickerFileIds: List<int>.from(
             (json['added_sticker_file_ids'] ?? [])
                 .map((item) => item)
@@ -51,7 +51,7 @@ class InputMessageAnimation extends InputMessageContent {
         duration: json['duration'],
         width: json['width'],
         height: json['height'],
-        caption: FormattedText.fromJson(json['caption'])!);
+        caption: FormattedText.fromJson(json['caption']));
   }
 
   @override
@@ -59,13 +59,13 @@ class InputMessageAnimation extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'animation': this.animation.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
         'duration': this.duration,
         'width': this.width,
         'height': this.height,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

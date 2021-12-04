@@ -5,7 +5,7 @@ class PaymentResult extends TdObject {
   PaymentResult({required this.success, required this.verificationUrl});
 
   /// [success] True, if the payment request was successful; otherwise the
-  /// verification_url will be not empty
+  /// verification_url will be non-empty
   final bool success;
 
   /// [verificationUrl] URL for additional payment credentials verification

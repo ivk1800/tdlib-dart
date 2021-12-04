@@ -32,7 +32,7 @@ class GetChatInviteLinks extends TdFunction {
   /// links; use empty string to get results from the beginning
   final String offsetInviteLink;
 
-  /// [limit] Maximum number of invite links to return
+  /// [limit] The maximum number of invite links to return; up to 100
   final int limit;
 
   static const String CONSTRUCTOR = 'getChatInviteLinks';

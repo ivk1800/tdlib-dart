@@ -3,14 +3,14 @@ import '../tdapi.dart';
 /// Finishes the file generation
 /// Returns [Ok]
 class FinishFileGeneration extends TdFunction {
-  FinishFileGeneration({required this.generationId, required this.error});
+  FinishFileGeneration({required this.generationId, this.error});
 
   /// [generationId] The identifier of the generation process
   final int generationId;
 
-  /// [error] If set, means that file generation has failed and should be
-  /// terminated
-  final TdError error;
+  /// [error] If passed, the file generation has failed and must be terminated;
+  /// pass null if the file generation succeeded
+  final TdError? error;
 
   static const String CONSTRUCTOR = 'finishFileGeneration';
 
@@ -19,7 +19,7 @@ class FinishFileGeneration extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'generation_id': this.generationId,
-        'error': this.error.toJson(),
+        'error': this.error?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

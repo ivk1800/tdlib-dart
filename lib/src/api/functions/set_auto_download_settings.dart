@@ -8,7 +8,7 @@ class SetAutoDownloadSettings extends TdFunction {
   /// [settings] New user auto-download settings
   final AutoDownloadSettings settings;
 
-  /// [type] Type of the network for which the new settings are applied
+  /// [type] Type of the network for which the new settings are relevant
   final NetworkType type;
 
   static const String CONSTRUCTOR = 'setAutoDownloadSettings';

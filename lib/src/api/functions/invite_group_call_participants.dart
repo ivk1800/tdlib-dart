@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
-/// Invites users to a group call. Sends a service message of type
-/// messageInviteToGroupCall for voice chats
+/// Invites users to an active group call. Sends a service message of type
+/// messageInviteToGroupCall for video chats
 /// Returns [Ok]
 class InviteGroupCallParticipants extends TdFunction {
   InviteGroupCallParticipants(

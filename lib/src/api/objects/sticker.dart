@@ -33,7 +33,7 @@ class Sticker extends TdObject {
   /// [isMask] True, if the sticker is a mask
   final bool isMask;
 
-  /// [maskPosition] Position where the mask should be placed; may be null
+  /// [maskPosition] Position where the mask is placed; may be null
   final MaskPosition? maskPosition;
 
   /// [outline] Sticker's outline represented as a list of closed vector paths;

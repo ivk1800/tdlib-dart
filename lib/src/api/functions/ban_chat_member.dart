@@ -7,15 +7,15 @@ import '../tdapi.dart';
 class BanChatMember extends TdFunction {
   BanChatMember(
       {required this.chatId,
-      required this.userId,
+      required this.memberId,
       required this.bannedUntilDate,
       required this.revokeMessages});
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [userId] Identifier of the user
-  final int userId;
+  /// [memberId] Member identifier
+  final MessageSender memberId;
 
   /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be
   /// unbanned; 0 if never. If the user is banned for more than 366 days or for
@@ -23,8 +23,8 @@ class BanChatMember extends TdFunction {
   /// banned forever. Ignored in basic groups
   final int bannedUntilDate;
 
-  /// [revokeMessages] Pass true to delete all messages in the chat for the
-  /// user. Always true for supergroups and channels
+  /// [revokeMessages] Pass true to delete all messages in the chat for the user
+  /// that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
 
   static const String CONSTRUCTOR = 'banChatMember';
@@ -34,7 +34,7 @@ class BanChatMember extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
-        'user_id': this.userId,
+        'member_id': this.memberId.toJson(),
         'banned_until_date': this.bannedUntilDate,
         'revoke_messages': this.revokeMessages,
         '@type': CONSTRUCTOR

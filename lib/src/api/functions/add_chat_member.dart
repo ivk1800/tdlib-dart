@@ -15,7 +15,7 @@ class AddChatMember extends TdFunction {
 
   /// [forwardLimit] The number of earlier messages from the chat to be
   /// forwarded to the new member; up to 100. Ignored for supergroups and
-  /// channels
+  /// channels, or if the added user is a bot
   final int forwardLimit;
 
   static const String CONSTRUCTOR = 'addChatMember';

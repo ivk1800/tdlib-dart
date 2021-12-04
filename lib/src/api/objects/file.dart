@@ -12,12 +12,11 @@ class File extends TdObject {
   /// [id] Unique file identifier
   final int id;
 
-  /// [size] File size; 0 if unknown
+  /// [size] File size, in bytes; 0 if unknown
   final int size;
 
-  /// [expectedSize] Expected file size in case the exact file size is unknown,
-  /// but an approximate size is known. Can be used to show download/upload
-  /// progress
+  /// [expectedSize] Approximate file size in bytes in case the exact file size
+  /// is unknown. Can be used to show download/upload progress
   final int expectedSize;
 
   /// [local] Information about the local copy of the file

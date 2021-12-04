@@ -6,6 +6,7 @@ class ProfilePhoto extends TdObject {
       {required this.id,
       required this.small,
       required this.big,
+      this.minithumbnail,
       required this.hasAnimation});
 
   /// [id] Photo identifier; 0 for an empty photo. Can be used to find a photo
@@ -19,6 +20,9 @@ class ProfilePhoto extends TdObject {
   /// [big] A big (640x640) user profile photo. The file can be downloaded only
   /// before the photo is changed
   final File big;
+
+  /// [minithumbnail] User profile photo minithumbnail; may be null
+  final Minithumbnail? minithumbnail;
 
   /// [hasAnimation] True, if the photo has animated variant
   final bool hasAnimation;
@@ -34,6 +38,7 @@ class ProfilePhoto extends TdObject {
         id: int.tryParse(json['id']) ?? 0,
         small: File.fromJson(json['small'])!,
         big: File.fromJson(json['big'])!,
+        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
         hasAnimation: json['has_animation']);
   }
 
@@ -44,6 +49,7 @@ class ProfilePhoto extends TdObject {
         'id': this.id,
         'small': this.small.toJson(),
         'big': this.big.toJson(),
+        'minithumbnail': this.minithumbnail?.toJson(),
         'has_animation': this.hasAnimation,
         '@type': CONSTRUCTOR
       };

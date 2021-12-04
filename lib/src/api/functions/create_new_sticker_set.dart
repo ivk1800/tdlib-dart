@@ -1,7 +1,6 @@
 import '../tdapi.dart';
 
-/// Creates a new sticker set; for bots only. Returns the newly created
-/// sticker set
+/// Creates a new sticker set. Returns the newly created sticker set
 /// Returns [StickerSet]
 class CreateNewStickerSet extends TdFunction {
   CreateNewStickerSet(
@@ -9,9 +8,10 @@ class CreateNewStickerSet extends TdFunction {
       required this.title,
       required this.name,
       required this.isMasks,
-      required this.stickers});
+      required this.stickers,
+      required this.source});
 
-  /// [userId] Sticker set owner
+  /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
   /// [title] Sticker set title; 1-64 characters
@@ -25,8 +25,12 @@ class CreateNewStickerSet extends TdFunction {
   final bool isMasks;
 
   /// [stickers] List of stickers to be added to the set; must be non-empty. All
-  /// stickers must be of the same type
+  /// stickers must be of the same type. For animated stickers,
+  /// uploadStickerFile must be used before the sticker is shown
   final List<InputSticker> stickers;
+
+  /// [source] Source of the sticker set; may be empty if unknown
+  final String source;
 
   static const String CONSTRUCTOR = 'createNewStickerSet';
 
@@ -39,6 +43,7 @@ class CreateNewStickerSet extends TdFunction {
         'name': this.name,
         'is_masks': this.isMasks,
         'stickers': stickers.map((item) => item.toJson()).toList(),
+        'source': this.source,
         '@type': CONSTRUCTOR
       };
 }

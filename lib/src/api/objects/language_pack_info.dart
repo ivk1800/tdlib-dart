@@ -21,8 +21,8 @@ class LanguagePackInfo extends TdObject {
   final String id;
 
   /// [baseLanguagePackId] Identifier of a base language pack; may be empty. If
-  /// a string is missed in the language pack, then it should be fetched from
-  /// base language pack. Unsupported in custom language packs
+  /// a string is missed in the language pack, then it must be fetched from base
+  /// language pack. Unsupported in custom language packs
   final String baseLanguagePackId;
 
   /// [name] Language name

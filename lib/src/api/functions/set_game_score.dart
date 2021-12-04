@@ -17,7 +17,7 @@ class SetGameScore extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [editMessage] True, if the message should be edited
+  /// [editMessage] True, if the message needs to be edited
   final bool editMessage;
 
   /// [userId] User identifier

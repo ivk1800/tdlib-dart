@@ -32,8 +32,8 @@ class Audio extends TdObject {
   final Minithumbnail? albumCoverMinithumbnail;
 
   /// [albumCoverThumbnail] The thumbnail of the album cover in JPEG format; as
-  /// defined by the sender. The full size thumbnail should be extracted from
-  /// the downloaded file; may be null
+  /// defined by the sender. The full size thumbnail is supposed to be extracted
+  /// from the downloaded file; may be null
   final Thumbnail? albumCoverThumbnail;
 
   /// [audio] File containing the audio

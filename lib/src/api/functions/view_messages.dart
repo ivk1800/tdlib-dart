@@ -22,7 +22,7 @@ class ViewMessages extends TdFunction {
   /// [messageIds] The identifiers of the messages being viewed
   final List<int> messageIds;
 
-  /// [forceRead] True, if messages in closed chats should be marked as read by
+  /// [forceRead] True, if messages in closed chats must be marked as read by
   /// the request
   final bool forceRead;
 

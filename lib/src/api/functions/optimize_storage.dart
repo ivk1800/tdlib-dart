@@ -15,8 +15,8 @@ class OptimizeStorage extends TdFunction {
       required this.returnDeletedFileStatistics,
       required this.chatLimit});
 
-  /// [size] Limit on the total size of files after deletion. Pass -1 to use the
-  /// default limit
+  /// [size] Limit on the total size of files after deletion, in bytes. Pass -1
+  /// to use the default limit
   final int size;
 
   /// [ttl] Limit on the time that has passed since the last time a file was
@@ -32,17 +32,17 @@ class OptimizeStorage extends TdFunction {
   /// which it can't be deleted, in seconds. Pass -1 to use the default value
   final int immunityDelay;
 
-  /// [fileTypes] If not empty, only files with the given type(s) are
-  /// considered. By default, all types except thumbnails, profile photos,
-  /// stickers and wallpapers are deleted
+  /// [fileTypes] If non-empty, only files with the given types are considered.
+  /// By default, all types except thumbnails, profile photos, stickers and
+  /// wallpapers are deleted
   final List<FileType> fileTypes;
 
-  /// [chatIds] If not empty, only files from the given chats are considered.
+  /// [chatIds] If non-empty, only files from the given chats are considered.
   /// Use 0 as chat identifier to delete files not belonging to any chat (e.g.,
   /// profile photos)
   final List<int> chatIds;
 
-  /// [excludeChatIds] If not empty, files from the given chats are excluded.
+  /// [excludeChatIds] If non-empty, files from the given chats are excluded.
   /// Use 0 as chat identifier to exclude all files not belonging to any chat
   /// (e.g., profile photos)
   final List<int> excludeChatIds;

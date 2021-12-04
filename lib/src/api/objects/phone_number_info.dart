@@ -16,7 +16,8 @@ class PhoneNumberInfo extends TdObject {
   final String countryCallingCode;
 
   /// [formattedPhoneNumber] The phone number without country calling code
-  /// formatted accordingly to local rules
+  /// formatted accordingly to local rules. Expected digits are returned as '-',
+  /// but even more digits might be entered by the user
   final String formattedPhoneNumber;
 
   static const String CONSTRUCTOR = 'phoneNumberInfo';

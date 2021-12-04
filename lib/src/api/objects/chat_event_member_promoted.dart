@@ -6,7 +6,7 @@ class ChatEventMemberPromoted extends ChatEventAction {
   ChatEventMemberPromoted(
       {required this.userId, required this.oldStatus, required this.newStatus});
 
-  /// [userId] Chat member user identifier
+  /// [userId] Affected chat member user identifier
   final int userId;
 
   /// [oldStatus] Previous status of the chat member

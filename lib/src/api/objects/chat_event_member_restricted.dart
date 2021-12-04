@@ -4,10 +4,12 @@ import '../tdapi.dart';
 /// of their restrictions has changed
 class ChatEventMemberRestricted extends ChatEventAction {
   ChatEventMemberRestricted(
-      {required this.userId, required this.oldStatus, required this.newStatus});
+      {required this.memberId,
+      required this.oldStatus,
+      required this.newStatus});
 
-  /// [userId] Chat member user identifier
-  final int userId;
+  /// [memberId] Affected chat member identifier
+  final MessageSender memberId;
 
   /// [oldStatus] Previous status of the chat member
   final ChatMemberStatus oldStatus;
@@ -23,7 +25,7 @@ class ChatEventMemberRestricted extends ChatEventAction {
     }
 
     return ChatEventMemberRestricted(
-        userId: json['user_id'],
+        memberId: MessageSender.fromJson(json['member_id'])!,
         oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
         newStatus: ChatMemberStatus.fromJson(json['new_status'])!);
   }
@@ -32,7 +34,7 @@ class ChatEventMemberRestricted extends ChatEventAction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
+        'member_id': this.memberId.toJson(),
         'old_status': this.oldStatus.toJson(),
         'new_status': this.newStatus.toJson(),
         '@type': CONSTRUCTOR

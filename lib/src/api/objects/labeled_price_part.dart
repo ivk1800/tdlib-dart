@@ -7,7 +7,7 @@ class LabeledPricePart extends TdObject {
   /// [label] Label for this portion of the product price
   final String label;
 
-  /// [amount] Currency amount in minimal quantity of the currency
+  /// [amount] Currency amount in the smallest units of the currency
   final int amount;
 
   static const String CONSTRUCTOR = 'labeledPricePart';

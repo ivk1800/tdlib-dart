@@ -39,13 +39,14 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   /// [thumbnailHeight] Height of the thumbnail
   final int thumbnailHeight;
 
-  /// [replyMarkup] The message reply markup. Must be of type
+  /// [replyMarkup] The message reply markup; pass null if none. Must be of type
   /// replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one
-  /// of the following types: InputMessageText, InputMessageDocument,
-  /// InputMessageLocation, InputMessageVenue or InputMessageContact
+  /// of the following types: inputMessageText, inputMessageDocument,
+  /// inputMessageInvoice, inputMessageLocation, inputMessageVenue or
+  /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'inputInlineQueryResultDocument';

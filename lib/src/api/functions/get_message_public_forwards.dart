@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
 /// Returns forwarded copies of a channel message to different public
-/// channels. For optimal performance the number of returned messages is
-/// chosen by the library
+/// channels. For optimal performance, the number of returned messages is
+/// chosen by TDLib
 /// Returns [FoundMessages]
 class GetMessagePublicForwards extends TdFunction {
   GetMessagePublicForwards(
@@ -22,8 +22,9 @@ class GetMessagePublicForwards extends TdFunction {
   final String offset;
 
   /// [limit] The maximum number of messages to be returned; must be positive
-  /// and can't be greater than 100. Fewer messages may be returned than
-  /// specified by the limit, even if the end of the list has not been reached
+  /// and can't be greater than 100. For optimal performance, the number of
+  /// returned messages is chosen by TDLib and can be smaller than the specified
+  /// limit
   final int limit;
 
   static const String CONSTRUCTOR = 'getMessagePublicForwards';

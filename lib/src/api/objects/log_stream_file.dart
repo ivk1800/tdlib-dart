@@ -11,7 +11,7 @@ class LogStreamFile extends LogStream {
   final String path;
 
   /// [maxFileSize] The maximum size of the file to where the internal TDLib log
-  /// is written before the file will be auto-rotated
+  /// is written before the file will be auto-rotated, in bytes
   final int maxFileSize;
 
   /// [redirectStderr] Pass true to additionally redirect stderr to the log

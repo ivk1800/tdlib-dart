@@ -8,7 +8,7 @@ class StorageStatisticsByFileType extends TdObject {
   /// [fileType] File type
   final FileType fileType;
 
-  /// [size] Total size of the files
+  /// [size] Total size of the files, in bytes
   final int size;
 
   /// [count] Total number of files

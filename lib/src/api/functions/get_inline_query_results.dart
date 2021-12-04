@@ -18,7 +18,8 @@ class GetInlineQueryResults extends TdFunction {
   /// [chatId] Identifier of the chat where the query was sent
   final int chatId;
 
-  /// [userLocation] Location of the user, only if needed
+  /// [userLocation] Location of the user; pass null if unknown or the bot
+  /// doesn't need user's location
   final Location? userLocation;
 
   /// [query] Text of the query

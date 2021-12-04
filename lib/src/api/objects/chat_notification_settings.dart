@@ -33,8 +33,7 @@ class ChatNotificationSettings extends TdObject {
   /// the relevant type of chat is used instead
   final bool useDefaultShowPreview;
 
-  /// [showPreview] True, if message content should be displayed in
-  /// notifications
+  /// [showPreview] True, if message content must be displayed in notifications
   final bool showPreview;
 
   /// [useDefaultDisablePinnedMessageNotifications] If true,

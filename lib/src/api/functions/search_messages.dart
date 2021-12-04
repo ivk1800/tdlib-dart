@@ -2,8 +2,9 @@ import '../tdapi.dart';
 
 /// Searches for messages in all chats except secret chats. Returns the
 /// results in reverse chronological order (i.e., in order of decreasing
-/// (date, chat_id, message_id)).. For optimal performance the number of
-/// returned messages is chosen by the library
+/// (date, chat_id, message_id)).. For optimal performance, the number of
+/// returned messages is chosen by TDLib and can be smaller than the specified
+/// limit
 /// Returns [Messages]
 class SearchMessages extends TdFunction {
   SearchMessages(
@@ -13,7 +14,7 @@ class SearchMessages extends TdFunction {
       required this.offsetChatId,
       required this.offsetMessageId,
       required this.limit,
-      required this.filter,
+      this.filter,
       required this.minDate,
       required this.maxDate});
 
@@ -25,8 +26,8 @@ class SearchMessages extends TdFunction {
   /// [query] Query to search for
   final String query;
 
-  /// [offsetDate] The date of the message starting from which the results
-  /// should be fetched. Use 0 or any date in the future to get results from the
+  /// [offsetDate] The date of the message starting from which the results need
+  /// to be fetched. Use 0 or any date in the future to get results from the
   /// last message
   final int offsetDate;
 
@@ -38,17 +39,17 @@ class SearchMessages extends TdFunction {
   /// for the first request
   final int offsetMessageId;
 
-  /// [limit] The maximum number of messages to be returned; up to 100. Fewer
-  /// messages may be returned than specified by the limit, even if the end of
-  /// the message history has not been reached
+  /// [limit] The maximum number of messages to be returned; up to 100. For
+  /// optimal performance, the number of returned messages is chosen by TDLib
+  /// and can be smaller than the specified limit
   final int limit;
 
-  /// [filter] Filter for message content in the search results;
-  /// searchMessagesFilterCall, searchMessagesFilterMissedCall,
-  /// searchMessagesFilterMention, searchMessagesFilterUnreadMention,
-  /// searchMessagesFilterFailedToSend and searchMessagesFilterPinned are
-  /// unsupported in this function
-  final SearchMessagesFilter filter;
+  /// [filter] Additional filter for messages to search; pass null to search for
+  /// all messages. Filters searchMessagesFilterCall,
+  /// searchMessagesFilterMissedCall, searchMessagesFilterMention,
+  /// searchMessagesFilterUnreadMention, searchMessagesFilterFailedToSend and
+  /// searchMessagesFilterPinned are unsupported in this function
+  final SearchMessagesFilter? filter;
 
   /// [minDate] If not 0, the minimum date of the messages to return
   final int minDate;
@@ -68,7 +69,7 @@ class SearchMessages extends TdFunction {
         'offset_chat_id': this.offsetChatId,
         'offset_message_id': this.offsetMessageId,
         'limit': this.limit,
-        'filter': this.filter.toJson(),
+        'filter': this.filter?.toJson(),
         'min_date': this.minDate,
         'max_date': this.maxDate,
         '@type': CONSTRUCTOR

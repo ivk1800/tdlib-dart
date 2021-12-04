@@ -8,7 +8,7 @@ class EditMessageCaption extends TdFunction {
       {required this.chatId,
       required this.messageId,
       this.replyMarkup,
-      required this.caption});
+      this.caption});
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -16,12 +16,14 @@ class EditMessageCaption extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
   final ReplyMarkup? replyMarkup;
 
   /// [caption] New message content caption;
-  /// 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  /// 0-GetOption("message_caption_length_max") characters; pass null to remove
+  /// caption
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'editMessageCaption';
 
@@ -32,7 +34,7 @@ class EditMessageCaption extends TdFunction {
         'chat_id': this.chatId,
         'message_id': this.messageId,
         'reply_markup': this.replyMarkup?.toJson(),
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

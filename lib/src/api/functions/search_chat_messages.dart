@@ -3,9 +3,9 @@ import '../tdapi.dart';
 /// Searches for messages with given words in the chat. Returns the results in
 /// reverse chronological order, i.e. in order of decreasing message_id.
 /// Cannot be used in secret chats with a non-empty query.
-/// (searchSecretMessages should be used instead), or without an enabled
-/// message database. For optimal performance the number of returned messages
-/// is chosen by the library
+/// (searchSecretMessages must be used instead), or without an enabled message
+/// database. For optimal performance, the number of returned messages is
+/// chosen by TDLib and can be smaller than the specified limit
 /// Returns [Messages]
 class SearchChatMessages extends TdFunction {
   SearchChatMessages(
@@ -15,7 +15,7 @@ class SearchChatMessages extends TdFunction {
       required this.fromMessageId,
       required this.offset,
       required this.limit,
-      required this.filter,
+      this.filter,
       required this.messageThreadId});
 
   /// [chatId] Identifier of the chat in which to search messages
@@ -24,8 +24,8 @@ class SearchChatMessages extends TdFunction {
   /// [query] Query to search for
   final String query;
 
-  /// [sender] If not null, only messages sent by the specified sender will be
-  /// returned. Not supported in secret chats
+  /// [sender] Sender of messages to search for; pass null to search for
+  /// messages from any sender. Not supported in secret chats
   final MessageSender? sender;
 
   /// [fromMessageId] Identifier of the message starting from which history must
@@ -38,12 +38,13 @@ class SearchChatMessages extends TdFunction {
 
   /// [limit] The maximum number of messages to be returned; must be positive
   /// and can't be greater than 100. If the offset is negative, the limit must
-  /// be greater than -offset. Fewer messages may be returned than specified by
-  /// the limit, even if the end of the message history has not been reached
+  /// be greater than -offset. For optimal performance, the number of returned
+  /// messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
 
-  /// [filter] Filter for message content in the search results
-  final SearchMessagesFilter filter;
+  /// [filter] Additional filter for messages to search; pass null to search for
+  /// all messages
+  final SearchMessagesFilter? filter;
 
   /// [messageThreadId] If not 0, only messages in the specified thread will be
   /// returned; supergroups only
@@ -61,7 +62,7 @@ class SearchChatMessages extends TdFunction {
         'from_message_id': this.fromMessageId,
         'offset': this.offset,
         'limit': this.limit,
-        'filter': this.filter.toJson(),
+        'filter': this.filter?.toJson(),
         'message_thread_id': this.messageThreadId,
         '@type': CONSTRUCTOR
       };

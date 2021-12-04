@@ -16,11 +16,12 @@ class EditMessageText extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
   final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Should be of type
-  /// InputMessageText
+  /// [inputMessageContent] New text content of the message. Must be of type
+  /// inputMessageText
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'editMessageText';

@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
 /// Returns stickers from the installed sticker sets that correspond to a
-/// given emoji. If the emoji is not empty, favorite and recently used
+/// given emoji. If the emoji is non-empty, favorite and recently used
 /// stickers may also be returned
 /// Returns [Stickers]
 class GetStickers extends TdFunction {

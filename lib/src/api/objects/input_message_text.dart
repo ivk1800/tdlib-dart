@@ -14,10 +14,10 @@ class InputMessageText extends InputMessageContent {
   final FormattedText text;
 
   /// [disableWebPagePreview] True, if rich web page previews for URLs in the
-  /// message text should be disabled
+  /// message text must be disabled
   final bool disableWebPagePreview;
 
-  /// [clearDraft] True, if a chat message draft should be deleted
+  /// [clearDraft] True, if a chat message draft must be deleted
   final bool clearDraft;
 
   static const String CONSTRUCTOR = 'inputMessageText';

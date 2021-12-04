@@ -9,7 +9,7 @@ class CreateCall extends TdFunction {
   /// [userId] Identifier of the user to be called
   final int userId;
 
-  /// [protocol] Description of the call protocols supported by the application
+  /// [protocol] The call protocols supported by the application
   final CallProtocol protocol;
 
   /// [isVideo] True, if a video call needs to be created

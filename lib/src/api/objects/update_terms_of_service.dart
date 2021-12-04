@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
 /// New terms of service must be accepted by the user. If the terms of service
-/// are declined, then the deleteAccount method should be called with the
-/// reason "Decline ToS update"
+/// are declined, then the deleteAccount method must be called with the reason
+/// "Decline ToS update"
 class UpdateTermsOfService extends Update {
   UpdateTermsOfService(
       {required this.termsOfServiceId, required this.termsOfService});

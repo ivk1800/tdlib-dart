@@ -5,10 +5,10 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   ChatEventSlowModeDelayChanged(
       {required this.oldSlowModeDelay, required this.newSlowModeDelay});
 
-  /// [oldSlowModeDelay] Previous value of slow_mode_delay
+  /// [oldSlowModeDelay] Previous value of slow_mode_delay, in seconds
   final int oldSlowModeDelay;
 
-  /// [newSlowModeDelay] New value of slow_mode_delay
+  /// [newSlowModeDelay] New value of slow_mode_delay, in seconds
   final int newSlowModeDelay;
 
   static const String CONSTRUCTOR = 'chatEventSlowModeDelayChanged';

@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The content should be bottom-aligned
+/// The content must be bottom-aligned
 class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
   const PageBlockVerticalAlignmentBottom();
 

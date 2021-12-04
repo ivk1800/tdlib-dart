@@ -4,15 +4,15 @@ import '../tdapi.dart';
 class InputMessageVideoNote extends InputMessageContent {
   InputMessageVideoNote(
       {required this.videoNote,
-      required this.thumbnail,
+      this.thumbnail,
       required this.duration,
       required this.length});
 
   /// [videoNote] Video note to be sent
   final InputFile videoNote;
 
-  /// [thumbnail] Video thumbnail, if available
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
   /// [duration] Duration of the video, in seconds
   final int duration;
@@ -29,7 +29,7 @@ class InputMessageVideoNote extends InputMessageContent {
 
     return InputMessageVideoNote(
         videoNote: InputFile.fromJson(json['video_note'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         duration: json['duration'],
         length: json['length']);
   }
@@ -39,7 +39,7 @@ class InputMessageVideoNote extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'video_note': this.videoNote.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'duration': this.duration,
         'length': this.length,
         '@type': CONSTRUCTOR

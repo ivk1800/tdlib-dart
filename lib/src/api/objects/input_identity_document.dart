@@ -4,27 +4,27 @@ import '../tdapi.dart';
 class InputIdentityDocument extends TdObject {
   InputIdentityDocument(
       {required this.number,
-      required this.expiryDate,
+      this.expiryDate,
       required this.frontSide,
-      required this.reverseSide,
-      required this.selfie,
+      this.reverseSide,
+      this.selfie,
       required this.translation});
 
   /// [number] Document number; 1-24 characters
   final String number;
 
-  /// [expiryDate] Document expiry date, if available
-  final Date expiryDate;
+  /// [expiryDate] Document expiry date; pass null if not applicable
+  final Date? expiryDate;
 
   /// [frontSide] Front side of the document
   final InputFile frontSide;
 
   /// [reverseSide] Reverse side of the document; only for driver license and
-  /// identity card
-  final InputFile reverseSide;
+  /// identity card; pass null otherwise
+  final InputFile? reverseSide;
 
-  /// [selfie] Selfie with the document, if available
-  final InputFile selfie;
+  /// [selfie] Selfie with the document; pass null if unavailable
+  final InputFile? selfie;
 
   /// [translation] List of files containing a certified English translation of
   /// the document
@@ -39,10 +39,10 @@ class InputIdentityDocument extends TdObject {
 
     return InputIdentityDocument(
         number: json['number'],
-        expiryDate: Date.fromJson(json['expiry_date'])!,
+        expiryDate: Date.fromJson(json['expiry_date']),
         frontSide: InputFile.fromJson(json['front_side'])!,
-        reverseSide: InputFile.fromJson(json['reverse_side'])!,
-        selfie: InputFile.fromJson(json['selfie'])!,
+        reverseSide: InputFile.fromJson(json['reverse_side']),
+        selfie: InputFile.fromJson(json['selfie']),
         translation: List<InputFile>.from((json['translation'] ?? [])
             .map((item) => InputFile.fromJson(item))
             .toList()));
@@ -53,10 +53,10 @@ class InputIdentityDocument extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         'number': this.number,
-        'expiry_date': this.expiryDate.toJson(),
+        'expiry_date': this.expiryDate?.toJson(),
         'front_side': this.frontSide.toJson(),
-        'reverse_side': this.reverseSide.toJson(),
-        'selfie': this.selfie.toJson(),
+        'reverse_side': this.reverseSide?.toJson(),
+        'selfie': this.selfie?.toJson(),
         'translation': translation.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };

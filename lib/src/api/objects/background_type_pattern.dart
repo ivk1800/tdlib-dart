@@ -5,14 +5,22 @@ import '../tdapi.dart';
 /// fill chosen by the user
 class BackgroundTypePattern extends BackgroundType {
   BackgroundTypePattern(
-      {required this.fill, required this.intensity, required this.isMoving});
+      {required this.fill,
+      required this.intensity,
+      required this.isInverted,
+      required this.isMoving});
 
-  /// [fill] Description of the background fill
+  /// [fill] Fill of the background
   final BackgroundFill fill;
 
   /// [intensity] Intensity of the pattern when it is shown above the filled
-  /// background; 0-100
+  /// background; 0-100.
   final int intensity;
+
+  /// [isInverted] True, if the background fill must be applied only to the
+  /// pattern itself. All other pixels are black in this case. For dark themes
+  /// only
+  final bool isInverted;
 
   /// [isMoving] True, if the background needs to be slightly moved when device
   /// is tilted
@@ -28,6 +36,7 @@ class BackgroundTypePattern extends BackgroundType {
     return BackgroundTypePattern(
         fill: BackgroundFill.fromJson(json['fill'])!,
         intensity: json['intensity'],
+        isInverted: json['is_inverted'],
         isMoving: json['is_moving']);
   }
 
@@ -37,6 +46,7 @@ class BackgroundTypePattern extends BackgroundType {
   Map<String, dynamic> toJson() => {
         'fill': this.fill.toJson(),
         'intensity': this.intensity,
+        'is_inverted': this.isInverted,
         'is_moving': this.isMoving,
         '@type': CONSTRUCTOR
       };

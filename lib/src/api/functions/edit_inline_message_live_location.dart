@@ -6,7 +6,7 @@ import '../tdapi.dart';
 class EditInlineMessageLiveLocation extends TdFunction {
   EditInlineMessageLiveLocation(
       {required this.inlineMessageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       this.location,
       required this.heading,
       required this.proximityAlertRadius});
@@ -14,11 +14,11 @@ class EditInlineMessageLiveLocation extends TdFunction {
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup? replyMarkup;
 
-  /// [location] New location content of the message; may be null. Pass null to
-  /// stop sharing the live location
+  /// [location] New location content of the message; pass null to stop sharing
+  /// the live location
   final Location? location;
 
   /// [heading] The new direction in which the location moves, in degrees;
@@ -36,7 +36,7 @@ class EditInlineMessageLiveLocation extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'location': this.location?.toJson(),
         'heading': this.heading,
         'proximity_alert_radius': this.proximityAlertRadius,

@@ -12,7 +12,8 @@ class StopPoll extends TdFunction {
   /// [messageId] Identifier of the message containing the poll
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
   final ReplyMarkup? replyMarkup;
 
   static const String CONSTRUCTOR = 'stopPoll';

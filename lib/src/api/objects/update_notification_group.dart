@@ -26,7 +26,7 @@ class UpdateNotificationGroup extends Update {
   /// must be applied to the added notifications
   final int notificationSettingsChatId;
 
-  /// [isSilent] True, if the notifications should be shown without sound
+  /// [isSilent] True, if the notifications must be shown without sound
   final bool isSilent;
 
   /// [totalCount] Total number of unread notifications in the group, can be

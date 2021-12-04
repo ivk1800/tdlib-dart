@@ -14,45 +14,45 @@ class ChatEventLogFilters extends TdObject {
       required this.infoChanges,
       required this.settingChanges,
       required this.inviteLinkChanges,
-      required this.voiceChatChanges});
+      required this.videoChatChanges});
 
-  /// [messageEdits] True, if message edits should be returned
+  /// [messageEdits] True, if message edits need to be returned
   final bool messageEdits;
 
-  /// [messageDeletions] True, if message deletions should be returned
+  /// [messageDeletions] True, if message deletions need to be returned
   final bool messageDeletions;
 
-  /// [messagePins] True, if pin/unpin events should be returned
+  /// [messagePins] True, if pin/unpin events need to be returned
   final bool messagePins;
 
-  /// [memberJoins] True, if members joining events should be returned
+  /// [memberJoins] True, if members joining events need to be returned
   final bool memberJoins;
 
-  /// [memberLeaves] True, if members leaving events should be returned
+  /// [memberLeaves] True, if members leaving events need to be returned
   final bool memberLeaves;
 
-  /// [memberInvites] True, if invited member events should be returned
+  /// [memberInvites] True, if invited member events need to be returned
   final bool memberInvites;
 
-  /// [memberPromotions] True, if member promotion/demotion events should be
+  /// [memberPromotions] True, if member promotion/demotion events need to be
   /// returned
   final bool memberPromotions;
 
   /// [memberRestrictions] True, if member
-  /// restricted/unrestricted/banned/unbanned events should be returned
+  /// restricted/unrestricted/banned/unbanned events need to be returned
   final bool memberRestrictions;
 
-  /// [infoChanges] True, if changes in chat information should be returned
+  /// [infoChanges] True, if changes in chat information need to be returned
   final bool infoChanges;
 
-  /// [settingChanges] True, if changes in chat settings should be returned
+  /// [settingChanges] True, if changes in chat settings need to be returned
   final bool settingChanges;
 
-  /// [inviteLinkChanges] True, if changes to invite links should be returned
+  /// [inviteLinkChanges] True, if changes to invite links need to be returned
   final bool inviteLinkChanges;
 
-  /// [voiceChatChanges] True, if voice chat actions should be returned
-  final bool voiceChatChanges;
+  /// [videoChatChanges] True, if video chat actions need to be returned
+  final bool videoChatChanges;
 
   static const String CONSTRUCTOR = 'chatEventLogFilters';
 
@@ -73,7 +73,7 @@ class ChatEventLogFilters extends TdObject {
         infoChanges: json['info_changes'],
         settingChanges: json['setting_changes'],
         inviteLinkChanges: json['invite_link_changes'],
-        voiceChatChanges: json['voice_chat_changes']);
+        videoChatChanges: json['video_chat_changes']);
   }
 
   @override
@@ -91,7 +91,7 @@ class ChatEventLogFilters extends TdObject {
         'info_changes': this.infoChanges,
         'setting_changes': this.settingChanges,
         'invite_link_changes': this.inviteLinkChanges,
-        'voice_chat_changes': this.voiceChatChanges,
+        'video_chat_changes': this.videoChatChanges,
         '@type': CONSTRUCTOR
       };
 }

@@ -16,7 +16,7 @@ class GetArchivedStickerSets extends TdFunction {
   /// the result
   final int offsetStickerSetId;
 
-  /// [limit] The maximum number of sticker sets to return
+  /// [limit] The maximum number of sticker sets to return; up to 100
   final int limit;
 
   static const String CONSTRUCTOR = 'getArchivedStickerSets';

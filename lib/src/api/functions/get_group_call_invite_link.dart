@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Returns invite link to a voice chat in a public chat
+/// Returns invite link to a video chat in a public chat
 /// Returns [HttpUrl]
 class GetGroupCallInviteLink extends TdFunction {
   GetGroupCallInviteLink(
@@ -9,9 +9,9 @@ class GetGroupCallInviteLink extends TdFunction {
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
-  /// [canSelfUnmute] Pass true if the invite_link should contain an invite
+  /// [canSelfUnmute] Pass true if the invite link needs to contain an invite
   /// hash, passing which to joinGroupCall would allow the invited user to
-  /// unmute themself. Requires groupCall.can_be_managed group call flag
+  /// unmute themselves. Requires groupCall.can_be_managed group call flag
   final bool canSelfUnmute;
 
   static const String CONSTRUCTOR = 'getGroupCallInviteLink';

@@ -11,7 +11,7 @@ class GetRepliedMessage extends TdFunction {
   /// [chatId] Identifier of the chat the message belongs to
   final int chatId;
 
-  /// [messageId] Identifier of the message reply to which to get
+  /// [messageId] Identifier of the reply message
   final int messageId;
 
   static const String CONSTRUCTOR = 'getRepliedMessage';

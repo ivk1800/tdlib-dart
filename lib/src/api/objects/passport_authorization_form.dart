@@ -11,8 +11,8 @@ class PassportAuthorizationForm extends TdObject {
   /// [id] Unique identifier of the authorization form
   final int id;
 
-  /// [requiredElements] Information about the Telegram Passport elements that
-  /// must be provided to complete the form
+  /// [requiredElements] Telegram Passport elements that must be provided to
+  /// complete the form
   final List<PassportRequiredElement> requiredElements;
 
   /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty

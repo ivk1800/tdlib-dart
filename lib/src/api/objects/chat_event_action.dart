@@ -14,6 +14,7 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventMessageUnpinned]
   /// [ChatEventMemberJoined]
   /// [ChatEventMemberJoinedByInviteLink]
+  /// [ChatEventMemberJoinedByRequest]
   /// [ChatEventMemberLeft]
   /// [ChatEventMemberInvited]
   /// [ChatEventMemberPromoted]
@@ -34,11 +35,11 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventInviteLinkEdited]
   /// [ChatEventInviteLinkRevoked]
   /// [ChatEventInviteLinkDeleted]
-  /// [ChatEventVoiceChatCreated]
-  /// [ChatEventVoiceChatDiscarded]
-  /// [ChatEventVoiceChatParticipantIsMutedToggled]
-  /// [ChatEventVoiceChatParticipantVolumeLevelChanged]
-  /// [ChatEventVoiceChatMuteNewParticipantsToggled]
+  /// [ChatEventVideoChatCreated]
+  /// [ChatEventVideoChatDiscarded]
+  /// [ChatEventVideoChatParticipantIsMutedToggled]
+  /// [ChatEventVideoChatParticipantVolumeLevelChanged]
+  /// [ChatEventVideoChatMuteNewParticipantsToggled]
   static ChatEventAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -59,6 +60,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventMemberJoined.fromJson(json);
       case ChatEventMemberJoinedByInviteLink.CONSTRUCTOR:
         return ChatEventMemberJoinedByInviteLink.fromJson(json);
+      case ChatEventMemberJoinedByRequest.CONSTRUCTOR:
+        return ChatEventMemberJoinedByRequest.fromJson(json);
       case ChatEventMemberLeft.CONSTRUCTOR:
         return ChatEventMemberLeft.fromJson(json);
       case ChatEventMemberInvited.CONSTRUCTOR:
@@ -99,16 +102,16 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventInviteLinkRevoked.fromJson(json);
       case ChatEventInviteLinkDeleted.CONSTRUCTOR:
         return ChatEventInviteLinkDeleted.fromJson(json);
-      case ChatEventVoiceChatCreated.CONSTRUCTOR:
-        return ChatEventVoiceChatCreated.fromJson(json);
-      case ChatEventVoiceChatDiscarded.CONSTRUCTOR:
-        return ChatEventVoiceChatDiscarded.fromJson(json);
-      case ChatEventVoiceChatParticipantIsMutedToggled.CONSTRUCTOR:
-        return ChatEventVoiceChatParticipantIsMutedToggled.fromJson(json);
-      case ChatEventVoiceChatParticipantVolumeLevelChanged.CONSTRUCTOR:
-        return ChatEventVoiceChatParticipantVolumeLevelChanged.fromJson(json);
-      case ChatEventVoiceChatMuteNewParticipantsToggled.CONSTRUCTOR:
-        return ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(json);
+      case ChatEventVideoChatCreated.CONSTRUCTOR:
+        return ChatEventVideoChatCreated.fromJson(json);
+      case ChatEventVideoChatDiscarded.CONSTRUCTOR:
+        return ChatEventVideoChatDiscarded.fromJson(json);
+      case ChatEventVideoChatParticipantIsMutedToggled.CONSTRUCTOR:
+        return ChatEventVideoChatParticipantIsMutedToggled.fromJson(json);
+      case ChatEventVideoChatParticipantVolumeLevelChanged.CONSTRUCTOR:
+        return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(json);
+      case ChatEventVideoChatMuteNewParticipantsToggled.CONSTRUCTOR:
+        return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(json);
       default:
         return null;
     }

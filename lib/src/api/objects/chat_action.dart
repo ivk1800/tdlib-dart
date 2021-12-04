@@ -14,11 +14,13 @@ abstract class ChatAction extends TdObject {
   /// [ChatActionUploadingVoiceNote]
   /// [ChatActionUploadingPhoto]
   /// [ChatActionUploadingDocument]
+  /// [ChatActionChoosingSticker]
   /// [ChatActionChoosingLocation]
   /// [ChatActionChoosingContact]
   /// [ChatActionStartPlayingGame]
   /// [ChatActionRecordingVideoNote]
   /// [ChatActionUploadingVideoNote]
+  /// [ChatActionWatchingAnimations]
   /// [ChatActionCancel]
   static ChatAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -40,6 +42,8 @@ abstract class ChatAction extends TdObject {
         return ChatActionUploadingPhoto.fromJson(json);
       case ChatActionUploadingDocument.CONSTRUCTOR:
         return ChatActionUploadingDocument.fromJson(json);
+      case ChatActionChoosingSticker.CONSTRUCTOR:
+        return ChatActionChoosingSticker.fromJson(json);
       case ChatActionChoosingLocation.CONSTRUCTOR:
         return ChatActionChoosingLocation.fromJson(json);
       case ChatActionChoosingContact.CONSTRUCTOR:
@@ -50,6 +54,8 @@ abstract class ChatAction extends TdObject {
         return ChatActionRecordingVideoNote.fromJson(json);
       case ChatActionUploadingVideoNote.CONSTRUCTOR:
         return ChatActionUploadingVideoNote.fromJson(json);
+      case ChatActionWatchingAnimations.CONSTRUCTOR:
+        return ChatActionWatchingAnimations.fromJson(json);
       case ChatActionCancel.CONSTRUCTOR:
         return ChatActionCancel.fromJson(json);
       default:

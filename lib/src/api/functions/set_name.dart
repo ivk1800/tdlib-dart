@@ -5,11 +5,12 @@ import '../tdapi.dart';
 class SetName extends TdFunction {
   SetName({required this.firstName, this.lastName});
 
-  /// [firstName] The new value of the first name for the user; 1-64 characters
+  /// [firstName] The new value of the first name for the current user; 1-64
+  /// characters
   final String firstName;
 
-  /// [lastName] The new value of the optional last name for the user; 0-64
-  /// characters
+  /// [lastName] The new value of the optional last name for the current user;
+  /// 0-64 characters
   final String? lastName;
 
   static const String CONSTRUCTOR = 'setName';

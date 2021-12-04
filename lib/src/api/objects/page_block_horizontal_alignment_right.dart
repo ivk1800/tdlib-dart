@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The content should be right-aligned
+/// The content must be right-aligned
 class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
   const PageBlockHorizontalAlignmentRight();
 

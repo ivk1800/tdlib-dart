@@ -16,7 +16,7 @@ class PinChatMessage extends TdFunction {
   /// [messageId] Identifier of the new pinned message
   final int messageId;
 
-  /// [disableNotification] True, if there should be no notification about the
+  /// [disableNotification] True, if there must be no notification about the
   /// pinned message. Notifications are always disabled in channels and private
   /// chats
   final bool disableNotification;

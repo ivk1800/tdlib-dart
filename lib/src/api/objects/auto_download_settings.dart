@@ -15,17 +15,20 @@ class AutoDownloadSettings extends TdObject {
   /// [isAutoDownloadEnabled] True, if the auto-download is enabled
   final bool isAutoDownloadEnabled;
 
-  /// [maxPhotoFileSize] The maximum size of a photo file to be auto-downloaded
+  /// [maxPhotoFileSize] The maximum size of a photo file to be auto-downloaded,
+  /// in bytes
   final int maxPhotoFileSize;
 
-  /// [maxVideoFileSize] The maximum size of a video file to be auto-downloaded
+  /// [maxVideoFileSize] The maximum size of a video file to be auto-downloaded,
+  /// in bytes
   final int maxVideoFileSize;
 
   /// [maxOtherFileSize] The maximum size of other file types to be
-  /// auto-downloaded
+  /// auto-downloaded, in bytes
   final int maxOtherFileSize;
 
-  /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos
+  /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos, in
+  /// kbit/s
   final int videoUploadBitrate;
 
   /// [preloadLargeVideos] True, if the beginning of video files needs to be

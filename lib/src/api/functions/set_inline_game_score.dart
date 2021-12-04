@@ -13,7 +13,7 @@ class SetInlineGameScore extends TdFunction {
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [editMessage] True, if the message should be edited
+  /// [editMessage] True, if the message needs to be edited
   final bool editMessage;
 
   /// [userId] User identifier

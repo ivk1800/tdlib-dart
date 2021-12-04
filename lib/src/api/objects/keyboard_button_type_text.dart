@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A simple button, with text that should be sent when the button is pressed
+/// A simple button, with text that must be sent when the button is pressed
 class KeyboardButtonTypeText extends KeyboardButtonType {
   const KeyboardButtonTypeText();
 

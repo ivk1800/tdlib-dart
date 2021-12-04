@@ -13,7 +13,7 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   /// [isAppSandbox] True, if App Sandbox is enabled
   final bool isAppSandbox;
 
-  /// [encrypt] True, if push notifications should be additionally encrypted
+  /// [encrypt] True, if push notifications must be additionally encrypted
   final bool encrypt;
 
   static const String CONSTRUCTOR = 'deviceTokenApplePushVoIP';

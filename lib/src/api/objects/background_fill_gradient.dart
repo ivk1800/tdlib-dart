@@ -14,7 +14,7 @@ class BackgroundFillGradient extends BackgroundFill {
   final int bottomColor;
 
   /// [rotationAngle] Clockwise rotation angle of the gradient, in degrees;
-  /// 0-359. Should be always divisible by 45
+  /// 0-359. Must be always divisible by 45
   final int rotationAngle;
 
   static const String CONSTRUCTOR = 'backgroundFillGradient';

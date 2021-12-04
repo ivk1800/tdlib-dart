@@ -4,17 +4,23 @@ import '../tdapi.dart';
 class ChatInviteLink extends TdObject {
   ChatInviteLink(
       {required this.inviteLink,
+      required this.name,
       required this.creatorUserId,
       required this.date,
       required this.editDate,
       required this.expireDate,
       required this.memberLimit,
       required this.memberCount,
+      required this.pendingJoinRequestCount,
+      required this.createsJoinRequest,
       required this.isPrimary,
       required this.isRevoked});
 
   /// [inviteLink] Chat invite link
   final String inviteLink;
+
+  /// [name] Name of the link
+  final String name;
 
   /// [creatorUserId] User identifier of an administrator created the link
   final int creatorUserId;
@@ -30,16 +36,25 @@ class ChatInviteLink extends TdObject {
   /// if never
   final int expireDate;
 
-  /// [memberLimit] Maximum number of members, which can join the chat using the
-  /// link simultaneously; 0 if not limited
+  /// [memberLimit] The maximum number of members, which can join the chat using
+  /// the link simultaneously; 0 if not limited. Always 0 if the link requires
+  /// approval
   final int memberLimit;
 
   /// [memberCount] Number of chat members, which joined the chat using the link
   final int memberCount;
 
+  /// [pendingJoinRequestCount] Number of pending join requests created using
+  /// this link
+  final int pendingJoinRequestCount;
+
+  /// [createsJoinRequest] True, if the link only creates join request. If true,
+  /// total number of joining members will be unlimited
+  final bool createsJoinRequest;
+
   /// [isPrimary] True, if the link is primary. Primary invite link can't have
-  /// expire date or usage limit. There is exactly one primary invite link for
-  /// each administrator with can_invite_users right at a given time
+  /// name, expire date or usage limit. There is exactly one primary invite link
+  /// for each administrator with can_invite_users right at a given time
   final bool isPrimary;
 
   /// [isRevoked] True, if the link was revoked
@@ -54,12 +69,15 @@ class ChatInviteLink extends TdObject {
 
     return ChatInviteLink(
         inviteLink: json['invite_link'],
+        name: json['name'],
         creatorUserId: json['creator_user_id'],
         date: json['date'],
         editDate: json['edit_date'],
         expireDate: json['expire_date'],
         memberLimit: json['member_limit'],
         memberCount: json['member_count'],
+        pendingJoinRequestCount: json['pending_join_request_count'],
+        createsJoinRequest: json['creates_join_request'],
         isPrimary: json['is_primary'],
         isRevoked: json['is_revoked']);
   }
@@ -69,12 +87,15 @@ class ChatInviteLink extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         'invite_link': this.inviteLink,
+        'name': this.name,
         'creator_user_id': this.creatorUserId,
         'date': this.date,
         'edit_date': this.editDate,
         'expire_date': this.expireDate,
         'member_limit': this.memberLimit,
         'member_count': this.memberCount,
+        'pending_join_request_count': this.pendingJoinRequestCount,
+        'creates_join_request': this.createsJoinRequest,
         'is_primary': this.isPrimary,
         'is_revoked': this.isRevoked,
         '@type': CONSTRUCTOR

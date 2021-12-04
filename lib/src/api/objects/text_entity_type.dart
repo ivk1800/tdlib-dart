@@ -24,6 +24,7 @@ abstract class TextEntityType extends TdObject {
   /// [TextEntityTypePreCode]
   /// [TextEntityTypeTextUrl]
   /// [TextEntityTypeMentionName]
+  /// [TextEntityTypeMediaTimestamp]
   static TextEntityType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -64,6 +65,8 @@ abstract class TextEntityType extends TdObject {
         return TextEntityTypeTextUrl.fromJson(json);
       case TextEntityTypeMentionName.CONSTRUCTOR:
         return TextEntityTypeMentionName.fromJson(json);
+      case TextEntityTypeMediaTimestamp.CONSTRUCTOR:
+        return TextEntityTypeMediaTimestamp.fromJson(json);
       default:
         return null;
     }

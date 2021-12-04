@@ -1,7 +1,8 @@
 import '../tdapi.dart';
 
-/// The user was banned (and hence is not a member of the chat). Implies the
-/// user can't return to the chat or view messages
+/// The user or the chat was banned (and hence is not a member of the chat).
+/// Implies the user can't return to the chat, view messages, or be used as a
+/// participant identifier to join a video chat of the chat
 class ChatMemberStatusBanned extends ChatMemberStatus {
   ChatMemberStatusBanned({required this.bannedUntilDate});
 

@@ -4,13 +4,13 @@ import '../tdapi.dart';
 /// Returns [Ok]
 class EditInlineMessageReplyMarkup extends TdFunction {
   EditInlineMessageReplyMarkup(
-      {required this.inlineMessageId, required this.replyMarkup});
+      {required this.inlineMessageId, this.replyMarkup});
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup? replyMarkup;
 
   static const String CONSTRUCTOR = 'editInlineMessageReplyMarkup';
 
@@ -19,7 +19,7 @@ class EditInlineMessageReplyMarkup extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

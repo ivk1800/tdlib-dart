@@ -13,7 +13,7 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
   /// [isCurrentUser] True, if the current user was added to the group
   final bool isCurrentUser;
 
-  /// [isReturned] True, if the user has returned to the group themself
+  /// [isReturned] True, if the user has returned to the group themselves
   final bool isReturned;
 
   static const String CONSTRUCTOR = 'pushMessageContentChatAddMembers';

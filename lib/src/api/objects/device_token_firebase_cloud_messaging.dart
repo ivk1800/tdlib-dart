@@ -8,7 +8,7 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   /// [token] Device registration token; may be empty to de-register a device
   final String token;
 
-  /// [encrypt] True, if push notifications should be additionally encrypted
+  /// [encrypt] True, if push notifications must be additionally encrypted
   final bool encrypt;
 
   static const String CONSTRUCTOR = 'deviceTokenFirebaseCloudMessaging';

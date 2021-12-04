@@ -13,8 +13,8 @@ class InputStickerStatic extends InputSticker {
   /// [emojis] Emojis corresponding to the sticker
   final String emojis;
 
-  /// [maskPosition] For masks, position where the mask should be placed; may be
-  /// null
+  /// [maskPosition] For masks, position where the mask is placed; pass null if
+  /// unspecified
   final MaskPosition? maskPosition;
 
   static const String CONSTRUCTOR = 'inputStickerStatic';

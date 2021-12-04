@@ -13,7 +13,7 @@ class AddContact extends TdFunction {
   /// [sharePhoneNumber] True, if the new contact needs to be allowed to see
   /// current user's phone number. A corresponding rule to
   /// userPrivacySettingShowPhoneNumber will be added if needed. Use the field
-  /// UserFullInfo.need_phone_number_privacy_exception to check whether the
+  /// userFullInfo.need_phone_number_privacy_exception to check whether the
   /// current user needs to be asked to share their phone number
   final bool sharePhoneNumber;
 

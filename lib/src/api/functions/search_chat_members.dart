@@ -9,7 +9,7 @@ class SearchChatMembers extends TdFunction {
       {required this.chatId,
       required this.query,
       required this.limit,
-      required this.filter});
+      this.filter});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -17,11 +17,12 @@ class SearchChatMembers extends TdFunction {
   /// [query] Query to search for
   final String query;
 
-  /// [limit] The maximum number of users to be returned
+  /// [limit] The maximum number of users to be returned; up to 200
   final int limit;
 
-  /// [filter] The type of users to return. By default, chatMembersFilterMembers
-  final ChatMembersFilter filter;
+  /// [filter] The type of users to search for; pass null to search among all
+  /// chat members
+  final ChatMembersFilter? filter;
 
   static const String CONSTRUCTOR = 'searchChatMembers';
 
@@ -32,7 +33,7 @@ class SearchChatMembers extends TdFunction {
         'chat_id': this.chatId,
         'query': this.query,
         'limit': this.limit,
-        'filter': this.filter.toJson(),
+        'filter': this.filter?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

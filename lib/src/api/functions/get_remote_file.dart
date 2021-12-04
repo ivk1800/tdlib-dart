@@ -9,13 +9,13 @@ import '../tdapi.dart';
 /// file must be preloaded by the application
 /// Returns [File]
 class GetRemoteFile extends TdFunction {
-  GetRemoteFile({required this.remoteFileId, required this.fileType});
+  GetRemoteFile({required this.remoteFileId, this.fileType});
 
   /// [remoteFileId] Remote identifier of the file to get
   final String remoteFileId;
 
-  /// [fileType] File type, if known
-  final FileType fileType;
+  /// [fileType] File type; pass null if unknown
+  final FileType? fileType;
 
   static const String CONSTRUCTOR = 'getRemoteFile';
 
@@ -24,7 +24,7 @@ class GetRemoteFile extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'remote_file_id': this.remoteFileId,
-        'file_type': this.fileType.toJson(),
+        'file_type': this.fileType?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

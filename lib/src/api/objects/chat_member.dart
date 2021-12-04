@@ -1,16 +1,17 @@
 import '../tdapi.dart';
 
-/// A user with information about joining/leaving a chat
+/// Describes a user or a chat as a member of another chat
 class ChatMember extends TdObject {
   ChatMember(
-      {required this.userId,
+      {required this.memberId,
       required this.inviterUserId,
       required this.joinedChatDate,
-      required this.status,
-      this.botInfo});
+      required this.status});
 
-  /// [userId] User identifier of the chat member
-  final int userId;
+  /// [memberId] Identifier of the chat member. Currently, other chats can be
+  /// only Left or Banned. Only supergroups and channels can have other chats as
+  /// Left or Banned members and these chats must be supergroups or channels
+  final MessageSender memberId;
 
   /// [inviterUserId] Identifier of a user that invited/promoted/banned this
   /// member in the chat; 0 if unknown
@@ -23,10 +24,6 @@ class ChatMember extends TdObject {
   /// [status] Status of the member in the chat
   final ChatMemberStatus status;
 
-  /// [botInfo] If the user is a bot, information about the bot; may be null.
-  /// Can be null even for a bot if the bot is not the chat member
-  final BotInfo? botInfo;
-
   static const String CONSTRUCTOR = 'chatMember';
 
   static ChatMember? fromJson(Map<String, dynamic>? json) {
@@ -35,22 +32,20 @@ class ChatMember extends TdObject {
     }
 
     return ChatMember(
-        userId: json['user_id'],
+        memberId: MessageSender.fromJson(json['member_id'])!,
         inviterUserId: json['inviter_user_id'],
         joinedChatDate: json['joined_chat_date'],
-        status: ChatMemberStatus.fromJson(json['status'])!,
-        botInfo: BotInfo.fromJson(json['bot_info']));
+        status: ChatMemberStatus.fromJson(json['status'])!);
   }
 
   @override
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
+        'member_id': this.memberId.toJson(),
         'inviter_user_id': this.inviterUserId,
         'joined_chat_date': this.joinedChatDate,
         'status': this.status.toJson(),
-        'bot_info': this.botInfo?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

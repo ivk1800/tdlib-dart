@@ -3,8 +3,11 @@ import '../tdapi.dart';
 /// Represents a group call participant
 class GroupCallParticipant extends TdObject {
   GroupCallParticipant(
-      {required this.participant,
-      required this.source,
+      {required this.participantId,
+      required this.audioSourceId,
+      required this.screenSharingAudioSourceId,
+      this.videoInfo,
+      this.screenSharingVideoInfo,
       required this.bio,
       required this.isCurrentUser,
       required this.isSpeaking,
@@ -19,11 +22,23 @@ class GroupCallParticipant extends TdObject {
       required this.volumeLevel,
       required this.order});
 
-  /// [participant] Identifier of the group call participant
-  final MessageSender participant;
+  /// [participantId] Identifier of the group call participant
+  final MessageSender participantId;
 
-  /// [source] User's synchronization source
-  final int source;
+  /// [audioSourceId] User's audio channel synchronization source identifier
+  final int audioSourceId;
+
+  /// [screenSharingAudioSourceId] User's screen sharing audio channel
+  /// synchronization source identifier
+  final int screenSharingAudioSourceId;
+
+  /// [videoInfo] Information about user's video channel; may be null if there
+  /// is no active video
+  final GroupCallParticipantVideoInfo? videoInfo;
+
+  /// [screenSharingVideoInfo] Information about user's screen sharing video
+  /// channel; may be null if there is no active screen sharing video
+  final GroupCallParticipantVideoInfo? screenSharingVideoInfo;
 
   /// [bio] The participant user's bio or the participant chat's description
   final String bio;
@@ -43,7 +58,7 @@ class GroupCallParticipant extends TdObject {
   final bool canBeMutedForAllUsers;
 
   /// [canBeUnmutedForAllUsers] True, if the current user can allow the
-  /// participant to unmute themself or unmute the participant (if the
+  /// participant to unmute themselves or unmute the participant (if the
   /// participant is the current user)
   final bool canBeUnmutedForAllUsers;
 
@@ -63,7 +78,7 @@ class GroupCallParticipant extends TdObject {
   final bool isMutedForCurrentUser;
 
   /// [canUnmuteSelf] True, if the participant is muted for all users, but can
-  /// unmute themself
+  /// unmute themselves
   final bool canUnmuteSelf;
 
   /// [volumeLevel] Participant's volume level; 1-20000 in hundreds of percents
@@ -83,8 +98,12 @@ class GroupCallParticipant extends TdObject {
     }
 
     return GroupCallParticipant(
-        participant: MessageSender.fromJson(json['participant'])!,
-        source: json['source'],
+        participantId: MessageSender.fromJson(json['participant_id'])!,
+        audioSourceId: json['audio_source_id'],
+        screenSharingAudioSourceId: json['screen_sharing_audio_source_id'],
+        videoInfo: GroupCallParticipantVideoInfo.fromJson(json['video_info']),
+        screenSharingVideoInfo: GroupCallParticipantVideoInfo.fromJson(
+            json['screen_sharing_video_info']),
         bio: json['bio'],
         isCurrentUser: json['is_current_user'],
         isSpeaking: json['is_speaking'],
@@ -104,8 +123,11 @@ class GroupCallParticipant extends TdObject {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'participant': this.participant.toJson(),
-        'source': this.source,
+        'participant_id': this.participantId.toJson(),
+        'audio_source_id': this.audioSourceId,
+        'screen_sharing_audio_source_id': this.screenSharingAudioSourceId,
+        'video_info': this.videoInfo?.toJson(),
+        'screen_sharing_video_info': this.screenSharingVideoInfo?.toJson(),
         'bio': this.bio,
         'is_current_user': this.isCurrentUser,
         'is_speaking': this.isSpeaking,

@@ -6,14 +6,13 @@ import '../tdapi.dart';
 /// remote identifier until it will be sent in a message
 /// Returns [File]
 class UploadFile extends TdFunction {
-  UploadFile(
-      {required this.file, required this.fileType, required this.priority});
+  UploadFile({required this.file, this.fileType, required this.priority});
 
   /// [file] File to upload
   final InputFile file;
 
-  /// [fileType] File type
-  final FileType fileType;
+  /// [fileType] File type; pass null if unknown
+  final FileType? fileType;
 
   /// [priority] Priority of the upload (1-32). The higher the priority, the
   /// earlier the file will be uploaded. If the priorities of two files are
@@ -28,7 +27,7 @@ class UploadFile extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'file': this.file.toJson(),
-        'file_type': this.fileType.toJson(),
+        'file_type': this.fileType?.toJson(),
         'priority': this.priority,
         '@type': CONSTRUCTOR
       };

@@ -4,9 +4,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 class SendChatAction extends TdFunction {
   SendChatAction(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.action});
+      {required this.chatId, required this.messageThreadId, this.action});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -15,8 +13,9 @@ class SendChatAction extends TdFunction {
   /// action was performed
   final int messageThreadId;
 
-  /// [action] The action description
-  final ChatAction action;
+  /// [action] The action description; pass null to cancel the currently active
+  /// action
+  final ChatAction? action;
 
   static const String CONSTRUCTOR = 'sendChatAction';
 
@@ -26,7 +25,7 @@ class SendChatAction extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_thread_id': this.messageThreadId,
-        'action': this.action.toJson(),
+        'action': this.action?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

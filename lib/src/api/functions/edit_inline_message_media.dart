@@ -6,18 +6,19 @@ import '../tdapi.dart';
 class EditInlineMessageMedia extends TdFunction {
   EditInlineMessageMedia(
       {required this.inlineMessageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       required this.inputMessageContent});
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New content of the message. Must be one of the
-  /// following types: InputMessageAnimation, InputMessageAudio,
-  /// InputMessageDocument, InputMessagePhoto or InputMessageVideo
+  /// following types: inputMessageAnimation, inputMessageAudio,
+  /// inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'editInlineMessageMedia';
@@ -27,7 +28,7 @@ class EditInlineMessageMedia extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };

@@ -14,7 +14,7 @@ class EditMessageSchedulingState extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [schedulingState] The new message scheduling state. Pass null to send the
+  /// [schedulingState] The new message scheduling state; pass null to send the
   /// message immediately
   final MessageSchedulingState? schedulingState;
 

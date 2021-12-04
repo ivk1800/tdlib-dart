@@ -4,20 +4,20 @@ import '../tdapi.dart';
 class InputMessageVideo extends InputMessageContent {
   InputMessageVideo(
       {required this.video,
-      required this.thumbnail,
+      this.thumbnail,
       required this.addedStickerFileIds,
       required this.duration,
       required this.width,
       required this.height,
       required this.supportsStreaming,
-      required this.caption,
+      this.caption,
       required this.ttl});
 
   /// [video] Video to be sent
   final InputFile video;
 
-  /// [thumbnail] Video thumbnail, if available
-  final InputThumbnail thumbnail;
+  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the video,
   /// if applicable
@@ -32,12 +32,12 @@ class InputMessageVideo extends InputMessageContent {
   /// [height] Video height
   final int height;
 
-  /// [supportsStreaming] True, if the video should be tried to be streamed
+  /// [supportsStreaming] True, if the video is supposed to be streamed
   final bool supportsStreaming;
 
-  /// [caption] Video caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Video caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be
   /// specified only in private chats
@@ -52,7 +52,7 @@ class InputMessageVideo extends InputMessageContent {
 
     return InputMessageVideo(
         video: InputFile.fromJson(json['video'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail'])!,
+        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
         addedStickerFileIds: List<int>.from(
             (json['added_sticker_file_ids'] ?? [])
                 .map((item) => item)
@@ -61,7 +61,7 @@ class InputMessageVideo extends InputMessageContent {
         width: json['width'],
         height: json['height'],
         supportsStreaming: json['supports_streaming'],
-        caption: FormattedText.fromJson(json['caption'])!,
+        caption: FormattedText.fromJson(json['caption']),
         ttl: json['ttl']);
   }
 
@@ -70,14 +70,14 @@ class InputMessageVideo extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         'video': this.video.toJson(),
-        'thumbnail': this.thumbnail.toJson(),
+        'thumbnail': this.thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
         'duration': this.duration,
         'width': this.width,
         'height': this.height,
         'supports_streaming': this.supportsStreaming,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         'ttl': this.ttl,
         '@type': CONSTRUCTOR
       };

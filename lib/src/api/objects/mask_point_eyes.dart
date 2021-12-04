@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A mask should be placed relatively to the eyes
+/// The mask is placed relatively to the eyes
 class MaskPointEyes extends MaskPoint {
   const MaskPointEyes();
 

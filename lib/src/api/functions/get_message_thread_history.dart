@@ -4,8 +4,8 @@ import '../tdapi.dart';
 /// message.can_get_message_thread == true. Message thread of a channel
 /// message is in the channel's linked supergroup.. The messages are returned
 /// in a reverse chronological order (i.e., in order of decreasing
-/// message_id). For optimal performance the number of returned messages is
-/// chosen by the library
+/// message_id). For optimal performance, the number of returned messages is
+/// chosen by TDLib
 /// Returns [Messages]
 class GetMessageThreadHistory extends TdFunction {
   GetMessageThreadHistory(
@@ -31,9 +31,9 @@ class GetMessageThreadHistory extends TdFunction {
 
   /// [limit] The maximum number of messages to be returned; must be positive
   /// and can't be greater than 100. If the offset is negative, the limit must
-  /// be greater than or equal to -offset. Fewer messages may be returned than
-  /// specified by the limit, even if the end of the message thread history has
-  /// not been reached
+  /// be greater than or equal to -offset. For optimal performance, the number
+  /// of returned messages is chosen by TDLib and can be smaller than the
+  /// specified limit
   final int limit;
 
   static const String CONSTRUCTOR = 'getMessageThreadHistory';

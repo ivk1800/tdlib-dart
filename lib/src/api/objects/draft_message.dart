@@ -13,8 +13,8 @@ class DraftMessage extends TdObject {
   /// [date] Point in time (Unix timestamp) when the draft was created
   final int date;
 
-  /// [inputMessageText] Content of the message draft; this should always be of
-  /// type inputMessageText
+  /// [inputMessageText] Content of the message draft; must be of the type
+  /// inputMessageText
   final InputMessageContent inputMessageText;
 
   static const String CONSTRUCTOR = 'draftMessage';

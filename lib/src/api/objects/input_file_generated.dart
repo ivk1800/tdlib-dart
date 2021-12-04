@@ -12,11 +12,11 @@ class InputFileGenerated extends InputFile {
   final String originalPath;
 
   /// [conversion] String specifying the conversion applied to the original
-  /// file; should be persistent across application restarts. Conversions
+  /// file; must be persistent across application restarts. Conversions
   /// beginning with '#' are reserved for internal TDLib usage
   final String conversion;
 
-  /// [expectedSize] Expected size of the generated file; 0 if unknown
+  /// [expectedSize] Expected size of the generated file, in bytes; 0 if unknown
   final int expectedSize;
 
   static const String CONSTRUCTOR = 'inputFileGenerated';

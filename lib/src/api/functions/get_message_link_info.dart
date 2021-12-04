@@ -1,13 +1,12 @@
 import '../tdapi.dart';
 
-/// Returns information about a public or private message link
+/// Returns information about a public or private message link. Can be called
+/// for any internal link of the type internalLinkTypeMessage
 /// Returns [MessageLinkInfo]
 class GetMessageLinkInfo extends TdFunction {
   GetMessageLinkInfo({required this.url});
 
-  /// [url] The message link in the format "https://t.me/c/...", or
-  /// "tg://privatepost?...", or "https://t.me/username/...", or
-  /// "tg://resolve?..."
+  /// [url] The message link
   final String url;
 
   static const String CONSTRUCTOR = 'getMessageLinkInfo';

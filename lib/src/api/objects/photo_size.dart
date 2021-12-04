@@ -22,7 +22,7 @@ class PhotoSize extends TdObject {
   final int height;
 
   /// [progressiveSizes] Sizes of progressive JPEG file prefixes, which can be
-  /// used to preliminarily show the image
+  /// used to preliminarily show the image; in bytes
   final List<int> progressiveSizes;
 
   static const String CONSTRUCTOR = 'photoSize';

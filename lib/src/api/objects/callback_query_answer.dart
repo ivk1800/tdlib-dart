@@ -8,8 +8,8 @@ class CallbackQueryAnswer extends TdObject {
   /// [text] Text of the answer
   final String text;
 
-  /// [showAlert] True, if an alert should be shown to the user instead of a
-  /// toast notification
+  /// [showAlert] True, if an alert must be shown to the user instead of a toast
+  /// notification
   final bool showAlert;
 
   /// [url] URL to be opened

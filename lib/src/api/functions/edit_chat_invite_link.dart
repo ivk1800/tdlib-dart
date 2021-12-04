@@ -9,8 +9,10 @@ class EditChatInviteLink extends TdFunction {
   EditChatInviteLink(
       {required this.chatId,
       required this.inviteLink,
+      required this.name,
       required this.expireDate,
-      required this.memberLimit});
+      required this.memberLimit,
+      required this.createsJoinRequest});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -18,13 +20,20 @@ class EditChatInviteLink extends TdFunction {
   /// [inviteLink] Invite link to be edited
   final String inviteLink;
 
+  /// [name] Invite link name; 0-32 characters
+  final String name;
+
   /// [expireDate] Point in time (Unix timestamp) when the link will expire;
   /// pass 0 if never
   final int expireDate;
 
-  /// [memberLimit] Maximum number of chat members that can join the chat by the
-  /// link simultaneously; 0-99999; pass 0 if not limited
+  /// [memberLimit] The maximum number of chat members that can join the chat by
+  /// the link simultaneously; 0-99999; pass 0 if not limited
   final int memberLimit;
+
+  /// [createsJoinRequest] True, if the link only creates join request. If true,
+  /// member_limit must not be specified
+  final bool createsJoinRequest;
 
   static const String CONSTRUCTOR = 'editChatInviteLink';
 
@@ -34,8 +43,10 @@ class EditChatInviteLink extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'invite_link': this.inviteLink,
+        'name': this.name,
         'expire_date': this.expireDate,
         'member_limit': this.memberLimit,
+        'creates_join_request': this.createsJoinRequest,
         '@type': CONSTRUCTOR
       };
 }

@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class ChatInviteLinkCounts extends TdObject {
   ChatInviteLinkCounts({required this.inviteLinkCounts});
 
-  /// [inviteLinkCounts] List of invite linkcounts
+  /// [inviteLinkCounts] List of invite link counts
   final List<ChatInviteLinkCount> inviteLinkCounts;
 
   static const String CONSTRUCTOR = 'chatInviteLinkCounts';

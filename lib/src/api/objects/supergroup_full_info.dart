@@ -21,6 +21,7 @@ class SupergroupFullInfo extends TdObject {
       required this.stickerSetId,
       this.location,
       this.inviteLink,
+      required this.botCommands,
       required this.upgradedFromBasicGroupId,
       required this.upgradedFromMaxMessageId});
 
@@ -92,6 +93,9 @@ class SupergroupFullInfo extends TdObject {
   /// administrators with can_invite_users right only
   final ChatInviteLink? inviteLink;
 
+  /// [botCommands] List of commands of bots in the group
+  final List<BotCommands> botCommands;
+
   /// [upgradedFromBasicGroupId] Identifier of the basic group from which
   /// supergroup was upgraded; 0 if none
   final int upgradedFromBasicGroupId;
@@ -126,6 +130,9 @@ class SupergroupFullInfo extends TdObject {
         stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
         location: ChatLocation.fromJson(json['location']),
         inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+            .map((item) => BotCommands.fromJson(item))
+            .toList()),
         upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'],
         upgradedFromMaxMessageId: json['upgraded_from_max_message_id']);
   }
@@ -152,6 +159,7 @@ class SupergroupFullInfo extends TdObject {
         'sticker_set_id': this.stickerSetId,
         'location': this.location?.toJson(),
         'invite_link': this.inviteLink?.toJson(),
+        'bot_commands': botCommands.map((item) => item.toJson()).toList(),
         'upgraded_from_basic_group_id': this.upgradedFromBasicGroupId,
         'upgraded_from_max_message_id': this.upgradedFromMaxMessageId,
         '@type': CONSTRUCTOR

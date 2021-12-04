@@ -7,7 +7,8 @@ class WebPageInstantView extends TdObject {
       required this.viewCount,
       required this.version,
       required this.isRtl,
-      required this.isFull});
+      required this.isFull,
+      required this.feedbackLink});
 
   /// [pageBlocks] Content of the web page
   final List<PageBlock> pageBlocks;
@@ -25,6 +26,10 @@ class WebPageInstantView extends TdObject {
   /// request might be needed to get the full web page instant view
   final bool isFull;
 
+  /// [feedbackLink] An internal link to be opened to leave feedback about the
+  /// instant view
+  final InternalLinkType feedbackLink;
+
   static const String CONSTRUCTOR = 'webPageInstantView';
 
   static WebPageInstantView? fromJson(Map<String, dynamic>? json) {
@@ -39,7 +44,8 @@ class WebPageInstantView extends TdObject {
         viewCount: json['view_count'],
         version: json['version'],
         isRtl: json['is_rtl'],
-        isFull: json['is_full']);
+        isFull: json['is_full'],
+        feedbackLink: InternalLinkType.fromJson(json['feedback_link'])!);
   }
 
   @override
@@ -51,6 +57,7 @@ class WebPageInstantView extends TdObject {
         'version': this.version,
         'is_rtl': this.isRtl,
         'is_full': this.isFull,
+        'feedback_link': this.feedbackLink.toJson(),
         '@type': CONSTRUCTOR
       };
 }

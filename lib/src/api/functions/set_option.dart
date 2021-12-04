@@ -5,13 +5,14 @@ import '../tdapi.dart';
 /// set. Can be called before authorization
 /// Returns [Ok]
 class SetOption extends TdFunction {
-  SetOption({required this.name, required this.value});
+  SetOption({required this.name, this.value});
 
   /// [name] The name of the option
   final String name;
 
-  /// [value] The new value of the option
-  final OptionValue value;
+  /// [value] The new value of the option; pass null to reset option value to a
+  /// default value
+  final OptionValue? value;
 
   static const String CONSTRUCTOR = 'setOption';
 
@@ -19,5 +20,5 @@ class SetOption extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() =>
-      {'name': this.name, 'value': this.value.toJson(), '@type': CONSTRUCTOR};
+      {'name': this.name, 'value': this.value?.toJson(), '@type': CONSTRUCTOR};
 }

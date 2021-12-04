@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The user is the owner of a chat and has all the administrator privileges
+/// The user is the owner of the chat and has all the administrator privileges
 class ChatMemberStatusCreator extends ChatMemberStatus {
   ChatMemberStatusCreator(
       {required this.customTitle,

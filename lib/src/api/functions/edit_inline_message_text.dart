@@ -6,17 +6,17 @@ import '../tdapi.dart';
 class EditInlineMessageText extends TdFunction {
   EditInlineMessageText(
       {required this.inlineMessageId,
-      required this.replyMarkup,
+      this.replyMarkup,
       required this.inputMessageContent});
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup? replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Should be of type
-  /// InputMessageText
+  /// [inputMessageContent] New text content of the message. Must be of type
+  /// inputMessageText
   final InputMessageContent inputMessageContent;
 
   static const String CONSTRUCTOR = 'editInlineMessageText';
@@ -26,7 +26,7 @@ class EditInlineMessageText extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };

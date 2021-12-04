@@ -21,7 +21,7 @@ class UpdateNewPreCheckoutQuery extends Update {
   /// [currency] Currency for the product price
   final String currency;
 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the
+  /// [totalAmount] Total price for the product, in the smallest units of the
   /// currency
   final int totalAmount;
 

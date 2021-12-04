@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Returns [Message]
 class EditMessageReplyMarkup extends TdFunction {
   EditMessageReplyMarkup(
-      {required this.chatId,
-      required this.messageId,
-      required this.replyMarkup});
+      {required this.chatId, required this.messageId, this.replyMarkup});
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -15,8 +13,8 @@ class EditMessageReplyMarkup extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup
-  final ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup? replyMarkup;
 
   static const String CONSTRUCTOR = 'editMessageReplyMarkup';
 
@@ -26,7 +24,7 @@ class EditMessageReplyMarkup extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'reply_markup': this.replyMarkup.toJson(),
+        'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

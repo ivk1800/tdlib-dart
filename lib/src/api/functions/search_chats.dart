@@ -7,7 +7,7 @@ import '../tdapi.dart';
 class SearchChats extends TdFunction {
   SearchChats({required this.query, required this.limit});
 
-  /// [query] Query to search for. If the query is empty, returns up to 20
+  /// [query] Query to search for. If the query is empty, returns up to 50
   /// recently found chats
   final String query;
 

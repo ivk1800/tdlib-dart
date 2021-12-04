@@ -23,8 +23,10 @@ class Chat extends TdObject {
       required this.unreadMentionCount,
       required this.notificationSettings,
       required this.messageTtlSetting,
+      required this.themeName,
       this.actionBar,
-      required this.voiceChat,
+      required this.videoChat,
+      this.pendingJoinRequests,
       required this.replyMarkupMessageId,
       this.draftMessage,
       required this.clientData});
@@ -99,12 +101,18 @@ class Chat extends TdObject {
   /// other chats
   final int messageTtlSetting;
 
-  /// [actionBar] Describes actions which should be possible to do through a
-  /// chat action bar; may be null
+  /// [themeName] If non-empty, name of a theme, set for the chat
+  final String themeName;
+
+  /// [actionBar] Information about actions which must be possible to do through
+  /// the chat action bar; may be null
   final ChatActionBar? actionBar;
 
-  /// [voiceChat] Contains information about voice chat of the chat
-  final VoiceChat voiceChat;
+  /// [videoChat] Information about video chat of the chat
+  final VideoChat videoChat;
+
+  /// [pendingJoinRequests] Information about pending join requests; may be null
+  final ChatJoinRequestsInfo? pendingJoinRequests;
 
   /// [replyMarkupMessageId] Identifier of the message from which reply markup
   /// needs to be used; 0 if there is no default custom reply markup in the chat
@@ -113,9 +121,9 @@ class Chat extends TdObject {
   /// [draftMessage] A draft of a message in the chat; may be null
   final DraftMessage? draftMessage;
 
-  /// [clientData] Contains application-specific data associated with the chat.
-  /// (For example, the chat scroll position or local chat notification settings
-  /// can be stored here.) Persistent if the message database is used
+  /// [clientData] Application-specific data associated with the chat. (For
+  /// example, the chat scroll position or local chat notification settings can
+  /// be stored here.) Persistent if the message database is used
   final String clientData;
 
   static const String CONSTRUCTOR = 'chat';
@@ -149,8 +157,11 @@ class Chat extends TdObject {
         notificationSettings:
             ChatNotificationSettings.fromJson(json['notification_settings'])!,
         messageTtlSetting: json['message_ttl_setting'],
+        themeName: json['theme_name'],
         actionBar: ChatActionBar.fromJson(json['action_bar']),
-        voiceChat: VoiceChat.fromJson(json['voice_chat'])!,
+        videoChat: VideoChat.fromJson(json['video_chat'])!,
+        pendingJoinRequests:
+            ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
         replyMarkupMessageId: json['reply_markup_message_id'],
         draftMessage: DraftMessage.fromJson(json['draft_message']),
         clientData: json['client_data']);
@@ -180,8 +191,10 @@ class Chat extends TdObject {
         'unread_mention_count': this.unreadMentionCount,
         'notification_settings': this.notificationSettings.toJson(),
         'message_ttl_setting': this.messageTtlSetting,
+        'theme_name': this.themeName,
         'action_bar': this.actionBar?.toJson(),
-        'voice_chat': this.voiceChat.toJson(),
+        'video_chat': this.videoChat.toJson(),
+        'pending_join_requests': this.pendingJoinRequests?.toJson(),
         'reply_markup_message_id': this.replyMarkupMessageId,
         'draft_message': this.draftMessage?.toJson(),
         'client_data': this.clientData,

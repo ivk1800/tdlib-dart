@@ -5,6 +5,8 @@ class Invoice extends TdObject {
   Invoice(
       {required this.currency,
       required this.priceParts,
+      required this.maxTipAmount,
+      required this.suggestedTipAmounts,
       required this.isTest,
       required this.needName,
       required this.needPhoneNumber,
@@ -20,6 +22,14 @@ class Invoice extends TdObject {
   /// [priceParts] A list of objects used to calculate the total price of the
   /// product
   final List<LabeledPricePart> priceParts;
+
+  /// [maxTipAmount] The maximum allowed amount of tip in the smallest units of
+  /// the currency
+  final int maxTipAmount;
+
+  /// [suggestedTipAmounts] Suggested amounts of tip in the smallest units of
+  /// the currency
+  final List<int> suggestedTipAmounts;
 
   /// [isTest] True, if the payment is a test payment
   final bool isTest;
@@ -60,6 +70,9 @@ class Invoice extends TdObject {
         priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
             .map((item) => LabeledPricePart.fromJson(item))
             .toList()),
+        maxTipAmount: json['max_tip_amount'],
+        suggestedTipAmounts: List<int>.from(
+            (json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
         isTest: json['is_test'],
         needName: json['need_name'],
         needPhoneNumber: json['need_phone_number'],
@@ -76,6 +89,9 @@ class Invoice extends TdObject {
   Map<String, dynamic> toJson() => {
         'currency': this.currency,
         'price_parts': priceParts.map((item) => item.toJson()).toList(),
+        'max_tip_amount': this.maxTipAmount,
+        'suggested_tip_amounts':
+            suggestedTipAmounts.map((item) => item).toList(),
         'is_test': this.isTest,
         'need_name': this.needName,
         'need_phone_number': this.needPhoneNumber,

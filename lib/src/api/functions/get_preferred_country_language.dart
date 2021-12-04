@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
 /// Returns an IETF language tag of the language preferred in the country,
-/// which should be used to fill native fields in Telegram Passport personal
+/// which must be used to fill native fields in Telegram Passport personal
 /// details. Returns a 404 error if unknown
 /// Returns [Text]
 class GetPreferredCountryLanguage extends TdFunction {

@@ -30,10 +30,10 @@ class PageBlockEmbedded extends PageBlock {
   /// [caption] Block caption
   final PageBlockCaption caption;
 
-  /// [isFullWidth] True, if the block should be full width
+  /// [isFullWidth] True, if the block must be full width
   final bool isFullWidth;
 
-  /// [allowScrolling] True, if scrolling should be allowed
+  /// [allowScrolling] True, if scrolling needs to be allowed
   final bool allowScrolling;
 
   static const String CONSTRUCTOR = 'pageBlockEmbedded';

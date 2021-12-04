@@ -11,7 +11,7 @@ class StorageStatisticsByChat extends TdObject {
   /// [chatId] Chat identifier; 0 if none
   final int chatId;
 
-  /// [size] Total size of the files in the chat
+  /// [size] Total size of the files in the chat, in bytes
   final int size;
 
   /// [count] Total number of files in the chat

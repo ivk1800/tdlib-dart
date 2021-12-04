@@ -7,7 +7,8 @@ class BasicGroupFullInfo extends TdObject {
       required this.description,
       required this.creatorUserId,
       required this.members,
-      this.inviteLink});
+      this.inviteLink,
+      required this.botCommands});
 
   /// [photo] Chat photo; may be null
   final ChatPhoto? photo;
@@ -27,6 +28,9 @@ class BasicGroupFullInfo extends TdObject {
   /// basic group is opened
   final ChatInviteLink? inviteLink;
 
+  /// [botCommands] List of commands of bots in the group
+  final List<BotCommands> botCommands;
+
   static const String CONSTRUCTOR = 'basicGroupFullInfo';
 
   static BasicGroupFullInfo? fromJson(Map<String, dynamic>? json) {
@@ -41,7 +45,10 @@ class BasicGroupFullInfo extends TdObject {
         members: List<ChatMember>.from((json['members'] ?? [])
             .map((item) => ChatMember.fromJson(item))
             .toList()),
-        inviteLink: ChatInviteLink.fromJson(json['invite_link']));
+        inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+            .map((item) => BotCommands.fromJson(item))
+            .toList()));
   }
 
   @override
@@ -53,6 +60,7 @@ class BasicGroupFullInfo extends TdObject {
         'creator_user_id': this.creatorUserId,
         'members': members.map((item) => item.toJson()).toList(),
         'invite_link': this.inviteLink?.toJson(),
+        'bot_commands': botCommands.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
 }

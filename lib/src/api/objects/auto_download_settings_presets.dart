@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Contains auto-download settings presets for the user
+/// Contains auto-download settings presets for the current user
 class AutoDownloadSettingsPresets extends TdObject {
   AutoDownloadSettingsPresets(
       {required this.low, required this.medium, required this.high});

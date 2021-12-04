@@ -5,13 +5,14 @@ import '../tdapi.dart';
 /// sent code
 /// Returns [AuthenticationCodeInfo]
 class ChangePhoneNumber extends TdFunction {
-  ChangePhoneNumber({required this.phoneNumber, required this.settings});
+  ChangePhoneNumber({required this.phoneNumber, this.settings});
 
   /// [phoneNumber] The new phone number of the user in international format
   final String phoneNumber;
 
-  /// [settings] Settings for the authentication of the user's phone number
-  final PhoneNumberAuthenticationSettings settings;
+  /// [settings] Settings for the authentication of the user's phone number;
+  /// pass null to use default settings
+  final PhoneNumberAuthenticationSettings? settings;
 
   static const String CONSTRUCTOR = 'changePhoneNumber';
 
@@ -20,7 +21,7 @@ class ChangePhoneNumber extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'phone_number': this.phoneNumber,
-        'settings': this.settings.toJson(),
+        'settings': this.settings?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

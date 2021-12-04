@@ -19,11 +19,12 @@ class EditMessageLiveLocation extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots
+  /// only
   final ReplyMarkup? replyMarkup;
 
-  /// [location] New location content of the message; may be null. Pass null to
-  /// stop sharing the live location
+  /// [location] New location content of the message; pass null to stop sharing
+  /// the live location
   final Location? location;
 
   /// [heading] The new direction in which the location moves, in degrees;

@@ -7,7 +7,7 @@ class ValidateOrderInfo extends TdFunction {
   ValidateOrderInfo(
       {required this.chatId,
       required this.messageId,
-      required this.orderInfo,
+      this.orderInfo,
       required this.allowSave});
 
   /// [chatId] Chat identifier of the Invoice message
@@ -16,8 +16,9 @@ class ValidateOrderInfo extends TdFunction {
   /// [messageId] Message identifier
   final int messageId;
 
-  /// [orderInfo] The order information, provided by the user
-  final OrderInfo orderInfo;
+  /// [orderInfo] The order information, provided by the user; pass null if
+  /// empty
+  final OrderInfo? orderInfo;
 
   /// [allowSave] True, if the order information can be saved
   final bool allowSave;
@@ -30,7 +31,7 @@ class ValidateOrderInfo extends TdFunction {
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
         'message_id': this.messageId,
-        'order_info': this.orderInfo.toJson(),
+        'order_info': this.orderInfo?.toJson(),
         'allow_save': this.allowSave,
         '@type': CONSTRUCTOR
       };

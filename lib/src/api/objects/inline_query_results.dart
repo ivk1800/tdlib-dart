@@ -20,9 +20,9 @@ class InlineQueryResults extends TdObject {
   /// [results] Results of the query
   final List<InlineQueryResult> results;
 
-  /// [switchPmText] If non-empty, this text should be shown on the button,
-  /// which opens a private chat with the bot and sends the bot a start message
-  /// with the switch_pm_parameter
+  /// [switchPmText] If non-empty, this text must be shown on the button, which
+  /// opens a private chat with the bot and sends the bot a start message with
+  /// the switch_pm_parameter
   final String switchPmText;
 
   /// [switchPmParameter] Parameter for the bot start message

@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The user has cancelled the previous action
+/// The user has canceled the previous action
 class ChatActionCancel extends ChatAction {
   const ChatActionCancel();
 

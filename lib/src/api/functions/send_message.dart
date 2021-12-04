@@ -7,7 +7,7 @@ class SendMessage extends TdFunction {
       {required this.chatId,
       required this.messageThreadId,
       required this.replyToMessageId,
-      required this.options,
+      this.options,
       this.replyMarkup,
       required this.inputMessageContent});
 
@@ -21,10 +21,12 @@ class SendMessage extends TdFunction {
   /// [replyToMessageId] Identifier of the message to reply to or 0
   final int replyToMessageId;
 
-  /// [options] Options to be used to send the message
-  final MessageSendOptions options;
+  /// [options] Options to be used to send the message; pass null to use default
+  /// options
+  final MessageSendOptions? options;
 
-  /// [replyMarkup] Markup for replying to the message; for bots only
+  /// [replyMarkup] Markup for replying to the message; pass null if none; for
+  /// bots only
   final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent
@@ -39,7 +41,7 @@ class SendMessage extends TdFunction {
         'chat_id': this.chatId,
         'message_thread_id': this.messageThreadId,
         'reply_to_message_id': this.replyToMessageId,
-        'options': this.options.toJson(),
+        'options': this.options?.toJson(),
         'reply_markup': this.replyMarkup?.toJson(),
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR

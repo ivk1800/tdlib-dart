@@ -29,8 +29,10 @@ abstract class PushMessageContent extends TdObject {
   /// [PushMessageContentChatAddMembers]
   /// [PushMessageContentChatChangePhoto]
   /// [PushMessageContentChatChangeTitle]
+  /// [PushMessageContentChatSetTheme]
   /// [PushMessageContentChatDeleteMember]
   /// [PushMessageContentChatJoinByLink]
+  /// [PushMessageContentChatJoinByRequest]
   /// [PushMessageContentMessageForwards]
   /// [PushMessageContentMediaAlbum]
   static PushMessageContent? fromJson(Map<String, dynamic>? json) {
@@ -83,10 +85,14 @@ abstract class PushMessageContent extends TdObject {
         return PushMessageContentChatChangePhoto.fromJson(json);
       case PushMessageContentChatChangeTitle.CONSTRUCTOR:
         return PushMessageContentChatChangeTitle.fromJson(json);
+      case PushMessageContentChatSetTheme.CONSTRUCTOR:
+        return PushMessageContentChatSetTheme.fromJson(json);
       case PushMessageContentChatDeleteMember.CONSTRUCTOR:
         return PushMessageContentChatDeleteMember.fromJson(json);
       case PushMessageContentChatJoinByLink.CONSTRUCTOR:
         return PushMessageContentChatJoinByLink.fromJson(json);
+      case PushMessageContentChatJoinByRequest.CONSTRUCTOR:
+        return PushMessageContentChatJoinByRequest.fromJson(json);
       case PushMessageContentMessageForwards.CONSTRUCTOR:
         return PushMessageContentMessageForwards.fromJson(json);
       case PushMessageContentMediaAlbum.CONSTRUCTOR:

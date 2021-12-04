@@ -6,6 +6,7 @@ class MessageLinkInfo extends TdObject {
       {required this.isPublic,
       required this.chatId,
       this.message,
+      required this.mediaTimestamp,
       required this.forAlbum,
       required this.forComment});
 
@@ -18,6 +19,11 @@ class MessageLinkInfo extends TdObject {
 
   /// [message] If found, the linked message; may be null
   final Message? message;
+
+  /// [mediaTimestamp] Timestamp from which the video/audio/video note/voice
+  /// note playing must start, in seconds; 0 if not specified. The media can be
+  /// in the message content or in its web page preview
+  final int mediaTimestamp;
 
   /// [forAlbum] True, if the whole media album to which the message belongs is
   /// linked
@@ -38,6 +44,7 @@ class MessageLinkInfo extends TdObject {
         isPublic: json['is_public'],
         chatId: json['chat_id'],
         message: Message.fromJson(json['message']),
+        mediaTimestamp: json['media_timestamp'],
         forAlbum: json['for_album'],
         forComment: json['for_comment']);
   }
@@ -49,6 +56,7 @@ class MessageLinkInfo extends TdObject {
         'is_public': this.isPublic,
         'chat_id': this.chatId,
         'message': this.message?.toJson(),
+        'media_timestamp': this.mediaTimestamp,
         'for_album': this.forAlbum,
         'for_comment': this.forComment,
         '@type': CONSTRUCTOR

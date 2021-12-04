@@ -5,7 +5,7 @@ class StorageStatistics extends TdObject {
   StorageStatistics(
       {required this.size, required this.count, required this.byChat});
 
-  /// [size] Total size of files
+  /// [size] Total size of files, in bytes
   final int size;
 
   /// [count] Total number of files

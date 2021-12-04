@@ -1,8 +1,7 @@
 import '../tdapi.dart';
 
 /// Returns users voted for the specified option in a non-anonymous polls. For
-/// the optimal performance the number of returned users is chosen by the
-/// library
+/// optimal performance, the number of returned users is chosen by TDLib
 /// Returns [Users]
 class GetPollVoters extends TdFunction {
   GetPollVoters(
@@ -25,8 +24,9 @@ class GetPollVoters extends TdFunction {
   final int offset;
 
   /// [limit] The maximum number of users to be returned; must be positive and
-  /// can't be greater than 50. Fewer users may be returned than specified by
-  /// the limit, even if the end of the voter list has not been reached
+  /// can't be greater than 50. For optimal performance, the number of returned
+  /// users is chosen by TDLib and can be smaller than the specified limit, even
+  /// if the end of the voter list has not been reached
   final int limit;
 
   static const String CONSTRUCTOR = 'getPollVoters';

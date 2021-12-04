@@ -13,7 +13,7 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
   /// [isCurrentUser] True, if the current user was deleted from the group
   final bool isCurrentUser;
 
-  /// [isLeft] True, if the user has left the group themself
+  /// [isLeft] True, if the user has left the group themselves
   final bool isLeft;
 
   static const String CONSTRUCTOR = 'pushMessageContentChatDeleteMember';

@@ -9,8 +9,8 @@ class SetChatSlowModeDelay extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [slowModeDelay] New slow mode delay for the chat; must be one of 0, 10,
-  /// 30, 60, 300, 900, 3600
+  /// [slowModeDelay] New slow mode delay for the chat, in seconds; must be one
+  /// of 0, 10, 30, 60, 300, 900, 3600
   final int slowModeDelay;
 
   static const String CONSTRUCTOR = 'setChatSlowModeDelay';

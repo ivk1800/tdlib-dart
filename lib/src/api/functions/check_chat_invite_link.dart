@@ -6,9 +6,7 @@ import '../tdapi.dart';
 class CheckChatInviteLink extends TdFunction {
   CheckChatInviteLink({required this.inviteLink});
 
-  /// [inviteLink] Invite link to be checked; must have URL "t.me",
-  /// "telegram.me", or "telegram.dog" and query beginning with "/joinchat/" or
-  /// "/+"
+  /// [inviteLink] Invite link to be checked
   final String inviteLink;
 
   static const String CONSTRUCTOR = 'checkChatInviteLink';

@@ -11,7 +11,7 @@ class PageBlockAnimation extends PageBlock {
   /// [caption] Animation caption
   final PageBlockCaption caption;
 
-  /// [needAutoplay] True, if the animation should be played automatically
+  /// [needAutoplay] True, if the animation must be played automatically
   final bool needAutoplay;
 
   static const String CONSTRUCTOR = 'pageBlockAnimation';

@@ -6,7 +6,7 @@ class InputMessageVoiceNote extends InputMessageContent {
       {required this.voiceNote,
       required this.duration,
       required this.waveform,
-      required this.caption});
+      this.caption});
 
   /// [voiceNote] Voice note to be sent
   final InputFile voiceNote;
@@ -17,9 +17,9 @@ class InputMessageVoiceNote extends InputMessageContent {
   /// [waveform] Waveform representation of the voice note, in 5-bit format
   final String waveform;
 
-  /// [caption] Voice note caption; 0-GetOption("message_caption_length_max")
-  /// characters
-  final FormattedText caption;
+  /// [caption] Voice note caption; pass null to use an empty caption;
+  /// 0-GetOption("message_caption_length_max") characters
+  final FormattedText? caption;
 
   static const String CONSTRUCTOR = 'inputMessageVoiceNote';
 
@@ -32,7 +32,7 @@ class InputMessageVoiceNote extends InputMessageContent {
         voiceNote: InputFile.fromJson(json['voice_note'])!,
         duration: json['duration'],
         waveform: json['waveform'],
-        caption: FormattedText.fromJson(json['caption'])!);
+        caption: FormattedText.fromJson(json['caption']));
   }
 
   @override
@@ -42,7 +42,7 @@ class InputMessageVoiceNote extends InputMessageContent {
         'voice_note': this.voiceNote.toJson(),
         'duration': this.duration,
         'waveform': this.waveform,
-        'caption': this.caption.toJson(),
+        'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
 }

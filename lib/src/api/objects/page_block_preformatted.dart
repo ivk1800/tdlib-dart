@@ -7,7 +7,7 @@ class PageBlockPreformatted extends PageBlock {
   /// [text] Paragraph text
   final RichText text;
 
-  /// [language] Programming language for which the text should be formatted
+  /// [language] Programming language for which the text needs to be formatted
   final String language;
 
   static const String CONSTRUCTOR = 'pageBlockPreformatted';
