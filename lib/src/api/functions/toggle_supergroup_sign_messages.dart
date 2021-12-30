@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
-/// Toggles sender signatures messages sent in a channel; requires
-/// can_change_info administrator right
+/// Toggles whether sender signature is added to sent messages in a channel;
+/// requires can_change_info administrator right
 /// Returns [Ok]
 class ToggleSupergroupSignMessages extends TdFunction {
   ToggleSupergroupSignMessages(

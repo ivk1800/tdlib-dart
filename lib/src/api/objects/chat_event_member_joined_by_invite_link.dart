@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A new member joined the chat by an invite link
+/// A new member joined the chat via an invite link
 class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   ChatEventMemberJoinedByInviteLink({required this.inviteLink});
 

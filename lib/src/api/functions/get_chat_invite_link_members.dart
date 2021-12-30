@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Returns chat members joined a chat by an invite link. Requires
+/// Returns chat members joined a chat via an invite link. Requires
 /// administrator privileges and can_invite_users right in the chat for own
 /// links and owner privileges for other links
 /// Returns [ChatInviteLinkMembers]

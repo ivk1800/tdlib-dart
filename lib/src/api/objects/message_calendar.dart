@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
-/// Contains information about found messages, splitted by days according to
-/// the option "utc_time_offset"
+/// Contains information about found messages, split by days according to the
+/// option "utc_time_offset"
 class MessageCalendar extends TdObject {
   MessageCalendar({required this.totalCount, required this.days});
 

@@ -1,13 +1,13 @@
 import '../tdapi.dart';
 
-/// Contains a list of chat members joined a chat by an invite link
+/// Contains a list of chat members joined a chat via an invite link
 class ChatInviteLinkMembers extends TdObject {
   ChatInviteLinkMembers({required this.totalCount, required this.members});
 
   /// [totalCount] Approximate total count of chat members found
   final int totalCount;
 
-  /// [members] List of chat members, joined a chat by an invite link
+  /// [members] List of chat members, joined a chat via an invite link
   final List<ChatInviteLinkMember> members;
 
   static const String CONSTRUCTOR = 'chatInviteLinkMembers';

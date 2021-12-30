@@ -5,6 +5,7 @@ class MessageSendOptions extends TdObject {
   MessageSendOptions(
       {required this.disableNotification,
       required this.fromBackground,
+      this.protectContent,
       this.schedulingState});
 
   /// [disableNotification] Pass true to disable notification for the message
@@ -12,6 +13,10 @@ class MessageSendOptions extends TdObject {
 
   /// [fromBackground] Pass true if the message is sent from the background
   final bool fromBackground;
+
+  /// [protectContent] Pass true if the content of the message must be protected
+  /// from forwarding and saving; for bots only
+  final bool? protectContent;
 
   /// [schedulingState] Message scheduling state; pass null to send message
   /// immediately. Messages sent to a secret chat, live location messages and
@@ -28,6 +33,7 @@ class MessageSendOptions extends TdObject {
     return MessageSendOptions(
         disableNotification: json['disable_notification'],
         fromBackground: json['from_background'],
+        protectContent: json['protect_content'],
         schedulingState:
             MessageSchedulingState.fromJson(json['scheduling_state']));
   }
@@ -38,6 +44,7 @@ class MessageSendOptions extends TdObject {
   Map<String, dynamic> toJson() => {
         'disable_notification': this.disableNotification,
         'from_background': this.fromBackground,
+        'protect_content': this.protectContent,
         'scheduling_state': this.schedulingState?.toJson(),
         '@type': CONSTRUCTOR
       };

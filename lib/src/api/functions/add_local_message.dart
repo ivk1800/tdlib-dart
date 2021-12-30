@@ -7,7 +7,7 @@ import '../tdapi.dart';
 class AddLocalMessage extends TdFunction {
   AddLocalMessage(
       {required this.chatId,
-      required this.sender,
+      required this.senderId,
       required this.replyToMessageId,
       required this.disableNotification,
       required this.inputMessageContent});
@@ -15,8 +15,8 @@ class AddLocalMessage extends TdFunction {
   /// [chatId] Target chat
   final int chatId;
 
-  /// [sender] The sender of the message
-  final MessageSender sender;
+  /// [senderId] Identifier of the sender of the message
+  final MessageSender senderId;
 
   /// [replyToMessageId] Identifier of the message to reply to or 0
   final int replyToMessageId;
@@ -34,7 +34,7 @@ class AddLocalMessage extends TdFunction {
   @override
   Map<String, dynamic> toJson() => {
         'chat_id': this.chatId,
-        'sender': this.sender.toJson(),
+        'sender_id': this.senderId.toJson(),
         'reply_to_message_id': this.replyToMessageId,
         'disable_notification': this.disableNotification,
         'input_message_content': this.inputMessageContent.toJson(),

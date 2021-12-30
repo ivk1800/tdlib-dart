@@ -1,13 +1,14 @@
 import '../tdapi.dart';
 
-/// Contains information about pending chat join requests
+/// Contains information about pending join requests for a chat
 class ChatJoinRequestsInfo extends TdObject {
   ChatJoinRequestsInfo({required this.totalCount, required this.userIds});
 
   /// [totalCount] Total number of pending join requests
   final int totalCount;
 
-  /// [userIds] Identifiers of users sent the newest pending join requests
+  /// [userIds] Identifiers of at most 3 users sent the newest pending join
+  /// requests
   final List<int> userIds;
 
   static const String CONSTRUCTOR = 'chatJoinRequestsInfo';

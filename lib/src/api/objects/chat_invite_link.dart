@@ -8,7 +8,7 @@ class ChatInviteLink extends TdObject {
       required this.creatorUserId,
       required this.date,
       required this.editDate,
-      required this.expireDate,
+      required this.expirationDate,
       required this.memberLimit,
       required this.memberCount,
       required this.pendingJoinRequestCount,
@@ -32,9 +32,9 @@ class ChatInviteLink extends TdObject {
   /// if never or unknown
   final int editDate;
 
-  /// [expireDate] Point in time (Unix timestamp) when the link will expire; 0
-  /// if never
-  final int expireDate;
+  /// [expirationDate] Point in time (Unix timestamp) when the link will expire;
+  /// 0 if never
+  final int expirationDate;
 
   /// [memberLimit] The maximum number of members, which can join the chat using
   /// the link simultaneously; 0 if not limited. Always 0 if the link requires
@@ -53,8 +53,8 @@ class ChatInviteLink extends TdObject {
   final bool createsJoinRequest;
 
   /// [isPrimary] True, if the link is primary. Primary invite link can't have
-  /// name, expire date or usage limit. There is exactly one primary invite link
-  /// for each administrator with can_invite_users right at a given time
+  /// name, expiration date, or usage limit. There is exactly one primary invite
+  /// link for each administrator with can_invite_users right at a given time
   final bool isPrimary;
 
   /// [isRevoked] True, if the link was revoked
@@ -73,7 +73,7 @@ class ChatInviteLink extends TdObject {
         creatorUserId: json['creator_user_id'],
         date: json['date'],
         editDate: json['edit_date'],
-        expireDate: json['expire_date'],
+        expirationDate: json['expiration_date'],
         memberLimit: json['member_limit'],
         memberCount: json['member_count'],
         pendingJoinRequestCount: json['pending_join_request_count'],
@@ -91,7 +91,7 @@ class ChatInviteLink extends TdObject {
         'creator_user_id': this.creatorUserId,
         'date': this.date,
         'edit_date': this.editDate,
-        'expire_date': this.expireDate,
+        'expiration_date': this.expirationDate,
         'member_limit': this.memberLimit,
         'member_count': this.memberCount,
         'pending_join_request_count': this.pendingJoinRequestCount,

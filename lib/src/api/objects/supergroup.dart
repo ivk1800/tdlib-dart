@@ -41,7 +41,7 @@ class Supergroup extends TdObject {
   final ChatMemberStatus status;
 
   /// [memberCount] Number of members in the supergroup or channel; 0 if
-  /// unknown. Currently it is guaranteed to be known only if the supergroup or
+  /// unknown. Currently, it is guaranteed to be known only if the supergroup or
   /// channel was received through searchPublicChats, searchChatsNearby,
   /// getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon,
   /// or getUserPrivacySettingRules
@@ -66,7 +66,7 @@ class Supergroup extends TdObject {
   final bool isChannel;
 
   /// [isBroadcastGroup] True, if the supergroup is a broadcast group, i.e. only
-  /// administrators can send messages and there is no limit on number of
+  /// administrators can send messages and there is no limit on the number of
   /// members
   final bool isBroadcastGroup;
 

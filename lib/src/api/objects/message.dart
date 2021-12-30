@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class Message extends TdObject {
   Message(
       {required this.id,
-      required this.sender,
+      required this.senderId,
       required this.chatId,
       this.sendingState,
       this.schedulingState,
@@ -12,6 +12,7 @@ class Message extends TdObject {
       required this.isPinned,
       required this.canBeEdited,
       required this.canBeForwarded,
+      required this.canBeSaved,
       required this.canBeDeletedOnlyForSelf,
       required this.canBeDeletedForAllUsers,
       required this.canGetStatistics,
@@ -40,8 +41,8 @@ class Message extends TdObject {
   /// [id] Message identifier; unique for the chat to which the message belongs
   final int id;
 
-  /// [sender] The sender of the message
-  final MessageSender sender;
+  /// [senderId] Identifier of the sender of the message
+  final MessageSender senderId;
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -65,6 +66,10 @@ class Message extends TdObject {
 
   /// [canBeForwarded] True, if the message can be forwarded
   final bool canBeForwarded;
+
+  /// [canBeSaved] True, if content of the message can be saved locally or
+  /// copied
+  final bool canBeSaved;
 
   /// [canBeDeletedOnlyForSelf] True, if the message can be deleted only for the
   /// current user while other users will continue to see it
@@ -167,7 +172,7 @@ class Message extends TdObject {
 
     return Message(
         id: json['id'],
-        sender: MessageSender.fromJson(json['sender'])!,
+        senderId: MessageSender.fromJson(json['sender_id'])!,
         chatId: json['chat_id'],
         sendingState: MessageSendingState.fromJson(json['sending_state']),
         schedulingState:
@@ -176,6 +181,7 @@ class Message extends TdObject {
         isPinned: json['is_pinned'],
         canBeEdited: json['can_be_edited'],
         canBeForwarded: json['can_be_forwarded'],
+        canBeSaved: json['can_be_saved'],
         canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
         canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
         canGetStatistics: json['can_get_statistics'],
@@ -208,7 +214,7 @@ class Message extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         'id': this.id,
-        'sender': this.sender.toJson(),
+        'sender_id': this.senderId.toJson(),
         'chat_id': this.chatId,
         'sending_state': this.sendingState?.toJson(),
         'scheduling_state': this.schedulingState?.toJson(),
@@ -216,6 +222,7 @@ class Message extends TdObject {
         'is_pinned': this.isPinned,
         'can_be_edited': this.canBeEdited,
         'can_be_forwarded': this.canBeForwarded,
+        'can_be_saved': this.canBeSaved,
         'can_be_deleted_only_for_self': this.canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': this.canBeDeletedForAllUsers,
         'can_get_statistics': this.canGetStatistics,

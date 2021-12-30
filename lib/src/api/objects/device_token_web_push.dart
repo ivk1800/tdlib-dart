@@ -8,7 +8,7 @@ class DeviceTokenWebPush extends DeviceToken {
       required this.authBase64url});
 
   /// [endpoint] Absolute URL exposed by the push service where the application
-  /// server can send push messages; may be empty to de-register a device
+  /// server can send push messages; may be empty to deregister a device
   final String endpoint;
 
   /// [p256dhBase64url] Base64url-encoded P-256 elliptic curve Diffie-Hellman

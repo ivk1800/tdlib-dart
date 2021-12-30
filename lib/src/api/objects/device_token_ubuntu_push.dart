@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class DeviceTokenUbuntuPush extends DeviceToken {
   DeviceTokenUbuntuPush({required this.token});
 
-  /// [token] Token; may be empty to de-register a device
+  /// [token] Token; may be empty to deregister a device
   final String token;
 
   static const String CONSTRUCTOR = 'deviceTokenUbuntuPush';

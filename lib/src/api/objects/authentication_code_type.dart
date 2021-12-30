@@ -12,6 +12,7 @@ abstract class AuthenticationCodeType extends TdObject {
   /// [AuthenticationCodeTypeSms]
   /// [AuthenticationCodeTypeCall]
   /// [AuthenticationCodeTypeFlashCall]
+  /// [AuthenticationCodeTypeMissedCall]
   static AuthenticationCodeType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -26,6 +27,8 @@ abstract class AuthenticationCodeType extends TdObject {
         return AuthenticationCodeTypeCall.fromJson(json);
       case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
         return AuthenticationCodeTypeFlashCall.fromJson(json);
+      case AuthenticationCodeTypeMissedCall.CONSTRUCTOR:
+        return AuthenticationCodeTypeMissedCall.fromJson(json);
       default:
         return null;
     }

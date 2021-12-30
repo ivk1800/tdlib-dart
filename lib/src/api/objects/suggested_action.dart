@@ -10,8 +10,9 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
   /// [SuggestedActionCheckPassword]
   /// [SuggestedActionCheckPhoneNumber]
-  /// [SuggestedActionSeeTicksHint]
+  /// [SuggestedActionViewChecksHint]
   /// [SuggestedActionConvertToBroadcastGroup]
+  /// [SuggestedActionSetPassword]
   static SuggestedAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -24,10 +25,12 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionCheckPassword.fromJson(json);
       case SuggestedActionCheckPhoneNumber.CONSTRUCTOR:
         return SuggestedActionCheckPhoneNumber.fromJson(json);
-      case SuggestedActionSeeTicksHint.CONSTRUCTOR:
-        return SuggestedActionSeeTicksHint.fromJson(json);
+      case SuggestedActionViewChecksHint.CONSTRUCTOR:
+        return SuggestedActionViewChecksHint.fromJson(json);
       case SuggestedActionConvertToBroadcastGroup.CONSTRUCTOR:
         return SuggestedActionConvertToBroadcastGroup.fromJson(json);
+      case SuggestedActionSetPassword.CONSTRUCTOR:
+        return SuggestedActionSetPassword.fromJson(json);
       default:
         return null;
     }

@@ -8,8 +8,8 @@ class InputMessageText extends InputMessageContent {
       required this.clearDraft});
 
   /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max")
-  /// characters. Only Bold, Italic, Underline, Strikethrough, Code, Pre,
-  /// PreCode, TextUrl and MentionName entities are allowed to be specified
+  /// characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, Code,
+  /// Pre, PreCode, TextUrl and MentionName entities are allowed to be specified
   /// manually
   final FormattedText text;
 

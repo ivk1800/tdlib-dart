@@ -14,6 +14,7 @@ abstract class InlineKeyboardButtonType extends TdObject {
   /// [InlineKeyboardButtonTypeCallbackGame]
   /// [InlineKeyboardButtonTypeSwitchInline]
   /// [InlineKeyboardButtonTypeBuy]
+  /// [InlineKeyboardButtonTypeUser]
   static InlineKeyboardButtonType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -34,6 +35,8 @@ abstract class InlineKeyboardButtonType extends TdObject {
         return InlineKeyboardButtonTypeSwitchInline.fromJson(json);
       case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
         return InlineKeyboardButtonTypeBuy.fromJson(json);
+      case InlineKeyboardButtonTypeUser.CONSTRUCTOR:
+        return InlineKeyboardButtonTypeUser.fromJson(json);
       default:
         return null;
     }

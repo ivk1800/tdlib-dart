@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Some data from userFullInfo has been changed
+/// Some data in userFullInfo has been changed
 class UpdateUserFullInfo extends Update {
   UpdateUserFullInfo({required this.userId, required this.userFullInfo});
 

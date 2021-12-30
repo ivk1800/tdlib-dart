@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Some data from supergroupFullInfo has been changed
+/// Some data in supergroupFullInfo has been changed
 class UpdateSupergroupFullInfo extends Update {
   UpdateSupergroupFullInfo(
       {required this.supergroupId, required this.supergroupFullInfo});

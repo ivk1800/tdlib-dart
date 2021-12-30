@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
 /// An authentication code is delivered by an immediately canceled call to the
-/// specified phone number. The number from which the call was made is the
-/// code
+/// specified phone number. The phone number that calls is the code that must
+/// be entered automatically
 class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   AuthenticationCodeTypeFlashCall({required this.pattern});
 

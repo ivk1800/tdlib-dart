@@ -7,6 +7,8 @@ class Session extends TdObject {
       {required this.id,
       required this.isCurrent,
       required this.isPasswordPending,
+      required this.canAcceptSecretChats,
+      required this.canAcceptCalls,
       required this.apiId,
       required this.applicationName,
       required this.applicationVersion,
@@ -29,6 +31,13 @@ class Session extends TdObject {
   /// [isPasswordPending] True, if a password is needed to complete
   /// authorization of the session
   final bool isPasswordPending;
+
+  /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by
+  /// the session
+  final bool canAcceptSecretChats;
+
+  /// [canAcceptCalls] True, if incoming calls can be accepted by the session
+  final bool canAcceptCalls;
 
   /// [apiId] Telegram API identifier, as provided by the application
   final int apiId;
@@ -86,6 +95,8 @@ class Session extends TdObject {
         id: int.tryParse(json['id']) ?? 0,
         isCurrent: json['is_current'],
         isPasswordPending: json['is_password_pending'],
+        canAcceptSecretChats: json['can_accept_secret_chats'],
+        canAcceptCalls: json['can_accept_calls'],
         apiId: json['api_id'],
         applicationName: json['application_name'],
         applicationVersion: json['application_version'],
@@ -107,6 +118,8 @@ class Session extends TdObject {
         'id': this.id,
         'is_current': this.isCurrent,
         'is_password_pending': this.isPasswordPending,
+        'can_accept_secret_chats': this.canAcceptSecretChats,
+        'can_accept_calls': this.canAcceptCalls,
         'api_id': this.apiId,
         'application_name': this.applicationName,
         'application_version': this.applicationVersion,

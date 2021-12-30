@@ -45,8 +45,7 @@ class SearchMessages extends TdFunction {
   final int limit;
 
   /// [filter] Additional filter for messages to search; pass null to search for
-  /// all messages. Filters searchMessagesFilterCall,
-  /// searchMessagesFilterMissedCall, searchMessagesFilterMention,
+  /// all messages. Filters searchMessagesFilterMention,
   /// searchMessagesFilterUnreadMention, searchMessagesFilterFailedToSend and
   /// searchMessagesFilterPinned are unsupported in this function
   final SearchMessagesFilter? filter;

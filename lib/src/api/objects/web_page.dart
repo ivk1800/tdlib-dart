@@ -73,8 +73,7 @@ class WebPage extends TdObject {
   /// [audio] Preview of the content as an audio file, if available; may be null
   final Audio? audio;
 
-  /// [document] Preview of the content as a document, if available (currently
-  /// only available for small PDF files and ZIP archives); may be null
+  /// [document] Preview of the content as a document, if available; may be null
   final Document? document;
 
   /// [sticker] Preview of the content as a sticker for small WEBP files, if
@@ -93,7 +92,7 @@ class WebPage extends TdObject {
   final VoiceNote? voiceNote;
 
   /// [instantViewVersion] Version of instant view, available for the web page
-  /// (currently can be 1 or 2), 0 if none
+  /// (currently, can be 1 or 2), 0 if none
   final int instantViewVersion;
 
   static const String CONSTRUCTOR = 'webPage';

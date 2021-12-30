@@ -5,7 +5,7 @@ class ChatEvent extends TdObject {
   ChatEvent(
       {required this.id,
       required this.date,
-      required this.userId,
+      required this.memberId,
       required this.action});
 
   /// [id] Chat event identifier
@@ -14,11 +14,10 @@ class ChatEvent extends TdObject {
   /// [date] Point in time (Unix timestamp) when the event happened
   final int date;
 
-  /// [userId] Identifier of the user who performed the action that triggered
-  /// the event
-  final int userId;
+  /// [memberId] Identifier of the user or chat who performed the action
+  final MessageSender memberId;
 
-  /// [action] Action performed by the user
+  /// [action] The action
   final ChatEventAction action;
 
   static const String CONSTRUCTOR = 'chatEvent';
@@ -31,7 +30,7 @@ class ChatEvent extends TdObject {
     return ChatEvent(
         id: int.tryParse(json['id']) ?? 0,
         date: json['date'],
-        userId: json['user_id'],
+        memberId: MessageSender.fromJson(json['member_id'])!,
         action: ChatEventAction.fromJson(json['action'])!);
   }
 
@@ -41,7 +40,7 @@ class ChatEvent extends TdObject {
   Map<String, dynamic> toJson() => {
         'id': this.id,
         'date': this.date,
-        'user_id': this.userId,
+        'member_id': this.memberId.toJson(),
         'action': this.action.toJson(),
         '@type': CONSTRUCTOR
       };

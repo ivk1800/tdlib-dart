@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Describes a chat member joined a chat by an invite link
+/// Describes a chat member joined a chat via an invite link
 class ChatInviteLinkMember extends TdObject {
   ChatInviteLinkMember(
       {required this.userId,

@@ -20,7 +20,7 @@ class BanChatMember extends TdFunction {
   /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be
   /// unbanned; 0 if never. If the user is banned for more than 366 days or for
   /// less than 30 seconds from the current time, the user is considered to be
-  /// banned forever. Ignored in basic groups
+  /// banned forever. Ignored in basic groups and if a chat is banned
   final int bannedUntilDate;
 
   /// [revokeMessages] Pass true to delete all messages in the chat for the user

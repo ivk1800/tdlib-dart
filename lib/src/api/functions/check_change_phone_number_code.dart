@@ -6,7 +6,7 @@ import '../tdapi.dart';
 class CheckChangePhoneNumberCode extends TdFunction {
   CheckChangePhoneNumberCode({required this.code});
 
-  /// [code] Verification code received by SMS, phone call or flash call
+  /// [code] Authentication code to check
   final String code;
 
   static const String CONSTRUCTOR = 'checkChangePhoneNumberCode';

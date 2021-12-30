@@ -20,7 +20,7 @@ class Venue extends TdObject {
   final String address;
 
   /// [provider] Provider of the venue database; as defined by the sender.
-  /// Currently only "foursquare" and "gplaces" (Google Places) need to be
+  /// Currently, only "foursquare" and "gplaces" (Google Places) need to be
   /// supported
   final String provider;
 

@@ -24,7 +24,7 @@ class DownloadFile extends TdFunction {
   final int offset;
 
   /// [limit] Number of bytes which need to be downloaded starting from the
-  /// "offset" position before the download will be automatically canceled; use
+  /// "offset" position before the download will automatically be canceled; use
   /// 0 to download without a limit
   final int limit;
 

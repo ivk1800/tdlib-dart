@@ -1,21 +1,21 @@
 import '../tdapi.dart';
 
-/// A video chat was discarded
-class ChatEventVideoChatDiscarded extends ChatEventAction {
-  ChatEventVideoChatDiscarded({required this.groupCallId});
+/// A video chat was ended
+class ChatEventVideoChatEnded extends ChatEventAction {
+  ChatEventVideoChatEnded({required this.groupCallId});
 
   /// [groupCallId] Identifier of the video chat. The video chat can be received
   /// through the method getGroupCall
   final int groupCallId;
 
-  static const String CONSTRUCTOR = 'chatEventVideoChatDiscarded';
+  static const String CONSTRUCTOR = 'chatEventVideoChatEnded';
 
-  static ChatEventVideoChatDiscarded? fromJson(Map<String, dynamic>? json) {
+  static ChatEventVideoChatEnded? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return ChatEventVideoChatDiscarded(groupCallId: json['group_call_id']);
+    return ChatEventVideoChatEnded(groupCallId: json['group_call_id']);
   }
 
   @override

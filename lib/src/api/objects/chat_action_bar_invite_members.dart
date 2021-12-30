@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// The chat is a recently created group chat, to which new members can be
+/// The chat is a recently created group chat to which new members can be
 /// invited
 class ChatActionBarInviteMembers extends ChatActionBar {
   const ChatActionBarInviteMembers();

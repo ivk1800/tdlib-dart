@@ -17,7 +17,7 @@ class DeleteChatHistory extends TdFunction {
   /// chat list
   final bool removeFromChatList;
 
-  /// [revoke] Pass true to try to delete chat history for all users
+  /// [revoke] Pass true to delete chat history for all users
   final bool revoke;
 
   static const String CONSTRUCTOR = 'deleteChatHistory';

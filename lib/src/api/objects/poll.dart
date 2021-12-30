@@ -40,8 +40,8 @@ class Poll extends TdObject {
   /// seconds
   final int openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be
-  /// automatically closed
+  /// [closeDate] Point in time (Unix timestamp) when the poll will
+  /// automatically be closed
   final int closeDate;
 
   /// [isClosed] True, if the poll is closed

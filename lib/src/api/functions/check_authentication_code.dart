@@ -6,8 +6,7 @@ import '../tdapi.dart';
 class CheckAuthenticationCode extends TdFunction {
   CheckAuthenticationCode({required this.code});
 
-  /// [code] The verification code received via SMS, Telegram message, phone
-  /// call, or flash call
+  /// [code] Authentication code to check
   final String code;
 
   static const String CONSTRUCTOR = 'checkAuthenticationCode';

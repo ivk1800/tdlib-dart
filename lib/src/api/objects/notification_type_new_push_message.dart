@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class NotificationTypeNewPushMessage extends NotificationType {
   NotificationTypeNewPushMessage(
       {required this.messageId,
-      required this.sender,
+      required this.senderId,
       required this.senderName,
       required this.isOutgoing,
       required this.content});
@@ -14,9 +14,9 @@ class NotificationTypeNewPushMessage extends NotificationType {
   /// reply_to_message_id
   final int messageId;
 
-  /// [sender] The sender of the message. Corresponding user or chat may be
-  /// inaccessible
-  final MessageSender sender;
+  /// [senderId] Identifier of the sender of the message. Corresponding user or
+  /// chat may be inaccessible
+  final MessageSender senderId;
 
   /// [senderName] Name of the sender
   final String senderName;
@@ -36,7 +36,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
 
     return NotificationTypeNewPushMessage(
         messageId: json['message_id'],
-        sender: MessageSender.fromJson(json['sender'])!,
+        senderId: MessageSender.fromJson(json['sender_id'])!,
         senderName: json['sender_name'],
         isOutgoing: json['is_outgoing'],
         content: PushMessageContent.fromJson(json['content'])!);
@@ -47,7 +47,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
   @override
   Map<String, dynamic> toJson() => {
         'message_id': this.messageId,
-        'sender': this.sender.toJson(),
+        'sender_id': this.senderId.toJson(),
         'sender_name': this.senderName,
         'is_outgoing': this.isOutgoing,
         'content': this.content.toJson(),

@@ -27,7 +27,7 @@ class GetChatJoinRequests extends TdFunction {
   /// pass null to get results from the beginning
   final ChatJoinRequest? offsetRequest;
 
-  /// [limit] The maximum number of chat join requests to return
+  /// [limit] The maximum number of requests to join the chat to return
   final int limit;
 
   static const String CONSTRUCTOR = 'getChatJoinRequests';

@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
-/// Changes default participant identifier, which can be used to join video
-/// chats in a chat
+/// Changes default participant identifier, on whose behalf a video chat in
+/// the chat will be joined
 /// Returns [Ok]
 class SetVideoChatDefaultParticipant extends TdFunction {
   SetVideoChatDefaultParticipant(

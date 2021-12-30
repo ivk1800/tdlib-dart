@@ -17,8 +17,6 @@ abstract class SearchMessagesFilter extends TdObject {
   /// [SearchMessagesFilterPhotoAndVideo]
   /// [SearchMessagesFilterUrl]
   /// [SearchMessagesFilterChatPhoto]
-  /// [SearchMessagesFilterCall]
-  /// [SearchMessagesFilterMissedCall]
   /// [SearchMessagesFilterVideoNote]
   /// [SearchMessagesFilterVoiceAndVideoNote]
   /// [SearchMessagesFilterMention]
@@ -51,10 +49,6 @@ abstract class SearchMessagesFilter extends TdObject {
         return SearchMessagesFilterUrl.fromJson(json);
       case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
         return SearchMessagesFilterChatPhoto.fromJson(json);
-      case SearchMessagesFilterCall.CONSTRUCTOR:
-        return SearchMessagesFilterCall.fromJson(json);
-      case SearchMessagesFilterMissedCall.CONSTRUCTOR:
-        return SearchMessagesFilterMissedCall.fromJson(json);
       case SearchMessagesFilterVideoNote.CONSTRUCTOR:
         return SearchMessagesFilterVideoNote.fromJson(json);
       case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:

@@ -10,7 +10,7 @@ class EditChatInviteLink extends TdFunction {
       {required this.chatId,
       required this.inviteLink,
       required this.name,
-      required this.expireDate,
+      required this.expirationDate,
       required this.memberLimit,
       required this.createsJoinRequest});
 
@@ -23,12 +23,12 @@ class EditChatInviteLink extends TdFunction {
   /// [name] Invite link name; 0-32 characters
   final String name;
 
-  /// [expireDate] Point in time (Unix timestamp) when the link will expire;
+  /// [expirationDate] Point in time (Unix timestamp) when the link will expire;
   /// pass 0 if never
-  final int expireDate;
+  final int expirationDate;
 
-  /// [memberLimit] The maximum number of chat members that can join the chat by
-  /// the link simultaneously; 0-99999; pass 0 if not limited
+  /// [memberLimit] The maximum number of chat members that can join the chat
+  /// via the link simultaneously; 0-99999; pass 0 if not limited
   final int memberLimit;
 
   /// [createsJoinRequest] True, if the link only creates join request. If true,
@@ -44,7 +44,7 @@ class EditChatInviteLink extends TdFunction {
         'chat_id': this.chatId,
         'invite_link': this.inviteLink,
         'name': this.name,
-        'expire_date': this.expireDate,
+        'expiration_date': this.expirationDate,
         'member_limit': this.memberLimit,
         'creates_join_request': this.createsJoinRequest,
         '@type': CONSTRUCTOR

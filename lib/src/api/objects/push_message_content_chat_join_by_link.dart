@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// A new member joined the chat by invite link
+/// A new member joined the chat via an invite link
 class PushMessageContentChatJoinByLink extends PushMessageContent {
   const PushMessageContentChatJoinByLink();
 

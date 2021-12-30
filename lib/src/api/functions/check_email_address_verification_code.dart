@@ -5,7 +5,7 @@ import '../tdapi.dart';
 class CheckEmailAddressVerificationCode extends TdFunction {
   CheckEmailAddressVerificationCode({required this.code});
 
-  /// [code] Verification code
+  /// [code] Verification code to check
   final String code;
 
   static const String CONSTRUCTOR = 'checkEmailAddressVerificationCode';

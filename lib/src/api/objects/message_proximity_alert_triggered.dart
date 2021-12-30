@@ -3,13 +3,17 @@ import '../tdapi.dart';
 /// A user in the chat came within proximity alert range
 class MessageProximityAlertTriggered extends MessageContent {
   MessageProximityAlertTriggered(
-      {required this.traveler, required this.watcher, required this.distance});
+      {required this.travelerId,
+      required this.watcherId,
+      required this.distance});
 
-  /// [traveler] The user or chat, which triggered the proximity alert
-  final MessageSender traveler;
+  /// [travelerId] The identifier of a user or chat that triggered the proximity
+  /// alert
+  final MessageSender travelerId;
 
-  /// [watcher] The user or chat, which subscribed for the proximity alert
-  final MessageSender watcher;
+  /// [watcherId] The identifier of a user or chat that subscribed for the
+  /// proximity alert
+  final MessageSender watcherId;
 
   /// [distance] The distance between the users
   final int distance;
@@ -22,8 +26,8 @@ class MessageProximityAlertTriggered extends MessageContent {
     }
 
     return MessageProximityAlertTriggered(
-        traveler: MessageSender.fromJson(json['traveler'])!,
-        watcher: MessageSender.fromJson(json['watcher'])!,
+        travelerId: MessageSender.fromJson(json['traveler_id'])!,
+        watcherId: MessageSender.fromJson(json['watcher_id'])!,
         distance: json['distance']);
   }
 
@@ -31,8 +35,8 @@ class MessageProximityAlertTriggered extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'traveler': this.traveler.toJson(),
-        'watcher': this.watcher.toJson(),
+        'traveler_id': this.travelerId.toJson(),
+        'watcher_id': this.watcherId.toJson(),
         'distance': this.distance,
         '@type': CONSTRUCTOR
       };

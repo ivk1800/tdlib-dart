@@ -30,8 +30,8 @@ class InputMessagePoll extends InputMessageContent {
   /// seconds; for bots only
   final int? openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be
-  /// automatically closed; for bots only
+  /// [closeDate] Point in time (Unix timestamp) when the poll will
+  /// automatically be closed; for bots only
   final int? closeDate;
 
   /// [isClosed] True, if the poll needs to be sent already closed; for bots

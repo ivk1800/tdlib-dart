@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Uploads a PNG image with a sticker; returns the uploaded file
+/// Uploads a file with a sticker; returns the uploaded file
 /// Returns [File]
 class UploadStickerFile extends TdFunction {
   UploadStickerFile({required this.userId, required this.sticker});

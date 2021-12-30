@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class DeviceTokenApplePush extends DeviceToken {
   DeviceTokenApplePush({required this.deviceToken, required this.isAppSandbox});
 
-  /// [deviceToken] Device token; may be empty to de-register a device
+  /// [deviceToken] Device token; may be empty to deregister a device
   final String deviceToken;
 
   /// [isAppSandbox] True, if App Sandbox is enabled

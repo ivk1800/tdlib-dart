@@ -5,7 +5,7 @@ class DeviceTokenWindowsPush extends DeviceToken {
   DeviceTokenWindowsPush({required this.accessToken});
 
   /// [accessToken] The access token that will be used to send notifications;
-  /// may be empty to de-register a device
+  /// may be empty to deregister a device
   final String accessToken;
 
   static const String CONSTRUCTOR = 'deviceTokenWindowsPush';

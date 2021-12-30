@@ -1,7 +1,7 @@
 import '../tdapi.dart';
 
 /// Returns information about the next messages of the specified type in the
-/// chat splitted by days. Returns the results in reverse chronological order.
+/// chat split by days. Returns the results in reverse chronological order.
 /// Can return partial result for the last returned day. Behavior of this
 /// method depends on the value of the option "utc_time_offset"
 /// Returns [MessageCalendar]
@@ -16,7 +16,6 @@ class GetChatMessageCalendar extends TdFunction {
   final int chatId;
 
   /// [filter] Filter for message content. Filters searchMessagesFilterEmpty,
-  /// searchMessagesFilterCall, searchMessagesFilterMissedCall,
   /// searchMessagesFilterMention and searchMessagesFilterUnreadMention are
   /// unsupported in this function
   final SearchMessagesFilter filter;

@@ -5,7 +5,7 @@ class DeviceTokenSimplePush extends DeviceToken {
   DeviceTokenSimplePush({required this.endpoint});
 
   /// [endpoint] Absolute URL exposed by the push service where the application
-  /// server can send push messages; may be empty to de-register a device
+  /// server can send push messages; may be empty to deregister a device
   final String endpoint;
 
   static const String CONSTRUCTOR = 'deviceTokenSimplePush';

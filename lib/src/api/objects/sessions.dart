@@ -2,10 +2,14 @@ import '../tdapi.dart';
 
 /// Contains a list of sessions
 class Sessions extends TdObject {
-  Sessions({required this.sessions});
+  Sessions({required this.sessions, required this.inactiveSessionTtlDays});
 
   /// [sessions] List of sessions
   final List<Session> sessions;
+
+  /// [inactiveSessionTtlDays] Number of days of inactivity before sessions will
+  /// automatically be terminated; 1-366 days
+  final int inactiveSessionTtlDays;
 
   static const String CONSTRUCTOR = 'sessions';
 
@@ -17,7 +21,8 @@ class Sessions extends TdObject {
     return Sessions(
         sessions: List<Session>.from((json['sessions'] ?? [])
             .map((item) => Session.fromJson(item))
-            .toList()));
+            .toList()),
+        inactiveSessionTtlDays: json['inactive_session_ttl_days']);
   }
 
   @override
@@ -25,6 +30,7 @@ class Sessions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         'sessions': sessions.map((item) => item.toJson()).toList(),
+        'inactive_session_ttl_days': this.inactiveSessionTtlDays,
         '@type': CONSTRUCTOR
       };
 }

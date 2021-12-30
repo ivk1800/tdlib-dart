@@ -20,8 +20,8 @@ class DeleteChatMessagesByDate extends TdFunction {
   /// [maxDate] The maximum date of the messages to delete
   final int maxDate;
 
-  /// [revoke] Pass true to try to delete chat messages for all users; private
-  /// chats only
+  /// [revoke] Pass true to delete chat messages for all users; private chats
+  /// only
   final bool revoke;
 
   static const String CONSTRUCTOR = 'deleteChatMessagesByDate';

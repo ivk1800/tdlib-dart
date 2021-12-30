@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class MessageChatSetTtl extends MessageContent {
   MessageChatSetTtl({required this.ttl});
 
-  /// [ttl] New message TTL setting
+  /// [ttl] New message TTL
   final int ttl;
 
   static const String CONSTRUCTOR = 'messageChatSetTtl';

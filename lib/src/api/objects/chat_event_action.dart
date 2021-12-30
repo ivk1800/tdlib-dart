@@ -27,8 +27,9 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventInvitesToggled]
   /// [ChatEventLinkedChatChanged]
   /// [ChatEventSlowModeDelayChanged]
-  /// [ChatEventMessageTtlSettingChanged]
+  /// [ChatEventMessageTtlChanged]
   /// [ChatEventSignMessagesToggled]
+  /// [ChatEventHasProtectedContentToggled]
   /// [ChatEventStickerSetChanged]
   /// [ChatEventLocationChanged]
   /// [ChatEventIsAllHistoryAvailableToggled]
@@ -36,7 +37,7 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventInviteLinkRevoked]
   /// [ChatEventInviteLinkDeleted]
   /// [ChatEventVideoChatCreated]
-  /// [ChatEventVideoChatDiscarded]
+  /// [ChatEventVideoChatEnded]
   /// [ChatEventVideoChatParticipantIsMutedToggled]
   /// [ChatEventVideoChatParticipantVolumeLevelChanged]
   /// [ChatEventVideoChatMuteNewParticipantsToggled]
@@ -86,10 +87,12 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventLinkedChatChanged.fromJson(json);
       case ChatEventSlowModeDelayChanged.CONSTRUCTOR:
         return ChatEventSlowModeDelayChanged.fromJson(json);
-      case ChatEventMessageTtlSettingChanged.CONSTRUCTOR:
-        return ChatEventMessageTtlSettingChanged.fromJson(json);
+      case ChatEventMessageTtlChanged.CONSTRUCTOR:
+        return ChatEventMessageTtlChanged.fromJson(json);
       case ChatEventSignMessagesToggled.CONSTRUCTOR:
         return ChatEventSignMessagesToggled.fromJson(json);
+      case ChatEventHasProtectedContentToggled.CONSTRUCTOR:
+        return ChatEventHasProtectedContentToggled.fromJson(json);
       case ChatEventStickerSetChanged.CONSTRUCTOR:
         return ChatEventStickerSetChanged.fromJson(json);
       case ChatEventLocationChanged.CONSTRUCTOR:
@@ -104,8 +107,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventInviteLinkDeleted.fromJson(json);
       case ChatEventVideoChatCreated.CONSTRUCTOR:
         return ChatEventVideoChatCreated.fromJson(json);
-      case ChatEventVideoChatDiscarded.CONSTRUCTOR:
-        return ChatEventVideoChatDiscarded.fromJson(json);
+      case ChatEventVideoChatEnded.CONSTRUCTOR:
+        return ChatEventVideoChatEnded.fromJson(json);
       case ChatEventVideoChatParticipantIsMutedToggled.CONSTRUCTOR:
         return ChatEventVideoChatParticipantIsMutedToggled.fromJson(json);
       case ChatEventVideoChatParticipantVolumeLevelChanged.CONSTRUCTOR:

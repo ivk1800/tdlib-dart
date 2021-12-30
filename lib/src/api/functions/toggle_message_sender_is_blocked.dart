@@ -4,10 +4,11 @@ import '../tdapi.dart';
 /// supergroup chats can be blocked
 /// Returns [Ok]
 class ToggleMessageSenderIsBlocked extends TdFunction {
-  ToggleMessageSenderIsBlocked({required this.sender, required this.isBlocked});
+  ToggleMessageSenderIsBlocked(
+      {required this.senderId, required this.isBlocked});
 
-  /// [sender] Message Sender
-  final MessageSender sender;
+  /// [senderId] Identifier of a message sender to block/unblock
+  final MessageSender senderId;
 
   /// [isBlocked] New value of is_blocked
   final bool isBlocked;
@@ -18,7 +19,7 @@ class ToggleMessageSenderIsBlocked extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {
-        'sender': this.sender.toJson(),
+        'sender_id': this.senderId.toJson(),
         'is_blocked': this.isBlocked,
         '@type': CONSTRUCTOR
       };

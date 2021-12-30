@@ -1,8 +1,8 @@
 import '../tdapi.dart';
 
-/// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl
-/// and MentionName entities contained in the text. Can be called
-/// synchronously
+/// Parses Bold, Italic, Underline, Strikethrough, Spoiler, Code, Pre,
+/// PreCode, TextUrl and MentionName entities contained in the text. Can be
+/// called synchronously
 /// Returns [FormattedText]
 class ParseTextEntities extends TdFunction {
   ParseTextEntities({required this.text, required this.parseMode});

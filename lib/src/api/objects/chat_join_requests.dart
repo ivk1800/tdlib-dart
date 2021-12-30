@@ -1,6 +1,6 @@
 import '../tdapi.dart';
 
-/// Contains a list of chat join requests
+/// Contains a list of requests to join a chat
 class ChatJoinRequests extends TdObject {
   ChatJoinRequests({required this.totalCount, required this.requests});
 

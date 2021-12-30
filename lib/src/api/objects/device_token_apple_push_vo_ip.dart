@@ -7,7 +7,7 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
       required this.isAppSandbox,
       required this.encrypt});
 
-  /// [deviceToken] Device token; may be empty to de-register a device
+  /// [deviceToken] Device token; may be empty to deregister a device
   final String deviceToken;
 
   /// [isAppSandbox] True, if App Sandbox is enabled

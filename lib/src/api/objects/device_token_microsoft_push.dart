@@ -4,7 +4,7 @@ import '../tdapi.dart';
 class DeviceTokenMicrosoftPush extends DeviceToken {
   DeviceTokenMicrosoftPush({required this.channelUri});
 
-  /// [channelUri] Push notification channel URI; may be empty to de-register a
+  /// [channelUri] Push notification channel URI; may be empty to deregister a
   /// device
   final String channelUri;
 

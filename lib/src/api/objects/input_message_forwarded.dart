@@ -19,8 +19,8 @@ class InputMessageForwarded extends InputMessageContent {
   final bool inGameShare;
 
   /// [copyOptions] Options to be used to copy content of the message without
-  /// reference to the original sender; pass null to try to forward the message
-  /// as usual
+  /// reference to the original sender; pass null to forward the message as
+  /// usual
   final MessageCopyOptions? copyOptions;
 
   static const String CONSTRUCTOR = 'inputMessageForwarded';

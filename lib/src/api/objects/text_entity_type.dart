@@ -19,6 +19,7 @@ abstract class TextEntityType extends TdObject {
   /// [TextEntityTypeItalic]
   /// [TextEntityTypeUnderline]
   /// [TextEntityTypeStrikethrough]
+  /// [TextEntityTypeSpoiler]
   /// [TextEntityTypeCode]
   /// [TextEntityTypePre]
   /// [TextEntityTypePreCode]
@@ -55,6 +56,8 @@ abstract class TextEntityType extends TdObject {
         return TextEntityTypeUnderline.fromJson(json);
       case TextEntityTypeStrikethrough.CONSTRUCTOR:
         return TextEntityTypeStrikethrough.fromJson(json);
+      case TextEntityTypeSpoiler.CONSTRUCTOR:
+        return TextEntityTypeSpoiler.fromJson(json);
       case TextEntityTypeCode.CONSTRUCTOR:
         return TextEntityTypeCode.fromJson(json);
       case TextEntityTypePre.CONSTRUCTOR:

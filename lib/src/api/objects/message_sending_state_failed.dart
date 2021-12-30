@@ -6,6 +6,7 @@ class MessageSendingStateFailed extends MessageSendingState {
       {required this.errorCode,
       required this.errorMessage,
       required this.canRetry,
+      required this.needAnotherSender,
       required this.retryAfter});
 
   /// [errorCode] An error code; 0 if unknown
@@ -16,6 +17,10 @@ class MessageSendingStateFailed extends MessageSendingState {
 
   /// [canRetry] True, if the message can be re-sent
   final bool canRetry;
+
+  /// [needAnotherSender] True, if the message can be re-sent only on behalf of
+  /// a different sender
+  final bool needAnotherSender;
 
   /// [retryAfter] Time left before the message can be re-sent, in seconds. No
   /// update is sent when this field changes
@@ -32,6 +37,7 @@ class MessageSendingStateFailed extends MessageSendingState {
         errorCode: json['error_code'],
         errorMessage: json['error_message'],
         canRetry: json['can_retry'],
+        needAnotherSender: json['need_another_sender'],
         retryAfter: json['retry_after']);
   }
 
@@ -42,6 +48,7 @@ class MessageSendingStateFailed extends MessageSendingState {
         'error_code': this.errorCode,
         'error_message': this.errorMessage,
         'can_retry': this.canRetry,
+        'need_another_sender': this.needAnotherSender,
         'retry_after': this.retryAfter,
         '@type': CONSTRUCTOR
       };

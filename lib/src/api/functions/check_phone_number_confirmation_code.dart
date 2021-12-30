@@ -5,7 +5,7 @@ import '../tdapi.dart';
 class CheckPhoneNumberConfirmationCode extends TdFunction {
   CheckPhoneNumberConfirmationCode({required this.code});
 
-  /// [code] The phone number confirmation code
+  /// [code] Confirmation code to check
   final String code;
 
   static const String CONSTRUCTOR = 'checkPhoneNumberConfirmationCode';
