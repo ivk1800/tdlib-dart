@@ -1,3 +1,3 @@
 # tdlib
 
-version: `1.7.9` 8d7bda00
+version: `1.8.0` c0385078
