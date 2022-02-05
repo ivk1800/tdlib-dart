@@ -1,12 +1,12 @@
 import 'package:tdlib/td_api.dart';
 
 extension TdErrorExtensions on TdError {
-  TdError copy({int? code, String? message}) =>
+  TdError copyWith({int? code, String? message}) =>
       TdError(code: code ?? this.code, message: message ?? this.message);
 }
 
 extension TdlibParametersExtensions on TdlibParameters {
-  TdlibParameters copy(
+  TdlibParameters copyWith(
           {bool? useTestDc,
           String? databaseDirectory,
           String? filesDirectory,
@@ -109,29 +109,29 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
 
 extension AuthenticationCodeTypeTelegramMessageExtensions
     on AuthenticationCodeTypeTelegramMessage {
-  AuthenticationCodeTypeTelegramMessage copy({int? length}) =>
+  AuthenticationCodeTypeTelegramMessage copyWith({int? length}) =>
       AuthenticationCodeTypeTelegramMessage(length: length ?? this.length);
 }
 
 extension AuthenticationCodeTypeSmsExtensions on AuthenticationCodeTypeSms {
-  AuthenticationCodeTypeSms copy({int? length}) =>
+  AuthenticationCodeTypeSms copyWith({int? length}) =>
       AuthenticationCodeTypeSms(length: length ?? this.length);
 }
 
 extension AuthenticationCodeTypeCallExtensions on AuthenticationCodeTypeCall {
-  AuthenticationCodeTypeCall copy({int? length}) =>
+  AuthenticationCodeTypeCall copyWith({int? length}) =>
       AuthenticationCodeTypeCall(length: length ?? this.length);
 }
 
 extension AuthenticationCodeTypeFlashCallExtensions
     on AuthenticationCodeTypeFlashCall {
-  AuthenticationCodeTypeFlashCall copy({String? pattern}) =>
+  AuthenticationCodeTypeFlashCall copyWith({String? pattern}) =>
       AuthenticationCodeTypeFlashCall(pattern: pattern ?? this.pattern);
 }
 
 extension AuthenticationCodeTypeMissedCallExtensions
     on AuthenticationCodeTypeMissedCall {
-  AuthenticationCodeTypeMissedCall copy(
+  AuthenticationCodeTypeMissedCall copyWith(
           {String? phoneNumberPrefix, int? length}) =>
       AuthenticationCodeTypeMissedCall(
           phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
@@ -139,7 +139,7 @@ extension AuthenticationCodeTypeMissedCallExtensions
 }
 
 extension AuthenticationCodeInfoExtensions on AuthenticationCodeInfo {
-  AuthenticationCodeInfo copy(
+  AuthenticationCodeInfo copyWith(
           {String? phoneNumber,
           AuthenticationCodeType? type,
           AuthenticationCodeType? nextType,
@@ -153,7 +153,7 @@ extension AuthenticationCodeInfoExtensions on AuthenticationCodeInfo {
 
 extension EmailAddressAuthenticationCodeInfoExtensions
     on EmailAddressAuthenticationCodeInfo {
-  EmailAddressAuthenticationCodeInfo copy(
+  EmailAddressAuthenticationCodeInfo copyWith(
           {String? emailAddressPattern, int? length}) =>
       EmailAddressAuthenticationCodeInfo(
           emailAddressPattern: emailAddressPattern ?? this.emailAddressPattern,
@@ -161,7 +161,7 @@ extension EmailAddressAuthenticationCodeInfoExtensions
 }
 
 extension TextEntityExtensions on TextEntity {
-  TextEntity copy({int? offset, int? length, TextEntityType? type}) =>
+  TextEntity copyWith({int? offset, int? length, TextEntityType? type}) =>
       TextEntity(
           offset: offset ?? this.offset,
           length: length ?? this.length,
@@ -169,18 +169,18 @@ extension TextEntityExtensions on TextEntity {
 }
 
 extension TextEntitiesExtensions on TextEntities {
-  TextEntities copy({List<TextEntity>? entities}) =>
+  TextEntities copyWith({List<TextEntity>? entities}) =>
       TextEntities(entities: entities ?? this.entities);
 }
 
 extension FormattedTextExtensions on FormattedText {
-  FormattedText copy({String? text, List<TextEntity>? entities}) =>
+  FormattedText copyWith({String? text, List<TextEntity>? entities}) =>
       FormattedText(
           text: text ?? this.text, entities: entities ?? this.entities);
 }
 
 extension TermsOfServiceExtensions on TermsOfService {
-  TermsOfService copy(
+  TermsOfService copyWith(
           {FormattedText? text, int? minUserAge, bool? showPopup}) =>
       TermsOfService(
           text: text ?? this.text,
@@ -325,32 +325,33 @@ extension AuthorizationStateExtensions on AuthorizationState {
 
 extension AuthorizationStateWaitEncryptionKeyExtensions
     on AuthorizationStateWaitEncryptionKey {
-  AuthorizationStateWaitEncryptionKey copy({bool? isEncrypted}) =>
+  AuthorizationStateWaitEncryptionKey copyWith({bool? isEncrypted}) =>
       AuthorizationStateWaitEncryptionKey(
           isEncrypted: isEncrypted ?? this.isEncrypted);
 }
 
 extension AuthorizationStateWaitCodeExtensions on AuthorizationStateWaitCode {
-  AuthorizationStateWaitCode copy({AuthenticationCodeInfo? codeInfo}) =>
+  AuthorizationStateWaitCode copyWith({AuthenticationCodeInfo? codeInfo}) =>
       AuthorizationStateWaitCode(codeInfo: codeInfo ?? this.codeInfo);
 }
 
 extension AuthorizationStateWaitOtherDeviceConfirmationExtensions
     on AuthorizationStateWaitOtherDeviceConfirmation {
-  AuthorizationStateWaitOtherDeviceConfirmation copy({String? link}) =>
+  AuthorizationStateWaitOtherDeviceConfirmation copyWith({String? link}) =>
       AuthorizationStateWaitOtherDeviceConfirmation(link: link ?? this.link);
 }
 
 extension AuthorizationStateWaitRegistrationExtensions
     on AuthorizationStateWaitRegistration {
-  AuthorizationStateWaitRegistration copy({TermsOfService? termsOfService}) =>
+  AuthorizationStateWaitRegistration copyWith(
+          {TermsOfService? termsOfService}) =>
       AuthorizationStateWaitRegistration(
           termsOfService: termsOfService ?? this.termsOfService);
 }
 
 extension AuthorizationStateWaitPasswordExtensions
     on AuthorizationStateWaitPassword {
-  AuthorizationStateWaitPassword copy(
+  AuthorizationStateWaitPassword copyWith(
           {String? passwordHint,
           bool? hasRecoveryEmailAddress,
           String? recoveryEmailAddressPattern}) =>
@@ -363,7 +364,7 @@ extension AuthorizationStateWaitPasswordExtensions
 }
 
 extension PasswordStateExtensions on PasswordState {
-  PasswordState copy(
+  PasswordState copyWith(
           {bool? hasPassword,
           String? passwordHint,
           bool? hasRecoveryEmailAddress,
@@ -382,21 +383,21 @@ extension PasswordStateExtensions on PasswordState {
 }
 
 extension RecoveryEmailAddressExtensions on RecoveryEmailAddress {
-  RecoveryEmailAddress copy({String? recoveryEmailAddress}) =>
+  RecoveryEmailAddress copyWith({String? recoveryEmailAddress}) =>
       RecoveryEmailAddress(
           recoveryEmailAddress:
               recoveryEmailAddress ?? this.recoveryEmailAddress);
 }
 
 extension TemporaryPasswordStateExtensions on TemporaryPasswordState {
-  TemporaryPasswordState copy({bool? hasPassword, int? validFor}) =>
+  TemporaryPasswordState copyWith({bool? hasPassword, int? validFor}) =>
       TemporaryPasswordState(
           hasPassword: hasPassword ?? this.hasPassword,
           validFor: validFor ?? this.validFor);
 }
 
 extension LocalFileExtensions on LocalFile {
-  LocalFile copy(
+  LocalFile copyWith(
           {String? path,
           bool? canBeDownloaded,
           bool? canBeDeleted,
@@ -419,7 +420,7 @@ extension LocalFileExtensions on LocalFile {
 }
 
 extension RemoteFileExtensions on RemoteFile {
-  RemoteFile copy(
+  RemoteFile copyWith(
           {String? id,
           String? uniqueId,
           bool? isUploadingActive,
@@ -435,7 +436,7 @@ extension RemoteFileExtensions on RemoteFile {
 }
 
 extension FileExtensions on File {
-  File copy(
+  File copyWith(
           {int? id,
           int? size,
           int? expectedSize,
@@ -501,20 +502,20 @@ extension InputFileExtensions on InputFile {
 }
 
 extension InputFileIdExtensions on InputFileId {
-  InputFileId copy({int? id}) => InputFileId(id: id ?? this.id);
+  InputFileId copyWith({int? id}) => InputFileId(id: id ?? this.id);
 }
 
 extension InputFileRemoteExtensions on InputFileRemote {
-  InputFileRemote copy({String? id}) => InputFileRemote(id: id ?? this.id);
+  InputFileRemote copyWith({String? id}) => InputFileRemote(id: id ?? this.id);
 }
 
 extension InputFileLocalExtensions on InputFileLocal {
-  InputFileLocal copy({String? path}) =>
+  InputFileLocal copyWith({String? path}) =>
       InputFileLocal(path: path ?? this.path);
 }
 
 extension InputFileGeneratedExtensions on InputFileGenerated {
-  InputFileGenerated copy(
+  InputFileGenerated copyWith(
           {String? originalPath, String? conversion, int? expectedSize}) =>
       InputFileGenerated(
           originalPath: originalPath ?? this.originalPath,
@@ -523,7 +524,7 @@ extension InputFileGeneratedExtensions on InputFileGenerated {
 }
 
 extension PhotoSizeExtensions on PhotoSize {
-  PhotoSize copy(
+  PhotoSize copyWith(
           {String? type,
           File? photo,
           int? width,
@@ -538,10 +539,11 @@ extension PhotoSizeExtensions on PhotoSize {
 }
 
 extension MinithumbnailExtensions on Minithumbnail {
-  Minithumbnail copy({int? width, int? height, String? data}) => Minithumbnail(
-      width: width ?? this.width,
-      height: height ?? this.height,
-      data: data ?? this.data);
+  Minithumbnail copyWith({int? width, int? height, String? data}) =>
+      Minithumbnail(
+          width: width ?? this.width,
+          height: height ?? this.height,
+          data: data ?? this.data);
 }
 
 extension ThumbnailFormatExtensions on ThumbnailFormat {
@@ -614,7 +616,7 @@ extension ThumbnailFormatExtensions on ThumbnailFormat {
 }
 
 extension ThumbnailExtensions on Thumbnail {
-  Thumbnail copy(
+  Thumbnail copyWith(
           {ThumbnailFormat? format, int? width, int? height, File? file}) =>
       Thumbnail(
           format: format ?? this.format,
@@ -675,7 +677,7 @@ extension MaskPointExtensions on MaskPoint {
 }
 
 extension MaskPositionExtensions on MaskPosition {
-  MaskPosition copy(
+  MaskPosition copyWith(
           {MaskPoint? point, double? xShift, double? yShift, double? scale}) =>
       MaskPosition(
           point: point ?? this.point,
@@ -685,12 +687,12 @@ extension MaskPositionExtensions on MaskPosition {
 }
 
 extension ClosedVectorPathExtensions on ClosedVectorPath {
-  ClosedVectorPath copy({List<VectorPathCommand>? commands}) =>
+  ClosedVectorPath copyWith({List<VectorPathCommand>? commands}) =>
       ClosedVectorPath(commands: commands ?? this.commands);
 }
 
 extension PollOptionExtensions on PollOption {
-  PollOption copy(
+  PollOption copyWith(
           {String? text,
           int? voterCount,
           int? votePercentage,
@@ -738,19 +740,19 @@ extension PollTypeExtensions on PollType {
 }
 
 extension PollTypeRegularExtensions on PollTypeRegular {
-  PollTypeRegular copy({bool? allowMultipleAnswers}) => PollTypeRegular(
+  PollTypeRegular copyWith({bool? allowMultipleAnswers}) => PollTypeRegular(
       allowMultipleAnswers: allowMultipleAnswers ?? this.allowMultipleAnswers);
 }
 
 extension PollTypeQuizExtensions on PollTypeQuiz {
-  PollTypeQuiz copy({int? correctOptionId, FormattedText? explanation}) =>
+  PollTypeQuiz copyWith({int? correctOptionId, FormattedText? explanation}) =>
       PollTypeQuiz(
           correctOptionId: correctOptionId ?? this.correctOptionId,
           explanation: explanation ?? this.explanation);
 }
 
 extension AnimationExtensions on Animation {
-  Animation copy(
+  Animation copyWith(
           {int? duration,
           int? width,
           int? height,
@@ -773,7 +775,7 @@ extension AnimationExtensions on Animation {
 }
 
 extension AudioExtensions on Audio {
-  Audio copy(
+  Audio copyWith(
           {int? duration,
           String? title,
           String? performer,
@@ -795,7 +797,7 @@ extension AudioExtensions on Audio {
 }
 
 extension DocumentExtensions on Document {
-  Document copy(
+  Document copyWith(
           {String? fileName,
           String? mimeType,
           Minithumbnail? minithumbnail,
@@ -810,7 +812,7 @@ extension DocumentExtensions on Document {
 }
 
 extension PhotoExtensions on Photo {
-  Photo copy(
+  Photo copyWith(
           {bool? hasStickers,
           Minithumbnail? minithumbnail,
           List<PhotoSize>? sizes}) =>
@@ -821,7 +823,7 @@ extension PhotoExtensions on Photo {
 }
 
 extension StickerExtensions on Sticker {
-  Sticker copy(
+  Sticker copyWith(
           {int? setId,
           int? width,
           int? height,
@@ -846,7 +848,7 @@ extension StickerExtensions on Sticker {
 }
 
 extension VideoExtensions on Video {
-  Video copy(
+  Video copyWith(
           {int? duration,
           int? width,
           int? height,
@@ -871,7 +873,7 @@ extension VideoExtensions on Video {
 }
 
 extension VideoNoteExtensions on VideoNote {
-  VideoNote copy(
+  VideoNote copyWith(
           {int? duration,
           int? length,
           Minithumbnail? minithumbnail,
@@ -886,7 +888,7 @@ extension VideoNoteExtensions on VideoNote {
 }
 
 extension VoiceNoteExtensions on VoiceNote {
-  VoiceNote copy(
+  VoiceNote copyWith(
           {int? duration, String? waveform, String? mimeType, File? voice}) =>
       VoiceNote(
           duration: duration ?? this.duration,
@@ -896,7 +898,8 @@ extension VoiceNoteExtensions on VoiceNote {
 }
 
 extension AnimatedEmojiExtensions on AnimatedEmoji {
-  AnimatedEmoji copy({Sticker? sticker, int? fitzpatrickType, File? sound}) =>
+  AnimatedEmoji copyWith(
+          {Sticker? sticker, int? fitzpatrickType, File? sound}) =>
       AnimatedEmoji(
           sticker: sticker ?? this.sticker,
           fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
@@ -904,7 +907,7 @@ extension AnimatedEmojiExtensions on AnimatedEmoji {
 }
 
 extension ContactExtensions on Contact {
-  Contact copy(
+  Contact copyWith(
           {String? phoneNumber,
           String? firstName,
           String? lastName,
@@ -919,7 +922,7 @@ extension ContactExtensions on Contact {
 }
 
 extension LocationExtensions on Location {
-  Location copy(
+  Location copyWith(
           {double? latitude, double? longitude, double? horizontalAccuracy}) =>
       Location(
           latitude: latitude ?? this.latitude,
@@ -928,7 +931,7 @@ extension LocationExtensions on Location {
 }
 
 extension VenueExtensions on Venue {
-  Venue copy(
+  Venue copyWith(
           {Location? location,
           String? title,
           String? address,
@@ -945,7 +948,7 @@ extension VenueExtensions on Venue {
 }
 
 extension GameExtensions on Game {
-  Game copy(
+  Game copyWith(
           {int? id,
           String? shortName,
           String? title,
@@ -964,7 +967,7 @@ extension GameExtensions on Game {
 }
 
 extension PollExtensions on Poll {
-  Poll copy(
+  Poll copyWith(
           {int? id,
           String? question,
           List<PollOption>? options,
@@ -989,7 +992,7 @@ extension PollExtensions on Poll {
 }
 
 extension ProfilePhotoExtensions on ProfilePhoto {
-  ProfilePhoto copy(
+  ProfilePhoto copyWith(
           {int? id,
           File? small,
           File? big,
@@ -1004,7 +1007,7 @@ extension ProfilePhotoExtensions on ProfilePhoto {
 }
 
 extension ChatPhotoInfoExtensions on ChatPhotoInfo {
-  ChatPhotoInfo copy(
+  ChatPhotoInfo copyWith(
           {File? small,
           File? big,
           Minithumbnail? minithumbnail,
@@ -1068,7 +1071,7 @@ extension UserTypeExtensions on UserType {
 }
 
 extension UserTypeBotExtensions on UserTypeBot {
-  UserTypeBot copy(
+  UserTypeBot copyWith(
           {bool? canJoinGroups,
           bool? canReadAllGroupMessages,
           bool? isInline,
@@ -1085,24 +1088,25 @@ extension UserTypeBotExtensions on UserTypeBot {
 }
 
 extension BotCommandExtensions on BotCommand {
-  BotCommand copy({String? command, String? description}) => BotCommand(
+  BotCommand copyWith({String? command, String? description}) => BotCommand(
       command: command ?? this.command,
       description: description ?? this.description);
 }
 
 extension BotCommandsExtensions on BotCommands {
-  BotCommands copy({int? botUserId, List<BotCommand>? commands}) => BotCommands(
-      botUserId: botUserId ?? this.botUserId,
-      commands: commands ?? this.commands);
+  BotCommands copyWith({int? botUserId, List<BotCommand>? commands}) =>
+      BotCommands(
+          botUserId: botUserId ?? this.botUserId,
+          commands: commands ?? this.commands);
 }
 
 extension ChatLocationExtensions on ChatLocation {
-  ChatLocation copy({Location? location, String? address}) => ChatLocation(
+  ChatLocation copyWith({Location? location, String? address}) => ChatLocation(
       location: location ?? this.location, address: address ?? this.address);
 }
 
 extension AnimatedChatPhotoExtensions on AnimatedChatPhoto {
-  AnimatedChatPhoto copy(
+  AnimatedChatPhoto copyWith(
           {int? length, File? file, double? mainFrameTimestamp}) =>
       AnimatedChatPhoto(
           length: length ?? this.length,
@@ -1111,7 +1115,7 @@ extension AnimatedChatPhotoExtensions on AnimatedChatPhoto {
 }
 
 extension ChatPhotoExtensions on ChatPhoto {
-  ChatPhoto copy(
+  ChatPhoto copyWith(
           {int? id,
           int? addedDate,
           Minithumbnail? minithumbnail,
@@ -1126,7 +1130,7 @@ extension ChatPhotoExtensions on ChatPhoto {
 }
 
 extension ChatPhotosExtensions on ChatPhotos {
-  ChatPhotos copy({int? totalCount, List<ChatPhoto>? photos}) => ChatPhotos(
+  ChatPhotos copyWith({int? totalCount, List<ChatPhoto>? photos}) => ChatPhotos(
       totalCount: totalCount ?? this.totalCount, photos: photos ?? this.photos);
 }
 
@@ -1173,17 +1177,17 @@ extension InputChatPhotoExtensions on InputChatPhoto {
 }
 
 extension InputChatPhotoPreviousExtensions on InputChatPhotoPrevious {
-  InputChatPhotoPrevious copy({int? chatPhotoId}) =>
+  InputChatPhotoPrevious copyWith({int? chatPhotoId}) =>
       InputChatPhotoPrevious(chatPhotoId: chatPhotoId ?? this.chatPhotoId);
 }
 
 extension InputChatPhotoStaticExtensions on InputChatPhotoStatic {
-  InputChatPhotoStatic copy({InputFile? photo}) =>
+  InputChatPhotoStatic copyWith({InputFile? photo}) =>
       InputChatPhotoStatic(photo: photo ?? this.photo);
 }
 
 extension InputChatPhotoAnimationExtensions on InputChatPhotoAnimation {
-  InputChatPhotoAnimation copy(
+  InputChatPhotoAnimation copyWith(
           {InputFile? animation, double? mainFrameTimestamp}) =>
       InputChatPhotoAnimation(
           animation: animation ?? this.animation,
@@ -1191,7 +1195,7 @@ extension InputChatPhotoAnimationExtensions on InputChatPhotoAnimation {
 }
 
 extension UserExtensions on User {
-  User copy(
+  User copyWith(
           {int? id,
           String? firstName,
           String? lastName,
@@ -1230,7 +1234,7 @@ extension UserExtensions on User {
 }
 
 extension UserFullInfoExtensions on UserFullInfo {
-  UserFullInfo copy(
+  UserFullInfo copyWith(
           {ChatPhoto? photo,
           bool? isBlocked,
           bool? canBeCalled,
@@ -1260,13 +1264,14 @@ extension UserFullInfoExtensions on UserFullInfo {
 }
 
 extension UsersExtensions on Users {
-  Users copy({int? totalCount, List<int>? userIds}) => Users(
+  Users copyWith({int? totalCount, List<int>? userIds}) => Users(
       totalCount: totalCount ?? this.totalCount,
       userIds: userIds ?? this.userIds);
 }
 
 extension ChatAdministratorExtensions on ChatAdministrator {
-  ChatAdministrator copy({int? userId, String? customTitle, bool? isOwner}) =>
+  ChatAdministrator copyWith(
+          {int? userId, String? customTitle, bool? isOwner}) =>
       ChatAdministrator(
           userId: userId ?? this.userId,
           customTitle: customTitle ?? this.customTitle,
@@ -1274,12 +1279,12 @@ extension ChatAdministratorExtensions on ChatAdministrator {
 }
 
 extension ChatAdministratorsExtensions on ChatAdministrators {
-  ChatAdministrators copy({List<ChatAdministrator>? administrators}) =>
+  ChatAdministrators copyWith({List<ChatAdministrator>? administrators}) =>
       ChatAdministrators(administrators: administrators ?? this.administrators);
 }
 
 extension ChatPermissionsExtensions on ChatPermissions {
-  ChatPermissions copy(
+  ChatPermissions copyWith(
           {bool? canSendMessages,
           bool? canSendMediaMessages,
           bool? canSendPolls,
@@ -1373,7 +1378,7 @@ extension ChatMemberStatusExtensions on ChatMemberStatus {
 }
 
 extension ChatMemberStatusCreatorExtensions on ChatMemberStatusCreator {
-  ChatMemberStatusCreator copy(
+  ChatMemberStatusCreator copyWith(
           {String? customTitle, bool? isAnonymous, bool? isMember}) =>
       ChatMemberStatusCreator(
           customTitle: customTitle ?? this.customTitle,
@@ -1383,7 +1388,7 @@ extension ChatMemberStatusCreatorExtensions on ChatMemberStatusCreator {
 
 extension ChatMemberStatusAdministratorExtensions
     on ChatMemberStatusAdministrator {
-  ChatMemberStatusAdministrator copy(
+  ChatMemberStatusAdministrator copyWith(
           {String? customTitle,
           bool? canBeEdited,
           bool? canManageChat,
@@ -1414,7 +1419,7 @@ extension ChatMemberStatusAdministratorExtensions
 }
 
 extension ChatMemberStatusRestrictedExtensions on ChatMemberStatusRestricted {
-  ChatMemberStatusRestricted copy(
+  ChatMemberStatusRestricted copyWith(
           {bool? isMember,
           int? restrictedUntilDate,
           ChatPermissions? permissions}) =>
@@ -1425,12 +1430,13 @@ extension ChatMemberStatusRestrictedExtensions on ChatMemberStatusRestricted {
 }
 
 extension ChatMemberStatusBannedExtensions on ChatMemberStatusBanned {
-  ChatMemberStatusBanned copy({int? bannedUntilDate}) => ChatMemberStatusBanned(
-      bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate);
+  ChatMemberStatusBanned copyWith({int? bannedUntilDate}) =>
+      ChatMemberStatusBanned(
+          bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate);
 }
 
 extension ChatMemberExtensions on ChatMember {
-  ChatMember copy(
+  ChatMember copyWith(
           {MessageSender? memberId,
           int? inviterUserId,
           int? joinedChatDate,
@@ -1443,9 +1449,10 @@ extension ChatMemberExtensions on ChatMember {
 }
 
 extension ChatMembersExtensions on ChatMembers {
-  ChatMembers copy({int? totalCount, List<ChatMember>? members}) => ChatMembers(
-      totalCount: totalCount ?? this.totalCount,
-      members: members ?? this.members);
+  ChatMembers copyWith({int? totalCount, List<ChatMember>? members}) =>
+      ChatMembers(
+          totalCount: totalCount ?? this.totalCount,
+          members: members ?? this.members);
 }
 
 extension ChatMembersFilterExtensions on ChatMembersFilter {
@@ -1528,7 +1535,7 @@ extension ChatMembersFilterExtensions on ChatMembersFilter {
 }
 
 extension ChatMembersFilterMentionExtensions on ChatMembersFilterMention {
-  ChatMembersFilterMention copy({int? messageThreadId}) =>
+  ChatMembersFilterMention copyWith({int? messageThreadId}) =>
       ChatMembersFilterMention(
           messageThreadId: messageThreadId ?? this.messageThreadId);
 }
@@ -1627,38 +1634,39 @@ extension SupergroupMembersFilterExtensions on SupergroupMembersFilter {
 
 extension SupergroupMembersFilterContactsExtensions
     on SupergroupMembersFilterContacts {
-  SupergroupMembersFilterContacts copy({String? query}) =>
+  SupergroupMembersFilterContacts copyWith({String? query}) =>
       SupergroupMembersFilterContacts(query: query ?? this.query);
 }
 
 extension SupergroupMembersFilterSearchExtensions
     on SupergroupMembersFilterSearch {
-  SupergroupMembersFilterSearch copy({String? query}) =>
+  SupergroupMembersFilterSearch copyWith({String? query}) =>
       SupergroupMembersFilterSearch(query: query ?? this.query);
 }
 
 extension SupergroupMembersFilterRestrictedExtensions
     on SupergroupMembersFilterRestricted {
-  SupergroupMembersFilterRestricted copy({String? query}) =>
+  SupergroupMembersFilterRestricted copyWith({String? query}) =>
       SupergroupMembersFilterRestricted(query: query ?? this.query);
 }
 
 extension SupergroupMembersFilterBannedExtensions
     on SupergroupMembersFilterBanned {
-  SupergroupMembersFilterBanned copy({String? query}) =>
+  SupergroupMembersFilterBanned copyWith({String? query}) =>
       SupergroupMembersFilterBanned(query: query ?? this.query);
 }
 
 extension SupergroupMembersFilterMentionExtensions
     on SupergroupMembersFilterMention {
-  SupergroupMembersFilterMention copy({String? query, int? messageThreadId}) =>
+  SupergroupMembersFilterMention copyWith(
+          {String? query, int? messageThreadId}) =>
       SupergroupMembersFilterMention(
           query: query ?? this.query,
           messageThreadId: messageThreadId ?? this.messageThreadId);
 }
 
 extension ChatInviteLinkExtensions on ChatInviteLink {
-  ChatInviteLink copy(
+  ChatInviteLink copyWith(
           {String? inviteLink,
           String? name,
           int? creatorUserId,
@@ -1688,14 +1696,15 @@ extension ChatInviteLinkExtensions on ChatInviteLink {
 }
 
 extension ChatInviteLinksExtensions on ChatInviteLinks {
-  ChatInviteLinks copy({int? totalCount, List<ChatInviteLink>? inviteLinks}) =>
+  ChatInviteLinks copyWith(
+          {int? totalCount, List<ChatInviteLink>? inviteLinks}) =>
       ChatInviteLinks(
           totalCount: totalCount ?? this.totalCount,
           inviteLinks: inviteLinks ?? this.inviteLinks);
 }
 
 extension ChatInviteLinkCountExtensions on ChatInviteLinkCount {
-  ChatInviteLinkCount copy(
+  ChatInviteLinkCount copyWith(
           {int? userId, int? inviteLinkCount, int? revokedInviteLinkCount}) =>
       ChatInviteLinkCount(
           userId: userId ?? this.userId,
@@ -1705,13 +1714,14 @@ extension ChatInviteLinkCountExtensions on ChatInviteLinkCount {
 }
 
 extension ChatInviteLinkCountsExtensions on ChatInviteLinkCounts {
-  ChatInviteLinkCounts copy({List<ChatInviteLinkCount>? inviteLinkCounts}) =>
+  ChatInviteLinkCounts copyWith(
+          {List<ChatInviteLinkCount>? inviteLinkCounts}) =>
       ChatInviteLinkCounts(
           inviteLinkCounts: inviteLinkCounts ?? this.inviteLinkCounts);
 }
 
 extension ChatInviteLinkMemberExtensions on ChatInviteLinkMember {
-  ChatInviteLinkMember copy(
+  ChatInviteLinkMember copyWith(
           {int? userId, int? joinedChatDate, int? approverUserId}) =>
       ChatInviteLinkMember(
           userId: userId ?? this.userId,
@@ -1720,7 +1730,7 @@ extension ChatInviteLinkMemberExtensions on ChatInviteLinkMember {
 }
 
 extension ChatInviteLinkMembersExtensions on ChatInviteLinkMembers {
-  ChatInviteLinkMembers copy(
+  ChatInviteLinkMembers copyWith(
           {int? totalCount, List<ChatInviteLinkMember>? members}) =>
       ChatInviteLinkMembers(
           totalCount: totalCount ?? this.totalCount,
@@ -1728,7 +1738,7 @@ extension ChatInviteLinkMembersExtensions on ChatInviteLinkMembers {
 }
 
 extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
-  ChatInviteLinkInfo copy(
+  ChatInviteLinkInfo copyWith(
           {int? chatId,
           int? accessibleFor,
           ChatType? type,
@@ -1753,7 +1763,7 @@ extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
 }
 
 extension ChatJoinRequestExtensions on ChatJoinRequest {
-  ChatJoinRequest copy({int? userId, int? date, String? bio}) =>
+  ChatJoinRequest copyWith({int? userId, int? date, String? bio}) =>
       ChatJoinRequest(
           userId: userId ?? this.userId,
           date: date ?? this.date,
@@ -1761,21 +1771,22 @@ extension ChatJoinRequestExtensions on ChatJoinRequest {
 }
 
 extension ChatJoinRequestsExtensions on ChatJoinRequests {
-  ChatJoinRequests copy({int? totalCount, List<ChatJoinRequest>? requests}) =>
+  ChatJoinRequests copyWith(
+          {int? totalCount, List<ChatJoinRequest>? requests}) =>
       ChatJoinRequests(
           totalCount: totalCount ?? this.totalCount,
           requests: requests ?? this.requests);
 }
 
 extension ChatJoinRequestsInfoExtensions on ChatJoinRequestsInfo {
-  ChatJoinRequestsInfo copy({int? totalCount, List<int>? userIds}) =>
+  ChatJoinRequestsInfo copyWith({int? totalCount, List<int>? userIds}) =>
       ChatJoinRequestsInfo(
           totalCount: totalCount ?? this.totalCount,
           userIds: userIds ?? this.userIds);
 }
 
 extension BasicGroupExtensions on BasicGroup {
-  BasicGroup copy(
+  BasicGroup copyWith(
           {int? id,
           int? memberCount,
           ChatMemberStatus? status,
@@ -1791,7 +1802,7 @@ extension BasicGroupExtensions on BasicGroup {
 }
 
 extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
-  BasicGroupFullInfo copy(
+  BasicGroupFullInfo copyWith(
           {ChatPhoto? photo,
           String? description,
           int? creatorUserId,
@@ -1808,7 +1819,7 @@ extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
 }
 
 extension SupergroupExtensions on Supergroup {
-  Supergroup copy(
+  Supergroup copyWith(
           {int? id,
           String? username,
           int? date,
@@ -1843,7 +1854,7 @@ extension SupergroupExtensions on Supergroup {
 }
 
 extension SupergroupFullInfoExtensions on SupergroupFullInfo {
-  SupergroupFullInfo copy(
+  SupergroupFullInfo copyWith(
           {ChatPhoto? photo,
           String? description,
           int? memberCount,
@@ -1936,7 +1947,7 @@ extension SecretChatStateExtensions on SecretChatState {
 }
 
 extension SecretChatExtensions on SecretChat {
-  SecretChat copy(
+  SecretChat copyWith(
           {int? id,
           int? userId,
           SecretChatState? state,
@@ -1986,17 +1997,17 @@ extension MessageSenderExtensions on MessageSender {
 }
 
 extension MessageSenderUserExtensions on MessageSenderUser {
-  MessageSenderUser copy({int? userId}) =>
+  MessageSenderUser copyWith({int? userId}) =>
       MessageSenderUser(userId: userId ?? this.userId);
 }
 
 extension MessageSenderChatExtensions on MessageSenderChat {
-  MessageSenderChat copy({int? chatId}) =>
+  MessageSenderChat copyWith({int? chatId}) =>
       MessageSenderChat(chatId: chatId ?? this.chatId);
 }
 
 extension MessageSendersExtensions on MessageSenders {
-  MessageSenders copy({int? totalCount, List<MessageSender>? senders}) =>
+  MessageSenders copyWith({int? totalCount, List<MessageSender>? senders}) =>
       MessageSenders(
           totalCount: totalCount ?? this.totalCount,
           senders: senders ?? this.senders);
@@ -2065,12 +2076,13 @@ extension MessageForwardOriginExtensions on MessageForwardOrigin {
 }
 
 extension MessageForwardOriginUserExtensions on MessageForwardOriginUser {
-  MessageForwardOriginUser copy({int? senderUserId}) =>
+  MessageForwardOriginUser copyWith({int? senderUserId}) =>
       MessageForwardOriginUser(senderUserId: senderUserId ?? this.senderUserId);
 }
 
 extension MessageForwardOriginChatExtensions on MessageForwardOriginChat {
-  MessageForwardOriginChat copy({int? senderChatId, String? authorSignature}) =>
+  MessageForwardOriginChat copyWith(
+          {int? senderChatId, String? authorSignature}) =>
       MessageForwardOriginChat(
           senderChatId: senderChatId ?? this.senderChatId,
           authorSignature: authorSignature ?? this.authorSignature);
@@ -2078,12 +2090,12 @@ extension MessageForwardOriginChatExtensions on MessageForwardOriginChat {
 
 extension MessageForwardOriginHiddenUserExtensions
     on MessageForwardOriginHiddenUser {
-  MessageForwardOriginHiddenUser copy({String? senderName}) =>
+  MessageForwardOriginHiddenUser copyWith({String? senderName}) =>
       MessageForwardOriginHiddenUser(senderName: senderName ?? this.senderName);
 }
 
 extension MessageForwardOriginChannelExtensions on MessageForwardOriginChannel {
-  MessageForwardOriginChannel copy(
+  MessageForwardOriginChannel copyWith(
           {int? chatId, int? messageId, String? authorSignature}) =>
       MessageForwardOriginChannel(
           chatId: chatId ?? this.chatId,
@@ -2093,13 +2105,13 @@ extension MessageForwardOriginChannelExtensions on MessageForwardOriginChannel {
 
 extension MessageForwardOriginMessageImportExtensions
     on MessageForwardOriginMessageImport {
-  MessageForwardOriginMessageImport copy({String? senderName}) =>
+  MessageForwardOriginMessageImport copyWith({String? senderName}) =>
       MessageForwardOriginMessageImport(
           senderName: senderName ?? this.senderName);
 }
 
 extension MessageForwardInfoExtensions on MessageForwardInfo {
-  MessageForwardInfo copy(
+  MessageForwardInfo copyWith(
           {MessageForwardOrigin? origin,
           int? date,
           String? publicServiceAnnouncementType,
@@ -2115,7 +2127,7 @@ extension MessageForwardInfoExtensions on MessageForwardInfo {
 }
 
 extension MessageReplyInfoExtensions on MessageReplyInfo {
-  MessageReplyInfo copy(
+  MessageReplyInfo copyWith(
           {int? replyCount,
           List<MessageSender>? recentReplierIds,
           int? lastReadInboxMessageId,
@@ -2132,7 +2144,7 @@ extension MessageReplyInfoExtensions on MessageReplyInfo {
 }
 
 extension MessageInteractionInfoExtensions on MessageInteractionInfo {
-  MessageInteractionInfo copy(
+  MessageInteractionInfo copyWith(
           {int? viewCount, int? forwardCount, MessageReplyInfo? replyInfo}) =>
       MessageInteractionInfo(
           viewCount: viewCount ?? this.viewCount,
@@ -2174,7 +2186,7 @@ extension MessageSendingStateExtensions on MessageSendingState {
 }
 
 extension MessageSendingStateFailedExtensions on MessageSendingStateFailed {
-  MessageSendingStateFailed copy(
+  MessageSendingStateFailed copyWith(
           {int? errorCode,
           String? errorMessage,
           bool? canRetry,
@@ -2189,7 +2201,7 @@ extension MessageSendingStateFailedExtensions on MessageSendingStateFailed {
 }
 
 extension MessageExtensions on Message {
-  Message copy(
+  Message copyWith(
           {int? id,
           MessageSender? senderId,
           int? chatId,
@@ -2266,13 +2278,13 @@ extension MessageExtensions on Message {
 }
 
 extension MessagesExtensions on Messages {
-  Messages copy({int? totalCount, List<Message>? messages}) => Messages(
+  Messages copyWith({int? totalCount, List<Message>? messages}) => Messages(
       totalCount: totalCount ?? this.totalCount,
       messages: messages ?? this.messages);
 }
 
 extension FoundMessagesExtensions on FoundMessages {
-  FoundMessages copy(
+  FoundMessages copyWith(
           {int? totalCount, List<Message>? messages, String? nextOffset}) =>
       FoundMessages(
           totalCount: totalCount ?? this.totalCount,
@@ -2281,7 +2293,7 @@ extension FoundMessagesExtensions on FoundMessages {
 }
 
 extension MessagePositionExtensions on MessagePosition {
-  MessagePosition copy({int? position, int? messageId, int? date}) =>
+  MessagePosition copyWith({int? position, int? messageId, int? date}) =>
       MessagePosition(
           position: position ?? this.position,
           messageId: messageId ?? this.messageId,
@@ -2289,27 +2301,28 @@ extension MessagePositionExtensions on MessagePosition {
 }
 
 extension MessagePositionsExtensions on MessagePositions {
-  MessagePositions copy({int? totalCount, List<MessagePosition>? positions}) =>
+  MessagePositions copyWith(
+          {int? totalCount, List<MessagePosition>? positions}) =>
       MessagePositions(
           totalCount: totalCount ?? this.totalCount,
           positions: positions ?? this.positions);
 }
 
 extension MessageCalendarDayExtensions on MessageCalendarDay {
-  MessageCalendarDay copy({int? totalCount, Message? message}) =>
+  MessageCalendarDay copyWith({int? totalCount, Message? message}) =>
       MessageCalendarDay(
           totalCount: totalCount ?? this.totalCount,
           message: message ?? this.message);
 }
 
 extension MessageCalendarExtensions on MessageCalendar {
-  MessageCalendar copy({int? totalCount, List<MessageCalendarDay>? days}) =>
+  MessageCalendar copyWith({int? totalCount, List<MessageCalendarDay>? days}) =>
       MessageCalendar(
           totalCount: totalCount ?? this.totalCount, days: days ?? this.days);
 }
 
 extension SponsoredMessageExtensions on SponsoredMessage {
-  SponsoredMessage copy(
+  SponsoredMessage copyWith(
           {int? messageId,
           int? sponsorChatId,
           ChatInviteLinkInfo? sponsorChatInfo,
@@ -2373,7 +2386,7 @@ extension NotificationSettingsScopeExtensions on NotificationSettingsScope {
 }
 
 extension ChatNotificationSettingsExtensions on ChatNotificationSettings {
-  ChatNotificationSettings copy(
+  ChatNotificationSettings copyWith(
           {bool? useDefaultMuteFor,
           int? muteFor,
           bool? useDefaultSound,
@@ -2406,7 +2419,7 @@ extension ChatNotificationSettingsExtensions on ChatNotificationSettings {
 }
 
 extension ScopeNotificationSettingsExtensions on ScopeNotificationSettings {
-  ScopeNotificationSettings copy(
+  ScopeNotificationSettings copyWith(
           {int? muteFor,
           String? sound,
           bool? showPreview,
@@ -2424,7 +2437,7 @@ extension ScopeNotificationSettingsExtensions on ScopeNotificationSettings {
 }
 
 extension DraftMessageExtensions on DraftMessage {
-  DraftMessage copy(
+  DraftMessage copyWith(
           {int? replyToMessageId,
           int? date,
           InputMessageContent? inputMessageText}) =>
@@ -2486,30 +2499,30 @@ extension ChatTypeExtensions on ChatType {
 }
 
 extension ChatTypePrivateExtensions on ChatTypePrivate {
-  ChatTypePrivate copy({int? userId}) =>
+  ChatTypePrivate copyWith({int? userId}) =>
       ChatTypePrivate(userId: userId ?? this.userId);
 }
 
 extension ChatTypeBasicGroupExtensions on ChatTypeBasicGroup {
-  ChatTypeBasicGroup copy({int? basicGroupId}) =>
+  ChatTypeBasicGroup copyWith({int? basicGroupId}) =>
       ChatTypeBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
 extension ChatTypeSupergroupExtensions on ChatTypeSupergroup {
-  ChatTypeSupergroup copy({int? supergroupId, bool? isChannel}) =>
+  ChatTypeSupergroup copyWith({int? supergroupId, bool? isChannel}) =>
       ChatTypeSupergroup(
           supergroupId: supergroupId ?? this.supergroupId,
           isChannel: isChannel ?? this.isChannel);
 }
 
 extension ChatTypeSecretExtensions on ChatTypeSecret {
-  ChatTypeSecret copy({int? secretChatId, int? userId}) => ChatTypeSecret(
+  ChatTypeSecret copyWith({int? secretChatId, int? userId}) => ChatTypeSecret(
       secretChatId: secretChatId ?? this.secretChatId,
       userId: userId ?? this.userId);
 }
 
 extension ChatFilterExtensions on ChatFilter {
-  ChatFilter copy(
+  ChatFilter copyWith(
           {String? title,
           String? iconName,
           List<int>? pinnedChatIds,
@@ -2540,7 +2553,7 @@ extension ChatFilterExtensions on ChatFilter {
 }
 
 extension ChatFilterInfoExtensions on ChatFilterInfo {
-  ChatFilterInfo copy({int? id, String? title, String? iconName}) =>
+  ChatFilterInfo copyWith({int? id, String? title, String? iconName}) =>
       ChatFilterInfo(
           id: id ?? this.id,
           title: title ?? this.title,
@@ -2548,14 +2561,14 @@ extension ChatFilterInfoExtensions on ChatFilterInfo {
 }
 
 extension RecommendedChatFilterExtensions on RecommendedChatFilter {
-  RecommendedChatFilter copy({ChatFilter? filter, String? description}) =>
+  RecommendedChatFilter copyWith({ChatFilter? filter, String? description}) =>
       RecommendedChatFilter(
           filter: filter ?? this.filter,
           description: description ?? this.description);
 }
 
 extension RecommendedChatFiltersExtensions on RecommendedChatFilters {
-  RecommendedChatFilters copy({List<RecommendedChatFilter>? chatFilters}) =>
+  RecommendedChatFilters copyWith({List<RecommendedChatFilter>? chatFilters}) =>
       RecommendedChatFilters(chatFilters: chatFilters ?? this.chatFilters);
 }
 
@@ -2602,12 +2615,12 @@ extension ChatListExtensions on ChatList {
 }
 
 extension ChatListFilterExtensions on ChatListFilter {
-  ChatListFilter copy({int? chatFilterId}) =>
+  ChatListFilter copyWith({int? chatFilterId}) =>
       ChatListFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
 extension ChatListsExtensions on ChatLists {
-  ChatLists copy({List<ChatList>? chatLists}) =>
+  ChatLists copyWith({List<ChatList>? chatLists}) =>
       ChatLists(chatLists: chatLists ?? this.chatLists);
 }
 
@@ -2650,13 +2663,13 @@ extension ChatSourceExtensions on ChatSource {
 
 extension ChatSourcePublicServiceAnnouncementExtensions
     on ChatSourcePublicServiceAnnouncement {
-  ChatSourcePublicServiceAnnouncement copy({String? type, String? text}) =>
+  ChatSourcePublicServiceAnnouncement copyWith({String? type, String? text}) =>
       ChatSourcePublicServiceAnnouncement(
           type: type ?? this.type, text: text ?? this.text);
 }
 
 extension ChatPositionExtensions on ChatPosition {
-  ChatPosition copy(
+  ChatPosition copyWith(
           {ChatList? list, int? order, bool? isPinned, ChatSource? source}) =>
       ChatPosition(
           list: list ?? this.list,
@@ -2666,7 +2679,7 @@ extension ChatPositionExtensions on ChatPosition {
 }
 
 extension VideoChatExtensions on VideoChat {
-  VideoChat copy(
+  VideoChat copyWith(
           {int? groupCallId,
           bool? hasParticipants,
           MessageSender? defaultParticipantId}) =>
@@ -2678,7 +2691,7 @@ extension VideoChatExtensions on VideoChat {
 }
 
 extension ChatExtensions on Chat {
-  Chat copy(
+  Chat copyWith(
           {int? id,
           ChatType? type,
           String? title,
@@ -2749,18 +2762,18 @@ extension ChatExtensions on Chat {
 }
 
 extension ChatsExtensions on Chats {
-  Chats copy({int? totalCount, List<int>? chatIds}) => Chats(
+  Chats copyWith({int? totalCount, List<int>? chatIds}) => Chats(
       totalCount: totalCount ?? this.totalCount,
       chatIds: chatIds ?? this.chatIds);
 }
 
 extension ChatNearbyExtensions on ChatNearby {
-  ChatNearby copy({int? chatId, int? distance}) => ChatNearby(
+  ChatNearby copyWith({int? chatId, int? distance}) => ChatNearby(
       chatId: chatId ?? this.chatId, distance: distance ?? this.distance);
 }
 
 extension ChatsNearbyExtensions on ChatsNearby {
-  ChatsNearby copy(
+  ChatsNearby copyWith(
           {List<ChatNearby>? usersNearby,
           List<ChatNearby>? supergroupsNearby}) =>
       ChatsNearby(
@@ -2887,19 +2900,19 @@ extension ChatActionBarExtensions on ChatActionBar {
 }
 
 extension ChatActionBarReportSpamExtensions on ChatActionBarReportSpam {
-  ChatActionBarReportSpam copy({bool? canUnarchive}) =>
+  ChatActionBarReportSpam copyWith({bool? canUnarchive}) =>
       ChatActionBarReportSpam(canUnarchive: canUnarchive ?? this.canUnarchive);
 }
 
 extension ChatActionBarReportAddBlockExtensions on ChatActionBarReportAddBlock {
-  ChatActionBarReportAddBlock copy({bool? canUnarchive, int? distance}) =>
+  ChatActionBarReportAddBlock copyWith({bool? canUnarchive, int? distance}) =>
       ChatActionBarReportAddBlock(
           canUnarchive: canUnarchive ?? this.canUnarchive,
           distance: distance ?? this.distance);
 }
 
 extension ChatActionBarJoinRequestExtensions on ChatActionBarJoinRequest {
-  ChatActionBarJoinRequest copy(
+  ChatActionBarJoinRequest copyWith(
           {String? title, bool? isChannel, int? requestDate}) =>
       ChatActionBarJoinRequest(
           title: title ?? this.title,
@@ -2968,14 +2981,15 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
 
 extension KeyboardButtonTypeRequestPollExtensions
     on KeyboardButtonTypeRequestPoll {
-  KeyboardButtonTypeRequestPoll copy({bool? forceRegular, bool? forceQuiz}) =>
+  KeyboardButtonTypeRequestPoll copyWith(
+          {bool? forceRegular, bool? forceQuiz}) =>
       KeyboardButtonTypeRequestPoll(
           forceRegular: forceRegular ?? this.forceRegular,
           forceQuiz: forceQuiz ?? this.forceQuiz);
 }
 
 extension KeyboardButtonExtensions on KeyboardButton {
-  KeyboardButton copy({String? text, KeyboardButtonType? type}) =>
+  KeyboardButton copyWith({String? text, KeyboardButtonType? type}) =>
       KeyboardButton(text: text ?? this.text, type: type ?? this.type);
 }
 
@@ -3080,13 +3094,13 @@ extension InlineKeyboardButtonTypeExtensions on InlineKeyboardButtonType {
 }
 
 extension InlineKeyboardButtonTypeUrlExtensions on InlineKeyboardButtonTypeUrl {
-  InlineKeyboardButtonTypeUrl copy({String? url}) =>
+  InlineKeyboardButtonTypeUrl copyWith({String? url}) =>
       InlineKeyboardButtonTypeUrl(url: url ?? this.url);
 }
 
 extension InlineKeyboardButtonTypeLoginUrlExtensions
     on InlineKeyboardButtonTypeLoginUrl {
-  InlineKeyboardButtonTypeLoginUrl copy(
+  InlineKeyboardButtonTypeLoginUrl copyWith(
           {String? url, int? id, String? forwardText}) =>
       InlineKeyboardButtonTypeLoginUrl(
           url: url ?? this.url,
@@ -3096,19 +3110,19 @@ extension InlineKeyboardButtonTypeLoginUrlExtensions
 
 extension InlineKeyboardButtonTypeCallbackExtensions
     on InlineKeyboardButtonTypeCallback {
-  InlineKeyboardButtonTypeCallback copy({String? data}) =>
+  InlineKeyboardButtonTypeCallback copyWith({String? data}) =>
       InlineKeyboardButtonTypeCallback(data: data ?? this.data);
 }
 
 extension InlineKeyboardButtonTypeCallbackWithPasswordExtensions
     on InlineKeyboardButtonTypeCallbackWithPassword {
-  InlineKeyboardButtonTypeCallbackWithPassword copy({String? data}) =>
+  InlineKeyboardButtonTypeCallbackWithPassword copyWith({String? data}) =>
       InlineKeyboardButtonTypeCallbackWithPassword(data: data ?? this.data);
 }
 
 extension InlineKeyboardButtonTypeSwitchInlineExtensions
     on InlineKeyboardButtonTypeSwitchInline {
-  InlineKeyboardButtonTypeSwitchInline copy(
+  InlineKeyboardButtonTypeSwitchInline copyWith(
           {String? query, bool? inCurrentChat}) =>
       InlineKeyboardButtonTypeSwitchInline(
           query: query ?? this.query,
@@ -3117,12 +3131,13 @@ extension InlineKeyboardButtonTypeSwitchInlineExtensions
 
 extension InlineKeyboardButtonTypeUserExtensions
     on InlineKeyboardButtonTypeUser {
-  InlineKeyboardButtonTypeUser copy({int? userId}) =>
+  InlineKeyboardButtonTypeUser copyWith({int? userId}) =>
       InlineKeyboardButtonTypeUser(userId: userId ?? this.userId);
 }
 
 extension InlineKeyboardButtonExtensions on InlineKeyboardButton {
-  InlineKeyboardButton copy({String? text, InlineKeyboardButtonType? type}) =>
+  InlineKeyboardButton copyWith(
+          {String? text, InlineKeyboardButtonType? type}) =>
       InlineKeyboardButton(text: text ?? this.text, type: type ?? this.type);
 }
 
@@ -3180,12 +3195,12 @@ extension ReplyMarkupExtensions on ReplyMarkup {
 }
 
 extension ReplyMarkupRemoveKeyboardExtensions on ReplyMarkupRemoveKeyboard {
-  ReplyMarkupRemoveKeyboard copy({bool? isPersonal}) =>
+  ReplyMarkupRemoveKeyboard copyWith({bool? isPersonal}) =>
       ReplyMarkupRemoveKeyboard(isPersonal: isPersonal ?? this.isPersonal);
 }
 
 extension ReplyMarkupForceReplyExtensions on ReplyMarkupForceReply {
-  ReplyMarkupForceReply copy(
+  ReplyMarkupForceReply copyWith(
           {bool? isPersonal, String? inputFieldPlaceholder}) =>
       ReplyMarkupForceReply(
           isPersonal: isPersonal ?? this.isPersonal,
@@ -3194,7 +3209,7 @@ extension ReplyMarkupForceReplyExtensions on ReplyMarkupForceReply {
 }
 
 extension ReplyMarkupShowKeyboardExtensions on ReplyMarkupShowKeyboard {
-  ReplyMarkupShowKeyboard copy(
+  ReplyMarkupShowKeyboard copyWith(
           {List<List<KeyboardButton>>? rows,
           bool? resizeKeyboard,
           bool? oneTime,
@@ -3210,7 +3225,8 @@ extension ReplyMarkupShowKeyboardExtensions on ReplyMarkupShowKeyboard {
 }
 
 extension ReplyMarkupInlineKeyboardExtensions on ReplyMarkupInlineKeyboard {
-  ReplyMarkupInlineKeyboard copy({List<List<InlineKeyboardButton>>? rows}) =>
+  ReplyMarkupInlineKeyboard copyWith(
+          {List<List<InlineKeyboardButton>>? rows}) =>
       ReplyMarkupInlineKeyboard(rows: rows ?? this.rows);
 }
 
@@ -3252,13 +3268,14 @@ extension LoginUrlInfoExtensions on LoginUrlInfo {
 }
 
 extension LoginUrlInfoOpenExtensions on LoginUrlInfoOpen {
-  LoginUrlInfoOpen copy({String? url, bool? skipConfirm}) => LoginUrlInfoOpen(
-      url: url ?? this.url, skipConfirm: skipConfirm ?? this.skipConfirm);
+  LoginUrlInfoOpen copyWith({String? url, bool? skipConfirm}) =>
+      LoginUrlInfoOpen(
+          url: url ?? this.url, skipConfirm: skipConfirm ?? this.skipConfirm);
 }
 
 extension LoginUrlInfoRequestConfirmationExtensions
     on LoginUrlInfoRequestConfirmation {
-  LoginUrlInfoRequestConfirmation copy(
+  LoginUrlInfoRequestConfirmation copyWith(
           {String? url,
           String? domain,
           int? botUserId,
@@ -3271,7 +3288,7 @@ extension LoginUrlInfoRequestConfirmationExtensions
 }
 
 extension MessageThreadInfoExtensions on MessageThreadInfo {
-  MessageThreadInfo copy(
+  MessageThreadInfo copyWith(
           {int? chatId,
           int? messageThreadId,
           MessageReplyInfo? replyInfo,
@@ -3456,35 +3473,37 @@ extension RichTextExtensions on RichText {
 }
 
 extension RichTextPlainExtensions on RichTextPlain {
-  RichTextPlain copy({String? text}) => RichTextPlain(text: text ?? this.text);
+  RichTextPlain copyWith({String? text}) =>
+      RichTextPlain(text: text ?? this.text);
 }
 
 extension RichTextBoldExtensions on RichTextBold {
-  RichTextBold copy({RichText? text}) => RichTextBold(text: text ?? this.text);
+  RichTextBold copyWith({RichText? text}) =>
+      RichTextBold(text: text ?? this.text);
 }
 
 extension RichTextItalicExtensions on RichTextItalic {
-  RichTextItalic copy({RichText? text}) =>
+  RichTextItalic copyWith({RichText? text}) =>
       RichTextItalic(text: text ?? this.text);
 }
 
 extension RichTextUnderlineExtensions on RichTextUnderline {
-  RichTextUnderline copy({RichText? text}) =>
+  RichTextUnderline copyWith({RichText? text}) =>
       RichTextUnderline(text: text ?? this.text);
 }
 
 extension RichTextStrikethroughExtensions on RichTextStrikethrough {
-  RichTextStrikethrough copy({RichText? text}) =>
+  RichTextStrikethrough copyWith({RichText? text}) =>
       RichTextStrikethrough(text: text ?? this.text);
 }
 
 extension RichTextFixedExtensions on RichTextFixed {
-  RichTextFixed copy({RichText? text}) =>
+  RichTextFixed copyWith({RichText? text}) =>
       RichTextFixed(text: text ?? this.text);
 }
 
 extension RichTextUrlExtensions on RichTextUrl {
-  RichTextUrl copy({RichText? text, String? url, bool? isCached}) =>
+  RichTextUrl copyWith({RichText? text, String? url, bool? isCached}) =>
       RichTextUrl(
           text: text ?? this.text,
           url: url ?? this.url,
@@ -3492,36 +3511,36 @@ extension RichTextUrlExtensions on RichTextUrl {
 }
 
 extension RichTextEmailAddressExtensions on RichTextEmailAddress {
-  RichTextEmailAddress copy({RichText? text, String? emailAddress}) =>
+  RichTextEmailAddress copyWith({RichText? text, String? emailAddress}) =>
       RichTextEmailAddress(
           text: text ?? this.text,
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
 extension RichTextSubscriptExtensions on RichTextSubscript {
-  RichTextSubscript copy({RichText? text}) =>
+  RichTextSubscript copyWith({RichText? text}) =>
       RichTextSubscript(text: text ?? this.text);
 }
 
 extension RichTextSuperscriptExtensions on RichTextSuperscript {
-  RichTextSuperscript copy({RichText? text}) =>
+  RichTextSuperscript copyWith({RichText? text}) =>
       RichTextSuperscript(text: text ?? this.text);
 }
 
 extension RichTextMarkedExtensions on RichTextMarked {
-  RichTextMarked copy({RichText? text}) =>
+  RichTextMarked copyWith({RichText? text}) =>
       RichTextMarked(text: text ?? this.text);
 }
 
 extension RichTextPhoneNumberExtensions on RichTextPhoneNumber {
-  RichTextPhoneNumber copy({RichText? text, String? phoneNumber}) =>
+  RichTextPhoneNumber copyWith({RichText? text, String? phoneNumber}) =>
       RichTextPhoneNumber(
           text: text ?? this.text,
           phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
 extension RichTextIconExtensions on RichTextIcon {
-  RichTextIcon copy({Document? document, int? width, int? height}) =>
+  RichTextIcon copyWith({Document? document, int? width, int? height}) =>
       RichTextIcon(
           document: document ?? this.document,
           width: width ?? this.width,
@@ -3529,7 +3548,8 @@ extension RichTextIconExtensions on RichTextIcon {
 }
 
 extension RichTextReferenceExtensions on RichTextReference {
-  RichTextReference copy({RichText? text, String? anchorName, String? url}) =>
+  RichTextReference copyWith(
+          {RichText? text, String? anchorName, String? url}) =>
       RichTextReference(
           text: text ?? this.text,
           anchorName: anchorName ?? this.anchorName,
@@ -3537,12 +3557,13 @@ extension RichTextReferenceExtensions on RichTextReference {
 }
 
 extension RichTextAnchorExtensions on RichTextAnchor {
-  RichTextAnchor copy({String? name}) =>
+  RichTextAnchor copyWith({String? name}) =>
       RichTextAnchor(name: name ?? this.name);
 }
 
 extension RichTextAnchorLinkExtensions on RichTextAnchorLink {
-  RichTextAnchorLink copy({RichText? text, String? anchorName, String? url}) =>
+  RichTextAnchorLink copyWith(
+          {RichText? text, String? anchorName, String? url}) =>
       RichTextAnchorLink(
           text: text ?? this.text,
           anchorName: anchorName ?? this.anchorName,
@@ -3550,17 +3571,17 @@ extension RichTextAnchorLinkExtensions on RichTextAnchorLink {
 }
 
 extension RichTextsExtensions on RichTexts {
-  RichTexts copy({List<RichText>? texts}) =>
+  RichTexts copyWith({List<RichText>? texts}) =>
       RichTexts(texts: texts ?? this.texts);
 }
 
 extension PageBlockCaptionExtensions on PageBlockCaption {
-  PageBlockCaption copy({RichText? text, RichText? credit}) =>
+  PageBlockCaption copyWith({RichText? text, RichText? credit}) =>
       PageBlockCaption(text: text ?? this.text, credit: credit ?? this.credit);
 }
 
 extension PageBlockListItemExtensions on PageBlockListItem {
-  PageBlockListItem copy({String? label, List<PageBlock>? pageBlocks}) =>
+  PageBlockListItem copyWith({String? label, List<PageBlock>? pageBlocks}) =>
       PageBlockListItem(
           label: label ?? this.label,
           pageBlocks: pageBlocks ?? this.pageBlocks);
@@ -3655,7 +3676,7 @@ extension PageBlockVerticalAlignmentExtensions on PageBlockVerticalAlignment {
 }
 
 extension PageBlockTableCellExtensions on PageBlockTableCell {
-  PageBlockTableCell copy(
+  PageBlockTableCell copyWith(
           {RichText? text,
           bool? isHeader,
           int? colspan,
@@ -3672,7 +3693,7 @@ extension PageBlockTableCellExtensions on PageBlockTableCell {
 }
 
 extension PageBlockRelatedArticleExtensions on PageBlockRelatedArticle {
-  PageBlockRelatedArticle copy(
+  PageBlockRelatedArticle copyWith(
           {String? url,
           String? title,
           String? description,
@@ -3965,77 +3986,77 @@ extension PageBlockExtensions on PageBlock {
 }
 
 extension PageBlockTitleExtensions on PageBlockTitle {
-  PageBlockTitle copy({RichText? title}) =>
+  PageBlockTitle copyWith({RichText? title}) =>
       PageBlockTitle(title: title ?? this.title);
 }
 
 extension PageBlockSubtitleExtensions on PageBlockSubtitle {
-  PageBlockSubtitle copy({RichText? subtitle}) =>
+  PageBlockSubtitle copyWith({RichText? subtitle}) =>
       PageBlockSubtitle(subtitle: subtitle ?? this.subtitle);
 }
 
 extension PageBlockAuthorDateExtensions on PageBlockAuthorDate {
-  PageBlockAuthorDate copy({RichText? author, int? publishDate}) =>
+  PageBlockAuthorDate copyWith({RichText? author, int? publishDate}) =>
       PageBlockAuthorDate(
           author: author ?? this.author,
           publishDate: publishDate ?? this.publishDate);
 }
 
 extension PageBlockHeaderExtensions on PageBlockHeader {
-  PageBlockHeader copy({RichText? header}) =>
+  PageBlockHeader copyWith({RichText? header}) =>
       PageBlockHeader(header: header ?? this.header);
 }
 
 extension PageBlockSubheaderExtensions on PageBlockSubheader {
-  PageBlockSubheader copy({RichText? subheader}) =>
+  PageBlockSubheader copyWith({RichText? subheader}) =>
       PageBlockSubheader(subheader: subheader ?? this.subheader);
 }
 
 extension PageBlockKickerExtensions on PageBlockKicker {
-  PageBlockKicker copy({RichText? kicker}) =>
+  PageBlockKicker copyWith({RichText? kicker}) =>
       PageBlockKicker(kicker: kicker ?? this.kicker);
 }
 
 extension PageBlockParagraphExtensions on PageBlockParagraph {
-  PageBlockParagraph copy({RichText? text}) =>
+  PageBlockParagraph copyWith({RichText? text}) =>
       PageBlockParagraph(text: text ?? this.text);
 }
 
 extension PageBlockPreformattedExtensions on PageBlockPreformatted {
-  PageBlockPreformatted copy({RichText? text, String? language}) =>
+  PageBlockPreformatted copyWith({RichText? text, String? language}) =>
       PageBlockPreformatted(
           text: text ?? this.text, language: language ?? this.language);
 }
 
 extension PageBlockFooterExtensions on PageBlockFooter {
-  PageBlockFooter copy({RichText? footer}) =>
+  PageBlockFooter copyWith({RichText? footer}) =>
       PageBlockFooter(footer: footer ?? this.footer);
 }
 
 extension PageBlockAnchorExtensions on PageBlockAnchor {
-  PageBlockAnchor copy({String? name}) =>
+  PageBlockAnchor copyWith({String? name}) =>
       PageBlockAnchor(name: name ?? this.name);
 }
 
 extension PageBlockListExtensions on PageBlockList {
-  PageBlockList copy({List<PageBlockListItem>? items}) =>
+  PageBlockList copyWith({List<PageBlockListItem>? items}) =>
       PageBlockList(items: items ?? this.items);
 }
 
 extension PageBlockBlockQuoteExtensions on PageBlockBlockQuote {
-  PageBlockBlockQuote copy({RichText? text, RichText? credit}) =>
+  PageBlockBlockQuote copyWith({RichText? text, RichText? credit}) =>
       PageBlockBlockQuote(
           text: text ?? this.text, credit: credit ?? this.credit);
 }
 
 extension PageBlockPullQuoteExtensions on PageBlockPullQuote {
-  PageBlockPullQuote copy({RichText? text, RichText? credit}) =>
+  PageBlockPullQuote copyWith({RichText? text, RichText? credit}) =>
       PageBlockPullQuote(
           text: text ?? this.text, credit: credit ?? this.credit);
 }
 
 extension PageBlockAnimationExtensions on PageBlockAnimation {
-  PageBlockAnimation copy(
+  PageBlockAnimation copyWith(
           {Animation? animation,
           PageBlockCaption? caption,
           bool? needAutoplay}) =>
@@ -4046,13 +4067,14 @@ extension PageBlockAnimationExtensions on PageBlockAnimation {
 }
 
 extension PageBlockAudioExtensions on PageBlockAudio {
-  PageBlockAudio copy({Audio? audio, PageBlockCaption? caption}) =>
+  PageBlockAudio copyWith({Audio? audio, PageBlockCaption? caption}) =>
       PageBlockAudio(
           audio: audio ?? this.audio, caption: caption ?? this.caption);
 }
 
 extension PageBlockPhotoExtensions on PageBlockPhoto {
-  PageBlockPhoto copy({Photo? photo, PageBlockCaption? caption, String? url}) =>
+  PageBlockPhoto copyWith(
+          {Photo? photo, PageBlockCaption? caption, String? url}) =>
       PageBlockPhoto(
           photo: photo ?? this.photo,
           caption: caption ?? this.caption,
@@ -4060,7 +4082,7 @@ extension PageBlockPhotoExtensions on PageBlockPhoto {
 }
 
 extension PageBlockVideoExtensions on PageBlockVideo {
-  PageBlockVideo copy(
+  PageBlockVideo copyWith(
           {Video? video,
           PageBlockCaption? caption,
           bool? needAutoplay,
@@ -4073,19 +4095,20 @@ extension PageBlockVideoExtensions on PageBlockVideo {
 }
 
 extension PageBlockVoiceNoteExtensions on PageBlockVoiceNote {
-  PageBlockVoiceNote copy({VoiceNote? voiceNote, PageBlockCaption? caption}) =>
+  PageBlockVoiceNote copyWith(
+          {VoiceNote? voiceNote, PageBlockCaption? caption}) =>
       PageBlockVoiceNote(
           voiceNote: voiceNote ?? this.voiceNote,
           caption: caption ?? this.caption);
 }
 
 extension PageBlockCoverExtensions on PageBlockCover {
-  PageBlockCover copy({PageBlock? cover}) =>
+  PageBlockCover copyWith({PageBlock? cover}) =>
       PageBlockCover(cover: cover ?? this.cover);
 }
 
 extension PageBlockEmbeddedExtensions on PageBlockEmbedded {
-  PageBlockEmbedded copy(
+  PageBlockEmbedded copyWith(
           {String? url,
           String? html,
           Photo? posterPhoto,
@@ -4106,7 +4129,7 @@ extension PageBlockEmbeddedExtensions on PageBlockEmbedded {
 }
 
 extension PageBlockEmbeddedPostExtensions on PageBlockEmbeddedPost {
-  PageBlockEmbeddedPost copy(
+  PageBlockEmbeddedPost copyWith(
           {String? url,
           String? author,
           Photo? authorPhoto,
@@ -4123,7 +4146,7 @@ extension PageBlockEmbeddedPostExtensions on PageBlockEmbeddedPost {
 }
 
 extension PageBlockCollageExtensions on PageBlockCollage {
-  PageBlockCollage copy(
+  PageBlockCollage copyWith(
           {List<PageBlock>? pageBlocks, PageBlockCaption? caption}) =>
       PageBlockCollage(
           pageBlocks: pageBlocks ?? this.pageBlocks,
@@ -4131,7 +4154,7 @@ extension PageBlockCollageExtensions on PageBlockCollage {
 }
 
 extension PageBlockSlideshowExtensions on PageBlockSlideshow {
-  PageBlockSlideshow copy(
+  PageBlockSlideshow copyWith(
           {List<PageBlock>? pageBlocks, PageBlockCaption? caption}) =>
       PageBlockSlideshow(
           pageBlocks: pageBlocks ?? this.pageBlocks,
@@ -4139,7 +4162,7 @@ extension PageBlockSlideshowExtensions on PageBlockSlideshow {
 }
 
 extension PageBlockChatLinkExtensions on PageBlockChatLink {
-  PageBlockChatLink copy(
+  PageBlockChatLink copyWith(
           {String? title, ChatPhotoInfo? photo, String? username}) =>
       PageBlockChatLink(
           title: title ?? this.title,
@@ -4148,7 +4171,7 @@ extension PageBlockChatLinkExtensions on PageBlockChatLink {
 }
 
 extension PageBlockTableExtensions on PageBlockTable {
-  PageBlockTable copy(
+  PageBlockTable copyWith(
           {RichText? caption,
           List<List<PageBlockTableCell>>? cells,
           bool? isBordered,
@@ -4161,7 +4184,7 @@ extension PageBlockTableExtensions on PageBlockTable {
 }
 
 extension PageBlockDetailsExtensions on PageBlockDetails {
-  PageBlockDetails copy(
+  PageBlockDetails copyWith(
           {RichText? header, List<PageBlock>? pageBlocks, bool? isOpen}) =>
       PageBlockDetails(
           header: header ?? this.header,
@@ -4170,14 +4193,14 @@ extension PageBlockDetailsExtensions on PageBlockDetails {
 }
 
 extension PageBlockRelatedArticlesExtensions on PageBlockRelatedArticles {
-  PageBlockRelatedArticles copy(
+  PageBlockRelatedArticles copyWith(
           {RichText? header, List<PageBlockRelatedArticle>? articles}) =>
       PageBlockRelatedArticles(
           header: header ?? this.header, articles: articles ?? this.articles);
 }
 
 extension PageBlockMapExtensions on PageBlockMap {
-  PageBlockMap copy(
+  PageBlockMap copyWith(
           {Location? location,
           int? zoom,
           int? width,
@@ -4192,7 +4215,7 @@ extension PageBlockMapExtensions on PageBlockMap {
 }
 
 extension WebPageInstantViewExtensions on WebPageInstantView {
-  WebPageInstantView copy(
+  WebPageInstantView copyWith(
           {List<PageBlock>? pageBlocks,
           int? viewCount,
           int? version,
@@ -4209,7 +4232,7 @@ extension WebPageInstantViewExtensions on WebPageInstantView {
 }
 
 extension WebPageExtensions on WebPage {
-  WebPage copy(
+  WebPage copyWith(
           {String? url,
           String? displayUrl,
           String? type,
@@ -4256,7 +4279,7 @@ extension WebPageExtensions on WebPage {
 }
 
 extension CountryInfoExtensions on CountryInfo {
-  CountryInfo copy(
+  CountryInfo copyWith(
           {String? countryCode,
           String? name,
           String? englishName,
@@ -4271,12 +4294,12 @@ extension CountryInfoExtensions on CountryInfo {
 }
 
 extension CountriesExtensions on Countries {
-  Countries copy({List<CountryInfo>? countries}) =>
+  Countries copyWith({List<CountryInfo>? countries}) =>
       Countries(countries: countries ?? this.countries);
 }
 
 extension PhoneNumberInfoExtensions on PhoneNumberInfo {
-  PhoneNumberInfo copy(
+  PhoneNumberInfo copyWith(
           {CountryInfo? country,
           String? countryCallingCode,
           String? formattedPhoneNumber}) =>
@@ -4288,18 +4311,19 @@ extension PhoneNumberInfoExtensions on PhoneNumberInfo {
 }
 
 extension BankCardActionOpenUrlExtensions on BankCardActionOpenUrl {
-  BankCardActionOpenUrl copy({String? text, String? url}) =>
+  BankCardActionOpenUrl copyWith({String? text, String? url}) =>
       BankCardActionOpenUrl(text: text ?? this.text, url: url ?? this.url);
 }
 
 extension BankCardInfoExtensions on BankCardInfo {
-  BankCardInfo copy({String? title, List<BankCardActionOpenUrl>? actions}) =>
+  BankCardInfo copyWith(
+          {String? title, List<BankCardActionOpenUrl>? actions}) =>
       BankCardInfo(
           title: title ?? this.title, actions: actions ?? this.actions);
 }
 
 extension AddressExtensions on Address {
-  Address copy(
+  Address copyWith(
           {String? countryCode,
           String? state,
           String? city,
@@ -4316,12 +4340,12 @@ extension AddressExtensions on Address {
 }
 
 extension LabeledPricePartExtensions on LabeledPricePart {
-  LabeledPricePart copy({String? label, int? amount}) => LabeledPricePart(
+  LabeledPricePart copyWith({String? label, int? amount}) => LabeledPricePart(
       label: label ?? this.label, amount: amount ?? this.amount);
 }
 
 extension InvoiceExtensions on Invoice {
-  Invoice copy(
+  Invoice copyWith(
           {String? currency,
           List<LabeledPricePart>? priceParts,
           int? maxTipAmount,
@@ -4352,7 +4376,7 @@ extension InvoiceExtensions on Invoice {
 }
 
 extension OrderInfoExtensions on OrderInfo {
-  OrderInfo copy(
+  OrderInfo copyWith(
           {String? name,
           String? phoneNumber,
           String? emailAddress,
@@ -4365,7 +4389,7 @@ extension OrderInfoExtensions on OrderInfo {
 }
 
 extension ShippingOptionExtensions on ShippingOption {
-  ShippingOption copy(
+  ShippingOption copyWith(
           {String? id, String? title, List<LabeledPricePart>? priceParts}) =>
       ShippingOption(
           id: id ?? this.id,
@@ -4374,7 +4398,7 @@ extension ShippingOptionExtensions on ShippingOption {
 }
 
 extension SavedCredentialsExtensions on SavedCredentials {
-  SavedCredentials copy({String? id, String? title}) =>
+  SavedCredentials copyWith({String? id, String? title}) =>
       SavedCredentials(id: id ?? this.id, title: title ?? this.title);
 }
 
@@ -4430,29 +4454,29 @@ extension InputCredentialsExtensions on InputCredentials {
 }
 
 extension InputCredentialsSavedExtensions on InputCredentialsSaved {
-  InputCredentialsSaved copy({String? savedCredentialsId}) =>
+  InputCredentialsSaved copyWith({String? savedCredentialsId}) =>
       InputCredentialsSaved(
           savedCredentialsId: savedCredentialsId ?? this.savedCredentialsId);
 }
 
 extension InputCredentialsNewExtensions on InputCredentialsNew {
-  InputCredentialsNew copy({String? data, bool? allowSave}) =>
+  InputCredentialsNew copyWith({String? data, bool? allowSave}) =>
       InputCredentialsNew(
           data: data ?? this.data, allowSave: allowSave ?? this.allowSave);
 }
 
 extension InputCredentialsApplePayExtensions on InputCredentialsApplePay {
-  InputCredentialsApplePay copy({String? data}) =>
+  InputCredentialsApplePay copyWith({String? data}) =>
       InputCredentialsApplePay(data: data ?? this.data);
 }
 
 extension InputCredentialsGooglePayExtensions on InputCredentialsGooglePay {
-  InputCredentialsGooglePay copy({String? data}) =>
+  InputCredentialsGooglePay copyWith({String? data}) =>
       InputCredentialsGooglePay(data: data ?? this.data);
 }
 
 extension PaymentsProviderStripeExtensions on PaymentsProviderStripe {
-  PaymentsProviderStripe copy(
+  PaymentsProviderStripe copyWith(
           {String? publishableKey,
           bool? needCountry,
           bool? needPostalCode,
@@ -4465,7 +4489,7 @@ extension PaymentsProviderStripeExtensions on PaymentsProviderStripe {
 }
 
 extension PaymentFormThemeExtensions on PaymentFormTheme {
-  PaymentFormTheme copy(
+  PaymentFormTheme copyWith(
           {int? backgroundColor,
           int? textColor,
           int? hintColor,
@@ -4482,7 +4506,7 @@ extension PaymentFormThemeExtensions on PaymentFormTheme {
 }
 
 extension PaymentFormExtensions on PaymentForm {
-  PaymentForm copy(
+  PaymentForm copyWith(
           {int? id,
           Invoice? invoice,
           String? url,
@@ -4508,7 +4532,7 @@ extension PaymentFormExtensions on PaymentForm {
 }
 
 extension ValidatedOrderInfoExtensions on ValidatedOrderInfo {
-  ValidatedOrderInfo copy(
+  ValidatedOrderInfo copyWith(
           {String? orderInfoId, List<ShippingOption>? shippingOptions}) =>
       ValidatedOrderInfo(
           orderInfoId: orderInfoId ?? this.orderInfoId,
@@ -4516,13 +4540,14 @@ extension ValidatedOrderInfoExtensions on ValidatedOrderInfo {
 }
 
 extension PaymentResultExtensions on PaymentResult {
-  PaymentResult copy({bool? success, String? verificationUrl}) => PaymentResult(
-      success: success ?? this.success,
-      verificationUrl: verificationUrl ?? this.verificationUrl);
+  PaymentResult copyWith({bool? success, String? verificationUrl}) =>
+      PaymentResult(
+          success: success ?? this.success,
+          verificationUrl: verificationUrl ?? this.verificationUrl);
 }
 
 extension PaymentReceiptExtensions on PaymentReceipt {
-  PaymentReceipt copy(
+  PaymentReceipt copyWith(
           {String? title,
           String? description,
           Photo? photo,
@@ -4550,7 +4575,7 @@ extension PaymentReceiptExtensions on PaymentReceipt {
 }
 
 extension DatedFileExtensions on DatedFile {
-  DatedFile copy({File? file, int? date}) =>
+  DatedFile copyWith({File? file, int? date}) =>
       DatedFile(file: file ?? this.file, date: date ?? this.date);
 }
 
@@ -4711,14 +4736,14 @@ extension PassportElementTypeExtensions on PassportElementType {
 }
 
 extension DateExtensions on Date {
-  Date copy({int? day, int? month, int? year}) => Date(
+  Date copyWith({int? day, int? month, int? year}) => Date(
       day: day ?? this.day,
       month: month ?? this.month,
       year: year ?? this.year);
 }
 
 extension PersonalDetailsExtensions on PersonalDetails {
-  PersonalDetails copy(
+  PersonalDetails copyWith(
           {String? firstName,
           String? middleName,
           String? lastName,
@@ -4744,7 +4769,7 @@ extension PersonalDetailsExtensions on PersonalDetails {
 }
 
 extension IdentityDocumentExtensions on IdentityDocument {
-  IdentityDocument copy(
+  IdentityDocument copyWith(
           {String? number,
           Date? expiryDate,
           DatedFile? frontSide,
@@ -4761,7 +4786,7 @@ extension IdentityDocumentExtensions on IdentityDocument {
 }
 
 extension InputIdentityDocumentExtensions on InputIdentityDocument {
-  InputIdentityDocument copy(
+  InputIdentityDocument copyWith(
           {String? number,
           Date? expiryDate,
           InputFile? frontSide,
@@ -4778,7 +4803,7 @@ extension InputIdentityDocumentExtensions on InputIdentityDocument {
 }
 
 extension PersonalDocumentExtensions on PersonalDocument {
-  PersonalDocument copy(
+  PersonalDocument copyWith(
           {List<DatedFile>? files, List<DatedFile>? translation}) =>
       PersonalDocument(
           files: files ?? this.files,
@@ -4786,7 +4811,7 @@ extension PersonalDocumentExtensions on PersonalDocument {
 }
 
 extension InputPersonalDocumentExtensions on InputPersonalDocument {
-  InputPersonalDocument copy(
+  InputPersonalDocument copyWith(
           {List<InputFile>? files, List<InputFile>? translation}) =>
       InputPersonalDocument(
           files: files ?? this.files,
@@ -4941,63 +4966,65 @@ extension PassportElementExtensions on PassportElement {
 
 extension PassportElementPersonalDetailsExtensions
     on PassportElementPersonalDetails {
-  PassportElementPersonalDetails copy({PersonalDetails? personalDetails}) =>
+  PassportElementPersonalDetails copyWith({PersonalDetails? personalDetails}) =>
       PassportElementPersonalDetails(
           personalDetails: personalDetails ?? this.personalDetails);
 }
 
 extension PassportElementPassportExtensions on PassportElementPassport {
-  PassportElementPassport copy({IdentityDocument? passport}) =>
+  PassportElementPassport copyWith({IdentityDocument? passport}) =>
       PassportElementPassport(passport: passport ?? this.passport);
 }
 
 extension PassportElementDriverLicenseExtensions
     on PassportElementDriverLicense {
-  PassportElementDriverLicense copy({IdentityDocument? driverLicense}) =>
+  PassportElementDriverLicense copyWith({IdentityDocument? driverLicense}) =>
       PassportElementDriverLicense(
           driverLicense: driverLicense ?? this.driverLicense);
 }
 
 extension PassportElementIdentityCardExtensions on PassportElementIdentityCard {
-  PassportElementIdentityCard copy({IdentityDocument? identityCard}) =>
+  PassportElementIdentityCard copyWith({IdentityDocument? identityCard}) =>
       PassportElementIdentityCard(
           identityCard: identityCard ?? this.identityCard);
 }
 
 extension PassportElementInternalPassportExtensions
     on PassportElementInternalPassport {
-  PassportElementInternalPassport copy({IdentityDocument? internalPassport}) =>
+  PassportElementInternalPassport copyWith(
+          {IdentityDocument? internalPassport}) =>
       PassportElementInternalPassport(
           internalPassport: internalPassport ?? this.internalPassport);
 }
 
 extension PassportElementAddressExtensions on PassportElementAddress {
-  PassportElementAddress copy({Address? address}) =>
+  PassportElementAddress copyWith({Address? address}) =>
       PassportElementAddress(address: address ?? this.address);
 }
 
 extension PassportElementUtilityBillExtensions on PassportElementUtilityBill {
-  PassportElementUtilityBill copy({PersonalDocument? utilityBill}) =>
+  PassportElementUtilityBill copyWith({PersonalDocument? utilityBill}) =>
       PassportElementUtilityBill(utilityBill: utilityBill ?? this.utilityBill);
 }
 
 extension PassportElementBankStatementExtensions
     on PassportElementBankStatement {
-  PassportElementBankStatement copy({PersonalDocument? bankStatement}) =>
+  PassportElementBankStatement copyWith({PersonalDocument? bankStatement}) =>
       PassportElementBankStatement(
           bankStatement: bankStatement ?? this.bankStatement);
 }
 
 extension PassportElementRentalAgreementExtensions
     on PassportElementRentalAgreement {
-  PassportElementRentalAgreement copy({PersonalDocument? rentalAgreement}) =>
+  PassportElementRentalAgreement copyWith(
+          {PersonalDocument? rentalAgreement}) =>
       PassportElementRentalAgreement(
           rentalAgreement: rentalAgreement ?? this.rentalAgreement);
 }
 
 extension PassportElementPassportRegistrationExtensions
     on PassportElementPassportRegistration {
-  PassportElementPassportRegistration copy(
+  PassportElementPassportRegistration copyWith(
           {PersonalDocument? passportRegistration}) =>
       PassportElementPassportRegistration(
           passportRegistration:
@@ -5006,7 +5033,7 @@ extension PassportElementPassportRegistrationExtensions
 
 extension PassportElementTemporaryRegistrationExtensions
     on PassportElementTemporaryRegistration {
-  PassportElementTemporaryRegistration copy(
+  PassportElementTemporaryRegistration copyWith(
           {PersonalDocument? temporaryRegistration}) =>
       PassportElementTemporaryRegistration(
           temporaryRegistration:
@@ -5014,12 +5041,12 @@ extension PassportElementTemporaryRegistrationExtensions
 }
 
 extension PassportElementPhoneNumberExtensions on PassportElementPhoneNumber {
-  PassportElementPhoneNumber copy({String? phoneNumber}) =>
+  PassportElementPhoneNumber copyWith({String? phoneNumber}) =>
       PassportElementPhoneNumber(phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
 extension PassportElementEmailAddressExtensions on PassportElementEmailAddress {
-  PassportElementEmailAddress copy({String? emailAddress}) =>
+  PassportElementEmailAddress copyWith({String? emailAddress}) =>
       PassportElementEmailAddress(
           emailAddress: emailAddress ?? this.emailAddress);
 }
@@ -5184,7 +5211,7 @@ extension InputPassportElementExtensions on InputPassportElement {
 
 extension InputPassportElementPersonalDetailsExtensions
     on InputPassportElementPersonalDetails {
-  InputPassportElementPersonalDetails copy(
+  InputPassportElementPersonalDetails copyWith(
           {PersonalDetails? personalDetails}) =>
       InputPassportElementPersonalDetails(
           personalDetails: personalDetails ?? this.personalDetails);
@@ -5192,13 +5219,13 @@ extension InputPassportElementPersonalDetailsExtensions
 
 extension InputPassportElementPassportExtensions
     on InputPassportElementPassport {
-  InputPassportElementPassport copy({InputIdentityDocument? passport}) =>
+  InputPassportElementPassport copyWith({InputIdentityDocument? passport}) =>
       InputPassportElementPassport(passport: passport ?? this.passport);
 }
 
 extension InputPassportElementDriverLicenseExtensions
     on InputPassportElementDriverLicense {
-  InputPassportElementDriverLicense copy(
+  InputPassportElementDriverLicense copyWith(
           {InputIdentityDocument? driverLicense}) =>
       InputPassportElementDriverLicense(
           driverLicense: driverLicense ?? this.driverLicense);
@@ -5206,7 +5233,7 @@ extension InputPassportElementDriverLicenseExtensions
 
 extension InputPassportElementIdentityCardExtensions
     on InputPassportElementIdentityCard {
-  InputPassportElementIdentityCard copy(
+  InputPassportElementIdentityCard copyWith(
           {InputIdentityDocument? identityCard}) =>
       InputPassportElementIdentityCard(
           identityCard: identityCard ?? this.identityCard);
@@ -5214,27 +5241,28 @@ extension InputPassportElementIdentityCardExtensions
 
 extension InputPassportElementInternalPassportExtensions
     on InputPassportElementInternalPassport {
-  InputPassportElementInternalPassport copy(
+  InputPassportElementInternalPassport copyWith(
           {InputIdentityDocument? internalPassport}) =>
       InputPassportElementInternalPassport(
           internalPassport: internalPassport ?? this.internalPassport);
 }
 
 extension InputPassportElementAddressExtensions on InputPassportElementAddress {
-  InputPassportElementAddress copy({Address? address}) =>
+  InputPassportElementAddress copyWith({Address? address}) =>
       InputPassportElementAddress(address: address ?? this.address);
 }
 
 extension InputPassportElementUtilityBillExtensions
     on InputPassportElementUtilityBill {
-  InputPassportElementUtilityBill copy({InputPersonalDocument? utilityBill}) =>
+  InputPassportElementUtilityBill copyWith(
+          {InputPersonalDocument? utilityBill}) =>
       InputPassportElementUtilityBill(
           utilityBill: utilityBill ?? this.utilityBill);
 }
 
 extension InputPassportElementBankStatementExtensions
     on InputPassportElementBankStatement {
-  InputPassportElementBankStatement copy(
+  InputPassportElementBankStatement copyWith(
           {InputPersonalDocument? bankStatement}) =>
       InputPassportElementBankStatement(
           bankStatement: bankStatement ?? this.bankStatement);
@@ -5242,7 +5270,7 @@ extension InputPassportElementBankStatementExtensions
 
 extension InputPassportElementRentalAgreementExtensions
     on InputPassportElementRentalAgreement {
-  InputPassportElementRentalAgreement copy(
+  InputPassportElementRentalAgreement copyWith(
           {InputPersonalDocument? rentalAgreement}) =>
       InputPassportElementRentalAgreement(
           rentalAgreement: rentalAgreement ?? this.rentalAgreement);
@@ -5250,7 +5278,7 @@ extension InputPassportElementRentalAgreementExtensions
 
 extension InputPassportElementPassportRegistrationExtensions
     on InputPassportElementPassportRegistration {
-  InputPassportElementPassportRegistration copy(
+  InputPassportElementPassportRegistration copyWith(
           {InputPersonalDocument? passportRegistration}) =>
       InputPassportElementPassportRegistration(
           passportRegistration:
@@ -5259,7 +5287,7 @@ extension InputPassportElementPassportRegistrationExtensions
 
 extension InputPassportElementTemporaryRegistrationExtensions
     on InputPassportElementTemporaryRegistration {
-  InputPassportElementTemporaryRegistration copy(
+  InputPassportElementTemporaryRegistration copyWith(
           {InputPersonalDocument? temporaryRegistration}) =>
       InputPassportElementTemporaryRegistration(
           temporaryRegistration:
@@ -5268,20 +5296,20 @@ extension InputPassportElementTemporaryRegistrationExtensions
 
 extension InputPassportElementPhoneNumberExtensions
     on InputPassportElementPhoneNumber {
-  InputPassportElementPhoneNumber copy({String? phoneNumber}) =>
+  InputPassportElementPhoneNumber copyWith({String? phoneNumber}) =>
       InputPassportElementPhoneNumber(
           phoneNumber: phoneNumber ?? this.phoneNumber);
 }
 
 extension InputPassportElementEmailAddressExtensions
     on InputPassportElementEmailAddress {
-  InputPassportElementEmailAddress copy({String? emailAddress}) =>
+  InputPassportElementEmailAddress copyWith({String? emailAddress}) =>
       InputPassportElementEmailAddress(
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
 extension PassportElementsExtensions on PassportElements {
-  PassportElements copy({List<PassportElement>? elements}) =>
+  PassportElements copyWith({List<PassportElement>? elements}) =>
       PassportElements(elements: elements ?? this.elements);
 }
 
@@ -5400,26 +5428,26 @@ extension PassportElementErrorSourceExtensions on PassportElementErrorSource {
 
 extension PassportElementErrorSourceDataFieldExtensions
     on PassportElementErrorSourceDataField {
-  PassportElementErrorSourceDataField copy({String? fieldName}) =>
+  PassportElementErrorSourceDataField copyWith({String? fieldName}) =>
       PassportElementErrorSourceDataField(
           fieldName: fieldName ?? this.fieldName);
 }
 
 extension PassportElementErrorSourceTranslationFileExtensions
     on PassportElementErrorSourceTranslationFile {
-  PassportElementErrorSourceTranslationFile copy({int? fileIndex}) =>
+  PassportElementErrorSourceTranslationFile copyWith({int? fileIndex}) =>
       PassportElementErrorSourceTranslationFile(
           fileIndex: fileIndex ?? this.fileIndex);
 }
 
 extension PassportElementErrorSourceFileExtensions
     on PassportElementErrorSourceFile {
-  PassportElementErrorSourceFile copy({int? fileIndex}) =>
+  PassportElementErrorSourceFile copyWith({int? fileIndex}) =>
       PassportElementErrorSourceFile(fileIndex: fileIndex ?? this.fileIndex);
 }
 
 extension PassportElementErrorExtensions on PassportElementError {
-  PassportElementError copy(
+  PassportElementError copyWith(
           {PassportElementType? type,
           String? message,
           PassportElementErrorSource? source}) =>
@@ -5430,7 +5458,7 @@ extension PassportElementErrorExtensions on PassportElementError {
 }
 
 extension PassportSuitableElementExtensions on PassportSuitableElement {
-  PassportSuitableElement copy(
+  PassportSuitableElement copyWith(
           {PassportElementType? type,
           bool? isSelfieRequired,
           bool? isTranslationRequired,
@@ -5445,14 +5473,14 @@ extension PassportSuitableElementExtensions on PassportSuitableElement {
 }
 
 extension PassportRequiredElementExtensions on PassportRequiredElement {
-  PassportRequiredElement copy(
+  PassportRequiredElement copyWith(
           {List<PassportSuitableElement>? suitableElements}) =>
       PassportRequiredElement(
           suitableElements: suitableElements ?? this.suitableElements);
 }
 
 extension PassportAuthorizationFormExtensions on PassportAuthorizationForm {
-  PassportAuthorizationForm copy(
+  PassportAuthorizationForm copyWith(
           {int? id,
           List<PassportRequiredElement>? requiredElements,
           String? privacyPolicyUrl}) =>
@@ -5463,7 +5491,7 @@ extension PassportAuthorizationFormExtensions on PassportAuthorizationForm {
 }
 
 extension PassportElementsWithErrorsExtensions on PassportElementsWithErrors {
-  PassportElementsWithErrors copy(
+  PassportElementsWithErrors copyWith(
           {List<PassportElement>? elements,
           List<PassportElementError>? errors}) =>
       PassportElementsWithErrors(
@@ -5471,7 +5499,7 @@ extension PassportElementsWithErrorsExtensions on PassportElementsWithErrors {
 }
 
 extension EncryptedCredentialsExtensions on EncryptedCredentials {
-  EncryptedCredentials copy({String? data, String? hash, String? secret}) =>
+  EncryptedCredentials copyWith({String? data, String? hash, String? secret}) =>
       EncryptedCredentials(
           data: data ?? this.data,
           hash: hash ?? this.hash,
@@ -5479,7 +5507,7 @@ extension EncryptedCredentialsExtensions on EncryptedCredentials {
 }
 
 extension EncryptedPassportElementExtensions on EncryptedPassportElement {
-  EncryptedPassportElement copy(
+  EncryptedPassportElement copyWith(
           {PassportElementType? type,
           String? data,
           DatedFile? frontSide,
@@ -5628,14 +5656,14 @@ extension InputPassportElementErrorSourceExtensions
 
 extension InputPassportElementErrorSourceUnspecifiedExtensions
     on InputPassportElementErrorSourceUnspecified {
-  InputPassportElementErrorSourceUnspecified copy({String? elementHash}) =>
+  InputPassportElementErrorSourceUnspecified copyWith({String? elementHash}) =>
       InputPassportElementErrorSourceUnspecified(
           elementHash: elementHash ?? this.elementHash);
 }
 
 extension InputPassportElementErrorSourceDataFieldExtensions
     on InputPassportElementErrorSourceDataField {
-  InputPassportElementErrorSourceDataField copy(
+  InputPassportElementErrorSourceDataField copyWith(
           {String? fieldName, String? dataHash}) =>
       InputPassportElementErrorSourceDataField(
           fieldName: fieldName ?? this.fieldName,
@@ -5644,35 +5672,35 @@ extension InputPassportElementErrorSourceDataFieldExtensions
 
 extension InputPassportElementErrorSourceFrontSideExtensions
     on InputPassportElementErrorSourceFrontSide {
-  InputPassportElementErrorSourceFrontSide copy({String? fileHash}) =>
+  InputPassportElementErrorSourceFrontSide copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceFrontSide(
           fileHash: fileHash ?? this.fileHash);
 }
 
 extension InputPassportElementErrorSourceReverseSideExtensions
     on InputPassportElementErrorSourceReverseSide {
-  InputPassportElementErrorSourceReverseSide copy({String? fileHash}) =>
+  InputPassportElementErrorSourceReverseSide copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceReverseSide(
           fileHash: fileHash ?? this.fileHash);
 }
 
 extension InputPassportElementErrorSourceSelfieExtensions
     on InputPassportElementErrorSourceSelfie {
-  InputPassportElementErrorSourceSelfie copy({String? fileHash}) =>
+  InputPassportElementErrorSourceSelfie copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceSelfie(
           fileHash: fileHash ?? this.fileHash);
 }
 
 extension InputPassportElementErrorSourceTranslationFileExtensions
     on InputPassportElementErrorSourceTranslationFile {
-  InputPassportElementErrorSourceTranslationFile copy({String? fileHash}) =>
+  InputPassportElementErrorSourceTranslationFile copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceTranslationFile(
           fileHash: fileHash ?? this.fileHash);
 }
 
 extension InputPassportElementErrorSourceTranslationFilesExtensions
     on InputPassportElementErrorSourceTranslationFiles {
-  InputPassportElementErrorSourceTranslationFiles copy(
+  InputPassportElementErrorSourceTranslationFiles copyWith(
           {List<String>? fileHashes}) =>
       InputPassportElementErrorSourceTranslationFiles(
           fileHashes: fileHashes ?? this.fileHashes);
@@ -5680,19 +5708,19 @@ extension InputPassportElementErrorSourceTranslationFilesExtensions
 
 extension InputPassportElementErrorSourceFileExtensions
     on InputPassportElementErrorSourceFile {
-  InputPassportElementErrorSourceFile copy({String? fileHash}) =>
+  InputPassportElementErrorSourceFile copyWith({String? fileHash}) =>
       InputPassportElementErrorSourceFile(fileHash: fileHash ?? this.fileHash);
 }
 
 extension InputPassportElementErrorSourceFilesExtensions
     on InputPassportElementErrorSourceFiles {
-  InputPassportElementErrorSourceFiles copy({List<String>? fileHashes}) =>
+  InputPassportElementErrorSourceFiles copyWith({List<String>? fileHashes}) =>
       InputPassportElementErrorSourceFiles(
           fileHashes: fileHashes ?? this.fileHashes);
 }
 
 extension InputPassportElementErrorExtensions on InputPassportElementError {
-  InputPassportElementError copy(
+  InputPassportElementError copyWith(
           {PassportElementType? type,
           String? message,
           InputPassportElementErrorSource? source}) =>
@@ -6214,12 +6242,12 @@ extension MessageContentExtensions on MessageContent {
 }
 
 extension MessageTextExtensions on MessageText {
-  MessageText copy({FormattedText? text, WebPage? webPage}) =>
+  MessageText copyWith({FormattedText? text, WebPage? webPage}) =>
       MessageText(text: text ?? this.text, webPage: webPage ?? this.webPage);
 }
 
 extension MessageAnimationExtensions on MessageAnimation {
-  MessageAnimation copy(
+  MessageAnimation copyWith(
           {Animation? animation, FormattedText? caption, bool? isSecret}) =>
       MessageAnimation(
           animation: animation ?? this.animation,
@@ -6228,19 +6256,20 @@ extension MessageAnimationExtensions on MessageAnimation {
 }
 
 extension MessageAudioExtensions on MessageAudio {
-  MessageAudio copy({Audio? audio, FormattedText? caption}) => MessageAudio(
+  MessageAudio copyWith({Audio? audio, FormattedText? caption}) => MessageAudio(
       audio: audio ?? this.audio, caption: caption ?? this.caption);
 }
 
 extension MessageDocumentExtensions on MessageDocument {
-  MessageDocument copy({Document? document, FormattedText? caption}) =>
+  MessageDocument copyWith({Document? document, FormattedText? caption}) =>
       MessageDocument(
           document: document ?? this.document,
           caption: caption ?? this.caption);
 }
 
 extension MessagePhotoExtensions on MessagePhoto {
-  MessagePhoto copy({Photo? photo, FormattedText? caption, bool? isSecret}) =>
+  MessagePhoto copyWith(
+          {Photo? photo, FormattedText? caption, bool? isSecret}) =>
       MessagePhoto(
           photo: photo ?? this.photo,
           caption: caption ?? this.caption,
@@ -6248,12 +6277,13 @@ extension MessagePhotoExtensions on MessagePhoto {
 }
 
 extension MessageStickerExtensions on MessageSticker {
-  MessageSticker copy({Sticker? sticker}) =>
+  MessageSticker copyWith({Sticker? sticker}) =>
       MessageSticker(sticker: sticker ?? this.sticker);
 }
 
 extension MessageVideoExtensions on MessageVideo {
-  MessageVideo copy({Video? video, FormattedText? caption, bool? isSecret}) =>
+  MessageVideo copyWith(
+          {Video? video, FormattedText? caption, bool? isSecret}) =>
       MessageVideo(
           video: video ?? this.video,
           caption: caption ?? this.caption,
@@ -6261,7 +6291,7 @@ extension MessageVideoExtensions on MessageVideo {
 }
 
 extension MessageVideoNoteExtensions on MessageVideoNote {
-  MessageVideoNote copy(
+  MessageVideoNote copyWith(
           {VideoNote? videoNote, bool? isViewed, bool? isSecret}) =>
       MessageVideoNote(
           videoNote: videoNote ?? this.videoNote,
@@ -6270,7 +6300,7 @@ extension MessageVideoNoteExtensions on MessageVideoNote {
 }
 
 extension MessageVoiceNoteExtensions on MessageVoiceNote {
-  MessageVoiceNote copy(
+  MessageVoiceNote copyWith(
           {VoiceNote? voiceNote, FormattedText? caption, bool? isListened}) =>
       MessageVoiceNote(
           voiceNote: voiceNote ?? this.voiceNote,
@@ -6279,7 +6309,7 @@ extension MessageVoiceNoteExtensions on MessageVoiceNote {
 }
 
 extension MessageLocationExtensions on MessageLocation {
-  MessageLocation copy(
+  MessageLocation copyWith(
           {Location? location,
           int? livePeriod,
           int? expiresIn,
@@ -6295,23 +6325,25 @@ extension MessageLocationExtensions on MessageLocation {
 }
 
 extension MessageVenueExtensions on MessageVenue {
-  MessageVenue copy({Venue? venue}) => MessageVenue(venue: venue ?? this.venue);
+  MessageVenue copyWith({Venue? venue}) =>
+      MessageVenue(venue: venue ?? this.venue);
 }
 
 extension MessageContactExtensions on MessageContact {
-  MessageContact copy({Contact? contact}) =>
+  MessageContact copyWith({Contact? contact}) =>
       MessageContact(contact: contact ?? this.contact);
 }
 
 extension MessageAnimatedEmojiExtensions on MessageAnimatedEmoji {
-  MessageAnimatedEmoji copy({AnimatedEmoji? animatedEmoji, String? emoji}) =>
+  MessageAnimatedEmoji copyWith(
+          {AnimatedEmoji? animatedEmoji, String? emoji}) =>
       MessageAnimatedEmoji(
           animatedEmoji: animatedEmoji ?? this.animatedEmoji,
           emoji: emoji ?? this.emoji);
 }
 
 extension MessageDiceExtensions on MessageDice {
-  MessageDice copy(
+  MessageDice copyWith(
           {DiceStickers? initialState,
           DiceStickers? finalState,
           String? emoji,
@@ -6327,15 +6359,15 @@ extension MessageDiceExtensions on MessageDice {
 }
 
 extension MessageGameExtensions on MessageGame {
-  MessageGame copy({Game? game}) => MessageGame(game: game ?? this.game);
+  MessageGame copyWith({Game? game}) => MessageGame(game: game ?? this.game);
 }
 
 extension MessagePollExtensions on MessagePoll {
-  MessagePoll copy({Poll? poll}) => MessagePoll(poll: poll ?? this.poll);
+  MessagePoll copyWith({Poll? poll}) => MessagePoll(poll: poll ?? this.poll);
 }
 
 extension MessageInvoiceExtensions on MessageInvoice {
-  MessageInvoice copy(
+  MessageInvoice copyWith(
           {String? title,
           String? description,
           Photo? photo,
@@ -6358,7 +6390,7 @@ extension MessageInvoiceExtensions on MessageInvoice {
 }
 
 extension MessageCallExtensions on MessageCall {
-  MessageCall copy(
+  MessageCall copyWith(
           {bool? isVideo, CallDiscardReason? discardReason, int? duration}) =>
       MessageCall(
           isVideo: isVideo ?? this.isVideo,
@@ -6367,25 +6399,25 @@ extension MessageCallExtensions on MessageCall {
 }
 
 extension MessageVideoChatScheduledExtensions on MessageVideoChatScheduled {
-  MessageVideoChatScheduled copy({int? groupCallId, int? startDate}) =>
+  MessageVideoChatScheduled copyWith({int? groupCallId, int? startDate}) =>
       MessageVideoChatScheduled(
           groupCallId: groupCallId ?? this.groupCallId,
           startDate: startDate ?? this.startDate);
 }
 
 extension MessageVideoChatStartedExtensions on MessageVideoChatStarted {
-  MessageVideoChatStarted copy({int? groupCallId}) =>
+  MessageVideoChatStarted copyWith({int? groupCallId}) =>
       MessageVideoChatStarted(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension MessageVideoChatEndedExtensions on MessageVideoChatEnded {
-  MessageVideoChatEnded copy({int? duration}) =>
+  MessageVideoChatEnded copyWith({int? duration}) =>
       MessageVideoChatEnded(duration: duration ?? this.duration);
 }
 
 extension MessageInviteVideoChatParticipantsExtensions
     on MessageInviteVideoChatParticipants {
-  MessageInviteVideoChatParticipants copy(
+  MessageInviteVideoChatParticipants copyWith(
           {int? groupCallId, List<int>? userIds}) =>
       MessageInviteVideoChatParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -6393,70 +6425,72 @@ extension MessageInviteVideoChatParticipantsExtensions
 }
 
 extension MessageBasicGroupChatCreateExtensions on MessageBasicGroupChatCreate {
-  MessageBasicGroupChatCreate copy({String? title, List<int>? memberUserIds}) =>
+  MessageBasicGroupChatCreate copyWith(
+          {String? title, List<int>? memberUserIds}) =>
       MessageBasicGroupChatCreate(
           title: title ?? this.title,
           memberUserIds: memberUserIds ?? this.memberUserIds);
 }
 
 extension MessageSupergroupChatCreateExtensions on MessageSupergroupChatCreate {
-  MessageSupergroupChatCreate copy({String? title}) =>
+  MessageSupergroupChatCreate copyWith({String? title}) =>
       MessageSupergroupChatCreate(title: title ?? this.title);
 }
 
 extension MessageChatChangeTitleExtensions on MessageChatChangeTitle {
-  MessageChatChangeTitle copy({String? title}) =>
+  MessageChatChangeTitle copyWith({String? title}) =>
       MessageChatChangeTitle(title: title ?? this.title);
 }
 
 extension MessageChatChangePhotoExtensions on MessageChatChangePhoto {
-  MessageChatChangePhoto copy({ChatPhoto? photo}) =>
+  MessageChatChangePhoto copyWith({ChatPhoto? photo}) =>
       MessageChatChangePhoto(photo: photo ?? this.photo);
 }
 
 extension MessageChatAddMembersExtensions on MessageChatAddMembers {
-  MessageChatAddMembers copy({List<int>? memberUserIds}) =>
+  MessageChatAddMembers copyWith({List<int>? memberUserIds}) =>
       MessageChatAddMembers(memberUserIds: memberUserIds ?? this.memberUserIds);
 }
 
 extension MessageChatDeleteMemberExtensions on MessageChatDeleteMember {
-  MessageChatDeleteMember copy({int? userId}) =>
+  MessageChatDeleteMember copyWith({int? userId}) =>
       MessageChatDeleteMember(userId: userId ?? this.userId);
 }
 
 extension MessageChatUpgradeToExtensions on MessageChatUpgradeTo {
-  MessageChatUpgradeTo copy({int? supergroupId}) =>
+  MessageChatUpgradeTo copyWith({int? supergroupId}) =>
       MessageChatUpgradeTo(supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension MessageChatUpgradeFromExtensions on MessageChatUpgradeFrom {
-  MessageChatUpgradeFrom copy({String? title, int? basicGroupId}) =>
+  MessageChatUpgradeFrom copyWith({String? title, int? basicGroupId}) =>
       MessageChatUpgradeFrom(
           title: title ?? this.title,
           basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
 extension MessagePinMessageExtensions on MessagePinMessage {
-  MessagePinMessage copy({int? messageId}) =>
+  MessagePinMessage copyWith({int? messageId}) =>
       MessagePinMessage(messageId: messageId ?? this.messageId);
 }
 
 extension MessageChatSetThemeExtensions on MessageChatSetTheme {
-  MessageChatSetTheme copy({String? themeName}) =>
+  MessageChatSetTheme copyWith({String? themeName}) =>
       MessageChatSetTheme(themeName: themeName ?? this.themeName);
 }
 
 extension MessageChatSetTtlExtensions on MessageChatSetTtl {
-  MessageChatSetTtl copy({int? ttl}) => MessageChatSetTtl(ttl: ttl ?? this.ttl);
+  MessageChatSetTtl copyWith({int? ttl}) =>
+      MessageChatSetTtl(ttl: ttl ?? this.ttl);
 }
 
 extension MessageCustomServiceActionExtensions on MessageCustomServiceAction {
-  MessageCustomServiceAction copy({String? text}) =>
+  MessageCustomServiceAction copyWith({String? text}) =>
       MessageCustomServiceAction(text: text ?? this.text);
 }
 
 extension MessageGameScoreExtensions on MessageGameScore {
-  MessageGameScore copy({int? gameMessageId, int? gameId, int? score}) =>
+  MessageGameScore copyWith({int? gameMessageId, int? gameId, int? score}) =>
       MessageGameScore(
           gameMessageId: gameMessageId ?? this.gameMessageId,
           gameId: gameId ?? this.gameId,
@@ -6464,7 +6498,7 @@ extension MessageGameScoreExtensions on MessageGameScore {
 }
 
 extension MessagePaymentSuccessfulExtensions on MessagePaymentSuccessful {
-  MessagePaymentSuccessful copy(
+  MessagePaymentSuccessful copyWith(
           {int? invoiceChatId,
           int? invoiceMessageId,
           String? currency,
@@ -6477,7 +6511,7 @@ extension MessagePaymentSuccessfulExtensions on MessagePaymentSuccessful {
 }
 
 extension MessagePaymentSuccessfulBotExtensions on MessagePaymentSuccessfulBot {
-  MessagePaymentSuccessfulBot copy(
+  MessagePaymentSuccessfulBot copyWith(
           {String? currency,
           int? totalAmount,
           String? invoicePayload,
@@ -6498,17 +6532,17 @@ extension MessagePaymentSuccessfulBotExtensions on MessagePaymentSuccessfulBot {
 }
 
 extension MessageWebsiteConnectedExtensions on MessageWebsiteConnected {
-  MessageWebsiteConnected copy({String? domainName}) =>
+  MessageWebsiteConnected copyWith({String? domainName}) =>
       MessageWebsiteConnected(domainName: domainName ?? this.domainName);
 }
 
 extension MessagePassportDataSentExtensions on MessagePassportDataSent {
-  MessagePassportDataSent copy({List<PassportElementType>? types}) =>
+  MessagePassportDataSent copyWith({List<PassportElementType>? types}) =>
       MessagePassportDataSent(types: types ?? this.types);
 }
 
 extension MessagePassportDataReceivedExtensions on MessagePassportDataReceived {
-  MessagePassportDataReceived copy(
+  MessagePassportDataReceived copyWith(
           {List<EncryptedPassportElement>? elements,
           EncryptedCredentials? credentials}) =>
       MessagePassportDataReceived(
@@ -6518,7 +6552,7 @@ extension MessagePassportDataReceivedExtensions on MessagePassportDataReceived {
 
 extension MessageProximityAlertTriggeredExtensions
     on MessageProximityAlertTriggered {
-  MessageProximityAlertTriggered copy(
+  MessageProximityAlertTriggered copyWith(
           {MessageSender? travelerId,
           MessageSender? watcherId,
           int? distance}) =>
@@ -6718,29 +6752,29 @@ extension TextEntityTypeExtensions on TextEntityType {
 }
 
 extension TextEntityTypePreCodeExtensions on TextEntityTypePreCode {
-  TextEntityTypePreCode copy({String? language}) =>
+  TextEntityTypePreCode copyWith({String? language}) =>
       TextEntityTypePreCode(language: language ?? this.language);
 }
 
 extension TextEntityTypeTextUrlExtensions on TextEntityTypeTextUrl {
-  TextEntityTypeTextUrl copy({String? url}) =>
+  TextEntityTypeTextUrl copyWith({String? url}) =>
       TextEntityTypeTextUrl(url: url ?? this.url);
 }
 
 extension TextEntityTypeMentionNameExtensions on TextEntityTypeMentionName {
-  TextEntityTypeMentionName copy({int? userId}) =>
+  TextEntityTypeMentionName copyWith({int? userId}) =>
       TextEntityTypeMentionName(userId: userId ?? this.userId);
 }
 
 extension TextEntityTypeMediaTimestampExtensions
     on TextEntityTypeMediaTimestamp {
-  TextEntityTypeMediaTimestamp copy({int? mediaTimestamp}) =>
+  TextEntityTypeMediaTimestamp copyWith({int? mediaTimestamp}) =>
       TextEntityTypeMediaTimestamp(
           mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp);
 }
 
 extension InputThumbnailExtensions on InputThumbnail {
-  InputThumbnail copy({InputFile? thumbnail, int? width, int? height}) =>
+  InputThumbnail copyWith({InputFile? thumbnail, int? width, int? height}) =>
       InputThumbnail(
           thumbnail: thumbnail ?? this.thumbnail,
           width: width ?? this.width,
@@ -6787,12 +6821,12 @@ extension MessageSchedulingStateExtensions on MessageSchedulingState {
 
 extension MessageSchedulingStateSendAtDateExtensions
     on MessageSchedulingStateSendAtDate {
-  MessageSchedulingStateSendAtDate copy({int? sendDate}) =>
+  MessageSchedulingStateSendAtDate copyWith({int? sendDate}) =>
       MessageSchedulingStateSendAtDate(sendDate: sendDate ?? this.sendDate);
 }
 
 extension MessageSendOptionsExtensions on MessageSendOptions {
-  MessageSendOptions copy(
+  MessageSendOptions copyWith(
           {bool? disableNotification,
           bool? fromBackground,
           bool? protectContent,
@@ -6805,7 +6839,7 @@ extension MessageSendOptionsExtensions on MessageSendOptions {
 }
 
 extension MessageCopyOptionsExtensions on MessageCopyOptions {
-  MessageCopyOptions copy(
+  MessageCopyOptions copyWith(
           {bool? sendCopy, bool? replaceCaption, FormattedText? newCaption}) =>
       MessageCopyOptions(
           sendCopy: sendCopy ?? this.sendCopy,
@@ -6988,7 +7022,7 @@ extension InputMessageContentExtensions on InputMessageContent {
 }
 
 extension InputMessageTextExtensions on InputMessageText {
-  InputMessageText copy(
+  InputMessageText copyWith(
           {FormattedText? text,
           bool? disableWebPagePreview,
           bool? clearDraft}) =>
@@ -7000,7 +7034,7 @@ extension InputMessageTextExtensions on InputMessageText {
 }
 
 extension InputMessageAnimationExtensions on InputMessageAnimation {
-  InputMessageAnimation copy(
+  InputMessageAnimation copyWith(
           {InputFile? animation,
           InputThumbnail? thumbnail,
           List<int>? addedStickerFileIds,
@@ -7019,7 +7053,7 @@ extension InputMessageAnimationExtensions on InputMessageAnimation {
 }
 
 extension InputMessageAudioExtensions on InputMessageAudio {
-  InputMessageAudio copy(
+  InputMessageAudio copyWith(
           {InputFile? audio,
           InputThumbnail? albumCoverThumbnail,
           int? duration,
@@ -7036,7 +7070,7 @@ extension InputMessageAudioExtensions on InputMessageAudio {
 }
 
 extension InputMessageDocumentExtensions on InputMessageDocument {
-  InputMessageDocument copy(
+  InputMessageDocument copyWith(
           {InputFile? document,
           InputThumbnail? thumbnail,
           bool? disableContentTypeDetection,
@@ -7050,7 +7084,7 @@ extension InputMessageDocumentExtensions on InputMessageDocument {
 }
 
 extension InputMessagePhotoExtensions on InputMessagePhoto {
-  InputMessagePhoto copy(
+  InputMessagePhoto copyWith(
           {InputFile? photo,
           InputThumbnail? thumbnail,
           List<int>? addedStickerFileIds,
@@ -7069,7 +7103,7 @@ extension InputMessagePhotoExtensions on InputMessagePhoto {
 }
 
 extension InputMessageStickerExtensions on InputMessageSticker {
-  InputMessageSticker copy(
+  InputMessageSticker copyWith(
           {InputFile? sticker,
           InputThumbnail? thumbnail,
           int? width,
@@ -7084,7 +7118,7 @@ extension InputMessageStickerExtensions on InputMessageSticker {
 }
 
 extension InputMessageVideoExtensions on InputMessageVideo {
-  InputMessageVideo copy(
+  InputMessageVideo copyWith(
           {InputFile? video,
           InputThumbnail? thumbnail,
           List<int>? addedStickerFileIds,
@@ -7107,7 +7141,7 @@ extension InputMessageVideoExtensions on InputMessageVideo {
 }
 
 extension InputMessageVideoNoteExtensions on InputMessageVideoNote {
-  InputMessageVideoNote copy(
+  InputMessageVideoNote copyWith(
           {InputFile? videoNote,
           InputThumbnail? thumbnail,
           int? duration,
@@ -7120,7 +7154,7 @@ extension InputMessageVideoNoteExtensions on InputMessageVideoNote {
 }
 
 extension InputMessageVoiceNoteExtensions on InputMessageVoiceNote {
-  InputMessageVoiceNote copy(
+  InputMessageVoiceNote copyWith(
           {InputFile? voiceNote,
           int? duration,
           String? waveform,
@@ -7133,7 +7167,7 @@ extension InputMessageVoiceNoteExtensions on InputMessageVoiceNote {
 }
 
 extension InputMessageLocationExtensions on InputMessageLocation {
-  InputMessageLocation copy(
+  InputMessageLocation copyWith(
           {Location? location,
           int? livePeriod,
           int? heading,
@@ -7147,29 +7181,31 @@ extension InputMessageLocationExtensions on InputMessageLocation {
 }
 
 extension InputMessageVenueExtensions on InputMessageVenue {
-  InputMessageVenue copy({Venue? venue}) =>
+  InputMessageVenue copyWith({Venue? venue}) =>
       InputMessageVenue(venue: venue ?? this.venue);
 }
 
 extension InputMessageContactExtensions on InputMessageContact {
-  InputMessageContact copy({Contact? contact}) =>
+  InputMessageContact copyWith({Contact? contact}) =>
       InputMessageContact(contact: contact ?? this.contact);
 }
 
 extension InputMessageDiceExtensions on InputMessageDice {
-  InputMessageDice copy({String? emoji, bool? clearDraft}) => InputMessageDice(
-      emoji: emoji ?? this.emoji, clearDraft: clearDraft ?? this.clearDraft);
+  InputMessageDice copyWith({String? emoji, bool? clearDraft}) =>
+      InputMessageDice(
+          emoji: emoji ?? this.emoji,
+          clearDraft: clearDraft ?? this.clearDraft);
 }
 
 extension InputMessageGameExtensions on InputMessageGame {
-  InputMessageGame copy({int? botUserId, String? gameShortName}) =>
+  InputMessageGame copyWith({int? botUserId, String? gameShortName}) =>
       InputMessageGame(
           botUserId: botUserId ?? this.botUserId,
           gameShortName: gameShortName ?? this.gameShortName);
 }
 
 extension InputMessageInvoiceExtensions on InputMessageInvoice {
-  InputMessageInvoice copy(
+  InputMessageInvoice copyWith(
           {Invoice? invoice,
           String? title,
           String? description,
@@ -7196,7 +7232,7 @@ extension InputMessageInvoiceExtensions on InputMessageInvoice {
 }
 
 extension InputMessagePollExtensions on InputMessagePoll {
-  InputMessagePoll copy(
+  InputMessagePoll copyWith(
           {String? question,
           List<String>? options,
           bool? isAnonymous,
@@ -7215,7 +7251,7 @@ extension InputMessagePollExtensions on InputMessagePoll {
 }
 
 extension InputMessageForwardedExtensions on InputMessageForwarded {
-  InputMessageForwarded copy(
+  InputMessageForwarded copyWith(
           {int? fromChatId,
           int? messageId,
           bool? inGameShare,
@@ -7554,35 +7590,35 @@ extension ChatActionExtensions on ChatAction {
 }
 
 extension ChatActionUploadingVideoExtensions on ChatActionUploadingVideo {
-  ChatActionUploadingVideo copy({int? progress}) =>
+  ChatActionUploadingVideo copyWith({int? progress}) =>
       ChatActionUploadingVideo(progress: progress ?? this.progress);
 }
 
 extension ChatActionUploadingVoiceNoteExtensions
     on ChatActionUploadingVoiceNote {
-  ChatActionUploadingVoiceNote copy({int? progress}) =>
+  ChatActionUploadingVoiceNote copyWith({int? progress}) =>
       ChatActionUploadingVoiceNote(progress: progress ?? this.progress);
 }
 
 extension ChatActionUploadingPhotoExtensions on ChatActionUploadingPhoto {
-  ChatActionUploadingPhoto copy({int? progress}) =>
+  ChatActionUploadingPhoto copyWith({int? progress}) =>
       ChatActionUploadingPhoto(progress: progress ?? this.progress);
 }
 
 extension ChatActionUploadingDocumentExtensions on ChatActionUploadingDocument {
-  ChatActionUploadingDocument copy({int? progress}) =>
+  ChatActionUploadingDocument copyWith({int? progress}) =>
       ChatActionUploadingDocument(progress: progress ?? this.progress);
 }
 
 extension ChatActionUploadingVideoNoteExtensions
     on ChatActionUploadingVideoNote {
-  ChatActionUploadingVideoNote copy({int? progress}) =>
+  ChatActionUploadingVideoNote copyWith({int? progress}) =>
       ChatActionUploadingVideoNote(progress: progress ?? this.progress);
 }
 
 extension ChatActionWatchingAnimationsExtensions
     on ChatActionWatchingAnimations {
-  ChatActionWatchingAnimations copy({String? emoji}) =>
+  ChatActionWatchingAnimations copyWith({String? emoji}) =>
       ChatActionWatchingAnimations(emoji: emoji ?? this.emoji);
 }
 
@@ -7656,26 +7692,27 @@ extension UserStatusExtensions on UserStatus {
 }
 
 extension UserStatusOnlineExtensions on UserStatusOnline {
-  UserStatusOnline copy({int? expires}) =>
+  UserStatusOnline copyWith({int? expires}) =>
       UserStatusOnline(expires: expires ?? this.expires);
 }
 
 extension UserStatusOfflineExtensions on UserStatusOffline {
-  UserStatusOffline copy({int? wasOnline}) =>
+  UserStatusOffline copyWith({int? wasOnline}) =>
       UserStatusOffline(wasOnline: wasOnline ?? this.wasOnline);
 }
 
 extension StickersExtensions on Stickers {
-  Stickers copy({List<Sticker>? stickers}) =>
+  Stickers copyWith({List<Sticker>? stickers}) =>
       Stickers(stickers: stickers ?? this.stickers);
 }
 
 extension EmojisExtensions on Emojis {
-  Emojis copy({List<String>? emojis}) => Emojis(emojis: emojis ?? this.emojis);
+  Emojis copyWith({List<String>? emojis}) =>
+      Emojis(emojis: emojis ?? this.emojis);
 }
 
 extension StickerSetExtensions on StickerSet {
-  StickerSet copy(
+  StickerSet copyWith(
           {int? id,
           String? title,
           String? name,
@@ -7706,7 +7743,7 @@ extension StickerSetExtensions on StickerSet {
 }
 
 extension StickerSetInfoExtensions on StickerSetInfo {
-  StickerSetInfo copy(
+  StickerSetInfo copyWith(
           {int? id,
           String? title,
           String? name,
@@ -7737,7 +7774,7 @@ extension StickerSetInfoExtensions on StickerSetInfo {
 }
 
 extension StickerSetsExtensions on StickerSets {
-  StickerSets copy({int? totalCount, List<StickerSetInfo>? sets}) =>
+  StickerSets copyWith({int? totalCount, List<StickerSetInfo>? sets}) =>
       StickerSets(
           totalCount: totalCount ?? this.totalCount, sets: sets ?? this.sets);
 }
@@ -7804,7 +7841,7 @@ extension CallDiscardReasonExtensions on CallDiscardReason {
 }
 
 extension CallProtocolExtensions on CallProtocol {
-  CallProtocol copy(
+  CallProtocol copyWith(
           {bool? udpP2p,
           bool? udpReflector,
           int? minLayer,
@@ -7856,12 +7893,12 @@ extension CallServerTypeExtensions on CallServerType {
 
 extension CallServerTypeTelegramReflectorExtensions
     on CallServerTypeTelegramReflector {
-  CallServerTypeTelegramReflector copy({String? peerTag}) =>
+  CallServerTypeTelegramReflector copyWith({String? peerTag}) =>
       CallServerTypeTelegramReflector(peerTag: peerTag ?? this.peerTag);
 }
 
 extension CallServerTypeWebrtcExtensions on CallServerTypeWebrtc {
-  CallServerTypeWebrtc copy(
+  CallServerTypeWebrtc copyWith(
           {String? username,
           String? password,
           bool? supportsTurn,
@@ -7874,7 +7911,7 @@ extension CallServerTypeWebrtcExtensions on CallServerTypeWebrtc {
 }
 
 extension CallServerExtensions on CallServer {
-  CallServer copy(
+  CallServer copyWith(
           {int? id,
           String? ipAddress,
           String? ipv6Address,
@@ -7889,11 +7926,11 @@ extension CallServerExtensions on CallServer {
 }
 
 extension CallIdExtensions on CallId {
-  CallId copy({int? id}) => CallId(id: id ?? this.id);
+  CallId copyWith({int? id}) => CallId(id: id ?? this.id);
 }
 
 extension GroupCallIdExtensions on GroupCallId {
-  GroupCallId copy({int? id}) => GroupCallId(id: id ?? this.id);
+  GroupCallId copyWith({int? id}) => GroupCallId(id: id ?? this.id);
 }
 
 extension CallStateExtensions on CallState {
@@ -7966,14 +8003,14 @@ extension CallStateExtensions on CallState {
 }
 
 extension CallStatePendingExtensions on CallStatePending {
-  CallStatePending copy({bool? isCreated, bool? isReceived}) =>
+  CallStatePending copyWith({bool? isCreated, bool? isReceived}) =>
       CallStatePending(
           isCreated: isCreated ?? this.isCreated,
           isReceived: isReceived ?? this.isReceived);
 }
 
 extension CallStateReadyExtensions on CallStateReady {
-  CallStateReady copy(
+  CallStateReady copyWith(
           {CallProtocol? protocol,
           List<CallServer>? servers,
           String? config,
@@ -7990,7 +8027,7 @@ extension CallStateReadyExtensions on CallStateReady {
 }
 
 extension CallStateDiscardedExtensions on CallStateDiscarded {
-  CallStateDiscarded copy(
+  CallStateDiscarded copyWith(
           {CallDiscardReason? reason,
           bool? needRating,
           bool? needDebugInformation}) =>
@@ -8002,7 +8039,7 @@ extension CallStateDiscardedExtensions on CallStateDiscarded {
 }
 
 extension CallStateErrorExtensions on CallStateError {
-  CallStateError copy({TdError? error}) =>
+  CallStateError copyWith({TdError? error}) =>
       CallStateError(error: error ?? this.error);
 }
 
@@ -8050,7 +8087,7 @@ extension GroupCallVideoQualityExtensions on GroupCallVideoQuality {
 }
 
 extension GroupCallRecentSpeakerExtensions on GroupCallRecentSpeaker {
-  GroupCallRecentSpeaker copy(
+  GroupCallRecentSpeaker copyWith(
           {MessageSender? participantId, bool? isSpeaking}) =>
       GroupCallRecentSpeaker(
           participantId: participantId ?? this.participantId,
@@ -8058,7 +8095,7 @@ extension GroupCallRecentSpeakerExtensions on GroupCallRecentSpeaker {
 }
 
 extension GroupCallExtensions on GroupCall {
-  GroupCall copy(
+  GroupCall copyWith(
           {int? id,
           String? title,
           int? scheduledStartDate,
@@ -8104,7 +8141,8 @@ extension GroupCallExtensions on GroupCall {
 }
 
 extension GroupCallVideoSourceGroupExtensions on GroupCallVideoSourceGroup {
-  GroupCallVideoSourceGroup copy({String? semantics, List<int>? sourceIds}) =>
+  GroupCallVideoSourceGroup copyWith(
+          {String? semantics, List<int>? sourceIds}) =>
       GroupCallVideoSourceGroup(
           semantics: semantics ?? this.semantics,
           sourceIds: sourceIds ?? this.sourceIds);
@@ -8112,7 +8150,7 @@ extension GroupCallVideoSourceGroupExtensions on GroupCallVideoSourceGroup {
 
 extension GroupCallParticipantVideoInfoExtensions
     on GroupCallParticipantVideoInfo {
-  GroupCallParticipantVideoInfo copy(
+  GroupCallParticipantVideoInfo copyWith(
           {List<GroupCallVideoSourceGroup>? sourceGroups,
           String? endpointId,
           bool? isPaused}) =>
@@ -8123,7 +8161,7 @@ extension GroupCallParticipantVideoInfoExtensions
 }
 
 extension GroupCallParticipantExtensions on GroupCallParticipant {
-  GroupCallParticipant copy(
+  GroupCallParticipant copyWith(
           {MessageSender? participantId,
           int? audioSourceId,
           int? screenSharingAudioSourceId,
@@ -8269,7 +8307,7 @@ extension CallProblemExtensions on CallProblem {
 }
 
 extension CallExtensions on Call {
-  Call copy(
+  Call copyWith(
           {int? id,
           int? userId,
           bool? isOutgoing,
@@ -8285,7 +8323,7 @@ extension CallExtensions on Call {
 
 extension PhoneNumberAuthenticationSettingsExtensions
     on PhoneNumberAuthenticationSettings {
-  PhoneNumberAuthenticationSettings copy(
+  PhoneNumberAuthenticationSettings copyWith(
           {bool? allowFlashCall,
           bool? allowMissedCall,
           bool? isCurrentPhoneNumber,
@@ -8303,7 +8341,7 @@ extension PhoneNumberAuthenticationSettingsExtensions
 }
 
 extension AnimationsExtensions on Animations {
-  Animations copy({List<Animation>? animations}) =>
+  Animations copyWith({List<Animation>? animations}) =>
       Animations(animations: animations ?? this.animations);
 }
 
@@ -8341,12 +8379,12 @@ extension DiceStickersExtensions on DiceStickers {
 }
 
 extension DiceStickersRegularExtensions on DiceStickersRegular {
-  DiceStickersRegular copy({Sticker? sticker}) =>
+  DiceStickersRegular copyWith({Sticker? sticker}) =>
       DiceStickersRegular(sticker: sticker ?? this.sticker);
 }
 
 extension DiceStickersSlotMachineExtensions on DiceStickersSlotMachine {
-  DiceStickersSlotMachine copy(
+  DiceStickersSlotMachine copyWith(
           {Sticker? background,
           Sticker? lever,
           Sticker? leftReel,
@@ -8361,14 +8399,14 @@ extension DiceStickersSlotMachineExtensions on DiceStickersSlotMachine {
 }
 
 extension ImportedContactsExtensions on ImportedContacts {
-  ImportedContacts copy({List<int>? userIds, List<int>? importerCount}) =>
+  ImportedContacts copyWith({List<int>? userIds, List<int>? importerCount}) =>
       ImportedContacts(
           userIds: userIds ?? this.userIds,
           importerCount: importerCount ?? this.importerCount);
 }
 
 extension HttpUrlExtensions on HttpUrl {
-  HttpUrl copy({String? url}) => HttpUrl(url: url ?? this.url);
+  HttpUrl copyWith({String? url}) => HttpUrl(url: url ?? this.url);
 }
 
 extension InputInlineQueryResultExtensions on InputInlineQueryResult {
@@ -8498,7 +8536,7 @@ extension InputInlineQueryResultExtensions on InputInlineQueryResult {
 
 extension InputInlineQueryResultAnimationExtensions
     on InputInlineQueryResultAnimation {
-  InputInlineQueryResultAnimation copy(
+  InputInlineQueryResultAnimation copyWith(
           {String? id,
           String? title,
           String? thumbnailUrl,
@@ -8526,7 +8564,7 @@ extension InputInlineQueryResultAnimationExtensions
 
 extension InputInlineQueryResultArticleExtensions
     on InputInlineQueryResultArticle {
-  InputInlineQueryResultArticle copy(
+  InputInlineQueryResultArticle copyWith(
           {String? id,
           String? url,
           bool? hideUrl,
@@ -8551,7 +8589,7 @@ extension InputInlineQueryResultArticleExtensions
 }
 
 extension InputInlineQueryResultAudioExtensions on InputInlineQueryResultAudio {
-  InputInlineQueryResultAudio copy(
+  InputInlineQueryResultAudio copyWith(
           {String? id,
           String? title,
           String? performer,
@@ -8571,7 +8609,7 @@ extension InputInlineQueryResultAudioExtensions on InputInlineQueryResultAudio {
 
 extension InputInlineQueryResultContactExtensions
     on InputInlineQueryResultContact {
-  InputInlineQueryResultContact copy(
+  InputInlineQueryResultContact copyWith(
           {String? id,
           Contact? contact,
           String? thumbnailUrl,
@@ -8591,7 +8629,7 @@ extension InputInlineQueryResultContactExtensions
 
 extension InputInlineQueryResultDocumentExtensions
     on InputInlineQueryResultDocument {
-  InputInlineQueryResultDocument copy(
+  InputInlineQueryResultDocument copyWith(
           {String? id,
           String? title,
           String? description,
@@ -8616,7 +8654,7 @@ extension InputInlineQueryResultDocumentExtensions
 }
 
 extension InputInlineQueryResultGameExtensions on InputInlineQueryResultGame {
-  InputInlineQueryResultGame copy(
+  InputInlineQueryResultGame copyWith(
           {String? id, String? gameShortName, ReplyMarkup? replyMarkup}) =>
       InputInlineQueryResultGame(
           id: id ?? this.id,
@@ -8626,7 +8664,7 @@ extension InputInlineQueryResultGameExtensions on InputInlineQueryResultGame {
 
 extension InputInlineQueryResultLocationExtensions
     on InputInlineQueryResultLocation {
-  InputInlineQueryResultLocation copy(
+  InputInlineQueryResultLocation copyWith(
           {String? id,
           Location? location,
           int? livePeriod,
@@ -8649,7 +8687,7 @@ extension InputInlineQueryResultLocationExtensions
 }
 
 extension InputInlineQueryResultPhotoExtensions on InputInlineQueryResultPhoto {
-  InputInlineQueryResultPhoto copy(
+  InputInlineQueryResultPhoto copyWith(
           {String? id,
           String? title,
           String? description,
@@ -8673,7 +8711,7 @@ extension InputInlineQueryResultPhotoExtensions on InputInlineQueryResultPhoto {
 
 extension InputInlineQueryResultStickerExtensions
     on InputInlineQueryResultSticker {
-  InputInlineQueryResultSticker copy(
+  InputInlineQueryResultSticker copyWith(
           {String? id,
           String? thumbnailUrl,
           String? stickerUrl,
@@ -8692,7 +8730,7 @@ extension InputInlineQueryResultStickerExtensions
 }
 
 extension InputInlineQueryResultVenueExtensions on InputInlineQueryResultVenue {
-  InputInlineQueryResultVenue copy(
+  InputInlineQueryResultVenue copyWith(
           {String? id,
           Venue? venue,
           String? thumbnailUrl,
@@ -8711,7 +8749,7 @@ extension InputInlineQueryResultVenueExtensions on InputInlineQueryResultVenue {
 }
 
 extension InputInlineQueryResultVideoExtensions on InputInlineQueryResultVideo {
-  InputInlineQueryResultVideo copy(
+  InputInlineQueryResultVideo copyWith(
           {String? id,
           String? title,
           String? description,
@@ -8739,7 +8777,7 @@ extension InputInlineQueryResultVideoExtensions on InputInlineQueryResultVideo {
 
 extension InputInlineQueryResultVoiceNoteExtensions
     on InputInlineQueryResultVoiceNote {
-  InputInlineQueryResultVoiceNote copy(
+  InputInlineQueryResultVoiceNote copyWith(
           {String? id,
           String? title,
           String? voiceNoteUrl,
@@ -8879,7 +8917,7 @@ extension InlineQueryResultExtensions on InlineQueryResult {
 }
 
 extension InlineQueryResultArticleExtensions on InlineQueryResultArticle {
-  InlineQueryResultArticle copy(
+  InlineQueryResultArticle copyWith(
           {String? id,
           String? url,
           bool? hideUrl,
@@ -8896,7 +8934,7 @@ extension InlineQueryResultArticleExtensions on InlineQueryResultArticle {
 }
 
 extension InlineQueryResultContactExtensions on InlineQueryResultContact {
-  InlineQueryResultContact copy(
+  InlineQueryResultContact copyWith(
           {String? id, Contact? contact, Thumbnail? thumbnail}) =>
       InlineQueryResultContact(
           id: id ?? this.id,
@@ -8905,7 +8943,7 @@ extension InlineQueryResultContactExtensions on InlineQueryResultContact {
 }
 
 extension InlineQueryResultLocationExtensions on InlineQueryResultLocation {
-  InlineQueryResultLocation copy(
+  InlineQueryResultLocation copyWith(
           {String? id,
           Location? location,
           String? title,
@@ -8918,7 +8956,7 @@ extension InlineQueryResultLocationExtensions on InlineQueryResultLocation {
 }
 
 extension InlineQueryResultVenueExtensions on InlineQueryResultVenue {
-  InlineQueryResultVenue copy(
+  InlineQueryResultVenue copyWith(
           {String? id, Venue? venue, Thumbnail? thumbnail}) =>
       InlineQueryResultVenue(
           id: id ?? this.id,
@@ -8927,12 +8965,12 @@ extension InlineQueryResultVenueExtensions on InlineQueryResultVenue {
 }
 
 extension InlineQueryResultGameExtensions on InlineQueryResultGame {
-  InlineQueryResultGame copy({String? id, Game? game}) =>
+  InlineQueryResultGame copyWith({String? id, Game? game}) =>
       InlineQueryResultGame(id: id ?? this.id, game: game ?? this.game);
 }
 
 extension InlineQueryResultAnimationExtensions on InlineQueryResultAnimation {
-  InlineQueryResultAnimation copy(
+  InlineQueryResultAnimation copyWith(
           {String? id, Animation? animation, String? title}) =>
       InlineQueryResultAnimation(
           id: id ?? this.id,
@@ -8941,12 +8979,12 @@ extension InlineQueryResultAnimationExtensions on InlineQueryResultAnimation {
 }
 
 extension InlineQueryResultAudioExtensions on InlineQueryResultAudio {
-  InlineQueryResultAudio copy({String? id, Audio? audio}) =>
+  InlineQueryResultAudio copyWith({String? id, Audio? audio}) =>
       InlineQueryResultAudio(id: id ?? this.id, audio: audio ?? this.audio);
 }
 
 extension InlineQueryResultDocumentExtensions on InlineQueryResultDocument {
-  InlineQueryResultDocument copy(
+  InlineQueryResultDocument copyWith(
           {String? id,
           Document? document,
           String? title,
@@ -8959,7 +8997,7 @@ extension InlineQueryResultDocumentExtensions on InlineQueryResultDocument {
 }
 
 extension InlineQueryResultPhotoExtensions on InlineQueryResultPhoto {
-  InlineQueryResultPhoto copy(
+  InlineQueryResultPhoto copyWith(
           {String? id, Photo? photo, String? title, String? description}) =>
       InlineQueryResultPhoto(
           id: id ?? this.id,
@@ -8969,13 +9007,13 @@ extension InlineQueryResultPhotoExtensions on InlineQueryResultPhoto {
 }
 
 extension InlineQueryResultStickerExtensions on InlineQueryResultSticker {
-  InlineQueryResultSticker copy({String? id, Sticker? sticker}) =>
+  InlineQueryResultSticker copyWith({String? id, Sticker? sticker}) =>
       InlineQueryResultSticker(
           id: id ?? this.id, sticker: sticker ?? this.sticker);
 }
 
 extension InlineQueryResultVideoExtensions on InlineQueryResultVideo {
-  InlineQueryResultVideo copy(
+  InlineQueryResultVideo copyWith(
           {String? id, Video? video, String? title, String? description}) =>
       InlineQueryResultVideo(
           id: id ?? this.id,
@@ -8985,7 +9023,7 @@ extension InlineQueryResultVideoExtensions on InlineQueryResultVideo {
 }
 
 extension InlineQueryResultVoiceNoteExtensions on InlineQueryResultVoiceNote {
-  InlineQueryResultVoiceNote copy(
+  InlineQueryResultVoiceNote copyWith(
           {String? id, VoiceNote? voiceNote, String? title}) =>
       InlineQueryResultVoiceNote(
           id: id ?? this.id,
@@ -8994,7 +9032,7 @@ extension InlineQueryResultVoiceNoteExtensions on InlineQueryResultVoiceNote {
 }
 
 extension InlineQueryResultsExtensions on InlineQueryResults {
-  InlineQueryResults copy(
+  InlineQueryResults copyWith(
           {int? inlineQueryId,
           String? nextOffset,
           List<InlineQueryResult>? results,
@@ -9055,25 +9093,26 @@ extension CallbackQueryPayloadExtensions on CallbackQueryPayload {
 }
 
 extension CallbackQueryPayloadDataExtensions on CallbackQueryPayloadData {
-  CallbackQueryPayloadData copy({String? data}) =>
+  CallbackQueryPayloadData copyWith({String? data}) =>
       CallbackQueryPayloadData(data: data ?? this.data);
 }
 
 extension CallbackQueryPayloadDataWithPasswordExtensions
     on CallbackQueryPayloadDataWithPassword {
-  CallbackQueryPayloadDataWithPassword copy({String? password, String? data}) =>
+  CallbackQueryPayloadDataWithPassword copyWith(
+          {String? password, String? data}) =>
       CallbackQueryPayloadDataWithPassword(
           password: password ?? this.password, data: data ?? this.data);
 }
 
 extension CallbackQueryPayloadGameExtensions on CallbackQueryPayloadGame {
-  CallbackQueryPayloadGame copy({String? gameShortName}) =>
+  CallbackQueryPayloadGame copyWith({String? gameShortName}) =>
       CallbackQueryPayloadGame(
           gameShortName: gameShortName ?? this.gameShortName);
 }
 
 extension CallbackQueryAnswerExtensions on CallbackQueryAnswer {
-  CallbackQueryAnswer copy({String? text, bool? showAlert, String? url}) =>
+  CallbackQueryAnswer copyWith({String? text, bool? showAlert, String? url}) =>
       CallbackQueryAnswer(
           text: text ?? this.text,
           showAlert: showAlert ?? this.showAlert,
@@ -9081,19 +9120,20 @@ extension CallbackQueryAnswerExtensions on CallbackQueryAnswer {
 }
 
 extension CustomRequestResultExtensions on CustomRequestResult {
-  CustomRequestResult copy({String? result}) =>
+  CustomRequestResult copyWith({String? result}) =>
       CustomRequestResult(result: result ?? this.result);
 }
 
 extension GameHighScoreExtensions on GameHighScore {
-  GameHighScore copy({int? position, int? userId, int? score}) => GameHighScore(
-      position: position ?? this.position,
-      userId: userId ?? this.userId,
-      score: score ?? this.score);
+  GameHighScore copyWith({int? position, int? userId, int? score}) =>
+      GameHighScore(
+          position: position ?? this.position,
+          userId: userId ?? this.userId,
+          score: score ?? this.score);
 }
 
 extension GameHighScoresExtensions on GameHighScores {
-  GameHighScores copy({List<GameHighScore>? scores}) =>
+  GameHighScores copyWith({List<GameHighScore>? scores}) =>
       GameHighScores(scores: scores ?? this.scores);
 }
 
@@ -9518,42 +9558,42 @@ extension ChatEventActionExtensions on ChatEventAction {
 }
 
 extension ChatEventMessageEditedExtensions on ChatEventMessageEdited {
-  ChatEventMessageEdited copy({Message? oldMessage, Message? newMessage}) =>
+  ChatEventMessageEdited copyWith({Message? oldMessage, Message? newMessage}) =>
       ChatEventMessageEdited(
           oldMessage: oldMessage ?? this.oldMessage,
           newMessage: newMessage ?? this.newMessage);
 }
 
 extension ChatEventMessageDeletedExtensions on ChatEventMessageDeleted {
-  ChatEventMessageDeleted copy({Message? message}) =>
+  ChatEventMessageDeleted copyWith({Message? message}) =>
       ChatEventMessageDeleted(message: message ?? this.message);
 }
 
 extension ChatEventPollStoppedExtensions on ChatEventPollStopped {
-  ChatEventPollStopped copy({Message? message}) =>
+  ChatEventPollStopped copyWith({Message? message}) =>
       ChatEventPollStopped(message: message ?? this.message);
 }
 
 extension ChatEventMessagePinnedExtensions on ChatEventMessagePinned {
-  ChatEventMessagePinned copy({Message? message}) =>
+  ChatEventMessagePinned copyWith({Message? message}) =>
       ChatEventMessagePinned(message: message ?? this.message);
 }
 
 extension ChatEventMessageUnpinnedExtensions on ChatEventMessageUnpinned {
-  ChatEventMessageUnpinned copy({Message? message}) =>
+  ChatEventMessageUnpinned copyWith({Message? message}) =>
       ChatEventMessageUnpinned(message: message ?? this.message);
 }
 
 extension ChatEventMemberJoinedByInviteLinkExtensions
     on ChatEventMemberJoinedByInviteLink {
-  ChatEventMemberJoinedByInviteLink copy({ChatInviteLink? inviteLink}) =>
+  ChatEventMemberJoinedByInviteLink copyWith({ChatInviteLink? inviteLink}) =>
       ChatEventMemberJoinedByInviteLink(
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension ChatEventMemberJoinedByRequestExtensions
     on ChatEventMemberJoinedByRequest {
-  ChatEventMemberJoinedByRequest copy(
+  ChatEventMemberJoinedByRequest copyWith(
           {int? approverUserId, ChatInviteLink? inviteLink}) =>
       ChatEventMemberJoinedByRequest(
           approverUserId: approverUserId ?? this.approverUserId,
@@ -9561,13 +9601,13 @@ extension ChatEventMemberJoinedByRequestExtensions
 }
 
 extension ChatEventMemberInvitedExtensions on ChatEventMemberInvited {
-  ChatEventMemberInvited copy({int? userId, ChatMemberStatus? status}) =>
+  ChatEventMemberInvited copyWith({int? userId, ChatMemberStatus? status}) =>
       ChatEventMemberInvited(
           userId: userId ?? this.userId, status: status ?? this.status);
 }
 
 extension ChatEventMemberPromotedExtensions on ChatEventMemberPromoted {
-  ChatEventMemberPromoted copy(
+  ChatEventMemberPromoted copyWith(
           {int? userId,
           ChatMemberStatus? oldStatus,
           ChatMemberStatus? newStatus}) =>
@@ -9578,7 +9618,7 @@ extension ChatEventMemberPromotedExtensions on ChatEventMemberPromoted {
 }
 
 extension ChatEventMemberRestrictedExtensions on ChatEventMemberRestricted {
-  ChatEventMemberRestricted copy(
+  ChatEventMemberRestricted copyWith(
           {MessageSender? memberId,
           ChatMemberStatus? oldStatus,
           ChatMemberStatus? newStatus}) =>
@@ -9589,14 +9629,14 @@ extension ChatEventMemberRestrictedExtensions on ChatEventMemberRestricted {
 }
 
 extension ChatEventTitleChangedExtensions on ChatEventTitleChanged {
-  ChatEventTitleChanged copy({String? oldTitle, String? newTitle}) =>
+  ChatEventTitleChanged copyWith({String? oldTitle, String? newTitle}) =>
       ChatEventTitleChanged(
           oldTitle: oldTitle ?? this.oldTitle,
           newTitle: newTitle ?? this.newTitle);
 }
 
 extension ChatEventPermissionsChangedExtensions on ChatEventPermissionsChanged {
-  ChatEventPermissionsChanged copy(
+  ChatEventPermissionsChanged copyWith(
           {ChatPermissions? oldPermissions, ChatPermissions? newPermissions}) =>
       ChatEventPermissionsChanged(
           oldPermissions: oldPermissions ?? this.oldPermissions,
@@ -9604,7 +9644,7 @@ extension ChatEventPermissionsChangedExtensions on ChatEventPermissionsChanged {
 }
 
 extension ChatEventDescriptionChangedExtensions on ChatEventDescriptionChanged {
-  ChatEventDescriptionChanged copy(
+  ChatEventDescriptionChanged copyWith(
           {String? oldDescription, String? newDescription}) =>
       ChatEventDescriptionChanged(
           oldDescription: oldDescription ?? this.oldDescription,
@@ -9612,27 +9652,28 @@ extension ChatEventDescriptionChangedExtensions on ChatEventDescriptionChanged {
 }
 
 extension ChatEventUsernameChangedExtensions on ChatEventUsernameChanged {
-  ChatEventUsernameChanged copy({String? oldUsername, String? newUsername}) =>
+  ChatEventUsernameChanged copyWith(
+          {String? oldUsername, String? newUsername}) =>
       ChatEventUsernameChanged(
           oldUsername: oldUsername ?? this.oldUsername,
           newUsername: newUsername ?? this.newUsername);
 }
 
 extension ChatEventPhotoChangedExtensions on ChatEventPhotoChanged {
-  ChatEventPhotoChanged copy({ChatPhoto? oldPhoto, ChatPhoto? newPhoto}) =>
+  ChatEventPhotoChanged copyWith({ChatPhoto? oldPhoto, ChatPhoto? newPhoto}) =>
       ChatEventPhotoChanged(
           oldPhoto: oldPhoto ?? this.oldPhoto,
           newPhoto: newPhoto ?? this.newPhoto);
 }
 
 extension ChatEventInvitesToggledExtensions on ChatEventInvitesToggled {
-  ChatEventInvitesToggled copy({bool? canInviteUsers}) =>
+  ChatEventInvitesToggled copyWith({bool? canInviteUsers}) =>
       ChatEventInvitesToggled(
           canInviteUsers: canInviteUsers ?? this.canInviteUsers);
 }
 
 extension ChatEventLinkedChatChangedExtensions on ChatEventLinkedChatChanged {
-  ChatEventLinkedChatChanged copy(
+  ChatEventLinkedChatChanged copyWith(
           {int? oldLinkedChatId, int? newLinkedChatId}) =>
       ChatEventLinkedChatChanged(
           oldLinkedChatId: oldLinkedChatId ?? this.oldLinkedChatId,
@@ -9641,7 +9682,7 @@ extension ChatEventLinkedChatChangedExtensions on ChatEventLinkedChatChanged {
 
 extension ChatEventSlowModeDelayChangedExtensions
     on ChatEventSlowModeDelayChanged {
-  ChatEventSlowModeDelayChanged copy(
+  ChatEventSlowModeDelayChanged copyWith(
           {int? oldSlowModeDelay, int? newSlowModeDelay}) =>
       ChatEventSlowModeDelayChanged(
           oldSlowModeDelay: oldSlowModeDelay ?? this.oldSlowModeDelay,
@@ -9649,7 +9690,8 @@ extension ChatEventSlowModeDelayChangedExtensions
 }
 
 extension ChatEventMessageTtlChangedExtensions on ChatEventMessageTtlChanged {
-  ChatEventMessageTtlChanged copy({int? oldMessageTtl, int? newMessageTtl}) =>
+  ChatEventMessageTtlChanged copyWith(
+          {int? oldMessageTtl, int? newMessageTtl}) =>
       ChatEventMessageTtlChanged(
           oldMessageTtl: oldMessageTtl ?? this.oldMessageTtl,
           newMessageTtl: newMessageTtl ?? this.newMessageTtl);
@@ -9657,20 +9699,20 @@ extension ChatEventMessageTtlChangedExtensions on ChatEventMessageTtlChanged {
 
 extension ChatEventSignMessagesToggledExtensions
     on ChatEventSignMessagesToggled {
-  ChatEventSignMessagesToggled copy({bool? signMessages}) =>
+  ChatEventSignMessagesToggled copyWith({bool? signMessages}) =>
       ChatEventSignMessagesToggled(
           signMessages: signMessages ?? this.signMessages);
 }
 
 extension ChatEventHasProtectedContentToggledExtensions
     on ChatEventHasProtectedContentToggled {
-  ChatEventHasProtectedContentToggled copy({bool? hasProtectedContent}) =>
+  ChatEventHasProtectedContentToggled copyWith({bool? hasProtectedContent}) =>
       ChatEventHasProtectedContentToggled(
           hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent);
 }
 
 extension ChatEventStickerSetChangedExtensions on ChatEventStickerSetChanged {
-  ChatEventStickerSetChanged copy(
+  ChatEventStickerSetChanged copyWith(
           {int? oldStickerSetId, int? newStickerSetId}) =>
       ChatEventStickerSetChanged(
           oldStickerSetId: oldStickerSetId ?? this.oldStickerSetId,
@@ -9678,7 +9720,7 @@ extension ChatEventStickerSetChangedExtensions on ChatEventStickerSetChanged {
 }
 
 extension ChatEventLocationChangedExtensions on ChatEventLocationChanged {
-  ChatEventLocationChanged copy(
+  ChatEventLocationChanged copyWith(
           {ChatLocation? oldLocation, ChatLocation? newLocation}) =>
       ChatEventLocationChanged(
           oldLocation: oldLocation ?? this.oldLocation,
@@ -9687,14 +9729,15 @@ extension ChatEventLocationChangedExtensions on ChatEventLocationChanged {
 
 extension ChatEventIsAllHistoryAvailableToggledExtensions
     on ChatEventIsAllHistoryAvailableToggled {
-  ChatEventIsAllHistoryAvailableToggled copy({bool? isAllHistoryAvailable}) =>
+  ChatEventIsAllHistoryAvailableToggled copyWith(
+          {bool? isAllHistoryAvailable}) =>
       ChatEventIsAllHistoryAvailableToggled(
           isAllHistoryAvailable:
               isAllHistoryAvailable ?? this.isAllHistoryAvailable);
 }
 
 extension ChatEventInviteLinkEditedExtensions on ChatEventInviteLinkEdited {
-  ChatEventInviteLinkEdited copy(
+  ChatEventInviteLinkEdited copyWith(
           {ChatInviteLink? oldInviteLink, ChatInviteLink? newInviteLink}) =>
       ChatEventInviteLinkEdited(
           oldInviteLink: oldInviteLink ?? this.oldInviteLink,
@@ -9702,28 +9745,28 @@ extension ChatEventInviteLinkEditedExtensions on ChatEventInviteLinkEdited {
 }
 
 extension ChatEventInviteLinkRevokedExtensions on ChatEventInviteLinkRevoked {
-  ChatEventInviteLinkRevoked copy({ChatInviteLink? inviteLink}) =>
+  ChatEventInviteLinkRevoked copyWith({ChatInviteLink? inviteLink}) =>
       ChatEventInviteLinkRevoked(inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension ChatEventInviteLinkDeletedExtensions on ChatEventInviteLinkDeleted {
-  ChatEventInviteLinkDeleted copy({ChatInviteLink? inviteLink}) =>
+  ChatEventInviteLinkDeleted copyWith({ChatInviteLink? inviteLink}) =>
       ChatEventInviteLinkDeleted(inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension ChatEventVideoChatCreatedExtensions on ChatEventVideoChatCreated {
-  ChatEventVideoChatCreated copy({int? groupCallId}) =>
+  ChatEventVideoChatCreated copyWith({int? groupCallId}) =>
       ChatEventVideoChatCreated(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension ChatEventVideoChatEndedExtensions on ChatEventVideoChatEnded {
-  ChatEventVideoChatEnded copy({int? groupCallId}) =>
+  ChatEventVideoChatEnded copyWith({int? groupCallId}) =>
       ChatEventVideoChatEnded(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension ChatEventVideoChatParticipantIsMutedToggledExtensions
     on ChatEventVideoChatParticipantIsMutedToggled {
-  ChatEventVideoChatParticipantIsMutedToggled copy(
+  ChatEventVideoChatParticipantIsMutedToggled copyWith(
           {MessageSender? participantId, bool? isMuted}) =>
       ChatEventVideoChatParticipantIsMutedToggled(
           participantId: participantId ?? this.participantId,
@@ -9732,7 +9775,7 @@ extension ChatEventVideoChatParticipantIsMutedToggledExtensions
 
 extension ChatEventVideoChatParticipantVolumeLevelChangedExtensions
     on ChatEventVideoChatParticipantVolumeLevelChanged {
-  ChatEventVideoChatParticipantVolumeLevelChanged copy(
+  ChatEventVideoChatParticipantVolumeLevelChanged copyWith(
           {MessageSender? participantId, int? volumeLevel}) =>
       ChatEventVideoChatParticipantVolumeLevelChanged(
           participantId: participantId ?? this.participantId,
@@ -9741,14 +9784,14 @@ extension ChatEventVideoChatParticipantVolumeLevelChangedExtensions
 
 extension ChatEventVideoChatMuteNewParticipantsToggledExtensions
     on ChatEventVideoChatMuteNewParticipantsToggled {
-  ChatEventVideoChatMuteNewParticipantsToggled copy(
+  ChatEventVideoChatMuteNewParticipantsToggled copyWith(
           {bool? muteNewParticipants}) =>
       ChatEventVideoChatMuteNewParticipantsToggled(
           muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants);
 }
 
 extension ChatEventExtensions on ChatEvent {
-  ChatEvent copy(
+  ChatEvent copyWith(
           {int? id,
           int? date,
           MessageSender? memberId,
@@ -9761,12 +9804,12 @@ extension ChatEventExtensions on ChatEvent {
 }
 
 extension ChatEventsExtensions on ChatEvents {
-  ChatEvents copy({List<ChatEvent>? events}) =>
+  ChatEvents copyWith({List<ChatEvent>? events}) =>
       ChatEvents(events: events ?? this.events);
 }
 
 extension ChatEventLogFiltersExtensions on ChatEventLogFilters {
-  ChatEventLogFilters copy(
+  ChatEventLogFilters copyWith(
           {bool? messageEdits,
           bool? messageDeletions,
           bool? messagePins,
@@ -9841,13 +9884,13 @@ extension LanguagePackStringValueExtensions on LanguagePackStringValue {
 
 extension LanguagePackStringValueOrdinaryExtensions
     on LanguagePackStringValueOrdinary {
-  LanguagePackStringValueOrdinary copy({String? value}) =>
+  LanguagePackStringValueOrdinary copyWith({String? value}) =>
       LanguagePackStringValueOrdinary(value: value ?? this.value);
 }
 
 extension LanguagePackStringValuePluralizedExtensions
     on LanguagePackStringValuePluralized {
-  LanguagePackStringValuePluralized copy(
+  LanguagePackStringValuePluralized copyWith(
           {String? zeroValue,
           String? oneValue,
           String? twoValue,
@@ -9864,17 +9907,17 @@ extension LanguagePackStringValuePluralizedExtensions
 }
 
 extension LanguagePackStringExtensions on LanguagePackString {
-  LanguagePackString copy({String? key, LanguagePackStringValue? value}) =>
+  LanguagePackString copyWith({String? key, LanguagePackStringValue? value}) =>
       LanguagePackString(key: key ?? this.key, value: value ?? this.value);
 }
 
 extension LanguagePackStringsExtensions on LanguagePackStrings {
-  LanguagePackStrings copy({List<LanguagePackString>? strings}) =>
+  LanguagePackStrings copyWith({List<LanguagePackString>? strings}) =>
       LanguagePackStrings(strings: strings ?? this.strings);
 }
 
 extension LanguagePackInfoExtensions on LanguagePackInfo {
-  LanguagePackInfo copy(
+  LanguagePackInfo copyWith(
           {String? id,
           String? baseLanguagePackId,
           String? name,
@@ -9906,7 +9949,7 @@ extension LanguagePackInfoExtensions on LanguagePackInfo {
 }
 
 extension LocalizationTargetInfoExtensions on LocalizationTargetInfo {
-  LocalizationTargetInfo copy({List<LanguagePackInfo>? languagePacks}) =>
+  LocalizationTargetInfo copyWith({List<LanguagePackInfo>? languagePacks}) =>
       LocalizationTargetInfo(
           languagePacks: languagePacks ?? this.languagePacks);
 }
@@ -10032,20 +10075,20 @@ extension DeviceTokenExtensions on DeviceToken {
 
 extension DeviceTokenFirebaseCloudMessagingExtensions
     on DeviceTokenFirebaseCloudMessaging {
-  DeviceTokenFirebaseCloudMessaging copy({String? token, bool? encrypt}) =>
+  DeviceTokenFirebaseCloudMessaging copyWith({String? token, bool? encrypt}) =>
       DeviceTokenFirebaseCloudMessaging(
           token: token ?? this.token, encrypt: encrypt ?? this.encrypt);
 }
 
 extension DeviceTokenApplePushExtensions on DeviceTokenApplePush {
-  DeviceTokenApplePush copy({String? deviceToken, bool? isAppSandbox}) =>
+  DeviceTokenApplePush copyWith({String? deviceToken, bool? isAppSandbox}) =>
       DeviceTokenApplePush(
           deviceToken: deviceToken ?? this.deviceToken,
           isAppSandbox: isAppSandbox ?? this.isAppSandbox);
 }
 
 extension DeviceTokenApplePushVoIPExtensions on DeviceTokenApplePushVoIP {
-  DeviceTokenApplePushVoIP copy(
+  DeviceTokenApplePushVoIP copyWith(
           {String? deviceToken, bool? isAppSandbox, bool? encrypt}) =>
       DeviceTokenApplePushVoIP(
           deviceToken: deviceToken ?? this.deviceToken,
@@ -10054,23 +10097,23 @@ extension DeviceTokenApplePushVoIPExtensions on DeviceTokenApplePushVoIP {
 }
 
 extension DeviceTokenWindowsPushExtensions on DeviceTokenWindowsPush {
-  DeviceTokenWindowsPush copy({String? accessToken}) =>
+  DeviceTokenWindowsPush copyWith({String? accessToken}) =>
       DeviceTokenWindowsPush(accessToken: accessToken ?? this.accessToken);
 }
 
 extension DeviceTokenMicrosoftPushExtensions on DeviceTokenMicrosoftPush {
-  DeviceTokenMicrosoftPush copy({String? channelUri}) =>
+  DeviceTokenMicrosoftPush copyWith({String? channelUri}) =>
       DeviceTokenMicrosoftPush(channelUri: channelUri ?? this.channelUri);
 }
 
 extension DeviceTokenMicrosoftPushVoIPExtensions
     on DeviceTokenMicrosoftPushVoIP {
-  DeviceTokenMicrosoftPushVoIP copy({String? channelUri}) =>
+  DeviceTokenMicrosoftPushVoIP copyWith({String? channelUri}) =>
       DeviceTokenMicrosoftPushVoIP(channelUri: channelUri ?? this.channelUri);
 }
 
 extension DeviceTokenWebPushExtensions on DeviceTokenWebPush {
-  DeviceTokenWebPush copy(
+  DeviceTokenWebPush copyWith(
           {String? endpoint, String? p256dhBase64url, String? authBase64url}) =>
       DeviceTokenWebPush(
           endpoint: endpoint ?? this.endpoint,
@@ -10079,27 +10122,27 @@ extension DeviceTokenWebPushExtensions on DeviceTokenWebPush {
 }
 
 extension DeviceTokenSimplePushExtensions on DeviceTokenSimplePush {
-  DeviceTokenSimplePush copy({String? endpoint}) =>
+  DeviceTokenSimplePush copyWith({String? endpoint}) =>
       DeviceTokenSimplePush(endpoint: endpoint ?? this.endpoint);
 }
 
 extension DeviceTokenUbuntuPushExtensions on DeviceTokenUbuntuPush {
-  DeviceTokenUbuntuPush copy({String? token}) =>
+  DeviceTokenUbuntuPush copyWith({String? token}) =>
       DeviceTokenUbuntuPush(token: token ?? this.token);
 }
 
 extension DeviceTokenBlackBerryPushExtensions on DeviceTokenBlackBerryPush {
-  DeviceTokenBlackBerryPush copy({String? token}) =>
+  DeviceTokenBlackBerryPush copyWith({String? token}) =>
       DeviceTokenBlackBerryPush(token: token ?? this.token);
 }
 
 extension DeviceTokenTizenPushExtensions on DeviceTokenTizenPush {
-  DeviceTokenTizenPush copy({String? regId}) =>
+  DeviceTokenTizenPush copyWith({String? regId}) =>
       DeviceTokenTizenPush(regId: regId ?? this.regId);
 }
 
 extension PushReceiverIdExtensions on PushReceiverId {
-  PushReceiverId copy({int? id}) => PushReceiverId(id: id ?? this.id);
+  PushReceiverId copyWith({int? id}) => PushReceiverId(id: id ?? this.id);
 }
 
 extension BackgroundFillExtensions on BackgroundFill {
@@ -10146,12 +10189,12 @@ extension BackgroundFillExtensions on BackgroundFill {
 }
 
 extension BackgroundFillSolidExtensions on BackgroundFillSolid {
-  BackgroundFillSolid copy({int? color}) =>
+  BackgroundFillSolid copyWith({int? color}) =>
       BackgroundFillSolid(color: color ?? this.color);
 }
 
 extension BackgroundFillGradientExtensions on BackgroundFillGradient {
-  BackgroundFillGradient copy(
+  BackgroundFillGradient copyWith(
           {int? topColor, int? bottomColor, int? rotationAngle}) =>
       BackgroundFillGradient(
           topColor: topColor ?? this.topColor,
@@ -10161,7 +10204,7 @@ extension BackgroundFillGradientExtensions on BackgroundFillGradient {
 
 extension BackgroundFillFreeformGradientExtensions
     on BackgroundFillFreeformGradient {
-  BackgroundFillFreeformGradient copy({List<int>? colors}) =>
+  BackgroundFillFreeformGradient copyWith({List<int>? colors}) =>
       BackgroundFillFreeformGradient(colors: colors ?? this.colors);
 }
 
@@ -10208,14 +10251,14 @@ extension BackgroundTypeExtensions on BackgroundType {
 }
 
 extension BackgroundTypeWallpaperExtensions on BackgroundTypeWallpaper {
-  BackgroundTypeWallpaper copy({bool? isBlurred, bool? isMoving}) =>
+  BackgroundTypeWallpaper copyWith({bool? isBlurred, bool? isMoving}) =>
       BackgroundTypeWallpaper(
           isBlurred: isBlurred ?? this.isBlurred,
           isMoving: isMoving ?? this.isMoving);
 }
 
 extension BackgroundTypePatternExtensions on BackgroundTypePattern {
-  BackgroundTypePattern copy(
+  BackgroundTypePattern copyWith(
           {BackgroundFill? fill,
           int? intensity,
           bool? isInverted,
@@ -10228,12 +10271,12 @@ extension BackgroundTypePatternExtensions on BackgroundTypePattern {
 }
 
 extension BackgroundTypeFillExtensions on BackgroundTypeFill {
-  BackgroundTypeFill copy({BackgroundFill? fill}) =>
+  BackgroundTypeFill copyWith({BackgroundFill? fill}) =>
       BackgroundTypeFill(fill: fill ?? this.fill);
 }
 
 extension BackgroundExtensions on Background {
-  Background copy(
+  Background copyWith(
           {int? id,
           bool? isDefault,
           bool? isDark,
@@ -10250,7 +10293,7 @@ extension BackgroundExtensions on Background {
 }
 
 extension BackgroundsExtensions on Backgrounds {
-  Backgrounds copy({List<Background>? backgrounds}) =>
+  Backgrounds copyWith({List<Background>? backgrounds}) =>
       Backgrounds(backgrounds: backgrounds ?? this.backgrounds);
 }
 
@@ -10288,17 +10331,17 @@ extension InputBackgroundExtensions on InputBackground {
 }
 
 extension InputBackgroundLocalExtensions on InputBackgroundLocal {
-  InputBackgroundLocal copy({InputFile? background}) =>
+  InputBackgroundLocal copyWith({InputFile? background}) =>
       InputBackgroundLocal(background: background ?? this.background);
 }
 
 extension InputBackgroundRemoteExtensions on InputBackgroundRemote {
-  InputBackgroundRemote copy({int? backgroundId}) =>
+  InputBackgroundRemote copyWith({int? backgroundId}) =>
       InputBackgroundRemote(backgroundId: backgroundId ?? this.backgroundId);
 }
 
 extension ThemeSettingsExtensions on ThemeSettings {
-  ThemeSettings copy(
+  ThemeSettings copyWith(
           {int? accentColor,
           Background? background,
           BackgroundFill? outgoingMessageFill,
@@ -10315,7 +10358,7 @@ extension ThemeSettingsExtensions on ThemeSettings {
 }
 
 extension ChatThemeExtensions on ChatTheme {
-  ChatTheme copy(
+  ChatTheme copyWith(
           {String? name,
           ThemeSettings? lightSettings,
           ThemeSettings? darkSettings}) =>
@@ -10326,7 +10369,7 @@ extension ChatThemeExtensions on ChatTheme {
 }
 
 extension HashtagsExtensions on Hashtags {
-  Hashtags copy({List<String>? hashtags}) =>
+  Hashtags copyWith({List<String>? hashtags}) =>
       Hashtags(hashtags: hashtags ?? this.hashtags);
 }
 
@@ -10396,14 +10439,14 @@ extension CanTransferOwnershipResultExtensions on CanTransferOwnershipResult {
 
 extension CanTransferOwnershipResultPasswordTooFreshExtensions
     on CanTransferOwnershipResultPasswordTooFresh {
-  CanTransferOwnershipResultPasswordTooFresh copy({int? retryAfter}) =>
+  CanTransferOwnershipResultPasswordTooFresh copyWith({int? retryAfter}) =>
       CanTransferOwnershipResultPasswordTooFresh(
           retryAfter: retryAfter ?? this.retryAfter);
 }
 
 extension CanTransferOwnershipResultSessionTooFreshExtensions
     on CanTransferOwnershipResultSessionTooFresh {
-  CanTransferOwnershipResultSessionTooFresh copy({int? retryAfter}) =>
+  CanTransferOwnershipResultSessionTooFresh copyWith({int? retryAfter}) =>
       CanTransferOwnershipResultSessionTooFresh(
           retryAfter: retryAfter ?? this.retryAfter);
 }
@@ -10574,13 +10617,13 @@ extension ResetPasswordResultExtensions on ResetPasswordResult {
 }
 
 extension ResetPasswordResultPendingExtensions on ResetPasswordResultPending {
-  ResetPasswordResultPending copy({int? pendingResetDate}) =>
+  ResetPasswordResultPending copyWith({int? pendingResetDate}) =>
       ResetPasswordResultPending(
           pendingResetDate: pendingResetDate ?? this.pendingResetDate);
 }
 
 extension ResetPasswordResultDeclinedExtensions on ResetPasswordResultDeclined {
-  ResetPasswordResultDeclined copy({int? retryDate}) =>
+  ResetPasswordResultDeclined copyWith({int? retryDate}) =>
       ResetPasswordResultDeclined(retryDate: retryDate ?? this.retryDate);
 }
 
@@ -10627,12 +10670,12 @@ extension MessageFileTypeExtensions on MessageFileType {
 }
 
 extension MessageFileTypePrivateExtensions on MessageFileTypePrivate {
-  MessageFileTypePrivate copy({String? name}) =>
+  MessageFileTypePrivate copyWith({String? name}) =>
       MessageFileTypePrivate(name: name ?? this.name);
 }
 
 extension MessageFileTypeGroupExtensions on MessageFileTypeGroup {
-  MessageFileTypeGroup copy({String? title}) =>
+  MessageFileTypeGroup copyWith({String? title}) =>
       MessageFileTypeGroup(title: title ?? this.title);
 }
 
@@ -10936,12 +10979,12 @@ extension PushMessageContentExtensions on PushMessageContent {
 }
 
 extension PushMessageContentHiddenExtensions on PushMessageContentHidden {
-  PushMessageContentHidden copy({bool? isPinned}) =>
+  PushMessageContentHidden copyWith({bool? isPinned}) =>
       PushMessageContentHidden(isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentAnimationExtensions on PushMessageContentAnimation {
-  PushMessageContentAnimation copy(
+  PushMessageContentAnimation copyWith(
           {Animation? animation, String? caption, bool? isPinned}) =>
       PushMessageContentAnimation(
           animation: animation ?? this.animation,
@@ -10950,32 +10993,32 @@ extension PushMessageContentAnimationExtensions on PushMessageContentAnimation {
 }
 
 extension PushMessageContentAudioExtensions on PushMessageContentAudio {
-  PushMessageContentAudio copy({Audio? audio, bool? isPinned}) =>
+  PushMessageContentAudio copyWith({Audio? audio, bool? isPinned}) =>
       PushMessageContentAudio(
           audio: audio ?? this.audio, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentContactExtensions on PushMessageContentContact {
-  PushMessageContentContact copy({String? name, bool? isPinned}) =>
+  PushMessageContentContact copyWith({String? name, bool? isPinned}) =>
       PushMessageContentContact(
           name: name ?? this.name, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentDocumentExtensions on PushMessageContentDocument {
-  PushMessageContentDocument copy({Document? document, bool? isPinned}) =>
+  PushMessageContentDocument copyWith({Document? document, bool? isPinned}) =>
       PushMessageContentDocument(
           document: document ?? this.document,
           isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentGameExtensions on PushMessageContentGame {
-  PushMessageContentGame copy({String? title, bool? isPinned}) =>
+  PushMessageContentGame copyWith({String? title, bool? isPinned}) =>
       PushMessageContentGame(
           title: title ?? this.title, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentGameScoreExtensions on PushMessageContentGameScore {
-  PushMessageContentGameScore copy(
+  PushMessageContentGameScore copyWith(
           {String? title, int? score, bool? isPinned}) =>
       PushMessageContentGameScore(
           title: title ?? this.title,
@@ -10984,19 +11027,19 @@ extension PushMessageContentGameScoreExtensions on PushMessageContentGameScore {
 }
 
 extension PushMessageContentInvoiceExtensions on PushMessageContentInvoice {
-  PushMessageContentInvoice copy({String? price, bool? isPinned}) =>
+  PushMessageContentInvoice copyWith({String? price, bool? isPinned}) =>
       PushMessageContentInvoice(
           price: price ?? this.price, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentLocationExtensions on PushMessageContentLocation {
-  PushMessageContentLocation copy({bool? isLive, bool? isPinned}) =>
+  PushMessageContentLocation copyWith({bool? isLive, bool? isPinned}) =>
       PushMessageContentLocation(
           isLive: isLive ?? this.isLive, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentPhotoExtensions on PushMessageContentPhoto {
-  PushMessageContentPhoto copy(
+  PushMessageContentPhoto copyWith(
           {Photo? photo, String? caption, bool? isSecret, bool? isPinned}) =>
       PushMessageContentPhoto(
           photo: photo ?? this.photo,
@@ -11006,7 +11049,7 @@ extension PushMessageContentPhotoExtensions on PushMessageContentPhoto {
 }
 
 extension PushMessageContentPollExtensions on PushMessageContentPoll {
-  PushMessageContentPoll copy(
+  PushMessageContentPoll copyWith(
           {String? question, bool? isRegular, bool? isPinned}) =>
       PushMessageContentPoll(
           question: question ?? this.question,
@@ -11015,7 +11058,7 @@ extension PushMessageContentPollExtensions on PushMessageContentPoll {
 }
 
 extension PushMessageContentStickerExtensions on PushMessageContentSticker {
-  PushMessageContentSticker copy(
+  PushMessageContentSticker copyWith(
           {Sticker? sticker, String? emoji, bool? isPinned}) =>
       PushMessageContentSticker(
           sticker: sticker ?? this.sticker,
@@ -11024,13 +11067,13 @@ extension PushMessageContentStickerExtensions on PushMessageContentSticker {
 }
 
 extension PushMessageContentTextExtensions on PushMessageContentText {
-  PushMessageContentText copy({String? text, bool? isPinned}) =>
+  PushMessageContentText copyWith({String? text, bool? isPinned}) =>
       PushMessageContentText(
           text: text ?? this.text, isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentVideoExtensions on PushMessageContentVideo {
-  PushMessageContentVideo copy(
+  PushMessageContentVideo copyWith(
           {Video? video, String? caption, bool? isSecret, bool? isPinned}) =>
       PushMessageContentVideo(
           video: video ?? this.video,
@@ -11040,14 +11083,16 @@ extension PushMessageContentVideoExtensions on PushMessageContentVideo {
 }
 
 extension PushMessageContentVideoNoteExtensions on PushMessageContentVideoNote {
-  PushMessageContentVideoNote copy({VideoNote? videoNote, bool? isPinned}) =>
+  PushMessageContentVideoNote copyWith(
+          {VideoNote? videoNote, bool? isPinned}) =>
       PushMessageContentVideoNote(
           videoNote: videoNote ?? this.videoNote,
           isPinned: isPinned ?? this.isPinned);
 }
 
 extension PushMessageContentVoiceNoteExtensions on PushMessageContentVoiceNote {
-  PushMessageContentVoiceNote copy({VoiceNote? voiceNote, bool? isPinned}) =>
+  PushMessageContentVoiceNote copyWith(
+          {VoiceNote? voiceNote, bool? isPinned}) =>
       PushMessageContentVoiceNote(
           voiceNote: voiceNote ?? this.voiceNote,
           isPinned: isPinned ?? this.isPinned);
@@ -11055,7 +11100,7 @@ extension PushMessageContentVoiceNoteExtensions on PushMessageContentVoiceNote {
 
 extension PushMessageContentChatAddMembersExtensions
     on PushMessageContentChatAddMembers {
-  PushMessageContentChatAddMembers copy(
+  PushMessageContentChatAddMembers copyWith(
           {String? memberName, bool? isCurrentUser, bool? isReturned}) =>
       PushMessageContentChatAddMembers(
           memberName: memberName ?? this.memberName,
@@ -11065,19 +11110,19 @@ extension PushMessageContentChatAddMembersExtensions
 
 extension PushMessageContentChatChangeTitleExtensions
     on PushMessageContentChatChangeTitle {
-  PushMessageContentChatChangeTitle copy({String? title}) =>
+  PushMessageContentChatChangeTitle copyWith({String? title}) =>
       PushMessageContentChatChangeTitle(title: title ?? this.title);
 }
 
 extension PushMessageContentChatSetThemeExtensions
     on PushMessageContentChatSetTheme {
-  PushMessageContentChatSetTheme copy({String? themeName}) =>
+  PushMessageContentChatSetTheme copyWith({String? themeName}) =>
       PushMessageContentChatSetTheme(themeName: themeName ?? this.themeName);
 }
 
 extension PushMessageContentChatDeleteMemberExtensions
     on PushMessageContentChatDeleteMember {
-  PushMessageContentChatDeleteMember copy(
+  PushMessageContentChatDeleteMember copyWith(
           {String? memberName, bool? isCurrentUser, bool? isLeft}) =>
       PushMessageContentChatDeleteMember(
           memberName: memberName ?? this.memberName,
@@ -11087,14 +11132,14 @@ extension PushMessageContentChatDeleteMemberExtensions
 
 extension PushMessageContentMessageForwardsExtensions
     on PushMessageContentMessageForwards {
-  PushMessageContentMessageForwards copy({int? totalCount}) =>
+  PushMessageContentMessageForwards copyWith({int? totalCount}) =>
       PushMessageContentMessageForwards(
           totalCount: totalCount ?? this.totalCount);
 }
 
 extension PushMessageContentMediaAlbumExtensions
     on PushMessageContentMediaAlbum {
-  PushMessageContentMediaAlbum copy(
+  PushMessageContentMediaAlbum copyWith(
           {int? totalCount,
           bool? hasPhotos,
           bool? hasVideos,
@@ -11162,18 +11207,18 @@ extension NotificationTypeExtensions on NotificationType {
 }
 
 extension NotificationTypeNewMessageExtensions on NotificationTypeNewMessage {
-  NotificationTypeNewMessage copy({Message? message}) =>
+  NotificationTypeNewMessage copyWith({Message? message}) =>
       NotificationTypeNewMessage(message: message ?? this.message);
 }
 
 extension NotificationTypeNewCallExtensions on NotificationTypeNewCall {
-  NotificationTypeNewCall copy({int? callId}) =>
+  NotificationTypeNewCall copyWith({int? callId}) =>
       NotificationTypeNewCall(callId: callId ?? this.callId);
 }
 
 extension NotificationTypeNewPushMessageExtensions
     on NotificationTypeNewPushMessage {
-  NotificationTypeNewPushMessage copy(
+  NotificationTypeNewPushMessage copyWith(
           {int? messageId,
           MessageSender? senderId,
           String? senderName,
@@ -11240,7 +11285,7 @@ extension NotificationGroupTypeExtensions on NotificationGroupType {
 }
 
 extension NotificationExtensions on Notification {
-  Notification copy(
+  Notification copyWith(
           {int? id, int? date, bool? isSilent, NotificationType? type}) =>
       Notification(
           id: id ?? this.id,
@@ -11250,7 +11295,7 @@ extension NotificationExtensions on Notification {
 }
 
 extension NotificationGroupExtensions on NotificationGroup {
-  NotificationGroup copy(
+  NotificationGroup copyWith(
           {int? id,
           NotificationGroupType? type,
           int? chatId,
@@ -11316,22 +11361,22 @@ extension OptionValueExtensions on OptionValue {
 }
 
 extension OptionValueBooleanExtensions on OptionValueBoolean {
-  OptionValueBoolean copy({bool? value}) =>
+  OptionValueBoolean copyWith({bool? value}) =>
       OptionValueBoolean(value: value ?? this.value);
 }
 
 extension OptionValueIntegerExtensions on OptionValueInteger {
-  OptionValueInteger copy({int? value}) =>
+  OptionValueInteger copyWith({int? value}) =>
       OptionValueInteger(value: value ?? this.value);
 }
 
 extension OptionValueStringExtensions on OptionValueString {
-  OptionValueString copy({String? value}) =>
+  OptionValueString copyWith({String? value}) =>
       OptionValueString(value: value ?? this.value);
 }
 
 extension JsonObjectMemberExtensions on JsonObjectMember {
-  JsonObjectMember copy({String? key, JsonValue? value}) =>
+  JsonObjectMember copyWith({String? key, JsonValue? value}) =>
       JsonObjectMember(key: key ?? this.key, value: value ?? this.value);
 }
 
@@ -11405,27 +11450,27 @@ extension JsonValueExtensions on JsonValue {
 }
 
 extension JsonValueBooleanExtensions on JsonValueBoolean {
-  JsonValueBoolean copy({bool? value}) =>
+  JsonValueBoolean copyWith({bool? value}) =>
       JsonValueBoolean(value: value ?? this.value);
 }
 
 extension JsonValueNumberExtensions on JsonValueNumber {
-  JsonValueNumber copy({double? value}) =>
+  JsonValueNumber copyWith({double? value}) =>
       JsonValueNumber(value: value ?? this.value);
 }
 
 extension JsonValueStringExtensions on JsonValueString {
-  JsonValueString copy({String? value}) =>
+  JsonValueString copyWith({String? value}) =>
       JsonValueString(value: value ?? this.value);
 }
 
 extension JsonValueArrayExtensions on JsonValueArray {
-  JsonValueArray copy({List<JsonValue>? values}) =>
+  JsonValueArray copyWith({List<JsonValue>? values}) =>
       JsonValueArray(values: values ?? this.values);
 }
 
 extension JsonValueObjectExtensions on JsonValueObject {
-  JsonValueObject copy({List<JsonObjectMember>? members}) =>
+  JsonValueObject copyWith({List<JsonObjectMember>? members}) =>
       JsonValueObject(members: members ?? this.members);
 }
 
@@ -11538,31 +11583,31 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
 
 extension UserPrivacySettingRuleAllowUsersExtensions
     on UserPrivacySettingRuleAllowUsers {
-  UserPrivacySettingRuleAllowUsers copy({List<int>? userIds}) =>
+  UserPrivacySettingRuleAllowUsers copyWith({List<int>? userIds}) =>
       UserPrivacySettingRuleAllowUsers(userIds: userIds ?? this.userIds);
 }
 
 extension UserPrivacySettingRuleAllowChatMembersExtensions
     on UserPrivacySettingRuleAllowChatMembers {
-  UserPrivacySettingRuleAllowChatMembers copy({List<int>? chatIds}) =>
+  UserPrivacySettingRuleAllowChatMembers copyWith({List<int>? chatIds}) =>
       UserPrivacySettingRuleAllowChatMembers(chatIds: chatIds ?? this.chatIds);
 }
 
 extension UserPrivacySettingRuleRestrictUsersExtensions
     on UserPrivacySettingRuleRestrictUsers {
-  UserPrivacySettingRuleRestrictUsers copy({List<int>? userIds}) =>
+  UserPrivacySettingRuleRestrictUsers copyWith({List<int>? userIds}) =>
       UserPrivacySettingRuleRestrictUsers(userIds: userIds ?? this.userIds);
 }
 
 extension UserPrivacySettingRuleRestrictChatMembersExtensions
     on UserPrivacySettingRuleRestrictChatMembers {
-  UserPrivacySettingRuleRestrictChatMembers copy({List<int>? chatIds}) =>
+  UserPrivacySettingRuleRestrictChatMembers copyWith({List<int>? chatIds}) =>
       UserPrivacySettingRuleRestrictChatMembers(
           chatIds: chatIds ?? this.chatIds);
 }
 
 extension UserPrivacySettingRulesExtensions on UserPrivacySettingRules {
-  UserPrivacySettingRules copy({List<UserPrivacySettingRule>? rules}) =>
+  UserPrivacySettingRules copyWith({List<UserPrivacySettingRule>? rules}) =>
       UserPrivacySettingRules(rules: rules ?? this.rules);
 }
 
@@ -11679,11 +11724,11 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
 }
 
 extension AccountTtlExtensions on AccountTtl {
-  AccountTtl copy({int? days}) => AccountTtl(days: days ?? this.days);
+  AccountTtl copyWith({int? days}) => AccountTtl(days: days ?? this.days);
 }
 
 extension SessionExtensions on Session {
-  Session copy(
+  Session copyWith(
           {int? id,
           bool? isCurrent,
           bool? isPasswordPending,
@@ -11724,8 +11769,7 @@ extension SessionExtensions on Session {
 }
 
 extension SessionsExtensions on Sessions {
-  Sessions copy(
-          {List<Session>? sessions, int? inactiveSessionTtlDays}) =>
+  Sessions copyWith({List<Session>? sessions, int? inactiveSessionTtlDays}) =>
       Sessions(
           sessions: sessions ?? this.sessions,
           inactiveSessionTtlDays:
@@ -11733,7 +11777,7 @@ extension SessionsExtensions on Sessions {
 }
 
 extension ConnectedWebsiteExtensions on ConnectedWebsite {
-  ConnectedWebsite copy(
+  ConnectedWebsite copyWith(
           {int? id,
           String? domainName,
           int? botUserId,
@@ -11756,7 +11800,7 @@ extension ConnectedWebsiteExtensions on ConnectedWebsite {
 }
 
 extension ConnectedWebsitesExtensions on ConnectedWebsites {
-  ConnectedWebsites copy({List<ConnectedWebsite>? websites}) =>
+  ConnectedWebsites copyWith({List<ConnectedWebsite>? websites}) =>
       ConnectedWebsites(websites: websites ?? this.websites);
 }
 
@@ -12114,18 +12158,18 @@ extension InternalLinkTypeExtensions on InternalLinkType {
 
 extension InternalLinkTypeAuthenticationCodeExtensions
     on InternalLinkTypeAuthenticationCode {
-  InternalLinkTypeAuthenticationCode copy({String? code}) =>
+  InternalLinkTypeAuthenticationCode copyWith({String? code}) =>
       InternalLinkTypeAuthenticationCode(code: code ?? this.code);
 }
 
 extension InternalLinkTypeBackgroundExtensions on InternalLinkTypeBackground {
-  InternalLinkTypeBackground copy({String? backgroundName}) =>
+  InternalLinkTypeBackground copyWith({String? backgroundName}) =>
       InternalLinkTypeBackground(
           backgroundName: backgroundName ?? this.backgroundName);
 }
 
 extension InternalLinkTypeBotStartExtensions on InternalLinkTypeBotStart {
-  InternalLinkTypeBotStart copy(
+  InternalLinkTypeBotStart copyWith(
           {String? botUsername, String? startParameter}) =>
       InternalLinkTypeBotStart(
           botUsername: botUsername ?? this.botUsername,
@@ -12134,7 +12178,7 @@ extension InternalLinkTypeBotStartExtensions on InternalLinkTypeBotStart {
 
 extension InternalLinkTypeBotStartInGroupExtensions
     on InternalLinkTypeBotStartInGroup {
-  InternalLinkTypeBotStartInGroup copy(
+  InternalLinkTypeBotStartInGroup copyWith(
           {String? botUsername, String? startParameter}) =>
       InternalLinkTypeBotStartInGroup(
           botUsername: botUsername ?? this.botUsername,
@@ -12142,12 +12186,12 @@ extension InternalLinkTypeBotStartInGroupExtensions
 }
 
 extension InternalLinkTypeChatInviteExtensions on InternalLinkTypeChatInvite {
-  InternalLinkTypeChatInvite copy({String? inviteLink}) =>
+  InternalLinkTypeChatInvite copyWith({String? inviteLink}) =>
       InternalLinkTypeChatInvite(inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension InternalLinkTypeGameExtensions on InternalLinkTypeGame {
-  InternalLinkTypeGame copy({String? botUsername, String? gameShortName}) =>
+  InternalLinkTypeGame copyWith({String? botUsername, String? gameShortName}) =>
       InternalLinkTypeGame(
           botUsername: botUsername ?? this.botUsername,
           gameShortName: gameShortName ?? this.gameShortName);
@@ -12155,19 +12199,19 @@ extension InternalLinkTypeGameExtensions on InternalLinkTypeGame {
 
 extension InternalLinkTypeLanguagePackExtensions
     on InternalLinkTypeLanguagePack {
-  InternalLinkTypeLanguagePack copy({String? languagePackId}) =>
+  InternalLinkTypeLanguagePack copyWith({String? languagePackId}) =>
       InternalLinkTypeLanguagePack(
           languagePackId: languagePackId ?? this.languagePackId);
 }
 
 extension InternalLinkTypeMessageExtensions on InternalLinkTypeMessage {
-  InternalLinkTypeMessage copy({String? url}) =>
+  InternalLinkTypeMessage copyWith({String? url}) =>
       InternalLinkTypeMessage(url: url ?? this.url);
 }
 
 extension InternalLinkTypeMessageDraftExtensions
     on InternalLinkTypeMessageDraft {
-  InternalLinkTypeMessageDraft copy(
+  InternalLinkTypeMessageDraft copyWith(
           {FormattedText? text, bool? containsLink}) =>
       InternalLinkTypeMessageDraft(
           text: text ?? this.text,
@@ -12176,7 +12220,7 @@ extension InternalLinkTypeMessageDraftExtensions
 
 extension InternalLinkTypePassportDataRequestExtensions
     on InternalLinkTypePassportDataRequest {
-  InternalLinkTypePassportDataRequest copy(
+  InternalLinkTypePassportDataRequest copyWith(
           {int? botUserId,
           String? scope,
           String? publicKey,
@@ -12192,7 +12236,7 @@ extension InternalLinkTypePassportDataRequestExtensions
 
 extension InternalLinkTypePhoneNumberConfirmationExtensions
     on InternalLinkTypePhoneNumberConfirmation {
-  InternalLinkTypePhoneNumberConfirmation copy(
+  InternalLinkTypePhoneNumberConfirmation copyWith(
           {String? hash, String? phoneNumber}) =>
       InternalLinkTypePhoneNumberConfirmation(
           hash: hash ?? this.hash,
@@ -12200,7 +12244,8 @@ extension InternalLinkTypePhoneNumberConfirmationExtensions
 }
 
 extension InternalLinkTypeProxyExtensions on InternalLinkTypeProxy {
-  InternalLinkTypeProxy copy({String? server, int? port, ProxyType? type}) =>
+  InternalLinkTypeProxy copyWith(
+          {String? server, int? port, ProxyType? type}) =>
       InternalLinkTypeProxy(
           server: server ?? this.server,
           port: port ?? this.port,
@@ -12208,30 +12253,30 @@ extension InternalLinkTypeProxyExtensions on InternalLinkTypeProxy {
 }
 
 extension InternalLinkTypePublicChatExtensions on InternalLinkTypePublicChat {
-  InternalLinkTypePublicChat copy({String? chatUsername}) =>
+  InternalLinkTypePublicChat copyWith({String? chatUsername}) =>
       InternalLinkTypePublicChat(
           chatUsername: chatUsername ?? this.chatUsername);
 }
 
 extension InternalLinkTypeStickerSetExtensions on InternalLinkTypeStickerSet {
-  InternalLinkTypeStickerSet copy({String? stickerSetName}) =>
+  InternalLinkTypeStickerSet copyWith({String? stickerSetName}) =>
       InternalLinkTypeStickerSet(
           stickerSetName: stickerSetName ?? this.stickerSetName);
 }
 
 extension InternalLinkTypeThemeExtensions on InternalLinkTypeTheme {
-  InternalLinkTypeTheme copy({String? themeName}) =>
+  InternalLinkTypeTheme copyWith({String? themeName}) =>
       InternalLinkTypeTheme(themeName: themeName ?? this.themeName);
 }
 
 extension InternalLinkTypeUnknownDeepLinkExtensions
     on InternalLinkTypeUnknownDeepLink {
-  InternalLinkTypeUnknownDeepLink copy({String? link}) =>
+  InternalLinkTypeUnknownDeepLink copyWith({String? link}) =>
       InternalLinkTypeUnknownDeepLink(link: link ?? this.link);
 }
 
 extension InternalLinkTypeVideoChatExtensions on InternalLinkTypeVideoChat {
-  InternalLinkTypeVideoChat copy(
+  InternalLinkTypeVideoChat copyWith(
           {String? chatUsername, String? inviteHash, bool? isLiveStream}) =>
       InternalLinkTypeVideoChat(
           chatUsername: chatUsername ?? this.chatUsername,
@@ -12240,12 +12285,12 @@ extension InternalLinkTypeVideoChatExtensions on InternalLinkTypeVideoChat {
 }
 
 extension MessageLinkExtensions on MessageLink {
-  MessageLink copy({String? link, bool? isPublic}) =>
+  MessageLink copyWith({String? link, bool? isPublic}) =>
       MessageLink(link: link ?? this.link, isPublic: isPublic ?? this.isPublic);
 }
 
 extension MessageLinkInfoExtensions on MessageLinkInfo {
-  MessageLinkInfo copy(
+  MessageLinkInfo copyWith(
           {bool? isPublic,
           int? chatId,
           Message? message,
@@ -12262,7 +12307,7 @@ extension MessageLinkInfoExtensions on MessageLinkInfo {
 }
 
 extension FilePartExtensions on FilePart {
-  FilePart copy({String? data}) => FilePart(data: data ?? this.data);
+  FilePart copyWith({String? data}) => FilePart(data: data ?? this.data);
 }
 
 extension FileTypeExtensions on FileType {
@@ -12425,7 +12470,7 @@ extension FileTypeExtensions on FileType {
 }
 
 extension StorageStatisticsByFileTypeExtensions on StorageStatisticsByFileType {
-  StorageStatisticsByFileType copy(
+  StorageStatisticsByFileType copyWith(
           {FileType? fileType, int? size, int? count}) =>
       StorageStatisticsByFileType(
           fileType: fileType ?? this.fileType,
@@ -12434,7 +12479,7 @@ extension StorageStatisticsByFileTypeExtensions on StorageStatisticsByFileType {
 }
 
 extension StorageStatisticsByChatExtensions on StorageStatisticsByChat {
-  StorageStatisticsByChat copy(
+  StorageStatisticsByChat copyWith(
           {int? chatId,
           int? size,
           int? count,
@@ -12447,7 +12492,7 @@ extension StorageStatisticsByChatExtensions on StorageStatisticsByChat {
 }
 
 extension StorageStatisticsExtensions on StorageStatistics {
-  StorageStatistics copy(
+  StorageStatistics copyWith(
           {int? size, int? count, List<StorageStatisticsByChat>? byChat}) =>
       StorageStatistics(
           size: size ?? this.size,
@@ -12456,7 +12501,7 @@ extension StorageStatisticsExtensions on StorageStatistics {
 }
 
 extension StorageStatisticsFastExtensions on StorageStatisticsFast {
-  StorageStatisticsFast copy(
+  StorageStatisticsFast copyWith(
           {int? filesSize,
           int? fileCount,
           int? databaseSize,
@@ -12472,7 +12517,7 @@ extension StorageStatisticsFastExtensions on StorageStatisticsFast {
 }
 
 extension DatabaseStatisticsExtensions on DatabaseStatistics {
-  DatabaseStatistics copy({String? statistics}) =>
+  DatabaseStatistics copyWith({String? statistics}) =>
       DatabaseStatistics(statistics: statistics ?? this.statistics);
 }
 
@@ -12570,7 +12615,7 @@ extension NetworkStatisticsEntryExtensions on NetworkStatisticsEntry {
 }
 
 extension NetworkStatisticsEntryFileExtensions on NetworkStatisticsEntryFile {
-  NetworkStatisticsEntryFile copy(
+  NetworkStatisticsEntryFile copyWith(
           {FileType? fileType,
           NetworkType? networkType,
           int? sentBytes,
@@ -12583,7 +12628,7 @@ extension NetworkStatisticsEntryFileExtensions on NetworkStatisticsEntryFile {
 }
 
 extension NetworkStatisticsEntryCallExtensions on NetworkStatisticsEntryCall {
-  NetworkStatisticsEntryCall copy(
+  NetworkStatisticsEntryCall copyWith(
           {NetworkType? networkType,
           int? sentBytes,
           int? receivedBytes,
@@ -12596,7 +12641,7 @@ extension NetworkStatisticsEntryCallExtensions on NetworkStatisticsEntryCall {
 }
 
 extension NetworkStatisticsExtensions on NetworkStatistics {
-  NetworkStatistics copy(
+  NetworkStatistics copyWith(
           {int? sinceDate, List<NetworkStatisticsEntry>? entries}) =>
       NetworkStatistics(
           sinceDate: sinceDate ?? this.sinceDate,
@@ -12604,7 +12649,7 @@ extension NetworkStatisticsExtensions on NetworkStatistics {
 }
 
 extension AutoDownloadSettingsExtensions on AutoDownloadSettings {
-  AutoDownloadSettings copy(
+  AutoDownloadSettings copyWith(
           {bool? isAutoDownloadEnabled,
           int? maxPhotoFileSize,
           int? maxVideoFileSize,
@@ -12626,7 +12671,7 @@ extension AutoDownloadSettingsExtensions on AutoDownloadSettings {
 }
 
 extension AutoDownloadSettingsPresetsExtensions on AutoDownloadSettingsPresets {
-  AutoDownloadSettingsPresets copy(
+  AutoDownloadSettingsPresets copyWith(
           {AutoDownloadSettings? low,
           AutoDownloadSettings? medium,
           AutoDownloadSettings? high}) =>
@@ -12833,32 +12878,32 @@ extension TMeUrlTypeExtensions on TMeUrlType {
 }
 
 extension TMeUrlTypeUserExtensions on TMeUrlTypeUser {
-  TMeUrlTypeUser copy({int? userId}) =>
+  TMeUrlTypeUser copyWith({int? userId}) =>
       TMeUrlTypeUser(userId: userId ?? this.userId);
 }
 
 extension TMeUrlTypeSupergroupExtensions on TMeUrlTypeSupergroup {
-  TMeUrlTypeSupergroup copy({int? supergroupId}) =>
+  TMeUrlTypeSupergroup copyWith({int? supergroupId}) =>
       TMeUrlTypeSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension TMeUrlTypeChatInviteExtensions on TMeUrlTypeChatInvite {
-  TMeUrlTypeChatInvite copy({ChatInviteLinkInfo? info}) =>
+  TMeUrlTypeChatInvite copyWith({ChatInviteLinkInfo? info}) =>
       TMeUrlTypeChatInvite(info: info ?? this.info);
 }
 
 extension TMeUrlTypeStickerSetExtensions on TMeUrlTypeStickerSet {
-  TMeUrlTypeStickerSet copy({int? stickerSetId}) =>
+  TMeUrlTypeStickerSet copyWith({int? stickerSetId}) =>
       TMeUrlTypeStickerSet(stickerSetId: stickerSetId ?? this.stickerSetId);
 }
 
 extension TMeUrlExtensions on TMeUrl {
-  TMeUrl copy({String? url, TMeUrlType? type}) =>
+  TMeUrl copyWith({String? url, TMeUrlType? type}) =>
       TMeUrl(url: url ?? this.url, type: type ?? this.type);
 }
 
 extension TMeUrlsExtensions on TMeUrls {
-  TMeUrls copy({List<TMeUrl>? urls}) => TMeUrls(urls: urls ?? this.urls);
+  TMeUrls copyWith({List<TMeUrl>? urls}) => TMeUrls(urls: urls ?? this.urls);
 }
 
 extension SuggestedActionExtensions on SuggestedAction {
@@ -12945,31 +12990,32 @@ extension SuggestedActionExtensions on SuggestedAction {
 
 extension SuggestedActionConvertToBroadcastGroupExtensions
     on SuggestedActionConvertToBroadcastGroup {
-  SuggestedActionConvertToBroadcastGroup copy({int? supergroupId}) =>
+  SuggestedActionConvertToBroadcastGroup copyWith({int? supergroupId}) =>
       SuggestedActionConvertToBroadcastGroup(
           supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension SuggestedActionSetPasswordExtensions on SuggestedActionSetPassword {
-  SuggestedActionSetPassword copy({int? authorizationDelay}) =>
+  SuggestedActionSetPassword copyWith({int? authorizationDelay}) =>
       SuggestedActionSetPassword(
           authorizationDelay: authorizationDelay ?? this.authorizationDelay);
 }
 
 extension CountExtensions on Count {
-  Count copy({int? count}) => Count(count: count ?? this.count);
+  Count copyWith({int? count}) => Count(count: count ?? this.count);
 }
 
 extension TextExtensions on Text {
-  Text copy({String? text}) => Text(text: text ?? this.text);
+  Text copyWith({String? text}) => Text(text: text ?? this.text);
 }
 
 extension SecondsExtensions on Seconds {
-  Seconds copy({double? seconds}) => Seconds(seconds: seconds ?? this.seconds);
+  Seconds copyWith({double? seconds}) =>
+      Seconds(seconds: seconds ?? this.seconds);
 }
 
 extension DeepLinkInfoExtensions on DeepLinkInfo {
-  DeepLinkInfo copy({FormattedText? text, bool? needUpdateApplication}) =>
+  DeepLinkInfo copyWith({FormattedText? text, bool? needUpdateApplication}) =>
       DeepLinkInfo(
           text: text ?? this.text,
           needUpdateApplication:
@@ -13010,7 +13056,7 @@ extension TextParseModeExtensions on TextParseMode {
 }
 
 extension TextParseModeMarkdownExtensions on TextParseModeMarkdown {
-  TextParseModeMarkdown copy({int? version}) =>
+  TextParseModeMarkdown copyWith({int? version}) =>
       TextParseModeMarkdown(version: version ?? this.version);
 }
 
@@ -13057,12 +13103,15 @@ extension ProxyTypeExtensions on ProxyType {
 }
 
 extension ProxyTypeSocks5Extensions on ProxyTypeSocks5 {
-  ProxyTypeSocks5 copy({String? username, String? password}) => ProxyTypeSocks5(
-      username: username ?? this.username, password: password ?? this.password);
+  ProxyTypeSocks5 copyWith({String? username, String? password}) =>
+      ProxyTypeSocks5(
+          username: username ?? this.username,
+          password: password ?? this.password);
 }
 
 extension ProxyTypeHttpExtensions on ProxyTypeHttp {
-  ProxyTypeHttp copy({String? username, String? password, bool? httpOnly}) =>
+  ProxyTypeHttp copyWith(
+          {String? username, String? password, bool? httpOnly}) =>
       ProxyTypeHttp(
           username: username ?? this.username,
           password: password ?? this.password,
@@ -13070,12 +13119,12 @@ extension ProxyTypeHttpExtensions on ProxyTypeHttp {
 }
 
 extension ProxyTypeMtprotoExtensions on ProxyTypeMtproto {
-  ProxyTypeMtproto copy({String? secret}) =>
+  ProxyTypeMtproto copyWith({String? secret}) =>
       ProxyTypeMtproto(secret: secret ?? this.secret);
 }
 
 extension ProxyExtensions on Proxy {
-  Proxy copy(
+  Proxy copyWith(
           {int? id,
           String? server,
           int? port,
@@ -13092,7 +13141,7 @@ extension ProxyExtensions on Proxy {
 }
 
 extension ProxiesExtensions on Proxies {
-  Proxies copy({List<Proxy>? proxies}) =>
+  Proxies copyWith({List<Proxy>? proxies}) =>
       Proxies(proxies: proxies ?? this.proxies);
 }
 
@@ -13130,7 +13179,7 @@ extension InputStickerExtensions on InputSticker {
 }
 
 extension InputStickerStaticExtensions on InputStickerStatic {
-  InputStickerStatic copy(
+  InputStickerStatic copyWith(
           {InputFile? sticker, String? emojis, MaskPosition? maskPosition}) =>
       InputStickerStatic(
           sticker: sticker ?? this.sticker,
@@ -13139,18 +13188,18 @@ extension InputStickerStaticExtensions on InputStickerStatic {
 }
 
 extension InputStickerAnimatedExtensions on InputStickerAnimated {
-  InputStickerAnimated copy({InputFile? sticker, String? emojis}) =>
+  InputStickerAnimated copyWith({InputFile? sticker, String? emojis}) =>
       InputStickerAnimated(
           sticker: sticker ?? this.sticker, emojis: emojis ?? this.emojis);
 }
 
 extension DateRangeExtensions on DateRange {
-  DateRange copy({int? startDate, int? endDate}) => DateRange(
+  DateRange copyWith({int? startDate, int? endDate}) => DateRange(
       startDate: startDate ?? this.startDate, endDate: endDate ?? this.endDate);
 }
 
 extension StatisticalValueExtensions on StatisticalValue {
-  StatisticalValue copy(
+  StatisticalValue copyWith(
           {double? value,
           double? previousValue,
           double? growthRatePercentage}) =>
@@ -13204,25 +13253,25 @@ extension StatisticalGraphExtensions on StatisticalGraph {
 }
 
 extension StatisticalGraphDataExtensions on StatisticalGraphData {
-  StatisticalGraphData copy({String? jsonData, String? zoomToken}) =>
+  StatisticalGraphData copyWith({String? jsonData, String? zoomToken}) =>
       StatisticalGraphData(
           jsonData: jsonData ?? this.jsonData,
           zoomToken: zoomToken ?? this.zoomToken);
 }
 
 extension StatisticalGraphAsyncExtensions on StatisticalGraphAsync {
-  StatisticalGraphAsync copy({String? token}) =>
+  StatisticalGraphAsync copyWith({String? token}) =>
       StatisticalGraphAsync(token: token ?? this.token);
 }
 
 extension StatisticalGraphErrorExtensions on StatisticalGraphError {
-  StatisticalGraphError copy({String? errorMessage}) =>
+  StatisticalGraphError copyWith({String? errorMessage}) =>
       StatisticalGraphError(errorMessage: errorMessage ?? this.errorMessage);
 }
 
 extension ChatStatisticsMessageInteractionInfoExtensions
     on ChatStatisticsMessageInteractionInfo {
-  ChatStatisticsMessageInteractionInfo copy(
+  ChatStatisticsMessageInteractionInfo copyWith(
           {int? messageId, int? viewCount, int? forwardCount}) =>
       ChatStatisticsMessageInteractionInfo(
           messageId: messageId ?? this.messageId,
@@ -13232,7 +13281,7 @@ extension ChatStatisticsMessageInteractionInfoExtensions
 
 extension ChatStatisticsMessageSenderInfoExtensions
     on ChatStatisticsMessageSenderInfo {
-  ChatStatisticsMessageSenderInfo copy(
+  ChatStatisticsMessageSenderInfo copyWith(
           {int? userId, int? sentMessageCount, int? averageCharacterCount}) =>
       ChatStatisticsMessageSenderInfo(
           userId: userId ?? this.userId,
@@ -13243,7 +13292,7 @@ extension ChatStatisticsMessageSenderInfoExtensions
 
 extension ChatStatisticsAdministratorActionsInfoExtensions
     on ChatStatisticsAdministratorActionsInfo {
-  ChatStatisticsAdministratorActionsInfo copy(
+  ChatStatisticsAdministratorActionsInfo copyWith(
           {int? userId,
           int? deletedMessageCount,
           int? bannedUserCount,
@@ -13256,7 +13305,7 @@ extension ChatStatisticsAdministratorActionsInfoExtensions
 }
 
 extension ChatStatisticsInviterInfoExtensions on ChatStatisticsInviterInfo {
-  ChatStatisticsInviterInfo copy({int? userId, int? addedMemberCount}) =>
+  ChatStatisticsInviterInfo copyWith({int? userId, int? addedMemberCount}) =>
       ChatStatisticsInviterInfo(
           userId: userId ?? this.userId,
           addedMemberCount: addedMemberCount ?? this.addedMemberCount);
@@ -13296,7 +13345,7 @@ extension ChatStatisticsExtensions on ChatStatistics {
 }
 
 extension ChatStatisticsSupergroupExtensions on ChatStatisticsSupergroup {
-  ChatStatisticsSupergroup copy(
+  ChatStatisticsSupergroup copyWith(
           {DateRange? period,
           StatisticalValue? memberCount,
           StatisticalValue? messageCount,
@@ -13333,7 +13382,7 @@ extension ChatStatisticsSupergroupExtensions on ChatStatisticsSupergroup {
 }
 
 extension ChatStatisticsChannelExtensions on ChatStatisticsChannel {
-  ChatStatisticsChannel copy(
+  ChatStatisticsChannel copyWith(
           {DateRange? period,
           StatisticalValue? memberCount,
           StatisticalValue? meanViewCount,
@@ -13375,14 +13424,15 @@ extension ChatStatisticsChannelExtensions on ChatStatisticsChannel {
 }
 
 extension MessageStatisticsExtensions on MessageStatistics {
-  MessageStatistics copy({StatisticalGraph? messageInteractionGraph}) =>
+  MessageStatistics copyWith({StatisticalGraph? messageInteractionGraph}) =>
       MessageStatistics(
           messageInteractionGraph:
               messageInteractionGraph ?? this.messageInteractionGraph);
 }
 
 extension PointExtensions on Point {
-  Point copy({double? x, double? y}) => Point(x: x ?? this.x, y: y ?? this.y);
+  Point copyWith({double? x, double? y}) =>
+      Point(x: x ?? this.x, y: y ?? this.y);
 }
 
 extension VectorPathCommandExtensions on VectorPathCommand {
@@ -13422,13 +13472,13 @@ extension VectorPathCommandExtensions on VectorPathCommand {
 }
 
 extension VectorPathCommandLineExtensions on VectorPathCommandLine {
-  VectorPathCommandLine copy({Point? endPoint}) =>
+  VectorPathCommandLine copyWith({Point? endPoint}) =>
       VectorPathCommandLine(endPoint: endPoint ?? this.endPoint);
 }
 
 extension VectorPathCommandCubicBezierCurveExtensions
     on VectorPathCommandCubicBezierCurve {
-  VectorPathCommandCubicBezierCurve copy(
+  VectorPathCommandCubicBezierCurve copyWith(
           {Point? startControlPoint,
           Point? endControlPoint,
           Point? endPoint}) =>
@@ -13527,18 +13577,18 @@ extension BotCommandScopeExtensions on BotCommandScope {
 }
 
 extension BotCommandScopeChatExtensions on BotCommandScopeChat {
-  BotCommandScopeChat copy({int? chatId}) =>
+  BotCommandScopeChat copyWith({int? chatId}) =>
       BotCommandScopeChat(chatId: chatId ?? this.chatId);
 }
 
 extension BotCommandScopeChatAdministratorsExtensions
     on BotCommandScopeChatAdministrators {
-  BotCommandScopeChatAdministrators copy({int? chatId}) =>
+  BotCommandScopeChatAdministrators copyWith({int? chatId}) =>
       BotCommandScopeChatAdministrators(chatId: chatId ?? this.chatId);
 }
 
 extension BotCommandScopeChatMemberExtensions on BotCommandScopeChatMember {
-  BotCommandScopeChatMember copy({int? chatId, int? userId}) =>
+  BotCommandScopeChatMember copyWith({int? chatId, int? userId}) =>
       BotCommandScopeChatMember(
           chatId: chatId ?? this.chatId, userId: userId ?? this.userId);
 }
@@ -14476,33 +14526,33 @@ extension UpdateExtensions on Update {
 }
 
 extension UpdateAuthorizationStateExtensions on UpdateAuthorizationState {
-  UpdateAuthorizationState copy({AuthorizationState? authorizationState}) =>
+  UpdateAuthorizationState copyWith({AuthorizationState? authorizationState}) =>
       UpdateAuthorizationState(
           authorizationState: authorizationState ?? this.authorizationState);
 }
 
 extension UpdateNewMessageExtensions on UpdateNewMessage {
-  UpdateNewMessage copy({Message? message}) =>
+  UpdateNewMessage copyWith({Message? message}) =>
       UpdateNewMessage(message: message ?? this.message);
 }
 
 extension UpdateMessageSendAcknowledgedExtensions
     on UpdateMessageSendAcknowledged {
-  UpdateMessageSendAcknowledged copy({int? chatId, int? messageId}) =>
+  UpdateMessageSendAcknowledged copyWith({int? chatId, int? messageId}) =>
       UpdateMessageSendAcknowledged(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
 extension UpdateMessageSendSucceededExtensions on UpdateMessageSendSucceeded {
-  UpdateMessageSendSucceeded copy({Message? message, int? oldMessageId}) =>
+  UpdateMessageSendSucceeded copyWith({Message? message, int? oldMessageId}) =>
       UpdateMessageSendSucceeded(
           message: message ?? this.message,
           oldMessageId: oldMessageId ?? this.oldMessageId);
 }
 
 extension UpdateMessageSendFailedExtensions on UpdateMessageSendFailed {
-  UpdateMessageSendFailed copy(
+  UpdateMessageSendFailed copyWith(
           {Message? message,
           int? oldMessageId,
           int? errorCode,
@@ -14515,7 +14565,7 @@ extension UpdateMessageSendFailedExtensions on UpdateMessageSendFailed {
 }
 
 extension UpdateMessageContentExtensions on UpdateMessageContent {
-  UpdateMessageContent copy(
+  UpdateMessageContent copyWith(
           {int? chatId, int? messageId, MessageContent? newContent}) =>
       UpdateMessageContent(
           chatId: chatId ?? this.chatId,
@@ -14524,7 +14574,7 @@ extension UpdateMessageContentExtensions on UpdateMessageContent {
 }
 
 extension UpdateMessageEditedExtensions on UpdateMessageEdited {
-  UpdateMessageEdited copy(
+  UpdateMessageEdited copyWith(
           {int? chatId,
           int? messageId,
           int? editDate,
@@ -14537,7 +14587,8 @@ extension UpdateMessageEditedExtensions on UpdateMessageEdited {
 }
 
 extension UpdateMessageIsPinnedExtensions on UpdateMessageIsPinned {
-  UpdateMessageIsPinned copy({int? chatId, int? messageId, bool? isPinned}) =>
+  UpdateMessageIsPinned copyWith(
+          {int? chatId, int? messageId, bool? isPinned}) =>
       UpdateMessageIsPinned(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -14546,7 +14597,7 @@ extension UpdateMessageIsPinnedExtensions on UpdateMessageIsPinned {
 
 extension UpdateMessageInteractionInfoExtensions
     on UpdateMessageInteractionInfo {
-  UpdateMessageInteractionInfo copy(
+  UpdateMessageInteractionInfo copyWith(
           {int? chatId,
           int? messageId,
           MessageInteractionInfo? interactionInfo}) =>
@@ -14557,14 +14608,14 @@ extension UpdateMessageInteractionInfoExtensions
 }
 
 extension UpdateMessageContentOpenedExtensions on UpdateMessageContentOpened {
-  UpdateMessageContentOpened copy({int? chatId, int? messageId}) =>
+  UpdateMessageContentOpened copyWith({int? chatId, int? messageId}) =>
       UpdateMessageContentOpened(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
 extension UpdateMessageMentionReadExtensions on UpdateMessageMentionRead {
-  UpdateMessageMentionRead copy(
+  UpdateMessageMentionRead copyWith(
           {int? chatId, int? messageId, int? unreadMentionCount}) =>
       UpdateMessageMentionRead(
           chatId: chatId ?? this.chatId,
@@ -14574,35 +14625,37 @@ extension UpdateMessageMentionReadExtensions on UpdateMessageMentionRead {
 
 extension UpdateMessageLiveLocationViewedExtensions
     on UpdateMessageLiveLocationViewed {
-  UpdateMessageLiveLocationViewed copy({int? chatId, int? messageId}) =>
+  UpdateMessageLiveLocationViewed copyWith({int? chatId, int? messageId}) =>
       UpdateMessageLiveLocationViewed(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
 extension UpdateNewChatExtensions on UpdateNewChat {
-  UpdateNewChat copy({Chat? chat}) => UpdateNewChat(chat: chat ?? this.chat);
+  UpdateNewChat copyWith({Chat? chat}) =>
+      UpdateNewChat(chat: chat ?? this.chat);
 }
 
 extension UpdateChatTitleExtensions on UpdateChatTitle {
-  UpdateChatTitle copy({int? chatId, String? title}) => UpdateChatTitle(
+  UpdateChatTitle copyWith({int? chatId, String? title}) => UpdateChatTitle(
       chatId: chatId ?? this.chatId, title: title ?? this.title);
 }
 
 extension UpdateChatPhotoExtensions on UpdateChatPhoto {
-  UpdateChatPhoto copy({int? chatId, ChatPhotoInfo? photo}) => UpdateChatPhoto(
-      chatId: chatId ?? this.chatId, photo: photo ?? this.photo);
+  UpdateChatPhoto copyWith({int? chatId, ChatPhotoInfo? photo}) =>
+      UpdateChatPhoto(
+          chatId: chatId ?? this.chatId, photo: photo ?? this.photo);
 }
 
 extension UpdateChatPermissionsExtensions on UpdateChatPermissions {
-  UpdateChatPermissions copy({int? chatId, ChatPermissions? permissions}) =>
+  UpdateChatPermissions copyWith({int? chatId, ChatPermissions? permissions}) =>
       UpdateChatPermissions(
           chatId: chatId ?? this.chatId,
           permissions: permissions ?? this.permissions);
 }
 
 extension UpdateChatLastMessageExtensions on UpdateChatLastMessage {
-  UpdateChatLastMessage copy(
+  UpdateChatLastMessage copyWith(
           {int? chatId, Message? lastMessage, List<ChatPosition>? positions}) =>
       UpdateChatLastMessage(
           chatId: chatId ?? this.chatId,
@@ -14611,13 +14664,13 @@ extension UpdateChatLastMessageExtensions on UpdateChatLastMessage {
 }
 
 extension UpdateChatPositionExtensions on UpdateChatPosition {
-  UpdateChatPosition copy({int? chatId, ChatPosition? position}) =>
+  UpdateChatPosition copyWith({int? chatId, ChatPosition? position}) =>
       UpdateChatPosition(
           chatId: chatId ?? this.chatId, position: position ?? this.position);
 }
 
 extension UpdateChatReadInboxExtensions on UpdateChatReadInbox {
-  UpdateChatReadInbox copy(
+  UpdateChatReadInbox copyWith(
           {int? chatId, int? lastReadInboxMessageId, int? unreadCount}) =>
       UpdateChatReadInbox(
           chatId: chatId ?? this.chatId,
@@ -14627,7 +14680,7 @@ extension UpdateChatReadInboxExtensions on UpdateChatReadInbox {
 }
 
 extension UpdateChatReadOutboxExtensions on UpdateChatReadOutbox {
-  UpdateChatReadOutbox copy({int? chatId, int? lastReadOutboxMessageId}) =>
+  UpdateChatReadOutbox copyWith({int? chatId, int? lastReadOutboxMessageId}) =>
       UpdateChatReadOutbox(
           chatId: chatId ?? this.chatId,
           lastReadOutboxMessageId:
@@ -14635,14 +14688,14 @@ extension UpdateChatReadOutboxExtensions on UpdateChatReadOutbox {
 }
 
 extension UpdateChatActionBarExtensions on UpdateChatActionBar {
-  UpdateChatActionBar copy({int? chatId, ChatActionBar? actionBar}) =>
+  UpdateChatActionBar copyWith({int? chatId, ChatActionBar? actionBar}) =>
       UpdateChatActionBar(
           chatId: chatId ?? this.chatId,
           actionBar: actionBar ?? this.actionBar);
 }
 
 extension UpdateChatDraftMessageExtensions on UpdateChatDraftMessage {
-  UpdateChatDraftMessage copy(
+  UpdateChatDraftMessage copyWith(
           {int? chatId,
           DraftMessage? draftMessage,
           List<ChatPosition>? positions}) =>
@@ -14653,14 +14706,15 @@ extension UpdateChatDraftMessageExtensions on UpdateChatDraftMessage {
 }
 
 extension UpdateChatMessageSenderExtensions on UpdateChatMessageSender {
-  UpdateChatMessageSender copy({int? chatId, MessageSender? messageSenderId}) =>
+  UpdateChatMessageSender copyWith(
+          {int? chatId, MessageSender? messageSenderId}) =>
       UpdateChatMessageSender(
           chatId: chatId ?? this.chatId,
           messageSenderId: messageSenderId ?? this.messageSenderId);
 }
 
 extension UpdateChatMessageTtlExtensions on UpdateChatMessageTtl {
-  UpdateChatMessageTtl copy({int? chatId, int? messageTtl}) =>
+  UpdateChatMessageTtl copyWith({int? chatId, int? messageTtl}) =>
       UpdateChatMessageTtl(
           chatId: chatId ?? this.chatId,
           messageTtl: messageTtl ?? this.messageTtl);
@@ -14668,7 +14722,7 @@ extension UpdateChatMessageTtlExtensions on UpdateChatMessageTtl {
 
 extension UpdateChatNotificationSettingsExtensions
     on UpdateChatNotificationSettings {
-  UpdateChatNotificationSettings copy(
+  UpdateChatNotificationSettings copyWith(
           {int? chatId, ChatNotificationSettings? notificationSettings}) =>
       UpdateChatNotificationSettings(
           chatId: chatId ?? this.chatId,
@@ -14678,7 +14732,7 @@ extension UpdateChatNotificationSettingsExtensions
 
 extension UpdateChatPendingJoinRequestsExtensions
     on UpdateChatPendingJoinRequests {
-  UpdateChatPendingJoinRequests copy(
+  UpdateChatPendingJoinRequests copyWith(
           {int? chatId, ChatJoinRequestsInfo? pendingJoinRequests}) =>
       UpdateChatPendingJoinRequests(
           chatId: chatId ?? this.chatId,
@@ -14686,7 +14740,7 @@ extension UpdateChatPendingJoinRequestsExtensions
 }
 
 extension UpdateChatReplyMarkupExtensions on UpdateChatReplyMarkup {
-  UpdateChatReplyMarkup copy({int? chatId, int? replyMarkupMessageId}) =>
+  UpdateChatReplyMarkup copyWith({int? chatId, int? replyMarkupMessageId}) =>
       UpdateChatReplyMarkup(
           chatId: chatId ?? this.chatId,
           replyMarkupMessageId:
@@ -14694,20 +14748,21 @@ extension UpdateChatReplyMarkupExtensions on UpdateChatReplyMarkup {
 }
 
 extension UpdateChatThemeExtensions on UpdateChatTheme {
-  UpdateChatTheme copy({int? chatId, String? themeName}) => UpdateChatTheme(
+  UpdateChatTheme copyWith({int? chatId, String? themeName}) => UpdateChatTheme(
       chatId: chatId ?? this.chatId, themeName: themeName ?? this.themeName);
 }
 
 extension UpdateChatUnreadMentionCountExtensions
     on UpdateChatUnreadMentionCount {
-  UpdateChatUnreadMentionCount copy({int? chatId, int? unreadMentionCount}) =>
+  UpdateChatUnreadMentionCount copyWith(
+          {int? chatId, int? unreadMentionCount}) =>
       UpdateChatUnreadMentionCount(
           chatId: chatId ?? this.chatId,
           unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount);
 }
 
 extension UpdateChatVideoChatExtensions on UpdateChatVideoChat {
-  UpdateChatVideoChat copy({int? chatId, VideoChat? videoChat}) =>
+  UpdateChatVideoChat copyWith({int? chatId, VideoChat? videoChat}) =>
       UpdateChatVideoChat(
           chatId: chatId ?? this.chatId,
           videoChat: videoChat ?? this.videoChat);
@@ -14715,7 +14770,7 @@ extension UpdateChatVideoChatExtensions on UpdateChatVideoChat {
 
 extension UpdateChatDefaultDisableNotificationExtensions
     on UpdateChatDefaultDisableNotification {
-  UpdateChatDefaultDisableNotification copy(
+  UpdateChatDefaultDisableNotification copyWith(
           {int? chatId, bool? defaultDisableNotification}) =>
       UpdateChatDefaultDisableNotification(
           chatId: chatId ?? this.chatId,
@@ -14725,7 +14780,7 @@ extension UpdateChatDefaultDisableNotificationExtensions
 
 extension UpdateChatHasProtectedContentExtensions
     on UpdateChatHasProtectedContent {
-  UpdateChatHasProtectedContent copy(
+  UpdateChatHasProtectedContent copyWith(
           {int? chatId, bool? hasProtectedContent}) =>
       UpdateChatHasProtectedContent(
           chatId: chatId ?? this.chatId,
@@ -14734,7 +14789,7 @@ extension UpdateChatHasProtectedContentExtensions
 
 extension UpdateChatHasScheduledMessagesExtensions
     on UpdateChatHasScheduledMessages {
-  UpdateChatHasScheduledMessages copy(
+  UpdateChatHasScheduledMessages copyWith(
           {int? chatId, bool? hasScheduledMessages}) =>
       UpdateChatHasScheduledMessages(
           chatId: chatId ?? this.chatId,
@@ -14743,26 +14798,26 @@ extension UpdateChatHasScheduledMessagesExtensions
 }
 
 extension UpdateChatIsBlockedExtensions on UpdateChatIsBlocked {
-  UpdateChatIsBlocked copy({int? chatId, bool? isBlocked}) =>
+  UpdateChatIsBlocked copyWith({int? chatId, bool? isBlocked}) =>
       UpdateChatIsBlocked(
           chatId: chatId ?? this.chatId,
           isBlocked: isBlocked ?? this.isBlocked);
 }
 
 extension UpdateChatIsMarkedAsUnreadExtensions on UpdateChatIsMarkedAsUnread {
-  UpdateChatIsMarkedAsUnread copy({int? chatId, bool? isMarkedAsUnread}) =>
+  UpdateChatIsMarkedAsUnread copyWith({int? chatId, bool? isMarkedAsUnread}) =>
       UpdateChatIsMarkedAsUnread(
           chatId: chatId ?? this.chatId,
           isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread);
 }
 
 extension UpdateChatFiltersExtensions on UpdateChatFilters {
-  UpdateChatFilters copy({List<ChatFilterInfo>? chatFilters}) =>
+  UpdateChatFilters copyWith({List<ChatFilterInfo>? chatFilters}) =>
       UpdateChatFilters(chatFilters: chatFilters ?? this.chatFilters);
 }
 
 extension UpdateChatOnlineMemberCountExtensions on UpdateChatOnlineMemberCount {
-  UpdateChatOnlineMemberCount copy({int? chatId, int? onlineMemberCount}) =>
+  UpdateChatOnlineMemberCount copyWith({int? chatId, int? onlineMemberCount}) =>
       UpdateChatOnlineMemberCount(
           chatId: chatId ?? this.chatId,
           onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount);
@@ -14770,7 +14825,7 @@ extension UpdateChatOnlineMemberCountExtensions on UpdateChatOnlineMemberCount {
 
 extension UpdateScopeNotificationSettingsExtensions
     on UpdateScopeNotificationSettings {
-  UpdateScopeNotificationSettings copy(
+  UpdateScopeNotificationSettings copyWith(
           {NotificationSettingsScope? scope,
           ScopeNotificationSettings? notificationSettings}) =>
       UpdateScopeNotificationSettings(
@@ -14780,7 +14835,7 @@ extension UpdateScopeNotificationSettingsExtensions
 }
 
 extension UpdateNotificationExtensions on UpdateNotification {
-  UpdateNotification copy(
+  UpdateNotification copyWith(
           {int? notificationGroupId, Notification? notification}) =>
       UpdateNotification(
           notificationGroupId: notificationGroupId ?? this.notificationGroupId,
@@ -14788,7 +14843,7 @@ extension UpdateNotificationExtensions on UpdateNotification {
 }
 
 extension UpdateNotificationGroupExtensions on UpdateNotificationGroup {
-  UpdateNotificationGroup copy(
+  UpdateNotificationGroup copyWith(
           {int? notificationGroupId,
           NotificationGroupType? type,
           int? chatId,
@@ -14811,13 +14866,13 @@ extension UpdateNotificationGroupExtensions on UpdateNotificationGroup {
 }
 
 extension UpdateActiveNotificationsExtensions on UpdateActiveNotifications {
-  UpdateActiveNotifications copy({List<NotificationGroup>? groups}) =>
+  UpdateActiveNotifications copyWith({List<NotificationGroup>? groups}) =>
       UpdateActiveNotifications(groups: groups ?? this.groups);
 }
 
 extension UpdateHavePendingNotificationsExtensions
     on UpdateHavePendingNotifications {
-  UpdateHavePendingNotifications copy(
+  UpdateHavePendingNotifications copyWith(
           {bool? haveDelayedNotifications,
           bool? haveUnreceivedNotifications}) =>
       UpdateHavePendingNotifications(
@@ -14828,7 +14883,7 @@ extension UpdateHavePendingNotificationsExtensions
 }
 
 extension UpdateDeleteMessagesExtensions on UpdateDeleteMessages {
-  UpdateDeleteMessages copy(
+  UpdateDeleteMessages copyWith(
           {int? chatId,
           List<int>? messageIds,
           bool? isPermanent,
@@ -14841,7 +14896,7 @@ extension UpdateDeleteMessagesExtensions on UpdateDeleteMessages {
 }
 
 extension UpdateChatActionExtensions on UpdateChatAction {
-  UpdateChatAction copy(
+  UpdateChatAction copyWith(
           {int? chatId,
           int? messageThreadId,
           MessageSender? senderId,
@@ -14854,38 +14909,39 @@ extension UpdateChatActionExtensions on UpdateChatAction {
 }
 
 extension UpdateUserStatusExtensions on UpdateUserStatus {
-  UpdateUserStatus copy({int? userId, UserStatus? status}) => UpdateUserStatus(
-      userId: userId ?? this.userId, status: status ?? this.status);
+  UpdateUserStatus copyWith({int? userId, UserStatus? status}) =>
+      UpdateUserStatus(
+          userId: userId ?? this.userId, status: status ?? this.status);
 }
 
 extension UpdateUserExtensions on UpdateUser {
-  UpdateUser copy({User? user}) => UpdateUser(user: user ?? this.user);
+  UpdateUser copyWith({User? user}) => UpdateUser(user: user ?? this.user);
 }
 
 extension UpdateBasicGroupExtensions on UpdateBasicGroup {
-  UpdateBasicGroup copy({BasicGroup? basicGroup}) =>
+  UpdateBasicGroup copyWith({BasicGroup? basicGroup}) =>
       UpdateBasicGroup(basicGroup: basicGroup ?? this.basicGroup);
 }
 
 extension UpdateSupergroupExtensions on UpdateSupergroup {
-  UpdateSupergroup copy({Supergroup? supergroup}) =>
+  UpdateSupergroup copyWith({Supergroup? supergroup}) =>
       UpdateSupergroup(supergroup: supergroup ?? this.supergroup);
 }
 
 extension UpdateSecretChatExtensions on UpdateSecretChat {
-  UpdateSecretChat copy({SecretChat? secretChat}) =>
+  UpdateSecretChat copyWith({SecretChat? secretChat}) =>
       UpdateSecretChat(secretChat: secretChat ?? this.secretChat);
 }
 
 extension UpdateUserFullInfoExtensions on UpdateUserFullInfo {
-  UpdateUserFullInfo copy({int? userId, UserFullInfo? userFullInfo}) =>
+  UpdateUserFullInfo copyWith({int? userId, UserFullInfo? userFullInfo}) =>
       UpdateUserFullInfo(
           userId: userId ?? this.userId,
           userFullInfo: userFullInfo ?? this.userFullInfo);
 }
 
 extension UpdateBasicGroupFullInfoExtensions on UpdateBasicGroupFullInfo {
-  UpdateBasicGroupFullInfo copy(
+  UpdateBasicGroupFullInfo copyWith(
           {int? basicGroupId, BasicGroupFullInfo? basicGroupFullInfo}) =>
       UpdateBasicGroupFullInfo(
           basicGroupId: basicGroupId ?? this.basicGroupId,
@@ -14893,7 +14949,7 @@ extension UpdateBasicGroupFullInfoExtensions on UpdateBasicGroupFullInfo {
 }
 
 extension UpdateSupergroupFullInfoExtensions on UpdateSupergroupFullInfo {
-  UpdateSupergroupFullInfo copy(
+  UpdateSupergroupFullInfo copyWith(
           {int? supergroupId, SupergroupFullInfo? supergroupFullInfo}) =>
       UpdateSupergroupFullInfo(
           supergroupId: supergroupId ?? this.supergroupId,
@@ -14901,17 +14957,17 @@ extension UpdateSupergroupFullInfoExtensions on UpdateSupergroupFullInfo {
 }
 
 extension UpdateServiceNotificationExtensions on UpdateServiceNotification {
-  UpdateServiceNotification copy({String? type, MessageContent? content}) =>
+  UpdateServiceNotification copyWith({String? type, MessageContent? content}) =>
       UpdateServiceNotification(
           type: type ?? this.type, content: content ?? this.content);
 }
 
 extension UpdateFileExtensions on UpdateFile {
-  UpdateFile copy({File? file}) => UpdateFile(file: file ?? this.file);
+  UpdateFile copyWith({File? file}) => UpdateFile(file: file ?? this.file);
 }
 
 extension UpdateFileGenerationStartExtensions on UpdateFileGenerationStart {
-  UpdateFileGenerationStart copy(
+  UpdateFileGenerationStart copyWith(
           {int? generationId,
           String? originalPath,
           String? destinationPath,
@@ -14924,21 +14980,21 @@ extension UpdateFileGenerationStartExtensions on UpdateFileGenerationStart {
 }
 
 extension UpdateFileGenerationStopExtensions on UpdateFileGenerationStop {
-  UpdateFileGenerationStop copy({int? generationId}) =>
+  UpdateFileGenerationStop copyWith({int? generationId}) =>
       UpdateFileGenerationStop(generationId: generationId ?? this.generationId);
 }
 
 extension UpdateCallExtensions on UpdateCall {
-  UpdateCall copy({Call? call}) => UpdateCall(call: call ?? this.call);
+  UpdateCall copyWith({Call? call}) => UpdateCall(call: call ?? this.call);
 }
 
 extension UpdateGroupCallExtensions on UpdateGroupCall {
-  UpdateGroupCall copy({GroupCall? groupCall}) =>
+  UpdateGroupCall copyWith({GroupCall? groupCall}) =>
       UpdateGroupCall(groupCall: groupCall ?? this.groupCall);
 }
 
 extension UpdateGroupCallParticipantExtensions on UpdateGroupCallParticipant {
-  UpdateGroupCallParticipant copy(
+  UpdateGroupCallParticipant copyWith(
           {int? groupCallId, GroupCallParticipant? participant}) =>
       UpdateGroupCallParticipant(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -14946,21 +15002,21 @@ extension UpdateGroupCallParticipantExtensions on UpdateGroupCallParticipant {
 }
 
 extension UpdateNewCallSignalingDataExtensions on UpdateNewCallSignalingData {
-  UpdateNewCallSignalingData copy({int? callId, String? data}) =>
+  UpdateNewCallSignalingData copyWith({int? callId, String? data}) =>
       UpdateNewCallSignalingData(
           callId: callId ?? this.callId, data: data ?? this.data);
 }
 
 extension UpdateUserPrivacySettingRulesExtensions
     on UpdateUserPrivacySettingRules {
-  UpdateUserPrivacySettingRules copy(
+  UpdateUserPrivacySettingRules copyWith(
           {UserPrivacySetting? setting, UserPrivacySettingRules? rules}) =>
       UpdateUserPrivacySettingRules(
           setting: setting ?? this.setting, rules: rules ?? this.rules);
 }
 
 extension UpdateUnreadMessageCountExtensions on UpdateUnreadMessageCount {
-  UpdateUnreadMessageCount copy(
+  UpdateUnreadMessageCount copyWith(
           {ChatList? chatList, int? unreadCount, int? unreadUnmutedCount}) =>
       UpdateUnreadMessageCount(
           chatList: chatList ?? this.chatList,
@@ -14969,7 +15025,7 @@ extension UpdateUnreadMessageCountExtensions on UpdateUnreadMessageCount {
 }
 
 extension UpdateUnreadChatCountExtensions on UpdateUnreadChatCount {
-  UpdateUnreadChatCount copy(
+  UpdateUnreadChatCount copyWith(
           {ChatList? chatList,
           int? totalCount,
           int? unreadCount,
@@ -14987,58 +15043,60 @@ extension UpdateUnreadChatCountExtensions on UpdateUnreadChatCount {
 }
 
 extension UpdateOptionExtensions on UpdateOption {
-  UpdateOption copy({String? name, OptionValue? value}) =>
+  UpdateOption copyWith({String? name, OptionValue? value}) =>
       UpdateOption(name: name ?? this.name, value: value ?? this.value);
 }
 
 extension UpdateStickerSetExtensions on UpdateStickerSet {
-  UpdateStickerSet copy({StickerSet? stickerSet}) =>
+  UpdateStickerSet copyWith({StickerSet? stickerSet}) =>
       UpdateStickerSet(stickerSet: stickerSet ?? this.stickerSet);
 }
 
 extension UpdateInstalledStickerSetsExtensions on UpdateInstalledStickerSets {
-  UpdateInstalledStickerSets copy({bool? isMasks, List<int>? stickerSetIds}) =>
+  UpdateInstalledStickerSets copyWith(
+          {bool? isMasks, List<int>? stickerSetIds}) =>
       UpdateInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
 extension UpdateTrendingStickerSetsExtensions on UpdateTrendingStickerSets {
-  UpdateTrendingStickerSets copy({StickerSets? stickerSets}) =>
+  UpdateTrendingStickerSets copyWith({StickerSets? stickerSets}) =>
       UpdateTrendingStickerSets(stickerSets: stickerSets ?? this.stickerSets);
 }
 
 extension UpdateRecentStickersExtensions on UpdateRecentStickers {
-  UpdateRecentStickers copy({bool? isAttached, List<int>? stickerIds}) =>
+  UpdateRecentStickers copyWith({bool? isAttached, List<int>? stickerIds}) =>
       UpdateRecentStickers(
           isAttached: isAttached ?? this.isAttached,
           stickerIds: stickerIds ?? this.stickerIds);
 }
 
 extension UpdateFavoriteStickersExtensions on UpdateFavoriteStickers {
-  UpdateFavoriteStickers copy({List<int>? stickerIds}) =>
+  UpdateFavoriteStickers copyWith({List<int>? stickerIds}) =>
       UpdateFavoriteStickers(stickerIds: stickerIds ?? this.stickerIds);
 }
 
 extension UpdateSavedAnimationsExtensions on UpdateSavedAnimations {
-  UpdateSavedAnimations copy({List<int>? animationIds}) =>
+  UpdateSavedAnimations copyWith({List<int>? animationIds}) =>
       UpdateSavedAnimations(animationIds: animationIds ?? this.animationIds);
 }
 
 extension UpdateSelectedBackgroundExtensions on UpdateSelectedBackground {
-  UpdateSelectedBackground copy({bool? forDarkTheme, Background? background}) =>
+  UpdateSelectedBackground copyWith(
+          {bool? forDarkTheme, Background? background}) =>
       UpdateSelectedBackground(
           forDarkTheme: forDarkTheme ?? this.forDarkTheme,
           background: background ?? this.background);
 }
 
 extension UpdateChatThemesExtensions on UpdateChatThemes {
-  UpdateChatThemes copy({List<ChatTheme>? chatThemes}) =>
+  UpdateChatThemes copyWith({List<ChatTheme>? chatThemes}) =>
       UpdateChatThemes(chatThemes: chatThemes ?? this.chatThemes);
 }
 
 extension UpdateLanguagePackStringsExtensions on UpdateLanguagePackStrings {
-  UpdateLanguagePackStrings copy(
+  UpdateLanguagePackStrings copyWith(
           {String? localizationTarget,
           String? languagePackId,
           List<LanguagePackString>? strings}) =>
@@ -15049,12 +15107,12 @@ extension UpdateLanguagePackStringsExtensions on UpdateLanguagePackStrings {
 }
 
 extension UpdateConnectionStateExtensions on UpdateConnectionState {
-  UpdateConnectionState copy({ConnectionState? state}) =>
+  UpdateConnectionState copyWith({ConnectionState? state}) =>
       UpdateConnectionState(state: state ?? this.state);
 }
 
 extension UpdateTermsOfServiceExtensions on UpdateTermsOfService {
-  UpdateTermsOfService copy(
+  UpdateTermsOfService copyWith(
           {String? termsOfServiceId, TermsOfService? termsOfService}) =>
       UpdateTermsOfService(
           termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
@@ -15062,18 +15120,18 @@ extension UpdateTermsOfServiceExtensions on UpdateTermsOfService {
 }
 
 extension UpdateUsersNearbyExtensions on UpdateUsersNearby {
-  UpdateUsersNearby copy({List<ChatNearby>? usersNearby}) =>
+  UpdateUsersNearby copyWith({List<ChatNearby>? usersNearby}) =>
       UpdateUsersNearby(usersNearby: usersNearby ?? this.usersNearby);
 }
 
 extension UpdateDiceEmojisExtensions on UpdateDiceEmojis {
-  UpdateDiceEmojis copy({List<String>? emojis}) =>
+  UpdateDiceEmojis copyWith({List<String>? emojis}) =>
       UpdateDiceEmojis(emojis: emojis ?? this.emojis);
 }
 
 extension UpdateAnimatedEmojiMessageClickedExtensions
     on UpdateAnimatedEmojiMessageClicked {
-  UpdateAnimatedEmojiMessageClicked copy(
+  UpdateAnimatedEmojiMessageClicked copyWith(
           {int? chatId, int? messageId, Sticker? sticker}) =>
       UpdateAnimatedEmojiMessageClicked(
           chatId: chatId ?? this.chatId,
@@ -15083,14 +15141,14 @@ extension UpdateAnimatedEmojiMessageClickedExtensions
 
 extension UpdateAnimationSearchParametersExtensions
     on UpdateAnimationSearchParameters {
-  UpdateAnimationSearchParameters copy(
+  UpdateAnimationSearchParameters copyWith(
           {String? provider, List<String>? emojis}) =>
       UpdateAnimationSearchParameters(
           provider: provider ?? this.provider, emojis: emojis ?? this.emojis);
 }
 
 extension UpdateSuggestedActionsExtensions on UpdateSuggestedActions {
-  UpdateSuggestedActions copy(
+  UpdateSuggestedActions copyWith(
           {List<SuggestedAction>? addedActions,
           List<SuggestedAction>? removedActions}) =>
       UpdateSuggestedActions(
@@ -15099,7 +15157,7 @@ extension UpdateSuggestedActionsExtensions on UpdateSuggestedActions {
 }
 
 extension UpdateNewInlineQueryExtensions on UpdateNewInlineQuery {
-  UpdateNewInlineQuery copy(
+  UpdateNewInlineQuery copyWith(
           {int? id,
           int? senderUserId,
           Location? userLocation,
@@ -15116,7 +15174,7 @@ extension UpdateNewInlineQueryExtensions on UpdateNewInlineQuery {
 }
 
 extension UpdateNewChosenInlineResultExtensions on UpdateNewChosenInlineResult {
-  UpdateNewChosenInlineResult copy(
+  UpdateNewChosenInlineResult copyWith(
           {int? senderUserId,
           Location? userLocation,
           String? query,
@@ -15131,7 +15189,7 @@ extension UpdateNewChosenInlineResultExtensions on UpdateNewChosenInlineResult {
 }
 
 extension UpdateNewCallbackQueryExtensions on UpdateNewCallbackQuery {
-  UpdateNewCallbackQuery copy(
+  UpdateNewCallbackQuery copyWith(
           {int? id,
           int? senderUserId,
           int? chatId,
@@ -15149,7 +15207,7 @@ extension UpdateNewCallbackQueryExtensions on UpdateNewCallbackQuery {
 
 extension UpdateNewInlineCallbackQueryExtensions
     on UpdateNewInlineCallbackQuery {
-  UpdateNewInlineCallbackQuery copy(
+  UpdateNewInlineCallbackQuery copyWith(
           {int? id,
           int? senderUserId,
           String? inlineMessageId,
@@ -15164,7 +15222,7 @@ extension UpdateNewInlineCallbackQueryExtensions
 }
 
 extension UpdateNewShippingQueryExtensions on UpdateNewShippingQuery {
-  UpdateNewShippingQuery copy(
+  UpdateNewShippingQuery copyWith(
           {int? id,
           int? senderUserId,
           String? invoicePayload,
@@ -15177,7 +15235,7 @@ extension UpdateNewShippingQueryExtensions on UpdateNewShippingQuery {
 }
 
 extension UpdateNewPreCheckoutQueryExtensions on UpdateNewPreCheckoutQuery {
-  UpdateNewPreCheckoutQuery copy(
+  UpdateNewPreCheckoutQuery copyWith(
           {int? id,
           int? senderUserId,
           String? currency,
@@ -15196,12 +15254,12 @@ extension UpdateNewPreCheckoutQueryExtensions on UpdateNewPreCheckoutQuery {
 }
 
 extension UpdateNewCustomEventExtensions on UpdateNewCustomEvent {
-  UpdateNewCustomEvent copy({String? event}) =>
+  UpdateNewCustomEvent copyWith({String? event}) =>
       UpdateNewCustomEvent(event: event ?? this.event);
 }
 
 extension UpdateNewCustomQueryExtensions on UpdateNewCustomQuery {
-  UpdateNewCustomQuery copy({int? id, String? data, int? timeout}) =>
+  UpdateNewCustomQuery copyWith({int? id, String? data, int? timeout}) =>
       UpdateNewCustomQuery(
           id: id ?? this.id,
           data: data ?? this.data,
@@ -15209,11 +15267,11 @@ extension UpdateNewCustomQueryExtensions on UpdateNewCustomQuery {
 }
 
 extension UpdatePollExtensions on UpdatePoll {
-  UpdatePoll copy({Poll? poll}) => UpdatePoll(poll: poll ?? this.poll);
+  UpdatePoll copyWith({Poll? poll}) => UpdatePoll(poll: poll ?? this.poll);
 }
 
 extension UpdatePollAnswerExtensions on UpdatePollAnswer {
-  UpdatePollAnswer copy({int? pollId, int? userId, List<int>? optionIds}) =>
+  UpdatePollAnswer copyWith({int? pollId, int? userId, List<int>? optionIds}) =>
       UpdatePollAnswer(
           pollId: pollId ?? this.pollId,
           userId: userId ?? this.userId,
@@ -15221,7 +15279,7 @@ extension UpdatePollAnswerExtensions on UpdatePollAnswer {
 }
 
 extension UpdateChatMemberExtensions on UpdateChatMember {
-  UpdateChatMember copy(
+  UpdateChatMember copyWith(
           {int? chatId,
           int? actorUserId,
           int? date,
@@ -15238,7 +15296,7 @@ extension UpdateChatMemberExtensions on UpdateChatMember {
 }
 
 extension UpdateNewChatJoinRequestExtensions on UpdateNewChatJoinRequest {
-  UpdateNewChatJoinRequest copy(
+  UpdateNewChatJoinRequest copyWith(
           {int? chatId,
           ChatJoinRequest? request,
           ChatInviteLink? inviteLink}) =>
@@ -15249,7 +15307,7 @@ extension UpdateNewChatJoinRequestExtensions on UpdateNewChatJoinRequest {
 }
 
 extension UpdatesExtensions on Updates {
-  Updates copy({List<Update>? updates}) =>
+  Updates copyWith({List<Update>? updates}) =>
       Updates(updates: updates ?? this.updates);
 }
 
@@ -15296,7 +15354,8 @@ extension LogStreamExtensions on LogStream {
 }
 
 extension LogStreamFileExtensions on LogStreamFile {
-  LogStreamFile copy({String? path, int? maxFileSize, bool? redirectStderr}) =>
+  LogStreamFile copyWith(
+          {String? path, int? maxFileSize, bool? redirectStderr}) =>
       LogStreamFile(
           path: path ?? this.path,
           maxFileSize: maxFileSize ?? this.maxFileSize,
@@ -15304,60 +15363,61 @@ extension LogStreamFileExtensions on LogStreamFile {
 }
 
 extension LogVerbosityLevelExtensions on LogVerbosityLevel {
-  LogVerbosityLevel copy({int? verbosityLevel}) =>
+  LogVerbosityLevel copyWith({int? verbosityLevel}) =>
       LogVerbosityLevel(verbosityLevel: verbosityLevel ?? this.verbosityLevel);
 }
 
 extension LogTagsExtensions on LogTags {
-  LogTags copy({List<String>? tags}) => LogTags(tags: tags ?? this.tags);
+  LogTags copyWith({List<String>? tags}) => LogTags(tags: tags ?? this.tags);
 }
 
 extension TestIntExtensions on TestInt {
-  TestInt copy({int? value}) => TestInt(value: value ?? this.value);
+  TestInt copyWith({int? value}) => TestInt(value: value ?? this.value);
 }
 
 extension TestStringExtensions on TestString {
-  TestString copy({String? value}) => TestString(value: value ?? this.value);
+  TestString copyWith({String? value}) =>
+      TestString(value: value ?? this.value);
 }
 
 extension TestBytesExtensions on TestBytes {
-  TestBytes copy({String? value}) => TestBytes(value: value ?? this.value);
+  TestBytes copyWith({String? value}) => TestBytes(value: value ?? this.value);
 }
 
 extension TestVectorIntExtensions on TestVectorInt {
-  TestVectorInt copy({List<int>? value}) =>
+  TestVectorInt copyWith({List<int>? value}) =>
       TestVectorInt(value: value ?? this.value);
 }
 
 extension TestVectorIntObjectExtensions on TestVectorIntObject {
-  TestVectorIntObject copy({List<TestInt>? value}) =>
+  TestVectorIntObject copyWith({List<TestInt>? value}) =>
       TestVectorIntObject(value: value ?? this.value);
 }
 
 extension TestVectorStringExtensions on TestVectorString {
-  TestVectorString copy({List<String>? value}) =>
+  TestVectorString copyWith({List<String>? value}) =>
       TestVectorString(value: value ?? this.value);
 }
 
 extension TestVectorStringObjectExtensions on TestVectorStringObject {
-  TestVectorStringObject copy({List<TestString>? value}) =>
+  TestVectorStringObject copyWith({List<TestString>? value}) =>
       TestVectorStringObject(value: value ?? this.value);
 }
 
 extension SetTdlibParametersExtensions on SetTdlibParameters {
-  SetTdlibParameters copy({TdlibParameters? parameters}) =>
+  SetTdlibParameters copyWith({TdlibParameters? parameters}) =>
       SetTdlibParameters(parameters: parameters ?? this.parameters);
 }
 
 extension CheckDatabaseEncryptionKeyExtensions on CheckDatabaseEncryptionKey {
-  CheckDatabaseEncryptionKey copy({String? encryptionKey}) =>
+  CheckDatabaseEncryptionKey copyWith({String? encryptionKey}) =>
       CheckDatabaseEncryptionKey(
           encryptionKey: encryptionKey ?? this.encryptionKey);
 }
 
 extension SetAuthenticationPhoneNumberExtensions
     on SetAuthenticationPhoneNumber {
-  SetAuthenticationPhoneNumber copy(
+  SetAuthenticationPhoneNumber copyWith(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
       SetAuthenticationPhoneNumber(
           phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -15365,37 +15425,37 @@ extension SetAuthenticationPhoneNumberExtensions
 }
 
 extension CheckAuthenticationCodeExtensions on CheckAuthenticationCode {
-  CheckAuthenticationCode copy({String? code}) =>
+  CheckAuthenticationCode copyWith({String? code}) =>
       CheckAuthenticationCode(code: code ?? this.code);
 }
 
 extension RequestQrCodeAuthenticationExtensions on RequestQrCodeAuthentication {
-  RequestQrCodeAuthentication copy({List<int>? otherUserIds}) =>
+  RequestQrCodeAuthentication copyWith({List<int>? otherUserIds}) =>
       RequestQrCodeAuthentication(
           otherUserIds: otherUserIds ?? this.otherUserIds);
 }
 
 extension RegisterUserExtensions on RegisterUser {
-  RegisterUser copy({String? firstName, String? lastName}) => RegisterUser(
+  RegisterUser copyWith({String? firstName, String? lastName}) => RegisterUser(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName);
 }
 
 extension CheckAuthenticationPasswordExtensions on CheckAuthenticationPassword {
-  CheckAuthenticationPassword copy({String? password}) =>
+  CheckAuthenticationPassword copyWith({String? password}) =>
       CheckAuthenticationPassword(password: password ?? this.password);
 }
 
 extension CheckAuthenticationPasswordRecoveryCodeExtensions
     on CheckAuthenticationPasswordRecoveryCode {
-  CheckAuthenticationPasswordRecoveryCode copy({String? recoveryCode}) =>
+  CheckAuthenticationPasswordRecoveryCode copyWith({String? recoveryCode}) =>
       CheckAuthenticationPasswordRecoveryCode(
           recoveryCode: recoveryCode ?? this.recoveryCode);
 }
 
 extension RecoverAuthenticationPasswordExtensions
     on RecoverAuthenticationPassword {
-  RecoverAuthenticationPassword copy(
+  RecoverAuthenticationPassword copyWith(
           {String? recoveryCode, String? newPassword, String? newHint}) =>
       RecoverAuthenticationPassword(
           recoveryCode: recoveryCode ?? this.recoveryCode,
@@ -15404,23 +15464,23 @@ extension RecoverAuthenticationPasswordExtensions
 }
 
 extension CheckAuthenticationBotTokenExtensions on CheckAuthenticationBotToken {
-  CheckAuthenticationBotToken copy({String? token}) =>
+  CheckAuthenticationBotToken copyWith({String? token}) =>
       CheckAuthenticationBotToken(token: token ?? this.token);
 }
 
 extension ConfirmQrCodeAuthenticationExtensions on ConfirmQrCodeAuthentication {
-  ConfirmQrCodeAuthentication copy({String? link}) =>
+  ConfirmQrCodeAuthentication copyWith({String? link}) =>
       ConfirmQrCodeAuthentication(link: link ?? this.link);
 }
 
 extension SetDatabaseEncryptionKeyExtensions on SetDatabaseEncryptionKey {
-  SetDatabaseEncryptionKey copy({String? newEncryptionKey}) =>
+  SetDatabaseEncryptionKey copyWith({String? newEncryptionKey}) =>
       SetDatabaseEncryptionKey(
           newEncryptionKey: newEncryptionKey ?? this.newEncryptionKey);
 }
 
 extension SetPasswordExtensions on SetPassword {
-  SetPassword copy(
+  SetPassword copyWith(
           {String? oldPassword,
           String? newPassword,
           String? newHint,
@@ -15437,12 +15497,12 @@ extension SetPasswordExtensions on SetPassword {
 }
 
 extension GetRecoveryEmailAddressExtensions on GetRecoveryEmailAddress {
-  GetRecoveryEmailAddress copy({String? password}) =>
+  GetRecoveryEmailAddress copyWith({String? password}) =>
       GetRecoveryEmailAddress(password: password ?? this.password);
 }
 
 extension SetRecoveryEmailAddressExtensions on SetRecoveryEmailAddress {
-  SetRecoveryEmailAddress copy(
+  SetRecoveryEmailAddress copyWith(
           {String? password, String? newRecoveryEmailAddress}) =>
       SetRecoveryEmailAddress(
           password: password ?? this.password,
@@ -15452,18 +15512,18 @@ extension SetRecoveryEmailAddressExtensions on SetRecoveryEmailAddress {
 
 extension CheckRecoveryEmailAddressCodeExtensions
     on CheckRecoveryEmailAddressCode {
-  CheckRecoveryEmailAddressCode copy({String? code}) =>
+  CheckRecoveryEmailAddressCode copyWith({String? code}) =>
       CheckRecoveryEmailAddressCode(code: code ?? this.code);
 }
 
 extension CheckPasswordRecoveryCodeExtensions on CheckPasswordRecoveryCode {
-  CheckPasswordRecoveryCode copy({String? recoveryCode}) =>
+  CheckPasswordRecoveryCode copyWith({String? recoveryCode}) =>
       CheckPasswordRecoveryCode(
           recoveryCode: recoveryCode ?? this.recoveryCode);
 }
 
 extension RecoverPasswordExtensions on RecoverPassword {
-  RecoverPassword copy(
+  RecoverPassword copyWith(
           {String? recoveryCode, String? newPassword, String? newHint}) =>
       RecoverPassword(
           recoveryCode: recoveryCode ?? this.recoveryCode,
@@ -15472,72 +15532,76 @@ extension RecoverPasswordExtensions on RecoverPassword {
 }
 
 extension CreateTemporaryPasswordExtensions on CreateTemporaryPassword {
-  CreateTemporaryPassword copy({String? password, int? validFor}) =>
+  CreateTemporaryPassword copyWith({String? password, int? validFor}) =>
       CreateTemporaryPassword(
           password: password ?? this.password,
           validFor: validFor ?? this.validFor);
 }
 
 extension GetUserExtensions on GetUser {
-  GetUser copy({int? userId}) => GetUser(userId: userId ?? this.userId);
+  GetUser copyWith({int? userId}) => GetUser(userId: userId ?? this.userId);
 }
 
 extension GetUserFullInfoExtensions on GetUserFullInfo {
-  GetUserFullInfo copy({int? userId}) =>
+  GetUserFullInfo copyWith({int? userId}) =>
       GetUserFullInfo(userId: userId ?? this.userId);
 }
 
 extension GetBasicGroupExtensions on GetBasicGroup {
-  GetBasicGroup copy({int? basicGroupId}) =>
+  GetBasicGroup copyWith({int? basicGroupId}) =>
       GetBasicGroup(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
 extension GetBasicGroupFullInfoExtensions on GetBasicGroupFullInfo {
-  GetBasicGroupFullInfo copy({int? basicGroupId}) =>
+  GetBasicGroupFullInfo copyWith({int? basicGroupId}) =>
       GetBasicGroupFullInfo(basicGroupId: basicGroupId ?? this.basicGroupId);
 }
 
 extension GetSupergroupExtensions on GetSupergroup {
-  GetSupergroup copy({int? supergroupId}) =>
+  GetSupergroup copyWith({int? supergroupId}) =>
       GetSupergroup(supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension GetSupergroupFullInfoExtensions on GetSupergroupFullInfo {
-  GetSupergroupFullInfo copy({int? supergroupId}) =>
+  GetSupergroupFullInfo copyWith({int? supergroupId}) =>
       GetSupergroupFullInfo(supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension GetSecretChatExtensions on GetSecretChat {
-  GetSecretChat copy({int? secretChatId}) =>
+  GetSecretChat copyWith({int? secretChatId}) =>
       GetSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
 extension GetChatExtensions on GetChat {
-  GetChat copy({int? chatId}) => GetChat(chatId: chatId ?? this.chatId);
+  GetChat copyWith({int? chatId}) => GetChat(chatId: chatId ?? this.chatId);
 }
 
 extension GetMessageExtensions on GetMessage {
-  GetMessage copy({int? chatId, int? messageId}) => GetMessage(
+  GetMessage copyWith({int? chatId, int? messageId}) => GetMessage(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
 extension GetMessageLocallyExtensions on GetMessageLocally {
-  GetMessageLocally copy({int? chatId, int? messageId}) => GetMessageLocally(
-      chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
+  GetMessageLocally copyWith({int? chatId, int? messageId}) =>
+      GetMessageLocally(
+          chatId: chatId ?? this.chatId,
+          messageId: messageId ?? this.messageId);
 }
 
 extension GetRepliedMessageExtensions on GetRepliedMessage {
-  GetRepliedMessage copy({int? chatId, int? messageId}) => GetRepliedMessage(
-      chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
+  GetRepliedMessage copyWith({int? chatId, int? messageId}) =>
+      GetRepliedMessage(
+          chatId: chatId ?? this.chatId,
+          messageId: messageId ?? this.messageId);
 }
 
 extension GetChatPinnedMessageExtensions on GetChatPinnedMessage {
-  GetChatPinnedMessage copy({int? chatId}) =>
+  GetChatPinnedMessage copyWith({int? chatId}) =>
       GetChatPinnedMessage(chatId: chatId ?? this.chatId);
 }
 
 extension GetCallbackQueryMessageExtensions on GetCallbackQueryMessage {
-  GetCallbackQueryMessage copy(
+  GetCallbackQueryMessage copyWith(
           {int? chatId, int? messageId, int? callbackQueryId}) =>
       GetCallbackQueryMessage(
           chatId: chatId ?? this.chatId,
@@ -15546,109 +15610,114 @@ extension GetCallbackQueryMessageExtensions on GetCallbackQueryMessage {
 }
 
 extension GetMessagesExtensions on GetMessages {
-  GetMessages copy({int? chatId, List<int>? messageIds}) => GetMessages(
+  GetMessages copyWith({int? chatId, List<int>? messageIds}) => GetMessages(
       chatId: chatId ?? this.chatId, messageIds: messageIds ?? this.messageIds);
 }
 
 extension GetMessageThreadExtensions on GetMessageThread {
-  GetMessageThread copy({int? chatId, int? messageId}) => GetMessageThread(
+  GetMessageThread copyWith({int? chatId, int? messageId}) => GetMessageThread(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
 extension GetMessageViewersExtensions on GetMessageViewers {
-  GetMessageViewers copy({int? chatId, int? messageId}) => GetMessageViewers(
-      chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
+  GetMessageViewers copyWith({int? chatId, int? messageId}) =>
+      GetMessageViewers(
+          chatId: chatId ?? this.chatId,
+          messageId: messageId ?? this.messageId);
 }
 
 extension GetFileExtensions on GetFile {
-  GetFile copy({int? fileId}) => GetFile(fileId: fileId ?? this.fileId);
+  GetFile copyWith({int? fileId}) => GetFile(fileId: fileId ?? this.fileId);
 }
 
 extension GetRemoteFileExtensions on GetRemoteFile {
-  GetRemoteFile copy({String? remoteFileId, FileType? fileType}) =>
+  GetRemoteFile copyWith({String? remoteFileId, FileType? fileType}) =>
       GetRemoteFile(
           remoteFileId: remoteFileId ?? this.remoteFileId,
           fileType: fileType ?? this.fileType);
 }
 
 extension LoadChatsExtensions on LoadChats {
-  LoadChats copy({ChatList? chatList, int? limit}) => LoadChats(
+  LoadChats copyWith({ChatList? chatList, int? limit}) => LoadChats(
       chatList: chatList ?? this.chatList, limit: limit ?? this.limit);
 }
 
 extension GetChatsExtensions on GetChats {
-  GetChats copy({ChatList? chatList, int? limit}) =>
+  GetChats copyWith({ChatList? chatList, int? limit}) =>
       GetChats(chatList: chatList ?? this.chatList, limit: limit ?? this.limit);
 }
 
 extension SearchPublicChatExtensions on SearchPublicChat {
-  SearchPublicChat copy({String? username}) =>
+  SearchPublicChat copyWith({String? username}) =>
       SearchPublicChat(username: username ?? this.username);
 }
 
 extension SearchPublicChatsExtensions on SearchPublicChats {
-  SearchPublicChats copy({String? query}) =>
+  SearchPublicChats copyWith({String? query}) =>
       SearchPublicChats(query: query ?? this.query);
 }
 
 extension SearchChatsExtensions on SearchChats {
-  SearchChats copy({String? query, int? limit}) =>
+  SearchChats copyWith({String? query, int? limit}) =>
       SearchChats(query: query ?? this.query, limit: limit ?? this.limit);
 }
 
 extension SearchChatsOnServerExtensions on SearchChatsOnServer {
-  SearchChatsOnServer copy({String? query, int? limit}) => SearchChatsOnServer(
-      query: query ?? this.query, limit: limit ?? this.limit);
+  SearchChatsOnServer copyWith({String? query, int? limit}) =>
+      SearchChatsOnServer(
+          query: query ?? this.query, limit: limit ?? this.limit);
 }
 
 extension SearchChatsNearbyExtensions on SearchChatsNearby {
-  SearchChatsNearby copy({Location? location}) =>
+  SearchChatsNearby copyWith({Location? location}) =>
       SearchChatsNearby(location: location ?? this.location);
 }
 
 extension GetTopChatsExtensions on GetTopChats {
-  GetTopChats copy({TopChatCategory? category, int? limit}) => GetTopChats(
+  GetTopChats copyWith({TopChatCategory? category, int? limit}) => GetTopChats(
       category: category ?? this.category, limit: limit ?? this.limit);
 }
 
 extension RemoveTopChatExtensions on RemoveTopChat {
-  RemoveTopChat copy({TopChatCategory? category, int? chatId}) => RemoveTopChat(
-      category: category ?? this.category, chatId: chatId ?? this.chatId);
+  RemoveTopChat copyWith({TopChatCategory? category, int? chatId}) =>
+      RemoveTopChat(
+          category: category ?? this.category, chatId: chatId ?? this.chatId);
 }
 
 extension AddRecentlyFoundChatExtensions on AddRecentlyFoundChat {
-  AddRecentlyFoundChat copy({int? chatId}) =>
+  AddRecentlyFoundChat copyWith({int? chatId}) =>
       AddRecentlyFoundChat(chatId: chatId ?? this.chatId);
 }
 
 extension RemoveRecentlyFoundChatExtensions on RemoveRecentlyFoundChat {
-  RemoveRecentlyFoundChat copy({int? chatId}) =>
+  RemoveRecentlyFoundChat copyWith({int? chatId}) =>
       RemoveRecentlyFoundChat(chatId: chatId ?? this.chatId);
 }
 
 extension GetRecentlyOpenedChatsExtensions on GetRecentlyOpenedChats {
-  GetRecentlyOpenedChats copy({int? limit}) =>
+  GetRecentlyOpenedChats copyWith({int? limit}) =>
       GetRecentlyOpenedChats(limit: limit ?? this.limit);
 }
 
 extension CheckChatUsernameExtensions on CheckChatUsername {
-  CheckChatUsername copy({int? chatId, String? username}) => CheckChatUsername(
-      chatId: chatId ?? this.chatId, username: username ?? this.username);
+  CheckChatUsername copyWith({int? chatId, String? username}) =>
+      CheckChatUsername(
+          chatId: chatId ?? this.chatId, username: username ?? this.username);
 }
 
 extension GetCreatedPublicChatsExtensions on GetCreatedPublicChats {
-  GetCreatedPublicChats copy({PublicChatType? type}) =>
+  GetCreatedPublicChats copyWith({PublicChatType? type}) =>
       GetCreatedPublicChats(type: type ?? this.type);
 }
 
 extension CheckCreatedPublicChatsLimitExtensions
     on CheckCreatedPublicChatsLimit {
-  CheckCreatedPublicChatsLimit copy({PublicChatType? type}) =>
+  CheckCreatedPublicChatsLimit copyWith({PublicChatType? type}) =>
       CheckCreatedPublicChatsLimit(type: type ?? this.type);
 }
 
 extension GetGroupsInCommonExtensions on GetGroupsInCommon {
-  GetGroupsInCommon copy({int? userId, int? offsetChatId, int? limit}) =>
+  GetGroupsInCommon copyWith({int? userId, int? offsetChatId, int? limit}) =>
       GetGroupsInCommon(
           userId: userId ?? this.userId,
           offsetChatId: offsetChatId ?? this.offsetChatId,
@@ -15656,7 +15725,7 @@ extension GetGroupsInCommonExtensions on GetGroupsInCommon {
 }
 
 extension GetChatHistoryExtensions on GetChatHistory {
-  GetChatHistory copy(
+  GetChatHistory copyWith(
           {int? chatId,
           int? fromMessageId,
           int? offset,
@@ -15671,7 +15740,7 @@ extension GetChatHistoryExtensions on GetChatHistory {
 }
 
 extension GetMessageThreadHistoryExtensions on GetMessageThreadHistory {
-  GetMessageThreadHistory copy(
+  GetMessageThreadHistory copyWith(
           {int? chatId,
           int? messageId,
           int? fromMessageId,
@@ -15686,7 +15755,7 @@ extension GetMessageThreadHistoryExtensions on GetMessageThreadHistory {
 }
 
 extension DeleteChatHistoryExtensions on DeleteChatHistory {
-  DeleteChatHistory copy(
+  DeleteChatHistory copyWith(
           {int? chatId, bool? removeFromChatList, bool? revoke}) =>
       DeleteChatHistory(
           chatId: chatId ?? this.chatId,
@@ -15695,11 +15764,12 @@ extension DeleteChatHistoryExtensions on DeleteChatHistory {
 }
 
 extension DeleteChatExtensions on DeleteChat {
-  DeleteChat copy({int? chatId}) => DeleteChat(chatId: chatId ?? this.chatId);
+  DeleteChat copyWith({int? chatId}) =>
+      DeleteChat(chatId: chatId ?? this.chatId);
 }
 
 extension SearchChatMessagesExtensions on SearchChatMessages {
-  SearchChatMessages copy(
+  SearchChatMessages copyWith(
           {int? chatId,
           String? query,
           MessageSender? senderId,
@@ -15720,7 +15790,7 @@ extension SearchChatMessagesExtensions on SearchChatMessages {
 }
 
 extension SearchMessagesExtensions on SearchMessages {
-  SearchMessages copy(
+  SearchMessages copyWith(
           {ChatList? chatList,
           String? query,
           int? offsetDate,
@@ -15743,7 +15813,7 @@ extension SearchMessagesExtensions on SearchMessages {
 }
 
 extension SearchSecretMessagesExtensions on SearchSecretMessages {
-  SearchSecretMessages copy(
+  SearchSecretMessages copyWith(
           {int? chatId,
           String? query,
           String? offset,
@@ -15758,7 +15828,8 @@ extension SearchSecretMessagesExtensions on SearchSecretMessages {
 }
 
 extension SearchCallMessagesExtensions on SearchCallMessages {
-  SearchCallMessages copy({int? fromMessageId, int? limit, bool? onlyMissed}) =>
+  SearchCallMessages copyWith(
+          {int? fromMessageId, int? limit, bool? onlyMissed}) =>
       SearchCallMessages(
           fromMessageId: fromMessageId ?? this.fromMessageId,
           limit: limit ?? this.limit,
@@ -15766,25 +15837,26 @@ extension SearchCallMessagesExtensions on SearchCallMessages {
 }
 
 extension DeleteAllCallMessagesExtensions on DeleteAllCallMessages {
-  DeleteAllCallMessages copy({bool? revoke}) =>
+  DeleteAllCallMessages copyWith({bool? revoke}) =>
       DeleteAllCallMessages(revoke: revoke ?? this.revoke);
 }
 
 extension SearchChatRecentLocationMessagesExtensions
     on SearchChatRecentLocationMessages {
-  SearchChatRecentLocationMessages copy({int? chatId, int? limit}) =>
+  SearchChatRecentLocationMessages copyWith({int? chatId, int? limit}) =>
       SearchChatRecentLocationMessages(
           chatId: chatId ?? this.chatId, limit: limit ?? this.limit);
 }
 
 extension GetChatMessageByDateExtensions on GetChatMessageByDate {
-  GetChatMessageByDate copy({int? chatId, int? date}) => GetChatMessageByDate(
-      chatId: chatId ?? this.chatId, date: date ?? this.date);
+  GetChatMessageByDate copyWith({int? chatId, int? date}) =>
+      GetChatMessageByDate(
+          chatId: chatId ?? this.chatId, date: date ?? this.date);
 }
 
 extension GetChatSparseMessagePositionsExtensions
     on GetChatSparseMessagePositions {
-  GetChatSparseMessagePositions copy(
+  GetChatSparseMessagePositions copyWith(
           {int? chatId,
           SearchMessagesFilter? filter,
           int? fromMessageId,
@@ -15797,7 +15869,7 @@ extension GetChatSparseMessagePositionsExtensions
 }
 
 extension GetChatMessageCalendarExtensions on GetChatMessageCalendar {
-  GetChatMessageCalendar copy(
+  GetChatMessageCalendar copyWith(
           {int? chatId, SearchMessagesFilter? filter, int? fromMessageId}) =>
       GetChatMessageCalendar(
           chatId: chatId ?? this.chatId,
@@ -15806,7 +15878,7 @@ extension GetChatMessageCalendarExtensions on GetChatMessageCalendar {
 }
 
 extension GetChatMessageCountExtensions on GetChatMessageCount {
-  GetChatMessageCount copy(
+  GetChatMessageCount copyWith(
           {int? chatId, SearchMessagesFilter? filter, bool? returnLocal}) =>
       GetChatMessageCount(
           chatId: chatId ?? this.chatId,
@@ -15815,12 +15887,12 @@ extension GetChatMessageCountExtensions on GetChatMessageCount {
 }
 
 extension GetChatScheduledMessagesExtensions on GetChatScheduledMessages {
-  GetChatScheduledMessages copy({int? chatId}) =>
+  GetChatScheduledMessages copyWith({int? chatId}) =>
       GetChatScheduledMessages(chatId: chatId ?? this.chatId);
 }
 
 extension GetMessagePublicForwardsExtensions on GetMessagePublicForwards {
-  GetMessagePublicForwards copy(
+  GetMessagePublicForwards copyWith(
           {int? chatId, int? messageId, String? offset, int? limit}) =>
       GetMessagePublicForwards(
           chatId: chatId ?? this.chatId,
@@ -15830,19 +15902,20 @@ extension GetMessagePublicForwardsExtensions on GetMessagePublicForwards {
 }
 
 extension GetChatSponsoredMessageExtensions on GetChatSponsoredMessage {
-  GetChatSponsoredMessage copy({int? chatId}) =>
+  GetChatSponsoredMessage copyWith({int? chatId}) =>
       GetChatSponsoredMessage(chatId: chatId ?? this.chatId);
 }
 
 extension RemoveNotificationExtensions on RemoveNotification {
-  RemoveNotification copy({int? notificationGroupId, int? notificationId}) =>
+  RemoveNotification copyWith(
+          {int? notificationGroupId, int? notificationId}) =>
       RemoveNotification(
           notificationGroupId: notificationGroupId ?? this.notificationGroupId,
           notificationId: notificationId ?? this.notificationId);
 }
 
 extension RemoveNotificationGroupExtensions on RemoveNotificationGroup {
-  RemoveNotificationGroup copy(
+  RemoveNotificationGroup copyWith(
           {int? notificationGroupId, int? maxNotificationId}) =>
       RemoveNotificationGroup(
           notificationGroupId: notificationGroupId ?? this.notificationGroupId,
@@ -15850,7 +15923,7 @@ extension RemoveNotificationGroupExtensions on RemoveNotificationGroup {
 }
 
 extension GetMessageLinkExtensions on GetMessageLink {
-  GetMessageLink copy(
+  GetMessageLink copyWith(
           {int? chatId,
           int? messageId,
           int? mediaTimestamp,
@@ -15865,7 +15938,8 @@ extension GetMessageLinkExtensions on GetMessageLink {
 }
 
 extension GetMessageEmbeddingCodeExtensions on GetMessageEmbeddingCode {
-  GetMessageEmbeddingCode copy({int? chatId, int? messageId, bool? forAlbum}) =>
+  GetMessageEmbeddingCode copyWith(
+          {int? chatId, int? messageId, bool? forAlbum}) =>
       GetMessageEmbeddingCode(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -15873,25 +15947,26 @@ extension GetMessageEmbeddingCodeExtensions on GetMessageEmbeddingCode {
 }
 
 extension GetMessageLinkInfoExtensions on GetMessageLinkInfo {
-  GetMessageLinkInfo copy({String? url}) =>
+  GetMessageLinkInfo copyWith({String? url}) =>
       GetMessageLinkInfo(url: url ?? this.url);
 }
 
 extension GetChatAvailableMessageSendersExtensions
     on GetChatAvailableMessageSenders {
-  GetChatAvailableMessageSenders copy({int? chatId}) =>
+  GetChatAvailableMessageSenders copyWith({int? chatId}) =>
       GetChatAvailableMessageSenders(chatId: chatId ?? this.chatId);
 }
 
 extension SetChatMessageSenderExtensions on SetChatMessageSender {
-  SetChatMessageSender copy({int? chatId, MessageSender? messageSenderId}) =>
+  SetChatMessageSender copyWith(
+          {int? chatId, MessageSender? messageSenderId}) =>
       SetChatMessageSender(
           chatId: chatId ?? this.chatId,
           messageSenderId: messageSenderId ?? this.messageSenderId);
 }
 
 extension SendMessageExtensions on SendMessage {
-  SendMessage copy(
+  SendMessage copyWith(
           {int? chatId,
           int? messageThreadId,
           int? replyToMessageId,
@@ -15908,7 +15983,7 @@ extension SendMessageExtensions on SendMessage {
 }
 
 extension SendMessageAlbumExtensions on SendMessageAlbum {
-  SendMessageAlbum copy(
+  SendMessageAlbum copyWith(
           {int? chatId,
           int? messageThreadId,
           int? replyToMessageId,
@@ -15924,7 +15999,8 @@ extension SendMessageAlbumExtensions on SendMessageAlbum {
 }
 
 extension SendBotStartMessageExtensions on SendBotStartMessage {
-  SendBotStartMessage copy({int? botUserId, int? chatId, String? parameter}) =>
+  SendBotStartMessage copyWith(
+          {int? botUserId, int? chatId, String? parameter}) =>
       SendBotStartMessage(
           botUserId: botUserId ?? this.botUserId,
           chatId: chatId ?? this.chatId,
@@ -15933,7 +16009,7 @@ extension SendBotStartMessageExtensions on SendBotStartMessage {
 
 extension SendInlineQueryResultMessageExtensions
     on SendInlineQueryResultMessage {
-  SendInlineQueryResultMessage copy(
+  SendInlineQueryResultMessage copyWith(
           {int? chatId,
           int? messageThreadId,
           int? replyToMessageId,
@@ -15952,7 +16028,7 @@ extension SendInlineQueryResultMessageExtensions
 }
 
 extension ForwardMessagesExtensions on ForwardMessages {
-  ForwardMessages copy(
+  ForwardMessages copyWith(
           {int? chatId,
           int? fromChatId,
           List<int>? messageIds,
@@ -15971,18 +16047,20 @@ extension ForwardMessagesExtensions on ForwardMessages {
 }
 
 extension ResendMessagesExtensions on ResendMessages {
-  ResendMessages copy({int? chatId, List<int>? messageIds}) => ResendMessages(
-      chatId: chatId ?? this.chatId, messageIds: messageIds ?? this.messageIds);
+  ResendMessages copyWith({int? chatId, List<int>? messageIds}) =>
+      ResendMessages(
+          chatId: chatId ?? this.chatId,
+          messageIds: messageIds ?? this.messageIds);
 }
 
 extension SendChatScreenshotTakenNotificationExtensions
     on SendChatScreenshotTakenNotification {
-  SendChatScreenshotTakenNotification copy({int? chatId}) =>
+  SendChatScreenshotTakenNotification copyWith({int? chatId}) =>
       SendChatScreenshotTakenNotification(chatId: chatId ?? this.chatId);
 }
 
 extension AddLocalMessageExtensions on AddLocalMessage {
-  AddLocalMessage copy(
+  AddLocalMessage copyWith(
           {int? chatId,
           MessageSender? senderId,
           int? replyToMessageId,
@@ -15997,7 +16075,7 @@ extension AddLocalMessageExtensions on AddLocalMessage {
 }
 
 extension DeleteMessagesExtensions on DeleteMessages {
-  DeleteMessages copy({int? chatId, List<int>? messageIds, bool? revoke}) =>
+  DeleteMessages copyWith({int? chatId, List<int>? messageIds, bool? revoke}) =>
       DeleteMessages(
           chatId: chatId ?? this.chatId,
           messageIds: messageIds ?? this.messageIds,
@@ -16005,13 +16083,13 @@ extension DeleteMessagesExtensions on DeleteMessages {
 }
 
 extension DeleteChatMessagesBySenderExtensions on DeleteChatMessagesBySender {
-  DeleteChatMessagesBySender copy({int? chatId, MessageSender? senderId}) =>
+  DeleteChatMessagesBySender copyWith({int? chatId, MessageSender? senderId}) =>
       DeleteChatMessagesBySender(
           chatId: chatId ?? this.chatId, senderId: senderId ?? this.senderId);
 }
 
 extension DeleteChatMessagesByDateExtensions on DeleteChatMessagesByDate {
-  DeleteChatMessagesByDate copy(
+  DeleteChatMessagesByDate copyWith(
           {int? chatId, int? minDate, int? maxDate, bool? revoke}) =>
       DeleteChatMessagesByDate(
           chatId: chatId ?? this.chatId,
@@ -16021,7 +16099,7 @@ extension DeleteChatMessagesByDateExtensions on DeleteChatMessagesByDate {
 }
 
 extension EditMessageTextExtensions on EditMessageText {
-  EditMessageText copy(
+  EditMessageText copyWith(
           {int? chatId,
           int? messageId,
           ReplyMarkup? replyMarkup,
@@ -16034,7 +16112,7 @@ extension EditMessageTextExtensions on EditMessageText {
 }
 
 extension EditMessageLiveLocationExtensions on EditMessageLiveLocation {
-  EditMessageLiveLocation copy(
+  EditMessageLiveLocation copyWith(
           {int? chatId,
           int? messageId,
           ReplyMarkup? replyMarkup,
@@ -16052,7 +16130,7 @@ extension EditMessageLiveLocationExtensions on EditMessageLiveLocation {
 }
 
 extension EditMessageMediaExtensions on EditMessageMedia {
-  EditMessageMedia copy(
+  EditMessageMedia copyWith(
           {int? chatId,
           int? messageId,
           ReplyMarkup? replyMarkup,
@@ -16065,7 +16143,7 @@ extension EditMessageMediaExtensions on EditMessageMedia {
 }
 
 extension EditMessageCaptionExtensions on EditMessageCaption {
-  EditMessageCaption copy(
+  EditMessageCaption copyWith(
           {int? chatId,
           int? messageId,
           ReplyMarkup? replyMarkup,
@@ -16078,7 +16156,7 @@ extension EditMessageCaptionExtensions on EditMessageCaption {
 }
 
 extension EditMessageReplyMarkupExtensions on EditMessageReplyMarkup {
-  EditMessageReplyMarkup copy(
+  EditMessageReplyMarkup copyWith(
           {int? chatId, int? messageId, ReplyMarkup? replyMarkup}) =>
       EditMessageReplyMarkup(
           chatId: chatId ?? this.chatId,
@@ -16087,7 +16165,7 @@ extension EditMessageReplyMarkupExtensions on EditMessageReplyMarkup {
 }
 
 extension EditInlineMessageTextExtensions on EditInlineMessageText {
-  EditInlineMessageText copy(
+  EditInlineMessageText copyWith(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
           InputMessageContent? inputMessageContent}) =>
@@ -16099,7 +16177,7 @@ extension EditInlineMessageTextExtensions on EditInlineMessageText {
 
 extension EditInlineMessageLiveLocationExtensions
     on EditInlineMessageLiveLocation {
-  EditInlineMessageLiveLocation copy(
+  EditInlineMessageLiveLocation copyWith(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
           Location? location,
@@ -16115,7 +16193,7 @@ extension EditInlineMessageLiveLocationExtensions
 }
 
 extension EditInlineMessageMediaExtensions on EditInlineMessageMedia {
-  EditInlineMessageMedia copy(
+  EditInlineMessageMedia copyWith(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
           InputMessageContent? inputMessageContent}) =>
@@ -16126,7 +16204,7 @@ extension EditInlineMessageMediaExtensions on EditInlineMessageMedia {
 }
 
 extension EditInlineMessageCaptionExtensions on EditInlineMessageCaption {
-  EditInlineMessageCaption copy(
+  EditInlineMessageCaption copyWith(
           {String? inlineMessageId,
           ReplyMarkup? replyMarkup,
           FormattedText? caption}) =>
@@ -16138,7 +16216,7 @@ extension EditInlineMessageCaptionExtensions on EditInlineMessageCaption {
 
 extension EditInlineMessageReplyMarkupExtensions
     on EditInlineMessageReplyMarkup {
-  EditInlineMessageReplyMarkup copy(
+  EditInlineMessageReplyMarkup copyWith(
           {String? inlineMessageId, ReplyMarkup? replyMarkup}) =>
       EditInlineMessageReplyMarkup(
           inlineMessageId: inlineMessageId ?? this.inlineMessageId,
@@ -16146,7 +16224,7 @@ extension EditInlineMessageReplyMarkupExtensions
 }
 
 extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
-  EditMessageSchedulingState copy(
+  EditMessageSchedulingState copyWith(
           {int? chatId,
           int? messageId,
           MessageSchedulingState? schedulingState}) =>
@@ -16157,43 +16235,43 @@ extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
 }
 
 extension GetTextEntitiesExtensions on GetTextEntities {
-  GetTextEntities copy({String? text}) =>
+  GetTextEntities copyWith({String? text}) =>
       GetTextEntities(text: text ?? this.text);
 }
 
 extension ParseTextEntitiesExtensions on ParseTextEntities {
-  ParseTextEntities copy({String? text, TextParseMode? parseMode}) =>
+  ParseTextEntities copyWith({String? text, TextParseMode? parseMode}) =>
       ParseTextEntities(
           text: text ?? this.text, parseMode: parseMode ?? this.parseMode);
 }
 
 extension ParseMarkdownExtensions on ParseMarkdown {
-  ParseMarkdown copy({FormattedText? text}) =>
+  ParseMarkdown copyWith({FormattedText? text}) =>
       ParseMarkdown(text: text ?? this.text);
 }
 
 extension GetMarkdownTextExtensions on GetMarkdownText {
-  GetMarkdownText copy({FormattedText? text}) =>
+  GetMarkdownText copyWith({FormattedText? text}) =>
       GetMarkdownText(text: text ?? this.text);
 }
 
 extension GetFileMimeTypeExtensions on GetFileMimeType {
-  GetFileMimeType copy({String? fileName}) =>
+  GetFileMimeType copyWith({String? fileName}) =>
       GetFileMimeType(fileName: fileName ?? this.fileName);
 }
 
 extension GetFileExtensionExtensions on GetFileExtension {
-  GetFileExtension copy({String? mimeType}) =>
+  GetFileExtension copyWith({String? mimeType}) =>
       GetFileExtension(mimeType: mimeType ?? this.mimeType);
 }
 
 extension CleanFileNameExtensions on CleanFileName {
-  CleanFileName copy({String? fileName}) =>
+  CleanFileName copyWith({String? fileName}) =>
       CleanFileName(fileName: fileName ?? this.fileName);
 }
 
 extension GetLanguagePackStringExtensions on GetLanguagePackString {
-  GetLanguagePackString copy(
+  GetLanguagePackString copyWith(
           {String? languagePackDatabasePath,
           String? localizationTarget,
           String? languagePackId,
@@ -16207,16 +16285,17 @@ extension GetLanguagePackStringExtensions on GetLanguagePackString {
 }
 
 extension GetJsonValueExtensions on GetJsonValue {
-  GetJsonValue copy({String? json}) => GetJsonValue(json: json ?? this.json);
+  GetJsonValue copyWith({String? json}) =>
+      GetJsonValue(json: json ?? this.json);
 }
 
 extension GetJsonStringExtensions on GetJsonString {
-  GetJsonString copy({JsonValue? jsonValue}) =>
+  GetJsonString copyWith({JsonValue? jsonValue}) =>
       GetJsonString(jsonValue: jsonValue ?? this.jsonValue);
 }
 
 extension SetPollAnswerExtensions on SetPollAnswer {
-  SetPollAnswer copy({int? chatId, int? messageId, List<int>? optionIds}) =>
+  SetPollAnswer copyWith({int? chatId, int? messageId, List<int>? optionIds}) =>
       SetPollAnswer(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -16224,7 +16303,7 @@ extension SetPollAnswerExtensions on SetPollAnswer {
 }
 
 extension GetPollVotersExtensions on GetPollVoters {
-  GetPollVoters copy(
+  GetPollVoters copyWith(
           {int? chatId,
           int? messageId,
           int? optionId,
@@ -16239,7 +16318,7 @@ extension GetPollVotersExtensions on GetPollVoters {
 }
 
 extension StopPollExtensions on StopPoll {
-  StopPoll copy({int? chatId, int? messageId, ReplyMarkup? replyMarkup}) =>
+  StopPoll copyWith({int? chatId, int? messageId, ReplyMarkup? replyMarkup}) =>
       StopPoll(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -16247,12 +16326,12 @@ extension StopPollExtensions on StopPoll {
 }
 
 extension HideSuggestedActionExtensions on HideSuggestedAction {
-  HideSuggestedAction copy({SuggestedAction? action}) =>
+  HideSuggestedAction copyWith({SuggestedAction? action}) =>
       HideSuggestedAction(action: action ?? this.action);
 }
 
 extension GetLoginUrlInfoExtensions on GetLoginUrlInfo {
-  GetLoginUrlInfo copy({int? chatId, int? messageId, int? buttonId}) =>
+  GetLoginUrlInfo copyWith({int? chatId, int? messageId, int? buttonId}) =>
       GetLoginUrlInfo(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -16260,7 +16339,7 @@ extension GetLoginUrlInfoExtensions on GetLoginUrlInfo {
 }
 
 extension GetLoginUrlExtensions on GetLoginUrl {
-  GetLoginUrl copy(
+  GetLoginUrl copyWith(
           {int? chatId,
           int? messageId,
           int? buttonId,
@@ -16273,7 +16352,7 @@ extension GetLoginUrlExtensions on GetLoginUrl {
 }
 
 extension GetInlineQueryResultsExtensions on GetInlineQueryResults {
-  GetInlineQueryResults copy(
+  GetInlineQueryResults copyWith(
           {int? botUserId,
           int? chatId,
           Location? userLocation,
@@ -16288,7 +16367,7 @@ extension GetInlineQueryResultsExtensions on GetInlineQueryResults {
 }
 
 extension AnswerInlineQueryExtensions on AnswerInlineQuery {
-  AnswerInlineQuery copy(
+  AnswerInlineQuery copyWith(
           {int? inlineQueryId,
           bool? isPersonal,
           List<InputInlineQueryResult>? results,
@@ -16307,7 +16386,7 @@ extension AnswerInlineQueryExtensions on AnswerInlineQuery {
 }
 
 extension GetCallbackQueryAnswerExtensions on GetCallbackQueryAnswer {
-  GetCallbackQueryAnswer copy(
+  GetCallbackQueryAnswer copyWith(
           {int? chatId, int? messageId, CallbackQueryPayload? payload}) =>
       GetCallbackQueryAnswer(
           chatId: chatId ?? this.chatId,
@@ -16316,7 +16395,7 @@ extension GetCallbackQueryAnswerExtensions on GetCallbackQueryAnswer {
 }
 
 extension AnswerCallbackQueryExtensions on AnswerCallbackQuery {
-  AnswerCallbackQuery copy(
+  AnswerCallbackQuery copyWith(
           {int? callbackQueryId,
           String? text,
           bool? showAlert,
@@ -16331,7 +16410,7 @@ extension AnswerCallbackQueryExtensions on AnswerCallbackQuery {
 }
 
 extension AnswerShippingQueryExtensions on AnswerShippingQuery {
-  AnswerShippingQuery copy(
+  AnswerShippingQuery copyWith(
           {int? shippingQueryId,
           List<ShippingOption>? shippingOptions,
           String? errorMessage}) =>
@@ -16342,7 +16421,7 @@ extension AnswerShippingQueryExtensions on AnswerShippingQuery {
 }
 
 extension AnswerPreCheckoutQueryExtensions on AnswerPreCheckoutQuery {
-  AnswerPreCheckoutQuery copy(
+  AnswerPreCheckoutQuery copyWith(
           {int? preCheckoutQueryId, String? errorMessage}) =>
       AnswerPreCheckoutQuery(
           preCheckoutQueryId: preCheckoutQueryId ?? this.preCheckoutQueryId,
@@ -16350,7 +16429,7 @@ extension AnswerPreCheckoutQueryExtensions on AnswerPreCheckoutQuery {
 }
 
 extension SetGameScoreExtensions on SetGameScore {
-  SetGameScore copy(
+  SetGameScore copyWith(
           {int? chatId,
           int? messageId,
           bool? editMessage,
@@ -16367,7 +16446,7 @@ extension SetGameScoreExtensions on SetGameScore {
 }
 
 extension SetInlineGameScoreExtensions on SetInlineGameScore {
-  SetInlineGameScore copy(
+  SetInlineGameScore copyWith(
           {String? inlineMessageId,
           bool? editMessage,
           int? userId,
@@ -16382,7 +16461,7 @@ extension SetInlineGameScoreExtensions on SetInlineGameScore {
 }
 
 extension GetGameHighScoresExtensions on GetGameHighScores {
-  GetGameHighScores copy({int? chatId, int? messageId, int? userId}) =>
+  GetGameHighScores copyWith({int? chatId, int? messageId, int? userId}) =>
       GetGameHighScores(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -16390,21 +16469,21 @@ extension GetGameHighScoresExtensions on GetGameHighScores {
 }
 
 extension GetInlineGameHighScoresExtensions on GetInlineGameHighScores {
-  GetInlineGameHighScores copy({String? inlineMessageId, int? userId}) =>
+  GetInlineGameHighScores copyWith({String? inlineMessageId, int? userId}) =>
       GetInlineGameHighScores(
           inlineMessageId: inlineMessageId ?? this.inlineMessageId,
           userId: userId ?? this.userId);
 }
 
 extension DeleteChatReplyMarkupExtensions on DeleteChatReplyMarkup {
-  DeleteChatReplyMarkup copy({int? chatId, int? messageId}) =>
+  DeleteChatReplyMarkup copyWith({int? chatId, int? messageId}) =>
       DeleteChatReplyMarkup(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
 extension SendChatActionExtensions on SendChatAction {
-  SendChatAction copy(
+  SendChatAction copyWith(
           {int? chatId, int? messageThreadId, ChatAction? action}) =>
       SendChatAction(
           chatId: chatId ?? this.chatId,
@@ -16413,15 +16492,15 @@ extension SendChatActionExtensions on SendChatAction {
 }
 
 extension OpenChatExtensions on OpenChat {
-  OpenChat copy({int? chatId}) => OpenChat(chatId: chatId ?? this.chatId);
+  OpenChat copyWith({int? chatId}) => OpenChat(chatId: chatId ?? this.chatId);
 }
 
 extension CloseChatExtensions on CloseChat {
-  CloseChat copy({int? chatId}) => CloseChat(chatId: chatId ?? this.chatId);
+  CloseChat copyWith({int? chatId}) => CloseChat(chatId: chatId ?? this.chatId);
 }
 
 extension ViewMessagesExtensions on ViewMessages {
-  ViewMessages copy(
+  ViewMessages copyWith(
           {int? chatId,
           int? messageThreadId,
           List<int>? messageIds,
@@ -16434,71 +16513,73 @@ extension ViewMessagesExtensions on ViewMessages {
 }
 
 extension OpenMessageContentExtensions on OpenMessageContent {
-  OpenMessageContent copy({int? chatId, int? messageId}) => OpenMessageContent(
-      chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
+  OpenMessageContent copyWith({int? chatId, int? messageId}) =>
+      OpenMessageContent(
+          chatId: chatId ?? this.chatId,
+          messageId: messageId ?? this.messageId);
 }
 
 extension ClickAnimatedEmojiMessageExtensions on ClickAnimatedEmojiMessage {
-  ClickAnimatedEmojiMessage copy({int? chatId, int? messageId}) =>
+  ClickAnimatedEmojiMessage copyWith({int? chatId, int? messageId}) =>
       ClickAnimatedEmojiMessage(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId);
 }
 
 extension GetInternalLinkTypeExtensions on GetInternalLinkType {
-  GetInternalLinkType copy({String? link}) =>
+  GetInternalLinkType copyWith({String? link}) =>
       GetInternalLinkType(link: link ?? this.link);
 }
 
 extension GetExternalLinkInfoExtensions on GetExternalLinkInfo {
-  GetExternalLinkInfo copy({String? link}) =>
+  GetExternalLinkInfo copyWith({String? link}) =>
       GetExternalLinkInfo(link: link ?? this.link);
 }
 
 extension GetExternalLinkExtensions on GetExternalLink {
-  GetExternalLink copy({String? link, bool? allowWriteAccess}) =>
+  GetExternalLink copyWith({String? link, bool? allowWriteAccess}) =>
       GetExternalLink(
           link: link ?? this.link,
           allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess);
 }
 
 extension ReadAllChatMentionsExtensions on ReadAllChatMentions {
-  ReadAllChatMentions copy({int? chatId}) =>
+  ReadAllChatMentions copyWith({int? chatId}) =>
       ReadAllChatMentions(chatId: chatId ?? this.chatId);
 }
 
 extension CreatePrivateChatExtensions on CreatePrivateChat {
-  CreatePrivateChat copy({int? userId, bool? force}) => CreatePrivateChat(
+  CreatePrivateChat copyWith({int? userId, bool? force}) => CreatePrivateChat(
       userId: userId ?? this.userId, force: force ?? this.force);
 }
 
 extension CreateBasicGroupChatExtensions on CreateBasicGroupChat {
-  CreateBasicGroupChat copy({int? basicGroupId, bool? force}) =>
+  CreateBasicGroupChat copyWith({int? basicGroupId, bool? force}) =>
       CreateBasicGroupChat(
           basicGroupId: basicGroupId ?? this.basicGroupId,
           force: force ?? this.force);
 }
 
 extension CreateSupergroupChatExtensions on CreateSupergroupChat {
-  CreateSupergroupChat copy({int? supergroupId, bool? force}) =>
+  CreateSupergroupChat copyWith({int? supergroupId, bool? force}) =>
       CreateSupergroupChat(
           supergroupId: supergroupId ?? this.supergroupId,
           force: force ?? this.force);
 }
 
 extension CreateSecretChatExtensions on CreateSecretChat {
-  CreateSecretChat copy({int? secretChatId}) =>
+  CreateSecretChat copyWith({int? secretChatId}) =>
       CreateSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
 extension CreateNewBasicGroupChatExtensions on CreateNewBasicGroupChat {
-  CreateNewBasicGroupChat copy({List<int>? userIds, String? title}) =>
+  CreateNewBasicGroupChat copyWith({List<int>? userIds, String? title}) =>
       CreateNewBasicGroupChat(
           userIds: userIds ?? this.userIds, title: title ?? this.title);
 }
 
 extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
-  CreateNewSupergroupChat copy(
+  CreateNewSupergroupChat copyWith(
           {String? title,
           bool? isChannel,
           String? description,
@@ -16513,88 +16594,88 @@ extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
 }
 
 extension CreateNewSecretChatExtensions on CreateNewSecretChat {
-  CreateNewSecretChat copy({int? userId}) =>
+  CreateNewSecretChat copyWith({int? userId}) =>
       CreateNewSecretChat(userId: userId ?? this.userId);
 }
 
 extension UpgradeBasicGroupChatToSupergroupChatExtensions
     on UpgradeBasicGroupChatToSupergroupChat {
-  UpgradeBasicGroupChatToSupergroupChat copy({int? chatId}) =>
+  UpgradeBasicGroupChatToSupergroupChat copyWith({int? chatId}) =>
       UpgradeBasicGroupChatToSupergroupChat(chatId: chatId ?? this.chatId);
 }
 
 extension GetChatListsToAddChatExtensions on GetChatListsToAddChat {
-  GetChatListsToAddChat copy({int? chatId}) =>
+  GetChatListsToAddChat copyWith({int? chatId}) =>
       GetChatListsToAddChat(chatId: chatId ?? this.chatId);
 }
 
 extension AddChatToListExtensions on AddChatToList {
-  AddChatToList copy({int? chatId, ChatList? chatList}) => AddChatToList(
+  AddChatToList copyWith({int? chatId, ChatList? chatList}) => AddChatToList(
       chatId: chatId ?? this.chatId, chatList: chatList ?? this.chatList);
 }
 
 extension GetChatFilterExtensions on GetChatFilter {
-  GetChatFilter copy({int? chatFilterId}) =>
+  GetChatFilter copyWith({int? chatFilterId}) =>
       GetChatFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
 extension CreateChatFilterExtensions on CreateChatFilter {
-  CreateChatFilter copy({ChatFilter? filter}) =>
+  CreateChatFilter copyWith({ChatFilter? filter}) =>
       CreateChatFilter(filter: filter ?? this.filter);
 }
 
 extension EditChatFilterExtensions on EditChatFilter {
-  EditChatFilter copy({int? chatFilterId, ChatFilter? filter}) =>
+  EditChatFilter copyWith({int? chatFilterId, ChatFilter? filter}) =>
       EditChatFilter(
           chatFilterId: chatFilterId ?? this.chatFilterId,
           filter: filter ?? this.filter);
 }
 
 extension DeleteChatFilterExtensions on DeleteChatFilter {
-  DeleteChatFilter copy({int? chatFilterId}) =>
+  DeleteChatFilter copyWith({int? chatFilterId}) =>
       DeleteChatFilter(chatFilterId: chatFilterId ?? this.chatFilterId);
 }
 
 extension ReorderChatFiltersExtensions on ReorderChatFilters {
-  ReorderChatFilters copy({List<int>? chatFilterIds}) =>
+  ReorderChatFilters copyWith({List<int>? chatFilterIds}) =>
       ReorderChatFilters(chatFilterIds: chatFilterIds ?? this.chatFilterIds);
 }
 
 extension GetChatFilterDefaultIconNameExtensions
     on GetChatFilterDefaultIconName {
-  GetChatFilterDefaultIconName copy({ChatFilter? filter}) =>
+  GetChatFilterDefaultIconName copyWith({ChatFilter? filter}) =>
       GetChatFilterDefaultIconName(filter: filter ?? this.filter);
 }
 
 extension SetChatTitleExtensions on SetChatTitle {
-  SetChatTitle copy({int? chatId, String? title}) =>
+  SetChatTitle copyWith({int? chatId, String? title}) =>
       SetChatTitle(chatId: chatId ?? this.chatId, title: title ?? this.title);
 }
 
 extension SetChatPhotoExtensions on SetChatPhoto {
-  SetChatPhoto copy({int? chatId, InputChatPhoto? photo}) =>
+  SetChatPhoto copyWith({int? chatId, InputChatPhoto? photo}) =>
       SetChatPhoto(chatId: chatId ?? this.chatId, photo: photo ?? this.photo);
 }
 
 extension SetChatMessageTtlExtensions on SetChatMessageTtl {
-  SetChatMessageTtl copy({int? chatId, int? ttl}) =>
+  SetChatMessageTtl copyWith({int? chatId, int? ttl}) =>
       SetChatMessageTtl(chatId: chatId ?? this.chatId, ttl: ttl ?? this.ttl);
 }
 
 extension SetChatPermissionsExtensions on SetChatPermissions {
-  SetChatPermissions copy({int? chatId, ChatPermissions? permissions}) =>
+  SetChatPermissions copyWith({int? chatId, ChatPermissions? permissions}) =>
       SetChatPermissions(
           chatId: chatId ?? this.chatId,
           permissions: permissions ?? this.permissions);
 }
 
 extension SetChatThemeExtensions on SetChatTheme {
-  SetChatTheme copy({int? chatId, String? themeName}) => SetChatTheme(
+  SetChatTheme copyWith({int? chatId, String? themeName}) => SetChatTheme(
       chatId: chatId ?? this.chatId, themeName: themeName ?? this.themeName);
 }
 
 extension SetChatDraftMessageExtensions on SetChatDraftMessage {
-  SetChatDraftMessage copy(
+  SetChatDraftMessage copyWith(
           {int? chatId, int? messageThreadId, DraftMessage? draftMessage}) =>
       SetChatDraftMessage(
           chatId: chatId ?? this.chatId,
@@ -16603,7 +16684,7 @@ extension SetChatDraftMessageExtensions on SetChatDraftMessage {
 }
 
 extension SetChatNotificationSettingsExtensions on SetChatNotificationSettings {
-  SetChatNotificationSettings copy(
+  SetChatNotificationSettings copyWith(
           {int? chatId, ChatNotificationSettings? notificationSettings}) =>
       SetChatNotificationSettings(
           chatId: chatId ?? this.chatId,
@@ -16613,7 +16694,7 @@ extension SetChatNotificationSettingsExtensions on SetChatNotificationSettings {
 
 extension ToggleChatHasProtectedContentExtensions
     on ToggleChatHasProtectedContent {
-  ToggleChatHasProtectedContent copy(
+  ToggleChatHasProtectedContent copyWith(
           {int? chatId, bool? hasProtectedContent}) =>
       ToggleChatHasProtectedContent(
           chatId: chatId ?? this.chatId,
@@ -16621,7 +16702,7 @@ extension ToggleChatHasProtectedContentExtensions
 }
 
 extension ToggleChatIsMarkedAsUnreadExtensions on ToggleChatIsMarkedAsUnread {
-  ToggleChatIsMarkedAsUnread copy({int? chatId, bool? isMarkedAsUnread}) =>
+  ToggleChatIsMarkedAsUnread copyWith({int? chatId, bool? isMarkedAsUnread}) =>
       ToggleChatIsMarkedAsUnread(
           chatId: chatId ?? this.chatId,
           isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread);
@@ -16629,7 +16710,7 @@ extension ToggleChatIsMarkedAsUnreadExtensions on ToggleChatIsMarkedAsUnread {
 
 extension ToggleChatDefaultDisableNotificationExtensions
     on ToggleChatDefaultDisableNotification {
-  ToggleChatDefaultDisableNotification copy(
+  ToggleChatDefaultDisableNotification copyWith(
           {int? chatId, bool? defaultDisableNotification}) =>
       ToggleChatDefaultDisableNotification(
           chatId: chatId ?? this.chatId,
@@ -16638,41 +16719,41 @@ extension ToggleChatDefaultDisableNotificationExtensions
 }
 
 extension SetChatClientDataExtensions on SetChatClientData {
-  SetChatClientData copy({int? chatId, String? clientData}) =>
+  SetChatClientData copyWith({int? chatId, String? clientData}) =>
       SetChatClientData(
           chatId: chatId ?? this.chatId,
           clientData: clientData ?? this.clientData);
 }
 
 extension SetChatDescriptionExtensions on SetChatDescription {
-  SetChatDescription copy({int? chatId, String? description}) =>
+  SetChatDescription copyWith({int? chatId, String? description}) =>
       SetChatDescription(
           chatId: chatId ?? this.chatId,
           description: description ?? this.description);
 }
 
 extension SetChatDiscussionGroupExtensions on SetChatDiscussionGroup {
-  SetChatDiscussionGroup copy({int? chatId, int? discussionChatId}) =>
+  SetChatDiscussionGroup copyWith({int? chatId, int? discussionChatId}) =>
       SetChatDiscussionGroup(
           chatId: chatId ?? this.chatId,
           discussionChatId: discussionChatId ?? this.discussionChatId);
 }
 
 extension SetChatLocationExtensions on SetChatLocation {
-  SetChatLocation copy({int? chatId, ChatLocation? location}) =>
+  SetChatLocation copyWith({int? chatId, ChatLocation? location}) =>
       SetChatLocation(
           chatId: chatId ?? this.chatId, location: location ?? this.location);
 }
 
 extension SetChatSlowModeDelayExtensions on SetChatSlowModeDelay {
-  SetChatSlowModeDelay copy({int? chatId, int? slowModeDelay}) =>
+  SetChatSlowModeDelay copyWith({int? chatId, int? slowModeDelay}) =>
       SetChatSlowModeDelay(
           chatId: chatId ?? this.chatId,
           slowModeDelay: slowModeDelay ?? this.slowModeDelay);
 }
 
 extension PinChatMessageExtensions on PinChatMessage {
-  PinChatMessage copy(
+  PinChatMessage copyWith(
           {int? chatId,
           int? messageId,
           bool? disableNotification,
@@ -16685,25 +16766,25 @@ extension PinChatMessageExtensions on PinChatMessage {
 }
 
 extension UnpinChatMessageExtensions on UnpinChatMessage {
-  UnpinChatMessage copy({int? chatId, int? messageId}) => UnpinChatMessage(
+  UnpinChatMessage copyWith({int? chatId, int? messageId}) => UnpinChatMessage(
       chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
 }
 
 extension UnpinAllChatMessagesExtensions on UnpinAllChatMessages {
-  UnpinAllChatMessages copy({int? chatId}) =>
+  UnpinAllChatMessages copyWith({int? chatId}) =>
       UnpinAllChatMessages(chatId: chatId ?? this.chatId);
 }
 
 extension JoinChatExtensions on JoinChat {
-  JoinChat copy({int? chatId}) => JoinChat(chatId: chatId ?? this.chatId);
+  JoinChat copyWith({int? chatId}) => JoinChat(chatId: chatId ?? this.chatId);
 }
 
 extension LeaveChatExtensions on LeaveChat {
-  LeaveChat copy({int? chatId}) => LeaveChat(chatId: chatId ?? this.chatId);
+  LeaveChat copyWith({int? chatId}) => LeaveChat(chatId: chatId ?? this.chatId);
 }
 
 extension AddChatMemberExtensions on AddChatMember {
-  AddChatMember copy({int? chatId, int? userId, int? forwardLimit}) =>
+  AddChatMember copyWith({int? chatId, int? userId, int? forwardLimit}) =>
       AddChatMember(
           chatId: chatId ?? this.chatId,
           userId: userId ?? this.userId,
@@ -16711,12 +16792,12 @@ extension AddChatMemberExtensions on AddChatMember {
 }
 
 extension AddChatMembersExtensions on AddChatMembers {
-  AddChatMembers copy({int? chatId, List<int>? userIds}) => AddChatMembers(
+  AddChatMembers copyWith({int? chatId, List<int>? userIds}) => AddChatMembers(
       chatId: chatId ?? this.chatId, userIds: userIds ?? this.userIds);
 }
 
 extension SetChatMemberStatusExtensions on SetChatMemberStatus {
-  SetChatMemberStatus copy(
+  SetChatMemberStatus copyWith(
           {int? chatId, MessageSender? memberId, ChatMemberStatus? status}) =>
       SetChatMemberStatus(
           chatId: chatId ?? this.chatId,
@@ -16725,7 +16806,7 @@ extension SetChatMemberStatusExtensions on SetChatMemberStatus {
 }
 
 extension BanChatMemberExtensions on BanChatMember {
-  BanChatMember copy(
+  BanChatMember copyWith(
           {int? chatId,
           MessageSender? memberId,
           int? bannedUntilDate,
@@ -16738,7 +16819,8 @@ extension BanChatMemberExtensions on BanChatMember {
 }
 
 extension TransferChatOwnershipExtensions on TransferChatOwnership {
-  TransferChatOwnership copy({int? chatId, int? userId, String? password}) =>
+  TransferChatOwnership copyWith(
+          {int? chatId, int? userId, String? password}) =>
       TransferChatOwnership(
           chatId: chatId ?? this.chatId,
           userId: userId ?? this.userId,
@@ -16746,12 +16828,13 @@ extension TransferChatOwnershipExtensions on TransferChatOwnership {
 }
 
 extension GetChatMemberExtensions on GetChatMember {
-  GetChatMember copy({int? chatId, MessageSender? memberId}) => GetChatMember(
-      chatId: chatId ?? this.chatId, memberId: memberId ?? this.memberId);
+  GetChatMember copyWith({int? chatId, MessageSender? memberId}) =>
+      GetChatMember(
+          chatId: chatId ?? this.chatId, memberId: memberId ?? this.memberId);
 }
 
 extension SearchChatMembersExtensions on SearchChatMembers {
-  SearchChatMembers copy(
+  SearchChatMembers copyWith(
           {int? chatId,
           String? query,
           int? limit,
@@ -16764,19 +16847,19 @@ extension SearchChatMembersExtensions on SearchChatMembers {
 }
 
 extension GetChatAdministratorsExtensions on GetChatAdministrators {
-  GetChatAdministrators copy({int? chatId}) =>
+  GetChatAdministrators copyWith({int? chatId}) =>
       GetChatAdministrators(chatId: chatId ?? this.chatId);
 }
 
 extension ClearAllDraftMessagesExtensions on ClearAllDraftMessages {
-  ClearAllDraftMessages copy({bool? excludeSecretChats}) =>
+  ClearAllDraftMessages copyWith({bool? excludeSecretChats}) =>
       ClearAllDraftMessages(
           excludeSecretChats: excludeSecretChats ?? this.excludeSecretChats);
 }
 
 extension GetChatNotificationSettingsExceptionsExtensions
     on GetChatNotificationSettingsExceptions {
-  GetChatNotificationSettingsExceptions copy(
+  GetChatNotificationSettingsExceptions copyWith(
           {NotificationSettingsScope? scope, bool? compareSound}) =>
       GetChatNotificationSettingsExceptions(
           scope: scope ?? this.scope,
@@ -16785,13 +16868,13 @@ extension GetChatNotificationSettingsExceptionsExtensions
 
 extension GetScopeNotificationSettingsExtensions
     on GetScopeNotificationSettings {
-  GetScopeNotificationSettings copy({NotificationSettingsScope? scope}) =>
+  GetScopeNotificationSettings copyWith({NotificationSettingsScope? scope}) =>
       GetScopeNotificationSettings(scope: scope ?? this.scope);
 }
 
 extension SetScopeNotificationSettingsExtensions
     on SetScopeNotificationSettings {
-  SetScopeNotificationSettings copy(
+  SetScopeNotificationSettings copyWith(
           {NotificationSettingsScope? scope,
           ScopeNotificationSettings? notificationSettings}) =>
       SetScopeNotificationSettings(
@@ -16801,7 +16884,8 @@ extension SetScopeNotificationSettingsExtensions
 }
 
 extension ToggleChatIsPinnedExtensions on ToggleChatIsPinned {
-  ToggleChatIsPinned copy({ChatList? chatList, int? chatId, bool? isPinned}) =>
+  ToggleChatIsPinned copyWith(
+          {ChatList? chatList, int? chatId, bool? isPinned}) =>
       ToggleChatIsPinned(
           chatList: chatList ?? this.chatList,
           chatId: chatId ?? this.chatId,
@@ -16809,14 +16893,14 @@ extension ToggleChatIsPinnedExtensions on ToggleChatIsPinned {
 }
 
 extension SetPinnedChatsExtensions on SetPinnedChats {
-  SetPinnedChats copy({ChatList? chatList, List<int>? chatIds}) =>
+  SetPinnedChats copyWith({ChatList? chatList, List<int>? chatIds}) =>
       SetPinnedChats(
           chatList: chatList ?? this.chatList,
           chatIds: chatIds ?? this.chatIds);
 }
 
 extension DownloadFileExtensions on DownloadFile {
-  DownloadFile copy(
+  DownloadFile copyWith(
           {int? fileId,
           int? priority,
           int? offset,
@@ -16831,27 +16915,27 @@ extension DownloadFileExtensions on DownloadFile {
 }
 
 extension GetFileDownloadedPrefixSizeExtensions on GetFileDownloadedPrefixSize {
-  GetFileDownloadedPrefixSize copy({int? fileId, int? offset}) =>
+  GetFileDownloadedPrefixSize copyWith({int? fileId, int? offset}) =>
       GetFileDownloadedPrefixSize(
           fileId: fileId ?? this.fileId, offset: offset ?? this.offset);
 }
 
 extension CancelDownloadFileExtensions on CancelDownloadFile {
-  CancelDownloadFile copy({int? fileId, bool? onlyIfPending}) =>
+  CancelDownloadFile copyWith({int? fileId, bool? onlyIfPending}) =>
       CancelDownloadFile(
           fileId: fileId ?? this.fileId,
           onlyIfPending: onlyIfPending ?? this.onlyIfPending);
 }
 
 extension GetSuggestedFileNameExtensions on GetSuggestedFileName {
-  GetSuggestedFileName copy({int? fileId, String? directory}) =>
+  GetSuggestedFileName copyWith({int? fileId, String? directory}) =>
       GetSuggestedFileName(
           fileId: fileId ?? this.fileId,
           directory: directory ?? this.directory);
 }
 
 extension UploadFileExtensions on UploadFile {
-  UploadFile copy({InputFile? file, FileType? fileType, int? priority}) =>
+  UploadFile copyWith({InputFile? file, FileType? fileType, int? priority}) =>
       UploadFile(
           file: file ?? this.file,
           fileType: fileType ?? this.fileType,
@@ -16859,12 +16943,13 @@ extension UploadFileExtensions on UploadFile {
 }
 
 extension CancelUploadFileExtensions on CancelUploadFile {
-  CancelUploadFile copy({int? fileId}) =>
+  CancelUploadFile copyWith({int? fileId}) =>
       CancelUploadFile(fileId: fileId ?? this.fileId);
 }
 
 extension WriteGeneratedFilePartExtensions on WriteGeneratedFilePart {
-  WriteGeneratedFilePart copy({int? generationId, int? offset, String? data}) =>
+  WriteGeneratedFilePart copyWith(
+          {int? generationId, int? offset, String? data}) =>
       WriteGeneratedFilePart(
           generationId: generationId ?? this.generationId,
           offset: offset ?? this.offset,
@@ -16872,7 +16957,7 @@ extension WriteGeneratedFilePartExtensions on WriteGeneratedFilePart {
 }
 
 extension SetFileGenerationProgressExtensions on SetFileGenerationProgress {
-  SetFileGenerationProgress copy(
+  SetFileGenerationProgress copyWith(
           {int? generationId, int? expectedSize, int? localPrefixSize}) =>
       SetFileGenerationProgress(
           generationId: generationId ?? this.generationId,
@@ -16881,36 +16966,37 @@ extension SetFileGenerationProgressExtensions on SetFileGenerationProgress {
 }
 
 extension FinishFileGenerationExtensions on FinishFileGeneration {
-  FinishFileGeneration copy({int? generationId, TdError? error}) =>
+  FinishFileGeneration copyWith({int? generationId, TdError? error}) =>
       FinishFileGeneration(
           generationId: generationId ?? this.generationId,
           error: error ?? this.error);
 }
 
 extension ReadFilePartExtensions on ReadFilePart {
-  ReadFilePart copy({int? fileId, int? offset, int? count}) => ReadFilePart(
+  ReadFilePart copyWith({int? fileId, int? offset, int? count}) => ReadFilePart(
       fileId: fileId ?? this.fileId,
       offset: offset ?? this.offset,
       count: count ?? this.count);
 }
 
 extension DeleteFileExtensions on DeleteFile {
-  DeleteFile copy({int? fileId}) => DeleteFile(fileId: fileId ?? this.fileId);
+  DeleteFile copyWith({int? fileId}) =>
+      DeleteFile(fileId: fileId ?? this.fileId);
 }
 
 extension GetMessageFileTypeExtensions on GetMessageFileType {
-  GetMessageFileType copy({String? messageFileHead}) => GetMessageFileType(
+  GetMessageFileType copyWith({String? messageFileHead}) => GetMessageFileType(
       messageFileHead: messageFileHead ?? this.messageFileHead);
 }
 
 extension GetMessageImportConfirmationTextExtensions
     on GetMessageImportConfirmationText {
-  GetMessageImportConfirmationText copy({int? chatId}) =>
+  GetMessageImportConfirmationText copyWith({int? chatId}) =>
       GetMessageImportConfirmationText(chatId: chatId ?? this.chatId);
 }
 
 extension ImportMessagesExtensions on ImportMessages {
-  ImportMessages copy(
+  ImportMessages copyWith(
           {int? chatId,
           InputFile? messageFile,
           List<InputFile>? attachedFiles}) =>
@@ -16922,12 +17008,12 @@ extension ImportMessagesExtensions on ImportMessages {
 
 extension ReplacePrimaryChatInviteLinkExtensions
     on ReplacePrimaryChatInviteLink {
-  ReplacePrimaryChatInviteLink copy({int? chatId}) =>
+  ReplacePrimaryChatInviteLink copyWith({int? chatId}) =>
       ReplacePrimaryChatInviteLink(chatId: chatId ?? this.chatId);
 }
 
 extension CreateChatInviteLinkExtensions on CreateChatInviteLink {
-  CreateChatInviteLink copy(
+  CreateChatInviteLink copyWith(
           {int? chatId,
           String? name,
           int? expirationDate,
@@ -16942,7 +17028,7 @@ extension CreateChatInviteLinkExtensions on CreateChatInviteLink {
 }
 
 extension EditChatInviteLinkExtensions on EditChatInviteLink {
-  EditChatInviteLink copy(
+  EditChatInviteLink copyWith(
           {int? chatId,
           String? inviteLink,
           String? name,
@@ -16959,19 +17045,19 @@ extension EditChatInviteLinkExtensions on EditChatInviteLink {
 }
 
 extension GetChatInviteLinkExtensions on GetChatInviteLink {
-  GetChatInviteLink copy({int? chatId, String? inviteLink}) =>
+  GetChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       GetChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension GetChatInviteLinkCountsExtensions on GetChatInviteLinkCounts {
-  GetChatInviteLinkCounts copy({int? chatId}) =>
+  GetChatInviteLinkCounts copyWith({int? chatId}) =>
       GetChatInviteLinkCounts(chatId: chatId ?? this.chatId);
 }
 
 extension GetChatInviteLinksExtensions on GetChatInviteLinks {
-  GetChatInviteLinks copy(
+  GetChatInviteLinks copyWith(
           {int? chatId,
           int? creatorUserId,
           bool? isRevoked,
@@ -16988,7 +17074,7 @@ extension GetChatInviteLinksExtensions on GetChatInviteLinks {
 }
 
 extension GetChatInviteLinkMembersExtensions on GetChatInviteLinkMembers {
-  GetChatInviteLinkMembers copy(
+  GetChatInviteLinkMembers copyWith(
           {int? chatId,
           String? inviteLink,
           ChatInviteLinkMember? offsetMember,
@@ -17001,14 +17087,14 @@ extension GetChatInviteLinkMembersExtensions on GetChatInviteLinkMembers {
 }
 
 extension RevokeChatInviteLinkExtensions on RevokeChatInviteLink {
-  RevokeChatInviteLink copy({int? chatId, String? inviteLink}) =>
+  RevokeChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       RevokeChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension DeleteRevokedChatInviteLinkExtensions on DeleteRevokedChatInviteLink {
-  DeleteRevokedChatInviteLink copy({int? chatId, String? inviteLink}) =>
+  DeleteRevokedChatInviteLink copyWith({int? chatId, String? inviteLink}) =>
       DeleteRevokedChatInviteLink(
           chatId: chatId ?? this.chatId,
           inviteLink: inviteLink ?? this.inviteLink);
@@ -17016,24 +17102,24 @@ extension DeleteRevokedChatInviteLinkExtensions on DeleteRevokedChatInviteLink {
 
 extension DeleteAllRevokedChatInviteLinksExtensions
     on DeleteAllRevokedChatInviteLinks {
-  DeleteAllRevokedChatInviteLinks copy({int? chatId, int? creatorUserId}) =>
+  DeleteAllRevokedChatInviteLinks copyWith({int? chatId, int? creatorUserId}) =>
       DeleteAllRevokedChatInviteLinks(
           chatId: chatId ?? this.chatId,
           creatorUserId: creatorUserId ?? this.creatorUserId);
 }
 
 extension CheckChatInviteLinkExtensions on CheckChatInviteLink {
-  CheckChatInviteLink copy({String? inviteLink}) =>
+  CheckChatInviteLink copyWith({String? inviteLink}) =>
       CheckChatInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension JoinChatByInviteLinkExtensions on JoinChatByInviteLink {
-  JoinChatByInviteLink copy({String? inviteLink}) =>
+  JoinChatByInviteLink copyWith({String? inviteLink}) =>
       JoinChatByInviteLink(inviteLink: inviteLink ?? this.inviteLink);
 }
 
 extension GetChatJoinRequestsExtensions on GetChatJoinRequests {
-  GetChatJoinRequests copy(
+  GetChatJoinRequests copyWith(
           {int? chatId,
           String? inviteLink,
           String? query,
@@ -17048,7 +17134,7 @@ extension GetChatJoinRequestsExtensions on GetChatJoinRequests {
 }
 
 extension ProcessChatJoinRequestExtensions on ProcessChatJoinRequest {
-  ProcessChatJoinRequest copy({int? chatId, int? userId, bool? approve}) =>
+  ProcessChatJoinRequest copyWith({int? chatId, int? userId, bool? approve}) =>
       ProcessChatJoinRequest(
           chatId: chatId ?? this.chatId,
           userId: userId ?? this.userId,
@@ -17056,7 +17142,7 @@ extension ProcessChatJoinRequestExtensions on ProcessChatJoinRequest {
 }
 
 extension ProcessChatJoinRequestsExtensions on ProcessChatJoinRequests {
-  ProcessChatJoinRequests copy(
+  ProcessChatJoinRequests copyWith(
           {int? chatId, String? inviteLink, bool? approve}) =>
       ProcessChatJoinRequests(
           chatId: chatId ?? this.chatId,
@@ -17065,7 +17151,7 @@ extension ProcessChatJoinRequestsExtensions on ProcessChatJoinRequests {
 }
 
 extension CreateCallExtensions on CreateCall {
-  CreateCall copy({int? userId, CallProtocol? protocol, bool? isVideo}) =>
+  CreateCall copyWith({int? userId, CallProtocol? protocol, bool? isVideo}) =>
       CreateCall(
           userId: userId ?? this.userId,
           protocol: protocol ?? this.protocol,
@@ -17073,18 +17159,18 @@ extension CreateCallExtensions on CreateCall {
 }
 
 extension AcceptCallExtensions on AcceptCall {
-  AcceptCall copy({int? callId, CallProtocol? protocol}) => AcceptCall(
+  AcceptCall copyWith({int? callId, CallProtocol? protocol}) => AcceptCall(
       callId: callId ?? this.callId, protocol: protocol ?? this.protocol);
 }
 
 extension SendCallSignalingDataExtensions on SendCallSignalingData {
-  SendCallSignalingData copy({int? callId, String? data}) =>
+  SendCallSignalingData copyWith({int? callId, String? data}) =>
       SendCallSignalingData(
           callId: callId ?? this.callId, data: data ?? this.data);
 }
 
 extension DiscardCallExtensions on DiscardCall {
-  DiscardCall copy(
+  DiscardCall copyWith(
           {int? callId,
           bool? isDisconnected,
           int? duration,
@@ -17099,7 +17185,7 @@ extension DiscardCallExtensions on DiscardCall {
 }
 
 extension SendCallRatingExtensions on SendCallRating {
-  SendCallRating copy(
+  SendCallRating copyWith(
           {int? callId,
           int? rating,
           String? comment,
@@ -17112,7 +17198,7 @@ extension SendCallRatingExtensions on SendCallRating {
 }
 
 extension SendCallDebugInformationExtensions on SendCallDebugInformation {
-  SendCallDebugInformation copy({int? callId, String? debugInformation}) =>
+  SendCallDebugInformation copyWith({int? callId, String? debugInformation}) =>
       SendCallDebugInformation(
           callId: callId ?? this.callId,
           debugInformation: debugInformation ?? this.debugInformation);
@@ -17120,13 +17206,13 @@ extension SendCallDebugInformationExtensions on SendCallDebugInformation {
 
 extension GetVideoChatAvailableParticipantsExtensions
     on GetVideoChatAvailableParticipants {
-  GetVideoChatAvailableParticipants copy({int? chatId}) =>
+  GetVideoChatAvailableParticipants copyWith({int? chatId}) =>
       GetVideoChatAvailableParticipants(chatId: chatId ?? this.chatId);
 }
 
 extension SetVideoChatDefaultParticipantExtensions
     on SetVideoChatDefaultParticipant {
-  SetVideoChatDefaultParticipant copy(
+  SetVideoChatDefaultParticipant copyWith(
           {int? chatId, MessageSender? defaultParticipantId}) =>
       SetVideoChatDefaultParticipant(
           chatId: chatId ?? this.chatId,
@@ -17135,7 +17221,7 @@ extension SetVideoChatDefaultParticipantExtensions
 }
 
 extension CreateVideoChatExtensions on CreateVideoChat {
-  CreateVideoChat copy({int? chatId, String? title, int? startDate}) =>
+  CreateVideoChat copyWith({int? chatId, String? title, int? startDate}) =>
       CreateVideoChat(
           chatId: chatId ?? this.chatId,
           title: title ?? this.title,
@@ -17143,18 +17229,18 @@ extension CreateVideoChatExtensions on CreateVideoChat {
 }
 
 extension GetGroupCallExtensions on GetGroupCall {
-  GetGroupCall copy({int? groupCallId}) =>
+  GetGroupCall copyWith({int? groupCallId}) =>
       GetGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension StartScheduledGroupCallExtensions on StartScheduledGroupCall {
-  StartScheduledGroupCall copy({int? groupCallId}) =>
+  StartScheduledGroupCall copyWith({int? groupCallId}) =>
       StartScheduledGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension ToggleGroupCallEnabledStartNotificationExtensions
     on ToggleGroupCallEnabledStartNotification {
-  ToggleGroupCallEnabledStartNotification copy(
+  ToggleGroupCallEnabledStartNotification copyWith(
           {int? groupCallId, bool? enabledStartNotification}) =>
       ToggleGroupCallEnabledStartNotification(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17163,7 +17249,7 @@ extension ToggleGroupCallEnabledStartNotificationExtensions
 }
 
 extension JoinGroupCallExtensions on JoinGroupCall {
-  JoinGroupCall copy(
+  JoinGroupCall copyWith(
           {int? groupCallId,
           MessageSender? participantId,
           int? audioSourceId,
@@ -17182,7 +17268,7 @@ extension JoinGroupCallExtensions on JoinGroupCall {
 }
 
 extension StartGroupCallScreenSharingExtensions on StartGroupCallScreenSharing {
-  StartGroupCallScreenSharing copy(
+  StartGroupCallScreenSharing copyWith(
           {int? groupCallId, int? audioSourceId, String? payload}) =>
       StartGroupCallScreenSharing(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17192,7 +17278,7 @@ extension StartGroupCallScreenSharingExtensions on StartGroupCallScreenSharing {
 
 extension ToggleGroupCallScreenSharingIsPausedExtensions
     on ToggleGroupCallScreenSharingIsPaused {
-  ToggleGroupCallScreenSharingIsPaused copy(
+  ToggleGroupCallScreenSharingIsPaused copyWith(
           {int? groupCallId, bool? isPaused}) =>
       ToggleGroupCallScreenSharingIsPaused(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17200,12 +17286,12 @@ extension ToggleGroupCallScreenSharingIsPausedExtensions
 }
 
 extension EndGroupCallScreenSharingExtensions on EndGroupCallScreenSharing {
-  EndGroupCallScreenSharing copy({int? groupCallId}) =>
+  EndGroupCallScreenSharing copyWith({int? groupCallId}) =>
       EndGroupCallScreenSharing(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension SetGroupCallTitleExtensions on SetGroupCallTitle {
-  SetGroupCallTitle copy({int? groupCallId, String? title}) =>
+  SetGroupCallTitle copyWith({int? groupCallId, String? title}) =>
       SetGroupCallTitle(
           groupCallId: groupCallId ?? this.groupCallId,
           title: title ?? this.title);
@@ -17213,7 +17299,7 @@ extension SetGroupCallTitleExtensions on SetGroupCallTitle {
 
 extension ToggleGroupCallMuteNewParticipantsExtensions
     on ToggleGroupCallMuteNewParticipants {
-  ToggleGroupCallMuteNewParticipants copy(
+  ToggleGroupCallMuteNewParticipants copyWith(
           {int? groupCallId, bool? muteNewParticipants}) =>
       ToggleGroupCallMuteNewParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17221,26 +17307,27 @@ extension ToggleGroupCallMuteNewParticipantsExtensions
 }
 
 extension InviteGroupCallParticipantsExtensions on InviteGroupCallParticipants {
-  InviteGroupCallParticipants copy({int? groupCallId, List<int>? userIds}) =>
+  InviteGroupCallParticipants copyWith(
+          {int? groupCallId, List<int>? userIds}) =>
       InviteGroupCallParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
           userIds: userIds ?? this.userIds);
 }
 
 extension GetGroupCallInviteLinkExtensions on GetGroupCallInviteLink {
-  GetGroupCallInviteLink copy({int? groupCallId, bool? canSelfUnmute}) =>
+  GetGroupCallInviteLink copyWith({int? groupCallId, bool? canSelfUnmute}) =>
       GetGroupCallInviteLink(
           groupCallId: groupCallId ?? this.groupCallId,
           canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute);
 }
 
 extension RevokeGroupCallInviteLinkExtensions on RevokeGroupCallInviteLink {
-  RevokeGroupCallInviteLink copy({int? groupCallId}) =>
+  RevokeGroupCallInviteLink copyWith({int? groupCallId}) =>
       RevokeGroupCallInviteLink(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension StartGroupCallRecordingExtensions on StartGroupCallRecording {
-  StartGroupCallRecording copy(
+  StartGroupCallRecording copyWith(
           {int? groupCallId,
           String? title,
           bool? recordVideo,
@@ -17254,13 +17341,13 @@ extension StartGroupCallRecordingExtensions on StartGroupCallRecording {
 }
 
 extension EndGroupCallRecordingExtensions on EndGroupCallRecording {
-  EndGroupCallRecording copy({int? groupCallId}) =>
+  EndGroupCallRecording copyWith({int? groupCallId}) =>
       EndGroupCallRecording(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension ToggleGroupCallIsMyVideoPausedExtensions
     on ToggleGroupCallIsMyVideoPaused {
-  ToggleGroupCallIsMyVideoPaused copy(
+  ToggleGroupCallIsMyVideoPaused copyWith(
           {int? groupCallId, bool? isMyVideoPaused}) =>
       ToggleGroupCallIsMyVideoPaused(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17269,7 +17356,7 @@ extension ToggleGroupCallIsMyVideoPausedExtensions
 
 extension ToggleGroupCallIsMyVideoEnabledExtensions
     on ToggleGroupCallIsMyVideoEnabled {
-  ToggleGroupCallIsMyVideoEnabled copy(
+  ToggleGroupCallIsMyVideoEnabled copyWith(
           {int? groupCallId, bool? isMyVideoEnabled}) =>
       ToggleGroupCallIsMyVideoEnabled(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17278,7 +17365,7 @@ extension ToggleGroupCallIsMyVideoEnabledExtensions
 
 extension SetGroupCallParticipantIsSpeakingExtensions
     on SetGroupCallParticipantIsSpeaking {
-  SetGroupCallParticipantIsSpeaking copy(
+  SetGroupCallParticipantIsSpeaking copyWith(
           {int? groupCallId, int? audioSource, bool? isSpeaking}) =>
       SetGroupCallParticipantIsSpeaking(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17288,7 +17375,7 @@ extension SetGroupCallParticipantIsSpeakingExtensions
 
 extension ToggleGroupCallParticipantIsMutedExtensions
     on ToggleGroupCallParticipantIsMuted {
-  ToggleGroupCallParticipantIsMuted copy(
+  ToggleGroupCallParticipantIsMuted copyWith(
           {int? groupCallId, MessageSender? participantId, bool? isMuted}) =>
       ToggleGroupCallParticipantIsMuted(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17298,7 +17385,7 @@ extension ToggleGroupCallParticipantIsMutedExtensions
 
 extension SetGroupCallParticipantVolumeLevelExtensions
     on SetGroupCallParticipantVolumeLevel {
-  SetGroupCallParticipantVolumeLevel copy(
+  SetGroupCallParticipantVolumeLevel copyWith(
           {int? groupCallId, MessageSender? participantId, int? volumeLevel}) =>
       SetGroupCallParticipantVolumeLevel(
           groupCallId: groupCallId ?? this.groupCallId,
@@ -17308,7 +17395,7 @@ extension SetGroupCallParticipantVolumeLevelExtensions
 
 extension ToggleGroupCallParticipantIsHandRaisedExtensions
     on ToggleGroupCallParticipantIsHandRaised {
-  ToggleGroupCallParticipantIsHandRaised copy(
+  ToggleGroupCallParticipantIsHandRaised copyWith(
           {int? groupCallId,
           MessageSender? participantId,
           bool? isHandRaised}) =>
@@ -17319,24 +17406,24 @@ extension ToggleGroupCallParticipantIsHandRaisedExtensions
 }
 
 extension LoadGroupCallParticipantsExtensions on LoadGroupCallParticipants {
-  LoadGroupCallParticipants copy({int? groupCallId, int? limit}) =>
+  LoadGroupCallParticipants copyWith({int? groupCallId, int? limit}) =>
       LoadGroupCallParticipants(
           groupCallId: groupCallId ?? this.groupCallId,
           limit: limit ?? this.limit);
 }
 
 extension LeaveGroupCallExtensions on LeaveGroupCall {
-  LeaveGroupCall copy({int? groupCallId}) =>
+  LeaveGroupCall copyWith({int? groupCallId}) =>
       LeaveGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension EndGroupCallExtensions on EndGroupCall {
-  EndGroupCall copy({int? groupCallId}) =>
+  EndGroupCall copyWith({int? groupCallId}) =>
       EndGroupCall(groupCallId: groupCallId ?? this.groupCallId);
 }
 
 extension GetGroupCallStreamSegmentExtensions on GetGroupCallStreamSegment {
-  GetGroupCallStreamSegment copy(
+  GetGroupCallStreamSegment copyWith(
           {int? groupCallId,
           int? timeOffset,
           int? scale,
@@ -17352,7 +17439,7 @@ extension GetGroupCallStreamSegmentExtensions on GetGroupCallStreamSegment {
 
 extension ToggleMessageSenderIsBlockedExtensions
     on ToggleMessageSenderIsBlocked {
-  ToggleMessageSenderIsBlocked copy(
+  ToggleMessageSenderIsBlocked copyWith(
           {MessageSender? senderId, bool? isBlocked}) =>
       ToggleMessageSenderIsBlocked(
           senderId: senderId ?? this.senderId,
@@ -17361,7 +17448,7 @@ extension ToggleMessageSenderIsBlockedExtensions
 
 extension BlockMessageSenderFromRepliesExtensions
     on BlockMessageSenderFromReplies {
-  BlockMessageSenderFromReplies copy(
+  BlockMessageSenderFromReplies copyWith(
           {int? messageId,
           bool? deleteMessage,
           bool? deleteAllMessages,
@@ -17374,44 +17461,44 @@ extension BlockMessageSenderFromRepliesExtensions
 }
 
 extension GetBlockedMessageSendersExtensions on GetBlockedMessageSenders {
-  GetBlockedMessageSenders copy({int? offset, int? limit}) =>
+  GetBlockedMessageSenders copyWith({int? offset, int? limit}) =>
       GetBlockedMessageSenders(
           offset: offset ?? this.offset, limit: limit ?? this.limit);
 }
 
 extension AddContactExtensions on AddContact {
-  AddContact copy({Contact? contact, bool? sharePhoneNumber}) => AddContact(
+  AddContact copyWith({Contact? contact, bool? sharePhoneNumber}) => AddContact(
       contact: contact ?? this.contact,
       sharePhoneNumber: sharePhoneNumber ?? this.sharePhoneNumber);
 }
 
 extension ImportContactsExtensions on ImportContacts {
-  ImportContacts copy({List<Contact>? contacts}) =>
+  ImportContacts copyWith({List<Contact>? contacts}) =>
       ImportContacts(contacts: contacts ?? this.contacts);
 }
 
 extension SearchContactsExtensions on SearchContacts {
-  SearchContacts copy({String? query, int? limit}) =>
+  SearchContacts copyWith({String? query, int? limit}) =>
       SearchContacts(query: query ?? this.query, limit: limit ?? this.limit);
 }
 
 extension RemoveContactsExtensions on RemoveContacts {
-  RemoveContacts copy({List<int>? userIds}) =>
+  RemoveContacts copyWith({List<int>? userIds}) =>
       RemoveContacts(userIds: userIds ?? this.userIds);
 }
 
 extension ChangeImportedContactsExtensions on ChangeImportedContacts {
-  ChangeImportedContacts copy({List<Contact>? contacts}) =>
+  ChangeImportedContacts copyWith({List<Contact>? contacts}) =>
       ChangeImportedContacts(contacts: contacts ?? this.contacts);
 }
 
 extension SharePhoneNumberExtensions on SharePhoneNumber {
-  SharePhoneNumber copy({int? userId}) =>
+  SharePhoneNumber copyWith({int? userId}) =>
       SharePhoneNumber(userId: userId ?? this.userId);
 }
 
 extension GetUserProfilePhotosExtensions on GetUserProfilePhotos {
-  GetUserProfilePhotos copy({int? userId, int? offset, int? limit}) =>
+  GetUserProfilePhotos copyWith({int? userId, int? offset, int? limit}) =>
       GetUserProfilePhotos(
           userId: userId ?? this.userId,
           offset: offset ?? this.offset,
@@ -17419,22 +17506,22 @@ extension GetUserProfilePhotosExtensions on GetUserProfilePhotos {
 }
 
 extension GetStickersExtensions on GetStickers {
-  GetStickers copy({String? emoji, int? limit}) =>
+  GetStickers copyWith({String? emoji, int? limit}) =>
       GetStickers(emoji: emoji ?? this.emoji, limit: limit ?? this.limit);
 }
 
 extension SearchStickersExtensions on SearchStickers {
-  SearchStickers copy({String? emoji, int? limit}) =>
+  SearchStickers copyWith({String? emoji, int? limit}) =>
       SearchStickers(emoji: emoji ?? this.emoji, limit: limit ?? this.limit);
 }
 
 extension GetInstalledStickerSetsExtensions on GetInstalledStickerSets {
-  GetInstalledStickerSets copy({bool? isMasks}) =>
+  GetInstalledStickerSets copyWith({bool? isMasks}) =>
       GetInstalledStickerSets(isMasks: isMasks ?? this.isMasks);
 }
 
 extension GetArchivedStickerSetsExtensions on GetArchivedStickerSets {
-  GetArchivedStickerSets copy(
+  GetArchivedStickerSets copyWith(
           {bool? isMasks, int? offsetStickerSetId, int? limit}) =>
       GetArchivedStickerSets(
           isMasks: isMasks ?? this.isMasks,
@@ -17443,27 +17530,29 @@ extension GetArchivedStickerSetsExtensions on GetArchivedStickerSets {
 }
 
 extension GetTrendingStickerSetsExtensions on GetTrendingStickerSets {
-  GetTrendingStickerSets copy({int? offset, int? limit}) =>
+  GetTrendingStickerSets copyWith({int? offset, int? limit}) =>
       GetTrendingStickerSets(
           offset: offset ?? this.offset, limit: limit ?? this.limit);
 }
 
 extension GetAttachedStickerSetsExtensions on GetAttachedStickerSets {
-  GetAttachedStickerSets copy({int? fileId}) =>
+  GetAttachedStickerSets copyWith({int? fileId}) =>
       GetAttachedStickerSets(fileId: fileId ?? this.fileId);
 }
 
 extension GetStickerSetExtensions on GetStickerSet {
-  GetStickerSet copy({int? setId}) => GetStickerSet(setId: setId ?? this.setId);
+  GetStickerSet copyWith({int? setId}) =>
+      GetStickerSet(setId: setId ?? this.setId);
 }
 
 extension SearchStickerSetExtensions on SearchStickerSet {
-  SearchStickerSet copy({String? name}) =>
+  SearchStickerSet copyWith({String? name}) =>
       SearchStickerSet(name: name ?? this.name);
 }
 
 extension SearchInstalledStickerSetsExtensions on SearchInstalledStickerSets {
-  SearchInstalledStickerSets copy({bool? isMasks, String? query, int? limit}) =>
+  SearchInstalledStickerSets copyWith(
+          {bool? isMasks, String? query, int? limit}) =>
       SearchInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
           query: query ?? this.query,
@@ -17471,12 +17560,13 @@ extension SearchInstalledStickerSetsExtensions on SearchInstalledStickerSets {
 }
 
 extension SearchStickerSetsExtensions on SearchStickerSets {
-  SearchStickerSets copy({String? query}) =>
+  SearchStickerSets copyWith({String? query}) =>
       SearchStickerSets(query: query ?? this.query);
 }
 
 extension ChangeStickerSetExtensions on ChangeStickerSet {
-  ChangeStickerSet copy({int? setId, bool? isInstalled, bool? isArchived}) =>
+  ChangeStickerSet copyWith(
+          {int? setId, bool? isInstalled, bool? isArchived}) =>
       ChangeStickerSet(
           setId: setId ?? this.setId,
           isInstalled: isInstalled ?? this.isInstalled,
@@ -17484,59 +17574,60 @@ extension ChangeStickerSetExtensions on ChangeStickerSet {
 }
 
 extension ViewTrendingStickerSetsExtensions on ViewTrendingStickerSets {
-  ViewTrendingStickerSets copy({List<int>? stickerSetIds}) =>
+  ViewTrendingStickerSets copyWith({List<int>? stickerSetIds}) =>
       ViewTrendingStickerSets(
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
 extension ReorderInstalledStickerSetsExtensions on ReorderInstalledStickerSets {
-  ReorderInstalledStickerSets copy({bool? isMasks, List<int>? stickerSetIds}) =>
+  ReorderInstalledStickerSets copyWith(
+          {bool? isMasks, List<int>? stickerSetIds}) =>
       ReorderInstalledStickerSets(
           isMasks: isMasks ?? this.isMasks,
           stickerSetIds: stickerSetIds ?? this.stickerSetIds);
 }
 
 extension GetRecentStickersExtensions on GetRecentStickers {
-  GetRecentStickers copy({bool? isAttached}) =>
+  GetRecentStickers copyWith({bool? isAttached}) =>
       GetRecentStickers(isAttached: isAttached ?? this.isAttached);
 }
 
 extension AddRecentStickerExtensions on AddRecentSticker {
-  AddRecentSticker copy({bool? isAttached, InputFile? sticker}) =>
+  AddRecentSticker copyWith({bool? isAttached, InputFile? sticker}) =>
       AddRecentSticker(
           isAttached: isAttached ?? this.isAttached,
           sticker: sticker ?? this.sticker);
 }
 
 extension RemoveRecentStickerExtensions on RemoveRecentSticker {
-  RemoveRecentSticker copy({bool? isAttached, InputFile? sticker}) =>
+  RemoveRecentSticker copyWith({bool? isAttached, InputFile? sticker}) =>
       RemoveRecentSticker(
           isAttached: isAttached ?? this.isAttached,
           sticker: sticker ?? this.sticker);
 }
 
 extension ClearRecentStickersExtensions on ClearRecentStickers {
-  ClearRecentStickers copy({bool? isAttached}) =>
+  ClearRecentStickers copyWith({bool? isAttached}) =>
       ClearRecentStickers(isAttached: isAttached ?? this.isAttached);
 }
 
 extension AddFavoriteStickerExtensions on AddFavoriteSticker {
-  AddFavoriteSticker copy({InputFile? sticker}) =>
+  AddFavoriteSticker copyWith({InputFile? sticker}) =>
       AddFavoriteSticker(sticker: sticker ?? this.sticker);
 }
 
 extension RemoveFavoriteStickerExtensions on RemoveFavoriteSticker {
-  RemoveFavoriteSticker copy({InputFile? sticker}) =>
+  RemoveFavoriteSticker copyWith({InputFile? sticker}) =>
       RemoveFavoriteSticker(sticker: sticker ?? this.sticker);
 }
 
 extension GetStickerEmojisExtensions on GetStickerEmojis {
-  GetStickerEmojis copy({InputFile? sticker}) =>
+  GetStickerEmojis copyWith({InputFile? sticker}) =>
       GetStickerEmojis(sticker: sticker ?? this.sticker);
 }
 
 extension SearchEmojisExtensions on SearchEmojis {
-  SearchEmojis copy(
+  SearchEmojis copyWith(
           {String? text, bool? exactMatch, List<String>? inputLanguageCodes}) =>
       SearchEmojis(
           text: text ?? this.text,
@@ -17545,78 +17636,78 @@ extension SearchEmojisExtensions on SearchEmojis {
 }
 
 extension GetAnimatedEmojiExtensions on GetAnimatedEmoji {
-  GetAnimatedEmoji copy({String? emoji}) =>
+  GetAnimatedEmoji copyWith({String? emoji}) =>
       GetAnimatedEmoji(emoji: emoji ?? this.emoji);
 }
 
 extension GetEmojiSuggestionsUrlExtensions on GetEmojiSuggestionsUrl {
-  GetEmojiSuggestionsUrl copy({String? languageCode}) =>
+  GetEmojiSuggestionsUrl copyWith({String? languageCode}) =>
       GetEmojiSuggestionsUrl(languageCode: languageCode ?? this.languageCode);
 }
 
 extension AddSavedAnimationExtensions on AddSavedAnimation {
-  AddSavedAnimation copy({InputFile? animation}) =>
+  AddSavedAnimation copyWith({InputFile? animation}) =>
       AddSavedAnimation(animation: animation ?? this.animation);
 }
 
 extension RemoveSavedAnimationExtensions on RemoveSavedAnimation {
-  RemoveSavedAnimation copy({InputFile? animation}) =>
+  RemoveSavedAnimation copyWith({InputFile? animation}) =>
       RemoveSavedAnimation(animation: animation ?? this.animation);
 }
 
 extension SearchHashtagsExtensions on SearchHashtags {
-  SearchHashtags copy({String? prefix, int? limit}) =>
+  SearchHashtags copyWith({String? prefix, int? limit}) =>
       SearchHashtags(prefix: prefix ?? this.prefix, limit: limit ?? this.limit);
 }
 
 extension RemoveRecentHashtagExtensions on RemoveRecentHashtag {
-  RemoveRecentHashtag copy({String? hashtag}) =>
+  RemoveRecentHashtag copyWith({String? hashtag}) =>
       RemoveRecentHashtag(hashtag: hashtag ?? this.hashtag);
 }
 
 extension GetWebPagePreviewExtensions on GetWebPagePreview {
-  GetWebPagePreview copy({FormattedText? text}) =>
+  GetWebPagePreview copyWith({FormattedText? text}) =>
       GetWebPagePreview(text: text ?? this.text);
 }
 
 extension GetWebPageInstantViewExtensions on GetWebPageInstantView {
-  GetWebPageInstantView copy({String? url, bool? forceFull}) =>
+  GetWebPageInstantView copyWith({String? url, bool? forceFull}) =>
       GetWebPageInstantView(
           url: url ?? this.url, forceFull: forceFull ?? this.forceFull);
 }
 
 extension SetProfilePhotoExtensions on SetProfilePhoto {
-  SetProfilePhoto copy({InputChatPhoto? photo}) =>
+  SetProfilePhoto copyWith({InputChatPhoto? photo}) =>
       SetProfilePhoto(photo: photo ?? this.photo);
 }
 
 extension DeleteProfilePhotoExtensions on DeleteProfilePhoto {
-  DeleteProfilePhoto copy({int? profilePhotoId}) =>
+  DeleteProfilePhoto copyWith({int? profilePhotoId}) =>
       DeleteProfilePhoto(profilePhotoId: profilePhotoId ?? this.profilePhotoId);
 }
 
 extension SetNameExtensions on SetName {
-  SetName copy({String? firstName, String? lastName}) => SetName(
+  SetName copyWith({String? firstName, String? lastName}) => SetName(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName);
 }
 
 extension SetBioExtensions on SetBio {
-  SetBio copy({String? bio}) => SetBio(bio: bio ?? this.bio);
+  SetBio copyWith({String? bio}) => SetBio(bio: bio ?? this.bio);
 }
 
 extension SetUsernameExtensions on SetUsername {
-  SetUsername copy({String? username}) =>
+  SetUsername copyWith({String? username}) =>
       SetUsername(username: username ?? this.username);
 }
 
 extension SetLocationExtensions on SetLocation {
-  SetLocation copy({Location? location}) =>
+  SetLocation copyWith({Location? location}) =>
       SetLocation(location: location ?? this.location);
 }
 
 extension ChangePhoneNumberExtensions on ChangePhoneNumber {
-  ChangePhoneNumber copy(
+  ChangePhoneNumber copyWith(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
       ChangePhoneNumber(
           phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -17624,12 +17715,12 @@ extension ChangePhoneNumberExtensions on ChangePhoneNumber {
 }
 
 extension CheckChangePhoneNumberCodeExtensions on CheckChangePhoneNumberCode {
-  CheckChangePhoneNumberCode copy({String? code}) =>
+  CheckChangePhoneNumberCode copyWith({String? code}) =>
       CheckChangePhoneNumberCode(code: code ?? this.code);
 }
 
 extension SetCommandsExtensions on SetCommands {
-  SetCommands copy(
+  SetCommands copyWith(
           {BotCommandScope? scope,
           String? languageCode,
           List<BotCommand>? commands}) =>
@@ -17640,26 +17731,27 @@ extension SetCommandsExtensions on SetCommands {
 }
 
 extension DeleteCommandsExtensions on DeleteCommands {
-  DeleteCommands copy({BotCommandScope? scope, String? languageCode}) =>
+  DeleteCommands copyWith({BotCommandScope? scope, String? languageCode}) =>
       DeleteCommands(
           scope: scope ?? this.scope,
           languageCode: languageCode ?? this.languageCode);
 }
 
 extension GetCommandsExtensions on GetCommands {
-  GetCommands copy({BotCommandScope? scope, String? languageCode}) =>
+  GetCommands copyWith({BotCommandScope? scope, String? languageCode}) =>
       GetCommands(
           scope: scope ?? this.scope,
           languageCode: languageCode ?? this.languageCode);
 }
 
 extension TerminateSessionExtensions on TerminateSession {
-  TerminateSession copy({int? sessionId}) =>
+  TerminateSession copyWith({int? sessionId}) =>
       TerminateSession(sessionId: sessionId ?? this.sessionId);
 }
 
 extension ToggleSessionCanAcceptCallsExtensions on ToggleSessionCanAcceptCalls {
-  ToggleSessionCanAcceptCalls copy({int? sessionId, bool? canAcceptCalls}) =>
+  ToggleSessionCanAcceptCalls copyWith(
+          {int? sessionId, bool? canAcceptCalls}) =>
       ToggleSessionCanAcceptCalls(
           sessionId: sessionId ?? this.sessionId,
           canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls);
@@ -17667,7 +17759,7 @@ extension ToggleSessionCanAcceptCallsExtensions on ToggleSessionCanAcceptCalls {
 
 extension ToggleSessionCanAcceptSecretChatsExtensions
     on ToggleSessionCanAcceptSecretChats {
-  ToggleSessionCanAcceptSecretChats copy(
+  ToggleSessionCanAcceptSecretChats copyWith(
           {int? sessionId, bool? canAcceptSecretChats}) =>
       ToggleSessionCanAcceptSecretChats(
           sessionId: sessionId ?? this.sessionId,
@@ -17676,26 +17768,26 @@ extension ToggleSessionCanAcceptSecretChatsExtensions
 }
 
 extension SetInactiveSessionTtlExtensions on SetInactiveSessionTtl {
-  SetInactiveSessionTtl copy({int? inactiveSessionTtlDays}) =>
+  SetInactiveSessionTtl copyWith({int? inactiveSessionTtlDays}) =>
       SetInactiveSessionTtl(
           inactiveSessionTtlDays:
               inactiveSessionTtlDays ?? this.inactiveSessionTtlDays);
 }
 
 extension DisconnectWebsiteExtensions on DisconnectWebsite {
-  DisconnectWebsite copy({int? websiteId}) =>
+  DisconnectWebsite copyWith({int? websiteId}) =>
       DisconnectWebsite(websiteId: websiteId ?? this.websiteId);
 }
 
 extension SetSupergroupUsernameExtensions on SetSupergroupUsername {
-  SetSupergroupUsername copy({int? supergroupId, String? username}) =>
+  SetSupergroupUsername copyWith({int? supergroupId, String? username}) =>
       SetSupergroupUsername(
           supergroupId: supergroupId ?? this.supergroupId,
           username: username ?? this.username);
 }
 
 extension SetSupergroupStickerSetExtensions on SetSupergroupStickerSet {
-  SetSupergroupStickerSet copy({int? supergroupId, int? stickerSetId}) =>
+  SetSupergroupStickerSet copyWith({int? supergroupId, int? stickerSetId}) =>
       SetSupergroupStickerSet(
           supergroupId: supergroupId ?? this.supergroupId,
           stickerSetId: stickerSetId ?? this.stickerSetId);
@@ -17703,7 +17795,8 @@ extension SetSupergroupStickerSetExtensions on SetSupergroupStickerSet {
 
 extension ToggleSupergroupSignMessagesExtensions
     on ToggleSupergroupSignMessages {
-  ToggleSupergroupSignMessages copy({int? supergroupId, bool? signMessages}) =>
+  ToggleSupergroupSignMessages copyWith(
+          {int? supergroupId, bool? signMessages}) =>
       ToggleSupergroupSignMessages(
           supergroupId: supergroupId ?? this.supergroupId,
           signMessages: signMessages ?? this.signMessages);
@@ -17711,7 +17804,7 @@ extension ToggleSupergroupSignMessagesExtensions
 
 extension ToggleSupergroupIsAllHistoryAvailableExtensions
     on ToggleSupergroupIsAllHistoryAvailable {
-  ToggleSupergroupIsAllHistoryAvailable copy(
+  ToggleSupergroupIsAllHistoryAvailable copyWith(
           {int? supergroupId, bool? isAllHistoryAvailable}) =>
       ToggleSupergroupIsAllHistoryAvailable(
           supergroupId: supergroupId ?? this.supergroupId,
@@ -17721,20 +17814,20 @@ extension ToggleSupergroupIsAllHistoryAvailableExtensions
 
 extension ToggleSupergroupIsBroadcastGroupExtensions
     on ToggleSupergroupIsBroadcastGroup {
-  ToggleSupergroupIsBroadcastGroup copy({int? supergroupId}) =>
+  ToggleSupergroupIsBroadcastGroup copyWith({int? supergroupId}) =>
       ToggleSupergroupIsBroadcastGroup(
           supergroupId: supergroupId ?? this.supergroupId);
 }
 
 extension ReportSupergroupSpamExtensions on ReportSupergroupSpam {
-  ReportSupergroupSpam copy({int? supergroupId, List<int>? messageIds}) =>
+  ReportSupergroupSpam copyWith({int? supergroupId, List<int>? messageIds}) =>
       ReportSupergroupSpam(
           supergroupId: supergroupId ?? this.supergroupId,
           messageIds: messageIds ?? this.messageIds);
 }
 
 extension GetSupergroupMembersExtensions on GetSupergroupMembers {
-  GetSupergroupMembers copy(
+  GetSupergroupMembers copyWith(
           {int? supergroupId,
           SupergroupMembersFilter? filter,
           int? offset,
@@ -17747,12 +17840,12 @@ extension GetSupergroupMembersExtensions on GetSupergroupMembers {
 }
 
 extension CloseSecretChatExtensions on CloseSecretChat {
-  CloseSecretChat copy({int? secretChatId}) =>
+  CloseSecretChat copyWith({int? secretChatId}) =>
       CloseSecretChat(secretChatId: secretChatId ?? this.secretChatId);
 }
 
 extension GetChatEventLogExtensions on GetChatEventLog {
-  GetChatEventLog copy(
+  GetChatEventLog copyWith(
           {int? chatId,
           String? query,
           int? fromEventId,
@@ -17769,7 +17862,8 @@ extension GetChatEventLogExtensions on GetChatEventLog {
 }
 
 extension GetPaymentFormExtensions on GetPaymentForm {
-  GetPaymentForm copy({int? chatId, int? messageId, PaymentFormTheme? theme}) =>
+  GetPaymentForm copyWith(
+          {int? chatId, int? messageId, PaymentFormTheme? theme}) =>
       GetPaymentForm(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -17777,7 +17871,7 @@ extension GetPaymentFormExtensions on GetPaymentForm {
 }
 
 extension ValidateOrderInfoExtensions on ValidateOrderInfo {
-  ValidateOrderInfo copy(
+  ValidateOrderInfo copyWith(
           {int? chatId,
           int? messageId,
           OrderInfo? orderInfo,
@@ -17790,7 +17884,7 @@ extension ValidateOrderInfoExtensions on ValidateOrderInfo {
 }
 
 extension SendPaymentFormExtensions on SendPaymentForm {
-  SendPaymentForm copy(
+  SendPaymentForm copyWith(
           {int? chatId,
           int? messageId,
           int? paymentFormId,
@@ -17809,27 +17903,29 @@ extension SendPaymentFormExtensions on SendPaymentForm {
 }
 
 extension GetPaymentReceiptExtensions on GetPaymentReceipt {
-  GetPaymentReceipt copy({int? chatId, int? messageId}) => GetPaymentReceipt(
-      chatId: chatId ?? this.chatId, messageId: messageId ?? this.messageId);
+  GetPaymentReceipt copyWith({int? chatId, int? messageId}) =>
+      GetPaymentReceipt(
+          chatId: chatId ?? this.chatId,
+          messageId: messageId ?? this.messageId);
 }
 
 extension GetBackgroundsExtensions on GetBackgrounds {
-  GetBackgrounds copy({bool? forDarkTheme}) =>
+  GetBackgrounds copyWith({bool? forDarkTheme}) =>
       GetBackgrounds(forDarkTheme: forDarkTheme ?? this.forDarkTheme);
 }
 
 extension GetBackgroundUrlExtensions on GetBackgroundUrl {
-  GetBackgroundUrl copy({String? name, BackgroundType? type}) =>
+  GetBackgroundUrl copyWith({String? name, BackgroundType? type}) =>
       GetBackgroundUrl(name: name ?? this.name, type: type ?? this.type);
 }
 
 extension SearchBackgroundExtensions on SearchBackground {
-  SearchBackground copy({String? name}) =>
+  SearchBackground copyWith({String? name}) =>
       SearchBackground(name: name ?? this.name);
 }
 
 extension SetBackgroundExtensions on SetBackground {
-  SetBackground copy(
+  SetBackground copyWith(
           {InputBackground? background,
           BackgroundType? type,
           bool? forDarkTheme}) =>
@@ -17840,53 +17936,54 @@ extension SetBackgroundExtensions on SetBackground {
 }
 
 extension RemoveBackgroundExtensions on RemoveBackground {
-  RemoveBackground copy({int? backgroundId}) =>
+  RemoveBackground copyWith({int? backgroundId}) =>
       RemoveBackground(backgroundId: backgroundId ?? this.backgroundId);
 }
 
 extension GetLocalizationTargetInfoExtensions on GetLocalizationTargetInfo {
-  GetLocalizationTargetInfo copy({bool? onlyLocal}) =>
+  GetLocalizationTargetInfo copyWith({bool? onlyLocal}) =>
       GetLocalizationTargetInfo(onlyLocal: onlyLocal ?? this.onlyLocal);
 }
 
 extension GetLanguagePackInfoExtensions on GetLanguagePackInfo {
-  GetLanguagePackInfo copy({String? languagePackId}) => GetLanguagePackInfo(
+  GetLanguagePackInfo copyWith({String? languagePackId}) => GetLanguagePackInfo(
       languagePackId: languagePackId ?? this.languagePackId);
 }
 
 extension GetLanguagePackStringsExtensions on GetLanguagePackStrings {
-  GetLanguagePackStrings copy({String? languagePackId, List<String>? keys}) =>
+  GetLanguagePackStrings copyWith(
+          {String? languagePackId, List<String>? keys}) =>
       GetLanguagePackStrings(
           languagePackId: languagePackId ?? this.languagePackId,
           keys: keys ?? this.keys);
 }
 
 extension SynchronizeLanguagePackExtensions on SynchronizeLanguagePack {
-  SynchronizeLanguagePack copy({String? languagePackId}) =>
+  SynchronizeLanguagePack copyWith({String? languagePackId}) =>
       SynchronizeLanguagePack(
           languagePackId: languagePackId ?? this.languagePackId);
 }
 
 extension AddCustomServerLanguagePackExtensions on AddCustomServerLanguagePack {
-  AddCustomServerLanguagePack copy({String? languagePackId}) =>
+  AddCustomServerLanguagePack copyWith({String? languagePackId}) =>
       AddCustomServerLanguagePack(
           languagePackId: languagePackId ?? this.languagePackId);
 }
 
 extension SetCustomLanguagePackExtensions on SetCustomLanguagePack {
-  SetCustomLanguagePack copy(
+  SetCustomLanguagePack copyWith(
           {LanguagePackInfo? info, List<LanguagePackString>? strings}) =>
       SetCustomLanguagePack(
           info: info ?? this.info, strings: strings ?? this.strings);
 }
 
 extension EditCustomLanguagePackInfoExtensions on EditCustomLanguagePackInfo {
-  EditCustomLanguagePackInfo copy({LanguagePackInfo? info}) =>
+  EditCustomLanguagePackInfo copyWith({LanguagePackInfo? info}) =>
       EditCustomLanguagePackInfo(info: info ?? this.info);
 }
 
 extension SetCustomLanguagePackStringExtensions on SetCustomLanguagePackString {
-  SetCustomLanguagePackString copy(
+  SetCustomLanguagePackString copyWith(
           {String? languagePackId, LanguagePackString? newString}) =>
       SetCustomLanguagePackString(
           languagePackId: languagePackId ?? this.languagePackId,
@@ -17894,69 +17991,71 @@ extension SetCustomLanguagePackStringExtensions on SetCustomLanguagePackString {
 }
 
 extension DeleteLanguagePackExtensions on DeleteLanguagePack {
-  DeleteLanguagePack copy({String? languagePackId}) =>
+  DeleteLanguagePack copyWith({String? languagePackId}) =>
       DeleteLanguagePack(languagePackId: languagePackId ?? this.languagePackId);
 }
 
 extension RegisterDeviceExtensions on RegisterDevice {
-  RegisterDevice copy({DeviceToken? deviceToken, List<int>? otherUserIds}) =>
+  RegisterDevice copyWith(
+          {DeviceToken? deviceToken, List<int>? otherUserIds}) =>
       RegisterDevice(
           deviceToken: deviceToken ?? this.deviceToken,
           otherUserIds: otherUserIds ?? this.otherUserIds);
 }
 
 extension ProcessPushNotificationExtensions on ProcessPushNotification {
-  ProcessPushNotification copy({String? payload}) =>
+  ProcessPushNotification copyWith({String? payload}) =>
       ProcessPushNotification(payload: payload ?? this.payload);
 }
 
 extension GetPushReceiverIdExtensions on GetPushReceiverId {
-  GetPushReceiverId copy({String? payload}) =>
+  GetPushReceiverId copyWith({String? payload}) =>
       GetPushReceiverId(payload: payload ?? this.payload);
 }
 
 extension GetRecentlyVisitedTMeUrlsExtensions on GetRecentlyVisitedTMeUrls {
-  GetRecentlyVisitedTMeUrls copy({String? referrer}) =>
+  GetRecentlyVisitedTMeUrls copyWith({String? referrer}) =>
       GetRecentlyVisitedTMeUrls(referrer: referrer ?? this.referrer);
 }
 
 extension SetUserPrivacySettingRulesExtensions on SetUserPrivacySettingRules {
-  SetUserPrivacySettingRules copy(
+  SetUserPrivacySettingRules copyWith(
           {UserPrivacySetting? setting, UserPrivacySettingRules? rules}) =>
       SetUserPrivacySettingRules(
           setting: setting ?? this.setting, rules: rules ?? this.rules);
 }
 
 extension GetUserPrivacySettingRulesExtensions on GetUserPrivacySettingRules {
-  GetUserPrivacySettingRules copy({UserPrivacySetting? setting}) =>
+  GetUserPrivacySettingRules copyWith({UserPrivacySetting? setting}) =>
       GetUserPrivacySettingRules(setting: setting ?? this.setting);
 }
 
 extension GetOptionExtensions on GetOption {
-  GetOption copy({String? name}) => GetOption(name: name ?? this.name);
+  GetOption copyWith({String? name}) => GetOption(name: name ?? this.name);
 }
 
 extension SetOptionExtensions on SetOption {
-  SetOption copy({String? name, OptionValue? value}) =>
+  SetOption copyWith({String? name, OptionValue? value}) =>
       SetOption(name: name ?? this.name, value: value ?? this.value);
 }
 
 extension SetAccountTtlExtensions on SetAccountTtl {
-  SetAccountTtl copy({AccountTtl? ttl}) => SetAccountTtl(ttl: ttl ?? this.ttl);
+  SetAccountTtl copyWith({AccountTtl? ttl}) =>
+      SetAccountTtl(ttl: ttl ?? this.ttl);
 }
 
 extension DeleteAccountExtensions on DeleteAccount {
-  DeleteAccount copy({String? reason}) =>
+  DeleteAccount copyWith({String? reason}) =>
       DeleteAccount(reason: reason ?? this.reason);
 }
 
 extension RemoveChatActionBarExtensions on RemoveChatActionBar {
-  RemoveChatActionBar copy({int? chatId}) =>
+  RemoveChatActionBar copyWith({int? chatId}) =>
       RemoveChatActionBar(chatId: chatId ?? this.chatId);
 }
 
 extension ReportChatExtensions on ReportChat {
-  ReportChat copy(
+  ReportChat copyWith(
           {int? chatId,
           List<int>? messageIds,
           ChatReportReason? reason,
@@ -17969,7 +18068,7 @@ extension ReportChatExtensions on ReportChat {
 }
 
 extension ReportChatPhotoExtensions on ReportChatPhoto {
-  ReportChatPhoto copy(
+  ReportChatPhoto copyWith(
           {int? chatId, int? fileId, ChatReportReason? reason, String? text}) =>
       ReportChatPhoto(
           chatId: chatId ?? this.chatId,
@@ -17979,12 +18078,12 @@ extension ReportChatPhotoExtensions on ReportChatPhoto {
 }
 
 extension GetChatStatisticsExtensions on GetChatStatistics {
-  GetChatStatistics copy({int? chatId, bool? isDark}) => GetChatStatistics(
+  GetChatStatistics copyWith({int? chatId, bool? isDark}) => GetChatStatistics(
       chatId: chatId ?? this.chatId, isDark: isDark ?? this.isDark);
 }
 
 extension GetMessageStatisticsExtensions on GetMessageStatistics {
-  GetMessageStatistics copy({int? chatId, int? messageId, bool? isDark}) =>
+  GetMessageStatistics copyWith({int? chatId, int? messageId, bool? isDark}) =>
       GetMessageStatistics(
           chatId: chatId ?? this.chatId,
           messageId: messageId ?? this.messageId,
@@ -17992,7 +18091,7 @@ extension GetMessageStatisticsExtensions on GetMessageStatistics {
 }
 
 extension GetStatisticalGraphExtensions on GetStatisticalGraph {
-  GetStatisticalGraph copy({int? chatId, String? token, int? x}) =>
+  GetStatisticalGraph copyWith({int? chatId, String? token, int? x}) =>
       GetStatisticalGraph(
           chatId: chatId ?? this.chatId,
           token: token ?? this.token,
@@ -18000,12 +18099,12 @@ extension GetStatisticalGraphExtensions on GetStatisticalGraph {
 }
 
 extension GetStorageStatisticsExtensions on GetStorageStatistics {
-  GetStorageStatistics copy({int? chatLimit}) =>
+  GetStorageStatistics copyWith({int? chatLimit}) =>
       GetStorageStatistics(chatLimit: chatLimit ?? this.chatLimit);
 }
 
 extension OptimizeStorageExtensions on OptimizeStorage {
-  OptimizeStorage copy(
+  OptimizeStorage copyWith(
           {int? size,
           int? ttl,
           int? count,
@@ -18029,70 +18128,71 @@ extension OptimizeStorageExtensions on OptimizeStorage {
 }
 
 extension SetNetworkTypeExtensions on SetNetworkType {
-  SetNetworkType copy({NetworkType? type}) =>
+  SetNetworkType copyWith({NetworkType? type}) =>
       SetNetworkType(type: type ?? this.type);
 }
 
 extension GetNetworkStatisticsExtensions on GetNetworkStatistics {
-  GetNetworkStatistics copy({bool? onlyCurrent}) =>
+  GetNetworkStatistics copyWith({bool? onlyCurrent}) =>
       GetNetworkStatistics(onlyCurrent: onlyCurrent ?? this.onlyCurrent);
 }
 
 extension AddNetworkStatisticsExtensions on AddNetworkStatistics {
-  AddNetworkStatistics copy({NetworkStatisticsEntry? entry}) =>
+  AddNetworkStatistics copyWith({NetworkStatisticsEntry? entry}) =>
       AddNetworkStatistics(entry: entry ?? this.entry);
 }
 
 extension SetAutoDownloadSettingsExtensions on SetAutoDownloadSettings {
-  SetAutoDownloadSettings copy(
+  SetAutoDownloadSettings copyWith(
           {AutoDownloadSettings? settings, NetworkType? type}) =>
       SetAutoDownloadSettings(
           settings: settings ?? this.settings, type: type ?? this.type);
 }
 
 extension GetBankCardInfoExtensions on GetBankCardInfo {
-  GetBankCardInfo copy({String? bankCardNumber}) =>
+  GetBankCardInfo copyWith({String? bankCardNumber}) =>
       GetBankCardInfo(bankCardNumber: bankCardNumber ?? this.bankCardNumber);
 }
 
 extension GetPassportElementExtensions on GetPassportElement {
-  GetPassportElement copy({PassportElementType? type, String? password}) =>
+  GetPassportElement copyWith({PassportElementType? type, String? password}) =>
       GetPassportElement(
           type: type ?? this.type, password: password ?? this.password);
 }
 
 extension GetAllPassportElementsExtensions on GetAllPassportElements {
-  GetAllPassportElements copy({String? password}) =>
+  GetAllPassportElements copyWith({String? password}) =>
       GetAllPassportElements(password: password ?? this.password);
 }
 
 extension SetPassportElementExtensions on SetPassportElement {
-  SetPassportElement copy({InputPassportElement? element, String? password}) =>
+  SetPassportElement copyWith(
+          {InputPassportElement? element, String? password}) =>
       SetPassportElement(
           element: element ?? this.element,
           password: password ?? this.password);
 }
 
 extension DeletePassportElementExtensions on DeletePassportElement {
-  DeletePassportElement copy({PassportElementType? type}) =>
+  DeletePassportElement copyWith({PassportElementType? type}) =>
       DeletePassportElement(type: type ?? this.type);
 }
 
 extension SetPassportElementErrorsExtensions on SetPassportElementErrors {
-  SetPassportElementErrors copy(
+  SetPassportElementErrors copyWith(
           {int? userId, List<InputPassportElementError>? errors}) =>
       SetPassportElementErrors(
           userId: userId ?? this.userId, errors: errors ?? this.errors);
 }
 
 extension GetPreferredCountryLanguageExtensions on GetPreferredCountryLanguage {
-  GetPreferredCountryLanguage copy({String? countryCode}) =>
+  GetPreferredCountryLanguage copyWith({String? countryCode}) =>
       GetPreferredCountryLanguage(countryCode: countryCode ?? this.countryCode);
 }
 
 extension SendPhoneNumberVerificationCodeExtensions
     on SendPhoneNumberVerificationCode {
-  SendPhoneNumberVerificationCode copy(
+  SendPhoneNumberVerificationCode copyWith(
           {String? phoneNumber, PhoneNumberAuthenticationSettings? settings}) =>
       SendPhoneNumberVerificationCode(
           phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -18101,26 +18201,26 @@ extension SendPhoneNumberVerificationCodeExtensions
 
 extension CheckPhoneNumberVerificationCodeExtensions
     on CheckPhoneNumberVerificationCode {
-  CheckPhoneNumberVerificationCode copy({String? code}) =>
+  CheckPhoneNumberVerificationCode copyWith({String? code}) =>
       CheckPhoneNumberVerificationCode(code: code ?? this.code);
 }
 
 extension SendEmailAddressVerificationCodeExtensions
     on SendEmailAddressVerificationCode {
-  SendEmailAddressVerificationCode copy({String? emailAddress}) =>
+  SendEmailAddressVerificationCode copyWith({String? emailAddress}) =>
       SendEmailAddressVerificationCode(
           emailAddress: emailAddress ?? this.emailAddress);
 }
 
 extension CheckEmailAddressVerificationCodeExtensions
     on CheckEmailAddressVerificationCode {
-  CheckEmailAddressVerificationCode copy({String? code}) =>
+  CheckEmailAddressVerificationCode copyWith({String? code}) =>
       CheckEmailAddressVerificationCode(code: code ?? this.code);
 }
 
 extension GetPassportAuthorizationFormExtensions
     on GetPassportAuthorizationForm {
-  GetPassportAuthorizationForm copy(
+  GetPassportAuthorizationForm copyWith(
           {int? botUserId, String? scope, String? publicKey, String? nonce}) =>
       GetPassportAuthorizationForm(
           botUserId: botUserId ?? this.botUserId,
@@ -18131,7 +18231,7 @@ extension GetPassportAuthorizationFormExtensions
 
 extension GetPassportAuthorizationFormAvailableElementsExtensions
     on GetPassportAuthorizationFormAvailableElements {
-  GetPassportAuthorizationFormAvailableElements copy(
+  GetPassportAuthorizationFormAvailableElements copyWith(
           {int? autorizationFormId, String? password}) =>
       GetPassportAuthorizationFormAvailableElements(
           autorizationFormId: autorizationFormId ?? this.autorizationFormId,
@@ -18140,7 +18240,7 @@ extension GetPassportAuthorizationFormAvailableElementsExtensions
 
 extension SendPassportAuthorizationFormExtensions
     on SendPassportAuthorizationForm {
-  SendPassportAuthorizationForm copy(
+  SendPassportAuthorizationForm copyWith(
           {int? autorizationFormId, List<PassportElementType>? types}) =>
       SendPassportAuthorizationForm(
           autorizationFormId: autorizationFormId ?? this.autorizationFormId,
@@ -18149,7 +18249,7 @@ extension SendPassportAuthorizationFormExtensions
 
 extension SendPhoneNumberConfirmationCodeExtensions
     on SendPhoneNumberConfirmationCode {
-  SendPhoneNumberConfirmationCode copy(
+  SendPhoneNumberConfirmationCode copyWith(
           {String? hash,
           String? phoneNumber,
           PhoneNumberAuthenticationSettings? settings}) =>
@@ -18161,35 +18261,36 @@ extension SendPhoneNumberConfirmationCodeExtensions
 
 extension CheckPhoneNumberConfirmationCodeExtensions
     on CheckPhoneNumberConfirmationCode {
-  CheckPhoneNumberConfirmationCode copy({String? code}) =>
+  CheckPhoneNumberConfirmationCode copyWith({String? code}) =>
       CheckPhoneNumberConfirmationCode(code: code ?? this.code);
 }
 
 extension SetBotUpdatesStatusExtensions on SetBotUpdatesStatus {
-  SetBotUpdatesStatus copy({int? pendingUpdateCount, String? errorMessage}) =>
+  SetBotUpdatesStatus copyWith(
+          {int? pendingUpdateCount, String? errorMessage}) =>
       SetBotUpdatesStatus(
           pendingUpdateCount: pendingUpdateCount ?? this.pendingUpdateCount,
           errorMessage: errorMessage ?? this.errorMessage);
 }
 
 extension UploadStickerFileExtensions on UploadStickerFile {
-  UploadStickerFile copy({int? userId, InputSticker? sticker}) =>
+  UploadStickerFile copyWith({int? userId, InputSticker? sticker}) =>
       UploadStickerFile(
           userId: userId ?? this.userId, sticker: sticker ?? this.sticker);
 }
 
 extension GetSuggestedStickerSetNameExtensions on GetSuggestedStickerSetName {
-  GetSuggestedStickerSetName copy({String? title}) =>
+  GetSuggestedStickerSetName copyWith({String? title}) =>
       GetSuggestedStickerSetName(title: title ?? this.title);
 }
 
 extension CheckStickerSetNameExtensions on CheckStickerSetName {
-  CheckStickerSetName copy({String? name}) =>
+  CheckStickerSetName copyWith({String? name}) =>
       CheckStickerSetName(name: name ?? this.name);
 }
 
 extension CreateNewStickerSetExtensions on CreateNewStickerSet {
-  CreateNewStickerSet copy(
+  CreateNewStickerSet copyWith(
           {int? userId,
           String? title,
           String? name,
@@ -18206,7 +18307,8 @@ extension CreateNewStickerSetExtensions on CreateNewStickerSet {
 }
 
 extension AddStickerToSetExtensions on AddStickerToSet {
-  AddStickerToSet copy({int? userId, String? name, InputSticker? sticker}) =>
+  AddStickerToSet copyWith(
+          {int? userId, String? name, InputSticker? sticker}) =>
       AddStickerToSet(
           userId: userId ?? this.userId,
           name: name ?? this.name,
@@ -18214,7 +18316,7 @@ extension AddStickerToSetExtensions on AddStickerToSet {
 }
 
 extension SetStickerSetThumbnailExtensions on SetStickerSetThumbnail {
-  SetStickerSetThumbnail copy(
+  SetStickerSetThumbnail copyWith(
           {int? userId, String? name, InputFile? thumbnail}) =>
       SetStickerSetThumbnail(
           userId: userId ?? this.userId,
@@ -18223,19 +18325,19 @@ extension SetStickerSetThumbnailExtensions on SetStickerSetThumbnail {
 }
 
 extension SetStickerPositionInSetExtensions on SetStickerPositionInSet {
-  SetStickerPositionInSet copy({InputFile? sticker, int? position}) =>
+  SetStickerPositionInSet copyWith({InputFile? sticker, int? position}) =>
       SetStickerPositionInSet(
           sticker: sticker ?? this.sticker,
           position: position ?? this.position);
 }
 
 extension RemoveStickerFromSetExtensions on RemoveStickerFromSet {
-  RemoveStickerFromSet copy({InputFile? sticker}) =>
+  RemoveStickerFromSet copyWith({InputFile? sticker}) =>
       RemoveStickerFromSet(sticker: sticker ?? this.sticker);
 }
 
 extension GetMapThumbnailFileExtensions on GetMapThumbnailFile {
-  GetMapThumbnailFile copy(
+  GetMapThumbnailFile copyWith(
           {Location? location,
           int? zoom,
           int? width,
@@ -18252,36 +18354,38 @@ extension GetMapThumbnailFileExtensions on GetMapThumbnailFile {
 }
 
 extension AcceptTermsOfServiceExtensions on AcceptTermsOfService {
-  AcceptTermsOfService copy({String? termsOfServiceId}) => AcceptTermsOfService(
-      termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId);
+  AcceptTermsOfService copyWith({String? termsOfServiceId}) =>
+      AcceptTermsOfService(
+          termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId);
 }
 
 extension SendCustomRequestExtensions on SendCustomRequest {
-  SendCustomRequest copy({String? method, String? parameters}) =>
+  SendCustomRequest copyWith({String? method, String? parameters}) =>
       SendCustomRequest(
           method: method ?? this.method,
           parameters: parameters ?? this.parameters);
 }
 
 extension AnswerCustomQueryExtensions on AnswerCustomQuery {
-  AnswerCustomQuery copy({int? customQueryId, String? data}) =>
+  AnswerCustomQuery copyWith({int? customQueryId, String? data}) =>
       AnswerCustomQuery(
           customQueryId: customQueryId ?? this.customQueryId,
           data: data ?? this.data);
 }
 
 extension SetAlarmExtensions on SetAlarm {
-  SetAlarm copy({double? seconds}) =>
+  SetAlarm copyWith({double? seconds}) =>
       SetAlarm(seconds: seconds ?? this.seconds);
 }
 
 extension GetPhoneNumberInfoExtensions on GetPhoneNumberInfo {
-  GetPhoneNumberInfo copy({String? phoneNumberPrefix}) => GetPhoneNumberInfo(
-      phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix);
+  GetPhoneNumberInfo copyWith({String? phoneNumberPrefix}) =>
+      GetPhoneNumberInfo(
+          phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix);
 }
 
 extension GetPhoneNumberInfoSyncExtensions on GetPhoneNumberInfoSync {
-  GetPhoneNumberInfoSync copy(
+  GetPhoneNumberInfoSync copyWith(
           {String? languageCode, String? phoneNumberPrefix}) =>
       GetPhoneNumberInfoSync(
           languageCode: languageCode ?? this.languageCode,
@@ -18289,12 +18393,13 @@ extension GetPhoneNumberInfoSyncExtensions on GetPhoneNumberInfoSync {
 }
 
 extension GetDeepLinkInfoExtensions on GetDeepLinkInfo {
-  GetDeepLinkInfo copy({String? link}) =>
+  GetDeepLinkInfo copyWith({String? link}) =>
       GetDeepLinkInfo(link: link ?? this.link);
 }
 
 extension SaveApplicationLogEventExtensions on SaveApplicationLogEvent {
-  SaveApplicationLogEvent copy({String? type, int? chatId, JsonValue? data}) =>
+  SaveApplicationLogEvent copyWith(
+          {String? type, int? chatId, JsonValue? data}) =>
       SaveApplicationLogEvent(
           type: type ?? this.type,
           chatId: chatId ?? this.chatId,
@@ -18302,7 +18407,8 @@ extension SaveApplicationLogEventExtensions on SaveApplicationLogEvent {
 }
 
 extension AddProxyExtensions on AddProxy {
-  AddProxy copy({String? server, int? port, bool? enable, ProxyType? type}) =>
+  AddProxy copyWith(
+          {String? server, int? port, bool? enable, ProxyType? type}) =>
       AddProxy(
           server: server ?? this.server,
           port: port ?? this.port,
@@ -18311,7 +18417,7 @@ extension AddProxyExtensions on AddProxy {
 }
 
 extension EditProxyExtensions on EditProxy {
-  EditProxy copy(
+  EditProxy copyWith(
           {int? proxyId,
           String? server,
           int? port,
@@ -18326,85 +18432,88 @@ extension EditProxyExtensions on EditProxy {
 }
 
 extension EnableProxyExtensions on EnableProxy {
-  EnableProxy copy({int? proxyId}) =>
+  EnableProxy copyWith({int? proxyId}) =>
       EnableProxy(proxyId: proxyId ?? this.proxyId);
 }
 
 extension RemoveProxyExtensions on RemoveProxy {
-  RemoveProxy copy({int? proxyId}) =>
+  RemoveProxy copyWith({int? proxyId}) =>
       RemoveProxy(proxyId: proxyId ?? this.proxyId);
 }
 
 extension GetProxyLinkExtensions on GetProxyLink {
-  GetProxyLink copy({int? proxyId}) =>
+  GetProxyLink copyWith({int? proxyId}) =>
       GetProxyLink(proxyId: proxyId ?? this.proxyId);
 }
 
 extension PingProxyExtensions on PingProxy {
-  PingProxy copy({int? proxyId}) => PingProxy(proxyId: proxyId ?? this.proxyId);
+  PingProxy copyWith({int? proxyId}) =>
+      PingProxy(proxyId: proxyId ?? this.proxyId);
 }
 
 extension SetLogStreamExtensions on SetLogStream {
-  SetLogStream copy({LogStream? logStream}) =>
+  SetLogStream copyWith({LogStream? logStream}) =>
       SetLogStream(logStream: logStream ?? this.logStream);
 }
 
 extension SetLogVerbosityLevelExtensions on SetLogVerbosityLevel {
-  SetLogVerbosityLevel copy({int? newVerbosityLevel}) => SetLogVerbosityLevel(
-      newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel);
+  SetLogVerbosityLevel copyWith({int? newVerbosityLevel}) =>
+      SetLogVerbosityLevel(
+          newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel);
 }
 
 extension SetLogTagVerbosityLevelExtensions on SetLogTagVerbosityLevel {
-  SetLogTagVerbosityLevel copy({String? tag, int? newVerbosityLevel}) =>
+  SetLogTagVerbosityLevel copyWith({String? tag, int? newVerbosityLevel}) =>
       SetLogTagVerbosityLevel(
           tag: tag ?? this.tag,
           newVerbosityLevel: newVerbosityLevel ?? this.newVerbosityLevel);
 }
 
 extension GetLogTagVerbosityLevelExtensions on GetLogTagVerbosityLevel {
-  GetLogTagVerbosityLevel copy({String? tag}) =>
+  GetLogTagVerbosityLevel copyWith({String? tag}) =>
       GetLogTagVerbosityLevel(tag: tag ?? this.tag);
 }
 
 extension AddLogMessageExtensions on AddLogMessage {
-  AddLogMessage copy({int? verbosityLevel, String? text}) => AddLogMessage(
+  AddLogMessage copyWith({int? verbosityLevel, String? text}) => AddLogMessage(
       verbosityLevel: verbosityLevel ?? this.verbosityLevel,
       text: text ?? this.text);
 }
 
 extension TestCallStringExtensions on TestCallString {
-  TestCallString copy({String? x}) => TestCallString(x: x ?? this.x);
+  TestCallString copyWith({String? x}) => TestCallString(x: x ?? this.x);
 }
 
 extension TestCallBytesExtensions on TestCallBytes {
-  TestCallBytes copy({String? x}) => TestCallBytes(x: x ?? this.x);
+  TestCallBytes copyWith({String? x}) => TestCallBytes(x: x ?? this.x);
 }
 
 extension TestCallVectorIntExtensions on TestCallVectorInt {
-  TestCallVectorInt copy({List<int>? x}) => TestCallVectorInt(x: x ?? this.x);
+  TestCallVectorInt copyWith({List<int>? x}) =>
+      TestCallVectorInt(x: x ?? this.x);
 }
 
 extension TestCallVectorIntObjectExtensions on TestCallVectorIntObject {
-  TestCallVectorIntObject copy({List<TestInt>? x}) =>
+  TestCallVectorIntObject copyWith({List<TestInt>? x}) =>
       TestCallVectorIntObject(x: x ?? this.x);
 }
 
 extension TestCallVectorStringExtensions on TestCallVectorString {
-  TestCallVectorString copy({List<String>? x}) =>
+  TestCallVectorString copyWith({List<String>? x}) =>
       TestCallVectorString(x: x ?? this.x);
 }
 
 extension TestCallVectorStringObjectExtensions on TestCallVectorStringObject {
-  TestCallVectorStringObject copy({List<TestString>? x}) =>
+  TestCallVectorStringObject copyWith({List<TestString>? x}) =>
       TestCallVectorStringObject(x: x ?? this.x);
 }
 
 extension TestSquareIntExtensions on TestSquareInt {
-  TestSquareInt copy({int? x}) => TestSquareInt(x: x ?? this.x);
+  TestSquareInt copyWith({int? x}) => TestSquareInt(x: x ?? this.x);
 }
 
 extension TestProxyExtensions on TestProxy {
-  TestProxy copy(
+  TestProxy copyWith(
           {String? server,
           int? port,
           ProxyType? type,
@@ -18419,6 +18528,6 @@ extension TestProxyExtensions on TestProxy {
 }
 
 extension TestReturnErrorExtensions on TestReturnError {
-  TestReturnError copy({TdError? error}) =>
+  TestReturnError copyWith({TdError? error}) =>
       TestReturnError(error: error ?? this.error);
 }
