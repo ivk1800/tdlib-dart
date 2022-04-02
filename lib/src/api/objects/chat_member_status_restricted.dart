@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user is under certain restrictions in the chat. Not supported in basic
 /// groups and channels
@@ -42,4 +43,10 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
         'permissions': this.permissions.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

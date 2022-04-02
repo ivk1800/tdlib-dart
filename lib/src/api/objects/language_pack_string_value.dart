@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents the value of a string in a language pack
 abstract class LanguagePackStringValue extends TdObject {
@@ -29,4 +30,10 @@ abstract class LanguagePackStringValue extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

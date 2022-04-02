@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a list of animations
 class Animations extends TdObject {
@@ -27,4 +28,10 @@ class Animations extends TdObject {
         'animations': animations.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

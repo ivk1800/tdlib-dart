@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A video message
 class MessageVideo extends MessageContent {
@@ -37,4 +38,10 @@ class MessageVideo extends MessageContent {
         'is_secret': this.isSecret,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

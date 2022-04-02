@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Information about a group call was updated
 class UpdateGroupCall extends Update {
@@ -22,4 +23,10 @@ class UpdateGroupCall extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'group_call': this.groupCall.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

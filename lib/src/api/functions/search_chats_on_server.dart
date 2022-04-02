@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for the specified query in the title and username of already
 /// known chats via request to the server. Returns chats in the order seen in
@@ -20,4 +21,10 @@ class SearchChatsOnServer extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'query': this.query, 'limit': this.limit, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

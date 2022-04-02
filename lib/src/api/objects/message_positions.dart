@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of message positions
 class MessagePositions extends TdObject {
@@ -32,4 +33,10 @@ class MessagePositions extends TdObject {
         'positions': positions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

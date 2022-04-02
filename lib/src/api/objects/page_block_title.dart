@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The title of a page
 class PageBlockTitle extends PageBlock {
@@ -22,4 +23,10 @@ class PageBlockTitle extends PageBlock {
   @override
   Map<String, dynamic> toJson() =>
       {'title': this.title.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Registers the currently used device for receiving push notifications.
 /// Returns a globally unique identifier of the push notification subscription
@@ -23,4 +24,10 @@ class RegisterDevice extends TdFunction {
         'other_user_ids': otherUserIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

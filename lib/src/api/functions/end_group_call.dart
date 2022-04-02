@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Ends a group call. Requires groupCall.can_be_managed
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class EndGroupCall extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'group_call_id': this.groupCallId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Validates the order information provided by a user and returns the
 /// available shipping options for a flexible invoice
@@ -35,4 +36,10 @@ class ValidateOrderInfo extends TdFunction {
         'allow_save': this.allowSave,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

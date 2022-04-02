@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new incoming callback query from a message sent via a bot; for bots only
 class UpdateNewInlineCallbackQuery extends Update {
@@ -52,4 +53,10 @@ class UpdateNewInlineCallbackQuery extends Update {
         'payload': this.payload.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

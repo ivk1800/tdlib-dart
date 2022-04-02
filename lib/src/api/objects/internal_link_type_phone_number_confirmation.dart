@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link can be used to confirm ownership of a phone number to prevent
 /// account deletion. Call sendPhoneNumberConfirmationCode with the given hash
@@ -33,4 +34,10 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
         'phone_number': this.phoneNumber,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

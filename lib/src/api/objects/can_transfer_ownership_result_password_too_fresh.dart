@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The 2-step verification was enabled recently, user needs to wait
 class CanTransferOwnershipResultPasswordTooFresh
@@ -27,4 +28,10 @@ class CanTransferOwnershipResultPasswordTooFresh
   @override
   Map<String, dynamic> toJson() =>
       {'retry_after': this.retryAfter, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

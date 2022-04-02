@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A text with some entities
 class FormattedText extends TdObject {
@@ -36,4 +37,10 @@ class FormattedText extends TdObject {
         'entities': entities.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

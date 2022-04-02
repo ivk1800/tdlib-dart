@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New chat members were added
 class MessageChatAddMembers extends MessageContent {
@@ -26,4 +27,10 @@ class MessageChatAddMembers extends MessageContent {
         'member_user_ids': memberUserIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

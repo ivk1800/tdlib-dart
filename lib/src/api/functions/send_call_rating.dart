@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a call rating
 /// Returns [Ok]
@@ -34,4 +35,10 @@ class SendCallRating extends TdFunction {
         'problems': problems.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

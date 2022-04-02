@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a secret chat
 class SecretChat extends TdObject {
@@ -65,4 +66,10 @@ class SecretChat extends TdObject {
         'layer': this.layer,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

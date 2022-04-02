@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with information about a venue
 class InputMessageVenue extends InputMessageContent {
@@ -22,4 +23,10 @@ class InputMessageVenue extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'venue': this.venue.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

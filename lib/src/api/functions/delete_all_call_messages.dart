@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes all call messages
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class DeleteAllCallMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'revoke': this.revoke, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

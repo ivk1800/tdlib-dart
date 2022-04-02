@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A thumbnail to be sent along with a file; must be in JPEG or WEBP format
 /// for stickers, and less than 200 KB in size
@@ -38,4 +39,10 @@ class InputThumbnail extends TdObject {
         'height': this.height,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

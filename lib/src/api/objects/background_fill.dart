@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a fill of a background
 abstract class BackgroundFill extends TdObject {
@@ -29,4 +30,10 @@ abstract class BackgroundFill extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

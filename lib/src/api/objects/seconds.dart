@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a value representing a number of seconds
 class Seconds extends TdObject {
@@ -22,4 +23,10 @@ class Seconds extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'seconds': this.seconds, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

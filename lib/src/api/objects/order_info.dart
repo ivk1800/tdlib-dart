@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Order information
 class OrderInfo extends TdObject {
@@ -44,4 +45,10 @@ class OrderInfo extends TdObject {
         'shipping_address': this.shippingAddress?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

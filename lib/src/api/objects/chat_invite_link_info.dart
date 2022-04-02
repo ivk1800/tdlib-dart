@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a chat invite link
 class ChatInviteLinkInfo extends TdObject {
@@ -85,4 +86,10 @@ class ChatInviteLinkInfo extends TdObject {
         'is_public': this.isPublic,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

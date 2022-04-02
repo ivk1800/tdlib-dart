@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A media album
 class PushMessageContentMediaAlbum extends PushMessageContent {
@@ -50,4 +51,10 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
         'has_documents': this.hasDocuments,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

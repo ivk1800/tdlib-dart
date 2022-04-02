@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an image in JPEG format
 class PhotoSize extends TdObject {
@@ -52,4 +53,10 @@ class PhotoSize extends TdObject {
         'progressive_sizes': progressiveSizes.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a file with a map thumbnail in PNG format. Only
 /// map thumbnail files with size less than 1MB can be downloaded
@@ -45,4 +46,10 @@ class GetMapThumbnailFile extends TdFunction {
         'chat_id': this.chatId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

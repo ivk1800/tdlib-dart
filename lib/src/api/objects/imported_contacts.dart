@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents the result of an ImportContacts request
 class ImportedContacts extends TdObject {
@@ -35,4 +36,10 @@ class ImportedContacts extends TdObject {
         'importer_count': importerCount.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New call was received
 class NotificationTypeNewCall extends NotificationType {
@@ -22,4 +23,10 @@ class NotificationTypeNewCall extends NotificationType {
   @override
   Map<String, dynamic> toJson() =>
       {'call_id': this.callId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

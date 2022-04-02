@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a link to an MP3 audio file
 class InputInlineQueryResultAudio extends InputInlineQueryResult {
@@ -67,4 +68,10 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

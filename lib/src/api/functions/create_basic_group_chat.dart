@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an existing chat corresponding to a known basic group
 /// Returns [Chat]
@@ -23,4 +24,10 @@ class CreateBasicGroupChat extends TdFunction {
         'force': this.force,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

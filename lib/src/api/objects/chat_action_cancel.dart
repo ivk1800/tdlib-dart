@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user has canceled the previous action
 class ChatActionCancel extends ChatAction {
@@ -18,4 +19,10 @@ class ChatActionCancel extends ChatAction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

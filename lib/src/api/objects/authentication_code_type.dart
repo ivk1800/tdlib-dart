@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Provides information about the method by which an authentication code is
 /// delivered to the user
@@ -36,4 +37,10 @@ abstract class AuthenticationCodeType extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

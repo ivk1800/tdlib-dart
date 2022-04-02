@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a user to the contact list or edits an existing contact by their user
 /// identifier
@@ -27,4 +28,10 @@ class AddContact extends TdFunction {
         'share_phone_number': this.sharePhoneNumber,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

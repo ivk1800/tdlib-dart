@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the phone number of the user and sends an authentication code to the
 /// user. Works only when the current authorization state is
@@ -27,4 +28,10 @@ class SetAuthenticationPhoneNumber extends TdFunction {
         'settings': this.settings?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

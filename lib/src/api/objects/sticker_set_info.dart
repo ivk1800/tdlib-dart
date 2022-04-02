@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents short information about a sticker set
 class StickerSetInfo extends TdObject {
@@ -111,4 +112,10 @@ class StickerSetInfo extends TdObject {
         'covers': covers.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

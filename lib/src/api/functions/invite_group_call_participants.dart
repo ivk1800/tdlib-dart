@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Invites users to an active group call. Sends a service message of type
 /// messageInviteToGroupCall for video chats
@@ -23,4 +24,10 @@ class InviteGroupCallParticipants extends TdFunction {
         'user_ids': userIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

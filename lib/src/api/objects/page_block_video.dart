@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A video
 class PageBlockVideo extends PageBlock {
@@ -44,4 +45,10 @@ class PageBlockVideo extends PageBlock {
         'is_looped': this.isLooped,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

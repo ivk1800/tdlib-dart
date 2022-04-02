@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a file with messages exported from another app
 /// Returns [MessageFileType]
@@ -15,4 +16,10 @@ class GetMessageFileType extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'message_file_head': this.messageFileHead, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

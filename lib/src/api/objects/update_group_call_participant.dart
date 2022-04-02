@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Information about a group call participant was changed. The updates are
 /// sent only after the group call is received through getGroupCall and only
@@ -33,4 +34,10 @@ class UpdateGroupCallParticipant extends Update {
         'participant': this.participant.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

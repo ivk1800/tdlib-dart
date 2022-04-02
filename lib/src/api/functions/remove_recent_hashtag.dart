@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes a hashtag from the list of recently used hashtags
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class RemoveRecentHashtag extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'hashtag': this.hashtag, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

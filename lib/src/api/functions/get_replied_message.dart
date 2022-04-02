@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a message that is replied by a given message.
 /// Also returns the pinned message, the game message, and the invoice message
@@ -24,4 +25,10 @@ class GetRepliedMessage extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

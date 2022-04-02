@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Incoming messages were read or the number of unread messages has been
 /// changed
@@ -39,4 +40,10 @@ class UpdateChatReadInbox extends Update {
         'unread_count': this.unreadCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

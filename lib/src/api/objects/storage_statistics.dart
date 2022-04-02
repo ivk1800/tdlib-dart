@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the exact storage usage statistics split by chats and file type
 class StorageStatistics extends TdObject {
@@ -38,4 +39,10 @@ class StorageStatistics extends TdObject {
         'by_chat': byChat.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An embedded web page
 class PageBlockEmbedded extends PageBlock {
@@ -68,4 +69,10 @@ class PageBlockEmbedded extends PageBlock {
         'allow_scrolling': this.allowScrolling,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

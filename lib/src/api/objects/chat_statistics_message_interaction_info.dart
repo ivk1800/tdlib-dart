@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains statistics about interactions with a message
 class ChatStatisticsMessageInteractionInfo extends TdObject {
@@ -39,4 +40,10 @@ class ChatStatisticsMessageInteractionInfo extends TdObject {
         'forward_count': this.forwardCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

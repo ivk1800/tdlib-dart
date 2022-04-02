@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether new participants of a group call can be unmuted only by
 /// administrators of the group call. Requires
@@ -24,4 +25,10 @@ class ToggleGroupCallMuteNewParticipants extends TdFunction {
         'mute_new_participants': this.muteNewParticipants,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

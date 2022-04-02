@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns all scheduled messages in a chat. The messages are returned in a
 /// reverse chronological order (i.e., in order of decreasing message_id)
@@ -16,4 +17,10 @@ class GetChatScheduledMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

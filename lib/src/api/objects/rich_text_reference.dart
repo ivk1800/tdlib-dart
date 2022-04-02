@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A reference to a richTexts object on the same web page
 class RichTextReference extends RichText {
@@ -37,4 +38,10 @@ class RichTextReference extends RichText {
         'url': this.url,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user is a member of the chat and has some additional privileges. In
 /// basic groups, administrators can edit and delete messages sent by others,
@@ -117,4 +118,10 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
         'is_anonymous': this.isAnonymous,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

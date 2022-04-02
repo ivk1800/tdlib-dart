@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for recently used hashtags by their prefix
 /// Returns [Hashtags]
@@ -18,4 +19,10 @@ class SearchHashtags extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'prefix': this.prefix, 'limit': this.limit, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

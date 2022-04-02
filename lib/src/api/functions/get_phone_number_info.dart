@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a phone number by its prefix. Can be called
 /// before authorization
@@ -16,4 +17,10 @@ class GetPhoneNumberInfo extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'phone_number_prefix': this.phoneNumberPrefix, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

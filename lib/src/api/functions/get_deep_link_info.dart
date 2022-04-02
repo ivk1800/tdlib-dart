@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a tg:// deep link. Use
 /// "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for
@@ -17,4 +18,10 @@ class GetDeepLinkInfo extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'link': this.link, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

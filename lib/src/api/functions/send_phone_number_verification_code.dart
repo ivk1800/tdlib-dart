@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a code to verify a phone number to be added to a user's Telegram
 /// Passport
@@ -23,4 +24,10 @@ class SendPhoneNumberVerificationCode extends TdFunction {
         'settings': this.settings?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

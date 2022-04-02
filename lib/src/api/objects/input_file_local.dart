@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A file defined by a local path
 class InputFileLocal extends InputFile {
@@ -21,4 +22,10 @@ class InputFileLocal extends InputFile {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'path': this.path, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

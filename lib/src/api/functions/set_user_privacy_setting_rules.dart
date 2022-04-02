@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes user privacy settings
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class SetUserPrivacySettingRules extends TdFunction {
         'rules': this.rules.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

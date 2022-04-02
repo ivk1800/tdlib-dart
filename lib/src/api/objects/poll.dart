@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a poll
 class Poll extends TdObject {
@@ -87,4 +88,10 @@ class Poll extends TdObject {
         'is_closed': this.isClosed,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

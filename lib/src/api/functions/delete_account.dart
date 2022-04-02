@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes the account of the current user, deleting all information
 /// associated with the user from the server. The phone number of the account
@@ -18,4 +19,10 @@ class DeleteAccount extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'reason': this.reason, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

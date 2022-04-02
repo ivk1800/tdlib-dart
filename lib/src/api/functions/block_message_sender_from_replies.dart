@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Blocks an original sender of a message in the Replies chat
 /// Returns [Ok]
@@ -35,4 +36,10 @@ class BlockMessageSenderFromReplies extends TdFunction {
         'report_spam': this.reportSpam,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

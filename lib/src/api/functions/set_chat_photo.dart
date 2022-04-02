@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the photo of a chat. Supported only for basic groups, supergroups
 /// and channels. Requires can_change_info administrator right
@@ -22,4 +23,10 @@ class SetChatPhoto extends TdFunction {
         'photo': this.photo?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

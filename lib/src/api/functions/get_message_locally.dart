@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a message, if it is available locally without
 /// sending network request. This is an offline request
@@ -22,4 +23,10 @@ class GetMessageLocally extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

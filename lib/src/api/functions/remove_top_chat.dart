@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes a chat from the list of frequently used chats. Supported only if
 /// the chat info database is enabled
@@ -22,4 +23,10 @@ class RemoveTopChat extends TdFunction {
         'chat_id': this.chatId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

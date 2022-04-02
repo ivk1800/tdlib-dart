@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs the server that some trending sticker sets have been viewed by the
 /// user
@@ -18,4 +19,10 @@ class ViewTrendingStickerSets extends TdFunction {
         'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

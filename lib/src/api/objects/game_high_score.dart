@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains one row of the game high score table
 class GameHighScore extends TdObject {
@@ -36,4 +37,10 @@ class GameHighScore extends TdObject {
         'score': this.score,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

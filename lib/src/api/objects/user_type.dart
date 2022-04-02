@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents the type of a user. The following types are possible: regular
 /// users, deleted users and bots
@@ -33,4 +34,10 @@ abstract class UserType extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

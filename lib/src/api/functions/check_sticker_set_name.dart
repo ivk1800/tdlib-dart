@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks whether a name can be used for a new sticker set
 /// Returns [CheckStickerSetNameResult]
@@ -14,4 +15,10 @@ class CheckStickerSetName extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'name': this.name, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

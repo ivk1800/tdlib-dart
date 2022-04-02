@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Stops a poll. A poll in a message can be stopped when the message has
 /// can_be_edited flag set
@@ -27,4 +28,10 @@ class StopPoll extends TdFunction {
         'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

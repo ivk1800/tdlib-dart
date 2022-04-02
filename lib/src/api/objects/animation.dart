@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an animation file. The animation must be encoded in GIF or MPEG4
 /// format
@@ -77,4 +78,10 @@ class Animation extends TdObject {
         'animation': this.animation.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

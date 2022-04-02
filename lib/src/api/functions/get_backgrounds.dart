@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns backgrounds installed by the user
 /// Returns [Backgrounds]
@@ -15,4 +16,10 @@ class GetBackgrounds extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'for_dark_theme': this.forDarkTheme, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

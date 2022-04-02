@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains an inline keyboard layout
 class ReplyMarkupInlineKeyboard extends ReplyMarkup {
@@ -32,4 +33,10 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
             .toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a simple network request to the Telegram servers via proxy; for
 /// testing only. Can be called before authorization
@@ -39,4 +40,10 @@ class TestProxy extends TdFunction {
         'timeout': this.timeout,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A theme in the chat has been changed
 class MessageChatSetTheme extends MessageContent {
@@ -23,4 +24,10 @@ class MessageChatSetTheme extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'theme_name': this.themeName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

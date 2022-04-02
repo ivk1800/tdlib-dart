@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Constructs a persistent HTTP URL for a background
 /// Returns [HttpUrl]
@@ -18,4 +19,10 @@ class GetBackgroundUrl extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'name': this.name, 'type': this.type.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

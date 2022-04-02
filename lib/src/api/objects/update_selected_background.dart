@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The selected background has changed
 class UpdateSelectedBackground extends Update {
@@ -30,4 +31,10 @@ class UpdateSelectedBackground extends Update {
         'background': this.background?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

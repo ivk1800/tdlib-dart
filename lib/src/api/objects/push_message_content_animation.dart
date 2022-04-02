@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animation message (GIF-style).
 class PushMessageContentAnimation extends PushMessageContent {
@@ -37,4 +38,10 @@ class PushMessageContentAnimation extends PushMessageContent {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

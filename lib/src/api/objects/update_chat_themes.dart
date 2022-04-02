@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of available chat themes has changed
 class UpdateChatThemes extends Update {
@@ -27,4 +28,10 @@ class UpdateChatThemes extends Update {
         'chat_themes': chatThemes.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

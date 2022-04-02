@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains parameters for TDLib initialization
 class TdlibParameters extends TdObject {
@@ -125,4 +126,10 @@ class TdlibParameters extends TdObject {
         'ignore_file_names': this.ignoreFileNames,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

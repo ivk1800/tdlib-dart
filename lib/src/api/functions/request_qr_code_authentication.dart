@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Requests QR code authentication by scanning a QR code on another logged in
 /// device. Works only when the current authorization state is
@@ -23,4 +24,10 @@ class RequestQrCodeAuthentication extends TdFunction {
         'other_user_ids': otherUserIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

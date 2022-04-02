@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Succeeds after a specified amount of time has passed. Can be called before
 /// initialization
@@ -16,4 +17,10 @@ class SetAlarm extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'seconds': this.seconds, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

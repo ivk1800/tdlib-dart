@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new message was received; can also be an outgoing message
 class UpdateNewMessage extends Update {
@@ -22,4 +23,10 @@ class UpdateNewMessage extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'message': this.message.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

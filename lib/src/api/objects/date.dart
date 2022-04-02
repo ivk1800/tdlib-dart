@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a date according to the Gregorian calendar
 class Date extends TdObject {
@@ -32,4 +33,10 @@ class Date extends TdObject {
         'year': this.year,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

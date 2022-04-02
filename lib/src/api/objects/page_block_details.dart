@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A collapsible block
 class PageBlockDetails extends PageBlock {
@@ -38,4 +39,10 @@ class PageBlockDetails extends PageBlock {
         'is_open': this.isOpen,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

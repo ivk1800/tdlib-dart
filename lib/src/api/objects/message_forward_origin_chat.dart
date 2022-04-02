@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was originally sent on behalf of a chat
 class MessageForwardOriginChat extends MessageForwardOrigin {
@@ -32,4 +33,10 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
         'author_signature': this.authorSignature,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

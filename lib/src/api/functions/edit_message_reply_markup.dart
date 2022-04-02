@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the message reply markup; for bots only. Returns the edited message
 /// after the edit is completed on the server side
@@ -27,4 +28,10 @@ class EditMessageReplyMarkup extends TdFunction {
         'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

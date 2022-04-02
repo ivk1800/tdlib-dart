@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rich text phone number
 class RichTextPhoneNumber extends RichText {
@@ -30,4 +31,10 @@ class RichTextPhoneNumber extends RichText {
         'phone_number': this.phoneNumber,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a location to which a chat is connected
 class ChatLocation extends TdObject {
@@ -30,4 +31,10 @@ class ChatLocation extends TdObject {
         'address': this.address,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

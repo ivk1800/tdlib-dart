@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new member joined the chat via an invite link
 class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
@@ -24,4 +25,10 @@ class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() =>
       {'invite_link': this.inviteLink.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

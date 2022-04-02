@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A scope covering all members of a chat
 class BotCommandScopeChat extends BotCommandScope {
@@ -22,4 +23,10 @@ class BotCommandScopeChat extends BotCommandScope {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

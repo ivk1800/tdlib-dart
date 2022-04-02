@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a web page preview
 class WebPage extends TdObject {
@@ -153,4 +154,10 @@ class WebPage extends TdObject {
         'instant_view_version': this.instantViewVersion,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

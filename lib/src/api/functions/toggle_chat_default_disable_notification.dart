@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the value of the default disable_notification parameter, used when
 /// a message is sent to a chat
@@ -23,4 +24,10 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
         'default_disable_notification': this.defaultDisableNotification,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

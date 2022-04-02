@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self
 /// and chat.can_be_deleted_for_all_users fields to find whether and how the
@@ -31,4 +32,10 @@ class DeleteChatHistory extends TdFunction {
         'revoke': this.revoke,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

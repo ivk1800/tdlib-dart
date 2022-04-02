@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns invite links for a chat created by specified administrator.
 /// Requires administrator privileges and can_invite_users right in the chat
@@ -49,4 +50,10 @@ class GetChatInviteLinks extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a voice note. The voice note must be encoded with the Opus
 /// codec, and stored inside an OGG container. Voice notes can have only a
@@ -47,4 +48,10 @@ class VoiceNote extends TdObject {
         'voice': this.voice.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

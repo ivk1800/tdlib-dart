@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an audio file. Audio is usually in MP3 or M4A format
 class Audio extends TdObject {
@@ -72,4 +73,10 @@ class Audio extends TdObject {
         'audio': this.audio.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

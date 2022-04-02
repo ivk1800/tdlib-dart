@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Options to be used when a message content is copied without reference to
 /// the original sender. Service messages and messageInvoice can't be copied
@@ -41,4 +42,10 @@ class MessageCopyOptions extends TdObject {
         'new_caption': this.newCaption?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

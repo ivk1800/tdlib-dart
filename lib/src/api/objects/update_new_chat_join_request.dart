@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A user sent a join request to a chat; for bots only
 class UpdateNewChatJoinRequest extends Update {
@@ -37,4 +38,10 @@ class UpdateNewChatJoinRequest extends Update {
         'invite_link': this.inviteLink?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

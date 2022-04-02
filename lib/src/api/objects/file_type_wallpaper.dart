@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The file is a wallpaper or a background pattern
 class FileTypeWallpaper extends FileType {
@@ -18,4 +19,10 @@ class FileTypeWallpaper extends FileType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

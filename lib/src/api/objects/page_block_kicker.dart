@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A kicker
 class PageBlockKicker extends PageBlock {
@@ -22,4 +23,10 @@ class PageBlockKicker extends PageBlock {
   @override
   Map<String, dynamic> toJson() =>
       {'kicker': this.kicker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

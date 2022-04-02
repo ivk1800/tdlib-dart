@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Pauses or unpauses screen sharing in a joined group call
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
         'is_paused': this.isPaused,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

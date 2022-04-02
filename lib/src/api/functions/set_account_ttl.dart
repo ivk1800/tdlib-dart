@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the period of inactivity after which the account of the current
 /// user will automatically be deleted
@@ -16,4 +17,10 @@ class SetAccountTtl extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'ttl': this.ttl.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The graph data to be asynchronously loaded through getStatisticalGraph
 class StatisticalGraphAsync extends StatisticalGraph {
@@ -21,4 +22,10 @@ class StatisticalGraphAsync extends StatisticalGraph {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'token': this.token, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

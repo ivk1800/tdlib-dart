@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns list of chat administrators with number of their invite links.
 /// Requires owner privileges in the chat
@@ -16,4 +17,10 @@ class GetChatInviteLinkCounts extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

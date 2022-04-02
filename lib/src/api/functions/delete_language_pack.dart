@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes all information about a language pack in the current localization
 /// target. The language pack which is currently in use (including base
@@ -18,4 +19,10 @@ class DeleteLanguagePack extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

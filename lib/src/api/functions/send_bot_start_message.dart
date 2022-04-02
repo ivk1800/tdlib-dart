@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Invites a bot to a chat (if it is not yet a member) and sends it the
 /// /start command. Bots can't be invited to a private chat other than the
@@ -30,4 +31,10 @@ class SendBotStartMessage extends TdFunction {
         'parameter': this.parameter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

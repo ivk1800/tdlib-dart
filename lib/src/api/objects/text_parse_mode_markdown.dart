@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The text uses Markdown-style formatting
 class TextParseModeMarkdown extends TextParseMode {
@@ -23,4 +24,10 @@ class TextParseModeMarkdown extends TextParseMode {
   @override
   Map<String, dynamic> toJson() =>
       {'version': this.version, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

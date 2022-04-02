@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new video chat was scheduled
 class MessageVideoChatScheduled extends MessageContent {
@@ -32,4 +33,10 @@ class MessageVideoChatScheduled extends MessageContent {
         'start_date': this.startDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

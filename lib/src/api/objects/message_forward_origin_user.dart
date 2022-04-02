@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was originally sent by a known user
 class MessageForwardOriginUser extends MessageForwardOrigin {
@@ -22,4 +23,10 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
   @override
   Map<String, dynamic> toJson() =>
       {'sender_user_id': this.senderUserId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

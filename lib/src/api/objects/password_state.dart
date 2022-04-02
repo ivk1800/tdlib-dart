@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents the current state of 2-step verification
 class PasswordState extends TdObject {
@@ -61,4 +62,10 @@ class PasswordState extends TdObject {
         'pending_reset_date': this.pendingResetDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

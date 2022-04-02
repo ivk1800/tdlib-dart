@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an HTML code for embedding the message. Available only for
 /// messages in supergroups and channels with a username
@@ -28,4 +29,10 @@ class GetMessageEmbeddingCode extends TdFunction {
         'for_album': this.forAlbum,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks whether a username can be set for a chat
 /// Returns [CheckChatUsernameResult]
@@ -20,4 +21,10 @@ class CheckChatUsername extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, 'username': this.username, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

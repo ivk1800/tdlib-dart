@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a notification about user activity in a chat
 /// Returns [Ok]
@@ -28,4 +29,10 @@ class SendChatAction extends TdFunction {
         'action': this.action?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

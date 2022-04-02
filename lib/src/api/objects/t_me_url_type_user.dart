@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A URL linking to a user
 class TMeUrlTypeUser extends TMeUrlType {
@@ -22,4 +23,10 @@ class TMeUrlTypeUser extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

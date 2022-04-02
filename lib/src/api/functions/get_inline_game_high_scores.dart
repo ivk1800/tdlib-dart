@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns game high scores and some part of the high score table in the
 /// range of the specified user; for bots only
@@ -23,4 +24,10 @@ class GetInlineGameHighScores extends TdFunction {
         'user_id': this.userId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Notification settings for some type of chats were updated
 class UpdateScopeNotificationSettings extends Update {
@@ -32,4 +33,10 @@ class UpdateScopeNotificationSettings extends Update {
         'notification_settings': this.notificationSettings.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

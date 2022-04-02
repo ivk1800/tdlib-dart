@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message was edited
 class ChatEventMessageEdited extends ChatEventAction {
@@ -30,4 +31,10 @@ class ChatEventMessageEdited extends ChatEventAction {
         'new_message': this.newMessage.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

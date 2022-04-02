@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a filled-out payment form to the bot for final verification
 /// Returns [PaymentResult]
@@ -50,4 +51,10 @@ class SendPaymentForm extends TdFunction {
         'tip_amount': this.tipAmount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the storage usage statistics for a specific file type
 class StorageStatisticsByFileType extends TdObject {
@@ -36,4 +37,10 @@ class StorageStatisticsByFileType extends TdObject {
         'count': this.count,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the caption of an inline message sent via a bot; for bots only
 /// Returns [Ok]
@@ -27,4 +28,10 @@ class EditInlineMessageCaption extends TdFunction {
         'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs TDLib that messages are being viewed by the user. Sponsored
 /// messages must be marked as viewed only when the entire text of the message
@@ -40,4 +41,10 @@ class ViewMessages extends TdFunction {
         'force_read': this.forceRead,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

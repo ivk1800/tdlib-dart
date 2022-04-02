@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a Vertical alignment of a table cell content
 abstract class PageBlockVerticalAlignment extends TdObject {
@@ -29,4 +30,10 @@ abstract class PageBlockVerticalAlignment extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

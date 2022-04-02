@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Theme colors for a payment form
 class PaymentFormTheme extends TdObject {
@@ -57,4 +58,10 @@ class PaymentFormTheme extends TdObject {
         'button_text_color': this.buttonTextColor,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

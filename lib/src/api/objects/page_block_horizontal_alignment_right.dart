@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The content must be right-aligned
 class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
@@ -19,4 +20,10 @@ class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

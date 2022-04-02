@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets new log stream for internal logging of TDLib. Can be called
 /// synchronously
@@ -16,4 +17,10 @@ class SetLogStream extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'log_stream': this.logStream.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

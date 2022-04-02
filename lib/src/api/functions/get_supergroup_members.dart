@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about members or banned users in a supergroup or
 /// channel. Can be used only if supergroupFullInfo.can_get_members == true;
@@ -36,4 +37,10 @@ class GetSupergroupMembers extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

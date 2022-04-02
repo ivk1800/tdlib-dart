@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The slow_mode_delay setting of a supergroup was changed
 class ChatEventSlowModeDelayChanged extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
         'new_slow_mode_delay': this.newSlowModeDelay,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

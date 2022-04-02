@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a custom server language pack to the list of installed language packs
 /// in current localization target. Can be called before authorization
@@ -17,4 +18,10 @@ class AddCustomServerLanguagePack extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the username of the current user
 /// Returns [Ok]
@@ -16,4 +17,10 @@ class SetUsername extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'username': this.username, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

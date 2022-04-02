@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Handles a push notification. Returns error with code 406 if the push
 /// notification is not supported and connection to the server is required to
@@ -19,4 +20,10 @@ class ProcessPushNotification extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'payload': this.payload, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a link to an opus-encoded audio file within an OGG container,
 /// single channel audio
@@ -62,4 +63,10 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

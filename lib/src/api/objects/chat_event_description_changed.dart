@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat description was changed
 class ChatEventDescriptionChanged extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventDescriptionChanged extends ChatEventAction {
         'new_description': this.newDescription,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message content has changed
 class UpdateMessageContent extends Update {
@@ -38,4 +39,10 @@ class UpdateMessageContent extends Update {
         'new_content': this.newContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

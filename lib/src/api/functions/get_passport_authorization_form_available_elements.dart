@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns already available Telegram Passport elements suitable for
 /// completing a Telegram Passport authorization form. Result can be received
@@ -25,4 +26,10 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
         'password': this.password,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

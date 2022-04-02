@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for the specified query in the first names, last names and
 /// usernames of the known user contacts
@@ -19,4 +20,10 @@ class SearchContacts extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'query': this.query, 'limit': this.limit, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

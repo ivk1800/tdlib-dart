@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A list of active notifications in a notification group has changed
 class UpdateNotificationGroup extends Update {
@@ -81,4 +82,10 @@ class UpdateNotificationGroup extends Update {
             removedNotificationIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Updates the game score of the specified user in the game; for bots only
 /// Returns [Message]
@@ -44,4 +45,10 @@ class SetGameScore extends TdFunction {
         'force': this.force,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

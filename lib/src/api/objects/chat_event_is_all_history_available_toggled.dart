@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The is_all_history_available setting of a supergroup was toggled
 class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
@@ -26,4 +27,10 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
         'is_all_history_available': this.isAllHistoryAvailable,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

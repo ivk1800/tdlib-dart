@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns restricted supergroup members; can be used only by administrators
 class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
@@ -22,4 +23,10 @@ class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'query': this.query, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

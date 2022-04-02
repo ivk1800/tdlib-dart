@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A PNG or TGV (gzipped subset of SVG with MIME type
 /// "application/x-tgwallpattern") pattern to be combined with the background
@@ -50,4 +51,10 @@ class BackgroundTypePattern extends BackgroundType {
         'is_moving': this.isMoving,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

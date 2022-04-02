@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of hashtags
 class Hashtags extends TdObject {
@@ -24,4 +25,10 @@ class Hashtags extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'hashtags': hashtags.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

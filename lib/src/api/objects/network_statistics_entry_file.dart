@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about the total amount of data that was used to send
 /// and receive files
@@ -47,4 +48,10 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
         'received_bytes': this.receivedBytes,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

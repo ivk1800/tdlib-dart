@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Recovers the password with a password recovery code sent to an email
 /// address that was previously set up. Works only when the current
@@ -31,4 +32,10 @@ class RecoverAuthenticationPassword extends TdFunction {
         'new_hint': this.newHint,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

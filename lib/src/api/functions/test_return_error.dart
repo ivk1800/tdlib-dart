@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns the specified error and ensures that the Error object is used; for
 /// testing only. Can be called synchronously
@@ -16,4 +17,10 @@ class TestReturnError extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'error': this.error.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

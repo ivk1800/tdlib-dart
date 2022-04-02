@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a message thread
 class MessageThreadInfo extends TdObject {
@@ -61,4 +62,10 @@ class MessageThreadInfo extends TdObject {
         'draft_message': this.draftMessage?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

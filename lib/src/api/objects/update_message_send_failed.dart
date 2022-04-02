@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message failed to send. Be aware that some messages being sent can be
 /// irrecoverably deleted, in which case updateDeleteMessages will be received
@@ -46,4 +47,10 @@ class UpdateMessageSendFailed extends Update {
         'error_message': this.errorMessage,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

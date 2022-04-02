@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a message to TDLib internal log. Can be called synchronously
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class AddLogMessage extends TdFunction {
         'text': this.text,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

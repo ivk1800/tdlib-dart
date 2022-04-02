@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user is offline
 class UserStatusOffline extends UserStatus {
@@ -22,4 +23,10 @@ class UserStatusOffline extends UserStatus {
   @override
   Map<String, dynamic> toJson() =>
       {'was_online': this.wasOnline, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

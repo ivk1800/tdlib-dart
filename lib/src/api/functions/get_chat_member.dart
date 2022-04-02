@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a single member of a chat
 /// Returns [ChatMember]
@@ -21,4 +22,10 @@ class GetChatMember extends TdFunction {
         'member_id': this.memberId.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

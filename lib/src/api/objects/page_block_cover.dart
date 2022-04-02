@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A page cover
 class PageBlockCover extends PageBlock {
@@ -22,4 +23,10 @@ class PageBlockCover extends PageBlock {
   @override
   Map<String, dynamic> toJson() =>
       {'cover': this.cover.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

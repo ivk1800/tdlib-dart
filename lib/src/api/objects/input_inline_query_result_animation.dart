@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a link to an animated GIF or an animated (i.e., without sound)
 /// H.264/MPEG-4 AVC video
@@ -95,4 +96,10 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

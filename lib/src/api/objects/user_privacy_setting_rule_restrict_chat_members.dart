@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rule to restrict all members of specified basic groups and supergroups
 /// from doing something
@@ -27,4 +28,10 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_ids': chatIds.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

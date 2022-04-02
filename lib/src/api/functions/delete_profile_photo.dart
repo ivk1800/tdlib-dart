@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes a profile photo
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class DeleteProfilePhoto extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'profile_photo_id': this.profilePhotoId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

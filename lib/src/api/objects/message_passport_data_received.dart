@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Telegram Passport data has been received; for bots only
 class MessagePassportDataReceived extends MessageContent {
@@ -33,4 +34,10 @@ class MessagePassportDataReceived extends MessageContent {
         'credentials': this.credentials.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

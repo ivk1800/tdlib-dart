@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a local message to a chat. The message is persistent across
 /// application restarts only if the message database is used. Returns the
@@ -40,4 +41,10 @@ class AddLocalMessage extends TdFunction {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

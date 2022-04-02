@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the description of an error in a Telegram Passport element; for
 /// bots only
@@ -37,4 +38,10 @@ class InputPassportElementError extends TdObject {
         'source': this.source.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

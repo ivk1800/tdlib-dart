@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a successful payment
 class PaymentReceipt extends TdObject {
@@ -87,4 +88,10 @@ class PaymentReceipt extends TdObject {
         'tip_amount': this.tipAmount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

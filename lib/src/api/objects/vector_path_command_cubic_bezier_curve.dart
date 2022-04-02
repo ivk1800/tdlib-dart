@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A cubic B
 class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
@@ -36,4 +37,10 @@ class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
         'end_point': this.endPoint.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// TDLib needs the user's authentication code to authorize
 class AuthorizationStateWaitCode extends AuthorizationState {
@@ -23,4 +24,10 @@ class AuthorizationStateWaitCode extends AuthorizationState {
   @override
   Map<String, dynamic> toJson() =>
       {'code_info': this.codeInfo.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A Telegram call reflector
 class CallServerTypeTelegramReflector extends CallServerType {
@@ -22,4 +23,10 @@ class CallServerTypeTelegramReflector extends CallServerType {
   @override
   Map<String, dynamic> toJson() =>
       {'peer_tag': this.peerTag, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

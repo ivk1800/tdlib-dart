@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message has been pinned
 class MessagePinMessage extends MessageContent {
@@ -23,4 +24,10 @@ class MessagePinMessage extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'message_id': this.messageId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents the results of the inline query. Use
 /// sendInlineQueryResultMessage to send the result of the query
@@ -56,4 +57,10 @@ class InlineQueryResults extends TdObject {
         'switch_pm_parameter': this.switchPmParameter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

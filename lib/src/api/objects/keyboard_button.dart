@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a single button in a bot keyboard
 class KeyboardButton extends TdObject {
@@ -26,4 +27,10 @@ class KeyboardButton extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text, 'type': this.type.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

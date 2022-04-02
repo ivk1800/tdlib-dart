@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for emojis by keywords. Supported only if the file database is
 /// enabled
@@ -31,4 +32,10 @@ class SearchEmojis extends TdFunction {
         'input_language_codes': inputLanguageCodes.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

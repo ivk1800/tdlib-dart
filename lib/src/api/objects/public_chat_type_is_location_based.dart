@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat is public, because it is a location-based supergroup
 class PublicChatTypeIsLocationBased extends PublicChatType {
@@ -18,4 +19,10 @@ class PublicChatTypeIsLocationBased extends PublicChatType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

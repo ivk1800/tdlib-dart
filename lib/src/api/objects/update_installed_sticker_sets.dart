@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of installed sticker sets was updated
 class UpdateInstalledStickerSets extends Update {
@@ -32,4 +33,10 @@ class UpdateInstalledStickerSets extends Update {
         'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

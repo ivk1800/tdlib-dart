@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message content was opened. Updates voice note messages to "listened",
 /// video note messages to "viewed" and starts the TTL timer for
@@ -31,4 +32,10 @@ class UpdateMessageContentOpened extends Update {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

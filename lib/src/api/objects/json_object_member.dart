@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents one member of a JSON object
 class JsonObjectMember extends TdObject {
@@ -26,4 +27,10 @@ class JsonObjectMember extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'key': this.key, 'value': this.value.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

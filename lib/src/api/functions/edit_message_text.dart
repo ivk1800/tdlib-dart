@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the text of a message (or a text of a game message). Returns the
 /// edited message after the edit is completed on the server side
@@ -36,4 +37,10 @@ class EditMessageText extends TdFunction {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

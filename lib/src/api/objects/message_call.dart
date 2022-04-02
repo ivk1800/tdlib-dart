@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with information about an ended call
 class MessageCall extends MessageContent {
@@ -38,4 +39,10 @@ class MessageCall extends MessageContent {
         'duration': this.duration,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

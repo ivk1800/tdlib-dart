@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New message was received
 class NotificationTypeNewMessage extends NotificationType {
@@ -23,4 +24,10 @@ class NotificationTypeNewMessage extends NotificationType {
   @override
   Map<String, dynamic> toJson() =>
       {'message': this.message.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

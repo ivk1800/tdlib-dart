@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns viewers of a recent outgoing message in a basic group or a
 /// supergroup chat. For video notes and voice notes only users, opened
@@ -24,4 +25,10 @@ class GetMessageViewers extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

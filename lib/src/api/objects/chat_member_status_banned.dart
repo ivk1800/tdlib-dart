@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user or the chat was banned (and hence is not a member of the chat).
 /// Implies the user can't return to the chat, view messages, or be used as a
@@ -27,4 +28,10 @@ class ChatMemberStatusBanned extends ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() =>
       {'banned_until_date': this.bannedUntilDate, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

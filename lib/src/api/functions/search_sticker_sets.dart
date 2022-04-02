@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for ordinary sticker sets by looking for specified query in their
 /// title and name. Excludes installed sticker sets from the results
@@ -15,4 +16,10 @@ class SearchStickerSets extends TdFunction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'query': this.query, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

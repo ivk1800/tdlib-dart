@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the pinned state of a chat. There can be up to
 /// GetOption("pinned_chat_count_max")/GetOption("pinned_archived_chat_count_max")
@@ -29,4 +30,10 @@ class ToggleChatIsPinned extends TdFunction {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

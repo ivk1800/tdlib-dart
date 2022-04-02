@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rule to restrict all contacts of a user from doing something
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
@@ -19,4 +20,10 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

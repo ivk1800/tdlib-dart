@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A basic group (a chat with 0-200 other users)
 class ChatTypeBasicGroup extends ChatType {
@@ -22,4 +23,10 @@ class ChatTypeBasicGroup extends ChatType {
   @override
   Map<String, dynamic> toJson() =>
       {'basic_group_id': this.basicGroupId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A WebRTC server
 class CallServerTypeWebrtc extends CallServerType {
@@ -44,4 +45,10 @@ class CallServerTypeWebrtc extends CallServerType {
         'supports_stun': this.supportsStun,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Reports messages in a supergroup as spam; requires administrator rights in
 /// the supergroup
@@ -22,4 +23,10 @@ class ReportSupergroupSpam extends TdFunction {
         'message_ids': messageIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat member was restricted/unrestricted or banned/unbanned, or the list
 /// of their restrictions has changed
@@ -39,4 +40,10 @@ class ChatEventMemberRestricted extends ChatEventAction {
         'new_status': this.newStatus.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

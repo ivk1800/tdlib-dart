@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns the list of commands supported by the bot for the given user scope
 /// and language; for bots only
@@ -23,4 +24,10 @@ class GetCommands extends TdFunction {
         'language_code': this.languageCode,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

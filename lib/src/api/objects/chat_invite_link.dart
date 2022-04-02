@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a chat invite link
 class ChatInviteLink extends TdObject {
@@ -100,4 +101,10 @@ class ChatInviteLink extends TdObject {
         'is_revoked': this.isRevoked,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

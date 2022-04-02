@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with information about an ended video chat
 class MessageVideoChatEnded extends MessageContent {
@@ -22,4 +23,10 @@ class MessageVideoChatEnded extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'duration': this.duration, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

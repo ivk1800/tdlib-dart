@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat username was changed
 class ChatEventUsernameChanged extends ChatEventAction {
@@ -30,4 +31,10 @@ class ChatEventUsernameChanged extends ChatEventAction {
         'new_username': this.newUsername,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

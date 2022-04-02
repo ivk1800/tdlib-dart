@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Accepts Telegram terms of services
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class AcceptTermsOfService extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'terms_of_service_id': this.termsOfServiceId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

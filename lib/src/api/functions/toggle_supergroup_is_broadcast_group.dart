@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Upgrades supergroup to a broadcast group; requires owner privileges in the
 /// supergroup
@@ -16,4 +17,10 @@ class ToggleSupergroupIsBroadcastGroup extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'supergroup_id': this.supergroupId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

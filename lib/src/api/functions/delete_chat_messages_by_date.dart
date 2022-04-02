@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes all messages between the specified dates in a chat. Supported only
 /// for private chats and basic groups. Messages sent in the last 30 seconds
@@ -36,4 +37,10 @@ class DeleteChatMessagesByDate extends TdFunction {
         'revoke': this.revoke,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

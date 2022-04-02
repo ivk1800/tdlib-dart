@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Computes time needed to receive a response from a Telegram server through
 /// a proxy. Can be called before authorization
@@ -17,4 +18,10 @@ class PingProxy extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'proxy_id': this.proxyId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

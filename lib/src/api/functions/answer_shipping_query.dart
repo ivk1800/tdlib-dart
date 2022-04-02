@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the result of a shipping query; for bots only
 /// Returns [Ok]
@@ -29,4 +30,10 @@ class AnswerShippingQuery extends TdFunction {
         'error_message': this.errorMessage,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

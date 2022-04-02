@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the message content of a live location. Messages can be edited for a
 /// limited period of time specified in the live location. Returns the edited
@@ -49,4 +50,10 @@ class EditMessageLiveLocation extends TdFunction {
         'proximity_alert_radius': this.proximityAlertRadius,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

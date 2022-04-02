@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns emoji corresponding to a sticker. The list is only for
 /// informational purposes, because a sticker is always sent with a fixed
@@ -17,4 +18,10 @@ class GetStickerEmojis extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

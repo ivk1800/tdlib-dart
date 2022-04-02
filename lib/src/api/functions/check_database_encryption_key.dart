@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks the database encryption key for correctness. Works only when the
 /// current authorization state is authorizationStateWaitEncryptionKey
@@ -16,4 +17,10 @@ class CheckDatabaseEncryptionKey extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'encryption_key': this.encryptionKey, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

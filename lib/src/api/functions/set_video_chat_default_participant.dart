@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes default participant identifier, on whose behalf a video chat in
 /// the chat will be joined
@@ -24,4 +25,10 @@ class SetVideoChatDefaultParticipant extends TdFunction {
         'default_participant_id': this.defaultParticipantId.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

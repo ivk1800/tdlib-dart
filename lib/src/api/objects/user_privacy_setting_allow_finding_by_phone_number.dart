@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A privacy setting for managing whether the user can be found by their
 /// phone number. Checked only if the phone number is not known to the other
@@ -22,4 +23,10 @@ class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

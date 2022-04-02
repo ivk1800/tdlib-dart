@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A video chat participant was muted or unmuted
 class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
@@ -33,4 +34,10 @@ class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
         'is_muted': this.isMuted,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

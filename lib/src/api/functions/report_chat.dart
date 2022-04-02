@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Reports a chat to the Telegram moderators. A chat can be reported only
 /// from the chat action bar, or if chat.can_be_reported
@@ -34,4 +35,10 @@ class ReportChat extends TdFunction {
         'text': this.text,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

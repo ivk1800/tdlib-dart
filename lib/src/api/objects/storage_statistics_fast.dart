@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains approximate storage usage statistics, excluding files of unknown
 /// file type
@@ -51,4 +52,10 @@ class StorageStatisticsFast extends TdObject {
         'log_size': this.logSize,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

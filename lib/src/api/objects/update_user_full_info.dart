@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some data in userFullInfo has been changed
 class UpdateUserFullInfo extends Update {
@@ -30,4 +31,10 @@ class UpdateUserFullInfo extends Update {
         'user_full_info': this.userFullInfo.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rich text URL link
 class RichTextUrl extends RichText {
@@ -35,4 +36,10 @@ class RichTextUrl extends RichText {
         'is_cached': this.isCached,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

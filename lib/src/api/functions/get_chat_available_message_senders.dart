@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns list of message sender identifiers, which can be used to send
 /// messages in a chat
@@ -16,4 +17,10 @@ class GetChatAvailableMessageSenders extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns messages in a message thread of a message. Can be used only if
 /// message.can_get_message_thread == true. Message thread of a channel
@@ -49,4 +50,10 @@ class GetMessageThreadHistory extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The position of a chat in a chat list has changed. Instead of this update
 /// updateChatLastMessage or updateChatDraftMessage might be sent
@@ -32,4 +33,10 @@ class UpdateChatPosition extends Update {
         'position': this.position.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

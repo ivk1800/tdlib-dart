@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a language pack
 class LanguagePackInfo extends TdObject {
@@ -106,4 +107,10 @@ class LanguagePackInfo extends TdObject {
         'translation_url': this.translationUrl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

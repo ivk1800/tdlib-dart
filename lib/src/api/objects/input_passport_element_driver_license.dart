@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A Telegram Passport element to be saved containing the user's driver
 /// license
@@ -25,4 +26,10 @@ class InputPassportElementDriverLicense extends InputPassportElement {
   @override
   Map<String, dynamic> toJson() =>
       {'driver_license': this.driverLicense.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

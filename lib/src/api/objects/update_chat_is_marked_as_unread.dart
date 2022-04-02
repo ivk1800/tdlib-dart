@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat was marked as unread or was read
 class UpdateChatIsMarkedAsUnread extends Update {
@@ -30,4 +31,10 @@ class UpdateChatIsMarkedAsUnread extends Update {
         'is_marked_as_unread': this.isMarkedAsUnread,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

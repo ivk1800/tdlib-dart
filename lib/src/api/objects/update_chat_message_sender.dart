@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message sender that is selected to send messages in a chat has changed
 class UpdateChatMessageSender extends Update {
@@ -31,4 +32,10 @@ class UpdateChatMessageSender extends Update {
         'message_sender_id': this.messageSenderId?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes an active notification from notification list. Needs to be called
 /// only if the notification is removed by the current user
@@ -24,4 +25,10 @@ class RemoveNotification extends TdFunction {
         'notification_id': this.notificationId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

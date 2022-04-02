@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat's has_scheduled_messages field has changed
 class UpdateChatHasScheduledMessages extends Update {
@@ -31,4 +32,10 @@ class UpdateChatHasScheduledMessages extends Update {
         'has_scheduled_messages': this.hasScheduledMessages,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

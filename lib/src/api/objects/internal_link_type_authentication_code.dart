@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link contains an authentication code. Call checkAuthenticationCode
 /// with the code if the current authorization state is
@@ -24,4 +25,10 @@ class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'code': this.code, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

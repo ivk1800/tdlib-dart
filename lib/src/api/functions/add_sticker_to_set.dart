@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a new sticker to a set; for bots only. Returns the sticker set
 /// Returns [StickerSet]
@@ -26,4 +27,10 @@ class AddStickerToSet extends TdFunction {
         'sticker': this.sticker.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

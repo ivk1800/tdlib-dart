@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the location of a chat. Available only for some location-based
 /// supergroups, use supergroupFullInfo.can_set_location to check whether the
@@ -23,4 +24,10 @@ class SetChatLocation extends TdFunction {
         'location': this.location.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

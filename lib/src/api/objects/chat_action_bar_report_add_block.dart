@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat is a private or secret chat, which can be reported using the
 /// method reportChat, or the other user can be blocked using the method
@@ -37,4 +38,10 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
         'distance': this.distance,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

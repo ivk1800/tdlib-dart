@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the user's personal details
 class PersonalDetails extends TdObject {
@@ -82,4 +83,10 @@ class PersonalDetails extends TdObject {
         'residence_country_code': this.residenceCountryCode,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

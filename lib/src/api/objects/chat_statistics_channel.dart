@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A detailed statistics about a channel chat
 class ChatStatisticsChannel extends ChatStatistics {
@@ -134,4 +135,10 @@ class ChatStatisticsChannel extends ChatStatistics {
             recentMessageInteractions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

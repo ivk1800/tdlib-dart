@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a custom request; for bots only
 /// Returns [CustomRequestResult]
@@ -21,4 +22,10 @@ class SendCustomRequest extends TdFunction {
         'parameters': this.parameters,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

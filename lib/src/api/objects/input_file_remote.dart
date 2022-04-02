@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A file defined by its remote ID. The remote ID is guaranteed to be usable
 /// only if the corresponding file is still accessible to the user and known
@@ -26,4 +27,10 @@ class InputFileRemote extends InputFile {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'id': this.id, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

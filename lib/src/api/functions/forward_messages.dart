@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Forwards previously sent messages. Returns the forwarded messages in the
 /// same order as the message identifiers passed in message_ids. If a message
@@ -57,4 +58,10 @@ class ForwardMessages extends TdFunction {
         'only_preview': this.onlyPreview,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

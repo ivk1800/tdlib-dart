@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat member has gained/lost administrator status, or the list of their
 /// administrator privileges has changed
@@ -37,4 +38,10 @@ class ChatEventMemberPromoted extends ChatEventAction {
         'new_status': this.newStatus.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

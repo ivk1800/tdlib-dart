@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message TTL was changed
 class ChatEventMessageTtlChanged extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventMessageTtlChanged extends ChatEventAction {
         'new_message_ttl': this.newMessageTtl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a phone number
 class PhoneNumberInfo extends TdObject {
@@ -42,4 +43,10 @@ class PhoneNumberInfo extends TdObject {
         'formatted_phone_number': this.formattedPhoneNumber,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

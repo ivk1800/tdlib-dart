@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new chat has been loaded/created. This update is guaranteed to come
 /// before the chat identifier is returned to the application. The chat field
@@ -24,4 +25,10 @@ class UpdateNewChat extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'chat': this.chat.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

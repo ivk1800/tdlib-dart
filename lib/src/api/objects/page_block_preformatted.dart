@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A preformatted text paragraph
 class PageBlockPreformatted extends PageBlock {
@@ -29,4 +30,10 @@ class PageBlockPreformatted extends PageBlock {
         'language': this.language,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

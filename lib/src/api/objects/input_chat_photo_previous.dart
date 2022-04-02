@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A previously used profile photo of the current user
 class InputChatPhotoPrevious extends InputChatPhoto {
@@ -23,4 +24,10 @@ class InputChatPhotoPrevious extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_photo_id': this.chatPhotoId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

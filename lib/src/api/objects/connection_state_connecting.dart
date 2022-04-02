@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Currently establishing a connection to the Telegram servers
 class ConnectionStateConnecting extends ConnectionState {
@@ -18,4 +19,10 @@ class ConnectionStateConnecting extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

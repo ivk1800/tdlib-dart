@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat theme was edited
 class PushMessageContentChatSetTheme extends PushMessageContent {
@@ -23,4 +24,10 @@ class PushMessageContentChatSetTheme extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'theme_name': this.themeName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

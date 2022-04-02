@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animation in MPEG4 format; must be square, at most 10 seconds long,
 /// have width between 160 and 800 and be at most 2MB in size
@@ -34,4 +35,10 @@ class InputChatPhotoAnimation extends InputChatPhoto {
         'main_frame_timestamp': this.mainFrameTimestamp,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

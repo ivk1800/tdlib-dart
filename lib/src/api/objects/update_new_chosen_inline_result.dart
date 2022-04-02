@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user has chosen a result of an inline query; for bots only
 class UpdateNewChosenInlineResult extends Update {
@@ -50,4 +51,10 @@ class UpdateNewChosenInlineResult extends Update {
         'inline_message_id': this.inlineMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

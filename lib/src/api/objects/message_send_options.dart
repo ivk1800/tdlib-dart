@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Options to be used when a message is sent
 class MessageSendOptions extends TdObject {
@@ -48,4 +49,10 @@ class MessageSendOptions extends TdObject {
         'scheduling_state': this.schedulingState?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

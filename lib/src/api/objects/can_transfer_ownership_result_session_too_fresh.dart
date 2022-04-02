@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The session was created recently, user needs to wait
 class CanTransferOwnershipResultSessionTooFresh
@@ -26,4 +27,10 @@ class CanTransferOwnershipResultSessionTooFresh
   @override
   Map<String, dynamic> toJson() =>
       {'retry_after': this.retryAfter, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

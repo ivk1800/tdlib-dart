@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an instant view version of a web page if available. Returns a 404
 /// error if the web page has no instant view page
@@ -20,4 +21,10 @@ class GetWebPageInstantView extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'url': this.url, 'force_full': this.forceFull, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

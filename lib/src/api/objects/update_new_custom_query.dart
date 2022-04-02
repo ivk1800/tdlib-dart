@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new incoming query; for bots only
 class UpdateNewCustomQuery extends Update {
@@ -36,4 +37,10 @@ class UpdateNewCustomQuery extends Update {
         'timeout': this.timeout,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message Time To Live setting for a chat was changed
 class UpdateChatMessageTtl extends Update {
@@ -29,4 +30,10 @@ class UpdateChatMessageTtl extends Update {
         'message_ttl': this.messageTtl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

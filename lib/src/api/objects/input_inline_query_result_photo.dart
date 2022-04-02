@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents link to a JPEG image
 class InputInlineQueryResultPhoto extends InputInlineQueryResult {
@@ -79,4 +80,10 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

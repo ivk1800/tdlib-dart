@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with an invoice from a bot
 class PushMessageContentInvoice extends PushMessageContent {
@@ -27,4 +28,10 @@ class PushMessageContentInvoice extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'price': this.price, 'is_pinned': this.isPinned, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

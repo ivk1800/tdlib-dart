@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes application-specific data associated with a chat
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class SetChatClientData extends TdFunction {
         'client_data': this.clientData,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

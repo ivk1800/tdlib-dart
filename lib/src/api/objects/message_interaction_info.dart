@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about interactions with a message
 class MessageInteractionInfo extends TdObject {
@@ -39,4 +40,10 @@ class MessageInteractionInfo extends TdObject {
         'reply_info': this.replyInfo?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

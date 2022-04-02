@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A list of privacy rules. Rules are matched in the specified order. The
 /// first matched rule defines the privacy setting for a given user. If no
@@ -29,4 +30,10 @@ class UserPrivacySettingRules extends TdObject {
         'rules': rules.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

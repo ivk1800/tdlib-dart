@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of messages found by a search
 class FoundMessages extends TdObject {
@@ -41,4 +42,10 @@ class FoundMessages extends TdObject {
         'next_offset': this.nextOffset,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

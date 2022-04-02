@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of chat invite links
 class ChatInviteLinks extends TdObject {
@@ -32,4 +33,10 @@ class ChatInviteLinks extends TdObject {
         'invite_links': inviteLinks.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

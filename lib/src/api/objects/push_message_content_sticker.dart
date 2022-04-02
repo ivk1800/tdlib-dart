@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a sticker
 class PushMessageContentSticker extends PushMessageContent {
@@ -37,4 +38,10 @@ class PushMessageContentSticker extends PushMessageContent {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

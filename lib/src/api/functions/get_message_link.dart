@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an HTTPS link to a message in a chat. Available only for already
 /// sent messages in supergroups and channels, or if
@@ -44,4 +45,10 @@ class GetMessageLink extends TdFunction {
         'for_comment': this.forComment,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

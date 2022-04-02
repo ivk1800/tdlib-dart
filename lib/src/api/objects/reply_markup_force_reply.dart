@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Instructs application to force a reply to this message
 class ReplyMarkupForceReply extends ReplyMarkup {
@@ -34,4 +35,10 @@ class ReplyMarkupForceReply extends ReplyMarkup {
         'input_field_placeholder': this.inputFieldPlaceholder,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

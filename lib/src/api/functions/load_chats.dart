@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Loads more chats from a chat list. The loaded chats and their positions in
 /// the chat list will be sent through updates. Chats are sorted by the pair
@@ -27,4 +28,10 @@ class LoadChats extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the period of inactivity after which sessions will automatically
 /// be terminated
@@ -19,4 +20,10 @@ class SetInactiveSessionTtl extends TdFunction {
         'inactive_session_ttl_days': this.inactiveSessionTtlDays,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

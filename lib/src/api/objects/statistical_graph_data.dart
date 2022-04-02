@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A graph data
 class StatisticalGraphData extends StatisticalGraph {
@@ -30,4 +31,10 @@ class StatisticalGraphData extends StatisticalGraph {
         'zoom_token': this.zoomToken,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

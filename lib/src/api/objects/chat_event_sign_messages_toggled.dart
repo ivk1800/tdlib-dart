@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The sign_messages setting of a channel was toggled
 class ChatEventSignMessagesToggled extends ChatEventAction {
@@ -22,4 +23,10 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() =>
       {'sign_messages': this.signMessages, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

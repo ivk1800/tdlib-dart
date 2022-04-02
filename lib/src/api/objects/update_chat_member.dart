@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// User rights changed in a chat; for bots only
 class UpdateChatMember extends Update {
@@ -57,4 +58,10 @@ class UpdateChatMember extends Update {
         'new_chat_member': this.newChatMember.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

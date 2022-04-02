@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a chat theme
 class ChatTheme extends TdObject {
@@ -38,4 +39,10 @@ class ChatTheme extends TdObject {
         'dark_settings': this.darkSettings.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

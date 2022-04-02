@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A full list of available network statistic entries
 class NetworkStatistics extends TdObject {
@@ -33,4 +34,10 @@ class NetworkStatistics extends TdObject {
         'entries': entries.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

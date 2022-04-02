@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a phone number by its prefix synchronously.
 /// getCountries must be called at least once after changing localization to
@@ -26,4 +27,10 @@ class GetPhoneNumberInfoSync extends TdFunction {
         'phone_number_prefix': this.phoneNumberPrefix,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

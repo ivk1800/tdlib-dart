@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about an encrypted Telegram Passport element; for
 /// bots only
@@ -80,4 +81,10 @@ class EncryptedPassportElement extends TdObject {
         'hash': this.hash,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

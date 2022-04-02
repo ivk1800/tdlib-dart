@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the time when a scheduled message will be sent. Scheduling state of
 /// all messages in the same album or forwarded together with the message will
@@ -29,4 +30,10 @@ class EditMessageSchedulingState extends TdFunction {
         'scheduling_state': this.schedulingState?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A forwarded messages
 class PushMessageContentMessageForwards extends PushMessageContent {
@@ -23,4 +24,10 @@ class PushMessageContentMessageForwards extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'total_count': this.totalCount, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a sticker set. Call searchStickerSet with the given
 /// sticker set name to process the link and show the sticker set
@@ -23,4 +24,10 @@ class InternalLinkTypeStickerSet extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker_set_name': this.stickerSetName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

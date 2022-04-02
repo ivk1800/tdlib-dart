@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The value of the default disable_notification parameter, used when a
 /// message is sent to the chat, was changed
@@ -33,4 +34,10 @@ class UpdateChatDefaultDisableNotification extends Update {
         'default_disable_notification': this.defaultDisableNotification,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

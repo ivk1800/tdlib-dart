@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a sticker
 class InlineQueryResultSticker extends InlineQueryResult {
@@ -26,4 +27,10 @@ class InlineQueryResultSticker extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() =>
       {'id': this.id, 'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// File generation is no longer needed
 class UpdateFileGenerationStop extends Update {
@@ -23,4 +24,10 @@ class UpdateFileGenerationStop extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'generation_id': this.generationId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

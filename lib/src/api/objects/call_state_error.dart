@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The call has ended with an error
 class CallStateError extends CallState {
@@ -23,4 +24,10 @@ class CallStateError extends CallState {
   @override
   Map<String, dynamic> toJson() =>
       {'error': this.error.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

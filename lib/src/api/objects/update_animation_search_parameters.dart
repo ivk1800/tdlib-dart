@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The parameters of animation search through
 /// GetOption("animation_search_bot_username") bot has changed
@@ -33,4 +34,10 @@ class UpdateAnimationSearchParameters extends Update {
         'emojis': emojis.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

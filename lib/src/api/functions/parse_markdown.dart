@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Parses Markdown entities in a human-friendly format, ignoring markup
 /// errors. Can be called synchronously
@@ -16,4 +17,10 @@ class ParseMarkdown extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

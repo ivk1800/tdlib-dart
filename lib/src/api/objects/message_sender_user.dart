@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was sent by a known user
 class MessageSenderUser extends MessageSender {
@@ -22,4 +23,10 @@ class MessageSenderUser extends MessageSender {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

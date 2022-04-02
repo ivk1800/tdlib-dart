@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some data in supergroupFullInfo has been changed
 class UpdateSupergroupFullInfo extends Update {
@@ -32,4 +33,10 @@ class UpdateSupergroupFullInfo extends Update {
         'supergroup_full_info': this.supergroupFullInfo.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The default chat reply markup was changed. Can occur because new messages
 /// with reply markup were received or because an old reply markup was hidden
@@ -34,4 +35,10 @@ class UpdateChatReplyMarkup extends Update {
         'reply_markup_message_id': this.replyMarkupMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

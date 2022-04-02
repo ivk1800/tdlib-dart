@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the block state of a message sender. Currently, only users and
 /// supergroup chats can be blocked
@@ -23,4 +24,10 @@ class ToggleMessageSenderIsBlocked extends TdFunction {
         'is_blocked': this.isBlocked,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

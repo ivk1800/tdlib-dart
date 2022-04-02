@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message pinned state was changed
 class UpdateMessageIsPinned extends Update {
@@ -36,4 +37,10 @@ class UpdateMessageIsPinned extends Update {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

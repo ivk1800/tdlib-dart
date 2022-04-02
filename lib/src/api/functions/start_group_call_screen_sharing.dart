@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Starts screen sharing in a joined group call. Returns join response
 /// payload for tgcalls
@@ -30,4 +31,10 @@ class StartGroupCallScreenSharing extends TdFunction {
         'payload': this.payload,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

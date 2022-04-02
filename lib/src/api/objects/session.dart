@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about one session in a Telegram application used by
 /// the current user. Sessions must be shown to the user in the returned order
@@ -134,4 +135,10 @@ class Session extends TdObject {
         'region': this.region,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

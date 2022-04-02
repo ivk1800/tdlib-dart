@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A dice message
 class InputMessageDice extends InputMessageContent {
@@ -29,4 +30,10 @@ class InputMessageDice extends InputMessageContent {
         'clear_draft': this.clearDraft,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A block quote
 class PageBlockBlockQuote extends PageBlock {
@@ -30,4 +31,10 @@ class PageBlockBlockQuote extends PageBlock {
         'credit': this.credit.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

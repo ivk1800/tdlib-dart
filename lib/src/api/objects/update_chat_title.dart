@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The title of a chat was changed
 class UpdateChatTitle extends Update {
@@ -25,4 +26,10 @@ class UpdateChatTitle extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, 'title': this.title, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

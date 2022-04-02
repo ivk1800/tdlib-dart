@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the background selected by the user; adds background to the list
 /// of installed backgrounds
@@ -28,4 +29,10 @@ class SetBackground extends TdFunction {
         'for_dark_theme': this.forDarkTheme,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

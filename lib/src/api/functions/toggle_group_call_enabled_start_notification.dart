@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether the current user will receive a notification when the
 /// group call will start; scheduled group calls only
@@ -24,4 +25,10 @@ class ToggleGroupCallEnabledStartNotification extends TdFunction {
         'enabled_start_notification': this.enabledStartNotification,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

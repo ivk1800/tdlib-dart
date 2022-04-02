@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A language pack string which has different forms based on the number of
 /// some object it mentions. See
@@ -60,4 +61,10 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
         'other_value': this.otherValue,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

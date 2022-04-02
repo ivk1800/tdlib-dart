@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A map
 class PageBlockMap extends PageBlock {
@@ -50,4 +51,10 @@ class PageBlockMap extends PageBlock {
         'caption': this.caption.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

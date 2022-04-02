@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Suggests the user to check whether authorization phone number is correct
 /// and change the phone number if it is inaccessible
@@ -19,4 +20,10 @@ class SuggestedActionCheckPhoneNumber extends SuggestedAction {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

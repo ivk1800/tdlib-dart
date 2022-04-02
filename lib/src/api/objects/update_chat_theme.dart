@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat theme was changed
 class UpdateChatTheme extends Update {
@@ -30,4 +31,10 @@ class UpdateChatTheme extends Update {
         'theme_name': this.themeName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

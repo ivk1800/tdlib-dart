@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An authentication code is delivered by an immediately canceled call to the
 /// specified phone number. The last digits of the phone number that calls are
@@ -34,4 +35,10 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
         'length': this.length,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

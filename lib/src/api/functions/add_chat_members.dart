@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds multiple new members to a chat. Currently, this method is only
 /// available for supergroups and channels. This method can't be used to join
@@ -25,4 +26,10 @@ class AddChatMembers extends TdFunction {
         'user_ids': userIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

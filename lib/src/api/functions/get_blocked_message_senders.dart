@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns users and chats that were blocked by the current user
 /// Returns [MessageSenders]
@@ -19,4 +20,10 @@ class GetBlockedMessageSenders extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'offset': this.offset, 'limit': this.limit, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

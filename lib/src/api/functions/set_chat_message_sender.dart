@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Selects a message sender to send messages in a chat
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class SetChatMessageSender extends TdFunction {
         'message_sender_id': this.messageSenderId.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

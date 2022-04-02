@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the user answer to a poll. A poll in quiz mode can be answered
 /// only once
@@ -29,4 +30,10 @@ class SetPollAnswer extends TdFunction {
         'option_ids': optionIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

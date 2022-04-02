@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The thumbnail is in WEBP format. It will be used only for some stickers
 class ThumbnailFormatWebp extends ThumbnailFormat {
@@ -18,4 +19,10 @@ class ThumbnailFormatWebp extends ThumbnailFormat {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

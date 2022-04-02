@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks whether a password recovery code sent to an email address is valid.
 /// Works only when the current authorization state is
@@ -17,4 +18,10 @@ class CheckAuthenticationPasswordRecoveryCode extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'recovery_code': this.recoveryCode, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

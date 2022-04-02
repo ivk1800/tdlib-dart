@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the draft message in a chat
 /// Returns [Ok]
@@ -27,4 +28,10 @@ class SetChatDraftMessage extends TdFunction {
         'draft_message': this.draftMessage?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

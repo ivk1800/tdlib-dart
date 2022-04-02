@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The information about interactions with a message has changed
 class UpdateMessageInteractionInfo extends Update {
@@ -38,4 +39,10 @@ class UpdateMessageInteractionInfo extends Update {
         'interaction_info': this.interactionInfo?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

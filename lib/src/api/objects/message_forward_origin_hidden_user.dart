@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was originally sent by a user, which is hidden by their
 /// privacy settings
@@ -23,4 +24,10 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
   @override
   Map<String, dynamic> toJson() =>
       {'sender_name': this.senderName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

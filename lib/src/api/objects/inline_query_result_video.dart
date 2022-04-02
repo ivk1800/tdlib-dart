@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a video
 class InlineQueryResultVideo extends InlineQueryResult {
@@ -44,4 +45,10 @@ class InlineQueryResultVideo extends InlineQueryResult {
         'description': this.description,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

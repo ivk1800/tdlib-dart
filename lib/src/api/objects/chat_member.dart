@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a user or a chat as a member of another chat
 class ChatMember extends TdObject {
@@ -48,4 +49,10 @@ class ChatMember extends TdObject {
         'status': this.status.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about the current localization target. This is an
 /// offline request if only_local is true. Can be called before authorization
@@ -17,4 +18,10 @@ class GetLocalizationTargetInfo extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'only_local': this.onlyLocal, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

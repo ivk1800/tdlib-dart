@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of chat filters or a chat filter has changed
 class UpdateChatFilters extends Update {
@@ -27,4 +28,10 @@ class UpdateChatFilters extends Update {
         'chat_filters': chatFilters.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

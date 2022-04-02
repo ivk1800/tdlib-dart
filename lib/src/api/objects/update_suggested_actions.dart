@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of suggested to the user actions has changed
 class UpdateSuggestedActions extends Update {
@@ -36,4 +37,10 @@ class UpdateSuggestedActions extends Update {
         'removed_actions': removedActions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

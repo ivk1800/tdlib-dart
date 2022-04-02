@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a TDLib internal log verbosity level
 class LogVerbosityLevel extends TdObject {
@@ -22,4 +23,10 @@ class LogVerbosityLevel extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'verbosity_level': this.verbosityLevel, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

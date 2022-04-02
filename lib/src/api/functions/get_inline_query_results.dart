@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends an inline query to a bot and returns its results. Returns an error
 /// with code 502 if the bot fails to answer the query before the query
@@ -41,4 +42,10 @@ class GetInlineQueryResults extends TdFunction {
         'offset': this.offset,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

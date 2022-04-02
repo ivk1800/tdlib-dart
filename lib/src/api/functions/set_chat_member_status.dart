@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the status of a chat member, needs appropriate privileges. This
 /// function is currently not suitable for transferring chat ownership; use
@@ -30,4 +31,10 @@ class SetChatMemberStatus extends TdFunction {
         'status': this.status.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

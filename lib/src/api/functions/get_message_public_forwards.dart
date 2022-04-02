@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns forwarded copies of a channel message to different public
 /// channels. For optimal performance, the number of returned messages is
@@ -39,4 +40,10 @@ class GetMessagePublicForwards extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

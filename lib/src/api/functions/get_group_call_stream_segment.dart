@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a file with a segment of a group call stream in a modified OGG
 /// format for audio or MPEG-4 format for video
@@ -43,4 +44,10 @@ class GetGroupCallStreamSegment extends TdFunction {
         'video_quality': this.videoQuality?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

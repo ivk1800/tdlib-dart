@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns messages in a chat. The messages are returned in a reverse
 /// chronological order (i.e., in order of decreasing message_id).. For
@@ -48,4 +49,10 @@ class GetChatHistory extends TdFunction {
         'only_local': this.onlyLocal,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

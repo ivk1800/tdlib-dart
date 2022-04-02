@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The mute_new_participants setting of a video chat was toggled
 class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction {
@@ -26,4 +27,10 @@ class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() =>
       {'mute_new_participants': this.muteNewParticipants, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// One of the data fields contains an error. The error will be considered
 /// resolved when the value of the field changes
@@ -24,4 +25,10 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
   @override
   Map<String, dynamic> toJson() =>
       {'field_name': this.fieldName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animated sticker in TGS format
 class InputStickerAnimated extends InputSticker {
@@ -32,4 +33,10 @@ class InputStickerAnimated extends InputSticker {
         'emojis': this.emojis,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

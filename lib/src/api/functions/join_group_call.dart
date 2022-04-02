@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Joins an active group call. Returns join response payload for tgcalls
 /// Returns [Text]
@@ -51,4 +52,10 @@ class JoinGroupCall extends TdFunction {
         'invite_hash': this.inviteHash,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

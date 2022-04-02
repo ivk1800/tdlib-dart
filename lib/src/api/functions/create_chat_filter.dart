@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates new chat filter. Returns information about the created chat filter
 /// Returns [ChatFilterInfo]
@@ -15,4 +16,10 @@ class CreateChatFilter extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'filter': this.filter.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

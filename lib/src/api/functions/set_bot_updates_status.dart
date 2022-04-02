@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs the server about the number of pending bot updates if they haven't
 /// been processed for a long time; for bots only
@@ -23,4 +24,10 @@ class SetBotUpdatesStatus extends TdFunction {
         'error_message': this.errorMessage,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

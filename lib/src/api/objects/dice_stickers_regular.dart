@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A regular animated sticker
 class DiceStickersRegular extends DiceStickers {
@@ -22,4 +23,10 @@ class DiceStickersRegular extends DiceStickers {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

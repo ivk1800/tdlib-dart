@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a button of type
 /// inlineKeyboardButtonTypeLoginUrl. The method needs to be called when the
@@ -28,4 +29,10 @@ class GetLoginUrlInfo extends TdFunction {
         'button_id': this.buttonId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

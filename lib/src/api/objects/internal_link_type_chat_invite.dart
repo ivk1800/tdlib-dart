@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a chat invite link. Call checkChatInviteLink with the given
 /// invite link to process the link
@@ -23,4 +24,10 @@ class InternalLinkTypeChatInvite extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() =>
       {'invite_link': this.inviteLink, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

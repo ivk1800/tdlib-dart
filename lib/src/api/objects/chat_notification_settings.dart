@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about notification settings for a chat
 class ChatNotificationSettings extends TdObject {
@@ -96,4 +97,10 @@ class ChatNotificationSettings extends TdObject {
         'disable_mention_notifications': this.disableMentionNotifications,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

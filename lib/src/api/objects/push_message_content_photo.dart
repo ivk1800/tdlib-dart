@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A photo message
 class PushMessageContentPhoto extends PushMessageContent {
@@ -45,4 +46,10 @@ class PushMessageContentPhoto extends PushMessageContent {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

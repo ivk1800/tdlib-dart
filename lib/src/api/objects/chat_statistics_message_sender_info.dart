@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains statistics about messages sent by a user
 class ChatStatisticsMessageSenderInfo extends TdObject {
@@ -39,4 +40,10 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
         'average_character_count': this.averageCharacterCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

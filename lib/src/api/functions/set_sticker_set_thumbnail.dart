@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets a sticker set thumbnail; for bots only. Returns the sticker set
 /// Returns [StickerSet]
@@ -28,4 +29,10 @@ class SetStickerSetThumbnail extends TdFunction {
         'thumbnail': this.thumbnail?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

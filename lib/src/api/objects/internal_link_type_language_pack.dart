@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a language pack. Call getLanguagePackInfo with the
 /// given language pack identifier to process the link
@@ -24,4 +25,10 @@ class InternalLinkTypeLanguagePack extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() =>
       {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

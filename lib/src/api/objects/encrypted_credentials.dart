@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains encrypted Telegram Passport data credentials
 class EncryptedCredentials extends TdObject {
@@ -35,4 +36,10 @@ class EncryptedCredentials extends TdObject {
         'secret': this.secret,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

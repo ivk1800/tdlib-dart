@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about the availability of a temporary password, which
 /// can be used for payments
@@ -30,4 +31,10 @@ class TemporaryPasswordState extends TdObject {
         'valid_for': this.validFor,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

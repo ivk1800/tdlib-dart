@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A supergroup has been created from a basic group
 class MessageChatUpgradeFrom extends MessageContent {
@@ -29,4 +30,10 @@ class MessageChatUpgradeFrom extends MessageContent {
         'basic_group_id': this.basicGroupId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

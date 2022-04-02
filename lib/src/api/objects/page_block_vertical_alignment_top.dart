@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The content must be top-aligned
 class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
@@ -18,4 +19,10 @@ class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

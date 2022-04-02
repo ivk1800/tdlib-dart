@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Text that must be formatted as if inside pre, and code HTML tags
 class TextEntityTypePreCode extends TextEntityType {
@@ -22,4 +23,10 @@ class TextEntityTypePreCode extends TextEntityType {
   @override
   Map<String, dynamic> toJson() =>
       {'language': this.language, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

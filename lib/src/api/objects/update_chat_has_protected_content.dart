@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat content was allowed or restricted for saving
 class UpdateChatHasProtectedContent extends Update {
@@ -31,4 +32,10 @@ class UpdateChatHasProtectedContent extends Update {
         'has_protected_content': this.hasProtectedContent,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

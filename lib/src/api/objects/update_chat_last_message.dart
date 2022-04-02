@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The last message of a chat was changed. If last_message is null, then the
 /// last message in the chat became unknown. Some new unknown messages might
@@ -40,4 +41,10 @@ class UpdateChatLastMessage extends Update {
         'positions': positions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

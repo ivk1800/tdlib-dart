@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New chat members were invited to a group
 class PushMessageContentChatAddMembers extends PushMessageContent {
@@ -39,4 +40,10 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
         'is_returned': this.isReturned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

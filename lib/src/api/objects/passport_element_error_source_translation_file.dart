@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// One of files with the translation of the document contains an error. The
 /// error will be considered resolved when the file changes
@@ -26,4 +27,10 @@ class PassportElementErrorSourceTranslationFile
   @override
   Map<String, dynamic> toJson() =>
       {'file_index': this.fileIndex, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes imported contacts using the list of contacts saved on the device.
 /// Imports newly added contacts and, if at least the file database is
@@ -22,4 +23,10 @@ class ChangeImportedContacts extends TdFunction {
         'contacts': contacts.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

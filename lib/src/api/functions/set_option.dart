@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the value of an option. (Check the list of available options on
 /// https://core.telegram.org/tdlib/options.) Only writable options can be
@@ -21,4 +22,10 @@ class SetOption extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'name': this.name, 'value': this.value?.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

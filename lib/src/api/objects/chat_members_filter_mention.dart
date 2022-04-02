@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns users which can be mentioned in the chat
 class ChatMembersFilterMention extends ChatMembersFilter {
@@ -23,4 +24,10 @@ class ChatMembersFilterMention extends ChatMembersFilter {
   @override
   Map<String, dynamic> toJson() =>
       {'message_thread_id': this.messageThreadId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a caption of an instant view web page block, consisting of a text
 /// and a trailing credit
@@ -31,4 +32,10 @@ class PageBlockCaption extends TdObject {
         'credit': this.credit.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

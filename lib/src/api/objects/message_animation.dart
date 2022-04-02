@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animation message (GIF-style).
 class MessageAnimation extends MessageContent {
@@ -37,4 +38,10 @@ class MessageAnimation extends MessageContent {
         'is_secret': this.isSecret,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

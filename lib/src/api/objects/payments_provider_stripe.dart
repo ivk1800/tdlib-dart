@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Stripe payment provider
 class PaymentsProviderStripe extends TdObject {
@@ -44,4 +45,10 @@ class PaymentsProviderStripe extends TdObject {
         'need_cardholder_name': this.needCardholderName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

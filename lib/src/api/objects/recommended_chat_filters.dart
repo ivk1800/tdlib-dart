@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of recommended chat filters
 class RecommendedChatFilters extends TdObject {
@@ -28,4 +29,10 @@ class RecommendedChatFilters extends TdObject {
         'chat_filters': chatFilters.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

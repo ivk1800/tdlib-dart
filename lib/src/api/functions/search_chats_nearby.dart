@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a list of users and location-based supergroups nearby. The list of
 /// users nearby will be updated for 60 seconds after the request by the
@@ -18,4 +19,10 @@ class SearchChatsNearby extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'location': this.location.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

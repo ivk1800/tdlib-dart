@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A photo
 class PageBlockPhoto extends PageBlock {
@@ -35,4 +36,10 @@ class PageBlockPhoto extends PageBlock {
         'url': this.url,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

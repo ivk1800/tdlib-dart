@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Specifies the kind of chat members to return in searchChatMembers
 abstract class ChatMembersFilter extends TdObject {
@@ -41,4 +42,10 @@ abstract class ChatMembersFilter extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

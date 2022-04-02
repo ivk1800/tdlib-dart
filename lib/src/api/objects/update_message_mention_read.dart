@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with an unread mention was read
 class UpdateMessageMentionRead extends Update {
@@ -39,4 +40,10 @@ class UpdateMessageMentionRead extends Update {
         'unread_mention_count': this.unreadMentionCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

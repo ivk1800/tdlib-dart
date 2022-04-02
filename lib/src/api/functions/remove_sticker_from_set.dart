@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes a sticker from the set to which it belongs; for bots only. The
 /// sticker set must have been created by the bot
@@ -16,4 +17,10 @@ class RemoveStickerFromSet extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

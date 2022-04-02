@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Instructs application to remove the keyboard once this message has been
 /// received. This kind of keyboard can't be received in an incoming message;
@@ -25,4 +26,10 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   @override
   Map<String, dynamic> toJson() =>
       {'is_personal': this.isPersonal, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

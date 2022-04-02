@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A HTTP transparent proxy server
 class ProxyTypeHttp extends ProxyType {
@@ -37,4 +38,10 @@ class ProxyTypeHttp extends ProxyType {
         'http_only': this.httpOnly,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

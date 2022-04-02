@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes the default reply markup from a chat. Must be called after a
 /// one-time keyboard or a ForceReply reply markup has been used.
@@ -23,4 +24,10 @@ class DeleteChatReplyMarkup extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

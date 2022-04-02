@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a tg: deep link
 class DeepLinkInfo extends TdObject {
@@ -31,4 +32,10 @@ class DeepLinkInfo extends TdObject {
         'need_update_application': this.needUpdateApplication,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

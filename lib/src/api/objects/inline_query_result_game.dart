@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents information about a game
 class InlineQueryResultGame extends InlineQueryResult {
@@ -26,4 +27,10 @@ class InlineQueryResultGame extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() =>
       {'id': this.id, 'game': this.game.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

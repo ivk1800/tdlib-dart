@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A payment has been completed; for bots only
 class MessagePaymentSuccessfulBot extends MessageContent {
@@ -64,4 +65,10 @@ class MessagePaymentSuccessfulBot extends MessageContent {
         'provider_payment_charge_id': this.providerPaymentChargeId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

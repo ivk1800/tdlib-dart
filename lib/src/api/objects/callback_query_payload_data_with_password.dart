@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The payload for a callback button requiring password
 class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
@@ -28,4 +29,10 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   @override
   Map<String, dynamic> toJson() =>
       {'password': this.password, 'data': this.data, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

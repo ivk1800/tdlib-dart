@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a gradient fill of a background
 class BackgroundFillGradient extends BackgroundFill {
@@ -39,4 +40,10 @@ class BackgroundFillGradient extends BackgroundFill {
         'rotation_angle': this.rotationAngle,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

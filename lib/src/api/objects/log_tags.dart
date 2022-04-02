@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of available TDLib internal log tags
 class LogTags extends TdObject {
@@ -24,4 +25,10 @@ class LogTags extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'tags': tags.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

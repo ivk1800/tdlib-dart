@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The translation of the document contains an error. The error is considered
 /// resolved when the list of files changes
@@ -30,4 +31,10 @@ class InputPassportElementErrorSourceTranslationFiles
         'file_hashes': fileHashes.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

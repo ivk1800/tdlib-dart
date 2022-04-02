@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends the result of an inline query as a message. Returns the sent
 /// message. Always clears a chat draft message
@@ -55,4 +56,10 @@ class SendInlineQueryResultMessage extends TdFunction {
         'hide_via_bot': this.hideViaBot,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates a new invite link for a chat. Available for basic groups,
 /// supergroups, and channels. Requires administrator privileges and
@@ -43,4 +44,10 @@ class CreateChatInviteLink extends TdFunction {
         'creates_join_request': this.createsJoinRequest,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

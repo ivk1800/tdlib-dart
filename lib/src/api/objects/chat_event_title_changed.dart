@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat title was changed
 class ChatEventTitleChanged extends ChatEventAction {
@@ -29,4 +30,10 @@ class ChatEventTitleChanged extends ChatEventAction {
         'new_title': this.newTitle,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

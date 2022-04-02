@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message failed to be sent
 class MessageSendingStateFailed extends MessageSendingState {
@@ -52,4 +53,10 @@ class MessageSendingStateFailed extends MessageSendingState {
         'retry_after': this.retryAfter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

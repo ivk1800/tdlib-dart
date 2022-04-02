@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The payload for a general callback button
 class CallbackQueryPayloadData extends CallbackQueryPayload {
@@ -21,4 +22,10 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'data': this.data, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the result of a pre-checkout query; for bots only
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class AnswerPreCheckoutQuery extends TdFunction {
         'error_message': this.errorMessage,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

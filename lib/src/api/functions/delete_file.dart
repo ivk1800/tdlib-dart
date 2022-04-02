@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes a file from the TDLib file cache
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class DeleteFile extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'file_id': this.fileId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

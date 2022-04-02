@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A filled background
 class BackgroundTypeFill extends BackgroundType {
@@ -22,4 +23,10 @@ class BackgroundTypeFill extends BackgroundType {
   @override
   Map<String, dynamic> toJson() =>
       {'fill': this.fill.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

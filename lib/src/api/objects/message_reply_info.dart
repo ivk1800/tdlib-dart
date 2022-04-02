@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about replies to a message
 class MessageReplyInfo extends TdObject {
@@ -60,4 +61,10 @@ class MessageReplyInfo extends TdObject {
         'last_message_id': this.lastMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

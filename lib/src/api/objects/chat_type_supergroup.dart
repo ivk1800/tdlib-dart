@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A supergroup or channel (with unlimited members)
 class ChatTypeSupergroup extends ChatType {
@@ -29,4 +30,10 @@ class ChatTypeSupergroup extends ChatType {
         'is_channel': this.isChannel,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

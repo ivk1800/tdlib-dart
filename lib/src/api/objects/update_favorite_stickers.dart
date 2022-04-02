@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of favorite stickers was updated
 class UpdateFavoriteStickers extends Update {
@@ -26,4 +27,10 @@ class UpdateFavoriteStickers extends Update {
         'sticker_ids': stickerIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

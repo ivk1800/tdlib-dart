@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a user by their identifier. This is an offline
 /// request if the current user is not a bot
@@ -16,4 +17,10 @@ class GetUser extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

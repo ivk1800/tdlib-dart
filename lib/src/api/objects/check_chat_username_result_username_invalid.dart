@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The username is invalid
 class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
@@ -19,4 +20,10 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

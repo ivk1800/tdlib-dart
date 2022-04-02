@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message sender activity in the chat has changed
 class UpdateChatAction extends Update {
@@ -45,4 +46,10 @@ class UpdateChatAction extends Update {
         'action': this.action.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

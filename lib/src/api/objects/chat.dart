@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
 class Chat extends TdObject {
@@ -214,4 +215,10 @@ class Chat extends TdObject {
         'client_data': this.clientData,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

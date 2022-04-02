@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A SOCKS5 proxy server
 class ProxyTypeSocks5 extends ProxyType {
@@ -29,4 +30,10 @@ class ProxyTypeSocks5 extends ProxyType {
         'password': this.password,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

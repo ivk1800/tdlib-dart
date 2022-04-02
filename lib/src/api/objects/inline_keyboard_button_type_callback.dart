@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button that sends a callback query to a bot
 class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
@@ -22,4 +23,10 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'data': this.data, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

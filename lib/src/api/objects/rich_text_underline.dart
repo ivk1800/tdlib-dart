@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An underlined rich text
 class RichTextUnderline extends RichText {
@@ -22,4 +23,10 @@ class RichTextUnderline extends RichText {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Fetches the latest versions of all strings from a language pack in the
 /// current localization target from the server. This method doesn't need to
@@ -18,4 +19,10 @@ class SynchronizeLanguagePack extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

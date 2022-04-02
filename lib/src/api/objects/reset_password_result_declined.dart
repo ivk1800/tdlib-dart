@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The password reset request was declined
 class ResetPasswordResultDeclined extends ResetPasswordResult {
@@ -23,4 +24,10 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
   @override
   Map<String, dynamic> toJson() =>
       {'retry_date': this.retryDate, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

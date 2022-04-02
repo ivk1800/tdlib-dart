@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the database encryption key. Usually the encryption key is never
 /// changed and is stored in some OS keychain
@@ -16,4 +17,10 @@ class SetDatabaseEncryptionKey extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'new_encryption_key': this.newEncryptionKey, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

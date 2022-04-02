@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Animated stickers to be combined into a slot machine
 class DiceStickersSlotMachine extends DiceStickers {
@@ -52,4 +53,10 @@ class DiceStickersSlotMachine extends DiceStickers {
         'right_reel': this.rightReel.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

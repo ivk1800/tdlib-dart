@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes information about a chat. Available for basic groups, supergroups,
 /// and channels. Requires can_change_info administrator right
@@ -22,4 +23,10 @@ class SetChatDescription extends TdFunction {
         'description': this.description,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

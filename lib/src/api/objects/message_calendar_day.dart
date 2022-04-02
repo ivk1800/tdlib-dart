@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about found messages sent on a specific day
 class MessageCalendarDay extends TdObject {
@@ -30,4 +31,10 @@ class MessageCalendarDay extends TdObject {
         'message': this.message.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

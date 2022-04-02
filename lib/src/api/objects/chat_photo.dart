@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a chat or user profile photo
 class ChatPhoto extends TdObject {
@@ -52,4 +53,10 @@ class ChatPhoto extends TdObject {
         'animation': this.animation?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

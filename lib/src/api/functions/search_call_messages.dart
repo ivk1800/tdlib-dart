@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for call messages. Returns the results in reverse chronological
 /// order (i. e., in order of decreasing message_id). For optimal performance,
@@ -33,4 +34,10 @@ class SearchCallMessages extends TdFunction {
         'only_missed': this.onlyMissed,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

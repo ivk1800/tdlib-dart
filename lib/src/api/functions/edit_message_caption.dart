@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the message content caption. Returns the edited message after the
 /// edit is completed on the server side
@@ -37,4 +38,10 @@ class EditMessageCaption extends TdFunction {
         'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

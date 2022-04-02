@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns approximate number of messages of the specified type in the chat
 /// Returns [Count]
@@ -29,4 +30,10 @@ class GetChatMessageCount extends TdFunction {
         'return_local': this.returnLocal,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

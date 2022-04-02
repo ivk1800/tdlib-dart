@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rich text email link
 class RichTextEmailAddress extends RichText {
@@ -30,4 +31,10 @@ class RichTextEmailAddress extends RichText {
         'email_address': this.emailAddress,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

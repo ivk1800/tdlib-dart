@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a location
 class InputMessageLocation extends InputMessageContent {
@@ -48,4 +49,10 @@ class InputMessageLocation extends InputMessageContent {
         'proximity_alert_radius': this.proximityAlertRadius,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

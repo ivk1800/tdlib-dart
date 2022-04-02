@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Answers a custom query; for bots only
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class AnswerCustomQuery extends TdFunction {
         'data': this.data,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

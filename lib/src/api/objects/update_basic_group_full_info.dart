@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some data in basicGroupFullInfo has been changed
 class UpdateBasicGroupFullInfo extends Update {
@@ -32,4 +33,10 @@ class UpdateBasicGroupFullInfo extends Update {
         'basic_group_full_info': this.basicGroupFullInfo.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

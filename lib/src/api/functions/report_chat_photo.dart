@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Reports a chat photo to the Telegram moderators. A chat photo can be
 /// reported only if chat.can_be_reported
@@ -35,4 +36,10 @@ class ReportChatPhoto extends TdFunction {
         'text': this.text,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

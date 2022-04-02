@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns stickers from the installed sticker sets that correspond to a
 /// given emoji. If the emoji is non-empty, favorite and recently used
@@ -21,4 +22,10 @@ class GetStickers extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'emoji': this.emoji, 'limit': this.limit, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

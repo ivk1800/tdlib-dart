@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a file by its remote ID; this is an offline
 /// request. Can be used to register a URL as a file for further uploading, or
@@ -27,4 +28,10 @@ class GetRemoteFile extends TdFunction {
         'file_type': this.fileType?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link can be used to login the current user on another device, but it
 /// must be scanned from QR-code using in-app camera. An alert similar to.
@@ -22,4 +23,10 @@ class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents information about a venue
 class InputInlineQueryResultVenue extends InputInlineQueryResult {
@@ -66,4 +67,10 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

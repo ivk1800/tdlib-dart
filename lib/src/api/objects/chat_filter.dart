@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a filter of user chats
 class ChatFilter extends TdObject {
@@ -109,4 +110,10 @@ class ChatFilter extends TdObject {
         'include_channels': this.includeChannels,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

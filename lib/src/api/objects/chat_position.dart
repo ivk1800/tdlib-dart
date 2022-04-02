@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a position of a chat in a chat list
 class ChatPosition extends TdObject {
@@ -45,4 +46,10 @@ class ChatPosition extends TdObject {
         'source': this.source?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

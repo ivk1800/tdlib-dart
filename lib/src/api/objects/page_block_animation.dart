@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animation
 class PageBlockAnimation extends PageBlock {
@@ -36,4 +37,10 @@ class PageBlockAnimation extends PageBlock {
         'need_autoplay': this.needAutoplay,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

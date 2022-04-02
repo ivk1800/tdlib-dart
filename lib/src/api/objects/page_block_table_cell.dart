@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a cell of a table
 class PageBlockTableCell extends TdObject {
@@ -57,4 +58,10 @@ class PageBlockTableCell extends TdObject {
         'valign': this.valign.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

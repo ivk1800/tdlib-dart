@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a user that sent a join request and waits for administrator
 /// approval
@@ -35,4 +36,10 @@ class ChatJoinRequest extends TdObject {
         'bio': this.bio,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

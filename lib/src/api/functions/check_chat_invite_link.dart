@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks the validity of an invite link for a chat and returns information
 /// about the corresponding chat
@@ -16,4 +17,10 @@ class CheckChatInviteLink extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'invite_link': this.inviteLink, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

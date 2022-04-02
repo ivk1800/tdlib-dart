@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A rule to restrict all specified users from doing something
 class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
@@ -26,4 +27,10 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   @override
   Map<String, dynamic> toJson() =>
       {'user_ids': userIds.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

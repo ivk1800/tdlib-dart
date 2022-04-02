@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat member was deleted
 class PushMessageContentChatDeleteMember extends PushMessageContent {
@@ -39,4 +40,10 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
         'is_left': this.isLeft,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

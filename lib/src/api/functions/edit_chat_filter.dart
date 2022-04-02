@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits existing chat filter. Returns information about the edited chat
 /// filter
@@ -22,4 +23,10 @@ class EditChatFilter extends TdFunction {
         'filter': this.filter.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

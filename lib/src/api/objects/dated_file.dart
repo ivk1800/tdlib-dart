@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// File with the date it was uploaded
 class DatedFile extends TdObject {
@@ -25,4 +26,10 @@ class DatedFile extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'file': this.file.toJson(), 'date': this.date, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

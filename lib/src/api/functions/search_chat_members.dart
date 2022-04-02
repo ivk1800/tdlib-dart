@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for a specified query in the first name, last name and username
 /// of the members of a specified chat. Requires administrator rights in
@@ -36,4 +37,10 @@ class SearchChatMembers extends TdFunction {
         'filter': this.filter?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

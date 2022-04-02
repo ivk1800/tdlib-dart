@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An authentication code is delivered by an immediately canceled call to the
 /// specified phone number. The phone number that calls is the code that must
@@ -24,4 +25,10 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   @override
   Map<String, dynamic> toJson() =>
       {'pattern': this.pattern, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

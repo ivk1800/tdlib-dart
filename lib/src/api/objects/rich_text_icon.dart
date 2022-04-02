@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A small image inside the text
 class RichTextIcon extends RichText {
@@ -39,4 +40,10 @@ class RichTextIcon extends RichText {
         'height': this.height,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

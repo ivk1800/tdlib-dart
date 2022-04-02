@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button that forces an inline query to the bot to be inserted in the
 /// input field
@@ -33,4 +34,10 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
         'in_current_chat': this.inCurrentChat,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

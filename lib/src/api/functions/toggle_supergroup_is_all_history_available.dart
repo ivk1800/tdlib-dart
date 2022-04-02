@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether the message history of a supergroup is available to new
 /// members; requires can_change_info administrator right
@@ -23,4 +24,10 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
         'is_all_history_available': this.isAllHistoryAvailable,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

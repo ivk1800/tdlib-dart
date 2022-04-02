@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A point on a Cartesian plane
 class Point extends TdObject {
@@ -25,4 +26,10 @@ class Point extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'x': this.x, 'y': this.y, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Information about a file was updated
 class UpdateFile extends Update {
@@ -22,4 +23,10 @@ class UpdateFile extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'file': this.file.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

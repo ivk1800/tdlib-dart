@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes volume level of a participant of an active group call. If the
 /// current user can manage the group call, then the participant's volume
@@ -31,4 +32,10 @@ class SetGroupCallParticipantVolumeLevel extends TdFunction {
         'volume_level': this.volumeLevel,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the content of a live location in an inline message sent via a bot;
 /// for bots only
@@ -42,4 +43,10 @@ class EditInlineMessageLiveLocation extends TdFunction {
         'proximity_alert_radius': this.proximityAlertRadius,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

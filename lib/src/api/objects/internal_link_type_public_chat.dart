@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a chat by its username. Call searchPublicChat with
 /// the given chat username to process the link
@@ -23,4 +24,10 @@ class InternalLinkTypePublicChat extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_username': this.chatUsername, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

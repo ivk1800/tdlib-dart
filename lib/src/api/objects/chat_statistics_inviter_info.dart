@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains statistics about number of new members invited by a user
 class ChatStatisticsInviterInfo extends TdObject {
@@ -30,4 +31,10 @@ class ChatStatisticsInviterInfo extends TdObject {
         'added_member_count': this.addedMemberCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

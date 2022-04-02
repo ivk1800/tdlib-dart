@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A newly created basic group
 class MessageBasicGroupChatCreate extends MessageContent {
@@ -32,4 +33,10 @@ class MessageBasicGroupChatCreate extends MessageContent {
         'member_user_ids': memberUserIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

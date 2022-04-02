@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A privacy setting for managing whether a link to the user's account is
 /// included in forwarded messages
@@ -21,4 +22,10 @@ class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

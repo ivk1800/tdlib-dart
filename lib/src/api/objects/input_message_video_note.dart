@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A video note message
 class InputMessageVideoNote extends InputMessageContent {
@@ -44,4 +45,10 @@ class InputMessageVideoNote extends InputMessageContent {
         'length': this.length,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

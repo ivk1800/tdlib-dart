@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a list of service actions taken by chat members and administrators
 /// in the last 48 hours. Available only for supergroups and channels.
@@ -49,4 +50,10 @@ class GetChatEventLog extends TdFunction {
         'user_ids': userIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

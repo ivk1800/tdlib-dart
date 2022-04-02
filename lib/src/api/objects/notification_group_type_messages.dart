@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A group containing notifications of type notificationTypeNewMessage and
 /// notificationTypeNewPushMessage with ordinary unread messages
@@ -19,4 +20,10 @@ class NotificationGroupTypeMessages extends NotificationGroupType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

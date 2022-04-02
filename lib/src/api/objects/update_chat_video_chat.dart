@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat video chat state has changed
 class UpdateChatVideoChat extends Update {
@@ -30,4 +31,10 @@ class UpdateChatVideoChat extends Update {
         'video_chat': this.videoChat.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

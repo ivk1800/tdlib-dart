@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates a new supergroup or channel and sends a corresponding
 /// messageSupergroupChatCreate. Returns the newly created chat
@@ -41,4 +42,10 @@ class CreateNewSupergroupChat extends TdFunction {
         'for_import': this.forImport,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

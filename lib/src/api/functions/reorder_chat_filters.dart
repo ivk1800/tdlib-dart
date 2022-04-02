@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the order of chat filters
 /// Returns [Ok]
@@ -17,4 +18,10 @@ class ReorderChatFilters extends TdFunction {
         'chat_filter_ids': chatFilterIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The location-based chat is unrelated to its stated location
 class ChatReportReasonUnrelatedLocation extends ChatReportReason {
@@ -19,4 +20,10 @@ class ChatReportReasonUnrelatedLocation extends ChatReportReason {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

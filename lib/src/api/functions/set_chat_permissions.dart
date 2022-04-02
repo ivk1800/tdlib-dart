@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the chat members permissions. Supported only for basic groups and
 /// supergroups. Requires can_restrict_members administrator right
@@ -22,4 +23,10 @@ class SetChatPermissions extends TdFunction {
         'permissions': this.permissions.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

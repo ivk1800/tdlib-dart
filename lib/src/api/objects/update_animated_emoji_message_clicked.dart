@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some animated emoji message was clicked and a big animated sticker must be
 /// played if the message is visible on the screen.
@@ -40,4 +41,10 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
         'sticker': this.sticker.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a chat administrator
 class ChatAdministrator extends TdObject {
@@ -36,4 +37,10 @@ class ChatAdministrator extends TdObject {
         'is_owner': this.isOwner,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

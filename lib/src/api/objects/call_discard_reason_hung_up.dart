@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The call was ended because one of the parties hung up
 class CallDiscardReasonHungUp extends CallDiscardReason {
@@ -18,4 +19,10 @@ class CallDiscardReasonHungUp extends CallDiscardReason {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

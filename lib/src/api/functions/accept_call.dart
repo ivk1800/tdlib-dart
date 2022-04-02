@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Accepts an incoming call
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class AcceptCall extends TdFunction {
         'protocol': this.protocol.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a video chat. Call searchPublicChat with the given
 /// chat username, and then joinGoupCall with the given invite hash to process
@@ -42,4 +43,10 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
         'is_live_stream': this.isLiveStream,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

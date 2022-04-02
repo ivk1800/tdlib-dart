@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains settings for the authentication of the user's phone number
 class PhoneNumberAuthenticationSettings extends TdObject {
@@ -62,4 +63,10 @@ class PhoneNumberAuthenticationSettings extends TdObject {
             authenticationTokens.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

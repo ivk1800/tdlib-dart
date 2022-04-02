@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New call signaling data arrived
 class UpdateNewCallSignalingData extends Update {
@@ -26,4 +27,10 @@ class UpdateNewCallSignalingData extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'call_id': this.callId, 'data': this.data, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

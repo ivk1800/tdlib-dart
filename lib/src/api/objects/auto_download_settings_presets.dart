@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains auto-download settings presets for the current user
 class AutoDownloadSettingsPresets extends TdObject {
@@ -39,4 +40,10 @@ class AutoDownloadSettingsPresets extends TdObject {
         'high': this.high.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

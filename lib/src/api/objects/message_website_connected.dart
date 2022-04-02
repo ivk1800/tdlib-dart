@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The current user has connected a website by logging in using Telegram
 /// Login Widget on it
@@ -23,4 +24,10 @@ class MessageWebsiteConnected extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'domain_name': this.domainName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

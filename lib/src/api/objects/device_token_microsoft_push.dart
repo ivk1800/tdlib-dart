@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Microsoft Push Notification Service
 class DeviceTokenMicrosoftPush extends DeviceToken {
@@ -23,4 +24,10 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() =>
       {'channel_uri': this.channelUri, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

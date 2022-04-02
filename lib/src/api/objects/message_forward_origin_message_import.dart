@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was imported from an exported message history
 class MessageForwardOriginMessageImport extends MessageForwardOrigin {
@@ -23,4 +24,10 @@ class MessageForwardOriginMessageImport extends MessageForwardOrigin {
   @override
   Map<String, dynamic> toJson() =>
       {'sender_name': this.senderName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

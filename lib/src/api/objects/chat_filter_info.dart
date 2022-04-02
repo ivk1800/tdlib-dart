@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains basic information about a chat filter
 class ChatFilterInfo extends TdObject {
@@ -38,4 +39,10 @@ class ChatFilterInfo extends TdObject {
         'icon_name': this.iconName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

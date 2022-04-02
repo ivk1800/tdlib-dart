@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains database statistics
 class DatabaseStatistics extends TdObject {
@@ -22,4 +23,10 @@ class DatabaseStatistics extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'statistics': this.statistics, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

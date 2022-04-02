@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A voice note message
 class PushMessageContentVoiceNote extends PushMessageContent {
@@ -31,4 +32,10 @@ class PushMessageContentVoiceNote extends PushMessageContent {
         'is_pinned': this.isPinned,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

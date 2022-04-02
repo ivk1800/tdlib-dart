@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains auto-download settings
 class AutoDownloadSettings extends TdObject {
@@ -75,4 +76,10 @@ class AutoDownloadSettings extends TdObject {
         'use_less_data_for_calls': this.useLessDataForCalls,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

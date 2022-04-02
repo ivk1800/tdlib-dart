@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with an invoice; can be used only by bots
 class InputMessageInvoice extends InputMessageContent {
@@ -89,4 +90,10 @@ class InputMessageInvoice extends InputMessageContent {
         'start_parameter': this.startParameter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

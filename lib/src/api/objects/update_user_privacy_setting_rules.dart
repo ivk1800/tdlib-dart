@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some privacy setting rules have been changed
 class UpdateUserPrivacySettingRules extends Update {
@@ -30,4 +31,10 @@ class UpdateUserPrivacySettingRules extends Update {
         'rules': this.rules.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

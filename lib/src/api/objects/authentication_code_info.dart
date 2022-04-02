@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Information about the authentication code that was sent
 class AuthenticationCodeInfo extends TdObject {
@@ -44,4 +45,10 @@ class AuthenticationCodeInfo extends TdObject {
         'timeout': this.timeout,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

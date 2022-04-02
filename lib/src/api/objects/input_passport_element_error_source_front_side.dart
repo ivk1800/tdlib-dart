@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The front side of the document contains an error. The error is considered
 /// resolved when the file with the front side of the document changes
@@ -26,4 +27,10 @@ class InputPassportElementErrorSourceFrontSide
   @override
   Map<String, dynamic> toJson() =>
       {'file_hash': this.fileHash, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

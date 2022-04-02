@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a basic group of 0-200 users (must be upgraded to a supergroup
 /// to accommodate more than 200 users)
@@ -52,4 +53,10 @@ class BasicGroup extends TdObject {
         'upgraded_to_supergroup_id': this.upgradedToSupergroupId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

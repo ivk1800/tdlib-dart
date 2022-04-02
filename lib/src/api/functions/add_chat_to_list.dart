@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a chat to a chat list. A chat can't be simultaneously in Main and
 /// Archive chat lists, so it is automatically removed from another one if
@@ -24,4 +25,10 @@ class AddChatToList extends TdFunction {
         'chat_list': this.chatList.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat invite link was edited
 class ChatEventInviteLinkEdited extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
         'new_invite_link': this.newInviteLink.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

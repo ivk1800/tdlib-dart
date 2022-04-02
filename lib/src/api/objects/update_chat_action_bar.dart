@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat action bar was changed
 class UpdateChatActionBar extends Update {
@@ -30,4 +31,10 @@ class UpdateChatActionBar extends Update {
         'action_bar': this.actionBar?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

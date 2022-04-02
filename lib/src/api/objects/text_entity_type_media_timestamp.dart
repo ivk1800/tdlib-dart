@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A media timestamp
 class TextEntityTypeMediaTimestamp extends TextEntityType {
@@ -26,4 +27,10 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
   @override
   Map<String, dynamic> toJson() =>
       {'media_timestamp': this.mediaTimestamp, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates a video chat (a group call bound to a chat). Available only for
 /// basic groups, supergroups and channels; requires can_manage_video_chats
@@ -30,4 +31,10 @@ class CreateVideoChat extends TdFunction {
         'start_date': this.startDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

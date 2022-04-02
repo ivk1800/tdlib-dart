@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New terms of service must be accepted by the user. If the terms of service
 /// are declined, then the deleteAccount method must be called with the reason
@@ -33,4 +34,10 @@ class UpdateTermsOfService extends Update {
         'terms_of_service': this.termsOfService.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

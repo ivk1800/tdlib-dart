@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a user profile photo
 class ProfilePhoto extends TdObject {
@@ -53,4 +54,10 @@ class ProfilePhoto extends TdObject {
         'has_animation': this.hasAnimation,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

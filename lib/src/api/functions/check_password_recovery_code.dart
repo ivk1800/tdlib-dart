@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks whether a 2-step verification password recovery code sent to an
 /// email address is valid
@@ -16,4 +17,10 @@ class CheckPasswordRecoveryCode extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'recovery_code': this.recoveryCode, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

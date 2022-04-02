@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// TDLib client is in its final state. All databases are closed and all
 /// resources are released. No other updates will be received after this. All
@@ -21,4 +22,10 @@ class AuthorizationStateClosed extends AuthorizationState {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

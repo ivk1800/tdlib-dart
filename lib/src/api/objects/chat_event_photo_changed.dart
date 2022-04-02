@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat photo was changed
 class ChatEventPhotoChanged extends ChatEventAction {
@@ -30,4 +31,10 @@ class ChatEventPhotoChanged extends ChatEventAction {
         'new_photo': this.newPhoto?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

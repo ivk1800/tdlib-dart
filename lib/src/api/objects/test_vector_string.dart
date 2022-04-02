@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A simple object containing a vector of strings; for testing only
 class TestVectorString extends TdObject {
@@ -24,4 +25,10 @@ class TestVectorString extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'value': value.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

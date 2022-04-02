@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about messages. If a message is not found, returns
 /// null on the corresponding position of the result
@@ -22,4 +23,10 @@ class GetMessages extends TdFunction {
         'message_ids': messageIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

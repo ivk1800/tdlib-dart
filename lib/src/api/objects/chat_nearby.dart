@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a chat located nearby
 class ChatNearby extends TdObject {
@@ -25,4 +26,10 @@ class ChatNearby extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, 'distance': this.distance, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

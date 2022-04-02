@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the position of a sticker in the set to which it belongs; for bots
 /// only. The sticker set must have been created by the bot
@@ -22,4 +23,10 @@ class SetStickerPositionInSet extends TdFunction {
         'position': this.position,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

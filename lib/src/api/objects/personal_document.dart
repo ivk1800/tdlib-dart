@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A personal document, containing some information about a user
 class PersonalDocument extends TdObject {
@@ -35,4 +36,10 @@ class PersonalDocument extends TdObject {
         'translation': translation.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

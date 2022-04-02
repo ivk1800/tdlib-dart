@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A video chat participant volume level was changed
 class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
@@ -33,4 +34,10 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
         'volume_level': this.volumeLevel,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

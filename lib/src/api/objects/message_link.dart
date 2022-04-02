@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains an HTTPS link to a message in a supergroup or channel
 class MessageLink extends TdObject {
@@ -25,4 +26,10 @@ class MessageLink extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'link': this.link, 'is_public': this.isPublic, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

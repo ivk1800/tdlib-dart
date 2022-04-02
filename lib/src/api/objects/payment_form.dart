@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about an invoice payment form
 class PaymentForm extends TdObject {
@@ -82,4 +83,10 @@ class PaymentForm extends TdObject {
         'need_password': this.needPassword,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

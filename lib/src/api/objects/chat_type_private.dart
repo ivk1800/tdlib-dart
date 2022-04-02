@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An ordinary chat with a user
 class ChatTypePrivate extends ChatType {
@@ -22,4 +23,10 @@ class ChatTypePrivate extends ChatType {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

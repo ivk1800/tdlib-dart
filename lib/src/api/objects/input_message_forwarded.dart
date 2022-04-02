@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A forwarded message
 class InputMessageForwarded extends InputMessageContent {
@@ -47,4 +48,10 @@ class InputMessageForwarded extends InputMessageContent {
         'copy_options': this.copyOptions?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

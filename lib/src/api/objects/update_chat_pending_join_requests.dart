@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat pending join requests were changed
 class UpdateChatPendingJoinRequests extends Update {
@@ -33,4 +34,10 @@ class UpdateChatPendingJoinRequests extends Update {
         'pending_join_requests': this.pendingJoinRequests?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

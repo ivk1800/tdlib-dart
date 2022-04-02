@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a group call participant's video channel
 class GroupCallParticipantVideoInfo extends TdObject {
@@ -42,4 +43,10 @@ class GroupCallParticipantVideoInfo extends TdObject {
         'is_paused': this.isPaused,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

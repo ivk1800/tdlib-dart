@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a theme. TDLib has no theme support yet
 class InternalLinkTypeTheme extends InternalLinkType {
@@ -22,4 +23,10 @@ class InternalLinkTypeTheme extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() =>
       {'theme_name': this.themeName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

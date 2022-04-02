@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Manually adds a new sticker to the list of recently used stickers. The new
 /// sticker is added to the top of the list. If the sticker was already in the
@@ -26,4 +27,10 @@ class AddRecentSticker extends TdFunction {
         'sticker': this.sticker.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

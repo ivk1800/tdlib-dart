@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Stops the downloading of a file. If a file has already been downloaded,
 /// does nothing
@@ -23,4 +24,10 @@ class CancelDownloadFile extends TdFunction {
         'only_if_pending': this.onlyIfPending,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

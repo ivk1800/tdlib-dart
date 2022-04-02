@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains Telegram terms of service
 class TermsOfService extends TdObject {
@@ -38,4 +39,10 @@ class TermsOfService extends TdObject {
         'show_popup': this.showPopup,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

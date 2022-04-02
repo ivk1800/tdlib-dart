@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a string stored in the local database from the specified
 /// localization target and language pack by its key. Returns a 404 error if
@@ -37,4 +38,10 @@ class GetLanguagePackString extends TdFunction {
         'key': this.key,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

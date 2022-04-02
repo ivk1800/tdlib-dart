@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns users which can be mentioned in the supergroup
 class SupergroupMembersFilterMention extends SupergroupMembersFilter {
@@ -31,4 +32,10 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
         'message_thread_id': this.messageThreadId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

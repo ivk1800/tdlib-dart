@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns sparse positions of messages of the specified type in the chat to
 /// be used for shared media scroll implementation. Returns the results in
@@ -43,4 +44,10 @@ class GetChatSparseMessagePositions extends TdFunction {
         'limit': this.limit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat is a private chat with an administrator of a chat to which the
 /// user sent join request
@@ -40,4 +41,10 @@ class ChatActionBarJoinRequest extends ChatActionBar {
         'request_date': this.requestDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns detailed statistics about a message. Can be used only if
 /// message.can_get_statistics == true
@@ -27,4 +28,10 @@ class GetMessageStatistics extends TdFunction {
         'is_dark': this.isDark,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

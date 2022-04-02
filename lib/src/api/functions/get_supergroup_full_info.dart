@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns full information about a supergroup or a channel by its
 /// identifier, cached for up to 1 minute
@@ -16,4 +17,10 @@ class GetSupergroupFullInfo extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'supergroup_id': this.supergroupId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

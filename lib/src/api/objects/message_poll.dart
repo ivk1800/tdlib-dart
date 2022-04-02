@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a poll
 class MessagePoll extends MessageContent {
@@ -22,4 +23,10 @@ class MessagePoll extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'poll': this.poll.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a Telegram Passport authorization form that was
 /// requested
@@ -44,4 +45,10 @@ class PassportAuthorizationForm extends TdObject {
         'privacy_policy_url': this.privacyPolicyUrl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a recently speaking participant in a group call
 class GroupCallRecentSpeaker extends TdObject {
@@ -31,4 +32,10 @@ class GroupCallRecentSpeaker extends TdObject {
         'is_speaking': this.isSpeaking,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

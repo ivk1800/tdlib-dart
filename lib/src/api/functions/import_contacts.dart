@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds new contacts or edits existing contacts by their phone numbers;
 /// contacts' user identifiers are ignored
@@ -19,4 +20,10 @@ class ImportContacts extends TdFunction {
         'contacts': contacts.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

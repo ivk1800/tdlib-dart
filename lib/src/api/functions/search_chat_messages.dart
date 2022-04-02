@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for messages with given words in the chat. Returns the results in
 /// reverse chronological order, i.e. in order of decreasing message_id.
@@ -66,4 +67,10 @@ class SearchChatMessages extends TdFunction {
         'message_thread_id': this.messageThreadId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

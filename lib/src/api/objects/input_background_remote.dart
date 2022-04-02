@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A background from the server
 class InputBackgroundRemote extends InputBackground {
@@ -23,4 +24,10 @@ class InputBackgroundRemote extends InputBackground {
   @override
   Map<String, dynamic> toJson() =>
       {'background_id': this.backgroundId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

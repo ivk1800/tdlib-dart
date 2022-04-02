@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a supergroup or channel with zero or more members (subscribers
 /// in the case of channels). From the point of view of the system, a channel
@@ -130,4 +131,10 @@ class Supergroup extends TdObject {
         'is_fake': this.isFake,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

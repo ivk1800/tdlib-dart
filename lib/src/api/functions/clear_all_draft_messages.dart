@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Clears draft messages in all chats
 /// Returns [Ok]
@@ -16,4 +17,10 @@ class ClearAllDraftMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'exclude_secret_chats': this.excludeSecretChats, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

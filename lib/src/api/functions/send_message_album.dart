@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends 2-10 messages grouped together into an album. Currently, only audio,
 /// document, photo and video messages can be grouped into an album. Documents
@@ -45,4 +46,10 @@ class SendMessageAlbum extends TdFunction {
             inputMessageContents.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

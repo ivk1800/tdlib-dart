@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes one answer option of a poll
 class PollOption extends TdObject {
@@ -52,4 +53,10 @@ class PollOption extends TdObject {
         'is_being_chosen': this.isBeingChosen,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

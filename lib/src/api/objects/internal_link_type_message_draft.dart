@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link contains a message draft text. A share screen needs to be shown
 /// to the user, then the chosen chat must be opened and the text is added to
@@ -35,4 +36,10 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
         'contains_link': this.containsLink,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A user in the chat came within proximity alert range
 class MessageProximityAlertTriggered extends MessageContent {
@@ -40,4 +41,10 @@ class MessageProximityAlertTriggered extends MessageContent {
         'distance': this.distance,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

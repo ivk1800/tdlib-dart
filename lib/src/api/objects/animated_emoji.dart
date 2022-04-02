@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an animated representation of an emoji
 class AnimatedEmoji extends TdObject {
@@ -38,4 +39,10 @@ class AnimatedEmoji extends TdObject {
         'sound': this.sound?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

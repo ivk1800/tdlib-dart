@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the phone number of the user and sends an authentication code to
 /// the user's new phone number. On success, returns information about the
@@ -24,4 +25,10 @@ class ChangePhoneNumber extends TdFunction {
         'settings': this.settings?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents an audio file
 class InlineQueryResultAudio extends InlineQueryResult {
@@ -26,4 +27,10 @@ class InlineQueryResultAudio extends InlineQueryResult {
   @override
   Map<String, dynamic> toJson() =>
       {'id': this.id, 'audio': this.audio.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

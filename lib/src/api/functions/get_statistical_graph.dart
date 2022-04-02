@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Loads an asynchronous or a zoomed in statistical graph
 /// Returns [StatisticalGraph]
@@ -26,4 +27,10 @@ class GetStatisticalGraph extends TdFunction {
         'x': this.x,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

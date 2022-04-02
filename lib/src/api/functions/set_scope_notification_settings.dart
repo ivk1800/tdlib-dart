@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes notification settings for chats of a given type
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class SetScopeNotificationSettings extends TdFunction {
         'notification_settings': this.notificationSettings.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

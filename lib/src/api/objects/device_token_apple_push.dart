@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Apple Push Notification service
 class DeviceTokenApplePush extends DeviceToken {
@@ -30,4 +31,10 @@ class DeviceTokenApplePush extends DeviceToken {
         'is_app_sandbox': this.isAppSandbox,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

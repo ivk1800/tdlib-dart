@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat can be reported as spam using the method reportChat with the
 /// reason chatReportReasonSpam
@@ -26,4 +27,10 @@ class ChatActionBarReportSpam extends ChatActionBar {
   @override
   Map<String, dynamic> toJson() =>
       {'can_unarchive': this.canUnarchive, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

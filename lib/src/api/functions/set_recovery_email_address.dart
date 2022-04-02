@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the 2-step verification recovery email address of the user. If a
 /// new recovery email address is specified, then the change will not be
@@ -27,4 +28,10 @@ class SetRecoveryEmailAddress extends TdFunction {
         'new_recovery_email_address': this.newRecoveryEmailAddress,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

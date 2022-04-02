@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes a group of active notifications. Needs to be called only if the
 /// notification group is removed by the current user
@@ -23,4 +24,10 @@ class RemoveNotificationGroup extends TdFunction {
         'max_notification_id': this.maxNotificationId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

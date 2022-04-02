@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the message TTL in a chat. Requires can_delete_messages
 /// administrator right in basic groups, supergroups and channels. Message TTL
@@ -22,4 +23,10 @@ class SetChatMessageTtl extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, 'ttl': this.ttl, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

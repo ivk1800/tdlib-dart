@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a new member to a chat. Members can't be added to private or secret
 /// chats
@@ -29,4 +30,10 @@ class AddChatMember extends TdFunction {
         'forward_limit': this.forwardLimit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

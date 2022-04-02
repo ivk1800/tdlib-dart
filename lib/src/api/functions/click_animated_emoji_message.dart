@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs TDLib that a message with an animated emoji was clicked by the
 /// user. Returns a big animated sticker to be played or a 404 error if usual
@@ -23,4 +24,10 @@ class ClickAnimatedEmojiMessage extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

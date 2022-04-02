@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a video note. The video must be equal in width and height,
 /// cropped to a circle, and stored in MPEG4 format
@@ -52,4 +53,10 @@ class VideoNote extends TdObject {
         'video': this.video.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

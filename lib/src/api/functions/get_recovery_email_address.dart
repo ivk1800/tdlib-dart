@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a 2-step verification recovery email address that was previously
 /// set up. This method can be used to verify a password provided by the user
@@ -16,4 +17,10 @@ class GetRecoveryEmailAddress extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'password': this.password, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

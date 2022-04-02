@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
 class LabeledPricePart extends TdObject {
@@ -25,4 +26,10 @@ class LabeledPricePart extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'label': this.label, 'amount': this.amount, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

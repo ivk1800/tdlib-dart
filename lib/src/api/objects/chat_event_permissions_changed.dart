@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat permissions was changed
 class ChatEventPermissionsChanged extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventPermissionsChanged extends ChatEventAction {
         'new_permissions': this.newPermissions.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

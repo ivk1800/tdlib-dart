@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of saved animations was updated
 class UpdateSavedAnimations extends Update {
@@ -26,4 +27,10 @@ class UpdateSavedAnimations extends Update {
         'animation_ids': animationIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a message draft
 class DraftMessage extends TdObject {
@@ -40,4 +41,10 @@ class DraftMessage extends TdObject {
         'input_message_text': this.inputMessageText.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

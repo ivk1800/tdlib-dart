@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Position on a photo where a mask is placed
 class MaskPosition extends TdObject {
@@ -48,4 +49,10 @@ class MaskPosition extends TdObject {
         'scale': this.scale,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

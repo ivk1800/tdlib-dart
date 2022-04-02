@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds, edits or deletes a string in a custom local language pack. Can be
 /// called before authorization
@@ -24,4 +25,10 @@ class SetCustomLanguagePackString extends TdFunction {
         'new_string': this.newString.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

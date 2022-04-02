@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains full information about a basic group
 class BasicGroupFullInfo extends TdObject {
@@ -63,4 +64,10 @@ class BasicGroupFullInfo extends TdObject {
         'bot_commands': botCommands.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

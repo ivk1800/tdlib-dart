@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs TDLib on a file generation progress
 /// Returns [Ok]
@@ -28,4 +29,10 @@ class SetFileGenerationProgress extends TdFunction {
         'local_prefix_size': this.localPrefixSize,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

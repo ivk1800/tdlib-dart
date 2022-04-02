@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the ability of users to save, forward, or copy chat content.
 /// Supported only for basic groups, supergroups and channels. Requires owner
@@ -25,4 +26,10 @@ class ToggleChatHasProtectedContent extends TdFunction {
         'has_protected_content': this.hasProtectedContent,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

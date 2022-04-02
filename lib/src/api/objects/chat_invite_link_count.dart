@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a chat administrator with a number of active and revoked chat
 /// invite links
@@ -39,4 +40,10 @@ class ChatInviteLinkCount extends TdObject {
         'revoked_invite_link_count': this.revokedInviteLinkCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

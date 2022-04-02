@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether a session can accept incoming calls
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class ToggleSessionCanAcceptCalls extends TdFunction {
         'can_accept_calls': this.canAcceptCalls,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

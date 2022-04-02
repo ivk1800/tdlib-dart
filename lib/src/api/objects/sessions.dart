@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of sessions
 class Sessions extends TdObject {
@@ -33,4 +34,10 @@ class Sessions extends TdObject {
         'inactive_session_ttl_days': this.inactiveSessionTtlDays,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

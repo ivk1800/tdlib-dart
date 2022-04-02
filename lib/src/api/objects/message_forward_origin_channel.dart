@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message was originally a post in a channel
 class MessageForwardOriginChannel extends MessageForwardOrigin {
@@ -39,4 +40,10 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
         'author_signature': this.authorSignature,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

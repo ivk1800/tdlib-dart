@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Simple Push API for Firefox OS
 class DeviceTokenSimplePush extends DeviceToken {
@@ -23,4 +24,10 @@ class DeviceTokenSimplePush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() =>
       {'endpoint': this.endpoint, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets auto-download settings
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class SetAutoDownloadSettings extends TdFunction {
         'type': this.type.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

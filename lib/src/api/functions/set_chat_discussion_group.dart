@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the discussion group of a channel chat; requires can_change_info
 /// administrator right in the channel if it is specified
@@ -30,4 +31,10 @@ class SetChatDiscussionGroup extends TdFunction {
         'discussion_chat_id': this.discussionChatId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

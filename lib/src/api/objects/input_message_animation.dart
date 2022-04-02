@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An animation message (GIF-style).
 class InputMessageAnimation extends InputMessageContent {
@@ -68,4 +69,10 @@ class InputMessageAnimation extends InputMessageContent {
         'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

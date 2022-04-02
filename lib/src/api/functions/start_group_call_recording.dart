@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Starts recording of an active group call. Requires
 /// groupCall.can_be_managed group call flag
@@ -35,4 +36,10 @@ class StartGroupCallRecording extends TdFunction {
         'use_portrait_orientation': this.usePortraitOrientation,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

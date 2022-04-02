@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about the current localization target
 class LocalizationTargetInfo extends TdObject {
@@ -28,4 +29,10 @@ class LocalizationTargetInfo extends TdObject {
         'language_packs': languagePacks.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

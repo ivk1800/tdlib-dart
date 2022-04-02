@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A static sticker in PNG format, which will be converted to WEBP
 /// server-side
@@ -39,4 +40,10 @@ class InputStickerStatic extends InputSticker {
         'mask_position': this.maskPosition?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

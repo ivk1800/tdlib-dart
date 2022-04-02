@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A Telegram Passport element containing the user's internal passport
 class PassportElementInternalPassport extends PassportElement {
@@ -26,4 +27,10 @@ class PassportElementInternalPassport extends PassportElement {
         'internal_passport': this.internalPassport.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

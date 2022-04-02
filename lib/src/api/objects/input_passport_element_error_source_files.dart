@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of attached files contains an error. The error is considered
 /// resolved when the file list changes
@@ -29,4 +30,10 @@ class InputPassportElementErrorSourceFiles
         'file_hashes': fileHashes.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new incoming pre-checkout query; for bots only. Contains full
 /// information about a checkout
@@ -65,4 +66,10 @@ class UpdateNewPreCheckoutQuery extends Update {
         'order_info': this.orderInfo?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

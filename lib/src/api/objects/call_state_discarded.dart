@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The call has ended successfully
 class CallStateDiscarded extends CallState {
@@ -39,4 +40,10 @@ class CallStateDiscarded extends CallState {
         'need_debug_information': this.needDebugInformation,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

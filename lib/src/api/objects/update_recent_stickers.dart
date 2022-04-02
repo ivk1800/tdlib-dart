@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of recently used stickers was updated
 class UpdateRecentStickers extends Update {
@@ -32,4 +33,10 @@ class UpdateRecentStickers extends Update {
         'sticker_ids': stickerIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

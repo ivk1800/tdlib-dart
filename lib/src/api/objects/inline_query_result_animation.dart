@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents an animation file
 class InlineQueryResultAnimation extends InlineQueryResult {
@@ -36,4 +37,10 @@ class InlineQueryResultAnimation extends InlineQueryResult {
         'title': this.title,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

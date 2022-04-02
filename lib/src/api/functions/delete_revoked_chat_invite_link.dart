@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Deletes revoked chat invite links. Requires administrator privileges and
 /// can_invite_users right in the chat for own links and owner privileges for
@@ -23,4 +24,10 @@ class DeleteRevokedChatInviteLink extends TdFunction {
         'invite_link': this.inviteLink,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

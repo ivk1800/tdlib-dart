@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message was edited. Changes in the message content will come in a
 /// separate updateMessageContent
@@ -45,4 +46,10 @@ class UpdateMessageEdited extends Update {
         'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

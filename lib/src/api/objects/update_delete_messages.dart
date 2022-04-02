@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some messages were deleted
 class UpdateDeleteMessages extends Update {
@@ -47,4 +48,10 @@ class UpdateDeleteMessages extends Update {
         'from_cache': this.fromCache,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a group call
 /// Returns [GroupCall]
@@ -15,4 +16,10 @@ class GetGroupCall extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'group_call_id': this.groupCallId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

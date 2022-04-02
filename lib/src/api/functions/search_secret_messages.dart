@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for messages in secret chats. Returns the results in reverse
 /// chronological order. For optimal performance, the number of returned
@@ -46,4 +47,10 @@ class SearchSecretMessages extends TdFunction {
         'filter': this.filter?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

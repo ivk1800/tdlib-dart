@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets group call title. Requires groupCall.can_be_managed group call flag
 /// Returns [Ok]
@@ -21,4 +22,10 @@ class SetGroupCallTitle extends TdFunction {
         'title': this.title,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

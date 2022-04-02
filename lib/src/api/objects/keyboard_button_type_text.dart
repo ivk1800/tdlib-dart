@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A simple button, with text that must be sent when the button is pressed
 class KeyboardButtonTypeText extends KeyboardButtonType {
@@ -18,4 +19,10 @@ class KeyboardButtonTypeText extends KeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

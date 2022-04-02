@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Optimizes storage usage, i.e. deletes some files and returns new storage
 /// usage statistics. Secret thumbnails can't be deleted
@@ -73,4 +74,10 @@ class OptimizeStorage extends TdFunction {
         'chat_limit': this.chatLimit,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

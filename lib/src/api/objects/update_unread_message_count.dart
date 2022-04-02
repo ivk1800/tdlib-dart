@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Number of unread messages in a chat list has changed. This update is sent
 /// only if the message database is used
@@ -39,4 +40,10 @@ class UpdateUnreadMessageCount extends Update {
         'unread_unmuted_count': this.unreadUnmutedCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

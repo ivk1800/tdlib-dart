@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a Telegram Passport element that was requested
 /// by a service
@@ -48,4 +49,10 @@ class PassportSuitableElement extends TdObject {
         'is_native_name_required': this.isNativeNameRequired,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

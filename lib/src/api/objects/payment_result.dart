@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the result of a payment request
 class PaymentResult extends TdObject {
@@ -30,4 +31,10 @@ class PaymentResult extends TdObject {
         'verification_url': this.verificationUrl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

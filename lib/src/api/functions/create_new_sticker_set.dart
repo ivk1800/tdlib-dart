@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates a new sticker set. Returns the newly created sticker set
 /// Returns [StickerSet]
@@ -46,4 +47,10 @@ class CreateNewStickerSet extends TdFunction {
         'source': this.source,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

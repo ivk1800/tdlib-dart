@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A document message (general file)
 class InputMessageDocument extends InputMessageContent {
@@ -47,4 +48,10 @@ class InputMessageDocument extends InputMessageContent {
         'caption': this.caption?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a list of sticker sets attached to a file. Currently, only photos
 /// and videos can have attached sticker sets
@@ -16,4 +17,10 @@ class GetAttachedStickerSets extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'file_id': this.fileId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

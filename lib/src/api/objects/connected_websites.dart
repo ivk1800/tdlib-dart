@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a list of websites the current user is logged in with Telegram
 class ConnectedWebsites extends TdObject {
@@ -27,4 +28,10 @@ class ConnectedWebsites extends TdObject {
         'websites': websites.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

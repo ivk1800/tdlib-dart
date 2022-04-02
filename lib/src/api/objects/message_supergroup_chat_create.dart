@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A newly created supergroup or channel
 class MessageSupergroupChatCreate extends MessageContent {
@@ -21,4 +22,10 @@ class MessageSupergroupChatCreate extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'title': this.title, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

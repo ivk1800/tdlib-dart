@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Some language pack strings have been updated
 class UpdateLanguagePackStrings extends Update {
@@ -41,4 +42,10 @@ class UpdateLanguagePackStrings extends Update {
         'strings': strings.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

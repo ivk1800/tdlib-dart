@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a game; not supported for channels or secret chats
 class InputMessageGame extends InputMessageContent {
@@ -29,4 +30,10 @@ class InputMessageGame extends InputMessageContent {
         'game_short_name': this.gameShortName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

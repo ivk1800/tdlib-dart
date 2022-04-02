@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the owner of a chat. The current user must be a current owner of
 /// the chat. Use the method canTransferOwnership to check whether the
@@ -30,4 +31,10 @@ class TransferChatOwnership extends TdFunction {
         'password': this.password,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

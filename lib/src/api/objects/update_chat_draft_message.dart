@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat draft has changed. Be aware that the update may come in the
 /// currently opened chat but with old content of the draft. If the user has
@@ -40,4 +41,10 @@ class UpdateChatDraftMessage extends Update {
         'positions': positions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

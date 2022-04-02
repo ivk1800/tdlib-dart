@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button that allows the user to create and send a poll when pressed;
 /// available only in private chats
@@ -31,4 +32,10 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
         'force_quiz': this.forceQuiz,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

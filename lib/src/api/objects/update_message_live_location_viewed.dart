@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a live location was viewed. When the update is received,
 /// the application is supposed to update the live location
@@ -31,4 +32,10 @@ class UpdateMessageLiveLocationViewed extends Update {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

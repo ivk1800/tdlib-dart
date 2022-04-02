@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The supergroup sticker set was changed
 class ChatEventStickerSetChanged extends ChatEventAction {
@@ -31,4 +32,10 @@ class ChatEventStickerSetChanged extends ChatEventAction {
         'new_sticker_set_id': this.newStickerSetId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

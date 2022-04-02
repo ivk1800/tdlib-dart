@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Checks whether the maximum number of owned public chats has been reached.
 /// Returns corresponding error if the limit was reached
@@ -16,4 +17,10 @@ class CheckCreatedPublicChatsLimit extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'type': this.type.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

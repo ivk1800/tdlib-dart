@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a chat member joined a chat via an invite link
 class ChatInviteLinkMember extends TdObject {
@@ -40,4 +41,10 @@ class ChatInviteLinkMember extends TdObject {
         'approver_user_id': this.approverUserId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

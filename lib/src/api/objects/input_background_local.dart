@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A background from a local file
 class InputBackgroundLocal extends InputBackground {
@@ -25,4 +26,10 @@ class InputBackgroundLocal extends InputBackground {
   @override
   Map<String, dynamic> toJson() =>
       {'background': this.background.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

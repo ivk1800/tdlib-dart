@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the chat theme. Supported only in private and secret chats
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class SetChatTheme extends TdFunction {
         'theme_name': this.themeName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

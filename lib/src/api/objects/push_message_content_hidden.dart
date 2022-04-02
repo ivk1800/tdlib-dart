@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A general message with hidden content
 class PushMessageContentHidden extends PushMessageContent {
@@ -23,4 +24,10 @@ class PushMessageContentHidden extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'is_pinned': this.isPinned, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

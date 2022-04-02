@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A sticker message
 class InputMessageSticker extends InputMessageContent {
@@ -50,4 +51,10 @@ class InputMessageSticker extends InputMessageContent {
         'emoji': this.emoji,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

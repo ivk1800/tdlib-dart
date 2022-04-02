@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an existing chat corresponding to a given user
 /// Returns [Chat]
@@ -20,4 +21,10 @@ class CreatePrivateChat extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, 'force': this.force, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

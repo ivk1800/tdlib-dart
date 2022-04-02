@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about the next messages of the specified type in the
 /// chat split by days. Returns the results in reverse chronological order.
@@ -35,4 +36,10 @@ class GetChatMessageCalendar extends TdFunction {
         'from_message_id': this.fromMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

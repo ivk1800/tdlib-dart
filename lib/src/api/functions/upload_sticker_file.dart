@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Uploads a file with a sticker; returns the uploaded file
 /// Returns [File]
@@ -21,4 +22,10 @@ class UploadStickerFile extends TdFunction {
         'sticker': this.sticker.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

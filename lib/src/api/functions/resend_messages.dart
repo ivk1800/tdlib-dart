@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Resends messages which failed to send. Can be called only for messages for
 /// which messageSendingStateFailed.can_retry is true and after specified in
@@ -28,4 +29,10 @@ class ResendMessages extends TdFunction {
         'message_ids': messageIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

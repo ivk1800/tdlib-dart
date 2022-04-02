@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An identity document to be saved to Telegram Passport
 class InputIdentityDocument extends TdObject {
@@ -60,4 +61,10 @@ class InputIdentityDocument extends TdObject {
         'translation': translation.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

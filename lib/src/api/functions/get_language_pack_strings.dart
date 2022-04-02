@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns strings from a language pack in the current localization target by
 /// their keys. Can be called before authorization
@@ -23,4 +24,10 @@ class GetLanguagePackStrings extends TdFunction {
         'keys': keys.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

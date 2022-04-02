@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends call signaling data
 /// Returns [Ok]
@@ -18,4 +19,10 @@ class SendCallSignalingData extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'call_id': this.callId, 'data': this.data, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

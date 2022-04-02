@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Shares the phone number of the current user with a mutual contact.
 /// Supposed to be called when the user clicks on
@@ -18,4 +19,10 @@ class SharePhoneNumber extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'user_id': this.userId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

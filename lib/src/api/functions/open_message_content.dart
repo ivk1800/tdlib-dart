@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs TDLib that the message content has been opened (e.g., the user has
 /// opened a photo, video, document, location or venue, or has listened to an
@@ -24,4 +25,10 @@ class OpenMessageContent extends TdFunction {
         'message_id': this.messageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Currently establishing a connection with a proxy server
 class ConnectionStateConnectingToProxy extends ConnectionState {
@@ -19,4 +20,10 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with an animated emoji
 class MessageAnimatedEmoji extends MessageContent {
@@ -30,4 +31,10 @@ class MessageAnimatedEmoji extends MessageContent {
         'emoji': this.emoji,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

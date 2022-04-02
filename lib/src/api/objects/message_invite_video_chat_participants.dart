@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with information about an invite to a video chat
 class MessageInviteVideoChatParticipants extends MessageContent {
@@ -34,4 +35,10 @@ class MessageInviteVideoChatParticipants extends MessageContent {
         'user_ids': userIds.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

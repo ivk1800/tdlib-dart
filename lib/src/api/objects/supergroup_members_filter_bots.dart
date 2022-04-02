@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns bot members of the supergroup or channel
 class SupergroupMembersFilterBots extends SupergroupMembersFilter {
@@ -18,4 +19,10 @@ class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

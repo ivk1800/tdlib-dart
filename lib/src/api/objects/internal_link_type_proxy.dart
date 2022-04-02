@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a proxy. Call addProxy with the given parameters to
 /// process the link and add the proxy
@@ -37,4 +38,10 @@ class InternalLinkTypeProxy extends InternalLinkType {
         'type': this.type.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

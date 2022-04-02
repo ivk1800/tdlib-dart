@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Information about the email address authentication code that was sent
 class EmailAddressAuthenticationCodeInfo extends TdObject {
@@ -33,4 +34,10 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
         'length': this.length,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

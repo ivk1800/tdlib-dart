@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The author and publishing date of a page
 class PageBlockAuthorDate extends PageBlock {
@@ -31,4 +32,10 @@ class PageBlockAuthorDate extends PageBlock {
         'publish_date': this.publishDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The TTL (Time To Live) setting for messages in the chat has been changed
 class MessageChatSetTtl extends MessageContent {
@@ -21,4 +22,10 @@ class MessageChatSetTtl extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'ttl': this.ttl, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns all found messages, no filter is applied
 class SearchMessagesFilterEmpty extends SearchMessagesFilter {
@@ -18,4 +19,10 @@ class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

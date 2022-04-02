@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A poll was updated; for bots only
 class UpdatePoll extends Update {
@@ -22,4 +23,10 @@ class UpdatePoll extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'poll': this.poll.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

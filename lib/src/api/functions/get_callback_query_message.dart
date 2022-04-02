@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a message with the callback button that
 /// originated a callback query; for bots only
@@ -29,4 +30,10 @@ class GetCallbackQueryMessage extends TdFunction {
         'callback_query_id': this.callbackQueryId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

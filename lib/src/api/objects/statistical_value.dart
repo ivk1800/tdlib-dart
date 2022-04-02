@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A value with information about its recent changes
 class StatisticalValue extends TdObject {
@@ -38,4 +39,10 @@ class StatisticalValue extends TdObject {
         'growth_rate_percentage': this.growthRatePercentage,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

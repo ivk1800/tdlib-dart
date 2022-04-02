@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a game. Call searchPublicChat with the given bot
 /// username, check that the user is a bot, ask the current user to select a
@@ -33,4 +34,10 @@ class InternalLinkTypeGame extends InternalLinkType {
         'game_short_name': this.gameShortName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

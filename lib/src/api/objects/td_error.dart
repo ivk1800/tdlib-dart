@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An object of this type can be returned on every function call, in case of
 /// an error
@@ -28,4 +29,10 @@ class TdError extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'code': this.code, 'message': this.message, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

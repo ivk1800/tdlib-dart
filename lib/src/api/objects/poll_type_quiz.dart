@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A poll in quiz mode, which has exactly one correct answer option and can
 /// be answered only once
@@ -34,4 +35,10 @@ class PollTypeQuiz extends PollType {
         'explanation': this.explanation.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

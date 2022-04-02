@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Bans a member in a chat. Members can't be banned in private or secret
 /// chats. In supergroups and channels, the user will not be able to return to
@@ -39,4 +40,10 @@ class BanChatMember extends TdFunction {
         'revoke_messages': this.revokeMessages,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

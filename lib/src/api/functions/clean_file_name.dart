@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes potentially dangerous characters from the name of a file. The
 /// encoding of the file name is supposed to be UTF-8. Returns an empty string
@@ -17,4 +18,10 @@ class CleanFileName extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'file_name': this.fileName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

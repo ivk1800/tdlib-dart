@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user is uploading a video note
 class ChatActionUploadingVideoNote extends ChatAction {
@@ -22,4 +23,10 @@ class ChatActionUploadingVideoNote extends ChatAction {
   @override
   Map<String, dynamic> toJson() =>
       {'progress': this.progress, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

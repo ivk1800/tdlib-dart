@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether a group call participant hand is rased
 /// Returns [Ok]
@@ -30,4 +31,10 @@ class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
         'is_hand_raised': this.isHandRaised,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

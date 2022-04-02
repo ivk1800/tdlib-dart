@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Saves application log event on the server. Can be called before
 /// authorization
@@ -27,4 +28,10 @@ class SaveApplicationLogEvent extends TdFunction {
         'data': this.data.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

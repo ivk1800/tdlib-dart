@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A subheader
 class PageBlockSubheader extends PageBlock {
@@ -22,4 +23,10 @@ class PageBlockSubheader extends PageBlock {
   @override
   Map<String, dynamic> toJson() =>
       {'subheader': this.subheader.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

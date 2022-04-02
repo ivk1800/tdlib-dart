@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs the user that some of the elements in their Telegram Passport
 /// contain errors; for bots only. The user will not be able to resend the
@@ -23,4 +24,10 @@ class SetPassportElementErrors extends TdFunction {
         'errors': errors.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

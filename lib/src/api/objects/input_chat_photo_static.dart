@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A static photo in JPEG format
 class InputChatPhotoStatic extends InputChatPhoto {
@@ -23,4 +24,10 @@ class InputChatPhotoStatic extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() =>
       {'photo': this.photo.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

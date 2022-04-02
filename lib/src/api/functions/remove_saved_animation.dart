@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Removes an animation from the list of saved animations
 /// Returns [Ok]
@@ -15,4 +16,10 @@ class RemoveSavedAnimation extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'animation': this.animation.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

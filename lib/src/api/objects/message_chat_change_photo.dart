@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An updated chat photo
 class MessageChatChangePhoto extends MessageContent {
@@ -22,4 +23,10 @@ class MessageChatChangePhoto extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'photo': this.photo.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

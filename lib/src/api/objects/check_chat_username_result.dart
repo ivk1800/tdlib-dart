@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents result of checking whether a username can be set for a chat
 abstract class CheckChatUsernameResult extends TdObject {
@@ -35,4 +36,10 @@ abstract class CheckChatUsernameResult extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

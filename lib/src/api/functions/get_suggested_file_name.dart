@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns suggested name for saving a file in a given directory
 /// Returns [Text]
@@ -21,4 +22,10 @@ class GetSuggestedFileName extends TdFunction {
         'directory': this.directory,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

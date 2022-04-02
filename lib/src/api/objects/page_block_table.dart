@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A table
 class PageBlockTable extends PageBlock {
@@ -51,4 +52,10 @@ class PageBlockTable extends PageBlock {
         'is_striped': this.isStriped,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

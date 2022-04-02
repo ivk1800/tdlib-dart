@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a poll. Polls can't be sent to secret chats. Polls can be
 /// sent only to a private chat with a bot
@@ -69,4 +70,10 @@ class InputMessagePoll extends InputMessageContent {
         'is_closed': this.isClosed,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A link to an anchor on the same web page
 class RichTextAnchorLink extends RichText {
@@ -37,4 +38,10 @@ class RichTextAnchorLink extends RichText {
         'url': this.url,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

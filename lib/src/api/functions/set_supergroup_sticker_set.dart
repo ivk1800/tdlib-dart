@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the sticker set of a supergroup; requires can_change_info
 /// administrator right
@@ -24,4 +25,10 @@ class SetSupergroupStickerSet extends TdFunction {
         'sticker_set_id': this.stickerSetId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

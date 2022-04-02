@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a bot's answer to a callback query
 class CallbackQueryAnswer extends TdObject {
@@ -35,4 +36,10 @@ class CallbackQueryAnswer extends TdObject {
         'url': this.url,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A fixed-width rich text
 class RichTextFixed extends RichText {
@@ -22,4 +23,10 @@ class RichTextFixed extends RichText {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

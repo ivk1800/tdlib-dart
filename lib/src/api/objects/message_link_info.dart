@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about a link to a message in a chat
 class MessageLinkInfo extends TdObject {
@@ -61,4 +62,10 @@ class MessageLinkInfo extends TdObject {
         'for_comment': this.forComment,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a list of chat administrators
 class ChatAdministrators extends TdObject {
@@ -28,4 +29,10 @@ class ChatAdministrators extends TdObject {
         'administrators': administrators.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A newly created basic group
 class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
@@ -19,4 +20,10 @@ class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

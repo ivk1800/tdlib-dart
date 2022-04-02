@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes actions that a user is allowed to take in a chat
 class ChatPermissions extends TdObject {
@@ -76,4 +77,10 @@ class ChatPermissions extends TdObject {
         'can_pin_messages': this.canPinMessages,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

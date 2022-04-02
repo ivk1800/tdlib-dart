@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Specifies the supported call protocols
 class CallProtocol extends TdObject {
@@ -51,4 +52,10 @@ class CallProtocol extends TdObject {
         'library_versions': libraryVersions.map((item) => item).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat was blocked or unblocked
 class UpdateChatIsBlocked extends Update {
@@ -29,4 +30,10 @@ class UpdateChatIsBlocked extends Update {
         'is_blocked': this.isBlocked,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

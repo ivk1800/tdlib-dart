@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a temporary identifier of validated order information, which is
 /// stored for one hour. Also contains the available shipping options
@@ -36,4 +37,10 @@ class ValidatedOrderInfo extends TdObject {
             shippingOptions.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

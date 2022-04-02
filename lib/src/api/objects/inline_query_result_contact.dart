@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a user contact
 class InlineQueryResultContact extends InlineQueryResult {
@@ -36,4 +37,10 @@ class InlineQueryResultContact extends InlineQueryResult {
         'thumbnail': this.thumbnail?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

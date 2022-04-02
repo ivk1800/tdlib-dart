@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New call was created or information about a call was updated
 class UpdateCall extends Update {
@@ -22,4 +23,10 @@ class UpdateCall extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'call': this.call.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

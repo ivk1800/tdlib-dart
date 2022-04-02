@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the verbosity level of the internal logging of TDLib. Can be called
 /// synchronously
@@ -21,4 +22,10 @@ class SetLogVerbosityLevel extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'new_verbosity_level': this.newVerbosityLevel, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

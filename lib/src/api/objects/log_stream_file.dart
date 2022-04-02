@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The log is written to a file
 class LogStreamFile extends LogStream {
@@ -40,4 +41,10 @@ class LogStreamFile extends LogStream {
         'redirect_stderr': this.redirectStderr,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to the change phone number section of the app
 class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
@@ -19,4 +20,10 @@ class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

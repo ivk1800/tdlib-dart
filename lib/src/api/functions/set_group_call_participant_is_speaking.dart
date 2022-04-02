@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Informs TDLib that speaking state of a participant of an active group has
 /// changed
@@ -30,4 +31,10 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
         'is_speaking': this.isSpeaking,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

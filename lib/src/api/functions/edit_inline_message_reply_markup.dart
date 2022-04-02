@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the reply markup of an inline message sent via a bot; for bots only
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class EditInlineMessageReplyMarkup extends TdFunction {
         'reply_markup': this.replyMarkup?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

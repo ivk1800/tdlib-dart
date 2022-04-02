@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an item of a list page block
 class PageBlockListItem extends TdObject {
@@ -32,4 +33,10 @@ class PageBlockListItem extends TdObject {
         'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

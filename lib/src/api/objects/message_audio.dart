@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An audio message
 class MessageAudio extends MessageContent {
@@ -30,4 +31,10 @@ class MessageAudio extends MessageContent {
         'caption': this.caption.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

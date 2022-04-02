@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Uses an invite link to add the current user to the chat if possible
 /// Returns [Chat]
@@ -15,4 +16,10 @@ class JoinChatByInviteLink extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'invite_link': this.inviteLink, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns information about a language pack. Returned language pack
 /// identifier may be different from a provided one. Can be called before
@@ -17,4 +18,10 @@ class GetLanguagePackInfo extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

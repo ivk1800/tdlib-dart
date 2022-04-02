@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Writes a part of a generated file. This method is intended to be used only
 /// if the application has no direct access to TDLib's file system, because it
@@ -28,4 +29,10 @@ class WriteGeneratedFilePart extends TdFunction {
         'data': this.data,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

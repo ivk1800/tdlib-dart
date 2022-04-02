@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a globally unique push notification subscription identifier for
 /// identification of an account, which has received a push notification. Can
@@ -17,4 +18,10 @@ class GetPushReceiverId extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'payload': this.payload, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

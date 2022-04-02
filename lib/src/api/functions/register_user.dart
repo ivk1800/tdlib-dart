@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Finishes user registration. Works only when the current authorization
 /// state is authorizationStateWaitRegistration
@@ -22,4 +23,10 @@ class RegisterUser extends TdFunction {
         'last_name': this.lastName,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

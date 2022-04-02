@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Applies if a user chooses some previously saved payment credentials. To
 /// use their previously saved credentials, the user must have a valid
@@ -25,4 +26,10 @@ class InputCredentialsSaved extends InputCredentials {
   @override
   Map<String, dynamic> toJson() =>
       {'saved_credentials_id': this.savedCredentialsId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

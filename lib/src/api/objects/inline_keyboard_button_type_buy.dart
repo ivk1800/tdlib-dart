@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button to buy something. This button must be in the first column and row
 /// of the keyboard and can be attached only to a message with content of the
@@ -20,4 +21,10 @@ class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user needs to confirm authorization on another logged in device by
 /// scanning a QR code with the provided link
@@ -24,4 +25,10 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'link': this.link, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

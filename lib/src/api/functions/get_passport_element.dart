@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns one of the available Telegram Passport elements
 /// Returns [PassportElement]
@@ -21,4 +22,10 @@ class GetPassportElement extends TdFunction {
         'password': this.password,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

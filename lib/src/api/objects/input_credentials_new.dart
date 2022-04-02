@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Applies if a user enters new credentials on a payment provider website
 class InputCredentialsNew extends InputCredentials {
@@ -28,4 +29,10 @@ class InputCredentialsNew extends InputCredentials {
   @override
   Map<String, dynamic> toJson() =>
       {'data': this.data, 'allow_save': this.allowSave, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

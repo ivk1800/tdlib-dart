@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with an invoice from a bot
 class MessageInvoice extends MessageContent {
@@ -76,4 +77,10 @@ class MessageInvoice extends MessageContent {
         'receipt_message_id': this.receiptMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

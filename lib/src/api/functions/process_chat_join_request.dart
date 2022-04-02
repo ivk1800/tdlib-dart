@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Handles a pending join request in a chat
 /// Returns [Ok]
@@ -27,4 +28,10 @@ class ProcessChatJoinRequest extends TdFunction {
         'approve': this.approve,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

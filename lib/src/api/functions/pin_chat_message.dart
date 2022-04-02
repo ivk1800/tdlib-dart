@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Pins a message in a chat; requires can_pin_messages rights or
 /// can_edit_messages rights in the channel
@@ -37,4 +38,10 @@ class PinChatMessage extends TdFunction {
         'only_for_self': this.onlyForSelf,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

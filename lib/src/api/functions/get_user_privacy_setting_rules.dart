@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns the current privacy settings
 /// Returns [UserPrivacySettingRules]
@@ -15,4 +16,10 @@ class GetUserPrivacySettingRules extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'setting': this.setting.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Imports messages exported from another app
 /// Returns [Ok]
@@ -33,4 +34,10 @@ class ImportMessages extends TdFunction {
         'attached_files': attachedFiles.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

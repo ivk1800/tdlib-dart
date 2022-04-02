@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Ubuntu Push Client service
 class DeviceTokenUbuntuPush extends DeviceToken {
@@ -21,4 +22,10 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'token': this.token, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

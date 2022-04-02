@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A text message
 class PushMessageContentText extends PushMessageContent {
@@ -27,4 +28,10 @@ class PushMessageContentText extends PushMessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text, 'is_pinned': this.isPinned, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

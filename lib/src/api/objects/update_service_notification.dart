@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A service notification from the server was received. Upon receiving this
 /// the application must show a popup with the content of the notification
@@ -32,4 +33,10 @@ class UpdateServiceNotification extends Update {
         'content': this.content.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

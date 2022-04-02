@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends phone number confirmation code to handle links of the type
 /// internalLinkTypePhoneNumberConfirmation
@@ -28,4 +29,10 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
         'settings': this.settings?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

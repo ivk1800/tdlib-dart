@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a sponsored message
 class SponsoredMessage extends TdObject {
@@ -55,4 +56,10 @@ class SponsoredMessage extends TdObject {
         'content': this.content.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

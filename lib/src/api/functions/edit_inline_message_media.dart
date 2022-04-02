@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Edits the content of a message with an animation, an audio, a document, a
 /// photo or a video in an inline message sent via a bot; for bots only
@@ -32,4 +33,10 @@ class EditInlineMessageMedia extends TdFunction {
         'input_message_content': this.inputMessageContent.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

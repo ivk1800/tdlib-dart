@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Animated variant of a chat photo in MPEG4 format
 class AnimatedChatPhoto extends TdObject {
@@ -38,4 +39,10 @@ class AnimatedChatPhoto extends TdObject {
         'main_frame_timestamp': this.mainFrameTimestamp,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

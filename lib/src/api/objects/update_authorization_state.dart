@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user authorization state has changed
 class UpdateAuthorizationState extends Update {
@@ -26,4 +27,10 @@ class UpdateAuthorizationState extends Update {
         'authorization_state': this.authorizationState.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

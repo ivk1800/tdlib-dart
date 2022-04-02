@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A regular poll
 class PollTypeRegular extends PollType {
@@ -26,4 +27,10 @@ class PollTypeRegular extends PollType {
         'allow_multiple_answers': this.allowMultipleAnswers,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

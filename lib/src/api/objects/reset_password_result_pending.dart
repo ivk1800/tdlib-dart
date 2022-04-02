@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The password reset request is pending
 class ResetPasswordResultPending extends ResetPasswordResult {
@@ -24,4 +25,10 @@ class ResetPasswordResultPending extends ResetPasswordResult {
   @override
   Map<String, dynamic> toJson() =>
       {'pending_reset_date': this.pendingResetDate, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

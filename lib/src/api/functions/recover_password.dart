@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Recovers the 2-step verification password using a recovery code sent to an
 /// email address that was previously set up
@@ -30,4 +31,10 @@ class RecoverPassword extends TdFunction {
         'new_hint': this.newHint,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

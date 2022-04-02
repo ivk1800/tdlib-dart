@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An HTTP url needs to be open
 class LoginUrlInfoOpen extends LoginUrlInfo {
@@ -27,4 +28,10 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   @override
   Map<String, dynamic> toJson() =>
       {'url': this.url, 'skip_confirm': this.skipConfirm, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

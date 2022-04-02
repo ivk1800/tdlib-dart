@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Apple Push Notification service VoIP notifications
 class DeviceTokenApplePushVoIP extends DeviceToken {
@@ -38,4 +39,10 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
         'encrypt': this.encrypt,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

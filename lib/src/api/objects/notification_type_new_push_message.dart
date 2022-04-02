@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// New message was received through a push notification
 class NotificationTypeNewPushMessage extends NotificationType {
@@ -53,4 +54,10 @@ class NotificationTypeNewPushMessage extends NotificationType {
         'content': this.content.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

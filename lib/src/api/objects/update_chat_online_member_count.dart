@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The number of online group members has changed. This update with non-zero
 /// count is sent only for currently opened chats. There is no guarantee that
@@ -34,4 +35,10 @@ class UpdateChatOnlineMemberCount extends Update {
         'online_member_count': this.onlineMemberCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

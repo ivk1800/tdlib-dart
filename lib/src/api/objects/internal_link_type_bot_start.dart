@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link is a link to a chat with a Telegram bot. Call searchPublicChat
 /// with the given bot username, check that the user is a bot, show START
@@ -34,4 +35,10 @@ class InternalLinkTypeBotStart extends InternalLinkType {
         'start_parameter': this.startParameter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

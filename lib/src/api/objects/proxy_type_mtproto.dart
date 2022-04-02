@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An MTProto proxy server
 class ProxyTypeMtproto extends ProxyType {
@@ -22,4 +23,10 @@ class ProxyTypeMtproto extends ProxyType {
   @override
   Map<String, dynamic> toJson() =>
       {'secret': this.secret, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns network data usage statistics. Can be called before authorization
 /// Returns [NetworkStatistics]
@@ -15,4 +16,10 @@ class GetNetworkStatistics extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'only_current': this.onlyCurrent, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

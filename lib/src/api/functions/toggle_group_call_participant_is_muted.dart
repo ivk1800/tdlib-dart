@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether a participant of an active group call is muted, unmuted,
 /// or allowed to unmute themselves
@@ -29,4 +30,10 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
         'is_muted': this.isMuted,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

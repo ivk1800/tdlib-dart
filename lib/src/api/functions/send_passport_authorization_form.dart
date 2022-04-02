@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sends a Telegram Passport authorization form, effectively sharing data
 /// with the service. This method must be called after
@@ -26,4 +27,10 @@ class SendPassportAuthorizationForm extends TdFunction {
         'types': types.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

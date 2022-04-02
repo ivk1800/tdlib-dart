@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat invite link was revoked
 class ChatEventInviteLinkRevoked extends ChatEventAction {
@@ -23,4 +24,10 @@ class ChatEventInviteLinkRevoked extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() =>
       {'invite_link': this.inviteLink.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

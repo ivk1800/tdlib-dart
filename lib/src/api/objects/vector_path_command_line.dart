@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A straight line to a given point
 class VectorPathCommandLine extends VectorPathCommand {
@@ -22,4 +23,10 @@ class VectorPathCommandLine extends VectorPathCommand {
   @override
   Map<String, dynamic> toJson() =>
       {'end_point': this.endPoint.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

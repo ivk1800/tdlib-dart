@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A URL linking to a sticker set
 class TMeUrlTypeStickerSet extends TMeUrlType {
@@ -23,4 +24,10 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker_set_id': this.stickerSetId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

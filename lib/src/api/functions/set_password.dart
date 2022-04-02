@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the password for the current user. If a new recovery email address
 /// is specified, then the change will not be applied until the new recovery
@@ -42,4 +43,10 @@ class SetPassword extends TdFunction {
         'new_recovery_email_address': this.newRecoveryEmailAddress,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes an instant view page for a web page
 class WebPageInstantView extends TdObject {
@@ -60,4 +61,10 @@ class WebPageInstantView extends TdObject {
         'feedback_link': this.feedbackLink.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

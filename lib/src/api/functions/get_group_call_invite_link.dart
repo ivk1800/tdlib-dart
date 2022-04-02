@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns invite link to a video chat in a public chat
 /// Returns [HttpUrl]
@@ -24,4 +25,10 @@ class GetGroupCallInviteLink extends TdFunction {
         'can_self_unmute': this.canSelfUnmute,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

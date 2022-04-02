@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Asynchronously uploads a file to the cloud without sending it in a
 /// message. updateFile will be used to notify about upload progress and
@@ -31,4 +32,10 @@ class UploadFile extends TdFunction {
         'priority': this.priority,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

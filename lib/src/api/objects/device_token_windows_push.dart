@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Windows Push Notification Services
 class DeviceTokenWindowsPush extends DeviceToken {
@@ -23,4 +24,10 @@ class DeviceTokenWindowsPush extends DeviceToken {
   @override
   Map<String, dynamic> toJson() =>
       {'access_token': this.accessToken, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

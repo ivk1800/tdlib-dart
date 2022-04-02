@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains a custom keyboard layout to quickly reply to bots
 class ReplyMarkupShowKeyboard extends ReplyMarkup {
@@ -61,4 +62,10 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
         'input_field_placeholder': this.inputFieldPlaceholder,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

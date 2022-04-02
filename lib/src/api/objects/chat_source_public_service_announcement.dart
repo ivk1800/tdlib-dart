@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat contains a public service announcement
 class ChatSourcePublicServiceAnnouncement extends ChatSource {
@@ -27,4 +28,10 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
   @override
   Map<String, dynamic> toJson() =>
       {'type': this.type, 'text': this.text, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

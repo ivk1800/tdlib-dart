@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a list of emoji
 class Emojis extends TdObject {
@@ -24,4 +25,10 @@ class Emojis extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'emojis': emojis.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Outgoing messages were read
 class UpdateChatReadOutbox extends Update {
@@ -31,4 +32,10 @@ class UpdateChatReadOutbox extends Update {
         'last_read_outbox_message_id': this.lastReadOutboxMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

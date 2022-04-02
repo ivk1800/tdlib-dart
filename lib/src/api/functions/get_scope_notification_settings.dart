@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns the notification settings for chats of a given type
 /// Returns [ScopeNotificationSettings]
@@ -16,4 +17,10 @@ class GetScopeNotificationSettings extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'scope': this.scope.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

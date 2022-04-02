@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns list of chats with non-default notification settings
 /// Returns [Chats]
@@ -23,4 +24,10 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
         'compare_sound': this.compareSound,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

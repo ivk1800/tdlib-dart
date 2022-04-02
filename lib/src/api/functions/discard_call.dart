@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Discards a call
 /// Returns [Ok]
@@ -38,4 +39,10 @@ class DiscardCall extends TdFunction {
         'connection_id': this.connectionId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

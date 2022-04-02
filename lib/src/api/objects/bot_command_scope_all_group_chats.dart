@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A scope covering all group and supergroup chats
 class BotCommandScopeAllGroupChats extends BotCommandScope {
@@ -18,4 +19,10 @@ class BotCommandScopeAllGroupChats extends BotCommandScope {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

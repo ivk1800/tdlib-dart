@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Downloads a file from the cloud. Download progress and completion of the
 /// download will be notified through updateFile updates
@@ -47,4 +48,10 @@ class DownloadFile extends TdFunction {
         'synchronous': this.synchronous,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

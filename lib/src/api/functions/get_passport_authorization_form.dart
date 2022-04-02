@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns a Telegram Passport authorization form for sharing data with a
 /// service
@@ -34,4 +35,10 @@ class GetPassportAuthorizationForm extends TdFunction {
         'nonce': this.nonce,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

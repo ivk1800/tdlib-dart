@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The call is pending, waiting to be accepted by a user
 class CallStatePending extends CallState {
@@ -30,4 +31,10 @@ class CallStatePending extends CallState {
         'is_received': this.isReceived,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

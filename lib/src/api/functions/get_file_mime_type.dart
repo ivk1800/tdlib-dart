@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns the MIME type of a file, guessed by its extension. Returns an
 /// empty string on failure. Can be called synchronously
@@ -16,4 +17,10 @@ class GetFileMimeType extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'file_name': this.fileName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

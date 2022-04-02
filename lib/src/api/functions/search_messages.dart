@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches for messages in all chats except secret chats. Returns the
 /// results in reverse chronological order (i.e., in order of decreasing
@@ -73,4 +74,10 @@ class SearchMessages extends TdFunction {
         'max_date': this.maxDate,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

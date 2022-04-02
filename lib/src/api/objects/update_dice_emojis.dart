@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of supported dice emojis has changed
 class UpdateDiceEmojis extends Update {
@@ -24,4 +25,10 @@ class UpdateDiceEmojis extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'emojis': emojis.map((item) => item).toList(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

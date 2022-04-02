@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains statistics about administrator actions done by a user
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
@@ -45,4 +46,10 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
         'restricted_user_count': this.restrictedUserCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

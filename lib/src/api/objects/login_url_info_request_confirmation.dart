@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An authorization confirmation dialog needs to be shown to the user
 class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
@@ -45,4 +46,10 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
         'request_write_access': this.requestWriteAccess,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

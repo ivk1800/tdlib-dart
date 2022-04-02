@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains the result of a custom request
 class CustomRequestResult extends TdObject {
@@ -22,4 +23,10 @@ class CustomRequestResult extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'result': this.result, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

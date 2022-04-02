@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new member was accepted to the chat by an administrator
 class ChatEventMemberJoinedByRequest extends ChatEventAction {
@@ -32,4 +33,10 @@ class ChatEventMemberJoinedByRequest extends ChatEventAction {
         'invite_link': this.inviteLink?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

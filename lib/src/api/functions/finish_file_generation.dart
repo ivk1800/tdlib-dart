@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Finishes the file generation
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class FinishFileGeneration extends TdFunction {
         'error': this.error?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the location of the current user. Needs to be called if
 /// GetOption("is_location_visible") is true and location changes for more
@@ -17,4 +18,10 @@ class SetLocation extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'location': this.location.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

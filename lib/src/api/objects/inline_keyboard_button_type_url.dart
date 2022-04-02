@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button that opens a specified URL
 class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
@@ -21,4 +22,10 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'url': this.url, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

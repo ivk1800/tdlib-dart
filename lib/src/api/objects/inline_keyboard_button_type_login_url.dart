@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A button that opens a specified URL and automatically authorize the
 /// current user if allowed to do so
@@ -36,4 +37,10 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
         'forward_text': this.forwardText,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

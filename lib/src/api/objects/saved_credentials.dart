@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about saved card credentials
 class SavedCredentials extends TdObject {
@@ -25,4 +26,10 @@ class SavedCredentials extends TdObject {
   @override
   Map<String, dynamic> toJson() =>
       {'id': this.id, 'title': this.title, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

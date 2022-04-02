@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A text description shown instead of a raw URL
 class TextEntityTypeTextUrl extends TextEntityType {
@@ -21,4 +22,10 @@ class TextEntityTypeTextUrl extends TextEntityType {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'url': this.url, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

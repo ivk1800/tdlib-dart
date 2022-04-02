@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a local file
 class LocalFile extends TdObject {
@@ -74,4 +75,10 @@ class LocalFile extends TdObject {
         'downloaded_size': this.downloadedSize,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

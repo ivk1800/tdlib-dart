@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat photo was changed
 class UpdateChatPhoto extends Update {
@@ -29,4 +30,10 @@ class UpdateChatPhoto extends Update {
         'photo': this.photo?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

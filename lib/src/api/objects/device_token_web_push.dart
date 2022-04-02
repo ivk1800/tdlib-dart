@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for web Push API
 class DeviceTokenWebPush extends DeviceToken {
@@ -40,4 +41,10 @@ class DeviceTokenWebPush extends DeviceToken {
         'auth_base64url': this.authBase64url,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

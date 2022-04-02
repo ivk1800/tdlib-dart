@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A new high score was achieved in a game
 class MessageGameScore extends MessageContent {
@@ -38,4 +39,10 @@ class MessageGameScore extends MessageContent {
         'score': this.score,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

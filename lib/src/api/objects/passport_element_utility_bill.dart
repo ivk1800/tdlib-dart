@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A Telegram Passport element containing the user's utility bill
 class PassportElementUtilityBill extends PassportElement {
@@ -23,4 +24,10 @@ class PassportElementUtilityBill extends PassportElement {
   @override
   Map<String, dynamic> toJson() =>
       {'utility_bill': this.utilityBill.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

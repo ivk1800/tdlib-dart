@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// An option changed its value
 class UpdateOption extends Update {
@@ -26,4 +27,10 @@ class UpdateOption extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'name': this.name, 'value': this.value.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

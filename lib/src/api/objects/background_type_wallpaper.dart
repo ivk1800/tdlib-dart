@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A wallpaper in JPEG format
 class BackgroundTypeWallpaper extends BackgroundType {
@@ -31,4 +32,10 @@ class BackgroundTypeWallpaper extends BackgroundType {
         'is_moving': this.isMoving,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

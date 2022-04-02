@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A secret chat with a user
 class ChatTypeSecret extends ChatType {
@@ -29,4 +30,10 @@ class ChatTypeSecret extends ChatType {
         'user_id': this.userId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

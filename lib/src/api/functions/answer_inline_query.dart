@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Sets the result of an inline query; for bots only
 /// Returns [Ok]
@@ -52,4 +53,10 @@ class AnswerInlineQuery extends TdFunction {
         'switch_pm_parameter': this.switchPmParameter,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

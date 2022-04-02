@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Revokes invite link for a chat. Available for basic groups, supergroups,
 /// and channels. Requires administrator privileges and can_invite_users right
@@ -25,4 +26,10 @@ class RevokeChatInviteLink extends TdFunction {
         'invite_link': this.inviteLink,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

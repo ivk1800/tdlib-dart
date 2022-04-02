@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Changes the marked as unread state of a chat
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class ToggleChatIsMarkedAsUnread extends TdFunction {
         'is_marked_as_unread': this.isMarkedAsUnread,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

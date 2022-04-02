@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Creates a new temporary password for processing payments
 /// Returns [TemporaryPasswordState]
@@ -22,4 +23,10 @@ class CreateTemporaryPassword extends TdFunction {
         'valid_for': this.validFor,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

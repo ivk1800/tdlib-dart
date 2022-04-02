@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an HTTP URL which can be used to automatically authorize the
 /// current user on a website after clicking an HTTP link. Use the method
@@ -24,4 +25,10 @@ class GetExternalLink extends TdFunction {
         'allow_write_access': this.allowWriteAccess,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains active notifications that was shown on previous application
 /// launches. This update is sent only if the message database is used. In
@@ -30,4 +31,10 @@ class UpdateActiveNotifications extends Update {
         'groups': groups.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

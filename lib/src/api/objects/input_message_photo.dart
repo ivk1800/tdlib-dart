@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A photo message
 class InputMessagePhoto extends InputMessageContent {
@@ -70,4 +71,10 @@ class InputMessagePhoto extends InputMessageContent {
         'ttl': this.ttl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

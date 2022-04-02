@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A link to a chat
 class PageBlockChatLink extends PageBlock {
@@ -36,4 +37,10 @@ class PageBlockChatLink extends PageBlock {
         'username': this.username,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The connection state has changed. This update must be used only to show a
 /// human-readable description of the connection state
@@ -24,4 +25,10 @@ class UpdateConnectionState extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'state': this.state.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

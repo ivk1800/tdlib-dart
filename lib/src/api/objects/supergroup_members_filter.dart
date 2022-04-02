@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Specifies the kind of chat members to return in getSupergroupMembers
 abstract class SupergroupMembersFilter extends TdObject {
@@ -44,4 +45,10 @@ abstract class SupergroupMembersFilter extends TdObject {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

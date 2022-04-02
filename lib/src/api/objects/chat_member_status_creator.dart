@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user is the owner of the chat and has all the administrator privileges
 class ChatMemberStatusCreator extends ChatMemberStatus {
@@ -40,4 +41,10 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
         'is_member': this.isMember,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

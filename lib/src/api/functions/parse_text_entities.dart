@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Parses Bold, Italic, Underline, Strikethrough, Spoiler, Code, Pre,
 /// PreCode, TextUrl and MentionName entities contained in the text. Can be
@@ -23,4 +24,10 @@ class ParseTextEntities extends TdFunction {
         'parse_mode': this.parseMode.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Adds a new sticker to the list of favorite stickers. The new sticker is
 /// added to the top of the list. If the sticker was already in the list, it
@@ -18,4 +19,10 @@ class AddFavoriteSticker extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

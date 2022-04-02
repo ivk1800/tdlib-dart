@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The message will be sent at the specified date
 class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
@@ -24,4 +25,10 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   @override
   Map<String, dynamic> toJson() =>
       {'send_date': this.sendDate, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains full information about a supergroup or channel
 class SupergroupFullInfo extends TdObject {
@@ -164,4 +165,10 @@ class SupergroupFullInfo extends TdObject {
         'upgraded_from_max_message_id': this.upgradedFromMaxMessageId,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

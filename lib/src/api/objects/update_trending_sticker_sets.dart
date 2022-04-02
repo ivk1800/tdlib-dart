@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of trending sticker sets was updated or some of them were viewed
 class UpdateTrendingStickerSets extends Update {
@@ -24,4 +25,10 @@ class UpdateTrendingStickerSets extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker_sets': this.stickerSets.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

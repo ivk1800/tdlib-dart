@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a set of filters used to obtain a chat event log
 class ChatEventLogFilters extends TdObject {
@@ -94,4 +95,10 @@ class ChatEventLogFilters extends TdObject {
         'video_chat_changes': this.videoChatChanges,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Related articles
 class PageBlockRelatedArticles extends PageBlock {
@@ -32,4 +33,10 @@ class PageBlockRelatedArticles extends PageBlock {
         'articles': articles.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

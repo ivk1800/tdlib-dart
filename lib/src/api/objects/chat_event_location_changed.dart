@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The supergroup location was changed
 class ChatEventLocationChanged extends ChatEventAction {
@@ -30,4 +31,10 @@ class ChatEventLocationChanged extends ChatEventAction {
         'new_location': this.newLocation?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

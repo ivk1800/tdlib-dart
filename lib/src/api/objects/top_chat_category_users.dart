@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A category containing frequently used private chats with non-bot users
 class TopChatCategoryUsers extends TopChatCategory {
@@ -18,4 +19,10 @@ class TopChatCategoryUsers extends TopChatCategory {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

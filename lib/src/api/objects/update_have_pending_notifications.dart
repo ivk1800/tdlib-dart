@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes whether there are some pending notification updates. Can be used
 /// to prevent application from killing, while there are some pending
@@ -36,4 +37,10 @@ class UpdateHavePendingNotifications extends Update {
         'have_unreceived_notifications': this.haveUnreceivedNotifications,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

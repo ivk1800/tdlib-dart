@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Contains information about the current recovery email address
 class RecoveryEmailAddress extends TdObject {
@@ -25,4 +26,10 @@ class RecoveryEmailAddress extends TdObject {
         'recovery_email_address': this.recoveryEmailAddress,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

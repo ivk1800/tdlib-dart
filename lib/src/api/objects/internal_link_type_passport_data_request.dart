@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The link contains a request of Telegram passport data. Call
 /// getPassportAuthorizationForm with the given parameters to process the link
@@ -56,4 +57,10 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
         'callback_url': this.callbackUrl,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

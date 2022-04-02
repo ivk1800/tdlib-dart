@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether current user's video is paused
 /// Returns [Ok]
@@ -22,4 +23,10 @@ class ToggleGroupCallIsMyVideoPaused extends TdFunction {
         'is_my_video_paused': this.isMyVideoPaused,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

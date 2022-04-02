@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Thumbnail image of a very poor quality and low resolution
 class Minithumbnail extends TdObject {
@@ -34,4 +35,10 @@ class Minithumbnail extends TdObject {
         'data': this.data,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

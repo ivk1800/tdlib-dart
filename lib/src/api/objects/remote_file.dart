@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a remote file
 class RemoteFile extends TdObject {
@@ -63,4 +64,10 @@ class RemoteFile extends TdObject {
         'uploaded_size': this.uploadedSize,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

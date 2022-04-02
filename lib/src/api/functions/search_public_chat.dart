@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Searches a public chat by its username. Currently, only private chats,
 /// supergroups and channels can be public. Returns the chat if found;
@@ -17,4 +18,10 @@ class SearchPublicChat extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'username': this.username, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

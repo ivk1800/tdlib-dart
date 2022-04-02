@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The selfie with the document contains an error. The error will be
 /// considered resolved when the file with the selfie changes
@@ -20,4 +21,10 @@ class PassportElementErrorSourceSelfie extends PassportElementErrorSource {
   String getConstructor() => CONSTRUCTOR;
   @override
   Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

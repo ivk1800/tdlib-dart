@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A sticker set has changed
 class UpdateStickerSet extends Update {
@@ -23,4 +24,10 @@ class UpdateStickerSet extends Update {
   @override
   Map<String, dynamic> toJson() =>
       {'sticker_set': this.stickerSet.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

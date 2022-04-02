@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The call is ready to use
 class CallStateReady extends CallState {
@@ -60,4 +61,10 @@ class CallStateReady extends CallState {
         'allow_p2p': this.allowP2p,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

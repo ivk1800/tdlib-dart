@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Represents a link to an article or web page
 class InlineQueryResultArticle extends InlineQueryResult {
@@ -56,4 +57,10 @@ class InlineQueryResultArticle extends InlineQueryResult {
         'thumbnail': this.thumbnail?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a location on planet Earth
 class Location extends TdObject {
@@ -40,4 +41,10 @@ class Location extends TdObject {
         'horizontal_accuracy': this.horizontalAccuracy,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

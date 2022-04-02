@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The user has been authorized, but needs to enter a password to start using
 /// the application
@@ -41,4 +42,10 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
         'recovery_email_address_pattern': this.recoveryEmailAddressPattern,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

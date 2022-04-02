@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A chat invite link
 class TMeUrlTypeChatInvite extends TMeUrlType {
@@ -23,4 +24,10 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() =>
       {'info': this.info.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

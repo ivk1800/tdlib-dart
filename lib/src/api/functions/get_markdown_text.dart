@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Replaces text entities with Markdown formatting in a human-friendly
 /// format. Entities that can't be represented in Markdown unambiguously are
@@ -17,4 +18,10 @@ class GetMarkdownText extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'text': this.text.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Returns an invoice payment form. This method must be called when the user
 /// presses inlineKeyboardButtonBuy
@@ -26,4 +27,10 @@ class GetPaymentForm extends TdFunction {
         'theme': this.theme?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

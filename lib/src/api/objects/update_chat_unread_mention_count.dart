@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The chat unread_mention_count has changed
 class UpdateChatUnreadMentionCount extends Update {
@@ -32,4 +33,10 @@ class UpdateChatUnreadMentionCount extends Update {
         'unread_mention_count': this.unreadMentionCount,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

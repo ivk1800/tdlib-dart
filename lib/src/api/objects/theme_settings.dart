@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes theme settings
 class ThemeSettings extends TdObject {
@@ -54,4 +55,10 @@ class ThemeSettings extends TdObject {
         'outgoing_message_accent_color': this.outgoingMessageAccentColor,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

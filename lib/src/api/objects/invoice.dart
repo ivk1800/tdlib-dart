@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Product invoice
 class Invoice extends TdObject {
@@ -102,4 +103,10 @@ class Invoice extends TdObject {
         'is_flexible': this.isFlexible,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

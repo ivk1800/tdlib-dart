@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Manually adds a new animation to the list of saved animations. The new
 /// animation is added to the beginning of the list. If the animation was
@@ -19,4 +20,10 @@ class AddSavedAnimation extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'animation': this.animation.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

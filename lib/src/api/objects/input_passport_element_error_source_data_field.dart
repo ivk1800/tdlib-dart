@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A data field contains an error. The error is considered resolved when the
 /// field's value changes
@@ -33,4 +34,10 @@ class InputPassportElementErrorSourceDataField
         'data_hash': this.dataHash,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A message with a game
 class MessageGame extends MessageContent {
@@ -22,4 +23,10 @@ class MessageGame extends MessageContent {
   @override
   Map<String, dynamic> toJson() =>
       {'game': this.game.toJson(), '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

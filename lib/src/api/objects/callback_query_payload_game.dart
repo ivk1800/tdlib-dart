@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The payload for a game callback button
 class CallbackQueryPayloadGame extends CallbackQueryPayload {
@@ -23,4 +24,10 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
   @override
   Map<String, dynamic> toJson() =>
       {'game_short_name': this.gameShortName, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

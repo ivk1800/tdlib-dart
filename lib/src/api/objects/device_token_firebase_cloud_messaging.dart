@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A token for Firebase Cloud Messaging
 class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
@@ -28,4 +29,10 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   @override
   Map<String, dynamic> toJson() =>
       {'token': this.token, 'encrypt': this.encrypt, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// A detailed statistics about a supergroup chat
 class ChatStatisticsSupergroup extends ChatStatistics {
@@ -134,4 +135,10 @@ class ChatStatisticsSupergroup extends ChatStatistics {
         'top_inviters': topInviters.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

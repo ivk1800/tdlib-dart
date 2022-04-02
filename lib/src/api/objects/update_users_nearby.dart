@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// The list of users nearby has changed. The update is guaranteed to be sent
 /// only 60 seconds after a successful searchChatsNearby request
@@ -28,4 +29,10 @@ class UpdateUsersNearby extends Update {
         'users_nearby': usersNearby.map((item) => item.toJson()).toList(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

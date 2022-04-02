@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Toggles whether a session can accept incoming secret chats
 /// Returns [Ok]
@@ -23,4 +24,10 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
         'can_accept_secret_chats': this.canAcceptSecretChats,
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

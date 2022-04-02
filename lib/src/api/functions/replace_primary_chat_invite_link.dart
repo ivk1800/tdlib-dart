@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Replaces current primary invite link for a chat with a new primary invite
 /// link. Available for basic groups, supergroups, and channels. Requires
@@ -17,4 +18,10 @@ class ReplacePrimaryChatInviteLink extends TdFunction {
   @override
   Map<String, dynamic> toJson() =>
       {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }

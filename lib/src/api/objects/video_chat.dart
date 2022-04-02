@@ -1,4 +1,5 @@
 import '../tdapi.dart';
+import '../extensions/data_class_extensions.dart';
 
 /// Describes a video chat
 class VideoChat extends TdObject {
@@ -42,4 +43,10 @@ class VideoChat extends TdObject {
         'default_participant_id': this.defaultParticipantId?.toJson(),
         '@type': CONSTRUCTOR
       };
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
 }
