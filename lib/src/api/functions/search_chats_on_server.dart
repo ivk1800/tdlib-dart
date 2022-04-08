@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Searches for the specified query in the title and username of already
 /// known chats via request to the server. Returns chats in the order seen in
 /// the main chat list
 /// Returns [Chats]
+@immutable
 class SearchChatsOnServer extends TdFunction {
-  SearchChatsOnServer({required this.query, required this.limit});
+  const SearchChatsOnServer({
+    required this.query,
+    required this.limit,
+  });
 
   /// [query] Query to search for
   final String query;
@@ -14,13 +19,17 @@ class SearchChatsOnServer extends TdFunction {
   /// [limit] The maximum number of chats to be returned
   final int limit;
 
-  static const String CONSTRUCTOR = 'searchChatsOnServer';
+  static const String constructor = 'searchChatsOnServer';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'query': this.query, 'limit': this.limit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'query': query,
+        'limit': limit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

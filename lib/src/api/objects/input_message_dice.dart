@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A dice message
+@immutable
 class InputMessageDice extends InputMessageContent {
-  InputMessageDice({required this.emoji, required this.clearDraft});
+  const InputMessageDice({
+    required this.emoji,
+    required this.clearDraft,
+  });
 
   /// [emoji] Emoji on which the dice throw animation is based
   final String emoji;
@@ -11,7 +16,7 @@ class InputMessageDice extends InputMessageContent {
   /// [clearDraft] True, if the chat message draft must be deleted
   final bool clearDraft;
 
-  static const String CONSTRUCTOR = 'inputMessageDice';
+  static const String constructor = 'inputMessageDice';
 
   static InputMessageDice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class InputMessageDice extends InputMessageContent {
     }
 
     return InputMessageDice(
-        emoji: json['emoji'], clearDraft: json['clear_draft']);
+      emoji: json['emoji'],
+      clearDraft: json['clear_draft'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'emoji': this.emoji,
-        'clear_draft': this.clearDraft,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'emoji': emoji,
+        'clear_draft': clearDraft,
+        '@type': constructor,
       };
 
   @override

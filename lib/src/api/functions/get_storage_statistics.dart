@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns storage usage statistics. Can be called before authorization
 /// Returns [StorageStatistics]
+@immutable
 class GetStorageStatistics extends TdFunction {
-  GetStorageStatistics({required this.chatLimit});
+  const GetStorageStatistics({
+    required this.chatLimit,
+  });
 
   /// [chatLimit] The maximum number of chats with the largest storage usage for
   /// which separate statistics need to be returned. All other chats will be
@@ -12,13 +16,16 @@ class GetStorageStatistics extends TdFunction {
   /// used, the chat_limit is ignored and is always set to 0
   final int chatLimit;
 
-  static const String CONSTRUCTOR = 'getStorageStatistics';
+  static const String constructor = 'getStorageStatistics';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'chat_limit': this.chatLimit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_limit': chatLimit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

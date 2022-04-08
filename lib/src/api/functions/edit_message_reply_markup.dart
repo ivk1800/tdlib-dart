@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the message reply markup; for bots only. Returns the edited message
 /// after the edit is completed on the server side
 /// Returns [Message]
+@immutable
 class EditMessageReplyMarkup extends TdFunction {
-  EditMessageReplyMarkup(
-      {required this.chatId, required this.messageId, this.replyMarkup});
+  const EditMessageReplyMarkup({
+    required this.chatId,
+    required this.messageId,
+    this.replyMarkup,
+  });
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -17,16 +22,17 @@ class EditMessageReplyMarkup extends TdFunction {
   /// [replyMarkup] The new message reply markup; pass null if none
   final ReplyMarkup? replyMarkup;
 
-  static const String CONSTRUCTOR = 'editMessageReplyMarkup';
+  static const String constructor = 'editMessageReplyMarkup';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'reply_markup': replyMarkup?.toJson(),
+        '@type': constructor,
       };
 
   @override

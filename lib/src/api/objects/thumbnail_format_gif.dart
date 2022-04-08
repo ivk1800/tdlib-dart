@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The thumbnail is in static GIF format. It will be used only for some bot
 /// inline results
+@immutable
 class ThumbnailFormatGif extends ThumbnailFormat {
   const ThumbnailFormatGif();
 
-  static const String CONSTRUCTOR = 'thumbnailFormatGif';
+  static const String constructor = 'thumbnailFormatGif';
 
   static ThumbnailFormatGif? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,9 +19,12 @@ class ThumbnailFormatGif extends ThumbnailFormat {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

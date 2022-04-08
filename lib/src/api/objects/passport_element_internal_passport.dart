@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element containing the user's internal passport
+@immutable
 class PassportElementInternalPassport extends PassportElement {
-  PassportElementInternalPassport({required this.internalPassport});
+  const PassportElementInternalPassport({
+    required this.internalPassport,
+  });
 
   /// [internalPassport] Internal passport
   final IdentityDocument internalPassport;
 
-  static const String CONSTRUCTOR = 'passportElementInternalPassport';
+  static const String constructor = 'passportElementInternalPassport';
 
   static PassportElementInternalPassport? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,16 +20,17 @@ class PassportElementInternalPassport extends PassportElement {
     }
 
     return PassportElementInternalPassport(
-        internalPassport:
-            IdentityDocument.fromJson(json['internal_passport'])!);
+      internalPassport: IdentityDocument.fromJson(json['internal_passport'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'internal_passport': this.internalPassport.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'internal_passport': internalPassport.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Saves application log event on the server. Can be called before
 /// authorization
 /// Returns [Ok]
+@immutable
 class SaveApplicationLogEvent extends TdFunction {
-  SaveApplicationLogEvent(
-      {required this.type, this.chatId, required this.data});
+  const SaveApplicationLogEvent({
+    required this.type,
+    this.chatId,
+    required this.data,
+  });
 
   /// [type] Event type
   final String type;
@@ -17,16 +22,17 @@ class SaveApplicationLogEvent extends TdFunction {
   /// [data] The log event data
   final JsonValue data;
 
-  static const String CONSTRUCTOR = 'saveApplicationLogEvent';
+  static const String constructor = 'saveApplicationLogEvent';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'type': this.type,
-        'chat_id': this.chatId,
-        'data': this.data.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type,
+        'chat_id': chatId,
+        'data': data.toJson(),
+        '@type': constructor,
       };
 
   @override

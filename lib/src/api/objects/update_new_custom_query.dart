@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new incoming query; for bots only
+@immutable
 class UpdateNewCustomQuery extends Update {
-  UpdateNewCustomQuery(
-      {required this.id, required this.data, required this.timeout});
+  const UpdateNewCustomQuery({
+    required this.id,
+    required this.data,
+    required this.timeout,
+  });
 
   /// [id] The query identifier
   final int id;
@@ -15,7 +20,7 @@ class UpdateNewCustomQuery extends Update {
   /// [timeout] Query timeout
   final int timeout;
 
-  static const String CONSTRUCTOR = 'updateNewCustomQuery';
+  static const String constructor = 'updateNewCustomQuery';
 
   static UpdateNewCustomQuery? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class UpdateNewCustomQuery extends Update {
     }
 
     return UpdateNewCustomQuery(
-        id: int.tryParse(json['id']) ?? 0,
-        data: json['data'],
-        timeout: json['timeout']);
+      id: int.tryParse(json['id']) ?? 0,
+      data: json['data'],
+      timeout: json['timeout'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'data': this.data,
-        'timeout': this.timeout,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'data': data,
+        'timeout': timeout,
+        '@type': constructor,
       };
 
   @override

@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of public chats of the specified type, owned by the user
 /// Returns [Chats]
+@immutable
 class GetCreatedPublicChats extends TdFunction {
-  GetCreatedPublicChats({required this.type});
+  const GetCreatedPublicChats({
+    required this.type,
+  });
 
   /// [type] Type of the public chats to return
   final PublicChatType type;
 
-  static const String CONSTRUCTOR = 'getCreatedPublicChats';
+  static const String constructor = 'getCreatedPublicChats';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'type': this.type.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes a pinned message from a chat; requires can_pin_messages rights in
 /// the group or can_edit_messages rights in the channel
 /// Returns [Ok]
+@immutable
 class UnpinChatMessage extends TdFunction {
-  UnpinChatMessage({required this.chatId, required this.messageId});
+  const UnpinChatMessage({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -13,15 +18,16 @@ class UnpinChatMessage extends TdFunction {
   /// [messageId] Identifier of the removed pinned message
   final int messageId;
 
-  static const String CONSTRUCTOR = 'unpinChatMessage';
+  static const String constructor = 'unpinChatMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

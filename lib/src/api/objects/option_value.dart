@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the value of an option
+@immutable
 abstract class OptionValue extends TdObject {
   const OptionValue();
 
-  static const String CONSTRUCTOR = 'optionValue';
+  static const String constructor = 'optionValue';
 
   /// Inherited by:
   /// [OptionValueBoolean]
@@ -17,14 +19,14 @@ abstract class OptionValue extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case OptionValueBoolean.CONSTRUCTOR:
+    switch (json['@type']) {
+      case OptionValueBoolean.constructor:
         return OptionValueBoolean.fromJson(json);
-      case OptionValueEmpty.CONSTRUCTOR:
+      case OptionValueEmpty.constructor:
         return OptionValueEmpty.fromJson(json);
-      case OptionValueInteger.CONSTRUCTOR:
+      case OptionValueInteger.constructor:
         return OptionValueInteger.fromJson(json);
-      case OptionValueString.CONSTRUCTOR:
+      case OptionValueString.constructor:
         return OptionValueString.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class OptionValue extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

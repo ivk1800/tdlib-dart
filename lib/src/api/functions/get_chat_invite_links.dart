@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns invite links for a chat created by specified administrator.
 /// Requires administrator privileges and can_invite_users right in the chat
 /// to get own links and owner privileges to get other links
 /// Returns [ChatInviteLinks]
+@immutable
 class GetChatInviteLinks extends TdFunction {
-  GetChatInviteLinks(
-      {required this.chatId,
-      required this.creatorUserId,
-      required this.isRevoked,
-      required this.offsetDate,
-      required this.offsetInviteLink,
-      required this.limit});
+  const GetChatInviteLinks({
+    required this.chatId,
+    required this.creatorUserId,
+    required this.isRevoked,
+    required this.offsetDate,
+    required this.offsetInviteLink,
+    required this.limit,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -36,19 +39,20 @@ class GetChatInviteLinks extends TdFunction {
   /// [limit] The maximum number of invite links to return; up to 100
   final int limit;
 
-  static const String CONSTRUCTOR = 'getChatInviteLinks';
+  static const String constructor = 'getChatInviteLinks';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'creator_user_id': this.creatorUserId,
-        'is_revoked': this.isRevoked,
-        'offset_date': this.offsetDate,
-        'offset_invite_link': this.offsetInviteLink,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'creator_user_id': creatorUserId,
+        'is_revoked': isRevoked,
+        'offset_date': offsetDate,
+        'offset_invite_link': offsetInviteLink,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

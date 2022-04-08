@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a related article
+@immutable
 class PageBlockRelatedArticle extends TdObject {
-  PageBlockRelatedArticle(
-      {required this.url,
-      required this.title,
-      required this.description,
-      this.photo,
-      required this.author,
-      required this.publishDate});
+  const PageBlockRelatedArticle({
+    required this.url,
+    required this.title,
+    required this.description,
+    this.photo,
+    required this.author,
+    required this.publishDate,
+  });
 
   /// [url] Related article URL
   final String url;
@@ -30,7 +33,7 @@ class PageBlockRelatedArticle extends TdObject {
   /// published; 0 if unknown
   final int publishDate;
 
-  static const String CONSTRUCTOR = 'pageBlockRelatedArticle';
+  static const String constructor = 'pageBlockRelatedArticle';
 
   static PageBlockRelatedArticle? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class PageBlockRelatedArticle extends TdObject {
     }
 
     return PageBlockRelatedArticle(
-        url: json['url'],
-        title: json['title'],
-        description: json['description'],
-        photo: Photo.fromJson(json['photo']),
-        author: json['author'],
-        publishDate: json['publish_date']);
+      url: json['url'],
+      title: json['title'],
+      description: json['description'],
+      photo: Photo.fromJson(json['photo']),
+      author: json['author'],
+      publishDate: json['publish_date'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'title': this.title,
-        'description': this.description,
-        'photo': this.photo?.toJson(),
-        'author': this.author,
-        'publish_date': this.publishDate,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'title': title,
+        'description': description,
+        'photo': photo?.toJson(),
+        'author': author,
+        'publish_date': publishDate,
+        '@type': constructor,
       };
 
   @override

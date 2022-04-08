@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A rich text email link
+@immutable
 class RichTextEmailAddress extends RichText {
-  RichTextEmailAddress({required this.text, required this.emailAddress});
+  const RichTextEmailAddress({
+    required this.text,
+    required this.emailAddress,
+  });
 
   /// [text] Text
   final RichText text;
@@ -11,7 +16,7 @@ class RichTextEmailAddress extends RichText {
   /// [emailAddress] Email address
   final String emailAddress;
 
-  static const String CONSTRUCTOR = 'richTextEmailAddress';
+  static const String constructor = 'richTextEmailAddress';
 
   static RichTextEmailAddress? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class RichTextEmailAddress extends RichText {
     }
 
     return RichTextEmailAddress(
-        text: RichText.fromJson(json['text'])!,
-        emailAddress: json['email_address']);
+      text: RichText.fromJson(json['text'])!,
+      emailAddress: json['email_address'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'email_address': this.emailAddress,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'email_address': emailAddress,
+        '@type': constructor,
       };
 
   @override

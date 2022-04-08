@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a link to a message in a chat
+@immutable
 class MessageLinkInfo extends TdObject {
-  MessageLinkInfo(
-      {required this.isPublic,
-      required this.chatId,
-      this.message,
-      required this.mediaTimestamp,
-      required this.forAlbum,
-      required this.forComment});
+  const MessageLinkInfo({
+    required this.isPublic,
+    required this.chatId,
+    this.message,
+    required this.mediaTimestamp,
+    required this.forAlbum,
+    required this.forComment,
+  });
 
   /// [isPublic] True, if the link is a public link for a message in a chat
   final bool isPublic;
@@ -34,7 +37,7 @@ class MessageLinkInfo extends TdObject {
   /// from a message thread
   final bool forComment;
 
-  static const String CONSTRUCTOR = 'messageLinkInfo';
+  static const String constructor = 'messageLinkInfo';
 
   static MessageLinkInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -42,25 +45,27 @@ class MessageLinkInfo extends TdObject {
     }
 
     return MessageLinkInfo(
-        isPublic: json['is_public'],
-        chatId: json['chat_id'],
-        message: Message.fromJson(json['message']),
-        mediaTimestamp: json['media_timestamp'],
-        forAlbum: json['for_album'],
-        forComment: json['for_comment']);
+      isPublic: json['is_public'],
+      chatId: json['chat_id'],
+      message: Message.fromJson(json['message']),
+      mediaTimestamp: json['media_timestamp'],
+      forAlbum: json['for_album'],
+      forComment: json['for_comment'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_public': this.isPublic,
-        'chat_id': this.chatId,
-        'message': this.message?.toJson(),
-        'media_timestamp': this.mediaTimestamp,
-        'for_album': this.forAlbum,
-        'for_comment': this.forComment,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_public': isPublic,
+        'chat_id': chatId,
+        'message': message?.toJson(),
+        'media_timestamp': mediaTimestamp,
+        'for_album': forAlbum,
+        'for_comment': forComment,
+        '@type': constructor,
       };
 
   @override

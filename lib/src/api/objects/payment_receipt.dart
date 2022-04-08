@@ -1,20 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a successful payment
+@immutable
 class PaymentReceipt extends TdObject {
-  PaymentReceipt(
-      {required this.title,
-      required this.description,
-      this.photo,
-      required this.date,
-      required this.sellerBotUserId,
-      required this.paymentsProviderUserId,
-      required this.invoice,
-      this.orderInfo,
-      this.shippingOption,
-      required this.credentialsTitle,
-      required this.tipAmount});
+  const PaymentReceipt({
+    required this.title,
+    required this.description,
+    this.photo,
+    required this.date,
+    required this.sellerBotUserId,
+    required this.paymentsProviderUserId,
+    required this.invoice,
+    this.orderInfo,
+    this.shippingOption,
+    required this.credentialsTitle,
+    required this.tipAmount,
+  });
 
   /// [title] Product title
   final String title;
@@ -50,7 +53,7 @@ class PaymentReceipt extends TdObject {
   /// the currency
   final int tipAmount;
 
-  static const String CONSTRUCTOR = 'paymentReceipt';
+  static const String constructor = 'paymentReceipt';
 
   static PaymentReceipt? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -58,35 +61,37 @@ class PaymentReceipt extends TdObject {
     }
 
     return PaymentReceipt(
-        title: json['title'],
-        description: json['description'],
-        photo: Photo.fromJson(json['photo']),
-        date: json['date'],
-        sellerBotUserId: json['seller_bot_user_id'],
-        paymentsProviderUserId: json['payments_provider_user_id'],
-        invoice: Invoice.fromJson(json['invoice'])!,
-        orderInfo: OrderInfo.fromJson(json['order_info']),
-        shippingOption: ShippingOption.fromJson(json['shipping_option']),
-        credentialsTitle: json['credentials_title'],
-        tipAmount: json['tip_amount']);
+      title: json['title'],
+      description: json['description'],
+      photo: Photo.fromJson(json['photo']),
+      date: json['date'],
+      sellerBotUserId: json['seller_bot_user_id'],
+      paymentsProviderUserId: json['payments_provider_user_id'],
+      invoice: Invoice.fromJson(json['invoice'])!,
+      orderInfo: OrderInfo.fromJson(json['order_info']),
+      shippingOption: ShippingOption.fromJson(json['shipping_option']),
+      credentialsTitle: json['credentials_title'],
+      tipAmount: json['tip_amount'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'description': this.description,
-        'photo': this.photo?.toJson(),
-        'date': this.date,
-        'seller_bot_user_id': this.sellerBotUserId,
-        'payments_provider_user_id': this.paymentsProviderUserId,
-        'invoice': this.invoice.toJson(),
-        'order_info': this.orderInfo?.toJson(),
-        'shipping_option': this.shippingOption?.toJson(),
-        'credentials_title': this.credentialsTitle,
-        'tip_amount': this.tipAmount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'description': description,
+        'photo': photo?.toJson(),
+        'date': date,
+        'seller_bot_user_id': sellerBotUserId,
+        'payments_provider_user_id': paymentsProviderUserId,
+        'invoice': invoice.toJson(),
+        'order_info': orderInfo?.toJson(),
+        'shipping_option': shippingOption?.toJson(),
+        'credentials_title': credentialsTitle,
+        'tip_amount': tipAmount,
+        '@type': constructor,
       };
 
   @override

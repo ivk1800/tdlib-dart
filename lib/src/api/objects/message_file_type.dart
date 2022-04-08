@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a file with messages exported from another app
+@immutable
 abstract class MessageFileType extends TdObject {
   const MessageFileType();
 
-  static const String CONSTRUCTOR = 'messageFileType';
+  static const String constructor = 'messageFileType';
 
   /// Inherited by:
   /// [MessageFileTypePrivate]
@@ -16,12 +18,12 @@ abstract class MessageFileType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageFileTypePrivate.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageFileTypePrivate.constructor:
         return MessageFileTypePrivate.fromJson(json);
-      case MessageFileTypeGroup.CONSTRUCTOR:
+      case MessageFileTypeGroup.constructor:
         return MessageFileTypeGroup.fromJson(json);
-      case MessageFileTypeUnknown.CONSTRUCTOR:
+      case MessageFileTypeUnknown.constructor:
         return MessageFileTypeUnknown.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class MessageFileType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

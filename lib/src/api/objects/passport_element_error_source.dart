@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains the description of an error in a Telegram Passport element
+@immutable
 abstract class PassportElementErrorSource extends TdObject {
   const PassportElementErrorSource();
 
-  static const String CONSTRUCTOR = 'passportElementErrorSource';
+  static const String constructor = 'passportElementErrorSource';
 
   /// Inherited by:
   /// [PassportElementErrorSourceUnspecified]
@@ -22,24 +24,24 @@ abstract class PassportElementErrorSource extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PassportElementErrorSourceUnspecified.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PassportElementErrorSourceUnspecified.constructor:
         return PassportElementErrorSourceUnspecified.fromJson(json);
-      case PassportElementErrorSourceDataField.CONSTRUCTOR:
+      case PassportElementErrorSourceDataField.constructor:
         return PassportElementErrorSourceDataField.fromJson(json);
-      case PassportElementErrorSourceFrontSide.CONSTRUCTOR:
+      case PassportElementErrorSourceFrontSide.constructor:
         return PassportElementErrorSourceFrontSide.fromJson(json);
-      case PassportElementErrorSourceReverseSide.CONSTRUCTOR:
+      case PassportElementErrorSourceReverseSide.constructor:
         return PassportElementErrorSourceReverseSide.fromJson(json);
-      case PassportElementErrorSourceSelfie.CONSTRUCTOR:
+      case PassportElementErrorSourceSelfie.constructor:
         return PassportElementErrorSourceSelfie.fromJson(json);
-      case PassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+      case PassportElementErrorSourceTranslationFile.constructor:
         return PassportElementErrorSourceTranslationFile.fromJson(json);
-      case PassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+      case PassportElementErrorSourceTranslationFiles.constructor:
         return PassportElementErrorSourceTranslationFiles.fromJson(json);
-      case PassportElementErrorSourceFile.CONSTRUCTOR:
+      case PassportElementErrorSourceFile.constructor:
         return PassportElementErrorSourceFile.fromJson(json);
-      case PassportElementErrorSourceFiles.CONSTRUCTOR:
+      case PassportElementErrorSourceFiles.constructor:
         return PassportElementErrorSourceFiles.fromJson(json);
       default:
         return null;
@@ -47,7 +49,7 @@ abstract class PassportElementErrorSource extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

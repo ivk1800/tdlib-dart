@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a video note. The video must be equal in width and height,
 /// cropped to a circle, and stored in MPEG4 format
+@immutable
 class VideoNote extends TdObject {
-  VideoNote(
-      {required this.duration,
-      required this.length,
-      this.minithumbnail,
-      this.thumbnail,
-      required this.video});
+  const VideoNote({
+    required this.duration,
+    required this.length,
+    this.minithumbnail,
+    this.thumbnail,
+    required this.video,
+  });
 
   /// [duration] Duration of the video, in seconds; as defined by the sender
   final int duration;
@@ -27,7 +30,7 @@ class VideoNote extends TdObject {
   /// [video] File containing the video
   final File video;
 
-  static const String CONSTRUCTOR = 'videoNote';
+  static const String constructor = 'videoNote';
 
   static VideoNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,23 +38,25 @@ class VideoNote extends TdObject {
     }
 
     return VideoNote(
-        duration: json['duration'],
-        length: json['length'],
-        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-        thumbnail: Thumbnail.fromJson(json['thumbnail']),
-        video: File.fromJson(json['video'])!);
+      duration: json['duration'],
+      length: json['length'],
+      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      video: File.fromJson(json['video'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'duration': this.duration,
-        'length': this.length,
-        'minithumbnail': this.minithumbnail?.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
-        'video': this.video.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'duration': duration,
+        'length': length,
+        'minithumbnail': minithumbnail?.toJson(),
+        'thumbnail': thumbnail?.toJson(),
+        'video': video.toJson(),
+        '@type': constructor,
       };
 
   @override

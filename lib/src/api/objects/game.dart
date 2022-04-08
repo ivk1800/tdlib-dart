@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a game
+@immutable
 class Game extends TdObject {
-  Game(
-      {required this.id,
-      required this.shortName,
-      required this.title,
-      required this.text,
-      required this.description,
-      required this.photo,
-      this.animation});
+  const Game({
+    required this.id,
+    required this.shortName,
+    required this.title,
+    required this.text,
+    required this.description,
+    required this.photo,
+    this.animation,
+  });
 
   /// [id] Game ID
   final int id;
@@ -34,7 +37,7 @@ class Game extends TdObject {
   /// [animation] Game animation; may be null
   final Animation? animation;
 
-  static const String CONSTRUCTOR = 'game';
+  static const String constructor = 'game';
 
   static Game? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -42,27 +45,29 @@ class Game extends TdObject {
     }
 
     return Game(
-        id: int.tryParse(json['id']) ?? 0,
-        shortName: json['short_name'],
-        title: json['title'],
-        text: FormattedText.fromJson(json['text'])!,
-        description: json['description'],
-        photo: Photo.fromJson(json['photo'])!,
-        animation: Animation.fromJson(json['animation']));
+      id: int.tryParse(json['id']) ?? 0,
+      shortName: json['short_name'],
+      title: json['title'],
+      text: FormattedText.fromJson(json['text'])!,
+      description: json['description'],
+      photo: Photo.fromJson(json['photo'])!,
+      animation: Animation.fromJson(json['animation']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'short_name': this.shortName,
-        'title': this.title,
-        'text': this.text.toJson(),
-        'description': this.description,
-        'photo': this.photo.toJson(),
-        'animation': this.animation?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'short_name': shortName,
+        'title': title,
+        'text': text.toJson(),
+        'description': description,
+        'photo': photo.toJson(),
+        'animation': animation?.toJson(),
+        '@type': constructor,
       };
 
   @override

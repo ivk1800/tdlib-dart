@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// New chat members were invited to a group
+@immutable
 class PushMessageContentChatAddMembers extends PushMessageContent {
-  PushMessageContentChatAddMembers(
-      {required this.memberName,
-      required this.isCurrentUser,
-      required this.isReturned});
+  const PushMessageContentChatAddMembers({
+    required this.memberName,
+    required this.isCurrentUser,
+    required this.isReturned,
+  });
 
   /// [memberName] Name of the added member
   final String memberName;
@@ -17,7 +20,7 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
   /// [isReturned] True, if the user has returned to the group themselves
   final bool isReturned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatAddMembers';
+  static const String constructor = 'pushMessageContentChatAddMembers';
 
   static PushMessageContentChatAddMembers? fromJson(
       Map<String, dynamic>? json) {
@@ -26,19 +29,21 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
     }
 
     return PushMessageContentChatAddMembers(
-        memberName: json['member_name'],
-        isCurrentUser: json['is_current_user'],
-        isReturned: json['is_returned']);
+      memberName: json['member_name'],
+      isCurrentUser: json['is_current_user'],
+      isReturned: json['is_returned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'member_name': this.memberName,
-        'is_current_user': this.isCurrentUser,
-        'is_returned': this.isReturned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'member_name': memberName,
+        'is_current_user': isCurrentUser,
+        'is_returned': isReturned,
+        '@type': constructor,
       };
 
   @override

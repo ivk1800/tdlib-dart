@@ -1,14 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Invites a bot to a chat (if it is not yet a member) and sends it the
 /// /start command. Bots can't be invited to a private chat other than the
 /// chat with the bot. Bots can't be invited to channels (although they can be
 /// added as admins) and secret chats. Returns the sent message
 /// Returns [Message]
+@immutable
 class SendBotStartMessage extends TdFunction {
-  SendBotStartMessage(
-      {required this.botUserId, required this.chatId, required this.parameter});
+  const SendBotStartMessage({
+    required this.botUserId,
+    required this.chatId,
+    required this.parameter,
+  });
 
   /// [botUserId] Identifier of the bot
   final int botUserId;
@@ -20,16 +25,17 @@ class SendBotStartMessage extends TdFunction {
   /// (https://core.telegram.org/bots#deep-linking)
   final String parameter;
 
-  static const String CONSTRUCTOR = 'sendBotStartMessage';
+  static const String constructor = 'sendBotStartMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'bot_user_id': this.botUserId,
-        'chat_id': this.chatId,
-        'parameter': this.parameter,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bot_user_id': botUserId,
+        'chat_id': chatId,
+        'parameter': parameter,
+        '@type': constructor,
       };
 
   @override

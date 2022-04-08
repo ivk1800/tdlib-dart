@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with an invoice from a bot
+@immutable
 class MessageInvoice extends MessageContent {
-  MessageInvoice(
-      {required this.title,
-      required this.description,
-      this.photo,
-      required this.currency,
-      required this.totalAmount,
-      required this.startParameter,
-      required this.isTest,
-      required this.needShippingAddress,
-      required this.receiptMessageId});
+  const MessageInvoice({
+    required this.title,
+    required this.description,
+    this.photo,
+    required this.currency,
+    required this.totalAmount,
+    required this.startParameter,
+    required this.isTest,
+    required this.needShippingAddress,
+    required this.receiptMessageId,
+  });
 
   /// [title] Product title
   final String title;
@@ -43,7 +46,7 @@ class MessageInvoice extends MessageContent {
   /// the product has been purchased
   final int receiptMessageId;
 
-  static const String CONSTRUCTOR = 'messageInvoice';
+  static const String constructor = 'messageInvoice';
 
   static MessageInvoice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -51,31 +54,33 @@ class MessageInvoice extends MessageContent {
     }
 
     return MessageInvoice(
-        title: json['title'],
-        description: json['description'],
-        photo: Photo.fromJson(json['photo']),
-        currency: json['currency'],
-        totalAmount: json['total_amount'],
-        startParameter: json['start_parameter'],
-        isTest: json['is_test'],
-        needShippingAddress: json['need_shipping_address'],
-        receiptMessageId: json['receipt_message_id']);
+      title: json['title'],
+      description: json['description'],
+      photo: Photo.fromJson(json['photo']),
+      currency: json['currency'],
+      totalAmount: json['total_amount'],
+      startParameter: json['start_parameter'],
+      isTest: json['is_test'],
+      needShippingAddress: json['need_shipping_address'],
+      receiptMessageId: json['receipt_message_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'description': this.description,
-        'photo': this.photo?.toJson(),
-        'currency': this.currency,
-        'total_amount': this.totalAmount,
-        'start_parameter': this.startParameter,
-        'is_test': this.isTest,
-        'need_shipping_address': this.needShippingAddress,
-        'receipt_message_id': this.receiptMessageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'description': description,
+        'photo': photo?.toJson(),
+        'currency': currency,
+        'total_amount': totalAmount,
+        'start_parameter': startParameter,
+        'is_test': isTest,
+        'need_shipping_address': needShippingAddress,
+        'receipt_message_id': receiptMessageId,
+        '@type': constructor,
       };
 
   @override

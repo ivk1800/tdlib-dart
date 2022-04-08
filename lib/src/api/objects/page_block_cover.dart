@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A page cover
+@immutable
 class PageBlockCover extends PageBlock {
-  PageBlockCover({required this.cover});
+  const PageBlockCover({
+    required this.cover,
+  });
 
   /// [cover] Cover
   final PageBlock cover;
 
-  static const String CONSTRUCTOR = 'pageBlockCover';
+  static const String constructor = 'pageBlockCover';
 
   static PageBlockCover? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PageBlockCover(cover: PageBlock.fromJson(json['cover'])!);
+    return PageBlockCover(
+      cover: PageBlock.fromJson(json['cover'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'cover': this.cover.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'cover': cover.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Succeeds after a specified amount of time has passed. Can be called before
 /// initialization
 /// Returns [Ok]
+@immutable
 class SetAlarm extends TdFunction {
-  SetAlarm({required this.seconds});
+  const SetAlarm({
+    required this.seconds,
+  });
 
   /// [seconds] Number of seconds before the function returns
   final double seconds;
 
-  static const String CONSTRUCTOR = 'setAlarm';
+  static const String constructor = 'setAlarm';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'seconds': this.seconds, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'seconds': seconds,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

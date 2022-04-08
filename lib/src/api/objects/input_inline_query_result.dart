@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a single result of an inline query; for bots only
+@immutable
 abstract class InputInlineQueryResult extends TdObject {
   const InputInlineQueryResult();
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResult';
+  static const String constructor = 'inputInlineQueryResult';
 
   /// Inherited by:
   /// [InputInlineQueryResultAnimation]
@@ -25,30 +27,30 @@ abstract class InputInlineQueryResult extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputInlineQueryResultAnimation.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputInlineQueryResultAnimation.constructor:
         return InputInlineQueryResultAnimation.fromJson(json);
-      case InputInlineQueryResultArticle.CONSTRUCTOR:
+      case InputInlineQueryResultArticle.constructor:
         return InputInlineQueryResultArticle.fromJson(json);
-      case InputInlineQueryResultAudio.CONSTRUCTOR:
+      case InputInlineQueryResultAudio.constructor:
         return InputInlineQueryResultAudio.fromJson(json);
-      case InputInlineQueryResultContact.CONSTRUCTOR:
+      case InputInlineQueryResultContact.constructor:
         return InputInlineQueryResultContact.fromJson(json);
-      case InputInlineQueryResultDocument.CONSTRUCTOR:
+      case InputInlineQueryResultDocument.constructor:
         return InputInlineQueryResultDocument.fromJson(json);
-      case InputInlineQueryResultGame.CONSTRUCTOR:
+      case InputInlineQueryResultGame.constructor:
         return InputInlineQueryResultGame.fromJson(json);
-      case InputInlineQueryResultLocation.CONSTRUCTOR:
+      case InputInlineQueryResultLocation.constructor:
         return InputInlineQueryResultLocation.fromJson(json);
-      case InputInlineQueryResultPhoto.CONSTRUCTOR:
+      case InputInlineQueryResultPhoto.constructor:
         return InputInlineQueryResultPhoto.fromJson(json);
-      case InputInlineQueryResultSticker.CONSTRUCTOR:
+      case InputInlineQueryResultSticker.constructor:
         return InputInlineQueryResultSticker.fromJson(json);
-      case InputInlineQueryResultVenue.CONSTRUCTOR:
+      case InputInlineQueryResultVenue.constructor:
         return InputInlineQueryResultVenue.fromJson(json);
-      case InputInlineQueryResultVideo.CONSTRUCTOR:
+      case InputInlineQueryResultVideo.constructor:
         return InputInlineQueryResultVideo.fromJson(json);
-      case InputInlineQueryResultVoiceNote.CONSTRUCTOR:
+      case InputInlineQueryResultVoiceNote.constructor:
         return InputInlineQueryResultVoiceNote.fromJson(json);
       default:
         return null;
@@ -56,7 +58,7 @@ abstract class InputInlineQueryResult extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

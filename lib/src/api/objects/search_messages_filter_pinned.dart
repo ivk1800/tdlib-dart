@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns only pinned messages
+@immutable
 class SearchMessagesFilterPinned extends SearchMessagesFilter {
   const SearchMessagesFilterPinned();
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterPinned';
+  static const String constructor = 'searchMessagesFilterPinned';
 
   static SearchMessagesFilterPinned? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class SearchMessagesFilterPinned extends SearchMessagesFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

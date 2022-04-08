@@ -1,29 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user is online
+@immutable
 class UserStatusOnline extends UserStatus {
-  UserStatusOnline({required this.expires});
+  const UserStatusOnline({
+    required this.expires,
+  });
 
   /// [expires] Point in time (Unix timestamp) when the user's online status
   /// will expire
   final int expires;
 
-  static const String CONSTRUCTOR = 'userStatusOnline';
+  static const String constructor = 'userStatusOnline';
 
   static UserStatusOnline? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UserStatusOnline(expires: json['expires']);
+    return UserStatusOnline(
+      expires: json['expires'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'expires': this.expires, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'expires': expires,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

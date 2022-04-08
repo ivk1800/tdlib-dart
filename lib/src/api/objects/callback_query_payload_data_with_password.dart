@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The payload for a callback button requiring password
+@immutable
 class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
-  CallbackQueryPayloadDataWithPassword(
-      {required this.password, required this.data});
+  const CallbackQueryPayloadDataWithPassword({
+    required this.password,
+    required this.data,
+  });
 
   /// [password] The password for the current user
   final String password;
@@ -12,7 +16,7 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   /// [data] Data that was attached to the callback button
   final String data;
 
-  static const String CONSTRUCTOR = 'callbackQueryPayloadDataWithPassword';
+  static const String constructor = 'callbackQueryPayloadDataWithPassword';
 
   static CallbackQueryPayloadDataWithPassword? fromJson(
       Map<String, dynamic>? json) {
@@ -21,14 +25,20 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
     }
 
     return CallbackQueryPayloadDataWithPassword(
-        password: json['password'], data: json['data']);
+      password: json['password'],
+      data: json['data'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'password': this.password, 'data': this.data, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'password': password,
+        'data': data,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

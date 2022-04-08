@@ -2,7 +2,7 @@ import 'package:tdlib/td_api.dart';
 
 extension ConvertExtensions on Map<String, dynamic> {
   TdObject? toTdObject() {
-    String type = this['@type']!;
+    final String type = this['@type']!;
     switch (type) {
       case 'error':
         return TdError.fromJson(this);

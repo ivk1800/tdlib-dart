@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Invites users to an active group call. Sends a service message of type
 /// messageInviteToGroupCall for video chats
 /// Returns [Ok]
+@immutable
 class InviteGroupCallParticipants extends TdFunction {
-  InviteGroupCallParticipants(
-      {required this.groupCallId, required this.userIds});
+  const InviteGroupCallParticipants({
+    required this.groupCallId,
+    required this.userIds,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -14,15 +18,16 @@ class InviteGroupCallParticipants extends TdFunction {
   /// [userIds] User identifiers. At most 10 users can be invited simultaneously
   final List<int> userIds;
 
-  static const String CONSTRUCTOR = 'inviteGroupCallParticipants';
+  static const String constructor = 'inviteGroupCallParticipants';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
         'user_ids': userIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

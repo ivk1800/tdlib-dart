@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about interactions with a message
+@immutable
 class MessageInteractionInfo extends TdObject {
-  MessageInteractionInfo(
-      {required this.viewCount, required this.forwardCount, this.replyInfo});
+  const MessageInteractionInfo({
+    required this.viewCount,
+    required this.forwardCount,
+    this.replyInfo,
+  });
 
   /// [viewCount] Number of times the message was viewed
   final int viewCount;
@@ -18,7 +23,7 @@ class MessageInteractionInfo extends TdObject {
   /// itself
   final MessageReplyInfo? replyInfo;
 
-  static const String CONSTRUCTOR = 'messageInteractionInfo';
+  static const String constructor = 'messageInteractionInfo';
 
   static MessageInteractionInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +31,21 @@ class MessageInteractionInfo extends TdObject {
     }
 
     return MessageInteractionInfo(
-        viewCount: json['view_count'],
-        forwardCount: json['forward_count'],
-        replyInfo: MessageReplyInfo.fromJson(json['reply_info']));
+      viewCount: json['view_count'],
+      forwardCount: json['forward_count'],
+      replyInfo: MessageReplyInfo.fromJson(json['reply_info']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'view_count': this.viewCount,
-        'forward_count': this.forwardCount,
-        'reply_info': this.replyInfo?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'view_count': viewCount,
+        'forward_count': forwardCount,
+        'reply_info': replyInfo?.toJson(),
+        '@type': constructor,
       };
 
   @override

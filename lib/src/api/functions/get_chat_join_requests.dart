@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns pending join requests in a chat
 /// Returns [ChatJoinRequests]
+@immutable
 class GetChatJoinRequests extends TdFunction {
-  GetChatJoinRequests(
-      {required this.chatId,
-      required this.inviteLink,
-      required this.query,
-      this.offsetRequest,
-      required this.limit});
+  const GetChatJoinRequests({
+    required this.chatId,
+    required this.inviteLink,
+    required this.query,
+    this.offsetRequest,
+    required this.limit,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -31,18 +34,19 @@ class GetChatJoinRequests extends TdFunction {
   /// [limit] The maximum number of requests to join the chat to return
   final int limit;
 
-  static const String CONSTRUCTOR = 'getChatJoinRequests';
+  static const String constructor = 'getChatJoinRequests';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'invite_link': this.inviteLink,
-        'query': this.query,
-        'offset_request': this.offsetRequest?.toJson(),
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'invite_link': inviteLink,
+        'query': query,
+        'offset_request': offsetRequest?.toJson(),
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

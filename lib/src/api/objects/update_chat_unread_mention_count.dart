@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat unread_mention_count has changed
+@immutable
 class UpdateChatUnreadMentionCount extends Update {
-  UpdateChatUnreadMentionCount(
-      {required this.chatId, required this.unreadMentionCount});
+  const UpdateChatUnreadMentionCount({
+    required this.chatId,
+    required this.unreadMentionCount,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,7 +17,7 @@ class UpdateChatUnreadMentionCount extends Update {
   /// chat
   final int unreadMentionCount;
 
-  static const String CONSTRUCTOR = 'updateChatUnreadMentionCount';
+  static const String constructor = 'updateChatUnreadMentionCount';
 
   static UpdateChatUnreadMentionCount? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,17 +25,19 @@ class UpdateChatUnreadMentionCount extends Update {
     }
 
     return UpdateChatUnreadMentionCount(
-        chatId: json['chat_id'],
-        unreadMentionCount: json['unread_mention_count']);
+      chatId: json['chat_id'],
+      unreadMentionCount: json['unread_mention_count'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'unread_mention_count': this.unreadMentionCount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'unread_mention_count': unreadMentionCount,
+        '@type': constructor,
       };
 
   @override

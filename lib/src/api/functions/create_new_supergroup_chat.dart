@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a new supergroup or channel and sends a corresponding
 /// messageSupergroupChatCreate. Returns the newly created chat
 /// Returns [Chat]
+@immutable
 class CreateNewSupergroupChat extends TdFunction {
-  CreateNewSupergroupChat(
-      {required this.title,
-      required this.isChannel,
-      required this.description,
-      this.location,
-      required this.forImport});
+  const CreateNewSupergroupChat({
+    required this.title,
+    required this.isChannel,
+    required this.description,
+    this.location,
+    required this.forImport,
+  });
 
   /// [title] Title of the new chat; 1-128 characters
   final String title;
@@ -29,18 +32,19 @@ class CreateNewSupergroupChat extends TdFunction {
   /// using importMessage
   final bool forImport;
 
-  static const String CONSTRUCTOR = 'createNewSupergroupChat';
+  static const String constructor = 'createNewSupergroupChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'is_channel': this.isChannel,
-        'description': this.description,
-        'location': this.location?.toJson(),
-        'for_import': this.forImport,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'is_channel': isChannel,
+        'description': description,
+        'location': location?.toJson(),
+        'for_import': forImport,
+        '@type': constructor,
       };
 
   @override

@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A token for Ubuntu Push Client service
+@immutable
 class DeviceTokenUbuntuPush extends DeviceToken {
-  DeviceTokenUbuntuPush({required this.token});
+  const DeviceTokenUbuntuPush({
+    required this.token,
+  });
 
   /// [token] Token; may be empty to deregister a device
   final String token;
 
-  static const String CONSTRUCTOR = 'deviceTokenUbuntuPush';
+  static const String constructor = 'deviceTokenUbuntuPush';
 
   static DeviceTokenUbuntuPush? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return DeviceTokenUbuntuPush(token: json['token']);
+    return DeviceTokenUbuntuPush(
+      token: json['token'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'token': this.token, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'token': token,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

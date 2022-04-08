@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A cubic B
+@immutable
 class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
-  VectorPathCommandCubicBezierCurve(
-      {required this.startControlPoint,
-      required this.endControlPoint,
-      required this.endPoint});
+  const VectorPathCommandCubicBezierCurve({
+    required this.startControlPoint,
+    required this.endControlPoint,
+    required this.endPoint,
+  });
 
   final Point startControlPoint;
 
@@ -14,7 +17,7 @@ class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
 
   final Point endPoint;
 
-  static const String CONSTRUCTOR = 'vectorPathCommandCubicBezierCurve';
+  static const String constructor = 'vectorPathCommandCubicBezierCurve';
 
   static VectorPathCommandCubicBezierCurve? fromJson(
       Map<String, dynamic>? json) {
@@ -23,19 +26,21 @@ class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
     }
 
     return VectorPathCommandCubicBezierCurve(
-        startControlPoint: Point.fromJson(json['start_control_point'])!,
-        endControlPoint: Point.fromJson(json['end_control_point'])!,
-        endPoint: Point.fromJson(json['end_point'])!);
+      startControlPoint: Point.fromJson(json['start_control_point'])!,
+      endControlPoint: Point.fromJson(json['end_control_point'])!,
+      endPoint: Point.fromJson(json['end_point'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'start_control_point': this.startControlPoint.toJson(),
-        'end_control_point': this.endControlPoint.toJson(),
-        'end_point': this.endPoint.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'start_control_point': startControlPoint.toJson(),
+        'end_control_point': endControlPoint.toJson(),
+        'end_point': endPoint.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether the current user will receive a notification when the
 /// group call will start; scheduled group calls only
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallEnabledStartNotification extends TdFunction {
-  ToggleGroupCallEnabledStartNotification(
-      {required this.groupCallId, required this.enabledStartNotification});
+  const ToggleGroupCallEnabledStartNotification({
+    required this.groupCallId,
+    required this.enabledStartNotification,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -15,15 +19,16 @@ class ToggleGroupCallEnabledStartNotification extends TdFunction {
   /// setting
   final bool enabledStartNotification;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallEnabledStartNotification';
+  static const String constructor = 'toggleGroupCallEnabledStartNotification';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'enabled_start_notification': this.enabledStartNotification,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'enabled_start_notification': enabledStartNotification,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Searches for recently used hashtags by their prefix
 /// Returns [Hashtags]
+@immutable
 class SearchHashtags extends TdFunction {
-  SearchHashtags({required this.prefix, required this.limit});
+  const SearchHashtags({
+    required this.prefix,
+    required this.limit,
+  });
 
   /// [prefix] Hashtag prefix to search for
   final String prefix;
@@ -12,13 +17,17 @@ class SearchHashtags extends TdFunction {
   /// [limit] The maximum number of hashtags to be returned
   final int limit;
 
-  static const String CONSTRUCTOR = 'searchHashtags';
+  static const String constructor = 'searchHashtags';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'prefix': this.prefix, 'limit': this.limit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'prefix': prefix,
+        'limit': limit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

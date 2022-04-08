@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns detailed statistics about a message. Can be used only if
 /// message.can_get_statistics == true
 /// Returns [MessageStatistics]
+@immutable
 class GetMessageStatistics extends TdFunction {
-  GetMessageStatistics(
-      {required this.chatId, required this.messageId, required this.isDark});
+  const GetMessageStatistics({
+    required this.chatId,
+    required this.messageId,
+    required this.isDark,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -17,16 +22,17 @@ class GetMessageStatistics extends TdFunction {
   /// [isDark] Pass true if a dark theme is used by the application
   final bool isDark;
 
-  static const String CONSTRUCTOR = 'getMessageStatistics';
+  static const String constructor = 'getMessageStatistics';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'is_dark': this.isDark,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'is_dark': isDark,
+        '@type': constructor,
       };
 
   @override

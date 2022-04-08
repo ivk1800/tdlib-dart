@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a text object inside an instant-view web page
+@immutable
 abstract class RichText extends TdObject {
   const RichText();
 
-  static const String CONSTRUCTOR = 'richText';
+  static const String constructor = 'richText';
 
   /// Inherited by:
   /// [RichTextPlain]
@@ -30,40 +32,40 @@ abstract class RichText extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case RichTextPlain.CONSTRUCTOR:
+    switch (json['@type']) {
+      case RichTextPlain.constructor:
         return RichTextPlain.fromJson(json);
-      case RichTextBold.CONSTRUCTOR:
+      case RichTextBold.constructor:
         return RichTextBold.fromJson(json);
-      case RichTextItalic.CONSTRUCTOR:
+      case RichTextItalic.constructor:
         return RichTextItalic.fromJson(json);
-      case RichTextUnderline.CONSTRUCTOR:
+      case RichTextUnderline.constructor:
         return RichTextUnderline.fromJson(json);
-      case RichTextStrikethrough.CONSTRUCTOR:
+      case RichTextStrikethrough.constructor:
         return RichTextStrikethrough.fromJson(json);
-      case RichTextFixed.CONSTRUCTOR:
+      case RichTextFixed.constructor:
         return RichTextFixed.fromJson(json);
-      case RichTextUrl.CONSTRUCTOR:
+      case RichTextUrl.constructor:
         return RichTextUrl.fromJson(json);
-      case RichTextEmailAddress.CONSTRUCTOR:
+      case RichTextEmailAddress.constructor:
         return RichTextEmailAddress.fromJson(json);
-      case RichTextSubscript.CONSTRUCTOR:
+      case RichTextSubscript.constructor:
         return RichTextSubscript.fromJson(json);
-      case RichTextSuperscript.CONSTRUCTOR:
+      case RichTextSuperscript.constructor:
         return RichTextSuperscript.fromJson(json);
-      case RichTextMarked.CONSTRUCTOR:
+      case RichTextMarked.constructor:
         return RichTextMarked.fromJson(json);
-      case RichTextPhoneNumber.CONSTRUCTOR:
+      case RichTextPhoneNumber.constructor:
         return RichTextPhoneNumber.fromJson(json);
-      case RichTextIcon.CONSTRUCTOR:
+      case RichTextIcon.constructor:
         return RichTextIcon.fromJson(json);
-      case RichTextReference.CONSTRUCTOR:
+      case RichTextReference.constructor:
         return RichTextReference.fromJson(json);
-      case RichTextAnchor.CONSTRUCTOR:
+      case RichTextAnchor.constructor:
         return RichTextAnchor.fromJson(json);
-      case RichTextAnchorLink.CONSTRUCTOR:
+      case RichTextAnchorLink.constructor:
         return RichTextAnchorLink.fromJson(json);
-      case RichTexts.CONSTRUCTOR:
+      case RichTexts.constructor:
         return RichTexts.fromJson(json);
       default:
         return null;
@@ -71,7 +73,7 @@ abstract class RichText extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

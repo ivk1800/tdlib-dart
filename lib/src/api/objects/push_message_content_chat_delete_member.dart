@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat member was deleted
+@immutable
 class PushMessageContentChatDeleteMember extends PushMessageContent {
-  PushMessageContentChatDeleteMember(
-      {required this.memberName,
-      required this.isCurrentUser,
-      required this.isLeft});
+  const PushMessageContentChatDeleteMember({
+    required this.memberName,
+    required this.isCurrentUser,
+    required this.isLeft,
+  });
 
   /// [memberName] Name of the deleted member
   final String memberName;
@@ -17,7 +20,7 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
   /// [isLeft] True, if the user has left the group themselves
   final bool isLeft;
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatDeleteMember';
+  static const String constructor = 'pushMessageContentChatDeleteMember';
 
   static PushMessageContentChatDeleteMember? fromJson(
       Map<String, dynamic>? json) {
@@ -26,19 +29,21 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
     }
 
     return PushMessageContentChatDeleteMember(
-        memberName: json['member_name'],
-        isCurrentUser: json['is_current_user'],
-        isLeft: json['is_left']);
+      memberName: json['member_name'],
+      isCurrentUser: json['is_current_user'],
+      isLeft: json['is_left'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'member_name': this.memberName,
-        'is_current_user': this.isCurrentUser,
-        'is_left': this.isLeft,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'member_name': memberName,
+        'is_current_user': isCurrentUser,
+        'is_left': isLeft,
+        '@type': constructor,
       };
 
   @override

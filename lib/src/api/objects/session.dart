@@ -1,27 +1,30 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about one session in a Telegram application used by
 /// the current user. Sessions must be shown to the user in the returned order
+@immutable
 class Session extends TdObject {
-  Session(
-      {required this.id,
-      required this.isCurrent,
-      required this.isPasswordPending,
-      required this.canAcceptSecretChats,
-      required this.canAcceptCalls,
-      required this.apiId,
-      required this.applicationName,
-      required this.applicationVersion,
-      required this.isOfficialApplication,
-      required this.deviceModel,
-      required this.platform,
-      required this.systemVersion,
-      required this.logInDate,
-      required this.lastActiveDate,
-      required this.ip,
-      required this.country,
-      required this.region});
+  const Session({
+    required this.id,
+    required this.isCurrent,
+    required this.isPasswordPending,
+    required this.canAcceptSecretChats,
+    required this.canAcceptCalls,
+    required this.apiId,
+    required this.applicationName,
+    required this.applicationVersion,
+    required this.isOfficialApplication,
+    required this.deviceModel,
+    required this.platform,
+    required this.systemVersion,
+    required this.logInDate,
+    required this.lastActiveDate,
+    required this.ip,
+    required this.country,
+    required this.region,
+  });
 
   /// [id] Session identifier
   final int id;
@@ -85,7 +88,7 @@ class Session extends TdObject {
   /// address
   final String region;
 
-  static const String CONSTRUCTOR = 'session';
+  static const String constructor = 'session';
 
   static Session? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -93,47 +96,49 @@ class Session extends TdObject {
     }
 
     return Session(
-        id: int.tryParse(json['id']) ?? 0,
-        isCurrent: json['is_current'],
-        isPasswordPending: json['is_password_pending'],
-        canAcceptSecretChats: json['can_accept_secret_chats'],
-        canAcceptCalls: json['can_accept_calls'],
-        apiId: json['api_id'],
-        applicationName: json['application_name'],
-        applicationVersion: json['application_version'],
-        isOfficialApplication: json['is_official_application'],
-        deviceModel: json['device_model'],
-        platform: json['platform'],
-        systemVersion: json['system_version'],
-        logInDate: json['log_in_date'],
-        lastActiveDate: json['last_active_date'],
-        ip: json['ip'],
-        country: json['country'],
-        region: json['region']);
+      id: int.tryParse(json['id']) ?? 0,
+      isCurrent: json['is_current'],
+      isPasswordPending: json['is_password_pending'],
+      canAcceptSecretChats: json['can_accept_secret_chats'],
+      canAcceptCalls: json['can_accept_calls'],
+      apiId: json['api_id'],
+      applicationName: json['application_name'],
+      applicationVersion: json['application_version'],
+      isOfficialApplication: json['is_official_application'],
+      deviceModel: json['device_model'],
+      platform: json['platform'],
+      systemVersion: json['system_version'],
+      logInDate: json['log_in_date'],
+      lastActiveDate: json['last_active_date'],
+      ip: json['ip'],
+      country: json['country'],
+      region: json['region'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'is_current': this.isCurrent,
-        'is_password_pending': this.isPasswordPending,
-        'can_accept_secret_chats': this.canAcceptSecretChats,
-        'can_accept_calls': this.canAcceptCalls,
-        'api_id': this.apiId,
-        'application_name': this.applicationName,
-        'application_version': this.applicationVersion,
-        'is_official_application': this.isOfficialApplication,
-        'device_model': this.deviceModel,
-        'platform': this.platform,
-        'system_version': this.systemVersion,
-        'log_in_date': this.logInDate,
-        'last_active_date': this.lastActiveDate,
-        'ip': this.ip,
-        'country': this.country,
-        'region': this.region,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'is_current': isCurrent,
+        'is_password_pending': isPasswordPending,
+        'can_accept_secret_chats': canAcceptSecretChats,
+        'can_accept_calls': canAcceptCalls,
+        'api_id': apiId,
+        'application_name': applicationName,
+        'application_version': applicationVersion,
+        'is_official_application': isOfficialApplication,
+        'device_model': deviceModel,
+        'platform': platform,
+        'system_version': systemVersion,
+        'log_in_date': logInDate,
+        'last_active_date': lastActiveDate,
+        'ip': ip,
+        'country': country,
+        'region': region,
+        '@type': constructor,
       };
 
   @override

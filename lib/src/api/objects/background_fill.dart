@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a fill of a background
+@immutable
 abstract class BackgroundFill extends TdObject {
   const BackgroundFill();
 
-  static const String CONSTRUCTOR = 'backgroundFill';
+  static const String constructor = 'backgroundFill';
 
   /// Inherited by:
   /// [BackgroundFillSolid]
@@ -16,12 +18,12 @@ abstract class BackgroundFill extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case BackgroundFillSolid.CONSTRUCTOR:
+    switch (json['@type']) {
+      case BackgroundFillSolid.constructor:
         return BackgroundFillSolid.fromJson(json);
-      case BackgroundFillGradient.CONSTRUCTOR:
+      case BackgroundFillGradient.constructor:
         return BackgroundFillGradient.fromJson(json);
-      case BackgroundFillFreeformGradient.CONSTRUCTOR:
+      case BackgroundFillFreeformGradient.constructor:
         return BackgroundFillFreeformGradient.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class BackgroundFill extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

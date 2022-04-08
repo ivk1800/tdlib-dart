@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the types of chats to which notification settings are relevant
+@immutable
 abstract class NotificationSettingsScope extends TdObject {
   const NotificationSettingsScope();
 
-  static const String CONSTRUCTOR = 'notificationSettingsScope';
+  static const String constructor = 'notificationSettingsScope';
 
   /// Inherited by:
   /// [NotificationSettingsScopePrivateChats]
@@ -16,12 +18,12 @@ abstract class NotificationSettingsScope extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case NotificationSettingsScopePrivateChats.CONSTRUCTOR:
+    switch (json['@type']) {
+      case NotificationSettingsScopePrivateChats.constructor:
         return NotificationSettingsScopePrivateChats.fromJson(json);
-      case NotificationSettingsScopeGroupChats.CONSTRUCTOR:
+      case NotificationSettingsScopeGroupChats.constructor:
         return NotificationSettingsScopeGroupChats.fromJson(json);
-      case NotificationSettingsScopeChannelChats.CONSTRUCTOR:
+      case NotificationSettingsScopeChannelChats.constructor:
         return NotificationSettingsScopeChannelChats.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class NotificationSettingsScope extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

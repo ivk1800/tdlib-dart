@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns default icon name for a filter. Can be called synchronously
 /// Returns [Text]
+@immutable
 class GetChatFilterDefaultIconName extends TdFunction {
-  GetChatFilterDefaultIconName({required this.filter});
+  const GetChatFilterDefaultIconName({
+    required this.filter,
+  });
 
   /// [filter] Chat filter
   final ChatFilter filter;
 
-  static const String CONSTRUCTOR = 'getChatFilterDefaultIconName';
+  static const String constructor = 'getChatFilterDefaultIconName';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'filter': this.filter.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'filter': filter.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

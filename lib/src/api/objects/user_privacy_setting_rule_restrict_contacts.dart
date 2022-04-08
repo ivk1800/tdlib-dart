@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A rule to restrict all contacts of a user from doing something
+@immutable
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   const UserPrivacySettingRuleRestrictContacts();
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
+  static const String constructor = 'userPrivacySettingRuleRestrictContacts';
 
   static UserPrivacySettingRuleRestrictContacts? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

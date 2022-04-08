@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat member was restricted/unrestricted or banned/unbanned, or the list
 /// of their restrictions has changed
+@immutable
 class ChatEventMemberRestricted extends ChatEventAction {
-  ChatEventMemberRestricted(
-      {required this.memberId,
-      required this.oldStatus,
-      required this.newStatus});
+  const ChatEventMemberRestricted({
+    required this.memberId,
+    required this.oldStatus,
+    required this.newStatus,
+  });
 
   /// [memberId] Affected chat member identifier
   final MessageSender memberId;
@@ -18,7 +21,7 @@ class ChatEventMemberRestricted extends ChatEventAction {
   /// [newStatus] New status of the chat member
   final ChatMemberStatus newStatus;
 
-  static const String CONSTRUCTOR = 'chatEventMemberRestricted';
+  static const String constructor = 'chatEventMemberRestricted';
 
   static ChatEventMemberRestricted? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +29,21 @@ class ChatEventMemberRestricted extends ChatEventAction {
     }
 
     return ChatEventMemberRestricted(
-        memberId: MessageSender.fromJson(json['member_id'])!,
-        oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
-        newStatus: ChatMemberStatus.fromJson(json['new_status'])!);
+      memberId: MessageSender.fromJson(json['member_id'])!,
+      oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
+      newStatus: ChatMemberStatus.fromJson(json['new_status'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'member_id': this.memberId.toJson(),
-        'old_status': this.oldStatus.toJson(),
-        'new_status': this.newStatus.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'member_id': memberId.toJson(),
+        'old_status': oldStatus.toJson(),
+        'new_status': newStatus.toJson(),
+        '@type': constructor,
       };
 
   @override

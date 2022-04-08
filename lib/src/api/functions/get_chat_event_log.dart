@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of service actions taken by chat members and administrators
 /// in the last 48 hours. Available only for supergroups and channels.
 /// Requires administrator rights. Returns results in reverse chronological
 /// order (i. e., in order of decreasing event_id)
 /// Returns [ChatEvents]
+@immutable
 class GetChatEventLog extends TdFunction {
-  GetChatEventLog(
-      {required this.chatId,
-      required this.query,
-      required this.fromEventId,
-      required this.limit,
-      this.filters,
-      required this.userIds});
+  const GetChatEventLog({
+    required this.chatId,
+    required this.query,
+    required this.fromEventId,
+    required this.limit,
+    this.filters,
+    required this.userIds,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -36,19 +39,20 @@ class GetChatEventLog extends TdFunction {
   /// relating to all users will be returned
   final List<int> userIds;
 
-  static const String CONSTRUCTOR = 'getChatEventLog';
+  static const String constructor = 'getChatEventLog';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'query': this.query,
-        'from_event_id': this.fromEventId,
-        'limit': this.limit,
-        'filters': this.filters?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'query': query,
+        'from_event_id': fromEventId,
+        'limit': limit,
+        'filters': filters?.toJson(),
         'user_ids': userIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes the default reply markup from a chat. Must be called after a
 /// one-time keyboard or a ForceReply reply markup has been used.
 /// UpdateChatReplyMarkup will be sent if the reply markup is changed
 /// Returns [Ok]
+@immutable
 class DeleteChatReplyMarkup extends TdFunction {
-  DeleteChatReplyMarkup({required this.chatId, required this.messageId});
+  const DeleteChatReplyMarkup({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -14,15 +19,16 @@ class DeleteChatReplyMarkup extends TdFunction {
   /// [messageId] The message identifier of the used keyboard
   final int messageId;
 
-  static const String CONSTRUCTOR = 'deleteChatReplyMarkup';
+  static const String constructor = 'deleteChatReplyMarkup';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

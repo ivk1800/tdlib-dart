@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the type of a file
+@immutable
 abstract class FileType extends TdObject {
   const FileType();
 
-  static const String CONSTRUCTOR = 'fileType';
+  static const String constructor = 'fileType';
 
   /// Inherited by:
   /// [FileTypeNone]
@@ -29,38 +31,38 @@ abstract class FileType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case FileTypeNone.CONSTRUCTOR:
+    switch (json['@type']) {
+      case FileTypeNone.constructor:
         return FileTypeNone.fromJson(json);
-      case FileTypeAnimation.CONSTRUCTOR:
+      case FileTypeAnimation.constructor:
         return FileTypeAnimation.fromJson(json);
-      case FileTypeAudio.CONSTRUCTOR:
+      case FileTypeAudio.constructor:
         return FileTypeAudio.fromJson(json);
-      case FileTypeDocument.CONSTRUCTOR:
+      case FileTypeDocument.constructor:
         return FileTypeDocument.fromJson(json);
-      case FileTypePhoto.CONSTRUCTOR:
+      case FileTypePhoto.constructor:
         return FileTypePhoto.fromJson(json);
-      case FileTypeProfilePhoto.CONSTRUCTOR:
+      case FileTypeProfilePhoto.constructor:
         return FileTypeProfilePhoto.fromJson(json);
-      case FileTypeSecret.CONSTRUCTOR:
+      case FileTypeSecret.constructor:
         return FileTypeSecret.fromJson(json);
-      case FileTypeSecretThumbnail.CONSTRUCTOR:
+      case FileTypeSecretThumbnail.constructor:
         return FileTypeSecretThumbnail.fromJson(json);
-      case FileTypeSecure.CONSTRUCTOR:
+      case FileTypeSecure.constructor:
         return FileTypeSecure.fromJson(json);
-      case FileTypeSticker.CONSTRUCTOR:
+      case FileTypeSticker.constructor:
         return FileTypeSticker.fromJson(json);
-      case FileTypeThumbnail.CONSTRUCTOR:
+      case FileTypeThumbnail.constructor:
         return FileTypeThumbnail.fromJson(json);
-      case FileTypeUnknown.CONSTRUCTOR:
+      case FileTypeUnknown.constructor:
         return FileTypeUnknown.fromJson(json);
-      case FileTypeVideo.CONSTRUCTOR:
+      case FileTypeVideo.constructor:
         return FileTypeVideo.fromJson(json);
-      case FileTypeVideoNote.CONSTRUCTOR:
+      case FileTypeVideoNote.constructor:
         return FileTypeVideoNote.fromJson(json);
-      case FileTypeVoiceNote.CONSTRUCTOR:
+      case FileTypeVoiceNote.constructor:
         return FileTypeVoiceNote.fromJson(json);
-      case FileTypeWallpaper.CONSTRUCTOR:
+      case FileTypeWallpaper.constructor:
         return FileTypeWallpaper.fromJson(json);
       default:
         return null;
@@ -68,7 +70,7 @@ abstract class FileType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

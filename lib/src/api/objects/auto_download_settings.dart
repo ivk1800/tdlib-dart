@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains auto-download settings
+@immutable
 class AutoDownloadSettings extends TdObject {
-  AutoDownloadSettings(
-      {required this.isAutoDownloadEnabled,
-      required this.maxPhotoFileSize,
-      required this.maxVideoFileSize,
-      required this.maxOtherFileSize,
-      required this.videoUploadBitrate,
-      required this.preloadLargeVideos,
-      required this.preloadNextAudio,
-      required this.useLessDataForCalls});
+  const AutoDownloadSettings({
+    required this.isAutoDownloadEnabled,
+    required this.maxPhotoFileSize,
+    required this.maxVideoFileSize,
+    required this.maxOtherFileSize,
+    required this.videoUploadBitrate,
+    required this.preloadLargeVideos,
+    required this.preloadNextAudio,
+    required this.useLessDataForCalls,
+  });
 
   /// [isAutoDownloadEnabled] True, if the auto-download is enabled
   final bool isAutoDownloadEnabled;
@@ -44,7 +47,7 @@ class AutoDownloadSettings extends TdObject {
   /// be enabled
   final bool useLessDataForCalls;
 
-  static const String CONSTRUCTOR = 'autoDownloadSettings';
+  static const String constructor = 'autoDownloadSettings';
 
   static AutoDownloadSettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -52,29 +55,31 @@ class AutoDownloadSettings extends TdObject {
     }
 
     return AutoDownloadSettings(
-        isAutoDownloadEnabled: json['is_auto_download_enabled'],
-        maxPhotoFileSize: json['max_photo_file_size'],
-        maxVideoFileSize: json['max_video_file_size'],
-        maxOtherFileSize: json['max_other_file_size'],
-        videoUploadBitrate: json['video_upload_bitrate'],
-        preloadLargeVideos: json['preload_large_videos'],
-        preloadNextAudio: json['preload_next_audio'],
-        useLessDataForCalls: json['use_less_data_for_calls']);
+      isAutoDownloadEnabled: json['is_auto_download_enabled'],
+      maxPhotoFileSize: json['max_photo_file_size'],
+      maxVideoFileSize: json['max_video_file_size'],
+      maxOtherFileSize: json['max_other_file_size'],
+      videoUploadBitrate: json['video_upload_bitrate'],
+      preloadLargeVideos: json['preload_large_videos'],
+      preloadNextAudio: json['preload_next_audio'],
+      useLessDataForCalls: json['use_less_data_for_calls'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_auto_download_enabled': this.isAutoDownloadEnabled,
-        'max_photo_file_size': this.maxPhotoFileSize,
-        'max_video_file_size': this.maxVideoFileSize,
-        'max_other_file_size': this.maxOtherFileSize,
-        'video_upload_bitrate': this.videoUploadBitrate,
-        'preload_large_videos': this.preloadLargeVideos,
-        'preload_next_audio': this.preloadNextAudio,
-        'use_less_data_for_calls': this.useLessDataForCalls,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_auto_download_enabled': isAutoDownloadEnabled,
+        'max_photo_file_size': maxPhotoFileSize,
+        'max_video_file_size': maxVideoFileSize,
+        'max_other_file_size': maxOtherFileSize,
+        'video_upload_bitrate': videoUploadBitrate,
+        'preload_large_videos': preloadLargeVideos,
+        'preload_next_audio': preloadNextAudio,
+        'use_less_data_for_calls': useLessDataForCalls,
+        '@type': constructor,
       };
 
   @override

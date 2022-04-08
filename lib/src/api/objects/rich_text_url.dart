@@ -1,9 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A rich text URL link
+@immutable
 class RichTextUrl extends RichText {
-  RichTextUrl({required this.text, required this.url, required this.isCached});
+  const RichTextUrl({
+    required this.text,
+    required this.url,
+    required this.isCached,
+  });
 
   /// [text] Text
   final RichText text;
@@ -14,7 +20,7 @@ class RichTextUrl extends RichText {
   /// [isCached] True, if the URL has cached instant view server-side
   final bool isCached;
 
-  static const String CONSTRUCTOR = 'richTextUrl';
+  static const String constructor = 'richTextUrl';
 
   static RichTextUrl? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -22,19 +28,21 @@ class RichTextUrl extends RichText {
     }
 
     return RichTextUrl(
-        text: RichText.fromJson(json['text'])!,
-        url: json['url'],
-        isCached: json['is_cached']);
+      text: RichText.fromJson(json['text'])!,
+      url: json['url'],
+      isCached: json['is_cached'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'url': this.url,
-        'is_cached': this.isCached,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'url': url,
+        'is_cached': isCached,
+        '@type': constructor,
       };
 
   @override

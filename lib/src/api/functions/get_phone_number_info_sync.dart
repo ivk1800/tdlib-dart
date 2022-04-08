@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a phone number by its prefix synchronously.
 /// getCountries must be called at least once after changing localization to
 /// the specified language if properly localized country information is
 /// expected. Can be called synchronously
 /// Returns [PhoneNumberInfo]
+@immutable
 class GetPhoneNumberInfoSync extends TdFunction {
-  GetPhoneNumberInfoSync(
-      {required this.languageCode, required this.phoneNumberPrefix});
+  const GetPhoneNumberInfoSync({
+    required this.languageCode,
+    required this.phoneNumberPrefix,
+  });
 
   /// [languageCode] A two-letter ISO 639-1 country code for country information
   /// localization
@@ -17,15 +21,16 @@ class GetPhoneNumberInfoSync extends TdFunction {
   /// [phoneNumberPrefix] The phone number prefix
   final String phoneNumberPrefix;
 
-  static const String CONSTRUCTOR = 'getPhoneNumberInfoSync';
+  static const String constructor = 'getPhoneNumberInfoSync';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'language_code': this.languageCode,
-        'phone_number_prefix': this.phoneNumberPrefix,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_code': languageCode,
+        'phone_number_prefix': phoneNumberPrefix,
+        '@type': constructor,
       };
 
   @override

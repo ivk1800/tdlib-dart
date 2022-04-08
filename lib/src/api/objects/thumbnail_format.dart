@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes format of the thumbnail
+@immutable
 abstract class ThumbnailFormat extends TdObject {
   const ThumbnailFormat();
 
-  static const String CONSTRUCTOR = 'thumbnailFormat';
+  static const String constructor = 'thumbnailFormat';
 
   /// Inherited by:
   /// [ThumbnailFormatJpeg]
@@ -19,18 +21,18 @@ abstract class ThumbnailFormat extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ThumbnailFormatJpeg.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ThumbnailFormatJpeg.constructor:
         return ThumbnailFormatJpeg.fromJson(json);
-      case ThumbnailFormatPng.CONSTRUCTOR:
+      case ThumbnailFormatPng.constructor:
         return ThumbnailFormatPng.fromJson(json);
-      case ThumbnailFormatWebp.CONSTRUCTOR:
+      case ThumbnailFormatWebp.constructor:
         return ThumbnailFormatWebp.fromJson(json);
-      case ThumbnailFormatGif.CONSTRUCTOR:
+      case ThumbnailFormatGif.constructor:
         return ThumbnailFormatGif.fromJson(json);
-      case ThumbnailFormatTgs.CONSTRUCTOR:
+      case ThumbnailFormatTgs.constructor:
         return ThumbnailFormatTgs.fromJson(json);
-      case ThumbnailFormatMpeg4.CONSTRUCTOR:
+      case ThumbnailFormatMpeg4.constructor:
         return ThumbnailFormatMpeg4.fromJson(json);
       default:
         return null;
@@ -38,7 +40,7 @@ abstract class ThumbnailFormat extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

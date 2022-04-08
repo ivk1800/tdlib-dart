@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns network data usage statistics. Can be called before authorization
 /// Returns [NetworkStatistics]
+@immutable
 class GetNetworkStatistics extends TdFunction {
-  GetNetworkStatistics({required this.onlyCurrent});
+  const GetNetworkStatistics({
+    required this.onlyCurrent,
+  });
 
   /// [onlyCurrent] If true, returns only data for the current library launch
   final bool onlyCurrent;
 
-  static const String CONSTRUCTOR = 'getNetworkStatistics';
+  static const String constructor = 'getNetworkStatistics';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'only_current': this.onlyCurrent, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'only_current': onlyCurrent,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

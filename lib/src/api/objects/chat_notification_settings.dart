@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about notification settings for a chat
+@immutable
 class ChatNotificationSettings extends TdObject {
-  ChatNotificationSettings(
-      {required this.useDefaultMuteFor,
-      required this.muteFor,
-      required this.useDefaultSound,
-      required this.sound,
-      required this.useDefaultShowPreview,
-      required this.showPreview,
-      required this.useDefaultDisablePinnedMessageNotifications,
-      required this.disablePinnedMessageNotifications,
-      required this.useDefaultDisableMentionNotifications,
-      required this.disableMentionNotifications});
+  const ChatNotificationSettings({
+    required this.useDefaultMuteFor,
+    required this.muteFor,
+    required this.useDefaultSound,
+    required this.sound,
+    required this.useDefaultShowPreview,
+    required this.showPreview,
+    required this.useDefaultDisablePinnedMessageNotifications,
+    required this.disablePinnedMessageNotifications,
+    required this.useDefaultDisableMentionNotifications,
+    required this.disableMentionNotifications,
+  });
 
   /// [useDefaultMuteFor] If true, mute_for is ignored and the value for the
   /// relevant type of chat is used instead
@@ -55,7 +58,7 @@ class ChatNotificationSettings extends TdObject {
   /// mentions will be created as for an ordinary unread message
   final bool disableMentionNotifications;
 
-  static const String CONSTRUCTOR = 'chatNotificationSettings';
+  static const String constructor = 'chatNotificationSettings';
 
   static ChatNotificationSettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -63,39 +66,41 @@ class ChatNotificationSettings extends TdObject {
     }
 
     return ChatNotificationSettings(
-        useDefaultMuteFor: json['use_default_mute_for'],
-        muteFor: json['mute_for'],
-        useDefaultSound: json['use_default_sound'],
-        sound: json['sound'],
-        useDefaultShowPreview: json['use_default_show_preview'],
-        showPreview: json['show_preview'],
-        useDefaultDisablePinnedMessageNotifications:
-            json['use_default_disable_pinned_message_notifications'],
-        disablePinnedMessageNotifications:
-            json['disable_pinned_message_notifications'],
-        useDefaultDisableMentionNotifications:
-            json['use_default_disable_mention_notifications'],
-        disableMentionNotifications: json['disable_mention_notifications']);
+      useDefaultMuteFor: json['use_default_mute_for'],
+      muteFor: json['mute_for'],
+      useDefaultSound: json['use_default_sound'],
+      sound: json['sound'],
+      useDefaultShowPreview: json['use_default_show_preview'],
+      showPreview: json['show_preview'],
+      useDefaultDisablePinnedMessageNotifications:
+          json['use_default_disable_pinned_message_notifications'],
+      disablePinnedMessageNotifications:
+          json['disable_pinned_message_notifications'],
+      useDefaultDisableMentionNotifications:
+          json['use_default_disable_mention_notifications'],
+      disableMentionNotifications: json['disable_mention_notifications'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'use_default_mute_for': this.useDefaultMuteFor,
-        'mute_for': this.muteFor,
-        'use_default_sound': this.useDefaultSound,
-        'sound': this.sound,
-        'use_default_show_preview': this.useDefaultShowPreview,
-        'show_preview': this.showPreview,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'use_default_mute_for': useDefaultMuteFor,
+        'mute_for': muteFor,
+        'use_default_sound': useDefaultSound,
+        'sound': sound,
+        'use_default_show_preview': useDefaultShowPreview,
+        'show_preview': showPreview,
         'use_default_disable_pinned_message_notifications':
-            this.useDefaultDisablePinnedMessageNotifications,
+            useDefaultDisablePinnedMessageNotifications,
         'disable_pinned_message_notifications':
-            this.disablePinnedMessageNotifications,
+            disablePinnedMessageNotifications,
         'use_default_disable_mention_notifications':
-            this.useDefaultDisableMentionNotifications,
-        'disable_mention_notifications': this.disableMentionNotifications,
-        '@type': CONSTRUCTOR
+            useDefaultDisableMentionNotifications,
+        'disable_mention_notifications': disableMentionNotifications,
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the block state of a message sender. Currently, only users and
 /// supergroup chats can be blocked
 /// Returns [Ok]
+@immutable
 class ToggleMessageSenderIsBlocked extends TdFunction {
-  ToggleMessageSenderIsBlocked(
-      {required this.senderId, required this.isBlocked});
+  const ToggleMessageSenderIsBlocked({
+    required this.senderId,
+    required this.isBlocked,
+  });
 
   /// [senderId] Identifier of a message sender to block/unblock
   final MessageSender senderId;
@@ -14,15 +18,16 @@ class ToggleMessageSenderIsBlocked extends TdFunction {
   /// [isBlocked] New value of is_blocked
   final bool isBlocked;
 
-  static const String CONSTRUCTOR = 'toggleMessageSenderIsBlocked';
+  static const String constructor = 'toggleMessageSenderIsBlocked';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sender_id': this.senderId.toJson(),
-        'is_blocked': this.isBlocked,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sender_id': senderId.toJson(),
+        'is_blocked': isBlocked,
+        '@type': constructor,
       };
 
   @override

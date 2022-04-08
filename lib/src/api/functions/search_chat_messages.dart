@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Searches for messages with given words in the chat. Returns the results in
 /// reverse chronological order, i.e. in order of decreasing message_id.
@@ -8,16 +9,18 @@ import '../extensions/data_class_extensions.dart';
 /// database. For optimal performance, the number of returned messages is
 /// chosen by TDLib and can be smaller than the specified limit
 /// Returns [Messages]
+@immutable
 class SearchChatMessages extends TdFunction {
-  SearchChatMessages(
-      {required this.chatId,
-      required this.query,
-      this.senderId,
-      required this.fromMessageId,
-      required this.offset,
-      required this.limit,
-      this.filter,
-      required this.messageThreadId});
+  const SearchChatMessages({
+    required this.chatId,
+    required this.query,
+    this.senderId,
+    required this.fromMessageId,
+    required this.offset,
+    required this.limit,
+    this.filter,
+    required this.messageThreadId,
+  });
 
   /// [chatId] Identifier of the chat in which to search messages
   final int chatId;
@@ -51,21 +54,22 @@ class SearchChatMessages extends TdFunction {
   /// returned; supergroups only
   final int messageThreadId;
 
-  static const String CONSTRUCTOR = 'searchChatMessages';
+  static const String constructor = 'searchChatMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'query': this.query,
-        'sender_id': this.senderId?.toJson(),
-        'from_message_id': this.fromMessageId,
-        'offset': this.offset,
-        'limit': this.limit,
-        'filter': this.filter?.toJson(),
-        'message_thread_id': this.messageThreadId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'query': query,
+        'sender_id': senderId?.toJson(),
+        'from_message_id': fromMessageId,
+        'offset': offset,
+        'limit': limit,
+        'filter': filter?.toJson(),
+        'message_thread_id': messageThreadId,
+        '@type': constructor,
       };
 
   @override

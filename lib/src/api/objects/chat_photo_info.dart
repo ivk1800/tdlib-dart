@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains basic information about the photo of a chat
+@immutable
 class ChatPhotoInfo extends TdObject {
-  ChatPhotoInfo(
-      {required this.small,
-      required this.big,
-      this.minithumbnail,
-      required this.hasAnimation});
+  const ChatPhotoInfo({
+    required this.small,
+    required this.big,
+    this.minithumbnail,
+    required this.hasAnimation,
+  });
 
   /// [small] A small (160x160) chat photo variant in JPEG format. The file can
   /// be downloaded only before the photo is changed
@@ -23,7 +26,7 @@ class ChatPhotoInfo extends TdObject {
   /// [hasAnimation] True, if the photo has animated variant
   final bool hasAnimation;
 
-  static const String CONSTRUCTOR = 'chatPhotoInfo';
+  static const String constructor = 'chatPhotoInfo';
 
   static ChatPhotoInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -31,21 +34,23 @@ class ChatPhotoInfo extends TdObject {
     }
 
     return ChatPhotoInfo(
-        small: File.fromJson(json['small'])!,
-        big: File.fromJson(json['big'])!,
-        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-        hasAnimation: json['has_animation']);
+      small: File.fromJson(json['small'])!,
+      big: File.fromJson(json['big'])!,
+      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
+      hasAnimation: json['has_animation'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'small': this.small.toJson(),
-        'big': this.big.toJson(),
-        'minithumbnail': this.minithumbnail?.toJson(),
-        'has_animation': this.hasAnimation,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'small': small.toJson(),
+        'big': big.toJson(),
+        'minithumbnail': minithumbnail?.toJson(),
+        'has_animation': hasAnimation,
+        '@type': constructor,
       };
 
   @override

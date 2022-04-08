@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains one row of the game high score table
+@immutable
 class GameHighScore extends TdObject {
-  GameHighScore(
-      {required this.position, required this.userId, required this.score});
+  const GameHighScore({
+    required this.position,
+    required this.userId,
+    required this.score,
+  });
 
   /// [position] Position in the high score table
   final int position;
@@ -15,7 +20,7 @@ class GameHighScore extends TdObject {
   /// [score] User score
   final int score;
 
-  static const String CONSTRUCTOR = 'gameHighScore';
+  static const String constructor = 'gameHighScore';
 
   static GameHighScore? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class GameHighScore extends TdObject {
     }
 
     return GameHighScore(
-        position: json['position'],
-        userId: json['user_id'],
-        score: json['score']);
+      position: json['position'],
+      userId: json['user_id'],
+      score: json['score'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'position': this.position,
-        'user_id': this.userId,
-        'score': this.score,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'position': position,
+        'user_id': userId,
+        'score': score,
+        '@type': constructor,
       };
 
   @override

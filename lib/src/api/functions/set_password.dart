@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the password for the current user. If a new recovery email address
 /// is specified, then the change will not be applied until the new recovery
 /// email address is confirmed
 /// Returns [PasswordState]
+@immutable
 class SetPassword extends TdFunction {
-  SetPassword(
-      {required this.oldPassword,
-      required this.newPassword,
-      required this.newHint,
-      required this.setRecoveryEmailAddress,
-      required this.newRecoveryEmailAddress});
+  const SetPassword({
+    required this.oldPassword,
+    required this.newPassword,
+    required this.newHint,
+    required this.setRecoveryEmailAddress,
+    required this.newRecoveryEmailAddress,
+  });
 
   /// [oldPassword] Previous password of the user
   final String oldPassword;
@@ -30,18 +33,19 @@ class SetPassword extends TdFunction {
   /// [newRecoveryEmailAddress] New recovery email address; may be empty
   final String newRecoveryEmailAddress;
 
-  static const String CONSTRUCTOR = 'setPassword';
+  static const String constructor = 'setPassword';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_password': this.oldPassword,
-        'new_password': this.newPassword,
-        'new_hint': this.newHint,
-        'set_recovery_email_address': this.setRecoveryEmailAddress,
-        'new_recovery_email_address': this.newRecoveryEmailAddress,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_password': oldPassword,
+        'new_password': newPassword,
+        'new_hint': newHint,
+        'set_recovery_email_address': setRecoveryEmailAddress,
+        'new_recovery_email_address': newRecoveryEmailAddress,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a payload of a callback query
+@immutable
 abstract class CallbackQueryPayload extends TdObject {
   const CallbackQueryPayload();
 
-  static const String CONSTRUCTOR = 'callbackQueryPayload';
+  static const String constructor = 'callbackQueryPayload';
 
   /// Inherited by:
   /// [CallbackQueryPayloadData]
@@ -16,12 +18,12 @@ abstract class CallbackQueryPayload extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CallbackQueryPayloadData.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CallbackQueryPayloadData.constructor:
         return CallbackQueryPayloadData.fromJson(json);
-      case CallbackQueryPayloadDataWithPassword.CONSTRUCTOR:
+      case CallbackQueryPayloadDataWithPassword.constructor:
         return CallbackQueryPayloadDataWithPassword.fromJson(json);
-      case CallbackQueryPayloadGame.CONSTRUCTOR:
+      case CallbackQueryPayloadGame.constructor:
         return CallbackQueryPayloadGame.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class CallbackQueryPayload extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

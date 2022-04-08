@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Thumbnail image of a very poor quality and low resolution
+@immutable
 class Minithumbnail extends TdObject {
-  Minithumbnail(
-      {required this.width, required this.height, required this.data});
+  const Minithumbnail({
+    required this.width,
+    required this.height,
+    required this.data,
+  });
 
   /// [width] Thumbnail width, usually doesn't exceed 40
   final int width;
@@ -15,7 +20,7 @@ class Minithumbnail extends TdObject {
   /// [data] The thumbnail in JPEG format
   final String data;
 
-  static const String CONSTRUCTOR = 'minithumbnail';
+  static const String constructor = 'minithumbnail';
 
   static Minithumbnail? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,17 +28,21 @@ class Minithumbnail extends TdObject {
     }
 
     return Minithumbnail(
-        width: json['width'], height: json['height'], data: json['data']);
+      width: json['width'],
+      height: json['height'],
+      data: json['data'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'width': this.width,
-        'height': this.height,
-        'data': this.data,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'width': width,
+        'height': height,
+        'data': data,
+        '@type': constructor,
       };
 
   @override

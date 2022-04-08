@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some data in userFullInfo has been changed
+@immutable
 class UpdateUserFullInfo extends Update {
-  UpdateUserFullInfo({required this.userId, required this.userFullInfo});
+  const UpdateUserFullInfo({
+    required this.userId,
+    required this.userFullInfo,
+  });
 
   /// [userId] User identifier
   final int userId;
@@ -11,7 +16,7 @@ class UpdateUserFullInfo extends Update {
   /// [userFullInfo] New full information about the user
   final UserFullInfo userFullInfo;
 
-  static const String CONSTRUCTOR = 'updateUserFullInfo';
+  static const String constructor = 'updateUserFullInfo';
 
   static UpdateUserFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateUserFullInfo extends Update {
     }
 
     return UpdateUserFullInfo(
-        userId: json['user_id'],
-        userFullInfo: UserFullInfo.fromJson(json['user_full_info'])!);
+      userId: json['user_id'],
+      userFullInfo: UserFullInfo.fromJson(json['user_full_info'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'user_full_info': this.userFullInfo.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'user_full_info': userFullInfo.toJson(),
+        '@type': constructor,
       };
 
   @override

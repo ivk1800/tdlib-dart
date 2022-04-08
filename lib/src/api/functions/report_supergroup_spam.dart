@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Reports messages in a supergroup as spam; requires administrator rights in
 /// the supergroup
 /// Returns [Ok]
+@immutable
 class ReportSupergroupSpam extends TdFunction {
-  ReportSupergroupSpam({required this.supergroupId, required this.messageIds});
+  const ReportSupergroupSpam({
+    required this.supergroupId,
+    required this.messageIds,
+  });
 
   /// [supergroupId] Supergroup identifier
   final int supergroupId;
@@ -13,15 +18,16 @@ class ReportSupergroupSpam extends TdFunction {
   /// [messageIds] Identifiers of messages to report
   final List<int> messageIds;
 
-  static const String CONSTRUCTOR = 'reportSupergroupSpam';
+  static const String constructor = 'reportSupergroupSpam';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
         'message_ids': messageIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

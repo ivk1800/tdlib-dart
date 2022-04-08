@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents result of 2-step verification password reset
+@immutable
 abstract class ResetPasswordResult extends TdObject {
   const ResetPasswordResult();
 
-  static const String CONSTRUCTOR = 'resetPasswordResult';
+  static const String constructor = 'resetPasswordResult';
 
   /// Inherited by:
   /// [ResetPasswordResultOk]
@@ -16,12 +18,12 @@ abstract class ResetPasswordResult extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ResetPasswordResultOk.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ResetPasswordResultOk.constructor:
         return ResetPasswordResultOk.fromJson(json);
-      case ResetPasswordResultPending.CONSTRUCTOR:
+      case ResetPasswordResultPending.constructor:
         return ResetPasswordResultPending.fromJson(json);
-      case ResetPasswordResultDeclined.CONSTRUCTOR:
+      case ResetPasswordResultDeclined.constructor:
         return ResetPasswordResultDeclined.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class ResetPasswordResult extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

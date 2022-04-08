@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An animation message (GIF-style).
+@immutable
 class PushMessageContentAnimation extends PushMessageContent {
-  PushMessageContentAnimation(
-      {this.animation, required this.caption, required this.isPinned});
+  const PushMessageContentAnimation({
+    this.animation,
+    required this.caption,
+    required this.isPinned,
+  });
 
   /// [animation] Message content; may be null
   final Animation? animation;
@@ -16,7 +21,7 @@ class PushMessageContentAnimation extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentAnimation';
+  static const String constructor = 'pushMessageContentAnimation';
 
   static PushMessageContentAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class PushMessageContentAnimation extends PushMessageContent {
     }
 
     return PushMessageContentAnimation(
-        animation: Animation.fromJson(json['animation']),
-        caption: json['caption'],
-        isPinned: json['is_pinned']);
+      animation: Animation.fromJson(json['animation']),
+      caption: json['caption'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'animation': this.animation?.toJson(),
-        'caption': this.caption,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'animation': animation?.toJson(),
+        'caption': caption,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

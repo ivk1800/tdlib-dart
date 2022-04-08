@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a file with a segment of a group call stream in a modified OGG
 /// format for audio or MPEG-4 format for video
 /// Returns [FilePart]
+@immutable
 class GetGroupCallStreamSegment extends TdFunction {
-  GetGroupCallStreamSegment(
-      {required this.groupCallId,
-      required this.timeOffset,
-      required this.scale,
-      required this.channelId,
-      this.videoQuality});
+  const GetGroupCallStreamSegment({
+    required this.groupCallId,
+    required this.timeOffset,
+    required this.scale,
+    required this.channelId,
+    this.videoQuality,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -31,18 +34,19 @@ class GetGroupCallStreamSegment extends TdFunction {
   /// the worst available quality
   final GroupCallVideoQuality? videoQuality;
 
-  static const String CONSTRUCTOR = 'getGroupCallStreamSegment';
+  static const String constructor = 'getGroupCallStreamSegment';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'time_offset': this.timeOffset,
-        'scale': this.scale,
-        'channel_id': this.channelId,
-        'video_quality': this.videoQuality?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'time_offset': timeOffset,
+        'scale': scale,
+        'channel_id': channelId,
+        'video_quality': videoQuality?.toJson(),
+        '@type': constructor,
       };
 
   @override

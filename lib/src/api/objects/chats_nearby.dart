@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a list of chats located nearby
+@immutable
 class ChatsNearby extends TdObject {
-  ChatsNearby({required this.usersNearby, required this.supergroupsNearby});
+  const ChatsNearby({
+    required this.usersNearby,
+    required this.supergroupsNearby,
+  });
 
   /// [usersNearby] List of users nearby
   final List<ChatNearby> usersNearby;
@@ -11,7 +16,7 @@ class ChatsNearby extends TdObject {
   /// [supergroupsNearby] List of location-based supergroups nearby
   final List<ChatNearby> supergroupsNearby;
 
-  static const String CONSTRUCTOR = 'chatsNearby';
+  static const String constructor = 'chatsNearby';
 
   static ChatsNearby? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,23 +24,25 @@ class ChatsNearby extends TdObject {
     }
 
     return ChatsNearby(
-        usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
-            .map((item) => ChatNearby.fromJson(item))
-            .toList()),
-        supergroupsNearby: List<ChatNearby>.from(
-            (json['supergroups_nearby'] ?? [])
-                .map((item) => ChatNearby.fromJson(item))
-                .toList()));
+      usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+          .map((item) => ChatNearby.fromJson(item))
+          .toList()),
+      supergroupsNearby: List<ChatNearby>.from(
+          (json['supergroups_nearby'] ?? [])
+              .map((item) => ChatNearby.fromJson(item))
+              .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'users_nearby': usersNearby.map((item) => item.toJson()).toList(),
         'supergroups_nearby':
             supergroupsNearby.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

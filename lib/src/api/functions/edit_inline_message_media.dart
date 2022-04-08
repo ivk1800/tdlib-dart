@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the content of a message with an animation, an audio, a document, a
 /// photo or a video in an inline message sent via a bot; for bots only
 /// Returns [Ok]
+@immutable
 class EditInlineMessageMedia extends TdFunction {
-  EditInlineMessageMedia(
-      {required this.inlineMessageId,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const EditInlineMessageMedia({
+    required this.inlineMessageId,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
@@ -22,16 +25,17 @@ class EditInlineMessageMedia extends TdFunction {
   /// inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'editInlineMessageMedia';
+  static const String constructor = 'editInlineMessageMedia';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_message_id': inlineMessageId,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

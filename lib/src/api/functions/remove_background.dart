@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes background from the list of installed backgrounds
 /// Returns [Ok]
+@immutable
 class RemoveBackground extends TdFunction {
-  RemoveBackground({required this.backgroundId});
+  const RemoveBackground({
+    required this.backgroundId,
+  });
 
   /// [backgroundId] The background identifier
   final int backgroundId;
 
-  static const String CONSTRUCTOR = 'removeBackground';
+  static const String constructor = 'removeBackground';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'background_id': this.backgroundId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'background_id': backgroundId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Currently establishing a connection with a proxy server
+@immutable
 class ConnectionStateConnectingToProxy extends ConnectionState {
   const ConnectionStateConnectingToProxy();
 
-  static const String CONSTRUCTOR = 'connectionStateConnectingToProxy';
+  static const String constructor = 'connectionStateConnectingToProxy';
 
   static ConnectionStateConnectingToProxy? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

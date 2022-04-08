@@ -1,29 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A token for Microsoft Push Notification Service VoIP channel
+@immutable
 class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
-  DeviceTokenMicrosoftPushVoIP({required this.channelUri});
+  const DeviceTokenMicrosoftPushVoIP({
+    required this.channelUri,
+  });
 
   /// [channelUri] Push notification channel URI; may be empty to deregister a
   /// device
   final String channelUri;
 
-  static const String CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
+  static const String constructor = 'deviceTokenMicrosoftPushVoIP';
 
   static DeviceTokenMicrosoftPushVoIP? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return DeviceTokenMicrosoftPushVoIP(channelUri: json['channel_uri']);
+    return DeviceTokenMicrosoftPushVoIP(
+      channelUri: json['channel_uri'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'channel_uri': this.channelUri, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'channel_uri': channelUri,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A privacy setting for managing whether a link to the user's account is
 /// included in forwarded messages
+@immutable
 class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
   const UserPrivacySettingShowLinkInForwardedMessages();
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'userPrivacySettingShowLinkInForwardedMessages';
 
   static UserPrivacySettingShowLinkInForwardedMessages? fromJson(
@@ -19,9 +21,12 @@ class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

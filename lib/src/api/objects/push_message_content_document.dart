@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A document message (a general file)
+@immutable
 class PushMessageContentDocument extends PushMessageContent {
-  PushMessageContentDocument({this.document, required this.isPinned});
+  const PushMessageContentDocument({
+    this.document,
+    required this.isPinned,
+  });
 
   /// [document] Message content; may be null
   final Document? document;
@@ -12,7 +17,7 @@ class PushMessageContentDocument extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentDocument';
+  static const String constructor = 'pushMessageContentDocument';
 
   static PushMessageContentDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +25,19 @@ class PushMessageContentDocument extends PushMessageContent {
     }
 
     return PushMessageContentDocument(
-        document: Document.fromJson(json['document']),
-        isPinned: json['is_pinned']);
+      document: Document.fromJson(json['document']),
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'document': this.document?.toJson(),
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'document': document?.toJson(),
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

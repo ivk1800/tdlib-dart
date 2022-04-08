@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes commands supported by the bot for the given user scope and
 /// language; for bots only
 /// Returns [Ok]
+@immutable
 class DeleteCommands extends TdFunction {
-  DeleteCommands({this.scope, required this.languageCode});
+  const DeleteCommands({
+    this.scope,
+    required this.languageCode,
+  });
 
   /// [scope] The scope to which the commands are relevant; pass null to delete
   /// commands in the default bot command scope
@@ -14,15 +19,16 @@ class DeleteCommands extends TdFunction {
   /// [languageCode] A two-letter ISO 639-1 country code or an empty string
   final String languageCode;
 
-  static const String CONSTRUCTOR = 'deleteCommands';
+  static const String constructor = 'deleteCommands';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'scope': this.scope?.toJson(),
-        'language_code': this.languageCode,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'scope': scope?.toJson(),
+        'language_code': languageCode,
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// TDLib needs the user's authentication code to authorize
+@immutable
 class AuthorizationStateWaitCode extends AuthorizationState {
-  AuthorizationStateWaitCode({required this.codeInfo});
+  const AuthorizationStateWaitCode({
+    required this.codeInfo,
+  });
 
   /// [codeInfo] Information about the authorization code that was sent
   final AuthenticationCodeInfo codeInfo;
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitCode';
+  static const String constructor = 'authorizationStateWaitCode';
 
   static AuthorizationStateWaitCode? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class AuthorizationStateWaitCode extends AuthorizationState {
     }
 
     return AuthorizationStateWaitCode(
-        codeInfo: AuthenticationCodeInfo.fromJson(json['code_info'])!);
+      codeInfo: AuthenticationCodeInfo.fromJson(json['code_info'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'code_info': this.codeInfo.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'code_info': codeInfo.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

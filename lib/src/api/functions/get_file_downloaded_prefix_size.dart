@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns file downloaded prefix size from a given offset, in bytes
 /// Returns [Count]
+@immutable
 class GetFileDownloadedPrefixSize extends TdFunction {
-  GetFileDownloadedPrefixSize({required this.fileId, required this.offset});
+  const GetFileDownloadedPrefixSize({
+    required this.fileId,
+    required this.offset,
+  });
 
   /// [fileId] Identifier of the file
   final int fileId;
@@ -12,13 +17,17 @@ class GetFileDownloadedPrefixSize extends TdFunction {
   /// [offset] Offset from which downloaded prefix size needs to be calculated
   final int offset;
 
-  static const String CONSTRUCTOR = 'getFileDownloadedPrefixSize';
+  static const String constructor = 'getFileDownloadedPrefixSize';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file_id': this.fileId, 'offset': this.offset, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        'offset': offset,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

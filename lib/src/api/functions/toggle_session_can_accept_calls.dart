@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether a session can accept incoming calls
 /// Returns [Ok]
+@immutable
 class ToggleSessionCanAcceptCalls extends TdFunction {
-  ToggleSessionCanAcceptCalls(
-      {required this.sessionId, required this.canAcceptCalls});
+  const ToggleSessionCanAcceptCalls({
+    required this.sessionId,
+    required this.canAcceptCalls,
+  });
 
   /// [sessionId] Session identifier
   final int sessionId;
@@ -13,15 +17,16 @@ class ToggleSessionCanAcceptCalls extends TdFunction {
   /// [canAcceptCalls] True, if incoming calls can be accepted by the session
   final bool canAcceptCalls;
 
-  static const String CONSTRUCTOR = 'toggleSessionCanAcceptCalls';
+  static const String constructor = 'toggleSessionCanAcceptCalls';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'session_id': this.sessionId,
-        'can_accept_calls': this.canAcceptCalls,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'session_id': sessionId,
+        'can_accept_calls': canAcceptCalls,
+        '@type': constructor,
       };
 
   @override

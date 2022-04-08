@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The element contains an error in an unspecified place. The error will be
 /// considered resolved when new data is added
+@immutable
 class InputPassportElementErrorSourceUnspecified
     extends InputPassportElementErrorSource {
-  InputPassportElementErrorSourceUnspecified({required this.elementHash});
+  const InputPassportElementErrorSourceUnspecified({
+    required this.elementHash,
+  });
 
   /// [elementHash] Current hash of the entire element
   final String elementHash;
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'inputPassportElementErrorSourceUnspecified';
 
   static InputPassportElementErrorSourceUnspecified? fromJson(
@@ -20,14 +24,18 @@ class InputPassportElementErrorSourceUnspecified
     }
 
     return InputPassportElementErrorSourceUnspecified(
-        elementHash: json['element_hash']);
+      elementHash: json['element_hash'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'element_hash': this.elementHash, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'element_hash': elementHash,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

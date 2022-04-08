@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a game
+@immutable
 class InputInlineQueryResultGame extends InputInlineQueryResult {
-  InputInlineQueryResultGame(
-      {required this.id, required this.gameShortName, this.replyMarkup});
+  const InputInlineQueryResultGame({
+    required this.id,
+    required this.gameShortName,
+    this.replyMarkup,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -16,7 +21,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   /// replyMarkupInlineKeyboard or null
   final ReplyMarkup? replyMarkup;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultGame';
+  static const String constructor = 'inputInlineQueryResultGame';
 
   static InputInlineQueryResultGame? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultGame(
-        id: json['id'],
-        gameShortName: json['game_short_name'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']));
+      id: json['id'],
+      gameShortName: json['game_short_name'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'game_short_name': this.gameShortName,
-        'reply_markup': this.replyMarkup?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'game_short_name': gameShortName,
+        'reply_markup': replyMarkup?.toJson(),
+        '@type': constructor,
       };
 
   @override

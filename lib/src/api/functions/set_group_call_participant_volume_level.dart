@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes volume level of a participant of an active group call. If the
 /// current user can manage the group call, then the participant's volume
 /// level will be changed for all users with the default volume level
 /// Returns [Ok]
+@immutable
 class SetGroupCallParticipantVolumeLevel extends TdFunction {
-  SetGroupCallParticipantVolumeLevel(
-      {required this.groupCallId,
-      required this.participantId,
-      required this.volumeLevel});
+  const SetGroupCallParticipantVolumeLevel({
+    required this.groupCallId,
+    required this.participantId,
+    required this.volumeLevel,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -21,16 +24,17 @@ class SetGroupCallParticipantVolumeLevel extends TdFunction {
   /// percents
   final int volumeLevel;
 
-  static const String CONSTRUCTOR = 'setGroupCallParticipantVolumeLevel';
+  static const String constructor = 'setGroupCallParticipantVolumeLevel';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'participant_id': this.participantId.toJson(),
-        'volume_level': this.volumeLevel,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'participant_id': participantId.toJson(),
+        'volume_level': volumeLevel,
+        '@type': constructor,
       };
 
   @override

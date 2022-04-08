@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether a group call participant hand is rased
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
-  ToggleGroupCallParticipantIsHandRaised(
-      {required this.groupCallId,
-      required this.participantId,
-      required this.isHandRaised});
+  const ToggleGroupCallParticipantIsHandRaised({
+    required this.groupCallId,
+    required this.participantId,
+    required this.isHandRaised,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -20,16 +23,17 @@ class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
   /// lower other's hand
   final bool isHandRaised;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallParticipantIsHandRaised';
+  static const String constructor = 'toggleGroupCallParticipantIsHandRaised';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'participant_id': this.participantId.toJson(),
-        'is_hand_raised': this.isHandRaised,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'participant_id': participantId.toJson(),
+        'is_hand_raised': isHandRaised,
+        '@type': constructor,
       };
 
   @override

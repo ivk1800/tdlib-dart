@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Provides information about the method by which an authentication code is
 /// delivered to the user
+@immutable
 abstract class AuthenticationCodeType extends TdObject {
   const AuthenticationCodeType();
 
-  static const String CONSTRUCTOR = 'authenticationCodeType';
+  static const String constructor = 'authenticationCodeType';
 
   /// Inherited by:
   /// [AuthenticationCodeTypeTelegramMessage]
@@ -19,16 +21,16 @@ abstract class AuthenticationCodeType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
+    switch (json['@type']) {
+      case AuthenticationCodeTypeTelegramMessage.constructor:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
-      case AuthenticationCodeTypeSms.CONSTRUCTOR:
+      case AuthenticationCodeTypeSms.constructor:
         return AuthenticationCodeTypeSms.fromJson(json);
-      case AuthenticationCodeTypeCall.CONSTRUCTOR:
+      case AuthenticationCodeTypeCall.constructor:
         return AuthenticationCodeTypeCall.fromJson(json);
-      case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
+      case AuthenticationCodeTypeFlashCall.constructor:
         return AuthenticationCodeTypeFlashCall.fromJson(json);
-      case AuthenticationCodeTypeMissedCall.CONSTRUCTOR:
+      case AuthenticationCodeTypeMissedCall.constructor:
         return AuthenticationCodeTypeMissedCall.fromJson(json);
       default:
         return null;
@@ -36,7 +38,7 @@ abstract class AuthenticationCodeType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

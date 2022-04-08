@@ -1,20 +1,25 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns all updates needed to restore current TDLib state, i.e. all actual
 /// UpdateAuthorizationState/UpdateUser/UpdateNewChat and others. This is
 /// especially useful if TDLib is run in a separate process. Can be called
 /// before initialization
 /// Returns [Updates]
+@immutable
 class GetCurrentState extends TdFunction {
-  GetCurrentState();
+  const GetCurrentState();
 
-  static const String CONSTRUCTOR = 'getCurrentState';
+  static const String constructor = 'getCurrentState';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

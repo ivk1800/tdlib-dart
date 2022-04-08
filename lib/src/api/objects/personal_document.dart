@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A personal document, containing some information about a user
+@immutable
 class PersonalDocument extends TdObject {
-  PersonalDocument({required this.files, required this.translation});
+  const PersonalDocument({
+    required this.files,
+    required this.translation,
+  });
 
   /// [files] List of files containing the pages of the document
   final List<DatedFile> files;
@@ -12,7 +17,7 @@ class PersonalDocument extends TdObject {
   /// the document
   final List<DatedFile> translation;
 
-  static const String CONSTRUCTOR = 'personalDocument';
+  static const String constructor = 'personalDocument';
 
   static PersonalDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,21 +25,23 @@ class PersonalDocument extends TdObject {
     }
 
     return PersonalDocument(
-        files: List<DatedFile>.from((json['files'] ?? [])
-            .map((item) => DatedFile.fromJson(item))
-            .toList()),
-        translation: List<DatedFile>.from((json['translation'] ?? [])
-            .map((item) => DatedFile.fromJson(item))
-            .toList()));
+      files: List<DatedFile>.from((json['files'] ?? [])
+          .map((item) => DatedFile.fromJson(item))
+          .toList()),
+      translation: List<DatedFile>.from((json['translation'] ?? [])
+          .map((item) => DatedFile.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'files': files.map((item) => item.toJson()).toList(),
         'translation': translation.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

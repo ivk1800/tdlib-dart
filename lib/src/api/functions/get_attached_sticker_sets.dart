@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of sticker sets attached to a file. Currently, only photos
 /// and videos can have attached sticker sets
 /// Returns [StickerSets]
+@immutable
 class GetAttachedStickerSets extends TdFunction {
-  GetAttachedStickerSets({required this.fileId});
+  const GetAttachedStickerSets({
+    required this.fileId,
+  });
 
   /// [fileId] File identifier
   final int fileId;
 
-  static const String CONSTRUCTOR = 'getAttachedStickerSets';
+  static const String constructor = 'getAttachedStickerSets';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file_id': this.fileId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

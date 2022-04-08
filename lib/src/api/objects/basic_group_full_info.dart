@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains full information about a basic group
+@immutable
 class BasicGroupFullInfo extends TdObject {
-  BasicGroupFullInfo(
-      {this.photo,
-      required this.description,
-      required this.creatorUserId,
-      required this.members,
-      this.inviteLink,
-      required this.botCommands});
+  const BasicGroupFullInfo({
+    this.photo,
+    required this.description,
+    required this.creatorUserId,
+    required this.members,
+    this.inviteLink,
+    required this.botCommands,
+  });
 
   /// [photo] Chat photo; may be null
   final ChatPhoto? photo;
@@ -32,7 +35,7 @@ class BasicGroupFullInfo extends TdObject {
   /// [botCommands] List of commands of bots in the group
   final List<BotCommands> botCommands;
 
-  static const String CONSTRUCTOR = 'basicGroupFullInfo';
+  static const String constructor = 'basicGroupFullInfo';
 
   static BasicGroupFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -40,29 +43,31 @@ class BasicGroupFullInfo extends TdObject {
     }
 
     return BasicGroupFullInfo(
-        photo: ChatPhoto.fromJson(json['photo']),
-        description: json['description'],
-        creatorUserId: json['creator_user_id'],
-        members: List<ChatMember>.from((json['members'] ?? [])
-            .map((item) => ChatMember.fromJson(item))
-            .toList()),
-        inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
-            .map((item) => BotCommands.fromJson(item))
-            .toList()));
+      photo: ChatPhoto.fromJson(json['photo']),
+      description: json['description'],
+      creatorUserId: json['creator_user_id'],
+      members: List<ChatMember>.from((json['members'] ?? [])
+          .map((item) => ChatMember.fromJson(item))
+          .toList()),
+      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+      botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+          .map((item) => BotCommands.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'photo': this.photo?.toJson(),
-        'description': this.description,
-        'creator_user_id': this.creatorUserId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo?.toJson(),
+        'description': description,
+        'creator_user_id': creatorUserId,
         'members': members.map((item) => item.toJson()).toList(),
-        'invite_link': this.inviteLink?.toJson(),
+        'invite_link': inviteLink?.toJson(),
         'bot_commands': botCommands.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

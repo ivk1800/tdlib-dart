@@ -1,21 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to a page containing an embedded video player or a video
 /// file
+@immutable
 class InputInlineQueryResultVideo extends InputInlineQueryResult {
-  InputInlineQueryResultVideo(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.thumbnailUrl,
-      required this.videoUrl,
-      required this.mimeType,
-      required this.videoWidth,
-      required this.videoHeight,
-      required this.videoDuration,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultVideo({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.thumbnailUrl,
+    required this.videoUrl,
+    required this.mimeType,
+    required this.videoWidth,
+    required this.videoHeight,
+    required this.videoDuration,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -55,7 +58,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultVideo';
+  static const String constructor = 'inputInlineQueryResultVideo';
 
   static InputInlineQueryResultVideo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -63,36 +66,38 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultVideo(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        videoUrl: json['video_url'],
-        mimeType: json['mime_type'],
-        videoWidth: json['video_width'],
-        videoHeight: json['video_height'],
-        videoDuration: json['video_duration'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      thumbnailUrl: json['thumbnail_url'],
+      videoUrl: json['video_url'],
+      mimeType: json['mime_type'],
+      videoWidth: json['video_width'],
+      videoHeight: json['video_height'],
+      videoDuration: json['video_duration'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'description': this.description,
-        'thumbnail_url': this.thumbnailUrl,
-        'video_url': this.videoUrl,
-        'mime_type': this.mimeType,
-        'video_width': this.videoWidth,
-        'video_height': this.videoHeight,
-        'video_duration': this.videoDuration,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'description': description,
+        'thumbnail_url': thumbnailUrl,
+        'video_url': videoUrl,
+        'mime_type': mimeType,
+        'video_width': videoWidth,
+        'video_height': videoHeight,
+        'video_duration': videoDuration,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

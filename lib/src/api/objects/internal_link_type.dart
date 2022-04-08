@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by
 /// the app in a special way
+@immutable
 abstract class InternalLinkType extends TdObject {
   const InternalLinkType();
 
-  static const String CONSTRUCTOR = 'internalLinkType';
+  static const String constructor = 'internalLinkType';
 
   /// Inherited by:
   /// [InternalLinkTypeActiveSessions]
@@ -38,54 +40,54 @@ abstract class InternalLinkType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InternalLinkTypeActiveSessions.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InternalLinkTypeActiveSessions.constructor:
         return InternalLinkTypeActiveSessions.fromJson(json);
-      case InternalLinkTypeAuthenticationCode.CONSTRUCTOR:
+      case InternalLinkTypeAuthenticationCode.constructor:
         return InternalLinkTypeAuthenticationCode.fromJson(json);
-      case InternalLinkTypeBackground.CONSTRUCTOR:
+      case InternalLinkTypeBackground.constructor:
         return InternalLinkTypeBackground.fromJson(json);
-      case InternalLinkTypeBotStart.CONSTRUCTOR:
+      case InternalLinkTypeBotStart.constructor:
         return InternalLinkTypeBotStart.fromJson(json);
-      case InternalLinkTypeBotStartInGroup.CONSTRUCTOR:
+      case InternalLinkTypeBotStartInGroup.constructor:
         return InternalLinkTypeBotStartInGroup.fromJson(json);
-      case InternalLinkTypeChangePhoneNumber.CONSTRUCTOR:
+      case InternalLinkTypeChangePhoneNumber.constructor:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
-      case InternalLinkTypeChatInvite.CONSTRUCTOR:
+      case InternalLinkTypeChatInvite.constructor:
         return InternalLinkTypeChatInvite.fromJson(json);
-      case InternalLinkTypeFilterSettings.CONSTRUCTOR:
+      case InternalLinkTypeFilterSettings.constructor:
         return InternalLinkTypeFilterSettings.fromJson(json);
-      case InternalLinkTypeGame.CONSTRUCTOR:
+      case InternalLinkTypeGame.constructor:
         return InternalLinkTypeGame.fromJson(json);
-      case InternalLinkTypeLanguagePack.CONSTRUCTOR:
+      case InternalLinkTypeLanguagePack.constructor:
         return InternalLinkTypeLanguagePack.fromJson(json);
-      case InternalLinkTypeMessage.CONSTRUCTOR:
+      case InternalLinkTypeMessage.constructor:
         return InternalLinkTypeMessage.fromJson(json);
-      case InternalLinkTypeMessageDraft.CONSTRUCTOR:
+      case InternalLinkTypeMessageDraft.constructor:
         return InternalLinkTypeMessageDraft.fromJson(json);
-      case InternalLinkTypePassportDataRequest.CONSTRUCTOR:
+      case InternalLinkTypePassportDataRequest.constructor:
         return InternalLinkTypePassportDataRequest.fromJson(json);
-      case InternalLinkTypePhoneNumberConfirmation.CONSTRUCTOR:
+      case InternalLinkTypePhoneNumberConfirmation.constructor:
         return InternalLinkTypePhoneNumberConfirmation.fromJson(json);
-      case InternalLinkTypeProxy.CONSTRUCTOR:
+      case InternalLinkTypeProxy.constructor:
         return InternalLinkTypeProxy.fromJson(json);
-      case InternalLinkTypePublicChat.CONSTRUCTOR:
+      case InternalLinkTypePublicChat.constructor:
         return InternalLinkTypePublicChat.fromJson(json);
-      case InternalLinkTypeQrCodeAuthentication.CONSTRUCTOR:
+      case InternalLinkTypeQrCodeAuthentication.constructor:
         return InternalLinkTypeQrCodeAuthentication.fromJson(json);
-      case InternalLinkTypeSettings.CONSTRUCTOR:
+      case InternalLinkTypeSettings.constructor:
         return InternalLinkTypeSettings.fromJson(json);
-      case InternalLinkTypeStickerSet.CONSTRUCTOR:
+      case InternalLinkTypeStickerSet.constructor:
         return InternalLinkTypeStickerSet.fromJson(json);
-      case InternalLinkTypeTheme.CONSTRUCTOR:
+      case InternalLinkTypeTheme.constructor:
         return InternalLinkTypeTheme.fromJson(json);
-      case InternalLinkTypeThemeSettings.CONSTRUCTOR:
+      case InternalLinkTypeThemeSettings.constructor:
         return InternalLinkTypeThemeSettings.fromJson(json);
-      case InternalLinkTypeUnknownDeepLink.CONSTRUCTOR:
+      case InternalLinkTypeUnknownDeepLink.constructor:
         return InternalLinkTypeUnknownDeepLink.fromJson(json);
-      case InternalLinkTypeUnsupportedProxy.CONSTRUCTOR:
+      case InternalLinkTypeUnsupportedProxy.constructor:
         return InternalLinkTypeUnsupportedProxy.fromJson(json);
-      case InternalLinkTypeVideoChat.CONSTRUCTOR:
+      case InternalLinkTypeVideoChat.constructor:
         return InternalLinkTypeVideoChat.fromJson(json);
       default:
         return null;
@@ -93,7 +95,7 @@ abstract class InternalLinkType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

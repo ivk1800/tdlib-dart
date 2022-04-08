@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A newly created basic group
+@immutable
 class MessageBasicGroupChatCreate extends MessageContent {
-  MessageBasicGroupChatCreate(
-      {required this.title, required this.memberUserIds});
+  const MessageBasicGroupChatCreate({
+    required this.title,
+    required this.memberUserIds,
+  });
 
   /// [title] Title of the basic group
   final String title;
@@ -12,7 +16,7 @@ class MessageBasicGroupChatCreate extends MessageContent {
   /// [memberUserIds] User identifiers of members in the basic group
   final List<int> memberUserIds;
 
-  static const String CONSTRUCTOR = 'messageBasicGroupChatCreate';
+  static const String constructor = 'messageBasicGroupChatCreate';
 
   static MessageBasicGroupChatCreate? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,18 +24,20 @@ class MessageBasicGroupChatCreate extends MessageContent {
     }
 
     return MessageBasicGroupChatCreate(
-        title: json['title'],
-        memberUserIds: List<int>.from(
-            (json['member_user_ids'] ?? []).map((item) => item).toList()));
+      title: json['title'],
+      memberUserIds: List<int>.from(
+          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
         'member_user_ids': memberUserIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

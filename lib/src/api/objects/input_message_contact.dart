@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message containing a user contact
+@immutable
 class InputMessageContact extends InputMessageContent {
-  InputMessageContact({required this.contact});
+  const InputMessageContact({
+    required this.contact,
+  });
 
   /// [contact] Contact to send
   final Contact contact;
 
-  static const String CONSTRUCTOR = 'inputMessageContact';
+  static const String constructor = 'inputMessageContact';
 
   static InputMessageContact? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InputMessageContact(contact: Contact.fromJson(json['contact'])!);
+    return InputMessageContact(
+      contact: Contact.fromJson(json['contact'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'contact': this.contact.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'contact': contact.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

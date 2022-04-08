@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a file with messages exported from another app
 /// Returns [MessageFileType]
+@immutable
 class GetMessageFileType extends TdFunction {
-  GetMessageFileType({required this.messageFileHead});
+  const GetMessageFileType({
+    required this.messageFileHead,
+  });
 
   /// [messageFileHead] Beginning of the message file; up to 100 first lines
   final String messageFileHead;
 
-  static const String CONSTRUCTOR = 'getMessageFileType';
+  static const String constructor = 'getMessageFileType';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'message_file_head': this.messageFileHead, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'message_file_head': messageFileHead,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

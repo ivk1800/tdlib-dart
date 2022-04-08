@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The messages was exported from a chat of unknown type
+@immutable
 class MessageFileTypeUnknown extends MessageFileType {
   const MessageFileTypeUnknown();
 
-  static const String CONSTRUCTOR = 'messageFileTypeUnknown';
+  static const String constructor = 'messageFileTypeUnknown';
 
   static MessageFileTypeUnknown? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class MessageFileTypeUnknown extends MessageFileType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

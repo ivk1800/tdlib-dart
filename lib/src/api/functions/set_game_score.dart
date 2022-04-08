@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Updates the game score of the specified user in the game; for bots only
 /// Returns [Message]
+@immutable
 class SetGameScore extends TdFunction {
-  SetGameScore(
-      {required this.chatId,
-      required this.messageId,
-      required this.editMessage,
-      required this.userId,
-      required this.score,
-      required this.force});
+  const SetGameScore({
+    required this.chatId,
+    required this.messageId,
+    required this.editMessage,
+    required this.userId,
+    required this.score,
+    required this.force,
+  });
 
   /// [chatId] The chat to which the message with the game belongs
   final int chatId;
@@ -31,19 +34,20 @@ class SetGameScore extends TdFunction {
   /// is 0, the user will be deleted from the high score table
   final bool force;
 
-  static const String CONSTRUCTOR = 'setGameScore';
+  static const String constructor = 'setGameScore';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'edit_message': this.editMessage,
-        'user_id': this.userId,
-        'score': this.score,
-        'force': this.force,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'edit_message': editMessage,
+        'user_id': userId,
+        'score': score,
+        'force': force,
+        '@type': constructor,
       };
 
   @override

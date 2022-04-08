@@ -1,20 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Optimizes storage usage, i.e. deletes some files and returns new storage
 /// usage statistics. Secret thumbnails can't be deleted
 /// Returns [StorageStatistics]
+@immutable
 class OptimizeStorage extends TdFunction {
-  OptimizeStorage(
-      {required this.size,
-      required this.ttl,
-      required this.count,
-      required this.immunityDelay,
-      required this.fileTypes,
-      required this.chatIds,
-      required this.excludeChatIds,
-      required this.returnDeletedFileStatistics,
-      required this.chatLimit});
+  const OptimizeStorage({
+    required this.size,
+    required this.ttl,
+    required this.count,
+    required this.immunityDelay,
+    required this.fileTypes,
+    required this.chatIds,
+    required this.excludeChatIds,
+    required this.returnDeletedFileStatistics,
+    required this.chatLimit,
+  });
 
   /// [size] Limit on the total size of files after deletion, in bytes. Pass -1
   /// to use the default limit
@@ -57,22 +60,23 @@ class OptimizeStorage extends TdFunction {
   /// statistics
   final int chatLimit;
 
-  static const String CONSTRUCTOR = 'optimizeStorage';
+  static const String constructor = 'optimizeStorage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'size': this.size,
-        'ttl': this.ttl,
-        'count': this.count,
-        'immunity_delay': this.immunityDelay,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'size': size,
+        'ttl': ttl,
+        'count': count,
+        'immunity_delay': immunityDelay,
         'file_types': fileTypes.map((item) => item.toJson()).toList(),
         'chat_ids': chatIds.map((item) => item).toList(),
         'exclude_chat_ids': excludeChatIds.map((item) => item).toList(),
-        'return_deleted_file_statistics': this.returnDeletedFileStatistics,
-        'chat_limit': this.chatLimit,
-        '@type': CONSTRUCTOR
+        'return_deleted_file_statistics': returnDeletedFileStatistics,
+        'chat_limit': chatLimit,
+        '@type': constructor,
       };
 
   @override

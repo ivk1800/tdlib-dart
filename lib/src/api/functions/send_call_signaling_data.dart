@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends call signaling data
 /// Returns [Ok]
+@immutable
 class SendCallSignalingData extends TdFunction {
-  SendCallSignalingData({required this.callId, required this.data});
+  const SendCallSignalingData({
+    required this.callId,
+    required this.data,
+  });
 
   /// [callId] Call identifier
   final int callId;
@@ -12,13 +17,17 @@ class SendCallSignalingData extends TdFunction {
   /// [data] The data
   final String data;
 
-  static const String CONSTRUCTOR = 'sendCallSignalingData';
+  static const String constructor = 'sendCallSignalingData';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'call_id': this.callId, 'data': this.data, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'call_id': callId,
+        'data': data,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

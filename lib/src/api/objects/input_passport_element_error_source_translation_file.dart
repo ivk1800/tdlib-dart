@@ -1,17 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// One of the files containing the translation of the document contains an
 /// error. The error is considered resolved when the file with the translation
 /// changes
+@immutable
 class InputPassportElementErrorSourceTranslationFile
     extends InputPassportElementErrorSource {
-  InputPassportElementErrorSourceTranslationFile({required this.fileHash});
+  const InputPassportElementErrorSourceTranslationFile({
+    required this.fileHash,
+  });
 
   /// [fileHash] Current hash of the file containing the translation
   final String fileHash;
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'inputPassportElementErrorSourceTranslationFile';
 
   static InputPassportElementErrorSourceTranslationFile? fromJson(
@@ -21,14 +25,18 @@ class InputPassportElementErrorSourceTranslationFile
     }
 
     return InputPassportElementErrorSourceTranslationFile(
-        fileHash: json['file_hash']);
+      fileHash: json['file_hash'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file_hash': this.fileHash, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_hash': fileHash,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

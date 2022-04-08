@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Suggests the user to convert specified supergroup to a broadcast group
+@immutable
 class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
-  SuggestedActionConvertToBroadcastGroup({required this.supergroupId});
+  const SuggestedActionConvertToBroadcastGroup({
+    required this.supergroupId,
+  });
 
   /// [supergroupId] Supergroup identifier
   final int supergroupId;
 
-  static const String CONSTRUCTOR = 'suggestedActionConvertToBroadcastGroup';
+  static const String constructor = 'suggestedActionConvertToBroadcastGroup';
 
   static SuggestedActionConvertToBroadcastGroup? fromJson(
       Map<String, dynamic>? json) {
@@ -17,14 +21,18 @@ class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
     }
 
     return SuggestedActionConvertToBroadcastGroup(
-        supergroupId: json['supergroup_id']);
+      supergroupId: json['supergroup_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'supergroup_id': this.supergroupId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

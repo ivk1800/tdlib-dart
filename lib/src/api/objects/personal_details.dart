@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains the user's personal details
+@immutable
 class PersonalDetails extends TdObject {
-  PersonalDetails(
-      {required this.firstName,
-      required this.middleName,
-      required this.lastName,
-      required this.nativeFirstName,
-      required this.nativeMiddleName,
-      required this.nativeLastName,
-      required this.birthdate,
-      required this.gender,
-      required this.countryCode,
-      required this.residenceCountryCode});
+  const PersonalDetails({
+    required this.firstName,
+    required this.middleName,
+    required this.lastName,
+    required this.nativeFirstName,
+    required this.nativeMiddleName,
+    required this.nativeLastName,
+    required this.birthdate,
+    required this.gender,
+    required this.countryCode,
+    required this.residenceCountryCode,
+  });
 
   /// [firstName] First name of the user written in English; 1-255 characters
   final String firstName;
@@ -47,7 +50,7 @@ class PersonalDetails extends TdObject {
   /// user's residence country
   final String residenceCountryCode;
 
-  static const String CONSTRUCTOR = 'personalDetails';
+  static const String constructor = 'personalDetails';
 
   static PersonalDetails? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -55,33 +58,35 @@ class PersonalDetails extends TdObject {
     }
 
     return PersonalDetails(
-        firstName: json['first_name'],
-        middleName: json['middle_name'],
-        lastName: json['last_name'],
-        nativeFirstName: json['native_first_name'],
-        nativeMiddleName: json['native_middle_name'],
-        nativeLastName: json['native_last_name'],
-        birthdate: Date.fromJson(json['birthdate'])!,
-        gender: json['gender'],
-        countryCode: json['country_code'],
-        residenceCountryCode: json['residence_country_code']);
+      firstName: json['first_name'],
+      middleName: json['middle_name'],
+      lastName: json['last_name'],
+      nativeFirstName: json['native_first_name'],
+      nativeMiddleName: json['native_middle_name'],
+      nativeLastName: json['native_last_name'],
+      birthdate: Date.fromJson(json['birthdate'])!,
+      gender: json['gender'],
+      countryCode: json['country_code'],
+      residenceCountryCode: json['residence_country_code'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'first_name': this.firstName,
-        'middle_name': this.middleName,
-        'last_name': this.lastName,
-        'native_first_name': this.nativeFirstName,
-        'native_middle_name': this.nativeMiddleName,
-        'native_last_name': this.nativeLastName,
-        'birthdate': this.birthdate.toJson(),
-        'gender': this.gender,
-        'country_code': this.countryCode,
-        'residence_country_code': this.residenceCountryCode,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'first_name': firstName,
+        'middle_name': middleName,
+        'last_name': lastName,
+        'native_first_name': nativeFirstName,
+        'native_middle_name': nativeMiddleName,
+        'native_last_name': nativeLastName,
+        'birthdate': birthdate.toJson(),
+        'gender': gender,
+        'country_code': countryCode,
+        'residence_country_code': residenceCountryCode,
+        '@type': constructor,
       };
 
   @override

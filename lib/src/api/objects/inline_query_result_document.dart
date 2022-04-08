@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a document
+@immutable
 class InlineQueryResultDocument extends InlineQueryResult {
-  InlineQueryResultDocument(
-      {required this.id,
-      required this.document,
-      required this.title,
-      required this.description});
+  const InlineQueryResultDocument({
+    required this.id,
+    required this.document,
+    required this.title,
+    required this.description,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -21,7 +24,7 @@ class InlineQueryResultDocument extends InlineQueryResult {
   /// param_[description] Document description
   final String description;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultDocument';
+  static const String constructor = 'inlineQueryResultDocument';
 
   static InlineQueryResultDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class InlineQueryResultDocument extends InlineQueryResult {
     }
 
     return InlineQueryResultDocument(
-        id: json['id'],
-        document: Document.fromJson(json['document'])!,
-        title: json['title'],
-        description: json['description']);
+      id: json['id'],
+      document: Document.fromJson(json['document'])!,
+      title: json['title'],
+      description: json['description'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'document': this.document.toJson(),
-        'title': this.title,
-        'description': this.description,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'document': document.toJson(),
+        'title': title,
+        'description': description,
+        '@type': constructor,
       };
 
   @override

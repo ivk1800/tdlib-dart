@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns full information about a basic group by its identifier
 /// Returns [BasicGroupFullInfo]
+@immutable
 class GetBasicGroupFullInfo extends TdFunction {
-  GetBasicGroupFullInfo({required this.basicGroupId});
+  const GetBasicGroupFullInfo({
+    required this.basicGroupId,
+  });
 
   /// [basicGroupId] Basic group identifier
   final int basicGroupId;
 
-  static const String CONSTRUCTOR = 'getBasicGroupFullInfo';
+  static const String constructor = 'getBasicGroupFullInfo';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'basic_group_id': this.basicGroupId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'basic_group_id': basicGroupId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,18 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Forces an updates.getDifference call to the Telegram servers; for testing
 /// only
 /// Returns [Ok]
+@immutable
 class TestGetDifference extends TdFunction {
-  TestGetDifference();
+  const TestGetDifference();
 
-  static const String CONSTRUCTOR = 'testGetDifference';
+  static const String constructor = 'testGetDifference';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

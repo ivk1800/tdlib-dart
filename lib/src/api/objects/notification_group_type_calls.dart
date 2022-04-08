@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A group containing notifications of type notificationTypeNewCall
+@immutable
 class NotificationGroupTypeCalls extends NotificationGroupType {
   const NotificationGroupTypeCalls();
 
-  static const String CONSTRUCTOR = 'notificationGroupTypeCalls';
+  static const String constructor = 'notificationGroupTypeCalls';
 
   static NotificationGroupTypeCalls? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class NotificationGroupTypeCalls extends NotificationGroupType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

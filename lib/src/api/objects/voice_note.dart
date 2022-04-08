@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a voice note. The voice note must be encoded with the Opus
 /// codec, and stored inside an OGG container. Voice notes can have only a
 /// single audio channel
+@immutable
 class VoiceNote extends TdObject {
-  VoiceNote(
-      {required this.duration,
-      required this.waveform,
-      required this.mimeType,
-      required this.voice});
+  const VoiceNote({
+    required this.duration,
+    required this.waveform,
+    required this.mimeType,
+    required this.voice,
+  });
 
   /// [duration] Duration of the voice note, in seconds; as defined by the
   /// sender
@@ -24,7 +27,7 @@ class VoiceNote extends TdObject {
   /// [voice] File containing the voice note
   final File voice;
 
-  static const String CONSTRUCTOR = 'voiceNote';
+  static const String constructor = 'voiceNote';
 
   static VoiceNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,21 +35,23 @@ class VoiceNote extends TdObject {
     }
 
     return VoiceNote(
-        duration: json['duration'],
-        waveform: json['waveform'],
-        mimeType: json['mime_type'],
-        voice: File.fromJson(json['voice'])!);
+      duration: json['duration'],
+      waveform: json['waveform'],
+      mimeType: json['mime_type'],
+      voice: File.fromJson(json['voice'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'duration': this.duration,
-        'waveform': this.waveform,
-        'mime_type': this.mimeType,
-        'voice': this.voice.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'duration': duration,
+        'waveform': waveform,
+        'mime_type': mimeType,
+        'voice': voice.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An audio file
+@immutable
 class PageBlockAudio extends PageBlock {
-  PageBlockAudio({this.audio, required this.caption});
+  const PageBlockAudio({
+    this.audio,
+    required this.caption,
+  });
 
   /// [audio] Audio file; may be null
   final Audio? audio;
@@ -11,7 +16,7 @@ class PageBlockAudio extends PageBlock {
   /// [caption] Audio file caption
   final PageBlockCaption caption;
 
-  static const String CONSTRUCTOR = 'pageBlockAudio';
+  static const String constructor = 'pageBlockAudio';
 
   static PageBlockAudio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class PageBlockAudio extends PageBlock {
     }
 
     return PageBlockAudio(
-        audio: Audio.fromJson(json['audio']),
-        caption: PageBlockCaption.fromJson(json['caption'])!);
+      audio: Audio.fromJson(json['audio']),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'audio': this.audio?.toJson(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'audio': audio?.toJson(),
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A graph data
+@immutable
 class StatisticalGraphData extends StatisticalGraph {
-  StatisticalGraphData({required this.jsonData, required this.zoomToken});
+  const StatisticalGraphData({
+    required this.jsonData,
+    required this.zoomToken,
+  });
 
   /// [jsonData] Graph data in JSON format
   final String jsonData;
@@ -12,7 +17,7 @@ class StatisticalGraphData extends StatisticalGraph {
   /// graph
   final String zoomToken;
 
-  static const String CONSTRUCTOR = 'statisticalGraphData';
+  static const String constructor = 'statisticalGraphData';
 
   static StatisticalGraphData? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +25,19 @@ class StatisticalGraphData extends StatisticalGraph {
     }
 
     return StatisticalGraphData(
-        jsonData: json['json_data'], zoomToken: json['zoom_token']);
+      jsonData: json['json_data'],
+      zoomToken: json['zoom_token'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'json_data': this.jsonData,
-        'zoom_token': this.zoomToken,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'json_data': jsonData,
+        'zoom_token': zoomToken,
+        '@type': constructor,
       };
 
   @override

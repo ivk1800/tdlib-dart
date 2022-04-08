@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some data in basicGroupFullInfo has been changed
+@immutable
 class UpdateBasicGroupFullInfo extends Update {
-  UpdateBasicGroupFullInfo(
-      {required this.basicGroupId, required this.basicGroupFullInfo});
+  const UpdateBasicGroupFullInfo({
+    required this.basicGroupId,
+    required this.basicGroupFullInfo,
+  });
 
   /// [basicGroupId] Identifier of a basic group
   final int basicGroupId;
@@ -12,7 +16,7 @@ class UpdateBasicGroupFullInfo extends Update {
   /// [basicGroupFullInfo] New full information about the group
   final BasicGroupFullInfo basicGroupFullInfo;
 
-  static const String CONSTRUCTOR = 'updateBasicGroupFullInfo';
+  static const String constructor = 'updateBasicGroupFullInfo';
 
   static UpdateBasicGroupFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,18 +24,20 @@ class UpdateBasicGroupFullInfo extends Update {
     }
 
     return UpdateBasicGroupFullInfo(
-        basicGroupId: json['basic_group_id'],
-        basicGroupFullInfo:
-            BasicGroupFullInfo.fromJson(json['basic_group_full_info'])!);
+      basicGroupId: json['basic_group_id'],
+      basicGroupFullInfo:
+          BasicGroupFullInfo.fromJson(json['basic_group_full_info'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'basic_group_id': this.basicGroupId,
-        'basic_group_full_info': this.basicGroupFullInfo.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'basic_group_id': basicGroupId,
+        'basic_group_full_info': basicGroupFullInfo.toJson(),
+        '@type': constructor,
       };
 
   @override

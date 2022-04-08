@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to an MP3 audio file
+@immutable
 class InputInlineQueryResultAudio extends InputInlineQueryResult {
-  InputInlineQueryResultAudio(
-      {required this.id,
-      required this.title,
-      required this.performer,
-      required this.audioUrl,
-      required this.audioDuration,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultAudio({
+    required this.id,
+    required this.title,
+    required this.performer,
+    required this.audioUrl,
+    required this.audioDuration,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -37,7 +40,7 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultAudio';
+  static const String constructor = 'inputInlineQueryResultAudio';
 
   static InputInlineQueryResultAudio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -45,28 +48,30 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultAudio(
-        id: json['id'],
-        title: json['title'],
-        performer: json['performer'],
-        audioUrl: json['audio_url'],
-        audioDuration: json['audio_duration'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      performer: json['performer'],
+      audioUrl: json['audio_url'],
+      audioDuration: json['audio_duration'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'performer': this.performer,
-        'audio_url': this.audioUrl,
-        'audio_duration': this.audioDuration,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'performer': performer,
+        'audio_url': audioUrl,
+        'audio_duration': audioDuration,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

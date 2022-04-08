@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat pending join requests were changed
+@immutable
 class UpdateChatPendingJoinRequests extends Update {
-  UpdateChatPendingJoinRequests(
-      {required this.chatId, this.pendingJoinRequests});
+  const UpdateChatPendingJoinRequests({
+    required this.chatId,
+    this.pendingJoinRequests,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,7 +17,7 @@ class UpdateChatPendingJoinRequests extends Update {
   /// null
   final ChatJoinRequestsInfo? pendingJoinRequests;
 
-  static const String CONSTRUCTOR = 'updateChatPendingJoinRequests';
+  static const String constructor = 'updateChatPendingJoinRequests';
 
   static UpdateChatPendingJoinRequests? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,18 +25,20 @@ class UpdateChatPendingJoinRequests extends Update {
     }
 
     return UpdateChatPendingJoinRequests(
-        chatId: json['chat_id'],
-        pendingJoinRequests:
-            ChatJoinRequestsInfo.fromJson(json['pending_join_requests']));
+      chatId: json['chat_id'],
+      pendingJoinRequests:
+          ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'pending_join_requests': this.pendingJoinRequests?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'pending_join_requests': pendingJoinRequests?.toJson(),
+        '@type': constructor,
       };
 
   @override

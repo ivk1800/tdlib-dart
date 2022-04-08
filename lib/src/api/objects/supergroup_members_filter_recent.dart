@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns recently active users in reverse chronological order
+@immutable
 class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   const SupergroupMembersFilterRecent();
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterRecent';
+  static const String constructor = 'supergroupMembersFilterRecent';
 
   static SupergroupMembersFilterRecent? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

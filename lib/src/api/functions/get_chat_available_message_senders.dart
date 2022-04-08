@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns list of message sender identifiers, which can be used to send
 /// messages in a chat
 /// Returns [MessageSenders]
+@immutable
 class GetChatAvailableMessageSenders extends TdFunction {
-  GetChatAvailableMessageSenders({required this.chatId});
+  const GetChatAvailableMessageSenders({
+    required this.chatId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  static const String CONSTRUCTOR = 'getChatAvailableMessageSenders';
+  static const String constructor = 'getChatAvailableMessageSenders';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

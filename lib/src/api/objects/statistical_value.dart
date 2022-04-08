@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A value with information about its recent changes
+@immutable
 class StatisticalValue extends TdObject {
-  StatisticalValue(
-      {required this.value,
-      required this.previousValue,
-      required this.growthRatePercentage});
+  const StatisticalValue({
+    required this.value,
+    required this.previousValue,
+    required this.growthRatePercentage,
+  });
 
   /// [value] The current value
   final double value;
@@ -17,7 +20,7 @@ class StatisticalValue extends TdObject {
   /// [growthRatePercentage] The growth rate of the value, as a percentage
   final double growthRatePercentage;
 
-  static const String CONSTRUCTOR = 'statisticalValue';
+  static const String constructor = 'statisticalValue';
 
   static StatisticalValue? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +28,21 @@ class StatisticalValue extends TdObject {
     }
 
     return StatisticalValue(
-        value: json['value'],
-        previousValue: json['previous_value'],
-        growthRatePercentage: json['growth_rate_percentage']);
+      value: json['value'],
+      previousValue: json['previous_value'],
+      growthRatePercentage: json['growth_rate_percentage'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'value': this.value,
-        'previous_value': this.previousValue,
-        'growth_rate_percentage': this.growthRatePercentage,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'value': value,
+        'previous_value': previousValue,
+        'growth_rate_percentage': growthRatePercentage,
+        '@type': constructor,
       };
 
   @override

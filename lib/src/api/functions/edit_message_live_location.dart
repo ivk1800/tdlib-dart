@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the message content of a live location. Messages can be edited for a
 /// limited period of time specified in the live location. Returns the edited
 /// message after the edit is completed on the server side
 /// Returns [Message]
+@immutable
 class EditMessageLiveLocation extends TdFunction {
-  EditMessageLiveLocation(
-      {required this.chatId,
-      required this.messageId,
-      this.replyMarkup,
-      this.location,
-      required this.heading,
-      required this.proximityAlertRadius});
+  const EditMessageLiveLocation({
+    required this.chatId,
+    required this.messageId,
+    this.replyMarkup,
+    this.location,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -36,19 +39,20 @@ class EditMessageLiveLocation extends TdFunction {
   /// meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
 
-  static const String CONSTRUCTOR = 'editMessageLiveLocation';
+  static const String constructor = 'editMessageLiveLocation';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'location': this.location?.toJson(),
-        'heading': this.heading,
-        'proximity_alert_radius': this.proximityAlertRadius,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'reply_markup': replyMarkup?.toJson(),
+        'location': location?.toJson(),
+        'heading': heading,
+        'proximity_alert_radius': proximityAlertRadius,
+        '@type': constructor,
       };
 
   @override

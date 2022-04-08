@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns restricted supergroup members; can be used only by administrators
+@immutable
 class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
-  SupergroupMembersFilterRestricted({required this.query});
+  const SupergroupMembersFilterRestricted({
+    required this.query,
+  });
 
   /// [query] Query to search for
   final String query;
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterRestricted';
+  static const String constructor = 'supergroupMembersFilterRestricted';
 
   static SupergroupMembersFilterRestricted? fromJson(
       Map<String, dynamic>? json) {
@@ -16,13 +20,19 @@ class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
       return null;
     }
 
-    return SupergroupMembersFilterRestricted(query: json['query']);
+    return SupergroupMembersFilterRestricted(
+      query: json['query'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'query': this.query, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'query': query,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A concatenation of rich texts
+@immutable
 class RichTexts extends RichText {
-  RichTexts({required this.texts});
+  const RichTexts({
+    required this.texts,
+  });
 
   /// [texts] Texts
   final List<RichText> texts;
 
-  static const String CONSTRUCTOR = 'richTexts';
+  static const String constructor = 'richTexts';
 
   static RichTexts? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class RichTexts extends RichText {
     }
 
     return RichTexts(
-        texts: List<RichText>.from((json['texts'] ?? [])
-            .map((item) => RichText.fromJson(item))
-            .toList()));
+      texts: List<RichText>.from((json['texts'] ?? [])
+          .map((item) => RichText.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'texts': texts.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A category containing frequently used private chats with non-bot users
+@immutable
 class TopChatCategoryUsers extends TopChatCategory {
   const TopChatCategoryUsers();
 
-  static const String CONSTRUCTOR = 'topChatCategoryUsers';
+  static const String constructor = 'topChatCategoryUsers';
 
   static TopChatCategoryUsers? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class TopChatCategoryUsers extends TopChatCategory {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

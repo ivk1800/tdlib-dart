@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a type of public chats
+@immutable
 abstract class PublicChatType extends TdObject {
   const PublicChatType();
 
-  static const String CONSTRUCTOR = 'publicChatType';
+  static const String constructor = 'publicChatType';
 
   /// Inherited by:
   /// [PublicChatTypeHasUsername]
@@ -15,10 +17,10 @@ abstract class PublicChatType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PublicChatTypeHasUsername.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PublicChatTypeHasUsername.constructor:
         return PublicChatTypeHasUsername.fromJson(json);
-      case PublicChatTypeIsLocationBased.CONSTRUCTOR:
+      case PublicChatTypeIsLocationBased.constructor:
         return PublicChatTypeIsLocationBased.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class PublicChatType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

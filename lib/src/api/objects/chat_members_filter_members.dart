@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns all chat members, including restricted chat members
+@immutable
 class ChatMembersFilterMembers extends ChatMembersFilter {
   const ChatMembersFilterMembers();
 
-  static const String CONSTRUCTOR = 'chatMembersFilterMembers';
+  static const String constructor = 'chatMembersFilterMembers';
 
   static ChatMembersFilterMembers? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class ChatMembersFilterMembers extends ChatMembersFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

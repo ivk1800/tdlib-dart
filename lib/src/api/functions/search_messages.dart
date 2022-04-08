@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Searches for messages in all chats except secret chats. Returns the
 /// results in reverse chronological order (i.e., in order of decreasing
@@ -7,17 +8,19 @@ import '../extensions/data_class_extensions.dart';
 /// returned messages is chosen by TDLib and can be smaller than the specified
 /// limit
 /// Returns [Messages]
+@immutable
 class SearchMessages extends TdFunction {
-  SearchMessages(
-      {this.chatList,
-      required this.query,
-      required this.offsetDate,
-      required this.offsetChatId,
-      required this.offsetMessageId,
-      required this.limit,
-      this.filter,
-      required this.minDate,
-      required this.maxDate});
+  const SearchMessages({
+    this.chatList,
+    required this.query,
+    required this.offsetDate,
+    required this.offsetChatId,
+    required this.offsetMessageId,
+    required this.limit,
+    this.filter,
+    required this.minDate,
+    required this.maxDate,
+  });
 
   /// [chatList] Chat list in which to search messages; pass null to search in
   /// all chats regardless of their chat list. Only Main and Archive chat lists
@@ -57,22 +60,23 @@ class SearchMessages extends TdFunction {
   /// [maxDate] If not 0, the maximum date of the messages to return
   final int maxDate;
 
-  static const String CONSTRUCTOR = 'searchMessages';
+  static const String constructor = 'searchMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_list': this.chatList?.toJson(),
-        'query': this.query,
-        'offset_date': this.offsetDate,
-        'offset_chat_id': this.offsetChatId,
-        'offset_message_id': this.offsetMessageId,
-        'limit': this.limit,
-        'filter': this.filter?.toJson(),
-        'min_date': this.minDate,
-        'max_date': this.maxDate,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_list': chatList?.toJson(),
+        'query': query,
+        'offset_date': offsetDate,
+        'offset_chat_id': offsetChatId,
+        'offset_message_id': offsetMessageId,
+        'limit': limit,
+        'filter': filter?.toJson(),
+        'min_date': minDate,
+        'max_date': maxDate,
+        '@type': constructor,
       };
 
   @override

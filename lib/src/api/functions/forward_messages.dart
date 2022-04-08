@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Forwards previously sent messages. Returns the forwarded messages in the
 /// same order as the message identifiers passed in message_ids. If a message
 /// can't be forwarded, null will be returned instead of the message
 /// Returns [Messages]
+@immutable
 class ForwardMessages extends TdFunction {
-  ForwardMessages(
-      {required this.chatId,
-      required this.fromChatId,
-      required this.messageIds,
-      this.options,
-      required this.sendCopy,
-      required this.removeCaption,
-      required this.onlyPreview});
+  const ForwardMessages({
+    required this.chatId,
+    required this.fromChatId,
+    required this.messageIds,
+    this.options,
+    required this.sendCopy,
+    required this.removeCaption,
+    required this.onlyPreview,
+  });
 
   /// [chatId] Identifier of the chat to which to forward messages
   final int chatId;
@@ -43,20 +46,21 @@ class ForwardMessages extends TdFunction {
   /// messages will be returned
   final bool onlyPreview;
 
-  static const String CONSTRUCTOR = 'forwardMessages';
+  static const String constructor = 'forwardMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'from_chat_id': this.fromChatId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'from_chat_id': fromChatId,
         'message_ids': messageIds.map((item) => item).toList(),
-        'options': this.options?.toJson(),
-        'send_copy': this.sendCopy,
-        'remove_caption': this.removeCaption,
-        'only_preview': this.onlyPreview,
-        '@type': CONSTRUCTOR
+        'options': options?.toJson(),
+        'send_copy': sendCopy,
+        'remove_caption': removeCaption,
+        'only_preview': onlyPreview,
+        '@type': constructor,
       };
 
   @override

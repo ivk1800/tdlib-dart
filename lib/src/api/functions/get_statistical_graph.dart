@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Loads an asynchronous or a zoomed in statistical graph
 /// Returns [StatisticalGraph]
+@immutable
 class GetStatisticalGraph extends TdFunction {
-  GetStatisticalGraph(
-      {required this.chatId, required this.token, required this.x});
+  const GetStatisticalGraph({
+    required this.chatId,
+    required this.token,
+    required this.x,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -16,16 +21,17 @@ class GetStatisticalGraph extends TdFunction {
   /// [x] X-value for zoomed in graph or 0 otherwise
   final int x;
 
-  static const String CONSTRUCTOR = 'getStatisticalGraph';
+  static const String constructor = 'getStatisticalGraph';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'token': this.token,
-        'x': this.x,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'token': token,
+        'x': x,
+        '@type': constructor,
       };
 
   @override

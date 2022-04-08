@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns list of participant identifiers, on whose behalf a video chat in
 /// the chat can be joined
 /// Returns [MessageSenders]
+@immutable
 class GetVideoChatAvailableParticipants extends TdFunction {
-  GetVideoChatAvailableParticipants({required this.chatId});
+  const GetVideoChatAvailableParticipants({
+    required this.chatId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  static const String CONSTRUCTOR = 'getVideoChatAvailableParticipants';
+  static const String constructor = 'getVideoChatAvailableParticipants';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

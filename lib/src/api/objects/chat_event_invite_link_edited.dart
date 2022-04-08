@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat invite link was edited
+@immutable
 class ChatEventInviteLinkEdited extends ChatEventAction {
-  ChatEventInviteLinkEdited(
-      {required this.oldInviteLink, required this.newInviteLink});
+  const ChatEventInviteLinkEdited({
+    required this.oldInviteLink,
+    required this.newInviteLink,
+  });
 
   /// [oldInviteLink] Previous information about the invite link
   final ChatInviteLink oldInviteLink;
@@ -12,7 +16,7 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
   /// [newInviteLink] New information about the invite link
   final ChatInviteLink newInviteLink;
 
-  static const String CONSTRUCTOR = 'chatEventInviteLinkEdited';
+  static const String constructor = 'chatEventInviteLinkEdited';
 
   static ChatEventInviteLinkEdited? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
     }
 
     return ChatEventInviteLinkEdited(
-        oldInviteLink: ChatInviteLink.fromJson(json['old_invite_link'])!,
-        newInviteLink: ChatInviteLink.fromJson(json['new_invite_link'])!);
+      oldInviteLink: ChatInviteLink.fromJson(json['old_invite_link'])!,
+      newInviteLink: ChatInviteLink.fromJson(json['new_invite_link'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_invite_link': this.oldInviteLink.toJson(),
-        'new_invite_link': this.newInviteLink.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_invite_link': oldInviteLink.toJson(),
+        'new_invite_link': newInviteLink.toJson(),
+        '@type': constructor,
       };
 
   @override

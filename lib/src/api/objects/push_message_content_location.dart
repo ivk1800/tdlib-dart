@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a location
+@immutable
 class PushMessageContentLocation extends PushMessageContent {
-  PushMessageContentLocation({required this.isLive, required this.isPinned});
+  const PushMessageContentLocation({
+    required this.isLive,
+    required this.isPinned,
+  });
 
   /// [isLive] True, if the location is live
   final bool isLive;
@@ -12,7 +17,7 @@ class PushMessageContentLocation extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentLocation';
+  static const String constructor = 'pushMessageContentLocation';
 
   static PushMessageContentLocation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +25,19 @@ class PushMessageContentLocation extends PushMessageContent {
     }
 
     return PushMessageContentLocation(
-        isLive: json['is_live'], isPinned: json['is_pinned']);
+      isLive: json['is_live'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_live': this.isLive,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_live': isLive,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

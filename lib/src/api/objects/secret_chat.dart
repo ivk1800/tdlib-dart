@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a secret chat
+@immutable
 class SecretChat extends TdObject {
-  SecretChat(
-      {required this.id,
-      required this.userId,
-      required this.state,
-      required this.isOutbound,
-      required this.keyHash,
-      required this.layer});
+  const SecretChat({
+    required this.id,
+    required this.userId,
+    required this.state,
+    required this.isOutbound,
+    required this.keyHash,
+    required this.layer,
+  });
 
   /// [id] Secret chat identifier
   final int id;
@@ -38,7 +41,7 @@ class SecretChat extends TdObject {
   /// strikethrough entities are supported if the layer
   final int layer;
 
-  static const String CONSTRUCTOR = 'secretChat';
+  static const String constructor = 'secretChat';
 
   static SecretChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -46,25 +49,27 @@ class SecretChat extends TdObject {
     }
 
     return SecretChat(
-        id: json['id'],
-        userId: json['user_id'],
-        state: SecretChatState.fromJson(json['state'])!,
-        isOutbound: json['is_outbound'],
-        keyHash: json['key_hash'],
-        layer: json['layer']);
+      id: json['id'],
+      userId: json['user_id'],
+      state: SecretChatState.fromJson(json['state'])!,
+      isOutbound: json['is_outbound'],
+      keyHash: json['key_hash'],
+      layer: json['layer'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'user_id': this.userId,
-        'state': this.state.toJson(),
-        'is_outbound': this.isOutbound,
-        'key_hash': this.keyHash,
-        'layer': this.layer,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'user_id': userId,
+        'state': state.toJson(),
+        'is_outbound': isOutbound,
+        'key_hash': keyHash,
+        'layer': layer,
+        '@type': constructor,
       };
 
   @override

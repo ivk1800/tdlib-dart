@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Enables a proxy. Only one proxy can be enabled at a time. Can be called
 /// before authorization
 /// Returns [Ok]
+@immutable
 class EnableProxy extends TdFunction {
-  EnableProxy({required this.proxyId});
+  const EnableProxy({
+    required this.proxyId,
+  });
 
   /// [proxyId] Proxy identifier
   final int proxyId;
 
-  static const String CONSTRUCTOR = 'enableProxy';
+  static const String constructor = 'enableProxy';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'proxy_id': this.proxyId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'proxy_id': proxyId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

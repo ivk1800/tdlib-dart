@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether a participant of an active group call is muted, unmuted,
 /// or allowed to unmute themselves
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallParticipantIsMuted extends TdFunction {
-  ToggleGroupCallParticipantIsMuted(
-      {required this.groupCallId,
-      required this.participantId,
-      required this.isMuted});
+  const ToggleGroupCallParticipantIsMuted({
+    required this.groupCallId,
+    required this.participantId,
+    required this.isMuted,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -19,16 +22,17 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// [isMuted] Pass true if the user must be muted and false otherwise
   final bool isMuted;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallParticipantIsMuted';
+  static const String constructor = 'toggleGroupCallParticipantIsMuted';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'participant_id': this.participantId.toJson(),
-        'is_muted': this.isMuted,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'participant_id': participantId.toJson(),
+        'is_muted': isMuted,
+        '@type': constructor,
       };
 
   @override

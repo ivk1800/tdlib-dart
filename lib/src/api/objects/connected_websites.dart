@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of websites the current user is logged in with Telegram
+@immutable
 class ConnectedWebsites extends TdObject {
-  ConnectedWebsites({required this.websites});
+  const ConnectedWebsites({
+    required this.websites,
+  });
 
   /// [websites] List of connected websites
   final List<ConnectedWebsite> websites;
 
-  static const String CONSTRUCTOR = 'connectedWebsites';
+  static const String constructor = 'connectedWebsites';
 
   static ConnectedWebsites? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class ConnectedWebsites extends TdObject {
     }
 
     return ConnectedWebsites(
-        websites: List<ConnectedWebsite>.from((json['websites'] ?? [])
-            .map((item) => ConnectedWebsite.fromJson(item))
-            .toList()));
+      websites: List<ConnectedWebsite>.from((json['websites'] ?? [])
+          .map((item) => ConnectedWebsite.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'websites': websites.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

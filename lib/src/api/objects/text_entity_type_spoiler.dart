@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A spoiler text. Not supported in secret chats
+@immutable
 class TextEntityTypeSpoiler extends TextEntityType {
   const TextEntityTypeSpoiler();
 
-  static const String CONSTRUCTOR = 'textEntityTypeSpoiler';
+  static const String constructor = 'textEntityTypeSpoiler';
 
   static TextEntityTypeSpoiler? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class TextEntityTypeSpoiler extends TextEntityType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

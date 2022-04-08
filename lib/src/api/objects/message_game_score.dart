@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new high score was achieved in a game
+@immutable
 class MessageGameScore extends MessageContent {
-  MessageGameScore(
-      {required this.gameMessageId, required this.gameId, required this.score});
+  const MessageGameScore({
+    required this.gameMessageId,
+    required this.gameId,
+    required this.score,
+  });
 
   /// [gameMessageId] Identifier of the message with the game, can be an
   /// identifier of a deleted message
@@ -17,7 +22,7 @@ class MessageGameScore extends MessageContent {
   /// [score] New score
   final int score;
 
-  static const String CONSTRUCTOR = 'messageGameScore';
+  static const String constructor = 'messageGameScore';
 
   static MessageGameScore? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +30,21 @@ class MessageGameScore extends MessageContent {
     }
 
     return MessageGameScore(
-        gameMessageId: json['game_message_id'],
-        gameId: int.tryParse(json['game_id']) ?? 0,
-        score: json['score']);
+      gameMessageId: json['game_message_id'],
+      gameId: int.tryParse(json['game_id']) ?? 0,
+      score: json['score'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'game_message_id': this.gameMessageId,
-        'game_id': this.gameId,
-        'score': this.score,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'game_message_id': gameMessageId,
+        'game_id': gameId,
+        'score': score,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of a call server
+@immutable
 abstract class CallServerType extends TdObject {
   const CallServerType();
 
-  static const String CONSTRUCTOR = 'callServerType';
+  static const String constructor = 'callServerType';
 
   /// Inherited by:
   /// [CallServerTypeTelegramReflector]
@@ -15,10 +17,10 @@ abstract class CallServerType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CallServerTypeTelegramReflector.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CallServerTypeTelegramReflector.constructor:
         return CallServerTypeTelegramReflector.fromJson(json);
-      case CallServerTypeWebrtc.CONSTRUCTOR:
+      case CallServerTypeWebrtc.constructor:
         return CallServerTypeWebrtc.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class CallServerType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

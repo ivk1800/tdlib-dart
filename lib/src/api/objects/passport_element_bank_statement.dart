@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element containing the user's bank statement
+@immutable
 class PassportElementBankStatement extends PassportElement {
-  PassportElementBankStatement({required this.bankStatement});
+  const PassportElementBankStatement({
+    required this.bankStatement,
+  });
 
   /// [bankStatement] Bank statement
   final PersonalDocument bankStatement;
 
-  static const String CONSTRUCTOR = 'passportElementBankStatement';
+  static const String constructor = 'passportElementBankStatement';
 
   static PassportElementBankStatement? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class PassportElementBankStatement extends PassportElement {
     }
 
     return PassportElementBankStatement(
-        bankStatement: PersonalDocument.fromJson(json['bank_statement'])!);
+      bankStatement: PersonalDocument.fromJson(json['bank_statement'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'bank_statement': this.bankStatement.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bank_statement': bankStatement.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

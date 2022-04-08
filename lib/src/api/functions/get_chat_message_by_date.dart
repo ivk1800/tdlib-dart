@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns the last message sent in a chat no later than the specified date
 /// Returns [Message]
+@immutable
 class GetChatMessageByDate extends TdFunction {
-  GetChatMessageByDate({required this.chatId, required this.date});
+  const GetChatMessageByDate({
+    required this.chatId,
+    required this.date,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,13 +18,17 @@ class GetChatMessageByDate extends TdFunction {
   /// messages
   final int date;
 
-  static const String CONSTRUCTOR = 'getChatMessageByDate';
+  static const String constructor = 'getChatMessageByDate';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'chat_id': this.chatId, 'date': this.date, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'date': date,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

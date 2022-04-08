@@ -1,11 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-
 import 'dart:ffi' as ffi;
-import 'package:tdlib/td_api.dart';
-import 'package:ffi/ffi.dart';
+import 'dart:io';
 import 'dart:isolate';
+
+import 'package:ffi/ffi.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:tdlib/td_api.dart';
 
 class Client {
   final _JsonBindings _jsonBindings = _JsonBindings();
@@ -26,11 +27,11 @@ class Client {
     final Map<String, dynamic> jsonAsMap = function.toJson();
     final dynamic extra = ++_extraCount;
     jsonAsMap['@extra'] = extra;
-    _jsonBindings.send(_client, json.encode(jsonAsMap));
+    unawaited(_jsonBindings.send(_client, json.encode(jsonAsMap)));
 
     return _rawResultsSubject
-        .where((event) => event['@extra'] == extra)
-        .map((event) => _handleTdObject<T>(
+        .where((Map<String, dynamic> event) => event['@extra'] == extra)
+        .map((Map<String, dynamic> event) => _handleTdObject<T>(
               tdObject: event.toTdObject(),
               function: function,
             ))
@@ -41,7 +42,7 @@ class Client {
   Future<T> execute<T extends TdObject>(TdFunction function) async {
     return _jsonBindings
         .execute(_client, json.encode(function.toJson()))
-        .then((event) => _handleTdObject<T>(
+        .then((Map<String, dynamic> event) => _handleTdObject<T>(
               tdObject: event.toTdObject(),
               function: function,
             ));
@@ -52,13 +53,13 @@ class Client {
     final ReceivePort resultPort = ReceivePort();
     resultPort.listen((dynamic message) {
       if (message is String) {
-        Map<String, dynamic> newJson = json.decode(message);
+        final Map<String, dynamic> newJson = json.decode(message);
 
-        dynamic extra = newJson['@extra'];
+        final dynamic extra = newJson['@extra'];
         if (extra != null) {
           _rawResultsSubject.add(newJson);
         } else {
-          TdObject? tdObject = newJson.toTdObject();
+          final TdObject? tdObject = newJson.toTdObject();
           if (tdObject != null) {
             _updatesSubject.add(tdObject);
           }
@@ -97,9 +98,9 @@ class Client {
 
 void _receiveIsolate(_ReceiveIsolateData port) async {
   final _JsonBindings jsonBindings = _JsonBindings();
-  ffi.Pointer client = ffi.Pointer.fromAddress(port.clientAddress);
+  final ffi.Pointer client = ffi.Pointer.fromAddress(port.clientAddress);
   while (true) {
-    final ffi.Pointer<Utf8> result = (await jsonBindings.receive(client, 500));
+    final ffi.Pointer<Utf8> result = await jsonBindings.receive(client, 500);
     final String event = result.toDartString();
     port.port.send(event);
   }
@@ -186,9 +187,9 @@ class _JsonBindings {
 
   String _resolveLibName() {
     if (Platform.isAndroid) {
-      return "libtdjsonandroid.so";
+      return 'libtdjsonandroid.so';
     } else if (Platform.isWindows) {
-      return "tdjson.dll";
+      return 'tdjson.dll';
     }
     throw UnsupportedError('unsupported for current platform');
   }

@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Checks whether the maximum number of owned public chats has been reached.
 /// Returns corresponding error if the limit was reached
 /// Returns [Ok]
+@immutable
 class CheckCreatedPublicChatsLimit extends TdFunction {
-  CheckCreatedPublicChatsLimit({required this.type});
+  const CheckCreatedPublicChatsLimit({
+    required this.type,
+  });
 
   /// [type] Type of the public chats, for which to check the limit
   final PublicChatType type;
 
-  static const String CONSTRUCTOR = 'checkCreatedPublicChatsLimit';
+  static const String constructor = 'checkCreatedPublicChatsLimit';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'type': this.type.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

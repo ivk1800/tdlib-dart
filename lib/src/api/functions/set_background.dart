@@ -1,11 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the background selected by the user; adds background to the list
 /// of installed backgrounds
 /// Returns [Background]
+@immutable
 class SetBackground extends TdFunction {
-  SetBackground({this.background, this.type, required this.forDarkTheme});
+  const SetBackground({
+    this.background,
+    this.type,
+    required this.forDarkTheme,
+  });
 
   /// [background] The input background to use; pass null to create a new filled
   /// backgrounds or to remove the current background
@@ -18,16 +24,17 @@ class SetBackground extends TdFunction {
   /// [forDarkTheme] True, if the background is chosen for dark theme
   final bool forDarkTheme;
 
-  static const String CONSTRUCTOR = 'setBackground';
+  static const String constructor = 'setBackground';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'background': this.background?.toJson(),
-        'type': this.type?.toJson(),
-        'for_dark_theme': this.forDarkTheme,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'background': background?.toJson(),
+        'type': type?.toJson(),
+        'for_dark_theme': forDarkTheme,
+        '@type': constructor,
       };
 
   @override

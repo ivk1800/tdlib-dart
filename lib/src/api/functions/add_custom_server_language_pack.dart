@@ -1,23 +1,30 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds a custom server language pack to the list of installed language packs
 /// in current localization target. Can be called before authorization
 /// Returns [Ok]
+@immutable
 class AddCustomServerLanguagePack extends TdFunction {
-  AddCustomServerLanguagePack({required this.languagePackId});
+  const AddCustomServerLanguagePack({
+    required this.languagePackId,
+  });
 
   /// [languagePackId] Identifier of a language pack to be added; may be
   /// different from a name that is used in an "https://t.me/setlanguage/" link
   final String languagePackId;
 
-  static const String CONSTRUCTOR = 'addCustomServerLanguagePack';
+  static const String constructor = 'addCustomServerLanguagePack';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_pack_id': languagePackId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

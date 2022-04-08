@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The call was ended because one of the parties hung up
+@immutable
 class CallDiscardReasonHungUp extends CallDiscardReason {
   const CallDiscardReasonHungUp();
 
-  static const String CONSTRUCTOR = 'callDiscardReasonHungUp';
+  static const String constructor = 'callDiscardReasonHungUp';
 
   static CallDiscardReasonHungUp? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class CallDiscardReasonHungUp extends CallDiscardReason {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

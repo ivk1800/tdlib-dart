@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of chat events
+@immutable
 class ChatEvents extends TdObject {
-  ChatEvents({required this.events});
+  const ChatEvents({
+    required this.events,
+  });
 
   /// [events] List of events
   final List<ChatEvent> events;
 
-  static const String CONSTRUCTOR = 'chatEvents';
+  static const String constructor = 'chatEvents';
 
   static ChatEvents? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class ChatEvents extends TdObject {
     }
 
     return ChatEvents(
-        events: List<ChatEvent>.from((json['events'] ?? [])
-            .map((item) => ChatEvent.fromJson(item))
-            .toList()));
+      events: List<ChatEvent>.from((json['events'] ?? [])
+          .map((item) => ChatEvent.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'events': events.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

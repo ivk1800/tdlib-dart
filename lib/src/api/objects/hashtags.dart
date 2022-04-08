@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of hashtags
+@immutable
 class Hashtags extends TdObject {
-  Hashtags({required this.hashtags});
+  const Hashtags({
+    required this.hashtags,
+  });
 
   /// [hashtags] A list of hashtags
   final List<String> hashtags;
 
-  static const String CONSTRUCTOR = 'hashtags';
+  static const String constructor = 'hashtags';
 
   static Hashtags? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,15 +20,19 @@ class Hashtags extends TdObject {
     }
 
     return Hashtags(
-        hashtags: List<String>.from(
-            (json['hashtags'] ?? []).map((item) => item).toList()));
+      hashtags: List<String>.from(
+          (json['hashtags'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'hashtags': hashtags.map((item) => item).toList(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'hashtags': hashtags.map((item) => item).toList(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message was unpinned
+@immutable
 class ChatEventMessageUnpinned extends ChatEventAction {
-  ChatEventMessageUnpinned({required this.message});
+  const ChatEventMessageUnpinned({
+    required this.message,
+  });
 
   /// [message] Unpinned message
   final Message message;
 
-  static const String CONSTRUCTOR = 'chatEventMessageUnpinned';
+  static const String constructor = 'chatEventMessageUnpinned';
 
   static ChatEventMessageUnpinned? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class ChatEventMessageUnpinned extends ChatEventAction {
     }
 
     return ChatEventMessageUnpinned(
-        message: Message.fromJson(json['message'])!);
+      message: Message.fromJson(json['message'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'message': this.message.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'message': message.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds a chat to a chat list. A chat can't be simultaneously in Main and
 /// Archive chat lists, so it is automatically removed from another one if
 /// needed
 /// Returns [Ok]
+@immutable
 class AddChatToList extends TdFunction {
-  AddChatToList({required this.chatId, required this.chatList});
+  const AddChatToList({
+    required this.chatId,
+    required this.chatList,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -15,15 +20,16 @@ class AddChatToList extends TdFunction {
   /// lists
   final ChatList chatList;
 
-  static const String CONSTRUCTOR = 'addChatToList';
+  static const String constructor = 'addChatToList';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'chat_list': this.chatList.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'chat_list': chatList.toJson(),
+        '@type': constructor,
       };
 
   @override

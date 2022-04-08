@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds a new sticker to a set; for bots only. Returns the sticker set
 /// Returns [StickerSet]
+@immutable
 class AddStickerToSet extends TdFunction {
-  AddStickerToSet(
-      {required this.userId, required this.name, required this.sticker});
+  const AddStickerToSet({
+    required this.userId,
+    required this.name,
+    required this.sticker,
+  });
 
   /// [userId] Sticker set owner
   final int userId;
@@ -16,16 +21,17 @@ class AddStickerToSet extends TdFunction {
   /// [sticker] Sticker to add to the set
   final InputSticker sticker;
 
-  static const String CONSTRUCTOR = 'addStickerToSet';
+  static const String constructor = 'addStickerToSet';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'name': this.name,
-        'sticker': this.sticker.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'name': name,
+        'sticker': sticker.toJson(),
+        '@type': constructor,
       };
 
   @override

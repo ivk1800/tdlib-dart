@@ -1,20 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Checks whether a name can be used for a new sticker set
 /// Returns [CheckStickerSetNameResult]
+@immutable
 class CheckStickerSetName extends TdFunction {
-  CheckStickerSetName({required this.name});
+  const CheckStickerSetName({
+    required this.name,
+  });
 
   /// [name] Name to be checked
   final String name;
 
-  static const String CONSTRUCTOR = 'checkStickerSetName';
+  static const String constructor = 'checkStickerSetName';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'name': this.name, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A simple object containing a vector of numbers; for testing only
+@immutable
 class TestVectorInt extends TdObject {
-  TestVectorInt({required this.value});
+  const TestVectorInt({
+    required this.value,
+  });
 
   /// [value] Vector of numbers
   final List<int> value;
 
-  static const String CONSTRUCTOR = 'testVectorInt';
+  static const String constructor = 'testVectorInt';
 
   static TestVectorInt? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,15 +20,18 @@ class TestVectorInt extends TdObject {
     }
 
     return TestVectorInt(
-        value:
-            List<int>.from((json['value'] ?? []).map((item) => item).toList()));
+      value: List<int>.from((json['value'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'value': value.map((item) => item).toList(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'value': value.map((item) => item).toList(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

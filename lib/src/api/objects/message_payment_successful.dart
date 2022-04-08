@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A payment has been completed
+@immutable
 class MessagePaymentSuccessful extends MessageContent {
-  MessagePaymentSuccessful(
-      {required this.invoiceChatId,
-      required this.invoiceMessageId,
-      required this.currency,
-      required this.totalAmount});
+  const MessagePaymentSuccessful({
+    required this.invoiceChatId,
+    required this.invoiceMessageId,
+    required this.currency,
+    required this.totalAmount,
+  });
 
   /// [invoiceChatId] Identifier of the chat, containing the corresponding
   /// invoice message; 0 if unknown
@@ -24,7 +27,7 @@ class MessagePaymentSuccessful extends MessageContent {
   /// currency
   final int totalAmount;
 
-  static const String CONSTRUCTOR = 'messagePaymentSuccessful';
+  static const String constructor = 'messagePaymentSuccessful';
 
   static MessagePaymentSuccessful? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,21 +35,23 @@ class MessagePaymentSuccessful extends MessageContent {
     }
 
     return MessagePaymentSuccessful(
-        invoiceChatId: json['invoice_chat_id'],
-        invoiceMessageId: json['invoice_message_id'],
-        currency: json['currency'],
-        totalAmount: json['total_amount']);
+      invoiceChatId: json['invoice_chat_id'],
+      invoiceMessageId: json['invoice_message_id'],
+      currency: json['currency'],
+      totalAmount: json['total_amount'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'invoice_chat_id': this.invoiceChatId,
-        'invoice_message_id': this.invoiceMessageId,
-        'currency': this.currency,
-        'total_amount': this.totalAmount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'invoice_chat_id': invoiceChatId,
+        'invoice_message_id': invoiceMessageId,
+        'currency': currency,
+        'total_amount': totalAmount,
+        '@type': constructor,
       };
 
   @override

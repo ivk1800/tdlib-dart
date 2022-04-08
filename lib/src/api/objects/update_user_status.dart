@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user went online or offline
+@immutable
 class UpdateUserStatus extends Update {
-  UpdateUserStatus({required this.userId, required this.status});
+  const UpdateUserStatus({
+    required this.userId,
+    required this.status,
+  });
 
   /// [userId] User identifier
   final int userId;
@@ -11,7 +16,7 @@ class UpdateUserStatus extends Update {
   /// [status] New status of the user
   final UserStatus status;
 
-  static const String CONSTRUCTOR = 'updateUserStatus';
+  static const String constructor = 'updateUserStatus';
 
   static UpdateUserStatus? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class UpdateUserStatus extends Update {
     }
 
     return UpdateUserStatus(
-        userId: json['user_id'], status: UserStatus.fromJson(json['status'])!);
+      userId: json['user_id'],
+      status: UserStatus.fromJson(json['status'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'status': this.status.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'status': status.toJson(),
+        '@type': constructor,
       };
 
   @override

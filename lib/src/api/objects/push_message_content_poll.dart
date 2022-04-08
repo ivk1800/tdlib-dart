@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a poll
+@immutable
 class PushMessageContentPoll extends PushMessageContent {
-  PushMessageContentPoll(
-      {required this.question,
-      required this.isRegular,
-      required this.isPinned});
+  const PushMessageContentPoll({
+    required this.question,
+    required this.isRegular,
+    required this.isPinned,
+  });
 
   /// [question] Poll question
   final String question;
@@ -18,7 +21,7 @@ class PushMessageContentPoll extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentPoll';
+  static const String constructor = 'pushMessageContentPoll';
 
   static PushMessageContentPoll? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +29,21 @@ class PushMessageContentPoll extends PushMessageContent {
     }
 
     return PushMessageContentPoll(
-        question: json['question'],
-        isRegular: json['is_regular'],
-        isPinned: json['is_pinned']);
+      question: json['question'],
+      isRegular: json['is_regular'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'question': this.question,
-        'is_regular': this.isRegular,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'question': question,
+        'is_regular': isRegular,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

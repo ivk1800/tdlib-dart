@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link can be used to confirm ownership of a phone number to prevent
 /// account deletion. Call sendPhoneNumberConfirmationCode with the given hash
 /// and phone number to process the link
+@immutable
 class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
-  InternalLinkTypePhoneNumberConfirmation(
-      {required this.hash, required this.phoneNumber});
+  const InternalLinkTypePhoneNumberConfirmation({
+    required this.hash,
+    required this.phoneNumber,
+  });
 
   /// [hash] Hash value from the link
   final String hash;
@@ -14,7 +18,7 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   /// [phoneNumber] Phone number value from the link
   final String phoneNumber;
 
-  static const String CONSTRUCTOR = 'internalLinkTypePhoneNumberConfirmation';
+  static const String constructor = 'internalLinkTypePhoneNumberConfirmation';
 
   static InternalLinkTypePhoneNumberConfirmation? fromJson(
       Map<String, dynamic>? json) {
@@ -23,16 +27,19 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
     }
 
     return InternalLinkTypePhoneNumberConfirmation(
-        hash: json['hash'], phoneNumber: json['phone_number']);
+      hash: json['hash'],
+      phoneNumber: json['phone_number'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'hash': this.hash,
-        'phone_number': this.phoneNumber,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'hash': hash,
+        'phone_number': phoneNumber,
+        '@type': constructor,
       };
 
   @override

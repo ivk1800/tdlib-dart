@@ -1,22 +1,25 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a filter of user chats
+@immutable
 class ChatFilter extends TdObject {
-  ChatFilter(
-      {required this.title,
-      required this.iconName,
-      required this.pinnedChatIds,
-      required this.includedChatIds,
-      required this.excludedChatIds,
-      required this.excludeMuted,
-      required this.excludeRead,
-      required this.excludeArchived,
-      required this.includeContacts,
-      required this.includeNonContacts,
-      required this.includeBots,
-      required this.includeGroups,
-      required this.includeChannels});
+  const ChatFilter({
+    required this.title,
+    required this.iconName,
+    required this.pinnedChatIds,
+    required this.includedChatIds,
+    required this.excludedChatIds,
+    required this.excludeMuted,
+    required this.excludeRead,
+    required this.excludeArchived,
+    required this.includeContacts,
+    required this.includeNonContacts,
+    required this.includeBots,
+    required this.includeGroups,
+    required this.includeChannels,
+  });
 
   /// [title] The title of the filter; 1-12 characters without line feeds
   final String title;
@@ -65,7 +68,7 @@ class ChatFilter extends TdObject {
   /// [includeChannels] True, if channels need to be included
   final bool includeChannels;
 
-  static const String CONSTRUCTOR = 'chatFilter';
+  static const String constructor = 'chatFilter';
 
   static ChatFilter? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -73,42 +76,44 @@ class ChatFilter extends TdObject {
     }
 
     return ChatFilter(
-        title: json['title'],
-        iconName: json['icon_name'],
-        pinnedChatIds: List<int>.from(
-            (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
-        includedChatIds: List<int>.from(
-            (json['included_chat_ids'] ?? []).map((item) => item).toList()),
-        excludedChatIds: List<int>.from(
-            (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-        excludeMuted: json['exclude_muted'],
-        excludeRead: json['exclude_read'],
-        excludeArchived: json['exclude_archived'],
-        includeContacts: json['include_contacts'],
-        includeNonContacts: json['include_non_contacts'],
-        includeBots: json['include_bots'],
-        includeGroups: json['include_groups'],
-        includeChannels: json['include_channels']);
+      title: json['title'],
+      iconName: json['icon_name'],
+      pinnedChatIds: List<int>.from(
+          (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
+      includedChatIds: List<int>.from(
+          (json['included_chat_ids'] ?? []).map((item) => item).toList()),
+      excludedChatIds: List<int>.from(
+          (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
+      excludeMuted: json['exclude_muted'],
+      excludeRead: json['exclude_read'],
+      excludeArchived: json['exclude_archived'],
+      includeContacts: json['include_contacts'],
+      includeNonContacts: json['include_non_contacts'],
+      includeBots: json['include_bots'],
+      includeGroups: json['include_groups'],
+      includeChannels: json['include_channels'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'icon_name': this.iconName,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'icon_name': iconName,
         'pinned_chat_ids': pinnedChatIds.map((item) => item).toList(),
         'included_chat_ids': includedChatIds.map((item) => item).toList(),
         'excluded_chat_ids': excludedChatIds.map((item) => item).toList(),
-        'exclude_muted': this.excludeMuted,
-        'exclude_read': this.excludeRead,
-        'exclude_archived': this.excludeArchived,
-        'include_contacts': this.includeContacts,
-        'include_non_contacts': this.includeNonContacts,
-        'include_bots': this.includeBots,
-        'include_groups': this.includeGroups,
-        'include_channels': this.includeChannels,
-        '@type': CONSTRUCTOR
+        'exclude_muted': excludeMuted,
+        'exclude_read': excludeRead,
+        'exclude_archived': excludeArchived,
+        'include_contacts': includeContacts,
+        'include_non_contacts': includeNonContacts,
+        'include_bots': includeBots,
+        'include_groups': includeGroups,
+        'include_channels': includeChannels,
+        '@type': constructor,
       };
 
   @override

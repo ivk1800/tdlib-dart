@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A newly created supergroup or channel
+@immutable
 class MessageSupergroupChatCreate extends MessageContent {
-  MessageSupergroupChatCreate({required this.title});
+  const MessageSupergroupChatCreate({
+    required this.title,
+  });
 
   /// [title] Title of the supergroup or channel
   final String title;
 
-  static const String CONSTRUCTOR = 'messageSupergroupChatCreate';
+  static const String constructor = 'messageSupergroupChatCreate';
 
   static MessageSupergroupChatCreate? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageSupergroupChatCreate(title: json['title']);
+    return MessageSupergroupChatCreate(
+      title: json['title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'title': this.title, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

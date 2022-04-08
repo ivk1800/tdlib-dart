@@ -1,20 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the bio of the current user
 /// Returns [Ok]
+@immutable
 class SetBio extends TdFunction {
-  SetBio({required this.bio});
+  const SetBio({
+    required this.bio,
+  });
 
   /// [bio] The new value of the user bio; 0-70 characters without line feeds
   final String bio;
 
-  static const String CONSTRUCTOR = 'setBio';
+  static const String constructor = 'setBio';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'bio': this.bio, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bio': bio,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

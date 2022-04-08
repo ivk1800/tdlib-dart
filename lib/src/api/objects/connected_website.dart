@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about one website the current user is logged in with
 /// Telegram
+@immutable
 class ConnectedWebsite extends TdObject {
-  ConnectedWebsite(
-      {required this.id,
-      required this.domainName,
-      required this.botUserId,
-      required this.browser,
-      required this.platform,
-      required this.logInDate,
-      required this.lastActiveDate,
-      required this.ip,
-      required this.location});
+  const ConnectedWebsite({
+    required this.id,
+    required this.domainName,
+    required this.botUserId,
+    required this.browser,
+    required this.platform,
+    required this.logInDate,
+    required this.lastActiveDate,
+    required this.ip,
+    required this.location,
+  });
 
   /// [id] Website identifier
   final int id;
@@ -45,7 +48,7 @@ class ConnectedWebsite extends TdObject {
   /// which the user was logged in, based on the IP address
   final String location;
 
-  static const String CONSTRUCTOR = 'connectedWebsite';
+  static const String constructor = 'connectedWebsite';
 
   static ConnectedWebsite? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -53,31 +56,33 @@ class ConnectedWebsite extends TdObject {
     }
 
     return ConnectedWebsite(
-        id: int.tryParse(json['id']) ?? 0,
-        domainName: json['domain_name'],
-        botUserId: json['bot_user_id'],
-        browser: json['browser'],
-        platform: json['platform'],
-        logInDate: json['log_in_date'],
-        lastActiveDate: json['last_active_date'],
-        ip: json['ip'],
-        location: json['location']);
+      id: int.tryParse(json['id']) ?? 0,
+      domainName: json['domain_name'],
+      botUserId: json['bot_user_id'],
+      browser: json['browser'],
+      platform: json['platform'],
+      logInDate: json['log_in_date'],
+      lastActiveDate: json['last_active_date'],
+      ip: json['ip'],
+      location: json['location'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'domain_name': this.domainName,
-        'bot_user_id': this.botUserId,
-        'browser': this.browser,
-        'platform': this.platform,
-        'log_in_date': this.logInDate,
-        'last_active_date': this.lastActiveDate,
-        'ip': this.ip,
-        'location': this.location,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'domain_name': domainName,
+        'bot_user_id': botUserId,
+        'browser': browser,
+        'platform': platform,
+        'log_in_date': logInDate,
+        'last_active_date': lastActiveDate,
+        'ip': ip,
+        'location': location,
+        '@type': constructor,
       };
 
   @override

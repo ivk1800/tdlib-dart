@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an audio file. Audio is usually in MP3 or M4A format
+@immutable
 class Audio extends TdObject {
-  Audio(
-      {required this.duration,
-      required this.title,
-      required this.performer,
-      required this.fileName,
-      required this.mimeType,
-      this.albumCoverMinithumbnail,
-      this.albumCoverThumbnail,
-      required this.audio});
+  const Audio({
+    required this.duration,
+    required this.title,
+    required this.performer,
+    required this.fileName,
+    required this.mimeType,
+    this.albumCoverMinithumbnail,
+    this.albumCoverThumbnail,
+    required this.audio,
+  });
 
   /// [duration] Duration of the audio, in seconds; as defined by the sender
   final int duration;
@@ -40,7 +43,7 @@ class Audio extends TdObject {
   /// [audio] File containing the audio
   final File audio;
 
-  static const String CONSTRUCTOR = 'audio';
+  static const String constructor = 'audio';
 
   static Audio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -48,30 +51,32 @@ class Audio extends TdObject {
     }
 
     return Audio(
-        duration: json['duration'],
-        title: json['title'],
-        performer: json['performer'],
-        fileName: json['file_name'],
-        mimeType: json['mime_type'],
-        albumCoverMinithumbnail:
-            Minithumbnail.fromJson(json['album_cover_minithumbnail']),
-        albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail']),
-        audio: File.fromJson(json['audio'])!);
+      duration: json['duration'],
+      title: json['title'],
+      performer: json['performer'],
+      fileName: json['file_name'],
+      mimeType: json['mime_type'],
+      albumCoverMinithumbnail:
+          Minithumbnail.fromJson(json['album_cover_minithumbnail']),
+      albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail']),
+      audio: File.fromJson(json['audio'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'duration': this.duration,
-        'title': this.title,
-        'performer': this.performer,
-        'file_name': this.fileName,
-        'mime_type': this.mimeType,
-        'album_cover_minithumbnail': this.albumCoverMinithumbnail?.toJson(),
-        'album_cover_thumbnail': this.albumCoverThumbnail?.toJson(),
-        'audio': this.audio.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'duration': duration,
+        'title': title,
+        'performer': performer,
+        'file_name': fileName,
+        'mime_type': mimeType,
+        'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
+        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+        'audio': audio.toJson(),
+        '@type': constructor,
       };
 
   @override

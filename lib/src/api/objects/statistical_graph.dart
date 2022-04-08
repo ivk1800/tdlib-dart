@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a statistical graph
+@immutable
 abstract class StatisticalGraph extends TdObject {
   const StatisticalGraph();
 
-  static const String CONSTRUCTOR = 'statisticalGraph';
+  static const String constructor = 'statisticalGraph';
 
   /// Inherited by:
   /// [StatisticalGraphData]
@@ -16,12 +18,12 @@ abstract class StatisticalGraph extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case StatisticalGraphData.CONSTRUCTOR:
+    switch (json['@type']) {
+      case StatisticalGraphData.constructor:
         return StatisticalGraphData.fromJson(json);
-      case StatisticalGraphAsync.CONSTRUCTOR:
+      case StatisticalGraphAsync.constructor:
         return StatisticalGraphAsync.fromJson(json);
-      case StatisticalGraphError.CONSTRUCTOR:
+      case StatisticalGraphError.constructor:
         return StatisticalGraphError.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class StatisticalGraph extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

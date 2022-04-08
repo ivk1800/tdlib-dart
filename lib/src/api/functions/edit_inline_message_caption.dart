@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the caption of an inline message sent via a bot; for bots only
 /// Returns [Ok]
+@immutable
 class EditInlineMessageCaption extends TdFunction {
-  EditInlineMessageCaption(
-      {required this.inlineMessageId, this.replyMarkup, this.caption});
+  const EditInlineMessageCaption({
+    required this.inlineMessageId,
+    this.replyMarkup,
+    this.caption,
+  });
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
@@ -17,16 +22,17 @@ class EditInlineMessageCaption extends TdFunction {
   /// 0-GetOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  static const String CONSTRUCTOR = 'editInlineMessageCaption';
+  static const String constructor = 'editInlineMessageCaption';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'caption': this.caption?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_message_id': inlineMessageId,
+        'reply_markup': replyMarkup?.toJson(),
+        'caption': caption?.toJson(),
+        '@type': constructor,
       };
 
   @override

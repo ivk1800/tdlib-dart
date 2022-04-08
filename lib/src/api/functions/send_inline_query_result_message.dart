@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends the result of an inline query as a message. Returns the sent
 /// message. Always clears a chat draft message
 /// Returns [Message]
+@immutable
 class SendInlineQueryResultMessage extends TdFunction {
-  SendInlineQueryResultMessage(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.replyToMessageId,
-      this.options,
-      required this.queryId,
-      required this.resultId,
-      required this.hideViaBot});
+  const SendInlineQueryResultMessage({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.replyToMessageId,
+    this.options,
+    required this.queryId,
+    required this.resultId,
+    required this.hideViaBot,
+  });
 
   /// [chatId] Target chat
   final int chatId;
@@ -41,20 +44,21 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// GetOption("venue_search_bot_username")
   final bool hideViaBot;
 
-  static const String CONSTRUCTOR = 'sendInlineQueryResultMessage';
+  static const String constructor = 'sendInlineQueryResultMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'reply_to_message_id': this.replyToMessageId,
-        'options': this.options?.toJson(),
-        'query_id': this.queryId,
-        'result_id': this.resultId,
-        'hide_via_bot': this.hideViaBot,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'reply_to_message_id': replyToMessageId,
+        'options': options?.toJson(),
+        'query_id': queryId,
+        'result_id': resultId,
+        'hide_via_bot': hideViaBot,
+        '@type': constructor,
       };
 
   @override

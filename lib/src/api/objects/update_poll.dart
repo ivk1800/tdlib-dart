@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A poll was updated; for bots only
+@immutable
 class UpdatePoll extends Update {
-  UpdatePoll({required this.poll});
+  const UpdatePoll({
+    required this.poll,
+  });
 
   /// [poll] New data about the poll
   final Poll poll;
 
-  static const String CONSTRUCTOR = 'updatePoll';
+  static const String constructor = 'updatePoll';
 
   static UpdatePoll? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UpdatePoll(poll: Poll.fromJson(json['poll'])!);
+    return UpdatePoll(
+      poll: Poll.fromJson(json['poll'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'poll': this.poll.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'poll': poll.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

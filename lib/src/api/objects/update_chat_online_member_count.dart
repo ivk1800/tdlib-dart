@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The number of online group members has changed. This update with non-zero
 /// count is sent only for currently opened chats. There is no guarantee that
 /// it will be sent just after the count has changed
+@immutable
 class UpdateChatOnlineMemberCount extends Update {
-  UpdateChatOnlineMemberCount(
-      {required this.chatId, required this.onlineMemberCount});
+  const UpdateChatOnlineMemberCount({
+    required this.chatId,
+    required this.onlineMemberCount,
+  });
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -15,7 +19,7 @@ class UpdateChatOnlineMemberCount extends Update {
   /// unknown
   final int onlineMemberCount;
 
-  static const String CONSTRUCTOR = 'updateChatOnlineMemberCount';
+  static const String constructor = 'updateChatOnlineMemberCount';
 
   static UpdateChatOnlineMemberCount? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,17 +27,19 @@ class UpdateChatOnlineMemberCount extends Update {
     }
 
     return UpdateChatOnlineMemberCount(
-        chatId: json['chat_id'],
-        onlineMemberCount: json['online_member_count']);
+      chatId: json['chat_id'],
+      onlineMemberCount: json['online_member_count'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'online_member_count': this.onlineMemberCount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'online_member_count': onlineMemberCount,
+        '@type': constructor,
       };
 
   @override

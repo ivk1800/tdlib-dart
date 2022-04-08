@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes a chat from the list of frequently used chats. Supported only if
 /// the chat info database is enabled
 /// Returns [Ok]
+@immutable
 class RemoveTopChat extends TdFunction {
-  RemoveTopChat({required this.category, required this.chatId});
+  const RemoveTopChat({
+    required this.category,
+    required this.chatId,
+  });
 
   /// [category] Category of frequently used chats
   final TopChatCategory category;
@@ -13,15 +18,16 @@ class RemoveTopChat extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  static const String CONSTRUCTOR = 'removeTopChat';
+  static const String constructor = 'removeTopChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'category': this.category.toJson(),
-        'chat_id': this.chatId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'category': category.toJson(),
+        'chat_id': chatId,
+        '@type': constructor,
       };
 
   @override

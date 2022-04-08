@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link contains a request of Telegram passport data. Call
 /// getPassportAuthorizationForm with the given parameters to process the link
 /// if the link was received from outside of the app, otherwise ignore it
+@immutable
 class InternalLinkTypePassportDataRequest extends InternalLinkType {
-  InternalLinkTypePassportDataRequest(
-      {required this.botUserId,
-      required this.scope,
-      required this.publicKey,
-      required this.nonce,
-      required this.callbackUrl});
+  const InternalLinkTypePassportDataRequest({
+    required this.botUserId,
+    required this.scope,
+    required this.publicKey,
+    required this.nonce,
+    required this.callbackUrl,
+  });
 
   /// [botUserId] User identifier of the service's bot
   final int botUserId;
@@ -30,7 +33,7 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
   /// tgbot{bot_user_id}://passport/cancel needs to be opened instead
   final String callbackUrl;
 
-  static const String CONSTRUCTOR = 'internalLinkTypePassportDataRequest';
+  static const String constructor = 'internalLinkTypePassportDataRequest';
 
   static InternalLinkTypePassportDataRequest? fromJson(
       Map<String, dynamic>? json) {
@@ -39,23 +42,25 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
     }
 
     return InternalLinkTypePassportDataRequest(
-        botUserId: json['bot_user_id'],
-        scope: json['scope'],
-        publicKey: json['public_key'],
-        nonce: json['nonce'],
-        callbackUrl: json['callback_url']);
+      botUserId: json['bot_user_id'],
+      scope: json['scope'],
+      publicKey: json['public_key'],
+      nonce: json['nonce'],
+      callbackUrl: json['callback_url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'bot_user_id': this.botUserId,
-        'scope': this.scope,
-        'public_key': this.publicKey,
-        'nonce': this.nonce,
-        'callback_url': this.callbackUrl,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bot_user_id': botUserId,
+        'scope': scope,
+        'public_key': publicKey,
+        'nonce': nonce,
+        'callback_url': callbackUrl,
+        '@type': constructor,
       };
 
   @override

@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A text paragraph
+@immutable
 class PageBlockParagraph extends PageBlock {
-  PageBlockParagraph({required this.text});
+  const PageBlockParagraph({
+    required this.text,
+  });
 
   /// [text] Paragraph text
   final RichText text;
 
-  static const String CONSTRUCTOR = 'pageBlockParagraph';
+  static const String constructor = 'pageBlockParagraph';
 
   static PageBlockParagraph? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PageBlockParagraph(text: RichText.fromJson(json['text'])!);
+    return PageBlockParagraph(
+      text: RichText.fromJson(json['text'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'text': this.text.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

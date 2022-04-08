@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a location
+@immutable
 class MessageLocation extends MessageContent {
-  MessageLocation(
-      {required this.location,
-      required this.livePeriod,
-      required this.expiresIn,
-      required this.heading,
-      required this.proximityAlertRadius});
+  const MessageLocation({
+    required this.location,
+    required this.livePeriod,
+    required this.expiresIn,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
 
   /// [location] The location description
   final Location location;
@@ -30,7 +33,7 @@ class MessageLocation extends MessageContent {
   /// notification is disabled. Available only for the message sender
   final int proximityAlertRadius;
 
-  static const String CONSTRUCTOR = 'messageLocation';
+  static const String constructor = 'messageLocation';
 
   static MessageLocation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,23 +41,25 @@ class MessageLocation extends MessageContent {
     }
 
     return MessageLocation(
-        location: Location.fromJson(json['location'])!,
-        livePeriod: json['live_period'],
-        expiresIn: json['expires_in'],
-        heading: json['heading'],
-        proximityAlertRadius: json['proximity_alert_radius']);
+      location: Location.fromJson(json['location'])!,
+      livePeriod: json['live_period'],
+      expiresIn: json['expires_in'],
+      heading: json['heading'],
+      proximityAlertRadius: json['proximity_alert_radius'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'location': this.location.toJson(),
-        'live_period': this.livePeriod,
-        'expires_in': this.expiresIn,
-        'heading': this.heading,
-        'proximity_alert_radius': this.proximityAlertRadius,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'location': location.toJson(),
+        'live_period': livePeriod,
+        'expires_in': expiresIn,
+        'heading': heading,
+        'proximity_alert_radius': proximityAlertRadius,
+        '@type': constructor,
       };
 
   @override

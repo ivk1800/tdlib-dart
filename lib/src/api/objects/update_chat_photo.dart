@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat photo was changed
+@immutable
 class UpdateChatPhoto extends Update {
-  UpdateChatPhoto({required this.chatId, this.photo});
+  const UpdateChatPhoto({
+    required this.chatId,
+    this.photo,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -11,7 +16,7 @@ class UpdateChatPhoto extends Update {
   /// [photo] The new chat photo; may be null
   final ChatPhotoInfo? photo;
 
-  static const String CONSTRUCTOR = 'updateChatPhoto';
+  static const String constructor = 'updateChatPhoto';
 
   static UpdateChatPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class UpdateChatPhoto extends Update {
     }
 
     return UpdateChatPhoto(
-        chatId: json['chat_id'], photo: ChatPhotoInfo.fromJson(json['photo']));
+      chatId: json['chat_id'],
+      photo: ChatPhotoInfo.fromJson(json['photo']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'photo': this.photo?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'photo': photo?.toJson(),
+        '@type': constructor,
       };
 
   @override

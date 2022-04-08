@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Order information
+@immutable
 class OrderInfo extends TdObject {
-  OrderInfo(
-      {required this.name,
-      required this.phoneNumber,
-      required this.emailAddress,
-      this.shippingAddress});
+  const OrderInfo({
+    required this.name,
+    required this.phoneNumber,
+    required this.emailAddress,
+    this.shippingAddress,
+  });
 
   /// [name] Name of the user
   final String name;
@@ -21,7 +24,7 @@ class OrderInfo extends TdObject {
   /// [shippingAddress] Shipping address for this order; may be null
   final Address? shippingAddress;
 
-  static const String CONSTRUCTOR = 'orderInfo';
+  static const String constructor = 'orderInfo';
 
   static OrderInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class OrderInfo extends TdObject {
     }
 
     return OrderInfo(
-        name: json['name'],
-        phoneNumber: json['phone_number'],
-        emailAddress: json['email_address'],
-        shippingAddress: Address.fromJson(json['shipping_address']));
+      name: json['name'],
+      phoneNumber: json['phone_number'],
+      emailAddress: json['email_address'],
+      shippingAddress: Address.fromJson(json['shipping_address']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'phone_number': this.phoneNumber,
-        'email_address': this.emailAddress,
-        'shipping_address': this.shippingAddress?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'phone_number': phoneNumber,
+        'email_address': emailAddress,
+        'shipping_address': shippingAddress?.toJson(),
+        '@type': constructor,
       };
 
   @override

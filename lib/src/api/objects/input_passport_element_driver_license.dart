@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element to be saved containing the user's driver
 /// license
+@immutable
 class InputPassportElementDriverLicense extends InputPassportElement {
-  InputPassportElementDriverLicense({required this.driverLicense});
+  const InputPassportElementDriverLicense({
+    required this.driverLicense,
+  });
 
   /// [driverLicense] The driver license to be saved
   final InputIdentityDocument driverLicense;
 
-  static const String CONSTRUCTOR = 'inputPassportElementDriverLicense';
+  static const String constructor = 'inputPassportElementDriverLicense';
 
   static InputPassportElementDriverLicense? fromJson(
       Map<String, dynamic>? json) {
@@ -18,14 +22,18 @@ class InputPassportElementDriverLicense extends InputPassportElement {
     }
 
     return InputPassportElementDriverLicense(
-        driverLicense: InputIdentityDocument.fromJson(json['driver_license'])!);
+      driverLicense: InputIdentityDocument.fromJson(json['driver_license'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'driver_license': this.driverLicense.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'driver_license': driverLicense.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

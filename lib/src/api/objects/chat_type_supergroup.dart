@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A supergroup or channel (with unlimited members)
+@immutable
 class ChatTypeSupergroup extends ChatType {
-  ChatTypeSupergroup({required this.supergroupId, required this.isChannel});
+  const ChatTypeSupergroup({
+    required this.supergroupId,
+    required this.isChannel,
+  });
 
   /// [supergroupId] Supergroup or channel identifier
   final int supergroupId;
@@ -11,7 +16,7 @@ class ChatTypeSupergroup extends ChatType {
   /// [isChannel] True, if the supergroup is a channel
   final bool isChannel;
 
-  static const String CONSTRUCTOR = 'chatTypeSupergroup';
+  static const String constructor = 'chatTypeSupergroup';
 
   static ChatTypeSupergroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class ChatTypeSupergroup extends ChatType {
     }
 
     return ChatTypeSupergroup(
-        supergroupId: json['supergroup_id'], isChannel: json['is_channel']);
+      supergroupId: json['supergroup_id'],
+      isChannel: json['is_channel'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
-        'is_channel': this.isChannel,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        'is_channel': isChannel,
+        '@type': constructor,
       };
 
   @override

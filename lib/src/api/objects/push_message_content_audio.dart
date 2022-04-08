@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An audio message
+@immutable
 class PushMessageContentAudio extends PushMessageContent {
-  PushMessageContentAudio({this.audio, required this.isPinned});
+  const PushMessageContentAudio({
+    this.audio,
+    required this.isPinned,
+  });
 
   /// [audio] Message content; may be null
   final Audio? audio;
@@ -12,7 +17,7 @@ class PushMessageContentAudio extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentAudio';
+  static const String constructor = 'pushMessageContentAudio';
 
   static PushMessageContentAudio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +25,19 @@ class PushMessageContentAudio extends PushMessageContent {
     }
 
     return PushMessageContentAudio(
-        audio: Audio.fromJson(json['audio']), isPinned: json['is_pinned']);
+      audio: Audio.fromJson(json['audio']),
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'audio': this.audio?.toJson(),
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'audio': audio?.toJson(),
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the total amount of data that was used to send
 /// and receive files
+@immutable
 class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
-  NetworkStatisticsEntryFile(
-      {this.fileType,
-      required this.networkType,
-      required this.sentBytes,
-      required this.receivedBytes});
+  const NetworkStatisticsEntryFile({
+    this.fileType,
+    required this.networkType,
+    required this.sentBytes,
+    required this.receivedBytes,
+  });
 
   /// [fileType] Type of the file the data is part of; pass null if the data
   /// isn't related to files
@@ -24,7 +27,7 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   /// [receivedBytes] Total number of bytes received
   final int receivedBytes;
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntryFile';
+  static const String constructor = 'networkStatisticsEntryFile';
 
   static NetworkStatisticsEntryFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,21 +35,23 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     }
 
     return NetworkStatisticsEntryFile(
-        fileType: FileType.fromJson(json['file_type']),
-        networkType: NetworkType.fromJson(json['network_type'])!,
-        sentBytes: json['sent_bytes'],
-        receivedBytes: json['received_bytes']);
+      fileType: FileType.fromJson(json['file_type']),
+      networkType: NetworkType.fromJson(json['network_type'])!,
+      sentBytes: json['sent_bytes'],
+      receivedBytes: json['received_bytes'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'file_type': this.fileType?.toJson(),
-        'network_type': this.networkType.toJson(),
-        'sent_bytes': this.sentBytes,
-        'received_bytes': this.receivedBytes,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_type': fileType?.toJson(),
+        'network_type': networkType.toJson(),
+        'sent_bytes': sentBytes,
+        'received_bytes': receivedBytes,
+        '@type': constructor,
       };
 
   @override

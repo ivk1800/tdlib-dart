@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Constructs a persistent HTTP URL for a background
 /// Returns [HttpUrl]
+@immutable
 class GetBackgroundUrl extends TdFunction {
-  GetBackgroundUrl({required this.name, required this.type});
+  const GetBackgroundUrl({
+    required this.name,
+    required this.type,
+  });
 
   /// [name] Background name
   final String name;
@@ -12,13 +17,17 @@ class GetBackgroundUrl extends TdFunction {
   /// [type] Background type
   final BackgroundType type;
 
-  static const String CONSTRUCTOR = 'getBackgroundUrl';
+  static const String constructor = 'getBackgroundUrl';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'name': this.name, 'type': this.type.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

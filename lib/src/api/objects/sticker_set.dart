@@ -1,22 +1,25 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a sticker set
+@immutable
 class StickerSet extends TdObject {
-  StickerSet(
-      {required this.id,
-      required this.title,
-      required this.name,
-      this.thumbnail,
-      required this.thumbnailOutline,
-      required this.isInstalled,
-      required this.isArchived,
-      required this.isOfficial,
-      required this.isAnimated,
-      required this.isMasks,
-      required this.isViewed,
-      required this.stickers,
-      required this.emojis});
+  const StickerSet({
+    required this.id,
+    required this.title,
+    required this.name,
+    this.thumbnail,
+    required this.thumbnailOutline,
+    required this.isInstalled,
+    required this.isArchived,
+    required this.isOfficial,
+    required this.isAnimated,
+    required this.isMasks,
+    required this.isViewed,
+    required this.stickers,
+    required this.emojis,
+  });
 
   /// [id] Identifier of the sticker set
   final int id;
@@ -65,7 +68,7 @@ class StickerSet extends TdObject {
   /// sent with a fixed emoji from the corresponding Sticker object
   final List<Emojis> emojis;
 
-  static const String CONSTRUCTOR = 'stickerSet';
+  static const String constructor = 'stickerSet';
 
   static StickerSet? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -73,47 +76,48 @@ class StickerSet extends TdObject {
     }
 
     return StickerSet(
-        id: int.tryParse(json['id']) ?? 0,
-        title: json['title'],
-        name: json['name'],
-        thumbnail: Thumbnail.fromJson(json['thumbnail']),
-        thumbnailOutline: List<ClosedVectorPath>.from(
-            (json['thumbnail_outline'] ?? [])
-                .map((item) => ClosedVectorPath.fromJson(item))
-                .toList()),
-        isInstalled: json['is_installed'],
-        isArchived: json['is_archived'],
-        isOfficial: json['is_official'],
-        isAnimated: json['is_animated'],
-        isMasks: json['is_masks'],
-        isViewed: json['is_viewed'],
-        stickers: List<Sticker>.from((json['stickers'] ?? [])
-            .map((item) => Sticker.fromJson(item))
-            .toList()),
-        emojis: List<Emojis>.from((json['emojis'] ?? [])
-            .map((item) => Emojis.fromJson(item))
-            .toList()));
+      id: int.tryParse(json['id']) ?? 0,
+      title: json['title'],
+      name: json['name'],
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      thumbnailOutline: List<ClosedVectorPath>.from(
+          (json['thumbnail_outline'] ?? [])
+              .map((item) => ClosedVectorPath.fromJson(item))
+              .toList()),
+      isInstalled: json['is_installed'],
+      isArchived: json['is_archived'],
+      isOfficial: json['is_official'],
+      isAnimated: json['is_animated'],
+      isMasks: json['is_masks'],
+      isViewed: json['is_viewed'],
+      stickers: List<Sticker>.from((json['stickers'] ?? [])
+          .map((item) => Sticker.fromJson(item))
+          .toList()),
+      emojis: List<Emojis>.from(
+          (json['emojis'] ?? []).map((item) => Emojis.fromJson(item)).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'name': this.name,
-        'thumbnail': this.thumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'name': name,
+        'thumbnail': thumbnail?.toJson(),
         'thumbnail_outline':
             thumbnailOutline.map((item) => item.toJson()).toList(),
-        'is_installed': this.isInstalled,
-        'is_archived': this.isArchived,
-        'is_official': this.isOfficial,
-        'is_animated': this.isAnimated,
-        'is_masks': this.isMasks,
-        'is_viewed': this.isViewed,
+        'is_installed': isInstalled,
+        'is_archived': isArchived,
+        'is_official': isOfficial,
+        'is_animated': isAnimated,
+        'is_masks': isMasks,
+        'is_viewed': isViewed,
         'stickers': stickers.map((item) => item.toJson()).toList(),
         'emojis': emojis.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

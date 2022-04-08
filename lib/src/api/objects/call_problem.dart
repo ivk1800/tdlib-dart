@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the exact type of a problem with a call
+@immutable
 abstract class CallProblem extends TdObject {
   const CallProblem();
 
-  static const String CONSTRUCTOR = 'callProblem';
+  static const String constructor = 'callProblem';
 
   /// Inherited by:
   /// [CallProblemEcho]
@@ -22,24 +24,24 @@ abstract class CallProblem extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CallProblemEcho.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CallProblemEcho.constructor:
         return CallProblemEcho.fromJson(json);
-      case CallProblemNoise.CONSTRUCTOR:
+      case CallProblemNoise.constructor:
         return CallProblemNoise.fromJson(json);
-      case CallProblemInterruptions.CONSTRUCTOR:
+      case CallProblemInterruptions.constructor:
         return CallProblemInterruptions.fromJson(json);
-      case CallProblemDistortedSpeech.CONSTRUCTOR:
+      case CallProblemDistortedSpeech.constructor:
         return CallProblemDistortedSpeech.fromJson(json);
-      case CallProblemSilentLocal.CONSTRUCTOR:
+      case CallProblemSilentLocal.constructor:
         return CallProblemSilentLocal.fromJson(json);
-      case CallProblemSilentRemote.CONSTRUCTOR:
+      case CallProblemSilentRemote.constructor:
         return CallProblemSilentRemote.fromJson(json);
-      case CallProblemDropped.CONSTRUCTOR:
+      case CallProblemDropped.constructor:
         return CallProblemDropped.fromJson(json);
-      case CallProblemDistortedVideo.CONSTRUCTOR:
+      case CallProblemDistortedVideo.constructor:
         return CallProblemDistortedVideo.fromJson(json);
-      case CallProblemPixelatedVideo.CONSTRUCTOR:
+      case CallProblemPixelatedVideo.constructor:
         return CallProblemPixelatedVideo.fromJson(json);
       default:
         return null;
@@ -47,7 +49,7 @@ abstract class CallProblem extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

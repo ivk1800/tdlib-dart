@@ -1,28 +1,31 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a group call
+@immutable
 class GroupCall extends TdObject {
-  GroupCall(
-      {required this.id,
-      required this.title,
-      required this.scheduledStartDate,
-      required this.enabledStartNotification,
-      required this.isActive,
-      required this.isJoined,
-      required this.needRejoin,
-      required this.canBeManaged,
-      required this.participantCount,
-      required this.loadedAllParticipants,
-      required this.recentSpeakers,
-      required this.isMyVideoEnabled,
-      required this.isMyVideoPaused,
-      required this.canEnableVideo,
-      required this.muteNewParticipants,
-      required this.canToggleMuteNewParticipants,
-      required this.recordDuration,
-      required this.isVideoRecorded,
-      required this.duration});
+  const GroupCall({
+    required this.id,
+    required this.title,
+    required this.scheduledStartDate,
+    required this.enabledStartNotification,
+    required this.isActive,
+    required this.isJoined,
+    required this.needRejoin,
+    required this.canBeManaged,
+    required this.participantCount,
+    required this.loadedAllParticipants,
+    required this.recentSpeakers,
+    required this.isMyVideoEnabled,
+    required this.isMyVideoPaused,
+    required this.canEnableVideo,
+    required this.muteNewParticipants,
+    required this.canToggleMuteNewParticipants,
+    required this.recordDuration,
+    required this.isVideoRecorded,
+    required this.duration,
+  });
 
   /// [id] Group call identifier
   final int id;
@@ -90,7 +93,7 @@ class GroupCall extends TdObject {
   /// [duration] Call duration, in seconds; for ended calls only
   final int duration;
 
-  static const String CONSTRUCTOR = 'groupCall';
+  static const String constructor = 'groupCall';
 
   static GroupCall? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -98,54 +101,56 @@ class GroupCall extends TdObject {
     }
 
     return GroupCall(
-        id: json['id'],
-        title: json['title'],
-        scheduledStartDate: json['scheduled_start_date'],
-        enabledStartNotification: json['enabled_start_notification'],
-        isActive: json['is_active'],
-        isJoined: json['is_joined'],
-        needRejoin: json['need_rejoin'],
-        canBeManaged: json['can_be_managed'],
-        participantCount: json['participant_count'],
-        loadedAllParticipants: json['loaded_all_participants'],
-        recentSpeakers: List<GroupCallRecentSpeaker>.from(
-            (json['recent_speakers'] ?? [])
-                .map((item) => GroupCallRecentSpeaker.fromJson(item))
-                .toList()),
-        isMyVideoEnabled: json['is_my_video_enabled'],
-        isMyVideoPaused: json['is_my_video_paused'],
-        canEnableVideo: json['can_enable_video'],
-        muteNewParticipants: json['mute_new_participants'],
-        canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
-        recordDuration: json['record_duration'],
-        isVideoRecorded: json['is_video_recorded'],
-        duration: json['duration']);
+      id: json['id'],
+      title: json['title'],
+      scheduledStartDate: json['scheduled_start_date'],
+      enabledStartNotification: json['enabled_start_notification'],
+      isActive: json['is_active'],
+      isJoined: json['is_joined'],
+      needRejoin: json['need_rejoin'],
+      canBeManaged: json['can_be_managed'],
+      participantCount: json['participant_count'],
+      loadedAllParticipants: json['loaded_all_participants'],
+      recentSpeakers: List<GroupCallRecentSpeaker>.from(
+          (json['recent_speakers'] ?? [])
+              .map((item) => GroupCallRecentSpeaker.fromJson(item))
+              .toList()),
+      isMyVideoEnabled: json['is_my_video_enabled'],
+      isMyVideoPaused: json['is_my_video_paused'],
+      canEnableVideo: json['can_enable_video'],
+      muteNewParticipants: json['mute_new_participants'],
+      canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
+      recordDuration: json['record_duration'],
+      isVideoRecorded: json['is_video_recorded'],
+      duration: json['duration'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'scheduled_start_date': this.scheduledStartDate,
-        'enabled_start_notification': this.enabledStartNotification,
-        'is_active': this.isActive,
-        'is_joined': this.isJoined,
-        'need_rejoin': this.needRejoin,
-        'can_be_managed': this.canBeManaged,
-        'participant_count': this.participantCount,
-        'loaded_all_participants': this.loadedAllParticipants,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'scheduled_start_date': scheduledStartDate,
+        'enabled_start_notification': enabledStartNotification,
+        'is_active': isActive,
+        'is_joined': isJoined,
+        'need_rejoin': needRejoin,
+        'can_be_managed': canBeManaged,
+        'participant_count': participantCount,
+        'loaded_all_participants': loadedAllParticipants,
         'recent_speakers': recentSpeakers.map((item) => item.toJson()).toList(),
-        'is_my_video_enabled': this.isMyVideoEnabled,
-        'is_my_video_paused': this.isMyVideoPaused,
-        'can_enable_video': this.canEnableVideo,
-        'mute_new_participants': this.muteNewParticipants,
-        'can_toggle_mute_new_participants': this.canToggleMuteNewParticipants,
-        'record_duration': this.recordDuration,
-        'is_video_recorded': this.isVideoRecorded,
-        'duration': this.duration,
-        '@type': CONSTRUCTOR
+        'is_my_video_enabled': isMyVideoEnabled,
+        'is_my_video_paused': isMyVideoPaused,
+        'can_enable_video': canEnableVideo,
+        'mute_new_participants': muteNewParticipants,
+        'can_toggle_mute_new_participants': canToggleMuteNewParticipants,
+        'record_duration': recordDuration,
+        'is_video_recorded': isVideoRecorded,
+        'duration': duration,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a vector path command
+@immutable
 abstract class VectorPathCommand extends TdObject {
   const VectorPathCommand();
 
-  static const String CONSTRUCTOR = 'vectorPathCommand';
+  static const String constructor = 'vectorPathCommand';
 
   /// Inherited by:
   /// [VectorPathCommandLine]
@@ -15,10 +17,10 @@ abstract class VectorPathCommand extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case VectorPathCommandLine.CONSTRUCTOR:
+    switch (json['@type']) {
+      case VectorPathCommandLine.constructor:
         return VectorPathCommandLine.fromJson(json);
-      case VectorPathCommandCubicBezierCurve.CONSTRUCTOR:
+      case VectorPathCommandCubicBezierCurve.constructor:
         return VectorPathCommandCubicBezierCurve.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class VectorPathCommand extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

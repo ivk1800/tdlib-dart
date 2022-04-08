@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link contains a message draft text. A share screen needs to be shown
 /// to the user, then the chosen chat must be opened and the text is added to
 /// the input field
+@immutable
 class InternalLinkTypeMessageDraft extends InternalLinkType {
-  InternalLinkTypeMessageDraft(
-      {required this.text, required this.containsLink});
+  const InternalLinkTypeMessageDraft({
+    required this.text,
+    required this.containsLink,
+  });
 
   /// [text] Message draft text
   final FormattedText text;
@@ -16,7 +20,7 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
   /// be selected
   final bool containsLink;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeMessageDraft';
+  static const String constructor = 'internalLinkTypeMessageDraft';
 
   static InternalLinkTypeMessageDraft? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,17 +28,19 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
     }
 
     return InternalLinkTypeMessageDraft(
-        text: FormattedText.fromJson(json['text'])!,
-        containsLink: json['contains_link']);
+      text: FormattedText.fromJson(json['text'])!,
+      containsLink: json['contains_link'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'contains_link': this.containsLink,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'contains_link': containsLink,
+        '@type': constructor,
       };
 
   @override

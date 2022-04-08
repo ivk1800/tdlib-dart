@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the sender of a message
+@immutable
 abstract class MessageSender extends TdObject {
   const MessageSender();
 
-  static const String CONSTRUCTOR = 'messageSender';
+  static const String constructor = 'messageSender';
 
   /// Inherited by:
   /// [MessageSenderUser]
@@ -15,10 +17,10 @@ abstract class MessageSender extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageSenderUser.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageSenderUser.constructor:
         return MessageSenderUser.fromJson(json);
-      case MessageSenderChat.CONSTRUCTOR:
+      case MessageSenderChat.constructor:
         return MessageSenderChat.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class MessageSender extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

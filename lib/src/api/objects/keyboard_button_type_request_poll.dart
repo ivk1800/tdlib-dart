@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A button that allows the user to create and send a poll when pressed;
 /// available only in private chats
+@immutable
 class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
-  KeyboardButtonTypeRequestPoll(
-      {required this.forceRegular, required this.forceQuiz});
+  const KeyboardButtonTypeRequestPoll({
+    required this.forceRegular,
+    required this.forceQuiz,
+  });
 
   /// [forceRegular] If true, only regular polls must be allowed to create
   final bool forceRegular;
@@ -13,7 +17,7 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   /// [forceQuiz] If true, only polls in quiz mode must be allowed to create
   final bool forceQuiz;
 
-  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestPoll';
+  static const String constructor = 'keyboardButtonTypeRequestPoll';
 
   static KeyboardButtonTypeRequestPoll? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,16 +25,19 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
     }
 
     return KeyboardButtonTypeRequestPoll(
-        forceRegular: json['force_regular'], forceQuiz: json['force_quiz']);
+      forceRegular: json['force_regular'],
+      forceQuiz: json['force_quiz'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'force_regular': this.forceRegular,
-        'force_quiz': this.forceQuiz,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'force_regular': forceRegular,
+        'force_quiz': forceQuiz,
+        '@type': constructor,
       };
 
   @override

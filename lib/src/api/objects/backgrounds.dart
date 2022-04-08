@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of backgrounds
+@immutable
 class Backgrounds extends TdObject {
-  Backgrounds({required this.backgrounds});
+  const Backgrounds({
+    required this.backgrounds,
+  });
 
   /// [backgrounds] A list of backgrounds
   final List<Background> backgrounds;
 
-  static const String CONSTRUCTOR = 'backgrounds';
+  static const String constructor = 'backgrounds';
 
   static Backgrounds? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class Backgrounds extends TdObject {
     }
 
     return Backgrounds(
-        backgrounds: List<Background>.from((json['backgrounds'] ?? [])
-            .map((item) => Background.fromJson(item))
-            .toList()));
+      backgrounds: List<Background>.from((json['backgrounds'] ?? [])
+          .map((item) => Background.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'backgrounds': backgrounds.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

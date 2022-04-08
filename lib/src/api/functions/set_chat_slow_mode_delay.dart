@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the slow mode delay of a chat. Available only for supergroups;
 /// requires can_restrict_members rights
 /// Returns [Ok]
+@immutable
 class SetChatSlowModeDelay extends TdFunction {
-  SetChatSlowModeDelay({required this.chatId, required this.slowModeDelay});
+  const SetChatSlowModeDelay({
+    required this.chatId,
+    required this.slowModeDelay,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -14,15 +19,16 @@ class SetChatSlowModeDelay extends TdFunction {
   /// of 0, 10, 30, 60, 300, 900, 3600
   final int slowModeDelay;
 
-  static const String CONSTRUCTOR = 'setChatSlowModeDelay';
+  static const String constructor = 'setChatSlowModeDelay';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'slow_mode_delay': this.slowModeDelay,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'slow_mode_delay': slowModeDelay,
+        '@type': constructor,
       };
 
   @override

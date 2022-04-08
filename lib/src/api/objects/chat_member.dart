@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a user or a chat as a member of another chat
+@immutable
 class ChatMember extends TdObject {
-  ChatMember(
-      {required this.memberId,
-      required this.inviterUserId,
-      required this.joinedChatDate,
-      required this.status});
+  const ChatMember({
+    required this.memberId,
+    required this.inviterUserId,
+    required this.joinedChatDate,
+    required this.status,
+  });
 
   /// [memberId] Identifier of the chat member. Currently, other chats can be
   /// only Left or Banned. Only supergroups and channels can have other chats as
@@ -25,7 +28,7 @@ class ChatMember extends TdObject {
   /// [status] Status of the member in the chat
   final ChatMemberStatus status;
 
-  static const String CONSTRUCTOR = 'chatMember';
+  static const String constructor = 'chatMember';
 
   static ChatMember? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,21 +36,23 @@ class ChatMember extends TdObject {
     }
 
     return ChatMember(
-        memberId: MessageSender.fromJson(json['member_id'])!,
-        inviterUserId: json['inviter_user_id'],
-        joinedChatDate: json['joined_chat_date'],
-        status: ChatMemberStatus.fromJson(json['status'])!);
+      memberId: MessageSender.fromJson(json['member_id'])!,
+      inviterUserId: json['inviter_user_id'],
+      joinedChatDate: json['joined_chat_date'],
+      status: ChatMemberStatus.fromJson(json['status'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'member_id': this.memberId.toJson(),
-        'inviter_user_id': this.inviterUserId,
-        'joined_chat_date': this.joinedChatDate,
-        'status': this.status.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'member_id': memberId.toJson(),
+        'inviter_user_id': inviterUserId,
+        'joined_chat_date': joinedChatDate,
+        'status': status.toJson(),
+        '@type': constructor,
       };
 
   @override

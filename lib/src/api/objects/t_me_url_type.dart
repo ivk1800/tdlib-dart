@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of a URL linking to an internal Telegram entity
+@immutable
 abstract class TMeUrlType extends TdObject {
   const TMeUrlType();
 
-  static const String CONSTRUCTOR = 'tMeUrlType';
+  static const String constructor = 'tMeUrlType';
 
   /// Inherited by:
   /// [TMeUrlTypeUser]
@@ -17,14 +19,14 @@ abstract class TMeUrlType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case TMeUrlTypeUser.CONSTRUCTOR:
+    switch (json['@type']) {
+      case TMeUrlTypeUser.constructor:
         return TMeUrlTypeUser.fromJson(json);
-      case TMeUrlTypeSupergroup.CONSTRUCTOR:
+      case TMeUrlTypeSupergroup.constructor:
         return TMeUrlTypeSupergroup.fromJson(json);
-      case TMeUrlTypeChatInvite.CONSTRUCTOR:
+      case TMeUrlTypeChatInvite.constructor:
         return TMeUrlTypeChatInvite.fromJson(json);
-      case TMeUrlTypeStickerSet.CONSTRUCTOR:
+      case TMeUrlTypeStickerSet.constructor:
         return TMeUrlTypeStickerSet.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class TMeUrlType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

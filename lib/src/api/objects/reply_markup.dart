@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a description of a custom keyboard and actions that can be done
 /// with it to quickly reply to bots
+@immutable
 abstract class ReplyMarkup extends TdObject {
   const ReplyMarkup();
 
-  static const String CONSTRUCTOR = 'replyMarkup';
+  static const String constructor = 'replyMarkup';
 
   /// Inherited by:
   /// [ReplyMarkupRemoveKeyboard]
@@ -18,14 +20,14 @@ abstract class ReplyMarkup extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ReplyMarkupRemoveKeyboard.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ReplyMarkupRemoveKeyboard.constructor:
         return ReplyMarkupRemoveKeyboard.fromJson(json);
-      case ReplyMarkupForceReply.CONSTRUCTOR:
+      case ReplyMarkupForceReply.constructor:
         return ReplyMarkupForceReply.fromJson(json);
-      case ReplyMarkupShowKeyboard.CONSTRUCTOR:
+      case ReplyMarkupShowKeyboard.constructor:
         return ReplyMarkupShowKeyboard.fromJson(json);
-      case ReplyMarkupInlineKeyboard.CONSTRUCTOR:
+      case ReplyMarkupInlineKeyboard.constructor:
         return ReplyMarkupInlineKeyboard.fromJson(json);
       default:
         return null;
@@ -33,7 +35,7 @@ abstract class ReplyMarkup extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

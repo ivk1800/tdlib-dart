@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a keyboard button type
+@immutable
 abstract class KeyboardButtonType extends TdObject {
   const KeyboardButtonType();
 
-  static const String CONSTRUCTOR = 'keyboardButtonType';
+  static const String constructor = 'keyboardButtonType';
 
   /// Inherited by:
   /// [KeyboardButtonTypeText]
@@ -17,14 +19,14 @@ abstract class KeyboardButtonType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case KeyboardButtonTypeText.CONSTRUCTOR:
+    switch (json['@type']) {
+      case KeyboardButtonTypeText.constructor:
         return KeyboardButtonTypeText.fromJson(json);
-      case KeyboardButtonTypeRequestPhoneNumber.CONSTRUCTOR:
+      case KeyboardButtonTypeRequestPhoneNumber.constructor:
         return KeyboardButtonTypeRequestPhoneNumber.fromJson(json);
-      case KeyboardButtonTypeRequestLocation.CONSTRUCTOR:
+      case KeyboardButtonTypeRequestLocation.constructor:
         return KeyboardButtonTypeRequestLocation.fromJson(json);
-      case KeyboardButtonTypeRequestPoll.CONSTRUCTOR:
+      case KeyboardButtonTypeRequestPoll.constructor:
         return KeyboardButtonTypeRequestPoll.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class KeyboardButtonType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains the content of a message
+@immutable
 abstract class MessageContent extends TdObject {
   const MessageContent();
 
-  static const String CONSTRUCTOR = 'messageContent';
+  static const String constructor = 'messageContent';
 
   /// Inherited by:
   /// [MessageText]
@@ -62,104 +64,104 @@ abstract class MessageContent extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageText.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageText.constructor:
         return MessageText.fromJson(json);
-      case MessageAnimation.CONSTRUCTOR:
+      case MessageAnimation.constructor:
         return MessageAnimation.fromJson(json);
-      case MessageAudio.CONSTRUCTOR:
+      case MessageAudio.constructor:
         return MessageAudio.fromJson(json);
-      case MessageDocument.CONSTRUCTOR:
+      case MessageDocument.constructor:
         return MessageDocument.fromJson(json);
-      case MessagePhoto.CONSTRUCTOR:
+      case MessagePhoto.constructor:
         return MessagePhoto.fromJson(json);
-      case MessageExpiredPhoto.CONSTRUCTOR:
+      case MessageExpiredPhoto.constructor:
         return MessageExpiredPhoto.fromJson(json);
-      case MessageSticker.CONSTRUCTOR:
+      case MessageSticker.constructor:
         return MessageSticker.fromJson(json);
-      case MessageVideo.CONSTRUCTOR:
+      case MessageVideo.constructor:
         return MessageVideo.fromJson(json);
-      case MessageExpiredVideo.CONSTRUCTOR:
+      case MessageExpiredVideo.constructor:
         return MessageExpiredVideo.fromJson(json);
-      case MessageVideoNote.CONSTRUCTOR:
+      case MessageVideoNote.constructor:
         return MessageVideoNote.fromJson(json);
-      case MessageVoiceNote.CONSTRUCTOR:
+      case MessageVoiceNote.constructor:
         return MessageVoiceNote.fromJson(json);
-      case MessageLocation.CONSTRUCTOR:
+      case MessageLocation.constructor:
         return MessageLocation.fromJson(json);
-      case MessageVenue.CONSTRUCTOR:
+      case MessageVenue.constructor:
         return MessageVenue.fromJson(json);
-      case MessageContact.CONSTRUCTOR:
+      case MessageContact.constructor:
         return MessageContact.fromJson(json);
-      case MessageAnimatedEmoji.CONSTRUCTOR:
+      case MessageAnimatedEmoji.constructor:
         return MessageAnimatedEmoji.fromJson(json);
-      case MessageDice.CONSTRUCTOR:
+      case MessageDice.constructor:
         return MessageDice.fromJson(json);
-      case MessageGame.CONSTRUCTOR:
+      case MessageGame.constructor:
         return MessageGame.fromJson(json);
-      case MessagePoll.CONSTRUCTOR:
+      case MessagePoll.constructor:
         return MessagePoll.fromJson(json);
-      case MessageInvoice.CONSTRUCTOR:
+      case MessageInvoice.constructor:
         return MessageInvoice.fromJson(json);
-      case MessageCall.CONSTRUCTOR:
+      case MessageCall.constructor:
         return MessageCall.fromJson(json);
-      case MessageVideoChatScheduled.CONSTRUCTOR:
+      case MessageVideoChatScheduled.constructor:
         return MessageVideoChatScheduled.fromJson(json);
-      case MessageVideoChatStarted.CONSTRUCTOR:
+      case MessageVideoChatStarted.constructor:
         return MessageVideoChatStarted.fromJson(json);
-      case MessageVideoChatEnded.CONSTRUCTOR:
+      case MessageVideoChatEnded.constructor:
         return MessageVideoChatEnded.fromJson(json);
-      case MessageInviteVideoChatParticipants.CONSTRUCTOR:
+      case MessageInviteVideoChatParticipants.constructor:
         return MessageInviteVideoChatParticipants.fromJson(json);
-      case MessageBasicGroupChatCreate.CONSTRUCTOR:
+      case MessageBasicGroupChatCreate.constructor:
         return MessageBasicGroupChatCreate.fromJson(json);
-      case MessageSupergroupChatCreate.CONSTRUCTOR:
+      case MessageSupergroupChatCreate.constructor:
         return MessageSupergroupChatCreate.fromJson(json);
-      case MessageChatChangeTitle.CONSTRUCTOR:
+      case MessageChatChangeTitle.constructor:
         return MessageChatChangeTitle.fromJson(json);
-      case MessageChatChangePhoto.CONSTRUCTOR:
+      case MessageChatChangePhoto.constructor:
         return MessageChatChangePhoto.fromJson(json);
-      case MessageChatDeletePhoto.CONSTRUCTOR:
+      case MessageChatDeletePhoto.constructor:
         return MessageChatDeletePhoto.fromJson(json);
-      case MessageChatAddMembers.CONSTRUCTOR:
+      case MessageChatAddMembers.constructor:
         return MessageChatAddMembers.fromJson(json);
-      case MessageChatJoinByLink.CONSTRUCTOR:
+      case MessageChatJoinByLink.constructor:
         return MessageChatJoinByLink.fromJson(json);
-      case MessageChatJoinByRequest.CONSTRUCTOR:
+      case MessageChatJoinByRequest.constructor:
         return MessageChatJoinByRequest.fromJson(json);
-      case MessageChatDeleteMember.CONSTRUCTOR:
+      case MessageChatDeleteMember.constructor:
         return MessageChatDeleteMember.fromJson(json);
-      case MessageChatUpgradeTo.CONSTRUCTOR:
+      case MessageChatUpgradeTo.constructor:
         return MessageChatUpgradeTo.fromJson(json);
-      case MessageChatUpgradeFrom.CONSTRUCTOR:
+      case MessageChatUpgradeFrom.constructor:
         return MessageChatUpgradeFrom.fromJson(json);
-      case MessagePinMessage.CONSTRUCTOR:
+      case MessagePinMessage.constructor:
         return MessagePinMessage.fromJson(json);
-      case MessageScreenshotTaken.CONSTRUCTOR:
+      case MessageScreenshotTaken.constructor:
         return MessageScreenshotTaken.fromJson(json);
-      case MessageChatSetTheme.CONSTRUCTOR:
+      case MessageChatSetTheme.constructor:
         return MessageChatSetTheme.fromJson(json);
-      case MessageChatSetTtl.CONSTRUCTOR:
+      case MessageChatSetTtl.constructor:
         return MessageChatSetTtl.fromJson(json);
-      case MessageCustomServiceAction.CONSTRUCTOR:
+      case MessageCustomServiceAction.constructor:
         return MessageCustomServiceAction.fromJson(json);
-      case MessageGameScore.CONSTRUCTOR:
+      case MessageGameScore.constructor:
         return MessageGameScore.fromJson(json);
-      case MessagePaymentSuccessful.CONSTRUCTOR:
+      case MessagePaymentSuccessful.constructor:
         return MessagePaymentSuccessful.fromJson(json);
-      case MessagePaymentSuccessfulBot.CONSTRUCTOR:
+      case MessagePaymentSuccessfulBot.constructor:
         return MessagePaymentSuccessfulBot.fromJson(json);
-      case MessageContactRegistered.CONSTRUCTOR:
+      case MessageContactRegistered.constructor:
         return MessageContactRegistered.fromJson(json);
-      case MessageWebsiteConnected.CONSTRUCTOR:
+      case MessageWebsiteConnected.constructor:
         return MessageWebsiteConnected.fromJson(json);
-      case MessagePassportDataSent.CONSTRUCTOR:
+      case MessagePassportDataSent.constructor:
         return MessagePassportDataSent.fromJson(json);
-      case MessagePassportDataReceived.CONSTRUCTOR:
+      case MessagePassportDataReceived.constructor:
         return MessagePassportDataReceived.fromJson(json);
-      case MessageProximityAlertTriggered.CONSTRUCTOR:
+      case MessageProximityAlertTriggered.constructor:
         return MessageProximityAlertTriggered.fromJson(json);
-      case MessageUnsupported.CONSTRUCTOR:
+      case MessageUnsupported.constructor:
         return MessageUnsupported.fromJson(json);
       default:
         return null;
@@ -167,7 +169,7 @@ abstract class MessageContent extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

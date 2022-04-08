@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a JSON value
+@immutable
 abstract class JsonValue extends TdObject {
   const JsonValue();
 
-  static const String CONSTRUCTOR = 'jsonValue';
+  static const String constructor = 'jsonValue';
 
   /// Inherited by:
   /// [JsonValueNull]
@@ -19,18 +21,18 @@ abstract class JsonValue extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case JsonValueNull.CONSTRUCTOR:
+    switch (json['@type']) {
+      case JsonValueNull.constructor:
         return JsonValueNull.fromJson(json);
-      case JsonValueBoolean.CONSTRUCTOR:
+      case JsonValueBoolean.constructor:
         return JsonValueBoolean.fromJson(json);
-      case JsonValueNumber.CONSTRUCTOR:
+      case JsonValueNumber.constructor:
         return JsonValueNumber.fromJson(json);
-      case JsonValueString.CONSTRUCTOR:
+      case JsonValueString.constructor:
         return JsonValueString.fromJson(json);
-      case JsonValueArray.CONSTRUCTOR:
+      case JsonValueArray.constructor:
         return JsonValueArray.fromJson(json);
-      case JsonValueObject.CONSTRUCTOR:
+      case JsonValueObject.constructor:
         return JsonValueObject.fromJson(json);
       default:
         return null;
@@ -38,7 +40,7 @@ abstract class JsonValue extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

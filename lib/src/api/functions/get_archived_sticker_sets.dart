@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of archived sticker sets
 /// Returns [StickerSets]
+@immutable
 class GetArchivedStickerSets extends TdFunction {
-  GetArchivedStickerSets(
-      {required this.isMasks,
-      required this.offsetStickerSetId,
-      required this.limit});
+  const GetArchivedStickerSets({
+    required this.isMasks,
+    required this.offsetStickerSetId,
+    required this.limit,
+  });
 
   /// [isMasks] Pass true to return mask stickers sets; pass false to return
   /// ordinary sticker sets
@@ -20,16 +23,17 @@ class GetArchivedStickerSets extends TdFunction {
   /// [limit] The maximum number of sticker sets to return; up to 100
   final int limit;
 
-  static const String CONSTRUCTOR = 'getArchivedStickerSets';
+  static const String constructor = 'getArchivedStickerSets';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_masks': this.isMasks,
-        'offset_sticker_set_id': this.offsetStickerSetId,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_masks': isMasks,
+        'offset_sticker_set_id': offsetStickerSetId,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

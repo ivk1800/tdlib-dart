@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A URL linking to a sticker set
+@immutable
 class TMeUrlTypeStickerSet extends TMeUrlType {
-  TMeUrlTypeStickerSet({required this.stickerSetId});
+  const TMeUrlTypeStickerSet({
+    required this.stickerSetId,
+  });
 
   /// [stickerSetId] Identifier of the sticker set
   final int stickerSetId;
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeStickerSet';
+  static const String constructor = 'tMeUrlTypeStickerSet';
 
   static TMeUrlTypeStickerSet? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
     }
 
     return TMeUrlTypeStickerSet(
-        stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0);
+      stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'sticker_set_id': this.stickerSetId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker_set_id': stickerSetId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

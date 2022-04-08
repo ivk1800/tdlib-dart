@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds, edits or deletes a string in a custom local language pack. Can be
 /// called before authorization
 /// Returns [Ok]
+@immutable
 class SetCustomLanguagePackString extends TdFunction {
-  SetCustomLanguagePackString(
-      {required this.languagePackId, required this.newString});
+  const SetCustomLanguagePackString({
+    required this.languagePackId,
+    required this.newString,
+  });
 
   /// [languagePackId] Identifier of a previously added custom local language
   /// pack in the current localization target
@@ -15,15 +19,16 @@ class SetCustomLanguagePackString extends TdFunction {
   /// [newString] New language pack string
   final LanguagePackString newString;
 
-  static const String CONSTRUCTOR = 'setCustomLanguagePackString';
+  static const String constructor = 'setCustomLanguagePackString';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'language_pack_id': this.languagePackId,
-        'new_string': this.newString.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_pack_id': languagePackId,
+        'new_string': newString.toJson(),
+        '@type': constructor,
       };
 
   @override

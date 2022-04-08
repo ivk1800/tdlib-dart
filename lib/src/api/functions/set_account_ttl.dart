@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the period of inactivity after which the account of the current
 /// user will automatically be deleted
 /// Returns [Ok]
+@immutable
 class SetAccountTtl extends TdFunction {
-  SetAccountTtl({required this.ttl});
+  const SetAccountTtl({
+    required this.ttl,
+  });
 
   /// [ttl] New account TTL
   final AccountTtl ttl;
 
-  static const String CONSTRUCTOR = 'setAccountTtl';
+  static const String constructor = 'setAccountTtl';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'ttl': this.ttl.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'ttl': ttl.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

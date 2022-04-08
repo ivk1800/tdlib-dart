@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of an inline keyboard button
+@immutable
 abstract class InlineKeyboardButtonType extends TdObject {
   const InlineKeyboardButtonType();
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonType';
+  static const String constructor = 'inlineKeyboardButtonType';
 
   /// Inherited by:
   /// [InlineKeyboardButtonTypeUrl]
@@ -21,22 +23,22 @@ abstract class InlineKeyboardButtonType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InlineKeyboardButtonTypeUrl.constructor:
         return InlineKeyboardButtonTypeUrl.fromJson(json);
-      case InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeLoginUrl.constructor:
         return InlineKeyboardButtonTypeLoginUrl.fromJson(json);
-      case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeCallback.constructor:
         return InlineKeyboardButtonTypeCallback.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackWithPassword.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeCallbackWithPassword.constructor:
         return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeCallbackGame.constructor:
         return InlineKeyboardButtonTypeCallbackGame.fromJson(json);
-      case InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeSwitchInline.constructor:
         return InlineKeyboardButtonTypeSwitchInline.fromJson(json);
-      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeBuy.constructor:
         return InlineKeyboardButtonTypeBuy.fromJson(json);
-      case InlineKeyboardButtonTypeUser.CONSTRUCTOR:
+      case InlineKeyboardButtonTypeUser.constructor:
         return InlineKeyboardButtonTypeUser.fromJson(json);
       default:
         return null;
@@ -44,7 +46,7 @@ abstract class InlineKeyboardButtonType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Telegram Passport data has been sent
+@immutable
 class MessagePassportDataSent extends MessageContent {
-  MessagePassportDataSent({required this.types});
+  const MessagePassportDataSent({
+    required this.types,
+  });
 
   /// [types] List of Telegram Passport element types sent
   final List<PassportElementType> types;
 
-  static const String CONSTRUCTOR = 'messagePassportDataSent';
+  static const String constructor = 'messagePassportDataSent';
 
   static MessagePassportDataSent? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class MessagePassportDataSent extends MessageContent {
     }
 
     return MessagePassportDataSent(
-        types: List<PassportElementType>.from((json['types'] ?? [])
-            .map((item) => PassportElementType.fromJson(item))
-            .toList()));
+      types: List<PassportElementType>.from((json['types'] ?? [])
+          .map((item) => PassportElementType.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'types': types.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

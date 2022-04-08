@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A kicker
+@immutable
 class PageBlockKicker extends PageBlock {
-  PageBlockKicker({required this.kicker});
+  const PageBlockKicker({
+    required this.kicker,
+  });
 
   /// [kicker] Kicker
   final RichText kicker;
 
-  static const String CONSTRUCTOR = 'pageBlockKicker';
+  static const String constructor = 'pageBlockKicker';
 
   static PageBlockKicker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PageBlockKicker(kicker: RichText.fromJson(json['kicker'])!);
+    return PageBlockKicker(
+      kicker: RichText.fromJson(json['kicker'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'kicker': this.kicker.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'kicker': kicker.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

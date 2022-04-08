@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A language pack string which has different forms based on the number of
 /// some object it mentions. See
 /// https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
 /// for more info
+@immutable
 class LanguagePackStringValuePluralized extends LanguagePackStringValue {
-  LanguagePackStringValuePluralized(
-      {required this.zeroValue,
-      required this.oneValue,
-      required this.twoValue,
-      required this.fewValue,
-      required this.manyValue,
-      required this.otherValue});
+  const LanguagePackStringValuePluralized({
+    required this.zeroValue,
+    required this.oneValue,
+    required this.twoValue,
+    required this.fewValue,
+    required this.manyValue,
+    required this.otherValue,
+  });
 
   /// [zeroValue] Value for zero objects
   final String zeroValue;
@@ -32,7 +35,7 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   /// [otherValue] Default value
   final String otherValue;
 
-  static const String CONSTRUCTOR = 'languagePackStringValuePluralized';
+  static const String constructor = 'languagePackStringValuePluralized';
 
   static LanguagePackStringValuePluralized? fromJson(
       Map<String, dynamic>? json) {
@@ -41,25 +44,27 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     }
 
     return LanguagePackStringValuePluralized(
-        zeroValue: json['zero_value'],
-        oneValue: json['one_value'],
-        twoValue: json['two_value'],
-        fewValue: json['few_value'],
-        manyValue: json['many_value'],
-        otherValue: json['other_value']);
+      zeroValue: json['zero_value'],
+      oneValue: json['one_value'],
+      twoValue: json['two_value'],
+      fewValue: json['few_value'],
+      manyValue: json['many_value'],
+      otherValue: json['other_value'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'zero_value': this.zeroValue,
-        'one_value': this.oneValue,
-        'two_value': this.twoValue,
-        'few_value': this.fewValue,
-        'many_value': this.manyValue,
-        'other_value': this.otherValue,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'zero_value': zeroValue,
+        'one_value': oneValue,
+        'two_value': twoValue,
+        'few_value': fewValue,
+        'many_value': manyValue,
+        'other_value': otherValue,
+        '@type': constructor,
       };
 
   @override

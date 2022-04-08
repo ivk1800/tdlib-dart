@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// User rights changed in a chat; for bots only
+@immutable
 class UpdateChatMember extends Update {
-  UpdateChatMember(
-      {required this.chatId,
-      required this.actorUserId,
-      required this.date,
-      this.inviteLink,
-      required this.oldChatMember,
-      required this.newChatMember});
+  const UpdateChatMember({
+    required this.chatId,
+    required this.actorUserId,
+    required this.date,
+    this.inviteLink,
+    required this.oldChatMember,
+    required this.newChatMember,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -30,7 +33,7 @@ class UpdateChatMember extends Update {
   /// [newChatMember] New chat member
   final ChatMember newChatMember;
 
-  static const String CONSTRUCTOR = 'updateChatMember';
+  static const String constructor = 'updateChatMember';
 
   static UpdateChatMember? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class UpdateChatMember extends Update {
     }
 
     return UpdateChatMember(
-        chatId: json['chat_id'],
-        actorUserId: json['actor_user_id'],
-        date: json['date'],
-        inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-        oldChatMember: ChatMember.fromJson(json['old_chat_member'])!,
-        newChatMember: ChatMember.fromJson(json['new_chat_member'])!);
+      chatId: json['chat_id'],
+      actorUserId: json['actor_user_id'],
+      date: json['date'],
+      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+      oldChatMember: ChatMember.fromJson(json['old_chat_member'])!,
+      newChatMember: ChatMember.fromJson(json['new_chat_member'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'actor_user_id': this.actorUserId,
-        'date': this.date,
-        'invite_link': this.inviteLink?.toJson(),
-        'old_chat_member': this.oldChatMember.toJson(),
-        'new_chat_member': this.newChatMember.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'actor_user_id': actorUserId,
+        'date': date,
+        'invite_link': inviteLink?.toJson(),
+        'old_chat_member': oldChatMember.toJson(),
+        'new_chat_member': newChatMember.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The password reset request is pending
+@immutable
 class ResetPasswordResultPending extends ResetPasswordResult {
-  ResetPasswordResultPending({required this.pendingResetDate});
+  const ResetPasswordResultPending({
+    required this.pendingResetDate,
+  });
 
   /// [pendingResetDate] Point in time (Unix timestamp) after which the password
   /// can be reset immediately using resetPassword
   final int pendingResetDate;
 
-  static const String CONSTRUCTOR = 'resetPasswordResultPending';
+  static const String constructor = 'resetPasswordResultPending';
 
   static ResetPasswordResultPending? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,14 +21,18 @@ class ResetPasswordResultPending extends ResetPasswordResult {
     }
 
     return ResetPasswordResultPending(
-        pendingResetDate: json['pending_reset_date']);
+      pendingResetDate: json['pending_reset_date'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'pending_reset_date': this.pendingResetDate, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'pending_reset_date': pendingResetDate,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

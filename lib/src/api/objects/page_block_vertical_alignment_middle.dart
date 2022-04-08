@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The content must be middle-aligned
+@immutable
 class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
   const PageBlockVerticalAlignmentMiddle();
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignmentMiddle';
+  static const String constructor = 'pageBlockVerticalAlignmentMiddle';
 
   static PageBlockVerticalAlignmentMiddle? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

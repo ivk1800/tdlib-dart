@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video note message
+@immutable
 class InputMessageVideoNote extends InputMessageContent {
-  InputMessageVideoNote(
-      {required this.videoNote,
-      this.thumbnail,
-      required this.duration,
-      required this.length});
+  const InputMessageVideoNote({
+    required this.videoNote,
+    this.thumbnail,
+    required this.duration,
+    required this.length,
+  });
 
   /// [videoNote] Video note to be sent
   final InputFile videoNote;
@@ -21,7 +24,7 @@ class InputMessageVideoNote extends InputMessageContent {
   /// [length] Video width and height; must be positive and not greater than 640
   final int length;
 
-  static const String CONSTRUCTOR = 'inputMessageVideoNote';
+  static const String constructor = 'inputMessageVideoNote';
 
   static InputMessageVideoNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class InputMessageVideoNote extends InputMessageContent {
     }
 
     return InputMessageVideoNote(
-        videoNote: InputFile.fromJson(json['video_note'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-        duration: json['duration'],
-        length: json['length']);
+      videoNote: InputFile.fromJson(json['video_note'])!,
+      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      duration: json['duration'],
+      length: json['length'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'video_note': this.videoNote.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
-        'duration': this.duration,
-        'length': this.length,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'video_note': videoNote.toJson(),
+        'thumbnail': thumbnail?.toJson(),
+        'duration': duration,
+        'length': length,
+        '@type': constructor,
       };
 
   @override

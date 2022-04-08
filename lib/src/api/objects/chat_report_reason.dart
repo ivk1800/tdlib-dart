@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the reason why a chat is reported
+@immutable
 abstract class ChatReportReason extends TdObject {
   const ChatReportReason();
 
-  static const String CONSTRUCTOR = 'chatReportReason';
+  static const String constructor = 'chatReportReason';
 
   /// Inherited by:
   /// [ChatReportReasonSpam]
@@ -21,22 +23,22 @@ abstract class ChatReportReason extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatReportReasonSpam.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatReportReasonSpam.constructor:
         return ChatReportReasonSpam.fromJson(json);
-      case ChatReportReasonViolence.CONSTRUCTOR:
+      case ChatReportReasonViolence.constructor:
         return ChatReportReasonViolence.fromJson(json);
-      case ChatReportReasonPornography.CONSTRUCTOR:
+      case ChatReportReasonPornography.constructor:
         return ChatReportReasonPornography.fromJson(json);
-      case ChatReportReasonChildAbuse.CONSTRUCTOR:
+      case ChatReportReasonChildAbuse.constructor:
         return ChatReportReasonChildAbuse.fromJson(json);
-      case ChatReportReasonCopyright.CONSTRUCTOR:
+      case ChatReportReasonCopyright.constructor:
         return ChatReportReasonCopyright.fromJson(json);
-      case ChatReportReasonUnrelatedLocation.CONSTRUCTOR:
+      case ChatReportReasonUnrelatedLocation.constructor:
         return ChatReportReasonUnrelatedLocation.fromJson(json);
-      case ChatReportReasonFake.CONSTRUCTOR:
+      case ChatReportReasonFake.constructor:
         return ChatReportReasonFake.fromJson(json);
-      case ChatReportReasonCustom.CONSTRUCTOR:
+      case ChatReportReasonCustom.constructor:
         return ChatReportReasonCustom.fromJson(json);
       default:
         return null;
@@ -44,7 +46,7 @@ abstract class ChatReportReason extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the time when a scheduled message will be sent
+@immutable
 abstract class MessageSchedulingState extends TdObject {
   const MessageSchedulingState();
 
-  static const String CONSTRUCTOR = 'messageSchedulingState';
+  static const String constructor = 'messageSchedulingState';
 
   /// Inherited by:
   /// [MessageSchedulingStateSendAtDate]
@@ -15,10 +17,10 @@ abstract class MessageSchedulingState extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageSchedulingStateSendAtDate.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageSchedulingStateSendAtDate.constructor:
         return MessageSchedulingStateSendAtDate.fromJson(json);
-      case MessageSchedulingStateSendWhenOnline.CONSTRUCTOR:
+      case MessageSchedulingStateSendWhenOnline.constructor:
         return MessageSchedulingStateSendWhenOnline.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class MessageSchedulingState extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

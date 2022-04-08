@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A link to an anchor on the same web page
+@immutable
 class RichTextAnchorLink extends RichText {
-  RichTextAnchorLink(
-      {required this.text, required this.anchorName, required this.url});
+  const RichTextAnchorLink({
+    required this.text,
+    required this.anchorName,
+    required this.url,
+  });
 
   /// [text] The link text
   final RichText text;
@@ -16,7 +21,7 @@ class RichTextAnchorLink extends RichText {
   /// [url] An HTTP URL, opening the anchor
   final String url;
 
-  static const String CONSTRUCTOR = 'richTextAnchorLink';
+  static const String constructor = 'richTextAnchorLink';
 
   static RichTextAnchorLink? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class RichTextAnchorLink extends RichText {
     }
 
     return RichTextAnchorLink(
-        text: RichText.fromJson(json['text'])!,
-        anchorName: json['anchor_name'],
-        url: json['url']);
+      text: RichText.fromJson(json['text'])!,
+      anchorName: json['anchor_name'],
+      url: json['url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'anchor_name': this.anchorName,
-        'url': this.url,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'anchor_name': anchorName,
+        'url': url,
+        '@type': constructor,
       };
 
   @override

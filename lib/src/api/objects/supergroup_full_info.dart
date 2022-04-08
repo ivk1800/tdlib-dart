@@ -1,30 +1,33 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains full information about a supergroup or channel
+@immutable
 class SupergroupFullInfo extends TdObject {
-  SupergroupFullInfo(
-      {this.photo,
-      required this.description,
-      required this.memberCount,
-      required this.administratorCount,
-      required this.restrictedCount,
-      required this.bannedCount,
-      required this.linkedChatId,
-      required this.slowModeDelay,
-      required this.slowModeDelayExpiresIn,
-      required this.canGetMembers,
-      required this.canSetUsername,
-      required this.canSetStickerSet,
-      required this.canSetLocation,
-      required this.canGetStatistics,
-      required this.isAllHistoryAvailable,
-      required this.stickerSetId,
-      this.location,
-      this.inviteLink,
-      required this.botCommands,
-      required this.upgradedFromBasicGroupId,
-      required this.upgradedFromMaxMessageId});
+  const SupergroupFullInfo({
+    this.photo,
+    required this.description,
+    required this.memberCount,
+    required this.administratorCount,
+    required this.restrictedCount,
+    required this.bannedCount,
+    required this.linkedChatId,
+    required this.slowModeDelay,
+    required this.slowModeDelayExpiresIn,
+    required this.canGetMembers,
+    required this.canSetUsername,
+    required this.canSetStickerSet,
+    required this.canSetLocation,
+    required this.canGetStatistics,
+    required this.isAllHistoryAvailable,
+    required this.stickerSetId,
+    this.location,
+    this.inviteLink,
+    required this.botCommands,
+    required this.upgradedFromBasicGroupId,
+    required this.upgradedFromMaxMessageId,
+  });
 
   /// [photo] Chat photo; may be null
   final ChatPhoto? photo;
@@ -105,7 +108,7 @@ class SupergroupFullInfo extends TdObject {
   /// group from which supergroup was upgraded; 0 if none
   final int upgradedFromMaxMessageId;
 
-  static const String CONSTRUCTOR = 'supergroupFullInfo';
+  static const String constructor = 'supergroupFullInfo';
 
   static SupergroupFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -113,57 +116,59 @@ class SupergroupFullInfo extends TdObject {
     }
 
     return SupergroupFullInfo(
-        photo: ChatPhoto.fromJson(json['photo']),
-        description: json['description'],
-        memberCount: json['member_count'],
-        administratorCount: json['administrator_count'],
-        restrictedCount: json['restricted_count'],
-        bannedCount: json['banned_count'],
-        linkedChatId: json['linked_chat_id'],
-        slowModeDelay: json['slow_mode_delay'],
-        slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
-        canGetMembers: json['can_get_members'],
-        canSetUsername: json['can_set_username'],
-        canSetStickerSet: json['can_set_sticker_set'],
-        canSetLocation: json['can_set_location'],
-        canGetStatistics: json['can_get_statistics'],
-        isAllHistoryAvailable: json['is_all_history_available'],
-        stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
-        location: ChatLocation.fromJson(json['location']),
-        inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
-            .map((item) => BotCommands.fromJson(item))
-            .toList()),
-        upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'],
-        upgradedFromMaxMessageId: json['upgraded_from_max_message_id']);
+      photo: ChatPhoto.fromJson(json['photo']),
+      description: json['description'],
+      memberCount: json['member_count'],
+      administratorCount: json['administrator_count'],
+      restrictedCount: json['restricted_count'],
+      bannedCount: json['banned_count'],
+      linkedChatId: json['linked_chat_id'],
+      slowModeDelay: json['slow_mode_delay'],
+      slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
+      canGetMembers: json['can_get_members'],
+      canSetUsername: json['can_set_username'],
+      canSetStickerSet: json['can_set_sticker_set'],
+      canSetLocation: json['can_set_location'],
+      canGetStatistics: json['can_get_statistics'],
+      isAllHistoryAvailable: json['is_all_history_available'],
+      stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
+      location: ChatLocation.fromJson(json['location']),
+      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+      botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+          .map((item) => BotCommands.fromJson(item))
+          .toList()),
+      upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'],
+      upgradedFromMaxMessageId: json['upgraded_from_max_message_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'photo': this.photo?.toJson(),
-        'description': this.description,
-        'member_count': this.memberCount,
-        'administrator_count': this.administratorCount,
-        'restricted_count': this.restrictedCount,
-        'banned_count': this.bannedCount,
-        'linked_chat_id': this.linkedChatId,
-        'slow_mode_delay': this.slowModeDelay,
-        'slow_mode_delay_expires_in': this.slowModeDelayExpiresIn,
-        'can_get_members': this.canGetMembers,
-        'can_set_username': this.canSetUsername,
-        'can_set_sticker_set': this.canSetStickerSet,
-        'can_set_location': this.canSetLocation,
-        'can_get_statistics': this.canGetStatistics,
-        'is_all_history_available': this.isAllHistoryAvailable,
-        'sticker_set_id': this.stickerSetId,
-        'location': this.location?.toJson(),
-        'invite_link': this.inviteLink?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo?.toJson(),
+        'description': description,
+        'member_count': memberCount,
+        'administrator_count': administratorCount,
+        'restricted_count': restrictedCount,
+        'banned_count': bannedCount,
+        'linked_chat_id': linkedChatId,
+        'slow_mode_delay': slowModeDelay,
+        'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
+        'can_get_members': canGetMembers,
+        'can_set_username': canSetUsername,
+        'can_set_sticker_set': canSetStickerSet,
+        'can_set_location': canSetLocation,
+        'can_get_statistics': canGetStatistics,
+        'is_all_history_available': isAllHistoryAvailable,
+        'sticker_set_id': stickerSetId,
+        'location': location?.toJson(),
+        'invite_link': inviteLink?.toJson(),
         'bot_commands': botCommands.map((item) => item.toJson()).toList(),
-        'upgraded_from_basic_group_id': this.upgradedFromBasicGroupId,
-        'upgraded_from_max_message_id': this.upgradedFromMaxMessageId,
-        '@type': CONSTRUCTOR
+        'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
+        'upgraded_from_max_message_id': upgradedFromMaxMessageId,
+        '@type': constructor,
       };
 
   @override

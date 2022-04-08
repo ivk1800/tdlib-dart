@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns full information about a user by their identifier
 /// Returns [UserFullInfo]
+@immutable
 class GetUserFullInfo extends TdFunction {
-  GetUserFullInfo({required this.userId});
+  const GetUserFullInfo({
+    required this.userId,
+  });
 
   /// [userId] User identifier
   final int userId;
 
-  static const String CONSTRUCTOR = 'getUserFullInfo';
+  static const String constructor = 'getUserFullInfo';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'user_id': this.userId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

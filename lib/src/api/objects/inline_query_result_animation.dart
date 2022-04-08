@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents an animation file
+@immutable
 class InlineQueryResultAnimation extends InlineQueryResult {
-  InlineQueryResultAnimation(
-      {required this.id, required this.animation, required this.title});
+  const InlineQueryResultAnimation({
+    required this.id,
+    required this.animation,
+    required this.title,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -15,7 +20,7 @@ class InlineQueryResultAnimation extends InlineQueryResult {
   /// [title] Animation title
   final String title;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultAnimation';
+  static const String constructor = 'inlineQueryResultAnimation';
 
   static InlineQueryResultAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class InlineQueryResultAnimation extends InlineQueryResult {
     }
 
     return InlineQueryResultAnimation(
-        id: json['id'],
-        animation: Animation.fromJson(json['animation'])!,
-        title: json['title']);
+      id: json['id'],
+      animation: Animation.fromJson(json['animation'])!,
+      title: json['title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'animation': this.animation.toJson(),
-        'title': this.title,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'animation': animation.toJson(),
+        'title': title,
+        '@type': constructor,
       };
 
   @override

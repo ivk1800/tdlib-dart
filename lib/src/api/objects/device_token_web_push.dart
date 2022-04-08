@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A token for web Push API
+@immutable
 class DeviceTokenWebPush extends DeviceToken {
-  DeviceTokenWebPush(
-      {required this.endpoint,
-      required this.p256dhBase64url,
-      required this.authBase64url});
+  const DeviceTokenWebPush({
+    required this.endpoint,
+    required this.p256dhBase64url,
+    required this.authBase64url,
+  });
 
   /// [endpoint] Absolute URL exposed by the push service where the application
   /// server can send push messages; may be empty to deregister a device
@@ -19,7 +22,7 @@ class DeviceTokenWebPush extends DeviceToken {
   /// [authBase64url] Base64url-encoded authentication secret
   final String authBase64url;
 
-  static const String CONSTRUCTOR = 'deviceTokenWebPush';
+  static const String constructor = 'deviceTokenWebPush';
 
   static DeviceTokenWebPush? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class DeviceTokenWebPush extends DeviceToken {
     }
 
     return DeviceTokenWebPush(
-        endpoint: json['endpoint'],
-        p256dhBase64url: json['p256dh_base64url'],
-        authBase64url: json['auth_base64url']);
+      endpoint: json['endpoint'],
+      p256dhBase64url: json['p256dh_base64url'],
+      authBase64url: json['auth_base64url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'endpoint': this.endpoint,
-        'p256dh_base64url': this.p256dhBase64url,
-        'auth_base64url': this.authBase64url,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'endpoint': endpoint,
+        'p256dh_base64url': p256dhBase64url,
+        'auth_base64url': authBase64url,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a voice note
+@immutable
 class InlineQueryResultVoiceNote extends InlineQueryResult {
-  InlineQueryResultVoiceNote(
-      {required this.id, required this.voiceNote, required this.title});
+  const InlineQueryResultVoiceNote({
+    required this.id,
+    required this.voiceNote,
+    required this.title,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -15,7 +20,7 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
   /// [title] Title of the voice note
   final String title;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultVoiceNote';
+  static const String constructor = 'inlineQueryResultVoiceNote';
 
   static InlineQueryResultVoiceNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
     }
 
     return InlineQueryResultVoiceNote(
-        id: json['id'],
-        voiceNote: VoiceNote.fromJson(json['voice_note'])!,
-        title: json['title']);
+      id: json['id'],
+      voiceNote: VoiceNote.fromJson(json['voice_note'])!,
+      title: json['title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'voice_note': this.voiceNote.toJson(),
-        'title': this.title,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'voice_note': voiceNote.toJson(),
+        'title': title,
+        '@type': constructor,
       };
 
   @override

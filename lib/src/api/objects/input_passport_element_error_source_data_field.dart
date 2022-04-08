@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A data field contains an error. The error is considered resolved when the
 /// field's value changes
+@immutable
 class InputPassportElementErrorSourceDataField
     extends InputPassportElementErrorSource {
-  InputPassportElementErrorSourceDataField(
-      {required this.fieldName, required this.dataHash});
+  const InputPassportElementErrorSourceDataField({
+    required this.fieldName,
+    required this.dataHash,
+  });
 
   /// [fieldName] Field name
   final String fieldName;
@@ -14,7 +18,7 @@ class InputPassportElementErrorSourceDataField
   /// [dataHash] Current data hash
   final String dataHash;
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceDataField';
+  static const String constructor = 'inputPassportElementErrorSourceDataField';
 
   static InputPassportElementErrorSourceDataField? fromJson(
       Map<String, dynamic>? json) {
@@ -23,16 +27,19 @@ class InputPassportElementErrorSourceDataField
     }
 
     return InputPassportElementErrorSourceDataField(
-        fieldName: json['field_name'], dataHash: json['data_hash']);
+      fieldName: json['field_name'],
+      dataHash: json['data_hash'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'field_name': this.fieldName,
-        'data_hash': this.dataHash,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'field_name': fieldName,
+        'data_hash': dataHash,
+        '@type': constructor,
       };
 
   @override

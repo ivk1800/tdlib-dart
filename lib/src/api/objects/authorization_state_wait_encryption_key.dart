@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// TDLib needs an encryption key to decrypt the local database
+@immutable
 class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
-  AuthorizationStateWaitEncryptionKey({required this.isEncrypted});
+  const AuthorizationStateWaitEncryptionKey({
+    required this.isEncrypted,
+  });
 
   /// [isEncrypted] True, if the database is currently encrypted
   final bool isEncrypted;
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitEncryptionKey';
+  static const String constructor = 'authorizationStateWaitEncryptionKey';
 
   static AuthorizationStateWaitEncryptionKey? fromJson(
       Map<String, dynamic>? json) {
@@ -17,14 +21,18 @@ class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
     }
 
     return AuthorizationStateWaitEncryptionKey(
-        isEncrypted: json['is_encrypted']);
+      isEncrypted: json['is_encrypted'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'is_encrypted': this.isEncrypted, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_encrypted': isEncrypted,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

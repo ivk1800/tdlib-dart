@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An embedded post
+@immutable
 class PageBlockEmbeddedPost extends PageBlock {
-  PageBlockEmbeddedPost(
-      {required this.url,
-      required this.author,
-      this.authorPhoto,
-      required this.date,
-      required this.pageBlocks,
-      required this.caption});
+  const PageBlockEmbeddedPost({
+    required this.url,
+    required this.author,
+    this.authorPhoto,
+    required this.date,
+    required this.pageBlocks,
+    required this.caption,
+  });
 
   /// [url] Web page URL
   final String url;
@@ -30,7 +33,7 @@ class PageBlockEmbeddedPost extends PageBlock {
   /// [caption] Post caption
   final PageBlockCaption caption;
 
-  static const String CONSTRUCTOR = 'pageBlockEmbeddedPost';
+  static const String constructor = 'pageBlockEmbeddedPost';
 
   static PageBlockEmbeddedPost? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,27 +41,29 @@ class PageBlockEmbeddedPost extends PageBlock {
     }
 
     return PageBlockEmbeddedPost(
-        url: json['url'],
-        author: json['author'],
-        authorPhoto: Photo.fromJson(json['author_photo']),
-        date: json['date'],
-        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-            .map((item) => PageBlock.fromJson(item))
-            .toList()),
-        caption: PageBlockCaption.fromJson(json['caption'])!);
+      url: json['url'],
+      author: json['author'],
+      authorPhoto: Photo.fromJson(json['author_photo']),
+      date: json['date'],
+      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+          .map((item) => PageBlock.fromJson(item))
+          .toList()),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'author': this.author,
-        'author_photo': this.authorPhoto?.toJson(),
-        'date': this.date,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'author': author,
+        'author_photo': authorPhoto?.toJson(),
+        'date': date,
         'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

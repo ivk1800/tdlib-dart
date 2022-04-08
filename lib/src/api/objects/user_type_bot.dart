@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A bot (see https://core.telegram.org/bots)
+@immutable
 class UserTypeBot extends UserType {
-  UserTypeBot(
-      {required this.canJoinGroups,
-      required this.canReadAllGroupMessages,
-      required this.isInline,
-      required this.inlineQueryPlaceholder,
-      required this.needLocation});
+  const UserTypeBot({
+    required this.canJoinGroups,
+    required this.canReadAllGroupMessages,
+    required this.isInline,
+    required this.inlineQueryPlaceholder,
+    required this.needLocation,
+  });
 
   /// [canJoinGroups] True, if the bot can be invited to basic group and
   /// supergroup chats
@@ -30,7 +33,7 @@ class UserTypeBot extends UserType {
   /// with every inline query to this bot
   final bool needLocation;
 
-  static const String CONSTRUCTOR = 'userTypeBot';
+  static const String constructor = 'userTypeBot';
 
   static UserTypeBot? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,23 +41,25 @@ class UserTypeBot extends UserType {
     }
 
     return UserTypeBot(
-        canJoinGroups: json['can_join_groups'],
-        canReadAllGroupMessages: json['can_read_all_group_messages'],
-        isInline: json['is_inline'],
-        inlineQueryPlaceholder: json['inline_query_placeholder'],
-        needLocation: json['need_location']);
+      canJoinGroups: json['can_join_groups'],
+      canReadAllGroupMessages: json['can_read_all_group_messages'],
+      isInline: json['is_inline'],
+      inlineQueryPlaceholder: json['inline_query_placeholder'],
+      needLocation: json['need_location'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'can_join_groups': this.canJoinGroups,
-        'can_read_all_group_messages': this.canReadAllGroupMessages,
-        'is_inline': this.isInline,
-        'inline_query_placeholder': this.inlineQueryPlaceholder,
-        'need_location': this.needLocation,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'can_join_groups': canJoinGroups,
+        'can_read_all_group_messages': canReadAllGroupMessages,
+        'is_inline': isInline,
+        'inline_query_placeholder': inlineQueryPlaceholder,
+        'need_location': needLocation,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains detailed information about a notification
+@immutable
 abstract class NotificationType extends TdObject {
   const NotificationType();
 
-  static const String CONSTRUCTOR = 'notificationType';
+  static const String constructor = 'notificationType';
 
   /// Inherited by:
   /// [NotificationTypeNewMessage]
@@ -17,14 +19,14 @@ abstract class NotificationType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case NotificationTypeNewMessage.CONSTRUCTOR:
+    switch (json['@type']) {
+      case NotificationTypeNewMessage.constructor:
         return NotificationTypeNewMessage.fromJson(json);
-      case NotificationTypeNewSecretChat.CONSTRUCTOR:
+      case NotificationTypeNewSecretChat.constructor:
         return NotificationTypeNewSecretChat.fromJson(json);
-      case NotificationTypeNewCall.CONSTRUCTOR:
+      case NotificationTypeNewCall.constructor:
         return NotificationTypeNewCall.fromJson(json);
-      case NotificationTypeNewPushMessage.CONSTRUCTOR:
+      case NotificationTypeNewPushMessage.constructor:
         return NotificationTypeNewPushMessage.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class NotificationType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

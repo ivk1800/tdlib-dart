@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the sticker set of a supergroup; requires can_change_info
 /// administrator right
 /// Returns [Ok]
+@immutable
 class SetSupergroupStickerSet extends TdFunction {
-  SetSupergroupStickerSet(
-      {required this.supergroupId, required this.stickerSetId});
+  const SetSupergroupStickerSet({
+    required this.supergroupId,
+    required this.stickerSetId,
+  });
 
   /// [supergroupId] Identifier of the supergroup
   final int supergroupId;
@@ -15,15 +19,16 @@ class SetSupergroupStickerSet extends TdFunction {
   /// to remove the supergroup sticker set
   final int stickerSetId;
 
-  static const String CONSTRUCTOR = 'setSupergroupStickerSet';
+  static const String constructor = 'setSupergroupStickerSet';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
-        'sticker_set_id': this.stickerSetId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        'sticker_set_id': stickerSetId,
+        '@type': constructor,
       };
 
   @override

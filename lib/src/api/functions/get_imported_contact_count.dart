@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns the total number of imported contacts
 /// Returns [Count]
+@immutable
 class GetImportedContactCount extends TdFunction {
-  GetImportedContactCount();
+  const GetImportedContactCount();
 
-  static const String CONSTRUCTOR = 'getImportedContactCount';
+  static const String constructor = 'getImportedContactCount';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

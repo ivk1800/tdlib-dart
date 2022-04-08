@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to an article or web page
+@immutable
 class InputInlineQueryResultArticle extends InputInlineQueryResult {
-  InputInlineQueryResultArticle(
-      {required this.id,
-      required this.url,
-      required this.hideUrl,
-      required this.title,
-      required this.description,
-      required this.thumbnailUrl,
-      required this.thumbnailWidth,
-      required this.thumbnailHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultArticle({
+    required this.id,
+    required this.url,
+    required this.hideUrl,
+    required this.title,
+    required this.description,
+    required this.thumbnailUrl,
+    required this.thumbnailWidth,
+    required this.thumbnailHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -48,7 +51,7 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   /// inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultArticle';
+  static const String constructor = 'inputInlineQueryResultArticle';
 
   static InputInlineQueryResultArticle? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -56,34 +59,36 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultArticle(
-        id: json['id'],
-        url: json['url'],
-        hideUrl: json['hide_url'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      url: json['url'],
+      hideUrl: json['hide_url'],
+      title: json['title'],
+      description: json['description'],
+      thumbnailUrl: json['thumbnail_url'],
+      thumbnailWidth: json['thumbnail_width'],
+      thumbnailHeight: json['thumbnail_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'url': this.url,
-        'hide_url': this.hideUrl,
-        'title': this.title,
-        'description': this.description,
-        'thumbnail_url': this.thumbnailUrl,
-        'thumbnail_width': this.thumbnailWidth,
-        'thumbnail_height': this.thumbnailHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'url': url,
+        'hide_url': hideUrl,
+        'title': title,
+        'description': description,
+        'thumbnail_url': thumbnailUrl,
+        'thumbnail_width': thumbnailWidth,
+        'thumbnail_height': thumbnailHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

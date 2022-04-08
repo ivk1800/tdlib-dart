@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message was originally sent on behalf of a chat
+@immutable
 class MessageForwardOriginChat extends MessageForwardOrigin {
-  MessageForwardOriginChat(
-      {required this.senderChatId, required this.authorSignature});
+  const MessageForwardOriginChat({
+    required this.senderChatId,
+    required this.authorSignature,
+  });
 
   /// [senderChatId] Identifier of the chat that originally sent the message
   final int senderChatId;
@@ -13,7 +17,7 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
   /// administrator, original message author signature
   final String authorSignature;
 
-  static const String CONSTRUCTOR = 'messageForwardOriginChat';
+  static const String constructor = 'messageForwardOriginChat';
 
   static MessageForwardOriginChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,17 +25,19 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginChat(
-        senderChatId: json['sender_chat_id'],
-        authorSignature: json['author_signature']);
+      senderChatId: json['sender_chat_id'],
+      authorSignature: json['author_signature'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sender_chat_id': this.senderChatId,
-        'author_signature': this.authorSignature,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sender_chat_id': senderChatId,
+        'author_signature': authorSignature,
+        '@type': constructor,
       };
 
   @override

@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A table
+@immutable
 class PageBlockTable extends PageBlock {
-  PageBlockTable(
-      {required this.caption,
-      required this.cells,
-      required this.isBordered,
-      required this.isStriped});
+  const PageBlockTable({
+    required this.caption,
+    required this.cells,
+    required this.isBordered,
+    required this.isStriped,
+  });
 
   /// [caption] Table caption
   final RichText caption;
@@ -21,7 +24,7 @@ class PageBlockTable extends PageBlock {
   /// [isStriped] True, if the table is striped
   final bool isStriped;
 
-  static const String CONSTRUCTOR = 'pageBlockTable';
+  static const String constructor = 'pageBlockTable';
 
   static PageBlockTable? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,28 +32,30 @@ class PageBlockTable extends PageBlock {
     }
 
     return PageBlockTable(
-        caption: RichText.fromJson(json['caption'])!,
-        cells: List<List<PageBlockTableCell>>.from((json['cells'] ?? [])
-            .map((item) => List<PageBlockTableCell>.from(
-                (json['List<PageBlockTableCell>'] ?? [])
-                    .map((item) => PageBlockTableCell.fromJson(item))
-                    .toList()))
-            .toList()),
-        isBordered: json['is_bordered'],
-        isStriped: json['is_striped']);
+      caption: RichText.fromJson(json['caption'])!,
+      cells: List<List<PageBlockTableCell>>.from((json['cells'] ?? [])
+          .map((item) => List<PageBlockTableCell>.from(
+              (json['List<PageBlockTableCell>'] ?? [])
+                  .map((item) => PageBlockTableCell.fromJson(item))
+                  .toList()))
+          .toList()),
+      isBordered: json['is_bordered'],
+      isStriped: json['is_striped'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'caption': this.caption.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'caption': caption.toJson(),
         'cells': cells
             .map((item) => item.map((item) => item.toJson()).toList())
             .toList(),
-        'is_bordered': this.isBordered,
-        'is_striped': this.isStriped,
-        '@type': CONSTRUCTOR
+        'is_bordered': isBordered,
+        'is_striped': isStriped,
+        '@type': constructor,
       };
 
   @override

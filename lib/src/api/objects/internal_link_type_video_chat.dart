@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is a link to a video chat. Call searchPublicChat with the given
 /// chat username, and then joinGoupCall with the given invite hash to process
 /// the link
+@immutable
 class InternalLinkTypeVideoChat extends InternalLinkType {
-  InternalLinkTypeVideoChat(
-      {required this.chatUsername,
-      required this.inviteHash,
-      required this.isLiveStream});
+  const InternalLinkTypeVideoChat({
+    required this.chatUsername,
+    required this.inviteHash,
+    required this.isLiveStream,
+  });
 
   /// [chatUsername] Username of the chat with the video chat
   final String chatUsername;
@@ -21,7 +24,7 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
   /// a channel or a broadcast group
   final bool isLiveStream;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeVideoChat';
+  static const String constructor = 'internalLinkTypeVideoChat';
 
   static InternalLinkTypeVideoChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,19 +32,21 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
     }
 
     return InternalLinkTypeVideoChat(
-        chatUsername: json['chat_username'],
-        inviteHash: json['invite_hash'],
-        isLiveStream: json['is_live_stream']);
+      chatUsername: json['chat_username'],
+      inviteHash: json['invite_hash'],
+      isLiveStream: json['is_live_stream'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_username': this.chatUsername,
-        'invite_hash': this.inviteHash,
-        'is_live_stream': this.isLiveStream,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_username': chatUsername,
+        'invite_hash': inviteHash,
+        'is_live_stream': isLiveStream,
+        '@type': constructor,
       };
 
   @override

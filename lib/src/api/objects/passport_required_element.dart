@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a description of the required Telegram Passport element that was
 /// requested by a service
+@immutable
 class PassportRequiredElement extends TdObject {
-  PassportRequiredElement({required this.suitableElements});
+  const PassportRequiredElement({
+    required this.suitableElements,
+  });
 
   /// [suitableElements] List of Telegram Passport elements any of which is
   /// enough to provide
   final List<PassportSuitableElement> suitableElements;
 
-  static const String CONSTRUCTOR = 'passportRequiredElement';
+  static const String constructor = 'passportRequiredElement';
 
   static PassportRequiredElement? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -18,19 +22,21 @@ class PassportRequiredElement extends TdObject {
     }
 
     return PassportRequiredElement(
-        suitableElements: List<PassportSuitableElement>.from(
-            (json['suitable_elements'] ?? [])
-                .map((item) => PassportSuitableElement.fromJson(item))
-                .toList()));
+      suitableElements: List<PassportSuitableElement>.from(
+          (json['suitable_elements'] ?? [])
+              .map((item) => PassportSuitableElement.fromJson(item))
+              .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'suitable_elements':
             suitableElements.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

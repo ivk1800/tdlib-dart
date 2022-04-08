@@ -1,24 +1,31 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes all information about a language pack in the current localization
 /// target. The language pack which is currently in use (including base
 /// language pack) or is being synchronized can't be deleted. Can be called
 /// before authorization
 /// Returns [Ok]
+@immutable
 class DeleteLanguagePack extends TdFunction {
-  DeleteLanguagePack({required this.languagePackId});
+  const DeleteLanguagePack({
+    required this.languagePackId,
+  });
 
   /// [languagePackId] Identifier of the language pack to delete
   final String languagePackId;
 
-  static const String CONSTRUCTOR = 'deleteLanguagePack';
+  static const String constructor = 'deleteLanguagePack';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'language_pack_id': this.languagePackId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_pack_id': languagePackId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

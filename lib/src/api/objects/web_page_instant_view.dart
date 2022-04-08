@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an instant view page for a web page
+@immutable
 class WebPageInstantView extends TdObject {
-  WebPageInstantView(
-      {required this.pageBlocks,
-      required this.viewCount,
-      required this.version,
-      required this.isRtl,
-      required this.isFull,
-      required this.feedbackLink});
+  const WebPageInstantView({
+    required this.pageBlocks,
+    required this.viewCount,
+    required this.version,
+    required this.isRtl,
+    required this.isFull,
+    required this.feedbackLink,
+  });
 
   /// [pageBlocks] Content of the web page
   final List<PageBlock> pageBlocks;
@@ -31,7 +34,7 @@ class WebPageInstantView extends TdObject {
   /// instant view
   final InternalLinkType feedbackLink;
 
-  static const String CONSTRUCTOR = 'webPageInstantView';
+  static const String constructor = 'webPageInstantView';
 
   static WebPageInstantView? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -39,27 +42,29 @@ class WebPageInstantView extends TdObject {
     }
 
     return WebPageInstantView(
-        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-            .map((item) => PageBlock.fromJson(item))
-            .toList()),
-        viewCount: json['view_count'],
-        version: json['version'],
-        isRtl: json['is_rtl'],
-        isFull: json['is_full'],
-        feedbackLink: InternalLinkType.fromJson(json['feedback_link'])!);
+      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+          .map((item) => PageBlock.fromJson(item))
+          .toList()),
+      viewCount: json['view_count'],
+      version: json['version'],
+      isRtl: json['is_rtl'],
+      isFull: json['is_full'],
+      feedbackLink: InternalLinkType.fromJson(json['feedback_link'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'view_count': this.viewCount,
-        'version': this.version,
-        'is_rtl': this.isRtl,
-        'is_full': this.isFull,
-        'feedback_link': this.feedbackLink.toJson(),
-        '@type': CONSTRUCTOR
+        'view_count': viewCount,
+        'version': version,
+        'is_rtl': isRtl,
+        'is_full': isFull,
+        'feedback_link': feedbackLink.toJson(),
+        '@type': constructor,
       };
 
   @override

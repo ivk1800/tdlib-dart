@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Information about the authentication code that was sent
+@immutable
 class AuthenticationCodeInfo extends TdObject {
-  AuthenticationCodeInfo(
-      {required this.phoneNumber,
-      required this.type,
-      this.nextType,
-      required this.timeout});
+  const AuthenticationCodeInfo({
+    required this.phoneNumber,
+    required this.type,
+    this.nextType,
+    required this.timeout,
+  });
 
   /// [phoneNumber] A phone number that is being authenticated
   final String phoneNumber;
@@ -21,7 +24,7 @@ class AuthenticationCodeInfo extends TdObject {
   /// [timeout] Timeout before the code can be re-sent, in seconds
   final int timeout;
 
-  static const String CONSTRUCTOR = 'authenticationCodeInfo';
+  static const String constructor = 'authenticationCodeInfo';
 
   static AuthenticationCodeInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class AuthenticationCodeInfo extends TdObject {
     }
 
     return AuthenticationCodeInfo(
-        phoneNumber: json['phone_number'],
-        type: AuthenticationCodeType.fromJson(json['type'])!,
-        nextType: AuthenticationCodeType.fromJson(json['next_type']),
-        timeout: json['timeout']);
+      phoneNumber: json['phone_number'],
+      type: AuthenticationCodeType.fromJson(json['type'])!,
+      nextType: AuthenticationCodeType.fromJson(json['next_type']),
+      timeout: json['timeout'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'phone_number': this.phoneNumber,
-        'type': this.type.toJson(),
-        'next_type': this.nextType?.toJson(),
-        'timeout': this.timeout,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'phone_number': phoneNumber,
+        'type': type.toJson(),
+        'next_type': nextType?.toJson(),
+        'timeout': timeout,
+        '@type': constructor,
       };
 
   @override

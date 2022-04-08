@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a filter for message search results
+@immutable
 abstract class SearchMessagesFilter extends TdObject {
   const SearchMessagesFilter();
 
-  static const String CONSTRUCTOR = 'searchMessagesFilter';
+  static const String constructor = 'searchMessagesFilter';
 
   /// Inherited by:
   /// [SearchMessagesFilterEmpty]
@@ -29,38 +31,38 @@ abstract class SearchMessagesFilter extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case SearchMessagesFilterEmpty.CONSTRUCTOR:
+    switch (json['@type']) {
+      case SearchMessagesFilterEmpty.constructor:
         return SearchMessagesFilterEmpty.fromJson(json);
-      case SearchMessagesFilterAnimation.CONSTRUCTOR:
+      case SearchMessagesFilterAnimation.constructor:
         return SearchMessagesFilterAnimation.fromJson(json);
-      case SearchMessagesFilterAudio.CONSTRUCTOR:
+      case SearchMessagesFilterAudio.constructor:
         return SearchMessagesFilterAudio.fromJson(json);
-      case SearchMessagesFilterDocument.CONSTRUCTOR:
+      case SearchMessagesFilterDocument.constructor:
         return SearchMessagesFilterDocument.fromJson(json);
-      case SearchMessagesFilterPhoto.CONSTRUCTOR:
+      case SearchMessagesFilterPhoto.constructor:
         return SearchMessagesFilterPhoto.fromJson(json);
-      case SearchMessagesFilterVideo.CONSTRUCTOR:
+      case SearchMessagesFilterVideo.constructor:
         return SearchMessagesFilterVideo.fromJson(json);
-      case SearchMessagesFilterVoiceNote.CONSTRUCTOR:
+      case SearchMessagesFilterVoiceNote.constructor:
         return SearchMessagesFilterVoiceNote.fromJson(json);
-      case SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR:
+      case SearchMessagesFilterPhotoAndVideo.constructor:
         return SearchMessagesFilterPhotoAndVideo.fromJson(json);
-      case SearchMessagesFilterUrl.CONSTRUCTOR:
+      case SearchMessagesFilterUrl.constructor:
         return SearchMessagesFilterUrl.fromJson(json);
-      case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
+      case SearchMessagesFilterChatPhoto.constructor:
         return SearchMessagesFilterChatPhoto.fromJson(json);
-      case SearchMessagesFilterVideoNote.CONSTRUCTOR:
+      case SearchMessagesFilterVideoNote.constructor:
         return SearchMessagesFilterVideoNote.fromJson(json);
-      case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:
+      case SearchMessagesFilterVoiceAndVideoNote.constructor:
         return SearchMessagesFilterVoiceAndVideoNote.fromJson(json);
-      case SearchMessagesFilterMention.CONSTRUCTOR:
+      case SearchMessagesFilterMention.constructor:
         return SearchMessagesFilterMention.fromJson(json);
-      case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
+      case SearchMessagesFilterUnreadMention.constructor:
         return SearchMessagesFilterUnreadMention.fromJson(json);
-      case SearchMessagesFilterFailedToSend.CONSTRUCTOR:
+      case SearchMessagesFilterFailedToSend.constructor:
         return SearchMessagesFilterFailedToSend.fromJson(json);
-      case SearchMessagesFilterPinned.CONSTRUCTOR:
+      case SearchMessagesFilterPinned.constructor:
         return SearchMessagesFilterPinned.fromJson(json);
       default:
         return null;
@@ -68,7 +70,7 @@ abstract class SearchMessagesFilter extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

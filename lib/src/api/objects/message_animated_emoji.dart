@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with an animated emoji
+@immutable
 class MessageAnimatedEmoji extends MessageContent {
-  MessageAnimatedEmoji({required this.animatedEmoji, required this.emoji});
+  const MessageAnimatedEmoji({
+    required this.animatedEmoji,
+    required this.emoji,
+  });
 
   /// [animatedEmoji] The animated emoji
   final AnimatedEmoji animatedEmoji;
@@ -11,7 +16,7 @@ class MessageAnimatedEmoji extends MessageContent {
   /// [emoji] The corresponding emoji
   final String emoji;
 
-  static const String CONSTRUCTOR = 'messageAnimatedEmoji';
+  static const String constructor = 'messageAnimatedEmoji';
 
   static MessageAnimatedEmoji? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class MessageAnimatedEmoji extends MessageContent {
     }
 
     return MessageAnimatedEmoji(
-        animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji'])!,
-        emoji: json['emoji']);
+      animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji'])!,
+      emoji: json['emoji'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'animated_emoji': this.animatedEmoji.toJson(),
-        'emoji': this.emoji,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'animated_emoji': animatedEmoji.toJson(),
+        'emoji': emoji,
+        '@type': constructor,
       };
 
   @override

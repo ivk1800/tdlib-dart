@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a command supported by a bot
+@immutable
 class BotCommand extends TdObject {
-  BotCommand({required this.command, required this.description});
+  const BotCommand({
+    required this.command,
+    required this.description,
+  });
 
   /// [command] Text of the bot command
   final String command;
@@ -11,7 +16,7 @@ class BotCommand extends TdObject {
   /// param_[description] Description of the bot command
   final String description;
 
-  static const String CONSTRUCTOR = 'botCommand';
+  static const String constructor = 'botCommand';
 
   static BotCommand? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class BotCommand extends TdObject {
     }
 
     return BotCommand(
-        command: json['command'], description: json['description']);
+      command: json['command'],
+      description: json['description'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'command': this.command,
-        'description': this.description,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'command': command,
+        'description': description,
+        '@type': constructor,
       };
 
   @override

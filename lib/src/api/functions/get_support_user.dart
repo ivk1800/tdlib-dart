@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a user that can be contacted to get support
 /// Returns [User]
+@immutable
 class GetSupportUser extends TdFunction {
-  GetSupportUser();
+  const GetSupportUser();
 
-  static const String CONSTRUCTOR = 'getSupportUser';
+  static const String constructor = 'getSupportUser';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

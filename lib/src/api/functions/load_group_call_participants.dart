@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Loads more participants of a group call. The loaded participants will be
 /// received through updates. Use the field groupCall.loaded_all_participants
 /// to check whether all participants have already been loaded
 /// Returns [Ok]
+@immutable
 class LoadGroupCallParticipants extends TdFunction {
-  LoadGroupCallParticipants({required this.groupCallId, required this.limit});
+  const LoadGroupCallParticipants({
+    required this.groupCallId,
+    required this.limit,
+  });
 
   /// [groupCallId] Group call identifier. The group call must be previously
   /// received through getGroupCall and must be joined or being joined
@@ -15,15 +20,16 @@ class LoadGroupCallParticipants extends TdFunction {
   /// [limit] The maximum number of participants to load; up to 100
   final int limit;
 
-  static const String CONSTRUCTOR = 'loadGroupCallParticipants';
+  static const String constructor = 'loadGroupCallParticipants';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

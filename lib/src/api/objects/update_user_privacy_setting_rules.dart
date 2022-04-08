@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some privacy setting rules have been changed
+@immutable
 class UpdateUserPrivacySettingRules extends Update {
-  UpdateUserPrivacySettingRules({required this.setting, required this.rules});
+  const UpdateUserPrivacySettingRules({
+    required this.setting,
+    required this.rules,
+  });
 
   /// [setting] The privacy setting
   final UserPrivacySetting setting;
@@ -11,7 +16,7 @@ class UpdateUserPrivacySettingRules extends Update {
   /// [rules] New privacy rules
   final UserPrivacySettingRules rules;
 
-  static const String CONSTRUCTOR = 'updateUserPrivacySettingRules';
+  static const String constructor = 'updateUserPrivacySettingRules';
 
   static UpdateUserPrivacySettingRules? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateUserPrivacySettingRules extends Update {
     }
 
     return UpdateUserPrivacySettingRules(
-        setting: UserPrivacySetting.fromJson(json['setting'])!,
-        rules: UserPrivacySettingRules.fromJson(json['rules'])!);
+      setting: UserPrivacySetting.fromJson(json['setting'])!,
+      rules: UserPrivacySettingRules.fromJson(json['rules'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'setting': this.setting.toJson(),
-        'rules': this.rules.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'setting': setting.toJson(),
+        'rules': rules.toJson(),
+        '@type': constructor,
       };
 
   @override

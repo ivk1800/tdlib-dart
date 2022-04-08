@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a group of video synchronization source identifiers
+@immutable
 class GroupCallVideoSourceGroup extends TdObject {
-  GroupCallVideoSourceGroup({required this.semantics, required this.sourceIds});
+  const GroupCallVideoSourceGroup({
+    required this.semantics,
+    required this.sourceIds,
+  });
 
   /// [semantics] The semantics of sources, one of "SIM" or "FID"
   final String semantics;
@@ -11,7 +16,7 @@ class GroupCallVideoSourceGroup extends TdObject {
   /// [sourceIds] The list of synchronization source identifiers
   final List<int> sourceIds;
 
-  static const String CONSTRUCTOR = 'groupCallVideoSourceGroup';
+  static const String constructor = 'groupCallVideoSourceGroup';
 
   static GroupCallVideoSourceGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,18 +24,20 @@ class GroupCallVideoSourceGroup extends TdObject {
     }
 
     return GroupCallVideoSourceGroup(
-        semantics: json['semantics'],
-        sourceIds: List<int>.from(
-            (json['source_ids'] ?? []).map((item) => item).toList()));
+      semantics: json['semantics'],
+      sourceIds: List<int>.from(
+          (json['source_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'semantics': this.semantics,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'semantics': semantics,
         'source_ids': sourceIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

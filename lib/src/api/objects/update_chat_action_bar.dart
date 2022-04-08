@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat action bar was changed
+@immutable
 class UpdateChatActionBar extends Update {
-  UpdateChatActionBar({required this.chatId, this.actionBar});
+  const UpdateChatActionBar({
+    required this.chatId,
+    this.actionBar,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -11,7 +16,7 @@ class UpdateChatActionBar extends Update {
   /// [actionBar] The new value of the action bar; may be null
   final ChatActionBar? actionBar;
 
-  static const String CONSTRUCTOR = 'updateChatActionBar';
+  static const String constructor = 'updateChatActionBar';
 
   static UpdateChatActionBar? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateChatActionBar extends Update {
     }
 
     return UpdateChatActionBar(
-        chatId: json['chat_id'],
-        actionBar: ChatActionBar.fromJson(json['action_bar']));
+      chatId: json['chat_id'],
+      actionBar: ChatActionBar.fromJson(json['action_bar']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'action_bar': this.actionBar?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'action_bar': actionBar?.toJson(),
+        '@type': constructor,
       };
 
   @override

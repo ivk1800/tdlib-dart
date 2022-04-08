@@ -1,20 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with an invoice; can be used only by bots
+@immutable
 class InputMessageInvoice extends InputMessageContent {
-  InputMessageInvoice(
-      {required this.invoice,
-      required this.title,
-      required this.description,
-      this.photoUrl,
-      required this.photoSize,
-      required this.photoWidth,
-      required this.photoHeight,
-      required this.payload,
-      required this.providerToken,
-      required this.providerData,
-      required this.startParameter});
+  const InputMessageInvoice({
+    required this.invoice,
+    required this.title,
+    required this.description,
+    this.photoUrl,
+    required this.photoSize,
+    required this.photoWidth,
+    required this.photoHeight,
+    required this.payload,
+    required this.providerToken,
+    required this.providerData,
+    required this.startParameter,
+  });
 
   /// [invoice] Invoice
   final Invoice invoice;
@@ -52,7 +55,7 @@ class InputMessageInvoice extends InputMessageContent {
   /// forwards of the invoice message
   final String startParameter;
 
-  static const String CONSTRUCTOR = 'inputMessageInvoice';
+  static const String constructor = 'inputMessageInvoice';
 
   static InputMessageInvoice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -60,35 +63,37 @@ class InputMessageInvoice extends InputMessageContent {
     }
 
     return InputMessageInvoice(
-        invoice: Invoice.fromJson(json['invoice'])!,
-        title: json['title'],
-        description: json['description'],
-        photoUrl: json['photo_url'],
-        photoSize: json['photo_size'],
-        photoWidth: json['photo_width'],
-        photoHeight: json['photo_height'],
-        payload: json['payload'],
-        providerToken: json['provider_token'],
-        providerData: json['provider_data'],
-        startParameter: json['start_parameter']);
+      invoice: Invoice.fromJson(json['invoice'])!,
+      title: json['title'],
+      description: json['description'],
+      photoUrl: json['photo_url'],
+      photoSize: json['photo_size'],
+      photoWidth: json['photo_width'],
+      photoHeight: json['photo_height'],
+      payload: json['payload'],
+      providerToken: json['provider_token'],
+      providerData: json['provider_data'],
+      startParameter: json['start_parameter'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'invoice': this.invoice.toJson(),
-        'title': this.title,
-        'description': this.description,
-        'photo_url': this.photoUrl,
-        'photo_size': this.photoSize,
-        'photo_width': this.photoWidth,
-        'photo_height': this.photoHeight,
-        'payload': this.payload,
-        'provider_token': this.providerToken,
-        'provider_data': this.providerData,
-        'start_parameter': this.startParameter,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'invoice': invoice.toJson(),
+        'title': title,
+        'description': description,
+        'photo_url': photoUrl,
+        'photo_size': photoSize,
+        'photo_width': photoWidth,
+        'photo_height': photoHeight,
+        'payload': payload,
+        'provider_token': providerToken,
+        'provider_data': providerData,
+        'start_parameter': startParameter,
+        '@type': constructor,
       };
 
   @override

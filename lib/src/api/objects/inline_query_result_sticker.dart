@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a sticker
+@immutable
 class InlineQueryResultSticker extends InlineQueryResult {
-  InlineQueryResultSticker({required this.id, required this.sticker});
+  const InlineQueryResultSticker({
+    required this.id,
+    required this.sticker,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -11,7 +16,7 @@ class InlineQueryResultSticker extends InlineQueryResult {
   /// [sticker] Sticker
   final Sticker sticker;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultSticker';
+  static const String constructor = 'inlineQueryResultSticker';
 
   static InlineQueryResultSticker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,14 +24,20 @@ class InlineQueryResultSticker extends InlineQueryResult {
     }
 
     return InlineQueryResultSticker(
-        id: json['id'], sticker: Sticker.fromJson(json['sticker'])!);
+      id: json['id'],
+      sticker: Sticker.fromJson(json['sticker'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'id': this.id, 'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'sticker': sticker.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

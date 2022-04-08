@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An embedded web page
+@immutable
 class PageBlockEmbedded extends PageBlock {
-  PageBlockEmbedded(
-      {required this.url,
-      required this.html,
-      this.posterPhoto,
-      required this.width,
-      required this.height,
-      required this.caption,
-      required this.isFullWidth,
-      required this.allowScrolling});
+  const PageBlockEmbedded({
+    required this.url,
+    required this.html,
+    this.posterPhoto,
+    required this.width,
+    required this.height,
+    required this.caption,
+    required this.isFullWidth,
+    required this.allowScrolling,
+  });
 
   /// [url] Web page URL, if available
   final String url;
@@ -37,7 +40,7 @@ class PageBlockEmbedded extends PageBlock {
   /// [allowScrolling] True, if scrolling needs to be allowed
   final bool allowScrolling;
 
-  static const String CONSTRUCTOR = 'pageBlockEmbedded';
+  static const String constructor = 'pageBlockEmbedded';
 
   static PageBlockEmbedded? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -45,29 +48,31 @@ class PageBlockEmbedded extends PageBlock {
     }
 
     return PageBlockEmbedded(
-        url: json['url'],
-        html: json['html'],
-        posterPhoto: Photo.fromJson(json['poster_photo']),
-        width: json['width'],
-        height: json['height'],
-        caption: PageBlockCaption.fromJson(json['caption'])!,
-        isFullWidth: json['is_full_width'],
-        allowScrolling: json['allow_scrolling']);
+      url: json['url'],
+      html: json['html'],
+      posterPhoto: Photo.fromJson(json['poster_photo']),
+      width: json['width'],
+      height: json['height'],
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+      isFullWidth: json['is_full_width'],
+      allowScrolling: json['allow_scrolling'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'html': this.html,
-        'poster_photo': this.posterPhoto?.toJson(),
-        'width': this.width,
-        'height': this.height,
-        'caption': this.caption.toJson(),
-        'is_full_width': this.isFullWidth,
-        'allow_scrolling': this.allowScrolling,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'html': html,
+        'poster_photo': posterPhoto?.toJson(),
+        'width': width,
+        'height': height,
+        'caption': caption.toJson(),
+        'is_full_width': isFullWidth,
+        'allow_scrolling': allowScrolling,
+        '@type': constructor,
       };
 
   @override

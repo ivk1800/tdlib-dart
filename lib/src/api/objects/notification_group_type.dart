@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of notifications in a notification group
+@immutable
 abstract class NotificationGroupType extends TdObject {
   const NotificationGroupType();
 
-  static const String CONSTRUCTOR = 'notificationGroupType';
+  static const String constructor = 'notificationGroupType';
 
   /// Inherited by:
   /// [NotificationGroupTypeMessages]
@@ -17,14 +19,14 @@ abstract class NotificationGroupType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case NotificationGroupTypeMessages.CONSTRUCTOR:
+    switch (json['@type']) {
+      case NotificationGroupTypeMessages.constructor:
         return NotificationGroupTypeMessages.fromJson(json);
-      case NotificationGroupTypeMentions.CONSTRUCTOR:
+      case NotificationGroupTypeMentions.constructor:
         return NotificationGroupTypeMentions.fromJson(json);
-      case NotificationGroupTypeSecretChat.CONSTRUCTOR:
+      case NotificationGroupTypeSecretChat.constructor:
         return NotificationGroupTypeSecretChat.fromJson(json);
-      case NotificationGroupTypeCalls.CONSTRUCTOR:
+      case NotificationGroupTypeCalls.constructor:
         return NotificationGroupTypeCalls.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class NotificationGroupType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

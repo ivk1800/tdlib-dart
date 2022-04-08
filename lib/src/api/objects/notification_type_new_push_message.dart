@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// New message was received through a push notification
+@immutable
 class NotificationTypeNewPushMessage extends NotificationType {
-  NotificationTypeNewPushMessage(
-      {required this.messageId,
-      required this.senderId,
-      required this.senderName,
-      required this.isOutgoing,
-      required this.content});
+  const NotificationTypeNewPushMessage({
+    required this.messageId,
+    required this.senderId,
+    required this.senderName,
+    required this.isOutgoing,
+    required this.content,
+  });
 
   /// [messageId] The message identifier. The message will not be available in
   /// the chat history, but the ID can be used in viewMessages, or as
@@ -28,7 +31,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
   /// [content] Push message content
   final PushMessageContent content;
 
-  static const String CONSTRUCTOR = 'notificationTypeNewPushMessage';
+  static const String constructor = 'notificationTypeNewPushMessage';
 
   static NotificationTypeNewPushMessage? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -36,23 +39,25 @@ class NotificationTypeNewPushMessage extends NotificationType {
     }
 
     return NotificationTypeNewPushMessage(
-        messageId: json['message_id'],
-        senderId: MessageSender.fromJson(json['sender_id'])!,
-        senderName: json['sender_name'],
-        isOutgoing: json['is_outgoing'],
-        content: PushMessageContent.fromJson(json['content'])!);
+      messageId: json['message_id'],
+      senderId: MessageSender.fromJson(json['sender_id'])!,
+      senderName: json['sender_name'],
+      isOutgoing: json['is_outgoing'],
+      content: PushMessageContent.fromJson(json['content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'message_id': this.messageId,
-        'sender_id': this.senderId.toJson(),
-        'sender_name': this.senderName,
-        'is_outgoing': this.isOutgoing,
-        'content': this.content.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'message_id': messageId,
+        'sender_id': senderId.toJson(),
+        'sender_name': senderName,
+        'is_outgoing': isOutgoing,
+        'content': content.toJson(),
+        '@type': constructor,
       };
 
   @override

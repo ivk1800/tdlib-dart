@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes available user privacy settings
+@immutable
 abstract class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
-  static const String CONSTRUCTOR = 'userPrivacySetting';
+  static const String constructor = 'userPrivacySetting';
 
   /// Inherited by:
   /// [UserPrivacySettingShowStatus]
@@ -21,22 +23,22 @@ abstract class UserPrivacySetting extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case UserPrivacySettingShowStatus.CONSTRUCTOR:
+    switch (json['@type']) {
+      case UserPrivacySettingShowStatus.constructor:
         return UserPrivacySettingShowStatus.fromJson(json);
-      case UserPrivacySettingShowProfilePhoto.CONSTRUCTOR:
+      case UserPrivacySettingShowProfilePhoto.constructor:
         return UserPrivacySettingShowProfilePhoto.fromJson(json);
-      case UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR:
+      case UserPrivacySettingShowLinkInForwardedMessages.constructor:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
-      case UserPrivacySettingShowPhoneNumber.CONSTRUCTOR:
+      case UserPrivacySettingShowPhoneNumber.constructor:
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
-      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
+      case UserPrivacySettingAllowChatInvites.constructor:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
-      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
+      case UserPrivacySettingAllowCalls.constructor:
         return UserPrivacySettingAllowCalls.fromJson(json);
-      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
+      case UserPrivacySettingAllowPeerToPeerCalls.constructor:
         return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
-      case UserPrivacySettingAllowFindingByPhoneNumber.CONSTRUCTOR:
+      case UserPrivacySettingAllowFindingByPhoneNumber.constructor:
         return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
       default:
         return null;
@@ -44,7 +46,7 @@ abstract class UserPrivacySetting extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

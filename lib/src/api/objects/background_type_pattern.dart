@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A PNG or TGV (gzipped subset of SVG with MIME type
 /// "application/x-tgwallpattern") pattern to be combined with the background
 /// fill chosen by the user
+@immutable
 class BackgroundTypePattern extends BackgroundType {
-  BackgroundTypePattern(
-      {required this.fill,
-      required this.intensity,
-      required this.isInverted,
-      required this.isMoving});
+  const BackgroundTypePattern({
+    required this.fill,
+    required this.intensity,
+    required this.isInverted,
+    required this.isMoving,
+  });
 
   /// [fill] Fill of the background
   final BackgroundFill fill;
@@ -27,7 +30,7 @@ class BackgroundTypePattern extends BackgroundType {
   /// is tilted
   final bool isMoving;
 
-  static const String CONSTRUCTOR = 'backgroundTypePattern';
+  static const String constructor = 'backgroundTypePattern';
 
   static BackgroundTypePattern? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,21 +38,23 @@ class BackgroundTypePattern extends BackgroundType {
     }
 
     return BackgroundTypePattern(
-        fill: BackgroundFill.fromJson(json['fill'])!,
-        intensity: json['intensity'],
-        isInverted: json['is_inverted'],
-        isMoving: json['is_moving']);
+      fill: BackgroundFill.fromJson(json['fill'])!,
+      intensity: json['intensity'],
+      isInverted: json['is_inverted'],
+      isMoving: json['is_moving'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'fill': this.fill.toJson(),
-        'intensity': this.intensity,
-        'is_inverted': this.isInverted,
-        'is_moving': this.isMoving,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'fill': fill.toJson(),
+        'intensity': intensity,
+        'is_inverted': isInverted,
+        'is_moving': isMoving,
+        '@type': constructor,
       };
 
   @override

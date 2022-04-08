@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with an invoice from a bot
+@immutable
 class PushMessageContentInvoice extends PushMessageContent {
-  PushMessageContentInvoice({required this.price, required this.isPinned});
+  const PushMessageContentInvoice({
+    required this.price,
+    required this.isPinned,
+  });
 
   /// [price] Product price
   final String price;
@@ -12,7 +17,7 @@ class PushMessageContentInvoice extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentInvoice';
+  static const String constructor = 'pushMessageContentInvoice';
 
   static PushMessageContentInvoice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,14 +25,20 @@ class PushMessageContentInvoice extends PushMessageContent {
     }
 
     return PushMessageContentInvoice(
-        price: json['price'], isPinned: json['is_pinned']);
+      price: json['price'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'price': this.price, 'is_pinned': this.isPinned, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'price': price,
+        'is_pinned': isPinned,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

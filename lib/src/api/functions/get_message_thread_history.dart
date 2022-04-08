@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns messages in a message thread of a message. Can be used only if
 /// message.can_get_message_thread == true. Message thread of a channel
@@ -8,13 +9,15 @@ import '../extensions/data_class_extensions.dart';
 /// message_id). For optimal performance, the number of returned messages is
 /// chosen by TDLib
 /// Returns [Messages]
+@immutable
 class GetMessageThreadHistory extends TdFunction {
-  GetMessageThreadHistory(
-      {required this.chatId,
-      required this.messageId,
-      required this.fromMessageId,
-      required this.offset,
-      required this.limit});
+  const GetMessageThreadHistory({
+    required this.chatId,
+    required this.messageId,
+    required this.fromMessageId,
+    required this.offset,
+    required this.limit,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -37,18 +40,19 @@ class GetMessageThreadHistory extends TdFunction {
   /// specified limit
   final int limit;
 
-  static const String CONSTRUCTOR = 'getMessageThreadHistory';
+  static const String constructor = 'getMessageThreadHistory';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'from_message_id': this.fromMessageId,
-        'offset': this.offset,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'from_message_id': fromMessageId,
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the sending state of the message
+@immutable
 abstract class MessageSendingState extends TdObject {
   const MessageSendingState();
 
-  static const String CONSTRUCTOR = 'messageSendingState';
+  static const String constructor = 'messageSendingState';
 
   /// Inherited by:
   /// [MessageSendingStatePending]
@@ -15,10 +17,10 @@ abstract class MessageSendingState extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageSendingStatePending.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageSendingStatePending.constructor:
         return MessageSendingStatePending.fromJson(json);
-      case MessageSendingStateFailed.CONSTRUCTOR:
+      case MessageSendingStateFailed.constructor:
         return MessageSendingStateFailed.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class MessageSendingState extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

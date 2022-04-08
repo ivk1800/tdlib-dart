@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains an inline keyboard layout
+@immutable
 class ReplyMarkupInlineKeyboard extends ReplyMarkup {
-  ReplyMarkupInlineKeyboard({required this.rows});
+  const ReplyMarkupInlineKeyboard({
+    required this.rows,
+  });
 
   /// [rows] A list of rows of inline keyboard buttons
   final List<List<InlineKeyboardButton>> rows;
 
-  static const String CONSTRUCTOR = 'replyMarkupInlineKeyboard';
+  static const String constructor = 'replyMarkupInlineKeyboard';
 
   static ReplyMarkupInlineKeyboard? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,22 +20,24 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupInlineKeyboard(
-        rows: List<List<InlineKeyboardButton>>.from((json['rows'] ?? [])
-            .map((item) => List<InlineKeyboardButton>.from(
-                (json['List<InlineKeyboardButton>'] ?? [])
-                    .map((item) => InlineKeyboardButton.fromJson(item))
-                    .toList()))
-            .toList()));
+      rows: List<List<InlineKeyboardButton>>.from((json['rows'] ?? [])
+          .map((item) => List<InlineKeyboardButton>.from(
+              (json['List<InlineKeyboardButton>'] ?? [])
+                  .map((item) => InlineKeyboardButton.fromJson(item))
+                  .toList()))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'rows': rows
             .map((item) => item.map((item) => item.toJson()).toList())
             .toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

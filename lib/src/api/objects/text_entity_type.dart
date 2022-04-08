@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a part of the text which must be formatted differently
+@immutable
 abstract class TextEntityType extends TdObject {
   const TextEntityType();
 
-  static const String CONSTRUCTOR = 'textEntityType';
+  static const String constructor = 'textEntityType';
 
   /// Inherited by:
   /// [TextEntityTypeMention]
@@ -32,44 +34,44 @@ abstract class TextEntityType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case TextEntityTypeMention.CONSTRUCTOR:
+    switch (json['@type']) {
+      case TextEntityTypeMention.constructor:
         return TextEntityTypeMention.fromJson(json);
-      case TextEntityTypeHashtag.CONSTRUCTOR:
+      case TextEntityTypeHashtag.constructor:
         return TextEntityTypeHashtag.fromJson(json);
-      case TextEntityTypeCashtag.CONSTRUCTOR:
+      case TextEntityTypeCashtag.constructor:
         return TextEntityTypeCashtag.fromJson(json);
-      case TextEntityTypeBotCommand.CONSTRUCTOR:
+      case TextEntityTypeBotCommand.constructor:
         return TextEntityTypeBotCommand.fromJson(json);
-      case TextEntityTypeUrl.CONSTRUCTOR:
+      case TextEntityTypeUrl.constructor:
         return TextEntityTypeUrl.fromJson(json);
-      case TextEntityTypeEmailAddress.CONSTRUCTOR:
+      case TextEntityTypeEmailAddress.constructor:
         return TextEntityTypeEmailAddress.fromJson(json);
-      case TextEntityTypePhoneNumber.CONSTRUCTOR:
+      case TextEntityTypePhoneNumber.constructor:
         return TextEntityTypePhoneNumber.fromJson(json);
-      case TextEntityTypeBankCardNumber.CONSTRUCTOR:
+      case TextEntityTypeBankCardNumber.constructor:
         return TextEntityTypeBankCardNumber.fromJson(json);
-      case TextEntityTypeBold.CONSTRUCTOR:
+      case TextEntityTypeBold.constructor:
         return TextEntityTypeBold.fromJson(json);
-      case TextEntityTypeItalic.CONSTRUCTOR:
+      case TextEntityTypeItalic.constructor:
         return TextEntityTypeItalic.fromJson(json);
-      case TextEntityTypeUnderline.CONSTRUCTOR:
+      case TextEntityTypeUnderline.constructor:
         return TextEntityTypeUnderline.fromJson(json);
-      case TextEntityTypeStrikethrough.CONSTRUCTOR:
+      case TextEntityTypeStrikethrough.constructor:
         return TextEntityTypeStrikethrough.fromJson(json);
-      case TextEntityTypeSpoiler.CONSTRUCTOR:
+      case TextEntityTypeSpoiler.constructor:
         return TextEntityTypeSpoiler.fromJson(json);
-      case TextEntityTypeCode.CONSTRUCTOR:
+      case TextEntityTypeCode.constructor:
         return TextEntityTypeCode.fromJson(json);
-      case TextEntityTypePre.CONSTRUCTOR:
+      case TextEntityTypePre.constructor:
         return TextEntityTypePre.fromJson(json);
-      case TextEntityTypePreCode.CONSTRUCTOR:
+      case TextEntityTypePreCode.constructor:
         return TextEntityTypePreCode.fromJson(json);
-      case TextEntityTypeTextUrl.CONSTRUCTOR:
+      case TextEntityTypeTextUrl.constructor:
         return TextEntityTypeTextUrl.fromJson(json);
-      case TextEntityTypeMentionName.CONSTRUCTOR:
+      case TextEntityTypeMentionName.constructor:
         return TextEntityTypeMentionName.fromJson(json);
-      case TextEntityTypeMediaTimestamp.CONSTRUCTOR:
+      case TextEntityTypeMediaTimestamp.constructor:
         return TextEntityTypeMediaTimestamp.fromJson(json);
       default:
         return null;
@@ -77,7 +79,7 @@ abstract class TextEntityType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

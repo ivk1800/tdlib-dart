@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Chat permissions was changed
+@immutable
 class UpdateChatPermissions extends Update {
-  UpdateChatPermissions({required this.chatId, required this.permissions});
+  const UpdateChatPermissions({
+    required this.chatId,
+    required this.permissions,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -11,7 +16,7 @@ class UpdateChatPermissions extends Update {
   /// [permissions] The new chat permissions
   final ChatPermissions permissions;
 
-  static const String CONSTRUCTOR = 'updateChatPermissions';
+  static const String constructor = 'updateChatPermissions';
 
   static UpdateChatPermissions? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateChatPermissions extends Update {
     }
 
     return UpdateChatPermissions(
-        chatId: json['chat_id'],
-        permissions: ChatPermissions.fromJson(json['permissions'])!);
+      chatId: json['chat_id'],
+      permissions: ChatPermissions.fromJson(json['permissions'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'permissions': this.permissions.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'permissions': permissions.toJson(),
+        '@type': constructor,
       };
 
   @override

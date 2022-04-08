@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Uploads a file with a sticker; returns the uploaded file
 /// Returns [File]
+@immutable
 class UploadStickerFile extends TdFunction {
-  UploadStickerFile({required this.userId, required this.sticker});
+  const UploadStickerFile({
+    required this.userId,
+    required this.sticker,
+  });
 
   /// [userId] Sticker file owner; ignored for regular users
   final int userId;
@@ -12,15 +17,16 @@ class UploadStickerFile extends TdFunction {
   /// [sticker] Sticker file to upload
   final InputSticker sticker;
 
-  static const String CONSTRUCTOR = 'uploadStickerFile';
+  static const String constructor = 'uploadStickerFile';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'sticker': this.sticker.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'sticker': sticker.toJson(),
+        '@type': constructor,
       };
 
   @override

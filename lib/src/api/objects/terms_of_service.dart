@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains Telegram terms of service
+@immutable
 class TermsOfService extends TdObject {
-  TermsOfService(
-      {required this.text, required this.minUserAge, required this.showPopup});
+  const TermsOfService({
+    required this.text,
+    required this.minUserAge,
+    required this.showPopup,
+  });
 
   /// [text] Text of the terms of service
   final FormattedText text;
@@ -17,7 +22,7 @@ class TermsOfService extends TdObject {
   /// to the user
   final bool showPopup;
 
-  static const String CONSTRUCTOR = 'termsOfService';
+  static const String constructor = 'termsOfService';
 
   static TermsOfService? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +30,21 @@ class TermsOfService extends TdObject {
     }
 
     return TermsOfService(
-        text: FormattedText.fromJson(json['text'])!,
-        minUserAge: json['min_user_age'],
-        showPopup: json['show_popup']);
+      text: FormattedText.fromJson(json['text'])!,
+      minUserAge: json['min_user_age'],
+      showPopup: json['show_popup'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'min_user_age': this.minUserAge,
-        'show_popup': this.showPopup,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'min_user_age': minUserAge,
+        'show_popup': showPopup,
+        '@type': constructor,
       };
 
   @override

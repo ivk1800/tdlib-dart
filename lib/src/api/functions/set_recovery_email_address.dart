@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the 2-step verification recovery email address of the user. If a
 /// new recovery email address is specified, then the change will not be
@@ -8,9 +9,12 @@ import '../extensions/data_class_extensions.dart';
 /// currently set up, this call succeeds immediately and aborts all other
 /// requests waiting for an email confirmation
 /// Returns [PasswordState]
+@immutable
 class SetRecoveryEmailAddress extends TdFunction {
-  SetRecoveryEmailAddress(
-      {required this.password, required this.newRecoveryEmailAddress});
+  const SetRecoveryEmailAddress({
+    required this.password,
+    required this.newRecoveryEmailAddress,
+  });
 
   /// [password] Password of the current user
   final String password;
@@ -18,15 +22,16 @@ class SetRecoveryEmailAddress extends TdFunction {
   /// [newRecoveryEmailAddress] New recovery email address
   final String newRecoveryEmailAddress;
 
-  static const String CONSTRUCTOR = 'setRecoveryEmailAddress';
+  static const String constructor = 'setRecoveryEmailAddress';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'password': this.password,
-        'new_recovery_email_address': this.newRecoveryEmailAddress,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'password': password,
+        'new_recovery_email_address': newRecoveryEmailAddress,
+        '@type': constructor,
       };
 
   @override

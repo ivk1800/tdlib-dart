@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the content of a live location in an inline message sent via a bot;
 /// for bots only
 /// Returns [Ok]
+@immutable
 class EditInlineMessageLiveLocation extends TdFunction {
-  EditInlineMessageLiveLocation(
-      {required this.inlineMessageId,
-      this.replyMarkup,
-      this.location,
-      required this.heading,
-      required this.proximityAlertRadius});
+  const EditInlineMessageLiveLocation({
+    required this.inlineMessageId,
+    this.replyMarkup,
+    this.location,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
@@ -30,18 +33,19 @@ class EditInlineMessageLiveLocation extends TdFunction {
   /// meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
 
-  static const String CONSTRUCTOR = 'editInlineMessageLiveLocation';
+  static const String constructor = 'editInlineMessageLiveLocation';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'location': this.location?.toJson(),
-        'heading': this.heading,
-        'proximity_alert_radius': this.proximityAlertRadius,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_message_id': inlineMessageId,
+        'reply_markup': replyMarkup?.toJson(),
+        'location': location?.toJson(),
+        'heading': heading,
+        'proximity_alert_radius': proximityAlertRadius,
+        '@type': constructor,
       };
 
   @override

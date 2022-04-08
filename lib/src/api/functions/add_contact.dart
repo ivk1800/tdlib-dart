@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds a user to the contact list or edits an existing contact by their user
 /// identifier
 /// Returns [Ok]
+@immutable
 class AddContact extends TdFunction {
-  AddContact({required this.contact, required this.sharePhoneNumber});
+  const AddContact({
+    required this.contact,
+    required this.sharePhoneNumber,
+  });
 
   /// [contact] The contact to add or edit; phone number can be empty and needs
   /// to be specified only if known, vCard is ignored
@@ -18,15 +23,16 @@ class AddContact extends TdFunction {
   /// current user needs to be asked to share their phone number
   final bool sharePhoneNumber;
 
-  static const String CONSTRUCTOR = 'addContact';
+  static const String constructor = 'addContact';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'contact': this.contact.toJson(),
-        'share_phone_number': this.sharePhoneNumber,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'contact': contact.toJson(),
+        'share_phone_number': sharePhoneNumber,
+        '@type': constructor,
       };
 
   @override

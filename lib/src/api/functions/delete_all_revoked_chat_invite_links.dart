@@ -1,13 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes all revoked chat invite links created by a given chat
 /// administrator. Requires administrator privileges and can_invite_users
 /// right in the chat for own links and owner privileges for other links
 /// Returns [Ok]
+@immutable
 class DeleteAllRevokedChatInviteLinks extends TdFunction {
-  DeleteAllRevokedChatInviteLinks(
-      {required this.chatId, required this.creatorUserId});
+  const DeleteAllRevokedChatInviteLinks({
+    required this.chatId,
+    required this.creatorUserId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -16,15 +20,16 @@ class DeleteAllRevokedChatInviteLinks extends TdFunction {
   /// be deleted. Must be an identifier of the current user for non-owner
   final int creatorUserId;
 
-  static const String CONSTRUCTOR = 'deleteAllRevokedChatInviteLinks';
+  static const String constructor = 'deleteAllRevokedChatInviteLinks';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'creator_user_id': this.creatorUserId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'creator_user_id': creatorUserId,
+        '@type': constructor,
       };
 
   @override

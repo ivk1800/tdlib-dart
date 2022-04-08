@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about notification settings for several chats
+@immutable
 class ScopeNotificationSettings extends TdObject {
-  ScopeNotificationSettings(
-      {required this.muteFor,
-      required this.sound,
-      required this.showPreview,
-      required this.disablePinnedMessageNotifications,
-      required this.disableMentionNotifications});
+  const ScopeNotificationSettings({
+    required this.muteFor,
+    required this.sound,
+    required this.showPreview,
+    required this.disablePinnedMessageNotifications,
+    required this.disableMentionNotifications,
+  });
 
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   final int muteFor;
@@ -28,7 +31,7 @@ class ScopeNotificationSettings extends TdObject {
   /// mentions will be created as for an ordinary unread message
   final bool disableMentionNotifications;
 
-  static const String CONSTRUCTOR = 'scopeNotificationSettings';
+  static const String constructor = 'scopeNotificationSettings';
 
   static ScopeNotificationSettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -36,25 +39,27 @@ class ScopeNotificationSettings extends TdObject {
     }
 
     return ScopeNotificationSettings(
-        muteFor: json['mute_for'],
-        sound: json['sound'],
-        showPreview: json['show_preview'],
-        disablePinnedMessageNotifications:
-            json['disable_pinned_message_notifications'],
-        disableMentionNotifications: json['disable_mention_notifications']);
+      muteFor: json['mute_for'],
+      sound: json['sound'],
+      showPreview: json['show_preview'],
+      disablePinnedMessageNotifications:
+          json['disable_pinned_message_notifications'],
+      disableMentionNotifications: json['disable_mention_notifications'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'mute_for': this.muteFor,
-        'sound': this.sound,
-        'show_preview': this.showPreview,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'mute_for': muteFor,
+        'sound': sound,
+        'show_preview': showPreview,
         'disable_pinned_message_notifications':
-            this.disablePinnedMessageNotifications,
-        'disable_mention_notifications': this.disableMentionNotifications,
-        '@type': CONSTRUCTOR
+            disablePinnedMessageNotifications,
+        'disable_mention_notifications': disableMentionNotifications,
+        '@type': constructor,
       };
 
   @override

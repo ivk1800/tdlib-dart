@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the way the text needs to be parsed for TextEntities
+@immutable
 abstract class TextParseMode extends TdObject {
   const TextParseMode();
 
-  static const String CONSTRUCTOR = 'textParseMode';
+  static const String constructor = 'textParseMode';
 
   /// Inherited by:
   /// [TextParseModeMarkdown]
@@ -15,10 +17,10 @@ abstract class TextParseMode extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case TextParseModeMarkdown.CONSTRUCTOR:
+    switch (json['@type']) {
+      case TextParseModeMarkdown.constructor:
         return TextParseModeMarkdown.fromJson(json);
-      case TextParseModeHTML.CONSTRUCTOR:
+      case TextParseModeHTML.constructor:
         return TextParseModeHTML.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class TextParseMode extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

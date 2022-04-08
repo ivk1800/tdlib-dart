@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Joins an active group call. Returns join response payload for tgcalls
 /// Returns [Text]
+@immutable
 class JoinGroupCall extends TdFunction {
-  JoinGroupCall(
-      {required this.groupCallId,
-      this.participantId,
-      required this.audioSourceId,
-      required this.payload,
-      required this.isMuted,
-      required this.isMyVideoEnabled,
-      required this.inviteHash});
+  const JoinGroupCall({
+    required this.groupCallId,
+    this.participantId,
+    required this.audioSourceId,
+    required this.payload,
+    required this.isMuted,
+    required this.isMyVideoEnabled,
+    required this.inviteHash,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -37,20 +40,21 @@ class JoinGroupCall extends TdFunction {
   /// without being muted by administrators
   final String inviteHash;
 
-  static const String CONSTRUCTOR = 'joinGroupCall';
+  static const String constructor = 'joinGroupCall';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'participant_id': this.participantId?.toJson(),
-        'audio_source_id': this.audioSourceId,
-        'payload': this.payload,
-        'is_muted': this.isMuted,
-        'is_my_video_enabled': this.isMyVideoEnabled,
-        'invite_hash': this.inviteHash,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'participant_id': participantId?.toJson(),
+        'audio_source_id': audioSourceId,
+        'payload': payload,
+        'is_muted': isMuted,
+        'is_my_video_enabled': isMyVideoEnabled,
+        'invite_hash': inviteHash,
+        '@type': constructor,
       };
 
   @override

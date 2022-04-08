@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns sparse positions of messages of the specified type in the chat to
 /// be used for shared media scroll implementation. Returns the results in
@@ -7,12 +8,14 @@ import '../extensions/data_class_extensions.dart';
 /// Cannot be used in secret chats or with searchMessagesFilterFailedToSend
 /// filter without an enabled message database
 /// Returns [MessagePositions]
+@immutable
 class GetChatSparseMessagePositions extends TdFunction {
-  GetChatSparseMessagePositions(
-      {required this.chatId,
-      required this.filter,
-      required this.fromMessageId,
-      required this.limit});
+  const GetChatSparseMessagePositions({
+    required this.chatId,
+    required this.filter,
+    required this.fromMessageId,
+    required this.limit,
+  });
 
   /// [chatId] Identifier of the chat in which to return information about
   /// message positions
@@ -32,17 +35,18 @@ class GetChatSparseMessagePositions extends TdFunction {
   /// appropriate messages
   final int limit;
 
-  static const String CONSTRUCTOR = 'getChatSparseMessagePositions';
+  static const String constructor = 'getChatSparseMessagePositions';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'filter': this.filter.toJson(),
-        'from_message_id': this.fromMessageId,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'filter': filter.toJson(),
+        'from_message_id': fromMessageId,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

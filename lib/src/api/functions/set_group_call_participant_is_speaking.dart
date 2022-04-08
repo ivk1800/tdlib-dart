@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Informs TDLib that speaking state of a participant of an active group has
 /// changed
 /// Returns [Ok]
+@immutable
 class SetGroupCallParticipantIsSpeaking extends TdFunction {
-  SetGroupCallParticipantIsSpeaking(
-      {required this.groupCallId,
-      required this.audioSource,
-      required this.isSpeaking});
+  const SetGroupCallParticipantIsSpeaking({
+    required this.groupCallId,
+    required this.audioSource,
+    required this.isSpeaking,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -20,16 +23,17 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
   /// [isSpeaking] True, if the user is speaking
   final bool isSpeaking;
 
-  static const String CONSTRUCTOR = 'setGroupCallParticipantIsSpeaking';
+  static const String constructor = 'setGroupCallParticipantIsSpeaking';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'audio_source': this.audioSource,
-        'is_speaking': this.isSpeaking,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'audio_source': audioSource,
+        'is_speaking': isSpeaking,
+        '@type': constructor,
       };
 
   @override

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The author and publishing date of a page
+@immutable
 class PageBlockAuthorDate extends PageBlock {
-  PageBlockAuthorDate({required this.author, required this.publishDate});
+  const PageBlockAuthorDate({
+    required this.author,
+    required this.publishDate,
+  });
 
   /// [author] Author
   final RichText author;
@@ -12,7 +17,7 @@ class PageBlockAuthorDate extends PageBlock {
   /// published; 0 if unknown
   final int publishDate;
 
-  static const String CONSTRUCTOR = 'pageBlockAuthorDate';
+  static const String constructor = 'pageBlockAuthorDate';
 
   static PageBlockAuthorDate? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +25,19 @@ class PageBlockAuthorDate extends PageBlock {
     }
 
     return PageBlockAuthorDate(
-        author: RichText.fromJson(json['author'])!,
-        publishDate: json['publish_date']);
+      author: RichText.fromJson(json['author'])!,
+      publishDate: json['publish_date'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'author': this.author.toJson(),
-        'publish_date': this.publishDate,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'author': author.toJson(),
+        'publish_date': publishDate,
+        '@type': constructor,
       };
 
   @override

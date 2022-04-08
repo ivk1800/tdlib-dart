@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a block of an instant view web page
+@immutable
 abstract class PageBlock extends TdObject {
   const PageBlock();
 
-  static const String CONSTRUCTOR = 'pageBlock';
+  static const String constructor = 'pageBlock';
 
   /// Inherited by:
   /// [PageBlockTitle]
@@ -42,64 +44,64 @@ abstract class PageBlock extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PageBlockTitle.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PageBlockTitle.constructor:
         return PageBlockTitle.fromJson(json);
-      case PageBlockSubtitle.CONSTRUCTOR:
+      case PageBlockSubtitle.constructor:
         return PageBlockSubtitle.fromJson(json);
-      case PageBlockAuthorDate.CONSTRUCTOR:
+      case PageBlockAuthorDate.constructor:
         return PageBlockAuthorDate.fromJson(json);
-      case PageBlockHeader.CONSTRUCTOR:
+      case PageBlockHeader.constructor:
         return PageBlockHeader.fromJson(json);
-      case PageBlockSubheader.CONSTRUCTOR:
+      case PageBlockSubheader.constructor:
         return PageBlockSubheader.fromJson(json);
-      case PageBlockKicker.CONSTRUCTOR:
+      case PageBlockKicker.constructor:
         return PageBlockKicker.fromJson(json);
-      case PageBlockParagraph.CONSTRUCTOR:
+      case PageBlockParagraph.constructor:
         return PageBlockParagraph.fromJson(json);
-      case PageBlockPreformatted.CONSTRUCTOR:
+      case PageBlockPreformatted.constructor:
         return PageBlockPreformatted.fromJson(json);
-      case PageBlockFooter.CONSTRUCTOR:
+      case PageBlockFooter.constructor:
         return PageBlockFooter.fromJson(json);
-      case PageBlockDivider.CONSTRUCTOR:
+      case PageBlockDivider.constructor:
         return PageBlockDivider.fromJson(json);
-      case PageBlockAnchor.CONSTRUCTOR:
+      case PageBlockAnchor.constructor:
         return PageBlockAnchor.fromJson(json);
-      case PageBlockList.CONSTRUCTOR:
+      case PageBlockList.constructor:
         return PageBlockList.fromJson(json);
-      case PageBlockBlockQuote.CONSTRUCTOR:
+      case PageBlockBlockQuote.constructor:
         return PageBlockBlockQuote.fromJson(json);
-      case PageBlockPullQuote.CONSTRUCTOR:
+      case PageBlockPullQuote.constructor:
         return PageBlockPullQuote.fromJson(json);
-      case PageBlockAnimation.CONSTRUCTOR:
+      case PageBlockAnimation.constructor:
         return PageBlockAnimation.fromJson(json);
-      case PageBlockAudio.CONSTRUCTOR:
+      case PageBlockAudio.constructor:
         return PageBlockAudio.fromJson(json);
-      case PageBlockPhoto.CONSTRUCTOR:
+      case PageBlockPhoto.constructor:
         return PageBlockPhoto.fromJson(json);
-      case PageBlockVideo.CONSTRUCTOR:
+      case PageBlockVideo.constructor:
         return PageBlockVideo.fromJson(json);
-      case PageBlockVoiceNote.CONSTRUCTOR:
+      case PageBlockVoiceNote.constructor:
         return PageBlockVoiceNote.fromJson(json);
-      case PageBlockCover.CONSTRUCTOR:
+      case PageBlockCover.constructor:
         return PageBlockCover.fromJson(json);
-      case PageBlockEmbedded.CONSTRUCTOR:
+      case PageBlockEmbedded.constructor:
         return PageBlockEmbedded.fromJson(json);
-      case PageBlockEmbeddedPost.CONSTRUCTOR:
+      case PageBlockEmbeddedPost.constructor:
         return PageBlockEmbeddedPost.fromJson(json);
-      case PageBlockCollage.CONSTRUCTOR:
+      case PageBlockCollage.constructor:
         return PageBlockCollage.fromJson(json);
-      case PageBlockSlideshow.CONSTRUCTOR:
+      case PageBlockSlideshow.constructor:
         return PageBlockSlideshow.fromJson(json);
-      case PageBlockChatLink.CONSTRUCTOR:
+      case PageBlockChatLink.constructor:
         return PageBlockChatLink.fromJson(json);
-      case PageBlockTable.CONSTRUCTOR:
+      case PageBlockTable.constructor:
         return PageBlockTable.fromJson(json);
-      case PageBlockDetails.CONSTRUCTOR:
+      case PageBlockDetails.constructor:
         return PageBlockDetails.fromJson(json);
-      case PageBlockRelatedArticles.CONSTRUCTOR:
+      case PageBlockRelatedArticles.constructor:
         return PageBlockRelatedArticles.fromJson(json);
-      case PageBlockMap.CONSTRUCTOR:
+      case PageBlockMap.constructor:
         return PageBlockMap.fromJson(json);
       default:
         return null;
@@ -107,7 +109,7 @@ abstract class PageBlock extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

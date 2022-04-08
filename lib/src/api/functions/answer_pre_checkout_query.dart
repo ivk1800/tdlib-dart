@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets the result of a pre-checkout query; for bots only
 /// Returns [Ok]
+@immutable
 class AnswerPreCheckoutQuery extends TdFunction {
-  AnswerPreCheckoutQuery(
-      {required this.preCheckoutQueryId, required this.errorMessage});
+  const AnswerPreCheckoutQuery({
+    required this.preCheckoutQueryId,
+    required this.errorMessage,
+  });
 
   /// [preCheckoutQueryId] Identifier of the pre-checkout query
   final int preCheckoutQueryId;
@@ -13,15 +17,16 @@ class AnswerPreCheckoutQuery extends TdFunction {
   /// [errorMessage] An error message, empty on success
   final String errorMessage;
 
-  static const String CONSTRUCTOR = 'answerPreCheckoutQuery';
+  static const String constructor = 'answerPreCheckoutQuery';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'pre_checkout_query_id': this.preCheckoutQueryId,
-        'error_message': this.errorMessage,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'pre_checkout_query_id': preCheckoutQueryId,
+        'error_message': errorMessage,
+        '@type': constructor,
       };
 
   @override

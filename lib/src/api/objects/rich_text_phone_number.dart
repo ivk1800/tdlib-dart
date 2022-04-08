@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A rich text phone number
+@immutable
 class RichTextPhoneNumber extends RichText {
-  RichTextPhoneNumber({required this.text, required this.phoneNumber});
+  const RichTextPhoneNumber({
+    required this.text,
+    required this.phoneNumber,
+  });
 
   /// [text] Text
   final RichText text;
@@ -11,7 +16,7 @@ class RichTextPhoneNumber extends RichText {
   /// [phoneNumber] Phone number
   final String phoneNumber;
 
-  static const String CONSTRUCTOR = 'richTextPhoneNumber';
+  static const String constructor = 'richTextPhoneNumber';
 
   static RichTextPhoneNumber? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class RichTextPhoneNumber extends RichText {
     }
 
     return RichTextPhoneNumber(
-        text: RichText.fromJson(json['text'])!,
-        phoneNumber: json['phone_number']);
+      text: RichText.fromJson(json['text'])!,
+      phoneNumber: json['phone_number'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'phone_number': this.phoneNumber,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'phone_number': phoneNumber,
+        '@type': constructor,
       };
 
   @override

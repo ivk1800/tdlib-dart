@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The call is pending, waiting to be accepted by a user
+@immutable
 class CallStatePending extends CallState {
-  CallStatePending({required this.isCreated, required this.isReceived});
+  const CallStatePending({
+    required this.isCreated,
+    required this.isReceived,
+  });
 
   /// [isCreated] True, if the call has already been created by the server
   final bool isCreated;
@@ -12,7 +17,7 @@ class CallStatePending extends CallState {
   /// party
   final bool isReceived;
 
-  static const String CONSTRUCTOR = 'callStatePending';
+  static const String constructor = 'callStatePending';
 
   static CallStatePending? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +25,19 @@ class CallStatePending extends CallState {
     }
 
     return CallStatePending(
-        isCreated: json['is_created'], isReceived: json['is_received']);
+      isCreated: json['is_created'],
+      isReceived: json['is_received'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_created': this.isCreated,
-        'is_received': this.isReceived,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_created': isCreated,
+        'is_received': isReceived,
+        '@type': constructor,
       };
 
   @override

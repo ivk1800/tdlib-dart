@@ -1,21 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Product invoice
+@immutable
 class Invoice extends TdObject {
-  Invoice(
-      {required this.currency,
-      required this.priceParts,
-      required this.maxTipAmount,
-      required this.suggestedTipAmounts,
-      required this.isTest,
-      required this.needName,
-      required this.needPhoneNumber,
-      required this.needEmailAddress,
-      required this.needShippingAddress,
-      required this.sendPhoneNumberToProvider,
-      required this.sendEmailAddressToProvider,
-      required this.isFlexible});
+  const Invoice({
+    required this.currency,
+    required this.priceParts,
+    required this.maxTipAmount,
+    required this.suggestedTipAmounts,
+    required this.isTest,
+    required this.needName,
+    required this.needPhoneNumber,
+    required this.needEmailAddress,
+    required this.needShippingAddress,
+    required this.sendPhoneNumberToProvider,
+    required this.sendEmailAddressToProvider,
+    required this.isFlexible,
+  });
 
   /// [currency] ISO 4217 currency code
   final String currency;
@@ -59,7 +62,7 @@ class Invoice extends TdObject {
   /// [isFlexible] True, if the total price depends on the shipping method
   final bool isFlexible;
 
-  static const String CONSTRUCTOR = 'invoice';
+  static const String constructor = 'invoice';
 
   static Invoice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -67,41 +70,43 @@ class Invoice extends TdObject {
     }
 
     return Invoice(
-        currency: json['currency'],
-        priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
-            .map((item) => LabeledPricePart.fromJson(item))
-            .toList()),
-        maxTipAmount: json['max_tip_amount'],
-        suggestedTipAmounts: List<int>.from(
-            (json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
-        isTest: json['is_test'],
-        needName: json['need_name'],
-        needPhoneNumber: json['need_phone_number'],
-        needEmailAddress: json['need_email_address'],
-        needShippingAddress: json['need_shipping_address'],
-        sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
-        sendEmailAddressToProvider: json['send_email_address_to_provider'],
-        isFlexible: json['is_flexible']);
+      currency: json['currency'],
+      priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
+          .map((item) => LabeledPricePart.fromJson(item))
+          .toList()),
+      maxTipAmount: json['max_tip_amount'],
+      suggestedTipAmounts: List<int>.from(
+          (json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
+      isTest: json['is_test'],
+      needName: json['need_name'],
+      needPhoneNumber: json['need_phone_number'],
+      needEmailAddress: json['need_email_address'],
+      needShippingAddress: json['need_shipping_address'],
+      sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
+      sendEmailAddressToProvider: json['send_email_address_to_provider'],
+      isFlexible: json['is_flexible'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'currency': this.currency,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'currency': currency,
         'price_parts': priceParts.map((item) => item.toJson()).toList(),
-        'max_tip_amount': this.maxTipAmount,
+        'max_tip_amount': maxTipAmount,
         'suggested_tip_amounts':
             suggestedTipAmounts.map((item) => item).toList(),
-        'is_test': this.isTest,
-        'need_name': this.needName,
-        'need_phone_number': this.needPhoneNumber,
-        'need_email_address': this.needEmailAddress,
-        'need_shipping_address': this.needShippingAddress,
-        'send_phone_number_to_provider': this.sendPhoneNumberToProvider,
-        'send_email_address_to_provider': this.sendEmailAddressToProvider,
-        'is_flexible': this.isFlexible,
-        '@type': CONSTRUCTOR
+        'is_test': isTest,
+        'need_name': needName,
+        'need_phone_number': needPhoneNumber,
+        'need_email_address': needEmailAddress,
+        'need_shipping_address': needShippingAddress,
+        'send_phone_number_to_provider': sendPhoneNumberToProvider,
+        'send_email_address_to_provider': sendEmailAddressToProvider,
+        'is_flexible': isFlexible,
+        '@type': constructor,
       };
 
   @override

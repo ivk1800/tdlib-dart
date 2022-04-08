@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with information about an invite to a video chat
+@immutable
 class MessageInviteVideoChatParticipants extends MessageContent {
-  MessageInviteVideoChatParticipants(
-      {required this.groupCallId, required this.userIds});
+  const MessageInviteVideoChatParticipants({
+    required this.groupCallId,
+    required this.userIds,
+  });
 
   /// [groupCallId] Identifier of the video chat. The video chat can be received
   /// through the method getGroupCall
@@ -13,7 +17,7 @@ class MessageInviteVideoChatParticipants extends MessageContent {
   /// [userIds] Invited user identifiers
   final List<int> userIds;
 
-  static const String CONSTRUCTOR = 'messageInviteVideoChatParticipants';
+  static const String constructor = 'messageInviteVideoChatParticipants';
 
   static MessageInviteVideoChatParticipants? fromJson(
       Map<String, dynamic>? json) {
@@ -22,18 +26,20 @@ class MessageInviteVideoChatParticipants extends MessageContent {
     }
 
     return MessageInviteVideoChatParticipants(
-        groupCallId: json['group_call_id'],
-        userIds: List<int>.from(
-            (json['user_ids'] ?? []).map((item) => item).toList()));
+      groupCallId: json['group_call_id'],
+      userIds:
+          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
         'user_ids': userIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

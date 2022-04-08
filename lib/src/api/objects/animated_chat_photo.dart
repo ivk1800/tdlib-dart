@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Animated variant of a chat photo in MPEG4 format
+@immutable
 class AnimatedChatPhoto extends TdObject {
-  AnimatedChatPhoto(
-      {required this.length,
-      required this.file,
-      required this.mainFrameTimestamp});
+  const AnimatedChatPhoto({
+    required this.length,
+    required this.file,
+    required this.mainFrameTimestamp,
+  });
 
   /// [length] Animation width and height
   final int length;
@@ -17,7 +20,7 @@ class AnimatedChatPhoto extends TdObject {
   /// [mainFrameTimestamp] Timestamp of the frame, used as a static chat photo
   final double mainFrameTimestamp;
 
-  static const String CONSTRUCTOR = 'animatedChatPhoto';
+  static const String constructor = 'animatedChatPhoto';
 
   static AnimatedChatPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +28,21 @@ class AnimatedChatPhoto extends TdObject {
     }
 
     return AnimatedChatPhoto(
-        length: json['length'],
-        file: File.fromJson(json['file'])!,
-        mainFrameTimestamp: json['main_frame_timestamp']);
+      length: json['length'],
+      file: File.fromJson(json['file'])!,
+      mainFrameTimestamp: json['main_frame_timestamp'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'length': this.length,
-        'file': this.file.toJson(),
-        'main_frame_timestamp': this.mainFrameTimestamp,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'length': length,
+        'file': file.toJson(),
+        'main_frame_timestamp': mainFrameTimestamp,
+        '@type': constructor,
       };
 
   @override

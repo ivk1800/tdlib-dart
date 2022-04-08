@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Requests QR code authentication by scanning a QR code on another logged in
 /// device. Works only when the current authorization state is
@@ -8,21 +9,25 @@ import '../extensions/data_class_extensions.dart';
 /// authorizationStateWaitCode, authorizationStateWaitRegistration, or
 /// authorizationStateWaitPassword
 /// Returns [Ok]
+@immutable
 class RequestQrCodeAuthentication extends TdFunction {
-  RequestQrCodeAuthentication({required this.otherUserIds});
+  const RequestQrCodeAuthentication({
+    required this.otherUserIds,
+  });
 
   /// [otherUserIds] List of user identifiers of other users currently using the
   /// application
   final List<int> otherUserIds;
 
-  static const String CONSTRUCTOR = 'requestQrCodeAuthentication';
+  static const String constructor = 'requestQrCodeAuthentication';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'other_user_ids': otherUserIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the username of the current user
 /// Returns [Ok]
+@immutable
 class SetUsername extends TdFunction {
-  SetUsername({required this.username});
+  const SetUsername({
+    required this.username,
+  });
 
   /// [username] The new value of the username. Use an empty string to remove
   /// the username
   final String username;
 
-  static const String CONSTRUCTOR = 'setUsername';
+  static const String constructor = 'setUsername';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'username': this.username, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'username': username,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

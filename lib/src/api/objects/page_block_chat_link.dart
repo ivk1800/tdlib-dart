@@ -1,9 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A link to a chat
+@immutable
 class PageBlockChatLink extends PageBlock {
-  PageBlockChatLink({required this.title, this.photo, required this.username});
+  const PageBlockChatLink({
+    required this.title,
+    this.photo,
+    required this.username,
+  });
 
   /// [title] Chat title
   final String title;
@@ -15,7 +21,7 @@ class PageBlockChatLink extends PageBlock {
   /// can be resolved
   final String username;
 
-  static const String CONSTRUCTOR = 'pageBlockChatLink';
+  static const String constructor = 'pageBlockChatLink';
 
   static PageBlockChatLink? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +29,21 @@ class PageBlockChatLink extends PageBlock {
     }
 
     return PageBlockChatLink(
-        title: json['title'],
-        photo: ChatPhotoInfo.fromJson(json['photo']),
-        username: json['username']);
+      title: json['title'],
+      photo: ChatPhotoInfo.fromJson(json['photo']),
+      username: json['username'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'photo': this.photo?.toJson(),
-        'username': this.username,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'photo': photo?.toJson(),
+        'username': username,
+        '@type': constructor,
       };
 
   @override

@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a numeric JSON value
+@immutable
 class JsonValueNumber extends JsonValue {
-  JsonValueNumber({required this.value});
+  const JsonValueNumber({
+    required this.value,
+  });
 
   /// [value] The value
   final double value;
 
-  static const String CONSTRUCTOR = 'jsonValueNumber';
+  static const String constructor = 'jsonValueNumber';
 
   static JsonValueNumber? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return JsonValueNumber(value: json['value']);
+    return JsonValueNumber(
+      value: json['value'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'value': this.value, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'value': value,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

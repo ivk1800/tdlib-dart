@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a notification
+@immutable
 class Notification extends TdObject {
-  Notification(
-      {required this.id,
-      required this.date,
-      required this.isSilent,
-      required this.type});
+  const Notification({
+    required this.id,
+    required this.date,
+    required this.isSilent,
+    required this.type,
+  });
 
   /// [id] Unique persistent identifier of this notification
   final int id;
@@ -21,7 +24,7 @@ class Notification extends TdObject {
   /// [type] Notification type
   final NotificationType type;
 
-  static const String CONSTRUCTOR = 'notification';
+  static const String constructor = 'notification';
 
   static Notification? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class Notification extends TdObject {
     }
 
     return Notification(
-        id: json['id'],
-        date: json['date'],
-        isSilent: json['is_silent'],
-        type: NotificationType.fromJson(json['type'])!);
+      id: json['id'],
+      date: json['date'],
+      isSilent: json['is_silent'],
+      type: NotificationType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'date': this.date,
-        'is_silent': this.isSilent,
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'date': date,
+        'is_silent': isSilent,
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

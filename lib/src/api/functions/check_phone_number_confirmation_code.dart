@@ -1,20 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Checks phone number confirmation code
 /// Returns [Ok]
+@immutable
 class CheckPhoneNumberConfirmationCode extends TdFunction {
-  CheckPhoneNumberConfirmationCode({required this.code});
+  const CheckPhoneNumberConfirmationCode({
+    required this.code,
+  });
 
   /// [code] Confirmation code to check
   final String code;
 
-  static const String CONSTRUCTOR = 'checkPhoneNumberConfirmationCode';
+  static const String constructor = 'checkPhoneNumberConfirmationCode';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'code': this.code, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'code': code,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

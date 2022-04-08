@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends a message. Returns the sent message
 /// Returns [Message]
+@immutable
 class SendMessage extends TdFunction {
-  SendMessage(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.replyToMessageId,
-      this.options,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const SendMessage({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.replyToMessageId,
+    this.options,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [chatId] Target chat
   final int chatId;
@@ -33,19 +36,20 @@ class SendMessage extends TdFunction {
   /// [inputMessageContent] The content of the message to be sent
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'sendMessage';
+  static const String constructor = 'sendMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'reply_to_message_id': this.replyToMessageId,
-        'options': this.options?.toJson(),
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'reply_to_message_id': replyToMessageId,
+        'options': options?.toJson(),
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a list of chats
+@immutable
 class Chats extends TdObject {
-  Chats({required this.totalCount, required this.chatIds});
+  const Chats({
+    required this.totalCount,
+    required this.chatIds,
+  });
 
   /// [totalCount] Approximate total count of chats found
   final int totalCount;
@@ -11,7 +16,7 @@ class Chats extends TdObject {
   /// [chatIds] List of chat identifiers
   final List<int> chatIds;
 
-  static const String CONSTRUCTOR = 'chats';
+  static const String constructor = 'chats';
 
   static Chats? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,18 +24,20 @@ class Chats extends TdObject {
     }
 
     return Chats(
-        totalCount: json['total_count'],
-        chatIds: List<int>.from(
-            (json['chat_ids'] ?? []).map((item) => item).toList()));
+      totalCount: json['total_count'],
+      chatIds:
+          List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'total_count': this.totalCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'total_count': totalCount,
         'chat_ids': chatIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

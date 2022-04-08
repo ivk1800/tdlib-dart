@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an HTTPS link to a message in a chat. Available only for already
 /// sent messages in supergroups and channels, or if
 /// message.can_get_media_timestamp_links and a media timestamp link is
 /// generated. This is an offline request
 /// Returns [MessageLink]
+@immutable
 class GetMessageLink extends TdFunction {
-  GetMessageLink(
-      {required this.chatId,
-      required this.messageId,
-      required this.mediaTimestamp,
-      required this.forAlbum,
-      required this.forComment});
+  const GetMessageLink({
+    required this.chatId,
+    required this.messageId,
+    required this.mediaTimestamp,
+    required this.forAlbum,
+    required this.forComment,
+  });
 
   /// [chatId] Identifier of the chat to which the message belongs
   final int chatId;
@@ -32,18 +35,19 @@ class GetMessageLink extends TdFunction {
   /// comment, or from a message thread
   final bool forComment;
 
-  static const String CONSTRUCTOR = 'getMessageLink';
+  static const String constructor = 'getMessageLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'media_timestamp': this.mediaTimestamp,
-        'for_album': this.forAlbum,
-        'for_comment': this.forComment,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'media_timestamp': mediaTimestamp,
+        'for_album': forAlbum,
+        'for_comment': forComment,
+        '@type': constructor,
       };
 
   @override

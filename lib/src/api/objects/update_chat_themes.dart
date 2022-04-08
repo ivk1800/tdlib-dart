@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The list of available chat themes has changed
+@immutable
 class UpdateChatThemes extends Update {
-  UpdateChatThemes({required this.chatThemes});
+  const UpdateChatThemes({
+    required this.chatThemes,
+  });
 
   /// [chatThemes] The new list of chat themes
   final List<ChatTheme> chatThemes;
 
-  static const String CONSTRUCTOR = 'updateChatThemes';
+  static const String constructor = 'updateChatThemes';
 
   static UpdateChatThemes? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class UpdateChatThemes extends Update {
     }
 
     return UpdateChatThemes(
-        chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? [])
-            .map((item) => ChatTheme.fromJson(item))
-            .toList()));
+      chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? [])
+          .map((item) => ChatTheme.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_themes': chatThemes.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

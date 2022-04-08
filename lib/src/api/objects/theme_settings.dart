@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes theme settings
+@immutable
 class ThemeSettings extends TdObject {
-  ThemeSettings(
-      {required this.accentColor,
-      this.background,
-      required this.outgoingMessageFill,
-      required this.animateOutgoingMessageFill,
-      required this.outgoingMessageAccentColor});
+  const ThemeSettings({
+    required this.accentColor,
+    this.background,
+    required this.outgoingMessageFill,
+    required this.animateOutgoingMessageFill,
+    required this.outgoingMessageAccentColor,
+  });
 
   /// [accentColor] Theme accent color in ARGB format
   final int accentColor;
@@ -28,7 +31,7 @@ class ThemeSettings extends TdObject {
   /// format
   final int outgoingMessageAccentColor;
 
-  static const String CONSTRUCTOR = 'themeSettings';
+  static const String constructor = 'themeSettings';
 
   static ThemeSettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -36,24 +39,26 @@ class ThemeSettings extends TdObject {
     }
 
     return ThemeSettings(
-        accentColor: json['accent_color'],
-        background: Background.fromJson(json['background']),
-        outgoingMessageFill:
-            BackgroundFill.fromJson(json['outgoing_message_fill'])!,
-        animateOutgoingMessageFill: json['animate_outgoing_message_fill'],
-        outgoingMessageAccentColor: json['outgoing_message_accent_color']);
+      accentColor: json['accent_color'],
+      background: Background.fromJson(json['background']),
+      outgoingMessageFill:
+          BackgroundFill.fromJson(json['outgoing_message_fill'])!,
+      animateOutgoingMessageFill: json['animate_outgoing_message_fill'],
+      outgoingMessageAccentColor: json['outgoing_message_accent_color'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'accent_color': this.accentColor,
-        'background': this.background?.toJson(),
-        'outgoing_message_fill': this.outgoingMessageFill.toJson(),
-        'animate_outgoing_message_fill': this.animateOutgoingMessageFill,
-        'outgoing_message_accent_color': this.outgoingMessageAccentColor,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'accent_color': accentColor,
+        'background': background?.toJson(),
+        'outgoing_message_fill': outgoingMessageFill.toJson(),
+        'animate_outgoing_message_fill': animateOutgoingMessageFill,
+        'outgoing_message_accent_color': outgoingMessageAccentColor,
+        '@type': constructor,
       };
 
   @override

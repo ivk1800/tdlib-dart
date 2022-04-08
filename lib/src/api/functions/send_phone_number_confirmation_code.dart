@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends phone number confirmation code to handle links of the type
 /// internalLinkTypePhoneNumberConfirmation
 /// Returns [AuthenticationCodeInfo]
+@immutable
 class SendPhoneNumberConfirmationCode extends TdFunction {
-  SendPhoneNumberConfirmationCode(
-      {required this.hash, required this.phoneNumber, this.settings});
+  const SendPhoneNumberConfirmationCode({
+    required this.hash,
+    required this.phoneNumber,
+    this.settings,
+  });
 
   /// [hash] Hash value from the link
   final String hash;
@@ -18,16 +23,17 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   /// pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
 
-  static const String CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
+  static const String constructor = 'sendPhoneNumberConfirmationCode';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'hash': this.hash,
-        'phone_number': this.phoneNumber,
-        'settings': this.settings?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'hash': hash,
+        'phone_number': phoneNumber,
+        'settings': settings?.toJson(),
+        '@type': constructor,
       };
 
   @override

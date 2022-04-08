@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the chat theme. Supported only in private and secret chats
 /// Returns [Ok]
+@immutable
 class SetChatTheme extends TdFunction {
-  SetChatTheme({required this.chatId, required this.themeName});
+  const SetChatTheme({
+    required this.chatId,
+    required this.themeName,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,15 +18,16 @@ class SetChatTheme extends TdFunction {
   /// default theme
   final String themeName;
 
-  static const String CONSTRUCTOR = 'setChatTheme';
+  static const String constructor = 'setChatTheme';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'theme_name': this.themeName,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'theme_name': themeName,
+        '@type': constructor,
       };
 
   @override

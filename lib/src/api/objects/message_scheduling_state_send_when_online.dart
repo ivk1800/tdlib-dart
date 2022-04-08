@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message will be sent when the peer will be online. Applicable to
 /// private chats only and when the exact online status of the peer is known
+@immutable
 class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   const MessageSchedulingStateSendWhenOnline();
 
-  static const String CONSTRUCTOR = 'messageSchedulingStateSendWhenOnline';
+  static const String constructor = 'messageSchedulingStateSendWhenOnline';
 
   static MessageSchedulingStateSendWhenOnline? fromJson(
       Map<String, dynamic>? json) {
@@ -18,9 +20,12 @@ class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

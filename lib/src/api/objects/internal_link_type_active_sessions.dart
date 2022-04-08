@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is a link to the active sessions section of the app. Use
 /// getActiveSessions to handle the link
+@immutable
 class InternalLinkTypeActiveSessions extends InternalLinkType {
   const InternalLinkTypeActiveSessions();
 
-  static const String CONSTRUCTOR = 'internalLinkTypeActiveSessions';
+  static const String constructor = 'internalLinkTypeActiveSessions';
 
   static InternalLinkTypeActiveSessions? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,9 +19,12 @@ class InternalLinkTypeActiveSessions extends InternalLinkType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

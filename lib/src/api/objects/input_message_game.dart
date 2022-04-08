@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a game; not supported for channels or secret chats
+@immutable
 class InputMessageGame extends InputMessageContent {
-  InputMessageGame({required this.botUserId, required this.gameShortName});
+  const InputMessageGame({
+    required this.botUserId,
+    required this.gameShortName,
+  });
 
   /// [botUserId] User identifier of the bot that owns the game
   final int botUserId;
@@ -11,7 +16,7 @@ class InputMessageGame extends InputMessageContent {
   /// [gameShortName] Short name of the game
   final String gameShortName;
 
-  static const String CONSTRUCTOR = 'inputMessageGame';
+  static const String constructor = 'inputMessageGame';
 
   static InputMessageGame? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class InputMessageGame extends InputMessageContent {
     }
 
     return InputMessageGame(
-        botUserId: json['bot_user_id'], gameShortName: json['game_short_name']);
+      botUserId: json['bot_user_id'],
+      gameShortName: json['game_short_name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'bot_user_id': this.botUserId,
-        'game_short_name': this.gameShortName,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bot_user_id': botUserId,
+        'game_short_name': gameShortName,
+        '@type': constructor,
       };
 
   @override

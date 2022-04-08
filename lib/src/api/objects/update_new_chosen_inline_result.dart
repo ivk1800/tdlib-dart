@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user has chosen a result of an inline query; for bots only
+@immutable
 class UpdateNewChosenInlineResult extends Update {
-  UpdateNewChosenInlineResult(
-      {required this.senderUserId,
-      this.userLocation,
-      required this.query,
-      required this.resultId,
-      required this.inlineMessageId});
+  const UpdateNewChosenInlineResult({
+    required this.senderUserId,
+    this.userLocation,
+    required this.query,
+    required this.resultId,
+    required this.inlineMessageId,
+  });
 
   /// [senderUserId] Identifier of the user who sent the query
   final int senderUserId;
@@ -25,7 +28,7 @@ class UpdateNewChosenInlineResult extends Update {
   /// [inlineMessageId] Identifier of the sent inline message, if known
   final String inlineMessageId;
 
-  static const String CONSTRUCTOR = 'updateNewChosenInlineResult';
+  static const String constructor = 'updateNewChosenInlineResult';
 
   static UpdateNewChosenInlineResult? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,23 +36,25 @@ class UpdateNewChosenInlineResult extends Update {
     }
 
     return UpdateNewChosenInlineResult(
-        senderUserId: json['sender_user_id'],
-        userLocation: Location.fromJson(json['user_location']),
-        query: json['query'],
-        resultId: json['result_id'],
-        inlineMessageId: json['inline_message_id']);
+      senderUserId: json['sender_user_id'],
+      userLocation: Location.fromJson(json['user_location']),
+      query: json['query'],
+      resultId: json['result_id'],
+      inlineMessageId: json['inline_message_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sender_user_id': this.senderUserId,
-        'user_location': this.userLocation?.toJson(),
-        'query': this.query,
-        'result_id': this.resultId,
-        'inline_message_id': this.inlineMessageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sender_user_id': senderUserId,
+        'user_location': userLocation?.toJson(),
+        'query': query,
+        'result_id': resultId,
+        'inline_message_id': inlineMessageId,
+        '@type': constructor,
       };
 
   @override

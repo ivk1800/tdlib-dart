@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains an HTTP URL
+@immutable
 class HttpUrl extends TdObject {
-  HttpUrl({required this.url});
+  const HttpUrl({
+    required this.url,
+  });
 
   /// [url] The URL
   final String url;
 
-  static const String CONSTRUCTOR = 'httpUrl';
+  static const String constructor = 'httpUrl';
 
   static HttpUrl? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return HttpUrl(url: json['url']);
+    return HttpUrl(
+      url: json['url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'url': this.url, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

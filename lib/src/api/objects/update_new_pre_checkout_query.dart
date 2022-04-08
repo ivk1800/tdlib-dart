@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new incoming pre-checkout query; for bots only. Contains full
 /// information about a checkout
+@immutable
 class UpdateNewPreCheckoutQuery extends Update {
-  UpdateNewPreCheckoutQuery(
-      {required this.id,
-      required this.senderUserId,
-      required this.currency,
-      required this.totalAmount,
-      required this.invoicePayload,
-      required this.shippingOptionId,
-      this.orderInfo});
+  const UpdateNewPreCheckoutQuery({
+    required this.id,
+    required this.senderUserId,
+    required this.currency,
+    required this.totalAmount,
+    required this.invoicePayload,
+    required this.shippingOptionId,
+    this.orderInfo,
+  });
 
   /// [id] Unique query identifier
   final int id;
@@ -36,7 +39,7 @@ class UpdateNewPreCheckoutQuery extends Update {
   /// [orderInfo] Information about the order; may be null
   final OrderInfo? orderInfo;
 
-  static const String CONSTRUCTOR = 'updateNewPreCheckoutQuery';
+  static const String constructor = 'updateNewPreCheckoutQuery';
 
   static UpdateNewPreCheckoutQuery? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -44,27 +47,29 @@ class UpdateNewPreCheckoutQuery extends Update {
     }
 
     return UpdateNewPreCheckoutQuery(
-        id: int.tryParse(json['id']) ?? 0,
-        senderUserId: json['sender_user_id'],
-        currency: json['currency'],
-        totalAmount: json['total_amount'],
-        invoicePayload: json['invoice_payload'],
-        shippingOptionId: json['shipping_option_id'],
-        orderInfo: OrderInfo.fromJson(json['order_info']));
+      id: int.tryParse(json['id']) ?? 0,
+      senderUserId: json['sender_user_id'],
+      currency: json['currency'],
+      totalAmount: json['total_amount'],
+      invoicePayload: json['invoice_payload'],
+      shippingOptionId: json['shipping_option_id'],
+      orderInfo: OrderInfo.fromJson(json['order_info']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'sender_user_id': this.senderUserId,
-        'currency': this.currency,
-        'total_amount': this.totalAmount,
-        'invoice_payload': this.invoicePayload,
-        'shipping_option_id': this.shippingOptionId,
-        'order_info': this.orderInfo?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'sender_user_id': senderUserId,
+        'currency': currency,
+        'total_amount': totalAmount,
+        'invoice_payload': invoicePayload,
+        'shipping_option_id': shippingOptionId,
+        'order_info': orderInfo?.toJson(),
+        '@type': constructor,
       };
 
   @override

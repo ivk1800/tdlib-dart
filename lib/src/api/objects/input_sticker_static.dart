@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A static sticker in PNG format, which will be converted to WEBP
 /// server-side
+@immutable
 class InputStickerStatic extends InputSticker {
-  InputStickerStatic(
-      {required this.sticker, required this.emojis, this.maskPosition});
+  const InputStickerStatic({
+    required this.sticker,
+    required this.emojis,
+    this.maskPosition,
+  });
 
   /// [sticker] PNG image with the sticker; must be up to 512 KB in size and fit
   /// in a 512x512 square
@@ -18,7 +23,7 @@ class InputStickerStatic extends InputSticker {
   /// unspecified
   final MaskPosition? maskPosition;
 
-  static const String CONSTRUCTOR = 'inputStickerStatic';
+  static const String constructor = 'inputStickerStatic';
 
   static InputStickerStatic? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +31,21 @@ class InputStickerStatic extends InputSticker {
     }
 
     return InputStickerStatic(
-        sticker: InputFile.fromJson(json['sticker'])!,
-        emojis: json['emojis'],
-        maskPosition: MaskPosition.fromJson(json['mask_position']));
+      sticker: InputFile.fromJson(json['sticker'])!,
+      emojis: json['emojis'],
+      maskPosition: MaskPosition.fromJson(json['mask_position']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sticker': this.sticker.toJson(),
-        'emojis': this.emojis,
-        'mask_position': this.maskPosition?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker.toJson(),
+        'emojis': emojis,
+        'mask_position': maskPosition?.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Stops a poll. A poll in a message can be stopped when the message has
 /// can_be_edited flag set
 /// Returns [Ok]
+@immutable
 class StopPoll extends TdFunction {
-  StopPoll({required this.chatId, required this.messageId, this.replyMarkup});
+  const StopPoll({
+    required this.chatId,
+    required this.messageId,
+    this.replyMarkup,
+  });
 
   /// [chatId] Identifier of the chat to which the poll belongs
   final int chatId;
@@ -17,16 +23,17 @@ class StopPoll extends TdFunction {
   /// only
   final ReplyMarkup? replyMarkup;
 
-  static const String CONSTRUCTOR = 'stopPoll';
+  static const String constructor = 'stopPoll';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'reply_markup': replyMarkup?.toJson(),
+        '@type': constructor,
       };
 
   @override

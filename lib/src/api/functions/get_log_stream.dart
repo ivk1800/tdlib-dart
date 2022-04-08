@@ -1,18 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about currently used log stream for internal logging
 /// of TDLib. Can be called synchronously
 /// Returns [LogStream]
+@immutable
 class GetLogStream extends TdFunction {
-  GetLogStream();
+  const GetLogStream();
 
-  static const String CONSTRUCTOR = 'getLogStream';
+  static const String constructor = 'getLogStream';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

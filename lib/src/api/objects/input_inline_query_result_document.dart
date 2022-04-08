@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to a file
+@immutable
 class InputInlineQueryResultDocument extends InputInlineQueryResult {
-  InputInlineQueryResultDocument(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.documentUrl,
-      required this.mimeType,
-      required this.thumbnailUrl,
-      required this.thumbnailWidth,
-      required this.thumbnailHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultDocument({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.documentUrl,
+    required this.mimeType,
+    required this.thumbnailUrl,
+    required this.thumbnailWidth,
+    required this.thumbnailHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -50,7 +53,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultDocument';
+  static const String constructor = 'inputInlineQueryResultDocument';
 
   static InputInlineQueryResultDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -58,34 +61,36 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultDocument(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        documentUrl: json['document_url'],
-        mimeType: json['mime_type'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      documentUrl: json['document_url'],
+      mimeType: json['mime_type'],
+      thumbnailUrl: json['thumbnail_url'],
+      thumbnailWidth: json['thumbnail_width'],
+      thumbnailHeight: json['thumbnail_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'description': this.description,
-        'document_url': this.documentUrl,
-        'mime_type': this.mimeType,
-        'thumbnail_url': this.thumbnailUrl,
-        'thumbnail_width': this.thumbnailWidth,
-        'thumbnail_height': this.thumbnailHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'description': description,
+        'document_url': documentUrl,
+        'mime_type': mimeType,
+        'thumbnail_url': thumbnailUrl,
+        'thumbnail_width': thumbnailWidth,
+        'thumbnail_height': thumbnailHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

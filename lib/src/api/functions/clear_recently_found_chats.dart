@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Clears the list of recently found chats
 /// Returns [Ok]
+@immutable
 class ClearRecentlyFoundChats extends TdFunction {
-  ClearRecentlyFoundChats();
+  const ClearRecentlyFoundChats();
 
-  static const String CONSTRUCTOR = 'clearRecentlyFoundChats';
+  static const String constructor = 'clearRecentlyFoundChats';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

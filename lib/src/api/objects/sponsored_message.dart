@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a sponsored message
+@immutable
 class SponsoredMessage extends TdObject {
-  SponsoredMessage(
-      {required this.messageId,
-      required this.sponsorChatId,
-      this.sponsorChatInfo,
-      this.link,
-      required this.content});
+  const SponsoredMessage({
+    required this.messageId,
+    required this.sponsorChatId,
+    this.sponsorChatInfo,
+    this.link,
+    required this.content,
+  });
 
   /// [messageId] Message identifier; unique for the chat to which the sponsored
   /// message belongs among both ordinary and sponsored messages
@@ -30,7 +33,7 @@ class SponsoredMessage extends TdObject {
   /// messageText
   final MessageContent content;
 
-  static const String CONSTRUCTOR = 'sponsoredMessage';
+  static const String constructor = 'sponsoredMessage';
 
   static SponsoredMessage? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,23 +41,25 @@ class SponsoredMessage extends TdObject {
     }
 
     return SponsoredMessage(
-        messageId: json['message_id'],
-        sponsorChatId: json['sponsor_chat_id'],
-        sponsorChatInfo: ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
-        link: InternalLinkType.fromJson(json['link']),
-        content: MessageContent.fromJson(json['content'])!);
+      messageId: json['message_id'],
+      sponsorChatId: json['sponsor_chat_id'],
+      sponsorChatInfo: ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
+      link: InternalLinkType.fromJson(json['link']),
+      content: MessageContent.fromJson(json['content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'message_id': this.messageId,
-        'sponsor_chat_id': this.sponsorChatId,
-        'sponsor_chat_info': this.sponsorChatInfo?.toJson(),
-        'link': this.link?.toJson(),
-        'content': this.content.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'message_id': messageId,
+        'sponsor_chat_id': sponsorChatId,
+        'sponsor_chat_info': sponsorChatInfo?.toJson(),
+        'link': link?.toJson(),
+        'content': content.toJson(),
+        '@type': constructor,
       };
 
   @override

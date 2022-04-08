@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of a chat
+@immutable
 abstract class ChatType extends TdObject {
   const ChatType();
 
-  static const String CONSTRUCTOR = 'chatType';
+  static const String constructor = 'chatType';
 
   /// Inherited by:
   /// [ChatTypePrivate]
@@ -17,14 +19,14 @@ abstract class ChatType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatTypePrivate.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatTypePrivate.constructor:
         return ChatTypePrivate.fromJson(json);
-      case ChatTypeBasicGroup.CONSTRUCTOR:
+      case ChatTypeBasicGroup.constructor:
         return ChatTypeBasicGroup.fromJson(json);
-      case ChatTypeSupergroup.CONSTRUCTOR:
+      case ChatTypeSupergroup.constructor:
         return ChatTypeSupergroup.fromJson(json);
-      case ChatTypeSecret.CONSTRUCTOR:
+      case ChatTypeSecret.constructor:
         return ChatTypeSecret.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class ChatType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

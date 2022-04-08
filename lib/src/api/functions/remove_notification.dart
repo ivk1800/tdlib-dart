@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes an active notification from notification list. Needs to be called
 /// only if the notification is removed by the current user
 /// Returns [Ok]
+@immutable
 class RemoveNotification extends TdFunction {
-  RemoveNotification(
-      {required this.notificationGroupId, required this.notificationId});
+  const RemoveNotification({
+    required this.notificationGroupId,
+    required this.notificationId,
+  });
 
   /// [notificationGroupId] Identifier of notification group to which the
   /// notification belongs
@@ -15,15 +19,16 @@ class RemoveNotification extends TdFunction {
   /// [notificationId] Identifier of removed notification
   final int notificationId;
 
-  static const String CONSTRUCTOR = 'removeNotification';
+  static const String constructor = 'removeNotification';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'notification_group_id': this.notificationGroupId,
-        'notification_id': this.notificationId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'notification_group_id': notificationGroupId,
+        'notification_id': notificationId,
+        '@type': constructor,
       };
 
   @override

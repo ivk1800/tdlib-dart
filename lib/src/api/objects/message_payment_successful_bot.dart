@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A payment has been completed; for bots only
+@immutable
 class MessagePaymentSuccessfulBot extends MessageContent {
-  MessagePaymentSuccessfulBot(
-      {required this.currency,
-      required this.totalAmount,
-      required this.invoicePayload,
-      required this.shippingOptionId,
-      this.orderInfo,
-      required this.telegramPaymentChargeId,
-      required this.providerPaymentChargeId});
+  const MessagePaymentSuccessfulBot({
+    required this.currency,
+    required this.totalAmount,
+    required this.invoicePayload,
+    required this.shippingOptionId,
+    this.orderInfo,
+    required this.telegramPaymentChargeId,
+    required this.providerPaymentChargeId,
+  });
 
   /// [currency] Currency for price of the product
   final String currency;
@@ -35,7 +38,7 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// [providerPaymentChargeId] Provider payment identifier
   final String providerPaymentChargeId;
 
-  static const String CONSTRUCTOR = 'messagePaymentSuccessfulBot';
+  static const String constructor = 'messagePaymentSuccessfulBot';
 
   static MessagePaymentSuccessfulBot? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -43,27 +46,29 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     }
 
     return MessagePaymentSuccessfulBot(
-        currency: json['currency'],
-        totalAmount: json['total_amount'],
-        invoicePayload: json['invoice_payload'],
-        shippingOptionId: json['shipping_option_id'],
-        orderInfo: OrderInfo.fromJson(json['order_info']),
-        telegramPaymentChargeId: json['telegram_payment_charge_id'],
-        providerPaymentChargeId: json['provider_payment_charge_id']);
+      currency: json['currency'],
+      totalAmount: json['total_amount'],
+      invoicePayload: json['invoice_payload'],
+      shippingOptionId: json['shipping_option_id'],
+      orderInfo: OrderInfo.fromJson(json['order_info']),
+      telegramPaymentChargeId: json['telegram_payment_charge_id'],
+      providerPaymentChargeId: json['provider_payment_charge_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'currency': this.currency,
-        'total_amount': this.totalAmount,
-        'invoice_payload': this.invoicePayload,
-        'shipping_option_id': this.shippingOptionId,
-        'order_info': this.orderInfo?.toJson(),
-        'telegram_payment_charge_id': this.telegramPaymentChargeId,
-        'provider_payment_charge_id': this.providerPaymentChargeId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'currency': currency,
+        'total_amount': totalAmount,
+        'invoice_payload': invoicePayload,
+        'shipping_option_id': shippingOptionId,
+        'order_info': orderInfo?.toJson(),
+        'telegram_payment_charge_id': telegramPaymentChargeId,
+        'provider_payment_charge_id': providerPaymentChargeId,
+        '@type': constructor,
       };
 
   @override

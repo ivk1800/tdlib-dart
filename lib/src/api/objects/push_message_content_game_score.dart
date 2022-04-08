@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new high score was achieved in a game
+@immutable
 class PushMessageContentGameScore extends PushMessageContent {
-  PushMessageContentGameScore(
-      {required this.title, required this.score, required this.isPinned});
+  const PushMessageContentGameScore({
+    required this.title,
+    required this.score,
+    required this.isPinned,
+  });
 
   /// [title] Game title, empty for pinned message
   final String title;
@@ -16,7 +21,7 @@ class PushMessageContentGameScore extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentGameScore';
+  static const String constructor = 'pushMessageContentGameScore';
 
   static PushMessageContentGameScore? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class PushMessageContentGameScore extends PushMessageContent {
     }
 
     return PushMessageContentGameScore(
-        title: json['title'],
-        score: json['score'],
-        isPinned: json['is_pinned']);
+      title: json['title'],
+      score: json['score'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'score': this.score,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'score': score,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

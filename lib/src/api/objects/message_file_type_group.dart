@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The messages was exported from a group chat
+@immutable
 class MessageFileTypeGroup extends MessageFileType {
-  MessageFileTypeGroup({required this.title});
+  const MessageFileTypeGroup({
+    required this.title,
+  });
 
   /// [title] Title of the group chat; may be empty if unrecognized
   final String title;
 
-  static const String CONSTRUCTOR = 'messageFileTypeGroup';
+  static const String constructor = 'messageFileTypeGroup';
 
   static MessageFileTypeGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageFileTypeGroup(title: json['title']);
+    return MessageFileTypeGroup(
+      title: json['title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'title': this.title, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

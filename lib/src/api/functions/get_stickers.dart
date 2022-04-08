@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns stickers from the installed sticker sets that correspond to a
 /// given emoji. If the emoji is non-empty, favorite and recently used
 /// stickers may also be returned
 /// Returns [Stickers]
+@immutable
 class GetStickers extends TdFunction {
-  GetStickers({required this.emoji, required this.limit});
+  const GetStickers({
+    required this.emoji,
+    required this.limit,
+  });
 
   /// [emoji] String representation of emoji. If empty, returns all known
   /// installed stickers
@@ -15,13 +20,17 @@ class GetStickers extends TdFunction {
   /// [limit] The maximum number of stickers to be returned
   final int limit;
 
-  static const String CONSTRUCTOR = 'getStickers';
+  static const String constructor = 'getStickers';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'emoji': this.emoji, 'limit': this.limit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'emoji': emoji,
+        'limit': limit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

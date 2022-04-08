@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Starts a scheduled group call
 /// Returns [Ok]
+@immutable
 class StartScheduledGroupCall extends TdFunction {
-  StartScheduledGroupCall({required this.groupCallId});
+  const StartScheduledGroupCall({
+    required this.groupCallId,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
-  static const String CONSTRUCTOR = 'startScheduledGroupCall';
+  static const String constructor = 'startScheduledGroupCall';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'group_call_id': this.groupCallId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

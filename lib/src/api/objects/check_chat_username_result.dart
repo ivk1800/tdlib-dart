@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents result of checking whether a username can be set for a chat
+@immutable
 abstract class CheckChatUsernameResult extends TdObject {
   const CheckChatUsernameResult();
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResult';
+  static const String constructor = 'checkChatUsernameResult';
 
   /// Inherited by:
   /// [CheckChatUsernameResultOk]
@@ -18,16 +20,16 @@ abstract class CheckChatUsernameResult extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CheckChatUsernameResultOk.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CheckChatUsernameResultOk.constructor:
         return CheckChatUsernameResultOk.fromJson(json);
-      case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
+      case CheckChatUsernameResultUsernameInvalid.constructor:
         return CheckChatUsernameResultUsernameInvalid.fromJson(json);
-      case CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR:
+      case CheckChatUsernameResultUsernameOccupied.constructor:
         return CheckChatUsernameResultUsernameOccupied.fromJson(json);
-      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
+      case CheckChatUsernameResultPublicChatsTooMuch.constructor:
         return CheckChatUsernameResultPublicChatsTooMuch.fromJson(json);
-      case CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR:
+      case CheckChatUsernameResultPublicGroupsUnavailable.constructor:
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json);
       default:
         return null;
@@ -35,7 +37,7 @@ abstract class CheckChatUsernameResult extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

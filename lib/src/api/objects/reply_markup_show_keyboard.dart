@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a custom keyboard layout to quickly reply to bots
+@immutable
 class ReplyMarkupShowKeyboard extends ReplyMarkup {
-  ReplyMarkupShowKeyboard(
-      {required this.rows,
-      required this.resizeKeyboard,
-      required this.oneTime,
-      required this.isPersonal,
-      required this.inputFieldPlaceholder});
+  const ReplyMarkupShowKeyboard({
+    required this.rows,
+    required this.resizeKeyboard,
+    required this.oneTime,
+    required this.isPersonal,
+    required this.inputFieldPlaceholder,
+  });
 
   /// [rows] A list of rows of bot keyboard buttons
   final List<List<KeyboardButton>> rows;
@@ -29,7 +32,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   /// input field when the keyboard is active; 0-64 characters
   final String inputFieldPlaceholder;
 
-  static const String CONSTRUCTOR = 'replyMarkupShowKeyboard';
+  static const String constructor = 'replyMarkupShowKeyboard';
 
   static ReplyMarkupShowKeyboard? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -37,30 +40,32 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupShowKeyboard(
-        rows: List<List<KeyboardButton>>.from((json['rows'] ?? [])
-            .map((item) => List<KeyboardButton>.from(
-                (json['List<KeyboardButton>'] ?? [])
-                    .map((item) => KeyboardButton.fromJson(item))
-                    .toList()))
-            .toList()),
-        resizeKeyboard: json['resize_keyboard'],
-        oneTime: json['one_time'],
-        isPersonal: json['is_personal'],
-        inputFieldPlaceholder: json['input_field_placeholder']);
+      rows: List<List<KeyboardButton>>.from((json['rows'] ?? [])
+          .map((item) => List<KeyboardButton>.from(
+              (json['List<KeyboardButton>'] ?? [])
+                  .map((item) => KeyboardButton.fromJson(item))
+                  .toList()))
+          .toList()),
+      resizeKeyboard: json['resize_keyboard'],
+      oneTime: json['one_time'],
+      isPersonal: json['is_personal'],
+      inputFieldPlaceholder: json['input_field_placeholder'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'rows': rows
             .map((item) => item.map((item) => item.toJson()).toList())
             .toList(),
-        'resize_keyboard': this.resizeKeyboard,
-        'one_time': this.oneTime,
-        'is_personal': this.isPersonal,
-        'input_field_placeholder': this.inputFieldPlaceholder,
-        '@type': CONSTRUCTOR
+        'resize_keyboard': resizeKeyboard,
+        'one_time': oneTime,
+        'is_personal': isPersonal,
+        'input_field_placeholder': inputFieldPlaceholder,
+        '@type': constructor,
       };
 
   @override

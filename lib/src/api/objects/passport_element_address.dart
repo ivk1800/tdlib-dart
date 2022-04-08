@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element containing the user's address
+@immutable
 class PassportElementAddress extends PassportElement {
-  PassportElementAddress({required this.address});
+  const PassportElementAddress({
+    required this.address,
+  });
 
   /// [address] Address
   final Address address;
 
-  static const String CONSTRUCTOR = 'passportElementAddress';
+  static const String constructor = 'passportElementAddress';
 
   static PassportElementAddress? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PassportElementAddress(address: Address.fromJson(json['address'])!);
+    return PassportElementAddress(
+      address: Address.fromJson(json['address'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'address': this.address.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'address': address.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

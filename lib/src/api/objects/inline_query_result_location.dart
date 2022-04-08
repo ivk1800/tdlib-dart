@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a point on the map
+@immutable
 class InlineQueryResultLocation extends InlineQueryResult {
-  InlineQueryResultLocation(
-      {required this.id,
-      required this.location,
-      required this.title,
-      this.thumbnail});
+  const InlineQueryResultLocation({
+    required this.id,
+    required this.location,
+    required this.title,
+    this.thumbnail,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -21,7 +24,7 @@ class InlineQueryResultLocation extends InlineQueryResult {
   /// [thumbnail] Result thumbnail in JPEG format; may be null
   final Thumbnail? thumbnail;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultLocation';
+  static const String constructor = 'inlineQueryResultLocation';
 
   static InlineQueryResultLocation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class InlineQueryResultLocation extends InlineQueryResult {
     }
 
     return InlineQueryResultLocation(
-        id: json['id'],
-        location: Location.fromJson(json['location'])!,
-        title: json['title'],
-        thumbnail: Thumbnail.fromJson(json['thumbnail']));
+      id: json['id'],
+      location: Location.fromJson(json['location'])!,
+      title: json['title'],
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'location': this.location.toJson(),
-        'title': this.title,
-        'thumbnail': this.thumbnail?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'location': location.toJson(),
+        'title': title,
+        'thumbnail': thumbnail?.toJson(),
+        '@type': constructor,
       };
 
   @override

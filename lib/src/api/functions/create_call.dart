@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a new call
 /// Returns [CallId]
+@immutable
 class CreateCall extends TdFunction {
-  CreateCall(
-      {required this.userId, required this.protocol, required this.isVideo});
+  const CreateCall({
+    required this.userId,
+    required this.protocol,
+    required this.isVideo,
+  });
 
   /// [userId] Identifier of the user to be called
   final int userId;
@@ -16,16 +21,17 @@ class CreateCall extends TdFunction {
   /// [isVideo] True, if a video call needs to be created
   final bool isVideo;
 
-  static const String CONSTRUCTOR = 'createCall';
+  static const String constructor = 'createCall';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'protocol': this.protocol.toJson(),
-        'is_video': this.isVideo,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'protocol': protocol.toJson(),
+        'is_video': isVideo,
+        '@type': constructor,
       };
 
   @override

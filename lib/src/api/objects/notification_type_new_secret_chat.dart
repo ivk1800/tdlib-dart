@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// New secret chat was created
+@immutable
 class NotificationTypeNewSecretChat extends NotificationType {
   const NotificationTypeNewSecretChat();
 
-  static const String CONSTRUCTOR = 'notificationTypeNewSecretChat';
+  static const String constructor = 'notificationTypeNewSecretChat';
 
   static NotificationTypeNewSecretChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class NotificationTypeNewSecretChat extends NotificationType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

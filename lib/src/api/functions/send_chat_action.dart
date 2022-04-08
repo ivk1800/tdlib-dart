@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends a notification about user activity in a chat
 /// Returns [Ok]
+@immutable
 class SendChatAction extends TdFunction {
-  SendChatAction(
-      {required this.chatId, required this.messageThreadId, this.action});
+  const SendChatAction({
+    required this.chatId,
+    required this.messageThreadId,
+    this.action,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -18,16 +23,17 @@ class SendChatAction extends TdFunction {
   /// action
   final ChatAction? action;
 
-  static const String CONSTRUCTOR = 'sendChatAction';
+  static const String constructor = 'sendChatAction';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'action': this.action?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'action': action?.toJson(),
+        '@type': constructor,
       };
 
   @override

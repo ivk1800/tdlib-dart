@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a remote file
+@immutable
 class RemoteFile extends TdObject {
-  RemoteFile(
-      {required this.id,
-      required this.uniqueId,
-      required this.isUploadingActive,
-      required this.isUploadingCompleted,
-      required this.uploadedSize});
+  const RemoteFile({
+    required this.id,
+    required this.uniqueId,
+    required this.isUploadingActive,
+    required this.isUploadingCompleted,
+    required this.uploadedSize,
+  });
 
   /// [id] Remote file identifier; may be empty. Can be used by the current user
   /// across application restarts or even from other devices. Uniquely
@@ -38,7 +41,7 @@ class RemoteFile extends TdObject {
   /// if unknown
   final int uploadedSize;
 
-  static const String CONSTRUCTOR = 'remoteFile';
+  static const String constructor = 'remoteFile';
 
   static RemoteFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -46,23 +49,25 @@ class RemoteFile extends TdObject {
     }
 
     return RemoteFile(
-        id: json['id'],
-        uniqueId: json['unique_id'],
-        isUploadingActive: json['is_uploading_active'],
-        isUploadingCompleted: json['is_uploading_completed'],
-        uploadedSize: json['uploaded_size']);
+      id: json['id'],
+      uniqueId: json['unique_id'],
+      isUploadingActive: json['is_uploading_active'],
+      isUploadingCompleted: json['is_uploading_completed'],
+      uploadedSize: json['uploaded_size'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'unique_id': this.uniqueId,
-        'is_uploading_active': this.isUploadingActive,
-        'is_uploading_completed': this.isUploadingCompleted,
-        'uploaded_size': this.uploadedSize,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'unique_id': uniqueId,
+        'is_uploading_active': isUploadingActive,
+        'is_uploading_completed': isUploadingCompleted,
+        'uploaded_size': uploadedSize,
+        '@type': constructor,
       };
 
   @override

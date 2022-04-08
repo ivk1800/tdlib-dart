@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a group call participant's video channel
+@immutable
 class GroupCallParticipantVideoInfo extends TdObject {
-  GroupCallParticipantVideoInfo(
-      {required this.sourceGroups,
-      required this.endpointId,
-      required this.isPaused});
+  const GroupCallParticipantVideoInfo({
+    required this.sourceGroups,
+    required this.endpointId,
+    required this.isPaused,
+  });
 
   /// [sourceGroups] List of synchronization source groups of the video
   final List<GroupCallVideoSourceGroup> sourceGroups;
@@ -18,7 +21,7 @@ class GroupCallParticipantVideoInfo extends TdObject {
   /// new video frames are received
   final bool isPaused;
 
-  static const String CONSTRUCTOR = 'groupCallParticipantVideoInfo';
+  static const String constructor = 'groupCallParticipantVideoInfo';
 
   static GroupCallParticipantVideoInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,22 +29,24 @@ class GroupCallParticipantVideoInfo extends TdObject {
     }
 
     return GroupCallParticipantVideoInfo(
-        sourceGroups: List<GroupCallVideoSourceGroup>.from(
-            (json['source_groups'] ?? [])
-                .map((item) => GroupCallVideoSourceGroup.fromJson(item))
-                .toList()),
-        endpointId: json['endpoint_id'],
-        isPaused: json['is_paused']);
+      sourceGroups: List<GroupCallVideoSourceGroup>.from(
+          (json['source_groups'] ?? [])
+              .map((item) => GroupCallVideoSourceGroup.fromJson(item))
+              .toList()),
+      endpointId: json['endpoint_id'],
+      isPaused: json['is_paused'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'source_groups': sourceGroups.map((item) => item.toJson()).toList(),
-        'endpoint_id': this.endpointId,
-        'is_paused': this.isPaused,
-        '@type': CONSTRUCTOR
+        'endpoint_id': endpointId,
+        'is_paused': isPaused,
+        '@type': constructor,
       };
 
   @override

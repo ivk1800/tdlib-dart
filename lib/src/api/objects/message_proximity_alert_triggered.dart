@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A user in the chat came within proximity alert range
+@immutable
 class MessageProximityAlertTriggered extends MessageContent {
-  MessageProximityAlertTriggered(
-      {required this.travelerId,
-      required this.watcherId,
-      required this.distance});
+  const MessageProximityAlertTriggered({
+    required this.travelerId,
+    required this.watcherId,
+    required this.distance,
+  });
 
   /// [travelerId] The identifier of a user or chat that triggered the proximity
   /// alert
@@ -19,7 +22,7 @@ class MessageProximityAlertTriggered extends MessageContent {
   /// [distance] The distance between the users
   final int distance;
 
-  static const String CONSTRUCTOR = 'messageProximityAlertTriggered';
+  static const String constructor = 'messageProximityAlertTriggered';
 
   static MessageProximityAlertTriggered? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class MessageProximityAlertTriggered extends MessageContent {
     }
 
     return MessageProximityAlertTriggered(
-        travelerId: MessageSender.fromJson(json['traveler_id'])!,
-        watcherId: MessageSender.fromJson(json['watcher_id'])!,
-        distance: json['distance']);
+      travelerId: MessageSender.fromJson(json['traveler_id'])!,
+      watcherId: MessageSender.fromJson(json['watcher_id'])!,
+      distance: json['distance'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'traveler_id': this.travelerId.toJson(),
-        'watcher_id': this.watcherId.toJson(),
-        'distance': this.distance,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'traveler_id': travelerId.toJson(),
+        'watcher_id': watcherId.toJson(),
+        'distance': distance,
+        '@type': constructor,
       };
 
   @override

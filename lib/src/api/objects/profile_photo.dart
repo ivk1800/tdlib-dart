@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a user profile photo
+@immutable
 class ProfilePhoto extends TdObject {
-  ProfilePhoto(
-      {required this.id,
-      required this.small,
-      required this.big,
-      this.minithumbnail,
-      required this.hasAnimation});
+  const ProfilePhoto({
+    required this.id,
+    required this.small,
+    required this.big,
+    this.minithumbnail,
+    required this.hasAnimation,
+  });
 
   /// [id] Photo identifier; 0 for an empty photo. Can be used to find a photo
   /// in a list of user profile photos
@@ -28,7 +31,7 @@ class ProfilePhoto extends TdObject {
   /// [hasAnimation] True, if the photo has animated variant
   final bool hasAnimation;
 
-  static const String CONSTRUCTOR = 'profilePhoto';
+  static const String constructor = 'profilePhoto';
 
   static ProfilePhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -36,23 +39,25 @@ class ProfilePhoto extends TdObject {
     }
 
     return ProfilePhoto(
-        id: int.tryParse(json['id']) ?? 0,
-        small: File.fromJson(json['small'])!,
-        big: File.fromJson(json['big'])!,
-        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-        hasAnimation: json['has_animation']);
+      id: int.tryParse(json['id']) ?? 0,
+      small: File.fromJson(json['small'])!,
+      big: File.fromJson(json['big'])!,
+      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
+      hasAnimation: json['has_animation'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'small': this.small.toJson(),
-        'big': this.big.toJson(),
-        'minithumbnail': this.minithumbnail?.toJson(),
-        'has_animation': this.hasAnimation,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'small': small.toJson(),
+        'big': big.toJson(),
+        'minithumbnail': minithumbnail?.toJson(),
+        'has_animation': hasAnimation,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The supergroup sticker set was changed
+@immutable
 class ChatEventStickerSetChanged extends ChatEventAction {
-  ChatEventStickerSetChanged(
-      {required this.oldStickerSetId, required this.newStickerSetId});
+  const ChatEventStickerSetChanged({
+    required this.oldStickerSetId,
+    required this.newStickerSetId,
+  });
 
   /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none
   final int oldStickerSetId;
@@ -12,7 +16,7 @@ class ChatEventStickerSetChanged extends ChatEventAction {
   /// [newStickerSetId] New identifier of the chat sticker set; 0 if none
   final int newStickerSetId;
 
-  static const String CONSTRUCTOR = 'chatEventStickerSetChanged';
+  static const String constructor = 'chatEventStickerSetChanged';
 
   static ChatEventStickerSetChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventStickerSetChanged extends ChatEventAction {
     }
 
     return ChatEventStickerSetChanged(
-        oldStickerSetId: int.tryParse(json['old_sticker_set_id']) ?? 0,
-        newStickerSetId: int.tryParse(json['new_sticker_set_id']) ?? 0);
+      oldStickerSetId: int.tryParse(json['old_sticker_set_id']) ?? 0,
+      newStickerSetId: int.tryParse(json['new_sticker_set_id']) ?? 0,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_sticker_set_id': this.oldStickerSetId,
-        'new_sticker_set_id': this.newStickerSetId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_sticker_set_id': oldStickerSetId,
+        'new_sticker_set_id': newStickerSetId,
+        '@type': constructor,
       };
 
   @override

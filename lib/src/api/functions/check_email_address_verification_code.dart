@@ -1,20 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Checks the email address verification code for Telegram Passport
 /// Returns [Ok]
+@immutable
 class CheckEmailAddressVerificationCode extends TdFunction {
-  CheckEmailAddressVerificationCode({required this.code});
+  const CheckEmailAddressVerificationCode({
+    required this.code,
+  });
 
   /// [code] Verification code to check
   final String code;
 
-  static const String CONSTRUCTOR = 'checkEmailAddressVerificationCode';
+  static const String constructor = 'checkEmailAddressVerificationCode';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'code': this.code, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'code': code,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

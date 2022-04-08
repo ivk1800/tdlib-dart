@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a user by their identifier. This is an offline
 /// request if the current user is not a bot
 /// Returns [User]
+@immutable
 class GetUser extends TdFunction {
-  GetUser({required this.userId});
+  const GetUser({
+    required this.userId,
+  });
 
   /// [userId] User identifier
   final int userId;
 
-  static const String CONSTRUCTOR = 'getUser';
+  static const String constructor = 'getUser';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'user_id': this.userId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

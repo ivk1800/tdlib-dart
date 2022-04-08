@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of a proxy server
+@immutable
 abstract class ProxyType extends TdObject {
   const ProxyType();
 
-  static const String CONSTRUCTOR = 'proxyType';
+  static const String constructor = 'proxyType';
 
   /// Inherited by:
   /// [ProxyTypeSocks5]
@@ -16,12 +18,12 @@ abstract class ProxyType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ProxyTypeSocks5.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ProxyTypeSocks5.constructor:
         return ProxyTypeSocks5.fromJson(json);
-      case ProxyTypeHttp.CONSTRUCTOR:
+      case ProxyTypeHttp.constructor:
         return ProxyTypeHttp.fromJson(json);
-      case ProxyTypeMtproto.CONSTRUCTOR:
+      case ProxyTypeMtproto.constructor:
         return ProxyTypeMtproto.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class ProxyType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

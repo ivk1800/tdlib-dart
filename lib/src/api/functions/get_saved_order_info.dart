@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns saved order info, if any
 /// Returns [OrderInfo]
+@immutable
 class GetSavedOrderInfo extends TdFunction {
-  GetSavedOrderInfo();
+  const GetSavedOrderInfo();
 
-  static const String CONSTRUCTOR = 'getSavedOrderInfo';
+  static const String constructor = 'getSavedOrderInfo';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to a WEBP or TGS sticker
+@immutable
 class InputInlineQueryResultSticker extends InputInlineQueryResult {
-  InputInlineQueryResultSticker(
-      {required this.id,
-      required this.thumbnailUrl,
-      required this.stickerUrl,
-      required this.stickerWidth,
-      required this.stickerHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultSticker({
+    required this.id,
+    required this.thumbnailUrl,
+    required this.stickerUrl,
+    required this.stickerWidth,
+    required this.stickerHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -38,7 +41,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultSticker';
+  static const String constructor = 'inputInlineQueryResultSticker';
 
   static InputInlineQueryResultSticker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -46,28 +49,30 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultSticker(
-        id: json['id'],
-        thumbnailUrl: json['thumbnail_url'],
-        stickerUrl: json['sticker_url'],
-        stickerWidth: json['sticker_width'],
-        stickerHeight: json['sticker_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      thumbnailUrl: json['thumbnail_url'],
+      stickerUrl: json['sticker_url'],
+      stickerWidth: json['sticker_width'],
+      stickerHeight: json['sticker_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'thumbnail_url': this.thumbnailUrl,
-        'sticker_url': this.stickerUrl,
-        'sticker_width': this.stickerWidth,
-        'sticker_height': this.stickerHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'thumbnail_url': thumbnailUrl,
+        'sticker_url': stickerUrl,
+        'sticker_width': stickerWidth,
+        'sticker_height': stickerHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about messages. If a message is not found, returns
 /// null on the corresponding position of the result
 /// Returns [Messages]
+@immutable
 class GetMessages extends TdFunction {
-  GetMessages({required this.chatId, required this.messageIds});
+  const GetMessages({
+    required this.chatId,
+    required this.messageIds,
+  });
 
   /// [chatId] Identifier of the chat the messages belong to
   final int chatId;
@@ -13,15 +18,16 @@ class GetMessages extends TdFunction {
   /// [messageIds] Identifiers of the messages to get
   final List<int> messageIds;
 
-  static const String CONSTRUCTOR = 'getMessages';
+  static const String constructor = 'getMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
         'message_ids': messageIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

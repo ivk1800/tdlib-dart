@@ -1,24 +1,27 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains parameters for TDLib initialization
+@immutable
 class TdlibParameters extends TdObject {
-  TdlibParameters(
-      {required this.useTestDc,
-      required this.databaseDirectory,
-      required this.filesDirectory,
-      required this.useFileDatabase,
-      required this.useChatInfoDatabase,
-      required this.useMessageDatabase,
-      required this.useSecretChats,
-      required this.apiId,
-      required this.apiHash,
-      required this.systemLanguageCode,
-      required this.deviceModel,
-      required this.systemVersion,
-      required this.applicationVersion,
-      required this.enableStorageOptimizer,
-      required this.ignoreFileNames});
+  const TdlibParameters({
+    required this.useTestDc,
+    required this.databaseDirectory,
+    required this.filesDirectory,
+    required this.useFileDatabase,
+    required this.useChatInfoDatabase,
+    required this.useMessageDatabase,
+    required this.useSecretChats,
+    required this.apiId,
+    required this.apiHash,
+    required this.systemLanguageCode,
+    required this.deviceModel,
+    required this.systemVersion,
+    required this.applicationVersion,
+    required this.enableStorageOptimizer,
+    required this.ignoreFileNames,
+  });
 
   /// [useTestDc] If set to true, the Telegram test environment will be used
   /// instead of the production environment
@@ -80,7 +83,7 @@ class TdlibParameters extends TdObject {
   /// to the original name
   final bool ignoreFileNames;
 
-  static const String CONSTRUCTOR = 'tdlibParameters';
+  static const String constructor = 'tdlibParameters';
 
   static TdlibParameters? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -88,43 +91,45 @@ class TdlibParameters extends TdObject {
     }
 
     return TdlibParameters(
-        useTestDc: json['use_test_dc'],
-        databaseDirectory: json['database_directory'],
-        filesDirectory: json['files_directory'],
-        useFileDatabase: json['use_file_database'],
-        useChatInfoDatabase: json['use_chat_info_database'],
-        useMessageDatabase: json['use_message_database'],
-        useSecretChats: json['use_secret_chats'],
-        apiId: json['api_id'],
-        apiHash: json['api_hash'],
-        systemLanguageCode: json['system_language_code'],
-        deviceModel: json['device_model'],
-        systemVersion: json['system_version'],
-        applicationVersion: json['application_version'],
-        enableStorageOptimizer: json['enable_storage_optimizer'],
-        ignoreFileNames: json['ignore_file_names']);
+      useTestDc: json['use_test_dc'],
+      databaseDirectory: json['database_directory'],
+      filesDirectory: json['files_directory'],
+      useFileDatabase: json['use_file_database'],
+      useChatInfoDatabase: json['use_chat_info_database'],
+      useMessageDatabase: json['use_message_database'],
+      useSecretChats: json['use_secret_chats'],
+      apiId: json['api_id'],
+      apiHash: json['api_hash'],
+      systemLanguageCode: json['system_language_code'],
+      deviceModel: json['device_model'],
+      systemVersion: json['system_version'],
+      applicationVersion: json['application_version'],
+      enableStorageOptimizer: json['enable_storage_optimizer'],
+      ignoreFileNames: json['ignore_file_names'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'use_test_dc': this.useTestDc,
-        'database_directory': this.databaseDirectory,
-        'files_directory': this.filesDirectory,
-        'use_file_database': this.useFileDatabase,
-        'use_chat_info_database': this.useChatInfoDatabase,
-        'use_message_database': this.useMessageDatabase,
-        'use_secret_chats': this.useSecretChats,
-        'api_id': this.apiId,
-        'api_hash': this.apiHash,
-        'system_language_code': this.systemLanguageCode,
-        'device_model': this.deviceModel,
-        'system_version': this.systemVersion,
-        'application_version': this.applicationVersion,
-        'enable_storage_optimizer': this.enableStorageOptimizer,
-        'ignore_file_names': this.ignoreFileNames,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'use_test_dc': useTestDc,
+        'database_directory': databaseDirectory,
+        'files_directory': filesDirectory,
+        'use_file_database': useFileDatabase,
+        'use_chat_info_database': useChatInfoDatabase,
+        'use_message_database': useMessageDatabase,
+        'use_secret_chats': useSecretChats,
+        'api_id': apiId,
+        'api_hash': apiHash,
+        'system_language_code': systemLanguageCode,
+        'device_model': deviceModel,
+        'system_version': systemVersion,
+        'application_version': applicationVersion,
+        'enable_storage_optimizer': enableStorageOptimizer,
+        'ignore_file_names': ignoreFileNames,
+        '@type': constructor,
       };
 
   @override

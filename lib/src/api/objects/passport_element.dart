@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a Telegram Passport element
+@immutable
 abstract class PassportElement extends TdObject {
   const PassportElement();
 
-  static const String CONSTRUCTOR = 'passportElement';
+  static const String constructor = 'passportElement';
 
   /// Inherited by:
   /// [PassportElementPersonalDetails]
@@ -26,32 +28,32 @@ abstract class PassportElement extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PassportElementPersonalDetails.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PassportElementPersonalDetails.constructor:
         return PassportElementPersonalDetails.fromJson(json);
-      case PassportElementPassport.CONSTRUCTOR:
+      case PassportElementPassport.constructor:
         return PassportElementPassport.fromJson(json);
-      case PassportElementDriverLicense.CONSTRUCTOR:
+      case PassportElementDriverLicense.constructor:
         return PassportElementDriverLicense.fromJson(json);
-      case PassportElementIdentityCard.CONSTRUCTOR:
+      case PassportElementIdentityCard.constructor:
         return PassportElementIdentityCard.fromJson(json);
-      case PassportElementInternalPassport.CONSTRUCTOR:
+      case PassportElementInternalPassport.constructor:
         return PassportElementInternalPassport.fromJson(json);
-      case PassportElementAddress.CONSTRUCTOR:
+      case PassportElementAddress.constructor:
         return PassportElementAddress.fromJson(json);
-      case PassportElementUtilityBill.CONSTRUCTOR:
+      case PassportElementUtilityBill.constructor:
         return PassportElementUtilityBill.fromJson(json);
-      case PassportElementBankStatement.CONSTRUCTOR:
+      case PassportElementBankStatement.constructor:
         return PassportElementBankStatement.fromJson(json);
-      case PassportElementRentalAgreement.CONSTRUCTOR:
+      case PassportElementRentalAgreement.constructor:
         return PassportElementRentalAgreement.fromJson(json);
-      case PassportElementPassportRegistration.CONSTRUCTOR:
+      case PassportElementPassportRegistration.constructor:
         return PassportElementPassportRegistration.fromJson(json);
-      case PassportElementTemporaryRegistration.CONSTRUCTOR:
+      case PassportElementTemporaryRegistration.constructor:
         return PassportElementTemporaryRegistration.fromJson(json);
-      case PassportElementPhoneNumber.CONSTRUCTOR:
+      case PassportElementPhoneNumber.constructor:
         return PassportElementPhoneNumber.fromJson(json);
-      case PassportElementEmailAddress.CONSTRUCTOR:
+      case PassportElementEmailAddress.constructor:
         return PassportElementEmailAddress.fromJson(json);
       default:
         return null;
@@ -59,7 +61,7 @@ abstract class PassportElement extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

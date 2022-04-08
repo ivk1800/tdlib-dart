@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the value of a string in a language pack
+@immutable
 abstract class LanguagePackStringValue extends TdObject {
   const LanguagePackStringValue();
 
-  static const String CONSTRUCTOR = 'languagePackStringValue';
+  static const String constructor = 'languagePackStringValue';
 
   /// Inherited by:
   /// [LanguagePackStringValueOrdinary]
@@ -16,12 +18,12 @@ abstract class LanguagePackStringValue extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case LanguagePackStringValueOrdinary.CONSTRUCTOR:
+    switch (json['@type']) {
+      case LanguagePackStringValueOrdinary.constructor:
         return LanguagePackStringValueOrdinary.fromJson(json);
-      case LanguagePackStringValuePluralized.CONSTRUCTOR:
+      case LanguagePackStringValuePluralized.constructor:
         return LanguagePackStringValuePluralized.fromJson(json);
-      case LanguagePackStringValueDeleted.CONSTRUCTOR:
+      case LanguagePackStringValueDeleted.constructor:
         return LanguagePackStringValueDeleted.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class LanguagePackStringValue extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

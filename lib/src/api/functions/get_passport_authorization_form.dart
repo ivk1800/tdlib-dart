@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a Telegram Passport authorization form for sharing data with a
 /// service
 /// Returns [PassportAuthorizationForm]
+@immutable
 class GetPassportAuthorizationForm extends TdFunction {
-  GetPassportAuthorizationForm(
-      {required this.botUserId,
-      required this.scope,
-      required this.publicKey,
-      required this.nonce});
+  const GetPassportAuthorizationForm({
+    required this.botUserId,
+    required this.scope,
+    required this.publicKey,
+    required this.nonce,
+  });
 
   /// [botUserId] User identifier of the service's bot
   final int botUserId;
@@ -23,17 +26,18 @@ class GetPassportAuthorizationForm extends TdFunction {
   /// [nonce] Unique request identifier provided by the service
   final String nonce;
 
-  static const String CONSTRUCTOR = 'getPassportAuthorizationForm';
+  static const String constructor = 'getPassportAuthorizationForm';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'bot_user_id': this.botUserId,
-        'scope': this.scope,
-        'public_key': this.publicKey,
-        'nonce': this.nonce,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bot_user_id': botUserId,
+        'scope': scope,
+        'public_key': publicKey,
+        'nonce': nonce,
+        '@type': constructor,
       };
 
   @override

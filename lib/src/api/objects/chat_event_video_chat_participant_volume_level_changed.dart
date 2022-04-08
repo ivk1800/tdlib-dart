@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video chat participant volume level was changed
+@immutable
 class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
-  ChatEventVideoChatParticipantVolumeLevelChanged(
-      {required this.participantId, required this.volumeLevel});
+  const ChatEventVideoChatParticipantVolumeLevelChanged({
+    required this.participantId,
+    required this.volumeLevel,
+  });
 
   /// [participantId] Identifier of the affected group call participant
   final MessageSender participantId;
@@ -12,7 +16,7 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
   /// [volumeLevel] New value of volume_level; 1-20000 in hundreds of percents
   final int volumeLevel;
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'chatEventVideoChatParticipantVolumeLevelChanged';
 
   static ChatEventVideoChatParticipantVolumeLevelChanged? fromJson(
@@ -22,17 +26,19 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
     }
 
     return ChatEventVideoChatParticipantVolumeLevelChanged(
-        participantId: MessageSender.fromJson(json['participant_id'])!,
-        volumeLevel: json['volume_level']);
+      participantId: MessageSender.fromJson(json['participant_id'])!,
+      volumeLevel: json['volume_level'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'participant_id': this.participantId.toJson(),
-        'volume_level': this.volumeLevel,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'participant_id': participantId.toJson(),
+        'volume_level': volumeLevel,
+        '@type': constructor,
       };
 
   @override

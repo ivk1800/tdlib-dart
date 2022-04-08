@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// TDLib needs TdlibParameters for initialization
+@immutable
 class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   const AuthorizationStateWaitTdlibParameters();
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitTdlibParameters';
+  static const String constructor = 'authorizationStateWaitTdlibParameters';
 
   static AuthorizationStateWaitTdlibParameters? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

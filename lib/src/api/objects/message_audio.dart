@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An audio message
+@immutable
 class MessageAudio extends MessageContent {
-  MessageAudio({required this.audio, required this.caption});
+  const MessageAudio({
+    required this.audio,
+    required this.caption,
+  });
 
   /// [audio] The audio description
   final Audio audio;
@@ -11,7 +16,7 @@ class MessageAudio extends MessageContent {
   /// [caption] Audio caption
   final FormattedText caption;
 
-  static const String CONSTRUCTOR = 'messageAudio';
+  static const String constructor = 'messageAudio';
 
   static MessageAudio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class MessageAudio extends MessageContent {
     }
 
     return MessageAudio(
-        audio: Audio.fromJson(json['audio'])!,
-        caption: FormattedText.fromJson(json['caption'])!);
+      audio: Audio.fromJson(json['audio'])!,
+      caption: FormattedText.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'audio': this.audio.toJson(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'audio': audio.toJson(),
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

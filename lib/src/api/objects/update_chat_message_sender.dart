@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message sender that is selected to send messages in a chat has changed
+@immutable
 class UpdateChatMessageSender extends Update {
-  UpdateChatMessageSender({required this.chatId, this.messageSenderId});
+  const UpdateChatMessageSender({
+    required this.chatId,
+    this.messageSenderId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -12,7 +17,7 @@ class UpdateChatMessageSender extends Update {
   /// can't change message sender
   final MessageSender? messageSenderId;
 
-  static const String CONSTRUCTOR = 'updateChatMessageSender';
+  static const String constructor = 'updateChatMessageSender';
 
   static UpdateChatMessageSender? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +25,19 @@ class UpdateChatMessageSender extends Update {
     }
 
     return UpdateChatMessageSender(
-        chatId: json['chat_id'],
-        messageSenderId: MessageSender.fromJson(json['message_sender_id']));
+      chatId: json['chat_id'],
+      messageSenderId: MessageSender.fromJson(json['message_sender_id']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_sender_id': this.messageSenderId?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_sender_id': messageSenderId?.toJson(),
+        '@type': constructor,
       };
 
   @override

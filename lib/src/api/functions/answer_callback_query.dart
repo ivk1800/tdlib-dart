@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets the result of a callback query; for bots only
 /// Returns [Ok]
+@immutable
 class AnswerCallbackQuery extends TdFunction {
-  AnswerCallbackQuery(
-      {required this.callbackQueryId,
-      required this.text,
-      required this.showAlert,
-      required this.url,
-      required this.cacheTime});
+  const AnswerCallbackQuery({
+    required this.callbackQueryId,
+    required this.text,
+    required this.showAlert,
+    required this.url,
+    required this.cacheTime,
+  });
 
   /// [callbackQueryId] Identifier of the callback query
   final int callbackQueryId;
@@ -28,18 +31,19 @@ class AnswerCallbackQuery extends TdFunction {
   /// seconds
   final int cacheTime;
 
-  static const String CONSTRUCTOR = 'answerCallbackQuery';
+  static const String constructor = 'answerCallbackQuery';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'callback_query_id': this.callbackQueryId,
-        'text': this.text,
-        'show_alert': this.showAlert,
-        'url': this.url,
-        'cache_time': this.cacheTime,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'callback_query_id': callbackQueryId,
+        'text': text,
+        'show_alert': showAlert,
+        'url': url,
+        'cache_time': cacheTime,
+        '@type': constructor,
       };
 
   @override

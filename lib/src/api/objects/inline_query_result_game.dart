@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents information about a game
+@immutable
 class InlineQueryResultGame extends InlineQueryResult {
-  InlineQueryResultGame({required this.id, required this.game});
+  const InlineQueryResultGame({
+    required this.id,
+    required this.game,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -11,7 +16,7 @@ class InlineQueryResultGame extends InlineQueryResult {
   /// [game] Game result
   final Game game;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultGame';
+  static const String constructor = 'inlineQueryResultGame';
 
   static InlineQueryResultGame? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,14 +24,20 @@ class InlineQueryResultGame extends InlineQueryResult {
     }
 
     return InlineQueryResultGame(
-        id: json['id'], game: Game.fromJson(json['game'])!);
+      id: json['id'],
+      game: Game.fromJson(json['game'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'id': this.id, 'game': this.game.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'game': game.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

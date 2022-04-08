@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Downloads a file from the cloud. Download progress and completion of the
 /// download will be notified through updateFile updates
 /// Returns [File]
+@immutable
 class DownloadFile extends TdFunction {
-  DownloadFile(
-      {required this.fileId,
-      required this.priority,
-      required this.offset,
-      required this.limit,
-      required this.synchronous});
+  const DownloadFile({
+    required this.fileId,
+    required this.priority,
+    required this.offset,
+    required this.limit,
+    required this.synchronous,
+  });
 
   /// [fileId] Identifier of the file to download
   final int fileId;
@@ -35,18 +38,19 @@ class DownloadFile extends TdFunction {
   /// downloadFile request with different offset/limit parameters was sent
   final bool synchronous;
 
-  static const String CONSTRUCTOR = 'downloadFile';
+  static const String constructor = 'downloadFile';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'file_id': this.fileId,
-        'priority': this.priority,
-        'offset': this.offset,
-        'limit': this.limit,
-        'synchronous': this.synchronous,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        'priority': priority,
+        'offset': offset,
+        'limit': limit,
+        'synchronous': synchronous,
+        '@type': constructor,
       };
 
   @override

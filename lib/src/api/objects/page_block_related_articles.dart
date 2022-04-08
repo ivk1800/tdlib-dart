@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Related articles
+@immutable
 class PageBlockRelatedArticles extends PageBlock {
-  PageBlockRelatedArticles({required this.header, required this.articles});
+  const PageBlockRelatedArticles({
+    required this.header,
+    required this.articles,
+  });
 
   /// [header] Block header
   final RichText header;
@@ -11,7 +16,7 @@ class PageBlockRelatedArticles extends PageBlock {
   /// [articles] List of related articles
   final List<PageBlockRelatedArticle> articles;
 
-  static const String CONSTRUCTOR = 'pageBlockRelatedArticles';
+  static const String constructor = 'pageBlockRelatedArticles';
 
   static PageBlockRelatedArticles? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,19 +24,21 @@ class PageBlockRelatedArticles extends PageBlock {
     }
 
     return PageBlockRelatedArticles(
-        header: RichText.fromJson(json['header'])!,
-        articles: List<PageBlockRelatedArticle>.from((json['articles'] ?? [])
-            .map((item) => PageBlockRelatedArticle.fromJson(item))
-            .toList()));
+      header: RichText.fromJson(json['header'])!,
+      articles: List<PageBlockRelatedArticle>.from((json['articles'] ?? [])
+          .map((item) => PageBlockRelatedArticle.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'header': this.header.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'header': header.toJson(),
         'articles': articles.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

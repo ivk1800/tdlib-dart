@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A media album
+@immutable
 class PushMessageContentMediaAlbum extends PushMessageContent {
-  PushMessageContentMediaAlbum(
-      {required this.totalCount,
-      required this.hasPhotos,
-      required this.hasVideos,
-      required this.hasAudios,
-      required this.hasDocuments});
+  const PushMessageContentMediaAlbum({
+    required this.totalCount,
+    required this.hasPhotos,
+    required this.hasVideos,
+    required this.hasAudios,
+    required this.hasDocuments,
+  });
 
   /// [totalCount] Number of messages in the album
   final int totalCount;
@@ -25,7 +28,7 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
   /// [hasDocuments] True, if the album has at least one document
   final bool hasDocuments;
 
-  static const String CONSTRUCTOR = 'pushMessageContentMediaAlbum';
+  static const String constructor = 'pushMessageContentMediaAlbum';
 
   static PushMessageContentMediaAlbum? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,23 +36,25 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
     }
 
     return PushMessageContentMediaAlbum(
-        totalCount: json['total_count'],
-        hasPhotos: json['has_photos'],
-        hasVideos: json['has_videos'],
-        hasAudios: json['has_audios'],
-        hasDocuments: json['has_documents']);
+      totalCount: json['total_count'],
+      hasPhotos: json['has_photos'],
+      hasVideos: json['has_videos'],
+      hasAudios: json['has_audios'],
+      hasDocuments: json['has_documents'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'total_count': this.totalCount,
-        'has_photos': this.hasPhotos,
-        'has_videos': this.hasVideos,
-        'has_audios': this.hasAudios,
-        'has_documents': this.hasDocuments,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'total_count': totalCount,
+        'has_photos': hasPhotos,
+        'has_videos': hasVideos,
+        'has_audios': hasAudios,
+        'has_documents': hasDocuments,
+        '@type': constructor,
       };
 
   @override

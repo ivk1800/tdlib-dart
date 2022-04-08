@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat video chat state has changed
+@immutable
 class UpdateChatVideoChat extends Update {
-  UpdateChatVideoChat({required this.chatId, required this.videoChat});
+  const UpdateChatVideoChat({
+    required this.chatId,
+    required this.videoChat,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -11,7 +16,7 @@ class UpdateChatVideoChat extends Update {
   /// [videoChat] New value of video_chat
   final VideoChat videoChat;
 
-  static const String CONSTRUCTOR = 'updateChatVideoChat';
+  static const String constructor = 'updateChatVideoChat';
 
   static UpdateChatVideoChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateChatVideoChat extends Update {
     }
 
     return UpdateChatVideoChat(
-        chatId: json['chat_id'],
-        videoChat: VideoChat.fromJson(json['video_chat'])!);
+      chatId: json['chat_id'],
+      videoChat: VideoChat.fromJson(json['video_chat'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'video_chat': this.videoChat.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'video_chat': videoChat.toJson(),
+        '@type': constructor,
       };
 
   @override

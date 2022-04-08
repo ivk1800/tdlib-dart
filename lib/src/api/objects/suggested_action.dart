@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an action suggested to the current user
+@immutable
 abstract class SuggestedAction extends TdObject {
   const SuggestedAction();
 
-  static const String CONSTRUCTOR = 'suggestedAction';
+  static const String constructor = 'suggestedAction';
 
   /// Inherited by:
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
@@ -19,18 +21,18 @@ abstract class SuggestedAction extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case SuggestedActionEnableArchiveAndMuteNewChats.CONSTRUCTOR:
+    switch (json['@type']) {
+      case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
-      case SuggestedActionCheckPassword.CONSTRUCTOR:
+      case SuggestedActionCheckPassword.constructor:
         return SuggestedActionCheckPassword.fromJson(json);
-      case SuggestedActionCheckPhoneNumber.CONSTRUCTOR:
+      case SuggestedActionCheckPhoneNumber.constructor:
         return SuggestedActionCheckPhoneNumber.fromJson(json);
-      case SuggestedActionViewChecksHint.CONSTRUCTOR:
+      case SuggestedActionViewChecksHint.constructor:
         return SuggestedActionViewChecksHint.fromJson(json);
-      case SuggestedActionConvertToBroadcastGroup.CONSTRUCTOR:
+      case SuggestedActionConvertToBroadcastGroup.constructor:
         return SuggestedActionConvertToBroadcastGroup.fromJson(json);
-      case SuggestedActionSetPassword.CONSTRUCTOR:
+      case SuggestedActionSetPassword.constructor:
         return SuggestedActionSetPassword.fromJson(json);
       default:
         return null;
@@ -38,7 +40,7 @@ abstract class SuggestedAction extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns list of available TDLib internal log tags, for example,
 /// Returns [LogTags]
+@immutable
 class GetLogTags extends TdFunction {
-  GetLogTags();
+  const GetLogTags();
 
-  static const String CONSTRUCTOR = 'getLogTags';
+  static const String constructor = 'getLogTags';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

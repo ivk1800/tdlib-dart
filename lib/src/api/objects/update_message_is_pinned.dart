@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message pinned state was changed
+@immutable
 class UpdateMessageIsPinned extends Update {
-  UpdateMessageIsPinned(
-      {required this.chatId, required this.messageId, required this.isPinned});
+  const UpdateMessageIsPinned({
+    required this.chatId,
+    required this.messageId,
+    required this.isPinned,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -15,7 +20,7 @@ class UpdateMessageIsPinned extends Update {
   /// [isPinned] True, if the message is pinned
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'updateMessageIsPinned';
+  static const String constructor = 'updateMessageIsPinned';
 
   static UpdateMessageIsPinned? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class UpdateMessageIsPinned extends Update {
     }
 
     return UpdateMessageIsPinned(
-        chatId: json['chat_id'],
-        messageId: json['message_id'],
-        isPinned: json['is_pinned']);
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

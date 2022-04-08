@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat photo was changed
+@immutable
 class ChatEventPhotoChanged extends ChatEventAction {
-  ChatEventPhotoChanged({this.oldPhoto, this.newPhoto});
+  const ChatEventPhotoChanged({
+    this.oldPhoto,
+    this.newPhoto,
+  });
 
   /// [oldPhoto] Previous chat photo value; may be null
   final ChatPhoto? oldPhoto;
@@ -11,7 +16,7 @@ class ChatEventPhotoChanged extends ChatEventAction {
   /// [newPhoto] New chat photo value; may be null
   final ChatPhoto? newPhoto;
 
-  static const String CONSTRUCTOR = 'chatEventPhotoChanged';
+  static const String constructor = 'chatEventPhotoChanged';
 
   static ChatEventPhotoChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class ChatEventPhotoChanged extends ChatEventAction {
     }
 
     return ChatEventPhotoChanged(
-        oldPhoto: ChatPhoto.fromJson(json['old_photo']),
-        newPhoto: ChatPhoto.fromJson(json['new_photo']));
+      oldPhoto: ChatPhoto.fromJson(json['old_photo']),
+      newPhoto: ChatPhoto.fromJson(json['new_photo']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_photo': this.oldPhoto?.toJson(),
-        'new_photo': this.newPhoto?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_photo': oldPhoto?.toJson(),
+        'new_photo': newPhoto?.toJson(),
+        '@type': constructor,
       };
 
   @override

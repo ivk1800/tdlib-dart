@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A bot command, beginning with "/"
+@immutable
 class TextEntityTypeBotCommand extends TextEntityType {
   const TextEntityTypeBotCommand();
 
-  static const String CONSTRUCTOR = 'textEntityTypeBotCommand';
+  static const String constructor = 'textEntityTypeBotCommand';
 
   static TextEntityTypeBotCommand? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class TextEntityTypeBotCommand extends TextEntityType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

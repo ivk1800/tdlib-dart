@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends a custom request; for bots only
 /// Returns [CustomRequestResult]
+@immutable
 class SendCustomRequest extends TdFunction {
-  SendCustomRequest({required this.method, required this.parameters});
+  const SendCustomRequest({
+    required this.method,
+    required this.parameters,
+  });
 
   /// [method] The method name
   final String method;
@@ -12,15 +17,16 @@ class SendCustomRequest extends TdFunction {
   /// [parameters] JSON-serialized method parameters
   final String parameters;
 
-  static const String CONSTRUCTOR = 'sendCustomRequest';
+  static const String constructor = 'sendCustomRequest';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'method': this.method,
-        'parameters': this.parameters,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'method': method,
+        'parameters': parameters,
+        '@type': constructor,
       };
 
   @override

@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a string stored in the local database from the specified
 /// localization target and language pack by its key. Returns a 404 error if
 /// the string is not found. Can be called synchronously
 /// Returns [LanguagePackStringValue]
+@immutable
 class GetLanguagePackString extends TdFunction {
-  GetLanguagePackString(
-      {required this.languagePackDatabasePath,
-      required this.localizationTarget,
-      required this.languagePackId,
-      required this.key});
+  const GetLanguagePackString({
+    required this.languagePackDatabasePath,
+    required this.localizationTarget,
+    required this.languagePackId,
+    required this.key,
+  });
 
   /// [languagePackDatabasePath] Path to the language pack database in which
   /// strings are stored
@@ -26,17 +29,18 @@ class GetLanguagePackString extends TdFunction {
   /// [key] Language pack key of the string to be returned
   final String key;
 
-  static const String CONSTRUCTOR = 'getLanguagePackString';
+  static const String constructor = 'getLanguagePackString';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'language_pack_database_path': this.languagePackDatabasePath,
-        'localization_target': this.localizationTarget,
-        'language_pack_id': this.languagePackId,
-        'key': this.key,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_pack_database_path': languagePackDatabasePath,
+        'localization_target': localizationTarget,
+        'language_pack_id': languagePackId,
+        'key': key,
+        '@type': constructor,
       };
 
   @override

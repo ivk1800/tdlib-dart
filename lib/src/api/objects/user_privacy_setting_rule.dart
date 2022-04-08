@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a single rule for managing privacy settings
+@immutable
 abstract class UserPrivacySettingRule extends TdObject {
   const UserPrivacySettingRule();
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRule';
+  static const String constructor = 'userPrivacySettingRule';
 
   /// Inherited by:
   /// [UserPrivacySettingRuleAllowAll]
@@ -21,22 +23,22 @@ abstract class UserPrivacySettingRule extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
+    switch (json['@type']) {
+      case UserPrivacySettingRuleAllowAll.constructor:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
-      case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowContacts.constructor:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
-      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowUsers.constructor:
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
-      case UserPrivacySettingRuleAllowChatMembers.CONSTRUCTOR:
+      case UserPrivacySettingRuleAllowChatMembers.constructor:
         return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
-      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictAll.constructor:
         return UserPrivacySettingRuleRestrictAll.fromJson(json);
-      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictContacts.constructor:
         return UserPrivacySettingRuleRestrictContacts.fromJson(json);
-      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictUsers.constructor:
         return UserPrivacySettingRuleRestrictUsers.fromJson(json);
-      case UserPrivacySettingRuleRestrictChatMembers.CONSTRUCTOR:
+      case UserPrivacySettingRuleRestrictChatMembers.constructor:
         return UserPrivacySettingRuleRestrictChatMembers.fromJson(json);
       default:
         return null;
@@ -44,7 +46,7 @@ abstract class UserPrivacySettingRule extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

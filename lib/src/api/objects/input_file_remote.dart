@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A file defined by its remote ID. The remote ID is guaranteed to be usable
 /// only if the corresponding file is still accessible to the user and known
@@ -7,26 +8,35 @@ import '../extensions/data_class_extensions.dart';
 /// must be not deleted and accessible to the user. If the file database is
 /// disabled, then the corresponding object with the file must be preloaded by
 /// the application
+@immutable
 class InputFileRemote extends InputFile {
-  InputFileRemote({required this.id});
+  const InputFileRemote({
+    required this.id,
+  });
 
   /// [id] Remote file identifier
   final String id;
 
-  static const String CONSTRUCTOR = 'inputFileRemote';
+  static const String constructor = 'inputFileRemote';
 
   static InputFileRemote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InputFileRemote(id: json['id']);
+    return InputFileRemote(
+      id: json['id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'id': this.id, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

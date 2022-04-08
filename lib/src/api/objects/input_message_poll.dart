@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a poll. Polls can't be sent to secret chats. Polls can be
 /// sent only to a private chat with a bot
+@immutable
 class InputMessagePoll extends InputMessageContent {
-  InputMessagePoll(
-      {required this.question,
-      required this.options,
-      required this.isAnonymous,
-      required this.type,
-      this.openPeriod,
-      this.closeDate,
-      this.isClosed});
+  const InputMessagePoll({
+    required this.question,
+    required this.options,
+    required this.isAnonymous,
+    required this.type,
+    this.openPeriod,
+    this.closeDate,
+    this.isClosed,
+  });
 
   /// [question] Poll question; 1-255 characters (up to 300 characters for bots)
   ///
@@ -39,7 +42,7 @@ class InputMessagePoll extends InputMessageContent {
   /// only
   final bool? isClosed;
 
-  static const String CONSTRUCTOR = 'inputMessagePoll';
+  static const String constructor = 'inputMessagePoll';
 
   static InputMessagePoll? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -47,28 +50,30 @@ class InputMessagePoll extends InputMessageContent {
     }
 
     return InputMessagePoll(
-        question: json['question'],
-        options: List<String>.from(
-            (json['options'] ?? []).map((item) => item).toList()),
-        isAnonymous: json['is_anonymous'],
-        type: PollType.fromJson(json['type'])!,
-        openPeriod: json['open_period'],
-        closeDate: json['close_date'],
-        isClosed: json['is_closed']);
+      question: json['question'],
+      options: List<String>.from(
+          (json['options'] ?? []).map((item) => item).toList()),
+      isAnonymous: json['is_anonymous'],
+      type: PollType.fromJson(json['type'])!,
+      openPeriod: json['open_period'],
+      closeDate: json['close_date'],
+      isClosed: json['is_closed'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'question': this.question,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'question': question,
         'options': options.map((item) => item).toList(),
-        'is_anonymous': this.isAnonymous,
-        'type': this.type.toJson(),
-        'open_period': this.openPeriod,
-        'close_date': this.closeDate,
-        'is_closed': this.isClosed,
-        '@type': CONSTRUCTOR
+        'is_anonymous': isAnonymous,
+        'type': type.toJson(),
+        'open_period': openPeriod,
+        'close_date': closeDate,
+        'is_closed': isClosed,
+        '@type': constructor,
       };
 
   @override

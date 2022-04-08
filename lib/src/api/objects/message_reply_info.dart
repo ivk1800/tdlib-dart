@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about replies to a message
+@immutable
 class MessageReplyInfo extends TdObject {
-  MessageReplyInfo(
-      {required this.replyCount,
-      required this.recentReplierIds,
-      required this.lastReadInboxMessageId,
-      required this.lastReadOutboxMessageId,
-      required this.lastMessageId});
+  const MessageReplyInfo({
+    required this.replyCount,
+    required this.recentReplierIds,
+    required this.lastReadInboxMessageId,
+    required this.lastReadOutboxMessageId,
+    required this.lastMessageId,
+  });
 
   /// [replyCount] Number of times the message was directly or indirectly
   /// replied
@@ -31,7 +34,7 @@ class MessageReplyInfo extends TdObject {
   /// [lastMessageId] Identifier of the last reply to the message
   final int lastMessageId;
 
-  static const String CONSTRUCTOR = 'messageReplyInfo';
+  static const String constructor = 'messageReplyInfo';
 
   static MessageReplyInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -39,27 +42,29 @@ class MessageReplyInfo extends TdObject {
     }
 
     return MessageReplyInfo(
-        replyCount: json['reply_count'],
-        recentReplierIds: List<MessageSender>.from(
-            (json['recent_replier_ids'] ?? [])
-                .map((item) => MessageSender.fromJson(item))
-                .toList()),
-        lastReadInboxMessageId: json['last_read_inbox_message_id'],
-        lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-        lastMessageId: json['last_message_id']);
+      replyCount: json['reply_count'],
+      recentReplierIds: List<MessageSender>.from(
+          (json['recent_replier_ids'] ?? [])
+              .map((item) => MessageSender.fromJson(item))
+              .toList()),
+      lastReadInboxMessageId: json['last_read_inbox_message_id'],
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+      lastMessageId: json['last_message_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'reply_count': this.replyCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'reply_count': replyCount,
         'recent_replier_ids':
             recentReplierIds.map((item) => item.toJson()).toList(),
-        'last_read_inbox_message_id': this.lastReadInboxMessageId,
-        'last_read_outbox_message_id': this.lastReadOutboxMessageId,
-        'last_message_id': this.lastMessageId,
-        '@type': CONSTRUCTOR
+        'last_read_inbox_message_id': lastReadInboxMessageId,
+        'last_read_outbox_message_id': lastReadOutboxMessageId,
+        'last_message_id': lastMessageId,
+        '@type': constructor,
       };
 
   @override

@@ -1,22 +1,27 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the order of chat filters
 /// Returns [Ok]
+@immutable
 class ReorderChatFilters extends TdFunction {
-  ReorderChatFilters({required this.chatFilterIds});
+  const ReorderChatFilters({
+    required this.chatFilterIds,
+  });
 
   /// [chatFilterIds] Identifiers of chat filters in the new correct order
   final List<int> chatFilterIds;
 
-  static const String CONSTRUCTOR = 'reorderChatFilters';
+  static const String constructor = 'reorderChatFilters';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_filter_ids': chatFilterIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video note message
+@immutable
 class MessageVideoNote extends MessageContent {
-  MessageVideoNote(
-      {required this.videoNote,
-      required this.isViewed,
-      required this.isSecret});
+  const MessageVideoNote({
+    required this.videoNote,
+    required this.isViewed,
+    required this.isSecret,
+  });
 
   /// [videoNote] The video note description
   final VideoNote videoNote;
@@ -19,7 +22,7 @@ class MessageVideoNote extends MessageContent {
   /// note must be shown only while tapped
   final bool isSecret;
 
-  static const String CONSTRUCTOR = 'messageVideoNote';
+  static const String constructor = 'messageVideoNote';
 
   static MessageVideoNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class MessageVideoNote extends MessageContent {
     }
 
     return MessageVideoNote(
-        videoNote: VideoNote.fromJson(json['video_note'])!,
-        isViewed: json['is_viewed'],
-        isSecret: json['is_secret']);
+      videoNote: VideoNote.fromJson(json['video_note'])!,
+      isViewed: json['is_viewed'],
+      isSecret: json['is_secret'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'video_note': this.videoNote.toJson(),
-        'is_viewed': this.isViewed,
-        'is_secret': this.isSecret,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'video_note': videoNote.toJson(),
+        'is_viewed': isViewed,
+        'is_secret': isSecret,
+        '@type': constructor,
       };
 
   @override

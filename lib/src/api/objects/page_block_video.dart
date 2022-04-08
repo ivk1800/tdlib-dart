@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video
+@immutable
 class PageBlockVideo extends PageBlock {
-  PageBlockVideo(
-      {this.video,
-      required this.caption,
-      required this.needAutoplay,
-      required this.isLooped});
+  const PageBlockVideo({
+    this.video,
+    required this.caption,
+    required this.needAutoplay,
+    required this.isLooped,
+  });
 
   /// [video] Video file; may be null
   final Video? video;
@@ -21,7 +24,7 @@ class PageBlockVideo extends PageBlock {
   /// [isLooped] True, if the video must be looped
   final bool isLooped;
 
-  static const String CONSTRUCTOR = 'pageBlockVideo';
+  static const String constructor = 'pageBlockVideo';
 
   static PageBlockVideo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class PageBlockVideo extends PageBlock {
     }
 
     return PageBlockVideo(
-        video: Video.fromJson(json['video']),
-        caption: PageBlockCaption.fromJson(json['caption'])!,
-        needAutoplay: json['need_autoplay'],
-        isLooped: json['is_looped']);
+      video: Video.fromJson(json['video']),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+      needAutoplay: json['need_autoplay'],
+      isLooped: json['is_looped'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'video': this.video?.toJson(),
-        'caption': this.caption.toJson(),
-        'need_autoplay': this.needAutoplay,
-        'is_looped': this.isLooped,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'video': video?.toJson(),
+        'caption': caption.toJson(),
+        'need_autoplay': needAutoplay,
+        'is_looped': isLooped,
+        '@type': constructor,
       };
 
   @override

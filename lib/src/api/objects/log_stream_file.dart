@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The log is written to a file
+@immutable
 class LogStreamFile extends LogStream {
-  LogStreamFile(
-      {required this.path,
-      required this.maxFileSize,
-      required this.redirectStderr});
+  const LogStreamFile({
+    required this.path,
+    required this.maxFileSize,
+    required this.redirectStderr,
+  });
 
   /// [path] Path to the file to where the internal TDLib log will be written
   final String path;
@@ -19,7 +22,7 @@ class LogStreamFile extends LogStream {
   /// file. Ignored on Windows
   final bool redirectStderr;
 
-  static const String CONSTRUCTOR = 'logStreamFile';
+  static const String constructor = 'logStreamFile';
 
   static LogStreamFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class LogStreamFile extends LogStream {
     }
 
     return LogStreamFile(
-        path: json['path'],
-        maxFileSize: json['max_file_size'],
-        redirectStderr: json['redirect_stderr']);
+      path: json['path'],
+      maxFileSize: json['max_file_size'],
+      redirectStderr: json['redirect_stderr'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'path': this.path,
-        'max_file_size': this.maxFileSize,
-        'redirect_stderr': this.redirectStderr,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'path': path,
+        'max_file_size': maxFileSize,
+        'redirect_stderr': redirectStderr,
+        '@type': constructor,
       };
 
   @override

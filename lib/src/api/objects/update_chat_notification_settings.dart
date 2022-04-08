@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Notification settings for a chat were changed
+@immutable
 class UpdateChatNotificationSettings extends Update {
-  UpdateChatNotificationSettings(
-      {required this.chatId, required this.notificationSettings});
+  const UpdateChatNotificationSettings({
+    required this.chatId,
+    required this.notificationSettings,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -12,7 +16,7 @@ class UpdateChatNotificationSettings extends Update {
   /// [notificationSettings] The new notification settings
   final ChatNotificationSettings notificationSettings;
 
-  static const String CONSTRUCTOR = 'updateChatNotificationSettings';
+  static const String constructor = 'updateChatNotificationSettings';
 
   static UpdateChatNotificationSettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,18 +24,20 @@ class UpdateChatNotificationSettings extends Update {
     }
 
     return UpdateChatNotificationSettings(
-        chatId: json['chat_id'],
-        notificationSettings:
-            ChatNotificationSettings.fromJson(json['notification_settings'])!);
+      chatId: json['chat_id'],
+      notificationSettings:
+          ChatNotificationSettings.fromJson(json['notification_settings'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'notification_settings': this.notificationSettings.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'notification_settings': notificationSettings.toJson(),
+        '@type': constructor,
       };
 
   @override

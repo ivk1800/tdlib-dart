@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns forwarded copies of a channel message to different public
 /// channels. For optimal performance, the number of returned messages is
 /// chosen by TDLib
 /// Returns [FoundMessages]
+@immutable
 class GetMessagePublicForwards extends TdFunction {
-  GetMessagePublicForwards(
-      {required this.chatId,
-      required this.messageId,
-      required this.offset,
-      required this.limit});
+  const GetMessagePublicForwards({
+    required this.chatId,
+    required this.messageId,
+    required this.offset,
+    required this.limit,
+  });
 
   /// [chatId] Chat identifier of the message
   final int chatId;
@@ -28,17 +31,18 @@ class GetMessagePublicForwards extends TdFunction {
   /// limit
   final int limit;
 
-  static const String CONSTRUCTOR = 'getMessagePublicForwards';
+  static const String constructor = 'getMessagePublicForwards';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'offset': this.offset,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The name is occupied
+@immutable
 class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameResult {
   const CheckStickerSetNameResultNameOccupied();
 
-  static const String CONSTRUCTOR = 'checkStickerSetNameResultNameOccupied';
+  static const String constructor = 'checkStickerSetNameResultNameOccupied';
 
   static CheckStickerSetNameResultNameOccupied? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class CheckStickerSetNameResultNameOccupied extends CheckStickerSetNameResult {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

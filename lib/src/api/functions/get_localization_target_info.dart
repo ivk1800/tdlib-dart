@@ -1,23 +1,30 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about the current localization target. This is an
 /// offline request if only_local is true. Can be called before authorization
 /// Returns [LocalizationTargetInfo]
+@immutable
 class GetLocalizationTargetInfo extends TdFunction {
-  GetLocalizationTargetInfo({required this.onlyLocal});
+  const GetLocalizationTargetInfo({
+    required this.onlyLocal,
+  });
 
   /// [onlyLocal] If true, returns only locally available information without
   /// sending network requests
   final bool onlyLocal;
 
-  static const String CONSTRUCTOR = 'getLocalizationTargetInfo';
+  static const String constructor = 'getLocalizationTargetInfo';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'only_local': this.onlyLocal, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'only_local': onlyLocal,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

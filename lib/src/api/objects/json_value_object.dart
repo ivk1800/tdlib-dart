@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a JSON object
+@immutable
 class JsonValueObject extends JsonValue {
-  JsonValueObject({required this.members});
+  const JsonValueObject({
+    required this.members,
+  });
 
   /// [members] The list of object members
   final List<JsonObjectMember> members;
 
-  static const String CONSTRUCTOR = 'jsonValueObject';
+  static const String constructor = 'jsonValueObject';
 
   static JsonValueObject? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class JsonValueObject extends JsonValue {
     }
 
     return JsonValueObject(
-        members: List<JsonObjectMember>.from((json['members'] ?? [])
-            .map((item) => JsonObjectMember.fromJson(item))
-            .toList()));
+      members: List<JsonObjectMember>.from((json['members'] ?? [])
+          .map((item) => JsonObjectMember.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'members': members.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

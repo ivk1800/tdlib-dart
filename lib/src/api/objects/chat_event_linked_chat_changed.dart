@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The linked chat of a supergroup was changed
+@immutable
 class ChatEventLinkedChatChanged extends ChatEventAction {
-  ChatEventLinkedChatChanged(
-      {required this.oldLinkedChatId, required this.newLinkedChatId});
+  const ChatEventLinkedChatChanged({
+    required this.oldLinkedChatId,
+    required this.newLinkedChatId,
+  });
 
   /// [oldLinkedChatId] Previous supergroup linked chat identifier
   final int oldLinkedChatId;
@@ -12,7 +16,7 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
   /// [newLinkedChatId] New supergroup linked chat identifier
   final int newLinkedChatId;
 
-  static const String CONSTRUCTOR = 'chatEventLinkedChatChanged';
+  static const String constructor = 'chatEventLinkedChatChanged';
 
   static ChatEventLinkedChatChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
     }
 
     return ChatEventLinkedChatChanged(
-        oldLinkedChatId: json['old_linked_chat_id'],
-        newLinkedChatId: json['new_linked_chat_id']);
+      oldLinkedChatId: json['old_linked_chat_id'],
+      newLinkedChatId: json['new_linked_chat_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_linked_chat_id': this.oldLinkedChatId,
-        'new_linked_chat_id': this.newLinkedChatId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_linked_chat_id': oldLinkedChatId,
+        'new_linked_chat_id': newLinkedChatId,
+        '@type': constructor,
       };
 
   @override

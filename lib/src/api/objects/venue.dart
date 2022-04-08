@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a venue
+@immutable
 class Venue extends TdObject {
-  Venue(
-      {required this.location,
-      required this.title,
-      required this.address,
-      required this.provider,
-      required this.id,
-      required this.type});
+  const Venue({
+    required this.location,
+    required this.title,
+    required this.address,
+    required this.provider,
+    required this.id,
+    required this.type,
+  });
 
   /// [location] Venue location; as defined by the sender
   final Location location;
@@ -33,7 +36,7 @@ class Venue extends TdObject {
   /// sender
   final String type;
 
-  static const String CONSTRUCTOR = 'venue';
+  static const String constructor = 'venue';
 
   static Venue? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -41,25 +44,27 @@ class Venue extends TdObject {
     }
 
     return Venue(
-        location: Location.fromJson(json['location'])!,
-        title: json['title'],
-        address: json['address'],
-        provider: json['provider'],
-        id: json['id'],
-        type: json['type']);
+      location: Location.fromJson(json['location'])!,
+      title: json['title'],
+      address: json['address'],
+      provider: json['provider'],
+      id: json['id'],
+      type: json['type'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'location': this.location.toJson(),
-        'title': this.title,
-        'address': this.address,
-        'provider': this.provider,
-        'id': this.id,
-        'type': this.type,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'location': location.toJson(),
+        'title': title,
+        'address': address,
+        'provider': provider,
+        'id': id,
+        'type': type,
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a list of chat administrators
+@immutable
 class ChatAdministrators extends TdObject {
-  ChatAdministrators({required this.administrators});
+  const ChatAdministrators({
+    required this.administrators,
+  });
 
   /// [administrators] A list of chat administrators
   final List<ChatAdministrator> administrators;
 
-  static const String CONSTRUCTOR = 'chatAdministrators';
+  static const String constructor = 'chatAdministrators';
 
   static ChatAdministrators? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,18 +20,20 @@ class ChatAdministrators extends TdObject {
     }
 
     return ChatAdministrators(
-        administrators: List<ChatAdministrator>.from(
-            (json['administrators'] ?? [])
-                .map((item) => ChatAdministrator.fromJson(item))
-                .toList()));
+      administrators: List<ChatAdministrator>.from(
+          (json['administrators'] ?? [])
+              .map((item) => ChatAdministrator.fromJson(item))
+              .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'administrators': administrators.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

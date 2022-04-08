@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the quality of a group call video
+@immutable
 abstract class GroupCallVideoQuality extends TdObject {
   const GroupCallVideoQuality();
 
-  static const String CONSTRUCTOR = 'groupCallVideoQuality';
+  static const String constructor = 'groupCallVideoQuality';
 
   /// Inherited by:
   /// [GroupCallVideoQualityThumbnail]
@@ -16,12 +18,12 @@ abstract class GroupCallVideoQuality extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case GroupCallVideoQualityThumbnail.CONSTRUCTOR:
+    switch (json['@type']) {
+      case GroupCallVideoQualityThumbnail.constructor:
         return GroupCallVideoQualityThumbnail.fromJson(json);
-      case GroupCallVideoQualityMedium.CONSTRUCTOR:
+      case GroupCallVideoQualityMedium.constructor:
         return GroupCallVideoQualityMedium.fromJson(json);
-      case GroupCallVideoQualityFull.CONSTRUCTOR:
+      case GroupCallVideoQualityFull.constructor:
         return GroupCallVideoQualityFull.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class GroupCallVideoQuality extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

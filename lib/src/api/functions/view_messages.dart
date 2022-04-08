@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Informs TDLib that messages are being viewed by the user. Sponsored
 /// messages must be marked as viewed only when the entire text of the message
@@ -8,12 +9,14 @@ import '../extensions/data_class_extensions.dart';
 /// marking messages as read, incrementing a view counter, updating a view
 /// counter, removing deleted messages in supergroups and channels)
 /// Returns [Ok]
+@immutable
 class ViewMessages extends TdFunction {
-  ViewMessages(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.messageIds,
-      required this.forceRead});
+  const ViewMessages({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.messageIds,
+    required this.forceRead,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -29,17 +32,18 @@ class ViewMessages extends TdFunction {
   /// the request
   final bool forceRead;
 
-  static const String CONSTRUCTOR = 'viewMessages';
+  static const String constructor = 'viewMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
         'message_ids': messageIds.map((item) => item).toList(),
-        'force_read': this.forceRead,
-        '@type': CONSTRUCTOR
+        'force_read': forceRead,
+        '@type': constructor,
       };
 
   @override

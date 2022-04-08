@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether a session can accept incoming secret chats
 /// Returns [Ok]
+@immutable
 class ToggleSessionCanAcceptSecretChats extends TdFunction {
-  ToggleSessionCanAcceptSecretChats(
-      {required this.sessionId, required this.canAcceptSecretChats});
+  const ToggleSessionCanAcceptSecretChats({
+    required this.sessionId,
+    required this.canAcceptSecretChats,
+  });
 
   /// [sessionId] Session identifier
   final int sessionId;
@@ -14,15 +18,16 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
   /// the session
   final bool canAcceptSecretChats;
 
-  static const String CONSTRUCTOR = 'toggleSessionCanAcceptSecretChats';
+  static const String constructor = 'toggleSessionCanAcceptSecretChats';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'session_id': this.sessionId,
-        'can_accept_secret_chats': this.canAcceptSecretChats,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'session_id': sessionId,
+        'can_accept_secret_chats': canAcceptSecretChats,
+        '@type': constructor,
       };
 
   @override

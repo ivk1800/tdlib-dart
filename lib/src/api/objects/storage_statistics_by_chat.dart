@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains the storage usage statistics for a specific chat
+@immutable
 class StorageStatisticsByChat extends TdObject {
-  StorageStatisticsByChat(
-      {required this.chatId,
-      required this.size,
-      required this.count,
-      required this.byFileType});
+  const StorageStatisticsByChat({
+    required this.chatId,
+    required this.size,
+    required this.count,
+    required this.byFileType,
+  });
 
   /// [chatId] Chat identifier; 0 if none
   final int chatId;
@@ -21,7 +24,7 @@ class StorageStatisticsByChat extends TdObject {
   /// [byFileType] Statistics split by file types
   final List<StorageStatisticsByFileType> byFileType;
 
-  static const String CONSTRUCTOR = 'storageStatisticsByChat';
+  static const String constructor = 'storageStatisticsByChat';
 
   static StorageStatisticsByChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,24 +32,26 @@ class StorageStatisticsByChat extends TdObject {
     }
 
     return StorageStatisticsByChat(
-        chatId: json['chat_id'],
-        size: json['size'],
-        count: json['count'],
-        byFileType: List<StorageStatisticsByFileType>.from(
-            (json['by_file_type'] ?? [])
-                .map((item) => StorageStatisticsByFileType.fromJson(item))
-                .toList()));
+      chatId: json['chat_id'],
+      size: json['size'],
+      count: json['count'],
+      byFileType: List<StorageStatisticsByFileType>.from(
+          (json['by_file_type'] ?? [])
+              .map((item) => StorageStatisticsByFileType.fromJson(item))
+              .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'size': this.size,
-        'count': this.count,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'size': size,
+        'count': count,
         'by_file_type': byFileType.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

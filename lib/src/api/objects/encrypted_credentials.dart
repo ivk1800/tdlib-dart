@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains encrypted Telegram Passport data credentials
+@immutable
 class EncryptedCredentials extends TdObject {
-  EncryptedCredentials(
-      {required this.data, required this.hash, required this.secret});
+  const EncryptedCredentials({
+    required this.data,
+    required this.hash,
+    required this.secret,
+  });
 
   /// [data] The encrypted credentials
   final String data;
@@ -16,7 +21,7 @@ class EncryptedCredentials extends TdObject {
   /// key
   final String secret;
 
-  static const String CONSTRUCTOR = 'encryptedCredentials';
+  static const String constructor = 'encryptedCredentials';
 
   static EncryptedCredentials? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,17 +29,21 @@ class EncryptedCredentials extends TdObject {
     }
 
     return EncryptedCredentials(
-        data: json['data'], hash: json['hash'], secret: json['secret']);
+      data: json['data'],
+      hash: json['hash'],
+      secret: json['secret'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'data': this.data,
-        'hash': this.hash,
-        'secret': this.secret,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'data': data,
+        'hash': hash,
+        'secret': secret,
+        '@type': constructor,
       };
 
   @override

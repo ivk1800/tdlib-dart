@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a gradient fill of a background
+@immutable
 class BackgroundFillGradient extends BackgroundFill {
-  BackgroundFillGradient(
-      {required this.topColor,
-      required this.bottomColor,
-      required this.rotationAngle});
+  const BackgroundFillGradient({
+    required this.topColor,
+    required this.bottomColor,
+    required this.rotationAngle,
+  });
 
   /// [topColor] A top color of the background in the RGB24 format
   final int topColor;
@@ -18,7 +21,7 @@ class BackgroundFillGradient extends BackgroundFill {
   /// 0-359. Must be always divisible by 45
   final int rotationAngle;
 
-  static const String CONSTRUCTOR = 'backgroundFillGradient';
+  static const String constructor = 'backgroundFillGradient';
 
   static BackgroundFillGradient? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +29,21 @@ class BackgroundFillGradient extends BackgroundFill {
     }
 
     return BackgroundFillGradient(
-        topColor: json['top_color'],
-        bottomColor: json['bottom_color'],
-        rotationAngle: json['rotation_angle']);
+      topColor: json['top_color'],
+      bottomColor: json['bottom_color'],
+      rotationAngle: json['rotation_angle'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'top_color': this.topColor,
-        'bottom_color': this.bottomColor,
-        'rotation_angle': this.rotationAngle,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'top_color': topColor,
+        'bottom_color': bottomColor,
+        'rotation_angle': rotationAngle,
+        '@type': constructor,
       };
 
   @override

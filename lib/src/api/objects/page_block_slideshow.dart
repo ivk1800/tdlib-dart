@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A slideshow
+@immutable
 class PageBlockSlideshow extends PageBlock {
-  PageBlockSlideshow({required this.pageBlocks, required this.caption});
+  const PageBlockSlideshow({
+    required this.pageBlocks,
+    required this.caption,
+  });
 
   /// [pageBlocks] Slideshow item contents
   final List<PageBlock> pageBlocks;
@@ -11,7 +16,7 @@ class PageBlockSlideshow extends PageBlock {
   /// [caption] Block caption
   final PageBlockCaption caption;
 
-  static const String CONSTRUCTOR = 'pageBlockSlideshow';
+  static const String constructor = 'pageBlockSlideshow';
 
   static PageBlockSlideshow? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,19 +24,21 @@ class PageBlockSlideshow extends PageBlock {
     }
 
     return PageBlockSlideshow(
-        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-            .map((item) => PageBlock.fromJson(item))
-            .toList()),
-        caption: PageBlockCaption.fromJson(json['caption'])!);
+      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+          .map((item) => PageBlock.fromJson(item))
+          .toList()),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

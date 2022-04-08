@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains an HTTPS link to a message in a supergroup or channel
+@immutable
 class MessageLink extends TdObject {
-  MessageLink({required this.link, required this.isPublic});
+  const MessageLink({
+    required this.link,
+    required this.isPublic,
+  });
 
   /// [link] Message link
   final String link;
@@ -11,21 +16,28 @@ class MessageLink extends TdObject {
   /// [isPublic] True, if the link will work for non-members of the chat
   final bool isPublic;
 
-  static const String CONSTRUCTOR = 'messageLink';
+  static const String constructor = 'messageLink';
 
   static MessageLink? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageLink(link: json['link'], isPublic: json['is_public']);
+    return MessageLink(
+      link: json['link'],
+      isPublic: json['is_public'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'link': this.link, 'is_public': this.isPublic, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'link': link,
+        'is_public': isPublic,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

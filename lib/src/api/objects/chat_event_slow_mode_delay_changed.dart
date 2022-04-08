@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The slow_mode_delay setting of a supergroup was changed
+@immutable
 class ChatEventSlowModeDelayChanged extends ChatEventAction {
-  ChatEventSlowModeDelayChanged(
-      {required this.oldSlowModeDelay, required this.newSlowModeDelay});
+  const ChatEventSlowModeDelayChanged({
+    required this.oldSlowModeDelay,
+    required this.newSlowModeDelay,
+  });
 
   /// [oldSlowModeDelay] Previous value of slow_mode_delay, in seconds
   final int oldSlowModeDelay;
@@ -12,7 +16,7 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   /// [newSlowModeDelay] New value of slow_mode_delay, in seconds
   final int newSlowModeDelay;
 
-  static const String CONSTRUCTOR = 'chatEventSlowModeDelayChanged';
+  static const String constructor = 'chatEventSlowModeDelayChanged';
 
   static ChatEventSlowModeDelayChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
     }
 
     return ChatEventSlowModeDelayChanged(
-        oldSlowModeDelay: json['old_slow_mode_delay'],
-        newSlowModeDelay: json['new_slow_mode_delay']);
+      oldSlowModeDelay: json['old_slow_mode_delay'],
+      newSlowModeDelay: json['new_slow_mode_delay'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_slow_mode_delay': this.oldSlowModeDelay,
-        'new_slow_mode_delay': this.newSlowModeDelay,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_slow_mode_delay': oldSlowModeDelay,
+        'new_slow_mode_delay': newSlowModeDelay,
+        '@type': constructor,
       };
 
   @override

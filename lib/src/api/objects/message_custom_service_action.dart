@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A non-standard action has happened in the chat
+@immutable
 class MessageCustomServiceAction extends MessageContent {
-  MessageCustomServiceAction({required this.text});
+  const MessageCustomServiceAction({
+    required this.text,
+  });
 
   /// [text] Message text to be shown in the chat
   final String text;
 
-  static const String CONSTRUCTOR = 'messageCustomServiceAction';
+  static const String constructor = 'messageCustomServiceAction';
 
   static MessageCustomServiceAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageCustomServiceAction(text: json['text']);
+    return MessageCustomServiceAction(
+      text: json['text'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'text': this.text, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

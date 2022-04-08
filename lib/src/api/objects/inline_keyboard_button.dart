@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a single button in an inline keyboard
+@immutable
 class InlineKeyboardButton extends TdObject {
-  InlineKeyboardButton({required this.text, required this.type});
+  const InlineKeyboardButton({
+    required this.text,
+    required this.type,
+  });
 
   /// [text] Text of the button
   final String text;
@@ -11,7 +16,7 @@ class InlineKeyboardButton extends TdObject {
   /// [type] Type of the button
   final InlineKeyboardButtonType type;
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButton';
+  static const String constructor = 'inlineKeyboardButton';
 
   static InlineKeyboardButton? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,15 +24,20 @@ class InlineKeyboardButton extends TdObject {
     }
 
     return InlineKeyboardButton(
-        text: json['text'],
-        type: InlineKeyboardButtonType.fromJson(json['type'])!);
+      text: json['text'],
+      type: InlineKeyboardButtonType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'text': this.text, 'type': this.type.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

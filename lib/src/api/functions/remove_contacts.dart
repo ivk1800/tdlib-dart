@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes users from the contact list
 /// Returns [Ok]
+@immutable
 class RemoveContacts extends TdFunction {
-  RemoveContacts({required this.userIds});
+  const RemoveContacts({
+    required this.userIds,
+  });
 
   /// [userIds] Identifiers of users to be deleted
   final List<int> userIds;
 
-  static const String CONSTRUCTOR = 'removeContacts';
+  static const String constructor = 'removeContacts';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'user_ids': userIds.map((item) => item).toList(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_ids': userIds.map((item) => item).toList(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

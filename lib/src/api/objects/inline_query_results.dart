@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the results of the inline query. Use
 /// sendInlineQueryResultMessage to send the result of the query
+@immutable
 class InlineQueryResults extends TdObject {
-  InlineQueryResults(
-      {required this.inlineQueryId,
-      required this.nextOffset,
-      required this.results,
-      required this.switchPmText,
-      required this.switchPmParameter});
+  const InlineQueryResults({
+    required this.inlineQueryId,
+    required this.nextOffset,
+    required this.results,
+    required this.switchPmText,
+    required this.switchPmParameter,
+  });
 
   /// [inlineQueryId] Unique identifier of the inline query
   final int inlineQueryId;
@@ -29,7 +32,7 @@ class InlineQueryResults extends TdObject {
   /// [switchPmParameter] Parameter for the bot start message
   final String switchPmParameter;
 
-  static const String CONSTRUCTOR = 'inlineQueryResults';
+  static const String constructor = 'inlineQueryResults';
 
   static InlineQueryResults? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -37,25 +40,27 @@ class InlineQueryResults extends TdObject {
     }
 
     return InlineQueryResults(
-        inlineQueryId: int.tryParse(json['inline_query_id']) ?? 0,
-        nextOffset: json['next_offset'],
-        results: List<InlineQueryResult>.from((json['results'] ?? [])
-            .map((item) => InlineQueryResult.fromJson(item))
-            .toList()),
-        switchPmText: json['switch_pm_text'],
-        switchPmParameter: json['switch_pm_parameter']);
+      inlineQueryId: int.tryParse(json['inline_query_id']) ?? 0,
+      nextOffset: json['next_offset'],
+      results: List<InlineQueryResult>.from((json['results'] ?? [])
+          .map((item) => InlineQueryResult.fromJson(item))
+          .toList()),
+      switchPmText: json['switch_pm_text'],
+      switchPmParameter: json['switch_pm_parameter'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_query_id': this.inlineQueryId,
-        'next_offset': this.nextOffset,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_query_id': inlineQueryId,
+        'next_offset': nextOffset,
         'results': results.map((item) => item.toJson()).toList(),
-        'switch_pm_text': this.switchPmText,
-        'switch_pm_parameter': this.switchPmParameter,
-        '@type': CONSTRUCTOR
+        'switch_pm_text': switchPmText,
+        'switch_pm_parameter': switchPmParameter,
+        '@type': constructor,
       };
 
   @override

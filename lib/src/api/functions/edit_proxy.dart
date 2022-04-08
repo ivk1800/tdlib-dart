@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits an existing proxy server for network requests. Can be called before
 /// authorization
 /// Returns [Proxy]
+@immutable
 class EditProxy extends TdFunction {
-  EditProxy(
-      {required this.proxyId,
-      required this.server,
-      required this.port,
-      required this.enable,
-      required this.type});
+  const EditProxy({
+    required this.proxyId,
+    required this.server,
+    required this.port,
+    required this.enable,
+    required this.type,
+  });
 
   /// [proxyId] Proxy identifier
   final int proxyId;
@@ -27,18 +30,19 @@ class EditProxy extends TdFunction {
   /// [type] Proxy type
   final ProxyType type;
 
-  static const String CONSTRUCTOR = 'editProxy';
+  static const String constructor = 'editProxy';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'proxy_id': this.proxyId,
-        'server': this.server,
-        'port': this.port,
-        'enable': this.enable,
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'proxy_id': proxyId,
+        'server': server,
+        'port': port,
+        'enable': enable,
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

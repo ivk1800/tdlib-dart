@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns users voted for the specified option in a non-anonymous polls. For
 /// optimal performance, the number of returned users is chosen by TDLib
 /// Returns [Users]
+@immutable
 class GetPollVoters extends TdFunction {
-  GetPollVoters(
-      {required this.chatId,
-      required this.messageId,
-      required this.optionId,
-      required this.offset,
-      required this.limit});
+  const GetPollVoters({
+    required this.chatId,
+    required this.messageId,
+    required this.optionId,
+    required this.offset,
+    required this.limit,
+  });
 
   /// [chatId] Identifier of the chat to which the poll belongs
   final int chatId;
@@ -30,18 +33,19 @@ class GetPollVoters extends TdFunction {
   /// if the end of the voter list has not been reached
   final int limit;
 
-  static const String CONSTRUCTOR = 'getPollVoters';
+  static const String constructor = 'getPollVoters';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'option_id': this.optionId,
-        'offset': this.offset,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'option_id': optionId,
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a single button in a bot keyboard
+@immutable
 class KeyboardButton extends TdObject {
-  KeyboardButton({required this.text, required this.type});
+  const KeyboardButton({
+    required this.text,
+    required this.type,
+  });
 
   /// [text] Text of the button
   final String text;
@@ -11,7 +16,7 @@ class KeyboardButton extends TdObject {
   /// [type] Type of the button
   final KeyboardButtonType type;
 
-  static const String CONSTRUCTOR = 'keyboardButton';
+  static const String constructor = 'keyboardButton';
 
   static KeyboardButton? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,14 +24,20 @@ class KeyboardButton extends TdObject {
     }
 
     return KeyboardButton(
-        text: json['text'], type: KeyboardButtonType.fromJson(json['type'])!);
+      text: json['text'],
+      type: KeyboardButtonType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'text': this.text, 'type': this.type.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

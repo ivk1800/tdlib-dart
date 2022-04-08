@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Specifies the kind of chat members to return in getSupergroupMembers
+@immutable
 abstract class SupergroupMembersFilter extends TdObject {
   const SupergroupMembersFilter();
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilter';
+  static const String constructor = 'supergroupMembersFilter';
 
   /// Inherited by:
   /// [SupergroupMembersFilterRecent]
@@ -21,22 +23,22 @@ abstract class SupergroupMembersFilter extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case SupergroupMembersFilterRecent.CONSTRUCTOR:
+    switch (json['@type']) {
+      case SupergroupMembersFilterRecent.constructor:
         return SupergroupMembersFilterRecent.fromJson(json);
-      case SupergroupMembersFilterContacts.CONSTRUCTOR:
+      case SupergroupMembersFilterContacts.constructor:
         return SupergroupMembersFilterContacts.fromJson(json);
-      case SupergroupMembersFilterAdministrators.CONSTRUCTOR:
+      case SupergroupMembersFilterAdministrators.constructor:
         return SupergroupMembersFilterAdministrators.fromJson(json);
-      case SupergroupMembersFilterSearch.CONSTRUCTOR:
+      case SupergroupMembersFilterSearch.constructor:
         return SupergroupMembersFilterSearch.fromJson(json);
-      case SupergroupMembersFilterRestricted.CONSTRUCTOR:
+      case SupergroupMembersFilterRestricted.constructor:
         return SupergroupMembersFilterRestricted.fromJson(json);
-      case SupergroupMembersFilterBanned.CONSTRUCTOR:
+      case SupergroupMembersFilterBanned.constructor:
         return SupergroupMembersFilterBanned.fromJson(json);
-      case SupergroupMembersFilterMention.CONSTRUCTOR:
+      case SupergroupMembersFilterMention.constructor:
         return SupergroupMembersFilterMention.fromJson(json);
-      case SupergroupMembersFilterBots.CONSTRUCTOR:
+      case SupergroupMembersFilterBots.constructor:
         return SupergroupMembersFilterBots.fromJson(json);
       default:
         return null;
@@ -44,7 +46,7 @@ abstract class SupergroupMembersFilter extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

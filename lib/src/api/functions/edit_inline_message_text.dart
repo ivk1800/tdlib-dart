@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the text of an inline text or game message sent via a bot; for bots
 /// only
 /// Returns [Ok]
+@immutable
 class EditInlineMessageText extends TdFunction {
-  EditInlineMessageText(
-      {required this.inlineMessageId,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const EditInlineMessageText({
+    required this.inlineMessageId,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
@@ -20,16 +23,17 @@ class EditInlineMessageText extends TdFunction {
   /// inputMessageText
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'editInlineMessageText';
+  static const String constructor = 'editInlineMessageText';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_message_id': this.inlineMessageId,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_message_id': inlineMessageId,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

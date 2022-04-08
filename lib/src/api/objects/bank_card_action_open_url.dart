@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an action associated with a bank card number
+@immutable
 class BankCardActionOpenUrl extends TdObject {
-  BankCardActionOpenUrl({required this.text, required this.url});
+  const BankCardActionOpenUrl({
+    required this.text,
+    required this.url,
+  });
 
   /// [text] Action text
   final String text;
@@ -11,21 +16,28 @@ class BankCardActionOpenUrl extends TdObject {
   /// [url] The URL to be opened
   final String url;
 
-  static const String CONSTRUCTOR = 'bankCardActionOpenUrl';
+  static const String constructor = 'bankCardActionOpenUrl';
 
   static BankCardActionOpenUrl? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return BankCardActionOpenUrl(text: json['text'], url: json['url']);
+    return BankCardActionOpenUrl(
+      text: json['text'],
+      url: json['url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'text': this.text, 'url': this.url, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        'url': url,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

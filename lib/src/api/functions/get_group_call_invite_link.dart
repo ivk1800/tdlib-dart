@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns invite link to a video chat in a public chat
 /// Returns [HttpUrl]
+@immutable
 class GetGroupCallInviteLink extends TdFunction {
-  GetGroupCallInviteLink(
-      {required this.groupCallId, required this.canSelfUnmute});
+  const GetGroupCallInviteLink({
+    required this.groupCallId,
+    required this.canSelfUnmute,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -15,15 +19,16 @@ class GetGroupCallInviteLink extends TdFunction {
   /// unmute themselves. Requires groupCall.can_be_managed group call flag
   final bool canSelfUnmute;
 
-  static const String CONSTRUCTOR = 'getGroupCallInviteLink';
+  static const String constructor = 'getGroupCallInviteLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'can_self_unmute': this.canSelfUnmute,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'can_self_unmute': canSelfUnmute,
+        '@type': constructor,
       };
 
   @override

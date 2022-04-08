@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A sticker set has changed
+@immutable
 class UpdateStickerSet extends Update {
-  UpdateStickerSet({required this.stickerSet});
+  const UpdateStickerSet({
+    required this.stickerSet,
+  });
 
   /// [stickerSet] The sticker set
   final StickerSet stickerSet;
 
-  static const String CONSTRUCTOR = 'updateStickerSet';
+  static const String constructor = 'updateStickerSet';
 
   static UpdateStickerSet? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class UpdateStickerSet extends Update {
     }
 
     return UpdateStickerSet(
-        stickerSet: StickerSet.fromJson(json['sticker_set'])!);
+      stickerSet: StickerSet.fromJson(json['sticker_set'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'sticker_set': this.stickerSet.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker_set': stickerSet.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

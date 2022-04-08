@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The name is invalid
+@immutable
 class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResult {
   const CheckStickerSetNameResultNameInvalid();
 
-  static const String CONSTRUCTOR = 'checkStickerSetNameResultNameInvalid';
+  static const String constructor = 'checkStickerSetNameResultNameInvalid';
 
   static CheckStickerSetNameResultNameInvalid? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class CheckStickerSetNameResultNameInvalid extends CheckStickerSetNameResult {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

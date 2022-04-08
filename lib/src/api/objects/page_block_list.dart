@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A list of data blocks
+@immutable
 class PageBlockList extends PageBlock {
-  PageBlockList({required this.items});
+  const PageBlockList({
+    required this.items,
+  });
 
   /// [items] The items of the list
   final List<PageBlockListItem> items;
 
-  static const String CONSTRUCTOR = 'pageBlockList';
+  static const String constructor = 'pageBlockList';
 
   static PageBlockList? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class PageBlockList extends PageBlock {
     }
 
     return PageBlockList(
-        items: List<PageBlockListItem>.from((json['items'] ?? [])
-            .map((item) => PageBlockListItem.fromJson(item))
-            .toList()));
+      items: List<PageBlockListItem>.from((json['items'] ?? [])
+          .map((item) => PageBlockListItem.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'items': items.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

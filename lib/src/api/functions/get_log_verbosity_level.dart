@@ -1,18 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns current verbosity level of the internal logging of TDLib. Can be
 /// called synchronously
 /// Returns [LogVerbosityLevel]
+@immutable
 class GetLogVerbosityLevel extends TdFunction {
-  GetLogVerbosityLevel();
+  const GetLogVerbosityLevel();
 
-  static const String CONSTRUCTOR = 'getLogVerbosityLevel';
+  static const String constructor = 'getLogVerbosityLevel';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

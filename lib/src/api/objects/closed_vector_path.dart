@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a closed vector path. The path begins at the end point of the
 /// last command
+@immutable
 class ClosedVectorPath extends TdObject {
-  ClosedVectorPath({required this.commands});
+  const ClosedVectorPath({
+    required this.commands,
+  });
 
   /// [commands] List of vector path commands
   final List<VectorPathCommand> commands;
 
-  static const String CONSTRUCTOR = 'closedVectorPath';
+  static const String constructor = 'closedVectorPath';
 
   static ClosedVectorPath? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,17 +21,19 @@ class ClosedVectorPath extends TdObject {
     }
 
     return ClosedVectorPath(
-        commands: List<VectorPathCommand>.from((json['commands'] ?? [])
-            .map((item) => VectorPathCommand.fromJson(item))
-            .toList()));
+      commands: List<VectorPathCommand>.from((json['commands'] ?? [])
+          .map((item) => VectorPathCommand.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

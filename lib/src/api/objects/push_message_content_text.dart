@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A text message
+@immutable
 class PushMessageContentText extends PushMessageContent {
-  PushMessageContentText({required this.text, required this.isPinned});
+  const PushMessageContentText({
+    required this.text,
+    required this.isPinned,
+  });
 
   /// [text] Message text
   final String text;
@@ -12,7 +17,7 @@ class PushMessageContentText extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentText';
+  static const String constructor = 'pushMessageContentText';
 
   static PushMessageContentText? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,14 +25,20 @@ class PushMessageContentText extends PushMessageContent {
     }
 
     return PushMessageContentText(
-        text: json['text'], isPinned: json['is_pinned']);
+      text: json['text'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'text': this.text, 'is_pinned': this.isPinned, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        'is_pinned': isPinned,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

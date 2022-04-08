@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a list of chats
+@immutable
 abstract class ChatList extends TdObject {
   const ChatList();
 
-  static const String CONSTRUCTOR = 'chatList';
+  static const String constructor = 'chatList';
 
   /// Inherited by:
   /// [ChatListMain]
@@ -16,12 +18,12 @@ abstract class ChatList extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatListMain.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatListMain.constructor:
         return ChatListMain.fromJson(json);
-      case ChatListArchive.CONSTRUCTOR:
+      case ChatListArchive.constructor:
         return ChatListArchive.fromJson(json);
-      case ChatListFilter.CONSTRUCTOR:
+      case ChatListFilter.constructor:
         return ChatListFilter.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class ChatList extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

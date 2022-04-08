@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat theme was changed
+@immutable
 class UpdateChatTheme extends Update {
-  UpdateChatTheme({required this.chatId, required this.themeName});
+  const UpdateChatTheme({
+    required this.chatId,
+    required this.themeName,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -12,7 +17,7 @@ class UpdateChatTheme extends Update {
   /// reset to default
   final String themeName;
 
-  static const String CONSTRUCTOR = 'updateChatTheme';
+  static const String constructor = 'updateChatTheme';
 
   static UpdateChatTheme? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +25,19 @@ class UpdateChatTheme extends Update {
     }
 
     return UpdateChatTheme(
-        chatId: json['chat_id'], themeName: json['theme_name']);
+      chatId: json['chat_id'],
+      themeName: json['theme_name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'theme_name': this.themeName,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'theme_name': themeName,
+        '@type': constructor,
       };
 
   @override

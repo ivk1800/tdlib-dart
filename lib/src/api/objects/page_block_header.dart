@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A header
+@immutable
 class PageBlockHeader extends PageBlock {
-  PageBlockHeader({required this.header});
+  const PageBlockHeader({
+    required this.header,
+  });
 
   /// [header] Header
   final RichText header;
 
-  static const String CONSTRUCTOR = 'pageBlockHeader';
+  static const String constructor = 'pageBlockHeader';
 
   static PageBlockHeader? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PageBlockHeader(header: RichText.fromJson(json['header'])!);
+    return PageBlockHeader(
+      header: RichText.fromJson(json['header'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'header': this.header.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'header': header.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

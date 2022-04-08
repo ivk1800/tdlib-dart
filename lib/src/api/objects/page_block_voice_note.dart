@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A voice note
+@immutable
 class PageBlockVoiceNote extends PageBlock {
-  PageBlockVoiceNote({this.voiceNote, required this.caption});
+  const PageBlockVoiceNote({
+    this.voiceNote,
+    required this.caption,
+  });
 
   /// [voiceNote] Voice note; may be null
   final VoiceNote? voiceNote;
@@ -11,7 +16,7 @@ class PageBlockVoiceNote extends PageBlock {
   /// [caption] Voice note caption
   final PageBlockCaption caption;
 
-  static const String CONSTRUCTOR = 'pageBlockVoiceNote';
+  static const String constructor = 'pageBlockVoiceNote';
 
   static PageBlockVoiceNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class PageBlockVoiceNote extends PageBlock {
     }
 
     return PageBlockVoiceNote(
-        voiceNote: VoiceNote.fromJson(json['voice_note']),
-        caption: PageBlockCaption.fromJson(json['caption'])!);
+      voiceNote: VoiceNote.fromJson(json['voice_note']),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'voice_note': this.voiceNote?.toJson(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'voice_note': voiceNote?.toJson(),
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

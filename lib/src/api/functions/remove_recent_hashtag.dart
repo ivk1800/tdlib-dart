@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes a hashtag from the list of recently used hashtags
 /// Returns [Ok]
+@immutable
 class RemoveRecentHashtag extends TdFunction {
-  RemoveRecentHashtag({required this.hashtag});
+  const RemoveRecentHashtag({
+    required this.hashtag,
+  });
 
   /// [hashtag] Hashtag to delete
   final String hashtag;
 
-  static const String CONSTRUCTOR = 'removeRecentHashtag';
+  static const String constructor = 'removeRecentHashtag';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'hashtag': this.hashtag, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'hashtag': hashtag,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

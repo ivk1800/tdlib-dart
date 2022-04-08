@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An identity document to be saved to Telegram Passport
+@immutable
 class InputIdentityDocument extends TdObject {
-  InputIdentityDocument(
-      {required this.number,
-      this.expiryDate,
-      required this.frontSide,
-      this.reverseSide,
-      this.selfie,
-      required this.translation});
+  const InputIdentityDocument({
+    required this.number,
+    this.expiryDate,
+    required this.frontSide,
+    this.reverseSide,
+    this.selfie,
+    required this.translation,
+  });
 
   /// [number] Document number; 1-24 characters
   final String number;
@@ -31,7 +34,7 @@ class InputIdentityDocument extends TdObject {
   /// the document
   final List<InputFile> translation;
 
-  static const String CONSTRUCTOR = 'inputIdentityDocument';
+  static const String constructor = 'inputIdentityDocument';
 
   static InputIdentityDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -39,27 +42,29 @@ class InputIdentityDocument extends TdObject {
     }
 
     return InputIdentityDocument(
-        number: json['number'],
-        expiryDate: Date.fromJson(json['expiry_date']),
-        frontSide: InputFile.fromJson(json['front_side'])!,
-        reverseSide: InputFile.fromJson(json['reverse_side']),
-        selfie: InputFile.fromJson(json['selfie']),
-        translation: List<InputFile>.from((json['translation'] ?? [])
-            .map((item) => InputFile.fromJson(item))
-            .toList()));
+      number: json['number'],
+      expiryDate: Date.fromJson(json['expiry_date']),
+      frontSide: InputFile.fromJson(json['front_side'])!,
+      reverseSide: InputFile.fromJson(json['reverse_side']),
+      selfie: InputFile.fromJson(json['selfie']),
+      translation: List<InputFile>.from((json['translation'] ?? [])
+          .map((item) => InputFile.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'number': this.number,
-        'expiry_date': this.expiryDate?.toJson(),
-        'front_side': this.frontSide.toJson(),
-        'reverse_side': this.reverseSide?.toJson(),
-        'selfie': this.selfie?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'number': number,
+        'expiry_date': expiryDate?.toJson(),
+        'front_side': frontSide.toJson(),
+        'reverse_side': reverseSide?.toJson(),
+        'selfie': selfie?.toJson(),
         'translation': translation.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

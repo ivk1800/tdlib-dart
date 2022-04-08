@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// New terms of service must be accepted by the user. If the terms of service
 /// are declined, then the deleteAccount method must be called with the reason
 /// "Decline ToS update"
+@immutable
 class UpdateTermsOfService extends Update {
-  UpdateTermsOfService(
-      {required this.termsOfServiceId, required this.termsOfService});
+  const UpdateTermsOfService({
+    required this.termsOfServiceId,
+    required this.termsOfService,
+  });
 
   /// [termsOfServiceId] Identifier of the terms of service
   final String termsOfServiceId;
@@ -14,7 +18,7 @@ class UpdateTermsOfService extends Update {
   /// [termsOfService]_id Identifier of the terms of service
   final TermsOfService termsOfService;
 
-  static const String CONSTRUCTOR = 'updateTermsOfService';
+  static const String constructor = 'updateTermsOfService';
 
   static UpdateTermsOfService? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -22,17 +26,19 @@ class UpdateTermsOfService extends Update {
     }
 
     return UpdateTermsOfService(
-        termsOfServiceId: json['terms_of_service_id'],
-        termsOfService: TermsOfService.fromJson(json['terms_of_service'])!);
+      termsOfServiceId: json['terms_of_service_id'],
+      termsOfService: TermsOfService.fromJson(json['terms_of_service'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'terms_of_service_id': this.termsOfServiceId,
-        'terms_of_service': this.termsOfService.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'terms_of_service_id': termsOfServiceId,
+        'terms_of_service': termsOfService.toJson(),
+        '@type': constructor,
       };
 
   @override

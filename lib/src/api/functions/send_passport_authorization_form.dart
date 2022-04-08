@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends a Telegram Passport authorization form, effectively sharing data
 /// with the service. This method must be called after
 /// getPassportAuthorizationFormAvailableElements if some previously available
 /// elements are going to be reused
 /// Returns [Ok]
+@immutable
 class SendPassportAuthorizationForm extends TdFunction {
-  SendPassportAuthorizationForm(
-      {required this.autorizationFormId, required this.types});
+  const SendPassportAuthorizationForm({
+    required this.autorizationFormId,
+    required this.types,
+  });
 
   /// [autorizationFormId] Authorization form identifier
   final int autorizationFormId;
@@ -17,15 +21,16 @@ class SendPassportAuthorizationForm extends TdFunction {
   /// authorization form
   final List<PassportElementType> types;
 
-  static const String CONSTRUCTOR = 'sendPassportAuthorizationForm';
+  static const String constructor = 'sendPassportAuthorizationForm';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'autorization_form_id': this.autorizationFormId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'autorization_form_id': autorizationFormId,
         'types': types.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

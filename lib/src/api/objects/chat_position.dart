@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a position of a chat in a chat list
+@immutable
 class ChatPosition extends TdObject {
-  ChatPosition(
-      {required this.list,
-      required this.order,
-      required this.isPinned,
-      this.source});
+  const ChatPosition({
+    required this.list,
+    required this.order,
+    required this.isPinned,
+    this.source,
+  });
 
   /// [list] The chat list
   final ChatList list;
@@ -22,7 +25,7 @@ class ChatPosition extends TdObject {
   /// [source] Source of the chat in the chat list; may be null
   final ChatSource? source;
 
-  static const String CONSTRUCTOR = 'chatPosition';
+  static const String constructor = 'chatPosition';
 
   static ChatPosition? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class ChatPosition extends TdObject {
     }
 
     return ChatPosition(
-        list: ChatList.fromJson(json['list'])!,
-        order: int.tryParse(json['order']) ?? 0,
-        isPinned: json['is_pinned'],
-        source: ChatSource.fromJson(json['source']));
+      list: ChatList.fromJson(json['list'])!,
+      order: int.tryParse(json['order']) ?? 0,
+      isPinned: json['is_pinned'],
+      source: ChatSource.fromJson(json['source']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'list': this.list.toJson(),
-        'order': this.order,
-        'is_pinned': this.isPinned,
-        'source': this.source?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'list': list.toJson(),
+        'order': order,
+        'is_pinned': isPinned,
+        'source': source?.toJson(),
+        '@type': constructor,
       };
 
   @override

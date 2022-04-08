@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the current call state
+@immutable
 abstract class CallState extends TdObject {
   const CallState();
 
-  static const String CONSTRUCTOR = 'callState';
+  static const String constructor = 'callState';
 
   /// Inherited by:
   /// [CallStatePending]
@@ -19,18 +21,18 @@ abstract class CallState extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CallStatePending.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CallStatePending.constructor:
         return CallStatePending.fromJson(json);
-      case CallStateExchangingKeys.CONSTRUCTOR:
+      case CallStateExchangingKeys.constructor:
         return CallStateExchangingKeys.fromJson(json);
-      case CallStateReady.CONSTRUCTOR:
+      case CallStateReady.constructor:
         return CallStateReady.fromJson(json);
-      case CallStateHangingUp.CONSTRUCTOR:
+      case CallStateHangingUp.constructor:
         return CallStateHangingUp.fromJson(json);
-      case CallStateDiscarded.CONSTRUCTOR:
+      case CallStateDiscarded.constructor:
         return CallStateDiscarded.fromJson(json);
-      case CallStateError.CONSTRUCTOR:
+      case CallStateError.constructor:
         return CallStateError.fromJson(json);
       default:
         return null;
@@ -38,7 +40,7 @@ abstract class CallState extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a Vertical alignment of a table cell content
+@immutable
 abstract class PageBlockVerticalAlignment extends TdObject {
   const PageBlockVerticalAlignment();
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignment';
+  static const String constructor = 'pageBlockVerticalAlignment';
 
   /// Inherited by:
   /// [PageBlockVerticalAlignmentTop]
@@ -16,12 +18,12 @@ abstract class PageBlockVerticalAlignment extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PageBlockVerticalAlignmentTop.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PageBlockVerticalAlignmentTop.constructor:
         return PageBlockVerticalAlignmentTop.fromJson(json);
-      case PageBlockVerticalAlignmentMiddle.CONSTRUCTOR:
+      case PageBlockVerticalAlignmentMiddle.constructor:
         return PageBlockVerticalAlignmentMiddle.fromJson(json);
-      case PageBlockVerticalAlignmentBottom.CONSTRUCTOR:
+      case PageBlockVerticalAlignmentBottom.constructor:
         return PageBlockVerticalAlignmentBottom.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class PageBlockVerticalAlignment extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

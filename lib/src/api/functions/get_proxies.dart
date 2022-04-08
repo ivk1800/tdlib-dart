@@ -1,18 +1,23 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns list of proxies that are currently set up. Can be called before
 /// authorization
 /// Returns [Proxies]
+@immutable
 class GetProxies extends TdFunction {
-  GetProxies();
+  const GetProxies();
 
-  static const String CONSTRUCTOR = 'getProxies';
+  static const String constructor = 'getProxies';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a sticker that needs to be added to a sticker set
+@immutable
 abstract class InputSticker extends TdObject {
   const InputSticker();
 
-  static const String CONSTRUCTOR = 'inputSticker';
+  static const String constructor = 'inputSticker';
 
   /// Inherited by:
   /// [InputStickerStatic]
@@ -15,10 +17,10 @@ abstract class InputSticker extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputStickerStatic.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputStickerStatic.constructor:
         return InputStickerStatic.fromJson(json);
-      case InputStickerAnimated.CONSTRUCTOR:
+      case InputStickerAnimated.constructor:
         return InputStickerAnimated.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class InputSticker extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

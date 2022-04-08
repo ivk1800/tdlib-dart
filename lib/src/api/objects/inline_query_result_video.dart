@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a video
+@immutable
 class InlineQueryResultVideo extends InlineQueryResult {
-  InlineQueryResultVideo(
-      {required this.id,
-      required this.video,
-      required this.title,
-      required this.description});
+  const InlineQueryResultVideo({
+    required this.id,
+    required this.video,
+    required this.title,
+    required this.description,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -21,7 +24,7 @@ class InlineQueryResultVideo extends InlineQueryResult {
   /// param_[description] Description of the video
   final String description;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultVideo';
+  static const String constructor = 'inlineQueryResultVideo';
 
   static InlineQueryResultVideo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class InlineQueryResultVideo extends InlineQueryResult {
     }
 
     return InlineQueryResultVideo(
-        id: json['id'],
-        video: Video.fromJson(json['video'])!,
-        title: json['title'],
-        description: json['description']);
+      id: json['id'],
+      video: Video.fromJson(json['video'])!,
+      title: json['title'],
+      description: json['description'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'video': this.video.toJson(),
-        'title': this.title,
-        'description': this.description,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'video': video.toJson(),
+        'title': title,
+        'description': description,
+        '@type': constructor,
       };
 
   @override

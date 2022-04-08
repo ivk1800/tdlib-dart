@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat title was changed
+@immutable
 class ChatEventTitleChanged extends ChatEventAction {
-  ChatEventTitleChanged({required this.oldTitle, required this.newTitle});
+  const ChatEventTitleChanged({
+    required this.oldTitle,
+    required this.newTitle,
+  });
 
   /// [oldTitle] Previous chat title
   final String oldTitle;
@@ -11,7 +16,7 @@ class ChatEventTitleChanged extends ChatEventAction {
   /// [newTitle] New chat title
   final String newTitle;
 
-  static const String CONSTRUCTOR = 'chatEventTitleChanged';
+  static const String constructor = 'chatEventTitleChanged';
 
   static ChatEventTitleChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class ChatEventTitleChanged extends ChatEventAction {
     }
 
     return ChatEventTitleChanged(
-        oldTitle: json['old_title'], newTitle: json['new_title']);
+      oldTitle: json['old_title'],
+      newTitle: json['new_title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_title': this.oldTitle,
-        'new_title': this.newTitle,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_title': oldTitle,
+        'new_title': newTitle,
+        '@type': constructor,
       };
 
   @override

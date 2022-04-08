@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of chat invite links
+@immutable
 class ChatInviteLinks extends TdObject {
-  ChatInviteLinks({required this.totalCount, required this.inviteLinks});
+  const ChatInviteLinks({
+    required this.totalCount,
+    required this.inviteLinks,
+  });
 
   /// [totalCount] Approximate total count of chat invite links found
   final int totalCount;
@@ -11,7 +16,7 @@ class ChatInviteLinks extends TdObject {
   /// [inviteLinks] List of invite links
   final List<ChatInviteLink> inviteLinks;
 
-  static const String CONSTRUCTOR = 'chatInviteLinks';
+  static const String constructor = 'chatInviteLinks';
 
   static ChatInviteLinks? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,19 +24,21 @@ class ChatInviteLinks extends TdObject {
     }
 
     return ChatInviteLinks(
-        totalCount: json['total_count'],
-        inviteLinks: List<ChatInviteLink>.from((json['invite_links'] ?? [])
-            .map((item) => ChatInviteLink.fromJson(item))
-            .toList()));
+      totalCount: json['total_count'],
+      inviteLinks: List<ChatInviteLink>.from((json['invite_links'] ?? [])
+          .map((item) => ChatInviteLink.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'total_count': this.totalCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'total_count': totalCount,
         'invite_links': inviteLinks.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

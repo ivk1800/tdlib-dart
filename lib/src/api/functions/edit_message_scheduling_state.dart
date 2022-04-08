@@ -1,13 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits the time when a scheduled message will be sent. Scheduling state of
 /// all messages in the same album or forwarded together with the message will
 /// be also changed
 /// Returns [Ok]
+@immutable
 class EditMessageSchedulingState extends TdFunction {
-  EditMessageSchedulingState(
-      {required this.chatId, required this.messageId, this.schedulingState});
+  const EditMessageSchedulingState({
+    required this.chatId,
+    required this.messageId,
+    this.schedulingState,
+  });
 
   /// [chatId] The chat the message belongs to
   final int chatId;
@@ -19,16 +24,17 @@ class EditMessageSchedulingState extends TdFunction {
   /// message immediately
   final MessageSchedulingState? schedulingState;
 
-  static const String CONSTRUCTOR = 'editMessageSchedulingState';
+  static const String constructor = 'editMessageSchedulingState';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'scheduling_state': this.schedulingState?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'scheduling_state': schedulingState?.toJson(),
+        '@type': constructor,
       };
 
   @override

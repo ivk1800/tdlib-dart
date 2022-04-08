@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self
 /// and chat.can_be_deleted_for_all_users fields to find whether and how the
 /// method can be applied to the chat
 /// Returns [Ok]
+@immutable
 class DeleteChatHistory extends TdFunction {
-  DeleteChatHistory(
-      {required this.chatId,
-      required this.removeFromChatList,
-      required this.revoke});
+  const DeleteChatHistory({
+    required this.chatId,
+    required this.removeFromChatList,
+    required this.revoke,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -21,16 +24,17 @@ class DeleteChatHistory extends TdFunction {
   /// [revoke] Pass true to delete chat history for all users
   final bool revoke;
 
-  static const String CONSTRUCTOR = 'deleteChatHistory';
+  static const String constructor = 'deleteChatHistory';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'remove_from_chat_list': this.removeFromChatList,
-        'revoke': this.revoke,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'remove_from_chat_list': removeFromChatList,
+        'revoke': revoke,
+        '@type': constructor,
       };
 
   @override

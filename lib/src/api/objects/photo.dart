@@ -1,9 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a photo
+@immutable
 class Photo extends TdObject {
-  Photo({required this.hasStickers, this.minithumbnail, required this.sizes});
+  const Photo({
+    required this.hasStickers,
+    this.minithumbnail,
+    required this.sizes,
+  });
 
   /// [hasStickers] True, if stickers were added to the photo. The list of
   /// corresponding sticker sets can be received using getAttachedStickerSets
@@ -15,7 +21,7 @@ class Photo extends TdObject {
   /// [sizes] Available variants of the photo, in different sizes
   final List<PhotoSize> sizes;
 
-  static const String CONSTRUCTOR = 'photo';
+  static const String constructor = 'photo';
 
   static Photo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,21 +29,23 @@ class Photo extends TdObject {
     }
 
     return Photo(
-        hasStickers: json['has_stickers'],
-        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-        sizes: List<PhotoSize>.from((json['sizes'] ?? [])
-            .map((item) => PhotoSize.fromJson(item))
-            .toList()));
+      hasStickers: json['has_stickers'],
+      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
+      sizes: List<PhotoSize>.from((json['sizes'] ?? [])
+          .map((item) => PhotoSize.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'has_stickers': this.hasStickers,
-        'minithumbnail': this.minithumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'has_stickers': hasStickers,
+        'minithumbnail': minithumbnail?.toJson(),
         'sizes': sizes.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

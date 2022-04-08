@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// New chat members were added
+@immutable
 class MessageChatAddMembers extends MessageContent {
-  MessageChatAddMembers({required this.memberUserIds});
+  const MessageChatAddMembers({
+    required this.memberUserIds,
+  });
 
   /// [memberUserIds] User identifiers of the new members
   final List<int> memberUserIds;
 
-  static const String CONSTRUCTOR = 'messageChatAddMembers';
+  static const String constructor = 'messageChatAddMembers';
 
   static MessageChatAddMembers? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,16 +20,18 @@ class MessageChatAddMembers extends MessageContent {
     }
 
     return MessageChatAddMembers(
-        memberUserIds: List<int>.from(
-            (json['member_user_ids'] ?? []).map((item) => item).toList()));
+      memberUserIds: List<int>.from(
+          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'member_user_ids': memberUserIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a message with the callback button that
 /// originated a callback query; for bots only
 /// Returns [Message]
+@immutable
 class GetCallbackQueryMessage extends TdFunction {
-  GetCallbackQueryMessage(
-      {required this.chatId,
-      required this.messageId,
-      required this.callbackQueryId});
+  const GetCallbackQueryMessage({
+    required this.chatId,
+    required this.messageId,
+    required this.callbackQueryId,
+  });
 
   /// [chatId] Identifier of the chat the message belongs to
   final int chatId;
@@ -19,16 +22,17 @@ class GetCallbackQueryMessage extends TdFunction {
   /// [callbackQueryId] Identifier of the callback query
   final int callbackQueryId;
 
-  static const String CONSTRUCTOR = 'getCallbackQueryMessage';
+  static const String constructor = 'getCallbackQueryMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'callback_query_id': this.callbackQueryId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'callback_query_id': callbackQueryId,
+        '@type': constructor,
       };
 
   @override

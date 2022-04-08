@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A text with some entities
+@immutable
 class FormattedText extends TdObject {
-  FormattedText({required this.text, required this.entities});
+  const FormattedText({
+    required this.text,
+    required this.entities,
+  });
 
   /// [text] The text
   final String text;
@@ -15,7 +20,7 @@ class FormattedText extends TdObject {
   /// other entities. All other entities can't contain each other
   final List<TextEntity> entities;
 
-  static const String CONSTRUCTOR = 'formattedText';
+  static const String constructor = 'formattedText';
 
   static FormattedText? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class FormattedText extends TdObject {
     }
 
     return FormattedText(
-        text: json['text'],
-        entities: List<TextEntity>.from((json['entities'] ?? [])
-            .map((item) => TextEntity.fromJson(item))
-            .toList()));
+      text: json['text'],
+      entities: List<TextEntity>.from((json['entities'] ?? [])
+          .map((item) => TextEntity.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
         'entities': entities.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

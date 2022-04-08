@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A list of active notifications in a notification group has changed
+@immutable
 class UpdateNotificationGroup extends Update {
-  UpdateNotificationGroup(
-      {required this.notificationGroupId,
-      required this.type,
-      required this.chatId,
-      required this.notificationSettingsChatId,
-      required this.isSilent,
-      required this.totalCount,
-      required this.addedNotifications,
-      required this.removedNotificationIds});
+  const UpdateNotificationGroup({
+    required this.notificationGroupId,
+    required this.type,
+    required this.chatId,
+    required this.notificationSettingsChatId,
+    required this.isSilent,
+    required this.totalCount,
+    required this.addedNotifications,
+    required this.removedNotificationIds,
+  });
 
   /// [notificationGroupId] Unique notification group identifier
   final int notificationGroupId;
@@ -42,7 +45,7 @@ class UpdateNotificationGroup extends Update {
   /// sorted by notification ID
   final List<int> removedNotificationIds;
 
-  static const String CONSTRUCTOR = 'updateNotificationGroup';
+  static const String constructor = 'updateNotificationGroup';
 
   static UpdateNotificationGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -50,37 +53,39 @@ class UpdateNotificationGroup extends Update {
     }
 
     return UpdateNotificationGroup(
-        notificationGroupId: json['notification_group_id'],
-        type: NotificationGroupType.fromJson(json['type'])!,
-        chatId: json['chat_id'],
-        notificationSettingsChatId: json['notification_settings_chat_id'],
-        isSilent: json['is_silent'],
-        totalCount: json['total_count'],
-        addedNotifications: List<Notification>.from(
-            (json['added_notifications'] ?? [])
-                .map((item) => Notification.fromJson(item))
-                .toList()),
-        removedNotificationIds: List<int>.from(
-            (json['removed_notification_ids'] ?? [])
-                .map((item) => item)
-                .toList()));
+      notificationGroupId: json['notification_group_id'],
+      type: NotificationGroupType.fromJson(json['type'])!,
+      chatId: json['chat_id'],
+      notificationSettingsChatId: json['notification_settings_chat_id'],
+      isSilent: json['is_silent'],
+      totalCount: json['total_count'],
+      addedNotifications: List<Notification>.from(
+          (json['added_notifications'] ?? [])
+              .map((item) => Notification.fromJson(item))
+              .toList()),
+      removedNotificationIds: List<int>.from(
+          (json['removed_notification_ids'] ?? [])
+              .map((item) => item)
+              .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'notification_group_id': this.notificationGroupId,
-        'type': this.type.toJson(),
-        'chat_id': this.chatId,
-        'notification_settings_chat_id': this.notificationSettingsChatId,
-        'is_silent': this.isSilent,
-        'total_count': this.totalCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'notification_group_id': notificationGroupId,
+        'type': type.toJson(),
+        'chat_id': chatId,
+        'notification_settings_chat_id': notificationSettingsChatId,
+        'is_silent': isSilent,
+        'total_count': totalCount,
         'added_notifications':
             addedNotifications.map((item) => item.toJson()).toList(),
         'removed_notification_ids':
             removedNotificationIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

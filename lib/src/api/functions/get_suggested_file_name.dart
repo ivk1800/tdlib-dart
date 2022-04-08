@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns suggested name for saving a file in a given directory
 /// Returns [Text]
+@immutable
 class GetSuggestedFileName extends TdFunction {
-  GetSuggestedFileName({required this.fileId, required this.directory});
+  const GetSuggestedFileName({
+    required this.fileId,
+    required this.directory,
+  });
 
   /// [fileId] Identifier of the file
   final int fileId;
@@ -12,15 +17,16 @@ class GetSuggestedFileName extends TdFunction {
   /// [directory] Directory in which the file is supposed to be saved
   final String directory;
 
-  static const String CONSTRUCTOR = 'getSuggestedFileName';
+  static const String constructor = 'getSuggestedFileName';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'file_id': this.fileId,
-        'directory': this.directory,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        'directory': directory,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the current authorization state of the TDLib client
+@immutable
 abstract class AuthorizationState extends TdObject {
   const AuthorizationState();
 
-  static const String CONSTRUCTOR = 'authorizationState';
+  static const String constructor = 'authorizationState';
 
   /// Inherited by:
   /// [AuthorizationStateWaitTdlibParameters]
@@ -24,28 +26,28 @@ abstract class AuthorizationState extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
+    switch (json['@type']) {
+      case AuthorizationStateWaitTdlibParameters.constructor:
         return AuthorizationStateWaitTdlibParameters.fromJson(json);
-      case AuthorizationStateWaitEncryptionKey.CONSTRUCTOR:
+      case AuthorizationStateWaitEncryptionKey.constructor:
         return AuthorizationStateWaitEncryptionKey.fromJson(json);
-      case AuthorizationStateWaitPhoneNumber.CONSTRUCTOR:
+      case AuthorizationStateWaitPhoneNumber.constructor:
         return AuthorizationStateWaitPhoneNumber.fromJson(json);
-      case AuthorizationStateWaitCode.CONSTRUCTOR:
+      case AuthorizationStateWaitCode.constructor:
         return AuthorizationStateWaitCode.fromJson(json);
-      case AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR:
+      case AuthorizationStateWaitOtherDeviceConfirmation.constructor:
         return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json);
-      case AuthorizationStateWaitRegistration.CONSTRUCTOR:
+      case AuthorizationStateWaitRegistration.constructor:
         return AuthorizationStateWaitRegistration.fromJson(json);
-      case AuthorizationStateWaitPassword.CONSTRUCTOR:
+      case AuthorizationStateWaitPassword.constructor:
         return AuthorizationStateWaitPassword.fromJson(json);
-      case AuthorizationStateReady.CONSTRUCTOR:
+      case AuthorizationStateReady.constructor:
         return AuthorizationStateReady.fromJson(json);
-      case AuthorizationStateLoggingOut.CONSTRUCTOR:
+      case AuthorizationStateLoggingOut.constructor:
         return AuthorizationStateLoggingOut.fromJson(json);
-      case AuthorizationStateClosing.CONSTRUCTOR:
+      case AuthorizationStateClosing.constructor:
         return AuthorizationStateClosing.fromJson(json);
-      case AuthorizationStateClosed.CONSTRUCTOR:
+      case AuthorizationStateClosed.constructor:
         return AuthorizationStateClosed.fromJson(json);
       default:
         return null;
@@ -53,7 +55,7 @@ abstract class AuthorizationState extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

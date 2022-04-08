@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message was originally a post in a channel
+@immutable
 class MessageForwardOriginChannel extends MessageForwardOrigin {
-  MessageForwardOriginChannel(
-      {required this.chatId,
-      required this.messageId,
-      required this.authorSignature});
+  const MessageForwardOriginChannel({
+    required this.chatId,
+    required this.messageId,
+    required this.authorSignature,
+  });
 
   /// [chatId] Identifier of the chat from which the message was originally
   /// forwarded
@@ -18,7 +21,7 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
   /// [authorSignature] Original post author signature
   final String authorSignature;
 
-  static const String CONSTRUCTOR = 'messageForwardOriginChannel';
+  static const String constructor = 'messageForwardOriginChannel';
 
   static MessageForwardOriginChannel? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +29,21 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginChannel(
-        chatId: json['chat_id'],
-        messageId: json['message_id'],
-        authorSignature: json['author_signature']);
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      authorSignature: json['author_signature'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'author_signature': this.authorSignature,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'author_signature': authorSignature,
+        '@type': constructor,
       };
 
   @override

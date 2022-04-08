@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Position on a photo where a mask is placed
+@immutable
 class MaskPosition extends TdObject {
-  MaskPosition(
-      {required this.point,
-      required this.xShift,
-      required this.yShift,
-      required this.scale});
+  const MaskPosition({
+    required this.point,
+    required this.xShift,
+    required this.yShift,
+    required this.scale,
+  });
 
   /// [point] Part of the face, relative to which the mask is placed
   final MaskPoint point;
@@ -25,7 +28,7 @@ class MaskPosition extends TdObject {
   /// [scale] Mask scaling coefficient. (For example, 2.0 means a doubled size)
   final double scale;
 
-  static const String CONSTRUCTOR = 'maskPosition';
+  static const String constructor = 'maskPosition';
 
   static MaskPosition? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,21 +36,23 @@ class MaskPosition extends TdObject {
     }
 
     return MaskPosition(
-        point: MaskPoint.fromJson(json['point'])!,
-        xShift: json['x_shift'],
-        yShift: json['y_shift'],
-        scale: json['scale']);
+      point: MaskPoint.fromJson(json['point'])!,
+      xShift: json['x_shift'],
+      yShift: json['y_shift'],
+      scale: json['scale'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'point': this.point.toJson(),
-        'x_shift': this.xShift,
-        'y_shift': this.yShift,
-        'scale': this.scale,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'point': point.toJson(),
+        'x_shift': xShift,
+        'y_shift': yShift,
+        'scale': scale,
+        '@type': constructor,
       };
 
   @override

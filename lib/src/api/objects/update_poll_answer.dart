@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A user changed the answer to a poll; for bots only
+@immutable
 class UpdatePollAnswer extends Update {
-  UpdatePollAnswer(
-      {required this.pollId, required this.userId, required this.optionIds});
+  const UpdatePollAnswer({
+    required this.pollId,
+    required this.userId,
+    required this.optionIds,
+  });
 
   /// [pollId] Unique poll identifier
   final int pollId;
@@ -15,7 +20,7 @@ class UpdatePollAnswer extends Update {
   /// [optionIds] 0-based identifiers of answer options, chosen by the user
   final List<int> optionIds;
 
-  static const String CONSTRUCTOR = 'updatePollAnswer';
+  static const String constructor = 'updatePollAnswer';
 
   static UpdatePollAnswer? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,20 +28,22 @@ class UpdatePollAnswer extends Update {
     }
 
     return UpdatePollAnswer(
-        pollId: int.tryParse(json['poll_id']) ?? 0,
-        userId: json['user_id'],
-        optionIds: List<int>.from(
-            (json['option_ids'] ?? []).map((item) => item).toList()));
+      pollId: int.tryParse(json['poll_id']) ?? 0,
+      userId: json['user_id'],
+      optionIds: List<int>.from(
+          (json['option_ids'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'poll_id': this.pollId,
-        'user_id': this.userId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'poll_id': pollId,
+        'user_id': userId,
         'option_ids': optionIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

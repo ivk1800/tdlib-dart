@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A button that sends a callback query to a bot
+@immutable
 class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
-  InlineKeyboardButtonTypeCallback({required this.data});
+  const InlineKeyboardButtonTypeCallback({
+    required this.data,
+  });
 
   /// [data] Data to be sent to the bot via a callback query
   final String data;
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCallback';
+  static const String constructor = 'inlineKeyboardButtonTypeCallback';
 
   static InlineKeyboardButtonTypeCallback? fromJson(
       Map<String, dynamic>? json) {
@@ -16,13 +20,19 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
       return null;
     }
 
-    return InlineKeyboardButtonTypeCallback(data: json['data']);
+    return InlineKeyboardButtonTypeCallback(
+      data: json['data'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'data': this.data, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'data': data,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

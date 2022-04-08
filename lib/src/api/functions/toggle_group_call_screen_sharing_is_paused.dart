@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Pauses or unpauses screen sharing in a joined group call
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
-  ToggleGroupCallScreenSharingIsPaused(
-      {required this.groupCallId, required this.isPaused});
+  const ToggleGroupCallScreenSharingIsPaused({
+    required this.groupCallId,
+    required this.isPaused,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -13,15 +17,16 @@ class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
   /// [isPaused] True if screen sharing is paused
   final bool isPaused;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallScreenSharingIsPaused';
+  static const String constructor = 'toggleGroupCallScreenSharingIsPaused';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'is_paused': this.isPaused,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'is_paused': isPaused,
+        '@type': constructor,
       };
 
   @override

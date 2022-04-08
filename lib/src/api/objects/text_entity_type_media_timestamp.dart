@@ -1,9 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A media timestamp
+@immutable
 class TextEntityTypeMediaTimestamp extends TextEntityType {
-  TextEntityTypeMediaTimestamp({required this.mediaTimestamp});
+  const TextEntityTypeMediaTimestamp({
+    required this.mediaTimestamp,
+  });
 
   /// [mediaTimestamp] Timestamp from which a video/audio/video note/voice note
   /// playing must start, in seconds. The media can be in the content or the web
@@ -11,7 +15,7 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
   /// message
   final int mediaTimestamp;
 
-  static const String CONSTRUCTOR = 'textEntityTypeMediaTimestamp';
+  static const String constructor = 'textEntityTypeMediaTimestamp';
 
   static TextEntityTypeMediaTimestamp? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,14 +23,18 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
     }
 
     return TextEntityTypeMediaTimestamp(
-        mediaTimestamp: json['media_timestamp']);
+      mediaTimestamp: json['media_timestamp'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'media_timestamp': this.mediaTimestamp, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'media_timestamp': mediaTimestamp,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

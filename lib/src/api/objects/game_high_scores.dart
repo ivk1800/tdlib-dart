@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of game high scores
+@immutable
 class GameHighScores extends TdObject {
-  GameHighScores({required this.scores});
+  const GameHighScores({
+    required this.scores,
+  });
 
   /// [scores] A list of game high scores
   final List<GameHighScore> scores;
 
-  static const String CONSTRUCTOR = 'gameHighScores';
+  static const String constructor = 'gameHighScores';
 
   static GameHighScores? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class GameHighScores extends TdObject {
     }
 
     return GameHighScores(
-        scores: List<GameHighScore>.from((json['scores'] ?? [])
-            .map((item) => GameHighScore.fromJson(item))
-            .toList()));
+      scores: List<GameHighScore>.from((json['scores'] ?? [])
+          .map((item) => GameHighScore.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'scores': scores.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

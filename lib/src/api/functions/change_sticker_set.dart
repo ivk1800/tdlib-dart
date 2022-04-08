@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Installs/uninstalls or activates/archives a sticker set
 /// Returns [Ok]
+@immutable
 class ChangeStickerSet extends TdFunction {
-  ChangeStickerSet(
-      {required this.setId,
-      required this.isInstalled,
-      required this.isArchived});
+  const ChangeStickerSet({
+    required this.setId,
+    required this.isInstalled,
+    required this.isArchived,
+  });
 
   /// [setId] Identifier of the sticker set
   final int setId;
@@ -19,16 +22,17 @@ class ChangeStickerSet extends TdFunction {
   /// installed and archived simultaneously
   final bool isArchived;
 
-  static const String CONSTRUCTOR = 'changeStickerSet';
+  static const String constructor = 'changeStickerSet';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'set_id': this.setId,
-        'is_installed': this.isInstalled,
-        'is_archived': this.isArchived,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'set_id': setId,
+        'is_installed': isInstalled,
+        'is_archived': isArchived,
+        '@type': constructor,
       };
 
   @override

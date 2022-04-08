@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Options to be used when a message content is copied without reference to
 /// the original sender. Service messages and messageInvoice can't be copied
+@immutable
 class MessageCopyOptions extends TdObject {
-  MessageCopyOptions(
-      {required this.sendCopy, required this.replaceCaption, this.newCaption});
+  const MessageCopyOptions({
+    required this.sendCopy,
+    required this.replaceCaption,
+    this.newCaption,
+  });
 
   /// [sendCopy] True, if content of the message needs to be copied without
   /// reference to the original sender. Always true if the message is forwarded
@@ -20,7 +25,7 @@ class MessageCopyOptions extends TdObject {
   /// caption. Ignored if replace_caption is false
   final FormattedText? newCaption;
 
-  static const String CONSTRUCTOR = 'messageCopyOptions';
+  static const String constructor = 'messageCopyOptions';
 
   static MessageCopyOptions? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -28,19 +33,21 @@ class MessageCopyOptions extends TdObject {
     }
 
     return MessageCopyOptions(
-        sendCopy: json['send_copy'],
-        replaceCaption: json['replace_caption'],
-        newCaption: FormattedText.fromJson(json['new_caption']));
+      sendCopy: json['send_copy'],
+      replaceCaption: json['replace_caption'],
+      newCaption: FormattedText.fromJson(json['new_caption']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'send_copy': this.sendCopy,
-        'replace_caption': this.replaceCaption,
-        'new_caption': this.newCaption?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'send_copy': sendCopy,
+        'replace_caption': replaceCaption,
+        'new_caption': newCaption?.toJson(),
+        '@type': constructor,
       };
 
   @override

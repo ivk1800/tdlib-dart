@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns all found messages, no filter is applied
+@immutable
 class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   const SearchMessagesFilterEmpty();
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterEmpty';
+  static const String constructor = 'searchMessagesFilterEmpty';
 
   static SearchMessagesFilterEmpty? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

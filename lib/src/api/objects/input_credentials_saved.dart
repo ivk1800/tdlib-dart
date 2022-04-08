@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Applies if a user chooses some previously saved payment credentials. To
 /// use their previously saved credentials, the user must have a valid
 /// temporary password
+@immutable
 class InputCredentialsSaved extends InputCredentials {
-  InputCredentialsSaved({required this.savedCredentialsId});
+  const InputCredentialsSaved({
+    required this.savedCredentialsId,
+  });
 
   /// [savedCredentialsId] Identifier of the saved credentials
   final String savedCredentialsId;
 
-  static const String CONSTRUCTOR = 'inputCredentialsSaved';
+  static const String constructor = 'inputCredentialsSaved';
 
   static InputCredentialsSaved? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -18,14 +22,18 @@ class InputCredentialsSaved extends InputCredentials {
     }
 
     return InputCredentialsSaved(
-        savedCredentialsId: json['saved_credentials_id']);
+      savedCredentialsId: json['saved_credentials_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'saved_credentials_id': this.savedCredentialsId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'saved_credentials_id': savedCredentialsId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// One shipping option
+@immutable
 class ShippingOption extends TdObject {
-  ShippingOption(
-      {required this.id, required this.title, required this.priceParts});
+  const ShippingOption({
+    required this.id,
+    required this.title,
+    required this.priceParts,
+  });
 
   /// [id] Shipping option identifier
   final String id;
@@ -15,7 +20,7 @@ class ShippingOption extends TdObject {
   /// [priceParts] A list of objects used to calculate the total shipping costs
   final List<LabeledPricePart> priceParts;
 
-  static const String CONSTRUCTOR = 'shippingOption';
+  static const String constructor = 'shippingOption';
 
   static ShippingOption? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,21 +28,23 @@ class ShippingOption extends TdObject {
     }
 
     return ShippingOption(
-        id: json['id'],
-        title: json['title'],
-        priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
-            .map((item) => LabeledPricePart.fromJson(item))
-            .toList()));
+      id: json['id'],
+      title: json['title'],
+      priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
+          .map((item) => LabeledPricePart.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
         'price_parts': priceParts.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

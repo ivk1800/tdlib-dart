@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of administrators of the chat with their custom titles
 /// Returns [ChatAdministrators]
+@immutable
 class GetChatAdministrators extends TdFunction {
-  GetChatAdministrators({required this.chatId});
+  const GetChatAdministrators({
+    required this.chatId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  static const String CONSTRUCTOR = 'getChatAdministrators';
+  static const String constructor = 'getChatAdministrators';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'chat_id': this.chatId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

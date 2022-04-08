@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Ends a group call. Requires groupCall.can_be_managed
 /// Returns [Ok]
+@immutable
 class EndGroupCall extends TdFunction {
-  EndGroupCall({required this.groupCallId});
+  const EndGroupCall({
+    required this.groupCallId,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
-  static const String CONSTRUCTOR = 'endGroupCall';
+  static const String constructor = 'endGroupCall';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'group_call_id': this.groupCallId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

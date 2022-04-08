@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns auto-download settings presets for the current user
 /// Returns [AutoDownloadSettingsPresets]
+@immutable
 class GetAutoDownloadSettingsPresets extends TdFunction {
-  GetAutoDownloadSettingsPresets();
+  const GetAutoDownloadSettingsPresets();
 
-  static const String CONSTRUCTOR = 'getAutoDownloadSettingsPresets';
+  static const String constructor = 'getAutoDownloadSettingsPresets';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

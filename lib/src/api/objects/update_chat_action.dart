@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message sender activity in the chat has changed
+@immutable
 class UpdateChatAction extends Update {
-  UpdateChatAction(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.senderId,
-      required this.action});
+  const UpdateChatAction({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.senderId,
+    required this.action,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -22,7 +25,7 @@ class UpdateChatAction extends Update {
   /// [action] The action
   final ChatAction action;
 
-  static const String CONSTRUCTOR = 'updateChatAction';
+  static const String constructor = 'updateChatAction';
 
   static UpdateChatAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class UpdateChatAction extends Update {
     }
 
     return UpdateChatAction(
-        chatId: json['chat_id'],
-        messageThreadId: json['message_thread_id'],
-        senderId: MessageSender.fromJson(json['sender_id'])!,
-        action: ChatAction.fromJson(json['action'])!);
+      chatId: json['chat_id'],
+      messageThreadId: json['message_thread_id'],
+      senderId: MessageSender.fromJson(json['sender_id'])!,
+      action: ChatAction.fromJson(json['action'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'sender_id': this.senderId.toJson(),
-        'action': this.action.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'sender_id': senderId.toJson(),
+        'action': action.toJson(),
+        '@type': constructor,
       };
 
   @override

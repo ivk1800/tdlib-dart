@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element containing the user's driver license
+@immutable
 class PassportElementTypeDriverLicense extends PassportElementType {
   const PassportElementTypeDriverLicense();
 
-  static const String CONSTRUCTOR = 'passportElementTypeDriverLicense';
+  static const String constructor = 'passportElementTypeDriverLicense';
 
   static PassportElementTypeDriverLicense? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class PassportElementTypeDriverLicense extends PassportElementType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

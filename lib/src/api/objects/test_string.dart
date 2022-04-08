@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A simple object containing a string; for testing only
+@immutable
 class TestString extends TdObject {
-  TestString({required this.value});
+  const TestString({
+    required this.value,
+  });
 
   /// [value] String
   final String value;
 
-  static const String CONSTRUCTOR = 'testString';
+  static const String constructor = 'testString';
 
   static TestString? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return TestString(value: json['value']);
+    return TestString(
+      value: json['value'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'value': this.value, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'value': value,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

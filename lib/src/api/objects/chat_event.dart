@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a chat event
+@immutable
 class ChatEvent extends TdObject {
-  ChatEvent(
-      {required this.id,
-      required this.date,
-      required this.memberId,
-      required this.action});
+  const ChatEvent({
+    required this.id,
+    required this.date,
+    required this.memberId,
+    required this.action,
+  });
 
   /// [id] Chat event identifier
   final int id;
@@ -21,7 +24,7 @@ class ChatEvent extends TdObject {
   /// [action] The action
   final ChatEventAction action;
 
-  static const String CONSTRUCTOR = 'chatEvent';
+  static const String constructor = 'chatEvent';
 
   static ChatEvent? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class ChatEvent extends TdObject {
     }
 
     return ChatEvent(
-        id: int.tryParse(json['id']) ?? 0,
-        date: json['date'],
-        memberId: MessageSender.fromJson(json['member_id'])!,
-        action: ChatEventAction.fromJson(json['action'])!);
+      id: int.tryParse(json['id']) ?? 0,
+      date: json['date'],
+      memberId: MessageSender.fromJson(json['member_id'])!,
+      action: ChatEventAction.fromJson(json['action'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'date': this.date,
-        'member_id': this.memberId.toJson(),
-        'action': this.action.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'date': date,
+        'member_id': memberId.toJson(),
+        'action': action.toJson(),
+        '@type': constructor,
       };
 
   @override

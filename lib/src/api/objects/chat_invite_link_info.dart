@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a chat invite link
+@immutable
 class ChatInviteLinkInfo extends TdObject {
-  ChatInviteLinkInfo(
-      {required this.chatId,
-      required this.accessibleFor,
-      required this.type,
-      required this.title,
-      this.photo,
-      required this.description,
-      required this.memberCount,
-      required this.memberUserIds,
-      required this.createsJoinRequest,
-      required this.isPublic});
+  const ChatInviteLinkInfo({
+    required this.chatId,
+    required this.accessibleFor,
+    required this.type,
+    required this.title,
+    this.photo,
+    required this.description,
+    required this.memberCount,
+    required this.memberUserIds,
+    required this.createsJoinRequest,
+    required this.isPublic,
+  });
 
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access
   /// to the chat before joining
@@ -49,7 +52,7 @@ class ChatInviteLinkInfo extends TdObject {
   /// has a username or it is a location-based supergroup
   final bool isPublic;
 
-  static const String CONSTRUCTOR = 'chatInviteLinkInfo';
+  static const String constructor = 'chatInviteLinkInfo';
 
   static ChatInviteLinkInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -57,34 +60,36 @@ class ChatInviteLinkInfo extends TdObject {
     }
 
     return ChatInviteLinkInfo(
-        chatId: json['chat_id'],
-        accessibleFor: json['accessible_for'],
-        type: ChatType.fromJson(json['type'])!,
-        title: json['title'],
-        photo: ChatPhotoInfo.fromJson(json['photo']),
-        description: json['description'],
-        memberCount: json['member_count'],
-        memberUserIds: List<int>.from(
-            (json['member_user_ids'] ?? []).map((item) => item).toList()),
-        createsJoinRequest: json['creates_join_request'],
-        isPublic: json['is_public']);
+      chatId: json['chat_id'],
+      accessibleFor: json['accessible_for'],
+      type: ChatType.fromJson(json['type'])!,
+      title: json['title'],
+      photo: ChatPhotoInfo.fromJson(json['photo']),
+      description: json['description'],
+      memberCount: json['member_count'],
+      memberUserIds: List<int>.from(
+          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+      createsJoinRequest: json['creates_join_request'],
+      isPublic: json['is_public'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'accessible_for': this.accessibleFor,
-        'type': this.type.toJson(),
-        'title': this.title,
-        'photo': this.photo?.toJson(),
-        'description': this.description,
-        'member_count': this.memberCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'accessible_for': accessibleFor,
+        'type': type.toJson(),
+        'title': title,
+        'photo': photo?.toJson(),
+        'description': description,
+        'member_count': memberCount,
         'member_user_ids': memberUserIds.map((item) => item).toList(),
-        'creates_join_request': this.createsJoinRequest,
-        'is_public': this.isPublic,
-        '@type': CONSTRUCTOR
+        'creates_join_request': createsJoinRequest,
+        'is_public': isPublic,
+        '@type': constructor,
       };
 
   @override

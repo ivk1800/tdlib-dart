@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a sticker
+@immutable
 class Sticker extends TdObject {
-  Sticker(
-      {required this.setId,
-      required this.width,
-      required this.height,
-      required this.emoji,
-      required this.isAnimated,
-      required this.isMask,
-      this.maskPosition,
-      required this.outline,
-      this.thumbnail,
-      required this.sticker});
+  const Sticker({
+    required this.setId,
+    required this.width,
+    required this.height,
+    required this.emoji,
+    required this.isAnimated,
+    required this.isMask,
+    this.maskPosition,
+    required this.outline,
+    this.thumbnail,
+    required this.sticker,
+  });
 
   /// [setId] The identifier of the sticker set to which the sticker belongs; 0
   /// if none
@@ -47,7 +50,7 @@ class Sticker extends TdObject {
   /// [sticker] File containing the sticker
   final File sticker;
 
-  static const String CONSTRUCTOR = 'sticker';
+  static const String constructor = 'sticker';
 
   static Sticker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -55,35 +58,37 @@ class Sticker extends TdObject {
     }
 
     return Sticker(
-        setId: int.tryParse(json['set_id']) ?? 0,
-        width: json['width'],
-        height: json['height'],
-        emoji: json['emoji'],
-        isAnimated: json['is_animated'],
-        isMask: json['is_mask'],
-        maskPosition: MaskPosition.fromJson(json['mask_position']),
-        outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
-            .map((item) => ClosedVectorPath.fromJson(item))
-            .toList()),
-        thumbnail: Thumbnail.fromJson(json['thumbnail']),
-        sticker: File.fromJson(json['sticker'])!);
+      setId: int.tryParse(json['set_id']) ?? 0,
+      width: json['width'],
+      height: json['height'],
+      emoji: json['emoji'],
+      isAnimated: json['is_animated'],
+      isMask: json['is_mask'],
+      maskPosition: MaskPosition.fromJson(json['mask_position']),
+      outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
+          .map((item) => ClosedVectorPath.fromJson(item))
+          .toList()),
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      sticker: File.fromJson(json['sticker'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'set_id': this.setId,
-        'width': this.width,
-        'height': this.height,
-        'emoji': this.emoji,
-        'is_animated': this.isAnimated,
-        'is_mask': this.isMask,
-        'mask_position': this.maskPosition?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'set_id': setId,
+        'width': width,
+        'height': height,
+        'emoji': emoji,
+        'is_animated': isAnimated,
+        'is_mask': isMask,
+        'mask_position': maskPosition?.toJson(),
         'outline': outline.map((item) => item.toJson()).toList(),
-        'thumbnail': this.thumbnail?.toJson(),
-        'sticker': this.sticker.toJson(),
-        '@type': CONSTRUCTOR
+        'thumbnail': thumbnail?.toJson(),
+        'sticker': sticker.toJson(),
+        '@type': constructor,
       };
 
   @override

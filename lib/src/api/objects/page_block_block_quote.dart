@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A block quote
+@immutable
 class PageBlockBlockQuote extends PageBlock {
-  PageBlockBlockQuote({required this.text, required this.credit});
+  const PageBlockBlockQuote({
+    required this.text,
+    required this.credit,
+  });
 
   /// [text] Quote text
   final RichText text;
@@ -11,7 +16,7 @@ class PageBlockBlockQuote extends PageBlock {
   /// [credit] Quote credit
   final RichText credit;
 
-  static const String CONSTRUCTOR = 'pageBlockBlockQuote';
+  static const String constructor = 'pageBlockBlockQuote';
 
   static PageBlockBlockQuote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class PageBlockBlockQuote extends PageBlock {
     }
 
     return PageBlockBlockQuote(
-        text: RichText.fromJson(json['text'])!,
-        credit: RichText.fromJson(json['credit'])!);
+      text: RichText.fromJson(json['text'])!,
+      credit: RichText.fromJson(json['credit'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'credit': this.credit.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'credit': credit.toJson(),
+        '@type': constructor,
       };
 
   @override

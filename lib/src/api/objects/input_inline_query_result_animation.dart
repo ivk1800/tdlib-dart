@@ -1,21 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to an animated GIF or an animated (i.e., without sound)
 /// H.264/MPEG-4 AVC video
+@immutable
 class InputInlineQueryResultAnimation extends InputInlineQueryResult {
-  InputInlineQueryResultAnimation(
-      {required this.id,
-      required this.title,
-      required this.thumbnailUrl,
-      required this.thumbnailMimeType,
-      required this.videoUrl,
-      required this.videoMimeType,
-      required this.videoDuration,
-      required this.videoWidth,
-      required this.videoHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultAnimation({
+    required this.id,
+    required this.title,
+    required this.thumbnailUrl,
+    required this.thumbnailMimeType,
+    required this.videoUrl,
+    required this.videoMimeType,
+    required this.videoDuration,
+    required this.videoWidth,
+    required this.videoHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -57,7 +60,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultAnimation';
+  static const String constructor = 'inputInlineQueryResultAnimation';
 
   static InputInlineQueryResultAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -65,36 +68,38 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultAnimation(
-        id: json['id'],
-        title: json['title'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailMimeType: json['thumbnail_mime_type'],
-        videoUrl: json['video_url'],
-        videoMimeType: json['video_mime_type'],
-        videoDuration: json['video_duration'],
-        videoWidth: json['video_width'],
-        videoHeight: json['video_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      thumbnailUrl: json['thumbnail_url'],
+      thumbnailMimeType: json['thumbnail_mime_type'],
+      videoUrl: json['video_url'],
+      videoMimeType: json['video_mime_type'],
+      videoDuration: json['video_duration'],
+      videoWidth: json['video_width'],
+      videoHeight: json['video_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'thumbnail_url': this.thumbnailUrl,
-        'thumbnail_mime_type': this.thumbnailMimeType,
-        'video_url': this.videoUrl,
-        'video_mime_type': this.videoMimeType,
-        'video_duration': this.videoDuration,
-        'video_width': this.videoWidth,
-        'video_height': this.videoHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'thumbnail_url': thumbnailUrl,
+        'thumbnail_mime_type': thumbnailMimeType,
+        'video_url': videoUrl,
+        'video_mime_type': videoMimeType,
+        'video_duration': videoDuration,
+        'video_width': videoWidth,
+        'video_height': videoHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

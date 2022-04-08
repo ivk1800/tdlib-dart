@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an animated representation of an emoji
+@immutable
 class AnimatedEmoji extends TdObject {
-  AnimatedEmoji(
-      {required this.sticker, required this.fitzpatrickType, this.sound});
+  const AnimatedEmoji({
+    required this.sticker,
+    required this.fitzpatrickType,
+    this.sound,
+  });
 
   /// [sticker] Animated sticker for the emoji
   final Sticker sticker;
@@ -17,7 +22,7 @@ class AnimatedEmoji extends TdObject {
   /// stored inside an OGG container
   final File? sound;
 
-  static const String CONSTRUCTOR = 'animatedEmoji';
+  static const String constructor = 'animatedEmoji';
 
   static AnimatedEmoji? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +30,21 @@ class AnimatedEmoji extends TdObject {
     }
 
     return AnimatedEmoji(
-        sticker: Sticker.fromJson(json['sticker'])!,
-        fitzpatrickType: json['fitzpatrick_type'],
-        sound: File.fromJson(json['sound']));
+      sticker: Sticker.fromJson(json['sticker'])!,
+      fitzpatrickType: json['fitzpatrick_type'],
+      sound: File.fromJson(json['sound']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sticker': this.sticker.toJson(),
-        'fitzpatrick_type': this.fitzpatrickType,
-        'sound': this.sound?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker.toJson(),
+        'fitzpatrick_type': fitzpatrickType,
+        'sound': sound?.toJson(),
+        '@type': constructor,
       };
 
   @override

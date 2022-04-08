@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Resends messages which failed to send. Can be called only for messages for
 /// which messageSendingStateFailed.can_retry is true and after specified in
@@ -9,8 +10,12 @@ import '../extensions/data_class_extensions.dart';
 /// message_ids. If a message can't be re-sent, null will be returned instead
 /// of the message
 /// Returns [Messages]
+@immutable
 class ResendMessages extends TdFunction {
-  ResendMessages({required this.chatId, required this.messageIds});
+  const ResendMessages({
+    required this.chatId,
+    required this.messageIds,
+  });
 
   /// [chatId] Identifier of the chat to send messages
   final int chatId;
@@ -19,15 +24,16 @@ class ResendMessages extends TdFunction {
   /// must be in a strictly increasing order
   final List<int> messageIds;
 
-  static const String CONSTRUCTOR = 'resendMessages';
+  static const String constructor = 'resendMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
         'message_ids': messageIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

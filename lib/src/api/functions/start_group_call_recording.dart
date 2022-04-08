@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Starts recording of an active group call. Requires
 /// groupCall.can_be_managed group call flag
 /// Returns [Ok]
+@immutable
 class StartGroupCallRecording extends TdFunction {
-  StartGroupCallRecording(
-      {required this.groupCallId,
-      required this.title,
-      required this.recordVideo,
-      required this.usePortraitOrientation});
+  const StartGroupCallRecording({
+    required this.groupCallId,
+    required this.title,
+    required this.recordVideo,
+    required this.usePortraitOrientation,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -24,17 +27,18 @@ class StartGroupCallRecording extends TdFunction {
   /// instead of landscape one
   final bool usePortraitOrientation;
 
-  static const String CONSTRUCTOR = 'startGroupCallRecording';
+  static const String constructor = 'startGroupCallRecording';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'title': this.title,
-        'record_video': this.recordVideo,
-        'use_portrait_orientation': this.usePortraitOrientation,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'title': title,
+        'record_video': recordVideo,
+        'use_portrait_orientation': usePortraitOrientation,
+        '@type': constructor,
       };
 
   @override

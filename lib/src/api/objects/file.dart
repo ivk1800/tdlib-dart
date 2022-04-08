@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a file
+@immutable
 class File extends TdObject {
-  File(
-      {required this.id,
-      required this.size,
-      required this.expectedSize,
-      required this.local,
-      required this.remote});
+  const File({
+    required this.id,
+    required this.size,
+    required this.expectedSize,
+    required this.local,
+    required this.remote,
+  });
 
   /// [id] Unique file identifier
   final int id;
@@ -26,7 +29,7 @@ class File extends TdObject {
   /// [remote] Information about the remote copy of the file
   final RemoteFile remote;
 
-  static const String CONSTRUCTOR = 'file';
+  static const String constructor = 'file';
 
   static File? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -34,23 +37,25 @@ class File extends TdObject {
     }
 
     return File(
-        id: json['id'],
-        size: json['size'],
-        expectedSize: json['expected_size'],
-        local: LocalFile.fromJson(json['local'])!,
-        remote: RemoteFile.fromJson(json['remote'])!);
+      id: json['id'],
+      size: json['size'],
+      expectedSize: json['expected_size'],
+      local: LocalFile.fromJson(json['local'])!,
+      remote: RemoteFile.fromJson(json['remote'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'size': this.size,
-        'expected_size': this.expectedSize,
-        'local': this.local.toJson(),
-        'remote': this.remote.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'size': size,
+        'expected_size': expectedSize,
+        'local': local.toJson(),
+        'remote': remote.toJson(),
+        '@type': constructor,
       };
 
   @override

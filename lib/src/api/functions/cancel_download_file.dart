@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Stops the downloading of a file. If a file has already been downloaded,
 /// does nothing
 /// Returns [Ok]
+@immutable
 class CancelDownloadFile extends TdFunction {
-  CancelDownloadFile({required this.fileId, required this.onlyIfPending});
+  const CancelDownloadFile({
+    required this.fileId,
+    required this.onlyIfPending,
+  });
 
   /// [fileId] Identifier of a file to stop downloading
   final int fileId;
@@ -14,15 +19,16 @@ class CancelDownloadFile extends TdFunction {
   /// started, i.e. request hasn't been sent to server
   final bool onlyIfPending;
 
-  static const String CONSTRUCTOR = 'cancelDownloadFile';
+  static const String constructor = 'cancelDownloadFile';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'file_id': this.fileId,
-        'only_if_pending': this.onlyIfPending,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        'only_if_pending': onlyIfPending,
+        '@type': constructor,
       };
 
   @override

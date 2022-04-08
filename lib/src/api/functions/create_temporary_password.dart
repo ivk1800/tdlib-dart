@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a new temporary password for processing payments
 /// Returns [TemporaryPasswordState]
+@immutable
 class CreateTemporaryPassword extends TdFunction {
-  CreateTemporaryPassword({required this.password, required this.validFor});
+  const CreateTemporaryPassword({
+    required this.password,
+    required this.validFor,
+  });
 
   /// [password] Persistent user password
   final String password;
@@ -13,15 +18,16 @@ class CreateTemporaryPassword extends TdFunction {
   /// seconds; must be between 60 and 86400
   final int validFor;
 
-  static const String CONSTRUCTOR = 'createTemporaryPassword';
+  static const String constructor = 'createTemporaryPassword';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'password': this.password,
-        'valid_for': this.validFor,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'password': password,
+        'valid_for': validFor,
+        '@type': constructor,
       };
 
   @override

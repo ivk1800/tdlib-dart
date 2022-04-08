@@ -1,14 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a data needed to subscribe for push notifications through
 /// registerDevice method. To use specific push notification service, the
 /// correct application platform must be specified and a valid server
 /// authentication data must be uploaded at https://my.telegram.org
+@immutable
 abstract class DeviceToken extends TdObject {
   const DeviceToken();
 
-  static const String CONSTRUCTOR = 'deviceToken';
+  static const String constructor = 'deviceToken';
 
   /// Inherited by:
   /// [DeviceTokenFirebaseCloudMessaging]
@@ -27,28 +29,28 @@ abstract class DeviceToken extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
+    switch (json['@type']) {
+      case DeviceTokenFirebaseCloudMessaging.constructor:
         return DeviceTokenFirebaseCloudMessaging.fromJson(json);
-      case DeviceTokenApplePush.CONSTRUCTOR:
+      case DeviceTokenApplePush.constructor:
         return DeviceTokenApplePush.fromJson(json);
-      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
+      case DeviceTokenApplePushVoIP.constructor:
         return DeviceTokenApplePushVoIP.fromJson(json);
-      case DeviceTokenWindowsPush.CONSTRUCTOR:
+      case DeviceTokenWindowsPush.constructor:
         return DeviceTokenWindowsPush.fromJson(json);
-      case DeviceTokenMicrosoftPush.CONSTRUCTOR:
+      case DeviceTokenMicrosoftPush.constructor:
         return DeviceTokenMicrosoftPush.fromJson(json);
-      case DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR:
+      case DeviceTokenMicrosoftPushVoIP.constructor:
         return DeviceTokenMicrosoftPushVoIP.fromJson(json);
-      case DeviceTokenWebPush.CONSTRUCTOR:
+      case DeviceTokenWebPush.constructor:
         return DeviceTokenWebPush.fromJson(json);
-      case DeviceTokenSimplePush.CONSTRUCTOR:
+      case DeviceTokenSimplePush.constructor:
         return DeviceTokenSimplePush.fromJson(json);
-      case DeviceTokenUbuntuPush.CONSTRUCTOR:
+      case DeviceTokenUbuntuPush.constructor:
         return DeviceTokenUbuntuPush.fromJson(json);
-      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
+      case DeviceTokenBlackBerryPush.constructor:
         return DeviceTokenBlackBerryPush.fromJson(json);
-      case DeviceTokenTizenPush.CONSTRUCTOR:
+      case DeviceTokenTizenPush.constructor:
         return DeviceTokenTizenPush.fromJson(json);
       default:
         return null;
@@ -56,7 +58,7 @@ abstract class DeviceToken extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

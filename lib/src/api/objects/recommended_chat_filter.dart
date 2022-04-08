@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a recommended chat filter
+@immutable
 class RecommendedChatFilter extends TdObject {
-  RecommendedChatFilter({required this.filter, required this.description});
+  const RecommendedChatFilter({
+    required this.filter,
+    required this.description,
+  });
 
   /// [filter] The chat filter
   final ChatFilter filter;
@@ -11,7 +16,7 @@ class RecommendedChatFilter extends TdObject {
   /// param_[description] Chat filter description
   final String description;
 
-  static const String CONSTRUCTOR = 'recommendedChatFilter';
+  static const String constructor = 'recommendedChatFilter';
 
   static RecommendedChatFilter? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class RecommendedChatFilter extends TdObject {
     }
 
     return RecommendedChatFilter(
-        filter: ChatFilter.fromJson(json['filter'])!,
-        description: json['description']);
+      filter: ChatFilter.fromJson(json['filter'])!,
+      description: json['description'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'filter': this.filter.toJson(),
-        'description': this.description,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'filter': filter.toJson(),
+        'description': description,
+        '@type': constructor,
       };
 
   @override

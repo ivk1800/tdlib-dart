@@ -1,13 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds multiple new members to a chat. Currently, this method is only
 /// available for supergroups and channels. This method can't be used to join
 /// a chat. Members can't be added to a channel if it has more than 200
 /// members
 /// Returns [Ok]
+@immutable
 class AddChatMembers extends TdFunction {
-  AddChatMembers({required this.chatId, required this.userIds});
+  const AddChatMembers({
+    required this.chatId,
+    required this.userIds,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -16,15 +21,16 @@ class AddChatMembers extends TdFunction {
   /// number of added users is 20 for supergroups and 100 for channels
   final List<int> userIds;
 
-  static const String CONSTRUCTOR = 'addChatMembers';
+  static const String constructor = 'addChatMembers';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
         'user_ids': userIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

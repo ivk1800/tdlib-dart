@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A text message
+@immutable
 class MessageText extends MessageContent {
-  MessageText({required this.text, this.webPage});
+  const MessageText({
+    required this.text,
+    this.webPage,
+  });
 
   /// [text] Text of the message
   final FormattedText text;
@@ -12,7 +17,7 @@ class MessageText extends MessageContent {
   /// null
   final WebPage? webPage;
 
-  static const String CONSTRUCTOR = 'messageText';
+  static const String constructor = 'messageText';
 
   static MessageText? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +25,19 @@ class MessageText extends MessageContent {
     }
 
     return MessageText(
-        text: FormattedText.fromJson(json['text'])!,
-        webPage: WebPage.fromJson(json['web_page']));
+      text: FormattedText.fromJson(json['text'])!,
+      webPage: WebPage.fromJson(json['web_page']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'web_page': this.webPage?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'web_page': webPage?.toJson(),
+        '@type': constructor,
       };
 
   @override

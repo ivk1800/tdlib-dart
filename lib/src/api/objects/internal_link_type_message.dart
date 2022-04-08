@@ -1,28 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is a link to a Telegram message. Call getMessageLinkInfo with the
 /// given URL to process the link
+@immutable
 class InternalLinkTypeMessage extends InternalLinkType {
-  InternalLinkTypeMessage({required this.url});
+  const InternalLinkTypeMessage({
+    required this.url,
+  });
 
   /// [url] URL to be passed to getMessageLinkInfo
   final String url;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeMessage';
+  static const String constructor = 'internalLinkTypeMessage';
 
   static InternalLinkTypeMessage? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InternalLinkTypeMessage(url: json['url']);
+    return InternalLinkTypeMessage(
+      url: json['url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'url': this.url, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

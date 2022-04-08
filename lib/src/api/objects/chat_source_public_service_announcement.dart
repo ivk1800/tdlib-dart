@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat contains a public service announcement
+@immutable
 class ChatSourcePublicServiceAnnouncement extends ChatSource {
-  ChatSourcePublicServiceAnnouncement({required this.type, required this.text});
+  const ChatSourcePublicServiceAnnouncement({
+    required this.type,
+    required this.text,
+  });
 
   /// [type] The type of the announcement
   final String type;
@@ -11,7 +16,7 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
   /// [text] The text of the announcement
   final String text;
 
-  static const String CONSTRUCTOR = 'chatSourcePublicServiceAnnouncement';
+  static const String constructor = 'chatSourcePublicServiceAnnouncement';
 
   static ChatSourcePublicServiceAnnouncement? fromJson(
       Map<String, dynamic>? json) {
@@ -20,14 +25,20 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
     }
 
     return ChatSourcePublicServiceAnnouncement(
-        type: json['type'], text: json['text']);
+      type: json['type'],
+      text: json['text'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'type': this.type, 'text': this.text, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type,
+        'text': text,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

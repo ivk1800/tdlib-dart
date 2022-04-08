@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A file defined by a local path
+@immutable
 class InputFileLocal extends InputFile {
-  InputFileLocal({required this.path});
+  const InputFileLocal({
+    required this.path,
+  });
 
   /// [path] Local path to the file
   final String path;
 
-  static const String CONSTRUCTOR = 'inputFileLocal';
+  static const String constructor = 'inputFileLocal';
 
   static InputFileLocal? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InputFileLocal(path: json['path']);
+    return InputFileLocal(
+      path: json['path'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'path': this.path, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'path': path,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

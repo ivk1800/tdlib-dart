@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// One of the data fields contains an error. The error will be considered
 /// resolved when the value of the field changes
+@immutable
 class PassportElementErrorSourceDataField extends PassportElementErrorSource {
-  PassportElementErrorSourceDataField({required this.fieldName});
+  const PassportElementErrorSourceDataField({
+    required this.fieldName,
+  });
 
   /// [fieldName] Field name
   final String fieldName;
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceDataField';
+  static const String constructor = 'passportElementErrorSourceDataField';
 
   static PassportElementErrorSourceDataField? fromJson(
       Map<String, dynamic>? json) {
@@ -17,14 +21,19 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
       return null;
     }
 
-    return PassportElementErrorSourceDataField(fieldName: json['field_name']);
+    return PassportElementErrorSourceDataField(
+      fieldName: json['field_name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'field_name': this.fieldName, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'field_name': fieldName,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

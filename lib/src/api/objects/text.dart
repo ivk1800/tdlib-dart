@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains some text
+@immutable
 class Text extends TdObject {
-  Text({required this.text});
+  const Text({
+    required this.text,
+  });
 
   /// [text] Text
   final String text;
 
-  static const String CONSTRUCTOR = 'text';
+  static const String constructor = 'text';
 
   static Text? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return Text(text: json['text']);
+    return Text(
+      text: json['text'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'text': this.text, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a bot's answer to a callback query
+@immutable
 class CallbackQueryAnswer extends TdObject {
-  CallbackQueryAnswer(
-      {required this.text, required this.showAlert, required this.url});
+  const CallbackQueryAnswer({
+    required this.text,
+    required this.showAlert,
+    required this.url,
+  });
 
   /// [text] Text of the answer
   final String text;
@@ -16,7 +21,7 @@ class CallbackQueryAnswer extends TdObject {
   /// [url] URL to be opened
   final String url;
 
-  static const String CONSTRUCTOR = 'callbackQueryAnswer';
+  static const String constructor = 'callbackQueryAnswer';
 
   static CallbackQueryAnswer? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,17 +29,21 @@ class CallbackQueryAnswer extends TdObject {
     }
 
     return CallbackQueryAnswer(
-        text: json['text'], showAlert: json['show_alert'], url: json['url']);
+      text: json['text'],
+      showAlert: json['show_alert'],
+      url: json['url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text,
-        'show_alert': this.showAlert,
-        'url': this.url,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        'show_alert': showAlert,
+        'url': url,
+        '@type': constructor,
       };
 
   @override

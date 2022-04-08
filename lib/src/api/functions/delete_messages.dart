@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes messages
 /// Returns [Ok]
+@immutable
 class DeleteMessages extends TdFunction {
-  DeleteMessages(
-      {required this.chatId, required this.messageIds, required this.revoke});
+  const DeleteMessages({
+    required this.chatId,
+    required this.messageIds,
+    required this.revoke,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -17,16 +22,17 @@ class DeleteMessages extends TdFunction {
   /// for supergroups, channels and secret chats
   final bool revoke;
 
-  static const String CONSTRUCTOR = 'deleteMessages';
+  static const String constructor = 'deleteMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
         'message_ids': messageIds.map((item) => item).toList(),
-        'revoke': this.revoke,
-        '@type': CONSTRUCTOR
+        'revoke': revoke,
+        '@type': constructor,
       };
 
   @override

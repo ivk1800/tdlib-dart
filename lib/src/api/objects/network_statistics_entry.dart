@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains statistics about network usage
+@immutable
 abstract class NetworkStatisticsEntry extends TdObject {
   const NetworkStatisticsEntry();
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntry';
+  static const String constructor = 'networkStatisticsEntry';
 
   /// Inherited by:
   /// [NetworkStatisticsEntryFile]
@@ -15,10 +17,10 @@ abstract class NetworkStatisticsEntry extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case NetworkStatisticsEntryFile.CONSTRUCTOR:
+    switch (json['@type']) {
+      case NetworkStatisticsEntryFile.constructor:
         return NetworkStatisticsEntryFile.fromJson(json);
-      case NetworkStatisticsEntryCall.CONSTRUCTOR:
+      case NetworkStatisticsEntryCall.constructor:
         return NetworkStatisticsEntryCall.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class NetworkStatisticsEntry extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

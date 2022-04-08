@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits a non-primary invite link for a chat. Available for basic groups,
 /// supergroups, and channels. Requires administrator privileges and
 /// can_invite_users right in the chat for own links and owner privileges for
 /// other links
 /// Returns [ChatInviteLink]
+@immutable
 class EditChatInviteLink extends TdFunction {
-  EditChatInviteLink(
-      {required this.chatId,
-      required this.inviteLink,
-      required this.name,
-      required this.expirationDate,
-      required this.memberLimit,
-      required this.createsJoinRequest});
+  const EditChatInviteLink({
+    required this.chatId,
+    required this.inviteLink,
+    required this.name,
+    required this.expirationDate,
+    required this.memberLimit,
+    required this.createsJoinRequest,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -36,19 +39,20 @@ class EditChatInviteLink extends TdFunction {
   /// member_limit must not be specified
   final bool createsJoinRequest;
 
-  static const String CONSTRUCTOR = 'editChatInviteLink';
+  static const String constructor = 'editChatInviteLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'invite_link': this.inviteLink,
-        'name': this.name,
-        'expiration_date': this.expirationDate,
-        'member_limit': this.memberLimit,
-        'creates_join_request': this.createsJoinRequest,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'invite_link': inviteLink,
+        'name': name,
+        'expiration_date': expirationDate,
+        'member_limit': memberLimit,
+        'creates_join_request': createsJoinRequest,
+        '@type': constructor,
       };
 
   @override

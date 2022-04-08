@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Converts a JsonValue object to corresponding JSON-serialized string. Can
 /// be called synchronously
 /// Returns [Text]
+@immutable
 class GetJsonString extends TdFunction {
-  GetJsonString({required this.jsonValue});
+  const GetJsonString({
+    required this.jsonValue,
+  });
 
   /// [jsonValue] The JsonValue object
   final JsonValue jsonValue;
 
-  static const String CONSTRUCTOR = 'getJsonString';
+  static const String constructor = 'getJsonString';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'json_value': this.jsonValue.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'json_value': jsonValue.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The selected background has changed
+@immutable
 class UpdateSelectedBackground extends Update {
-  UpdateSelectedBackground({required this.forDarkTheme, this.background});
+  const UpdateSelectedBackground({
+    required this.forDarkTheme,
+    this.background,
+  });
 
   /// [forDarkTheme] True, if background for dark theme has changed
   final bool forDarkTheme;
@@ -11,7 +16,7 @@ class UpdateSelectedBackground extends Update {
   /// [background] The new selected background; may be null
   final Background? background;
 
-  static const String CONSTRUCTOR = 'updateSelectedBackground';
+  static const String constructor = 'updateSelectedBackground';
 
   static UpdateSelectedBackground? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class UpdateSelectedBackground extends Update {
     }
 
     return UpdateSelectedBackground(
-        forDarkTheme: json['for_dark_theme'],
-        background: Background.fromJson(json['background']));
+      forDarkTheme: json['for_dark_theme'],
+      background: Background.fromJson(json['background']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'for_dark_theme': this.forDarkTheme,
-        'background': this.background?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'for_dark_theme': forDarkTheme,
+        'background': background?.toJson(),
+        '@type': constructor,
       };
 
   @override

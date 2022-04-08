@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an existing chat corresponding to a given user
 /// Returns [Chat]
+@immutable
 class CreatePrivateChat extends TdFunction {
-  CreatePrivateChat({required this.userId, required this.force});
+  const CreatePrivateChat({
+    required this.userId,
+    required this.force,
+  });
 
   /// [userId] User identifier
   final int userId;
@@ -14,13 +19,17 @@ class CreatePrivateChat extends TdFunction {
   /// be incorrect
   final bool force;
 
-  static const String CONSTRUCTOR = 'createPrivateChat';
+  static const String constructor = 'createPrivateChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'user_id': this.userId, 'force': this.force, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'force': force,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

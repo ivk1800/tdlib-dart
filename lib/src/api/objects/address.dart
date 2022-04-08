@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes an address
+@immutable
 class Address extends TdObject {
-  Address(
-      {required this.countryCode,
-      required this.state,
-      required this.city,
-      required this.streetLine1,
-      required this.streetLine2,
-      required this.postalCode});
+  const Address({
+    required this.countryCode,
+    required this.state,
+    required this.city,
+    required this.streetLine1,
+    required this.streetLine2,
+    required this.postalCode,
+  });
 
   /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code
   final String countryCode;
@@ -29,7 +32,7 @@ class Address extends TdObject {
   /// [postalCode] Address postal code
   final String postalCode;
 
-  static const String CONSTRUCTOR = 'address';
+  static const String constructor = 'address';
 
   static Address? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -37,25 +40,27 @@ class Address extends TdObject {
     }
 
     return Address(
-        countryCode: json['country_code'],
-        state: json['state'],
-        city: json['city'],
-        streetLine1: json['street_line1'],
-        streetLine2: json['street_line2'],
-        postalCode: json['postal_code']);
+      countryCode: json['country_code'],
+      state: json['state'],
+      city: json['city'],
+      streetLine1: json['street_line1'],
+      streetLine2: json['street_line2'],
+      postalCode: json['postal_code'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'country_code': this.countryCode,
-        'state': this.state,
-        'city': this.city,
-        'street_line1': this.streetLine1,
-        'street_line2': this.streetLine2,
-        'postal_code': this.postalCode,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'country_code': countryCode,
+        'state': state,
+        'city': city,
+        'street_line1': streetLine1,
+        'street_line2': streetLine2,
+        'postal_code': postalCode,
+        '@type': constructor,
       };
 
   @override

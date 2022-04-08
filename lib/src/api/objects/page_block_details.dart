@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A collapsible block
+@immutable
 class PageBlockDetails extends PageBlock {
-  PageBlockDetails(
-      {required this.header, required this.pageBlocks, required this.isOpen});
+  const PageBlockDetails({
+    required this.header,
+    required this.pageBlocks,
+    required this.isOpen,
+  });
 
   /// [header] Always visible heading for the block
   final RichText header;
@@ -15,7 +20,7 @@ class PageBlockDetails extends PageBlock {
   /// [isOpen] True, if the block is open by default
   final bool isOpen;
 
-  static const String CONSTRUCTOR = 'pageBlockDetails';
+  static const String constructor = 'pageBlockDetails';
 
   static PageBlockDetails? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,21 +28,23 @@ class PageBlockDetails extends PageBlock {
     }
 
     return PageBlockDetails(
-        header: RichText.fromJson(json['header'])!,
-        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-            .map((item) => PageBlock.fromJson(item))
-            .toList()),
-        isOpen: json['is_open']);
+      header: RichText.fromJson(json['header'])!,
+      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+          .map((item) => PageBlock.fromJson(item))
+          .toList()),
+      isOpen: json['is_open'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'header': this.header.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'header': header.toJson(),
         'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'is_open': this.isOpen,
-        '@type': CONSTRUCTOR
+        'is_open': isOpen,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The content must be left-aligned
+@immutable
 class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
   const PageBlockHorizontalAlignmentLeft();
 
-  static const String CONSTRUCTOR = 'pageBlockHorizontalAlignmentLeft';
+  static const String constructor = 'pageBlockHorizontalAlignmentLeft';
 
   static PageBlockHorizontalAlignmentLeft? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

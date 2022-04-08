@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a photo to be set as a user profile or chat photo
+@immutable
 abstract class InputChatPhoto extends TdObject {
   const InputChatPhoto();
 
-  static const String CONSTRUCTOR = 'inputChatPhoto';
+  static const String constructor = 'inputChatPhoto';
 
   /// Inherited by:
   /// [InputChatPhotoPrevious]
@@ -16,12 +18,12 @@ abstract class InputChatPhoto extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputChatPhotoPrevious.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputChatPhotoPrevious.constructor:
         return InputChatPhotoPrevious.fromJson(json);
-      case InputChatPhotoStatic.CONSTRUCTOR:
+      case InputChatPhotoStatic.constructor:
         return InputChatPhotoStatic.fromJson(json);
-      case InputChatPhotoAnimation.CONSTRUCTOR:
+      case InputChatPhotoAnimation.constructor:
         return InputChatPhotoAnimation.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class InputChatPhoto extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

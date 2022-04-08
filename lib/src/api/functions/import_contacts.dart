@@ -1,24 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds new contacts or edits existing contacts by their phone numbers;
 /// contacts' user identifiers are ignored
 /// Returns [ImportedContacts]
+@immutable
 class ImportContacts extends TdFunction {
-  ImportContacts({required this.contacts});
+  const ImportContacts({
+    required this.contacts,
+  });
 
   /// [contacts] The list of contacts to import or edit; contacts' vCard are
   /// ignored and are not imported
   final List<Contact> contacts;
 
-  static const String CONSTRUCTOR = 'importContacts';
+  static const String constructor = 'importContacts';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'contacts': contacts.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Blocks an original sender of a message in the Replies chat
 /// Returns [Ok]
+@immutable
 class BlockMessageSenderFromReplies extends TdFunction {
-  BlockMessageSenderFromReplies(
-      {required this.messageId,
-      required this.deleteMessage,
-      required this.deleteAllMessages,
-      required this.reportSpam});
+  const BlockMessageSenderFromReplies({
+    required this.messageId,
+    required this.deleteMessage,
+    required this.deleteAllMessages,
+    required this.reportSpam,
+  });
 
   /// [messageId] The identifier of an incoming message in the Replies chat
   final int messageId;
@@ -24,17 +27,18 @@ class BlockMessageSenderFromReplies extends TdFunction {
   /// moderators
   final bool reportSpam;
 
-  static const String CONSTRUCTOR = 'blockMessageSenderFromReplies';
+  static const String constructor = 'blockMessageSenderFromReplies';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'message_id': this.messageId,
-        'delete_message': this.deleteMessage,
-        'delete_all_messages': this.deleteAllMessages,
-        'report_spam': this.reportSpam,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'message_id': messageId,
+        'delete_message': deleteMessage,
+        'delete_all_messages': deleteAllMessages,
+        'report_spam': reportSpam,
+        '@type': constructor,
       };
 
   @override

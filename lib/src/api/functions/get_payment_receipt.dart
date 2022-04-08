@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a successful payment
 /// Returns [PaymentReceipt]
+@immutable
 class GetPaymentReceipt extends TdFunction {
-  GetPaymentReceipt({required this.chatId, required this.messageId});
+  const GetPaymentReceipt({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Chat identifier of the PaymentSuccessful message
   final int chatId;
@@ -12,15 +17,16 @@ class GetPaymentReceipt extends TdFunction {
   /// [messageId] Message identifier
   final int messageId;
 
-  static const String CONSTRUCTOR = 'getPaymentReceipt';
+  static const String constructor = 'getPaymentReceipt';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a stream to which TDLib internal log is written
+@immutable
 abstract class LogStream extends TdObject {
   const LogStream();
 
-  static const String CONSTRUCTOR = 'logStream';
+  static const String constructor = 'logStream';
 
   /// Inherited by:
   /// [LogStreamDefault]
@@ -16,12 +18,12 @@ abstract class LogStream extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case LogStreamDefault.CONSTRUCTOR:
+    switch (json['@type']) {
+      case LogStreamDefault.constructor:
         return LogStreamDefault.fromJson(json);
-      case LogStreamFile.CONSTRUCTOR:
+      case LogStreamFile.constructor:
         return LogStreamFile.fromJson(json);
-      case LogStreamEmpty.CONSTRUCTOR:
+      case LogStreamEmpty.constructor:
         return LogStreamEmpty.fromJson(json);
       default:
         return null;
@@ -29,7 +31,7 @@ abstract class LogStream extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

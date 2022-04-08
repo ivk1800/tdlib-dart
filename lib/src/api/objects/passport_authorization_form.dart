@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a Telegram Passport authorization form that was
 /// requested
+@immutable
 class PassportAuthorizationForm extends TdObject {
-  PassportAuthorizationForm(
-      {required this.id,
-      required this.requiredElements,
-      required this.privacyPolicyUrl});
+  const PassportAuthorizationForm({
+    required this.id,
+    required this.requiredElements,
+    required this.privacyPolicyUrl,
+  });
 
   /// [id] Unique identifier of the authorization form
   final int id;
@@ -19,7 +22,7 @@ class PassportAuthorizationForm extends TdObject {
   /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty
   final String privacyPolicyUrl;
 
-  static const String CONSTRUCTOR = 'passportAuthorizationForm';
+  static const String constructor = 'passportAuthorizationForm';
 
   static PassportAuthorizationForm? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,23 +30,25 @@ class PassportAuthorizationForm extends TdObject {
     }
 
     return PassportAuthorizationForm(
-        id: json['id'],
-        requiredElements: List<PassportRequiredElement>.from(
-            (json['required_elements'] ?? [])
-                .map((item) => PassportRequiredElement.fromJson(item))
-                .toList()),
-        privacyPolicyUrl: json['privacy_policy_url']);
+      id: json['id'],
+      requiredElements: List<PassportRequiredElement>.from(
+          (json['required_elements'] ?? [])
+              .map((item) => PassportRequiredElement.fromJson(item))
+              .toList()),
+      privacyPolicyUrl: json['privacy_policy_url'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
         'required_elements':
             requiredElements.map((item) => item.toJson()).toList(),
-        'privacy_policy_url': this.privacyPolicyUrl,
-        '@type': CONSTRUCTOR
+        'privacy_policy_url': privacyPolicyUrl,
+        '@type': constructor,
       };
 
   @override

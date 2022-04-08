@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the different types of activity in a chat
+@immutable
 abstract class ChatAction extends TdObject {
   const ChatAction();
 
-  static const String CONSTRUCTOR = 'chatAction';
+  static const String constructor = 'chatAction';
 
   /// Inherited by:
   /// [ChatActionTyping]
@@ -28,36 +30,36 @@ abstract class ChatAction extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatActionTyping.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatActionTyping.constructor:
         return ChatActionTyping.fromJson(json);
-      case ChatActionRecordingVideo.CONSTRUCTOR:
+      case ChatActionRecordingVideo.constructor:
         return ChatActionRecordingVideo.fromJson(json);
-      case ChatActionUploadingVideo.CONSTRUCTOR:
+      case ChatActionUploadingVideo.constructor:
         return ChatActionUploadingVideo.fromJson(json);
-      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
+      case ChatActionRecordingVoiceNote.constructor:
         return ChatActionRecordingVoiceNote.fromJson(json);
-      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
+      case ChatActionUploadingVoiceNote.constructor:
         return ChatActionUploadingVoiceNote.fromJson(json);
-      case ChatActionUploadingPhoto.CONSTRUCTOR:
+      case ChatActionUploadingPhoto.constructor:
         return ChatActionUploadingPhoto.fromJson(json);
-      case ChatActionUploadingDocument.CONSTRUCTOR:
+      case ChatActionUploadingDocument.constructor:
         return ChatActionUploadingDocument.fromJson(json);
-      case ChatActionChoosingSticker.CONSTRUCTOR:
+      case ChatActionChoosingSticker.constructor:
         return ChatActionChoosingSticker.fromJson(json);
-      case ChatActionChoosingLocation.CONSTRUCTOR:
+      case ChatActionChoosingLocation.constructor:
         return ChatActionChoosingLocation.fromJson(json);
-      case ChatActionChoosingContact.CONSTRUCTOR:
+      case ChatActionChoosingContact.constructor:
         return ChatActionChoosingContact.fromJson(json);
-      case ChatActionStartPlayingGame.CONSTRUCTOR:
+      case ChatActionStartPlayingGame.constructor:
         return ChatActionStartPlayingGame.fromJson(json);
-      case ChatActionRecordingVideoNote.CONSTRUCTOR:
+      case ChatActionRecordingVideoNote.constructor:
         return ChatActionRecordingVideoNote.fromJson(json);
-      case ChatActionUploadingVideoNote.CONSTRUCTOR:
+      case ChatActionUploadingVideoNote.constructor:
         return ChatActionUploadingVideoNote.fromJson(json);
-      case ChatActionWatchingAnimations.CONSTRUCTOR:
+      case ChatActionWatchingAnimations.constructor:
         return ChatActionWatchingAnimations.fromJson(json);
-      case ChatActionCancel.CONSTRUCTOR:
+      case ChatActionCancel.constructor:
         return ChatActionCancel.fromJson(json);
       default:
         return null;
@@ -65,7 +67,7 @@ abstract class ChatAction extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

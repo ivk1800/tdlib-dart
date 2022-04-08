@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A URL linking to a public supergroup or channel
+@immutable
 class TMeUrlTypeSupergroup extends TMeUrlType {
-  TMeUrlTypeSupergroup({required this.supergroupId});
+  const TMeUrlTypeSupergroup({
+    required this.supergroupId,
+  });
 
   /// [supergroupId] Identifier of the supergroup or channel
   final int supergroupId;
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeSupergroup';
+  static const String constructor = 'tMeUrlTypeSupergroup';
 
   static TMeUrlTypeSupergroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return TMeUrlTypeSupergroup(supergroupId: json['supergroup_id']);
+    return TMeUrlTypeSupergroup(
+      supergroupId: json['supergroup_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'supergroup_id': this.supergroupId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

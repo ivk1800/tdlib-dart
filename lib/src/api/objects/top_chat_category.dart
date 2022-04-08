@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the categories of chats for which a list of frequently used
 /// chats can be retrieved
+@immutable
 abstract class TopChatCategory extends TdObject {
   const TopChatCategory();
 
-  static const String CONSTRUCTOR = 'topChatCategory';
+  static const String constructor = 'topChatCategory';
 
   /// Inherited by:
   /// [TopChatCategoryUsers]
@@ -21,20 +23,20 @@ abstract class TopChatCategory extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case TopChatCategoryUsers.CONSTRUCTOR:
+    switch (json['@type']) {
+      case TopChatCategoryUsers.constructor:
         return TopChatCategoryUsers.fromJson(json);
-      case TopChatCategoryBots.CONSTRUCTOR:
+      case TopChatCategoryBots.constructor:
         return TopChatCategoryBots.fromJson(json);
-      case TopChatCategoryGroups.CONSTRUCTOR:
+      case TopChatCategoryGroups.constructor:
         return TopChatCategoryGroups.fromJson(json);
-      case TopChatCategoryChannels.CONSTRUCTOR:
+      case TopChatCategoryChannels.constructor:
         return TopChatCategoryChannels.fromJson(json);
-      case TopChatCategoryInlineBots.CONSTRUCTOR:
+      case TopChatCategoryInlineBots.constructor:
         return TopChatCategoryInlineBots.fromJson(json);
-      case TopChatCategoryCalls.CONSTRUCTOR:
+      case TopChatCategoryCalls.constructor:
         return TopChatCategoryCalls.fromJson(json);
-      case TopChatCategoryForwardChats.CONSTRUCTOR:
+      case TopChatCategoryForwardChats.constructor:
         return TopChatCategoryForwardChats.fromJson(json);
       default:
         return null;
@@ -42,7 +44,7 @@ abstract class TopChatCategory extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

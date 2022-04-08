@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a reason why an external chat is shown in a chat list
+@immutable
 abstract class ChatSource extends TdObject {
   const ChatSource();
 
-  static const String CONSTRUCTOR = 'chatSource';
+  static const String constructor = 'chatSource';
 
   /// Inherited by:
   /// [ChatSourceMtprotoProxy]
@@ -15,10 +17,10 @@ abstract class ChatSource extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatSourceMtprotoProxy.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatSourceMtprotoProxy.constructor:
         return ChatSourceMtprotoProxy.fromJson(json);
-      case ChatSourcePublicServiceAnnouncement.CONSTRUCTOR:
+      case ChatSourcePublicServiceAnnouncement.constructor:
         return ChatSourcePublicServiceAnnouncement.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class ChatSource extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

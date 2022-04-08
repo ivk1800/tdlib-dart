@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The footer of a page
+@immutable
 class PageBlockFooter extends PageBlock {
-  PageBlockFooter({required this.footer});
+  const PageBlockFooter({
+    required this.footer,
+  });
 
   /// [footer] Footer
   final RichText footer;
 
-  static const String CONSTRUCTOR = 'pageBlockFooter';
+  static const String constructor = 'pageBlockFooter';
 
   static PageBlockFooter? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PageBlockFooter(footer: RichText.fromJson(json['footer'])!);
+    return PageBlockFooter(
+      footer: RichText.fromJson(json['footer'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'footer': this.footer.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'footer': footer.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

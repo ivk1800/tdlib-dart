@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets the result of an inline query; for bots only
 /// Returns [Ok]
+@immutable
 class AnswerInlineQuery extends TdFunction {
-  AnswerInlineQuery(
-      {required this.inlineQueryId,
-      required this.isPersonal,
-      required this.results,
-      required this.cacheTime,
-      required this.nextOffset,
-      required this.switchPmText,
-      required this.switchPmParameter});
+  const AnswerInlineQuery({
+    required this.inlineQueryId,
+    required this.isPersonal,
+    required this.results,
+    required this.cacheTime,
+    required this.nextOffset,
+    required this.switchPmText,
+    required this.switchPmParameter,
+  });
 
   /// [inlineQueryId] Identifier of the inline query
   final int inlineQueryId;
@@ -38,20 +41,21 @@ class AnswerInlineQuery extends TdFunction {
   /// [switchPmParameter] The parameter for the bot start message
   final String switchPmParameter;
 
-  static const String CONSTRUCTOR = 'answerInlineQuery';
+  static const String constructor = 'answerInlineQuery';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'inline_query_id': this.inlineQueryId,
-        'is_personal': this.isPersonal,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'inline_query_id': inlineQueryId,
+        'is_personal': isPersonal,
         'results': results.map((item) => item.toJson()).toList(),
-        'cache_time': this.cacheTime,
-        'next_offset': this.nextOffset,
-        'switch_pm_text': this.switchPmText,
-        'switch_pm_parameter': this.switchPmParameter,
-        '@type': CONSTRUCTOR
+        'cache_time': cacheTime,
+        'next_offset': nextOffset,
+        'switch_pm_text': switchPmText,
+        'switch_pm_parameter': switchPmParameter,
+        '@type': constructor,
       };
 
   @override

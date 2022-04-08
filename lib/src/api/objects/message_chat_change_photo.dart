@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An updated chat photo
+@immutable
 class MessageChatChangePhoto extends MessageContent {
-  MessageChatChangePhoto({required this.photo});
+  const MessageChatChangePhoto({
+    required this.photo,
+  });
 
   /// [photo] New chat photo
   final ChatPhoto photo;
 
-  static const String CONSTRUCTOR = 'messageChatChangePhoto';
+  static const String constructor = 'messageChatChangePhoto';
 
   static MessageChatChangePhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageChatChangePhoto(photo: ChatPhoto.fromJson(json['photo'])!);
+    return MessageChatChangePhoto(
+      photo: ChatPhoto.fromJson(json['photo'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'photo': this.photo.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

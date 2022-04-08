@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Bans a member in a chat. Members can't be banned in private or secret
 /// chats. In supergroups and channels, the user will not be able to return to
 /// the group on their own using invite links, etc., unless unbanned first
 /// Returns [Ok]
+@immutable
 class BanChatMember extends TdFunction {
-  BanChatMember(
-      {required this.chatId,
-      required this.memberId,
-      required this.bannedUntilDate,
-      required this.revokeMessages});
+  const BanChatMember({
+    required this.chatId,
+    required this.memberId,
+    required this.bannedUntilDate,
+    required this.revokeMessages,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -28,17 +31,18 @@ class BanChatMember extends TdFunction {
   /// that is being removed. Always true for supergroups and channels
   final bool revokeMessages;
 
-  static const String CONSTRUCTOR = 'banChatMember';
+  static const String constructor = 'banChatMember';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'member_id': this.memberId.toJson(),
-        'banned_until_date': this.bannedUntilDate,
-        'revoke_messages': this.revokeMessages,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'member_id': memberId.toJson(),
+        'banned_until_date': bannedUntilDate,
+        'revoke_messages': revokeMessages,
+        '@type': constructor,
       };
 
   @override

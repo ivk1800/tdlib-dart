@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a sticker
+@immutable
 class PushMessageContentSticker extends PushMessageContent {
-  PushMessageContentSticker(
-      {this.sticker, required this.emoji, required this.isPinned});
+  const PushMessageContentSticker({
+    this.sticker,
+    required this.emoji,
+    required this.isPinned,
+  });
 
   /// [sticker] Message content; may be null
   final Sticker? sticker;
@@ -16,7 +21,7 @@ class PushMessageContentSticker extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentSticker';
+  static const String constructor = 'pushMessageContentSticker';
 
   static PushMessageContentSticker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class PushMessageContentSticker extends PushMessageContent {
     }
 
     return PushMessageContentSticker(
-        sticker: Sticker.fromJson(json['sticker']),
-        emoji: json['emoji'],
-        isPinned: json['is_pinned']);
+      sticker: Sticker.fromJson(json['sticker']),
+      emoji: json['emoji'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sticker': this.sticker?.toJson(),
-        'emoji': this.emoji,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker?.toJson(),
+        'emoji': emoji,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

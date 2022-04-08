@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Finishes the file generation
 /// Returns [Ok]
+@immutable
 class FinishFileGeneration extends TdFunction {
-  FinishFileGeneration({required this.generationId, this.error});
+  const FinishFileGeneration({
+    required this.generationId,
+    this.error,
+  });
 
   /// [generationId] The identifier of the generation process
   final int generationId;
@@ -13,15 +18,16 @@ class FinishFileGeneration extends TdFunction {
   /// pass null if the file generation succeeded
   final TdError? error;
 
-  static const String CONSTRUCTOR = 'finishFileGeneration';
+  static const String constructor = 'finishFileGeneration';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'generation_id': this.generationId,
-        'error': this.error?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'generation_id': generationId,
+        'error': error?.toJson(),
+        '@type': constructor,
       };
 
   @override

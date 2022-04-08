@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes a sticker from the list of recently used stickers
 /// Returns [Ok]
+@immutable
 class RemoveRecentSticker extends TdFunction {
-  RemoveRecentSticker({required this.isAttached, required this.sticker});
+  const RemoveRecentSticker({
+    required this.isAttached,
+    required this.sticker,
+  });
 
   /// [isAttached] Pass true to remove the sticker from the list of stickers
   /// recently attached to photo or video files; pass false to remove the
@@ -14,15 +19,16 @@ class RemoveRecentSticker extends TdFunction {
   /// [sticker] Sticker file to delete
   final InputFile sticker;
 
-  static const String CONSTRUCTOR = 'removeRecentSticker';
+  static const String constructor = 'removeRecentSticker';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_attached': this.isAttached,
-        'sticker': this.sticker.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_attached': isAttached,
+        'sticker': sticker.toJson(),
+        '@type': constructor,
       };
 
   @override

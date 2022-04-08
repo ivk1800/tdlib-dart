@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains auto-download settings presets for the current user
+@immutable
 class AutoDownloadSettingsPresets extends TdObject {
-  AutoDownloadSettingsPresets(
-      {required this.low, required this.medium, required this.high});
+  const AutoDownloadSettingsPresets({
+    required this.low,
+    required this.medium,
+    required this.high,
+  });
 
   /// [low] Preset with lowest settings; supposed to be used by default when
   /// roaming
@@ -18,7 +23,7 @@ class AutoDownloadSettingsPresets extends TdObject {
   /// connected on Wi-Fi
   final AutoDownloadSettings high;
 
-  static const String CONSTRUCTOR = 'autoDownloadSettingsPresets';
+  static const String constructor = 'autoDownloadSettingsPresets';
 
   static AutoDownloadSettingsPresets? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,19 +31,21 @@ class AutoDownloadSettingsPresets extends TdObject {
     }
 
     return AutoDownloadSettingsPresets(
-        low: AutoDownloadSettings.fromJson(json['low'])!,
-        medium: AutoDownloadSettings.fromJson(json['medium'])!,
-        high: AutoDownloadSettings.fromJson(json['high'])!);
+      low: AutoDownloadSettings.fromJson(json['low'])!,
+      medium: AutoDownloadSettings.fromJson(json['medium'])!,
+      high: AutoDownloadSettings.fromJson(json['high'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'low': this.low.toJson(),
-        'medium': this.medium.toJson(),
-        'high': this.high.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'low': low.toJson(),
+        'medium': medium.toJson(),
+        'high': high.toJson(),
+        '@type': constructor,
       };
 
   @override

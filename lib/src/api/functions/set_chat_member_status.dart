@@ -1,14 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the status of a chat member, needs appropriate privileges. This
 /// function is currently not suitable for transferring chat ownership; use
 /// transferChatOwnership instead. Use addChatMember or banChatMember if some
 /// additional parameters needs to be passed
 /// Returns [Ok]
+@immutable
 class SetChatMemberStatus extends TdFunction {
-  SetChatMemberStatus(
-      {required this.chatId, required this.memberId, required this.status});
+  const SetChatMemberStatus({
+    required this.chatId,
+    required this.memberId,
+    required this.status,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -20,16 +25,17 @@ class SetChatMemberStatus extends TdFunction {
   /// [status] The new status of the member in the chat
   final ChatMemberStatus status;
 
-  static const String CONSTRUCTOR = 'setChatMemberStatus';
+  static const String constructor = 'setChatMemberStatus';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'member_id': this.memberId.toJson(),
-        'status': this.status.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'member_id': memberId.toJson(),
+        'status': status.toJson(),
+        '@type': constructor,
       };
 
   @override

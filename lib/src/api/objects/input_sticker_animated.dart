@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An animated sticker in TGS format
+@immutable
 class InputStickerAnimated extends InputSticker {
-  InputStickerAnimated({required this.sticker, required this.emojis});
+  const InputStickerAnimated({
+    required this.sticker,
+    required this.emojis,
+  });
 
   /// [sticker] File with the animated sticker. Only local or uploaded within a
   /// week files are supported. See
@@ -14,7 +19,7 @@ class InputStickerAnimated extends InputSticker {
   /// [emojis] Emojis corresponding to the sticker
   final String emojis;
 
-  static const String CONSTRUCTOR = 'inputStickerAnimated';
+  static const String constructor = 'inputStickerAnimated';
 
   static InputStickerAnimated? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -22,16 +27,19 @@ class InputStickerAnimated extends InputSticker {
     }
 
     return InputStickerAnimated(
-        sticker: InputFile.fromJson(json['sticker'])!, emojis: json['emojis']);
+      sticker: InputFile.fromJson(json['sticker'])!,
+      emojis: json['emojis'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'sticker': this.sticker.toJson(),
-        'emojis': this.emojis,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker.toJson(),
+        'emojis': emojis,
+        '@type': constructor,
       };
 
   @override

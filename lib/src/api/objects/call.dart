@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a call
+@immutable
 class Call extends TdObject {
-  Call(
-      {required this.id,
-      required this.userId,
-      required this.isOutgoing,
-      required this.isVideo,
-      required this.state});
+  const Call({
+    required this.id,
+    required this.userId,
+    required this.isOutgoing,
+    required this.isVideo,
+    required this.state,
+  });
 
   /// [id] Call identifier, not persistent
   final int id;
@@ -25,7 +28,7 @@ class Call extends TdObject {
   /// [state] Call state
   final CallState state;
 
-  static const String CONSTRUCTOR = 'call';
+  static const String constructor = 'call';
 
   static Call? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,23 +36,25 @@ class Call extends TdObject {
     }
 
     return Call(
-        id: json['id'],
-        userId: json['user_id'],
-        isOutgoing: json['is_outgoing'],
-        isVideo: json['is_video'],
-        state: CallState.fromJson(json['state'])!);
+      id: json['id'],
+      userId: json['user_id'],
+      isOutgoing: json['is_outgoing'],
+      isVideo: json['is_video'],
+      state: CallState.fromJson(json['state'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'user_id': this.userId,
-        'is_outgoing': this.isOutgoing,
-        'is_video': this.isVideo,
-        'state': this.state.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'user_id': userId,
+        'is_outgoing': isOutgoing,
+        'is_video': isVideo,
+        'state': state.toJson(),
+        '@type': constructor,
       };
 
   @override

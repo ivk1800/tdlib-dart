@@ -1,22 +1,30 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank
 /// card numbers, URLs, and email addresses) contained in the text. Can be
 /// called synchronously
 /// Returns [TextEntities]
+@immutable
 class GetTextEntities extends TdFunction {
-  GetTextEntities({required this.text});
+  const GetTextEntities({
+    required this.text,
+  });
 
   /// [text] The text in which to look for entites
   final String text;
 
-  static const String CONSTRUCTOR = 'getTextEntities';
+  static const String constructor = 'getTextEntities';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'text': this.text, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

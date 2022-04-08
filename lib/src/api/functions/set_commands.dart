@@ -1,11 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets the list of commands supported by the bot for the given user scope
 /// and language; for bots only
 /// Returns [Ok]
+@immutable
 class SetCommands extends TdFunction {
-  SetCommands({this.scope, required this.languageCode, required this.commands});
+  const SetCommands({
+    this.scope,
+    required this.languageCode,
+    required this.commands,
+  });
 
   /// [scope] The scope to which the commands are relevant; pass null to change
   /// commands in the default bot command scope
@@ -19,16 +25,17 @@ class SetCommands extends TdFunction {
   /// [commands] List of the bot's commands
   final List<BotCommand> commands;
 
-  static const String CONSTRUCTOR = 'setCommands';
+  static const String constructor = 'setCommands';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'scope': this.scope?.toJson(),
-        'language_code': this.languageCode,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'scope': scope?.toJson(),
+        'language_code': languageCode,
         'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

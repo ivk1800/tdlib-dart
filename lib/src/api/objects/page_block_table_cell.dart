@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a cell of a table
+@immutable
 class PageBlockTableCell extends TdObject {
-  PageBlockTableCell(
-      {this.text,
-      required this.isHeader,
-      required this.colspan,
-      required this.rowspan,
-      required this.align,
-      required this.valign});
+  const PageBlockTableCell({
+    this.text,
+    required this.isHeader,
+    required this.colspan,
+    required this.rowspan,
+    required this.align,
+    required this.valign,
+  });
 
   /// [text] Cell text; may be null. If the text is null, then the cell must be
   /// invisible
@@ -30,7 +33,7 @@ class PageBlockTableCell extends TdObject {
   /// [valign] Vertical cell content alignment
   final PageBlockVerticalAlignment valign;
 
-  static const String CONSTRUCTOR = 'pageBlockTableCell';
+  static const String constructor = 'pageBlockTableCell';
 
   static PageBlockTableCell? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class PageBlockTableCell extends TdObject {
     }
 
     return PageBlockTableCell(
-        text: RichText.fromJson(json['text']),
-        isHeader: json['is_header'],
-        colspan: json['colspan'],
-        rowspan: json['rowspan'],
-        align: PageBlockHorizontalAlignment.fromJson(json['align'])!,
-        valign: PageBlockVerticalAlignment.fromJson(json['valign'])!);
+      text: RichText.fromJson(json['text']),
+      isHeader: json['is_header'],
+      colspan: json['colspan'],
+      rowspan: json['rowspan'],
+      align: PageBlockHorizontalAlignment.fromJson(json['align'])!,
+      valign: PageBlockVerticalAlignment.fromJson(json['valign'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text?.toJson(),
-        'is_header': this.isHeader,
-        'colspan': this.colspan,
-        'rowspan': this.rowspan,
-        'align': this.align.toJson(),
-        'valign': this.valign.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text?.toJson(),
+        'is_header': isHeader,
+        'colspan': colspan,
+        'rowspan': rowspan,
+        'align': align.toJson(),
+        'valign': valign.toJson(),
+        '@type': constructor,
       };
 
   @override

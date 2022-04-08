@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents result of checking whether a name can be used for a new sticker
 /// set
+@immutable
 abstract class CheckStickerSetNameResult extends TdObject {
   const CheckStickerSetNameResult();
 
-  static const String CONSTRUCTOR = 'checkStickerSetNameResult';
+  static const String constructor = 'checkStickerSetNameResult';
 
   /// Inherited by:
   /// [CheckStickerSetNameResultOk]
@@ -17,12 +19,12 @@ abstract class CheckStickerSetNameResult extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CheckStickerSetNameResultOk.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CheckStickerSetNameResultOk.constructor:
         return CheckStickerSetNameResultOk.fromJson(json);
-      case CheckStickerSetNameResultNameInvalid.CONSTRUCTOR:
+      case CheckStickerSetNameResultNameInvalid.constructor:
         return CheckStickerSetNameResultNameInvalid.fromJson(json);
-      case CheckStickerSetNameResultNameOccupied.CONSTRUCTOR:
+      case CheckStickerSetNameResultNameOccupied.constructor:
         return CheckStickerSetNameResultNameOccupied.fromJson(json);
       default:
         return null;
@@ -30,7 +32,7 @@ abstract class CheckStickerSetNameResult extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

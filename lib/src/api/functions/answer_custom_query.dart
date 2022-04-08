@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Answers a custom query; for bots only
 /// Returns [Ok]
+@immutable
 class AnswerCustomQuery extends TdFunction {
-  AnswerCustomQuery({required this.customQueryId, required this.data});
+  const AnswerCustomQuery({
+    required this.customQueryId,
+    required this.data,
+  });
 
   /// [customQueryId] Identifier of a custom query
   final int customQueryId;
@@ -12,15 +17,16 @@ class AnswerCustomQuery extends TdFunction {
   /// [data] JSON-serialized answer to the query
   final String data;
 
-  static const String CONSTRUCTOR = 'answerCustomQuery';
+  static const String constructor = 'answerCustomQuery';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'custom_query_id': this.customQueryId,
-        'data': this.data,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'custom_query_id': customQueryId,
+        'data': data,
+        '@type': constructor,
       };
 
   @override

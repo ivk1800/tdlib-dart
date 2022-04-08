@@ -1,29 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A static photo in JPEG format
+@immutable
 class InputChatPhotoStatic extends InputChatPhoto {
-  InputChatPhotoStatic({required this.photo});
+  const InputChatPhotoStatic({
+    required this.photo,
+  });
 
   /// [photo] Photo to be set as profile photo. Only inputFileLocal and
   /// inputFileGenerated are allowed
   final InputFile photo;
 
-  static const String CONSTRUCTOR = 'inputChatPhotoStatic';
+  static const String constructor = 'inputChatPhotoStatic';
 
   static InputChatPhotoStatic? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InputChatPhotoStatic(photo: InputFile.fromJson(json['photo'])!);
+    return InputChatPhotoStatic(
+      photo: InputFile.fromJson(json['photo'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'photo': this.photo.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

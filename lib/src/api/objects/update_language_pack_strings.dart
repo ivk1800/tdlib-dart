@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some language pack strings have been updated
+@immutable
 class UpdateLanguagePackStrings extends Update {
-  UpdateLanguagePackStrings(
-      {required this.localizationTarget,
-      required this.languagePackId,
-      required this.strings});
+  const UpdateLanguagePackStrings({
+    required this.localizationTarget,
+    required this.languagePackId,
+    required this.strings,
+  });
 
   /// [localizationTarget] Localization target to which the language pack
   /// belongs
@@ -18,7 +21,7 @@ class UpdateLanguagePackStrings extends Update {
   /// [strings] List of changed language pack strings
   final List<LanguagePackString> strings;
 
-  static const String CONSTRUCTOR = 'updateLanguagePackStrings';
+  static const String constructor = 'updateLanguagePackStrings';
 
   static UpdateLanguagePackStrings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,21 +29,23 @@ class UpdateLanguagePackStrings extends Update {
     }
 
     return UpdateLanguagePackStrings(
-        localizationTarget: json['localization_target'],
-        languagePackId: json['language_pack_id'],
-        strings: List<LanguagePackString>.from((json['strings'] ?? [])
-            .map((item) => LanguagePackString.fromJson(item))
-            .toList()));
+      localizationTarget: json['localization_target'],
+      languagePackId: json['language_pack_id'],
+      strings: List<LanguagePackString>.from((json['strings'] ?? [])
+          .map((item) => LanguagePackString.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'localization_target': this.localizationTarget,
-        'language_pack_id': this.languagePackId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'localization_target': localizationTarget,
+        'language_pack_id': languagePackId,
         'strings': strings.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

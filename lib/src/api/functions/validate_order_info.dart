@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Validates the order information provided by a user and returns the
 /// available shipping options for a flexible invoice
 /// Returns [ValidatedOrderInfo]
+@immutable
 class ValidateOrderInfo extends TdFunction {
-  ValidateOrderInfo(
-      {required this.chatId,
-      required this.messageId,
-      this.orderInfo,
-      required this.allowSave});
+  const ValidateOrderInfo({
+    required this.chatId,
+    required this.messageId,
+    this.orderInfo,
+    required this.allowSave,
+  });
 
   /// [chatId] Chat identifier of the Invoice message
   final int chatId;
@@ -24,17 +27,18 @@ class ValidateOrderInfo extends TdFunction {
   /// [allowSave] True, if the order information can be saved
   final bool allowSave;
 
-  static const String CONSTRUCTOR = 'validateOrderInfo';
+  static const String constructor = 'validateOrderInfo';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'order_info': this.orderInfo?.toJson(),
-        'allow_save': this.allowSave,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'order_info': orderInfo?.toJson(),
+        'allow_save': allowSave,
+        '@type': constructor,
       };
 
   @override

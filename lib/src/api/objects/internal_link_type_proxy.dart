@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is a link to a proxy. Call addProxy with the given parameters to
 /// process the link and add the proxy
+@immutable
 class InternalLinkTypeProxy extends InternalLinkType {
-  InternalLinkTypeProxy(
-      {required this.server, required this.port, required this.type});
+  const InternalLinkTypeProxy({
+    required this.server,
+    required this.port,
+    required this.type,
+  });
 
   /// [server] Proxy server IP address
   final String server;
@@ -16,7 +21,7 @@ class InternalLinkTypeProxy extends InternalLinkType {
   /// [type] Type of the proxy
   final ProxyType type;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeProxy';
+  static const String constructor = 'internalLinkTypeProxy';
 
   static InternalLinkTypeProxy? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class InternalLinkTypeProxy extends InternalLinkType {
     }
 
     return InternalLinkTypeProxy(
-        server: json['server'],
-        port: json['port'],
-        type: ProxyType.fromJson(json['type'])!);
+      server: json['server'],
+      port: json['port'],
+      type: ProxyType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'server': this.server,
-        'port': this.port,
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'server': server,
+        'port': port,
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

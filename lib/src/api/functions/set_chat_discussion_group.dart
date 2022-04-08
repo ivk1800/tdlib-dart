@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the discussion group of a channel chat; requires can_change_info
 /// administrator right in the channel if it is specified
 /// Returns [Ok]
+@immutable
 class SetChatDiscussionGroup extends TdFunction {
-  SetChatDiscussionGroup(
-      {required this.chatId, required this.discussionChatId});
+  const SetChatDiscussionGroup({
+    required this.chatId,
+    required this.discussionChatId,
+  });
 
   /// [chatId] Identifier of the channel chat. Pass 0 to remove a link from the
   /// supergroup passed in the second argument to a linked channel chat
@@ -21,15 +25,16 @@ class SetChatDiscussionGroup extends TdFunction {
   /// first to change that
   final int discussionChatId;
 
-  static const String CONSTRUCTOR = 'setChatDiscussionGroup';
+  static const String constructor = 'setChatDiscussionGroup';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'discussion_chat_id': this.discussionChatId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'discussion_chat_id': discussionChatId,
+        '@type': constructor,
       };
 
   @override

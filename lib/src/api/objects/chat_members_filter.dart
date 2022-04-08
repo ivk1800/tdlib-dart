@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Specifies the kind of chat members to return in searchChatMembers
+@immutable
 abstract class ChatMembersFilter extends TdObject {
   const ChatMembersFilter();
 
-  static const String CONSTRUCTOR = 'chatMembersFilter';
+  static const String constructor = 'chatMembersFilter';
 
   /// Inherited by:
   /// [ChatMembersFilterContacts]
@@ -20,20 +22,20 @@ abstract class ChatMembersFilter extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatMembersFilterContacts.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatMembersFilterContacts.constructor:
         return ChatMembersFilterContacts.fromJson(json);
-      case ChatMembersFilterAdministrators.CONSTRUCTOR:
+      case ChatMembersFilterAdministrators.constructor:
         return ChatMembersFilterAdministrators.fromJson(json);
-      case ChatMembersFilterMembers.CONSTRUCTOR:
+      case ChatMembersFilterMembers.constructor:
         return ChatMembersFilterMembers.fromJson(json);
-      case ChatMembersFilterMention.CONSTRUCTOR:
+      case ChatMembersFilterMention.constructor:
         return ChatMembersFilterMention.fromJson(json);
-      case ChatMembersFilterRestricted.CONSTRUCTOR:
+      case ChatMembersFilterRestricted.constructor:
         return ChatMembersFilterRestricted.fromJson(json);
-      case ChatMembersFilterBanned.CONSTRUCTOR:
+      case ChatMembersFilterBanned.constructor:
         return ChatMembersFilterBanned.fromJson(json);
-      case ChatMembersFilterBots.CONSTRUCTOR:
+      case ChatMembersFilterBots.constructor:
         return ChatMembersFilterBots.fromJson(json);
       default:
         return null;
@@ -41,7 +43,7 @@ abstract class ChatMembersFilter extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

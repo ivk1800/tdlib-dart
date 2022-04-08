@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a new sticker set. Returns the newly created sticker set
 /// Returns [StickerSet]
+@immutable
 class CreateNewStickerSet extends TdFunction {
-  CreateNewStickerSet(
-      {required this.userId,
-      required this.title,
-      required this.name,
-      required this.isMasks,
-      required this.stickers,
-      required this.source});
+  const CreateNewStickerSet({
+    required this.userId,
+    required this.title,
+    required this.name,
+    required this.isMasks,
+    required this.stickers,
+    required this.source,
+  });
 
   /// [userId] Sticker set owner; ignored for regular users
   final int userId;
@@ -33,19 +36,20 @@ class CreateNewStickerSet extends TdFunction {
   /// [source] Source of the sticker set; may be empty if unknown
   final String source;
 
-  static const String CONSTRUCTOR = 'createNewStickerSet';
+  static const String constructor = 'createNewStickerSet';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'title': this.title,
-        'name': this.name,
-        'is_masks': this.isMasks,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'title': title,
+        'name': name,
+        'is_masks': isMasks,
         'stickers': stickers.map((item) => item.toJson()).toList(),
-        'source': this.source,
-        '@type': CONSTRUCTOR
+        'source': source,
+        '@type': constructor,
       };
 
   @override

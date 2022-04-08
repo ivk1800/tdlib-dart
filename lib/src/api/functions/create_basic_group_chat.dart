@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an existing chat corresponding to a known basic group
 /// Returns [Chat]
+@immutable
 class CreateBasicGroupChat extends TdFunction {
-  CreateBasicGroupChat({required this.basicGroupId, required this.force});
+  const CreateBasicGroupChat({
+    required this.basicGroupId,
+    required this.force,
+  });
 
   /// [basicGroupId] Basic group identifier
   final int basicGroupId;
@@ -14,15 +19,16 @@ class CreateBasicGroupChat extends TdFunction {
   /// be incorrect
   final bool force;
 
-  static const String CONSTRUCTOR = 'createBasicGroupChat';
+  static const String constructor = 'createBasicGroupChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'basic_group_id': this.basicGroupId,
-        'force': this.force,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'basic_group_id': basicGroupId,
+        'force': force,
+        '@type': constructor,
       };
 
   @override

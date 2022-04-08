@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video chat participant was muted or unmuted
+@immutable
 class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
-  ChatEventVideoChatParticipantIsMutedToggled(
-      {required this.participantId, required this.isMuted});
+  const ChatEventVideoChatParticipantIsMutedToggled({
+    required this.participantId,
+    required this.isMuted,
+  });
 
   /// [participantId] Identifier of the affected group call participant
   final MessageSender participantId;
@@ -12,7 +16,7 @@ class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
   /// [isMuted] New value of is_muted
   final bool isMuted;
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'chatEventVideoChatParticipantIsMutedToggled';
 
   static ChatEventVideoChatParticipantIsMutedToggled? fromJson(
@@ -22,17 +26,19 @@ class ChatEventVideoChatParticipantIsMutedToggled extends ChatEventAction {
     }
 
     return ChatEventVideoChatParticipantIsMutedToggled(
-        participantId: MessageSender.fromJson(json['participant_id'])!,
-        isMuted: json['is_muted']);
+      participantId: MessageSender.fromJson(json['participant_id'])!,
+      isMuted: json['is_muted'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'participant_id': this.participantId.toJson(),
-        'is_muted': this.isMuted,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'participant_id': participantId.toJson(),
+        'is_muted': isMuted,
+        '@type': constructor,
       };
 
   @override

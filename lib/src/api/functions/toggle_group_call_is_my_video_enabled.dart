@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether current user's video is enabled
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
-  ToggleGroupCallIsMyVideoEnabled(
-      {required this.groupCallId, required this.isMyVideoEnabled});
+  const ToggleGroupCallIsMyVideoEnabled({
+    required this.groupCallId,
+    required this.isMyVideoEnabled,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -13,15 +17,16 @@ class ToggleGroupCallIsMyVideoEnabled extends TdFunction {
   /// [isMyVideoEnabled] Pass true if the current user's video is enabled
   final bool isMyVideoEnabled;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallIsMyVideoEnabled';
+  static const String constructor = 'toggleGroupCallIsMyVideoEnabled';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'is_my_video_enabled': this.isMyVideoEnabled,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'is_my_video_enabled': isMyVideoEnabled,
+        '@type': constructor,
       };
 
   @override

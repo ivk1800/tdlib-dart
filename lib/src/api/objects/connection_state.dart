@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the current state of the connection to Telegram servers
+@immutable
 abstract class ConnectionState extends TdObject {
   const ConnectionState();
 
-  static const String CONSTRUCTOR = 'connectionState';
+  static const String constructor = 'connectionState';
 
   /// Inherited by:
   /// [ConnectionStateWaitingForNetwork]
@@ -18,16 +20,16 @@ abstract class ConnectionState extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ConnectionStateWaitingForNetwork.constructor:
         return ConnectionStateWaitingForNetwork.fromJson(json);
-      case ConnectionStateConnectingToProxy.CONSTRUCTOR:
+      case ConnectionStateConnectingToProxy.constructor:
         return ConnectionStateConnectingToProxy.fromJson(json);
-      case ConnectionStateConnecting.CONSTRUCTOR:
+      case ConnectionStateConnecting.constructor:
         return ConnectionStateConnecting.fromJson(json);
-      case ConnectionStateUpdating.CONSTRUCTOR:
+      case ConnectionStateUpdating.constructor:
         return ConnectionStateUpdating.fromJson(json);
-      case ConnectionStateReady.CONSTRUCTOR:
+      case ConnectionStateReady.constructor:
         return ConnectionStateReady.fromJson(json);
       default:
         return null;
@@ -35,7 +37,7 @@ abstract class ConnectionState extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

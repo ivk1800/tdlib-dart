@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A document message (general file)
+@immutable
 class MessageDocument extends MessageContent {
-  MessageDocument({required this.document, required this.caption});
+  const MessageDocument({
+    required this.document,
+    required this.caption,
+  });
 
   /// [document] The document description
   final Document document;
@@ -11,7 +16,7 @@ class MessageDocument extends MessageContent {
   /// [caption] Document caption
   final FormattedText caption;
 
-  static const String CONSTRUCTOR = 'messageDocument';
+  static const String constructor = 'messageDocument';
 
   static MessageDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class MessageDocument extends MessageContent {
     }
 
     return MessageDocument(
-        document: Document.fromJson(json['document'])!,
-        caption: FormattedText.fromJson(json['caption'])!);
+      document: Document.fromJson(json['document'])!,
+      caption: FormattedText.fromJson(json['caption'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'document': this.document.toJson(),
-        'caption': this.caption.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'document': document.toJson(),
+        'caption': caption.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A WebRTC server
+@immutable
 class CallServerTypeWebrtc extends CallServerType {
-  CallServerTypeWebrtc(
-      {required this.username,
-      required this.password,
-      required this.supportsTurn,
-      required this.supportsStun});
+  const CallServerTypeWebrtc({
+    required this.username,
+    required this.password,
+    required this.supportsTurn,
+    required this.supportsStun,
+  });
 
   /// [username] Username to be used for authentication
   final String username;
@@ -21,7 +24,7 @@ class CallServerTypeWebrtc extends CallServerType {
   /// [supportsStun] True, if the server supports STUN
   final bool supportsStun;
 
-  static const String CONSTRUCTOR = 'callServerTypeWebrtc';
+  static const String constructor = 'callServerTypeWebrtc';
 
   static CallServerTypeWebrtc? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,21 +32,23 @@ class CallServerTypeWebrtc extends CallServerType {
     }
 
     return CallServerTypeWebrtc(
-        username: json['username'],
-        password: json['password'],
-        supportsTurn: json['supports_turn'],
-        supportsStun: json['supports_stun']);
+      username: json['username'],
+      password: json['password'],
+      supportsTurn: json['supports_turn'],
+      supportsStun: json['supports_stun'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'username': this.username,
-        'password': this.password,
-        'supports_turn': this.supportsTurn,
-        'supports_stun': this.supportsStun,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'username': username,
+        'password': password,
+        'supports_turn': supportsTurn,
+        'supports_stun': supportsStun,
+        '@type': constructor,
       };
 
   @override

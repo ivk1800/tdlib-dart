@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new incoming shipping query; for bots only. Only for invoices with
 /// flexible price
+@immutable
 class UpdateNewShippingQuery extends Update {
-  UpdateNewShippingQuery(
-      {required this.id,
-      required this.senderUserId,
-      required this.invoicePayload,
-      required this.shippingAddress});
+  const UpdateNewShippingQuery({
+    required this.id,
+    required this.senderUserId,
+    required this.invoicePayload,
+    required this.shippingAddress,
+  });
 
   /// [id] Unique query identifier
   final int id;
@@ -22,7 +25,7 @@ class UpdateNewShippingQuery extends Update {
   /// [shippingAddress] User shipping address
   final Address shippingAddress;
 
-  static const String CONSTRUCTOR = 'updateNewShippingQuery';
+  static const String constructor = 'updateNewShippingQuery';
 
   static UpdateNewShippingQuery? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class UpdateNewShippingQuery extends Update {
     }
 
     return UpdateNewShippingQuery(
-        id: int.tryParse(json['id']) ?? 0,
-        senderUserId: json['sender_user_id'],
-        invoicePayload: json['invoice_payload'],
-        shippingAddress: Address.fromJson(json['shipping_address'])!);
+      id: int.tryParse(json['id']) ?? 0,
+      senderUserId: json['sender_user_id'],
+      invoicePayload: json['invoice_payload'],
+      shippingAddress: Address.fromJson(json['shipping_address'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'sender_user_id': this.senderUserId,
-        'invoice_payload': this.invoicePayload,
-        'shipping_address': this.shippingAddress.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'sender_user_id': senderUserId,
+        'invoice_payload': invoicePayload,
+        'shipping_address': shippingAddress.toJson(),
+        '@type': constructor,
       };
 
   @override

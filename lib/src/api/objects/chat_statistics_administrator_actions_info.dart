@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains statistics about administrator actions done by a user
+@immutable
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
-  ChatStatisticsAdministratorActionsInfo(
-      {required this.userId,
-      required this.deletedMessageCount,
-      required this.bannedUserCount,
-      required this.restrictedUserCount});
+  const ChatStatisticsAdministratorActionsInfo({
+    required this.userId,
+    required this.deletedMessageCount,
+    required this.bannedUserCount,
+    required this.restrictedUserCount,
+  });
 
   /// [userId] Administrator user identifier
   final int userId;
@@ -21,7 +24,7 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   /// [restrictedUserCount] Number of users restricted by the administrator
   final int restrictedUserCount;
 
-  static const String CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';
+  static const String constructor = 'chatStatisticsAdministratorActionsInfo';
 
   static ChatStatisticsAdministratorActionsInfo? fromJson(
       Map<String, dynamic>? json) {
@@ -30,21 +33,23 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
     }
 
     return ChatStatisticsAdministratorActionsInfo(
-        userId: json['user_id'],
-        deletedMessageCount: json['deleted_message_count'],
-        bannedUserCount: json['banned_user_count'],
-        restrictedUserCount: json['restricted_user_count']);
+      userId: json['user_id'],
+      deletedMessageCount: json['deleted_message_count'],
+      bannedUserCount: json['banned_user_count'],
+      restrictedUserCount: json['restricted_user_count'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'deleted_message_count': this.deletedMessageCount,
-        'banned_user_count': this.bannedUserCount,
-        'restricted_user_count': this.restrictedUserCount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'deleted_message_count': deletedMessageCount,
+        'banned_user_count': bannedUserCount,
+        'restricted_user_count': restrictedUserCount,
+        '@type': constructor,
       };
 
   @override

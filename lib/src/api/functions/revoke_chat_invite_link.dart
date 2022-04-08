@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Revokes invite link for a chat. Available for basic groups, supergroups,
 /// and channels. Requires administrator privileges and can_invite_users right
@@ -7,8 +8,12 @@ import '../extensions/data_class_extensions.dart';
 /// primary link is revoked, then additionally to the revoked link returns new
 /// primary link
 /// Returns [ChatInviteLinks]
+@immutable
 class RevokeChatInviteLink extends TdFunction {
-  RevokeChatInviteLink({required this.chatId, required this.inviteLink});
+  const RevokeChatInviteLink({
+    required this.chatId,
+    required this.inviteLink,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -16,15 +21,16 @@ class RevokeChatInviteLink extends TdFunction {
   /// [inviteLink] Invite link to be revoked
   final String inviteLink;
 
-  static const String CONSTRUCTOR = 'revokeChatInviteLink';
+  static const String constructor = 'revokeChatInviteLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'invite_link': this.inviteLink,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'invite_link': inviteLink,
+        '@type': constructor,
       };
 
   @override

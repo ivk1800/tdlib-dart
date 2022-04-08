@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends an inline query to a bot and returns its results. Returns an error
 /// with code 502 if the bot fails to answer the query before the query
 /// timeout expires
 /// Returns [InlineQueryResults]
+@immutable
 class GetInlineQueryResults extends TdFunction {
-  GetInlineQueryResults(
-      {required this.botUserId,
-      required this.chatId,
-      this.userLocation,
-      required this.query,
-      required this.offset});
+  const GetInlineQueryResults({
+    required this.botUserId,
+    required this.chatId,
+    this.userLocation,
+    required this.query,
+    required this.offset,
+  });
 
   /// [botUserId] The identifier of the target bot
   final int botUserId;
@@ -29,18 +32,19 @@ class GetInlineQueryResults extends TdFunction {
   /// [offset] Offset of the first entry to return
   final String offset;
 
-  static const String CONSTRUCTOR = 'getInlineQueryResults';
+  static const String constructor = 'getInlineQueryResults';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'bot_user_id': this.botUserId,
-        'chat_id': this.chatId,
-        'user_location': this.userLocation?.toJson(),
-        'query': this.query,
-        'offset': this.offset,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'bot_user_id': botUserId,
+        'chat_id': chatId,
+        'user_location': userLocation?.toJson(),
+        'query': query,
+        'offset': offset,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns users and chats that were blocked by the current user
 /// Returns [MessageSenders]
+@immutable
 class GetBlockedMessageSenders extends TdFunction {
-  GetBlockedMessageSenders({required this.offset, required this.limit});
+  const GetBlockedMessageSenders({
+    required this.offset,
+    required this.limit,
+  });
 
   /// [offset] Number of users and chats to skip in the result; must be
   /// non-negative
@@ -13,13 +18,17 @@ class GetBlockedMessageSenders extends TdFunction {
   /// [limit] The maximum number of users and chats to return; up to 100
   final int limit;
 
-  static const String CONSTRUCTOR = 'getBlockedMessageSenders';
+  static const String constructor = 'getBlockedMessageSenders';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'offset': this.offset, 'limit': this.limit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

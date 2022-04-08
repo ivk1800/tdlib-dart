@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The content of a message to send
+@immutable
 abstract class InputMessageContent extends TdObject {
   const InputMessageContent();
 
-  static const String CONSTRUCTOR = 'inputMessageContent';
+  static const String constructor = 'inputMessageContent';
 
   /// Inherited by:
   /// [InputMessageText]
@@ -30,40 +32,40 @@ abstract class InputMessageContent extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputMessageText.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputMessageText.constructor:
         return InputMessageText.fromJson(json);
-      case InputMessageAnimation.CONSTRUCTOR:
+      case InputMessageAnimation.constructor:
         return InputMessageAnimation.fromJson(json);
-      case InputMessageAudio.CONSTRUCTOR:
+      case InputMessageAudio.constructor:
         return InputMessageAudio.fromJson(json);
-      case InputMessageDocument.CONSTRUCTOR:
+      case InputMessageDocument.constructor:
         return InputMessageDocument.fromJson(json);
-      case InputMessagePhoto.CONSTRUCTOR:
+      case InputMessagePhoto.constructor:
         return InputMessagePhoto.fromJson(json);
-      case InputMessageSticker.CONSTRUCTOR:
+      case InputMessageSticker.constructor:
         return InputMessageSticker.fromJson(json);
-      case InputMessageVideo.CONSTRUCTOR:
+      case InputMessageVideo.constructor:
         return InputMessageVideo.fromJson(json);
-      case InputMessageVideoNote.CONSTRUCTOR:
+      case InputMessageVideoNote.constructor:
         return InputMessageVideoNote.fromJson(json);
-      case InputMessageVoiceNote.CONSTRUCTOR:
+      case InputMessageVoiceNote.constructor:
         return InputMessageVoiceNote.fromJson(json);
-      case InputMessageLocation.CONSTRUCTOR:
+      case InputMessageLocation.constructor:
         return InputMessageLocation.fromJson(json);
-      case InputMessageVenue.CONSTRUCTOR:
+      case InputMessageVenue.constructor:
         return InputMessageVenue.fromJson(json);
-      case InputMessageContact.CONSTRUCTOR:
+      case InputMessageContact.constructor:
         return InputMessageContact.fromJson(json);
-      case InputMessageDice.CONSTRUCTOR:
+      case InputMessageDice.constructor:
         return InputMessageDice.fromJson(json);
-      case InputMessageGame.CONSTRUCTOR:
+      case InputMessageGame.constructor:
         return InputMessageGame.fromJson(json);
-      case InputMessageInvoice.CONSTRUCTOR:
+      case InputMessageInvoice.constructor:
         return InputMessageInvoice.fromJson(json);
-      case InputMessagePoll.CONSTRUCTOR:
+      case InputMessagePoll.constructor:
         return InputMessagePoll.fromJson(json);
-      case InputMessageForwarded.CONSTRUCTOR:
+      case InputMessageForwarded.constructor:
         return InputMessageForwarded.fromJson(json);
       default:
         return null;
@@ -71,7 +73,7 @@ abstract class InputMessageContent extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

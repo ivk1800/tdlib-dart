@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A photo message
+@immutable
 class InputMessagePhoto extends InputMessageContent {
-  InputMessagePhoto(
-      {required this.photo,
-      this.thumbnail,
-      required this.addedStickerFileIds,
-      required this.width,
-      required this.height,
-      this.caption,
-      required this.ttl});
+  const InputMessagePhoto({
+    required this.photo,
+    this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.width,
+    required this.height,
+    this.caption,
+    required this.ttl,
+  });
 
   /// [photo] Photo to send
   final InputFile photo;
@@ -37,7 +40,7 @@ class InputMessagePhoto extends InputMessageContent {
   /// specified only in private chats
   final int ttl;
 
-  static const String CONSTRUCTOR = 'inputMessagePhoto';
+  static const String constructor = 'inputMessagePhoto';
 
   static InputMessagePhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -45,31 +48,31 @@ class InputMessagePhoto extends InputMessageContent {
     }
 
     return InputMessagePhoto(
-        photo: InputFile.fromJson(json['photo'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-        addedStickerFileIds: List<int>.from(
-            (json['added_sticker_file_ids'] ?? [])
-                .map((item) => item)
-                .toList()),
-        width: json['width'],
-        height: json['height'],
-        caption: FormattedText.fromJson(json['caption']),
-        ttl: json['ttl']);
+      photo: InputFile.fromJson(json['photo'])!,
+      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      addedStickerFileIds: List<int>.from(
+          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+      width: json['width'],
+      height: json['height'],
+      caption: FormattedText.fromJson(json['caption']),
+      ttl: json['ttl'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'photo': this.photo.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo.toJson(),
+        'thumbnail': thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
-        'width': this.width,
-        'height': this.height,
-        'caption': this.caption?.toJson(),
-        'ttl': this.ttl,
-        '@type': CONSTRUCTOR
+        'width': width,
+        'height': height,
+        'caption': caption?.toJson(),
+        'ttl': ttl,
+        '@type': constructor,
       };
 
   @override

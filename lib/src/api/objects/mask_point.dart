@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Part of the face, relative to which a mask is placed
+@immutable
 abstract class MaskPoint extends TdObject {
   const MaskPoint();
 
-  static const String CONSTRUCTOR = 'maskPoint';
+  static const String constructor = 'maskPoint';
 
   /// Inherited by:
   /// [MaskPointForehead]
@@ -17,14 +19,14 @@ abstract class MaskPoint extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MaskPointForehead.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MaskPointForehead.constructor:
         return MaskPointForehead.fromJson(json);
-      case MaskPointEyes.CONSTRUCTOR:
+      case MaskPointEyes.constructor:
         return MaskPointEyes.fromJson(json);
-      case MaskPointMouth.CONSTRUCTOR:
+      case MaskPointMouth.constructor:
         return MaskPointMouth.fromJson(json);
-      case MaskPointChin.CONSTRUCTOR:
+      case MaskPointChin.constructor:
         return MaskPointChin.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class MaskPoint extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

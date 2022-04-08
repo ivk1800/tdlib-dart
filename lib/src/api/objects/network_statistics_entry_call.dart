@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the total amount of data that was used for
 /// calls
+@immutable
 class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
-  NetworkStatisticsEntryCall(
-      {required this.networkType,
-      required this.sentBytes,
-      required this.receivedBytes,
-      required this.duration});
+  const NetworkStatisticsEntryCall({
+    required this.networkType,
+    required this.sentBytes,
+    required this.receivedBytes,
+    required this.duration,
+  });
 
   /// [networkType] Type of the network the data was sent through. Call
   /// setNetworkType to maintain the actual network type
@@ -23,7 +26,7 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   /// [duration] Total call duration, in seconds
   final double duration;
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntryCall';
+  static const String constructor = 'networkStatisticsEntryCall';
 
   static NetworkStatisticsEntryCall? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -31,21 +34,23 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     }
 
     return NetworkStatisticsEntryCall(
-        networkType: NetworkType.fromJson(json['network_type'])!,
-        sentBytes: json['sent_bytes'],
-        receivedBytes: json['received_bytes'],
-        duration: json['duration']);
+      networkType: NetworkType.fromJson(json['network_type'])!,
+      sentBytes: json['sent_bytes'],
+      receivedBytes: json['received_bytes'],
+      duration: json['duration'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'network_type': this.networkType.toJson(),
-        'sent_bytes': this.sentBytes,
-        'received_bytes': this.receivedBytes,
-        'duration': this.duration,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'network_type': networkType.toJson(),
+        'sent_bytes': sentBytes,
+        'received_bytes': receivedBytes,
+        'duration': duration,
+        '@type': constructor,
       };
 
   @override

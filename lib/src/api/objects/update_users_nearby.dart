@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The list of users nearby has changed. The update is guaranteed to be sent
 /// only 60 seconds after a successful searchChatsNearby request
+@immutable
 class UpdateUsersNearby extends Update {
-  UpdateUsersNearby({required this.usersNearby});
+  const UpdateUsersNearby({
+    required this.usersNearby,
+  });
 
   /// [usersNearby] The new list of users nearby
   final List<ChatNearby> usersNearby;
 
-  static const String CONSTRUCTOR = 'updateUsersNearby';
+  static const String constructor = 'updateUsersNearby';
 
   static UpdateUsersNearby? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,17 +21,19 @@ class UpdateUsersNearby extends Update {
     }
 
     return UpdateUsersNearby(
-        usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
-            .map((item) => ChatNearby.fromJson(item))
-            .toList()));
+      usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+          .map((item) => ChatNearby.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'users_nearby': usersNearby.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

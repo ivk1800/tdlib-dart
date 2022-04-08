@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a video file
+@immutable
 class Video extends TdObject {
-  Video(
-      {required this.duration,
-      required this.width,
-      required this.height,
-      required this.fileName,
-      required this.mimeType,
-      required this.hasStickers,
-      required this.supportsStreaming,
-      this.minithumbnail,
-      this.thumbnail,
-      required this.video});
+  const Video({
+    required this.duration,
+    required this.width,
+    required this.height,
+    required this.fileName,
+    required this.mimeType,
+    required this.hasStickers,
+    required this.supportsStreaming,
+    this.minithumbnail,
+    this.thumbnail,
+    required this.video,
+  });
 
   /// [duration] Duration of the video, in seconds; as defined by the sender
   final int duration;
@@ -47,7 +50,7 @@ class Video extends TdObject {
   /// [video] File containing the video
   final File video;
 
-  static const String CONSTRUCTOR = 'video';
+  static const String constructor = 'video';
 
   static Video? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -55,33 +58,35 @@ class Video extends TdObject {
     }
 
     return Video(
-        duration: json['duration'],
-        width: json['width'],
-        height: json['height'],
-        fileName: json['file_name'],
-        mimeType: json['mime_type'],
-        hasStickers: json['has_stickers'],
-        supportsStreaming: json['supports_streaming'],
-        minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-        thumbnail: Thumbnail.fromJson(json['thumbnail']),
-        video: File.fromJson(json['video'])!);
+      duration: json['duration'],
+      width: json['width'],
+      height: json['height'],
+      fileName: json['file_name'],
+      mimeType: json['mime_type'],
+      hasStickers: json['has_stickers'],
+      supportsStreaming: json['supports_streaming'],
+      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      video: File.fromJson(json['video'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'duration': this.duration,
-        'width': this.width,
-        'height': this.height,
-        'file_name': this.fileName,
-        'mime_type': this.mimeType,
-        'has_stickers': this.hasStickers,
-        'supports_streaming': this.supportsStreaming,
-        'minithumbnail': this.minithumbnail?.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
-        'video': this.video.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'duration': duration,
+        'width': width,
+        'height': height,
+        'file_name': fileName,
+        'mime_type': mimeType,
+        'has_stickers': hasStickers,
+        'supports_streaming': supportsStreaming,
+        'minithumbnail': minithumbnail?.toJson(),
+        'thumbnail': thumbnail?.toJson(),
+        'video': video.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The 2-step verification was enabled recently, user needs to wait
+@immutable
 class CanTransferOwnershipResultPasswordTooFresh
     extends CanTransferOwnershipResult {
-  CanTransferOwnershipResultPasswordTooFresh({required this.retryAfter});
+  const CanTransferOwnershipResultPasswordTooFresh({
+    required this.retryAfter,
+  });
 
   /// [retryAfter] Time left before the session can be used to transfer
   /// ownership of a chat, in seconds
   final int retryAfter;
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'canTransferOwnershipResultPasswordTooFresh';
 
   static CanTransferOwnershipResultPasswordTooFresh? fromJson(
@@ -20,14 +24,18 @@ class CanTransferOwnershipResultPasswordTooFresh
     }
 
     return CanTransferOwnershipResultPasswordTooFresh(
-        retryAfter: json['retry_after']);
+      retryAfter: json['retry_after'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'retry_after': this.retryAfter, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'retry_after': retryAfter,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

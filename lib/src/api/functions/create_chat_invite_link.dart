@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a new invite link for a chat. Available for basic groups,
 /// supergroups, and channels. Requires administrator privileges and
 /// can_invite_users right in the chat
 /// Returns [ChatInviteLink]
+@immutable
 class CreateChatInviteLink extends TdFunction {
-  CreateChatInviteLink(
-      {required this.chatId,
-      required this.name,
-      required this.expirationDate,
-      required this.memberLimit,
-      required this.createsJoinRequest});
+  const CreateChatInviteLink({
+    required this.chatId,
+    required this.name,
+    required this.expirationDate,
+    required this.memberLimit,
+    required this.createsJoinRequest,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -31,18 +34,19 @@ class CreateChatInviteLink extends TdFunction {
   /// member_limit must not be specified
   final bool createsJoinRequest;
 
-  static const String CONSTRUCTOR = 'createChatInviteLink';
+  static const String constructor = 'createChatInviteLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'name': this.name,
-        'expiration_date': this.expirationDate,
-        'member_limit': this.memberLimit,
-        'creates_join_request': this.createsJoinRequest,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'name': name,
+        'expiration_date': expirationDate,
+        'member_limit': memberLimit,
+        'creates_join_request': createsJoinRequest,
+        '@type': constructor,
       };
 
   @override

@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a chat background
+@immutable
 class Background extends TdObject {
-  Background(
-      {required this.id,
-      required this.isDefault,
-      required this.isDark,
-      required this.name,
-      this.document,
-      required this.type});
+  const Background({
+    required this.id,
+    required this.isDefault,
+    required this.isDark,
+    required this.name,
+    this.document,
+    required this.type,
+  });
 
   /// [id] Unique background identifier
   final int id;
@@ -31,7 +34,7 @@ class Background extends TdObject {
   /// [type] Type of the background
   final BackgroundType type;
 
-  static const String CONSTRUCTOR = 'background';
+  static const String constructor = 'background';
 
   static Background? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -39,25 +42,27 @@ class Background extends TdObject {
     }
 
     return Background(
-        id: int.tryParse(json['id']) ?? 0,
-        isDefault: json['is_default'],
-        isDark: json['is_dark'],
-        name: json['name'],
-        document: Document.fromJson(json['document']),
-        type: BackgroundType.fromJson(json['type'])!);
+      id: int.tryParse(json['id']) ?? 0,
+      isDefault: json['is_default'],
+      isDark: json['is_dark'],
+      name: json['name'],
+      document: Document.fromJson(json['document']),
+      type: BackgroundType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'is_default': this.isDefault,
-        'is_dark': this.isDark,
-        'name': this.name,
-        'document': this.document?.toJson(),
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'is_default': isDefault,
+        'is_dark': isDark,
+        'name': name,
+        'document': document?.toJson(),
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

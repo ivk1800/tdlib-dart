@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user is under certain restrictions in the chat. Not supported in basic
 /// groups and channels
+@immutable
 class ChatMemberStatusRestricted extends ChatMemberStatus {
-  ChatMemberStatusRestricted(
-      {required this.isMember,
-      required this.restrictedUntilDate,
-      required this.permissions});
+  const ChatMemberStatusRestricted({
+    required this.isMember,
+    required this.restrictedUntilDate,
+    required this.permissions,
+  });
 
   /// [isMember] True, if the user is a member of the chat
   final bool isMember;
@@ -21,7 +24,7 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
   /// [permissions] User permissions in the chat
   final ChatPermissions permissions;
 
-  static const String CONSTRUCTOR = 'chatMemberStatusRestricted';
+  static const String constructor = 'chatMemberStatusRestricted';
 
   static ChatMemberStatusRestricted? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -29,19 +32,21 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
     }
 
     return ChatMemberStatusRestricted(
-        isMember: json['is_member'],
-        restrictedUntilDate: json['restricted_until_date'],
-        permissions: ChatPermissions.fromJson(json['permissions'])!);
+      isMember: json['is_member'],
+      restrictedUntilDate: json['restricted_until_date'],
+      permissions: ChatPermissions.fromJson(json['permissions'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_member': this.isMember,
-        'restricted_until_date': this.restrictedUntilDate,
-        'permissions': this.permissions.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_member': isMember,
+        'restricted_until_date': restrictedUntilDate,
+        'permissions': permissions.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,13 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a message that is replied by a given message.
 /// Also returns the pinned message, the game message, and the invoice message
 /// for messages of the types messagePinMessage, messageGameScore, and
 /// messagePaymentSuccessful respectively
 /// Returns [Message]
+@immutable
 class GetRepliedMessage extends TdFunction {
-  GetRepliedMessage({required this.chatId, required this.messageId});
+  const GetRepliedMessage({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Identifier of the chat the message belongs to
   final int chatId;
@@ -15,15 +20,16 @@ class GetRepliedMessage extends TdFunction {
   /// [messageId] Identifier of the reply message
   final int messageId;
 
-  static const String CONSTRUCTOR = 'getRepliedMessage';
+  static const String constructor = 'getRepliedMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

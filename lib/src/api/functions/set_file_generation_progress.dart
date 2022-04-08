@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Informs TDLib on a file generation progress
 /// Returns [Ok]
+@immutable
 class SetFileGenerationProgress extends TdFunction {
-  SetFileGenerationProgress(
-      {required this.generationId,
-      required this.expectedSize,
-      required this.localPrefixSize});
+  const SetFileGenerationProgress({
+    required this.generationId,
+    required this.expectedSize,
+    required this.localPrefixSize,
+  });
 
   /// [generationId] The identifier of the generation process
   final int generationId;
@@ -18,16 +21,17 @@ class SetFileGenerationProgress extends TdFunction {
   /// [localPrefixSize] The number of bytes already generated
   final int localPrefixSize;
 
-  static const String CONSTRUCTOR = 'setFileGenerationProgress';
+  static const String constructor = 'setFileGenerationProgress';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'generation_id': this.generationId,
-        'expected_size': this.expectedSize,
-        'local_prefix_size': this.localPrefixSize,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'generation_id': generationId,
+        'expected_size': expectedSize,
+        'local_prefix_size': localPrefixSize,
+        '@type': constructor,
       };
 
   @override

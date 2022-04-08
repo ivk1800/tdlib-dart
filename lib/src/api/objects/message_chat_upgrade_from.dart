@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A supergroup has been created from a basic group
+@immutable
 class MessageChatUpgradeFrom extends MessageContent {
-  MessageChatUpgradeFrom({required this.title, required this.basicGroupId});
+  const MessageChatUpgradeFrom({
+    required this.title,
+    required this.basicGroupId,
+  });
 
   /// [title] Title of the newly created supergroup
   final String title;
@@ -11,7 +16,7 @@ class MessageChatUpgradeFrom extends MessageContent {
   /// [basicGroupId] The identifier of the original basic group
   final int basicGroupId;
 
-  static const String CONSTRUCTOR = 'messageChatUpgradeFrom';
+  static const String constructor = 'messageChatUpgradeFrom';
 
   static MessageChatUpgradeFrom? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class MessageChatUpgradeFrom extends MessageContent {
     }
 
     return MessageChatUpgradeFrom(
-        title: json['title'], basicGroupId: json['basic_group_id']);
+      title: json['title'],
+      basicGroupId: json['basic_group_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'basic_group_id': this.basicGroupId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
+        'basic_group_id': basicGroupId,
+        '@type': constructor,
       };
 
   @override

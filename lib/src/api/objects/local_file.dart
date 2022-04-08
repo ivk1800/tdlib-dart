@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a local file
+@immutable
 class LocalFile extends TdObject {
-  LocalFile(
-      {required this.path,
-      required this.canBeDownloaded,
-      required this.canBeDeleted,
-      required this.isDownloadingActive,
-      required this.isDownloadingCompleted,
-      required this.downloadOffset,
-      required this.downloadedPrefixSize,
-      required this.downloadedSize});
+  const LocalFile({
+    required this.path,
+    required this.canBeDownloaded,
+    required this.canBeDeleted,
+    required this.isDownloadingActive,
+    required this.isDownloadingCompleted,
+    required this.downloadOffset,
+    required this.downloadedPrefixSize,
+    required this.downloadedSize,
+  });
 
   /// [path] Local path to the locally available file part; may be empty
   final String path;
@@ -43,7 +46,7 @@ class LocalFile extends TdObject {
   /// some parts of it may contain garbage
   final int downloadedSize;
 
-  static const String CONSTRUCTOR = 'localFile';
+  static const String constructor = 'localFile';
 
   static LocalFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -51,29 +54,31 @@ class LocalFile extends TdObject {
     }
 
     return LocalFile(
-        path: json['path'],
-        canBeDownloaded: json['can_be_downloaded'],
-        canBeDeleted: json['can_be_deleted'],
-        isDownloadingActive: json['is_downloading_active'],
-        isDownloadingCompleted: json['is_downloading_completed'],
-        downloadOffset: json['download_offset'],
-        downloadedPrefixSize: json['downloaded_prefix_size'],
-        downloadedSize: json['downloaded_size']);
+      path: json['path'],
+      canBeDownloaded: json['can_be_downloaded'],
+      canBeDeleted: json['can_be_deleted'],
+      isDownloadingActive: json['is_downloading_active'],
+      isDownloadingCompleted: json['is_downloading_completed'],
+      downloadOffset: json['download_offset'],
+      downloadedPrefixSize: json['downloaded_prefix_size'],
+      downloadedSize: json['downloaded_size'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'path': this.path,
-        'can_be_downloaded': this.canBeDownloaded,
-        'can_be_deleted': this.canBeDeleted,
-        'is_downloading_active': this.isDownloadingActive,
-        'is_downloading_completed': this.isDownloadingCompleted,
-        'download_offset': this.downloadOffset,
-        'downloaded_prefix_size': this.downloadedPrefixSize,
-        'downloaded_size': this.downloadedSize,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'path': path,
+        'can_be_downloaded': canBeDownloaded,
+        'can_be_deleted': canBeDeleted,
+        'is_downloading_active': isDownloadingActive,
+        'is_downloading_completed': isDownloadingCompleted,
+        'download_offset': downloadOffset,
+        'downloaded_prefix_size': downloadedPrefixSize,
+        'downloaded_size': downloadedSize,
+        '@type': constructor,
       };
 
   @override

@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends 2-10 messages grouped together into an album. Currently, only audio,
 /// document, photo and video messages can be grouped into an album. Documents
 /// and audio files can be only grouped in an album with messages of the same
 /// type. Returns sent messages
 /// Returns [Messages]
+@immutable
 class SendMessageAlbum extends TdFunction {
-  SendMessageAlbum(
-      {required this.chatId,
-      required this.messageThreadId,
-      required this.replyToMessageId,
-      this.options,
-      required this.inputMessageContents});
+  const SendMessageAlbum({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.replyToMessageId,
+    this.options,
+    required this.inputMessageContents,
+  });
 
   /// [chatId] Target chat
   final int chatId;
@@ -32,19 +35,20 @@ class SendMessageAlbum extends TdFunction {
   /// messages can be added to an album
   final List<InputMessageContent> inputMessageContents;
 
-  static const String CONSTRUCTOR = 'sendMessageAlbum';
+  static const String constructor = 'sendMessageAlbum';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'reply_to_message_id': this.replyToMessageId,
-        'options': this.options?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'reply_to_message_id': replyToMessageId,
+        'options': options?.toJson(),
         'input_message_contents':
             inputMessageContents.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a video chat
+@immutable
 class VideoChat extends TdObject {
-  VideoChat(
-      {required this.groupCallId,
-      required this.hasParticipants,
-      this.defaultParticipantId});
+  const VideoChat({
+    required this.groupCallId,
+    required this.hasParticipants,
+    this.defaultParticipantId,
+  });
 
   /// [groupCallId] Group call identifier of an active video chat; 0 if none.
   /// Full information about the video chat can be received through the method
@@ -20,7 +23,7 @@ class VideoChat extends TdObject {
   /// the video chat; may be null
   final MessageSender? defaultParticipantId;
 
-  static const String CONSTRUCTOR = 'videoChat';
+  static const String constructor = 'videoChat';
 
   static VideoChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -28,20 +31,22 @@ class VideoChat extends TdObject {
     }
 
     return VideoChat(
-        groupCallId: json['group_call_id'],
-        hasParticipants: json['has_participants'],
-        defaultParticipantId:
-            MessageSender.fromJson(json['default_participant_id']));
+      groupCallId: json['group_call_id'],
+      hasParticipants: json['has_participants'],
+      defaultParticipantId:
+          MessageSender.fromJson(json['default_participant_id']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'has_participants': this.hasParticipants,
-        'default_participant_id': this.defaultParticipantId?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'has_participants': hasParticipants,
+        'default_participant_id': defaultParticipantId?.toJson(),
+        '@type': constructor,
       };
 
   @override

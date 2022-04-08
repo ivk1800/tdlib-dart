@@ -1,28 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a globally unique push receiver identifier, which can be used to
 /// identify which account has received a push notification
+@immutable
 class PushReceiverId extends TdObject {
-  PushReceiverId({required this.id});
+  const PushReceiverId({
+    required this.id,
+  });
 
   /// [id] The globally unique identifier of push notification subscription
   final int id;
 
-  static const String CONSTRUCTOR = 'pushReceiverId';
+  static const String constructor = 'pushReceiverId';
 
   static PushReceiverId? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PushReceiverId(id: int.tryParse(json['id']) ?? 0);
+    return PushReceiverId(
+      id: int.tryParse(json['id']) ?? 0,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'id': this.id, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

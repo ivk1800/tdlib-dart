@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns the high scores for a game and some part of the high score table
 /// in the range of the specified user; for bots only
 /// Returns [GameHighScores]
+@immutable
 class GetGameHighScores extends TdFunction {
-  GetGameHighScores(
-      {required this.chatId, required this.messageId, required this.userId});
+  const GetGameHighScores({
+    required this.chatId,
+    required this.messageId,
+    required this.userId,
+  });
 
   /// [chatId] The chat that contains the message with the game
   final int chatId;
@@ -17,16 +22,17 @@ class GetGameHighScores extends TdFunction {
   /// [userId] User identifier
   final int userId;
 
-  static const String CONSTRUCTOR = 'getGameHighScores';
+  static const String constructor = 'getGameHighScores';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'user_id': this.userId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'user_id': userId,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The mask is placed relatively to the mouth
+@immutable
 class MaskPointMouth extends MaskPoint {
   const MaskPointMouth();
 
-  static const String CONSTRUCTOR = 'maskPointMouth';
+  static const String constructor = 'maskPointMouth';
 
   static MaskPointMouth? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class MaskPointMouth extends MaskPoint {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

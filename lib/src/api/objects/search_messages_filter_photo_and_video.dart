@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns only photo and video messages
+@immutable
 class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   const SearchMessagesFilterPhotoAndVideo();
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterPhotoAndVideo';
+  static const String constructor = 'searchMessagesFilterPhotoAndVideo';
 
   static SearchMessagesFilterPhotoAndVideo? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

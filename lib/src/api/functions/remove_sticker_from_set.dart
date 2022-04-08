@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Removes a sticker from the set to which it belongs; for bots only. The
 /// sticker set must have been created by the bot
 /// Returns [Ok]
+@immutable
 class RemoveStickerFromSet extends TdFunction {
-  RemoveStickerFromSet({required this.sticker});
+  const RemoveStickerFromSet({
+    required this.sticker,
+  });
 
   /// [sticker] Sticker
   final InputFile sticker;
 
-  static const String CONSTRUCTOR = 'removeStickerFromSet';
+  static const String constructor = 'removeStickerFromSet';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'sticker': this.sticker.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Information about a bank card
+@immutable
 class BankCardInfo extends TdObject {
-  BankCardInfo({required this.title, required this.actions});
+  const BankCardInfo({
+    required this.title,
+    required this.actions,
+  });
 
   /// [title] Title of the bank card description
   final String title;
@@ -11,7 +16,7 @@ class BankCardInfo extends TdObject {
   /// [actions] Actions that can be done with the bank card number
   final List<BankCardActionOpenUrl> actions;
 
-  static const String CONSTRUCTOR = 'bankCardInfo';
+  static const String constructor = 'bankCardInfo';
 
   static BankCardInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,19 +24,21 @@ class BankCardInfo extends TdObject {
     }
 
     return BankCardInfo(
-        title: json['title'],
-        actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
-            .map((item) => BankCardActionOpenUrl.fromJson(item))
-            .toList()));
+      title: json['title'],
+      actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
+          .map((item) => BankCardActionOpenUrl.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'title': title,
         'actions': actions.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

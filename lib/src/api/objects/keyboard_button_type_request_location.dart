@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A button that sends the user's location when pressed; available only in
 /// private chats
+@immutable
 class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   const KeyboardButtonTypeRequestLocation();
 
-  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestLocation';
+  static const String constructor = 'keyboardButtonTypeRequestLocation';
 
   static KeyboardButtonTypeRequestLocation? fromJson(
       Map<String, dynamic>? json) {
@@ -18,9 +20,12 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

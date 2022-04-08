@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new video chat was scheduled
+@immutable
 class MessageVideoChatScheduled extends MessageContent {
-  MessageVideoChatScheduled(
-      {required this.groupCallId, required this.startDate});
+  const MessageVideoChatScheduled({
+    required this.groupCallId,
+    required this.startDate,
+  });
 
   /// [groupCallId] Identifier of the video chat. The video chat can be received
   /// through the method getGroupCall
@@ -14,7 +18,7 @@ class MessageVideoChatScheduled extends MessageContent {
   /// to be started by an administrator
   final int startDate;
 
-  static const String CONSTRUCTOR = 'messageVideoChatScheduled';
+  static const String constructor = 'messageVideoChatScheduled';
 
   static MessageVideoChatScheduled? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -22,16 +26,19 @@ class MessageVideoChatScheduled extends MessageContent {
     }
 
     return MessageVideoChatScheduled(
-        groupCallId: json['group_call_id'], startDate: json['start_date']);
+      groupCallId: json['group_call_id'],
+      startDate: json['start_date'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'start_date': this.startDate,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'start_date': startDate,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Instructs application to force a reply to this message
+@immutable
 class ReplyMarkupForceReply extends ReplyMarkup {
-  ReplyMarkupForceReply(
-      {required this.isPersonal, required this.inputFieldPlaceholder});
+  const ReplyMarkupForceReply({
+    required this.isPersonal,
+    required this.inputFieldPlaceholder,
+  });
 
   /// [isPersonal] True, if a forced reply must automatically be shown to the
   /// current user. For outgoing messages, specify true to show the forced reply
@@ -15,7 +19,7 @@ class ReplyMarkupForceReply extends ReplyMarkup {
   /// input field when the reply is active; 0-64 characters
   final String inputFieldPlaceholder;
 
-  static const String CONSTRUCTOR = 'replyMarkupForceReply';
+  static const String constructor = 'replyMarkupForceReply';
 
   static ReplyMarkupForceReply? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,17 +27,19 @@ class ReplyMarkupForceReply extends ReplyMarkup {
     }
 
     return ReplyMarkupForceReply(
-        isPersonal: json['is_personal'],
-        inputFieldPlaceholder: json['input_field_placeholder']);
+      isPersonal: json['is_personal'],
+      inputFieldPlaceholder: json['input_field_placeholder'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_personal': this.isPersonal,
-        'input_field_placeholder': this.inputFieldPlaceholder,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_personal': isPersonal,
+        'input_field_placeholder': inputFieldPlaceholder,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains content of a push message notification
+@immutable
 abstract class PushMessageContent extends TdObject {
   const PushMessageContent();
 
-  static const String CONSTRUCTOR = 'pushMessageContent';
+  static const String constructor = 'pushMessageContent';
 
   /// Inherited by:
   /// [PushMessageContentHidden]
@@ -41,62 +43,62 @@ abstract class PushMessageContent extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PushMessageContentHidden.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PushMessageContentHidden.constructor:
         return PushMessageContentHidden.fromJson(json);
-      case PushMessageContentAnimation.CONSTRUCTOR:
+      case PushMessageContentAnimation.constructor:
         return PushMessageContentAnimation.fromJson(json);
-      case PushMessageContentAudio.CONSTRUCTOR:
+      case PushMessageContentAudio.constructor:
         return PushMessageContentAudio.fromJson(json);
-      case PushMessageContentContact.CONSTRUCTOR:
+      case PushMessageContentContact.constructor:
         return PushMessageContentContact.fromJson(json);
-      case PushMessageContentContactRegistered.CONSTRUCTOR:
+      case PushMessageContentContactRegistered.constructor:
         return PushMessageContentContactRegistered.fromJson(json);
-      case PushMessageContentDocument.CONSTRUCTOR:
+      case PushMessageContentDocument.constructor:
         return PushMessageContentDocument.fromJson(json);
-      case PushMessageContentGame.CONSTRUCTOR:
+      case PushMessageContentGame.constructor:
         return PushMessageContentGame.fromJson(json);
-      case PushMessageContentGameScore.CONSTRUCTOR:
+      case PushMessageContentGameScore.constructor:
         return PushMessageContentGameScore.fromJson(json);
-      case PushMessageContentInvoice.CONSTRUCTOR:
+      case PushMessageContentInvoice.constructor:
         return PushMessageContentInvoice.fromJson(json);
-      case PushMessageContentLocation.CONSTRUCTOR:
+      case PushMessageContentLocation.constructor:
         return PushMessageContentLocation.fromJson(json);
-      case PushMessageContentPhoto.CONSTRUCTOR:
+      case PushMessageContentPhoto.constructor:
         return PushMessageContentPhoto.fromJson(json);
-      case PushMessageContentPoll.CONSTRUCTOR:
+      case PushMessageContentPoll.constructor:
         return PushMessageContentPoll.fromJson(json);
-      case PushMessageContentScreenshotTaken.CONSTRUCTOR:
+      case PushMessageContentScreenshotTaken.constructor:
         return PushMessageContentScreenshotTaken.fromJson(json);
-      case PushMessageContentSticker.CONSTRUCTOR:
+      case PushMessageContentSticker.constructor:
         return PushMessageContentSticker.fromJson(json);
-      case PushMessageContentText.CONSTRUCTOR:
+      case PushMessageContentText.constructor:
         return PushMessageContentText.fromJson(json);
-      case PushMessageContentVideo.CONSTRUCTOR:
+      case PushMessageContentVideo.constructor:
         return PushMessageContentVideo.fromJson(json);
-      case PushMessageContentVideoNote.CONSTRUCTOR:
+      case PushMessageContentVideoNote.constructor:
         return PushMessageContentVideoNote.fromJson(json);
-      case PushMessageContentVoiceNote.CONSTRUCTOR:
+      case PushMessageContentVoiceNote.constructor:
         return PushMessageContentVoiceNote.fromJson(json);
-      case PushMessageContentBasicGroupChatCreate.CONSTRUCTOR:
+      case PushMessageContentBasicGroupChatCreate.constructor:
         return PushMessageContentBasicGroupChatCreate.fromJson(json);
-      case PushMessageContentChatAddMembers.CONSTRUCTOR:
+      case PushMessageContentChatAddMembers.constructor:
         return PushMessageContentChatAddMembers.fromJson(json);
-      case PushMessageContentChatChangePhoto.CONSTRUCTOR:
+      case PushMessageContentChatChangePhoto.constructor:
         return PushMessageContentChatChangePhoto.fromJson(json);
-      case PushMessageContentChatChangeTitle.CONSTRUCTOR:
+      case PushMessageContentChatChangeTitle.constructor:
         return PushMessageContentChatChangeTitle.fromJson(json);
-      case PushMessageContentChatSetTheme.CONSTRUCTOR:
+      case PushMessageContentChatSetTheme.constructor:
         return PushMessageContentChatSetTheme.fromJson(json);
-      case PushMessageContentChatDeleteMember.CONSTRUCTOR:
+      case PushMessageContentChatDeleteMember.constructor:
         return PushMessageContentChatDeleteMember.fromJson(json);
-      case PushMessageContentChatJoinByLink.CONSTRUCTOR:
+      case PushMessageContentChatJoinByLink.constructor:
         return PushMessageContentChatJoinByLink.fromJson(json);
-      case PushMessageContentChatJoinByRequest.CONSTRUCTOR:
+      case PushMessageContentChatJoinByRequest.constructor:
         return PushMessageContentChatJoinByRequest.fromJson(json);
-      case PushMessageContentMessageForwards.CONSTRUCTOR:
+      case PushMessageContentMessageForwards.constructor:
         return PushMessageContentMessageForwards.fromJson(json);
-      case PushMessageContentMediaAlbum.CONSTRUCTOR:
+      case PushMessageContentMediaAlbum.constructor:
         return PushMessageContentMediaAlbum.fromJson(json);
       default:
         return null;
@@ -104,7 +106,7 @@ abstract class PushMessageContent extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

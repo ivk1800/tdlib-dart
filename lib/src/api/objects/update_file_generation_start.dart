@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The file generation process needs to be started by the application
+@immutable
 class UpdateFileGenerationStart extends Update {
-  UpdateFileGenerationStart(
-      {required this.generationId,
-      required this.originalPath,
-      required this.destinationPath,
-      required this.conversion});
+  const UpdateFileGenerationStart({
+    required this.generationId,
+    required this.originalPath,
+    required this.destinationPath,
+    required this.conversion,
+  });
 
   /// [generationId] Unique identifier for the generation process
   final int generationId;
@@ -25,7 +28,7 @@ class UpdateFileGenerationStart extends Update {
   /// URL of a file, which must be downloaded by the application
   final String conversion;
 
-  static const String CONSTRUCTOR = 'updateFileGenerationStart';
+  static const String constructor = 'updateFileGenerationStart';
 
   static UpdateFileGenerationStart? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,21 +36,23 @@ class UpdateFileGenerationStart extends Update {
     }
 
     return UpdateFileGenerationStart(
-        generationId: int.tryParse(json['generation_id']) ?? 0,
-        originalPath: json['original_path'],
-        destinationPath: json['destination_path'],
-        conversion: json['conversion']);
+      generationId: int.tryParse(json['generation_id']) ?? 0,
+      originalPath: json['original_path'],
+      destinationPath: json['destination_path'],
+      conversion: json['conversion'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'generation_id': this.generationId,
-        'original_path': this.originalPath,
-        'destination_path': this.destinationPath,
-        'conversion': this.conversion,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'generation_id': generationId,
+        'original_path': originalPath,
+        'destination_path': destinationPath,
+        'conversion': conversion,
+        '@type': constructor,
       };
 
   @override

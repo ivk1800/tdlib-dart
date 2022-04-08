@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message TTL was changed
+@immutable
 class ChatEventMessageTtlChanged extends ChatEventAction {
-  ChatEventMessageTtlChanged(
-      {required this.oldMessageTtl, required this.newMessageTtl});
+  const ChatEventMessageTtlChanged({
+    required this.oldMessageTtl,
+    required this.newMessageTtl,
+  });
 
   /// [oldMessageTtl] Previous value of message_ttl
   final int oldMessageTtl;
@@ -12,7 +16,7 @@ class ChatEventMessageTtlChanged extends ChatEventAction {
   /// [newMessageTtl] New value of message_ttl
   final int newMessageTtl;
 
-  static const String CONSTRUCTOR = 'chatEventMessageTtlChanged';
+  static const String constructor = 'chatEventMessageTtlChanged';
 
   static ChatEventMessageTtlChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventMessageTtlChanged extends ChatEventAction {
     }
 
     return ChatEventMessageTtlChanged(
-        oldMessageTtl: json['old_message_ttl'],
-        newMessageTtl: json['new_message_ttl']);
+      oldMessageTtl: json['old_message_ttl'],
+      newMessageTtl: json['new_message_ttl'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_message_ttl': this.oldMessageTtl,
-        'new_message_ttl': this.newMessageTtl,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_message_ttl': oldMessageTtl,
+        'new_message_ttl': newMessageTtl,
+        '@type': constructor,
       };
 
   @override

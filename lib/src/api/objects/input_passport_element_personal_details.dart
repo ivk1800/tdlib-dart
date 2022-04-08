@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element to be saved containing the user's personal
 /// details
+@immutable
 class InputPassportElementPersonalDetails extends InputPassportElement {
-  InputPassportElementPersonalDetails({required this.personalDetails});
+  const InputPassportElementPersonalDetails({
+    required this.personalDetails,
+  });
 
   /// [personalDetails] Personal details of the user
   final PersonalDetails personalDetails;
 
-  static const String CONSTRUCTOR = 'inputPassportElementPersonalDetails';
+  static const String constructor = 'inputPassportElementPersonalDetails';
 
   static InputPassportElementPersonalDetails? fromJson(
       Map<String, dynamic>? json) {
@@ -18,14 +22,18 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
     }
 
     return InputPassportElementPersonalDetails(
-        personalDetails: PersonalDetails.fromJson(json['personal_details'])!);
+      personalDetails: PersonalDetails.fromJson(json['personal_details'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'personal_details': this.personalDetails.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'personal_details': personalDetails.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

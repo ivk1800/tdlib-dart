@@ -1,17 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes saved credentials for all payment provider bots
 /// Returns [Ok]
+@immutable
 class DeleteSavedCredentials extends TdFunction {
-  DeleteSavedCredentials();
+  const DeleteSavedCredentials();
 
-  static const String CONSTRUCTOR = 'deleteSavedCredentials';
+  static const String constructor = 'deleteSavedCredentials';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

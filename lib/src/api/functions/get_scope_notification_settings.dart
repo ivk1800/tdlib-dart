@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns the notification settings for chats of a given type
 /// Returns [ScopeNotificationSettings]
+@immutable
 class GetScopeNotificationSettings extends TdFunction {
-  GetScopeNotificationSettings({required this.scope});
+  const GetScopeNotificationSettings({
+    required this.scope,
+  });
 
   /// [scope] Types of chats for which to return the notification settings
   /// information
   final NotificationSettingsScope scope;
 
-  static const String CONSTRUCTOR = 'getScopeNotificationSettings';
+  static const String constructor = 'getScopeNotificationSettings';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'scope': this.scope.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'scope': scope.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

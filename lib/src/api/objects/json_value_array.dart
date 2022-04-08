@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a JSON array
+@immutable
 class JsonValueArray extends JsonValue {
-  JsonValueArray({required this.values});
+  const JsonValueArray({
+    required this.values,
+  });
 
   /// [values] The list of array elements
   final List<JsonValue> values;
 
-  static const String CONSTRUCTOR = 'jsonValueArray';
+  static const String constructor = 'jsonValueArray';
 
   static JsonValueArray? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class JsonValueArray extends JsonValue {
     }
 
     return JsonValueArray(
-        values: List<JsonValue>.from((json['values'] ?? [])
-            .map((item) => JsonValue.fromJson(item))
-            .toList()));
+      values: List<JsonValue>.from((json['values'] ?? [])
+          .map((item) => JsonValue.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'values': values.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the type of a poll
+@immutable
 abstract class PollType extends TdObject {
   const PollType();
 
-  static const String CONSTRUCTOR = 'pollType';
+  static const String constructor = 'pollType';
 
   /// Inherited by:
   /// [PollTypeRegular]
@@ -15,10 +17,10 @@ abstract class PollType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case PollTypeRegular.CONSTRUCTOR:
+    switch (json['@type']) {
+      case PollTypeRegular.constructor:
         return PollTypeRegular.fromJson(json);
-      case PollTypeQuiz.CONSTRUCTOR:
+      case PollTypeQuiz.constructor:
         return PollTypeQuiz.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class PollType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

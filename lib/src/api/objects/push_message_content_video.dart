@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video message
+@immutable
 class PushMessageContentVideo extends PushMessageContent {
-  PushMessageContentVideo(
-      {this.video,
-      required this.caption,
-      required this.isSecret,
-      required this.isPinned});
+  const PushMessageContentVideo({
+    this.video,
+    required this.caption,
+    required this.isSecret,
+    required this.isPinned,
+  });
 
   /// [video] Message content; may be null
   final Video? video;
@@ -22,7 +25,7 @@ class PushMessageContentVideo extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentVideo';
+  static const String constructor = 'pushMessageContentVideo';
 
   static PushMessageContentVideo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class PushMessageContentVideo extends PushMessageContent {
     }
 
     return PushMessageContentVideo(
-        video: Video.fromJson(json['video']),
-        caption: json['caption'],
-        isSecret: json['is_secret'],
-        isPinned: json['is_pinned']);
+      video: Video.fromJson(json['video']),
+      caption: json['caption'],
+      isSecret: json['is_secret'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'video': this.video?.toJson(),
-        'caption': this.caption,
-        'is_secret': this.isSecret,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'video': video?.toJson(),
+        'caption': caption,
+        'is_secret': isSecret,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

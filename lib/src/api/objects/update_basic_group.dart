@@ -1,15 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some data of a basic group has changed. This update is guaranteed to come
 /// before the basic group identifier is returned to the application
+@immutable
 class UpdateBasicGroup extends Update {
-  UpdateBasicGroup({required this.basicGroup});
+  const UpdateBasicGroup({
+    required this.basicGroup,
+  });
 
   /// [basicGroup] New data about the group
   final BasicGroup basicGroup;
 
-  static const String CONSTRUCTOR = 'updateBasicGroup';
+  static const String constructor = 'updateBasicGroup';
 
   static UpdateBasicGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,14 +21,18 @@ class UpdateBasicGroup extends Update {
     }
 
     return UpdateBasicGroup(
-        basicGroup: BasicGroup.fromJson(json['basic_group'])!);
+      basicGroup: BasicGroup.fromJson(json['basic_group'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'basic_group': this.basicGroup.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'basic_group': basicGroup.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

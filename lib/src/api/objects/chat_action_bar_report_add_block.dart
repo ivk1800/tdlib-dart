@@ -1,13 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat is a private or secret chat, which can be reported using the
 /// method reportChat, or the other user can be blocked using the method
 /// toggleMessageSenderIsBlocked, or the other user can be added to the
 /// contact list using the method addContact
+@immutable
 class ChatActionBarReportAddBlock extends ChatActionBar {
-  ChatActionBarReportAddBlock(
-      {required this.canUnarchive, required this.distance});
+  const ChatActionBarReportAddBlock({
+    required this.canUnarchive,
+    required this.distance,
+  });
 
   /// [canUnarchive] If true, the chat was automatically archived and can be
   /// moved back to the main chat list using addChatToList simultaneously with
@@ -19,7 +23,7 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   /// searchChatsNearby and this is the distance between the users
   final int distance;
 
-  static const String CONSTRUCTOR = 'chatActionBarReportAddBlock';
+  static const String constructor = 'chatActionBarReportAddBlock';
 
   static ChatActionBarReportAddBlock? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,16 +31,19 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
     }
 
     return ChatActionBarReportAddBlock(
-        canUnarchive: json['can_unarchive'], distance: json['distance']);
+      canUnarchive: json['can_unarchive'],
+      distance: json['distance'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'can_unarchive': this.canUnarchive,
-        'distance': this.distance,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'can_unarchive': canUnarchive,
+        'distance': distance,
+        '@type': constructor,
       };
 
   @override

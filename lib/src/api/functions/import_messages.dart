@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Imports messages exported from another app
 /// Returns [Ok]
+@immutable
 class ImportMessages extends TdFunction {
-  ImportMessages(
-      {required this.chatId,
-      required this.messageFile,
-      required this.attachedFiles});
+  const ImportMessages({
+    required this.chatId,
+    required this.messageFile,
+    required this.attachedFiles,
+  });
 
   /// [chatId] Identifier of a chat to which the messages will be imported. It
   /// must be an identifier of a private chat with a mutual contact or an
@@ -23,16 +26,17 @@ class ImportMessages extends TdFunction {
   /// uploaded
   final List<InputFile> attachedFiles;
 
-  static const String CONSTRUCTOR = 'importMessages';
+  static const String constructor = 'importMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_file': this.messageFile.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_file': messageFile.toJson(),
         'attached_files': attachedFiles.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Information about a file was updated
+@immutable
 class UpdateFile extends Update {
-  UpdateFile({required this.file});
+  const UpdateFile({
+    required this.file,
+  });
 
   /// [file] New data about the file
   final File file;
 
-  static const String CONSTRUCTOR = 'updateFile';
+  static const String constructor = 'updateFile';
 
   static UpdateFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UpdateFile(file: File.fromJson(json['file'])!);
+    return UpdateFile(
+      file: File.fromJson(json['file'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file': this.file.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file': file.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

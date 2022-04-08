@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An audio message
+@immutable
 class InputMessageAudio extends InputMessageContent {
-  InputMessageAudio(
-      {required this.audio,
-      this.albumCoverThumbnail,
-      required this.duration,
-      required this.title,
-      required this.performer,
-      this.caption});
+  const InputMessageAudio({
+    required this.audio,
+    this.albumCoverThumbnail,
+    required this.duration,
+    required this.title,
+    required this.performer,
+    this.caption,
+  });
 
   /// [audio] Audio file to be sent
   final InputFile audio;
@@ -33,7 +36,7 @@ class InputMessageAudio extends InputMessageContent {
   /// 0-GetOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  static const String CONSTRUCTOR = 'inputMessageAudio';
+  static const String constructor = 'inputMessageAudio';
 
   static InputMessageAudio? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -41,26 +44,28 @@ class InputMessageAudio extends InputMessageContent {
     }
 
     return InputMessageAudio(
-        audio: InputFile.fromJson(json['audio'])!,
-        albumCoverThumbnail:
-            InputThumbnail.fromJson(json['album_cover_thumbnail']),
-        duration: json['duration'],
-        title: json['title'],
-        performer: json['performer'],
-        caption: FormattedText.fromJson(json['caption']));
+      audio: InputFile.fromJson(json['audio'])!,
+      albumCoverThumbnail:
+          InputThumbnail.fromJson(json['album_cover_thumbnail']),
+      duration: json['duration'],
+      title: json['title'],
+      performer: json['performer'],
+      caption: FormattedText.fromJson(json['caption']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'audio': this.audio.toJson(),
-        'album_cover_thumbnail': this.albumCoverThumbnail?.toJson(),
-        'duration': this.duration,
-        'title': this.title,
-        'performer': this.performer,
-        'caption': this.caption?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'audio': audio.toJson(),
+        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+        'duration': duration,
+        'title': title,
+        'performer': performer,
+        'caption': caption?.toJson(),
+        '@type': constructor,
       };
 
   @override

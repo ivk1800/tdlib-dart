@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A voice note message
+@immutable
 class InputMessageVoiceNote extends InputMessageContent {
-  InputMessageVoiceNote(
-      {required this.voiceNote,
-      required this.duration,
-      required this.waveform,
-      this.caption});
+  const InputMessageVoiceNote({
+    required this.voiceNote,
+    required this.duration,
+    required this.waveform,
+    this.caption,
+  });
 
   /// [voiceNote] Voice note to be sent
   final InputFile voiceNote;
@@ -22,7 +25,7 @@ class InputMessageVoiceNote extends InputMessageContent {
   /// 0-GetOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  static const String CONSTRUCTOR = 'inputMessageVoiceNote';
+  static const String constructor = 'inputMessageVoiceNote';
 
   static InputMessageVoiceNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class InputMessageVoiceNote extends InputMessageContent {
     }
 
     return InputMessageVoiceNote(
-        voiceNote: InputFile.fromJson(json['voice_note'])!,
-        duration: json['duration'],
-        waveform: json['waveform'],
-        caption: FormattedText.fromJson(json['caption']));
+      voiceNote: InputFile.fromJson(json['voice_note'])!,
+      duration: json['duration'],
+      waveform: json['waveform'],
+      caption: FormattedText.fromJson(json['caption']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'voice_note': this.voiceNote.toJson(),
-        'duration': this.duration,
-        'waveform': this.waveform,
-        'caption': this.caption?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'voice_note': voiceNote.toJson(),
+        'duration': duration,
+        'waveform': waveform,
+        'caption': caption?.toJson(),
+        '@type': constructor,
       };
 
   @override

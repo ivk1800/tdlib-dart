@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an existing chat corresponding to a known supergroup or channel
 /// Returns [Chat]
+@immutable
 class CreateSupergroupChat extends TdFunction {
-  CreateSupergroupChat({required this.supergroupId, required this.force});
+  const CreateSupergroupChat({
+    required this.supergroupId,
+    required this.force,
+  });
 
   /// [supergroupId] Supergroup or channel identifier
   final int supergroupId;
@@ -14,15 +19,16 @@ class CreateSupergroupChat extends TdFunction {
   /// be incorrect
   final bool force;
 
-  static const String CONSTRUCTOR = 'createSupergroupChat';
+  static const String constructor = 'createSupergroupChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
-        'force': this.force,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        'force': force,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes actions which must be possible to do through a chat action bar
+@immutable
 abstract class ChatActionBar extends TdObject {
   const ChatActionBar();
 
-  static const String CONSTRUCTOR = 'chatActionBar';
+  static const String constructor = 'chatActionBar';
 
   /// Inherited by:
   /// [ChatActionBarReportSpam]
@@ -20,20 +22,20 @@ abstract class ChatActionBar extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatActionBarReportSpam.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatActionBarReportSpam.constructor:
         return ChatActionBarReportSpam.fromJson(json);
-      case ChatActionBarReportUnrelatedLocation.CONSTRUCTOR:
+      case ChatActionBarReportUnrelatedLocation.constructor:
         return ChatActionBarReportUnrelatedLocation.fromJson(json);
-      case ChatActionBarInviteMembers.CONSTRUCTOR:
+      case ChatActionBarInviteMembers.constructor:
         return ChatActionBarInviteMembers.fromJson(json);
-      case ChatActionBarReportAddBlock.CONSTRUCTOR:
+      case ChatActionBarReportAddBlock.constructor:
         return ChatActionBarReportAddBlock.fromJson(json);
-      case ChatActionBarAddContact.CONSTRUCTOR:
+      case ChatActionBarAddContact.constructor:
         return ChatActionBarAddContact.fromJson(json);
-      case ChatActionBarSharePhoneNumber.CONSTRUCTOR:
+      case ChatActionBarSharePhoneNumber.constructor:
         return ChatActionBarSharePhoneNumber.fromJson(json);
-      case ChatActionBarJoinRequest.CONSTRUCTOR:
+      case ChatActionBarJoinRequest.constructor:
         return ChatActionBarJoinRequest.fromJson(json);
       default:
         return null;
@@ -41,7 +43,7 @@ abstract class ChatActionBar extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

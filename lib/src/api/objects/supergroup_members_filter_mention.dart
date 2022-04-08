@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns users which can be mentioned in the supergroup
+@immutable
 class SupergroupMembersFilterMention extends SupergroupMembersFilter {
-  SupergroupMembersFilterMention(
-      {required this.query, required this.messageThreadId});
+  const SupergroupMembersFilterMention({
+    required this.query,
+    required this.messageThreadId,
+  });
 
   /// [query] Query to search for
   final String query;
@@ -13,7 +17,7 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   /// thread
   final int messageThreadId;
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterMention';
+  static const String constructor = 'supergroupMembersFilterMention';
 
   static SupergroupMembersFilterMention? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,16 +25,19 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
     }
 
     return SupergroupMembersFilterMention(
-        query: json['query'], messageThreadId: json['message_thread_id']);
+      query: json['query'],
+      messageThreadId: json['message_thread_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'query': this.query,
-        'message_thread_id': this.messageThreadId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'query': query,
+        'message_thread_id': messageThreadId,
+        '@type': constructor,
       };
 
   @override

@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a supergroup or channel with zero or more members (subscribers
 /// in the case of channels). From the point of view of the system, a channel
@@ -7,23 +8,25 @@ import '../extensions/data_class_extensions.dart';
 /// the list of members, and posts from all administrators use the name and
 /// photo of the channel instead of individual names and profile photos.
 /// Unlike supergroups, channels can have an unlimited number of subscribers
+@immutable
 class Supergroup extends TdObject {
-  Supergroup(
-      {required this.id,
-      required this.username,
-      required this.date,
-      required this.status,
-      required this.memberCount,
-      required this.hasLinkedChat,
-      required this.hasLocation,
-      required this.signMessages,
-      required this.isSlowModeEnabled,
-      required this.isChannel,
-      required this.isBroadcastGroup,
-      required this.isVerified,
-      required this.restrictionReason,
-      required this.isScam,
-      required this.isFake});
+  const Supergroup({
+    required this.id,
+    required this.username,
+    required this.date,
+    required this.status,
+    required this.memberCount,
+    required this.hasLinkedChat,
+    required this.hasLocation,
+    required this.signMessages,
+    required this.isSlowModeEnabled,
+    required this.isChannel,
+    required this.isBroadcastGroup,
+    required this.isVerified,
+    required this.restrictionReason,
+    required this.isScam,
+    required this.isFake,
+  });
 
   /// [id] Supergroup or channel identifier
   final int id;
@@ -85,7 +88,7 @@ class Supergroup extends TdObject {
   /// account
   final bool isFake;
 
-  static const String CONSTRUCTOR = 'supergroup';
+  static const String constructor = 'supergroup';
 
   static Supergroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -93,43 +96,45 @@ class Supergroup extends TdObject {
     }
 
     return Supergroup(
-        id: json['id'],
-        username: json['username'],
-        date: json['date'],
-        status: ChatMemberStatus.fromJson(json['status'])!,
-        memberCount: json['member_count'],
-        hasLinkedChat: json['has_linked_chat'],
-        hasLocation: json['has_location'],
-        signMessages: json['sign_messages'],
-        isSlowModeEnabled: json['is_slow_mode_enabled'],
-        isChannel: json['is_channel'],
-        isBroadcastGroup: json['is_broadcast_group'],
-        isVerified: json['is_verified'],
-        restrictionReason: json['restriction_reason'],
-        isScam: json['is_scam'],
-        isFake: json['is_fake']);
+      id: json['id'],
+      username: json['username'],
+      date: json['date'],
+      status: ChatMemberStatus.fromJson(json['status'])!,
+      memberCount: json['member_count'],
+      hasLinkedChat: json['has_linked_chat'],
+      hasLocation: json['has_location'],
+      signMessages: json['sign_messages'],
+      isSlowModeEnabled: json['is_slow_mode_enabled'],
+      isChannel: json['is_channel'],
+      isBroadcastGroup: json['is_broadcast_group'],
+      isVerified: json['is_verified'],
+      restrictionReason: json['restriction_reason'],
+      isScam: json['is_scam'],
+      isFake: json['is_fake'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'username': this.username,
-        'date': this.date,
-        'status': this.status.toJson(),
-        'member_count': this.memberCount,
-        'has_linked_chat': this.hasLinkedChat,
-        'has_location': this.hasLocation,
-        'sign_messages': this.signMessages,
-        'is_slow_mode_enabled': this.isSlowModeEnabled,
-        'is_channel': this.isChannel,
-        'is_broadcast_group': this.isBroadcastGroup,
-        'is_verified': this.isVerified,
-        'restriction_reason': this.restrictionReason,
-        'is_scam': this.isScam,
-        'is_fake': this.isFake,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'username': username,
+        'date': date,
+        'status': status.toJson(),
+        'member_count': memberCount,
+        'has_linked_chat': hasLinkedChat,
+        'has_location': hasLocation,
+        'sign_messages': signMessages,
+        'is_slow_mode_enabled': isSlowModeEnabled,
+        'is_channel': isChannel,
+        'is_broadcast_group': isBroadcastGroup,
+        'is_verified': isVerified,
+        'restriction_reason': restrictionReason,
+        'is_scam': isScam,
+        'is_fake': isFake,
+        '@type': constructor,
       };
 
   @override

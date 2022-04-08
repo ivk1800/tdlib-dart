@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a live location was viewed. When the update is received,
 /// the application is supposed to update the live location
+@immutable
 class UpdateMessageLiveLocationViewed extends Update {
-  UpdateMessageLiveLocationViewed(
-      {required this.chatId, required this.messageId});
+  const UpdateMessageLiveLocationViewed({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Identifier of the chat with the live location message
   final int chatId;
@@ -13,7 +17,7 @@ class UpdateMessageLiveLocationViewed extends Update {
   /// [messageId] Identifier of the message with live location
   final int messageId;
 
-  static const String CONSTRUCTOR = 'updateMessageLiveLocationViewed';
+  static const String constructor = 'updateMessageLiveLocationViewed';
 
   static UpdateMessageLiveLocationViewed? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,16 +25,19 @@ class UpdateMessageLiveLocationViewed extends Update {
     }
 
     return UpdateMessageLiveLocationViewed(
-        chatId: json['chat_id'], messageId: json['message_id']);
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

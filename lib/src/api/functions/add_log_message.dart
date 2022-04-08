@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Adds a message to TDLib internal log. Can be called synchronously
 /// Returns [Ok]
+@immutable
 class AddLogMessage extends TdFunction {
-  AddLogMessage({required this.verbosityLevel, required this.text});
+  const AddLogMessage({
+    required this.verbosityLevel,
+    required this.text,
+  });
 
   /// [verbosityLevel] The minimum verbosity level needed for the message to be
   /// logged; 0-1023
@@ -13,15 +18,16 @@ class AddLogMessage extends TdFunction {
   /// [text] Text of a message to log
   final String text;
 
-  static const String CONSTRUCTOR = 'addLogMessage';
+  static const String constructor = 'addLogMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'verbosity_level': this.verbosityLevel,
-        'text': this.text,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'verbosity_level': verbosityLevel,
+        'text': text,
+        '@type': constructor,
       };
 
   @override

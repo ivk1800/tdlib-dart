@@ -1,21 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains full information about a user
+@immutable
 class UserFullInfo extends TdObject {
-  UserFullInfo(
-      {this.photo,
-      required this.isBlocked,
-      required this.canBeCalled,
-      required this.supportsVideoCalls,
-      required this.hasPrivateCalls,
-      required this.hasPrivateForwards,
-      required this.needPhoneNumberPrivacyException,
-      required this.bio,
-      required this.shareText,
-      required this.description,
-      required this.groupInCommonCount,
-      required this.commands});
+  const UserFullInfo({
+    this.photo,
+    required this.isBlocked,
+    required this.canBeCalled,
+    required this.supportsVideoCalls,
+    required this.hasPrivateCalls,
+    required this.hasPrivateForwards,
+    required this.needPhoneNumberPrivacyException,
+    required this.bio,
+    required this.shareText,
+    required this.description,
+    required this.groupInCommonCount,
+    required this.commands,
+  });
 
   /// [photo] User profile photo; may be null
   final ChatPhoto? photo;
@@ -60,7 +63,7 @@ class UserFullInfo extends TdObject {
   /// [commands] For bots, list of the bot commands
   final List<BotCommand> commands;
 
-  static const String CONSTRUCTOR = 'userFullInfo';
+  static const String constructor = 'userFullInfo';
 
   static UserFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -68,41 +71,42 @@ class UserFullInfo extends TdObject {
     }
 
     return UserFullInfo(
-        photo: ChatPhoto.fromJson(json['photo']),
-        isBlocked: json['is_blocked'],
-        canBeCalled: json['can_be_called'],
-        supportsVideoCalls: json['supports_video_calls'],
-        hasPrivateCalls: json['has_private_calls'],
-        hasPrivateForwards: json['has_private_forwards'],
-        needPhoneNumberPrivacyException:
-            json['need_phone_number_privacy_exception'],
-        bio: json['bio'],
-        shareText: json['share_text'],
-        description: json['description'],
-        groupInCommonCount: json['group_in_common_count'],
-        commands: List<BotCommand>.from((json['commands'] ?? [])
-            .map((item) => BotCommand.fromJson(item))
-            .toList()));
+      photo: ChatPhoto.fromJson(json['photo']),
+      isBlocked: json['is_blocked'],
+      canBeCalled: json['can_be_called'],
+      supportsVideoCalls: json['supports_video_calls'],
+      hasPrivateCalls: json['has_private_calls'],
+      hasPrivateForwards: json['has_private_forwards'],
+      needPhoneNumberPrivacyException:
+          json['need_phone_number_privacy_exception'],
+      bio: json['bio'],
+      shareText: json['share_text'],
+      description: json['description'],
+      groupInCommonCount: json['group_in_common_count'],
+      commands: List<BotCommand>.from((json['commands'] ?? [])
+          .map((item) => BotCommand.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'photo': this.photo?.toJson(),
-        'is_blocked': this.isBlocked,
-        'can_be_called': this.canBeCalled,
-        'supports_video_calls': this.supportsVideoCalls,
-        'has_private_calls': this.hasPrivateCalls,
-        'has_private_forwards': this.hasPrivateForwards,
-        'need_phone_number_privacy_exception':
-            this.needPhoneNumberPrivacyException,
-        'bio': this.bio,
-        'share_text': this.shareText,
-        'description': this.description,
-        'group_in_common_count': this.groupInCommonCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo?.toJson(),
+        'is_blocked': isBlocked,
+        'can_be_called': canBeCalled,
+        'supports_video_calls': supportsVideoCalls,
+        'has_private_calls': hasPrivateCalls,
+        'has_private_forwards': hasPrivateForwards,
+        'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
+        'bio': bio,
+        'share_text': shareText,
+        'description': description,
+        'group_in_common_count': groupInCommonCount,
         'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

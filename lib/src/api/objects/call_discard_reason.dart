@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes the reason why a call was discarded
+@immutable
 abstract class CallDiscardReason extends TdObject {
   const CallDiscardReason();
 
-  static const String CONSTRUCTOR = 'callDiscardReason';
+  static const String constructor = 'callDiscardReason';
 
   /// Inherited by:
   /// [CallDiscardReasonEmpty]
@@ -18,16 +20,16 @@ abstract class CallDiscardReason extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case CallDiscardReasonEmpty.CONSTRUCTOR:
+    switch (json['@type']) {
+      case CallDiscardReasonEmpty.constructor:
         return CallDiscardReasonEmpty.fromJson(json);
-      case CallDiscardReasonMissed.CONSTRUCTOR:
+      case CallDiscardReasonMissed.constructor:
         return CallDiscardReasonMissed.fromJson(json);
-      case CallDiscardReasonDeclined.CONSTRUCTOR:
+      case CallDiscardReasonDeclined.constructor:
         return CallDiscardReasonDeclined.fromJson(json);
-      case CallDiscardReasonDisconnected.CONSTRUCTOR:
+      case CallDiscardReasonDisconnected.constructor:
         return CallDiscardReasonDisconnected.fromJson(json);
-      case CallDiscardReasonHungUp.CONSTRUCTOR:
+      case CallDiscardReasonHungUp.constructor:
         return CallDiscardReasonHungUp.fromJson(json);
       default:
         return null;
@@ -35,7 +37,7 @@ abstract class CallDiscardReason extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

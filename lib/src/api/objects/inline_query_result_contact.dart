@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a user contact
+@immutable
 class InlineQueryResultContact extends InlineQueryResult {
-  InlineQueryResultContact(
-      {required this.id, required this.contact, this.thumbnail});
+  const InlineQueryResultContact({
+    required this.id,
+    required this.contact,
+    this.thumbnail,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -15,7 +20,7 @@ class InlineQueryResultContact extends InlineQueryResult {
   /// [thumbnail] Result thumbnail in JPEG format; may be null
   final Thumbnail? thumbnail;
 
-  static const String CONSTRUCTOR = 'inlineQueryResultContact';
+  static const String constructor = 'inlineQueryResultContact';
 
   static InlineQueryResultContact? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class InlineQueryResultContact extends InlineQueryResult {
     }
 
     return InlineQueryResultContact(
-        id: json['id'],
-        contact: Contact.fromJson(json['contact'])!,
-        thumbnail: Thumbnail.fromJson(json['thumbnail']));
+      id: json['id'],
+      contact: Contact.fromJson(json['contact'])!,
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'contact': this.contact.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'contact': contact.toJson(),
+        'thumbnail': thumbnail?.toJson(),
+        '@type': constructor,
       };
 
   @override

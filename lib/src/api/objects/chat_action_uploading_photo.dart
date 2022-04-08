@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user is uploading a photo
+@immutable
 class ChatActionUploadingPhoto extends ChatAction {
-  ChatActionUploadingPhoto({required this.progress});
+  const ChatActionUploadingPhoto({
+    required this.progress,
+  });
 
   /// [progress] Upload progress, as a percentage
   final int progress;
 
-  static const String CONSTRUCTOR = 'chatActionUploadingPhoto';
+  static const String constructor = 'chatActionUploadingPhoto';
 
   static ChatActionUploadingPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return ChatActionUploadingPhoto(progress: json['progress']);
+    return ChatActionUploadingPhoto(
+      progress: json['progress'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'progress': this.progress, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'progress': progress,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

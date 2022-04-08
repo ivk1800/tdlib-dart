@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A Telegram Passport element containing the user's temporary registration
+@immutable
 class PassportElementTemporaryRegistration extends PassportElement {
-  PassportElementTemporaryRegistration({required this.temporaryRegistration});
+  const PassportElementTemporaryRegistration({
+    required this.temporaryRegistration,
+  });
 
   /// [temporaryRegistration] Temporary registration
   final PersonalDocument temporaryRegistration;
 
-  static const String CONSTRUCTOR = 'passportElementTemporaryRegistration';
+  static const String constructor = 'passportElementTemporaryRegistration';
 
   static PassportElementTemporaryRegistration? fromJson(
       Map<String, dynamic>? json) {
@@ -17,16 +21,18 @@ class PassportElementTemporaryRegistration extends PassportElement {
     }
 
     return PassportElementTemporaryRegistration(
-        temporaryRegistration:
-            PersonalDocument.fromJson(json['temporary_registration'])!);
+      temporaryRegistration:
+          PersonalDocument.fromJson(json['temporary_registration'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'temporary_registration': this.temporaryRegistration.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'temporary_registration': temporaryRegistration.toJson(),
+        '@type': constructor,
       };
 
   @override

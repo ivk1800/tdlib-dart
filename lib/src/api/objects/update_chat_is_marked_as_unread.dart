@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat was marked as unread or was read
+@immutable
 class UpdateChatIsMarkedAsUnread extends Update {
-  UpdateChatIsMarkedAsUnread(
-      {required this.chatId, required this.isMarkedAsUnread});
+  const UpdateChatIsMarkedAsUnread({
+    required this.chatId,
+    required this.isMarkedAsUnread,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -12,7 +16,7 @@ class UpdateChatIsMarkedAsUnread extends Update {
   /// [isMarkedAsUnread] New value of is_marked_as_unread
   final bool isMarkedAsUnread;
 
-  static const String CONSTRUCTOR = 'updateChatIsMarkedAsUnread';
+  static const String constructor = 'updateChatIsMarkedAsUnread';
 
   static UpdateChatIsMarkedAsUnread? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,16 +24,19 @@ class UpdateChatIsMarkedAsUnread extends Update {
     }
 
     return UpdateChatIsMarkedAsUnread(
-        chatId: json['chat_id'], isMarkedAsUnread: json['is_marked_as_unread']);
+      chatId: json['chat_id'],
+      isMarkedAsUnread: json['is_marked_as_unread'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'is_marked_as_unread': this.isMarkedAsUnread,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'is_marked_as_unread': isMarkedAsUnread,
+        '@type': constructor,
       };
 
   @override

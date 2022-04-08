@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains animated stickers which must be used for dice animation rendering
+@immutable
 abstract class DiceStickers extends TdObject {
   const DiceStickers();
 
-  static const String CONSTRUCTOR = 'diceStickers';
+  static const String constructor = 'diceStickers';
 
   /// Inherited by:
   /// [DiceStickersRegular]
@@ -15,10 +17,10 @@ abstract class DiceStickers extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case DiceStickersRegular.CONSTRUCTOR:
+    switch (json['@type']) {
+      case DiceStickersRegular.constructor:
         return DiceStickersRegular.fromJson(json);
-      case DiceStickersSlotMachine.CONSTRUCTOR:
+      case DiceStickersSlotMachine.constructor:
         return DiceStickersSlotMachine.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class DiceStickers extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

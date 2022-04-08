@@ -1,13 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The translation of the document contains an error. The error will be
 /// considered resolved when the list of translation files changes
+@immutable
 class PassportElementErrorSourceTranslationFiles
     extends PassportElementErrorSource {
   const PassportElementErrorSourceTranslationFiles();
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'passportElementErrorSourceTranslationFiles';
 
   static PassportElementErrorSourceTranslationFiles? fromJson(
@@ -20,9 +22,12 @@ class PassportElementErrorSourceTranslationFiles
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

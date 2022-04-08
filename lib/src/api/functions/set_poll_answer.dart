@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the user answer to a poll. A poll in quiz mode can be answered
 /// only once
 /// Returns [Ok]
+@immutable
 class SetPollAnswer extends TdFunction {
-  SetPollAnswer(
-      {required this.chatId, required this.messageId, required this.optionIds});
+  const SetPollAnswer({
+    required this.chatId,
+    required this.messageId,
+    required this.optionIds,
+  });
 
   /// [chatId] Identifier of the chat to which the poll belongs
   final int chatId;
@@ -19,16 +24,17 @@ class SetPollAnswer extends TdFunction {
   /// answers
   final List<int> optionIds;
 
-  static const String CONSTRUCTOR = 'setPollAnswer';
+  static const String constructor = 'setPollAnswer';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
         'option_ids': optionIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

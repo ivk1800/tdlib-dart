@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about an inline button of type
 /// inlineKeyboardButtonTypeLoginUrl
+@immutable
 abstract class LoginUrlInfo extends TdObject {
   const LoginUrlInfo();
 
-  static const String CONSTRUCTOR = 'loginUrlInfo';
+  static const String constructor = 'loginUrlInfo';
 
   /// Inherited by:
   /// [LoginUrlInfoOpen]
@@ -16,10 +18,10 @@ abstract class LoginUrlInfo extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case LoginUrlInfoOpen.CONSTRUCTOR:
+    switch (json['@type']) {
+      case LoginUrlInfoOpen.constructor:
         return LoginUrlInfoOpen.fromJson(json);
-      case LoginUrlInfoRequestConfirmation.CONSTRUCTOR:
+      case LoginUrlInfoRequestConfirmation.constructor:
         return LoginUrlInfoRequestConfirmation.fromJson(json);
       default:
         return null;
@@ -27,7 +29,7 @@ abstract class LoginUrlInfo extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat is a private or secret chat and the other user can be added to
 /// the contact list using the method addContact
+@immutable
 class ChatActionBarAddContact extends ChatActionBar {
   const ChatActionBarAddContact();
 
-  static const String CONSTRUCTOR = 'chatActionBarAddContact';
+  static const String constructor = 'chatActionBarAddContact';
 
   static ChatActionBarAddContact? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,9 +19,12 @@ class ChatActionBarAddContact extends ChatActionBar {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a basic group of 0-200 users (must be upgraded to a supergroup
 /// to accommodate more than 200 users)
+@immutable
 class BasicGroup extends TdObject {
-  BasicGroup(
-      {required this.id,
-      required this.memberCount,
-      required this.status,
-      required this.isActive,
-      required this.upgradedToSupergroupId});
+  const BasicGroup({
+    required this.id,
+    required this.memberCount,
+    required this.status,
+    required this.isActive,
+    required this.upgradedToSupergroupId,
+  });
 
   /// [id] Group identifier
   final int id;
@@ -27,7 +30,7 @@ class BasicGroup extends TdObject {
   /// was upgraded; 0 if none
   final int upgradedToSupergroupId;
 
-  static const String CONSTRUCTOR = 'basicGroup';
+  static const String constructor = 'basicGroup';
 
   static BasicGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,23 +38,25 @@ class BasicGroup extends TdObject {
     }
 
     return BasicGroup(
-        id: json['id'],
-        memberCount: json['member_count'],
-        status: ChatMemberStatus.fromJson(json['status'])!,
-        isActive: json['is_active'],
-        upgradedToSupergroupId: json['upgraded_to_supergroup_id']);
+      id: json['id'],
+      memberCount: json['member_count'],
+      status: ChatMemberStatus.fromJson(json['status'])!,
+      isActive: json['is_active'],
+      upgradedToSupergroupId: json['upgraded_to_supergroup_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'member_count': this.memberCount,
-        'status': this.status.toJson(),
-        'is_active': this.isActive,
-        'upgraded_to_supergroup_id': this.upgradedToSupergroupId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'member_count': memberCount,
+        'status': status.toJson(),
+        'is_active': isActive,
+        'upgraded_to_supergroup_id': upgradedToSupergroupId,
+        '@type': constructor,
       };
 
   @override

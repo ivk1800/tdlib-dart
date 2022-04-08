@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns only failed to send messages. This filter can be used only if the
 /// message database is used
+@immutable
 class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   const SearchMessagesFilterFailedToSend();
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterFailedToSend';
+  static const String constructor = 'searchMessagesFilterFailedToSend';
 
   static SearchMessagesFilterFailedToSend? fromJson(
       Map<String, dynamic>? json) {
@@ -18,9 +20,12 @@ class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

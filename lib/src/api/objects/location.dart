@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a location on planet Earth
+@immutable
 class Location extends TdObject {
-  Location(
-      {required this.latitude,
-      required this.longitude,
-      required this.horizontalAccuracy});
+  const Location({
+    required this.latitude,
+    required this.longitude,
+    required this.horizontalAccuracy,
+  });
 
   /// [latitude] Latitude of the location in degrees; as defined by the sender
   final double latitude;
@@ -19,7 +22,7 @@ class Location extends TdObject {
   /// meters; as defined by the sender. 0 if unknown
   final double horizontalAccuracy;
 
-  static const String CONSTRUCTOR = 'location';
+  static const String constructor = 'location';
 
   static Location? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class Location extends TdObject {
     }
 
     return Location(
-        latitude: json['latitude'],
-        longitude: json['longitude'],
-        horizontalAccuracy: json['horizontal_accuracy']);
+      latitude: json['latitude'],
+      longitude: json['longitude'],
+      horizontalAccuracy: json['horizontal_accuracy'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'latitude': this.latitude,
-        'longitude': this.longitude,
-        'horizontal_accuracy': this.horizontalAccuracy,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'latitude': latitude,
+        'longitude': longitude,
+        'horizontal_accuracy': horizontalAccuracy,
+        '@type': constructor,
       };
 
   @override

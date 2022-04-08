@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A token for Apple Push Notification service VoIP notifications
+@immutable
 class DeviceTokenApplePushVoIP extends DeviceToken {
-  DeviceTokenApplePushVoIP(
-      {required this.deviceToken,
-      required this.isAppSandbox,
-      required this.encrypt});
+  const DeviceTokenApplePushVoIP({
+    required this.deviceToken,
+    required this.isAppSandbox,
+    required this.encrypt,
+  });
 
   /// [deviceToken] Device token; may be empty to deregister a device
   final String deviceToken;
@@ -17,7 +20,7 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   /// [encrypt] True, if push notifications must be additionally encrypted
   final bool encrypt;
 
-  static const String CONSTRUCTOR = 'deviceTokenApplePushVoIP';
+  static const String constructor = 'deviceTokenApplePushVoIP';
 
   static DeviceTokenApplePushVoIP? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -25,19 +28,21 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
     }
 
     return DeviceTokenApplePushVoIP(
-        deviceToken: json['device_token'],
-        isAppSandbox: json['is_app_sandbox'],
-        encrypt: json['encrypt']);
+      deviceToken: json['device_token'],
+      isAppSandbox: json['is_app_sandbox'],
+      encrypt: json['encrypt'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'device_token': this.deviceToken,
-        'is_app_sandbox': this.isAppSandbox,
-        'encrypt': this.encrypt,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'device_token': deviceToken,
+        'is_app_sandbox': isAppSandbox,
+        'encrypt': encrypt,
+        '@type': constructor,
       };
 
   @override

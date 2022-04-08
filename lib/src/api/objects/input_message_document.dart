@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A document message (general file)
+@immutable
 class InputMessageDocument extends InputMessageContent {
-  InputMessageDocument(
-      {required this.document,
-      this.thumbnail,
-      required this.disableContentTypeDetection,
-      this.caption});
+  const InputMessageDocument({
+    required this.document,
+    this.thumbnail,
+    required this.disableContentTypeDetection,
+    this.caption,
+  });
 
   /// [document] Document to be sent
   final InputFile document;
@@ -24,7 +27,7 @@ class InputMessageDocument extends InputMessageContent {
   /// 0-GetOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  static const String CONSTRUCTOR = 'inputMessageDocument';
+  static const String constructor = 'inputMessageDocument';
 
   static InputMessageDocument? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,21 +35,23 @@ class InputMessageDocument extends InputMessageContent {
     }
 
     return InputMessageDocument(
-        document: InputFile.fromJson(json['document'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-        disableContentTypeDetection: json['disable_content_type_detection'],
-        caption: FormattedText.fromJson(json['caption']));
+      document: InputFile.fromJson(json['document'])!,
+      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      disableContentTypeDetection: json['disable_content_type_detection'],
+      caption: FormattedText.fromJson(json['caption']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'document': this.document.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
-        'disable_content_type_detection': this.disableContentTypeDetection,
-        'caption': this.caption?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'document': document.toJson(),
+        'thumbnail': thumbnail?.toJson(),
+        'disable_content_type_detection': disableContentTypeDetection,
+        'caption': caption?.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Theme colors for a payment form
+@immutable
 class PaymentFormTheme extends TdObject {
-  PaymentFormTheme(
-      {required this.backgroundColor,
-      required this.textColor,
-      required this.hintColor,
-      required this.linkColor,
-      required this.buttonColor,
-      required this.buttonTextColor});
+  const PaymentFormTheme({
+    required this.backgroundColor,
+    required this.textColor,
+    required this.hintColor,
+    required this.linkColor,
+    required this.buttonColor,
+    required this.buttonTextColor,
+  });
 
   /// [backgroundColor] A color of the payment form background in the RGB24
   /// format
@@ -30,7 +33,7 @@ class PaymentFormTheme extends TdObject {
   /// [buttonTextColor] A color of text on the buttons in the RGB24 format
   final int buttonTextColor;
 
-  static const String CONSTRUCTOR = 'paymentFormTheme';
+  static const String constructor = 'paymentFormTheme';
 
   static PaymentFormTheme? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class PaymentFormTheme extends TdObject {
     }
 
     return PaymentFormTheme(
-        backgroundColor: json['background_color'],
-        textColor: json['text_color'],
-        hintColor: json['hint_color'],
-        linkColor: json['link_color'],
-        buttonColor: json['button_color'],
-        buttonTextColor: json['button_text_color']);
+      backgroundColor: json['background_color'],
+      textColor: json['text_color'],
+      hintColor: json['hint_color'],
+      linkColor: json['link_color'],
+      buttonColor: json['button_color'],
+      buttonTextColor: json['button_text_color'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'background_color': this.backgroundColor,
-        'text_color': this.textColor,
-        'hint_color': this.hintColor,
-        'link_color': this.linkColor,
-        'button_color': this.buttonColor,
-        'button_text_color': this.buttonTextColor,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'background_color': backgroundColor,
+        'text_color': textColor,
+        'hint_color': hintColor,
+        'link_color': linkColor,
+        'button_color': buttonColor,
+        'button_text_color': buttonTextColor,
+        '@type': constructor,
       };
 
   @override

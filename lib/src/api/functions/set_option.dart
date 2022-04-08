@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets the value of an option. (Check the list of available options on
 /// https://core.telegram.org/tdlib/options.) Only writable options can be
 /// set. Can be called before authorization
 /// Returns [Ok]
+@immutable
 class SetOption extends TdFunction {
-  SetOption({required this.name, this.value});
+  const SetOption({
+    required this.name,
+    this.value,
+  });
 
   /// [name] The name of the option
   final String name;
@@ -15,13 +20,17 @@ class SetOption extends TdFunction {
   /// default value
   final OptionValue? value;
 
-  static const String CONSTRUCTOR = 'setOption';
+  static const String constructor = 'setOption';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'name': this.name, 'value': this.value?.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'value': value?.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

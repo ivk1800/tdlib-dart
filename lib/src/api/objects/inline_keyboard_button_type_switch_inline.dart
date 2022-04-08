@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A button that forces an inline query to the bot to be inserted in the
 /// input field
+@immutable
 class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
-  InlineKeyboardButtonTypeSwitchInline(
-      {required this.query, required this.inCurrentChat});
+  const InlineKeyboardButtonTypeSwitchInline({
+    required this.query,
+    required this.inCurrentChat,
+  });
 
   /// [query] Inline query to be sent to the bot
   final String query;
@@ -14,7 +18,7 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   /// chat
   final bool inCurrentChat;
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeSwitchInline';
+  static const String constructor = 'inlineKeyboardButtonTypeSwitchInline';
 
   static InlineKeyboardButtonTypeSwitchInline? fromJson(
       Map<String, dynamic>? json) {
@@ -23,16 +27,19 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeSwitchInline(
-        query: json['query'], inCurrentChat: json['in_current_chat']);
+      query: json['query'],
+      inCurrentChat: json['in_current_chat'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'query': this.query,
-        'in_current_chat': this.inCurrentChat,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'query': query,
+        'in_current_chat': inCurrentChat,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Edits existing chat filter. Returns information about the edited chat
 /// filter
 /// Returns [ChatFilterInfo]
+@immutable
 class EditChatFilter extends TdFunction {
-  EditChatFilter({required this.chatFilterId, required this.filter});
+  const EditChatFilter({
+    required this.chatFilterId,
+    required this.filter,
+  });
 
   /// [chatFilterId] Chat filter identifier
   final int chatFilterId;
@@ -13,15 +18,16 @@ class EditChatFilter extends TdFunction {
   /// [filter] The edited chat filter
   final ChatFilter filter;
 
-  static const String CONSTRUCTOR = 'editChatFilter';
+  static const String constructor = 'editChatFilter';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_filter_id': this.chatFilterId,
-        'filter': this.filter.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_filter_id': chatFilterId,
+        'filter': filter.toJson(),
+        '@type': constructor,
       };
 
   @override

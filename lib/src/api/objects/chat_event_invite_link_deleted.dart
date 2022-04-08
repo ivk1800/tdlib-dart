@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A revoked chat invite link was deleted
+@immutable
 class ChatEventInviteLinkDeleted extends ChatEventAction {
-  ChatEventInviteLinkDeleted({required this.inviteLink});
+  const ChatEventInviteLinkDeleted({
+    required this.inviteLink,
+  });
 
   /// [inviteLink] The invite link
   final ChatInviteLink inviteLink;
 
-  static const String CONSTRUCTOR = 'chatEventInviteLinkDeleted';
+  static const String constructor = 'chatEventInviteLinkDeleted';
 
   static ChatEventInviteLinkDeleted? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
     }
 
     return ChatEventInviteLinkDeleted(
-        inviteLink: ChatInviteLink.fromJson(json['invite_link'])!);
+      inviteLink: ChatInviteLink.fromJson(json['invite_link'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'invite_link': this.inviteLink.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'invite_link': inviteLink.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

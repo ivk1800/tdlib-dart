@@ -1,21 +1,28 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Deletes a file from the TDLib file cache
 /// Returns [Ok]
+@immutable
 class DeleteFile extends TdFunction {
-  DeleteFile({required this.fileId});
+  const DeleteFile({
+    required this.fileId,
+  });
 
   /// [fileId] Identifier of the file to delete
   final int fileId;
 
-  static const String CONSTRUCTOR = 'deleteFile';
+  static const String constructor = 'deleteFile';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file_id': this.fileId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_id': fileId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,38 +1,41 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
+@immutable
 class Chat extends TdObject {
-  Chat(
-      {required this.id,
-      required this.type,
-      required this.title,
-      this.photo,
-      required this.permissions,
-      this.lastMessage,
-      required this.positions,
-      this.messageSenderId,
-      required this.hasProtectedContent,
-      required this.isMarkedAsUnread,
-      required this.isBlocked,
-      required this.hasScheduledMessages,
-      required this.canBeDeletedOnlyForSelf,
-      required this.canBeDeletedForAllUsers,
-      required this.canBeReported,
-      required this.defaultDisableNotification,
-      required this.unreadCount,
-      required this.lastReadInboxMessageId,
-      required this.lastReadOutboxMessageId,
-      required this.unreadMentionCount,
-      required this.notificationSettings,
-      required this.messageTtl,
-      required this.themeName,
-      this.actionBar,
-      required this.videoChat,
-      this.pendingJoinRequests,
-      required this.replyMarkupMessageId,
-      this.draftMessage,
-      required this.clientData});
+  const Chat({
+    required this.id,
+    required this.type,
+    required this.title,
+    this.photo,
+    required this.permissions,
+    this.lastMessage,
+    required this.positions,
+    this.messageSenderId,
+    required this.hasProtectedContent,
+    required this.isMarkedAsUnread,
+    required this.isBlocked,
+    required this.hasScheduledMessages,
+    required this.canBeDeletedOnlyForSelf,
+    required this.canBeDeletedForAllUsers,
+    required this.canBeReported,
+    required this.defaultDisableNotification,
+    required this.unreadCount,
+    required this.lastReadInboxMessageId,
+    required this.lastReadOutboxMessageId,
+    required this.unreadMentionCount,
+    required this.notificationSettings,
+    required this.messageTtl,
+    required this.themeName,
+    this.actionBar,
+    required this.videoChat,
+    this.pendingJoinRequests,
+    required this.replyMarkupMessageId,
+    this.draftMessage,
+    required this.clientData,
+  });
 
   /// [id] Chat unique identifier
   final int id;
@@ -137,7 +140,7 @@ class Chat extends TdObject {
   /// be stored here.) Persistent if the message database is used
   final String clientData;
 
-  static const String CONSTRUCTOR = 'chat';
+  static const String constructor = 'chat';
 
   static Chat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -145,75 +148,77 @@ class Chat extends TdObject {
     }
 
     return Chat(
-        id: json['id'],
-        type: ChatType.fromJson(json['type'])!,
-        title: json['title'],
-        photo: ChatPhotoInfo.fromJson(json['photo']),
-        permissions: ChatPermissions.fromJson(json['permissions'])!,
-        lastMessage: Message.fromJson(json['last_message']),
-        positions: List<ChatPosition>.from((json['positions'] ?? [])
-            .map((item) => ChatPosition.fromJson(item))
-            .toList()),
-        messageSenderId: MessageSender.fromJson(json['message_sender_id']),
-        hasProtectedContent: json['has_protected_content'],
-        isMarkedAsUnread: json['is_marked_as_unread'],
-        isBlocked: json['is_blocked'],
-        hasScheduledMessages: json['has_scheduled_messages'],
-        canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
-        canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
-        canBeReported: json['can_be_reported'],
-        defaultDisableNotification: json['default_disable_notification'],
-        unreadCount: json['unread_count'],
-        lastReadInboxMessageId: json['last_read_inbox_message_id'],
-        lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-        unreadMentionCount: json['unread_mention_count'],
-        notificationSettings:
-            ChatNotificationSettings.fromJson(json['notification_settings'])!,
-        messageTtl: json['message_ttl'],
-        themeName: json['theme_name'],
-        actionBar: ChatActionBar.fromJson(json['action_bar']),
-        videoChat: VideoChat.fromJson(json['video_chat'])!,
-        pendingJoinRequests:
-            ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
-        replyMarkupMessageId: json['reply_markup_message_id'],
-        draftMessage: DraftMessage.fromJson(json['draft_message']),
-        clientData: json['client_data']);
+      id: json['id'],
+      type: ChatType.fromJson(json['type'])!,
+      title: json['title'],
+      photo: ChatPhotoInfo.fromJson(json['photo']),
+      permissions: ChatPermissions.fromJson(json['permissions'])!,
+      lastMessage: Message.fromJson(json['last_message']),
+      positions: List<ChatPosition>.from((json['positions'] ?? [])
+          .map((item) => ChatPosition.fromJson(item))
+          .toList()),
+      messageSenderId: MessageSender.fromJson(json['message_sender_id']),
+      hasProtectedContent: json['has_protected_content'],
+      isMarkedAsUnread: json['is_marked_as_unread'],
+      isBlocked: json['is_blocked'],
+      hasScheduledMessages: json['has_scheduled_messages'],
+      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
+      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
+      canBeReported: json['can_be_reported'],
+      defaultDisableNotification: json['default_disable_notification'],
+      unreadCount: json['unread_count'],
+      lastReadInboxMessageId: json['last_read_inbox_message_id'],
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+      unreadMentionCount: json['unread_mention_count'],
+      notificationSettings:
+          ChatNotificationSettings.fromJson(json['notification_settings'])!,
+      messageTtl: json['message_ttl'],
+      themeName: json['theme_name'],
+      actionBar: ChatActionBar.fromJson(json['action_bar']),
+      videoChat: VideoChat.fromJson(json['video_chat'])!,
+      pendingJoinRequests:
+          ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
+      replyMarkupMessageId: json['reply_markup_message_id'],
+      draftMessage: DraftMessage.fromJson(json['draft_message']),
+      clientData: json['client_data'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'type': this.type.toJson(),
-        'title': this.title,
-        'photo': this.photo?.toJson(),
-        'permissions': this.permissions.toJson(),
-        'last_message': this.lastMessage?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'type': type.toJson(),
+        'title': title,
+        'photo': photo?.toJson(),
+        'permissions': permissions.toJson(),
+        'last_message': lastMessage?.toJson(),
         'positions': positions.map((item) => item.toJson()).toList(),
-        'message_sender_id': this.messageSenderId?.toJson(),
-        'has_protected_content': this.hasProtectedContent,
-        'is_marked_as_unread': this.isMarkedAsUnread,
-        'is_blocked': this.isBlocked,
-        'has_scheduled_messages': this.hasScheduledMessages,
-        'can_be_deleted_only_for_self': this.canBeDeletedOnlyForSelf,
-        'can_be_deleted_for_all_users': this.canBeDeletedForAllUsers,
-        'can_be_reported': this.canBeReported,
-        'default_disable_notification': this.defaultDisableNotification,
-        'unread_count': this.unreadCount,
-        'last_read_inbox_message_id': this.lastReadInboxMessageId,
-        'last_read_outbox_message_id': this.lastReadOutboxMessageId,
-        'unread_mention_count': this.unreadMentionCount,
-        'notification_settings': this.notificationSettings.toJson(),
-        'message_ttl': this.messageTtl,
-        'theme_name': this.themeName,
-        'action_bar': this.actionBar?.toJson(),
-        'video_chat': this.videoChat.toJson(),
-        'pending_join_requests': this.pendingJoinRequests?.toJson(),
-        'reply_markup_message_id': this.replyMarkupMessageId,
-        'draft_message': this.draftMessage?.toJson(),
-        'client_data': this.clientData,
-        '@type': CONSTRUCTOR
+        'message_sender_id': messageSenderId?.toJson(),
+        'has_protected_content': hasProtectedContent,
+        'is_marked_as_unread': isMarkedAsUnread,
+        'is_blocked': isBlocked,
+        'has_scheduled_messages': hasScheduledMessages,
+        'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
+        'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
+        'can_be_reported': canBeReported,
+        'default_disable_notification': defaultDisableNotification,
+        'unread_count': unreadCount,
+        'last_read_inbox_message_id': lastReadInboxMessageId,
+        'last_read_outbox_message_id': lastReadOutboxMessageId,
+        'unread_mention_count': unreadMentionCount,
+        'notification_settings': notificationSettings.toJson(),
+        'message_ttl': messageTtl,
+        'theme_name': themeName,
+        'action_bar': actionBar?.toJson(),
+        'video_chat': videoChat.toJson(),
+        'pending_join_requests': pendingJoinRequests?.toJson(),
+        'reply_markup_message_id': replyMarkupMessageId,
+        'draft_message': draftMessage?.toJson(),
+        'client_data': clientData,
+        '@type': constructor,
       };
 
   @override

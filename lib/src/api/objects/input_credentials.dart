@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the payment method chosen by the user
+@immutable
 abstract class InputCredentials extends TdObject {
   const InputCredentials();
 
-  static const String CONSTRUCTOR = 'inputCredentials';
+  static const String constructor = 'inputCredentials';
 
   /// Inherited by:
   /// [InputCredentialsSaved]
@@ -17,14 +19,14 @@ abstract class InputCredentials extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputCredentialsSaved.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputCredentialsSaved.constructor:
         return InputCredentialsSaved.fromJson(json);
-      case InputCredentialsNew.CONSTRUCTOR:
+      case InputCredentialsNew.constructor:
         return InputCredentialsNew.fromJson(json);
-      case InputCredentialsApplePay.CONSTRUCTOR:
+      case InputCredentialsApplePay.constructor:
         return InputCredentialsApplePay.fromJson(json);
-      case InputCredentialsGooglePay.CONSTRUCTOR:
+      case InputCredentialsGooglePay.constructor:
         return InputCredentialsGooglePay.fromJson(json);
       default:
         return null;
@@ -32,7 +34,7 @@ abstract class InputCredentials extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

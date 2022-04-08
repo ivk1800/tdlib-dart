@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Telegram Passport data has been received; for bots only
+@immutable
 class MessagePassportDataReceived extends MessageContent {
-  MessagePassportDataReceived(
-      {required this.elements, required this.credentials});
+  const MessagePassportDataReceived({
+    required this.elements,
+    required this.credentials,
+  });
 
   /// [elements] List of received Telegram Passport elements
   final List<EncryptedPassportElement> elements;
@@ -12,7 +16,7 @@ class MessagePassportDataReceived extends MessageContent {
   /// [credentials] Encrypted data credentials
   final EncryptedCredentials credentials;
 
-  static const String CONSTRUCTOR = 'messagePassportDataReceived';
+  static const String constructor = 'messagePassportDataReceived';
 
   static MessagePassportDataReceived? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,19 +24,21 @@ class MessagePassportDataReceived extends MessageContent {
     }
 
     return MessagePassportDataReceived(
-        elements: List<EncryptedPassportElement>.from((json['elements'] ?? [])
-            .map((item) => EncryptedPassportElement.fromJson(item))
-            .toList()),
-        credentials: EncryptedCredentials.fromJson(json['credentials'])!);
+      elements: List<EncryptedPassportElement>.from((json['elements'] ?? [])
+          .map((item) => EncryptedPassportElement.fromJson(item))
+          .toList()),
+      credentials: EncryptedCredentials.fromJson(json['credentials'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'elements': elements.map((item) => item.toJson()).toList(),
-        'credentials': this.credentials.toJson(),
-        '@type': CONSTRUCTOR
+        'credentials': credentials.toJson(),
+        '@type': constructor,
       };
 
   @override

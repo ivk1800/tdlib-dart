@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Searches for messages in secret chats. Returns the results in reverse
 /// chronological order. For optimal performance, the number of returned
 /// messages is chosen by TDLib
 /// Returns [FoundMessages]
+@immutable
 class SearchSecretMessages extends TdFunction {
-  SearchSecretMessages(
-      {required this.chatId,
-      required this.query,
-      required this.offset,
-      required this.limit,
-      this.filter});
+  const SearchSecretMessages({
+    required this.chatId,
+    required this.query,
+    required this.offset,
+    required this.limit,
+    this.filter,
+  });
 
   /// [chatId] Identifier of the chat in which to search. Specify 0 to search in
   /// all secret chats
@@ -34,18 +37,19 @@ class SearchSecretMessages extends TdFunction {
   /// all messages
   final SearchMessagesFilter? filter;
 
-  static const String CONSTRUCTOR = 'searchSecretMessages';
+  static const String constructor = 'searchSecretMessages';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'query': this.query,
-        'offset': this.offset,
-        'limit': this.limit,
-        'filter': this.filter?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'query': query,
+        'offset': offset,
+        'limit': limit,
+        'filter': filter?.toJson(),
+        '@type': constructor,
       };
 
   @override

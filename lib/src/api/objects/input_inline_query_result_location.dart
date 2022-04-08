@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a point on the map
+@immutable
 class InputInlineQueryResultLocation extends InputInlineQueryResult {
-  InputInlineQueryResultLocation(
-      {required this.id,
-      required this.location,
-      required this.livePeriod,
-      required this.title,
-      required this.thumbnailUrl,
-      required this.thumbnailWidth,
-      required this.thumbnailHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultLocation({
+    required this.id,
+    required this.location,
+    required this.livePeriod,
+    required this.title,
+    required this.thumbnailUrl,
+    required this.thumbnailWidth,
+    required this.thumbnailHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -45,7 +48,7 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   /// inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultLocation';
+  static const String constructor = 'inputInlineQueryResultLocation';
 
   static InputInlineQueryResultLocation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -53,32 +56,34 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultLocation(
-        id: json['id'],
-        location: Location.fromJson(json['location'])!,
-        livePeriod: json['live_period'],
-        title: json['title'],
-        thumbnailUrl: json['thumbnail_url'],
-        thumbnailWidth: json['thumbnail_width'],
-        thumbnailHeight: json['thumbnail_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      location: Location.fromJson(json['location'])!,
+      livePeriod: json['live_period'],
+      title: json['title'],
+      thumbnailUrl: json['thumbnail_url'],
+      thumbnailWidth: json['thumbnail_width'],
+      thumbnailHeight: json['thumbnail_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'location': this.location.toJson(),
-        'live_period': this.livePeriod,
-        'title': this.title,
-        'thumbnail_url': this.thumbnailUrl,
-        'thumbnail_width': this.thumbnailWidth,
-        'thumbnail_height': this.thumbnailHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'location': location.toJson(),
+        'live_period': livePeriod,
+        'title': title,
+        'thumbnail_url': thumbnailUrl,
+        'thumbnail_width': thumbnailWidth,
+        'thumbnail_height': thumbnailHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

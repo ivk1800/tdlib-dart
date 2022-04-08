@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the order of installed sticker sets
 /// Returns [Ok]
+@immutable
 class ReorderInstalledStickerSets extends TdFunction {
-  ReorderInstalledStickerSets(
-      {required this.isMasks, required this.stickerSetIds});
+  const ReorderInstalledStickerSets({
+    required this.isMasks,
+    required this.stickerSetIds,
+  });
 
   /// [isMasks] Pass true to change the order of mask sticker sets; pass false
   /// to change the order of ordinary sticker sets
@@ -15,15 +19,16 @@ class ReorderInstalledStickerSets extends TdFunction {
   /// order
   final List<int> stickerSetIds;
 
-  static const String CONSTRUCTOR = 'reorderInstalledStickerSets';
+  static const String constructor = 'reorderInstalledStickerSets';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'is_masks': this.isMasks,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'is_masks': isMasks,
         'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

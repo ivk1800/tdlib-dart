@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sets a sticker set thumbnail; for bots only. Returns the sticker set
 /// Returns [StickerSet]
+@immutable
 class SetStickerSetThumbnail extends TdFunction {
-  SetStickerSetThumbnail(
-      {required this.userId, required this.name, this.thumbnail});
+  const SetStickerSetThumbnail({
+    required this.userId,
+    required this.name,
+    this.thumbnail,
+  });
 
   /// [userId] Sticker set owner
   final int userId;
@@ -18,16 +23,17 @@ class SetStickerSetThumbnail extends TdFunction {
   /// sets and only for them
   final InputFile? thumbnail;
 
-  static const String CONSTRUCTOR = 'setStickerSetThumbnail';
+  static const String constructor = 'setStickerSetThumbnail';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'name': this.name,
-        'thumbnail': this.thumbnail?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'name': name,
+        'thumbnail': thumbnail?.toJson(),
+        '@type': constructor,
       };
 
   @override

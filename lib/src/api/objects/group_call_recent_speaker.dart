@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a recently speaking participant in a group call
+@immutable
 class GroupCallRecentSpeaker extends TdObject {
-  GroupCallRecentSpeaker(
-      {required this.participantId, required this.isSpeaking});
+  const GroupCallRecentSpeaker({
+    required this.participantId,
+    required this.isSpeaking,
+  });
 
   /// [participantId] Group call participant identifier
   final MessageSender participantId;
@@ -12,7 +16,7 @@ class GroupCallRecentSpeaker extends TdObject {
   /// [isSpeaking] True, is the user has spoken recently
   final bool isSpeaking;
 
-  static const String CONSTRUCTOR = 'groupCallRecentSpeaker';
+  static const String constructor = 'groupCallRecentSpeaker';
 
   static GroupCallRecentSpeaker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class GroupCallRecentSpeaker extends TdObject {
     }
 
     return GroupCallRecentSpeaker(
-        participantId: MessageSender.fromJson(json['participant_id'])!,
-        isSpeaking: json['is_speaking']);
+      participantId: MessageSender.fromJson(json['participant_id'])!,
+      isSpeaking: json['is_speaking'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'participant_id': this.participantId.toJson(),
-        'is_speaking': this.isSpeaking,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'participant_id': participantId.toJson(),
+        'is_speaking': isSpeaking,
+        '@type': constructor,
       };
 
   @override

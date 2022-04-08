@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A secret chat with a user
+@immutable
 class ChatTypeSecret extends ChatType {
-  ChatTypeSecret({required this.secretChatId, required this.userId});
+  const ChatTypeSecret({
+    required this.secretChatId,
+    required this.userId,
+  });
 
   /// [secretChatId] Secret chat identifier
   final int secretChatId;
@@ -11,7 +16,7 @@ class ChatTypeSecret extends ChatType {
   /// [userId] User identifier of the secret chat peer
   final int userId;
 
-  static const String CONSTRUCTOR = 'chatTypeSecret';
+  static const String constructor = 'chatTypeSecret';
 
   static ChatTypeSecret? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,16 +24,19 @@ class ChatTypeSecret extends ChatType {
     }
 
     return ChatTypeSecret(
-        secretChatId: json['secret_chat_id'], userId: json['user_id']);
+      secretChatId: json['secret_chat_id'],
+      userId: json['user_id'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'secret_chat_id': this.secretChatId,
-        'user_id': this.userId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'secret_chat_id': secretChatId,
+        'user_id': userId,
+        '@type': constructor,
       };
 
   @override

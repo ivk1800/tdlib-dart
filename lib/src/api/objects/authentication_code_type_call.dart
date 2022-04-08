@@ -1,29 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An authentication code is delivered via a phone call to the specified
 /// phone number
+@immutable
 class AuthenticationCodeTypeCall extends AuthenticationCodeType {
-  AuthenticationCodeTypeCall({required this.length});
+  const AuthenticationCodeTypeCall({
+    required this.length,
+  });
 
   /// [length] Length of the code
   final int length;
 
-  static const String CONSTRUCTOR = 'authenticationCodeTypeCall';
+  static const String constructor = 'authenticationCodeTypeCall';
 
   static AuthenticationCodeTypeCall? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return AuthenticationCodeTypeCall(length: json['length']);
+    return AuthenticationCodeTypeCall(
+      length: json['length'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'length': this.length, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'length': length,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

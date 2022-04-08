@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Sends a filled-out payment form to the bot for final verification
 /// Returns [PaymentResult]
+@immutable
 class SendPaymentForm extends TdFunction {
-  SendPaymentForm(
-      {required this.chatId,
-      required this.messageId,
-      required this.paymentFormId,
-      required this.orderInfoId,
-      required this.shippingOptionId,
-      required this.credentials,
-      required this.tipAmount});
+  const SendPaymentForm({
+    required this.chatId,
+    required this.messageId,
+    required this.paymentFormId,
+    required this.orderInfoId,
+    required this.shippingOptionId,
+    required this.credentials,
+    required this.tipAmount,
+  });
 
   /// [chatId] Chat identifier of the Invoice message
   final int chatId;
@@ -36,20 +39,21 @@ class SendPaymentForm extends TdFunction {
   /// currency
   final int tipAmount;
 
-  static const String CONSTRUCTOR = 'sendPaymentForm';
+  static const String constructor = 'sendPaymentForm';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'payment_form_id': this.paymentFormId,
-        'order_info_id': this.orderInfoId,
-        'shipping_option_id': this.shippingOptionId,
-        'credentials': this.credentials.toJson(),
-        'tip_amount': this.tipAmount,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'payment_form_id': paymentFormId,
+        'order_info_id': orderInfoId,
+        'shipping_option_id': shippingOptionId,
+        'credentials': credentials.toJson(),
+        'tip_amount': tipAmount,
+        '@type': constructor,
       };
 
   @override

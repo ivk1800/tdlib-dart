@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Provides information about the status of a member in a chat
+@immutable
 abstract class ChatMemberStatus extends TdObject {
   const ChatMemberStatus();
 
-  static const String CONSTRUCTOR = 'chatMemberStatus';
+  static const String constructor = 'chatMemberStatus';
 
   /// Inherited by:
   /// [ChatMemberStatusCreator]
@@ -19,18 +21,18 @@ abstract class ChatMemberStatus extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatMemberStatusCreator.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatMemberStatusCreator.constructor:
         return ChatMemberStatusCreator.fromJson(json);
-      case ChatMemberStatusAdministrator.CONSTRUCTOR:
+      case ChatMemberStatusAdministrator.constructor:
         return ChatMemberStatusAdministrator.fromJson(json);
-      case ChatMemberStatusMember.CONSTRUCTOR:
+      case ChatMemberStatusMember.constructor:
         return ChatMemberStatusMember.fromJson(json);
-      case ChatMemberStatusRestricted.CONSTRUCTOR:
+      case ChatMemberStatusRestricted.constructor:
         return ChatMemberStatusRestricted.fromJson(json);
-      case ChatMemberStatusLeft.CONSTRUCTOR:
+      case ChatMemberStatusLeft.constructor:
         return ChatMemberStatusLeft.fromJson(json);
-      case ChatMemberStatusBanned.CONSTRUCTOR:
+      case ChatMemberStatusBanned.constructor:
         return ChatMemberStatusBanned.fromJson(json);
       default:
         return null;
@@ -38,7 +40,7 @@ abstract class ChatMemberStatus extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

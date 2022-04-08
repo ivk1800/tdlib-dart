@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the type of a user. The following types are possible: regular
 /// users, deleted users and bots
+@immutable
 abstract class UserType extends TdObject {
   const UserType();
 
-  static const String CONSTRUCTOR = 'userType';
+  static const String constructor = 'userType';
 
   /// Inherited by:
   /// [UserTypeRegular]
@@ -18,14 +20,14 @@ abstract class UserType extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case UserTypeRegular.CONSTRUCTOR:
+    switch (json['@type']) {
+      case UserTypeRegular.constructor:
         return UserTypeRegular.fromJson(json);
-      case UserTypeDeleted.CONSTRUCTOR:
+      case UserTypeDeleted.constructor:
         return UserTypeDeleted.fromJson(json);
-      case UserTypeBot.CONSTRUCTOR:
+      case UserTypeBot.constructor:
         return UserTypeBot.fromJson(json);
-      case UserTypeUnknown.CONSTRUCTOR:
+      case UserTypeUnknown.constructor:
         return UserTypeUnknown.fromJson(json);
       default:
         return null;
@@ -33,7 +35,7 @@ abstract class UserType extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

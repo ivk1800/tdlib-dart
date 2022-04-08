@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat permissions was changed
+@immutable
 class ChatEventPermissionsChanged extends ChatEventAction {
-  ChatEventPermissionsChanged(
-      {required this.oldPermissions, required this.newPermissions});
+  const ChatEventPermissionsChanged({
+    required this.oldPermissions,
+    required this.newPermissions,
+  });
 
   /// [oldPermissions] Previous chat permissions
   final ChatPermissions oldPermissions;
@@ -12,7 +16,7 @@ class ChatEventPermissionsChanged extends ChatEventAction {
   /// [newPermissions] New chat permissions
   final ChatPermissions newPermissions;
 
-  static const String CONSTRUCTOR = 'chatEventPermissionsChanged';
+  static const String constructor = 'chatEventPermissionsChanged';
 
   static ChatEventPermissionsChanged? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +24,19 @@ class ChatEventPermissionsChanged extends ChatEventAction {
     }
 
     return ChatEventPermissionsChanged(
-        oldPermissions: ChatPermissions.fromJson(json['old_permissions'])!,
-        newPermissions: ChatPermissions.fromJson(json['new_permissions'])!);
+      oldPermissions: ChatPermissions.fromJson(json['old_permissions'])!,
+      newPermissions: ChatPermissions.fromJson(json['new_permissions'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'old_permissions': this.oldPermissions.toJson(),
-        'new_permissions': this.newPermissions.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'old_permissions': oldPermissions.toJson(),
+        'new_permissions': newPermissions.toJson(),
+        '@type': constructor,
       };
 
   @override

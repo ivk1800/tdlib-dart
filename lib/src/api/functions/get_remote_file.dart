@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a file by its remote ID; this is an offline
 /// request. Can be used to register a URL as a file for further uploading, or
@@ -9,8 +10,12 @@ import '../extensions/data_class_extensions.dart';
 /// If the file database is disabled, then the corresponding object with the
 /// file must be preloaded by the application
 /// Returns [File]
+@immutable
 class GetRemoteFile extends TdFunction {
-  GetRemoteFile({required this.remoteFileId, this.fileType});
+  const GetRemoteFile({
+    required this.remoteFileId,
+    this.fileType,
+  });
 
   /// [remoteFileId] Remote identifier of the file to get
   final String remoteFileId;
@@ -18,15 +23,16 @@ class GetRemoteFile extends TdFunction {
   /// [fileType] File type; pass null if unknown
   final FileType? fileType;
 
-  static const String CONSTRUCTOR = 'getRemoteFile';
+  static const String constructor = 'getRemoteFile';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'remote_file_id': this.remoteFileId,
-        'file_type': this.fileType?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'remote_file_id': remoteFileId,
+        'file_type': fileType?.toJson(),
+        '@type': constructor,
       };
 
   @override

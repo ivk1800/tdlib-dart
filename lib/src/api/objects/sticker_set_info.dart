@@ -1,22 +1,25 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents short information about a sticker set
+@immutable
 class StickerSetInfo extends TdObject {
-  StickerSetInfo(
-      {required this.id,
-      required this.title,
-      required this.name,
-      this.thumbnail,
-      required this.thumbnailOutline,
-      required this.isInstalled,
-      required this.isArchived,
-      required this.isOfficial,
-      required this.isAnimated,
-      required this.isMasks,
-      required this.isViewed,
-      required this.size,
-      required this.covers});
+  const StickerSetInfo({
+    required this.id,
+    required this.title,
+    required this.name,
+    this.thumbnail,
+    required this.thumbnailOutline,
+    required this.isInstalled,
+    required this.isArchived,
+    required this.isOfficial,
+    required this.isAnimated,
+    required this.isMasks,
+    required this.isViewed,
+    required this.size,
+    required this.covers,
+  });
 
   /// [id] Identifier of the sticker set
   final int id;
@@ -64,7 +67,7 @@ class StickerSetInfo extends TdObject {
   /// to be requested
   final List<Sticker> covers;
 
-  static const String CONSTRUCTOR = 'stickerSetInfo';
+  static const String constructor = 'stickerSetInfo';
 
   static StickerSetInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -72,45 +75,47 @@ class StickerSetInfo extends TdObject {
     }
 
     return StickerSetInfo(
-        id: int.tryParse(json['id']) ?? 0,
-        title: json['title'],
-        name: json['name'],
-        thumbnail: Thumbnail.fromJson(json['thumbnail']),
-        thumbnailOutline: List<ClosedVectorPath>.from(
-            (json['thumbnail_outline'] ?? [])
-                .map((item) => ClosedVectorPath.fromJson(item))
-                .toList()),
-        isInstalled: json['is_installed'],
-        isArchived: json['is_archived'],
-        isOfficial: json['is_official'],
-        isAnimated: json['is_animated'],
-        isMasks: json['is_masks'],
-        isViewed: json['is_viewed'],
-        size: json['size'],
-        covers: List<Sticker>.from((json['covers'] ?? [])
-            .map((item) => Sticker.fromJson(item))
-            .toList()));
+      id: int.tryParse(json['id']) ?? 0,
+      title: json['title'],
+      name: json['name'],
+      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      thumbnailOutline: List<ClosedVectorPath>.from(
+          (json['thumbnail_outline'] ?? [])
+              .map((item) => ClosedVectorPath.fromJson(item))
+              .toList()),
+      isInstalled: json['is_installed'],
+      isArchived: json['is_archived'],
+      isOfficial: json['is_official'],
+      isAnimated: json['is_animated'],
+      isMasks: json['is_masks'],
+      isViewed: json['is_viewed'],
+      size: json['size'],
+      covers: List<Sticker>.from((json['covers'] ?? [])
+          .map((item) => Sticker.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'name': this.name,
-        'thumbnail': this.thumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'name': name,
+        'thumbnail': thumbnail?.toJson(),
         'thumbnail_outline':
             thumbnailOutline.map((item) => item.toJson()).toList(),
-        'is_installed': this.isInstalled,
-        'is_archived': this.isArchived,
-        'is_official': this.isOfficial,
-        'is_animated': this.isAnimated,
-        'is_masks': this.isMasks,
-        'is_viewed': this.isViewed,
-        'size': this.size,
+        'is_installed': isInstalled,
+        'is_archived': isArchived,
+        'is_official': isOfficial,
+        'is_animated': isAnimated,
+        'is_masks': isMasks,
+        'is_viewed': isViewed,
+        'size': size,
         'covers': covers.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

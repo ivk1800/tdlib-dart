@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a group of notifications
+@immutable
 class NotificationGroup extends TdObject {
-  NotificationGroup(
-      {required this.id,
-      required this.type,
-      required this.chatId,
-      required this.totalCount,
-      required this.notifications});
+  const NotificationGroup({
+    required this.id,
+    required this.type,
+    required this.chatId,
+    required this.totalCount,
+    required this.notifications,
+  });
 
   /// [id] Unique persistent auto-incremented from 1 identifier of the
   /// notification group
@@ -27,7 +30,7 @@ class NotificationGroup extends TdObject {
   /// [notifications] The list of active notifications
   final List<Notification> notifications;
 
-  static const String CONSTRUCTOR = 'notificationGroup';
+  static const String constructor = 'notificationGroup';
 
   static NotificationGroup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,25 +38,27 @@ class NotificationGroup extends TdObject {
     }
 
     return NotificationGroup(
-        id: json['id'],
-        type: NotificationGroupType.fromJson(json['type'])!,
-        chatId: json['chat_id'],
-        totalCount: json['total_count'],
-        notifications: List<Notification>.from((json['notifications'] ?? [])
-            .map((item) => Notification.fromJson(item))
-            .toList()));
+      id: json['id'],
+      type: NotificationGroupType.fromJson(json['type'])!,
+      chatId: json['chat_id'],
+      totalCount: json['total_count'],
+      notifications: List<Notification>.from((json['notifications'] ?? [])
+          .map((item) => Notification.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'type': this.type.toJson(),
-        'chat_id': this.chatId,
-        'total_count': this.totalCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'type': type.toJson(),
+        'chat_id': chatId,
+        'total_count': totalCount,
         'notifications': notifications.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

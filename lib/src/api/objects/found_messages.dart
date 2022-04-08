@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of messages found by a search
+@immutable
 class FoundMessages extends TdObject {
-  FoundMessages(
-      {required this.totalCount,
-      required this.messages,
-      required this.nextOffset});
+  const FoundMessages({
+    required this.totalCount,
+    required this.messages,
+    required this.nextOffset,
+  });
 
   /// [totalCount] Approximate total count of messages found; -1 if unknown
   final int totalCount;
@@ -18,7 +21,7 @@ class FoundMessages extends TdObject {
   /// results
   final String nextOffset;
 
-  static const String CONSTRUCTOR = 'foundMessages';
+  static const String constructor = 'foundMessages';
 
   static FoundMessages? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,21 +29,23 @@ class FoundMessages extends TdObject {
     }
 
     return FoundMessages(
-        totalCount: json['total_count'],
-        messages: List<Message>.from((json['messages'] ?? [])
-            .map((item) => Message.fromJson(item))
-            .toList()),
-        nextOffset: json['next_offset']);
+      totalCount: json['total_count'],
+      messages: List<Message>.from((json['messages'] ?? [])
+          .map((item) => Message.fromJson(item))
+          .toList()),
+      nextOffset: json['next_offset'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'total_count': this.totalCount,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'total_count': totalCount,
         'messages': messages.map((item) => item.toJson()).toList(),
-        'next_offset': this.nextOffset,
-        '@type': CONSTRUCTOR
+        'next_offset': nextOffset,
+        '@type': constructor,
       };
 
   @override

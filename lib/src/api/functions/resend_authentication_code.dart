@@ -1,19 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Re-sends an authentication code to the user. Works only when the current
 /// authorization state is authorizationStateWaitCode, the next_code_type of
 /// the result is not null and the server-specified timeout has passed
 /// Returns [Ok]
+@immutable
 class ResendAuthenticationCode extends TdFunction {
-  ResendAuthenticationCode();
+  const ResendAuthenticationCode();
 
-  static const String CONSTRUCTOR = 'resendAuthenticationCode';
+  static const String constructor = 'resendAuthenticationCode';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

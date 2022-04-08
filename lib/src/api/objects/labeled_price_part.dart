@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
+@immutable
 class LabeledPricePart extends TdObject {
-  LabeledPricePart({required this.label, required this.amount});
+  const LabeledPricePart({
+    required this.label,
+    required this.amount,
+  });
 
   /// [label] Label for this portion of the product price
   final String label;
@@ -11,21 +16,28 @@ class LabeledPricePart extends TdObject {
   /// [amount] Currency amount in the smallest units of the currency
   final int amount;
 
-  static const String CONSTRUCTOR = 'labeledPricePart';
+  static const String constructor = 'labeledPricePart';
 
   static LabeledPricePart? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return LabeledPricePart(label: json['label'], amount: json['amount']);
+    return LabeledPricePart(
+      label: json['label'],
+      amount: json['amount'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'label': this.label, 'amount': this.amount, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'label': label,
+        'amount': amount,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

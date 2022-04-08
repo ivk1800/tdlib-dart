@@ -1,29 +1,38 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is a chat invite link. Call checkChatInviteLink with the given
 /// invite link to process the link
+@immutable
 class InternalLinkTypeChatInvite extends InternalLinkType {
-  InternalLinkTypeChatInvite({required this.inviteLink});
+  const InternalLinkTypeChatInvite({
+    required this.inviteLink,
+  });
 
   /// [inviteLink] Internal representation of the invite link
   final String inviteLink;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeChatInvite';
+  static const String constructor = 'internalLinkTypeChatInvite';
 
   static InternalLinkTypeChatInvite? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InternalLinkTypeChatInvite(inviteLink: json['invite_link']);
+    return InternalLinkTypeChatInvite(
+      inviteLink: json['invite_link'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'invite_link': this.inviteLink, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'invite_link': inviteLink,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

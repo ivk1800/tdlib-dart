@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Currently waiting for the network to become available. Use setNetworkType
 /// to change the available network type
+@immutable
 class ConnectionStateWaitingForNetwork extends ConnectionState {
   const ConnectionStateWaitingForNetwork();
 
-  static const String CONSTRUCTOR = 'connectionStateWaitingForNetwork';
+  static const String constructor = 'connectionStateWaitingForNetwork';
 
   static ConnectionStateWaitingForNetwork? fromJson(
       Map<String, dynamic>? json) {
@@ -18,9 +20,12 @@ class ConnectionStateWaitingForNetwork extends ConnectionState {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

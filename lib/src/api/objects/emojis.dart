@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a list of emoji
+@immutable
 class Emojis extends TdObject {
-  Emojis({required this.emojis});
+  const Emojis({
+    required this.emojis,
+  });
 
   /// [emojis] List of emojis
   final List<String> emojis;
 
-  static const String CONSTRUCTOR = 'emojis';
+  static const String constructor = 'emojis';
 
   static Emojis? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,15 +20,19 @@ class Emojis extends TdObject {
     }
 
     return Emojis(
-        emojis: List<String>.from(
-            (json['emojis'] ?? []).map((item) => item).toList()));
+      emojis: List<String>.from(
+          (json['emojis'] ?? []).map((item) => item).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'emojis': emojis.map((item) => item).toList(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'emojis': emojis.map((item) => item).toList(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

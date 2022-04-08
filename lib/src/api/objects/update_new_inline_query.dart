@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new incoming inline query; for bots only
+@immutable
 class UpdateNewInlineQuery extends Update {
-  UpdateNewInlineQuery(
-      {required this.id,
-      required this.senderUserId,
-      this.userLocation,
-      this.chatType,
-      required this.query,
-      required this.offset});
+  const UpdateNewInlineQuery({
+    required this.id,
+    required this.senderUserId,
+    this.userLocation,
+    this.chatType,
+    required this.query,
+    required this.offset,
+  });
 
   /// [id] Unique query identifier
   final int id;
@@ -30,7 +33,7 @@ class UpdateNewInlineQuery extends Update {
   /// [offset] Offset of the first entry to return
   final String offset;
 
-  static const String CONSTRUCTOR = 'updateNewInlineQuery';
+  static const String constructor = 'updateNewInlineQuery';
 
   static UpdateNewInlineQuery? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class UpdateNewInlineQuery extends Update {
     }
 
     return UpdateNewInlineQuery(
-        id: int.tryParse(json['id']) ?? 0,
-        senderUserId: json['sender_user_id'],
-        userLocation: Location.fromJson(json['user_location']),
-        chatType: ChatType.fromJson(json['chat_type']),
-        query: json['query'],
-        offset: json['offset']);
+      id: int.tryParse(json['id']) ?? 0,
+      senderUserId: json['sender_user_id'],
+      userLocation: Location.fromJson(json['user_location']),
+      chatType: ChatType.fromJson(json['chat_type']),
+      query: json['query'],
+      offset: json['offset'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'sender_user_id': this.senderUserId,
-        'user_location': this.userLocation?.toJson(),
-        'chat_type': this.chatType?.toJson(),
-        'query': this.query,
-        'offset': this.offset,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'sender_user_id': senderUserId,
+        'user_location': userLocation?.toJson(),
+        'chat_type': chatType?.toJson(),
+        'query': query,
+        'offset': offset,
+        '@type': constructor,
       };
 
   @override

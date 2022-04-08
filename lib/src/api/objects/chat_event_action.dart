@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a chat event
+@immutable
 abstract class ChatEventAction extends TdObject {
   const ChatEventAction();
 
-  static const String CONSTRUCTOR = 'chatEventAction';
+  static const String constructor = 'chatEventAction';
 
   /// Inherited by:
   /// [ChatEventMessageEdited]
@@ -47,74 +49,74 @@ abstract class ChatEventAction extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatEventMessageEdited.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatEventMessageEdited.constructor:
         return ChatEventMessageEdited.fromJson(json);
-      case ChatEventMessageDeleted.CONSTRUCTOR:
+      case ChatEventMessageDeleted.constructor:
         return ChatEventMessageDeleted.fromJson(json);
-      case ChatEventPollStopped.CONSTRUCTOR:
+      case ChatEventPollStopped.constructor:
         return ChatEventPollStopped.fromJson(json);
-      case ChatEventMessagePinned.CONSTRUCTOR:
+      case ChatEventMessagePinned.constructor:
         return ChatEventMessagePinned.fromJson(json);
-      case ChatEventMessageUnpinned.CONSTRUCTOR:
+      case ChatEventMessageUnpinned.constructor:
         return ChatEventMessageUnpinned.fromJson(json);
-      case ChatEventMemberJoined.CONSTRUCTOR:
+      case ChatEventMemberJoined.constructor:
         return ChatEventMemberJoined.fromJson(json);
-      case ChatEventMemberJoinedByInviteLink.CONSTRUCTOR:
+      case ChatEventMemberJoinedByInviteLink.constructor:
         return ChatEventMemberJoinedByInviteLink.fromJson(json);
-      case ChatEventMemberJoinedByRequest.CONSTRUCTOR:
+      case ChatEventMemberJoinedByRequest.constructor:
         return ChatEventMemberJoinedByRequest.fromJson(json);
-      case ChatEventMemberLeft.CONSTRUCTOR:
+      case ChatEventMemberLeft.constructor:
         return ChatEventMemberLeft.fromJson(json);
-      case ChatEventMemberInvited.CONSTRUCTOR:
+      case ChatEventMemberInvited.constructor:
         return ChatEventMemberInvited.fromJson(json);
-      case ChatEventMemberPromoted.CONSTRUCTOR:
+      case ChatEventMemberPromoted.constructor:
         return ChatEventMemberPromoted.fromJson(json);
-      case ChatEventMemberRestricted.CONSTRUCTOR:
+      case ChatEventMemberRestricted.constructor:
         return ChatEventMemberRestricted.fromJson(json);
-      case ChatEventTitleChanged.CONSTRUCTOR:
+      case ChatEventTitleChanged.constructor:
         return ChatEventTitleChanged.fromJson(json);
-      case ChatEventPermissionsChanged.CONSTRUCTOR:
+      case ChatEventPermissionsChanged.constructor:
         return ChatEventPermissionsChanged.fromJson(json);
-      case ChatEventDescriptionChanged.CONSTRUCTOR:
+      case ChatEventDescriptionChanged.constructor:
         return ChatEventDescriptionChanged.fromJson(json);
-      case ChatEventUsernameChanged.CONSTRUCTOR:
+      case ChatEventUsernameChanged.constructor:
         return ChatEventUsernameChanged.fromJson(json);
-      case ChatEventPhotoChanged.CONSTRUCTOR:
+      case ChatEventPhotoChanged.constructor:
         return ChatEventPhotoChanged.fromJson(json);
-      case ChatEventInvitesToggled.CONSTRUCTOR:
+      case ChatEventInvitesToggled.constructor:
         return ChatEventInvitesToggled.fromJson(json);
-      case ChatEventLinkedChatChanged.CONSTRUCTOR:
+      case ChatEventLinkedChatChanged.constructor:
         return ChatEventLinkedChatChanged.fromJson(json);
-      case ChatEventSlowModeDelayChanged.CONSTRUCTOR:
+      case ChatEventSlowModeDelayChanged.constructor:
         return ChatEventSlowModeDelayChanged.fromJson(json);
-      case ChatEventMessageTtlChanged.CONSTRUCTOR:
+      case ChatEventMessageTtlChanged.constructor:
         return ChatEventMessageTtlChanged.fromJson(json);
-      case ChatEventSignMessagesToggled.CONSTRUCTOR:
+      case ChatEventSignMessagesToggled.constructor:
         return ChatEventSignMessagesToggled.fromJson(json);
-      case ChatEventHasProtectedContentToggled.CONSTRUCTOR:
+      case ChatEventHasProtectedContentToggled.constructor:
         return ChatEventHasProtectedContentToggled.fromJson(json);
-      case ChatEventStickerSetChanged.CONSTRUCTOR:
+      case ChatEventStickerSetChanged.constructor:
         return ChatEventStickerSetChanged.fromJson(json);
-      case ChatEventLocationChanged.CONSTRUCTOR:
+      case ChatEventLocationChanged.constructor:
         return ChatEventLocationChanged.fromJson(json);
-      case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
+      case ChatEventIsAllHistoryAvailableToggled.constructor:
         return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
-      case ChatEventInviteLinkEdited.CONSTRUCTOR:
+      case ChatEventInviteLinkEdited.constructor:
         return ChatEventInviteLinkEdited.fromJson(json);
-      case ChatEventInviteLinkRevoked.CONSTRUCTOR:
+      case ChatEventInviteLinkRevoked.constructor:
         return ChatEventInviteLinkRevoked.fromJson(json);
-      case ChatEventInviteLinkDeleted.CONSTRUCTOR:
+      case ChatEventInviteLinkDeleted.constructor:
         return ChatEventInviteLinkDeleted.fromJson(json);
-      case ChatEventVideoChatCreated.CONSTRUCTOR:
+      case ChatEventVideoChatCreated.constructor:
         return ChatEventVideoChatCreated.fromJson(json);
-      case ChatEventVideoChatEnded.CONSTRUCTOR:
+      case ChatEventVideoChatEnded.constructor:
         return ChatEventVideoChatEnded.fromJson(json);
-      case ChatEventVideoChatParticipantIsMutedToggled.CONSTRUCTOR:
+      case ChatEventVideoChatParticipantIsMutedToggled.constructor:
         return ChatEventVideoChatParticipantIsMutedToggled.fromJson(json);
-      case ChatEventVideoChatParticipantVolumeLevelChanged.CONSTRUCTOR:
+      case ChatEventVideoChatParticipantVolumeLevelChanged.constructor:
         return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(json);
-      case ChatEventVideoChatMuteNewParticipantsToggled.CONSTRUCTOR:
+      case ChatEventVideoChatMuteNewParticipantsToggled.constructor:
         return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(json);
       default:
         return null;
@@ -122,7 +124,7 @@ abstract class ChatEventAction extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

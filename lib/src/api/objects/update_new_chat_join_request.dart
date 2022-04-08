@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A user sent a join request to a chat; for bots only
+@immutable
 class UpdateNewChatJoinRequest extends Update {
-  UpdateNewChatJoinRequest(
-      {required this.chatId, required this.request, this.inviteLink});
+  const UpdateNewChatJoinRequest({
+    required this.chatId,
+    required this.request,
+    this.inviteLink,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -16,7 +21,7 @@ class UpdateNewChatJoinRequest extends Update {
   /// null
   final ChatInviteLink? inviteLink;
 
-  static const String CONSTRUCTOR = 'updateNewChatJoinRequest';
+  static const String constructor = 'updateNewChatJoinRequest';
 
   static UpdateNewChatJoinRequest? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class UpdateNewChatJoinRequest extends Update {
     }
 
     return UpdateNewChatJoinRequest(
-        chatId: json['chat_id'],
-        request: ChatJoinRequest.fromJson(json['request'])!,
-        inviteLink: ChatInviteLink.fromJson(json['invite_link']));
+      chatId: json['chat_id'],
+      request: ChatJoinRequest.fromJson(json['request'])!,
+      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'request': this.request.toJson(),
-        'invite_link': this.inviteLink?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'request': request.toJson(),
+        'invite_link': inviteLink?.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about saved Telegram Passport elements
+@immutable
 class PassportElements extends TdObject {
-  PassportElements({required this.elements});
+  const PassportElements({
+    required this.elements,
+  });
 
   /// [elements] Telegram Passport elements
   final List<PassportElement> elements;
 
-  static const String CONSTRUCTOR = 'passportElements';
+  static const String constructor = 'passportElements';
 
   static PassportElements? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,19 @@ class PassportElements extends TdObject {
     }
 
     return PassportElements(
-        elements: List<PassportElement>.from((json['elements'] ?? [])
-            .map((item) => PassportElement.fromJson(item))
-            .toList()));
+      elements: List<PassportElement>.from((json['elements'] ?? [])
+          .map((item) => PassportElement.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'elements': elements.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

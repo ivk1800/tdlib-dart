@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Information about a group call participant was changed. The updates are
 /// sent only after the group call is received through getGroupCall and only
 /// if the call is joined or being joined
+@immutable
 class UpdateGroupCallParticipant extends Update {
-  UpdateGroupCallParticipant(
-      {required this.groupCallId, required this.participant});
+  const UpdateGroupCallParticipant({
+    required this.groupCallId,
+    required this.participant,
+  });
 
   /// [groupCallId] Identifier of group call
   final int groupCallId;
@@ -14,7 +18,7 @@ class UpdateGroupCallParticipant extends Update {
   /// [participant] New data about a participant
   final GroupCallParticipant participant;
 
-  static const String CONSTRUCTOR = 'updateGroupCallParticipant';
+  static const String constructor = 'updateGroupCallParticipant';
 
   static UpdateGroupCallParticipant? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -22,17 +26,19 @@ class UpdateGroupCallParticipant extends Update {
     }
 
     return UpdateGroupCallParticipant(
-        groupCallId: json['group_call_id'],
-        participant: GroupCallParticipant.fromJson(json['participant'])!);
+      groupCallId: json['group_call_id'],
+      participant: GroupCallParticipant.fromJson(json['participant'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'participant': this.participant.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'participant': participant.toJson(),
+        '@type': constructor,
       };
 
   @override

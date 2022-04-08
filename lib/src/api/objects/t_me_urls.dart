@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a list of t.me URLs
+@immutable
 class TMeUrls extends TdObject {
-  TMeUrls({required this.urls});
+  const TMeUrls({
+    required this.urls,
+  });
 
   /// [urls] List of URLs
   final List<TMeUrl> urls;
 
-  static const String CONSTRUCTOR = 'tMeUrls';
+  static const String constructor = 'tMeUrls';
 
   static TMeUrls? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,17 +20,18 @@ class TMeUrls extends TdObject {
     }
 
     return TMeUrls(
-        urls: List<TMeUrl>.from((json['urls'] ?? [])
-            .map((item) => TMeUrl.fromJson(item))
-            .toList()));
+      urls: List<TMeUrl>.from(
+          (json['urls'] ?? []).map((item) => TMeUrl.fromJson(item)).toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'urls': urls.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the draft message in a chat
 /// Returns [Ok]
+@immutable
 class SetChatDraftMessage extends TdFunction {
-  SetChatDraftMessage(
-      {required this.chatId, required this.messageThreadId, this.draftMessage});
+  const SetChatDraftMessage({
+    required this.chatId,
+    required this.messageThreadId,
+    this.draftMessage,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -17,16 +22,17 @@ class SetChatDraftMessage extends TdFunction {
   /// [draftMessage] New draft message; pass null to remove the draft
   final DraftMessage? draftMessage;
 
-  static const String CONSTRUCTOR = 'setChatDraftMessage';
+  static const String constructor = 'setChatDraftMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_thread_id': this.messageThreadId,
-        'draft_message': this.draftMessage?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_thread_id': messageThreadId,
+        'draft_message': draftMessage?.toJson(),
+        '@type': constructor,
       };
 
   @override

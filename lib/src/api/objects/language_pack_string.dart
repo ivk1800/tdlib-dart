@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents one language pack string
+@immutable
 class LanguagePackString extends TdObject {
-  LanguagePackString({required this.key, this.value});
+  const LanguagePackString({
+    required this.key,
+    this.value,
+  });
 
   /// [key] String key
   final String key;
@@ -12,7 +17,7 @@ class LanguagePackString extends TdObject {
   /// built-in English language pack
   final LanguagePackStringValue? value;
 
-  static const String CONSTRUCTOR = 'languagePackString';
+  static const String constructor = 'languagePackString';
 
   static LanguagePackString? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,15 +25,20 @@ class LanguagePackString extends TdObject {
     }
 
     return LanguagePackString(
-        key: json['key'],
-        value: LanguagePackStringValue.fromJson(json['value']));
+      key: json['key'],
+      value: LanguagePackStringValue.fromJson(json['value']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'key': this.key, 'value': this.value?.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'key': key,
+        'value': value?.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

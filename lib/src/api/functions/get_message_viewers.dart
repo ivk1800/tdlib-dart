@@ -1,13 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns viewers of a recent outgoing message in a basic group or a
 /// supergroup chat. For video notes and voice notes only users, opened
 /// content of the message, are returned. The method can be called if
 /// message.can_get_viewers == true
 /// Returns [Users]
+@immutable
 class GetMessageViewers extends TdFunction {
-  GetMessageViewers({required this.chatId, required this.messageId});
+  const GetMessageViewers({
+    required this.chatId,
+    required this.messageId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -15,15 +20,16 @@ class GetMessageViewers extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  static const String CONSTRUCTOR = 'getMessageViewers';
+  static const String constructor = 'getMessageViewers';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        '@type': constructor,
       };
 
   @override

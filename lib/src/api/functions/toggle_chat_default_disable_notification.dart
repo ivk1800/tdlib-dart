@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the value of the default disable_notification parameter, used when
 /// a message is sent to a chat
 /// Returns [Ok]
+@immutable
 class ToggleChatDefaultDisableNotification extends TdFunction {
-  ToggleChatDefaultDisableNotification(
-      {required this.chatId, required this.defaultDisableNotification});
+  const ToggleChatDefaultDisableNotification({
+    required this.chatId,
+    required this.defaultDisableNotification,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -14,15 +18,16 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
   /// [defaultDisableNotification] New value of default_disable_notification
   final bool defaultDisableNotification;
 
-  static const String CONSTRUCTOR = 'toggleChatDefaultDisableNotification';
+  static const String constructor = 'toggleChatDefaultDisableNotification';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'default_disable_notification': this.defaultDisableNotification,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'default_disable_notification': defaultDisableNotification,
+        '@type': constructor,
       };
 
   @override

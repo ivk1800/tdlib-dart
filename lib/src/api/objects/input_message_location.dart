@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A message with a location
+@immutable
 class InputMessageLocation extends InputMessageContent {
-  InputMessageLocation(
-      {required this.location,
-      required this.livePeriod,
-      required this.heading,
-      required this.proximityAlertRadius});
+  const InputMessageLocation({
+    required this.location,
+    required this.livePeriod,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
 
   /// [location] Location to be sent
   final Location location;
@@ -25,7 +28,7 @@ class InputMessageLocation extends InputMessageContent {
   /// notification is disabled. Can't be enabled in channels and Saved Messages
   final int proximityAlertRadius;
 
-  static const String CONSTRUCTOR = 'inputMessageLocation';
+  static const String constructor = 'inputMessageLocation';
 
   static InputMessageLocation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,21 +36,23 @@ class InputMessageLocation extends InputMessageContent {
     }
 
     return InputMessageLocation(
-        location: Location.fromJson(json['location'])!,
-        livePeriod: json['live_period'],
-        heading: json['heading'],
-        proximityAlertRadius: json['proximity_alert_radius']);
+      location: Location.fromJson(json['location'])!,
+      livePeriod: json['live_period'],
+      heading: json['heading'],
+      proximityAlertRadius: json['proximity_alert_radius'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'location': this.location.toJson(),
-        'live_period': this.livePeriod,
-        'heading': this.heading,
-        'proximity_alert_radius': this.proximityAlertRadius,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'location': location.toJson(),
+        'live_period': livePeriod,
+        'heading': heading,
+        'proximity_alert_radius': proximityAlertRadius,
+        '@type': constructor,
       };
 
   @override

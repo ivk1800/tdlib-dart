@@ -1,28 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A straight line to a given point
+@immutable
 class VectorPathCommandLine extends VectorPathCommand {
-  VectorPathCommandLine({required this.endPoint});
+  const VectorPathCommandLine({
+    required this.endPoint,
+  });
 
   /// [endPoint] The end point of the straight line
   final Point endPoint;
 
-  static const String CONSTRUCTOR = 'vectorPathCommandLine';
+  static const String constructor = 'vectorPathCommandLine';
 
   static VectorPathCommandLine? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return VectorPathCommandLine(endPoint: Point.fromJson(json['end_point'])!);
+    return VectorPathCommandLine(
+      endPoint: Point.fromJson(json['end_point'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'end_point': this.endPoint.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'end_point': endPoint.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

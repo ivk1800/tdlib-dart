@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An anchor
+@immutable
 class RichTextAnchor extends RichText {
-  RichTextAnchor({required this.name});
+  const RichTextAnchor({
+    required this.name,
+  });
 
   /// [name] Anchor name
   final String name;
 
-  static const String CONSTRUCTOR = 'richTextAnchor';
+  static const String constructor = 'richTextAnchor';
 
   static RichTextAnchor? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return RichTextAnchor(name: json['name']);
+    return RichTextAnchor(
+      name: json['name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'name': this.name, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

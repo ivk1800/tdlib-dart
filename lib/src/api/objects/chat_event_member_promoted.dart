@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A chat member has gained/lost administrator status, or the list of their
 /// administrator privileges has changed
+@immutable
 class ChatEventMemberPromoted extends ChatEventAction {
-  ChatEventMemberPromoted(
-      {required this.userId, required this.oldStatus, required this.newStatus});
+  const ChatEventMemberPromoted({
+    required this.userId,
+    required this.oldStatus,
+    required this.newStatus,
+  });
 
   /// [userId] Affected chat member user identifier
   final int userId;
@@ -16,7 +21,7 @@ class ChatEventMemberPromoted extends ChatEventAction {
   /// [newStatus] New status of the chat member
   final ChatMemberStatus newStatus;
 
-  static const String CONSTRUCTOR = 'chatEventMemberPromoted';
+  static const String constructor = 'chatEventMemberPromoted';
 
   static ChatEventMemberPromoted? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class ChatEventMemberPromoted extends ChatEventAction {
     }
 
     return ChatEventMemberPromoted(
-        userId: json['user_id'],
-        oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
-        newStatus: ChatMemberStatus.fromJson(json['new_status'])!);
+      userId: json['user_id'],
+      oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
+      newStatus: ChatMemberStatus.fromJson(json['new_status'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'user_id': this.userId,
-        'old_status': this.oldStatus.toJson(),
-        'new_status': this.newStatus.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
+        'old_status': oldStatus.toJson(),
+        'new_status': newStatus.toJson(),
+        '@type': constructor,
       };
 
   @override

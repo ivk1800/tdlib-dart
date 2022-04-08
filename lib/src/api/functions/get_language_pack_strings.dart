@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns strings from a language pack in the current localization target by
 /// their keys. Can be called before authorization
 /// Returns [LanguagePackStrings]
+@immutable
 class GetLanguagePackStrings extends TdFunction {
-  GetLanguagePackStrings({required this.languagePackId, required this.keys});
+  const GetLanguagePackStrings({
+    required this.languagePackId,
+    required this.keys,
+  });
 
   /// [languagePackId] Language pack identifier of the strings to be returned
   final String languagePackId;
@@ -14,15 +19,16 @@ class GetLanguagePackStrings extends TdFunction {
   /// request all available strings
   final List<String> keys;
 
-  static const String CONSTRUCTOR = 'getLanguagePackStrings';
+  static const String constructor = 'getLanguagePackStrings';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'language_pack_id': this.languagePackId,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'language_pack_id': languagePackId,
         'keys': keys.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

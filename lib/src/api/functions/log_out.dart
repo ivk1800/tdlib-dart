@@ -1,20 +1,25 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Closes the TDLib instance after a proper logout. Requires an available
 /// network connection. All local data will be destroyed. After the logout
 /// completes, updateAuthorizationState with authorizationStateClosed will be
 /// sent
 /// Returns [Ok]
+@immutable
 class LogOut extends TdFunction {
-  LogOut();
+  const LogOut();
 
-  static const String CONSTRUCTOR = 'logOut';
+  static const String constructor = 'logOut';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

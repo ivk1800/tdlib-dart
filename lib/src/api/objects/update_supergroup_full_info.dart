@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Some data in supergroupFullInfo has been changed
+@immutable
 class UpdateSupergroupFullInfo extends Update {
-  UpdateSupergroupFullInfo(
-      {required this.supergroupId, required this.supergroupFullInfo});
+  const UpdateSupergroupFullInfo({
+    required this.supergroupId,
+    required this.supergroupFullInfo,
+  });
 
   /// [supergroupId] Identifier of the supergroup or channel
   final int supergroupId;
@@ -12,7 +16,7 @@ class UpdateSupergroupFullInfo extends Update {
   /// [supergroupFullInfo] New full information about the supergroup
   final SupergroupFullInfo supergroupFullInfo;
 
-  static const String CONSTRUCTOR = 'updateSupergroupFullInfo';
+  static const String constructor = 'updateSupergroupFullInfo';
 
   static UpdateSupergroupFullInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,18 +24,20 @@ class UpdateSupergroupFullInfo extends Update {
     }
 
     return UpdateSupergroupFullInfo(
-        supergroupId: json['supergroup_id'],
-        supergroupFullInfo:
-            SupergroupFullInfo.fromJson(json['supergroup_full_info'])!);
+      supergroupId: json['supergroup_id'],
+      supergroupFullInfo:
+          SupergroupFullInfo.fromJson(json['supergroup_full_info'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
-        'supergroup_full_info': this.supergroupFullInfo.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        'supergroup_full_info': supergroupFullInfo.toJson(),
+        '@type': constructor,
       };
 
   @override

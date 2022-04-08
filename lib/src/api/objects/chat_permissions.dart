@@ -1,17 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes actions that a user is allowed to take in a chat
+@immutable
 class ChatPermissions extends TdObject {
-  ChatPermissions(
-      {required this.canSendMessages,
-      required this.canSendMediaMessages,
-      required this.canSendPolls,
-      required this.canSendOtherMessages,
-      required this.canAddWebPagePreviews,
-      required this.canChangeInfo,
-      required this.canInviteUsers,
-      required this.canPinMessages});
+  const ChatPermissions({
+    required this.canSendMessages,
+    required this.canSendMediaMessages,
+    required this.canSendPolls,
+    required this.canSendOtherMessages,
+    required this.canAddWebPagePreviews,
+    required this.canChangeInfo,
+    required this.canInviteUsers,
+    required this.canPinMessages,
+  });
 
   /// [canSendMessages] True, if the user can send text messages, contacts,
   /// locations, and venues
@@ -45,7 +48,7 @@ class ChatPermissions extends TdObject {
   /// [canPinMessages] True, if the user can pin messages
   final bool canPinMessages;
 
-  static const String CONSTRUCTOR = 'chatPermissions';
+  static const String constructor = 'chatPermissions';
 
   static ChatPermissions? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -53,29 +56,31 @@ class ChatPermissions extends TdObject {
     }
 
     return ChatPermissions(
-        canSendMessages: json['can_send_messages'],
-        canSendMediaMessages: json['can_send_media_messages'],
-        canSendPolls: json['can_send_polls'],
-        canSendOtherMessages: json['can_send_other_messages'],
-        canAddWebPagePreviews: json['can_add_web_page_previews'],
-        canChangeInfo: json['can_change_info'],
-        canInviteUsers: json['can_invite_users'],
-        canPinMessages: json['can_pin_messages']);
+      canSendMessages: json['can_send_messages'],
+      canSendMediaMessages: json['can_send_media_messages'],
+      canSendPolls: json['can_send_polls'],
+      canSendOtherMessages: json['can_send_other_messages'],
+      canAddWebPagePreviews: json['can_add_web_page_previews'],
+      canChangeInfo: json['can_change_info'],
+      canInviteUsers: json['can_invite_users'],
+      canPinMessages: json['can_pin_messages'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'can_send_messages': this.canSendMessages,
-        'can_send_media_messages': this.canSendMediaMessages,
-        'can_send_polls': this.canSendPolls,
-        'can_send_other_messages': this.canSendOtherMessages,
-        'can_add_web_page_previews': this.canAddWebPagePreviews,
-        'can_change_info': this.canChangeInfo,
-        'can_invite_users': this.canInviteUsers,
-        'can_pin_messages': this.canPinMessages,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'can_send_messages': canSendMessages,
+        'can_send_media_messages': canSendMediaMessages,
+        'can_send_polls': canSendPolls,
+        'can_send_other_messages': canSendOtherMessages,
+        'can_add_web_page_previews': canAddWebPagePreviews,
+        'can_change_info': canChangeInfo,
+        'can_invite_users': canInviteUsers,
+        'can_pin_messages': canPinMessages,
+        '@type': constructor,
       };
 
   @override

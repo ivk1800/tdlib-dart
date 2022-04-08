@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A token for Apple Push Notification service
+@immutable
 class DeviceTokenApplePush extends DeviceToken {
-  DeviceTokenApplePush({required this.deviceToken, required this.isAppSandbox});
+  const DeviceTokenApplePush({
+    required this.deviceToken,
+    required this.isAppSandbox,
+  });
 
   /// [deviceToken] Device token; may be empty to deregister a device
   final String deviceToken;
@@ -11,7 +16,7 @@ class DeviceTokenApplePush extends DeviceToken {
   /// [isAppSandbox] True, if App Sandbox is enabled
   final bool isAppSandbox;
 
-  static const String CONSTRUCTOR = 'deviceTokenApplePush';
+  static const String constructor = 'deviceTokenApplePush';
 
   static DeviceTokenApplePush? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class DeviceTokenApplePush extends DeviceToken {
     }
 
     return DeviceTokenApplePush(
-        deviceToken: json['device_token'],
-        isAppSandbox: json['is_app_sandbox']);
+      deviceToken: json['device_token'],
+      isAppSandbox: json['is_app_sandbox'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'device_token': this.deviceToken,
-        'is_app_sandbox': this.isAppSandbox,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'device_token': deviceToken,
+        'is_app_sandbox': isAppSandbox,
+        '@type': constructor,
       };
 
   @override

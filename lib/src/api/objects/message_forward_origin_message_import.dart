@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The message was imported from an exported message history
+@immutable
 class MessageForwardOriginMessageImport extends MessageForwardOrigin {
-  MessageForwardOriginMessageImport({required this.senderName});
+  const MessageForwardOriginMessageImport({
+    required this.senderName,
+  });
 
   /// [senderName] Name of the sender
   final String senderName;
 
-  static const String CONSTRUCTOR = 'messageForwardOriginMessageImport';
+  static const String constructor = 'messageForwardOriginMessageImport';
 
   static MessageForwardOriginMessageImport? fromJson(
       Map<String, dynamic>? json) {
@@ -16,14 +20,19 @@ class MessageForwardOriginMessageImport extends MessageForwardOrigin {
       return null;
     }
 
-    return MessageForwardOriginMessageImport(senderName: json['sender_name']);
+    return MessageForwardOriginMessageImport(
+      senderName: json['sender_name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'sender_name': this.senderName, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sender_name': senderName,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

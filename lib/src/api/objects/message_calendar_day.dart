@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about found messages sent on a specific day
+@immutable
 class MessageCalendarDay extends TdObject {
-  MessageCalendarDay({required this.totalCount, required this.message});
+  const MessageCalendarDay({
+    required this.totalCount,
+    required this.message,
+  });
 
   /// [totalCount] Total number of found messages sent on the day
   final int totalCount;
@@ -11,7 +16,7 @@ class MessageCalendarDay extends TdObject {
   /// [message] First message sent on the day
   final Message message;
 
-  static const String CONSTRUCTOR = 'messageCalendarDay';
+  static const String constructor = 'messageCalendarDay';
 
   static MessageCalendarDay? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,17 +24,19 @@ class MessageCalendarDay extends TdObject {
     }
 
     return MessageCalendarDay(
-        totalCount: json['total_count'],
-        message: Message.fromJson(json['message'])!);
+      totalCount: json['total_count'],
+      message: Message.fromJson(json['message'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'total_count': this.totalCount,
-        'message': this.message.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'total_count': totalCount,
+        'message': message.toJson(),
+        '@type': constructor,
       };
 
   @override

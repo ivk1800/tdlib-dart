@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a link to an opus-encoded audio file within an OGG container,
 /// single channel audio
+@immutable
 class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
-  InputInlineQueryResultVoiceNote(
-      {required this.id,
-      required this.title,
-      required this.voiceNoteUrl,
-      required this.voiceNoteDuration,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultVoiceNote({
+    required this.id,
+    required this.title,
+    required this.voiceNoteUrl,
+    required this.voiceNoteDuration,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -34,7 +37,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultVoiceNote';
+  static const String constructor = 'inputInlineQueryResultVoiceNote';
 
   static InputInlineQueryResultVoiceNote? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -42,26 +45,28 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultVoiceNote(
-        id: json['id'],
-        title: json['title'],
-        voiceNoteUrl: json['voice_note_url'],
-        voiceNoteDuration: json['voice_note_duration'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      voiceNoteUrl: json['voice_note_url'],
+      voiceNoteDuration: json['voice_note_duration'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'voice_note_url': this.voiceNoteUrl,
-        'voice_note_duration': this.voiceNoteDuration,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'voice_note_url': voiceNoteUrl,
+        'voice_note_duration': voiceNoteDuration,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

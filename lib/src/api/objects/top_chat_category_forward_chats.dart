@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A category containing frequently used chats used to forward messages
+@immutable
 class TopChatCategoryForwardChats extends TopChatCategory {
   const TopChatCategoryForwardChats();
 
-  static const String CONSTRUCTOR = 'topChatCategoryForwardChats';
+  static const String constructor = 'topChatCategoryForwardChats';
 
   static TopChatCategoryForwardChats? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class TopChatCategoryForwardChats extends TopChatCategory {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

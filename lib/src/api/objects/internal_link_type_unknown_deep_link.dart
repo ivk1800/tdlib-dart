@@ -1,27 +1,37 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link is an unknown tg: link. Call getDeepLinkInfo to process the link
+@immutable
 class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
-  InternalLinkTypeUnknownDeepLink({required this.link});
+  const InternalLinkTypeUnknownDeepLink({
+    required this.link,
+  });
 
   /// [link] Link to be passed to getDeepLinkInfo
   final String link;
 
-  static const String CONSTRUCTOR = 'internalLinkTypeUnknownDeepLink';
+  static const String constructor = 'internalLinkTypeUnknownDeepLink';
 
   static InternalLinkTypeUnknownDeepLink? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return InternalLinkTypeUnknownDeepLink(link: json['link']);
+    return InternalLinkTypeUnknownDeepLink(
+      link: json['link'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'link': this.link, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'link': link,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

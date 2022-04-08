@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents link to a JPEG image
+@immutable
 class InputInlineQueryResultPhoto extends InputInlineQueryResult {
-  InputInlineQueryResultPhoto(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.thumbnailUrl,
-      required this.photoUrl,
-      required this.photoWidth,
-      required this.photoHeight,
-      this.replyMarkup,
-      required this.inputMessageContent});
+  const InputInlineQueryResultPhoto({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.thumbnailUrl,
+    required this.photoUrl,
+    required this.photoWidth,
+    required this.photoHeight,
+    this.replyMarkup,
+    required this.inputMessageContent,
+  });
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -45,7 +48,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   /// inputMessageContact
   final InputMessageContent inputMessageContent;
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultPhoto';
+  static const String constructor = 'inputInlineQueryResultPhoto';
 
   static InputInlineQueryResultPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -53,32 +56,34 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultPhoto(
-        id: json['id'],
-        title: json['title'],
-        description: json['description'],
-        thumbnailUrl: json['thumbnail_url'],
-        photoUrl: json['photo_url'],
-        photoWidth: json['photo_width'],
-        photoHeight: json['photo_height'],
-        replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-        inputMessageContent:
-            InputMessageContent.fromJson(json['input_message_content'])!);
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      thumbnailUrl: json['thumbnail_url'],
+      photoUrl: json['photo_url'],
+      photoWidth: json['photo_width'],
+      photoHeight: json['photo_height'],
+      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      inputMessageContent:
+          InputMessageContent.fromJson(json['input_message_content'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'description': this.description,
-        'thumbnail_url': this.thumbnailUrl,
-        'photo_url': this.photoUrl,
-        'photo_width': this.photoWidth,
-        'photo_height': this.photoHeight,
-        'reply_markup': this.replyMarkup?.toJson(),
-        'input_message_content': this.inputMessageContent.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'description': description,
+        'thumbnail_url': thumbnailUrl,
+        'photo_url': photoUrl,
+        'photo_width': photoWidth,
+        'photo_height': photoHeight,
+        'reply_markup': replyMarkup?.toJson(),
+        'input_message_content': inputMessageContent.toJson(),
+        '@type': constructor,
       };
 
   @override

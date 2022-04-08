@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns the owner and administrators
+@immutable
 class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
   const SupergroupMembersFilterAdministrators();
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterAdministrators';
+  static const String constructor = 'supergroupMembersFilterAdministrators';
 
   static SupergroupMembersFilterAdministrators? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains the description of an error in a Telegram Passport element; for
 /// bots only
+@immutable
 abstract class InputPassportElementErrorSource extends TdObject {
   const InputPassportElementErrorSource();
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSource';
+  static const String constructor = 'inputPassportElementErrorSource';
 
   /// Inherited by:
   /// [InputPassportElementErrorSourceUnspecified]
@@ -23,24 +25,24 @@ abstract class InputPassportElementErrorSource extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputPassportElementErrorSourceUnspecified.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputPassportElementErrorSourceUnspecified.constructor:
         return InputPassportElementErrorSourceUnspecified.fromJson(json);
-      case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
+      case InputPassportElementErrorSourceDataField.constructor:
         return InputPassportElementErrorSourceDataField.fromJson(json);
-      case InputPassportElementErrorSourceFrontSide.CONSTRUCTOR:
+      case InputPassportElementErrorSourceFrontSide.constructor:
         return InputPassportElementErrorSourceFrontSide.fromJson(json);
-      case InputPassportElementErrorSourceReverseSide.CONSTRUCTOR:
+      case InputPassportElementErrorSourceReverseSide.constructor:
         return InputPassportElementErrorSourceReverseSide.fromJson(json);
-      case InputPassportElementErrorSourceSelfie.CONSTRUCTOR:
+      case InputPassportElementErrorSourceSelfie.constructor:
         return InputPassportElementErrorSourceSelfie.fromJson(json);
-      case InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+      case InputPassportElementErrorSourceTranslationFile.constructor:
         return InputPassportElementErrorSourceTranslationFile.fromJson(json);
-      case InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+      case InputPassportElementErrorSourceTranslationFiles.constructor:
         return InputPassportElementErrorSourceTranslationFiles.fromJson(json);
-      case InputPassportElementErrorSourceFile.CONSTRUCTOR:
+      case InputPassportElementErrorSourceFile.constructor:
         return InputPassportElementErrorSourceFile.fromJson(json);
-      case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
+      case InputPassportElementErrorSourceFiles.constructor:
         return InputPassportElementErrorSourceFiles.fromJson(json);
       default:
         return null;
@@ -48,7 +50,7 @@ abstract class InputPassportElementErrorSource extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Animated stickers to be combined into a slot machine
+@immutable
 class DiceStickersSlotMachine extends DiceStickers {
-  DiceStickersSlotMachine(
-      {required this.background,
-      required this.lever,
-      required this.leftReel,
-      required this.centerReel,
-      required this.rightReel});
+  const DiceStickersSlotMachine({
+    required this.background,
+    required this.lever,
+    required this.leftReel,
+    required this.centerReel,
+    required this.rightReel,
+  });
 
   /// [background] The animated sticker with the slot machine background. The
   /// background animation must start playing after all reel animations finish
@@ -27,7 +30,7 @@ class DiceStickersSlotMachine extends DiceStickers {
   /// [rightReel] The animated sticker with the right reel
   final Sticker rightReel;
 
-  static const String CONSTRUCTOR = 'diceStickersSlotMachine';
+  static const String constructor = 'diceStickersSlotMachine';
 
   static DiceStickersSlotMachine? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,23 +38,25 @@ class DiceStickersSlotMachine extends DiceStickers {
     }
 
     return DiceStickersSlotMachine(
-        background: Sticker.fromJson(json['background'])!,
-        lever: Sticker.fromJson(json['lever'])!,
-        leftReel: Sticker.fromJson(json['left_reel'])!,
-        centerReel: Sticker.fromJson(json['center_reel'])!,
-        rightReel: Sticker.fromJson(json['right_reel'])!);
+      background: Sticker.fromJson(json['background'])!,
+      lever: Sticker.fromJson(json['lever'])!,
+      leftReel: Sticker.fromJson(json['left_reel'])!,
+      centerReel: Sticker.fromJson(json['center_reel'])!,
+      rightReel: Sticker.fromJson(json['right_reel'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'background': this.background.toJson(),
-        'lever': this.lever.toJson(),
-        'left_reel': this.leftReel.toJson(),
-        'center_reel': this.centerReel.toJson(),
-        'right_reel': this.rightReel.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'background': background.toJson(),
+        'lever': lever.toJson(),
+        'left_reel': leftReel.toJson(),
+        'center_reel': centerReel.toJson(),
+        'right_reel': rightReel.toJson(),
+        '@type': constructor,
       };
 
   @override

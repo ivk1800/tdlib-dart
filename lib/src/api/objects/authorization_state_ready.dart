@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user has been successfully authorized. TDLib is now ready to answer
 /// queries
+@immutable
 class AuthorizationStateReady extends AuthorizationState {
   const AuthorizationStateReady();
 
-  static const String CONSTRUCTOR = 'authorizationStateReady';
+  static const String constructor = 'authorizationStateReady';
 
   static AuthorizationStateReady? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -17,9 +19,12 @@ class AuthorizationStateReady extends AuthorizationState {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

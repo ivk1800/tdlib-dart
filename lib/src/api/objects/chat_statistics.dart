@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains a detailed statistics about a chat
+@immutable
 abstract class ChatStatistics extends TdObject {
   const ChatStatistics();
 
-  static const String CONSTRUCTOR = 'chatStatistics';
+  static const String constructor = 'chatStatistics';
 
   /// Inherited by:
   /// [ChatStatisticsSupergroup]
@@ -15,10 +17,10 @@ abstract class ChatStatistics extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case ChatStatisticsSupergroup.CONSTRUCTOR:
+    switch (json['@type']) {
+      case ChatStatisticsSupergroup.constructor:
         return ChatStatisticsSupergroup.fromJson(json);
-      case ChatStatisticsChannel.CONSTRUCTOR:
+      case ChatStatisticsChannel.constructor:
         return ChatStatisticsChannel.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class ChatStatistics extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,19 +1,22 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a poll
+@immutable
 class Poll extends TdObject {
-  Poll(
-      {required this.id,
-      required this.question,
-      required this.options,
-      required this.totalVoterCount,
-      required this.recentVoterUserIds,
-      required this.isAnonymous,
-      required this.type,
-      required this.openPeriod,
-      required this.closeDate,
-      required this.isClosed});
+  const Poll({
+    required this.id,
+    required this.question,
+    required this.options,
+    required this.totalVoterCount,
+    required this.recentVoterUserIds,
+    required this.isAnonymous,
+    required this.type,
+    required this.openPeriod,
+    required this.closeDate,
+    required this.isClosed,
+  });
 
   /// [id] Unique poll identifier
   final int id;
@@ -48,7 +51,7 @@ class Poll extends TdObject {
   /// [isClosed] True, if the poll is closed
   final bool isClosed;
 
-  static const String CONSTRUCTOR = 'poll';
+  static const String constructor = 'poll';
 
   static Poll? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -56,37 +59,39 @@ class Poll extends TdObject {
     }
 
     return Poll(
-        id: int.tryParse(json['id']) ?? 0,
-        question: json['question'],
-        options: List<PollOption>.from((json['options'] ?? [])
-            .map((item) => PollOption.fromJson(item))
-            .toList()),
-        totalVoterCount: json['total_voter_count'],
-        recentVoterUserIds: List<int>.from(
-            (json['recent_voter_user_ids'] ?? []).map((item) => item).toList()),
-        isAnonymous: json['is_anonymous'],
-        type: PollType.fromJson(json['type'])!,
-        openPeriod: json['open_period'],
-        closeDate: json['close_date'],
-        isClosed: json['is_closed']);
+      id: int.tryParse(json['id']) ?? 0,
+      question: json['question'],
+      options: List<PollOption>.from((json['options'] ?? [])
+          .map((item) => PollOption.fromJson(item))
+          .toList()),
+      totalVoterCount: json['total_voter_count'],
+      recentVoterUserIds: List<int>.from(
+          (json['recent_voter_user_ids'] ?? []).map((item) => item).toList()),
+      isAnonymous: json['is_anonymous'],
+      type: PollType.fromJson(json['type'])!,
+      openPeriod: json['open_period'],
+      closeDate: json['close_date'],
+      isClosed: json['is_closed'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'question': this.question,
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'question': question,
         'options': options.map((item) => item.toJson()).toList(),
-        'total_voter_count': this.totalVoterCount,
+        'total_voter_count': totalVoterCount,
         'recent_voter_user_ids':
             recentVoterUserIds.map((item) => item).toList(),
-        'is_anonymous': this.isAnonymous,
-        'type': this.type.toJson(),
-        'open_period': this.openPeriod,
-        'close_date': this.closeDate,
-        'is_closed': this.isClosed,
-        '@type': CONSTRUCTOR
+        'is_anonymous': isAnonymous,
+        'type': type.toJson(),
+        'open_period': openPeriod,
+        'close_date': closeDate,
+        'is_closed': isClosed,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Information about the email address authentication code that was sent
+@immutable
 class EmailAddressAuthenticationCodeInfo extends TdObject {
-  EmailAddressAuthenticationCodeInfo(
-      {required this.emailAddressPattern, required this.length});
+  const EmailAddressAuthenticationCodeInfo({
+    required this.emailAddressPattern,
+    required this.length,
+  });
 
   /// [emailAddressPattern] Pattern of the email address to which an
   /// authentication code was sent
@@ -13,7 +17,7 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   /// [length] Length of the code; 0 if unknown
   final int length;
 
-  static const String CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';
+  static const String constructor = 'emailAddressAuthenticationCodeInfo';
 
   static EmailAddressAuthenticationCodeInfo? fromJson(
       Map<String, dynamic>? json) {
@@ -22,17 +26,19 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
     }
 
     return EmailAddressAuthenticationCodeInfo(
-        emailAddressPattern: json['email_address_pattern'],
-        length: json['length']);
+      emailAddressPattern: json['email_address_pattern'],
+      length: json['length'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'email_address_pattern': this.emailAddressPattern,
-        'length': this.length,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'email_address_pattern': emailAddressPattern,
+        'length': length,
+        '@type': constructor,
       };
 
   @override

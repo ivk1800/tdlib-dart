@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The selfie contains an error. The error is considered resolved when the
 /// file with the selfie changes
+@immutable
 class InputPassportElementErrorSourceSelfie
     extends InputPassportElementErrorSource {
-  InputPassportElementErrorSourceSelfie({required this.fileHash});
+  const InputPassportElementErrorSourceSelfie({
+    required this.fileHash,
+  });
 
   /// [fileHash] Current hash of the file containing the selfie
   final String fileHash;
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceSelfie';
+  static const String constructor = 'inputPassportElementErrorSourceSelfie';
 
   static InputPassportElementErrorSourceSelfie? fromJson(
       Map<String, dynamic>? json) {
@@ -18,14 +22,19 @@ class InputPassportElementErrorSourceSelfie
       return null;
     }
 
-    return InputPassportElementErrorSourceSelfie(fileHash: json['file_hash']);
+    return InputPassportElementErrorSourceSelfie(
+      fileHash: json['file_hash'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'file_hash': this.fileHash, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'file_hash': fileHash,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

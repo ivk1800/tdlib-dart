@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a Telegram Passport element that was requested
 /// by a service
+@immutable
 class PassportSuitableElement extends TdObject {
-  PassportSuitableElement(
-      {required this.type,
-      required this.isSelfieRequired,
-      required this.isTranslationRequired,
-      required this.isNativeNameRequired});
+  const PassportSuitableElement({
+    required this.type,
+    required this.isSelfieRequired,
+    required this.isTranslationRequired,
+    required this.isNativeNameRequired,
+  });
 
   /// [type] Type of the element
   final PassportElementType type;
@@ -25,7 +28,7 @@ class PassportSuitableElement extends TdObject {
   /// name in the language of their country of residence
   final bool isNativeNameRequired;
 
-  static const String CONSTRUCTOR = 'passportSuitableElement';
+  static const String constructor = 'passportSuitableElement';
 
   static PassportSuitableElement? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,21 +36,23 @@ class PassportSuitableElement extends TdObject {
     }
 
     return PassportSuitableElement(
-        type: PassportElementType.fromJson(json['type'])!,
-        isSelfieRequired: json['is_selfie_required'],
-        isTranslationRequired: json['is_translation_required'],
-        isNativeNameRequired: json['is_native_name_required']);
+      type: PassportElementType.fromJson(json['type'])!,
+      isSelfieRequired: json['is_selfie_required'],
+      isTranslationRequired: json['is_translation_required'],
+      isNativeNameRequired: json['is_native_name_required'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'type': this.type.toJson(),
-        'is_selfie_required': this.isSelfieRequired,
-        'is_translation_required': this.isTranslationRequired,
-        'is_native_name_required': this.isNativeNameRequired,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'type': type.toJson(),
+        'is_selfie_required': isSelfieRequired,
+        'is_translation_required': isTranslationRequired,
+        'is_native_name_required': isNativeNameRequired,
+        '@type': constructor,
       };
 
   @override

@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A photo message
+@immutable
 class PushMessageContentPhoto extends PushMessageContent {
-  PushMessageContentPhoto(
-      {this.photo,
-      required this.caption,
-      required this.isSecret,
-      required this.isPinned});
+  const PushMessageContentPhoto({
+    this.photo,
+    required this.caption,
+    required this.isSecret,
+    required this.isPinned,
+  });
 
   /// [photo] Message content; may be null
   final Photo? photo;
@@ -22,7 +25,7 @@ class PushMessageContentPhoto extends PushMessageContent {
   /// content
   final bool isPinned;
 
-  static const String CONSTRUCTOR = 'pushMessageContentPhoto';
+  static const String constructor = 'pushMessageContentPhoto';
 
   static PushMessageContentPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class PushMessageContentPhoto extends PushMessageContent {
     }
 
     return PushMessageContentPhoto(
-        photo: Photo.fromJson(json['photo']),
-        caption: json['caption'],
-        isSecret: json['is_secret'],
-        isPinned: json['is_pinned']);
+      photo: Photo.fromJson(json['photo']),
+      caption: json['caption'],
+      isSecret: json['is_secret'],
+      isPinned: json['is_pinned'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'photo': this.photo?.toJson(),
-        'caption': this.caption,
-        'is_secret': this.isSecret,
-        'is_pinned': this.isPinned,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'photo': photo?.toJson(),
+        'caption': caption,
+        'is_secret': isSecret,
+        'is_pinned': isPinned,
+        '@type': constructor,
       };
 
   @override

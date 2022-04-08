@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A new member joined the chat via an invite link
+@immutable
 class PushMessageContentChatJoinByLink extends PushMessageContent {
   const PushMessageContentChatJoinByLink();
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatJoinByLink';
+  static const String constructor = 'pushMessageContentChatJoinByLink';
 
   static PushMessageContentChatJoinByLink? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class PushMessageContentChatJoinByLink extends PushMessageContent {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

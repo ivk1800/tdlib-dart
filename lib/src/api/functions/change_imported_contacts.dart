@@ -1,5 +1,6 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes imported contacts using the list of contacts saved on the device.
 /// Imports newly added contacts and, if at least the file database is
@@ -7,21 +8,25 @@ import '../extensions/data_class_extensions.dart';
 /// result of the previous query, so only one query is possible at the same
 /// time
 /// Returns [ImportedContacts]
+@immutable
 class ChangeImportedContacts extends TdFunction {
-  ChangeImportedContacts({required this.contacts});
+  const ChangeImportedContacts({
+    required this.contacts,
+  });
 
   /// [contacts] The new list of contacts, contact's vCard are ignored and are
   /// not imported
   final List<Contact> contacts;
 
-  static const String CONSTRUCTOR = 'changeImportedContacts';
+  static const String constructor = 'changeImportedContacts';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'contacts': contacts.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An animation in MPEG4 format; must be square, at most 10 seconds long,
 /// have width between 160 and 800 and be at most 2MB in size
+@immutable
 class InputChatPhotoAnimation extends InputChatPhoto {
-  InputChatPhotoAnimation(
-      {required this.animation, required this.mainFrameTimestamp});
+  const InputChatPhotoAnimation({
+    required this.animation,
+    required this.mainFrameTimestamp,
+  });
 
   /// [animation] Animation to be set as profile photo. Only inputFileLocal and
   /// inputFileGenerated are allowed
@@ -15,7 +19,7 @@ class InputChatPhotoAnimation extends InputChatPhoto {
   /// chat photo
   final double mainFrameTimestamp;
 
-  static const String CONSTRUCTOR = 'inputChatPhotoAnimation';
+  static const String constructor = 'inputChatPhotoAnimation';
 
   static InputChatPhotoAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,17 +27,19 @@ class InputChatPhotoAnimation extends InputChatPhoto {
     }
 
     return InputChatPhotoAnimation(
-        animation: InputFile.fromJson(json['animation'])!,
-        mainFrameTimestamp: json['main_frame_timestamp']);
+      animation: InputFile.fromJson(json['animation'])!,
+      mainFrameTimestamp: json['main_frame_timestamp'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'animation': this.animation.toJson(),
-        'main_frame_timestamp': this.mainFrameTimestamp,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'animation': animation.toJson(),
+        'main_frame_timestamp': mainFrameTimestamp,
+        '@type': constructor,
       };
 
   @override

@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains basic information about a chat filter
+@immutable
 class ChatFilterInfo extends TdObject {
-  ChatFilterInfo(
-      {required this.id, required this.title, required this.iconName});
+  const ChatFilterInfo({
+    required this.id,
+    required this.title,
+    required this.iconName,
+  });
 
   /// [id] Unique chat filter identifier
   final int id;
@@ -19,7 +24,7 @@ class ChatFilterInfo extends TdObject {
   /// "Trade", "Travel", "Work"
   final String iconName;
 
-  static const String CONSTRUCTOR = 'chatFilterInfo';
+  static const String constructor = 'chatFilterInfo';
 
   static ChatFilterInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,17 +32,21 @@ class ChatFilterInfo extends TdObject {
     }
 
     return ChatFilterInfo(
-        id: json['id'], title: json['title'], iconName: json['icon_name']);
+      id: json['id'],
+      title: json['title'],
+      iconName: json['icon_name'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'title': this.title,
-        'icon_name': this.iconName,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        'icon_name': iconName,
+        '@type': constructor,
       };
 
   @override

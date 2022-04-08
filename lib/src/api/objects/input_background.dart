@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about background to set
+@immutable
 abstract class InputBackground extends TdObject {
   const InputBackground();
 
-  static const String CONSTRUCTOR = 'inputBackground';
+  static const String constructor = 'inputBackground';
 
   /// Inherited by:
   /// [InputBackgroundLocal]
@@ -15,10 +17,10 @@ abstract class InputBackground extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case InputBackgroundLocal.CONSTRUCTOR:
+    switch (json['@type']) {
+      case InputBackgroundLocal.constructor:
         return InputBackgroundLocal.fromJson(json);
-      case InputBackgroundRemote.CONSTRUCTOR:
+      case InputBackgroundRemote.constructor:
         return InputBackgroundRemote.fromJson(json);
       default:
         return null;
@@ -26,7 +28,7 @@ abstract class InputBackground extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

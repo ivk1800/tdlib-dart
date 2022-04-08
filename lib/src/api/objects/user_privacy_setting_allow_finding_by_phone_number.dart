@@ -1,13 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A privacy setting for managing whether the user can be found by their
 /// phone number. Checked only if the phone number is not known to the other
 /// user. Can be set only to "Allow contacts" or "Allow all"
+@immutable
 class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
   const UserPrivacySettingAllowFindingByPhoneNumber();
 
-  static const String CONSTRUCTOR =
+  static const String constructor =
       'userPrivacySettingAllowFindingByPhoneNumber';
 
   static UserPrivacySettingAllowFindingByPhoneNumber? fromJson(
@@ -20,9 +22,12 @@ class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,14 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// File generation is no longer needed
+@immutable
 class UpdateFileGenerationStop extends Update {
-  UpdateFileGenerationStop({required this.generationId});
+  const UpdateFileGenerationStop({
+    required this.generationId,
+  });
 
   /// [generationId] Unique identifier for the generation process
   final int generationId;
 
-  static const String CONSTRUCTOR = 'updateFileGenerationStop';
+  static const String constructor = 'updateFileGenerationStop';
 
   static UpdateFileGenerationStop? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,14 +20,18 @@ class UpdateFileGenerationStop extends Update {
     }
 
     return UpdateFileGenerationStop(
-        generationId: int.tryParse(json['generation_id']) ?? 0);
+      generationId: int.tryParse(json['generation_id']) ?? 0,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'generation_id': this.generationId, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'generation_id': generationId,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents the scope to which bot commands are relevant
+@immutable
 abstract class BotCommandScope extends TdObject {
   const BotCommandScope();
 
-  static const String CONSTRUCTOR = 'botCommandScope';
+  static const String constructor = 'botCommandScope';
 
   /// Inherited by:
   /// [BotCommandScopeDefault]
@@ -20,20 +22,20 @@ abstract class BotCommandScope extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case BotCommandScopeDefault.CONSTRUCTOR:
+    switch (json['@type']) {
+      case BotCommandScopeDefault.constructor:
         return BotCommandScopeDefault.fromJson(json);
-      case BotCommandScopeAllPrivateChats.CONSTRUCTOR:
+      case BotCommandScopeAllPrivateChats.constructor:
         return BotCommandScopeAllPrivateChats.fromJson(json);
-      case BotCommandScopeAllGroupChats.CONSTRUCTOR:
+      case BotCommandScopeAllGroupChats.constructor:
         return BotCommandScopeAllGroupChats.fromJson(json);
-      case BotCommandScopeAllChatAdministrators.CONSTRUCTOR:
+      case BotCommandScopeAllChatAdministrators.constructor:
         return BotCommandScopeAllChatAdministrators.fromJson(json);
-      case BotCommandScopeChat.CONSTRUCTOR:
+      case BotCommandScopeChat.constructor:
         return BotCommandScopeChat.fromJson(json);
-      case BotCommandScopeChatAdministrators.CONSTRUCTOR:
+      case BotCommandScopeChatAdministrators.constructor:
         return BotCommandScopeChatAdministrators.fromJson(json);
-      case BotCommandScopeChatMember.CONSTRUCTOR:
+      case BotCommandScopeChatMember.constructor:
         return BotCommandScopeChatMember.fromJson(json);
       default:
         return null;
@@ -41,7 +43,7 @@ abstract class BotCommandScope extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

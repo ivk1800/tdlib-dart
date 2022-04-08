@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the photo of a chat. Supported only for basic groups, supergroups
 /// and channels. Requires can_change_info administrator right
 /// Returns [Ok]
+@immutable
 class SetChatPhoto extends TdFunction {
-  SetChatPhoto({required this.chatId, this.photo});
+  const SetChatPhoto({
+    required this.chatId,
+    this.photo,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,15 +18,16 @@ class SetChatPhoto extends TdFunction {
   /// [photo] New chat photo; pass null to delete the chat photo
   final InputChatPhoto? photo;
 
-  static const String CONSTRUCTOR = 'setChatPhoto';
+  static const String constructor = 'setChatPhoto';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'photo': this.photo?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'photo': photo?.toJson(),
+        '@type': constructor,
       };
 
   @override

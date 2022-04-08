@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the order of pinned chats
 /// Returns [Ok]
+@immutable
 class SetPinnedChats extends TdFunction {
-  SetPinnedChats({required this.chatList, required this.chatIds});
+  const SetPinnedChats({
+    required this.chatList,
+    required this.chatIds,
+  });
 
   /// [chatList] Chat list in which to change the order of pinned chats
   final ChatList chatList;
@@ -12,15 +17,16 @@ class SetPinnedChats extends TdFunction {
   /// [chatIds] The new list of pinned chats
   final List<int> chatIds;
 
-  static const String CONSTRUCTOR = 'setPinnedChats';
+  static const String constructor = 'setPinnedChats';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_list': this.chatList.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_list': chatList.toJson(),
         'chat_ids': chatIds.map((item) => item).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

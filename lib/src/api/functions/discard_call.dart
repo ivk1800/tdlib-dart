@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Discards a call
 /// Returns [Ok]
+@immutable
 class DiscardCall extends TdFunction {
-  DiscardCall(
-      {required this.callId,
-      required this.isDisconnected,
-      required this.duration,
-      required this.isVideo,
-      required this.connectionId});
+  const DiscardCall({
+    required this.callId,
+    required this.isDisconnected,
+    required this.duration,
+    required this.isVideo,
+    required this.connectionId,
+  });
 
   /// [callId] Call identifier
   final int callId;
@@ -26,18 +29,19 @@ class DiscardCall extends TdFunction {
   /// [connectionId] Identifier of the connection used during the call
   final int connectionId;
 
-  static const String CONSTRUCTOR = 'discardCall';
+  static const String constructor = 'discardCall';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'call_id': this.callId,
-        'is_disconnected': this.isDisconnected,
-        'duration': this.duration,
-        'is_video': this.isVideo,
-        'connection_id': this.connectionId,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'call_id': callId,
+        'is_disconnected': isDisconnected,
+        'duration': duration,
+        'is_video': isVideo,
+        'connection_id': connectionId,
+        '@type': constructor,
       };
 
   @override

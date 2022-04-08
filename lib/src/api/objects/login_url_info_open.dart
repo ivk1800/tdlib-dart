@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An HTTP url needs to be open
+@immutable
 class LoginUrlInfoOpen extends LoginUrlInfo {
-  LoginUrlInfoOpen({required this.url, required this.skipConfirm});
+  const LoginUrlInfoOpen({
+    required this.url,
+    required this.skipConfirm,
+  });
 
   /// [url] The URL to open
   final String url;
@@ -12,7 +17,7 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   /// confirm
   final bool skipConfirm;
 
-  static const String CONSTRUCTOR = 'loginUrlInfoOpen';
+  static const String constructor = 'loginUrlInfoOpen';
 
   static LoginUrlInfoOpen? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,14 +25,20 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
     }
 
     return LoginUrlInfoOpen(
-        url: json['url'], skipConfirm: json['skip_confirm']);
+      url: json['url'],
+      skipConfirm: json['skip_confirm'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'url': this.url, 'skip_confirm': this.skipConfirm, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'skip_confirm': skipConfirm,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

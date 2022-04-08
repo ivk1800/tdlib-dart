@@ -1,12 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an ordered list of chats from the beginning of a chat list. For
 /// informational purposes only. Use loadChats and updates processing instead
 /// to maintain chat lists in a consistent state
 /// Returns [Chats]
+@immutable
 class GetChats extends TdFunction {
-  GetChats({this.chatList, required this.limit});
+  const GetChats({
+    this.chatList,
+    required this.limit,
+  });
 
   /// [chatList] The chat list in which to return chats; pass null to get chats
   /// from the main chat list
@@ -15,15 +20,16 @@ class GetChats extends TdFunction {
   /// [limit] The maximum number of chats to be returned
   final int limit;
 
-  static const String CONSTRUCTOR = 'getChats';
+  static const String constructor = 'getChats';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_list': this.chatList?.toJson(),
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_list': chatList?.toJson(),
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

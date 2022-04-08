@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Options to be used when a message is sent
+@immutable
 class MessageSendOptions extends TdObject {
-  MessageSendOptions(
-      {required this.disableNotification,
-      required this.fromBackground,
-      this.protectContent,
-      this.schedulingState});
+  const MessageSendOptions({
+    required this.disableNotification,
+    required this.fromBackground,
+    this.protectContent,
+    this.schedulingState,
+  });
 
   /// [disableNotification] Pass true to disable notification for the message
   final bool disableNotification;
@@ -24,7 +27,7 @@ class MessageSendOptions extends TdObject {
   /// self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
-  static const String CONSTRUCTOR = 'messageSendOptions';
+  static const String constructor = 'messageSendOptions';
 
   static MessageSendOptions? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,22 +35,24 @@ class MessageSendOptions extends TdObject {
     }
 
     return MessageSendOptions(
-        disableNotification: json['disable_notification'],
-        fromBackground: json['from_background'],
-        protectContent: json['protect_content'],
-        schedulingState:
-            MessageSchedulingState.fromJson(json['scheduling_state']));
+      disableNotification: json['disable_notification'],
+      fromBackground: json['from_background'],
+      protectContent: json['protect_content'],
+      schedulingState:
+          MessageSchedulingState.fromJson(json['scheduling_state']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'disable_notification': this.disableNotification,
-        'from_background': this.fromBackground,
-        'protect_content': this.protectContent,
-        'scheduling_state': this.schedulingState?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'disable_notification': disableNotification,
+        'from_background': fromBackground,
+        'protect_content': protectContent,
+        'scheduling_state': schedulingState?.toJson(),
+        '@type': constructor,
       };
 
   @override

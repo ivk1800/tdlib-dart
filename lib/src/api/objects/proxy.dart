@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a proxy server
+@immutable
 class Proxy extends TdObject {
-  Proxy(
-      {required this.id,
-      required this.server,
-      required this.port,
-      required this.lastUsedDate,
-      required this.isEnabled,
-      required this.type});
+  const Proxy({
+    required this.id,
+    required this.server,
+    required this.port,
+    required this.lastUsedDate,
+    required this.isEnabled,
+    required this.type,
+  });
 
   /// [id] Unique identifier of the proxy
   final int id;
@@ -30,7 +33,7 @@ class Proxy extends TdObject {
   /// [type] Type of the proxy
   final ProxyType type;
 
-  static const String CONSTRUCTOR = 'proxy';
+  static const String constructor = 'proxy';
 
   static Proxy? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -38,25 +41,27 @@ class Proxy extends TdObject {
     }
 
     return Proxy(
-        id: json['id'],
-        server: json['server'],
-        port: json['port'],
-        lastUsedDate: json['last_used_date'],
-        isEnabled: json['is_enabled'],
-        type: ProxyType.fromJson(json['type'])!);
+      id: json['id'],
+      server: json['server'],
+      port: json['port'],
+      lastUsedDate: json['last_used_date'],
+      isEnabled: json['is_enabled'],
+      type: ProxyType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'server': this.server,
-        'port': this.port,
-        'last_used_date': this.lastUsedDate,
-        'is_enabled': this.isEnabled,
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'server': server,
+        'port': port,
+        'last_used_date': lastUsedDate,
+        'is_enabled': isEnabled,
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

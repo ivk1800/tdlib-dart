@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a server for relaying call data
+@immutable
 class CallServer extends TdObject {
-  CallServer(
-      {required this.id,
-      required this.ipAddress,
-      required this.ipv6Address,
-      required this.port,
-      required this.type});
+  const CallServer({
+    required this.id,
+    required this.ipAddress,
+    required this.ipv6Address,
+    required this.port,
+    required this.type,
+  });
 
   /// [id] Server identifier
   final int id;
@@ -25,7 +28,7 @@ class CallServer extends TdObject {
   /// [type] Server type
   final CallServerType type;
 
-  static const String CONSTRUCTOR = 'callServer';
+  static const String constructor = 'callServer';
 
   static CallServer? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,23 +36,25 @@ class CallServer extends TdObject {
     }
 
     return CallServer(
-        id: int.tryParse(json['id']) ?? 0,
-        ipAddress: json['ip_address'],
-        ipv6Address: json['ipv6_address'],
-        port: json['port'],
-        type: CallServerType.fromJson(json['type'])!);
+      id: int.tryParse(json['id']) ?? 0,
+      ipAddress: json['ip_address'],
+      ipv6Address: json['ipv6_address'],
+      port: json['port'],
+      type: CallServerType.fromJson(json['type'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'ip_address': this.ipAddress,
-        'ipv6_address': this.ipv6Address,
-        'port': this.port,
-        'type': this.type.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'ip_address': ipAddress,
+        'ipv6_address': ipv6Address,
+        'port': port,
+        'type': type.toJson(),
+        '@type': constructor,
       };
 
   @override

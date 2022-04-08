@@ -1,11 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Toggles whether current user's video is paused
 /// Returns [Ok]
+@immutable
 class ToggleGroupCallIsMyVideoPaused extends TdFunction {
-  ToggleGroupCallIsMyVideoPaused(
-      {required this.groupCallId, required this.isMyVideoPaused});
+  const ToggleGroupCallIsMyVideoPaused({
+    required this.groupCallId,
+    required this.isMyVideoPaused,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -13,15 +17,16 @@ class ToggleGroupCallIsMyVideoPaused extends TdFunction {
   /// [isMyVideoPaused] Pass true if the current user's video is paused
   final bool isMyVideoPaused;
 
-  static const String CONSTRUCTOR = 'toggleGroupCallIsMyVideoPaused';
+  static const String constructor = 'toggleGroupCallIsMyVideoPaused';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'is_my_video_paused': this.isMyVideoPaused,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'is_my_video_paused': isMyVideoPaused,
+        '@type': constructor,
       };
 
   @override

@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An animation message (GIF-style).
+@immutable
 class InputMessageAnimation extends InputMessageContent {
-  InputMessageAnimation(
-      {required this.animation,
-      this.thumbnail,
-      required this.addedStickerFileIds,
-      required this.duration,
-      required this.width,
-      required this.height,
-      this.caption});
+  const InputMessageAnimation({
+    required this.animation,
+    this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.duration,
+    required this.width,
+    required this.height,
+    this.caption,
+  });
 
   /// [animation] Animation file to be sent
   final InputFile animation;
@@ -35,7 +38,7 @@ class InputMessageAnimation extends InputMessageContent {
   /// 0-GetOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  static const String CONSTRUCTOR = 'inputMessageAnimation';
+  static const String constructor = 'inputMessageAnimation';
 
   static InputMessageAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -43,31 +46,31 @@ class InputMessageAnimation extends InputMessageContent {
     }
 
     return InputMessageAnimation(
-        animation: InputFile.fromJson(json['animation'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-        addedStickerFileIds: List<int>.from(
-            (json['added_sticker_file_ids'] ?? [])
-                .map((item) => item)
-                .toList()),
-        duration: json['duration'],
-        width: json['width'],
-        height: json['height'],
-        caption: FormattedText.fromJson(json['caption']));
+      animation: InputFile.fromJson(json['animation'])!,
+      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      addedStickerFileIds: List<int>.from(
+          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+      duration: json['duration'],
+      width: json['width'],
+      height: json['height'],
+      caption: FormattedText.fromJson(json['caption']),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'animation': this.animation.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'animation': animation.toJson(),
+        'thumbnail': thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
-        'duration': this.duration,
-        'width': this.width,
-        'height': this.height,
-        'caption': this.caption?.toJson(),
-        '@type': CONSTRUCTOR
+        'duration': duration,
+        'width': width,
+        'height': height,
+        'caption': caption?.toJson(),
+        '@type': constructor,
       };
 
   @override

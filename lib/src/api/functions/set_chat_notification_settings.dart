@@ -1,12 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Changes the notification settings of a chat. Notification settings of a
 /// chat with the current user (Saved Messages) can't be changed
 /// Returns [Ok]
+@immutable
 class SetChatNotificationSettings extends TdFunction {
-  SetChatNotificationSettings(
-      {required this.chatId, required this.notificationSettings});
+  const SetChatNotificationSettings({
+    required this.chatId,
+    required this.notificationSettings,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -15,15 +19,16 @@ class SetChatNotificationSettings extends TdFunction {
   /// is muted for more than 1 week, it is considered to be muted forever
   final ChatNotificationSettings notificationSettings;
 
-  static const String CONSTRUCTOR = 'setChatNotificationSettings';
+  static const String constructor = 'setChatNotificationSettings';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'notification_settings': this.notificationSettings.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'notification_settings': notificationSettings.toJson(),
+        '@type': constructor,
       };
 
   @override

@@ -1,12 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The user is the owner of the chat and has all the administrator privileges
+@immutable
 class ChatMemberStatusCreator extends ChatMemberStatus {
-  ChatMemberStatusCreator(
-      {required this.customTitle,
-      required this.isAnonymous,
-      required this.isMember});
+  const ChatMemberStatusCreator({
+    required this.customTitle,
+    required this.isAnonymous,
+    required this.isMember,
+  });
 
   /// [customTitle] A custom title of the owner; 0-16 characters without emojis;
   /// applicable to supergroups only
@@ -19,7 +22,7 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
   /// [isMember] True, if the user is a member of the chat
   final bool isMember;
 
-  static const String CONSTRUCTOR = 'chatMemberStatusCreator';
+  static const String constructor = 'chatMemberStatusCreator';
 
   static ChatMemberStatusCreator? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -27,19 +30,21 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
     }
 
     return ChatMemberStatusCreator(
-        customTitle: json['custom_title'],
-        isAnonymous: json['is_anonymous'],
-        isMember: json['is_member']);
+      customTitle: json['custom_title'],
+      isAnonymous: json['is_anonymous'],
+      isMember: json['is_member'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'custom_title': this.customTitle,
-        'is_anonymous': this.isAnonymous,
-        'is_member': this.isMember,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'custom_title': customTitle,
+        'is_anonymous': isAnonymous,
+        'is_member': isMember,
+        '@type': constructor,
       };
 
   @override

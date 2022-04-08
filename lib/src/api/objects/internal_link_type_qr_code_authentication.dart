@@ -1,14 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The link can be used to login the current user on another device, but it
 /// must be scanned from QR-code using in-app camera. An alert similar to.
 /// "This code can be used to allow someone to log in to your Telegram
 /// account. To confirm Telegram login, please go to Settings
+@immutable
 class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   const InternalLinkTypeQrCodeAuthentication();
 
-  static const String CONSTRUCTOR = 'internalLinkTypeQrCodeAuthentication';
+  static const String constructor = 'internalLinkTypeQrCodeAuthentication';
 
   static InternalLinkTypeQrCodeAuthentication? fromJson(
       Map<String, dynamic>? json) {
@@ -20,9 +22,12 @@ class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

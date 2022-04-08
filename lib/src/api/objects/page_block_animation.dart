@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An animation
+@immutable
 class PageBlockAnimation extends PageBlock {
-  PageBlockAnimation(
-      {this.animation, required this.caption, required this.needAutoplay});
+  const PageBlockAnimation({
+    this.animation,
+    required this.caption,
+    required this.needAutoplay,
+  });
 
   /// [animation] Animation file; may be null
   final Animation? animation;
@@ -15,7 +20,7 @@ class PageBlockAnimation extends PageBlock {
   /// [needAutoplay] True, if the animation must be played automatically
   final bool needAutoplay;
 
-  static const String CONSTRUCTOR = 'pageBlockAnimation';
+  static const String constructor = 'pageBlockAnimation';
 
   static PageBlockAnimation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -23,19 +28,21 @@ class PageBlockAnimation extends PageBlock {
     }
 
     return PageBlockAnimation(
-        animation: Animation.fromJson(json['animation']),
-        caption: PageBlockCaption.fromJson(json['caption'])!,
-        needAutoplay: json['need_autoplay']);
+      animation: Animation.fromJson(json['animation']),
+      caption: PageBlockCaption.fromJson(json['caption'])!,
+      needAutoplay: json['need_autoplay'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'animation': this.animation?.toJson(),
-        'caption': this.caption.toJson(),
-        'need_autoplay': this.needAutoplay,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'animation': animation?.toJson(),
+        'caption': caption.toJson(),
+        'need_autoplay': needAutoplay,
+        '@type': constructor,
       };
 
   @override

@@ -1,13 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Creates a video chat (a group call bound to a chat). Available only for
 /// basic groups, supergroups and channels; requires can_manage_video_chats
 /// rights
 /// Returns [GroupCallId]
+@immutable
 class CreateVideoChat extends TdFunction {
-  CreateVideoChat(
-      {required this.chatId, required this.title, required this.startDate});
+  const CreateVideoChat({
+    required this.chatId,
+    required this.title,
+    required this.startDate,
+  });
 
   /// [chatId] Chat identifier, in which the video chat will be created
   final int chatId;
@@ -20,16 +25,17 @@ class CreateVideoChat extends TdFunction {
   /// The date must be at least 10 seconds and at most 8 days in the future
   final int startDate;
 
-  static const String CONSTRUCTOR = 'createVideoChat';
+  static const String constructor = 'createVideoChat';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'title': this.title,
-        'start_date': this.startDate,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'title': title,
+        'start_date': startDate,
+        '@type': constructor,
       };
 
   @override

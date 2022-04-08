@@ -1,12 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The reverse side of the document contains an error. The error will be
 /// considered resolved when the file with the reverse side changes
+@immutable
 class PassportElementErrorSourceReverseSide extends PassportElementErrorSource {
   const PassportElementErrorSourceReverseSide();
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceReverseSide';
+  static const String constructor = 'passportElementErrorSourceReverseSide';
 
   static PassportElementErrorSourceReverseSide? fromJson(
       Map<String, dynamic>? json) {
@@ -18,9 +20,12 @@ class PassportElementErrorSourceReverseSide extends PassportElementErrorSource {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

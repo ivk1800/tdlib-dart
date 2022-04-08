@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A scope covering all group and supergroup chat administrators
+@immutable
 class BotCommandScopeAllChatAdministrators extends BotCommandScope {
   const BotCommandScopeAllChatAdministrators();
 
-  static const String CONSTRUCTOR = 'botCommandScopeAllChatAdministrators';
+  static const String constructor = 'botCommandScopeAllChatAdministrators';
 
   static BotCommandScopeAllChatAdministrators? fromJson(
       Map<String, dynamic>? json) {
@@ -17,9 +19,12 @@ class BotCommandScopeAllChatAdministrators extends BotCommandScope {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

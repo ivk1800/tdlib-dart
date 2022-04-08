@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about a tg: deep link
+@immutable
 class DeepLinkInfo extends TdObject {
-  DeepLinkInfo({required this.text, required this.needUpdateApplication});
+  const DeepLinkInfo({
+    required this.text,
+    required this.needUpdateApplication,
+  });
 
   /// [text] Text to be shown to the user
   final FormattedText text;
@@ -12,7 +17,7 @@ class DeepLinkInfo extends TdObject {
   /// application
   final bool needUpdateApplication;
 
-  static const String CONSTRUCTOR = 'deepLinkInfo';
+  static const String constructor = 'deepLinkInfo';
 
   static DeepLinkInfo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,17 +25,19 @@ class DeepLinkInfo extends TdObject {
     }
 
     return DeepLinkInfo(
-        text: FormattedText.fromJson(json['text'])!,
-        needUpdateApplication: json['need_update_application']);
+      text: FormattedText.fromJson(json['text'])!,
+      needUpdateApplication: json['need_update_application'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'text': this.text.toJson(),
-        'need_update_application': this.needUpdateApplication,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'text': text.toJson(),
+        'need_update_application': needUpdateApplication,
+        '@type': constructor,
       };
 
   @override

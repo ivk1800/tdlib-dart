@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Handles all pending join requests for a given link in a chat
 /// Returns [Ok]
+@immutable
 class ProcessChatJoinRequests extends TdFunction {
-  ProcessChatJoinRequests(
-      {required this.chatId, required this.inviteLink, required this.approve});
+  const ProcessChatJoinRequests({
+    required this.chatId,
+    required this.inviteLink,
+    required this.approve,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -20,16 +25,17 @@ class ProcessChatJoinRequests extends TdFunction {
   /// declived
   final bool approve;
 
-  static const String CONSTRUCTOR = 'processChatJoinRequests';
+  static const String constructor = 'processChatJoinRequests';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'invite_link': this.inviteLink,
-        'approve': this.approve,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'invite_link': inviteLink,
+        'approve': approve,
+        '@type': constructor,
       };
 
   @override

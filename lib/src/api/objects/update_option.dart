@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An option changed its value
+@immutable
 class UpdateOption extends Update {
-  UpdateOption({required this.name, required this.value});
+  const UpdateOption({
+    required this.name,
+    required this.value,
+  });
 
   /// [name] The option name
   final String name;
@@ -11,7 +16,7 @@ class UpdateOption extends Update {
   /// [value] The new option value
   final OptionValue value;
 
-  static const String CONSTRUCTOR = 'updateOption';
+  static const String constructor = 'updateOption';
 
   static UpdateOption? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,14 +24,20 @@ class UpdateOption extends Update {
     }
 
     return UpdateOption(
-        name: json['name'], value: OptionValue.fromJson(json['value'])!);
+      name: json['name'],
+      value: OptionValue.fromJson(json['value'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'name': this.name, 'value': this.value.toJson(), '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'value': value.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

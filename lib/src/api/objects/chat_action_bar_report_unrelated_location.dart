@@ -1,13 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The chat is a location-based supergroup, which can be reported as having
 /// unrelated location using the method reportChat with the reason
 /// chatReportReasonUnrelatedLocation
+@immutable
 class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
   const ChatActionBarReportUnrelatedLocation();
 
-  static const String CONSTRUCTOR = 'chatActionBarReportUnrelatedLocation';
+  static const String constructor = 'chatActionBarReportUnrelatedLocation';
 
   static ChatActionBarReportUnrelatedLocation? fromJson(
       Map<String, dynamic>? json) {
@@ -19,9 +21,12 @@ class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

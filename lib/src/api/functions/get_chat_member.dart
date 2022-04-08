@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about a single member of a chat
 /// Returns [ChatMember]
+@immutable
 class GetChatMember extends TdFunction {
-  GetChatMember({required this.chatId, required this.memberId});
+  const GetChatMember({
+    required this.chatId,
+    required this.memberId,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -12,15 +17,16 @@ class GetChatMember extends TdFunction {
   /// [memberId] Member identifier
   final MessageSender memberId;
 
-  static const String CONSTRUCTOR = 'getChatMember';
+  static const String constructor = 'getChatMember';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'member_id': this.memberId.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'member_id': memberId.toJson(),
+        '@type': constructor,
       };
 
   @override

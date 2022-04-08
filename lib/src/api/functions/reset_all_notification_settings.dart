@@ -1,19 +1,24 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Resets all notification settings to their default values. By default, all
 /// chats are unmuted, the sound is set to "default" and message previews are
 /// shown
 /// Returns [Ok]
+@immutable
 class ResetAllNotificationSettings extends TdFunction {
-  ResetAllNotificationSettings();
+  const ResetAllNotificationSettings();
 
-  static const String CONSTRUCTOR = 'resetAllNotificationSettings';
+  static const String constructor = 'resetAllNotificationSettings';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

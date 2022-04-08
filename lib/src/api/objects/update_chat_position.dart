@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The position of a chat in a chat list has changed. Instead of this update
 /// updateChatLastMessage or updateChatDraftMessage might be sent
+@immutable
 class UpdateChatPosition extends Update {
-  UpdateChatPosition({required this.chatId, required this.position});
+  const UpdateChatPosition({
+    required this.chatId,
+    required this.position,
+  });
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -13,7 +18,7 @@ class UpdateChatPosition extends Update {
   /// removed from the list
   final ChatPosition position;
 
-  static const String CONSTRUCTOR = 'updateChatPosition';
+  static const String constructor = 'updateChatPosition';
 
   static UpdateChatPosition? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,17 +26,19 @@ class UpdateChatPosition extends Update {
     }
 
     return UpdateChatPosition(
-        chatId: json['chat_id'],
-        position: ChatPosition.fromJson(json['position'])!);
+      chatId: json['chat_id'],
+      position: ChatPosition.fromJson(json['position'])!,
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'position': this.position.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'position': position.toJson(),
+        '@type': constructor,
       };
 
   @override

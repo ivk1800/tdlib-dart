@@ -1,22 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Checks the validity of an invite link for a chat and returns information
 /// about the corresponding chat
 /// Returns [ChatInviteLinkInfo]
+@immutable
 class CheckChatInviteLink extends TdFunction {
-  CheckChatInviteLink({required this.inviteLink});
+  const CheckChatInviteLink({
+    required this.inviteLink,
+  });
 
   /// [inviteLink] Invite link to be checked
   final String inviteLink;
 
-  static const String CONSTRUCTOR = 'checkChatInviteLink';
+  static const String constructor = 'checkChatInviteLink';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'invite_link': this.inviteLink, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'invite_link': inviteLink,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

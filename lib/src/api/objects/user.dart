@@ -1,26 +1,29 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Represents a user
+@immutable
 class User extends TdObject {
-  User(
-      {required this.id,
-      required this.firstName,
-      required this.lastName,
-      required this.username,
-      required this.phoneNumber,
-      required this.status,
-      this.profilePhoto,
-      required this.isContact,
-      required this.isMutualContact,
-      required this.isVerified,
-      required this.isSupport,
-      required this.restrictionReason,
-      required this.isScam,
-      required this.isFake,
-      required this.haveAccess,
-      required this.type,
-      required this.languageCode});
+  const User({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.username,
+    required this.phoneNumber,
+    required this.status,
+    this.profilePhoto,
+    required this.isContact,
+    required this.isMutualContact,
+    required this.isVerified,
+    required this.isSupport,
+    required this.restrictionReason,
+    required this.isScam,
+    required this.isFake,
+    required this.haveAccess,
+    required this.type,
+    required this.languageCode,
+  });
 
   /// [id] User identifier
   final int id;
@@ -78,7 +81,7 @@ class User extends TdObject {
   /// bots
   final String languageCode;
 
-  static const String CONSTRUCTOR = 'user';
+  static const String constructor = 'user';
 
   static User? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -86,47 +89,49 @@ class User extends TdObject {
     }
 
     return User(
-        id: json['id'],
-        firstName: json['first_name'],
-        lastName: json['last_name'],
-        username: json['username'],
-        phoneNumber: json['phone_number'],
-        status: UserStatus.fromJson(json['status'])!,
-        profilePhoto: ProfilePhoto.fromJson(json['profile_photo']),
-        isContact: json['is_contact'],
-        isMutualContact: json['is_mutual_contact'],
-        isVerified: json['is_verified'],
-        isSupport: json['is_support'],
-        restrictionReason: json['restriction_reason'],
-        isScam: json['is_scam'],
-        isFake: json['is_fake'],
-        haveAccess: json['have_access'],
-        type: UserType.fromJson(json['type'])!,
-        languageCode: json['language_code']);
+      id: json['id'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      username: json['username'],
+      phoneNumber: json['phone_number'],
+      status: UserStatus.fromJson(json['status'])!,
+      profilePhoto: ProfilePhoto.fromJson(json['profile_photo']),
+      isContact: json['is_contact'],
+      isMutualContact: json['is_mutual_contact'],
+      isVerified: json['is_verified'],
+      isSupport: json['is_support'],
+      restrictionReason: json['restriction_reason'],
+      isScam: json['is_scam'],
+      isFake: json['is_fake'],
+      haveAccess: json['have_access'],
+      type: UserType.fromJson(json['type'])!,
+      languageCode: json['language_code'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'id': this.id,
-        'first_name': this.firstName,
-        'last_name': this.lastName,
-        'username': this.username,
-        'phone_number': this.phoneNumber,
-        'status': this.status.toJson(),
-        'profile_photo': this.profilePhoto?.toJson(),
-        'is_contact': this.isContact,
-        'is_mutual_contact': this.isMutualContact,
-        'is_verified': this.isVerified,
-        'is_support': this.isSupport,
-        'restriction_reason': this.restrictionReason,
-        'is_scam': this.isScam,
-        'is_fake': this.isFake,
-        'have_access': this.haveAccess,
-        'type': this.type.toJson(),
-        'language_code': this.languageCode,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'first_name': firstName,
+        'last_name': lastName,
+        'username': username,
+        'phone_number': phoneNumber,
+        'status': status.toJson(),
+        'profile_photo': profilePhoto?.toJson(),
+        'is_contact': isContact,
+        'is_mutual_contact': isMutualContact,
+        'is_verified': isVerified,
+        'is_support': isSupport,
+        'restriction_reason': restrictionReason,
+        'is_scam': isScam,
+        'is_fake': isFake,
+        'have_access': haveAccess,
+        'type': type.toJson(),
+        'language_code': languageCode,
+        '@type': constructor,
       };
 
   @override

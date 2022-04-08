@@ -1,16 +1,19 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns information about members or banned users in a supergroup or
 /// channel. Can be used only if supergroupFullInfo.can_get_members == true;
 /// additionally, administrator privileges may be required for some filters
 /// Returns [ChatMembers]
+@immutable
 class GetSupergroupMembers extends TdFunction {
-  GetSupergroupMembers(
-      {required this.supergroupId,
-      this.filter,
-      required this.offset,
-      required this.limit});
+  const GetSupergroupMembers({
+    required this.supergroupId,
+    this.filter,
+    required this.offset,
+    required this.limit,
+  });
 
   /// [supergroupId] Identifier of the supergroup or channel
   final int supergroupId;
@@ -25,17 +28,18 @@ class GetSupergroupMembers extends TdFunction {
   /// [limit] The maximum number of users be returned; up to 200
   final int limit;
 
-  static const String CONSTRUCTOR = 'getSupergroupMembers';
+  static const String constructor = 'getSupergroupMembers';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'supergroup_id': this.supergroupId,
-        'filter': this.filter?.toJson(),
-        'offset': this.offset,
-        'limit': this.limit,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'supergroup_id': supergroupId,
+        'filter': filter?.toJson(),
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
       };
 
   @override

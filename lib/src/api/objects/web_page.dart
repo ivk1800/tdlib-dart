@@ -1,30 +1,33 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Describes a web page preview
+@immutable
 class WebPage extends TdObject {
-  WebPage(
-      {required this.url,
-      required this.displayUrl,
-      required this.type,
-      required this.siteName,
-      required this.title,
-      required this.description,
-      this.photo,
-      required this.embedUrl,
-      required this.embedType,
-      required this.embedWidth,
-      required this.embedHeight,
-      required this.duration,
-      required this.author,
-      this.animation,
-      this.audio,
-      this.document,
-      this.sticker,
-      this.video,
-      this.videoNote,
-      this.voiceNote,
-      required this.instantViewVersion});
+  const WebPage({
+    required this.url,
+    required this.displayUrl,
+    required this.type,
+    required this.siteName,
+    required this.title,
+    required this.description,
+    this.photo,
+    required this.embedUrl,
+    required this.embedType,
+    required this.embedWidth,
+    required this.embedHeight,
+    required this.duration,
+    required this.author,
+    this.animation,
+    this.audio,
+    this.document,
+    this.sticker,
+    this.video,
+    this.videoNote,
+    this.voiceNote,
+    required this.instantViewVersion,
+  });
 
   /// [url] Original URL of the link
   final String url;
@@ -96,7 +99,7 @@ class WebPage extends TdObject {
   /// (currently, can be 1 or 2), 0 if none
   final int instantViewVersion;
 
-  static const String CONSTRUCTOR = 'webPage';
+  static const String constructor = 'webPage';
 
   static WebPage? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -104,55 +107,57 @@ class WebPage extends TdObject {
     }
 
     return WebPage(
-        url: json['url'],
-        displayUrl: json['display_url'],
-        type: json['type'],
-        siteName: json['site_name'],
-        title: json['title'],
-        description: FormattedText.fromJson(json['description'])!,
-        photo: Photo.fromJson(json['photo']),
-        embedUrl: json['embed_url'],
-        embedType: json['embed_type'],
-        embedWidth: json['embed_width'],
-        embedHeight: json['embed_height'],
-        duration: json['duration'],
-        author: json['author'],
-        animation: Animation.fromJson(json['animation']),
-        audio: Audio.fromJson(json['audio']),
-        document: Document.fromJson(json['document']),
-        sticker: Sticker.fromJson(json['sticker']),
-        video: Video.fromJson(json['video']),
-        videoNote: VideoNote.fromJson(json['video_note']),
-        voiceNote: VoiceNote.fromJson(json['voice_note']),
-        instantViewVersion: json['instant_view_version']);
+      url: json['url'],
+      displayUrl: json['display_url'],
+      type: json['type'],
+      siteName: json['site_name'],
+      title: json['title'],
+      description: FormattedText.fromJson(json['description'])!,
+      photo: Photo.fromJson(json['photo']),
+      embedUrl: json['embed_url'],
+      embedType: json['embed_type'],
+      embedWidth: json['embed_width'],
+      embedHeight: json['embed_height'],
+      duration: json['duration'],
+      author: json['author'],
+      animation: Animation.fromJson(json['animation']),
+      audio: Audio.fromJson(json['audio']),
+      document: Document.fromJson(json['document']),
+      sticker: Sticker.fromJson(json['sticker']),
+      video: Video.fromJson(json['video']),
+      videoNote: VideoNote.fromJson(json['video_note']),
+      voiceNote: VoiceNote.fromJson(json['voice_note']),
+      instantViewVersion: json['instant_view_version'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'display_url': this.displayUrl,
-        'type': this.type,
-        'site_name': this.siteName,
-        'title': this.title,
-        'description': this.description.toJson(),
-        'photo': this.photo?.toJson(),
-        'embed_url': this.embedUrl,
-        'embed_type': this.embedType,
-        'embed_width': this.embedWidth,
-        'embed_height': this.embedHeight,
-        'duration': this.duration,
-        'author': this.author,
-        'animation': this.animation?.toJson(),
-        'audio': this.audio?.toJson(),
-        'document': this.document?.toJson(),
-        'sticker': this.sticker?.toJson(),
-        'video': this.video?.toJson(),
-        'video_note': this.videoNote?.toJson(),
-        'voice_note': this.voiceNote?.toJson(),
-        'instant_view_version': this.instantViewVersion,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'display_url': displayUrl,
+        'type': type,
+        'site_name': siteName,
+        'title': title,
+        'description': description.toJson(),
+        'photo': photo?.toJson(),
+        'embed_url': embedUrl,
+        'embed_type': embedType,
+        'embed_width': embedWidth,
+        'embed_height': embedHeight,
+        'duration': duration,
+        'author': author,
+        'animation': animation?.toJson(),
+        'audio': audio?.toJson(),
+        'document': document?.toJson(),
+        'sticker': sticker?.toJson(),
+        'video': video?.toJson(),
+        'video_note': videoNote?.toJson(),
+        'voice_note': voiceNote?.toJson(),
+        'instant_view_version': instantViewVersion,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about the origin of a forwarded message
+@immutable
 abstract class MessageForwardOrigin extends TdObject {
   const MessageForwardOrigin();
 
-  static const String CONSTRUCTOR = 'messageForwardOrigin';
+  static const String constructor = 'messageForwardOrigin';
 
   /// Inherited by:
   /// [MessageForwardOriginUser]
@@ -18,16 +20,16 @@ abstract class MessageForwardOrigin extends TdObject {
       return null;
     }
 
-    switch (json["@type"]) {
-      case MessageForwardOriginUser.CONSTRUCTOR:
+    switch (json['@type']) {
+      case MessageForwardOriginUser.constructor:
         return MessageForwardOriginUser.fromJson(json);
-      case MessageForwardOriginChat.CONSTRUCTOR:
+      case MessageForwardOriginChat.constructor:
         return MessageForwardOriginChat.fromJson(json);
-      case MessageForwardOriginHiddenUser.CONSTRUCTOR:
+      case MessageForwardOriginHiddenUser.constructor:
         return MessageForwardOriginHiddenUser.fromJson(json);
-      case MessageForwardOriginChannel.CONSTRUCTOR:
+      case MessageForwardOriginChannel.constructor:
         return MessageForwardOriginChannel.fromJson(json);
-      case MessageForwardOriginMessageImport.CONSTRUCTOR:
+      case MessageForwardOriginMessageImport.constructor:
         return MessageForwardOriginMessageImport.fromJson(json);
       default:
         return null;
@@ -35,7 +37,7 @@ abstract class MessageForwardOrigin extends TdObject {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

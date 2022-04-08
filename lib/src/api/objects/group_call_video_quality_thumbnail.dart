@@ -1,11 +1,13 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// The worst available video quality
+@immutable
 class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   const GroupCallVideoQualityThumbnail();
 
-  static const String CONSTRUCTOR = 'groupCallVideoQualityThumbnail';
+  static const String constructor = 'groupCallVideoQualityThumbnail';
 
   static GroupCallVideoQualityThumbnail? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -16,9 +18,12 @@ class GroupCallVideoQualityThumbnail extends GroupCallVideoQuality {
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {'@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

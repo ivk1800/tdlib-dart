@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A button that opens a specified URL and automatically authorize the
 /// current user if allowed to do so
+@immutable
 class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
-  InlineKeyboardButtonTypeLoginUrl(
-      {required this.url, required this.id, required this.forwardText});
+  const InlineKeyboardButtonTypeLoginUrl({
+    required this.url,
+    required this.id,
+    required this.forwardText,
+  });
 
   /// [url] An HTTP URL to open
   final String url;
@@ -16,7 +21,7 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   /// [forwardText] If non-empty, new text of the button in forwarded messages
   final String forwardText;
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeLoginUrl';
+  static const String constructor = 'inlineKeyboardButtonTypeLoginUrl';
 
   static InlineKeyboardButtonTypeLoginUrl? fromJson(
       Map<String, dynamic>? json) {
@@ -25,17 +30,21 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeLoginUrl(
-        url: json['url'], id: json['id'], forwardText: json['forward_text']);
+      url: json['url'],
+      id: json['id'],
+      forwardText: json['forward_text'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'id': this.id,
-        'forward_text': this.forwardText,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'id': id,
+        'forward_text': forwardText,
+        '@type': constructor,
       };
 
   @override

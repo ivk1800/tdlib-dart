@@ -1,11 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns an invoice payment form. This method must be called when the user
 /// presses inlineKeyboardButtonBuy
 /// Returns [PaymentForm]
+@immutable
 class GetPaymentForm extends TdFunction {
-  GetPaymentForm({required this.chatId, required this.messageId, this.theme});
+  const GetPaymentForm({
+    required this.chatId,
+    required this.messageId,
+    this.theme,
+  });
 
   /// [chatId] Chat identifier of the Invoice message
   final int chatId;
@@ -16,16 +22,17 @@ class GetPaymentForm extends TdFunction {
   /// [theme] Preferred payment form theme; pass null to use the default theme
   final PaymentFormTheme? theme;
 
-  static const String CONSTRUCTOR = 'getPaymentForm';
+  static const String constructor = 'getPaymentForm';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'theme': this.theme?.toJson(),
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'theme': theme?.toJson(),
+        '@type': constructor,
       };
 
   @override

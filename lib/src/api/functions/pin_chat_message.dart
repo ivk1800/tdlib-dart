@@ -1,15 +1,18 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Pins a message in a chat; requires can_pin_messages rights or
 /// can_edit_messages rights in the channel
 /// Returns [Ok]
+@immutable
 class PinChatMessage extends TdFunction {
-  PinChatMessage(
-      {required this.chatId,
-      required this.messageId,
-      required this.disableNotification,
-      required this.onlyForSelf});
+  const PinChatMessage({
+    required this.chatId,
+    required this.messageId,
+    required this.disableNotification,
+    required this.onlyForSelf,
+  });
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -26,17 +29,18 @@ class PinChatMessage extends TdFunction {
   /// private chats only
   final bool onlyForSelf;
 
-  static const String CONSTRUCTOR = 'pinChatMessage';
+  static const String constructor = 'pinChatMessage';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'chat_id': this.chatId,
-        'message_id': this.messageId,
-        'disable_notification': this.disableNotification,
-        'only_for_self': this.onlyForSelf,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'message_id': messageId,
+        'disable_notification': disableNotification,
+        'only_for_self': onlyForSelf,
+        '@type': constructor,
       };
 
   @override

@@ -1,11 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Returns a list of trending sticker sets. For optimal performance, the
 /// number of returned sticker sets is chosen by TDLib
 /// Returns [StickerSets]
+@immutable
 class GetTrendingStickerSets extends TdFunction {
-  GetTrendingStickerSets({required this.offset, required this.limit});
+  const GetTrendingStickerSets({
+    required this.offset,
+    required this.limit,
+  });
 
   /// [offset] The offset from which to return the sticker sets; must be
   /// non-negative
@@ -17,13 +22,17 @@ class GetTrendingStickerSets extends TdFunction {
   /// list has not been reached
   final int limit;
 
-  static const String CONSTRUCTOR = 'getTrendingStickerSets';
+  static const String constructor = 'getTrendingStickerSets';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'offset': this.offset, 'limit': this.limit, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'offset': offset,
+        'limit': limit,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

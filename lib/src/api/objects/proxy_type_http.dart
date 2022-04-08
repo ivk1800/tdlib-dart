@@ -1,10 +1,15 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A HTTP transparent proxy server
+@immutable
 class ProxyTypeHttp extends ProxyType {
-  ProxyTypeHttp(
-      {required this.username, required this.password, required this.httpOnly});
+  const ProxyTypeHttp({
+    required this.username,
+    required this.password,
+    required this.httpOnly,
+  });
 
   /// [username] Username for logging in; may be empty
   final String username;
@@ -16,7 +21,7 @@ class ProxyTypeHttp extends ProxyType {
   /// support transparent TCP connections via HTTP CONNECT method
   final bool httpOnly;
 
-  static const String CONSTRUCTOR = 'proxyTypeHttp';
+  static const String constructor = 'proxyTypeHttp';
 
   static ProxyTypeHttp? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -24,19 +29,21 @@ class ProxyTypeHttp extends ProxyType {
     }
 
     return ProxyTypeHttp(
-        username: json['username'],
-        password: json['password'],
-        httpOnly: json['http_only']);
+      username: json['username'],
+      password: json['password'],
+      httpOnly: json['http_only'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'username': this.username,
-        'password': this.password,
-        'http_only': this.httpOnly,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'username': username,
+        'password': password,
+        'http_only': httpOnly,
+        '@type': constructor,
       };
 
   @override

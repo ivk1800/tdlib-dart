@@ -1,16 +1,20 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A list of privacy rules. Rules are matched in the specified order. The
 /// first matched rule defines the privacy setting for a given user. If no
 /// rule matches, the action is not allowed
+@immutable
 class UserPrivacySettingRules extends TdObject {
-  UserPrivacySettingRules({required this.rules});
+  const UserPrivacySettingRules({
+    required this.rules,
+  });
 
   /// [rules] A list of rules
   final List<UserPrivacySettingRule> rules;
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRules';
+  static const String constructor = 'userPrivacySettingRules';
 
   static UserPrivacySettingRules? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -18,17 +22,19 @@ class UserPrivacySettingRules extends TdObject {
     }
 
     return UserPrivacySettingRules(
-        rules: List<UserPrivacySettingRule>.from((json['rules'] ?? [])
-            .map((item) => UserPrivacySettingRule.fromJson(item))
-            .toList()));
+      rules: List<UserPrivacySettingRule>.from((json['rules'] ?? [])
+          .map((item) => UserPrivacySettingRule.fromJson(item))
+          .toList()),
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'rules': rules.map((item) => item.toJson()).toList(),
-        '@type': CONSTRUCTOR
+        '@type': constructor,
       };
 
   @override

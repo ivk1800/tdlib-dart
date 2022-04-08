@@ -1,14 +1,17 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Starts screen sharing in a joined group call. Returns join response
 /// payload for tgcalls
 /// Returns [Text]
+@immutable
 class StartGroupCallScreenSharing extends TdFunction {
-  StartGroupCallScreenSharing(
-      {required this.groupCallId,
-      required this.audioSourceId,
-      required this.payload});
+  const StartGroupCallScreenSharing({
+    required this.groupCallId,
+    required this.audioSourceId,
+    required this.payload,
+  });
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -20,16 +23,17 @@ class StartGroupCallScreenSharing extends TdFunction {
   /// [payload] Group call join payload; received from tgcalls
   final String payload;
 
-  static const String CONSTRUCTOR = 'startGroupCallScreenSharing';
+  static const String constructor = 'startGroupCallScreenSharing';
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'group_call_id': this.groupCallId,
-        'audio_source_id': this.audioSourceId,
-        'payload': this.payload,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'group_call_id': groupCallId,
+        'audio_source_id': audioSourceId,
+        'payload': payload,
+        '@type': constructor,
       };
 
   @override

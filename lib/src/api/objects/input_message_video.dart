@@ -1,18 +1,21 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// A video message
+@immutable
 class InputMessageVideo extends InputMessageContent {
-  InputMessageVideo(
-      {required this.video,
-      this.thumbnail,
-      required this.addedStickerFileIds,
-      required this.duration,
-      required this.width,
-      required this.height,
-      required this.supportsStreaming,
-      this.caption,
-      required this.ttl});
+  const InputMessageVideo({
+    required this.video,
+    this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.duration,
+    required this.width,
+    required this.height,
+    required this.supportsStreaming,
+    this.caption,
+    required this.ttl,
+  });
 
   /// [video] Video to be sent
   final InputFile video;
@@ -44,7 +47,7 @@ class InputMessageVideo extends InputMessageContent {
   /// specified only in private chats
   final int ttl;
 
-  static const String CONSTRUCTOR = 'inputMessageVideo';
+  static const String constructor = 'inputMessageVideo';
 
   static InputMessageVideo? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -52,35 +55,35 @@ class InputMessageVideo extends InputMessageContent {
     }
 
     return InputMessageVideo(
-        video: InputFile.fromJson(json['video'])!,
-        thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-        addedStickerFileIds: List<int>.from(
-            (json['added_sticker_file_ids'] ?? [])
-                .map((item) => item)
-                .toList()),
-        duration: json['duration'],
-        width: json['width'],
-        height: json['height'],
-        supportsStreaming: json['supports_streaming'],
-        caption: FormattedText.fromJson(json['caption']),
-        ttl: json['ttl']);
+      video: InputFile.fromJson(json['video'])!,
+      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      addedStickerFileIds: List<int>.from(
+          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+      duration: json['duration'],
+      width: json['width'],
+      height: json['height'],
+      supportsStreaming: json['supports_streaming'],
+      caption: FormattedText.fromJson(json['caption']),
+      ttl: json['ttl'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'video': this.video.toJson(),
-        'thumbnail': this.thumbnail?.toJson(),
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'video': video.toJson(),
+        'thumbnail': thumbnail?.toJson(),
         'added_sticker_file_ids':
             addedStickerFileIds.map((item) => item).toList(),
-        'duration': this.duration,
-        'width': this.width,
-        'height': this.height,
-        'supports_streaming': this.supportsStreaming,
-        'caption': this.caption?.toJson(),
-        'ttl': this.ttl,
-        '@type': CONSTRUCTOR
+        'duration': duration,
+        'width': width,
+        'height': height,
+        'supports_streaming': supportsStreaming,
+        'caption': caption?.toJson(),
+        'ttl': ttl,
+        '@type': constructor,
       };
 
   @override

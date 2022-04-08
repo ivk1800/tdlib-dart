@@ -1,9 +1,14 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// Contains information about saved card credentials
+@immutable
 class SavedCredentials extends TdObject {
-  SavedCredentials({required this.id, required this.title});
+  const SavedCredentials({
+    required this.id,
+    required this.title,
+  });
 
   /// [id] Unique identifier of the saved credentials
   final String id;
@@ -11,21 +16,28 @@ class SavedCredentials extends TdObject {
   /// [title] Title of the saved credentials
   final String title;
 
-  static const String CONSTRUCTOR = 'savedCredentials';
+  static const String constructor = 'savedCredentials';
 
   static SavedCredentials? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return SavedCredentials(id: json['id'], title: json['title']);
+    return SavedCredentials(
+      id: json['id'],
+      title: json['title'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() =>
-      {'id': this.id, 'title': this.title, '@type': CONSTRUCTOR};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
+        'title': title,
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

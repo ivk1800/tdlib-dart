@@ -1,13 +1,16 @@
-import '../tdapi.dart';
+import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
 
 /// An authorization confirmation dialog needs to be shown to the user
+@immutable
 class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
-  LoginUrlInfoRequestConfirmation(
-      {required this.url,
-      required this.domain,
-      required this.botUserId,
-      required this.requestWriteAccess});
+  const LoginUrlInfoRequestConfirmation({
+    required this.url,
+    required this.domain,
+    required this.botUserId,
+    required this.requestWriteAccess,
+  });
 
   /// [url] An HTTP URL to be opened
   final String url;
@@ -22,7 +25,7 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   /// permission to the bot to send them messages
   final bool requestWriteAccess;
 
-  static const String CONSTRUCTOR = 'loginUrlInfoRequestConfirmation';
+  static const String constructor = 'loginUrlInfoRequestConfirmation';
 
   static LoginUrlInfoRequestConfirmation? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,21 +33,23 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     }
 
     return LoginUrlInfoRequestConfirmation(
-        url: json['url'],
-        domain: json['domain'],
-        botUserId: json['bot_user_id'],
-        requestWriteAccess: json['request_write_access']);
+      url: json['url'],
+      domain: json['domain'],
+      botUserId: json['bot_user_id'],
+      requestWriteAccess: json['request_write_access'],
+    );
   }
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => constructor;
+
   @override
-  Map<String, dynamic> toJson() => {
-        'url': this.url,
-        'domain': this.domain,
-        'bot_user_id': this.botUserId,
-        'request_write_access': this.requestWriteAccess,
-        '@type': CONSTRUCTOR
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'url': url,
+        'domain': domain,
+        'bot_user_id': botUserId,
+        'request_write_access': requestWriteAccess,
+        '@type': constructor,
       };
 
   @override
