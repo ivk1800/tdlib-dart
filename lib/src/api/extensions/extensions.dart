@@ -82,7 +82,7 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     TResult Function(AuthenticationCodeTypeCall value)? call,
     TResult Function(AuthenticationCodeTypeFlashCall value)? flashCall,
     TResult Function(AuthenticationCodeTypeMissedCall value)? missedCall,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case AuthenticationCodeTypeTelegramMessage.constructor:
@@ -307,7 +307,7 @@ extension AuthorizationStateExtensions on AuthorizationState {
     TResult Function(AuthorizationStateLoggingOut value)? loggingOut,
     TResult Function(AuthorizationStateClosing value)? closing,
     TResult Function(AuthorizationStateClosed value)? closed,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case AuthorizationStateWaitTdlibParameters.constructor:
@@ -554,7 +554,7 @@ extension InputFileExtensions on InputFile {
     TResult Function(InputFileRemote value)? remote,
     TResult Function(InputFileLocal value)? local,
     TResult Function(InputFileGenerated value)? generated,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputFileId.constructor:
@@ -685,7 +685,7 @@ extension ThumbnailFormatExtensions on ThumbnailFormat {
     TResult Function(ThumbnailFormatGif value)? gif,
     TResult Function(ThumbnailFormatTgs value)? tgs,
     TResult Function(ThumbnailFormatMpeg4 value)? mpeg4,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ThumbnailFormatJpeg.constructor:
@@ -763,7 +763,7 @@ extension MaskPointExtensions on MaskPoint {
     TResult Function(MaskPointEyes value)? eyes,
     TResult Function(MaskPointMouth value)? mouth,
     TResult Function(MaskPointChin value)? chin,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MaskPointForehead.constructor:
@@ -849,7 +849,7 @@ extension PollTypeExtensions on PollType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PollTypeRegular value)? regular,
     TResult Function(PollTypeQuiz value)? quiz,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PollTypeRegular.constructor:
@@ -1219,7 +1219,7 @@ extension UserTypeExtensions on UserType {
     TResult Function(UserTypeDeleted value)? deleted,
     TResult Function(UserTypeBot value)? bot,
     TResult Function(UserTypeUnknown value)? unknown,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case UserTypeRegular.constructor:
@@ -1361,7 +1361,7 @@ extension InputChatPhotoExtensions on InputChatPhoto {
     TResult Function(InputChatPhotoPrevious value)? previous,
     TResult Function(InputChatPhotoStatic value)? static,
     TResult Function(InputChatPhotoAnimation value)? animation,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputChatPhotoPrevious.constructor:
@@ -1577,7 +1577,7 @@ extension ChatMemberStatusExtensions on ChatMemberStatus {
     TResult Function(ChatMemberStatusRestricted value)? restricted,
     TResult Function(ChatMemberStatusLeft value)? left,
     TResult Function(ChatMemberStatusBanned value)? banned,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatMemberStatusCreator.constructor:
@@ -1748,7 +1748,7 @@ extension ChatMembersFilterExtensions on ChatMembersFilter {
     TResult Function(ChatMembersFilterRestricted value)? restricted,
     TResult Function(ChatMembersFilterBanned value)? banned,
     TResult Function(ChatMembersFilterBots value)? bots,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatMembersFilterContacts.constructor:
@@ -1845,7 +1845,7 @@ extension SupergroupMembersFilterExtensions on SupergroupMembersFilter {
     TResult Function(SupergroupMembersFilterBanned value)? banned,
     TResult Function(SupergroupMembersFilterMention value)? mention,
     TResult Function(SupergroupMembersFilterBots value)? bots,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case SupergroupMembersFilterRecent.constructor:
@@ -2246,7 +2246,7 @@ extension SecretChatStateExtensions on SecretChatState {
     TResult Function(SecretChatStatePending value)? pending,
     TResult Function(SecretChatStateReady value)? ready,
     TResult Function(SecretChatStateClosed value)? closed,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case SecretChatStatePending.constructor:
@@ -2305,7 +2305,7 @@ extension MessageSenderExtensions on MessageSender {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MessageSenderUser value)? user,
     TResult Function(MessageSenderChat value)? chat,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageSenderUser.constructor:
@@ -2382,7 +2382,7 @@ extension MessageForwardOriginExtensions on MessageForwardOrigin {
     TResult Function(MessageForwardOriginHiddenUser value)? hiddenUser,
     TResult Function(MessageForwardOriginChannel value)? channel,
     TResult Function(MessageForwardOriginMessageImport value)? messageImport,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageForwardOriginUser.constructor:
@@ -2535,7 +2535,7 @@ extension MessageSendingStateExtensions on MessageSendingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MessageSendingStatePending value)? pending,
     TResult Function(MessageSendingStateFailed value)? failed,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageSendingStatePending.constructor:
@@ -2760,7 +2760,7 @@ extension NotificationSettingsScopeExtensions on NotificationSettingsScope {
     TResult Function(NotificationSettingsScopePrivateChats value)? privateChats,
     TResult Function(NotificationSettingsScopeGroupChats value)? groupChats,
     TResult Function(NotificationSettingsScopeChannelChats value)? channelChats,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case NotificationSettingsScopePrivateChats.constructor:
@@ -2876,7 +2876,7 @@ extension ChatTypeExtensions on ChatType {
     TResult Function(ChatTypeBasicGroup value)? basicGroup,
     TResult Function(ChatTypeSupergroup value)? supergroup,
     TResult Function(ChatTypeSecret value)? secret,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatTypePrivate.constructor:
@@ -3031,7 +3031,7 @@ extension ChatListExtensions on ChatList {
     TResult Function(ChatListMain value)? main,
     TResult Function(ChatListArchive value)? archive,
     TResult Function(ChatListFilter value)? filter,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatListMain.constructor:
@@ -3092,7 +3092,7 @@ extension ChatSourceExtensions on ChatSource {
     TResult Function(ChatSourceMtprotoProxy value)? mtprotoProxy,
     TResult Function(ChatSourcePublicServiceAnnouncement value)?
         publicServiceAnnouncement,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatSourceMtprotoProxy.constructor:
@@ -3272,7 +3272,7 @@ extension PublicChatTypeExtensions on PublicChatType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PublicChatTypeHasUsername value)? hasUsername,
     TResult Function(PublicChatTypeIsLocationBased value)? isLocationBased,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PublicChatTypeHasUsername.constructor:
@@ -3331,7 +3331,7 @@ extension ChatActionBarExtensions on ChatActionBar {
     TResult Function(ChatActionBarAddContact value)? addContact,
     TResult Function(ChatActionBarSharePhoneNumber value)? sharePhoneNumber,
     TResult Function(ChatActionBarJoinRequest value)? joinRequest,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatActionBarReportSpam.constructor:
@@ -3437,7 +3437,7 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
         requestPhoneNumber,
     TResult Function(KeyboardButtonTypeRequestLocation value)? requestLocation,
     TResult Function(KeyboardButtonTypeRequestPoll value)? requestPoll,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case KeyboardButtonTypeText.constructor:
@@ -3537,7 +3537,7 @@ extension InlineKeyboardButtonTypeExtensions on InlineKeyboardButtonType {
     TResult Function(InlineKeyboardButtonTypeSwitchInline value)? switchInline,
     TResult Function(InlineKeyboardButtonTypeBuy value)? buy,
     TResult Function(InlineKeyboardButtonTypeUser value)? user,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InlineKeyboardButtonTypeUrl.constructor:
@@ -3689,7 +3689,7 @@ extension ReplyMarkupExtensions on ReplyMarkup {
     TResult Function(ReplyMarkupForceReply value)? forceReply,
     TResult Function(ReplyMarkupShowKeyboard value)? showKeyboard,
     TResult Function(ReplyMarkupInlineKeyboard value)? inlineKeyboard,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ReplyMarkupRemoveKeyboard.constructor:
@@ -3785,7 +3785,7 @@ extension LoginUrlInfoExtensions on LoginUrlInfo {
     TResult Function(LoginUrlInfoOpen value)? open,
     TResult Function(LoginUrlInfoRequestConfirmation value)?
         requestConfirmation,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case LoginUrlInfoOpen.constructor:
@@ -3927,7 +3927,7 @@ extension RichTextExtensions on RichText {
     TResult Function(RichTextAnchor value)? anchor,
     TResult Function(RichTextAnchorLink value)? anchorLink,
     TResult Function(RichTexts value)? s,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case RichTextPlain.constructor:
@@ -4237,7 +4237,7 @@ extension PageBlockHorizontalAlignmentExtensions
     TResult Function(PageBlockHorizontalAlignmentLeft value)? left,
     TResult Function(PageBlockHorizontalAlignmentCenter value)? center,
     TResult Function(PageBlockHorizontalAlignmentRight value)? right,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PageBlockHorizontalAlignmentLeft.constructor:
@@ -4281,7 +4281,7 @@ extension PageBlockVerticalAlignmentExtensions on PageBlockVerticalAlignment {
     TResult Function(PageBlockVerticalAlignmentTop value)? top,
     TResult Function(PageBlockVerticalAlignmentMiddle value)? middle,
     TResult Function(PageBlockVerticalAlignmentBottom value)? bottom,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PageBlockVerticalAlignmentTop.constructor:
@@ -4467,7 +4467,7 @@ extension PageBlockExtensions on PageBlock {
     TResult Function(PageBlockDetails value)? details,
     TResult Function(PageBlockRelatedArticles value)? relatedArticles,
     TResult Function(PageBlockMap value)? map,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PageBlockTitle.constructor:
@@ -5206,7 +5206,7 @@ extension InputCredentialsExtensions on InputCredentials {
     TResult Function(InputCredentialsNew value)? $new,
     TResult Function(InputCredentialsApplePay value)? applePay,
     TResult Function(InputCredentialsGooglePay value)? googlePay,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputCredentialsSaved.constructor:
@@ -5473,7 +5473,7 @@ extension PassportElementTypeExtensions on PassportElementType {
         temporaryRegistration,
     TResult Function(PassportElementTypePhoneNumber value)? phoneNumber,
     TResult Function(PassportElementTypeEmailAddress value)? emailAddress,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PassportElementTypePersonalDetails.constructor:
@@ -5721,7 +5721,7 @@ extension PassportElementExtensions on PassportElement {
         temporaryRegistration,
     TResult Function(PassportElementPhoneNumber value)? phoneNumber,
     TResult Function(PassportElementEmailAddress value)? emailAddress,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PassportElementPersonalDetails.constructor:
@@ -6003,7 +6003,7 @@ extension InputPassportElementExtensions on InputPassportElement {
         temporaryRegistration,
     TResult Function(InputPassportElementPhoneNumber value)? phoneNumber,
     TResult Function(InputPassportElementEmailAddress value)? emailAddress,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputPassportElementPersonalDetails.constructor:
@@ -6275,7 +6275,7 @@ extension PassportElementErrorSourceExtensions on PassportElementErrorSource {
         translationFiles,
     TResult Function(PassportElementErrorSourceFile value)? file,
     TResult Function(PassportElementErrorSourceFiles value)? files,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PassportElementErrorSourceUnspecified.constructor:
@@ -6525,7 +6525,7 @@ extension InputPassportElementErrorSourceExtensions
         translationFiles,
     TResult Function(InputPassportElementErrorSourceFile value)? file,
     TResult Function(InputPassportElementErrorSourceFiles value)? files,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputPassportElementErrorSourceUnspecified.constructor:
@@ -6933,7 +6933,7 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessageProximityAlertTriggered value)?
         messageProximityAlertTriggered,
     TResult Function(MessageUnsupported value)? messageUnsupported,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageText.constructor:
@@ -7758,7 +7758,7 @@ extension TextEntityTypeExtensions on TextEntityType {
     TResult Function(TextEntityTypeTextUrl value)? textUrl,
     TResult Function(TextEntityTypeMentionName value)? mentionName,
     TResult Function(TextEntityTypeMediaTimestamp value)? mediaTimestamp,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case TextEntityTypeMention.constructor:
@@ -7932,7 +7932,7 @@ extension MessageSchedulingStateExtensions on MessageSchedulingState {
     TResult Function(MessageSchedulingStateSendAtDate value)? sendAtDate,
     TResult Function(MessageSchedulingStateSendWhenOnline value)?
         sendWhenOnline,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageSchedulingStateSendAtDate.constructor:
@@ -8070,7 +8070,7 @@ extension InputMessageContentExtensions on InputMessageContent {
     TResult Function(InputMessageInvoice value)? inputMessageInvoice,
     TResult Function(InputMessagePoll value)? inputMessagePoll,
     TResult Function(InputMessageForwarded value)? inputMessageForwarded,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputMessageText.constructor:
@@ -8525,7 +8525,7 @@ extension SearchMessagesFilterExtensions on SearchMessagesFilter {
     TResult Function(SearchMessagesFilterUnreadMention value)? unreadMention,
     TResult Function(SearchMessagesFilterFailedToSend value)? failedToSend,
     TResult Function(SearchMessagesFilterPinned value)? pinned,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case SearchMessagesFilterEmpty.constructor:
@@ -8691,7 +8691,7 @@ extension ChatActionExtensions on ChatAction {
     TResult Function(ChatActionUploadingVideoNote value)? uploadingVideoNote,
     TResult Function(ChatActionWatchingAnimations value)? watchingAnimations,
     TResult Function(ChatActionCancel value)? cancel,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatActionTyping.constructor:
@@ -8864,7 +8864,7 @@ extension UserStatusExtensions on UserStatus {
     TResult Function(UserStatusRecently value)? recently,
     TResult Function(UserStatusLastWeek value)? lastWeek,
     TResult Function(UserStatusLastMonth value)? lastMonth,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case UserStatusEmpty.constructor:
@@ -9044,7 +9044,7 @@ extension CallDiscardReasonExtensions on CallDiscardReason {
     TResult Function(CallDiscardReasonDeclined value)? declined,
     TResult Function(CallDiscardReasonDisconnected value)? disconnected,
     TResult Function(CallDiscardReasonHungUp value)? hungUp,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CallDiscardReasonEmpty.constructor:
@@ -9112,7 +9112,7 @@ extension CallServerTypeExtensions on CallServerType {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CallServerTypeTelegramReflector value)? telegramReflector,
     TResult Function(CallServerTypeWebrtc value)? webrtc,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CallServerTypeTelegramReflector.constructor:
@@ -9224,7 +9224,7 @@ extension CallStateExtensions on CallState {
     TResult Function(CallStateHangingUp value)? hangingUp,
     TResult Function(CallStateDiscarded value)? discarded,
     TResult Function(CallStateError value)? error,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CallStatePending.constructor:
@@ -9335,7 +9335,7 @@ extension GroupCallVideoQualityExtensions on GroupCallVideoQuality {
     TResult Function(GroupCallVideoQualityThumbnail value)? thumbnail,
     TResult Function(GroupCallVideoQualityMedium value)? medium,
     TResult Function(GroupCallVideoQualityFull value)? full,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case GroupCallVideoQualityThumbnail.constructor:
@@ -9537,7 +9537,7 @@ extension CallProblemExtensions on CallProblem {
     TResult Function(CallProblemDropped value)? dropped,
     TResult Function(CallProblemDistortedVideo value)? distortedVideo,
     TResult Function(CallProblemPixelatedVideo value)? pixelatedVideo,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CallProblemEcho.constructor:
@@ -9651,7 +9651,7 @@ extension DiceStickersExtensions on DiceStickers {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DiceStickersRegular value)? regular,
     TResult Function(DiceStickersSlotMachine value)? slotMachine,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case DiceStickersRegular.constructor:
@@ -9772,7 +9772,7 @@ extension InputInlineQueryResultExtensions on InputInlineQueryResult {
     TResult Function(InputInlineQueryResultVenue value)? venue,
     TResult Function(InputInlineQueryResultVideo value)? video,
     TResult Function(InputInlineQueryResultVoiceNote value)? voiceNote,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputInlineQueryResultAnimation.constructor:
@@ -10182,7 +10182,7 @@ extension InlineQueryResultExtensions on InlineQueryResult {
     TResult Function(InlineQueryResultSticker value)? sticker,
     TResult Function(InlineQueryResultVideo value)? video,
     TResult Function(InlineQueryResultVoiceNote value)? voiceNote,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InlineQueryResultArticle.constructor:
@@ -10455,7 +10455,7 @@ extension CallbackQueryPayloadExtensions on CallbackQueryPayload {
     TResult Function(CallbackQueryPayloadDataWithPassword value)?
         dataWithPassword,
     TResult Function(CallbackQueryPayloadGame value)? game,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CallbackQueryPayloadData.constructor:
@@ -10770,7 +10770,7 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventVideoChatParticipantVolumeLevelChanged,
     TResult Function(ChatEventVideoChatMuteNewParticipantsToggled value)?
         chatEventVideoChatMuteNewParticipantsToggled,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatEventMessageEdited.constructor:
@@ -11385,7 +11385,7 @@ extension LanguagePackStringValueExtensions on LanguagePackStringValue {
     TResult Function(LanguagePackStringValueOrdinary value)? ordinary,
     TResult Function(LanguagePackStringValuePluralized value)? pluralized,
     TResult Function(LanguagePackStringValueDeleted value)? deleted,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case LanguagePackStringValueOrdinary.constructor:
@@ -11558,7 +11558,7 @@ extension DeviceTokenExtensions on DeviceToken {
     TResult Function(DeviceTokenUbuntuPush value)? ubuntuPush,
     TResult Function(DeviceTokenBlackBerryPush value)? blackBerryPush,
     TResult Function(DeviceTokenTizenPush value)? tizenPush,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case DeviceTokenFirebaseCloudMessaging.constructor:
@@ -11766,7 +11766,7 @@ extension BackgroundFillExtensions on BackgroundFill {
     TResult Function(BackgroundFillSolid value)? solid,
     TResult Function(BackgroundFillGradient value)? gradient,
     TResult Function(BackgroundFillFreeformGradient value)? freeformGradient,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case BackgroundFillSolid.constructor:
@@ -11842,7 +11842,7 @@ extension BackgroundTypeExtensions on BackgroundType {
     TResult Function(BackgroundTypeWallpaper value)? wallpaper,
     TResult Function(BackgroundTypePattern value)? pattern,
     TResult Function(BackgroundTypeFill value)? fill,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case BackgroundTypeWallpaper.constructor:
@@ -11945,7 +11945,7 @@ extension InputBackgroundExtensions on InputBackground {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InputBackgroundLocal value)? local,
     TResult Function(InputBackgroundRemote value)? remote,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputBackgroundLocal.constructor:
@@ -12056,7 +12056,7 @@ extension CanTransferOwnershipResultExtensions on CanTransferOwnershipResult {
         passwordTooFresh,
     TResult Function(CanTransferOwnershipResultSessionTooFresh value)?
         sessionTooFresh,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CanTransferOwnershipResultOk.constructor:
@@ -12149,7 +12149,7 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
         publicChatsTooMuch,
     TResult Function(CheckChatUsernameResultPublicGroupsUnavailable value)?
         publicGroupsUnavailable,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CheckChatUsernameResultOk.constructor:
@@ -12209,7 +12209,7 @@ extension CheckStickerSetNameResultExtensions on CheckStickerSetNameResult {
     TResult Function(CheckStickerSetNameResultOk value)? ok,
     TResult Function(CheckStickerSetNameResultNameInvalid value)? nameInvalid,
     TResult Function(CheckStickerSetNameResultNameOccupied value)? nameOccupied,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case CheckStickerSetNameResultOk.constructor:
@@ -12254,7 +12254,7 @@ extension ResetPasswordResultExtensions on ResetPasswordResult {
     TResult Function(ResetPasswordResultOk value)? ok,
     TResult Function(ResetPasswordResultPending value)? pending,
     TResult Function(ResetPasswordResultDeclined value)? declined,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ResetPasswordResultOk.constructor:
@@ -12316,7 +12316,7 @@ extension MessageFileTypeExtensions on MessageFileType {
     TResult Function(MessageFileTypePrivate value)? private,
     TResult Function(MessageFileTypeGroup value)? group,
     TResult Function(MessageFileTypeUnknown value)? unknown,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case MessageFileTypePrivate.constructor:
@@ -12497,7 +12497,7 @@ extension PushMessageContentExtensions on PushMessageContent {
         chatJoinByRequest,
     TResult Function(PushMessageContentMessageForwards value)? messageForwards,
     TResult Function(PushMessageContentMediaAlbum value)? mediaAlbum,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case PushMessageContentHidden.constructor:
@@ -12946,7 +12946,7 @@ extension NotificationTypeExtensions on NotificationType {
     TResult Function(NotificationTypeNewSecretChat value)? newSecretChat,
     TResult Function(NotificationTypeNewCall value)? newCall,
     TResult Function(NotificationTypeNewPushMessage value)? newPushMessage,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case NotificationTypeNewMessage.constructor:
@@ -13035,7 +13035,7 @@ extension NotificationGroupTypeExtensions on NotificationGroupType {
     TResult Function(NotificationGroupTypeMentions value)? mentions,
     TResult Function(NotificationGroupTypeSecretChat value)? secretChat,
     TResult Function(NotificationGroupTypeCalls value)? calls,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case NotificationGroupTypeMessages.constructor:
@@ -13120,7 +13120,7 @@ extension OptionValueExtensions on OptionValue {
     TResult Function(OptionValueEmpty value)? empty,
     TResult Function(OptionValueInteger value)? integer,
     TResult Function(OptionValueString value)? $string,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case OptionValueBoolean.constructor:
@@ -13219,7 +13219,7 @@ extension JsonValueExtensions on JsonValue {
     TResult Function(JsonValueString value)? $string,
     TResult Function(JsonValueArray value)? array,
     TResult Function(JsonValueObject value)? $object,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case JsonValueNull.constructor:
@@ -13356,7 +13356,7 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
     TResult Function(UserPrivacySettingRuleRestrictUsers value)? restrictUsers,
     TResult Function(UserPrivacySettingRuleRestrictChatMembers value)?
         restrictChatMembers,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case UserPrivacySettingRuleAllowAll.constructor:
@@ -13516,7 +13516,7 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         allowPeerToPeerCalls,
     TResult Function(UserPrivacySettingAllowFindingByPhoneNumber value)?
         allowFindingByPhoneNumber,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case UserPrivacySettingShowStatus.constructor:
@@ -13711,7 +13711,7 @@ extension ChatReportReasonExtensions on ChatReportReason {
         unrelatedLocation,
     TResult Function(ChatReportReasonFake value)? fake,
     TResult Function(ChatReportReasonCustom value)? custom,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatReportReasonSpam.constructor:
@@ -13886,7 +13886,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeUnknownDeepLink value)? unknownDeepLink,
     TResult Function(InternalLinkTypeUnsupportedProxy value)? unsupportedProxy,
     TResult Function(InternalLinkTypeVideoChat value)? videoChat,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InternalLinkTypeActiveSessions.constructor:
@@ -14318,7 +14318,7 @@ extension FileTypeExtensions on FileType {
     TResult Function(FileTypeVideoNote value)? videoNote,
     TResult Function(FileTypeVoiceNote value)? voiceNote,
     TResult Function(FileTypeWallpaper value)? wallpaper,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case FileTypeNone.constructor:
@@ -14503,7 +14503,7 @@ extension NetworkTypeExtensions on NetworkType {
     TResult Function(NetworkTypeMobileRoaming value)? mobileRoaming,
     TResult Function(NetworkTypeWiFi value)? wiFi,
     TResult Function(NetworkTypeOther value)? other,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case NetworkTypeNone.constructor:
@@ -14553,7 +14553,7 @@ extension NetworkStatisticsEntryExtensions on NetworkStatisticsEntry {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NetworkStatisticsEntryFile value)? file,
     TResult Function(NetworkStatisticsEntryCall value)? call,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case NetworkStatisticsEntryFile.constructor:
@@ -14680,7 +14680,7 @@ extension ConnectionStateExtensions on ConnectionState {
     TResult Function(ConnectionStateConnecting value)? connecting,
     TResult Function(ConnectionStateUpdating value)? updating,
     TResult Function(ConnectionStateReady value)? ready,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ConnectionStateWaitingForNetwork.constructor:
@@ -14752,7 +14752,7 @@ extension TopChatCategoryExtensions on TopChatCategory {
     TResult Function(TopChatCategoryInlineBots value)? inlineBots,
     TResult Function(TopChatCategoryCalls value)? calls,
     TResult Function(TopChatCategoryForwardChats value)? forwardChats,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case TopChatCategoryUsers.constructor:
@@ -14820,7 +14820,7 @@ extension TMeUrlTypeExtensions on TMeUrlType {
     TResult Function(TMeUrlTypeSupergroup value)? supergroup,
     TResult Function(TMeUrlTypeChatInvite value)? chatInvite,
     TResult Function(TMeUrlTypeStickerSet value)? stickerSet,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case TMeUrlTypeUser.constructor:
@@ -14945,7 +14945,7 @@ extension SuggestedActionExtensions on SuggestedAction {
     TResult Function(SuggestedActionConvertToBroadcastGroup value)?
         convertToBroadcastGroup,
     TResult Function(SuggestedActionSetPassword value)? setPassword,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
@@ -15060,7 +15060,7 @@ extension TextParseModeExtensions on TextParseMode {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TextParseModeMarkdown value)? markdown,
     TResult Function(TextParseModeHTML value)? hTML,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case TextParseModeMarkdown.constructor:
@@ -15108,7 +15108,7 @@ extension ProxyTypeExtensions on ProxyType {
     TResult Function(ProxyTypeSocks5 value)? socks5,
     TResult Function(ProxyTypeHttp value)? http,
     TResult Function(ProxyTypeMtproto value)? mtproto,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ProxyTypeSocks5.constructor:
@@ -15209,7 +15209,7 @@ extension InputStickerExtensions on InputSticker {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InputStickerStatic value)? static,
     TResult Function(InputStickerAnimated value)? animated,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case InputStickerStatic.constructor:
@@ -15296,7 +15296,7 @@ extension StatisticalGraphExtensions on StatisticalGraph {
     TResult Function(StatisticalGraphData value)? data,
     TResult Function(StatisticalGraphAsync value)? async,
     TResult Function(StatisticalGraphError value)? error,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case StatisticalGraphData.constructor:
@@ -15421,7 +15421,7 @@ extension ChatStatisticsExtensions on ChatStatistics {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ChatStatisticsSupergroup value)? supergroup,
     TResult Function(ChatStatisticsChannel value)? channel,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case ChatStatisticsSupergroup.constructor:
@@ -15559,7 +15559,7 @@ extension VectorPathCommandExtensions on VectorPathCommand {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(VectorPathCommandLine value)? line,
     TResult Function(VectorPathCommandCubicBezierCurve value)? cubicBezierCurve,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case VectorPathCommandLine.constructor:
@@ -15645,7 +15645,7 @@ extension BotCommandScopeExtensions on BotCommandScope {
     TResult Function(BotCommandScopeChatAdministrators value)?
         chatAdministrators,
     TResult Function(BotCommandScopeChatMember value)? chatMember,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case BotCommandScopeDefault.constructor:
@@ -16164,7 +16164,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdatePollAnswer value)? pollAnswer,
     TResult Function(UpdateChatMember value)? chatMember,
     TResult Function(UpdateNewChatJoinRequest value)? newChatJoinRequest,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case UpdateAuthorizationState.constructor:
@@ -17784,7 +17784,7 @@ extension LogStreamExtensions on LogStream {
     TResult Function(LogStreamDefault value)? $default,
     TResult Function(LogStreamFile value)? file,
     TResult Function(LogStreamEmpty value)? empty,
-    required TResult orElse(),
+    required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
       case LogStreamDefault.constructor:
