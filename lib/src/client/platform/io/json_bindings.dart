@@ -21,9 +21,7 @@ typedef td_json_client_destroy_t = ffi.Void Function(ffi.Pointer);
 class JsonBindings {
   static final JsonBindings _singleton = JsonBindings._internal();
 
-  factory JsonBindings() {
-    return _singleton;
-  }
+  factory JsonBindings() => _singleton;
 
   JsonBindings._internal() {
     final libtdjson = _openLib();
@@ -84,7 +82,7 @@ class JsonBindings {
     } else if (Platform.isWindows) {
       return 'tdjson.dll';
     }
-    throw UnsupportedError('unsupported for current platform');
+    throw UnsupportedError('Unsupported for current platform');
   }
 
   String _resolveFuncName(String name) =>

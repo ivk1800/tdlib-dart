@@ -4,6 +4,7 @@ class PlatformImpl implements Platform {
   @override
   void destroy() {
     // TODO: implement destroy
+    throw UnimplementedError();
   }
 
   @override
@@ -25,5 +26,6 @@ class PlatformImpl implements Platform {
   @override
   void send({required Map<String, dynamic> function}) {
     // TODO: implement send
+    throw UnimplementedError();
   }
 }

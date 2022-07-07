@@ -1,6 +1,6 @@
 import '../../td_api.dart';
 
-class TdFunctionException extends Error {
+class TdFunctionException implements Exception {
   TdFunctionException({
     required this.error,
     required this.function,

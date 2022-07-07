@@ -5,8 +5,9 @@ import 'dart:isolate';
 
 import 'package:rxdart/rxdart.dart';
 
-import 'json_bindings.dart';
+import '../../td_error.dart' as client_error;
 import '../platform.dart';
+import 'json_bindings.dart';
 import 'receive_isolate_data.dart';
 import 'receive_isolate_endpoint.dart';
 
@@ -20,7 +21,7 @@ class PlatformImpl implements Platform {
   @override
   Future<void> initialize() async {
     if (_client != null) {
-      throw StateError('client already initiated!');
+      throw client_error.TdError('Client already initiated!');
     }
 
     _client = JsonBindings().createClient();
