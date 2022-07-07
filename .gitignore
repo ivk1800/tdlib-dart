@@ -74,3 +74,8 @@ build/
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 pubspec.lock
+
+/tdlib
+example/linux
+example/analysis_options.yaml
+example/README.md
