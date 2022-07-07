@@ -23,45 +23,37 @@ class JsonBindings {
 
   factory JsonBindings() => _singleton;
 
-  JsonBindings._internal() {
-    final libtdjson = _openLib();
+  JsonBindings._internal();
 
-    _clientCreate = libtdjson
-        .lookup<ffi.NativeFunction<td_json_client_create_t>>(
-            _resolveFuncName('create'))
-        .asFunction();
+  late final ffi.DynamicLibrary _libtdjson = _openLib();
 
-    _clientReceive = libtdjson
-        .lookup<ffi.NativeFunction<td_json_client_receive_t>>(
-            _resolveFuncName('receive'))
-        .asFunction();
+  late final ffi.Pointer Function() _clientCreate = _libtdjson
+      .lookup<ffi.NativeFunction<td_json_client_create_t>>(
+          _resolveFuncName('create'))
+      .asFunction();
 
-    _clientSend = libtdjson
-        .lookup<ffi.NativeFunction<td_json_client_send_t>>(
-            _resolveFuncName('send'))
-        .asFunction();
+  late final ffi.Pointer<Utf8> Function(ffi.Pointer, double) _clientReceive =
+      _libtdjson
+          .lookup<ffi.NativeFunction<td_json_client_receive_t>>(
+              _resolveFuncName('receive'))
+          .asFunction();
 
-    _clientExecute = libtdjson
-        .lookup<ffi.NativeFunction<td_json_client_execute_t>>(
-            _resolveFuncName('execute'))
-        .asFunction();
+  late final void Function(ffi.Pointer, ffi.Pointer<Utf8>) _clientSend =
+      _libtdjson
+          .lookup<ffi.NativeFunction<td_json_client_send_t>>(
+              _resolveFuncName('send'))
+          .asFunction();
 
-    _clientDestroy = libtdjson
-        .lookup<ffi.NativeFunction<td_json_client_destroy_t>>(
-            _resolveFuncName('destroy'))
-        .asFunction();
-  }
+  late final ffi.Pointer<Utf8> Function(ffi.Pointer, ffi.Pointer<Utf8>)
+      _clientExecute = _libtdjson
+          .lookup<ffi.NativeFunction<td_json_client_execute_t>>(
+              _resolveFuncName('execute'))
+          .asFunction();
 
-  late ffi.Pointer Function() _clientCreate;
-
-  late ffi.Pointer<Utf8> Function(ffi.Pointer, double) _clientReceive;
-
-  late void Function(ffi.Pointer, ffi.Pointer<Utf8>) _clientSend;
-
-  late ffi.Pointer<Utf8> Function(ffi.Pointer, ffi.Pointer<Utf8>)
-      _clientExecute;
-
-  late void Function(ffi.Pointer) _clientDestroy;
+  late final void Function(ffi.Pointer) _clientDestroy = _libtdjson
+      .lookup<ffi.NativeFunction<td_json_client_destroy_t>>(
+          _resolveFuncName('destroy'))
+      .asFunction();
 
   ffi.Pointer createClient() => _clientCreate();
 
