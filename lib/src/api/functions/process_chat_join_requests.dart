@@ -21,8 +21,7 @@ class ProcessChatJoinRequests extends TdFunction {
   /// other links
   final String inviteLink;
 
-  /// [approve] True, if the requests are approved. Otherwise the requests are
-  /// declived
+  /// [approve] Pass true to approve all requests; pass false to decline them
   final bool approve;
 
   static const String constructor = 'processChatJoinRequests';

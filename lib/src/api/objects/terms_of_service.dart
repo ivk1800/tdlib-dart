@@ -15,7 +15,7 @@ class TermsOfService extends TdObject {
   final FormattedText text;
 
   /// [minUserAge] The minimum age of a user to be able to accept the terms; 0
-  /// if any
+  /// if age isn't restricted
   final int minUserAge;
 
   /// [showPopup] True, if a blocking popup with terms of service must be shown

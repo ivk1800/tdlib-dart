@@ -10,21 +10,21 @@ abstract class ResetPasswordResult extends TdObject {
   static const String constructor = 'resetPasswordResult';
 
   /// Inherited by:
+  /// [ResetPasswordResultDeclined]
   /// [ResetPasswordResultOk]
   /// [ResetPasswordResultPending]
-  /// [ResetPasswordResultDeclined]
   static ResetPasswordResult? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
+      case ResetPasswordResultDeclined.constructor:
+        return ResetPasswordResultDeclined.fromJson(json);
       case ResetPasswordResultOk.constructor:
         return ResetPasswordResultOk.fromJson(json);
       case ResetPasswordResultPending.constructor:
         return ResetPasswordResultPending.fromJson(json);
-      case ResetPasswordResultDeclined.constructor:
-        return ResetPasswordResultDeclined.fromJson(json);
       default:
         return null;
     }

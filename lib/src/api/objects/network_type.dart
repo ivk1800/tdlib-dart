@@ -10,27 +10,27 @@ abstract class NetworkType extends TdObject {
   static const String constructor = 'networkType';
 
   /// Inherited by:
-  /// [NetworkTypeNone]
-  /// [NetworkTypeMobile]
   /// [NetworkTypeMobileRoaming]
-  /// [NetworkTypeWiFi]
+  /// [NetworkTypeMobile]
+  /// [NetworkTypeNone]
   /// [NetworkTypeOther]
+  /// [NetworkTypeWiFi]
   static NetworkType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case NetworkTypeNone.constructor:
-        return NetworkTypeNone.fromJson(json);
       case NetworkTypeMobile.constructor:
         return NetworkTypeMobile.fromJson(json);
       case NetworkTypeMobileRoaming.constructor:
         return NetworkTypeMobileRoaming.fromJson(json);
-      case NetworkTypeWiFi.constructor:
-        return NetworkTypeWiFi.fromJson(json);
+      case NetworkTypeNone.constructor:
+        return NetworkTypeNone.fromJson(json);
       case NetworkTypeOther.constructor:
         return NetworkTypeOther.fromJson(json);
+      case NetworkTypeWiFi.constructor:
+        return NetworkTypeWiFi.fromJson(json);
       default:
         return null;
     }

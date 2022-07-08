@@ -10,24 +10,24 @@ abstract class TMeUrlType extends TdObject {
   static const String constructor = 'tMeUrlType';
 
   /// Inherited by:
-  /// [TMeUrlTypeUser]
-  /// [TMeUrlTypeSupergroup]
   /// [TMeUrlTypeChatInvite]
   /// [TMeUrlTypeStickerSet]
+  /// [TMeUrlTypeSupergroup]
+  /// [TMeUrlTypeUser]
   static TMeUrlType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case TMeUrlTypeUser.constructor:
-        return TMeUrlTypeUser.fromJson(json);
-      case TMeUrlTypeSupergroup.constructor:
-        return TMeUrlTypeSupergroup.fromJson(json);
       case TMeUrlTypeChatInvite.constructor:
         return TMeUrlTypeChatInvite.fromJson(json);
       case TMeUrlTypeStickerSet.constructor:
         return TMeUrlTypeStickerSet.fromJson(json);
+      case TMeUrlTypeSupergroup.constructor:
+        return TMeUrlTypeSupergroup.fromJson(json);
+      case TMeUrlTypeUser.constructor:
+        return TMeUrlTypeUser.fromJson(json);
       default:
         return null;
     }

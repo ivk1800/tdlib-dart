@@ -18,7 +18,7 @@ class CreateNewSupergroupChat extends TdFunction {
   /// [title] Title of the new chat; 1-128 characters
   final String title;
 
-  /// [isChannel] True, if a channel chat needs to be created
+  /// [isChannel] Pass true to create a channel chat
   final bool isChannel;
 
   /// param_[description] Chat description; 0-255 characters
@@ -28,8 +28,8 @@ class CreateNewSupergroupChat extends TdFunction {
   /// pass null to create an ordinary supergroup chat
   final ChatLocation? location;
 
-  /// [forImport] True, if the supergroup is created for importing messages
-  /// using importMessage
+  /// [forImport] Pass true to create a supergroup for importing messages using
+  /// importMessage
   final bool forImport;
 
   static const String constructor = 'createNewSupergroupChat';

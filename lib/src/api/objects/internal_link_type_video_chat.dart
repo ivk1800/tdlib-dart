@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a video chat. Call searchPublicChat with the given
-/// chat username, and then joinGoupCall with the given invite hash to process
-/// the link
+/// chat username, and then joinGroupCall with the given invite hash to
+/// process the link
 @immutable
 class InternalLinkTypeVideoChat extends InternalLinkType {
   const InternalLinkTypeVideoChat({

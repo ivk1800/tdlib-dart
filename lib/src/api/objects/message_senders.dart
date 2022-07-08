@@ -10,7 +10,7 @@ class MessageSenders extends TdObject {
     required this.senders,
   });
 
-  /// [totalCount] Approximate total count of messages senders found
+  /// [totalCount] Approximate total number of messages senders found
   final int totalCount;
 
   /// [senders] List of message senders

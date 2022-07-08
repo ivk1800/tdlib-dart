@@ -37,7 +37,7 @@ class LanguagePackInfo extends TdObject {
 
   /// [pluralCode] A language code to be used to apply plural forms. See
   /// https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
-  /// for more info
+  /// for more information
   final String pluralCode;
 
   /// [isOfficial] True, if the language pack is official

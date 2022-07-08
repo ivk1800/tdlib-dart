@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns file downloaded prefix size from a given offset, in bytes
-/// Returns [Count]
+/// Returns [FileDownloadedPrefixSize]
 @immutable
 class GetFileDownloadedPrefixSize extends TdFunction {
   const GetFileDownloadedPrefixSize({

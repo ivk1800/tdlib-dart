@@ -10,7 +10,8 @@ class GetNetworkStatistics extends TdFunction {
     required this.onlyCurrent,
   });
 
-  /// [onlyCurrent] If true, returns only data for the current library launch
+  /// [onlyCurrent] Pass true to get statistics only for the current library
+  /// launch
   final bool onlyCurrent;
 
   static const String constructor = 'getNetworkStatistics';

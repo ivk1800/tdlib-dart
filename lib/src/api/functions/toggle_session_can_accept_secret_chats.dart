@@ -14,8 +14,8 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
   /// [sessionId] Session identifier
   final int sessionId;
 
-  /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by
-  /// the session
+  /// [canAcceptSecretChats] Pass true to allow accepring secret chats by the
+  /// session; pass false otherwise
   final bool canAcceptSecretChats;
 
   static const String constructor = 'toggleSessionCanAcceptSecretChats';

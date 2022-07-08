@@ -10,18 +10,18 @@ abstract class TextParseMode extends TdObject {
   static const String constructor = 'textParseMode';
 
   /// Inherited by:
-  /// [TextParseModeMarkdown]
   /// [TextParseModeHTML]
+  /// [TextParseModeMarkdown]
   static TextParseMode? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case TextParseModeMarkdown.constructor:
-        return TextParseModeMarkdown.fromJson(json);
       case TextParseModeHTML.constructor:
         return TextParseModeHTML.fromJson(json);
+      case TextParseModeMarkdown.constructor:
+        return TextParseModeMarkdown.fromJson(json);
       default:
         return null;
     }

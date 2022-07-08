@@ -10,7 +10,7 @@ class Chats extends TdObject {
     required this.chatIds,
   });
 
-  /// [totalCount] Approximate total count of chats found
+  /// [totalCount] Approximate total number of chats found
   final int totalCount;
 
   /// [chatIds] List of chat identifiers

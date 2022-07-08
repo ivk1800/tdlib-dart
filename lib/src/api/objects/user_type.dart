@@ -11,9 +11,9 @@ abstract class UserType extends TdObject {
   static const String constructor = 'userType';
 
   /// Inherited by:
-  /// [UserTypeRegular]
-  /// [UserTypeDeleted]
   /// [UserTypeBot]
+  /// [UserTypeDeleted]
+  /// [UserTypeRegular]
   /// [UserTypeUnknown]
   static UserType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,12 +21,12 @@ abstract class UserType extends TdObject {
     }
 
     switch (json['@type']) {
-      case UserTypeRegular.constructor:
-        return UserTypeRegular.fromJson(json);
-      case UserTypeDeleted.constructor:
-        return UserTypeDeleted.fromJson(json);
       case UserTypeBot.constructor:
         return UserTypeBot.fromJson(json);
+      case UserTypeDeleted.constructor:
+        return UserTypeDeleted.fromJson(json);
+      case UserTypeRegular.constructor:
+        return UserTypeRegular.fromJson(json);
       case UserTypeUnknown.constructor:
         return UserTypeUnknown.fromJson(json);
       default:

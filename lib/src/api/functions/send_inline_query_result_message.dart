@@ -24,7 +24,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of a message to reply to or 0
+  /// [replyToMessageId] Identifier of a replied message; 0 if none
   final int replyToMessageId;
 
   /// [options] Options to be used to send the message; pass null to use default
@@ -37,10 +37,9 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// [resultId] Identifier of the inline result
   final String resultId;
 
-  /// [hideViaBot] If true, there will be no mention of a bot, via which the
-  /// message is sent. Can be used only for bots
-  /// GetOption("animation_search_bot_username"),
-  /// GetOption("photo_search_bot_username") and
+  /// [hideViaBot] Pass true to hide the bot, via which the message is sent. Can
+  /// be used only for bots GetOption("animation_search_bot_username"),
+  /// GetOption("photo_search_bot_username"), and
   /// GetOption("venue_search_bot_username")
   final bool hideViaBot;
 

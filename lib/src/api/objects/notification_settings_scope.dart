@@ -10,21 +10,21 @@ abstract class NotificationSettingsScope extends TdObject {
   static const String constructor = 'notificationSettingsScope';
 
   /// Inherited by:
-  /// [NotificationSettingsScopePrivateChats]
-  /// [NotificationSettingsScopeGroupChats]
   /// [NotificationSettingsScopeChannelChats]
+  /// [NotificationSettingsScopeGroupChats]
+  /// [NotificationSettingsScopePrivateChats]
   static NotificationSettingsScope? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case NotificationSettingsScopePrivateChats.constructor:
-        return NotificationSettingsScopePrivateChats.fromJson(json);
-      case NotificationSettingsScopeGroupChats.constructor:
-        return NotificationSettingsScopeGroupChats.fromJson(json);
       case NotificationSettingsScopeChannelChats.constructor:
         return NotificationSettingsScopeChannelChats.fromJson(json);
+      case NotificationSettingsScopeGroupChats.constructor:
+        return NotificationSettingsScopeGroupChats.fromJson(json);
+      case NotificationSettingsScopePrivateChats.constructor:
+        return NotificationSettingsScopePrivateChats.fromJson(json);
       default:
         return null;
     }

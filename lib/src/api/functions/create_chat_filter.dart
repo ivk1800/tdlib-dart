@@ -2,7 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Creates new chat filter. Returns information about the created chat filter
+/// Creates new chat filter. Returns information about the created chat
+/// filter. There can be up to GetOption("chat_filter_count_max") chat
+/// filters, but the limit can be increased with Telegram Premium
 /// Returns [ChatFilterInfo]
 @immutable
 class CreateChatFilter extends TdFunction {

@@ -10,24 +10,24 @@ abstract class NotificationGroupType extends TdObject {
   static const String constructor = 'notificationGroupType';
 
   /// Inherited by:
-  /// [NotificationGroupTypeMessages]
-  /// [NotificationGroupTypeMentions]
-  /// [NotificationGroupTypeSecretChat]
   /// [NotificationGroupTypeCalls]
+  /// [NotificationGroupTypeMentions]
+  /// [NotificationGroupTypeMessages]
+  /// [NotificationGroupTypeSecretChat]
   static NotificationGroupType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case NotificationGroupTypeMessages.constructor:
-        return NotificationGroupTypeMessages.fromJson(json);
-      case NotificationGroupTypeMentions.constructor:
-        return NotificationGroupTypeMentions.fromJson(json);
-      case NotificationGroupTypeSecretChat.constructor:
-        return NotificationGroupTypeSecretChat.fromJson(json);
       case NotificationGroupTypeCalls.constructor:
         return NotificationGroupTypeCalls.fromJson(json);
+      case NotificationGroupTypeMentions.constructor:
+        return NotificationGroupTypeMentions.fromJson(json);
+      case NotificationGroupTypeMessages.constructor:
+        return NotificationGroupTypeMessages.fromJson(json);
+      case NotificationGroupTypeSecretChat.constructor:
+        return NotificationGroupTypeSecretChat.fromJson(json);
       default:
         return null;
     }

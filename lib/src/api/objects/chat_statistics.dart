@@ -10,18 +10,18 @@ abstract class ChatStatistics extends TdObject {
   static const String constructor = 'chatStatistics';
 
   /// Inherited by:
-  /// [ChatStatisticsSupergroup]
   /// [ChatStatisticsChannel]
+  /// [ChatStatisticsSupergroup]
   static ChatStatistics? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ChatStatisticsSupergroup.constructor:
-        return ChatStatisticsSupergroup.fromJson(json);
       case ChatStatisticsChannel.constructor:
         return ChatStatisticsChannel.fromJson(json);
+      case ChatStatisticsSupergroup.constructor:
+        return ChatStatisticsSupergroup.fromJson(json);
       default:
         return null;
     }

@@ -13,45 +13,45 @@ abstract class DeviceToken extends TdObject {
   static const String constructor = 'deviceToken';
 
   /// Inherited by:
-  /// [DeviceTokenFirebaseCloudMessaging]
-  /// [DeviceTokenApplePush]
   /// [DeviceTokenApplePushVoIP]
-  /// [DeviceTokenWindowsPush]
-  /// [DeviceTokenMicrosoftPush]
-  /// [DeviceTokenMicrosoftPushVoIP]
-  /// [DeviceTokenWebPush]
-  /// [DeviceTokenSimplePush]
-  /// [DeviceTokenUbuntuPush]
+  /// [DeviceTokenApplePush]
   /// [DeviceTokenBlackBerryPush]
+  /// [DeviceTokenFirebaseCloudMessaging]
+  /// [DeviceTokenMicrosoftPushVoIP]
+  /// [DeviceTokenMicrosoftPush]
+  /// [DeviceTokenSimplePush]
   /// [DeviceTokenTizenPush]
+  /// [DeviceTokenUbuntuPush]
+  /// [DeviceTokenWebPush]
+  /// [DeviceTokenWindowsPush]
   static DeviceToken? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case DeviceTokenFirebaseCloudMessaging.constructor:
-        return DeviceTokenFirebaseCloudMessaging.fromJson(json);
       case DeviceTokenApplePush.constructor:
         return DeviceTokenApplePush.fromJson(json);
       case DeviceTokenApplePushVoIP.constructor:
         return DeviceTokenApplePushVoIP.fromJson(json);
-      case DeviceTokenWindowsPush.constructor:
-        return DeviceTokenWindowsPush.fromJson(json);
+      case DeviceTokenBlackBerryPush.constructor:
+        return DeviceTokenBlackBerryPush.fromJson(json);
+      case DeviceTokenFirebaseCloudMessaging.constructor:
+        return DeviceTokenFirebaseCloudMessaging.fromJson(json);
       case DeviceTokenMicrosoftPush.constructor:
         return DeviceTokenMicrosoftPush.fromJson(json);
       case DeviceTokenMicrosoftPushVoIP.constructor:
         return DeviceTokenMicrosoftPushVoIP.fromJson(json);
-      case DeviceTokenWebPush.constructor:
-        return DeviceTokenWebPush.fromJson(json);
       case DeviceTokenSimplePush.constructor:
         return DeviceTokenSimplePush.fromJson(json);
-      case DeviceTokenUbuntuPush.constructor:
-        return DeviceTokenUbuntuPush.fromJson(json);
-      case DeviceTokenBlackBerryPush.constructor:
-        return DeviceTokenBlackBerryPush.fromJson(json);
       case DeviceTokenTizenPush.constructor:
         return DeviceTokenTizenPush.fromJson(json);
+      case DeviceTokenUbuntuPush.constructor:
+        return DeviceTokenUbuntuPush.fromJson(json);
+      case DeviceTokenWebPush.constructor:
+        return DeviceTokenWebPush.fromJson(json);
+      case DeviceTokenWindowsPush.constructor:
+        return DeviceTokenWindowsPush.fromJson(json);
       default:
         return null;
     }

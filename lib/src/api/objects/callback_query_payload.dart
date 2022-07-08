@@ -10,8 +10,8 @@ abstract class CallbackQueryPayload extends TdObject {
   static const String constructor = 'callbackQueryPayload';
 
   /// Inherited by:
-  /// [CallbackQueryPayloadData]
   /// [CallbackQueryPayloadDataWithPassword]
+  /// [CallbackQueryPayloadData]
   /// [CallbackQueryPayloadGame]
   static CallbackQueryPayload? fromJson(Map<String, dynamic>? json) {
     if (json == null) {

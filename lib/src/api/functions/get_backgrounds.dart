@@ -10,7 +10,7 @@ class GetBackgrounds extends TdFunction {
     required this.forDarkTheme,
   });
 
-  /// [forDarkTheme] True, if the backgrounds must be ordered for dark theme
+  /// [forDarkTheme] Pass true to order returned backgrounds for a dark theme
   final bool forDarkTheme;
 
   static const String constructor = 'getBackgrounds';

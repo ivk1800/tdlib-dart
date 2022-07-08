@@ -10,18 +10,18 @@ abstract class VectorPathCommand extends TdObject {
   static const String constructor = 'vectorPathCommand';
 
   /// Inherited by:
-  /// [VectorPathCommandLine]
   /// [VectorPathCommandCubicBezierCurve]
+  /// [VectorPathCommandLine]
   static VectorPathCommand? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case VectorPathCommandLine.constructor:
-        return VectorPathCommandLine.fromJson(json);
       case VectorPathCommandCubicBezierCurve.constructor:
         return VectorPathCommandCubicBezierCurve.fromJson(json);
+      case VectorPathCommandLine.constructor:
+        return VectorPathCommandLine.fromJson(json);
       default:
         return null;
     }

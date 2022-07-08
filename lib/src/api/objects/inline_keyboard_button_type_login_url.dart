@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// A button that opens a specified URL and automatically authorize the
-/// current user if allowed to do so
+/// current user by calling getLoginUrlInfo
 @immutable
 class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   const InlineKeyboardButtonTypeLoginUrl({
@@ -12,7 +12,7 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
     required this.forwardText,
   });
 
-  /// [url] An HTTP URL to open
+  /// [url] An HTTP URL to pass to getLoginUrlInfo
   final String url;
 
   /// [id] Unique button identifier

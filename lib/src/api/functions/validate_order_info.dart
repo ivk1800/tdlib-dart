@@ -8,23 +8,19 @@ import '../tdapi.dart';
 @immutable
 class ValidateOrderInfo extends TdFunction {
   const ValidateOrderInfo({
-    required this.chatId,
-    required this.messageId,
+    required this.inputInvoice,
     this.orderInfo,
     required this.allowSave,
   });
 
-  /// [chatId] Chat identifier of the Invoice message
-  final int chatId;
-
-  /// [messageId] Message identifier
-  final int messageId;
+  /// [inputInvoice] The invoice
+  final InputInvoice inputInvoice;
 
   /// [orderInfo] The order information, provided by the user; pass null if
   /// empty
   final OrderInfo? orderInfo;
 
-  /// [allowSave] True, if the order information can be saved
+  /// [allowSave] Pass true to save the order information
   final bool allowSave;
 
   static const String constructor = 'validateOrderInfo';
@@ -34,8 +30,7 @@ class ValidateOrderInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
+        'input_invoice': inputInvoice.toJson(),
         'order_info': orderInfo?.toJson(),
         'allow_save': allowSave,
         '@type': constructor,

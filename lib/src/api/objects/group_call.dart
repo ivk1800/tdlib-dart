@@ -11,10 +11,12 @@ class GroupCall extends TdObject {
     required this.scheduledStartDate,
     required this.enabledStartNotification,
     required this.isActive,
+    required this.isRtmpStream,
     required this.isJoined,
     required this.needRejoin,
     required this.canBeManaged,
     required this.participantCount,
+    required this.hasHiddenListeners,
     required this.loadedAllParticipants,
     required this.recentSpeakers,
     required this.isMyVideoEnabled,
@@ -45,6 +47,10 @@ class GroupCall extends TdObject {
   /// [isActive] True, if the call is active
   final bool isActive;
 
+  /// [isRtmpStream] True, if the chat is an RTMP stream instead of an ordinary
+  /// video chat
+  final bool isRtmpStream;
+
   /// [isJoined] True, if the call is joined
   final bool isJoined;
 
@@ -57,6 +63,10 @@ class GroupCall extends TdObject {
 
   /// [participantCount] Number of participants in the group call
   final int participantCount;
+
+  /// [hasHiddenListeners] True, if group call participants, which are muted,
+  /// aren't returned in participant list
+  final bool hasHiddenListeners;
 
   /// [loadedAllParticipants] True, if all group call participants are loaded
   final bool loadedAllParticipants;
@@ -106,10 +116,12 @@ class GroupCall extends TdObject {
       scheduledStartDate: json['scheduled_start_date'],
       enabledStartNotification: json['enabled_start_notification'],
       isActive: json['is_active'],
+      isRtmpStream: json['is_rtmp_stream'],
       isJoined: json['is_joined'],
       needRejoin: json['need_rejoin'],
       canBeManaged: json['can_be_managed'],
       participantCount: json['participant_count'],
+      hasHiddenListeners: json['has_hidden_listeners'],
       loadedAllParticipants: json['loaded_all_participants'],
       recentSpeakers: List<GroupCallRecentSpeaker>.from(
           (json['recent_speakers'] ?? [])
@@ -136,10 +148,12 @@ class GroupCall extends TdObject {
         'scheduled_start_date': scheduledStartDate,
         'enabled_start_notification': enabledStartNotification,
         'is_active': isActive,
+        'is_rtmp_stream': isRtmpStream,
         'is_joined': isJoined,
         'need_rejoin': needRejoin,
         'can_be_managed': canBeManaged,
         'participant_count': participantCount,
+        'has_hidden_listeners': hasHiddenListeners,
         'loaded_all_participants': loadedAllParticipants,
         'recent_speakers': recentSpeakers.map((item) => item.toJson()).toList(),
         'is_my_video_enabled': isMyVideoEnabled,

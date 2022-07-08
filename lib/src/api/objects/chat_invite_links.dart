@@ -10,7 +10,7 @@ class ChatInviteLinks extends TdObject {
     required this.inviteLinks,
   });
 
-  /// [totalCount] Approximate total count of chat invite links found
+  /// [totalCount] Approximate total number of chat invite links found
   final int totalCount;
 
   /// [inviteLinks] List of invite links

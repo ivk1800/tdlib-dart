@@ -17,7 +17,8 @@ class ReportChat extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [messageIds] Identifiers of reported messages, if any
+  /// [messageIds] Identifiers of reported messages; may be empty to report the
+  /// whole chat
   final List<int> messageIds;
 
   /// [reason] The reason for reporting the chat

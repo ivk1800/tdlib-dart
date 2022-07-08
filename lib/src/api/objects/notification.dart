@@ -18,7 +18,7 @@ class Notification extends TdObject {
   /// [date] Notification date
   final int date;
 
-  /// [isSilent] True, if the notification was initially silent
+  /// [isSilent] True, if the notification was explicitly sent without sound
   final bool isSilent;
 
   /// [type] Notification type

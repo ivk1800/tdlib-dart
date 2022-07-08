@@ -22,7 +22,7 @@ class AddLocalMessage extends TdFunction {
   /// [senderId] Identifier of the sender of the message
   final MessageSender senderId;
 
-  /// [replyToMessageId] Identifier of the message to reply to or 0
+  /// [replyToMessageId] Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
   /// [disableNotification] Pass true to disable notification for the message

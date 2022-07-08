@@ -11,6 +11,7 @@ class InternalLinkTypeBotStart extends InternalLinkType {
   const InternalLinkTypeBotStart({
     required this.botUsername,
     required this.startParameter,
+    required this.autostart,
   });
 
   /// [botUsername] Username of the bot
@@ -18,6 +19,10 @@ class InternalLinkTypeBotStart extends InternalLinkType {
 
   /// [startParameter] The parameter to be passed to sendBotStartMessage
   final String startParameter;
+
+  /// [autostart] True, if sendBotStartMessage must be called automatically
+  /// without showing the START button
+  final bool autostart;
 
   static const String constructor = 'internalLinkTypeBotStart';
 
@@ -29,6 +34,7 @@ class InternalLinkTypeBotStart extends InternalLinkType {
     return InternalLinkTypeBotStart(
       botUsername: json['bot_username'],
       startParameter: json['start_parameter'],
+      autostart: json['autostart'],
     );
   }
 
@@ -39,6 +45,7 @@ class InternalLinkTypeBotStart extends InternalLinkType {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'bot_username': botUsername,
         'start_parameter': startParameter,
+        'autostart': autostart,
         '@type': constructor,
       };
 

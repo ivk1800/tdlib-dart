@@ -25,7 +25,7 @@ class SearchSecretMessages extends TdFunction {
   final String query;
 
   /// [offset] Offset of the first entry to return as received from the previous
-  /// request; use empty string to get first chunk of results
+  /// request; use empty string to get the first chunk of results
   final String offset;
 
   /// [limit] The maximum number of messages to be returned; up to 100. For

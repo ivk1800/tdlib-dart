@@ -11,27 +11,27 @@ abstract class AuthenticationCodeType extends TdObject {
   static const String constructor = 'authenticationCodeType';
 
   /// Inherited by:
-  /// [AuthenticationCodeTypeTelegramMessage]
-  /// [AuthenticationCodeTypeSms]
   /// [AuthenticationCodeTypeCall]
   /// [AuthenticationCodeTypeFlashCall]
   /// [AuthenticationCodeTypeMissedCall]
+  /// [AuthenticationCodeTypeSms]
+  /// [AuthenticationCodeTypeTelegramMessage]
   static AuthenticationCodeType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case AuthenticationCodeTypeTelegramMessage.constructor:
-        return AuthenticationCodeTypeTelegramMessage.fromJson(json);
-      case AuthenticationCodeTypeSms.constructor:
-        return AuthenticationCodeTypeSms.fromJson(json);
       case AuthenticationCodeTypeCall.constructor:
         return AuthenticationCodeTypeCall.fromJson(json);
       case AuthenticationCodeTypeFlashCall.constructor:
         return AuthenticationCodeTypeFlashCall.fromJson(json);
       case AuthenticationCodeTypeMissedCall.constructor:
         return AuthenticationCodeTypeMissedCall.fromJson(json);
+      case AuthenticationCodeTypeSms.constructor:
+        return AuthenticationCodeTypeSms.fromJson(json);
+      case AuthenticationCodeTypeTelegramMessage.constructor:
+        return AuthenticationCodeTypeTelegramMessage.fromJson(json);
       default:
         return null;
     }

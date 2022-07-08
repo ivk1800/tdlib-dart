@@ -10,24 +10,24 @@ abstract class ChatType extends TdObject {
   static const String constructor = 'chatType';
 
   /// Inherited by:
-  /// [ChatTypePrivate]
   /// [ChatTypeBasicGroup]
-  /// [ChatTypeSupergroup]
+  /// [ChatTypePrivate]
   /// [ChatTypeSecret]
+  /// [ChatTypeSupergroup]
   static ChatType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ChatTypePrivate.constructor:
-        return ChatTypePrivate.fromJson(json);
       case ChatTypeBasicGroup.constructor:
         return ChatTypeBasicGroup.fromJson(json);
-      case ChatTypeSupergroup.constructor:
-        return ChatTypeSupergroup.fromJson(json);
+      case ChatTypePrivate.constructor:
+        return ChatTypePrivate.fromJson(json);
       case ChatTypeSecret.constructor:
         return ChatTypeSecret.fromJson(json);
+      case ChatTypeSupergroup.constructor:
+        return ChatTypeSupergroup.fromJson(json);
       default:
         return null;
     }

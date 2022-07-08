@@ -10,7 +10,7 @@ class MessagePositions extends TdObject {
     required this.positions,
   });
 
-  /// [totalCount] Total count of messages found
+  /// [totalCount] Total number of messages found
   final int totalCount;
 
   /// [positions] List of message positions

@@ -2,11 +2,12 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Theme colors for a payment form
+/// Contains parameters of the application theme
 @immutable
-class PaymentFormTheme extends TdObject {
-  const PaymentFormTheme({
+class ThemeParameters extends TdObject {
+  const ThemeParameters({
     required this.backgroundColor,
+    required this.secondaryBackgroundColor,
     required this.textColor,
     required this.hintColor,
     required this.linkColor,
@@ -14,9 +15,12 @@ class PaymentFormTheme extends TdObject {
     required this.buttonTextColor,
   });
 
-  /// [backgroundColor] A color of the payment form background in the RGB24
-  /// format
+  /// [backgroundColor] A color of the background in the RGB24 format
   final int backgroundColor;
+
+  /// [secondaryBackgroundColor] A secondary color for the background in the
+  /// RGB24 format
+  final int secondaryBackgroundColor;
 
   /// [textColor] A color of text in the RGB24 format
   final int textColor;
@@ -33,15 +37,16 @@ class PaymentFormTheme extends TdObject {
   /// [buttonTextColor] A color of text on the buttons in the RGB24 format
   final int buttonTextColor;
 
-  static const String constructor = 'paymentFormTheme';
+  static const String constructor = 'themeParameters';
 
-  static PaymentFormTheme? fromJson(Map<String, dynamic>? json) {
+  static ThemeParameters? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PaymentFormTheme(
+    return ThemeParameters(
       backgroundColor: json['background_color'],
+      secondaryBackgroundColor: json['secondary_background_color'],
       textColor: json['text_color'],
       hintColor: json['hint_color'],
       linkColor: json['link_color'],
@@ -56,6 +61,7 @@ class PaymentFormTheme extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'background_color': backgroundColor,
+        'secondary_background_color': secondaryBackgroundColor,
         'text_color': textColor,
         'hint_color': hintColor,
         'link_color': linkColor,

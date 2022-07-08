@@ -11,8 +11,8 @@ abstract class LogStream extends TdObject {
 
   /// Inherited by:
   /// [LogStreamDefault]
-  /// [LogStreamFile]
   /// [LogStreamEmpty]
+  /// [LogStreamFile]
   static LogStream? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -21,10 +21,10 @@ abstract class LogStream extends TdObject {
     switch (json['@type']) {
       case LogStreamDefault.constructor:
         return LogStreamDefault.fromJson(json);
-      case LogStreamFile.constructor:
-        return LogStreamFile.fromJson(json);
       case LogStreamEmpty.constructor:
         return LogStreamEmpty.fromJson(json);
+      case LogStreamFile.constructor:
+        return LogStreamFile.fromJson(json);
       default:
         return null;
     }

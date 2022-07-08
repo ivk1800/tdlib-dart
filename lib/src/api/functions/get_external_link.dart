@@ -16,8 +16,8 @@ class GetExternalLink extends TdFunction {
   /// [link] The HTTP link
   final String link;
 
-  /// [allowWriteAccess] True, if the current user allowed the bot, returned in
-  /// getExternalLinkInfo, to send them messages
+  /// [allowWriteAccess] Pass true if the current user allowed the bot, returned
+  /// in getExternalLinkInfo, to send them messages
   final bool allowWriteAccess;
 
   static const String constructor = 'getExternalLink';

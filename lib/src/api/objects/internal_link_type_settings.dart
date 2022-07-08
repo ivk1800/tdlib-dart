@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to app settings
+/// The link is a link to application settings
 @immutable
 class InternalLinkTypeSettings extends InternalLinkType {
   const InternalLinkTypeSettings();

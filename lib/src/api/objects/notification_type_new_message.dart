@@ -7,10 +7,14 @@ import '../tdapi.dart';
 class NotificationTypeNewMessage extends NotificationType {
   const NotificationTypeNewMessage({
     required this.message,
+    required this.showPreview,
   });
 
   /// [message] The message
   final Message message;
+
+  /// [showPreview] True, if message content must be displayed in notifications
+  final bool showPreview;
 
   static const String constructor = 'notificationTypeNewMessage';
 
@@ -21,6 +25,7 @@ class NotificationTypeNewMessage extends NotificationType {
 
     return NotificationTypeNewMessage(
       message: Message.fromJson(json['message'])!,
+      showPreview: json['show_preview'],
     );
   }
 
@@ -30,6 +35,7 @@ class NotificationTypeNewMessage extends NotificationType {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'message': message.toJson(),
+        'show_preview': showPreview,
         '@type': constructor,
       };
 

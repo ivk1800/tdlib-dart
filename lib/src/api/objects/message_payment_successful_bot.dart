@@ -8,6 +8,8 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   const MessagePaymentSuccessfulBot({
     required this.currency,
     required this.totalAmount,
+    required this.isRecurring,
+    required this.isFirstRecurring,
     required this.invoicePayload,
     required this.shippingOptionId,
     this.orderInfo,
@@ -21,6 +23,12 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// [totalAmount] Total price for the product, in the smallest units of the
   /// currency
   final int totalAmount;
+
+  /// [isRecurring] True, if this is a recurring payment
+  final bool isRecurring;
+
+  /// [isFirstRecurring] True, if this is the first recurring payment
+  final bool isFirstRecurring;
 
   /// [invoicePayload] Invoice payload
   final String invoicePayload;
@@ -48,6 +56,8 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     return MessagePaymentSuccessfulBot(
       currency: json['currency'],
       totalAmount: json['total_amount'],
+      isRecurring: json['is_recurring'],
+      isFirstRecurring: json['is_first_recurring'],
       invoicePayload: json['invoice_payload'],
       shippingOptionId: json['shipping_option_id'],
       orderInfo: OrderInfo.fromJson(json['order_info']),
@@ -63,6 +73,8 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'currency': currency,
         'total_amount': totalAmount,
+        'is_recurring': isRecurring,
+        'is_first_recurring': isFirstRecurring,
         'invoice_payload': invoicePayload,
         'shipping_option_id': shippingOptionId,
         'order_info': orderInfo?.toJson(),

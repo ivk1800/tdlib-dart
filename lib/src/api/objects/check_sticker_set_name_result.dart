@@ -11,21 +11,21 @@ abstract class CheckStickerSetNameResult extends TdObject {
   static const String constructor = 'checkStickerSetNameResult';
 
   /// Inherited by:
-  /// [CheckStickerSetNameResultOk]
   /// [CheckStickerSetNameResultNameInvalid]
   /// [CheckStickerSetNameResultNameOccupied]
+  /// [CheckStickerSetNameResultOk]
   static CheckStickerSetNameResult? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case CheckStickerSetNameResultOk.constructor:
-        return CheckStickerSetNameResultOk.fromJson(json);
       case CheckStickerSetNameResultNameInvalid.constructor:
         return CheckStickerSetNameResultNameInvalid.fromJson(json);
       case CheckStickerSetNameResultNameOccupied.constructor:
         return CheckStickerSetNameResultNameOccupied.fromJson(json);
+      case CheckStickerSetNameResultOk.constructor:
+        return CheckStickerSetNameResultOk.fromJson(json);
       default:
         return null;
     }

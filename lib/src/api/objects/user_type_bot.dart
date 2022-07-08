@@ -11,6 +11,7 @@ class UserTypeBot extends UserType {
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
+    required this.canBeAddedToAttachmentMenu,
   });
 
   /// [canJoinGroups] True, if the bot can be invited to basic group and
@@ -33,6 +34,10 @@ class UserTypeBot extends UserType {
   /// with every inline query to this bot
   final bool needLocation;
 
+  /// [canBeAddedToAttachmentMenu] True, if the bot can be added to attachment
+  /// menu
+  final bool canBeAddedToAttachmentMenu;
+
   static const String constructor = 'userTypeBot';
 
   static UserTypeBot? fromJson(Map<String, dynamic>? json) {
@@ -46,6 +51,7 @@ class UserTypeBot extends UserType {
       isInline: json['is_inline'],
       inlineQueryPlaceholder: json['inline_query_placeholder'],
       needLocation: json['need_location'],
+      canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
     );
   }
 
@@ -59,6 +65,7 @@ class UserTypeBot extends UserType {
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
+        'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
         '@type': constructor,
       };
 

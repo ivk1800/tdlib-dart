@@ -35,8 +35,9 @@ class EditChatInviteLink extends TdFunction {
   /// via the link simultaneously; 0-99999; pass 0 if not limited
   final int memberLimit;
 
-  /// [createsJoinRequest] True, if the link only creates join request. If true,
-  /// member_limit must not be specified
+  /// [createsJoinRequest] Pass true if users joining the chat via the link need
+  /// to be approved by chat administrators. In this case, member_limit must be
+  /// 0
   final bool createsJoinRequest;
 
   static const String constructor = 'editChatInviteLink';

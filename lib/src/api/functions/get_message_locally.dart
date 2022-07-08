@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a message, if it is available locally without
-/// sending network request. This is an offline request
+/// Returns information about a message, if it is available without sending
+/// network request. This is an offline request
 /// Returns [Message]
 @immutable
 class GetMessageLocally extends TdFunction {

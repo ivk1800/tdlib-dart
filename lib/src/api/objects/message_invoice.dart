@@ -21,7 +21,7 @@ class MessageInvoice extends MessageContent {
   final String title;
 
   /// param_[description] Product description
-  final String description;
+  final FormattedText description;
 
   /// [photo] Product photo; may be null
   final Photo? photo;
@@ -55,7 +55,7 @@ class MessageInvoice extends MessageContent {
 
     return MessageInvoice(
       title: json['title'],
-      description: json['description'],
+      description: FormattedText.fromJson(json['description'])!,
       photo: Photo.fromJson(json['photo']),
       currency: json['currency'],
       totalAmount: json['total_amount'],
@@ -72,7 +72,7 @@ class MessageInvoice extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
-        'description': description,
+        'description': description.toJson(),
         'photo': photo?.toJson(),
         'currency': currency,
         'total_amount': totalAmount,

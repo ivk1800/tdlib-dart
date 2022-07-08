@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Notification settings applied to all basic groups and supergroups when the
-/// corresponding chat setting has a default value
+/// Notification settings applied to all basic group and supergroup chats when
+/// the corresponding chat setting has a default value
 @immutable
 class NotificationSettingsScopeGroupChats extends NotificationSettingsScope {
   const NotificationSettingsScopeGroupChats();

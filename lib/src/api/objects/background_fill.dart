@@ -10,21 +10,21 @@ abstract class BackgroundFill extends TdObject {
   static const String constructor = 'backgroundFill';
 
   /// Inherited by:
-  /// [BackgroundFillSolid]
-  /// [BackgroundFillGradient]
   /// [BackgroundFillFreeformGradient]
+  /// [BackgroundFillGradient]
+  /// [BackgroundFillSolid]
   static BackgroundFill? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case BackgroundFillSolid.constructor:
-        return BackgroundFillSolid.fromJson(json);
-      case BackgroundFillGradient.constructor:
-        return BackgroundFillGradient.fromJson(json);
       case BackgroundFillFreeformGradient.constructor:
         return BackgroundFillFreeformGradient.fromJson(json);
+      case BackgroundFillGradient.constructor:
+        return BackgroundFillGradient.fromJson(json);
+      case BackgroundFillSolid.constructor:
+        return BackgroundFillSolid.fromJson(json);
       default:
         return null;
     }

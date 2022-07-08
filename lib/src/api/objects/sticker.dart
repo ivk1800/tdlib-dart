@@ -10,11 +10,10 @@ class Sticker extends TdObject {
     required this.width,
     required this.height,
     required this.emoji,
-    required this.isAnimated,
-    required this.isMask,
-    this.maskPosition,
+    required this.type,
     required this.outline,
     this.thumbnail,
+    this.premiumAnimation,
     required this.sticker,
   });
 
@@ -31,14 +30,8 @@ class Sticker extends TdObject {
   /// [emoji] Emoji corresponding to the sticker
   final String emoji;
 
-  /// [isAnimated] True, if the sticker is an animated sticker in TGS format
-  final bool isAnimated;
-
-  /// [isMask] True, if the sticker is a mask
-  final bool isMask;
-
-  /// [maskPosition] Position where the mask is placed; may be null
-  final MaskPosition? maskPosition;
+  /// [type] Sticker type
+  final StickerType type;
 
   /// [outline] Sticker's outline represented as a list of closed vector paths;
   /// may be empty. The coordinate system origin is in the upper-left corner
@@ -46,6 +39,10 @@ class Sticker extends TdObject {
 
   /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null
   final Thumbnail? thumbnail;
+
+  /// [premiumAnimation] Premium animation of the sticker; may be null. If
+  /// present, only Premium users can send the sticker
+  final File? premiumAnimation;
 
   /// [sticker] File containing the sticker
   final File sticker;
@@ -62,13 +59,12 @@ class Sticker extends TdObject {
       width: json['width'],
       height: json['height'],
       emoji: json['emoji'],
-      isAnimated: json['is_animated'],
-      isMask: json['is_mask'],
-      maskPosition: MaskPosition.fromJson(json['mask_position']),
+      type: StickerType.fromJson(json['type'])!,
       outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
           .map((item) => ClosedVectorPath.fromJson(item))
           .toList()),
       thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      premiumAnimation: File.fromJson(json['premium_animation']),
       sticker: File.fromJson(json['sticker'])!,
     );
   }
@@ -82,11 +78,10 @@ class Sticker extends TdObject {
         'width': width,
         'height': height,
         'emoji': emoji,
-        'is_animated': isAnimated,
-        'is_mask': isMask,
-        'mask_position': maskPosition?.toJson(),
+        'type': type.toJson(),
         'outline': outline.map((item) => item.toJson()).toList(),
         'thumbnail': thumbnail?.toJson(),
+        'premium_animation': premiumAnimation?.toJson(),
         'sticker': sticker.toJson(),
         '@type': constructor,
       };

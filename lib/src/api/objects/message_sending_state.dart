@@ -10,18 +10,18 @@ abstract class MessageSendingState extends TdObject {
   static const String constructor = 'messageSendingState';
 
   /// Inherited by:
-  /// [MessageSendingStatePending]
   /// [MessageSendingStateFailed]
+  /// [MessageSendingStatePending]
   static MessageSendingState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case MessageSendingStatePending.constructor:
-        return MessageSendingStatePending.fromJson(json);
       case MessageSendingStateFailed.constructor:
         return MessageSendingStateFailed.fromJson(json);
+      case MessageSendingStatePending.constructor:
+        return MessageSendingStatePending.fromJson(json);
       default:
         return null;
     }

@@ -17,8 +17,7 @@ class DeleteChatHistory extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [removeFromChatList] Pass true if the chat needs to be removed from the
-  /// chat list
+  /// [removeFromChatList] Pass true to remove the chat from all chat lists
   final bool removeFromChatList;
 
   /// [revoke] Pass true to delete chat history for all users

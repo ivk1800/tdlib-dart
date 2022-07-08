@@ -16,6 +16,7 @@ class User extends TdObject {
     required this.isContact,
     required this.isMutualContact,
     required this.isVerified,
+    required this.isPremium,
     required this.isSupport,
     required this.restrictionReason,
     required this.isScam,
@@ -23,6 +24,7 @@ class User extends TdObject {
     required this.haveAccess,
     required this.type,
     required this.languageCode,
+    required this.addedToAttachmentMenu,
   });
 
   /// [id] User identifier
@@ -56,6 +58,9 @@ class User extends TdObject {
   /// [isVerified] True, if the user is verified
   final bool isVerified;
 
+  /// [isPremium] True, if the user is a Telegram Premium user
+  final bool isPremium;
+
   /// [isSupport] True, if the user is Telegram support account
   final bool isSupport;
 
@@ -70,8 +75,8 @@ class User extends TdObject {
   final bool isFake;
 
   /// [haveAccess] If false, the user is inaccessible, and the only information
-  /// known about the user is inside this class. It can't be passed to any
-  /// method except GetUser
+  /// known about the user is inside this class. Identifier of the user can't be
+  /// passed to any method except GetUser
   final bool haveAccess;
 
   /// [type] Type of the user
@@ -80,6 +85,10 @@ class User extends TdObject {
   /// [languageCode] IETF language tag of the user's language; only available to
   /// bots
   final String languageCode;
+
+  /// [addedToAttachmentMenu] True, if the user added the current bot to
+  /// attachment menu; only available to bots
+  final bool addedToAttachmentMenu;
 
   static const String constructor = 'user';
 
@@ -99,6 +108,7 @@ class User extends TdObject {
       isContact: json['is_contact'],
       isMutualContact: json['is_mutual_contact'],
       isVerified: json['is_verified'],
+      isPremium: json['is_premium'],
       isSupport: json['is_support'],
       restrictionReason: json['restriction_reason'],
       isScam: json['is_scam'],
@@ -106,6 +116,7 @@ class User extends TdObject {
       haveAccess: json['have_access'],
       type: UserType.fromJson(json['type'])!,
       languageCode: json['language_code'],
+      addedToAttachmentMenu: json['added_to_attachment_menu'],
     );
   }
 
@@ -124,6 +135,7 @@ class User extends TdObject {
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
         'is_verified': isVerified,
+        'is_premium': isPremium,
         'is_support': isSupport,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
@@ -131,6 +143,7 @@ class User extends TdObject {
         'have_access': haveAccess,
         'type': type.toJson(),
         'language_code': languageCode,
+        'added_to_attachment_menu': addedToAttachmentMenu,
         '@type': constructor,
       };
 

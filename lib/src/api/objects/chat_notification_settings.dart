@@ -9,7 +9,7 @@ class ChatNotificationSettings extends TdObject {
     required this.useDefaultMuteFor,
     required this.muteFor,
     required this.useDefaultSound,
-    required this.sound,
+    required this.soundId,
     required this.useDefaultShowPreview,
     required this.showPreview,
     required this.useDefaultDisablePinnedMessageNotifications,
@@ -25,13 +25,13 @@ class ChatNotificationSettings extends TdObject {
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
-  /// [useDefaultSound] If true, sound is ignored and the value for the relevant
-  /// type of chat is used instead
+  /// [useDefaultSound] If true, the value for the relevant type of chat is used
+  /// instead of sound_id
   final bool useDefaultSound;
 
-  /// [sound] The name of an audio file to be used for notification sounds; only
-  /// applies to iOS applications
-  final String sound;
+  /// [soundId] Identifier of the notification sound to be played; 0 if sound is
+  /// disabled
+  final int soundId;
 
   /// [useDefaultShowPreview] If true, show_preview is ignored and the value for
   /// the relevant type of chat is used instead
@@ -69,7 +69,7 @@ class ChatNotificationSettings extends TdObject {
       useDefaultMuteFor: json['use_default_mute_for'],
       muteFor: json['mute_for'],
       useDefaultSound: json['use_default_sound'],
-      sound: json['sound'],
+      soundId: int.tryParse(json['sound_id']) ?? 0,
       useDefaultShowPreview: json['use_default_show_preview'],
       showPreview: json['show_preview'],
       useDefaultDisablePinnedMessageNotifications:
@@ -90,7 +90,7 @@ class ChatNotificationSettings extends TdObject {
         'use_default_mute_for': useDefaultMuteFor,
         'mute_for': muteFor,
         'use_default_sound': useDefaultSound,
-        'sound': sound,
+        'sound_id': soundId,
         'use_default_show_preview': useDefaultShowPreview,
         'show_preview': showPreview,
         'use_default_disable_pinned_message_notifications':

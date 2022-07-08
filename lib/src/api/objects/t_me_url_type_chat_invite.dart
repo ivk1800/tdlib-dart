@@ -9,7 +9,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
     required this.info,
   });
 
-  /// [info] Chat invite link info
+  /// [info] Information about the chat invite link
   final ChatInviteLinkInfo info;
 
   static const String constructor = 'tMeUrlTypeChatInvite';

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Clears draft messages in all chats
+/// Clears message drafts in all chats
 /// Returns [Ok]
 @immutable
 class ClearAllDraftMessages extends TdFunction {
@@ -10,8 +10,8 @@ class ClearAllDraftMessages extends TdFunction {
     required this.excludeSecretChats,
   });
 
-  /// [excludeSecretChats] If true, local draft messages in secret chats will
-  /// not be cleared
+  /// [excludeSecretChats] Pass true to keep local message drafts in secret
+  /// chats
   final bool excludeSecretChats;
 
   static const String constructor = 'clearAllDraftMessages';

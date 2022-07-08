@@ -10,45 +10,45 @@ abstract class AuthorizationState extends TdObject {
   static const String constructor = 'authorizationState';
 
   /// Inherited by:
-  /// [AuthorizationStateWaitTdlibParameters]
-  /// [AuthorizationStateWaitEncryptionKey]
-  /// [AuthorizationStateWaitPhoneNumber]
-  /// [AuthorizationStateWaitCode]
-  /// [AuthorizationStateWaitOtherDeviceConfirmation]
-  /// [AuthorizationStateWaitRegistration]
-  /// [AuthorizationStateWaitPassword]
-  /// [AuthorizationStateReady]
-  /// [AuthorizationStateLoggingOut]
-  /// [AuthorizationStateClosing]
   /// [AuthorizationStateClosed]
+  /// [AuthorizationStateClosing]
+  /// [AuthorizationStateLoggingOut]
+  /// [AuthorizationStateReady]
+  /// [AuthorizationStateWaitCode]
+  /// [AuthorizationStateWaitEncryptionKey]
+  /// [AuthorizationStateWaitOtherDeviceConfirmation]
+  /// [AuthorizationStateWaitPassword]
+  /// [AuthorizationStateWaitPhoneNumber]
+  /// [AuthorizationStateWaitRegistration]
+  /// [AuthorizationStateWaitTdlibParameters]
   static AuthorizationState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case AuthorizationStateWaitTdlibParameters.constructor:
-        return AuthorizationStateWaitTdlibParameters.fromJson(json);
-      case AuthorizationStateWaitEncryptionKey.constructor:
-        return AuthorizationStateWaitEncryptionKey.fromJson(json);
-      case AuthorizationStateWaitPhoneNumber.constructor:
-        return AuthorizationStateWaitPhoneNumber.fromJson(json);
-      case AuthorizationStateWaitCode.constructor:
-        return AuthorizationStateWaitCode.fromJson(json);
-      case AuthorizationStateWaitOtherDeviceConfirmation.constructor:
-        return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json);
-      case AuthorizationStateWaitRegistration.constructor:
-        return AuthorizationStateWaitRegistration.fromJson(json);
-      case AuthorizationStateWaitPassword.constructor:
-        return AuthorizationStateWaitPassword.fromJson(json);
-      case AuthorizationStateReady.constructor:
-        return AuthorizationStateReady.fromJson(json);
-      case AuthorizationStateLoggingOut.constructor:
-        return AuthorizationStateLoggingOut.fromJson(json);
-      case AuthorizationStateClosing.constructor:
-        return AuthorizationStateClosing.fromJson(json);
       case AuthorizationStateClosed.constructor:
         return AuthorizationStateClosed.fromJson(json);
+      case AuthorizationStateClosing.constructor:
+        return AuthorizationStateClosing.fromJson(json);
+      case AuthorizationStateLoggingOut.constructor:
+        return AuthorizationStateLoggingOut.fromJson(json);
+      case AuthorizationStateReady.constructor:
+        return AuthorizationStateReady.fromJson(json);
+      case AuthorizationStateWaitCode.constructor:
+        return AuthorizationStateWaitCode.fromJson(json);
+      case AuthorizationStateWaitEncryptionKey.constructor:
+        return AuthorizationStateWaitEncryptionKey.fromJson(json);
+      case AuthorizationStateWaitOtherDeviceConfirmation.constructor:
+        return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json);
+      case AuthorizationStateWaitPassword.constructor:
+        return AuthorizationStateWaitPassword.fromJson(json);
+      case AuthorizationStateWaitPhoneNumber.constructor:
+        return AuthorizationStateWaitPhoneNumber.fromJson(json);
+      case AuthorizationStateWaitRegistration.constructor:
+        return AuthorizationStateWaitRegistration.fromJson(json);
+      case AuthorizationStateWaitTdlibParameters.constructor:
+        return AuthorizationStateWaitTdlibParameters.fromJson(json);
       default:
         return null;
     }

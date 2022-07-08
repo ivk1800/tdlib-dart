@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a link to a WEBP or TGS sticker
+/// Represents a link to a WEBP, TGS, or WEBM sticker
 @immutable
 class InputInlineQueryResultSticker extends InputInlineQueryResult {
   const InputInlineQueryResultSticker({
@@ -21,8 +21,8 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   /// [thumbnailUrl] URL of the sticker thumbnail, if it exists
   final String thumbnailUrl;
 
-  /// [stickerUrl] The URL of the WEBP or TGS sticker (sticker file size must
-  /// not exceed 5MB)
+  /// [stickerUrl] The URL of the WEBP, TGS, or WEBM sticker (sticker file size
+  /// must not exceed 5MB)
   final String stickerUrl;
 
   /// [stickerWidth] Width of the sticker

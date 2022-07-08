@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to the active sessions section of the app. Use
+/// The link is a link to the active sessions section of the application. Use
 /// getActiveSessions to handle the link
 @immutable
 class InternalLinkTypeActiveSessions extends InternalLinkType {

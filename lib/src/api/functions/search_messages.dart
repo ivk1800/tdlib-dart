@@ -50,8 +50,9 @@ class SearchMessages extends TdFunction {
 
   /// [filter] Additional filter for messages to search; pass null to search for
   /// all messages. Filters searchMessagesFilterMention,
-  /// searchMessagesFilterUnreadMention, searchMessagesFilterFailedToSend and
-  /// searchMessagesFilterPinned are unsupported in this function
+  /// searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction,
+  /// searchMessagesFilterFailedToSend, and searchMessagesFilterPinned are
+  /// unsupported in this function
   final SearchMessagesFilter? filter;
 
   /// [minDate] If not 0, the minimum date of the messages to return

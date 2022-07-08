@@ -10,27 +10,27 @@ abstract class MessageForwardOrigin extends TdObject {
   static const String constructor = 'messageForwardOrigin';
 
   /// Inherited by:
-  /// [MessageForwardOriginUser]
+  /// [MessageForwardOriginChannel]
   /// [MessageForwardOriginChat]
   /// [MessageForwardOriginHiddenUser]
-  /// [MessageForwardOriginChannel]
   /// [MessageForwardOriginMessageImport]
+  /// [MessageForwardOriginUser]
   static MessageForwardOrigin? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case MessageForwardOriginUser.constructor:
-        return MessageForwardOriginUser.fromJson(json);
+      case MessageForwardOriginChannel.constructor:
+        return MessageForwardOriginChannel.fromJson(json);
       case MessageForwardOriginChat.constructor:
         return MessageForwardOriginChat.fromJson(json);
       case MessageForwardOriginHiddenUser.constructor:
         return MessageForwardOriginHiddenUser.fromJson(json);
-      case MessageForwardOriginChannel.constructor:
-        return MessageForwardOriginChannel.fromJson(json);
       case MessageForwardOriginMessageImport.constructor:
         return MessageForwardOriginMessageImport.fromJson(json);
+      case MessageForwardOriginUser.constructor:
+        return MessageForwardOriginUser.fromJson(json);
       default:
         return null;
     }

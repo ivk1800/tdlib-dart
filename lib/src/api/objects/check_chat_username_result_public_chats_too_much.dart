@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user has too much chats with username, one of them must be made
+/// The user has too many chats with username, one of them must be made
 /// private first
 @immutable
 class CheckChatUsernameResultPublicChatsTooMuch

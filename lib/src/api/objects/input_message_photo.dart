@@ -15,7 +15,9 @@ class InputMessagePhoto extends InputMessageContent {
     required this.ttl,
   });
 
-  /// [photo] Photo to send
+  /// [photo] Photo to send. The photo must be at most 10 MB in size. The
+  /// photo's width and height must not exceed 10000 in total. Width and height
+  /// ratio must be at most 20
   final InputFile photo;
 
   /// [thumbnail] Photo thumbnail to be sent; pass null to skip thumbnail

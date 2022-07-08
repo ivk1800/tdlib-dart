@@ -16,8 +16,7 @@ class ToggleChatHasProtectedContent extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [hasProtectedContent] True, if chat content can't be saved locally,
-  /// forwarded, or copied
+  /// [hasProtectedContent] New value of has_protected_content
   final bool hasProtectedContent;
 
   static const String constructor = 'toggleChatHasProtectedContent';

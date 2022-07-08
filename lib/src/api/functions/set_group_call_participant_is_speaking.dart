@@ -20,7 +20,7 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
   /// identifier, or 0 for the current user
   final int audioSource;
 
-  /// [isSpeaking] True, if the user is speaking
+  /// [isSpeaking] Pass true if the user is speaking
   final bool isSpeaking;
 
   static const String constructor = 'setGroupCallParticipantIsSpeaking';

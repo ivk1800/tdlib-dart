@@ -10,7 +10,8 @@ class SetBio extends TdFunction {
     required this.bio,
   });
 
-  /// [bio] The new value of the user bio; 0-70 characters without line feeds
+  /// [bio] The new value of the user bio; 0-GetOption("bio_length_max")
+  /// characters without line feeds
   final String bio;
 
   static const String constructor = 'setBio';

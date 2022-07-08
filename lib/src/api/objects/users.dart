@@ -10,7 +10,7 @@ class Users extends TdObject {
     required this.userIds,
   });
 
-  /// [totalCount] Approximate total count of users found
+  /// [totalCount] Approximate total number of users found
   final int totalCount;
 
   /// [userIds] A list of user identifiers

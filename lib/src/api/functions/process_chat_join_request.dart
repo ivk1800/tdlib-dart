@@ -18,8 +18,7 @@ class ProcessChatJoinRequest extends TdFunction {
   /// [userId] Identifier of the user that sent the request
   final int userId;
 
-  /// [approve] True, if the request is approved. Otherwise the request is
-  /// declived
+  /// [approve] Pass true to approve the request; pass false to decline it
   final bool approve;
 
   static const String constructor = 'processChatJoinRequest';

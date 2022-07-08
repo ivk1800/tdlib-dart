@@ -15,7 +15,8 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
   /// null to return chats from all scopes
   final NotificationSettingsScope? scope;
 
-  /// [compareSound] If true, also chats with non-default sound will be returned
+  /// [compareSound] Pass true to include in the response chats with only
+  /// non-default sound
   final bool compareSound;
 
   static const String constructor = 'getChatNotificationSettingsExceptions';

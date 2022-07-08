@@ -10,21 +10,21 @@ abstract class LanguagePackStringValue extends TdObject {
   static const String constructor = 'languagePackStringValue';
 
   /// Inherited by:
+  /// [LanguagePackStringValueDeleted]
   /// [LanguagePackStringValueOrdinary]
   /// [LanguagePackStringValuePluralized]
-  /// [LanguagePackStringValueDeleted]
   static LanguagePackStringValue? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
+      case LanguagePackStringValueDeleted.constructor:
+        return LanguagePackStringValueDeleted.fromJson(json);
       case LanguagePackStringValueOrdinary.constructor:
         return LanguagePackStringValueOrdinary.fromJson(json);
       case LanguagePackStringValuePluralized.constructor:
         return LanguagePackStringValuePluralized.fromJson(json);
-      case LanguagePackStringValueDeleted.constructor:
-        return LanguagePackStringValueDeleted.fromJson(json);
       default:
         return null;
     }

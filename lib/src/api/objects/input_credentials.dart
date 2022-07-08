@@ -10,24 +10,24 @@ abstract class InputCredentials extends TdObject {
   static const String constructor = 'inputCredentials';
 
   /// Inherited by:
-  /// [InputCredentialsSaved]
-  /// [InputCredentialsNew]
   /// [InputCredentialsApplePay]
   /// [InputCredentialsGooglePay]
+  /// [InputCredentialsNew]
+  /// [InputCredentialsSaved]
   static InputCredentials? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case InputCredentialsSaved.constructor:
-        return InputCredentialsSaved.fromJson(json);
-      case InputCredentialsNew.constructor:
-        return InputCredentialsNew.fromJson(json);
       case InputCredentialsApplePay.constructor:
         return InputCredentialsApplePay.fromJson(json);
       case InputCredentialsGooglePay.constructor:
         return InputCredentialsGooglePay.fromJson(json);
+      case InputCredentialsNew.constructor:
+        return InputCredentialsNew.fromJson(json);
+      case InputCredentialsSaved.constructor:
+        return InputCredentialsSaved.fromJson(json);
       default:
         return null;
     }

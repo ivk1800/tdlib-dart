@@ -7,10 +7,14 @@ import '../tdapi.dart';
 class MessageSticker extends MessageContent {
   const MessageSticker({
     required this.sticker,
+    required this.isPremium,
   });
 
   /// [sticker] The sticker description
   final Sticker sticker;
+
+  /// [isPremium] True, if premium animation of the sticker must be played
+  final bool isPremium;
 
   static const String constructor = 'messageSticker';
 
@@ -21,6 +25,7 @@ class MessageSticker extends MessageContent {
 
     return MessageSticker(
       sticker: Sticker.fromJson(json['sticker'])!,
+      isPremium: json['is_premium'],
     );
   }
 
@@ -30,6 +35,7 @@ class MessageSticker extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'sticker': sticker.toJson(),
+        'is_premium': isPremium,
         '@type': constructor,
       };
 

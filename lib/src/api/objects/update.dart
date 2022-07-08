@@ -10,166 +10,143 @@ abstract class Update extends TdObject {
   static const String constructor = 'update';
 
   /// Inherited by:
+  /// [UpdateActiveNotifications]
+  /// [UpdateAnimatedEmojiMessageClicked]
+  /// [UpdateAnimationSearchParameters]
+  /// [UpdateAttachmentMenuBots]
   /// [UpdateAuthorizationState]
-  /// [UpdateNewMessage]
-  /// [UpdateMessageSendAcknowledged]
-  /// [UpdateMessageSendSucceeded]
-  /// [UpdateMessageSendFailed]
-  /// [UpdateMessageContent]
-  /// [UpdateMessageEdited]
-  /// [UpdateMessageIsPinned]
-  /// [UpdateMessageInteractionInfo]
-  /// [UpdateMessageContentOpened]
-  /// [UpdateMessageMentionRead]
-  /// [UpdateMessageLiveLocationViewed]
-  /// [UpdateNewChat]
-  /// [UpdateChatTitle]
-  /// [UpdateChatPhoto]
-  /// [UpdateChatPermissions]
-  /// [UpdateChatLastMessage]
-  /// [UpdateChatPosition]
-  /// [UpdateChatReadInbox]
-  /// [UpdateChatReadOutbox]
+  /// [UpdateBasicGroupFullInfo]
+  /// [UpdateBasicGroup]
+  /// [UpdateCall]
   /// [UpdateChatActionBar]
-  /// [UpdateChatDraftMessage]
-  /// [UpdateChatMessageSender]
-  /// [UpdateChatMessageTtl]
-  /// [UpdateChatNotificationSettings]
-  /// [UpdateChatPendingJoinRequests]
-  /// [UpdateChatReplyMarkup]
-  /// [UpdateChatTheme]
-  /// [UpdateChatUnreadMentionCount]
-  /// [UpdateChatVideoChat]
+  /// [UpdateChatAction]
+  /// [UpdateChatAvailableReactions]
   /// [UpdateChatDefaultDisableNotification]
+  /// [UpdateChatDraftMessage]
+  /// [UpdateChatFilters]
   /// [UpdateChatHasProtectedContent]
   /// [UpdateChatHasScheduledMessages]
   /// [UpdateChatIsBlocked]
   /// [UpdateChatIsMarkedAsUnread]
-  /// [UpdateChatFilters]
+  /// [UpdateChatLastMessage]
+  /// [UpdateChatMember]
+  /// [UpdateChatMessageSender]
+  /// [UpdateChatMessageTtl]
+  /// [UpdateChatNotificationSettings]
   /// [UpdateChatOnlineMemberCount]
-  /// [UpdateScopeNotificationSettings]
-  /// [UpdateNotification]
-  /// [UpdateNotificationGroup]
-  /// [UpdateActiveNotifications]
-  /// [UpdateHavePendingNotifications]
+  /// [UpdateChatPendingJoinRequests]
+  /// [UpdateChatPermissions]
+  /// [UpdateChatPhoto]
+  /// [UpdateChatPosition]
+  /// [UpdateChatReadInbox]
+  /// [UpdateChatReadOutbox]
+  /// [UpdateChatReplyMarkup]
+  /// [UpdateChatTheme]
+  /// [UpdateChatThemes]
+  /// [UpdateChatTitle]
+  /// [UpdateChatUnreadMentionCount]
+  /// [UpdateChatUnreadReactionCount]
+  /// [UpdateChatVideoChat]
+  /// [UpdateConnectionState]
   /// [UpdateDeleteMessages]
-  /// [UpdateChatAction]
-  /// [UpdateUserStatus]
-  /// [UpdateUser]
-  /// [UpdateBasicGroup]
-  /// [UpdateSupergroup]
-  /// [UpdateSecretChat]
-  /// [UpdateUserFullInfo]
-  /// [UpdateBasicGroupFullInfo]
-  /// [UpdateSupergroupFullInfo]
-  /// [UpdateServiceNotification]
-  /// [UpdateFile]
+  /// [UpdateDiceEmojis]
+  /// [UpdateFavoriteStickers]
+  /// [UpdateFileAddedToDownloads]
+  /// [UpdateFileDownload]
+  /// [UpdateFileDownloads]
   /// [UpdateFileGenerationStart]
   /// [UpdateFileGenerationStop]
-  /// [UpdateCall]
-  /// [UpdateGroupCall]
+  /// [UpdateFileRemovedFromDownloads]
+  /// [UpdateFile]
   /// [UpdateGroupCallParticipant]
-  /// [UpdateNewCallSignalingData]
-  /// [UpdateUserPrivacySettingRules]
-  /// [UpdateUnreadMessageCount]
-  /// [UpdateUnreadChatCount]
-  /// [UpdateOption]
-  /// [UpdateStickerSet]
+  /// [UpdateGroupCall]
+  /// [UpdateHavePendingNotifications]
   /// [UpdateInstalledStickerSets]
-  /// [UpdateTrendingStickerSets]
-  /// [UpdateRecentStickers]
-  /// [UpdateFavoriteStickers]
-  /// [UpdateSavedAnimations]
-  /// [UpdateSelectedBackground]
-  /// [UpdateChatThemes]
   /// [UpdateLanguagePackStrings]
-  /// [UpdateConnectionState]
-  /// [UpdateTermsOfService]
-  /// [UpdateUsersNearby]
-  /// [UpdateDiceEmojis]
-  /// [UpdateAnimatedEmojiMessageClicked]
-  /// [UpdateAnimationSearchParameters]
-  /// [UpdateSuggestedActions]
-  /// [UpdateNewInlineQuery]
-  /// [UpdateNewChosenInlineResult]
+  /// [UpdateMessageContentOpened]
+  /// [UpdateMessageContent]
+  /// [UpdateMessageEdited]
+  /// [UpdateMessageInteractionInfo]
+  /// [UpdateMessageIsPinned]
+  /// [UpdateMessageLiveLocationViewed]
+  /// [UpdateMessageMentionRead]
+  /// [UpdateMessageSendAcknowledged]
+  /// [UpdateMessageSendFailed]
+  /// [UpdateMessageSendSucceeded]
+  /// [UpdateMessageUnreadReactions]
+  /// [UpdateNewCallSignalingData]
   /// [UpdateNewCallbackQuery]
-  /// [UpdateNewInlineCallbackQuery]
-  /// [UpdateNewShippingQuery]
-  /// [UpdateNewPreCheckoutQuery]
+  /// [UpdateNewChatJoinRequest]
+  /// [UpdateNewChat]
+  /// [UpdateNewChosenInlineResult]
   /// [UpdateNewCustomEvent]
   /// [UpdateNewCustomQuery]
-  /// [UpdatePoll]
+  /// [UpdateNewInlineCallbackQuery]
+  /// [UpdateNewInlineQuery]
+  /// [UpdateNewMessage]
+  /// [UpdateNewPreCheckoutQuery]
+  /// [UpdateNewShippingQuery]
+  /// [UpdateNotificationGroup]
+  /// [UpdateNotification]
+  /// [UpdateOption]
   /// [UpdatePollAnswer]
-  /// [UpdateChatMember]
-  /// [UpdateNewChatJoinRequest]
+  /// [UpdatePoll]
+  /// [UpdateReactions]
+  /// [UpdateRecentStickers]
+  /// [UpdateSavedAnimations]
+  /// [UpdateSavedNotificationSounds]
+  /// [UpdateScopeNotificationSettings]
+  /// [UpdateSecretChat]
+  /// [UpdateSelectedBackground]
+  /// [UpdateServiceNotification]
+  /// [UpdateStickerSet]
+  /// [UpdateSuggestedActions]
+  /// [UpdateSupergroupFullInfo]
+  /// [UpdateSupergroup]
+  /// [UpdateTermsOfService]
+  /// [UpdateTrendingStickerSets]
+  /// [UpdateUnreadChatCount]
+  /// [UpdateUnreadMessageCount]
+  /// [UpdateUserFullInfo]
+  /// [UpdateUserPrivacySettingRules]
+  /// [UpdateUserStatus]
+  /// [UpdateUser]
+  /// [UpdateUsersNearby]
+  /// [UpdateWebAppMessageSent]
   static Update? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
+      case UpdateActiveNotifications.constructor:
+        return UpdateActiveNotifications.fromJson(json);
+      case UpdateAnimatedEmojiMessageClicked.constructor:
+        return UpdateAnimatedEmojiMessageClicked.fromJson(json);
+      case UpdateAnimationSearchParameters.constructor:
+        return UpdateAnimationSearchParameters.fromJson(json);
+      case UpdateAttachmentMenuBots.constructor:
+        return UpdateAttachmentMenuBots.fromJson(json);
       case UpdateAuthorizationState.constructor:
         return UpdateAuthorizationState.fromJson(json);
-      case UpdateNewMessage.constructor:
-        return UpdateNewMessage.fromJson(json);
-      case UpdateMessageSendAcknowledged.constructor:
-        return UpdateMessageSendAcknowledged.fromJson(json);
-      case UpdateMessageSendSucceeded.constructor:
-        return UpdateMessageSendSucceeded.fromJson(json);
-      case UpdateMessageSendFailed.constructor:
-        return UpdateMessageSendFailed.fromJson(json);
-      case UpdateMessageContent.constructor:
-        return UpdateMessageContent.fromJson(json);
-      case UpdateMessageEdited.constructor:
-        return UpdateMessageEdited.fromJson(json);
-      case UpdateMessageIsPinned.constructor:
-        return UpdateMessageIsPinned.fromJson(json);
-      case UpdateMessageInteractionInfo.constructor:
-        return UpdateMessageInteractionInfo.fromJson(json);
-      case UpdateMessageContentOpened.constructor:
-        return UpdateMessageContentOpened.fromJson(json);
-      case UpdateMessageMentionRead.constructor:
-        return UpdateMessageMentionRead.fromJson(json);
-      case UpdateMessageLiveLocationViewed.constructor:
-        return UpdateMessageLiveLocationViewed.fromJson(json);
-      case UpdateNewChat.constructor:
-        return UpdateNewChat.fromJson(json);
-      case UpdateChatTitle.constructor:
-        return UpdateChatTitle.fromJson(json);
-      case UpdateChatPhoto.constructor:
-        return UpdateChatPhoto.fromJson(json);
-      case UpdateChatPermissions.constructor:
-        return UpdateChatPermissions.fromJson(json);
-      case UpdateChatLastMessage.constructor:
-        return UpdateChatLastMessage.fromJson(json);
-      case UpdateChatPosition.constructor:
-        return UpdateChatPosition.fromJson(json);
-      case UpdateChatReadInbox.constructor:
-        return UpdateChatReadInbox.fromJson(json);
-      case UpdateChatReadOutbox.constructor:
-        return UpdateChatReadOutbox.fromJson(json);
+      case UpdateBasicGroup.constructor:
+        return UpdateBasicGroup.fromJson(json);
+      case UpdateBasicGroupFullInfo.constructor:
+        return UpdateBasicGroupFullInfo.fromJson(json);
+      case UpdateCall.constructor:
+        return UpdateCall.fromJson(json);
+      case UpdateChatAction.constructor:
+        return UpdateChatAction.fromJson(json);
       case UpdateChatActionBar.constructor:
         return UpdateChatActionBar.fromJson(json);
-      case UpdateChatDraftMessage.constructor:
-        return UpdateChatDraftMessage.fromJson(json);
-      case UpdateChatMessageSender.constructor:
-        return UpdateChatMessageSender.fromJson(json);
-      case UpdateChatMessageTtl.constructor:
-        return UpdateChatMessageTtl.fromJson(json);
-      case UpdateChatNotificationSettings.constructor:
-        return UpdateChatNotificationSettings.fromJson(json);
-      case UpdateChatPendingJoinRequests.constructor:
-        return UpdateChatPendingJoinRequests.fromJson(json);
-      case UpdateChatReplyMarkup.constructor:
-        return UpdateChatReplyMarkup.fromJson(json);
-      case UpdateChatTheme.constructor:
-        return UpdateChatTheme.fromJson(json);
-      case UpdateChatUnreadMentionCount.constructor:
-        return UpdateChatUnreadMentionCount.fromJson(json);
-      case UpdateChatVideoChat.constructor:
-        return UpdateChatVideoChat.fromJson(json);
+      case UpdateChatAvailableReactions.constructor:
+        return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatDefaultDisableNotification.constructor:
         return UpdateChatDefaultDisableNotification.fromJson(json);
+      case UpdateChatDraftMessage.constructor:
+        return UpdateChatDraftMessage.fromJson(json);
+      case UpdateChatFilters.constructor:
+        return UpdateChatFilters.fromJson(json);
       case UpdateChatHasProtectedContent.constructor:
         return UpdateChatHasProtectedContent.fromJson(json);
       case UpdateChatHasScheduledMessages.constructor:
@@ -178,120 +155,176 @@ abstract class Update extends TdObject {
         return UpdateChatIsBlocked.fromJson(json);
       case UpdateChatIsMarkedAsUnread.constructor:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
-      case UpdateChatFilters.constructor:
-        return UpdateChatFilters.fromJson(json);
+      case UpdateChatLastMessage.constructor:
+        return UpdateChatLastMessage.fromJson(json);
+      case UpdateChatMember.constructor:
+        return UpdateChatMember.fromJson(json);
+      case UpdateChatMessageSender.constructor:
+        return UpdateChatMessageSender.fromJson(json);
+      case UpdateChatMessageTtl.constructor:
+        return UpdateChatMessageTtl.fromJson(json);
+      case UpdateChatNotificationSettings.constructor:
+        return UpdateChatNotificationSettings.fromJson(json);
       case UpdateChatOnlineMemberCount.constructor:
         return UpdateChatOnlineMemberCount.fromJson(json);
-      case UpdateScopeNotificationSettings.constructor:
-        return UpdateScopeNotificationSettings.fromJson(json);
-      case UpdateNotification.constructor:
-        return UpdateNotification.fromJson(json);
-      case UpdateNotificationGroup.constructor:
-        return UpdateNotificationGroup.fromJson(json);
-      case UpdateActiveNotifications.constructor:
-        return UpdateActiveNotifications.fromJson(json);
-      case UpdateHavePendingNotifications.constructor:
-        return UpdateHavePendingNotifications.fromJson(json);
+      case UpdateChatPendingJoinRequests.constructor:
+        return UpdateChatPendingJoinRequests.fromJson(json);
+      case UpdateChatPermissions.constructor:
+        return UpdateChatPermissions.fromJson(json);
+      case UpdateChatPhoto.constructor:
+        return UpdateChatPhoto.fromJson(json);
+      case UpdateChatPosition.constructor:
+        return UpdateChatPosition.fromJson(json);
+      case UpdateChatReadInbox.constructor:
+        return UpdateChatReadInbox.fromJson(json);
+      case UpdateChatReadOutbox.constructor:
+        return UpdateChatReadOutbox.fromJson(json);
+      case UpdateChatReplyMarkup.constructor:
+        return UpdateChatReplyMarkup.fromJson(json);
+      case UpdateChatTheme.constructor:
+        return UpdateChatTheme.fromJson(json);
+      case UpdateChatThemes.constructor:
+        return UpdateChatThemes.fromJson(json);
+      case UpdateChatTitle.constructor:
+        return UpdateChatTitle.fromJson(json);
+      case UpdateChatUnreadMentionCount.constructor:
+        return UpdateChatUnreadMentionCount.fromJson(json);
+      case UpdateChatUnreadReactionCount.constructor:
+        return UpdateChatUnreadReactionCount.fromJson(json);
+      case UpdateChatVideoChat.constructor:
+        return UpdateChatVideoChat.fromJson(json);
+      case UpdateConnectionState.constructor:
+        return UpdateConnectionState.fromJson(json);
       case UpdateDeleteMessages.constructor:
         return UpdateDeleteMessages.fromJson(json);
-      case UpdateChatAction.constructor:
-        return UpdateChatAction.fromJson(json);
-      case UpdateUserStatus.constructor:
-        return UpdateUserStatus.fromJson(json);
-      case UpdateUser.constructor:
-        return UpdateUser.fromJson(json);
-      case UpdateBasicGroup.constructor:
-        return UpdateBasicGroup.fromJson(json);
-      case UpdateSupergroup.constructor:
-        return UpdateSupergroup.fromJson(json);
-      case UpdateSecretChat.constructor:
-        return UpdateSecretChat.fromJson(json);
-      case UpdateUserFullInfo.constructor:
-        return UpdateUserFullInfo.fromJson(json);
-      case UpdateBasicGroupFullInfo.constructor:
-        return UpdateBasicGroupFullInfo.fromJson(json);
-      case UpdateSupergroupFullInfo.constructor:
-        return UpdateSupergroupFullInfo.fromJson(json);
-      case UpdateServiceNotification.constructor:
-        return UpdateServiceNotification.fromJson(json);
+      case UpdateDiceEmojis.constructor:
+        return UpdateDiceEmojis.fromJson(json);
+      case UpdateFavoriteStickers.constructor:
+        return UpdateFavoriteStickers.fromJson(json);
       case UpdateFile.constructor:
         return UpdateFile.fromJson(json);
+      case UpdateFileAddedToDownloads.constructor:
+        return UpdateFileAddedToDownloads.fromJson(json);
+      case UpdateFileDownload.constructor:
+        return UpdateFileDownload.fromJson(json);
+      case UpdateFileDownloads.constructor:
+        return UpdateFileDownloads.fromJson(json);
       case UpdateFileGenerationStart.constructor:
         return UpdateFileGenerationStart.fromJson(json);
       case UpdateFileGenerationStop.constructor:
         return UpdateFileGenerationStop.fromJson(json);
-      case UpdateCall.constructor:
-        return UpdateCall.fromJson(json);
+      case UpdateFileRemovedFromDownloads.constructor:
+        return UpdateFileRemovedFromDownloads.fromJson(json);
       case UpdateGroupCall.constructor:
         return UpdateGroupCall.fromJson(json);
       case UpdateGroupCallParticipant.constructor:
         return UpdateGroupCallParticipant.fromJson(json);
-      case UpdateNewCallSignalingData.constructor:
-        return UpdateNewCallSignalingData.fromJson(json);
-      case UpdateUserPrivacySettingRules.constructor:
-        return UpdateUserPrivacySettingRules.fromJson(json);
-      case UpdateUnreadMessageCount.constructor:
-        return UpdateUnreadMessageCount.fromJson(json);
-      case UpdateUnreadChatCount.constructor:
-        return UpdateUnreadChatCount.fromJson(json);
-      case UpdateOption.constructor:
-        return UpdateOption.fromJson(json);
-      case UpdateStickerSet.constructor:
-        return UpdateStickerSet.fromJson(json);
+      case UpdateHavePendingNotifications.constructor:
+        return UpdateHavePendingNotifications.fromJson(json);
       case UpdateInstalledStickerSets.constructor:
         return UpdateInstalledStickerSets.fromJson(json);
-      case UpdateTrendingStickerSets.constructor:
-        return UpdateTrendingStickerSets.fromJson(json);
-      case UpdateRecentStickers.constructor:
-        return UpdateRecentStickers.fromJson(json);
-      case UpdateFavoriteStickers.constructor:
-        return UpdateFavoriteStickers.fromJson(json);
-      case UpdateSavedAnimations.constructor:
-        return UpdateSavedAnimations.fromJson(json);
-      case UpdateSelectedBackground.constructor:
-        return UpdateSelectedBackground.fromJson(json);
-      case UpdateChatThemes.constructor:
-        return UpdateChatThemes.fromJson(json);
       case UpdateLanguagePackStrings.constructor:
         return UpdateLanguagePackStrings.fromJson(json);
-      case UpdateConnectionState.constructor:
-        return UpdateConnectionState.fromJson(json);
-      case UpdateTermsOfService.constructor:
-        return UpdateTermsOfService.fromJson(json);
-      case UpdateUsersNearby.constructor:
-        return UpdateUsersNearby.fromJson(json);
-      case UpdateDiceEmojis.constructor:
-        return UpdateDiceEmojis.fromJson(json);
-      case UpdateAnimatedEmojiMessageClicked.constructor:
-        return UpdateAnimatedEmojiMessageClicked.fromJson(json);
-      case UpdateAnimationSearchParameters.constructor:
-        return UpdateAnimationSearchParameters.fromJson(json);
-      case UpdateSuggestedActions.constructor:
-        return UpdateSuggestedActions.fromJson(json);
-      case UpdateNewInlineQuery.constructor:
-        return UpdateNewInlineQuery.fromJson(json);
-      case UpdateNewChosenInlineResult.constructor:
-        return UpdateNewChosenInlineResult.fromJson(json);
+      case UpdateMessageContent.constructor:
+        return UpdateMessageContent.fromJson(json);
+      case UpdateMessageContentOpened.constructor:
+        return UpdateMessageContentOpened.fromJson(json);
+      case UpdateMessageEdited.constructor:
+        return UpdateMessageEdited.fromJson(json);
+      case UpdateMessageInteractionInfo.constructor:
+        return UpdateMessageInteractionInfo.fromJson(json);
+      case UpdateMessageIsPinned.constructor:
+        return UpdateMessageIsPinned.fromJson(json);
+      case UpdateMessageLiveLocationViewed.constructor:
+        return UpdateMessageLiveLocationViewed.fromJson(json);
+      case UpdateMessageMentionRead.constructor:
+        return UpdateMessageMentionRead.fromJson(json);
+      case UpdateMessageSendAcknowledged.constructor:
+        return UpdateMessageSendAcknowledged.fromJson(json);
+      case UpdateMessageSendFailed.constructor:
+        return UpdateMessageSendFailed.fromJson(json);
+      case UpdateMessageSendSucceeded.constructor:
+        return UpdateMessageSendSucceeded.fromJson(json);
+      case UpdateMessageUnreadReactions.constructor:
+        return UpdateMessageUnreadReactions.fromJson(json);
+      case UpdateNewCallSignalingData.constructor:
+        return UpdateNewCallSignalingData.fromJson(json);
       case UpdateNewCallbackQuery.constructor:
         return UpdateNewCallbackQuery.fromJson(json);
-      case UpdateNewInlineCallbackQuery.constructor:
-        return UpdateNewInlineCallbackQuery.fromJson(json);
-      case UpdateNewShippingQuery.constructor:
-        return UpdateNewShippingQuery.fromJson(json);
-      case UpdateNewPreCheckoutQuery.constructor:
-        return UpdateNewPreCheckoutQuery.fromJson(json);
+      case UpdateNewChat.constructor:
+        return UpdateNewChat.fromJson(json);
+      case UpdateNewChatJoinRequest.constructor:
+        return UpdateNewChatJoinRequest.fromJson(json);
+      case UpdateNewChosenInlineResult.constructor:
+        return UpdateNewChosenInlineResult.fromJson(json);
       case UpdateNewCustomEvent.constructor:
         return UpdateNewCustomEvent.fromJson(json);
       case UpdateNewCustomQuery.constructor:
         return UpdateNewCustomQuery.fromJson(json);
+      case UpdateNewInlineCallbackQuery.constructor:
+        return UpdateNewInlineCallbackQuery.fromJson(json);
+      case UpdateNewInlineQuery.constructor:
+        return UpdateNewInlineQuery.fromJson(json);
+      case UpdateNewMessage.constructor:
+        return UpdateNewMessage.fromJson(json);
+      case UpdateNewPreCheckoutQuery.constructor:
+        return UpdateNewPreCheckoutQuery.fromJson(json);
+      case UpdateNewShippingQuery.constructor:
+        return UpdateNewShippingQuery.fromJson(json);
+      case UpdateNotification.constructor:
+        return UpdateNotification.fromJson(json);
+      case UpdateNotificationGroup.constructor:
+        return UpdateNotificationGroup.fromJson(json);
+      case UpdateOption.constructor:
+        return UpdateOption.fromJson(json);
       case UpdatePoll.constructor:
         return UpdatePoll.fromJson(json);
       case UpdatePollAnswer.constructor:
         return UpdatePollAnswer.fromJson(json);
-      case UpdateChatMember.constructor:
-        return UpdateChatMember.fromJson(json);
-      case UpdateNewChatJoinRequest.constructor:
-        return UpdateNewChatJoinRequest.fromJson(json);
+      case UpdateReactions.constructor:
+        return UpdateReactions.fromJson(json);
+      case UpdateRecentStickers.constructor:
+        return UpdateRecentStickers.fromJson(json);
+      case UpdateSavedAnimations.constructor:
+        return UpdateSavedAnimations.fromJson(json);
+      case UpdateSavedNotificationSounds.constructor:
+        return UpdateSavedNotificationSounds.fromJson(json);
+      case UpdateScopeNotificationSettings.constructor:
+        return UpdateScopeNotificationSettings.fromJson(json);
+      case UpdateSecretChat.constructor:
+        return UpdateSecretChat.fromJson(json);
+      case UpdateSelectedBackground.constructor:
+        return UpdateSelectedBackground.fromJson(json);
+      case UpdateServiceNotification.constructor:
+        return UpdateServiceNotification.fromJson(json);
+      case UpdateStickerSet.constructor:
+        return UpdateStickerSet.fromJson(json);
+      case UpdateSuggestedActions.constructor:
+        return UpdateSuggestedActions.fromJson(json);
+      case UpdateSupergroup.constructor:
+        return UpdateSupergroup.fromJson(json);
+      case UpdateSupergroupFullInfo.constructor:
+        return UpdateSupergroupFullInfo.fromJson(json);
+      case UpdateTermsOfService.constructor:
+        return UpdateTermsOfService.fromJson(json);
+      case UpdateTrendingStickerSets.constructor:
+        return UpdateTrendingStickerSets.fromJson(json);
+      case UpdateUnreadChatCount.constructor:
+        return UpdateUnreadChatCount.fromJson(json);
+      case UpdateUnreadMessageCount.constructor:
+        return UpdateUnreadMessageCount.fromJson(json);
+      case UpdateUser.constructor:
+        return UpdateUser.fromJson(json);
+      case UpdateUserFullInfo.constructor:
+        return UpdateUserFullInfo.fromJson(json);
+      case UpdateUserPrivacySettingRules.constructor:
+        return UpdateUserPrivacySettingRules.fromJson(json);
+      case UpdateUserStatus.constructor:
+        return UpdateUserStatus.fromJson(json);
+      case UpdateUsersNearby.constructor:
+        return UpdateUsersNearby.fromJson(json);
+      case UpdateWebAppMessageSent.constructor:
+        return UpdateWebAppMessageSent.fromJson(json);
       default:
         return null;
     }

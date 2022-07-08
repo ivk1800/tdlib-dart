@@ -35,8 +35,8 @@ class GetChatHistory extends TdFunction {
   /// specified limit
   final int limit;
 
-  /// [onlyLocal] If true, returns only messages that are available locally
-  /// without sending network requests
+  /// [onlyLocal] Pass true to get only messages that are available without
+  /// sending network requests
   final bool onlyLocal;
 
   static const String constructor = 'getChatHistory';

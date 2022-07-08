@@ -20,7 +20,7 @@ class AnswerCallbackQuery extends TdFunction {
   /// [text] Text of the answer
   final String text;
 
-  /// [showAlert] If true, an alert must be shown to the user instead of a toast
+  /// [showAlert] Pass true to show an alert to the user instead of a toast
   /// notification
   final bool showAlert;
 

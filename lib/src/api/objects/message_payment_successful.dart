@@ -10,6 +10,9 @@ class MessagePaymentSuccessful extends MessageContent {
     required this.invoiceMessageId,
     required this.currency,
     required this.totalAmount,
+    required this.isRecurring,
+    required this.isFirstRecurring,
+    required this.invoiceName,
   });
 
   /// [invoiceChatId] Identifier of the chat, containing the corresponding
@@ -17,7 +20,7 @@ class MessagePaymentSuccessful extends MessageContent {
   final int invoiceChatId;
 
   /// [invoiceMessageId] Identifier of the message with the corresponding
-  /// invoice; can be an identifier of a deleted message
+  /// invoice; can be 0 or an identifier of a deleted message
   final int invoiceMessageId;
 
   /// [currency] Currency for the price of the product
@@ -26,6 +29,15 @@ class MessagePaymentSuccessful extends MessageContent {
   /// [totalAmount] Total price for the product, in the smallest units of the
   /// currency
   final int totalAmount;
+
+  /// [isRecurring] True, if this is a recurring payment
+  final bool isRecurring;
+
+  /// [isFirstRecurring] True, if this is the first recurring payment
+  final bool isFirstRecurring;
+
+  /// [invoiceName] Name of the invoice; may be empty if unknown
+  final String invoiceName;
 
   static const String constructor = 'messagePaymentSuccessful';
 
@@ -39,6 +51,9 @@ class MessagePaymentSuccessful extends MessageContent {
       invoiceMessageId: json['invoice_message_id'],
       currency: json['currency'],
       totalAmount: json['total_amount'],
+      isRecurring: json['is_recurring'],
+      isFirstRecurring: json['is_first_recurring'],
+      invoiceName: json['invoice_name'],
     );
   }
 
@@ -51,6 +66,9 @@ class MessagePaymentSuccessful extends MessageContent {
         'invoice_message_id': invoiceMessageId,
         'currency': currency,
         'total_amount': totalAmount,
+        'is_recurring': isRecurring,
+        'is_first_recurring': isFirstRecurring,
+        'invoice_name': invoiceName,
         '@type': constructor,
       };
 

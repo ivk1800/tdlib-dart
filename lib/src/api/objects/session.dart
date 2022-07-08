@@ -12,6 +12,7 @@ class Session extends TdObject {
     required this.isPasswordPending,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
+    required this.type,
     required this.apiId,
     required this.applicationName,
     required this.applicationVersion,
@@ -42,6 +43,10 @@ class Session extends TdObject {
 
   /// [canAcceptCalls] True, if incoming calls can be accepted by the session
   final bool canAcceptCalls;
+
+  /// [type] Session type based on the system and application version, which can
+  /// be used to display a corresponding icon
+  final SessionType type;
 
   /// [apiId] Telegram API identifier, as provided by the application
   final int apiId;
@@ -101,6 +106,7 @@ class Session extends TdObject {
       isPasswordPending: json['is_password_pending'],
       canAcceptSecretChats: json['can_accept_secret_chats'],
       canAcceptCalls: json['can_accept_calls'],
+      type: SessionType.fromJson(json['type'])!,
       apiId: json['api_id'],
       applicationName: json['application_name'],
       applicationVersion: json['application_version'],
@@ -126,6 +132,7 @@ class Session extends TdObject {
         'is_password_pending': isPasswordPending,
         'can_accept_secret_chats': canAcceptSecretChats,
         'can_accept_calls': canAcceptCalls,
+        'type': type.toJson(),
         'api_id': apiId,
         'application_name': applicationName,
         'application_version': applicationVersion,

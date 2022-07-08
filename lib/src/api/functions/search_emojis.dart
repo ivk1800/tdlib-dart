@@ -16,8 +16,8 @@ class SearchEmojis extends TdFunction {
   /// [text] Text to search for
   final String text;
 
-  /// [exactMatch] True, if only emojis, which exactly match text needs to be
-  /// returned
+  /// [exactMatch] Pass true if only emojis, which exactly match the text, needs
+  /// to be returned
   final bool exactMatch;
 
   /// [inputLanguageCodes] List of possible IETF language tags of the user's

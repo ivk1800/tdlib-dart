@@ -10,7 +10,7 @@ class UpdateNotificationGroup extends Update {
     required this.type,
     required this.chatId,
     required this.notificationSettingsChatId,
-    required this.isSilent,
+    required this.notificationSoundId,
     required this.totalCount,
     required this.addedNotifications,
     required this.removedNotificationIds,
@@ -30,8 +30,9 @@ class UpdateNotificationGroup extends Update {
   /// must be applied to the added notifications
   final int notificationSettingsChatId;
 
-  /// [isSilent] True, if the notifications must be shown without sound
-  final bool isSilent;
+  /// [notificationSoundId] Identifier of the notification sound to be played; 0
+  /// if sound is disabled
+  final int notificationSoundId;
 
   /// [totalCount] Total number of unread notifications in the group, can be
   /// bigger than number of active notifications
@@ -57,7 +58,7 @@ class UpdateNotificationGroup extends Update {
       type: NotificationGroupType.fromJson(json['type'])!,
       chatId: json['chat_id'],
       notificationSettingsChatId: json['notification_settings_chat_id'],
-      isSilent: json['is_silent'],
+      notificationSoundId: int.tryParse(json['notification_sound_id']) ?? 0,
       totalCount: json['total_count'],
       addedNotifications: List<Notification>.from(
           (json['added_notifications'] ?? [])
@@ -79,7 +80,7 @@ class UpdateNotificationGroup extends Update {
         'type': type.toJson(),
         'chat_id': chatId,
         'notification_settings_chat_id': notificationSettingsChatId,
-        'is_silent': isSilent,
+        'notification_sound_id': notificationSoundId,
         'total_count': totalCount,
         'added_notifications':
             addedNotifications.map((item) => item.toJson()).toList(),

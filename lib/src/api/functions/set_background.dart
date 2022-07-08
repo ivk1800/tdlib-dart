@@ -21,7 +21,7 @@ class SetBackground extends TdFunction {
   /// background or to remove the current background
   final BackgroundType? type;
 
-  /// [forDarkTheme] True, if the background is chosen for dark theme
+  /// [forDarkTheme] Pass true if the background is changed for a dark theme
   final bool forDarkTheme;
 
   static const String constructor = 'setBackground';

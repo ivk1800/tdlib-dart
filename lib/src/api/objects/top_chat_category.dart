@@ -11,33 +11,33 @@ abstract class TopChatCategory extends TdObject {
   static const String constructor = 'topChatCategory';
 
   /// Inherited by:
-  /// [TopChatCategoryUsers]
   /// [TopChatCategoryBots]
-  /// [TopChatCategoryGroups]
-  /// [TopChatCategoryChannels]
-  /// [TopChatCategoryInlineBots]
   /// [TopChatCategoryCalls]
+  /// [TopChatCategoryChannels]
   /// [TopChatCategoryForwardChats]
+  /// [TopChatCategoryGroups]
+  /// [TopChatCategoryInlineBots]
+  /// [TopChatCategoryUsers]
   static TopChatCategory? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case TopChatCategoryUsers.constructor:
-        return TopChatCategoryUsers.fromJson(json);
       case TopChatCategoryBots.constructor:
         return TopChatCategoryBots.fromJson(json);
-      case TopChatCategoryGroups.constructor:
-        return TopChatCategoryGroups.fromJson(json);
-      case TopChatCategoryChannels.constructor:
-        return TopChatCategoryChannels.fromJson(json);
-      case TopChatCategoryInlineBots.constructor:
-        return TopChatCategoryInlineBots.fromJson(json);
       case TopChatCategoryCalls.constructor:
         return TopChatCategoryCalls.fromJson(json);
+      case TopChatCategoryChannels.constructor:
+        return TopChatCategoryChannels.fromJson(json);
       case TopChatCategoryForwardChats.constructor:
         return TopChatCategoryForwardChats.fromJson(json);
+      case TopChatCategoryGroups.constructor:
+        return TopChatCategoryGroups.fromJson(json);
+      case TopChatCategoryInlineBots.constructor:
+        return TopChatCategoryInlineBots.fromJson(json);
+      case TopChatCategoryUsers.constructor:
+        return TopChatCategoryUsers.fromJson(json);
       default:
         return null;
     }

@@ -10,18 +10,18 @@ abstract class NetworkStatisticsEntry extends TdObject {
   static const String constructor = 'networkStatisticsEntry';
 
   /// Inherited by:
-  /// [NetworkStatisticsEntryFile]
   /// [NetworkStatisticsEntryCall]
+  /// [NetworkStatisticsEntryFile]
   static NetworkStatisticsEntry? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case NetworkStatisticsEntryFile.constructor:
-        return NetworkStatisticsEntryFile.fromJson(json);
       case NetworkStatisticsEntryCall.constructor:
         return NetworkStatisticsEntryCall.fromJson(json);
+      case NetworkStatisticsEntryFile.constructor:
+        return NetworkStatisticsEntryFile.fromJson(json);
       default:
         return null;
     }

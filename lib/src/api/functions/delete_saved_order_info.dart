@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Deletes saved order info
+/// Deletes saved order information
 /// Returns [Ok]
 @immutable
 class DeleteSavedOrderInfo extends TdFunction {

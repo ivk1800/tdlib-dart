@@ -11,7 +11,7 @@ class FoundMessages extends TdObject {
     required this.nextOffset,
   });
 
-  /// [totalCount] Approximate total count of messages found; -1 if unknown
+  /// [totalCount] Approximate total number of messages found; -1 if unknown
   final int totalCount;
 
   /// [messages] List of messages

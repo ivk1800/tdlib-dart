@@ -10,21 +10,21 @@ abstract class GroupCallVideoQuality extends TdObject {
   static const String constructor = 'groupCallVideoQuality';
 
   /// Inherited by:
-  /// [GroupCallVideoQualityThumbnail]
-  /// [GroupCallVideoQualityMedium]
   /// [GroupCallVideoQualityFull]
+  /// [GroupCallVideoQualityMedium]
+  /// [GroupCallVideoQualityThumbnail]
   static GroupCallVideoQuality? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case GroupCallVideoQualityThumbnail.constructor:
-        return GroupCallVideoQualityThumbnail.fromJson(json);
-      case GroupCallVideoQualityMedium.constructor:
-        return GroupCallVideoQualityMedium.fromJson(json);
       case GroupCallVideoQualityFull.constructor:
         return GroupCallVideoQualityFull.fromJson(json);
+      case GroupCallVideoQualityMedium.constructor:
+        return GroupCallVideoQualityMedium.fromJson(json);
+      case GroupCallVideoQualityThumbnail.constructor:
+        return GroupCallVideoQualityThumbnail.fromJson(json);
       default:
         return null;
     }

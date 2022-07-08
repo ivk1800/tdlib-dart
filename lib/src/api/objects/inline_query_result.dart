@@ -10,16 +10,16 @@ abstract class InlineQueryResult extends TdObject {
   static const String constructor = 'inlineQueryResult';
 
   /// Inherited by:
-  /// [InlineQueryResultArticle]
-  /// [InlineQueryResultContact]
-  /// [InlineQueryResultLocation]
-  /// [InlineQueryResultVenue]
-  /// [InlineQueryResultGame]
   /// [InlineQueryResultAnimation]
+  /// [InlineQueryResultArticle]
   /// [InlineQueryResultAudio]
+  /// [InlineQueryResultContact]
   /// [InlineQueryResultDocument]
+  /// [InlineQueryResultGame]
+  /// [InlineQueryResultLocation]
   /// [InlineQueryResultPhoto]
   /// [InlineQueryResultSticker]
+  /// [InlineQueryResultVenue]
   /// [InlineQueryResultVideo]
   /// [InlineQueryResultVoiceNote]
   static InlineQueryResult? fromJson(Map<String, dynamic>? json) {
@@ -28,26 +28,26 @@ abstract class InlineQueryResult extends TdObject {
     }
 
     switch (json['@type']) {
-      case InlineQueryResultArticle.constructor:
-        return InlineQueryResultArticle.fromJson(json);
-      case InlineQueryResultContact.constructor:
-        return InlineQueryResultContact.fromJson(json);
-      case InlineQueryResultLocation.constructor:
-        return InlineQueryResultLocation.fromJson(json);
-      case InlineQueryResultVenue.constructor:
-        return InlineQueryResultVenue.fromJson(json);
-      case InlineQueryResultGame.constructor:
-        return InlineQueryResultGame.fromJson(json);
       case InlineQueryResultAnimation.constructor:
         return InlineQueryResultAnimation.fromJson(json);
+      case InlineQueryResultArticle.constructor:
+        return InlineQueryResultArticle.fromJson(json);
       case InlineQueryResultAudio.constructor:
         return InlineQueryResultAudio.fromJson(json);
+      case InlineQueryResultContact.constructor:
+        return InlineQueryResultContact.fromJson(json);
       case InlineQueryResultDocument.constructor:
         return InlineQueryResultDocument.fromJson(json);
+      case InlineQueryResultGame.constructor:
+        return InlineQueryResultGame.fromJson(json);
+      case InlineQueryResultLocation.constructor:
+        return InlineQueryResultLocation.fromJson(json);
       case InlineQueryResultPhoto.constructor:
         return InlineQueryResultPhoto.fromJson(json);
       case InlineQueryResultSticker.constructor:
         return InlineQueryResultSticker.fromJson(json);
+      case InlineQueryResultVenue.constructor:
+        return InlineQueryResultVenue.fromJson(json);
       case InlineQueryResultVideo.constructor:
         return InlineQueryResultVideo.fromJson(json);
       case InlineQueryResultVoiceNote.constructor:

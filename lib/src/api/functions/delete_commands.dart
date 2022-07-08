@@ -16,7 +16,7 @@ class DeleteCommands extends TdFunction {
   /// commands in the default bot command scope
   final BotCommandScope? scope;
 
-  /// [languageCode] A two-letter ISO 639-1 country code or an empty string
+  /// [languageCode] A two-letter ISO 639-1 language code or an empty string
   final String languageCode;
 
   static const String constructor = 'deleteCommands';

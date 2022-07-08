@@ -16,15 +16,13 @@ class BlockMessageSenderFromReplies extends TdFunction {
   /// [messageId] The identifier of an incoming message in the Replies chat
   final int messageId;
 
-  /// [deleteMessage] Pass true if the message must be deleted
+  /// [deleteMessage] Pass true to delete the message
   final bool deleteMessage;
 
-  /// [deleteAllMessages] Pass true if all messages from the same sender must be
-  /// deleted
+  /// [deleteAllMessages] Pass true to delete all messages from the same sender
   final bool deleteAllMessages;
 
-  /// [reportSpam] Pass true if the sender must be reported to the Telegram
-  /// moderators
+  /// [reportSpam] Pass true to report the sender to the Telegram moderators
   final bool reportSpam;
 
   static const String constructor = 'blockMessageSenderFromReplies';

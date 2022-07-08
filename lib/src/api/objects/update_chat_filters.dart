@@ -7,10 +7,15 @@ import '../tdapi.dart';
 class UpdateChatFilters extends Update {
   const UpdateChatFilters({
     required this.chatFilters,
+    required this.mainChatListPosition,
   });
 
   /// [chatFilters] The new list of chat filters
   final List<ChatFilterInfo> chatFilters;
+
+  /// [mainChatListPosition] Position of the main chat list among chat filters,
+  /// 0-based
+  final int mainChatListPosition;
 
   static const String constructor = 'updateChatFilters';
 
@@ -23,6 +28,7 @@ class UpdateChatFilters extends Update {
       chatFilters: List<ChatFilterInfo>.from((json['chat_filters'] ?? [])
           .map((item) => ChatFilterInfo.fromJson(item))
           .toList()),
+      mainChatListPosition: json['main_chat_list_position'],
     );
   }
 
@@ -32,6 +38,7 @@ class UpdateChatFilters extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_filters': chatFilters.map((item) => item.toJson()).toList(),
+        'main_chat_list_position': mainChatListPosition,
         '@type': constructor,
       };
 

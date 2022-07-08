@@ -7,6 +7,7 @@ import '../tdapi.dart';
 class SponsoredMessage extends TdObject {
   const SponsoredMessage({
     required this.messageId,
+    required this.isRecommended,
     required this.sponsorChatId,
     this.sponsorChatInfo,
     this.link,
@@ -17,6 +18,10 @@ class SponsoredMessage extends TdObject {
   /// message belongs among both ordinary and sponsored messages
   final int messageId;
 
+  /// [isRecommended] True, if the message needs to be labeled as "recommended"
+  /// instead of "sponsored"
+  final bool isRecommended;
+
   /// [sponsorChatId] Sponsor chat identifier; 0 if the sponsor chat is
   /// accessible through an invite link
   final int sponsorChatId;
@@ -26,7 +31,7 @@ class SponsoredMessage extends TdObject {
   final ChatInviteLinkInfo? sponsorChatInfo;
 
   /// [link] An internal link to be opened when the sponsored message is
-  /// clicked; may be null. If null, the sponsor chat needs to be opened instead
+  /// clicked; may be null if the sponsor chat needs to be opened instead
   final InternalLinkType? link;
 
   /// [content] Content of the message. Currently, can be only of the type
@@ -42,6 +47,7 @@ class SponsoredMessage extends TdObject {
 
     return SponsoredMessage(
       messageId: json['message_id'],
+      isRecommended: json['is_recommended'],
       sponsorChatId: json['sponsor_chat_id'],
       sponsorChatInfo: ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
       link: InternalLinkType.fromJson(json['link']),
@@ -55,6 +61,7 @@ class SponsoredMessage extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'message_id': messageId,
+        'is_recommended': isRecommended,
         'sponsor_chat_id': sponsorChatId,
         'sponsor_chat_info': sponsorChatInfo?.toJson(),
         'link': link?.toJson(),

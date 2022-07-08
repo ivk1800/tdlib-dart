@@ -20,8 +20,8 @@ class DownloadFile extends TdFunction {
 
   /// [priority] Priority of the download (1-32). The higher the priority, the
   /// earlier the file will be downloaded. If the priorities of two files are
-  /// equal, then the last one for which downloadFile was called will be
-  /// downloaded first
+  /// equal, then the last one for which downloadFile/addFileToDownloads was
+  /// called will be downloaded first
   final int priority;
 
   /// [offset] The starting position from which the file needs to be downloaded
@@ -32,10 +32,10 @@ class DownloadFile extends TdFunction {
   /// 0 to download without a limit
   final int limit;
 
-  /// [synchronous] If false, this request returns file state just after the
-  /// download has been started. If true, this request returns file state only
-  /// after. the download has succeeded, has failed, has been canceled or a new
-  /// downloadFile request with different offset/limit parameters was sent
+  /// [synchronous] Pass true to return response only after the file download
+  /// has succeeded, has failed, has been canceled, or a new downloadFile
+  /// request with different offset/limit parameters was sent; pass false to
+  /// return file state immediately, just after the download has been started
   final bool synchronous;
 
   static const String constructor = 'downloadFile';

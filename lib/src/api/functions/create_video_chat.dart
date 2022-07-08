@@ -12,9 +12,10 @@ class CreateVideoChat extends TdFunction {
     required this.chatId,
     required this.title,
     required this.startDate,
+    required this.isRtmpStream,
   });
 
-  /// [chatId] Chat identifier, in which the video chat will be created
+  /// [chatId] Identifier of a chat in which the video chat will be created
   final int chatId;
 
   /// [title] Group call title; if empty, chat title will be used
@@ -24,6 +25,10 @@ class CreateVideoChat extends TdFunction {
   /// to be started by an administrator; 0 to start the video chat immediately.
   /// The date must be at least 10 seconds and at most 8 days in the future
   final int startDate;
+
+  /// [isRtmpStream] Pass true to create an RTMP stream instead of an ordinary
+  /// video chat; requires creator privileges
+  final bool isRtmpStream;
 
   static const String constructor = 'createVideoChat';
 
@@ -35,6 +40,7 @@ class CreateVideoChat extends TdFunction {
         'chat_id': chatId,
         'title': title,
         'start_date': startDate,
+        'is_rtmp_stream': isRtmpStream,
         '@type': constructor,
       };
 

@@ -15,8 +15,7 @@ class GetWebPageInstantView extends TdFunction {
   /// [url] The web page URL
   final String url;
 
-  /// [forceFull] If true, the full instant view for the web page will be
-  /// returned
+  /// [forceFull] Pass true to get full instant view for the web page
   final bool forceFull;
 
   static const String constructor = 'getWebPageInstantView';

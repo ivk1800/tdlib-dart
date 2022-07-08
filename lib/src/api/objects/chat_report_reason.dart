@@ -10,36 +10,42 @@ abstract class ChatReportReason extends TdObject {
   static const String constructor = 'chatReportReason';
 
   /// Inherited by:
-  /// [ChatReportReasonSpam]
-  /// [ChatReportReasonViolence]
-  /// [ChatReportReasonPornography]
   /// [ChatReportReasonChildAbuse]
   /// [ChatReportReasonCopyright]
-  /// [ChatReportReasonUnrelatedLocation]
-  /// [ChatReportReasonFake]
   /// [ChatReportReasonCustom]
+  /// [ChatReportReasonFake]
+  /// [ChatReportReasonIllegalDrugs]
+  /// [ChatReportReasonPersonalDetails]
+  /// [ChatReportReasonPornography]
+  /// [ChatReportReasonSpam]
+  /// [ChatReportReasonUnrelatedLocation]
+  /// [ChatReportReasonViolence]
   static ChatReportReason? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ChatReportReasonSpam.constructor:
-        return ChatReportReasonSpam.fromJson(json);
-      case ChatReportReasonViolence.constructor:
-        return ChatReportReasonViolence.fromJson(json);
-      case ChatReportReasonPornography.constructor:
-        return ChatReportReasonPornography.fromJson(json);
       case ChatReportReasonChildAbuse.constructor:
         return ChatReportReasonChildAbuse.fromJson(json);
       case ChatReportReasonCopyright.constructor:
         return ChatReportReasonCopyright.fromJson(json);
-      case ChatReportReasonUnrelatedLocation.constructor:
-        return ChatReportReasonUnrelatedLocation.fromJson(json);
-      case ChatReportReasonFake.constructor:
-        return ChatReportReasonFake.fromJson(json);
       case ChatReportReasonCustom.constructor:
         return ChatReportReasonCustom.fromJson(json);
+      case ChatReportReasonFake.constructor:
+        return ChatReportReasonFake.fromJson(json);
+      case ChatReportReasonIllegalDrugs.constructor:
+        return ChatReportReasonIllegalDrugs.fromJson(json);
+      case ChatReportReasonPersonalDetails.constructor:
+        return ChatReportReasonPersonalDetails.fromJson(json);
+      case ChatReportReasonPornography.constructor:
+        return ChatReportReasonPornography.fromJson(json);
+      case ChatReportReasonSpam.constructor:
+        return ChatReportReasonSpam.fromJson(json);
+      case ChatReportReasonUnrelatedLocation.constructor:
+        return ChatReportReasonUnrelatedLocation.fromJson(json);
+      case ChatReportReasonViolence.constructor:
+        return ChatReportReasonViolence.fromJson(json);
       default:
         return null;
     }

@@ -18,6 +18,7 @@ class Message extends TdObject {
     required this.canBeSaved,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
+    required this.canGetAddedReactions,
     required this.canGetStatistics,
     required this.canGetMessageThread,
     required this.canGetViewers,
@@ -29,6 +30,7 @@ class Message extends TdObject {
     required this.editDate,
     this.forwardInfo,
     this.interactionInfo,
+    required this.unreadReactions,
     required this.replyInChatId,
     required this.replyToMessageId,
     required this.messageThreadId,
@@ -83,10 +85,16 @@ class Message extends TdObject {
   /// users
   final bool canBeDeletedForAllUsers;
 
-  /// [canGetStatistics] True, if the message statistics are available
+  /// [canGetAddedReactions] True, if the list of added reactions is available
+  /// through getMessageAddedReactions
+  final bool canGetAddedReactions;
+
+  /// [canGetStatistics] True, if the message statistics are available through
+  /// getMessageStatistics
   final bool canGetStatistics;
 
-  /// [canGetMessageThread] True, if the message thread info is available
+  /// [canGetMessageThread] True, if information about the message thread is
+  /// available through getMessageThread
   final bool canGetMessageThread;
 
   /// [canGetViewers] True, if chat members already viewed the message can be
@@ -95,7 +103,7 @@ class Message extends TdObject {
 
   /// [canGetMediaTimestampLinks] True, if media timestamp links can be
   /// generated for media timestamp entities in the message text, caption or web
-  /// page description
+  /// page description through getMessageLink
   final bool canGetMediaTimestampLinks;
 
   /// [hasTimestampedMedia] True, if media timestamp entities refers to a media
@@ -122,6 +130,9 @@ class Message extends TdObject {
   /// [interactionInfo] Information about interactions with the message; may be
   /// null
   final MessageInteractionInfo? interactionInfo;
+
+  /// [unreadReactions] Information about unread reactions added to the message
+  final List<UnreadReaction> unreadReactions;
 
   /// [replyInChatId] If non-zero, the identifier of the chat to which the
   /// replied message belongs; Currently, only messages in the Replies chat can
@@ -188,6 +199,7 @@ class Message extends TdObject {
       canBeSaved: json['can_be_saved'],
       canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
       canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
+      canGetAddedReactions: json['can_get_added_reactions'],
       canGetStatistics: json['can_get_statistics'],
       canGetMessageThread: json['can_get_message_thread'],
       canGetViewers: json['can_get_viewers'],
@@ -200,6 +212,10 @@ class Message extends TdObject {
       forwardInfo: MessageForwardInfo.fromJson(json['forward_info']),
       interactionInfo:
           MessageInteractionInfo.fromJson(json['interaction_info']),
+      unreadReactions: List<UnreadReaction>.from(
+          (json['unread_reactions'] ?? [])
+              .map((item) => UnreadReaction.fromJson(item))
+              .toList()),
       replyInChatId: json['reply_in_chat_id'],
       replyToMessageId: json['reply_to_message_id'],
       messageThreadId: json['message_thread_id'],
@@ -231,6 +247,7 @@ class Message extends TdObject {
         'can_be_saved': canBeSaved,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
+        'can_get_added_reactions': canGetAddedReactions,
         'can_get_statistics': canGetStatistics,
         'can_get_message_thread': canGetMessageThread,
         'can_get_viewers': canGetViewers,
@@ -242,6 +259,8 @@ class Message extends TdObject {
         'edit_date': editDate,
         'forward_info': forwardInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
+        'unread_reactions':
+            unreadReactions.map((item) => item.toJson()).toList(),
         'reply_in_chat_id': replyInChatId,
         'reply_to_message_id': replyToMessageId,
         'message_thread_id': messageThreadId,

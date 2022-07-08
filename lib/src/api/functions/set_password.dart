@@ -26,8 +26,8 @@ class SetPassword extends TdFunction {
   /// [newHint] New password hint; may be empty
   final String newHint;
 
-  /// [setRecoveryEmailAddress] Pass true if the recovery email address must be
-  /// changed
+  /// [setRecoveryEmailAddress] Pass true to change also the recovery email
+  /// address
   final bool setRecoveryEmailAddress;
 
   /// [newRecoveryEmailAddress] New recovery email address; may be empty

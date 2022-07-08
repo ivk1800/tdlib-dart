@@ -2,7 +2,7 @@
 
 A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated schema classes of [td_api.tl](https://github.com/tdlib/td/blob/master/td/generate/scheme/td_api.tl) and a client that interacts with lib through [ffi](https://dart.dev/guides/libraries/c-interop). 
 
-Actual version of tdlib: `1.8.0` [c0385078](https://github.com/tdlib/td/tree/c0385078)
+Actual version of tdlib: `1.8.4` [d489014](https://github.com/tdlib/td/tree/d489014)
 
 ### Table of Contents
 
@@ -26,7 +26,7 @@ Actual version of tdlib: `1.8.0` [c0385078](https://github.com/tdlib/td/tree/c03
 The official repository contains instructions on how to build tdlib. https://github.com/tdlib/td#building
 
 1. git clone `git@github.com:tdlib/td.git`
-2. git checkout `c0385078`
+2. git checkout `d489014`
 
 ### Android
 Instruction: https://github.com/tdlib/td/issues/77#issuecomment-640719893

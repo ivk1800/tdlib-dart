@@ -8,33 +8,32 @@ class PaymentForm extends TdObject {
   const PaymentForm({
     required this.id,
     required this.invoice,
-    required this.url,
     required this.sellerBotUserId,
-    required this.paymentsProviderUserId,
-    required this.paymentsProvider,
+    required this.paymentProviderUserId,
+    required this.paymentProvider,
     this.savedOrderInfo,
     this.savedCredentials,
     required this.canSaveCredentials,
     required this.needPassword,
+    required this.productTitle,
+    required this.productDescription,
+    this.productPhoto,
   });
 
   /// [id] The payment form identifier
   final int id;
 
-  /// [invoice] Full information of the invoice
+  /// [invoice] Full information about the invoice
   final Invoice invoice;
-
-  /// [url] Payment form URL
-  final String url;
 
   /// [sellerBotUserId] User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// [paymentsProviderUserId] User identifier of the payment provider bot
-  final int paymentsProviderUserId;
+  /// [paymentProviderUserId] User identifier of the payment provider bot
+  final int paymentProviderUserId;
 
-  /// [paymentsProvider]_user_id User identifier of the payment provider bot
-  final PaymentsProviderStripe paymentsProvider;
+  /// [paymentProvider]_user_id User identifier of the payment provider bot
+  final PaymentProvider paymentProvider;
 
   /// [savedOrderInfo] Saved server-side order information; may be null
   final OrderInfo? savedOrderInfo;
@@ -49,6 +48,15 @@ class PaymentForm extends TdObject {
   /// protected by a password they set up
   final bool needPassword;
 
+  /// [productTitle] Product title
+  final String productTitle;
+
+  /// [productDescription] Product description
+  final FormattedText productDescription;
+
+  /// [productPhoto] Product photo; may be null
+  final Photo? productPhoto;
+
   static const String constructor = 'paymentForm';
 
   static PaymentForm? fromJson(Map<String, dynamic>? json) {
@@ -59,15 +67,16 @@ class PaymentForm extends TdObject {
     return PaymentForm(
       id: int.tryParse(json['id']) ?? 0,
       invoice: Invoice.fromJson(json['invoice'])!,
-      url: json['url'],
       sellerBotUserId: json['seller_bot_user_id'],
-      paymentsProviderUserId: json['payments_provider_user_id'],
-      paymentsProvider:
-          PaymentsProviderStripe.fromJson(json['payments_provider'])!,
+      paymentProviderUserId: json['payment_provider_user_id'],
+      paymentProvider: PaymentProvider.fromJson(json['payment_provider'])!,
       savedOrderInfo: OrderInfo.fromJson(json['saved_order_info']),
       savedCredentials: SavedCredentials.fromJson(json['saved_credentials']),
       canSaveCredentials: json['can_save_credentials'],
       needPassword: json['need_password'],
+      productTitle: json['product_title'],
+      productDescription: FormattedText.fromJson(json['product_description'])!,
+      productPhoto: Photo.fromJson(json['product_photo']),
     );
   }
 
@@ -78,14 +87,16 @@ class PaymentForm extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,
         'invoice': invoice.toJson(),
-        'url': url,
         'seller_bot_user_id': sellerBotUserId,
-        'payments_provider_user_id': paymentsProviderUserId,
-        'payments_provider': paymentsProvider.toJson(),
+        'payment_provider_user_id': paymentProviderUserId,
+        'payment_provider': paymentProvider.toJson(),
         'saved_order_info': savedOrderInfo?.toJson(),
         'saved_credentials': savedCredentials?.toJson(),
         'can_save_credentials': canSaveCredentials,
         'need_password': needPassword,
+        'product_title': productTitle,
+        'product_description': productDescription.toJson(),
+        'product_photo': productPhoto?.toJson(),
         '@type': constructor,
       };
 

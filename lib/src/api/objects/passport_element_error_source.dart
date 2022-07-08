@@ -10,25 +10,27 @@ abstract class PassportElementErrorSource extends TdObject {
   static const String constructor = 'passportElementErrorSource';
 
   /// Inherited by:
-  /// [PassportElementErrorSourceUnspecified]
   /// [PassportElementErrorSourceDataField]
+  /// [PassportElementErrorSourceFile]
+  /// [PassportElementErrorSourceFiles]
   /// [PassportElementErrorSourceFrontSide]
   /// [PassportElementErrorSourceReverseSide]
   /// [PassportElementErrorSourceSelfie]
   /// [PassportElementErrorSourceTranslationFile]
   /// [PassportElementErrorSourceTranslationFiles]
-  /// [PassportElementErrorSourceFile]
-  /// [PassportElementErrorSourceFiles]
+  /// [PassportElementErrorSourceUnspecified]
   static PassportElementErrorSource? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case PassportElementErrorSourceUnspecified.constructor:
-        return PassportElementErrorSourceUnspecified.fromJson(json);
       case PassportElementErrorSourceDataField.constructor:
         return PassportElementErrorSourceDataField.fromJson(json);
+      case PassportElementErrorSourceFile.constructor:
+        return PassportElementErrorSourceFile.fromJson(json);
+      case PassportElementErrorSourceFiles.constructor:
+        return PassportElementErrorSourceFiles.fromJson(json);
       case PassportElementErrorSourceFrontSide.constructor:
         return PassportElementErrorSourceFrontSide.fromJson(json);
       case PassportElementErrorSourceReverseSide.constructor:
@@ -39,10 +41,8 @@ abstract class PassportElementErrorSource extends TdObject {
         return PassportElementErrorSourceTranslationFile.fromJson(json);
       case PassportElementErrorSourceTranslationFiles.constructor:
         return PassportElementErrorSourceTranslationFiles.fromJson(json);
-      case PassportElementErrorSourceFile.constructor:
-        return PassportElementErrorSourceFile.fromJson(json);
-      case PassportElementErrorSourceFiles.constructor:
-        return PassportElementErrorSourceFiles.fromJson(json);
+      case PassportElementErrorSourceUnspecified.constructor:
+        return PassportElementErrorSourceUnspecified.fromJson(json);
       default:
         return null;
     }

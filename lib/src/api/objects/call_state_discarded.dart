@@ -9,6 +9,7 @@ class CallStateDiscarded extends CallState {
     required this.reason,
     required this.needRating,
     required this.needDebugInformation,
+    required this.needLog,
   });
 
   /// [reason] The reason, why the call has ended
@@ -21,6 +22,9 @@ class CallStateDiscarded extends CallState {
   /// the server
   final bool needDebugInformation;
 
+  /// [needLog] True, if the call log must be sent to the server
+  final bool needLog;
+
   static const String constructor = 'callStateDiscarded';
 
   static CallStateDiscarded? fromJson(Map<String, dynamic>? json) {
@@ -32,6 +36,7 @@ class CallStateDiscarded extends CallState {
       reason: CallDiscardReason.fromJson(json['reason'])!,
       needRating: json['need_rating'],
       needDebugInformation: json['need_debug_information'],
+      needLog: json['need_log'],
     );
   }
 
@@ -43,6 +48,7 @@ class CallStateDiscarded extends CallState {
         'reason': reason.toJson(),
         'need_rating': needRating,
         'need_debug_information': needDebugInformation,
+        'need_log': needLog,
         '@type': constructor,
       };
 

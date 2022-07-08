@@ -19,9 +19,8 @@ class GetChatMessageCount extends TdFunction {
   /// unsupported in this function
   final SearchMessagesFilter filter;
 
-  /// [returnLocal] If true, returns count that is available locally without
-  /// sending network requests, returning -1 if the number of messages is
-  /// unknown
+  /// [returnLocal] Pass true to get the number of messages without sending
+  /// network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
 
   static const String constructor = 'getChatMessageCount';

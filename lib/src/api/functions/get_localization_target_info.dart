@@ -11,7 +11,7 @@ class GetLocalizationTargetInfo extends TdFunction {
     required this.onlyLocal,
   });
 
-  /// [onlyLocal] If true, returns only locally available information without
+  /// [onlyLocal] Pass true to get only locally available information without
   /// sending network requests
   final bool onlyLocal;
 

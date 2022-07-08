@@ -4,8 +4,8 @@ import '../tdapi.dart';
 
 /// Stripe payment provider
 @immutable
-class PaymentsProviderStripe extends TdObject {
-  const PaymentsProviderStripe({
+class PaymentProviderStripe extends PaymentProvider {
+  const PaymentProviderStripe({
     required this.publishableKey,
     required this.needCountry,
     required this.needPostalCode,
@@ -24,14 +24,14 @@ class PaymentsProviderStripe extends TdObject {
   /// [needCardholderName] True, if the cardholder name must be provided
   final bool needCardholderName;
 
-  static const String constructor = 'paymentsProviderStripe';
+  static const String constructor = 'paymentProviderStripe';
 
-  static PaymentsProviderStripe? fromJson(Map<String, dynamic>? json) {
+  static PaymentProviderStripe? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return PaymentsProviderStripe(
+    return PaymentProviderStripe(
       publishableKey: json['publishable_key'],
       needCountry: json['need_country'],
       needPostalCode: json['need_postal_code'],

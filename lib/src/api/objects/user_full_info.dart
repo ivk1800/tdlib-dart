@@ -13,11 +13,9 @@ class UserFullInfo extends TdObject {
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
     required this.needPhoneNumberPrivacyException,
-    required this.bio,
-    required this.shareText,
-    required this.description,
+    this.bio,
     required this.groupInCommonCount,
-    required this.commands,
+    this.botInfo,
   });
 
   /// [photo] User profile photo; may be null
@@ -45,23 +43,15 @@ class UserFullInfo extends TdObject {
   /// addContact is used
   final bool needPhoneNumberPrivacyException;
 
-  /// [bio] A short user bio
-  final String bio;
-
-  /// [shareText] For bots, the text that is shown on the bot's profile page and
-  /// is sent together with the link when users share the bot
-  final String shareText;
-
-  /// param_[description] For bots, the text shown in the chat with the bot if
-  /// the chat is empty
-  final String description;
+  /// [bio] A short user bio; may be null for bots
+  final FormattedText? bio;
 
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
-  /// [commands] For bots, list of the bot commands
-  final List<BotCommand> commands;
+  /// [botInfo] For bots, information about the bot; may be null
+  final BotInfo? botInfo;
 
   static const String constructor = 'userFullInfo';
 
@@ -79,13 +69,9 @@ class UserFullInfo extends TdObject {
       hasPrivateForwards: json['has_private_forwards'],
       needPhoneNumberPrivacyException:
           json['need_phone_number_privacy_exception'],
-      bio: json['bio'],
-      shareText: json['share_text'],
-      description: json['description'],
+      bio: FormattedText.fromJson(json['bio']),
       groupInCommonCount: json['group_in_common_count'],
-      commands: List<BotCommand>.from((json['commands'] ?? [])
-          .map((item) => BotCommand.fromJson(item))
-          .toList()),
+      botInfo: BotInfo.fromJson(json['bot_info']),
     );
   }
 
@@ -101,11 +87,9 @@ class UserFullInfo extends TdObject {
         'has_private_calls': hasPrivateCalls,
         'has_private_forwards': hasPrivateForwards,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
-        'bio': bio,
-        'share_text': shareText,
-        'description': description,
+        'bio': bio?.toJson(),
         'group_in_common_count': groupInCommonCount,
-        'commands': commands.map((item) => item.toJson()).toList(),
+        'bot_info': botInfo?.toJson(),
         '@type': constructor,
       };
 

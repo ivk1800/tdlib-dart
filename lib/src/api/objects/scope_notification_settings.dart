@@ -7,7 +7,7 @@ import '../tdapi.dart';
 class ScopeNotificationSettings extends TdObject {
   const ScopeNotificationSettings({
     required this.muteFor,
-    required this.sound,
+    required this.soundId,
     required this.showPreview,
     required this.disablePinnedMessageNotifications,
     required this.disableMentionNotifications,
@@ -16,9 +16,9 @@ class ScopeNotificationSettings extends TdObject {
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
-  /// [sound] The name of an audio file to be used for notification sounds; only
-  /// applies to iOS applications
-  final String sound;
+  /// [soundId] Identifier of the notification sound to be played; 0 if sound is
+  /// disabled
+  final int soundId;
 
   /// [showPreview] True, if message content must be displayed in notifications
   final bool showPreview;
@@ -40,7 +40,7 @@ class ScopeNotificationSettings extends TdObject {
 
     return ScopeNotificationSettings(
       muteFor: json['mute_for'],
-      sound: json['sound'],
+      soundId: int.tryParse(json['sound_id']) ?? 0,
       showPreview: json['show_preview'],
       disablePinnedMessageNotifications:
           json['disable_pinned_message_notifications'],
@@ -54,7 +54,7 @@ class ScopeNotificationSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'mute_for': muteFor,
-        'sound': sound,
+        'sound_id': soundId,
         'show_preview': showPreview,
         'disable_pinned_message_notifications':
             disablePinnedMessageNotifications,

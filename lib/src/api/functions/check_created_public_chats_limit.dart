@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Checks whether the maximum number of owned public chats has been reached.
-/// Returns corresponding error if the limit was reached
+/// Returns corresponding error if the limit was reached. The limit can be
+/// increased with Telegram Premium
 /// Returns [Ok]
 @immutable
 class CheckCreatedPublicChatsLimit extends TdFunction {

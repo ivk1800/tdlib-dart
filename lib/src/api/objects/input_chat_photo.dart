@@ -10,21 +10,21 @@ abstract class InputChatPhoto extends TdObject {
   static const String constructor = 'inputChatPhoto';
 
   /// Inherited by:
+  /// [InputChatPhotoAnimation]
   /// [InputChatPhotoPrevious]
   /// [InputChatPhotoStatic]
-  /// [InputChatPhotoAnimation]
   static InputChatPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
+      case InputChatPhotoAnimation.constructor:
+        return InputChatPhotoAnimation.fromJson(json);
       case InputChatPhotoPrevious.constructor:
         return InputChatPhotoPrevious.fromJson(json);
       case InputChatPhotoStatic.constructor:
         return InputChatPhotoStatic.fromJson(json);
-      case InputChatPhotoAnimation.constructor:
-        return InputChatPhotoAnimation.fromJson(json);
       default:
         return null;
     }

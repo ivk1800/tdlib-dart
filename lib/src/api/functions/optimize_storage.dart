@@ -28,7 +28,7 @@ class OptimizeStorage extends TdFunction {
   /// default limit
   final int ttl;
 
-  /// [count] Limit on the total count of files after deletion. Pass -1 to use
+  /// [count] Limit on the total number of files after deletion. Pass -1 to use
   /// the default limit
   final int count;
 

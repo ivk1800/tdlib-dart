@@ -33,17 +33,17 @@ class ForwardMessages extends TdFunction {
   /// default options
   final MessageSendOptions? options;
 
-  /// [sendCopy] If true, content of the messages will be copied without
-  /// reference to the original sender. Always true if the messages are
-  /// forwarded to a secret chat or are local
+  /// [sendCopy] Pass true to copy content of the messages without reference to
+  /// the original sender. Always true if the messages are forwarded to a secret
+  /// chat or are local
   final bool sendCopy;
 
-  /// [removeCaption] If true, media caption of message copies will be removed.
+  /// [removeCaption] Pass true to remove media captions of message copies.
   /// Ignored if send_copy is false
   final bool removeCaption;
 
-  /// [onlyPreview] If true, messages will not be forwarded and instead fake
-  /// messages will be returned
+  /// [onlyPreview] Pass true to get fake messages instead of actually
+  /// forwarding them
   final bool onlyPreview;
 
   static const String constructor = 'forwardMessages';

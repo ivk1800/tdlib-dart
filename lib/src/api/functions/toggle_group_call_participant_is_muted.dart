@@ -19,7 +19,7 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// [participantId] Participant identifier
   final MessageSender participantId;
 
-  /// [isMuted] Pass true if the user must be muted and false otherwise
+  /// [isMuted] Pass true to mute the user; pass false to unmute the them
   final bool isMuted;
 
   static const String constructor = 'toggleGroupCallParticipantIsMuted';

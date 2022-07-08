@@ -18,7 +18,7 @@ class CreateCall extends TdFunction {
   /// [protocol] The call protocols supported by the application
   final CallProtocol protocol;
 
-  /// [isVideo] True, if a video call needs to be created
+  /// [isVideo] Pass true to create a video call
   final bool isVideo;
 
   static const String constructor = 'createCall';

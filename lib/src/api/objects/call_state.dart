@@ -10,30 +10,30 @@ abstract class CallState extends TdObject {
   static const String constructor = 'callState';
 
   /// Inherited by:
-  /// [CallStatePending]
-  /// [CallStateExchangingKeys]
-  /// [CallStateReady]
-  /// [CallStateHangingUp]
   /// [CallStateDiscarded]
   /// [CallStateError]
+  /// [CallStateExchangingKeys]
+  /// [CallStateHangingUp]
+  /// [CallStatePending]
+  /// [CallStateReady]
   static CallState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case CallStatePending.constructor:
-        return CallStatePending.fromJson(json);
-      case CallStateExchangingKeys.constructor:
-        return CallStateExchangingKeys.fromJson(json);
-      case CallStateReady.constructor:
-        return CallStateReady.fromJson(json);
-      case CallStateHangingUp.constructor:
-        return CallStateHangingUp.fromJson(json);
       case CallStateDiscarded.constructor:
         return CallStateDiscarded.fromJson(json);
       case CallStateError.constructor:
         return CallStateError.fromJson(json);
+      case CallStateExchangingKeys.constructor:
+        return CallStateExchangingKeys.fromJson(json);
+      case CallStateHangingUp.constructor:
+        return CallStateHangingUp.fromJson(json);
+      case CallStatePending.constructor:
+        return CallStatePending.fromJson(json);
+      case CallStateReady.constructor:
+        return CallStateReady.fromJson(json);
       default:
         return null;
     }

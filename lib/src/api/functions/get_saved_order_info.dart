@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns saved order info, if any
+/// Returns saved order information. Returns a 404 error if there is no saved
+/// order information
 /// Returns [OrderInfo]
 @immutable
 class GetSavedOrderInfo extends TdFunction {

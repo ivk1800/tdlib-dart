@@ -10,8 +10,8 @@ abstract class PageBlockHorizontalAlignment extends TdObject {
   static const String constructor = 'pageBlockHorizontalAlignment';
 
   /// Inherited by:
-  /// [PageBlockHorizontalAlignmentLeft]
   /// [PageBlockHorizontalAlignmentCenter]
+  /// [PageBlockHorizontalAlignmentLeft]
   /// [PageBlockHorizontalAlignmentRight]
   static PageBlockHorizontalAlignment? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,10 +19,10 @@ abstract class PageBlockHorizontalAlignment extends TdObject {
     }
 
     switch (json['@type']) {
-      case PageBlockHorizontalAlignmentLeft.constructor:
-        return PageBlockHorizontalAlignmentLeft.fromJson(json);
       case PageBlockHorizontalAlignmentCenter.constructor:
         return PageBlockHorizontalAlignmentCenter.fromJson(json);
+      case PageBlockHorizontalAlignmentLeft.constructor:
+        return PageBlockHorizontalAlignmentLeft.fromJson(json);
       case PageBlockHorizontalAlignmentRight.constructor:
         return PageBlockHorizontalAlignmentRight.fromJson(json);
       default:

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Notification settings applied to all channels when the corresponding chat
-/// setting has a default value
+/// Notification settings applied to all channel chats when the corresponding
+/// chat setting has a default value
 @immutable
 class NotificationSettingsScopeChannelChats extends NotificationSettingsScope {
   const NotificationSettingsScopeChannelChats();

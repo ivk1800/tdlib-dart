@@ -26,7 +26,9 @@ class Chat extends TdObject {
     required this.lastReadInboxMessageId,
     required this.lastReadOutboxMessageId,
     required this.unreadMentionCount,
+    required this.unreadReactionCount,
     required this.notificationSettings,
+    required this.availableReactions,
     required this.messageTtl,
     required this.themeName,
     this.actionBar,
@@ -106,8 +108,14 @@ class Chat extends TdObject {
   /// chat
   final int unreadMentionCount;
 
-  /// [notificationSettings] Notification settings for this chat
+  /// [unreadReactionCount] Number of messages with unread reactions in the chat
+  final int unreadReactionCount;
+
+  /// [notificationSettings] Notification settings for the chat
   final ChatNotificationSettings notificationSettings;
+
+  /// [availableReactions] List of reactions, available in the chat
+  final List<String> availableReactions;
 
   /// [messageTtl] Current message Time To Live setting (self-destruct timer)
   /// for the chat; 0 if not defined. TTL is counted from the time message or
@@ -170,8 +178,11 @@ class Chat extends TdObject {
       lastReadInboxMessageId: json['last_read_inbox_message_id'],
       lastReadOutboxMessageId: json['last_read_outbox_message_id'],
       unreadMentionCount: json['unread_mention_count'],
+      unreadReactionCount: json['unread_reaction_count'],
       notificationSettings:
           ChatNotificationSettings.fromJson(json['notification_settings'])!,
+      availableReactions: List<String>.from(
+          (json['available_reactions'] ?? []).map((item) => item).toList()),
       messageTtl: json['message_ttl'],
       themeName: json['theme_name'],
       actionBar: ChatActionBar.fromJson(json['action_bar']),
@@ -209,7 +220,9 @@ class Chat extends TdObject {
         'last_read_inbox_message_id': lastReadInboxMessageId,
         'last_read_outbox_message_id': lastReadOutboxMessageId,
         'unread_mention_count': unreadMentionCount,
+        'unread_reaction_count': unreadReactionCount,
         'notification_settings': notificationSettings.toJson(),
+        'available_reactions': availableReactions.map((item) => item).toList(),
         'message_ttl': messageTtl,
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),

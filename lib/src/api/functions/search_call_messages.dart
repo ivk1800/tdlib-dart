@@ -23,7 +23,8 @@ class SearchCallMessages extends TdFunction {
   /// and can be smaller than the specified limit
   final int limit;
 
-  /// [onlyMissed] If true, returns only messages with missed/declined calls
+  /// [onlyMissed] Pass true to search only for messages with missed/declined
+  /// calls
   final bool onlyMissed;
 
   static const String constructor = 'searchCallMessages';

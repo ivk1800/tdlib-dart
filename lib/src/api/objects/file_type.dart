@@ -10,20 +10,21 @@ abstract class FileType extends TdObject {
   static const String constructor = 'fileType';
 
   /// Inherited by:
-  /// [FileTypeNone]
   /// [FileTypeAnimation]
   /// [FileTypeAudio]
   /// [FileTypeDocument]
+  /// [FileTypeNone]
+  /// [FileTypeNotificationSound]
   /// [FileTypePhoto]
   /// [FileTypeProfilePhoto]
-  /// [FileTypeSecret]
   /// [FileTypeSecretThumbnail]
+  /// [FileTypeSecret]
   /// [FileTypeSecure]
   /// [FileTypeSticker]
   /// [FileTypeThumbnail]
   /// [FileTypeUnknown]
-  /// [FileTypeVideo]
   /// [FileTypeVideoNote]
+  /// [FileTypeVideo]
   /// [FileTypeVoiceNote]
   /// [FileTypeWallpaper]
   static FileType? fromJson(Map<String, dynamic>? json) {
@@ -32,14 +33,16 @@ abstract class FileType extends TdObject {
     }
 
     switch (json['@type']) {
-      case FileTypeNone.constructor:
-        return FileTypeNone.fromJson(json);
       case FileTypeAnimation.constructor:
         return FileTypeAnimation.fromJson(json);
       case FileTypeAudio.constructor:
         return FileTypeAudio.fromJson(json);
       case FileTypeDocument.constructor:
         return FileTypeDocument.fromJson(json);
+      case FileTypeNone.constructor:
+        return FileTypeNone.fromJson(json);
+      case FileTypeNotificationSound.constructor:
+        return FileTypeNotificationSound.fromJson(json);
       case FileTypePhoto.constructor:
         return FileTypePhoto.fromJson(json);
       case FileTypeProfilePhoto.constructor:

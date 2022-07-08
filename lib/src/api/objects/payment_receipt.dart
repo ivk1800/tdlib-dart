@@ -11,7 +11,7 @@ class PaymentReceipt extends TdObject {
     this.photo,
     required this.date,
     required this.sellerBotUserId,
-    required this.paymentsProviderUserId,
+    required this.paymentProviderUserId,
     required this.invoice,
     this.orderInfo,
     this.shippingOption,
@@ -23,7 +23,7 @@ class PaymentReceipt extends TdObject {
   final String title;
 
   /// param_[description] Product description
-  final String description;
+  final FormattedText description;
 
   /// [photo] Product photo; may be null
   final Photo? photo;
@@ -34,8 +34,8 @@ class PaymentReceipt extends TdObject {
   /// [sellerBotUserId] User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// [paymentsProviderUserId] User identifier of the payment provider bot
-  final int paymentsProviderUserId;
+  /// [paymentProviderUserId] User identifier of the payment provider bot
+  final int paymentProviderUserId;
 
   /// [invoice] Information about the invoice
   final Invoice invoice;
@@ -62,11 +62,11 @@ class PaymentReceipt extends TdObject {
 
     return PaymentReceipt(
       title: json['title'],
-      description: json['description'],
+      description: FormattedText.fromJson(json['description'])!,
       photo: Photo.fromJson(json['photo']),
       date: json['date'],
       sellerBotUserId: json['seller_bot_user_id'],
-      paymentsProviderUserId: json['payments_provider_user_id'],
+      paymentProviderUserId: json['payment_provider_user_id'],
       invoice: Invoice.fromJson(json['invoice'])!,
       orderInfo: OrderInfo.fromJson(json['order_info']),
       shippingOption: ShippingOption.fromJson(json['shipping_option']),
@@ -81,11 +81,11 @@ class PaymentReceipt extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
-        'description': description,
+        'description': description.toJson(),
         'photo': photo?.toJson(),
         'date': date,
         'seller_bot_user_id': sellerBotUserId,
-        'payments_provider_user_id': paymentsProviderUserId,
+        'payment_provider_user_id': paymentProviderUserId,
         'invoice': invoice.toJson(),
         'order_info': orderInfo?.toJson(),
         'shipping_option': shippingOption?.toJson(),

@@ -15,7 +15,7 @@ class SetStickerPositionInSet extends TdFunction {
   /// [sticker] Sticker
   final InputFile sticker;
 
-  /// [position] New position of the sticker in the set, zero-based
+  /// [position] New position of the sticker in the set, 0-based
   final int position;
 
   static const String constructor = 'setStickerPositionInSet';

@@ -18,9 +18,9 @@ class SetStickerSetThumbnail extends TdFunction {
   /// [name] Sticker set name
   final String name;
 
-  /// [thumbnail] Thumbnail to set in PNG or TGS format; pass null to remove the
-  /// sticker set thumbnail. Animated thumbnail must be set for animated sticker
-  /// sets and only for them
+  /// [thumbnail] Thumbnail to set in PNG, TGS, or WEBM format; pass null to
+  /// remove the sticker set thumbnail. Thumbnail format must match the format
+  /// of stickers in the set
   final InputFile? thumbnail;
 
   static const String constructor = 'setStickerSetThumbnail';

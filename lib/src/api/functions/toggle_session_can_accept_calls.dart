@@ -14,7 +14,8 @@ class ToggleSessionCanAcceptCalls extends TdFunction {
   /// [sessionId] Session identifier
   final int sessionId;
 
-  /// [canAcceptCalls] True, if incoming calls can be accepted by the session
+  /// [canAcceptCalls] Pass true to allow accepting incoming calls by the
+  /// session; pass false otherwise
   final bool canAcceptCalls;
 
   static const String constructor = 'toggleSessionCanAcceptCalls';

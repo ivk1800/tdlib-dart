@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sends debug information for a call
+/// Sends debug information for a call to Telegram servers
 /// Returns [Ok]
 @immutable
 class SendCallDebugInformation extends TdFunction {

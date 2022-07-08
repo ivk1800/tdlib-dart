@@ -10,8 +10,8 @@ abstract class StatisticalGraph extends TdObject {
   static const String constructor = 'statisticalGraph';
 
   /// Inherited by:
-  /// [StatisticalGraphData]
   /// [StatisticalGraphAsync]
+  /// [StatisticalGraphData]
   /// [StatisticalGraphError]
   static StatisticalGraph? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,10 +19,10 @@ abstract class StatisticalGraph extends TdObject {
     }
 
     switch (json['@type']) {
-      case StatisticalGraphData.constructor:
-        return StatisticalGraphData.fromJson(json);
       case StatisticalGraphAsync.constructor:
         return StatisticalGraphAsync.fromJson(json);
+      case StatisticalGraphData.constructor:
+        return StatisticalGraphData.fromJson(json);
       case StatisticalGraphError.constructor:
         return StatisticalGraphError.fromJson(json);
       default:

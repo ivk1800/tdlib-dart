@@ -11,13 +11,13 @@ abstract class UserPrivacySettingRule extends TdObject {
 
   /// Inherited by:
   /// [UserPrivacySettingRuleAllowAll]
+  /// [UserPrivacySettingRuleAllowChatMembers]
   /// [UserPrivacySettingRuleAllowContacts]
   /// [UserPrivacySettingRuleAllowUsers]
-  /// [UserPrivacySettingRuleAllowChatMembers]
   /// [UserPrivacySettingRuleRestrictAll]
+  /// [UserPrivacySettingRuleRestrictChatMembers]
   /// [UserPrivacySettingRuleRestrictContacts]
   /// [UserPrivacySettingRuleRestrictUsers]
-  /// [UserPrivacySettingRuleRestrictChatMembers]
   static UserPrivacySettingRule? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -26,20 +26,20 @@ abstract class UserPrivacySettingRule extends TdObject {
     switch (json['@type']) {
       case UserPrivacySettingRuleAllowAll.constructor:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
+      case UserPrivacySettingRuleAllowChatMembers.constructor:
+        return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.constructor:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
       case UserPrivacySettingRuleAllowUsers.constructor:
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
-      case UserPrivacySettingRuleAllowChatMembers.constructor:
-        return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
       case UserPrivacySettingRuleRestrictAll.constructor:
         return UserPrivacySettingRuleRestrictAll.fromJson(json);
+      case UserPrivacySettingRuleRestrictChatMembers.constructor:
+        return UserPrivacySettingRuleRestrictChatMembers.fromJson(json);
       case UserPrivacySettingRuleRestrictContacts.constructor:
         return UserPrivacySettingRuleRestrictContacts.fromJson(json);
       case UserPrivacySettingRuleRestrictUsers.constructor:
         return UserPrivacySettingRuleRestrictUsers.fromJson(json);
-      case UserPrivacySettingRuleRestrictChatMembers.constructor:
-        return UserPrivacySettingRuleRestrictChatMembers.fromJson(json);
       default:
         return null;
     }

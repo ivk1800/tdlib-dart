@@ -20,8 +20,8 @@ class GetChatMessageCalendar extends TdFunction {
   final int chatId;
 
   /// [filter] Filter for message content. Filters searchMessagesFilterEmpty,
-  /// searchMessagesFilterMention and searchMessagesFilterUnreadMention are
-  /// unsupported in this function
+  /// searchMessagesFilterMention, searchMessagesFilterUnreadMention, and
+  /// searchMessagesFilterUnreadReaction are unsupported in this function
   final SearchMessagesFilter filter;
 
   /// [fromMessageId] The message identifier from which to return information

@@ -8,19 +8,15 @@ import '../tdapi.dart';
 @immutable
 class GetPaymentForm extends TdFunction {
   const GetPaymentForm({
-    required this.chatId,
-    required this.messageId,
+    required this.inputInvoice,
     this.theme,
   });
 
-  /// [chatId] Chat identifier of the Invoice message
-  final int chatId;
-
-  /// [messageId] Message identifier
-  final int messageId;
+  /// [inputInvoice] The invoice
+  final InputInvoice inputInvoice;
 
   /// [theme] Preferred payment form theme; pass null to use the default theme
-  final PaymentFormTheme? theme;
+  final ThemeParameters? theme;
 
   static const String constructor = 'getPaymentForm';
 
@@ -29,8 +25,7 @@ class GetPaymentForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
+        'input_invoice': inputInvoice.toJson(),
         'theme': theme?.toJson(),
         '@type': constructor,
       };

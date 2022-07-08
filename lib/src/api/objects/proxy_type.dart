@@ -10,21 +10,21 @@ abstract class ProxyType extends TdObject {
   static const String constructor = 'proxyType';
 
   /// Inherited by:
-  /// [ProxyTypeSocks5]
   /// [ProxyTypeHttp]
   /// [ProxyTypeMtproto]
+  /// [ProxyTypeSocks5]
   static ProxyType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ProxyTypeSocks5.constructor:
-        return ProxyTypeSocks5.fromJson(json);
       case ProxyTypeHttp.constructor:
         return ProxyTypeHttp.fromJson(json);
       case ProxyTypeMtproto.constructor:
         return ProxyTypeMtproto.fromJson(json);
+      case ProxyTypeSocks5.constructor:
+        return ProxyTypeSocks5.fromJson(json);
       default:
         return null;
     }

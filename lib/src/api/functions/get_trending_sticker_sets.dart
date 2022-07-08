@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Returns a list of trending sticker sets. For optimal performance, the
 /// number of returned sticker sets is chosen by TDLib
-/// Returns [StickerSets]
+/// Returns [TrendingStickerSets]
 @immutable
 class GetTrendingStickerSets extends TdFunction {
   const GetTrendingStickerSets({

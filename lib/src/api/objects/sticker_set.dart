@@ -14,8 +14,7 @@ class StickerSet extends TdObject {
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.isAnimated,
-    required this.isMasks,
+    required this.stickerType,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -30,8 +29,8 @@ class StickerSet extends TdObject {
   /// [name] Name of the sticker set
   final String name;
 
-  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and
-  /// height 100; may be null. The file can be downloaded only before the
+  /// [thumbnail] Sticker set thumbnail in WEBP, TGS, or WEBM format with width
+  /// and height 100; may be null. The file can be downloaded only before the
   /// thumbnail is changed
   final Thumbnail? thumbnail;
 
@@ -51,11 +50,8 @@ class StickerSet extends TdObject {
   /// [isOfficial] True, if the sticker set is official
   final bool isOfficial;
 
-  /// [isAnimated] True, is the stickers in the set are animated
-  final bool isAnimated;
-
-  /// [isMasks] True, if the stickers in the set are masks
-  final bool isMasks;
+  /// [stickerType] Type of the stickers in the set
+  final StickerType stickerType;
 
   /// [isViewed] True for already viewed trending sticker sets
   final bool isViewed;
@@ -87,8 +83,7 @@ class StickerSet extends TdObject {
       isInstalled: json['is_installed'],
       isArchived: json['is_archived'],
       isOfficial: json['is_official'],
-      isAnimated: json['is_animated'],
-      isMasks: json['is_masks'],
+      stickerType: StickerType.fromJson(json['sticker_type'])!,
       isViewed: json['is_viewed'],
       stickers: List<Sticker>.from((json['stickers'] ?? [])
           .map((item) => Sticker.fromJson(item))
@@ -112,8 +107,7 @@ class StickerSet extends TdObject {
         'is_installed': isInstalled,
         'is_archived': isArchived,
         'is_official': isOfficial,
-        'is_animated': isAnimated,
-        'is_masks': isMasks,
+        'sticker_type': stickerType.toJson(),
         'is_viewed': isViewed,
         'stickers': stickers.map((item) => item.toJson()).toList(),
         'emojis': emojis.map((item) => item.toJson()).toList(),

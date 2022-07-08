@@ -21,7 +21,8 @@ class SetGameScore extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [editMessage] True, if the message needs to be edited
+  /// [editMessage] Pass true to edit the game message to include the current
+  /// scoreboard
   final bool editMessage;
 
   /// [userId] User identifier

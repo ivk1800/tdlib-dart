@@ -17,8 +17,8 @@ class PageBlockChatLink extends PageBlock {
   /// [photo] Chat photo; may be null
   final ChatPhotoInfo? photo;
 
-  /// [username] Chat username, by which all other information about the chat
-  /// can be resolved
+  /// [username] Chat username by which all other information about the chat can
+  /// be resolved
   final String username;
 
   static const String constructor = 'pageBlockChatLink';

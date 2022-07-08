@@ -26,7 +26,8 @@ class GetLoginUrl extends TdFunction {
   /// [buttonId] Button identifier
   final int buttonId;
 
-  /// [allowWriteAccess] True, if the user allowed the bot to send them messages
+  /// [allowWriteAccess] Pass true to allow the bot to send messages to the
+  /// current user
   final bool allowWriteAccess;
 
   static const String constructor = 'getLoginUrl';

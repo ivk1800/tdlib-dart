@@ -11,24 +11,24 @@ abstract class ReplyMarkup extends TdObject {
   static const String constructor = 'replyMarkup';
 
   /// Inherited by:
-  /// [ReplyMarkupRemoveKeyboard]
   /// [ReplyMarkupForceReply]
-  /// [ReplyMarkupShowKeyboard]
   /// [ReplyMarkupInlineKeyboard]
+  /// [ReplyMarkupRemoveKeyboard]
+  /// [ReplyMarkupShowKeyboard]
   static ReplyMarkup? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ReplyMarkupRemoveKeyboard.constructor:
-        return ReplyMarkupRemoveKeyboard.fromJson(json);
       case ReplyMarkupForceReply.constructor:
         return ReplyMarkupForceReply.fromJson(json);
-      case ReplyMarkupShowKeyboard.constructor:
-        return ReplyMarkupShowKeyboard.fromJson(json);
       case ReplyMarkupInlineKeyboard.constructor:
         return ReplyMarkupInlineKeyboard.fromJson(json);
+      case ReplyMarkupRemoveKeyboard.constructor:
+        return ReplyMarkupRemoveKeyboard.fromJson(json);
+      case ReplyMarkupShowKeyboard.constructor:
+        return ReplyMarkupShowKeyboard.fromJson(json);
       default:
         return null;
     }

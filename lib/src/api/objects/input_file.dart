@@ -10,24 +10,24 @@ abstract class InputFile extends TdObject {
   static const String constructor = 'inputFile';
 
   /// Inherited by:
-  /// [InputFileId]
-  /// [InputFileRemote]
-  /// [InputFileLocal]
   /// [InputFileGenerated]
+  /// [InputFileId]
+  /// [InputFileLocal]
+  /// [InputFileRemote]
   static InputFile? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case InputFileId.constructor:
-        return InputFileId.fromJson(json);
-      case InputFileRemote.constructor:
-        return InputFileRemote.fromJson(json);
-      case InputFileLocal.constructor:
-        return InputFileLocal.fromJson(json);
       case InputFileGenerated.constructor:
         return InputFileGenerated.fromJson(json);
+      case InputFileId.constructor:
+        return InputFileId.fromJson(json);
+      case InputFileLocal.constructor:
+        return InputFileLocal.fromJson(json);
+      case InputFileRemote.constructor:
+        return InputFileRemote.fromJson(json);
       default:
         return null;
     }

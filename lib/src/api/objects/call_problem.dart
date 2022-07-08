@@ -10,39 +10,39 @@ abstract class CallProblem extends TdObject {
   static const String constructor = 'callProblem';
 
   /// Inherited by:
-  /// [CallProblemEcho]
-  /// [CallProblemNoise]
-  /// [CallProblemInterruptions]
   /// [CallProblemDistortedSpeech]
+  /// [CallProblemDistortedVideo]
+  /// [CallProblemDropped]
+  /// [CallProblemEcho]
+  /// [CallProblemInterruptions]
+  /// [CallProblemNoise]
+  /// [CallProblemPixelatedVideo]
   /// [CallProblemSilentLocal]
   /// [CallProblemSilentRemote]
-  /// [CallProblemDropped]
-  /// [CallProblemDistortedVideo]
-  /// [CallProblemPixelatedVideo]
   static CallProblem? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case CallProblemEcho.constructor:
-        return CallProblemEcho.fromJson(json);
-      case CallProblemNoise.constructor:
-        return CallProblemNoise.fromJson(json);
-      case CallProblemInterruptions.constructor:
-        return CallProblemInterruptions.fromJson(json);
       case CallProblemDistortedSpeech.constructor:
         return CallProblemDistortedSpeech.fromJson(json);
+      case CallProblemDistortedVideo.constructor:
+        return CallProblemDistortedVideo.fromJson(json);
+      case CallProblemDropped.constructor:
+        return CallProblemDropped.fromJson(json);
+      case CallProblemEcho.constructor:
+        return CallProblemEcho.fromJson(json);
+      case CallProblemInterruptions.constructor:
+        return CallProblemInterruptions.fromJson(json);
+      case CallProblemNoise.constructor:
+        return CallProblemNoise.fromJson(json);
+      case CallProblemPixelatedVideo.constructor:
+        return CallProblemPixelatedVideo.fromJson(json);
       case CallProblemSilentLocal.constructor:
         return CallProblemSilentLocal.fromJson(json);
       case CallProblemSilentRemote.constructor:
         return CallProblemSilentRemote.fromJson(json);
-      case CallProblemDropped.constructor:
-        return CallProblemDropped.fromJson(json);
-      case CallProblemDistortedVideo.constructor:
-        return CallProblemDistortedVideo.fromJson(json);
-      case CallProblemPixelatedVideo.constructor:
-        return CallProblemPixelatedVideo.fromJson(json);
       default:
         return null;
     }

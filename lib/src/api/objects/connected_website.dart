@@ -44,8 +44,8 @@ class ConnectedWebsite extends TdObject {
   /// format
   final String ip;
 
-  /// [location] Human-readable description of a country and a region, from
-  /// which the user was logged in, based on the IP address
+  /// [location] Human-readable description of a country and a region from which
+  /// the user was logged in, based on the IP address
   final String location;
 
   static const String constructor = 'connectedWebsite';

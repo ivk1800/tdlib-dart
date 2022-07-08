@@ -20,13 +20,12 @@ class PinChatMessage extends TdFunction {
   /// [messageId] Identifier of the new pinned message
   final int messageId;
 
-  /// [disableNotification] True, if there must be no notification about the
-  /// pinned message. Notifications are always disabled in channels and private
-  /// chats
+  /// [disableNotification] Pass true to disable notification about the pinned
+  /// message. Notifications are always disabled in channels and private chats
   final bool disableNotification;
 
-  /// [onlyForSelf] True, if the message needs to be pinned for one side only;
-  /// private chats only
+  /// [onlyForSelf] Pass true to pin the message only for self; private chats
+  /// only
   final bool onlyForSelf;
 
   static const String constructor = 'pinChatMessage';

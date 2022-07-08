@@ -11,7 +11,7 @@ class DraftMessage extends TdObject {
     required this.inputMessageText,
   });
 
-  /// [replyToMessageId] Identifier of the message to reply to; 0 if none
+  /// [replyToMessageId] Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
   /// [date] Point in time (Unix timestamp) when the draft was created

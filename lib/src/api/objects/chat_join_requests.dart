@@ -10,7 +10,7 @@ class ChatJoinRequests extends TdObject {
     required this.requests,
   });
 
-  /// [totalCount] Approximate total count of requests found
+  /// [totalCount] Approximate total number of requests found
   final int totalCount;
 
   /// [requests] List of the requests

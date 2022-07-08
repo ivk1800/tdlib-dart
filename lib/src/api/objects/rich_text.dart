@@ -10,22 +10,22 @@ abstract class RichText extends TdObject {
   static const String constructor = 'richText';
 
   /// Inherited by:
-  /// [RichTextPlain]
+  /// [RichTextAnchorLink]
+  /// [RichTextAnchor]
   /// [RichTextBold]
-  /// [RichTextItalic]
-  /// [RichTextUnderline]
-  /// [RichTextStrikethrough]
-  /// [RichTextFixed]
-  /// [RichTextUrl]
   /// [RichTextEmailAddress]
-  /// [RichTextSubscript]
-  /// [RichTextSuperscript]
+  /// [RichTextFixed]
+  /// [RichTextIcon]
+  /// [RichTextItalic]
   /// [RichTextMarked]
   /// [RichTextPhoneNumber]
-  /// [RichTextIcon]
+  /// [RichTextPlain]
   /// [RichTextReference]
-  /// [RichTextAnchor]
-  /// [RichTextAnchorLink]
+  /// [RichTextStrikethrough]
+  /// [RichTextSubscript]
+  /// [RichTextSuperscript]
+  /// [RichTextUnderline]
+  /// [RichTextUrl]
   /// [RichTexts]
   static RichText? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,38 +33,38 @@ abstract class RichText extends TdObject {
     }
 
     switch (json['@type']) {
-      case RichTextPlain.constructor:
-        return RichTextPlain.fromJson(json);
-      case RichTextBold.constructor:
-        return RichTextBold.fromJson(json);
-      case RichTextItalic.constructor:
-        return RichTextItalic.fromJson(json);
-      case RichTextUnderline.constructor:
-        return RichTextUnderline.fromJson(json);
-      case RichTextStrikethrough.constructor:
-        return RichTextStrikethrough.fromJson(json);
-      case RichTextFixed.constructor:
-        return RichTextFixed.fromJson(json);
-      case RichTextUrl.constructor:
-        return RichTextUrl.fromJson(json);
-      case RichTextEmailAddress.constructor:
-        return RichTextEmailAddress.fromJson(json);
-      case RichTextSubscript.constructor:
-        return RichTextSubscript.fromJson(json);
-      case RichTextSuperscript.constructor:
-        return RichTextSuperscript.fromJson(json);
-      case RichTextMarked.constructor:
-        return RichTextMarked.fromJson(json);
-      case RichTextPhoneNumber.constructor:
-        return RichTextPhoneNumber.fromJson(json);
-      case RichTextIcon.constructor:
-        return RichTextIcon.fromJson(json);
-      case RichTextReference.constructor:
-        return RichTextReference.fromJson(json);
       case RichTextAnchor.constructor:
         return RichTextAnchor.fromJson(json);
       case RichTextAnchorLink.constructor:
         return RichTextAnchorLink.fromJson(json);
+      case RichTextBold.constructor:
+        return RichTextBold.fromJson(json);
+      case RichTextEmailAddress.constructor:
+        return RichTextEmailAddress.fromJson(json);
+      case RichTextFixed.constructor:
+        return RichTextFixed.fromJson(json);
+      case RichTextIcon.constructor:
+        return RichTextIcon.fromJson(json);
+      case RichTextItalic.constructor:
+        return RichTextItalic.fromJson(json);
+      case RichTextMarked.constructor:
+        return RichTextMarked.fromJson(json);
+      case RichTextPhoneNumber.constructor:
+        return RichTextPhoneNumber.fromJson(json);
+      case RichTextPlain.constructor:
+        return RichTextPlain.fromJson(json);
+      case RichTextReference.constructor:
+        return RichTextReference.fromJson(json);
+      case RichTextStrikethrough.constructor:
+        return RichTextStrikethrough.fromJson(json);
+      case RichTextSubscript.constructor:
+        return RichTextSubscript.fromJson(json);
+      case RichTextSuperscript.constructor:
+        return RichTextSuperscript.fromJson(json);
+      case RichTextUnderline.constructor:
+        return RichTextUnderline.fromJson(json);
+      case RichTextUrl.constructor:
+        return RichTextUrl.fromJson(json);
       case RichTexts.constructor:
         return RichTexts.fromJson(json);
       default:

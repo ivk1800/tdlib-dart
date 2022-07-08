@@ -10,27 +10,27 @@ abstract class ConnectionState extends TdObject {
   static const String constructor = 'connectionState';
 
   /// Inherited by:
-  /// [ConnectionStateWaitingForNetwork]
   /// [ConnectionStateConnectingToProxy]
   /// [ConnectionStateConnecting]
-  /// [ConnectionStateUpdating]
   /// [ConnectionStateReady]
+  /// [ConnectionStateUpdating]
+  /// [ConnectionStateWaitingForNetwork]
   static ConnectionState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ConnectionStateWaitingForNetwork.constructor:
-        return ConnectionStateWaitingForNetwork.fromJson(json);
-      case ConnectionStateConnectingToProxy.constructor:
-        return ConnectionStateConnectingToProxy.fromJson(json);
       case ConnectionStateConnecting.constructor:
         return ConnectionStateConnecting.fromJson(json);
-      case ConnectionStateUpdating.constructor:
-        return ConnectionStateUpdating.fromJson(json);
+      case ConnectionStateConnectingToProxy.constructor:
+        return ConnectionStateConnectingToProxy.fromJson(json);
       case ConnectionStateReady.constructor:
         return ConnectionStateReady.fromJson(json);
+      case ConnectionStateUpdating.constructor:
+        return ConnectionStateUpdating.fromJson(json);
+      case ConnectionStateWaitingForNetwork.constructor:
+        return ConnectionStateWaitingForNetwork.fromJson(json);
       default:
         return null;
     }

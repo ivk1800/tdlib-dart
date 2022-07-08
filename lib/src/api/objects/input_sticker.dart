@@ -2,33 +2,53 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a sticker that needs to be added to a sticker set
+/// A sticker to be added to a sticker set
 @immutable
-abstract class InputSticker extends TdObject {
-  const InputSticker();
+class InputSticker extends TdObject {
+  const InputSticker({
+    required this.sticker,
+    required this.emojis,
+    required this.type,
+  });
+
+  /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP
+  /// stickers and masks the file must be in PNG format, which will be converted
+  /// to WEBP server-side. Otherwise, the file must be local or uploaded within
+  /// a week. See
+  /// https://core.telegram.org/animated_stickers#technical-requirements for
+  /// technical requirements
+  final InputFile sticker;
+
+  /// [emojis] Emojis corresponding to the sticker
+  final String emojis;
+
+  /// [type] Sticker type
+  final StickerType type;
 
   static const String constructor = 'inputSticker';
 
-  /// Inherited by:
-  /// [InputStickerStatic]
-  /// [InputStickerAnimated]
   static InputSticker? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    switch (json['@type']) {
-      case InputStickerStatic.constructor:
-        return InputStickerStatic.fromJson(json);
-      case InputStickerAnimated.constructor:
-        return InputStickerAnimated.fromJson(json);
-      default:
-        return null;
-    }
+    return InputSticker(
+      sticker: InputFile.fromJson(json['sticker'])!,
+      emojis: json['emojis'],
+      type: StickerType.fromJson(json['type'])!,
+    );
   }
 
   @override
   String getConstructor() => constructor;
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker': sticker.toJson(),
+        'emojis': emojis,
+        'type': type.toJson(),
+        '@type': constructor,
+      };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

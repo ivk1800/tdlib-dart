@@ -10,30 +10,30 @@ abstract class JsonValue extends TdObject {
   static const String constructor = 'jsonValue';
 
   /// Inherited by:
-  /// [JsonValueNull]
-  /// [JsonValueBoolean]
-  /// [JsonValueNumber]
-  /// [JsonValueString]
   /// [JsonValueArray]
+  /// [JsonValueBoolean]
+  /// [JsonValueNull]
+  /// [JsonValueNumber]
   /// [JsonValueObject]
+  /// [JsonValueString]
   static JsonValue? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case JsonValueNull.constructor:
-        return JsonValueNull.fromJson(json);
-      case JsonValueBoolean.constructor:
-        return JsonValueBoolean.fromJson(json);
-      case JsonValueNumber.constructor:
-        return JsonValueNumber.fromJson(json);
-      case JsonValueString.constructor:
-        return JsonValueString.fromJson(json);
       case JsonValueArray.constructor:
         return JsonValueArray.fromJson(json);
+      case JsonValueBoolean.constructor:
+        return JsonValueBoolean.fromJson(json);
+      case JsonValueNull.constructor:
+        return JsonValueNull.fromJson(json);
+      case JsonValueNumber.constructor:
+        return JsonValueNumber.fromJson(json);
       case JsonValueObject.constructor:
         return JsonValueObject.fromJson(json);
+      case JsonValueString.constructor:
+        return JsonValueString.fromJson(json);
       default:
         return null;
     }

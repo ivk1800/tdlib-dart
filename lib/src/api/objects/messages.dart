@@ -10,7 +10,7 @@ class Messages extends TdObject {
     this.messages,
   });
 
-  /// [totalCount] Approximate total count of messages found
+  /// [totalCount] Approximate total number of messages found
   final int totalCount;
 
   /// [messages] List of messages; messages may be null

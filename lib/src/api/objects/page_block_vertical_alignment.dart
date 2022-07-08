@@ -10,21 +10,21 @@ abstract class PageBlockVerticalAlignment extends TdObject {
   static const String constructor = 'pageBlockVerticalAlignment';
 
   /// Inherited by:
-  /// [PageBlockVerticalAlignmentTop]
-  /// [PageBlockVerticalAlignmentMiddle]
   /// [PageBlockVerticalAlignmentBottom]
+  /// [PageBlockVerticalAlignmentMiddle]
+  /// [PageBlockVerticalAlignmentTop]
   static PageBlockVerticalAlignment? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case PageBlockVerticalAlignmentTop.constructor:
-        return PageBlockVerticalAlignmentTop.fromJson(json);
-      case PageBlockVerticalAlignmentMiddle.constructor:
-        return PageBlockVerticalAlignmentMiddle.fromJson(json);
       case PageBlockVerticalAlignmentBottom.constructor:
         return PageBlockVerticalAlignmentBottom.fromJson(json);
+      case PageBlockVerticalAlignmentMiddle.constructor:
+        return PageBlockVerticalAlignmentMiddle.fromJson(json);
+      case PageBlockVerticalAlignmentTop.constructor:
+        return PageBlockVerticalAlignmentTop.fromJson(json);
       default:
         return null;
     }

@@ -10,7 +10,7 @@ class ChatInviteLinkMembers extends TdObject {
     required this.members,
   });
 
-  /// [totalCount] Approximate total count of chat members found
+  /// [totalCount] Approximate total number of chat members found
   final int totalCount;
 
   /// [members] List of chat members, joined a chat via an invite link

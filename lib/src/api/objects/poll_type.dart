@@ -10,18 +10,18 @@ abstract class PollType extends TdObject {
   static const String constructor = 'pollType';
 
   /// Inherited by:
-  /// [PollTypeRegular]
   /// [PollTypeQuiz]
+  /// [PollTypeRegular]
   static PollType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case PollTypeRegular.constructor:
-        return PollTypeRegular.fromJson(json);
       case PollTypeQuiz.constructor:
         return PollTypeQuiz.fromJson(json);
+      case PollTypeRegular.constructor:
+        return PollTypeRegular.fromJson(json);
       default:
         return null;
     }

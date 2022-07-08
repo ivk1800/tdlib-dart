@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Telegram Passport data has been sent
+/// Telegram Passport data has been sent to a bot
 @immutable
 class MessagePassportDataSent extends MessageContent {
   const MessagePassportDataSent({

@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a file with messages exported from another app
+/// Returns information about a file with messages exported from another
+/// application
 /// Returns [MessageFileType]
 @immutable
 class GetMessageFileType extends TdFunction {

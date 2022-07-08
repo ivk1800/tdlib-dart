@@ -21,7 +21,8 @@ class ChatFilterInfo extends TdObject {
   /// representation. One of "All", "Unread", "Unmuted", "Bots", "Channels",
   /// "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite",
   /// "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study",
-  /// "Trade", "Travel", "Work"
+  /// "Trade", "Travel", "Work", "Airplane", "Book", "Light", "Like", "Money",
+  /// "Note", "Palette"
   final String iconName;
 
   static const String constructor = 'chatFilterInfo';

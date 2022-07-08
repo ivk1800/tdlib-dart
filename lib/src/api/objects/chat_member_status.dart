@@ -10,30 +10,30 @@ abstract class ChatMemberStatus extends TdObject {
   static const String constructor = 'chatMemberStatus';
 
   /// Inherited by:
-  /// [ChatMemberStatusCreator]
   /// [ChatMemberStatusAdministrator]
+  /// [ChatMemberStatusBanned]
+  /// [ChatMemberStatusCreator]
+  /// [ChatMemberStatusLeft]
   /// [ChatMemberStatusMember]
   /// [ChatMemberStatusRestricted]
-  /// [ChatMemberStatusLeft]
-  /// [ChatMemberStatusBanned]
   static ChatMemberStatus? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case ChatMemberStatusCreator.constructor:
-        return ChatMemberStatusCreator.fromJson(json);
       case ChatMemberStatusAdministrator.constructor:
         return ChatMemberStatusAdministrator.fromJson(json);
+      case ChatMemberStatusBanned.constructor:
+        return ChatMemberStatusBanned.fromJson(json);
+      case ChatMemberStatusCreator.constructor:
+        return ChatMemberStatusCreator.fromJson(json);
+      case ChatMemberStatusLeft.constructor:
+        return ChatMemberStatusLeft.fromJson(json);
       case ChatMemberStatusMember.constructor:
         return ChatMemberStatusMember.fromJson(json);
       case ChatMemberStatusRestricted.constructor:
         return ChatMemberStatusRestricted.fromJson(json);
-      case ChatMemberStatusLeft.constructor:
-        return ChatMemberStatusLeft.fromJson(json);
-      case ChatMemberStatusBanned.constructor:
-        return ChatMemberStatusBanned.fromJson(json);
       default:
         return null;
     }

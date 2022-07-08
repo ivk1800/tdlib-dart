@@ -19,7 +19,7 @@ class UpdateNewInlineCallbackQuery extends Update {
   /// [senderUserId] Identifier of the user who sent the query
   final int senderUserId;
 
-  /// [inlineMessageId] Identifier of the inline message, from which the query
+  /// [inlineMessageId] Identifier of the inline message from which the query
   /// originated
   final String inlineMessageId;
 

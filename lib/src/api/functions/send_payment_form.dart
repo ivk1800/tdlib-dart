@@ -7,8 +7,7 @@ import '../tdapi.dart';
 @immutable
 class SendPaymentForm extends TdFunction {
   const SendPaymentForm({
-    required this.chatId,
-    required this.messageId,
+    required this.inputInvoice,
     required this.paymentFormId,
     required this.orderInfoId,
     required this.shippingOptionId,
@@ -16,11 +15,8 @@ class SendPaymentForm extends TdFunction {
     required this.tipAmount,
   });
 
-  /// [chatId] Chat identifier of the Invoice message
-  final int chatId;
-
-  /// [messageId] Message identifier
-  final int messageId;
+  /// [inputInvoice] The invoice
+  final InputInvoice inputInvoice;
 
   /// [paymentFormId] Payment form identifier returned by getPaymentForm
   final int paymentFormId;
@@ -46,8 +42,7 @@ class SendPaymentForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
+        'input_invoice': inputInvoice.toJson(),
         'payment_form_id': paymentFormId,
         'order_info_id': orderInfoId,
         'shipping_option_id': shippingOptionId,

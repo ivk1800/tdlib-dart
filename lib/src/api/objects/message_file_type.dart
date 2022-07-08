@@ -10,8 +10,8 @@ abstract class MessageFileType extends TdObject {
   static const String constructor = 'messageFileType';
 
   /// Inherited by:
-  /// [MessageFileTypePrivate]
   /// [MessageFileTypeGroup]
+  /// [MessageFileTypePrivate]
   /// [MessageFileTypeUnknown]
   static MessageFileType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -19,10 +19,10 @@ abstract class MessageFileType extends TdObject {
     }
 
     switch (json['@type']) {
-      case MessageFileTypePrivate.constructor:
-        return MessageFileTypePrivate.fromJson(json);
       case MessageFileTypeGroup.constructor:
         return MessageFileTypeGroup.fromJson(json);
+      case MessageFileTypePrivate.constructor:
+        return MessageFileTypePrivate.fromJson(json);
       case MessageFileTypeUnknown.constructor:
         return MessageFileTypeUnknown.fromJson(json);
       default:

@@ -22,7 +22,7 @@ class SendMessage extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of the message to reply to or 0
+  /// [replyToMessageId] Identifier of the replied message; 0 if none
   final int replyToMessageId;
 
   /// [options] Options to be used to send the message; pass null to use default

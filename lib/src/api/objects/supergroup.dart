@@ -19,6 +19,8 @@ class Supergroup extends TdObject {
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
+    required this.joinToSendMessages,
+    required this.joinByRequest,
     required this.isSlowModeEnabled,
     required this.isChannel,
     required this.isBroadcastGroup,
@@ -63,6 +65,16 @@ class Supergroup extends TdObject {
   /// information about the sender. This field is only applicable to channels
   final bool signMessages;
 
+  /// [joinToSendMessages] True, if users need to join the supergroup before
+  /// they can send messages. Always true for channels and non-discussion
+  /// supergroups
+  final bool joinToSendMessages;
+
+  /// [joinByRequest] True, if all users directly joining the supergroup need to
+  /// be approved by supergroup administrators. Always false for channels and
+  /// supergroups without username, location, or a linked chat
+  final bool joinByRequest;
+
   /// [isSlowModeEnabled] True, if the slow mode is enabled in the supergroup
   final bool isSlowModeEnabled;
 
@@ -104,6 +116,8 @@ class Supergroup extends TdObject {
       hasLinkedChat: json['has_linked_chat'],
       hasLocation: json['has_location'],
       signMessages: json['sign_messages'],
+      joinToSendMessages: json['join_to_send_messages'],
+      joinByRequest: json['join_by_request'],
       isSlowModeEnabled: json['is_slow_mode_enabled'],
       isChannel: json['is_channel'],
       isBroadcastGroup: json['is_broadcast_group'],
@@ -127,6 +141,8 @@ class Supergroup extends TdObject {
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,
+        'join_to_send_messages': joinToSendMessages,
+        'join_by_request': joinByRequest,
         'is_slow_mode_enabled': isSlowModeEnabled,
         'is_channel': isChannel,
         'is_broadcast_group': isBroadcastGroup,

@@ -11,25 +11,27 @@ abstract class InputPassportElementErrorSource extends TdObject {
   static const String constructor = 'inputPassportElementErrorSource';
 
   /// Inherited by:
-  /// [InputPassportElementErrorSourceUnspecified]
   /// [InputPassportElementErrorSourceDataField]
+  /// [InputPassportElementErrorSourceFile]
+  /// [InputPassportElementErrorSourceFiles]
   /// [InputPassportElementErrorSourceFrontSide]
   /// [InputPassportElementErrorSourceReverseSide]
   /// [InputPassportElementErrorSourceSelfie]
   /// [InputPassportElementErrorSourceTranslationFile]
   /// [InputPassportElementErrorSourceTranslationFiles]
-  /// [InputPassportElementErrorSourceFile]
-  /// [InputPassportElementErrorSourceFiles]
+  /// [InputPassportElementErrorSourceUnspecified]
   static InputPassportElementErrorSource? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case InputPassportElementErrorSourceUnspecified.constructor:
-        return InputPassportElementErrorSourceUnspecified.fromJson(json);
       case InputPassportElementErrorSourceDataField.constructor:
         return InputPassportElementErrorSourceDataField.fromJson(json);
+      case InputPassportElementErrorSourceFile.constructor:
+        return InputPassportElementErrorSourceFile.fromJson(json);
+      case InputPassportElementErrorSourceFiles.constructor:
+        return InputPassportElementErrorSourceFiles.fromJson(json);
       case InputPassportElementErrorSourceFrontSide.constructor:
         return InputPassportElementErrorSourceFrontSide.fromJson(json);
       case InputPassportElementErrorSourceReverseSide.constructor:
@@ -40,10 +42,8 @@ abstract class InputPassportElementErrorSource extends TdObject {
         return InputPassportElementErrorSourceTranslationFile.fromJson(json);
       case InputPassportElementErrorSourceTranslationFiles.constructor:
         return InputPassportElementErrorSourceTranslationFiles.fromJson(json);
-      case InputPassportElementErrorSourceFile.constructor:
-        return InputPassportElementErrorSourceFile.fromJson(json);
-      case InputPassportElementErrorSourceFiles.constructor:
-        return InputPassportElementErrorSourceFiles.fromJson(json);
+      case InputPassportElementErrorSourceUnspecified.constructor:
+        return InputPassportElementErrorSourceUnspecified.fromJson(json);
       default:
         return null;
     }

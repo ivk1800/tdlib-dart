@@ -11,7 +11,7 @@ class UpdateTrendingStickerSets extends Update {
 
   /// [stickerSets] The prefix of the list of trending sticker sets with the
   /// newest trending sticker sets
-  final StickerSets stickerSets;
+  final TrendingStickerSets stickerSets;
 
   static const String constructor = 'updateTrendingStickerSets';
 
@@ -21,7 +21,7 @@ class UpdateTrendingStickerSets extends Update {
     }
 
     return UpdateTrendingStickerSets(
-      stickerSets: StickerSets.fromJson(json['sticker_sets'])!,
+      stickerSets: TrendingStickerSets.fromJson(json['sticker_sets'])!,
     );
   }
 

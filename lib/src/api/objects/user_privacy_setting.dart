@@ -10,36 +10,36 @@ abstract class UserPrivacySetting extends TdObject {
   static const String constructor = 'userPrivacySetting';
 
   /// Inherited by:
-  /// [UserPrivacySettingShowStatus]
-  /// [UserPrivacySettingShowProfilePhoto]
+  /// [UserPrivacySettingAllowCalls]
+  /// [UserPrivacySettingAllowChatInvites]
+  /// [UserPrivacySettingAllowFindingByPhoneNumber]
+  /// [UserPrivacySettingAllowPeerToPeerCalls]
   /// [UserPrivacySettingShowLinkInForwardedMessages]
   /// [UserPrivacySettingShowPhoneNumber]
-  /// [UserPrivacySettingAllowChatInvites]
-  /// [UserPrivacySettingAllowCalls]
-  /// [UserPrivacySettingAllowPeerToPeerCalls]
-  /// [UserPrivacySettingAllowFindingByPhoneNumber]
+  /// [UserPrivacySettingShowProfilePhoto]
+  /// [UserPrivacySettingShowStatus]
   static UserPrivacySetting? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case UserPrivacySettingShowStatus.constructor:
-        return UserPrivacySettingShowStatus.fromJson(json);
-      case UserPrivacySettingShowProfilePhoto.constructor:
-        return UserPrivacySettingShowProfilePhoto.fromJson(json);
+      case UserPrivacySettingAllowCalls.constructor:
+        return UserPrivacySettingAllowCalls.fromJson(json);
+      case UserPrivacySettingAllowChatInvites.constructor:
+        return UserPrivacySettingAllowChatInvites.fromJson(json);
+      case UserPrivacySettingAllowFindingByPhoneNumber.constructor:
+        return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
+      case UserPrivacySettingAllowPeerToPeerCalls.constructor:
+        return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
       case UserPrivacySettingShowLinkInForwardedMessages.constructor:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
       case UserPrivacySettingShowPhoneNumber.constructor:
         return UserPrivacySettingShowPhoneNumber.fromJson(json);
-      case UserPrivacySettingAllowChatInvites.constructor:
-        return UserPrivacySettingAllowChatInvites.fromJson(json);
-      case UserPrivacySettingAllowCalls.constructor:
-        return UserPrivacySettingAllowCalls.fromJson(json);
-      case UserPrivacySettingAllowPeerToPeerCalls.constructor:
-        return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
-      case UserPrivacySettingAllowFindingByPhoneNumber.constructor:
-        return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
+      case UserPrivacySettingShowProfilePhoto.constructor:
+        return UserPrivacySettingShowProfilePhoto.fromJson(json);
+      case UserPrivacySettingShowStatus.constructor:
+        return UserPrivacySettingShowStatus.fromJson(json);
       default:
         return null;
     }

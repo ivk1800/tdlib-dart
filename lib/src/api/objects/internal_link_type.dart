@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by
-/// the app in a special way
+/// the application in a special way
 @immutable
 abstract class InternalLinkType extends TdObject {
   const InternalLinkType();
@@ -12,28 +12,35 @@ abstract class InternalLinkType extends TdObject {
 
   /// Inherited by:
   /// [InternalLinkTypeActiveSessions]
+  /// [InternalLinkTypeAttachmentMenuBot]
   /// [InternalLinkTypeAuthenticationCode]
   /// [InternalLinkTypeBackground]
-  /// [InternalLinkTypeBotStart]
+  /// [InternalLinkTypeBotAddToChannel]
   /// [InternalLinkTypeBotStartInGroup]
+  /// [InternalLinkTypeBotStart]
   /// [InternalLinkTypeChangePhoneNumber]
   /// [InternalLinkTypeChatInvite]
   /// [InternalLinkTypeFilterSettings]
   /// [InternalLinkTypeGame]
+  /// [InternalLinkTypeInvoice]
   /// [InternalLinkTypeLanguagePack]
-  /// [InternalLinkTypeMessage]
+  /// [InternalLinkTypeLanguageSettings]
   /// [InternalLinkTypeMessageDraft]
+  /// [InternalLinkTypeMessage]
   /// [InternalLinkTypePassportDataRequest]
   /// [InternalLinkTypePhoneNumberConfirmation]
+  /// [InternalLinkTypePremiumFeatures]
+  /// [InternalLinkTypePrivacyAndSecuritySettings]
   /// [InternalLinkTypeProxy]
   /// [InternalLinkTypePublicChat]
   /// [InternalLinkTypeQrCodeAuthentication]
   /// [InternalLinkTypeSettings]
   /// [InternalLinkTypeStickerSet]
-  /// [InternalLinkTypeTheme]
   /// [InternalLinkTypeThemeSettings]
+  /// [InternalLinkTypeTheme]
   /// [InternalLinkTypeUnknownDeepLink]
   /// [InternalLinkTypeUnsupportedProxy]
+  /// [InternalLinkTypeUserPhoneNumber]
   /// [InternalLinkTypeVideoChat]
   static InternalLinkType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -43,10 +50,14 @@ abstract class InternalLinkType extends TdObject {
     switch (json['@type']) {
       case InternalLinkTypeActiveSessions.constructor:
         return InternalLinkTypeActiveSessions.fromJson(json);
+      case InternalLinkTypeAttachmentMenuBot.constructor:
+        return InternalLinkTypeAttachmentMenuBot.fromJson(json);
       case InternalLinkTypeAuthenticationCode.constructor:
         return InternalLinkTypeAuthenticationCode.fromJson(json);
       case InternalLinkTypeBackground.constructor:
         return InternalLinkTypeBackground.fromJson(json);
+      case InternalLinkTypeBotAddToChannel.constructor:
+        return InternalLinkTypeBotAddToChannel.fromJson(json);
       case InternalLinkTypeBotStart.constructor:
         return InternalLinkTypeBotStart.fromJson(json);
       case InternalLinkTypeBotStartInGroup.constructor:
@@ -59,8 +70,12 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeFilterSettings.fromJson(json);
       case InternalLinkTypeGame.constructor:
         return InternalLinkTypeGame.fromJson(json);
+      case InternalLinkTypeInvoice.constructor:
+        return InternalLinkTypeInvoice.fromJson(json);
       case InternalLinkTypeLanguagePack.constructor:
         return InternalLinkTypeLanguagePack.fromJson(json);
+      case InternalLinkTypeLanguageSettings.constructor:
+        return InternalLinkTypeLanguageSettings.fromJson(json);
       case InternalLinkTypeMessage.constructor:
         return InternalLinkTypeMessage.fromJson(json);
       case InternalLinkTypeMessageDraft.constructor:
@@ -69,6 +84,10 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypePassportDataRequest.fromJson(json);
       case InternalLinkTypePhoneNumberConfirmation.constructor:
         return InternalLinkTypePhoneNumberConfirmation.fromJson(json);
+      case InternalLinkTypePremiumFeatures.constructor:
+        return InternalLinkTypePremiumFeatures.fromJson(json);
+      case InternalLinkTypePrivacyAndSecuritySettings.constructor:
+        return InternalLinkTypePrivacyAndSecuritySettings.fromJson(json);
       case InternalLinkTypeProxy.constructor:
         return InternalLinkTypeProxy.fromJson(json);
       case InternalLinkTypePublicChat.constructor:
@@ -87,6 +106,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeUnknownDeepLink.fromJson(json);
       case InternalLinkTypeUnsupportedProxy.constructor:
         return InternalLinkTypeUnsupportedProxy.fromJson(json);
+      case InternalLinkTypeUserPhoneNumber.constructor:
+        return InternalLinkTypeUserPhoneNumber.fromJson(json);
       case InternalLinkTypeVideoChat.constructor:
         return InternalLinkTypeVideoChat.fromJson(json);
       default:

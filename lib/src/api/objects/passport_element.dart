@@ -10,51 +10,51 @@ abstract class PassportElement extends TdObject {
   static const String constructor = 'passportElement';
 
   /// Inherited by:
-  /// [PassportElementPersonalDetails]
-  /// [PassportElementPassport]
+  /// [PassportElementAddress]
+  /// [PassportElementBankStatement]
   /// [PassportElementDriverLicense]
+  /// [PassportElementEmailAddress]
   /// [PassportElementIdentityCard]
   /// [PassportElementInternalPassport]
-  /// [PassportElementAddress]
-  /// [PassportElementUtilityBill]
-  /// [PassportElementBankStatement]
-  /// [PassportElementRentalAgreement]
   /// [PassportElementPassportRegistration]
-  /// [PassportElementTemporaryRegistration]
+  /// [PassportElementPassport]
+  /// [PassportElementPersonalDetails]
   /// [PassportElementPhoneNumber]
-  /// [PassportElementEmailAddress]
+  /// [PassportElementRentalAgreement]
+  /// [PassportElementTemporaryRegistration]
+  /// [PassportElementUtilityBill]
   static PassportElement? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case PassportElementPersonalDetails.constructor:
-        return PassportElementPersonalDetails.fromJson(json);
-      case PassportElementPassport.constructor:
-        return PassportElementPassport.fromJson(json);
+      case PassportElementAddress.constructor:
+        return PassportElementAddress.fromJson(json);
+      case PassportElementBankStatement.constructor:
+        return PassportElementBankStatement.fromJson(json);
       case PassportElementDriverLicense.constructor:
         return PassportElementDriverLicense.fromJson(json);
+      case PassportElementEmailAddress.constructor:
+        return PassportElementEmailAddress.fromJson(json);
       case PassportElementIdentityCard.constructor:
         return PassportElementIdentityCard.fromJson(json);
       case PassportElementInternalPassport.constructor:
         return PassportElementInternalPassport.fromJson(json);
-      case PassportElementAddress.constructor:
-        return PassportElementAddress.fromJson(json);
-      case PassportElementUtilityBill.constructor:
-        return PassportElementUtilityBill.fromJson(json);
-      case PassportElementBankStatement.constructor:
-        return PassportElementBankStatement.fromJson(json);
-      case PassportElementRentalAgreement.constructor:
-        return PassportElementRentalAgreement.fromJson(json);
+      case PassportElementPassport.constructor:
+        return PassportElementPassport.fromJson(json);
       case PassportElementPassportRegistration.constructor:
         return PassportElementPassportRegistration.fromJson(json);
-      case PassportElementTemporaryRegistration.constructor:
-        return PassportElementTemporaryRegistration.fromJson(json);
+      case PassportElementPersonalDetails.constructor:
+        return PassportElementPersonalDetails.fromJson(json);
       case PassportElementPhoneNumber.constructor:
         return PassportElementPhoneNumber.fromJson(json);
-      case PassportElementEmailAddress.constructor:
-        return PassportElementEmailAddress.fromJson(json);
+      case PassportElementRentalAgreement.constructor:
+        return PassportElementRentalAgreement.fromJson(json);
+      case PassportElementTemporaryRegistration.constructor:
+        return PassportElementTemporaryRegistration.fromJson(json);
+      case PassportElementUtilityBill.constructor:
+        return PassportElementUtilityBill.fromJson(json);
       default:
         return null;
     }

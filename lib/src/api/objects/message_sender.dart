@@ -10,18 +10,18 @@ abstract class MessageSender extends TdObject {
   static const String constructor = 'messageSender';
 
   /// Inherited by:
-  /// [MessageSenderUser]
   /// [MessageSenderChat]
+  /// [MessageSenderUser]
   static MessageSender? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case MessageSenderUser.constructor:
-        return MessageSenderUser.fromJson(json);
       case MessageSenderChat.constructor:
         return MessageSenderChat.fromJson(json);
+      case MessageSenderUser.constructor:
+        return MessageSenderUser.fromJson(json);
       default:
         return null;
     }

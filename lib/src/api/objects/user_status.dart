@@ -11,11 +11,11 @@ abstract class UserStatus extends TdObject {
 
   /// Inherited by:
   /// [UserStatusEmpty]
-  /// [UserStatusOnline]
-  /// [UserStatusOffline]
-  /// [UserStatusRecently]
-  /// [UserStatusLastWeek]
   /// [UserStatusLastMonth]
+  /// [UserStatusLastWeek]
+  /// [UserStatusOffline]
+  /// [UserStatusOnline]
+  /// [UserStatusRecently]
   static UserStatus? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -24,16 +24,16 @@ abstract class UserStatus extends TdObject {
     switch (json['@type']) {
       case UserStatusEmpty.constructor:
         return UserStatusEmpty.fromJson(json);
-      case UserStatusOnline.constructor:
-        return UserStatusOnline.fromJson(json);
-      case UserStatusOffline.constructor:
-        return UserStatusOffline.fromJson(json);
-      case UserStatusRecently.constructor:
-        return UserStatusRecently.fromJson(json);
-      case UserStatusLastWeek.constructor:
-        return UserStatusLastWeek.fromJson(json);
       case UserStatusLastMonth.constructor:
         return UserStatusLastMonth.fromJson(json);
+      case UserStatusLastWeek.constructor:
+        return UserStatusLastWeek.fromJson(json);
+      case UserStatusOffline.constructor:
+        return UserStatusOffline.fromJson(json);
+      case UserStatusOnline.constructor:
+        return UserStatusOnline.fromJson(json);
+      case UserStatusRecently.constructor:
+        return UserStatusRecently.fromJson(json);
       default:
         return null;
     }
