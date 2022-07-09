@@ -6,7 +6,8 @@ Actual version of tdlib: `1.8.4` [d489014](https://github.com/tdlib/td/tree/d489
 
 ### Table of Contents
 
-- [Getting started with example](#getting-started-with-example)
+- [Example](#example)
+- [Getting started with flutter example](#getting-started-with-flutter-example)
 - [Build tdlib](#build-tdlib)
   - [Android](#android)
   - [iOS and macOS](#ios-and-macos)
@@ -14,7 +15,25 @@ Actual version of tdlib: `1.8.4` [d489014](https://github.com/tdlib/td/tree/d489
   - [Linux](#linux)
   - [Web](#web)
 
-### Getting started with example
+### Example
+```dart
+Future<void> main() async {
+  final Client client = Client.create();
+
+  client.updates.listen((td.TdObject event) async {
+    print('update: ${event.toJson()}');
+  });
+  await client.initialize();
+
+  td.Ok result = client.execute<td.Ok>(td.SetLogVerbosityLevel(newVerbosityLevel: 0));
+  print('execute result: ${result.toJson()}');
+
+  td.Updates sendResult = await client.send<td.Updates>(td.GetCurrentState());
+  print('send result: ${sendResult.toJson()}');
+}
+```
+
+### Getting started with flutter example
 1. Obtain `api_id` and `api_hash` at https://my.telegram.org
 2. Build tdlib for your operating system following the guide below.
 3. Open `example/lib/main.dart` and place obtained `api_id` and `api_hash` to appropriate methods `getApiId` and `getApiHash`.
