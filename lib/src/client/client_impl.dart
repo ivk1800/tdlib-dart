@@ -67,7 +67,7 @@ class ClientImpl implements Client {
   @override
   Future<void> initialize() async {
     assert(_state == _ClientState.created);
-    _platform!.initialize();
+    await _platform!.initialize();
     _platform!.events.listen((Map<String, dynamic> newJson) {
       final dynamic extra = newJson['@extra'];
       if (extra != null) {
