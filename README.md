@@ -165,6 +165,26 @@ install(FILES "${zlib_path}" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" COMPONENT R
 ```
 
 ### Linux
-TBD
+Instruction: https://tdlib.github.io/td/build.html
+
+1. Choose language `Dart`
+2. Choose operating system `Linux`
+3. Build following the guide.
+4. Copy file `/tdlib/lib/libtdjson.so` to `example/linux/tdlib`
+```
+└── example 
+    └── linux 
+        └── tdlib 
+            └── libtdjson.so
+```
+5. Open `example/linux/CMakeLists.txt`.
+6. Add at the end of file:
+```
+# begin td
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/tdlib/libtdjson.so" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}"
+    COMPONENT Runtime)
+# end td
+```
+
 ### Web
 TBD
