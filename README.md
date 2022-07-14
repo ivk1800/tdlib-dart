@@ -17,6 +17,9 @@ Actual version of tdlib: `1.8.4` [d489014](https://github.com/tdlib/td/tree/d489
 
 ### Example
 ```dart
+import 'package:tdlib/td_client.dart';
+import 'package:tdlib/td_api.dart' as td;
+
 Future<void> main() async {
   final Client client = Client.create();
 
