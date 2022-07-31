@@ -8,7 +8,7 @@ Actual version of tdlib: `1.8.4` [d489014](https://github.com/tdlib/td/tree/d489
 
 - [Example](#example)
 - [Getting started with flutter example](#getting-started-with-flutter-example)
-- [Build tdlib](#build-tdlib)
+- [Prebuilt binaries](#prebuilt-binaries)
   - [Android](#android)
   - [iOS and macOS](#ios-and-macos)
   - [Windows](#windows)
@@ -45,7 +45,7 @@ Future<void> main() async {
 6. `flutter run`
 
 ### Prebuilt binaries
-The tdlib binaries is built automatically using github actions and published on the [releases page](https://github.com/ivk1800/td-json-client-prebuilt/releases/tag/windows-x64-1.8.4-d489014). Follow the instructions below for each platform to configure flutter project to use tdlib
+The tdlib binaries is built automatically using github actions and published on the [releases page](https://github.com/ivk1800/td-json-client-prebuilt/releases/). Follow the instructions below for each platform to configure flutter project to use tdlib
 
 ### Android
 Copy `.so` files from archive to `example/android/app/main/jniLibs`:
