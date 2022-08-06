@@ -31,6 +31,8 @@ class ClientImpl implements Client {
     jsonAsMap['@extra'] = extra;
     _platform!.send(function: jsonAsMap);
 
+    final StackTrace stackTrace = StackTrace.current;
+
     return _rawResultsSubject
         .where((Map<String, dynamic> event) => event['@extra'] == extra)
         .map((Map<String, dynamic> event) {
@@ -41,6 +43,7 @@ class ClientImpl implements Client {
           return _handleTdObject<T>(
             tdObject: object,
             function: function,
+            stackTrace: stackTrace,
           );
         })
         .take(1)
@@ -61,6 +64,7 @@ class ClientImpl implements Client {
     return _handleTdObject<T>(
       tdObject: object,
       function: function,
+      stackTrace: StackTrace.current,
     );
   }
 
@@ -96,11 +100,15 @@ class ClientImpl implements Client {
   T _handleTdObject<T extends TdObject>({
     required TdObject tdObject,
     required TdFunction function,
+    required StackTrace stackTrace,
   }) {
     if (tdObject is T) {
       return tdObject;
     } else if (tdObject is TdError) {
-      throw TdFunctionException(function: function, error: tdObject);
+      Error.throwWithStackTrace(
+        TdFunctionException(function: function, error: tdObject),
+        stackTrace,
+      );
     }
     throw client_error.TdError(
         'Expected type [$T], but was ${tdObject.runtimeType}');
