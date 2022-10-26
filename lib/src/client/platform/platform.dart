@@ -1,3 +1,5 @@
+import 'package:tdlib/td_api.dart';
+
 abstract class Platform {
   void send({required Map<String, dynamic> function});
 
@@ -5,7 +7,14 @@ abstract class Platform {
 
   Future<void> initialize();
 
-  Stream<Map<String, dynamic>> get events;
+  Stream<Event> get events;
 
   void destroy();
+}
+
+class Event {
+  final TdObject object;
+  final int? extra;
+
+  Event({required this.object, required this.extra});
 }

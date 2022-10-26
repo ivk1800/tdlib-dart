@@ -9,7 +9,7 @@ class PlatformImpl implements Platform {
 
   @override
   // TODO: implement events
-  Stream<Map<String, dynamic>> get events => throw UnimplementedError();
+  Stream<Event> get events => throw UnimplementedError();
 
   @override
   Map<String, dynamic> execute({required Map<String, dynamic> function}) {

@@ -14,8 +14,7 @@ class ClientImpl implements Client {
 
   _ClientState _state = _ClientState.created;
 
-  final PublishSubject<Map<String, dynamic>> _rawResultsSubject =
-      PublishSubject<Map<String, dynamic>>();
+  final PublishSubject<Event> _rawResultsSubject = PublishSubject<Event>();
 
   ClientImpl({required Platform platform}) : _platform = platform;
 
@@ -34,14 +33,10 @@ class ClientImpl implements Client {
     final StackTrace stackTrace = StackTrace.current;
 
     return _rawResultsSubject
-        .where((Map<String, dynamic> event) => event['@extra'] == extra)
-        .map((Map<String, dynamic> event) {
-          TdObject? object = event.toTdObject();
-          if (object == null) {
-            throw client_error.TdError('Object cannot be null');
-          }
+        .where((Event event) => event.extra == extra)
+        .map((Event event) {
           return _handleTdObject<T>(
-            tdObject: object,
+            tdObject: event.object,
             function: function,
             stackTrace: stackTrace,
           );
@@ -72,15 +67,11 @@ class ClientImpl implements Client {
   Future<void> initialize() async {
     assert(_state == _ClientState.created);
     await _platform!.initialize();
-    _platform!.events.listen((Map<String, dynamic> newJson) {
-      final dynamic extra = newJson['@extra'];
-      if (extra != null) {
-        _rawResultsSubject.add(newJson);
+    _platform!.events.listen((Event event) {
+      if (event.extra != null) {
+        _rawResultsSubject.add(event);
       } else {
-        final TdObject? tdObject = newJson.toTdObject();
-        if (tdObject != null) {
-          _updatesSubject.add(tdObject);
-        }
+        _updatesSubject.add(event.object);
       }
     });
     _state = _ClientState.initialized;

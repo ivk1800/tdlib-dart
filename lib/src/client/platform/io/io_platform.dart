@@ -15,8 +15,7 @@ class PlatformImpl implements Platform {
   ffi.Pointer? _client;
   Isolate? _receiveIsolate;
   final ReceivePort _ingoingPort = ReceivePort();
-  final PublishSubject<Map<String, dynamic>> _eventsSubject =
-      PublishSubject<Map<String, dynamic>>();
+  final PublishSubject<Event> _eventsSubject = PublishSubject<Event>();
 
   @override
   Future<void> initialize() async {
@@ -26,9 +25,8 @@ class PlatformImpl implements Platform {
 
     _client = JsonBindings().createClient();
     _ingoingPort.listen((Object? message) {
-      if (message is String) {
-        final Map<String, dynamic> newJson = json.decode(message);
-        _eventsSubject.add(newJson);
+      if (message is Event) {
+        _eventsSubject.add(message);
       } else if (message == killed) {
         JsonBindings().destroy(_client!);
         _client = null;
@@ -46,7 +44,7 @@ class PlatformImpl implements Platform {
   }
 
   @override
-  Stream<Map<String, dynamic>> get events => _eventsSubject;
+  Stream<Event> get events => _eventsSubject;
 
   @override
   Map<String, dynamic> execute({required Map<String, dynamic> function}) {
