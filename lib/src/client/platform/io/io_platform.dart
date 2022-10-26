@@ -65,6 +65,7 @@ class PlatformImpl implements Platform {
   void destroy() {
     _receiveIsolate?.kill(priority: Isolate.immediate);
     _receiveIsolate = null;
+    _eventsSubject.close();
   }
 
   static int killed = 1;

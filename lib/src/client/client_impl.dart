@@ -10,6 +10,7 @@ import 'td_function_exception.dart';
 class ClientImpl implements Client {
   Platform? _platform;
   int _extraCount = 0;
+  StreamSubscription<Event>? _eventsSubscription;
   final PublishSubject<TdObject> _updatesSubject = PublishSubject<TdObject>();
 
   _ClientState _state = _ClientState.created;
@@ -67,7 +68,7 @@ class ClientImpl implements Client {
   Future<void> initialize() async {
     assert(_state == _ClientState.created);
     await _platform!.initialize();
-    _platform!.events.listen((Event event) {
+    _eventsSubscription = _platform!.events.listen((Event event) {
       if (event.extra != null) {
         _rawResultsSubject.add(event);
       } else {
@@ -81,6 +82,7 @@ class ClientImpl implements Client {
   void destroy() {
     assert(_state == _ClientState.initialized);
 
+    _eventsSubscription?.cancel();
     _updatesSubject.close();
     _rawResultsSubject.close();
     _platform?.destroy();
