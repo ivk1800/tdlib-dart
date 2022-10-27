@@ -11,8 +11,9 @@ class PaymentForm extends TdObject {
     required this.sellerBotUserId,
     required this.paymentProviderUserId,
     required this.paymentProvider,
+    required this.additionalPaymentOptions,
     this.savedOrderInfo,
-    this.savedCredentials,
+    required this.savedCredentials,
     required this.canSaveCredentials,
     required this.needPassword,
     required this.productTitle,
@@ -35,17 +36,20 @@ class PaymentForm extends TdObject {
   /// [paymentProvider]_user_id User identifier of the payment provider bot
   final PaymentProvider paymentProvider;
 
+  /// [additionalPaymentOptions] The list of additional payment options
+  final List<PaymentOption> additionalPaymentOptions;
+
   /// [savedOrderInfo] Saved server-side order information; may be null
   final OrderInfo? savedOrderInfo;
 
-  /// [savedCredentials] Information about saved card credentials; may be null
-  final SavedCredentials? savedCredentials;
+  /// [savedCredentials] The list of saved payment credentials
+  final List<SavedCredentials> savedCredentials;
 
   /// [canSaveCredentials] True, if the user can choose to save credentials
   final bool canSaveCredentials;
 
-  /// [needPassword] True, if the user will be able to save credentials
-  /// protected by a password they set up
+  /// [needPassword] True, if the user will be able to save credentials, if sets
+  /// up a 2-step verification password
   final bool needPassword;
 
   /// [productTitle] Product title
@@ -70,8 +74,15 @@ class PaymentForm extends TdObject {
       sellerBotUserId: json['seller_bot_user_id'],
       paymentProviderUserId: json['payment_provider_user_id'],
       paymentProvider: PaymentProvider.fromJson(json['payment_provider'])!,
+      additionalPaymentOptions: List<PaymentOption>.from(
+          (json['additional_payment_options'] ?? [])
+              .map((item) => PaymentOption.fromJson(item))
+              .toList()),
       savedOrderInfo: OrderInfo.fromJson(json['saved_order_info']),
-      savedCredentials: SavedCredentials.fromJson(json['saved_credentials']),
+      savedCredentials: List<SavedCredentials>.from(
+          (json['saved_credentials'] ?? [])
+              .map((item) => SavedCredentials.fromJson(item))
+              .toList()),
       canSaveCredentials: json['can_save_credentials'],
       needPassword: json['need_password'],
       productTitle: json['product_title'],
@@ -90,8 +101,11 @@ class PaymentForm extends TdObject {
         'seller_bot_user_id': sellerBotUserId,
         'payment_provider_user_id': paymentProviderUserId,
         'payment_provider': paymentProvider.toJson(),
+        'additional_payment_options':
+            additionalPaymentOptions.map((item) => item.toJson()).toList(),
         'saved_order_info': savedOrderInfo?.toJson(),
-        'saved_credentials': savedCredentials?.toJson(),
+        'saved_credentials':
+            savedCredentials.map((item) => item.toJson()).toList(),
         'can_save_credentials': canSaveCredentials,
         'need_password': needPassword,
         'product_title': productTitle,

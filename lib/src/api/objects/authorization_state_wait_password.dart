@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user has been authorized, but needs to enter a password to start using
-/// the application
+/// The user has been authorized, but needs to enter a 2-step verification
+/// password to start using the application
 @immutable
 class AuthorizationStateWaitPassword extends AuthorizationState {
   const AuthorizationStateWaitPassword({

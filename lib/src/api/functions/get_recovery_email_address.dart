@@ -11,7 +11,7 @@ class GetRecoveryEmailAddress extends TdFunction {
     required this.password,
   });
 
-  /// [password] The password for the current user
+  /// [password] The 2-step verification password for the current user
   final String password;
 
   static const String constructor = 'getRecoveryEmailAddress';

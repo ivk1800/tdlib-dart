@@ -14,6 +14,7 @@ class OpenWebApp extends TdFunction {
     required this.botUserId,
     required this.url,
     this.theme,
+    required this.applicationName,
     required this.replyToMessageId,
   });
 
@@ -31,6 +32,10 @@ class OpenWebApp extends TdFunction {
   /// [theme] Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
+  /// [applicationName] Short name of the application; 0-64 English letters,
+  /// digits, and underscores
+  final String applicationName;
+
   /// [replyToMessageId] Identifier of the replied message for the message sent
   /// by the Web App; 0 if none
   final int replyToMessageId;
@@ -46,6 +51,7 @@ class OpenWebApp extends TdFunction {
         'bot_user_id': botUserId,
         'url': url,
         'theme': theme?.toJson(),
+        'application_name': applicationName,
         'reply_to_message_id': replyToMessageId,
         '@type': constructor,
       };

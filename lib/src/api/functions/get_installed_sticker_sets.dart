@@ -7,12 +7,11 @@ import '../tdapi.dart';
 @immutable
 class GetInstalledStickerSets extends TdFunction {
   const GetInstalledStickerSets({
-    required this.isMasks,
+    required this.stickerType,
   });
 
-  /// [isMasks] Pass true to return mask sticker sets; pass false to return
-  /// ordinary sticker sets
-  final bool isMasks;
+  /// [stickerType] Type of the sticker sets to return
+  final StickerType stickerType;
 
   static const String constructor = 'getInstalledStickerSets';
 
@@ -21,7 +20,7 @@ class GetInstalledStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_masks': isMasks,
+        'sticker_type': stickerType.toJson(),
         '@type': constructor,
       };
 

@@ -11,8 +11,7 @@ class VoiceNote extends TdObject {
     required this.duration,
     required this.waveform,
     required this.mimeType,
-    required this.isRecognized,
-    required this.recognizedText,
+    this.speechRecognitionResult,
     required this.voice,
   });
 
@@ -26,13 +25,9 @@ class VoiceNote extends TdObject {
   /// [mimeType] MIME type of the file; as defined by the sender
   final String mimeType;
 
-  /// [isRecognized] True, if speech recognition is completed; Premium users
-  /// only
-  final bool isRecognized;
-
-  /// [recognizedText] Recognized text of the voice note; Premium users only.
-  /// Call recognizeSpeech to get recognized text of the voice note
-  final String recognizedText;
+  /// [speechRecognitionResult] Result of speech recognition in the voice note;
+  /// may be null
+  final SpeechRecognitionResult? speechRecognitionResult;
 
   /// [voice] File containing the voice note
   final File voice;
@@ -48,8 +43,8 @@ class VoiceNote extends TdObject {
       duration: json['duration'],
       waveform: json['waveform'],
       mimeType: json['mime_type'],
-      isRecognized: json['is_recognized'],
-      recognizedText: json['recognized_text'],
+      speechRecognitionResult:
+          SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
       voice: File.fromJson(json['voice'])!,
     );
   }
@@ -62,8 +57,7 @@ class VoiceNote extends TdObject {
         'duration': duration,
         'waveform': waveform,
         'mime_type': mimeType,
-        'is_recognized': isRecognized,
-        'recognized_text': recognizedText,
+        'speech_recognition_result': speechRecognitionResult?.toJson(),
         'voice': voice.toJson(),
         '@type': constructor,
       };

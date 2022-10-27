@@ -8,14 +8,13 @@ import '../tdapi.dart';
 @immutable
 class SearchInstalledStickerSets extends TdFunction {
   const SearchInstalledStickerSets({
-    required this.isMasks,
+    required this.stickerType,
     required this.query,
     required this.limit,
   });
 
-  /// [isMasks] Pass true to return mask sticker sets; pass false to return
-  /// ordinary sticker sets
-  final bool isMasks;
+  /// [stickerType] Type of the sticker sets to search for
+  final StickerType stickerType;
 
   /// [query] Query to search for
   final String query;
@@ -30,7 +29,7 @@ class SearchInstalledStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_masks': isMasks,
+        'sticker_type': stickerType.toJson(),
         'query': query,
         'limit': limit,
         '@type': constructor,

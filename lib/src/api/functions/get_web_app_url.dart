@@ -11,6 +11,7 @@ class GetWebAppUrl extends TdFunction {
     required this.botUserId,
     required this.url,
     this.theme,
+    required this.applicationName,
   });
 
   /// [botUserId] Identifier of the target bot
@@ -22,6 +23,10 @@ class GetWebAppUrl extends TdFunction {
   /// [theme] Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
+  /// [applicationName] Short name of the application; 0-64 English letters,
+  /// digits, and underscores
+  final String applicationName;
+
   static const String constructor = 'getWebAppUrl';
 
   @override
@@ -32,6 +37,7 @@ class GetWebAppUrl extends TdFunction {
         'bot_user_id': botUserId,
         'url': url,
         'theme': theme?.toJson(),
+        'application_name': applicationName,
         '@type': constructor,
       };
 

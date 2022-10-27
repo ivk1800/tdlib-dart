@@ -12,8 +12,10 @@ class UserFullInfo extends TdObject {
     required this.supportsVideoCalls,
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
+    required this.hasRestrictedVoiceAndVideoNoteMessages,
     required this.needPhoneNumberPrivacyException,
     this.bio,
+    required this.premiumGiftOptions,
     required this.groupInCommonCount,
     this.botInfo,
   });
@@ -38,6 +40,10 @@ class UserFullInfo extends TdObject {
   /// messages due to their privacy settings
   final bool hasPrivateForwards;
 
+  /// [hasRestrictedVoiceAndVideoNoteMessages] True, if voice and video notes
+  /// can't be sent or forwarded to the user
+  final bool hasRestrictedVoiceAndVideoNoteMessages;
+
   /// [needPhoneNumberPrivacyException] True, if the current user needs to
   /// explicitly allow to share their phone number with the user when the method
   /// addContact is used
@@ -45,6 +51,10 @@ class UserFullInfo extends TdObject {
 
   /// [bio] A short user bio; may be null for bots
   final FormattedText? bio;
+
+  /// [premiumGiftOptions] The list of available options for gifting Telegram
+  /// Premium to the user
+  final List<PremiumPaymentOption> premiumGiftOptions;
 
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
@@ -67,9 +77,15 @@ class UserFullInfo extends TdObject {
       supportsVideoCalls: json['supports_video_calls'],
       hasPrivateCalls: json['has_private_calls'],
       hasPrivateForwards: json['has_private_forwards'],
+      hasRestrictedVoiceAndVideoNoteMessages:
+          json['has_restricted_voice_and_video_note_messages'],
       needPhoneNumberPrivacyException:
           json['need_phone_number_privacy_exception'],
       bio: FormattedText.fromJson(json['bio']),
+      premiumGiftOptions: List<PremiumPaymentOption>.from(
+          (json['premium_gift_options'] ?? [])
+              .map((item) => PremiumPaymentOption.fromJson(item))
+              .toList()),
       groupInCommonCount: json['group_in_common_count'],
       botInfo: BotInfo.fromJson(json['bot_info']),
     );
@@ -86,8 +102,12 @@ class UserFullInfo extends TdObject {
         'supports_video_calls': supportsVideoCalls,
         'has_private_calls': hasPrivateCalls,
         'has_private_forwards': hasPrivateForwards,
+        'has_restricted_voice_and_video_note_messages':
+            hasRestrictedVoiceAndVideoNoteMessages,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
         'bio': bio?.toJson(),
+        'premium_gift_options':
+            premiumGiftOptions.map((item) => item.toJson()).toList(),
         'group_in_common_count': groupInCommonCount,
         'bot_info': botInfo?.toJson(),
         '@type': constructor,

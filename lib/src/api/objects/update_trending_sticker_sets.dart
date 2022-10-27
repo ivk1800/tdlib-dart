@@ -6,8 +6,12 @@ import '../tdapi.dart';
 @immutable
 class UpdateTrendingStickerSets extends Update {
   const UpdateTrendingStickerSets({
+    required this.stickerType,
     required this.stickerSets,
   });
+
+  /// [stickerType] Type of the affected stickers
+  final StickerType stickerType;
 
   /// [stickerSets] The prefix of the list of trending sticker sets with the
   /// newest trending sticker sets
@@ -21,6 +25,7 @@ class UpdateTrendingStickerSets extends Update {
     }
 
     return UpdateTrendingStickerSets(
+      stickerType: StickerType.fromJson(json['sticker_type'])!,
       stickerSets: TrendingStickerSets.fromJson(json['sticker_sets'])!,
     );
   }
@@ -30,6 +35,7 @@ class UpdateTrendingStickerSets extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker_type': stickerType.toJson(),
         'sticker_sets': stickerSets.toJson(),
         '@type': constructor,
       };

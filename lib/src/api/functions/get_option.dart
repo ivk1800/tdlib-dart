@@ -4,7 +4,8 @@ import '../tdapi.dart';
 
 /// Returns the value of an option by its name. (Check the list of available
 /// options on https://core.telegram.org/tdlib/options.) Can be called before
-/// authorization
+/// authorization. Can be called synchronously for options "version" and
+/// "commit_hash"
 /// Returns [OptionValue]
 @immutable
 class GetOption extends TdFunction {

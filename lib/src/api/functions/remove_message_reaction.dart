@@ -2,15 +2,14 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes chosen reaction for a message
+/// Removes a reaction from a message. A chosen reaction can always be removed
 /// Returns [Ok]
 @immutable
-class SetMessageReaction extends TdFunction {
-  const SetMessageReaction({
+class RemoveMessageReaction extends TdFunction {
+  const RemoveMessageReaction({
     required this.chatId,
     required this.messageId,
-    required this.reaction,
-    required this.isBig,
+    required this.reactionType,
   });
 
   /// [chatId] Identifier of the chat to which the message belongs
@@ -19,14 +18,10 @@ class SetMessageReaction extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [reaction] Text representation of the new chosen reaction. Can be an empty
-  /// string or the currently chosen non-big reaction to remove the reaction
-  final String reaction;
+  /// [reactionType] Type of the reaction to remove
+  final ReactionType reactionType;
 
-  /// [isBig] Pass true if the reaction is added with a big animation
-  final bool isBig;
-
-  static const String constructor = 'setMessageReaction';
+  static const String constructor = 'removeMessageReaction';
 
   @override
   String getConstructor() => constructor;
@@ -35,8 +30,7 @@ class SetMessageReaction extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_id': messageId,
-        'reaction': reaction,
-        'is_big': isBig,
+        'reaction_type': reactionType.toJson(),
         '@type': constructor,
       };
 

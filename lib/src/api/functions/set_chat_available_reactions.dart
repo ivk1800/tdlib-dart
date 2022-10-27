@@ -15,9 +15,9 @@ class SetChatAvailableReactions extends TdFunction {
   /// [chatId] Identifier of the chat
   final int chatId;
 
-  /// [availableReactions] New list of reactions, available in the chat. All
-  /// reactions must be active
-  final List<String> availableReactions;
+  /// [availableReactions] Reactions available in the chat. All emoji reactions
+  /// must be active
+  final ChatAvailableReactions availableReactions;
 
   static const String constructor = 'setChatAvailableReactions';
 
@@ -27,7 +27,7 @@ class SetChatAvailableReactions extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
-        'available_reactions': availableReactions.map((item) => item).toList(),
+        'available_reactions': availableReactions.toJson(),
         '@type': constructor,
       };
 

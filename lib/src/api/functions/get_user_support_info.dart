@@ -2,19 +2,25 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns all emojis, which has a corresponding animated emoji
-/// Returns [Emojis]
+/// Returns support information for the given user; for Telegram support only
+/// Returns [UserSupportInfo]
 @immutable
-class GetAllAnimatedEmojis extends TdFunction {
-  const GetAllAnimatedEmojis();
+class GetUserSupportInfo extends TdFunction {
+  const GetUserSupportInfo({
+    required this.userId,
+  });
 
-  static const String constructor = 'getAllAnimatedEmojis';
+  /// [userId] User identifier
+  final int userId;
+
+  static const String constructor = 'getUserSupportInfo';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'user_id': userId,
         '@type': constructor,
       };
 

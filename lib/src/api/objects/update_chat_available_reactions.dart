@@ -13,8 +13,8 @@ class UpdateChatAvailableReactions extends Update {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [availableReactions] The new list of reactions, available in the chat
-  final List<String> availableReactions;
+  /// [availableReactions] The new reactions, available in the chat
+  final ChatAvailableReactions availableReactions;
 
   static const String constructor = 'updateChatAvailableReactions';
 
@@ -25,8 +25,8 @@ class UpdateChatAvailableReactions extends Update {
 
     return UpdateChatAvailableReactions(
       chatId: json['chat_id'],
-      availableReactions: List<String>.from(
-          (json['available_reactions'] ?? []).map((item) => item).toList()),
+      availableReactions:
+          ChatAvailableReactions.fromJson(json['available_reactions'])!,
     );
   }
 
@@ -36,7 +36,7 @@ class UpdateChatAvailableReactions extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
-        'available_reactions': availableReactions.map((item) => item).toList(),
+        'available_reactions': availableReactions.toJson(),
         '@type': constructor,
       };
 

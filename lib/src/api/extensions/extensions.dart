@@ -11,44 +11,6 @@ extension TdErrorExtensions on TdError {
       );
 }
 
-extension TdlibParametersExtensions on TdlibParameters {
-  TdlibParameters copyWith({
-    bool? useTestDc,
-    String? databaseDirectory,
-    String? filesDirectory,
-    bool? useFileDatabase,
-    bool? useChatInfoDatabase,
-    bool? useMessageDatabase,
-    bool? useSecretChats,
-    int? apiId,
-    String? apiHash,
-    String? systemLanguageCode,
-    String? deviceModel,
-    String? systemVersion,
-    String? applicationVersion,
-    bool? enableStorageOptimizer,
-    bool? ignoreFileNames,
-  }) =>
-      TdlibParameters(
-        useTestDc: useTestDc ?? this.useTestDc,
-        databaseDirectory: databaseDirectory ?? this.databaseDirectory,
-        filesDirectory: filesDirectory ?? this.filesDirectory,
-        useFileDatabase: useFileDatabase ?? this.useFileDatabase,
-        useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
-        useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
-        useSecretChats: useSecretChats ?? this.useSecretChats,
-        apiId: apiId ?? this.apiId,
-        apiHash: apiHash ?? this.apiHash,
-        systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
-        deviceModel: deviceModel ?? this.deviceModel,
-        systemVersion: systemVersion ?? this.systemVersion,
-        applicationVersion: applicationVersion ?? this.applicationVersion,
-        enableStorageOptimizer:
-            enableStorageOptimizer ?? this.enableStorageOptimizer,
-        ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
-      );
-}
-
 extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationCodeTypeTelegramMessage value)
@@ -193,6 +155,81 @@ extension EmailAddressAuthenticationCodeInfoExtensions
       );
 }
 
+extension EmailAddressAuthenticationExtensions on EmailAddressAuthentication {
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailAddressAuthenticationCode value) code,
+    required TResult Function(EmailAddressAuthenticationAppleId value) appleId,
+    required TResult Function(EmailAddressAuthenticationGoogleId value)
+        googleId,
+  }) {
+    switch (getConstructor()) {
+      case EmailAddressAuthenticationCode.constructor:
+        return code.call(this as EmailAddressAuthenticationCode);
+      case EmailAddressAuthenticationAppleId.constructor:
+        return appleId.call(this as EmailAddressAuthenticationAppleId);
+      case EmailAddressAuthenticationGoogleId.constructor:
+        return googleId.call(this as EmailAddressAuthenticationGoogleId);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailAddressAuthenticationCode value)? code,
+    TResult Function(EmailAddressAuthenticationAppleId value)? appleId,
+    TResult Function(EmailAddressAuthenticationGoogleId value)? googleId,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case EmailAddressAuthenticationCode.constructor:
+        if (code != null) {
+          return code.call(this as EmailAddressAuthenticationCode);
+        }
+        break;
+      case EmailAddressAuthenticationAppleId.constructor:
+        if (appleId != null) {
+          return appleId.call(this as EmailAddressAuthenticationAppleId);
+        }
+        break;
+      case EmailAddressAuthenticationGoogleId.constructor:
+        if (googleId != null) {
+          return googleId.call(this as EmailAddressAuthenticationGoogleId);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension EmailAddressAuthenticationCodeExtensions
+    on EmailAddressAuthenticationCode {
+  EmailAddressAuthenticationCode copyWith({
+    String? code,
+  }) =>
+      EmailAddressAuthenticationCode(
+        code: code ?? this.code,
+      );
+}
+
+extension EmailAddressAuthenticationAppleIdExtensions
+    on EmailAddressAuthenticationAppleId {
+  EmailAddressAuthenticationAppleId copyWith({
+    String? token,
+  }) =>
+      EmailAddressAuthenticationAppleId(
+        token: token ?? this.token,
+      );
+}
+
+extension EmailAddressAuthenticationGoogleIdExtensions
+    on EmailAddressAuthenticationGoogleId {
+  EmailAddressAuthenticationGoogleId copyWith({
+    String? token,
+  }) =>
+      EmailAddressAuthenticationGoogleId(
+        token: token ?? this.token,
+      );
+}
+
 extension TextEntityExtensions on TextEntity {
   TextEntity copyWith({
     int? offset,
@@ -243,10 +280,12 @@ extension AuthorizationStateExtensions on AuthorizationState {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthorizationStateWaitTdlibParameters value)
         waitTdlibParameters,
-    required TResult Function(AuthorizationStateWaitEncryptionKey value)
-        waitEncryptionKey,
     required TResult Function(AuthorizationStateWaitPhoneNumber value)
         waitPhoneNumber,
+    required TResult Function(AuthorizationStateWaitEmailAddress value)
+        waitEmailAddress,
+    required TResult Function(AuthorizationStateWaitEmailCode value)
+        waitEmailCode,
     required TResult Function(AuthorizationStateWaitCode value) waitCode,
     required TResult Function(
             AuthorizationStateWaitOtherDeviceConfirmation value)
@@ -264,11 +303,13 @@ extension AuthorizationStateExtensions on AuthorizationState {
       case AuthorizationStateWaitTdlibParameters.constructor:
         return waitTdlibParameters
             .call(this as AuthorizationStateWaitTdlibParameters);
-      case AuthorizationStateWaitEncryptionKey.constructor:
-        return waitEncryptionKey
-            .call(this as AuthorizationStateWaitEncryptionKey);
       case AuthorizationStateWaitPhoneNumber.constructor:
         return waitPhoneNumber.call(this as AuthorizationStateWaitPhoneNumber);
+      case AuthorizationStateWaitEmailAddress.constructor:
+        return waitEmailAddress
+            .call(this as AuthorizationStateWaitEmailAddress);
+      case AuthorizationStateWaitEmailCode.constructor:
+        return waitEmailCode.call(this as AuthorizationStateWaitEmailCode);
       case AuthorizationStateWaitCode.constructor:
         return waitCode.call(this as AuthorizationStateWaitCode);
       case AuthorizationStateWaitOtherDeviceConfirmation.constructor:
@@ -294,9 +335,10 @@ extension AuthorizationStateExtensions on AuthorizationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthorizationStateWaitTdlibParameters value)?
         waitTdlibParameters,
-    TResult Function(AuthorizationStateWaitEncryptionKey value)?
-        waitEncryptionKey,
     TResult Function(AuthorizationStateWaitPhoneNumber value)? waitPhoneNumber,
+    TResult Function(AuthorizationStateWaitEmailAddress value)?
+        waitEmailAddress,
+    TResult Function(AuthorizationStateWaitEmailCode value)? waitEmailCode,
     TResult Function(AuthorizationStateWaitCode value)? waitCode,
     TResult Function(AuthorizationStateWaitOtherDeviceConfirmation value)?
         waitOtherDeviceConfirmation,
@@ -316,16 +358,21 @@ extension AuthorizationStateExtensions on AuthorizationState {
               .call(this as AuthorizationStateWaitTdlibParameters);
         }
         break;
-      case AuthorizationStateWaitEncryptionKey.constructor:
-        if (waitEncryptionKey != null) {
-          return waitEncryptionKey
-              .call(this as AuthorizationStateWaitEncryptionKey);
-        }
-        break;
       case AuthorizationStateWaitPhoneNumber.constructor:
         if (waitPhoneNumber != null) {
           return waitPhoneNumber
               .call(this as AuthorizationStateWaitPhoneNumber);
+        }
+        break;
+      case AuthorizationStateWaitEmailAddress.constructor:
+        if (waitEmailAddress != null) {
+          return waitEmailAddress
+              .call(this as AuthorizationStateWaitEmailAddress);
+        }
+        break;
+      case AuthorizationStateWaitEmailCode.constructor:
+        if (waitEmailCode != null) {
+          return waitEmailCode.call(this as AuthorizationStateWaitEmailCode);
         }
         break;
       case AuthorizationStateWaitCode.constructor:
@@ -375,13 +422,32 @@ extension AuthorizationStateExtensions on AuthorizationState {
   }
 }
 
-extension AuthorizationStateWaitEncryptionKeyExtensions
-    on AuthorizationStateWaitEncryptionKey {
-  AuthorizationStateWaitEncryptionKey copyWith({
-    bool? isEncrypted,
+extension AuthorizationStateWaitEmailAddressExtensions
+    on AuthorizationStateWaitEmailAddress {
+  AuthorizationStateWaitEmailAddress copyWith({
+    bool? allowAppleId,
+    bool? allowGoogleId,
   }) =>
-      AuthorizationStateWaitEncryptionKey(
-        isEncrypted: isEncrypted ?? this.isEncrypted,
+      AuthorizationStateWaitEmailAddress(
+        allowAppleId: allowAppleId ?? this.allowAppleId,
+        allowGoogleId: allowGoogleId ?? this.allowGoogleId,
+      );
+}
+
+extension AuthorizationStateWaitEmailCodeExtensions
+    on AuthorizationStateWaitEmailCode {
+  AuthorizationStateWaitEmailCode copyWith({
+    bool? allowAppleId,
+    bool? allowGoogleId,
+    EmailAddressAuthenticationCodeInfo? codeInfo,
+    int? nextPhoneNumberAuthorizationDate,
+  }) =>
+      AuthorizationStateWaitEmailCode(
+        allowAppleId: allowAppleId ?? this.allowAppleId,
+        allowGoogleId: allowGoogleId ?? this.allowGoogleId,
+        codeInfo: codeInfo ?? this.codeInfo,
+        nextPhoneNumberAuthorizationDate: nextPhoneNumberAuthorizationDate ??
+            this.nextPhoneNumberAuthorizationDate,
       );
 }
 
@@ -437,6 +503,7 @@ extension PasswordStateExtensions on PasswordState {
     bool? hasRecoveryEmailAddress,
     bool? hasPassportData,
     EmailAddressAuthenticationCodeInfo? recoveryEmailAddressCodeInfo,
+    String? loginEmailAddressPattern,
     int? pendingResetDate,
   }) =>
       PasswordState(
@@ -447,6 +514,8 @@ extension PasswordStateExtensions on PasswordState {
         hasPassportData: hasPassportData ?? this.hasPassportData,
         recoveryEmailAddressCodeInfo:
             recoveryEmailAddressCodeInfo ?? this.recoveryEmailAddressCodeInfo,
+        loginEmailAddressPattern:
+            loginEmailAddressPattern ?? this.loginEmailAddressPattern,
         pendingResetDate: pendingResetDate ?? this.pendingResetDate,
       );
 }
@@ -815,52 +884,43 @@ extension MaskPositionExtensions on MaskPosition {
       );
 }
 
-extension StickerTypeExtensions on StickerType {
+extension StickerFormatExtensions on StickerFormat {
   TResult map<TResult extends Object?>({
-    required TResult Function(StickerTypeStatic value) static,
-    required TResult Function(StickerTypeAnimated value) animated,
-    required TResult Function(StickerTypeVideo value) video,
-    required TResult Function(StickerTypeMask value) mask,
+    required TResult Function(StickerFormatWebp value) webp,
+    required TResult Function(StickerFormatTgs value) tgs,
+    required TResult Function(StickerFormatWebm value) webm,
   }) {
     switch (getConstructor()) {
-      case StickerTypeStatic.constructor:
-        return static.call(this as StickerTypeStatic);
-      case StickerTypeAnimated.constructor:
-        return animated.call(this as StickerTypeAnimated);
-      case StickerTypeVideo.constructor:
-        return video.call(this as StickerTypeVideo);
-      case StickerTypeMask.constructor:
-        return mask.call(this as StickerTypeMask);
+      case StickerFormatWebp.constructor:
+        return webp.call(this as StickerFormatWebp);
+      case StickerFormatTgs.constructor:
+        return tgs.call(this as StickerFormatTgs);
+      case StickerFormatWebm.constructor:
+        return webm.call(this as StickerFormatWebm);
     }
     throw StateError('not handled type Generator');
   }
 
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StickerTypeStatic value)? static,
-    TResult Function(StickerTypeAnimated value)? animated,
-    TResult Function(StickerTypeVideo value)? video,
-    TResult Function(StickerTypeMask value)? mask,
+    TResult Function(StickerFormatWebp value)? webp,
+    TResult Function(StickerFormatTgs value)? tgs,
+    TResult Function(StickerFormatWebm value)? webm,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
-      case StickerTypeStatic.constructor:
-        if (static != null) {
-          return static.call(this as StickerTypeStatic);
+      case StickerFormatWebp.constructor:
+        if (webp != null) {
+          return webp.call(this as StickerFormatWebp);
         }
         break;
-      case StickerTypeAnimated.constructor:
-        if (animated != null) {
-          return animated.call(this as StickerTypeAnimated);
+      case StickerFormatTgs.constructor:
+        if (tgs != null) {
+          return tgs.call(this as StickerFormatTgs);
         }
         break;
-      case StickerTypeVideo.constructor:
-        if (video != null) {
-          return video.call(this as StickerTypeVideo);
-        }
-        break;
-      case StickerTypeMask.constructor:
-        if (mask != null) {
-          return mask.call(this as StickerTypeMask);
+      case StickerFormatWebm.constructor:
+        if (webm != null) {
+          return webm.call(this as StickerFormatWebm);
         }
         break;
     }
@@ -868,13 +928,48 @@ extension StickerTypeExtensions on StickerType {
   }
 }
 
-extension StickerTypeMaskExtensions on StickerTypeMask {
-  StickerTypeMask copyWith({
-    MaskPosition? maskPosition,
-  }) =>
-      StickerTypeMask(
-        maskPosition: maskPosition ?? this.maskPosition,
-      );
+extension StickerTypeExtensions on StickerType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StickerTypeRegular value) regular,
+    required TResult Function(StickerTypeMask value) mask,
+    required TResult Function(StickerTypeCustomEmoji value) customEmoji,
+  }) {
+    switch (getConstructor()) {
+      case StickerTypeRegular.constructor:
+        return regular.call(this as StickerTypeRegular);
+      case StickerTypeMask.constructor:
+        return mask.call(this as StickerTypeMask);
+      case StickerTypeCustomEmoji.constructor:
+        return customEmoji.call(this as StickerTypeCustomEmoji);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StickerTypeRegular value)? regular,
+    TResult Function(StickerTypeMask value)? mask,
+    TResult Function(StickerTypeCustomEmoji value)? customEmoji,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StickerTypeRegular.constructor:
+        if (regular != null) {
+          return regular.call(this as StickerTypeRegular);
+        }
+        break;
+      case StickerTypeMask.constructor:
+        if (mask != null) {
+          return mask.call(this as StickerTypeMask);
+        }
+        break;
+      case StickerTypeCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as StickerTypeCustomEmoji);
+        }
+        break;
+    }
+    return orElse.call();
+  }
 }
 
 extension ClosedVectorPathExtensions on ClosedVectorPath {
@@ -992,6 +1087,7 @@ extension AudioExtensions on Audio {
     String? mimeType,
     Minithumbnail? albumCoverMinithumbnail,
     Thumbnail? albumCoverThumbnail,
+    List<Thumbnail>? externalAlbumCovers,
     File? audio,
   }) =>
       Audio(
@@ -1003,6 +1099,7 @@ extension AudioExtensions on Audio {
         albumCoverMinithumbnail:
             albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
         albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+        externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
         audio: audio ?? this.audio,
       );
 }
@@ -1043,9 +1140,13 @@ extension StickerExtensions on Sticker {
     int? width,
     int? height,
     String? emoji,
+    StickerFormat? format,
     StickerType? type,
+    MaskPosition? maskPosition,
+    int? customEmojiId,
     List<ClosedVectorPath>? outline,
     Thumbnail? thumbnail,
+    bool? isPremium,
     File? premiumAnimation,
     File? sticker,
   }) =>
@@ -1054,9 +1155,13 @@ extension StickerExtensions on Sticker {
         width: width ?? this.width,
         height: height ?? this.height,
         emoji: emoji ?? this.emoji,
+        format: format ?? this.format,
         type: type ?? this.type,
+        maskPosition: maskPosition ?? this.maskPosition,
+        customEmojiId: customEmojiId ?? this.customEmojiId,
         outline: outline ?? this.outline,
         thumbnail: thumbnail ?? this.thumbnail,
+        isPremium: isPremium ?? this.isPremium,
         premiumAnimation: premiumAnimation ?? this.premiumAnimation,
         sticker: sticker ?? this.sticker,
       );
@@ -1111,16 +1216,15 @@ extension VoiceNoteExtensions on VoiceNote {
     int? duration,
     String? waveform,
     String? mimeType,
-    bool? isRecognized,
-    String? recognizedText,
+    SpeechRecognitionResult? speechRecognitionResult,
     File? voice,
   }) =>
       VoiceNote(
         duration: duration ?? this.duration,
         waveform: waveform ?? this.waveform,
         mimeType: mimeType ?? this.mimeType,
-        isRecognized: isRecognized ?? this.isRecognized,
-        recognizedText: recognizedText ?? this.recognizedText,
+        speechRecognitionResult:
+            speechRecognitionResult ?? this.speechRecognitionResult,
         voice: voice ?? this.voice,
       );
 }
@@ -1128,11 +1232,15 @@ extension VoiceNoteExtensions on VoiceNote {
 extension AnimatedEmojiExtensions on AnimatedEmoji {
   AnimatedEmoji copyWith({
     Sticker? sticker,
+    int? stickerWidth,
+    int? stickerHeight,
     int? fitzpatrickType,
     File? sound,
   }) =>
       AnimatedEmoji(
         sticker: sticker ?? this.sticker,
+        stickerWidth: stickerWidth ?? this.stickerWidth,
+        stickerHeight: stickerHeight ?? this.stickerHeight,
         fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
         sound: sound ?? this.sound,
       );
@@ -1555,6 +1663,43 @@ extension ChatAdministratorRightsExtensions on ChatAdministratorRights {
       );
 }
 
+extension PremiumPaymentOptionExtensions on PremiumPaymentOption {
+  PremiumPaymentOption copyWith({
+    String? currency,
+    int? amount,
+    int? discountPercentage,
+    int? monthCount,
+    String? storeProductId,
+    InternalLinkType? paymentLink,
+  }) =>
+      PremiumPaymentOption(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        discountPercentage: discountPercentage ?? this.discountPercentage,
+        monthCount: monthCount ?? this.monthCount,
+        storeProductId: storeProductId ?? this.storeProductId,
+        paymentLink: paymentLink ?? this.paymentLink,
+      );
+}
+
+extension EmojiStatusExtensions on EmojiStatus {
+  EmojiStatus copyWith({
+    int? customEmojiId,
+  }) =>
+      EmojiStatus(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
+}
+
+extension EmojiStatusesExtensions on EmojiStatuses {
+  EmojiStatuses copyWith({
+    List<EmojiStatus>? emojiStatuses,
+  }) =>
+      EmojiStatuses(
+        emojiStatuses: emojiStatuses ?? this.emojiStatuses,
+      );
+}
+
 extension UserExtensions on User {
   User copyWith({
     int? id,
@@ -1564,6 +1709,7 @@ extension UserExtensions on User {
     String? phoneNumber,
     UserStatus? status,
     ProfilePhoto? profilePhoto,
+    EmojiStatus? emojiStatus,
     bool? isContact,
     bool? isMutualContact,
     bool? isVerified,
@@ -1585,6 +1731,7 @@ extension UserExtensions on User {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         status: status ?? this.status,
         profilePhoto: profilePhoto ?? this.profilePhoto,
+        emojiStatus: emojiStatus ?? this.emojiStatus,
         isContact: isContact ?? this.isContact,
         isMutualContact: isMutualContact ?? this.isMutualContact,
         isVerified: isVerified ?? this.isVerified,
@@ -1634,8 +1781,10 @@ extension UserFullInfoExtensions on UserFullInfo {
     bool? supportsVideoCalls,
     bool? hasPrivateCalls,
     bool? hasPrivateForwards,
+    bool? hasRestrictedVoiceAndVideoNoteMessages,
     bool? needPhoneNumberPrivacyException,
     FormattedText? bio,
+    List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
     BotInfo? botInfo,
   }) =>
@@ -1646,9 +1795,13 @@ extension UserFullInfoExtensions on UserFullInfo {
         supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
         hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
         hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
+        hasRestrictedVoiceAndVideoNoteMessages:
+            hasRestrictedVoiceAndVideoNoteMessages ??
+                this.hasRestrictedVoiceAndVideoNoteMessages,
         needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
             this.needPhoneNumberPrivacyException,
         bio: bio ?? this.bio,
+        premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
         botInfo: botInfo ?? this.botInfo,
       );
@@ -2480,6 +2633,26 @@ extension MessageSendersExtensions on MessageSenders {
       );
 }
 
+extension ChatMessageSenderExtensions on ChatMessageSender {
+  ChatMessageSender copyWith({
+    MessageSender? sender,
+    bool? needsPremium,
+  }) =>
+      ChatMessageSender(
+        sender: sender ?? this.sender,
+        needsPremium: needsPremium ?? this.needsPremium,
+      );
+}
+
+extension ChatMessageSendersExtensions on ChatMessageSenders {
+  ChatMessageSenders copyWith({
+    List<ChatMessageSender>? senders,
+  }) =>
+      ChatMessageSenders(
+        senders: senders ?? this.senders,
+      );
+}
+
 extension MessageForwardOriginExtensions on MessageForwardOrigin {
   TResult map<TResult extends Object?>({
     required TResult Function(MessageForwardOriginUser value) user,
@@ -2596,6 +2769,59 @@ extension MessageForwardOriginMessageImportExtensions
       );
 }
 
+extension ReactionTypeExtensions on ReactionType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReactionTypeEmoji value) emoji,
+    required TResult Function(ReactionTypeCustomEmoji value) customEmoji,
+  }) {
+    switch (getConstructor()) {
+      case ReactionTypeEmoji.constructor:
+        return emoji.call(this as ReactionTypeEmoji);
+      case ReactionTypeCustomEmoji.constructor:
+        return customEmoji.call(this as ReactionTypeCustomEmoji);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReactionTypeEmoji value)? emoji,
+    TResult Function(ReactionTypeCustomEmoji value)? customEmoji,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ReactionTypeEmoji.constructor:
+        if (emoji != null) {
+          return emoji.call(this as ReactionTypeEmoji);
+        }
+        break;
+      case ReactionTypeCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as ReactionTypeCustomEmoji);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ReactionTypeEmojiExtensions on ReactionTypeEmoji {
+  ReactionTypeEmoji copyWith({
+    String? emoji,
+  }) =>
+      ReactionTypeEmoji(
+        emoji: emoji ?? this.emoji,
+      );
+}
+
+extension ReactionTypeCustomEmojiExtensions on ReactionTypeCustomEmoji {
+  ReactionTypeCustomEmoji copyWith({
+    int? customEmojiId,
+  }) =>
+      ReactionTypeCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
+}
+
 extension MessageForwardInfoExtensions on MessageForwardInfo {
   MessageForwardInfo copyWith({
     MessageForwardOrigin? origin,
@@ -2635,13 +2861,13 @@ extension MessageReplyInfoExtensions on MessageReplyInfo {
 
 extension MessageReactionExtensions on MessageReaction {
   MessageReaction copyWith({
-    String? reaction,
+    ReactionType? type,
     int? totalCount,
     bool? isChosen,
     List<MessageSender>? recentSenderIds,
   }) =>
       MessageReaction(
-        reaction: reaction ?? this.reaction,
+        type: type ?? this.type,
         totalCount: totalCount ?? this.totalCount,
         isChosen: isChosen ?? this.isChosen,
         recentSenderIds: recentSenderIds ?? this.recentSenderIds,
@@ -2665,12 +2891,12 @@ extension MessageInteractionInfoExtensions on MessageInteractionInfo {
 
 extension UnreadReactionExtensions on UnreadReaction {
   UnreadReaction copyWith({
-    String? reaction,
+    ReactionType? type,
     MessageSender? senderId,
     bool? isBig,
   }) =>
       UnreadReaction(
-        reaction: reaction ?? this.reaction,
+        type: type ?? this.type,
         senderId: senderId ?? this.senderId,
         isBig: isBig ?? this.isBig,
       );
@@ -2747,6 +2973,7 @@ extension MessageExtensions on Message {
     bool? canGetMessageThread,
     bool? canGetViewers,
     bool? canGetMediaTimestampLinks,
+    bool? canReportReactions,
     bool? hasTimestampedMedia,
     bool? isChannelPost,
     bool? containsUnreadMention,
@@ -2788,6 +3015,7 @@ extension MessageExtensions on Message {
         canGetViewers: canGetViewers ?? this.canGetViewers,
         canGetMediaTimestampLinks:
             canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
+        canReportReactions: canReportReactions ?? this.canReportReactions,
         hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
         isChannelPost: isChannelPost ?? this.isChannelPost,
         containsUnreadMention:
@@ -3345,6 +3573,50 @@ extension ChatPositionExtensions on ChatPosition {
       );
 }
 
+extension ChatAvailableReactionsExtensions on ChatAvailableReactions {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatAvailableReactionsAll value) all,
+    required TResult Function(ChatAvailableReactionsSome value) some,
+  }) {
+    switch (getConstructor()) {
+      case ChatAvailableReactionsAll.constructor:
+        return all.call(this as ChatAvailableReactionsAll);
+      case ChatAvailableReactionsSome.constructor:
+        return some.call(this as ChatAvailableReactionsSome);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatAvailableReactionsAll value)? all,
+    TResult Function(ChatAvailableReactionsSome value)? some,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ChatAvailableReactionsAll.constructor:
+        if (all != null) {
+          return all.call(this as ChatAvailableReactionsAll);
+        }
+        break;
+      case ChatAvailableReactionsSome.constructor:
+        if (some != null) {
+          return some.call(this as ChatAvailableReactionsSome);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ChatAvailableReactionsSomeExtensions on ChatAvailableReactionsSome {
+  ChatAvailableReactionsSome copyWith({
+    List<ReactionType>? reactions,
+  }) =>
+      ChatAvailableReactionsSome(
+        reactions: reactions ?? this.reactions,
+      );
+}
+
 extension VideoChatExtensions on VideoChat {
   VideoChat copyWith({
     int? groupCallId,
@@ -3382,7 +3654,7 @@ extension ChatExtensions on Chat {
     int? unreadMentionCount,
     int? unreadReactionCount,
     ChatNotificationSettings? notificationSettings,
-    List<String>? availableReactions,
+    ChatAvailableReactions? availableReactions,
     int? messageTtl,
     String? themeName,
     ChatActionBar? actionBar,
@@ -5633,6 +5905,17 @@ extension PaymentProviderOtherExtensions on PaymentProviderOther {
       );
 }
 
+extension PaymentOptionExtensions on PaymentOption {
+  PaymentOption copyWith({
+    String? title,
+    String? url,
+  }) =>
+      PaymentOption(
+        title: title ?? this.title,
+        url: url ?? this.url,
+      );
+}
+
 extension PaymentFormExtensions on PaymentForm {
   PaymentForm copyWith({
     int? id,
@@ -5640,8 +5923,9 @@ extension PaymentFormExtensions on PaymentForm {
     int? sellerBotUserId,
     int? paymentProviderUserId,
     PaymentProvider? paymentProvider,
+    List<PaymentOption>? additionalPaymentOptions,
     OrderInfo? savedOrderInfo,
-    SavedCredentials? savedCredentials,
+    List<SavedCredentials>? savedCredentials,
     bool? canSaveCredentials,
     bool? needPassword,
     String? productTitle,
@@ -5655,6 +5939,8 @@ extension PaymentFormExtensions on PaymentForm {
         paymentProviderUserId:
             paymentProviderUserId ?? this.paymentProviderUserId,
         paymentProvider: paymentProvider ?? this.paymentProvider,
+        additionalPaymentOptions:
+            additionalPaymentOptions ?? this.additionalPaymentOptions,
         savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
         savedCredentials: savedCredentials ?? this.savedCredentials,
         canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
@@ -5769,6 +6055,109 @@ extension InputInvoiceNameExtensions on InputInvoiceName {
   }) =>
       InputInvoiceName(
         name: name ?? this.name,
+      );
+}
+
+extension MessageExtendedMediaExtensions on MessageExtendedMedia {
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessageExtendedMediaPreview value) preview,
+    required TResult Function(MessageExtendedMediaPhoto value) photo,
+    required TResult Function(MessageExtendedMediaVideo value) video,
+    required TResult Function(MessageExtendedMediaUnsupported value)
+        unsupported,
+  }) {
+    switch (getConstructor()) {
+      case MessageExtendedMediaPreview.constructor:
+        return preview.call(this as MessageExtendedMediaPreview);
+      case MessageExtendedMediaPhoto.constructor:
+        return photo.call(this as MessageExtendedMediaPhoto);
+      case MessageExtendedMediaVideo.constructor:
+        return video.call(this as MessageExtendedMediaVideo);
+      case MessageExtendedMediaUnsupported.constructor:
+        return unsupported.call(this as MessageExtendedMediaUnsupported);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessageExtendedMediaPreview value)? preview,
+    TResult Function(MessageExtendedMediaPhoto value)? photo,
+    TResult Function(MessageExtendedMediaVideo value)? video,
+    TResult Function(MessageExtendedMediaUnsupported value)? unsupported,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case MessageExtendedMediaPreview.constructor:
+        if (preview != null) {
+          return preview.call(this as MessageExtendedMediaPreview);
+        }
+        break;
+      case MessageExtendedMediaPhoto.constructor:
+        if (photo != null) {
+          return photo.call(this as MessageExtendedMediaPhoto);
+        }
+        break;
+      case MessageExtendedMediaVideo.constructor:
+        if (video != null) {
+          return video.call(this as MessageExtendedMediaVideo);
+        }
+        break;
+      case MessageExtendedMediaUnsupported.constructor:
+        if (unsupported != null) {
+          return unsupported.call(this as MessageExtendedMediaUnsupported);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension MessageExtendedMediaPreviewExtensions on MessageExtendedMediaPreview {
+  MessageExtendedMediaPreview copyWith({
+    int? width,
+    int? height,
+    int? duration,
+    Minithumbnail? minithumbnail,
+    FormattedText? caption,
+  }) =>
+      MessageExtendedMediaPreview(
+        width: width ?? this.width,
+        height: height ?? this.height,
+        duration: duration ?? this.duration,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        caption: caption ?? this.caption,
+      );
+}
+
+extension MessageExtendedMediaPhotoExtensions on MessageExtendedMediaPhoto {
+  MessageExtendedMediaPhoto copyWith({
+    Photo? photo,
+    FormattedText? caption,
+  }) =>
+      MessageExtendedMediaPhoto(
+        photo: photo ?? this.photo,
+        caption: caption ?? this.caption,
+      );
+}
+
+extension MessageExtendedMediaVideoExtensions on MessageExtendedMediaVideo {
+  MessageExtendedMediaVideo copyWith({
+    Video? video,
+    FormattedText? caption,
+  }) =>
+      MessageExtendedMediaVideo(
+        video: video ?? this.video,
+        caption: caption ?? this.caption,
+      );
+}
+
+extension MessageExtendedMediaUnsupportedExtensions
+    on MessageExtendedMediaUnsupported {
+  MessageExtendedMediaUnsupported copyWith({
+    FormattedText? caption,
+  }) =>
+      MessageExtendedMediaUnsupported(
+        caption: caption ?? this.caption,
       );
 }
 
@@ -7138,6 +7527,7 @@ extension MessageContentExtensions on MessageContent {
         messagePaymentSuccessful,
     required TResult Function(MessagePaymentSuccessfulBot value)
         messagePaymentSuccessfulBot,
+    required TResult Function(MessageGiftedPremium value) messageGiftedPremium,
     required TResult Function(MessageContactRegistered value)
         messageContactRegistered,
     required TResult Function(MessageWebsiteConnected value)
@@ -7247,6 +7637,8 @@ extension MessageContentExtensions on MessageContent {
       case MessagePaymentSuccessfulBot.constructor:
         return messagePaymentSuccessfulBot
             .call(this as MessagePaymentSuccessfulBot);
+      case MessageGiftedPremium.constructor:
+        return messageGiftedPremium.call(this as MessageGiftedPremium);
       case MessageContactRegistered.constructor:
         return messageContactRegistered.call(this as MessageContactRegistered);
       case MessageWebsiteConnected.constructor:
@@ -7320,6 +7712,7 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessagePaymentSuccessful value)? messagePaymentSuccessful,
     TResult Function(MessagePaymentSuccessfulBot value)?
         messagePaymentSuccessfulBot,
+    TResult Function(MessageGiftedPremium value)? messageGiftedPremium,
     TResult Function(MessageContactRegistered value)? messageContactRegistered,
     TResult Function(MessageWebsiteConnected value)? messageWebsiteConnected,
     TResult Function(MessageWebAppDataSent value)? messageWebAppDataSent,
@@ -7555,6 +7948,11 @@ extension MessageContentExtensions on MessageContent {
         if (messagePaymentSuccessfulBot != null) {
           return messagePaymentSuccessfulBot
               .call(this as MessagePaymentSuccessfulBot);
+        }
+        break;
+      case MessageGiftedPremium.constructor:
+        if (messageGiftedPremium != null) {
+          return messageGiftedPremium.call(this as MessageGiftedPremium);
         }
         break;
       case MessageContactRegistered.constructor:
@@ -7808,6 +8206,7 @@ extension MessageInvoiceExtensions on MessageInvoice {
     bool? isTest,
     bool? needShippingAddress,
     int? receiptMessageId,
+    MessageExtendedMedia? extendedMedia,
   }) =>
       MessageInvoice(
         title: title ?? this.title,
@@ -7819,6 +8218,7 @@ extension MessageInvoiceExtensions on MessageInvoice {
         isTest: isTest ?? this.isTest,
         needShippingAddress: needShippingAddress ?? this.needShippingAddress,
         receiptMessageId: receiptMessageId ?? this.receiptMessageId,
+        extendedMedia: extendedMedia ?? this.extendedMedia,
       );
 }
 
@@ -8049,6 +8449,21 @@ extension MessagePaymentSuccessfulBotExtensions on MessagePaymentSuccessfulBot {
       );
 }
 
+extension MessageGiftedPremiumExtensions on MessageGiftedPremium {
+  MessageGiftedPremium copyWith({
+    String? currency,
+    int? amount,
+    int? monthCount,
+    Sticker? sticker,
+  }) =>
+      MessageGiftedPremium(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        monthCount: monthCount ?? this.monthCount,
+        sticker: sticker ?? this.sticker,
+      );
+}
+
 extension MessageWebsiteConnectedExtensions on MessageWebsiteConnected {
   MessageWebsiteConnected copyWith({
     String? domainName,
@@ -8133,6 +8548,7 @@ extension TextEntityTypeExtensions on TextEntityType {
     required TResult Function(TextEntityTypePreCode value) preCode,
     required TResult Function(TextEntityTypeTextUrl value) textUrl,
     required TResult Function(TextEntityTypeMentionName value) mentionName,
+    required TResult Function(TextEntityTypeCustomEmoji value) customEmoji,
     required TResult Function(TextEntityTypeMediaTimestamp value)
         mediaTimestamp,
   }) {
@@ -8173,6 +8589,8 @@ extension TextEntityTypeExtensions on TextEntityType {
         return textUrl.call(this as TextEntityTypeTextUrl);
       case TextEntityTypeMentionName.constructor:
         return mentionName.call(this as TextEntityTypeMentionName);
+      case TextEntityTypeCustomEmoji.constructor:
+        return customEmoji.call(this as TextEntityTypeCustomEmoji);
       case TextEntityTypeMediaTimestamp.constructor:
         return mediaTimestamp.call(this as TextEntityTypeMediaTimestamp);
     }
@@ -8198,6 +8616,7 @@ extension TextEntityTypeExtensions on TextEntityType {
     TResult Function(TextEntityTypePreCode value)? preCode,
     TResult Function(TextEntityTypeTextUrl value)? textUrl,
     TResult Function(TextEntityTypeMentionName value)? mentionName,
+    TResult Function(TextEntityTypeCustomEmoji value)? customEmoji,
     TResult Function(TextEntityTypeMediaTimestamp value)? mediaTimestamp,
     required TResult Function() orElse,
   }) {
@@ -8292,6 +8711,11 @@ extension TextEntityTypeExtensions on TextEntityType {
           return mentionName.call(this as TextEntityTypeMentionName);
         }
         break;
+      case TextEntityTypeCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as TextEntityTypeCustomEmoji);
+        }
+        break;
       case TextEntityTypeMediaTimestamp.constructor:
         if (mediaTimestamp != null) {
           return mediaTimestamp.call(this as TextEntityTypeMediaTimestamp);
@@ -8326,6 +8750,15 @@ extension TextEntityTypeMentionNameExtensions on TextEntityTypeMentionName {
   }) =>
       TextEntityTypeMentionName(
         userId: userId ?? this.userId,
+      );
+}
+
+extension TextEntityTypeCustomEmojiExtensions on TextEntityTypeCustomEmoji {
+  TextEntityTypeCustomEmoji copyWith({
+    int? customEmojiId,
+  }) =>
+      TextEntityTypeCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
       );
 }
 
@@ -8407,12 +8840,15 @@ extension MessageSendOptionsExtensions on MessageSendOptions {
     bool? disableNotification,
     bool? fromBackground,
     bool? protectContent,
+    bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? schedulingState,
   }) =>
       MessageSendOptions(
         disableNotification: disableNotification ?? this.disableNotification,
         fromBackground: fromBackground ?? this.fromBackground,
         protectContent: protectContent ?? this.protectContent,
+        updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
+            this.updateOrderOfInstalledStickerSets,
         schedulingState: schedulingState ?? this.schedulingState,
       );
 }
@@ -8835,6 +9271,7 @@ extension InputMessageInvoiceExtensions on InputMessageInvoice {
     String? providerToken,
     String? providerData,
     String? startParameter,
+    InputMessageContent? extendedMediaContent,
   }) =>
       InputMessageInvoice(
         invoice: invoice ?? this.invoice,
@@ -8848,6 +9285,7 @@ extension InputMessageInvoiceExtensions on InputMessageInvoice {
         providerToken: providerToken ?? this.providerToken,
         providerData: providerData ?? this.providerData,
         startParameter: startParameter ?? this.startParameter,
+        extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
       );
 }
 
@@ -9400,6 +9838,7 @@ extension StickerSetExtensions on StickerSet {
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
+    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? isViewed,
     List<Sticker>? stickers,
@@ -9414,6 +9853,7 @@ extension StickerSetExtensions on StickerSet {
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         isViewed: isViewed ?? this.isViewed,
         stickers: stickers ?? this.stickers,
@@ -9431,6 +9871,7 @@ extension StickerSetInfoExtensions on StickerSetInfo {
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
+    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? isViewed,
     int? size,
@@ -9445,6 +9886,7 @@ extension StickerSetInfoExtensions on StickerSetInfo {
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
+        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         isViewed: isViewed ?? this.isViewed,
         size: size ?? this.size,
@@ -10129,11 +10571,11 @@ extension PhoneNumberAuthenticationSettingsExtensions
 
 extension AddedReactionExtensions on AddedReaction {
   AddedReaction copyWith({
-    String? reaction,
+    ReactionType? type,
     MessageSender? senderId,
   }) =>
       AddedReaction(
-        reaction: reaction ?? this.reaction,
+        type: type ?? this.type,
         senderId: senderId ?? this.senderId,
       );
 }
@@ -10153,30 +10595,35 @@ extension AddedReactionsExtensions on AddedReactions {
 
 extension AvailableReactionExtensions on AvailableReaction {
   AvailableReaction copyWith({
-    String? reaction,
+    ReactionType? type,
     bool? needsPremium,
   }) =>
       AvailableReaction(
-        reaction: reaction ?? this.reaction,
+        type: type ?? this.type,
         needsPremium: needsPremium ?? this.needsPremium,
       );
 }
 
 extension AvailableReactionsExtensions on AvailableReactions {
   AvailableReactions copyWith({
-    List<AvailableReaction>? reactions,
+    List<AvailableReaction>? topReactions,
+    List<AvailableReaction>? recentReactions,
+    List<AvailableReaction>? popularReactions,
+    bool? allowCustomEmoji,
   }) =>
       AvailableReactions(
-        reactions: reactions ?? this.reactions,
+        topReactions: topReactions ?? this.topReactions,
+        recentReactions: recentReactions ?? this.recentReactions,
+        popularReactions: popularReactions ?? this.popularReactions,
+        allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
       );
 }
 
-extension ReactionExtensions on Reaction {
-  Reaction copyWith({
-    String? reaction,
+extension EmojiReactionExtensions on EmojiReaction {
+  EmojiReaction copyWith({
+    String? emoji,
     String? title,
     bool? isActive,
-    bool? isPremium,
     Sticker? staticIcon,
     Sticker? appearAnimation,
     Sticker? selectAnimation,
@@ -10185,11 +10632,10 @@ extension ReactionExtensions on Reaction {
     Sticker? aroundAnimation,
     Sticker? centerAnimation,
   }) =>
-      Reaction(
-        reaction: reaction ?? this.reaction,
+      EmojiReaction(
+        emoji: emoji ?? this.emoji,
         title: title ?? this.title,
         isActive: isActive ?? this.isActive,
-        isPremium: isPremium ?? this.isPremium,
         staticIcon: staticIcon ?? this.staticIcon,
         appearAnimation: appearAnimation ?? this.appearAnimation,
         selectAnimation: selectAnimation ?? this.selectAnimation,
@@ -10278,6 +10724,79 @@ extension ImportedContactsExtensions on ImportedContacts {
       ImportedContacts(
         userIds: userIds ?? this.userIds,
         importerCount: importerCount ?? this.importerCount,
+      );
+}
+
+extension SpeechRecognitionResultExtensions on SpeechRecognitionResult {
+  TResult map<TResult extends Object?>({
+    required TResult Function(SpeechRecognitionResultPending value) pending,
+    required TResult Function(SpeechRecognitionResultText value) text,
+    required TResult Function(SpeechRecognitionResultError value) error,
+  }) {
+    switch (getConstructor()) {
+      case SpeechRecognitionResultPending.constructor:
+        return pending.call(this as SpeechRecognitionResultPending);
+      case SpeechRecognitionResultText.constructor:
+        return text.call(this as SpeechRecognitionResultText);
+      case SpeechRecognitionResultError.constructor:
+        return error.call(this as SpeechRecognitionResultError);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SpeechRecognitionResultPending value)? pending,
+    TResult Function(SpeechRecognitionResultText value)? text,
+    TResult Function(SpeechRecognitionResultError value)? error,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case SpeechRecognitionResultPending.constructor:
+        if (pending != null) {
+          return pending.call(this as SpeechRecognitionResultPending);
+        }
+        break;
+      case SpeechRecognitionResultText.constructor:
+        if (text != null) {
+          return text.call(this as SpeechRecognitionResultText);
+        }
+        break;
+      case SpeechRecognitionResultError.constructor:
+        if (error != null) {
+          return error.call(this as SpeechRecognitionResultError);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension SpeechRecognitionResultPendingExtensions
+    on SpeechRecognitionResultPending {
+  SpeechRecognitionResultPending copyWith({
+    String? partialText,
+  }) =>
+      SpeechRecognitionResultPending(
+        partialText: partialText ?? this.partialText,
+      );
+}
+
+extension SpeechRecognitionResultTextExtensions on SpeechRecognitionResultText {
+  SpeechRecognitionResultText copyWith({
+    String? text,
+  }) =>
+      SpeechRecognitionResultText(
+        text: text ?? this.text,
+      );
+}
+
+extension SpeechRecognitionResultErrorExtensions
+    on SpeechRecognitionResultError {
+  SpeechRecognitionResultError copyWith({
+    TdError? error,
+  }) =>
+      SpeechRecognitionResultError(
+        error: error ?? this.error,
       );
 }
 
@@ -11726,8 +12245,8 @@ extension ChatEventMemberRestrictedExtensions on ChatEventMemberRestricted {
 extension ChatEventAvailableReactionsChangedExtensions
     on ChatEventAvailableReactionsChanged {
   ChatEventAvailableReactionsChanged copyWith({
-    List<String>? oldAvailableReactions,
-    List<String>? newAvailableReactions,
+    ChatAvailableReactions? oldAvailableReactions,
+    ChatAvailableReactions? newAvailableReactions,
   }) =>
       ChatEventAvailableReactionsChanged(
         oldAvailableReactions:
@@ -12308,9 +12827,11 @@ extension PremiumFeatureExtensions on PremiumFeature {
         uniqueReactions,
     required TResult Function(PremiumFeatureUniqueStickers value)
         uniqueStickers,
+    required TResult Function(PremiumFeatureCustomEmoji value) customEmoji,
     required TResult Function(PremiumFeatureAdvancedChatManagement value)
         advancedChatManagement,
     required TResult Function(PremiumFeatureProfileBadge value) profileBadge,
+    required TResult Function(PremiumFeatureEmojiStatus value) emojiStatus,
     required TResult Function(PremiumFeatureAnimatedProfilePhoto value)
         animatedProfilePhoto,
     required TResult Function(PremiumFeatureAppIcons value) appIcons,
@@ -12332,11 +12853,15 @@ extension PremiumFeatureExtensions on PremiumFeature {
         return uniqueReactions.call(this as PremiumFeatureUniqueReactions);
       case PremiumFeatureUniqueStickers.constructor:
         return uniqueStickers.call(this as PremiumFeatureUniqueStickers);
+      case PremiumFeatureCustomEmoji.constructor:
+        return customEmoji.call(this as PremiumFeatureCustomEmoji);
       case PremiumFeatureAdvancedChatManagement.constructor:
         return advancedChatManagement
             .call(this as PremiumFeatureAdvancedChatManagement);
       case PremiumFeatureProfileBadge.constructor:
         return profileBadge.call(this as PremiumFeatureProfileBadge);
+      case PremiumFeatureEmojiStatus.constructor:
+        return emojiStatus.call(this as PremiumFeatureEmojiStatus);
       case PremiumFeatureAnimatedProfilePhoto.constructor:
         return animatedProfilePhoto
             .call(this as PremiumFeatureAnimatedProfilePhoto);
@@ -12356,9 +12881,11 @@ extension PremiumFeatureExtensions on PremiumFeature {
     TResult Function(PremiumFeatureDisabledAds value)? disabledAds,
     TResult Function(PremiumFeatureUniqueReactions value)? uniqueReactions,
     TResult Function(PremiumFeatureUniqueStickers value)? uniqueStickers,
+    TResult Function(PremiumFeatureCustomEmoji value)? customEmoji,
     TResult Function(PremiumFeatureAdvancedChatManagement value)?
         advancedChatManagement,
     TResult Function(PremiumFeatureProfileBadge value)? profileBadge,
+    TResult Function(PremiumFeatureEmojiStatus value)? emojiStatus,
     TResult Function(PremiumFeatureAnimatedProfilePhoto value)?
         animatedProfilePhoto,
     TResult Function(PremiumFeatureAppIcons value)? appIcons,
@@ -12402,6 +12929,11 @@ extension PremiumFeatureExtensions on PremiumFeature {
           return uniqueStickers.call(this as PremiumFeatureUniqueStickers);
         }
         break;
+      case PremiumFeatureCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as PremiumFeatureCustomEmoji);
+        }
+        break;
       case PremiumFeatureAdvancedChatManagement.constructor:
         if (advancedChatManagement != null) {
           return advancedChatManagement
@@ -12411,6 +12943,11 @@ extension PremiumFeatureExtensions on PremiumFeature {
       case PremiumFeatureProfileBadge.constructor:
         if (profileBadge != null) {
           return profileBadge.call(this as PremiumFeatureProfileBadge);
+        }
+        break;
+      case PremiumFeatureEmojiStatus.constructor:
+        if (emojiStatus != null) {
+          return emojiStatus.call(this as PremiumFeatureEmojiStatus);
         }
         break;
       case PremiumFeatureAnimatedProfilePhoto.constructor:
@@ -12550,15 +13087,77 @@ extension PremiumFeaturePromotionAnimationExtensions
 extension PremiumStateExtensions on PremiumState {
   PremiumState copyWith({
     FormattedText? state,
-    String? currency,
-    int? monthlyAmount,
+    List<PremiumPaymentOption>? paymentOptions,
     List<PremiumFeaturePromotionAnimation>? animations,
   }) =>
       PremiumState(
         state: state ?? this.state,
-        currency: currency ?? this.currency,
-        monthlyAmount: monthlyAmount ?? this.monthlyAmount,
+        paymentOptions: paymentOptions ?? this.paymentOptions,
         animations: animations ?? this.animations,
+      );
+}
+
+extension StorePaymentPurposeExtensions on StorePaymentPurpose {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StorePaymentPurposePremiumSubscription value)
+        premiumSubscription,
+    required TResult Function(StorePaymentPurposeGiftedPremium value)
+        giftedPremium,
+  }) {
+    switch (getConstructor()) {
+      case StorePaymentPurposePremiumSubscription.constructor:
+        return premiumSubscription
+            .call(this as StorePaymentPurposePremiumSubscription);
+      case StorePaymentPurposeGiftedPremium.constructor:
+        return giftedPremium.call(this as StorePaymentPurposeGiftedPremium);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StorePaymentPurposePremiumSubscription value)?
+        premiumSubscription,
+    TResult Function(StorePaymentPurposeGiftedPremium value)? giftedPremium,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StorePaymentPurposePremiumSubscription.constructor:
+        if (premiumSubscription != null) {
+          return premiumSubscription
+              .call(this as StorePaymentPurposePremiumSubscription);
+        }
+        break;
+      case StorePaymentPurposeGiftedPremium.constructor:
+        if (giftedPremium != null) {
+          return giftedPremium.call(this as StorePaymentPurposeGiftedPremium);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension StorePaymentPurposePremiumSubscriptionExtensions
+    on StorePaymentPurposePremiumSubscription {
+  StorePaymentPurposePremiumSubscription copyWith({
+    bool? isRestore,
+  }) =>
+      StorePaymentPurposePremiumSubscription(
+        isRestore: isRestore ?? this.isRestore,
+      );
+}
+
+extension StorePaymentPurposeGiftedPremiumExtensions
+    on StorePaymentPurposeGiftedPremium {
+  StorePaymentPurposeGiftedPremium copyWith({
+    int? userId,
+    String? currency,
+    int? amount,
+  }) =>
+      StorePaymentPurposeGiftedPremium(
+        userId: userId ?? this.userId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
       );
 }
 
@@ -14589,6 +15188,9 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         allowPeerToPeerCalls,
     required TResult Function(UserPrivacySettingAllowFindingByPhoneNumber value)
         allowFindingByPhoneNumber,
+    required TResult Function(
+            UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages value)
+        allowPrivateVoiceAndVideoNoteMessages,
   }) {
     switch (getConstructor()) {
       case UserPrivacySettingShowStatus.constructor:
@@ -14612,6 +15214,9 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
       case UserPrivacySettingAllowFindingByPhoneNumber.constructor:
         return allowFindingByPhoneNumber
             .call(this as UserPrivacySettingAllowFindingByPhoneNumber);
+      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.constructor:
+        return allowPrivateVoiceAndVideoNoteMessages.call(
+            this as UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages);
     }
     throw StateError('not handled type Generator');
   }
@@ -14630,6 +15235,9 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         allowPeerToPeerCalls,
     TResult Function(UserPrivacySettingAllowFindingByPhoneNumber value)?
         allowFindingByPhoneNumber,
+    TResult Function(
+            UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages value)?
+        allowPrivateVoiceAndVideoNoteMessages,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -14677,6 +15285,12 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         if (allowFindingByPhoneNumber != null) {
           return allowFindingByPhoneNumber
               .call(this as UserPrivacySettingAllowFindingByPhoneNumber);
+        }
+        break;
+      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.constructor:
+        if (allowPrivateVoiceAndVideoNoteMessages != null) {
+          return allowPrivateVoiceAndVideoNoteMessages.call(
+              this as UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages);
         }
         break;
     }
@@ -15153,6 +15767,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     required TResult Function(InternalLinkTypeFilterSettings value)
         filterSettings,
     required TResult Function(InternalLinkTypeGame value) game,
+    required TResult Function(InternalLinkTypeInstantView value) instantView,
     required TResult Function(InternalLinkTypeInvoice value) invoice,
     required TResult Function(InternalLinkTypeLanguagePack value) languagePack,
     required TResult Function(InternalLinkTypeLanguageSettings value)
@@ -15171,6 +15786,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     required TResult Function(InternalLinkTypePublicChat value) publicChat,
     required TResult Function(InternalLinkTypeQrCodeAuthentication value)
         qrCodeAuthentication,
+    required TResult Function(InternalLinkTypeRestorePurchases value)
+        restorePurchases,
     required TResult Function(InternalLinkTypeSettings value) settings,
     required TResult Function(InternalLinkTypeStickerSet value) stickerSet,
     required TResult Function(InternalLinkTypeTheme value) theme,
@@ -15210,6 +15827,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         return filterSettings.call(this as InternalLinkTypeFilterSettings);
       case InternalLinkTypeGame.constructor:
         return game.call(this as InternalLinkTypeGame);
+      case InternalLinkTypeInstantView.constructor:
+        return instantView.call(this as InternalLinkTypeInstantView);
       case InternalLinkTypeInvoice.constructor:
         return invoice.call(this as InternalLinkTypeInvoice);
       case InternalLinkTypeLanguagePack.constructor:
@@ -15238,6 +15857,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeQrCodeAuthentication.constructor:
         return qrCodeAuthentication
             .call(this as InternalLinkTypeQrCodeAuthentication);
+      case InternalLinkTypeRestorePurchases.constructor:
+        return restorePurchases.call(this as InternalLinkTypeRestorePurchases);
       case InternalLinkTypeSettings.constructor:
         return settings.call(this as InternalLinkTypeSettings);
       case InternalLinkTypeStickerSet.constructor:
@@ -15273,6 +15894,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeChatInvite value)? chatInvite,
     TResult Function(InternalLinkTypeFilterSettings value)? filterSettings,
     TResult Function(InternalLinkTypeGame value)? game,
+    TResult Function(InternalLinkTypeInstantView value)? instantView,
     TResult Function(InternalLinkTypeInvoice value)? invoice,
     TResult Function(InternalLinkTypeLanguagePack value)? languagePack,
     TResult Function(InternalLinkTypeLanguageSettings value)? languageSettings,
@@ -15289,6 +15911,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypePublicChat value)? publicChat,
     TResult Function(InternalLinkTypeQrCodeAuthentication value)?
         qrCodeAuthentication,
+    TResult Function(InternalLinkTypeRestorePurchases value)? restorePurchases,
     TResult Function(InternalLinkTypeSettings value)? settings,
     TResult Function(InternalLinkTypeStickerSet value)? stickerSet,
     TResult Function(InternalLinkTypeTheme value)? theme,
@@ -15358,6 +15981,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
           return game.call(this as InternalLinkTypeGame);
         }
         break;
+      case InternalLinkTypeInstantView.constructor:
+        if (instantView != null) {
+          return instantView.call(this as InternalLinkTypeInstantView);
+        }
+        break;
       case InternalLinkTypeInvoice.constructor:
         if (invoice != null) {
           return invoice.call(this as InternalLinkTypeInvoice);
@@ -15421,6 +16049,12 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         if (qrCodeAuthentication != null) {
           return qrCodeAuthentication
               .call(this as InternalLinkTypeQrCodeAuthentication);
+        }
+        break;
+      case InternalLinkTypeRestorePurchases.constructor:
+        if (restorePurchases != null) {
+          return restorePurchases
+              .call(this as InternalLinkTypeRestorePurchases);
         }
         break;
       case InternalLinkTypeSettings.constructor:
@@ -15558,6 +16192,17 @@ extension InternalLinkTypeGameExtensions on InternalLinkTypeGame {
       InternalLinkTypeGame(
         botUsername: botUsername ?? this.botUsername,
         gameShortName: gameShortName ?? this.gameShortName,
+      );
+}
+
+extension InternalLinkTypeInstantViewExtensions on InternalLinkTypeInstantView {
+  InternalLinkTypeInstantView copyWith({
+    String? url,
+    String? fallbackUrl,
+  }) =>
+      InternalLinkTypeInstantView(
+        url: url ?? this.url,
+        fallbackUrl: fallbackUrl ?? this.fallbackUrl,
       );
 }
 
@@ -16723,12 +17368,14 @@ extension InputStickerExtensions on InputSticker {
   InputSticker copyWith({
     InputFile? sticker,
     String? emojis,
-    StickerType? type,
+    StickerFormat? format,
+    MaskPosition? maskPosition,
   }) =>
       InputSticker(
         sticker: sticker ?? this.sticker,
         emojis: emojis ?? this.emojis,
-        type: type ?? this.type,
+        format: format ?? this.format,
+        maskPosition: maskPosition ?? this.maskPosition,
       );
 }
 
@@ -17327,7 +17974,10 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateAttachmentMenuBots value)
         attachmentMenuBots,
     required TResult Function(UpdateWebAppMessageSent value) webAppMessageSent,
-    required TResult Function(UpdateReactions value) reactions,
+    required TResult Function(UpdateActiveEmojiReactions value)
+        activeEmojiReactions,
+    required TResult Function(UpdateDefaultReactionType value)
+        defaultReactionType,
     required TResult Function(UpdateDiceEmojis value) diceEmojis,
     required TResult Function(UpdateAnimatedEmojiMessageClicked value)
         animatedEmojiMessageClicked,
@@ -17541,8 +18191,10 @@ extension UpdateExtensions on Update {
         return attachmentMenuBots.call(this as UpdateAttachmentMenuBots);
       case UpdateWebAppMessageSent.constructor:
         return webAppMessageSent.call(this as UpdateWebAppMessageSent);
-      case UpdateReactions.constructor:
-        return reactions.call(this as UpdateReactions);
+      case UpdateActiveEmojiReactions.constructor:
+        return activeEmojiReactions.call(this as UpdateActiveEmojiReactions);
+      case UpdateDefaultReactionType.constructor:
+        return defaultReactionType.call(this as UpdateDefaultReactionType);
       case UpdateDiceEmojis.constructor:
         return diceEmojis.call(this as UpdateDiceEmojis);
       case UpdateAnimatedEmojiMessageClicked.constructor:
@@ -17686,7 +18338,8 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateUsersNearby value)? usersNearby,
     TResult Function(UpdateAttachmentMenuBots value)? attachmentMenuBots,
     TResult Function(UpdateWebAppMessageSent value)? webAppMessageSent,
-    TResult Function(UpdateReactions value)? reactions,
+    TResult Function(UpdateActiveEmojiReactions value)? activeEmojiReactions,
+    TResult Function(UpdateDefaultReactionType value)? defaultReactionType,
     TResult Function(UpdateDiceEmojis value)? diceEmojis,
     TResult Function(UpdateAnimatedEmojiMessageClicked value)?
         animatedEmojiMessageClicked,
@@ -18157,9 +18810,14 @@ extension UpdateExtensions on Update {
           return webAppMessageSent.call(this as UpdateWebAppMessageSent);
         }
         break;
-      case UpdateReactions.constructor:
-        if (reactions != null) {
-          return reactions.call(this as UpdateReactions);
+      case UpdateActiveEmojiReactions.constructor:
+        if (activeEmojiReactions != null) {
+          return activeEmojiReactions.call(this as UpdateActiveEmojiReactions);
+        }
+        break;
+      case UpdateDefaultReactionType.constructor:
+        if (defaultReactionType != null) {
+          return defaultReactionType.call(this as UpdateDefaultReactionType);
         }
         break;
       case UpdateDiceEmojis.constructor:
@@ -18521,7 +19179,7 @@ extension UpdateChatAvailableReactionsExtensions
     on UpdateChatAvailableReactions {
   UpdateChatAvailableReactions copyWith({
     int? chatId,
-    List<String>? availableReactions,
+    ChatAvailableReactions? availableReactions,
   }) =>
       UpdateChatAvailableReactions(
         chatId: chatId ?? this.chatId,
@@ -19109,20 +19767,22 @@ extension UpdateStickerSetExtensions on UpdateStickerSet {
 
 extension UpdateInstalledStickerSetsExtensions on UpdateInstalledStickerSets {
   UpdateInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
     List<int>? stickerSetIds,
   }) =>
       UpdateInstalledStickerSets(
-        isMasks: isMasks ?? this.isMasks,
+        stickerType: stickerType ?? this.stickerType,
         stickerSetIds: stickerSetIds ?? this.stickerSetIds,
       );
 }
 
 extension UpdateTrendingStickerSetsExtensions on UpdateTrendingStickerSets {
   UpdateTrendingStickerSets copyWith({
+    StickerType? stickerType,
     TrendingStickerSets? stickerSets,
   }) =>
       UpdateTrendingStickerSets(
+        stickerType: stickerType ?? this.stickerType,
         stickerSets: stickerSets ?? this.stickerSets,
       );
 }
@@ -19246,12 +19906,21 @@ extension UpdateWebAppMessageSentExtensions on UpdateWebAppMessageSent {
       );
 }
 
-extension UpdateReactionsExtensions on UpdateReactions {
-  UpdateReactions copyWith({
-    List<Reaction>? reactions,
+extension UpdateActiveEmojiReactionsExtensions on UpdateActiveEmojiReactions {
+  UpdateActiveEmojiReactions copyWith({
+    List<String>? emojis,
   }) =>
-      UpdateReactions(
-        reactions: reactions ?? this.reactions,
+      UpdateActiveEmojiReactions(
+        emojis: emojis ?? this.emojis,
+      );
+}
+
+extension UpdateDefaultReactionTypeExtensions on UpdateDefaultReactionType {
+  UpdateDefaultReactionType copyWith({
+    ReactionType? reactionType,
+  }) =>
+      UpdateDefaultReactionType(
+        reactionType: reactionType ?? this.reactionType,
       );
 }
 
@@ -19570,6 +20239,19 @@ extension LogTagsExtensions on LogTags {
       );
 }
 
+extension UserSupportInfoExtensions on UserSupportInfo {
+  UserSupportInfo copyWith({
+    FormattedText? message,
+    String? author,
+    int? date,
+  }) =>
+      UserSupportInfo(
+        message: message ?? this.message,
+        author: author ?? this.author,
+        date: date ?? this.date,
+      );
+}
+
 extension TestIntExtensions on TestInt {
   TestInt copyWith({
     int? value,
@@ -19635,19 +20317,42 @@ extension TestVectorStringObjectExtensions on TestVectorStringObject {
 
 extension SetTdlibParametersExtensions on SetTdlibParameters {
   SetTdlibParameters copyWith({
-    TdlibParameters? parameters,
+    bool? useTestDc,
+    String? databaseDirectory,
+    String? filesDirectory,
+    String? databaseEncryptionKey,
+    bool? useFileDatabase,
+    bool? useChatInfoDatabase,
+    bool? useMessageDatabase,
+    bool? useSecretChats,
+    int? apiId,
+    String? apiHash,
+    String? systemLanguageCode,
+    String? deviceModel,
+    String? systemVersion,
+    String? applicationVersion,
+    bool? enableStorageOptimizer,
+    bool? ignoreFileNames,
   }) =>
       SetTdlibParameters(
-        parameters: parameters ?? this.parameters,
-      );
-}
-
-extension CheckDatabaseEncryptionKeyExtensions on CheckDatabaseEncryptionKey {
-  CheckDatabaseEncryptionKey copyWith({
-    String? encryptionKey,
-  }) =>
-      CheckDatabaseEncryptionKey(
-        encryptionKey: encryptionKey ?? this.encryptionKey,
+        useTestDc: useTestDc ?? this.useTestDc,
+        databaseDirectory: databaseDirectory ?? this.databaseDirectory,
+        filesDirectory: filesDirectory ?? this.filesDirectory,
+        databaseEncryptionKey:
+            databaseEncryptionKey ?? this.databaseEncryptionKey,
+        useFileDatabase: useFileDatabase ?? this.useFileDatabase,
+        useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
+        useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
+        useSecretChats: useSecretChats ?? this.useSecretChats,
+        apiId: apiId ?? this.apiId,
+        apiHash: apiHash ?? this.apiHash,
+        systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
+        deviceModel: deviceModel ?? this.deviceModel,
+        systemVersion: systemVersion ?? this.systemVersion,
+        applicationVersion: applicationVersion ?? this.applicationVersion,
+        enableStorageOptimizer:
+            enableStorageOptimizer ?? this.enableStorageOptimizer,
+        ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
       );
 }
 
@@ -19660,6 +20365,26 @@ extension SetAuthenticationPhoneNumberExtensions
       SetAuthenticationPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         settings: settings ?? this.settings,
+      );
+}
+
+extension SetAuthenticationEmailAddressExtensions
+    on SetAuthenticationEmailAddress {
+  SetAuthenticationEmailAddress copyWith({
+    String? emailAddress,
+  }) =>
+      SetAuthenticationEmailAddress(
+        emailAddress: emailAddress ?? this.emailAddress,
+      );
+}
+
+extension CheckAuthenticationEmailCodeExtensions
+    on CheckAuthenticationEmailCode {
+  CheckAuthenticationEmailCode copyWith({
+    EmailAddressAuthentication? code,
+  }) =>
+      CheckAuthenticationEmailCode(
+        code: code ?? this.code,
       );
 }
 
@@ -19768,6 +20493,24 @@ extension SetPasswordExtensions on SetPassword {
             setRecoveryEmailAddress ?? this.setRecoveryEmailAddress,
         newRecoveryEmailAddress:
             newRecoveryEmailAddress ?? this.newRecoveryEmailAddress,
+      );
+}
+
+extension SetLoginEmailAddressExtensions on SetLoginEmailAddress {
+  SetLoginEmailAddress copyWith({
+    String? newLoginEmailAddress,
+  }) =>
+      SetLoginEmailAddress(
+        newLoginEmailAddress: newLoginEmailAddress ?? this.newLoginEmailAddress,
+      );
+}
+
+extension CheckLoginEmailAddressCodeExtensions on CheckLoginEmailAddressCode {
+  CheckLoginEmailAddressCode copyWith({
+    EmailAddressAuthentication? code,
+  }) =>
+      CheckLoginEmailAddressCode(
+        code: code ?? this.code,
       );
 }
 
@@ -20398,6 +21141,21 @@ extension GetChatMessageCountExtensions on GetChatMessageCount {
       );
 }
 
+extension GetChatMessagePositionExtensions on GetChatMessagePosition {
+  GetChatMessagePosition copyWith({
+    int? chatId,
+    int? messageId,
+    SearchMessagesFilter? filter,
+    int? messageThreadId,
+  }) =>
+      GetChatMessagePosition(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        filter: filter ?? this.filter,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
+}
+
 extension GetChatScheduledMessagesExtensions on GetChatScheduledMessages {
   GetChatScheduledMessages copyWith({
     int? chatId,
@@ -20880,30 +21638,57 @@ extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
       );
 }
 
+extension GetEmojiReactionExtensions on GetEmojiReaction {
+  GetEmojiReaction copyWith({
+    String? emoji,
+  }) =>
+      GetEmojiReaction(
+        emoji: emoji ?? this.emoji,
+      );
+}
+
 extension GetMessageAvailableReactionsExtensions
     on GetMessageAvailableReactions {
   GetMessageAvailableReactions copyWith({
     int? chatId,
     int? messageId,
+    int? rowSize,
   }) =>
       GetMessageAvailableReactions(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
+        rowSize: rowSize ?? this.rowSize,
       );
 }
 
-extension SetMessageReactionExtensions on SetMessageReaction {
-  SetMessageReaction copyWith({
+extension AddMessageReactionExtensions on AddMessageReaction {
+  AddMessageReaction copyWith({
     int? chatId,
     int? messageId,
-    String? reaction,
+    ReactionType? reactionType,
     bool? isBig,
+    bool? updateRecentReactions,
   }) =>
-      SetMessageReaction(
+      AddMessageReaction(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        reaction: reaction ?? this.reaction,
+        reactionType: reactionType ?? this.reactionType,
         isBig: isBig ?? this.isBig,
+        updateRecentReactions:
+            updateRecentReactions ?? this.updateRecentReactions,
+      );
+}
+
+extension RemoveMessageReactionExtensions on RemoveMessageReaction {
+  RemoveMessageReaction copyWith({
+    int? chatId,
+    int? messageId,
+    ReactionType? reactionType,
+  }) =>
+      RemoveMessageReaction(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        reactionType: reactionType ?? this.reactionType,
       );
 }
 
@@ -20911,16 +21696,25 @@ extension GetMessageAddedReactionsExtensions on GetMessageAddedReactions {
   GetMessageAddedReactions copyWith({
     int? chatId,
     int? messageId,
-    String? reaction,
+    ReactionType? reactionType,
     String? offset,
     int? limit,
   }) =>
       GetMessageAddedReactions(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        reaction: reaction ?? this.reaction,
+        reactionType: reactionType ?? this.reactionType,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
+      );
+}
+
+extension SetDefaultReactionTypeExtensions on SetDefaultReactionType {
+  SetDefaultReactionType copyWith({
+    ReactionType? reactionType,
+  }) =>
+      SetDefaultReactionType(
+        reactionType: reactionType ?? this.reactionType,
       );
 }
 
@@ -21156,11 +21950,13 @@ extension GetWebAppUrlExtensions on GetWebAppUrl {
     int? botUserId,
     String? url,
     ThemeParameters? theme,
+    String? applicationName,
   }) =>
       GetWebAppUrl(
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
         theme: theme ?? this.theme,
+        applicationName: applicationName ?? this.applicationName,
       );
 }
 
@@ -21183,6 +21979,7 @@ extension OpenWebAppExtensions on OpenWebApp {
     int? botUserId,
     String? url,
     ThemeParameters? theme,
+    String? applicationName,
     int? replyToMessageId,
   }) =>
       OpenWebApp(
@@ -21190,6 +21987,7 @@ extension OpenWebAppExtensions on OpenWebApp {
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
         theme: theme ?? this.theme,
+        applicationName: applicationName ?? this.applicationName,
         replyToMessageId: replyToMessageId ?? this.replyToMessageId,
       );
 }
@@ -21740,7 +22538,7 @@ extension ToggleChatDefaultDisableNotificationExtensions
 extension SetChatAvailableReactionsExtensions on SetChatAvailableReactions {
   SetChatAvailableReactions copyWith({
     int? chatId,
-    List<String>? availableReactions,
+    ChatAvailableReactions? availableReactions,
   }) =>
       SetChatAvailableReactions(
         chatId: chatId ?? this.chatId,
@@ -22122,24 +22920,24 @@ extension GetSuggestedFileNameExtensions on GetSuggestedFileName {
       );
 }
 
-extension UploadFileExtensions on UploadFile {
-  UploadFile copyWith({
+extension PreliminaryUploadFileExtensions on PreliminaryUploadFile {
+  PreliminaryUploadFile copyWith({
     InputFile? file,
     FileType? fileType,
     int? priority,
   }) =>
-      UploadFile(
+      PreliminaryUploadFile(
         file: file ?? this.file,
         fileType: fileType ?? this.fileType,
         priority: priority ?? this.priority,
       );
 }
 
-extension CancelUploadFileExtensions on CancelUploadFile {
-  CancelUploadFile copyWith({
+extension CancelPreliminaryUploadFileExtensions on CancelPreliminaryUploadFile {
+  CancelPreliminaryUploadFile copyWith({
     int? fileId,
   }) =>
-      CancelUploadFile(
+      CancelPreliminaryUploadFile(
         fileId: fileId ?? this.fileId,
       );
 }
@@ -23071,12 +23869,16 @@ extension GetUserProfilePhotosExtensions on GetUserProfilePhotos {
 
 extension GetStickersExtensions on GetStickers {
   GetStickers copyWith({
-    String? emoji,
+    StickerType? stickerType,
+    String? query,
     int? limit,
+    int? chatId,
   }) =>
       GetStickers(
-        emoji: emoji ?? this.emoji,
+        stickerType: stickerType ?? this.stickerType,
+        query: query ?? this.query,
         limit: limit ?? this.limit,
+        chatId: chatId ?? this.chatId,
       );
 }
 
@@ -23091,23 +23893,32 @@ extension SearchStickersExtensions on SearchStickers {
       );
 }
 
+extension GetPremiumStickersExtensions on GetPremiumStickers {
+  GetPremiumStickers copyWith({
+    int? limit,
+  }) =>
+      GetPremiumStickers(
+        limit: limit ?? this.limit,
+      );
+}
+
 extension GetInstalledStickerSetsExtensions on GetInstalledStickerSets {
   GetInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
   }) =>
       GetInstalledStickerSets(
-        isMasks: isMasks ?? this.isMasks,
+        stickerType: stickerType ?? this.stickerType,
       );
 }
 
 extension GetArchivedStickerSetsExtensions on GetArchivedStickerSets {
   GetArchivedStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
     int? offsetStickerSetId,
     int? limit,
   }) =>
       GetArchivedStickerSets(
-        isMasks: isMasks ?? this.isMasks,
+        stickerType: stickerType ?? this.stickerType,
         offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
         limit: limit ?? this.limit,
       );
@@ -23115,10 +23926,12 @@ extension GetArchivedStickerSetsExtensions on GetArchivedStickerSets {
 
 extension GetTrendingStickerSetsExtensions on GetTrendingStickerSets {
   GetTrendingStickerSets copyWith({
+    StickerType? stickerType,
     int? offset,
     int? limit,
   }) =>
       GetTrendingStickerSets(
+        stickerType: stickerType ?? this.stickerType,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
@@ -23153,12 +23966,12 @@ extension SearchStickerSetExtensions on SearchStickerSet {
 
 extension SearchInstalledStickerSetsExtensions on SearchInstalledStickerSets {
   SearchInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
     String? query,
     int? limit,
   }) =>
       SearchInstalledStickerSets(
-        isMasks: isMasks ?? this.isMasks,
+        stickerType: stickerType ?? this.stickerType,
         query: query ?? this.query,
         limit: limit ?? this.limit,
       );
@@ -23197,11 +24010,11 @@ extension ViewTrendingStickerSetsExtensions on ViewTrendingStickerSets {
 
 extension ReorderInstalledStickerSetsExtensions on ReorderInstalledStickerSets {
   ReorderInstalledStickerSets copyWith({
-    bool? isMasks,
+    StickerType? stickerType,
     List<int>? stickerSetIds,
   }) =>
       ReorderInstalledStickerSets(
-        isMasks: isMasks ?? this.isMasks,
+        stickerType: stickerType ?? this.stickerType,
         stickerSetIds: stickerSetIds ?? this.stickerSetIds,
       );
 }
@@ -23301,6 +24114,15 @@ extension GetEmojiSuggestionsUrlExtensions on GetEmojiSuggestionsUrl {
   }) =>
       GetEmojiSuggestionsUrl(
         languageCode: languageCode ?? this.languageCode,
+      );
+}
+
+extension GetCustomEmojiStickersExtensions on GetCustomEmojiStickers {
+  GetCustomEmojiStickers copyWith({
+    List<int>? customEmojiIds,
+  }) =>
+      GetCustomEmojiStickers(
+        customEmojiIds: customEmojiIds ?? this.customEmojiIds,
       );
 }
 
@@ -23406,6 +24228,17 @@ extension SetUsernameExtensions on SetUsername {
   }) =>
       SetUsername(
         username: username ?? this.username,
+      );
+}
+
+extension SetEmojiStatusExtensions on SetEmojiStatus {
+  SetEmojiStatus copyWith({
+    EmojiStatus? emojiStatus,
+    int? duration,
+  }) =>
+      SetEmojiStatus(
+        emojiStatus: emojiStatus ?? this.emojiStatus,
+        duration: duration ?? this.duration,
       );
 }
 
@@ -23992,9 +24825,11 @@ extension SetAccountTtlExtensions on SetAccountTtl {
 extension DeleteAccountExtensions on DeleteAccount {
   DeleteAccount copyWith({
     String? reason,
+    String? password,
   }) =>
       DeleteAccount(
         reason: reason ?? this.reason,
+        password: password ?? this.password,
       );
 }
 
@@ -24034,6 +24869,19 @@ extension ReportChatPhotoExtensions on ReportChatPhoto {
         fileId: fileId ?? this.fileId,
         reason: reason ?? this.reason,
         text: text ?? this.text,
+      );
+}
+
+extension ReportMessageReactionsExtensions on ReportMessageReactions {
+  ReportMessageReactions copyWith({
+    int? chatId,
+    int? messageId,
+    MessageSender? senderId,
+  }) =>
+      ReportMessageReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        senderId: senderId ?? this.senderId,
       );
 }
 
@@ -24367,6 +25215,7 @@ extension CreateNewStickerSetExtensions on CreateNewStickerSet {
     int? userId,
     String? title,
     String? name,
+    StickerType? stickerType,
     List<InputSticker>? stickers,
     String? source,
   }) =>
@@ -24374,6 +25223,7 @@ extension CreateNewStickerSetExtensions on CreateNewStickerSet {
         userId: userId ?? this.userId,
         title: title ?? this.title,
         name: name ?? this.name,
+        stickerType: stickerType ?? this.stickerType,
         stickers: stickers ?? this.stickers,
         source: source ?? this.source,
       );
@@ -24471,23 +25321,38 @@ extension ViewPremiumFeatureExtensions on ViewPremiumFeature {
       );
 }
 
+extension CanPurchasePremiumExtensions on CanPurchasePremium {
+  CanPurchasePremium copyWith({
+    StorePaymentPurpose? purpose,
+  }) =>
+      CanPurchasePremium(
+        purpose: purpose ?? this.purpose,
+      );
+}
+
 extension AssignAppStoreTransactionExtensions on AssignAppStoreTransaction {
   AssignAppStoreTransaction copyWith({
     String? receipt,
-    bool? isRestore,
+    StorePaymentPurpose? purpose,
   }) =>
       AssignAppStoreTransaction(
         receipt: receipt ?? this.receipt,
-        isRestore: isRestore ?? this.isRestore,
+        purpose: purpose ?? this.purpose,
       );
 }
 
 extension AssignGooglePlayTransactionExtensions on AssignGooglePlayTransaction {
   AssignGooglePlayTransaction copyWith({
+    String? packageName,
+    String? storeProductId,
     String? purchaseToken,
+    StorePaymentPurpose? purpose,
   }) =>
       AssignGooglePlayTransaction(
+        packageName: packageName ?? this.packageName,
+        storeProductId: storeProductId ?? this.storeProductId,
         purchaseToken: purchaseToken ?? this.purchaseToken,
+        purpose: purpose ?? this.purpose,
       );
 }
 
@@ -24687,6 +25552,26 @@ extension AddLogMessageExtensions on AddLogMessage {
       AddLogMessage(
         verbosityLevel: verbosityLevel ?? this.verbosityLevel,
         text: text ?? this.text,
+      );
+}
+
+extension GetUserSupportInfoExtensions on GetUserSupportInfo {
+  GetUserSupportInfo copyWith({
+    int? userId,
+  }) =>
+      GetUserSupportInfo(
+        userId: userId ?? this.userId,
+      );
+}
+
+extension SetUserSupportInfoExtensions on SetUserSupportInfo {
+  SetUserSupportInfo copyWith({
+    int? userId,
+    FormattedText? message,
+  }) =>
+      SetUserSupportInfo(
+        userId: userId ?? this.userId,
+        message: message ?? this.message,
       );
 }
 

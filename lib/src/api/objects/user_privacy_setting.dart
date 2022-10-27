@@ -14,6 +14,7 @@ abstract class UserPrivacySetting extends TdObject {
   /// [UserPrivacySettingAllowChatInvites]
   /// [UserPrivacySettingAllowFindingByPhoneNumber]
   /// [UserPrivacySettingAllowPeerToPeerCalls]
+  /// [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]
   /// [UserPrivacySettingShowLinkInForwardedMessages]
   /// [UserPrivacySettingShowPhoneNumber]
   /// [UserPrivacySettingShowProfilePhoto]
@@ -32,6 +33,9 @@ abstract class UserPrivacySetting extends TdObject {
         return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json);
       case UserPrivacySettingAllowPeerToPeerCalls.constructor:
         return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
+      case UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.constructor:
+        return UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(
+            json);
       case UserPrivacySettingShowLinkInForwardedMessages.constructor:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
       case UserPrivacySettingShowPhoneNumber.constructor:

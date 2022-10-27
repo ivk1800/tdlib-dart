@@ -9,6 +9,7 @@ class MessageSendOptions extends TdObject {
     required this.disableNotification,
     required this.fromBackground,
     this.protectContent,
+    required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
   });
 
@@ -21,6 +22,11 @@ class MessageSendOptions extends TdObject {
   /// [protectContent] Pass true if the content of the message must be protected
   /// from forwarding and saving; for bots only
   final bool? protectContent;
+
+  /// [updateOrderOfInstalledStickerSets] Pass true if the user explicitly
+  /// chosen a sticker or a custom emoji from an installed sticker set;
+  /// applicable only to sendMessage and sendMessageAlbum
+  final bool updateOrderOfInstalledStickerSets;
 
   /// [schedulingState] Message scheduling state; pass null to send message
   /// immediately. Messages sent to a secret chat, live location messages and
@@ -38,6 +44,8 @@ class MessageSendOptions extends TdObject {
       disableNotification: json['disable_notification'],
       fromBackground: json['from_background'],
       protectContent: json['protect_content'],
+      updateOrderOfInstalledStickerSets:
+          json['update_order_of_installed_sticker_sets'],
       schedulingState:
           MessageSchedulingState.fromJson(json['scheduling_state']),
     );
@@ -51,6 +59,8 @@ class MessageSendOptions extends TdObject {
         'disable_notification': disableNotification,
         'from_background': fromBackground,
         'protect_content': protectContent,
+        'update_order_of_installed_sticker_sets':
+            updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
         '@type': constructor,
       };

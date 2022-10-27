@@ -15,6 +15,7 @@ class MessageInvoice extends MessageContent {
     required this.isTest,
     required this.needShippingAddress,
     required this.receiptMessageId,
+    this.extendedMedia,
   });
 
   /// [title] Product title
@@ -46,6 +47,9 @@ class MessageInvoice extends MessageContent {
   /// the product has been purchased
   final int receiptMessageId;
 
+  /// [extendedMedia] Extended media attached to the invoice; may be null
+  final MessageExtendedMedia? extendedMedia;
+
   static const String constructor = 'messageInvoice';
 
   static MessageInvoice? fromJson(Map<String, dynamic>? json) {
@@ -63,6 +67,7 @@ class MessageInvoice extends MessageContent {
       isTest: json['is_test'],
       needShippingAddress: json['need_shipping_address'],
       receiptMessageId: json['receipt_message_id'],
+      extendedMedia: MessageExtendedMedia.fromJson(json['extended_media']),
     );
   }
 
@@ -80,6 +85,7 @@ class MessageInvoice extends MessageContent {
         'is_test': isTest,
         'need_shipping_address': needShippingAddress,
         'receipt_message_id': receiptMessageId,
+        'extended_media': extendedMedia?.toJson(),
         '@type': constructor,
       };
 

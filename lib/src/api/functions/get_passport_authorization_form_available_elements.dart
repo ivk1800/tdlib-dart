@@ -16,7 +16,7 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   /// [autorizationFormId] Authorization form identifier
   final int autorizationFormId;
 
-  /// [password] Password of the current user
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   static const String constructor =

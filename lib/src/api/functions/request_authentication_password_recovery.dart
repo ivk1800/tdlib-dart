@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Requests to send a password recovery code to an email address that was
-/// previously set up. Works only when the current authorization state is
-/// authorizationStateWaitPassword
+/// Requests to send a 2-step verification password recovery code to an email
+/// address that was previously set up. Works only when the current
+/// authorization state is authorizationStateWaitPassword
 /// Returns [Ok]
 @immutable
 class RequestAuthenticationPasswordRecovery extends TdFunction {

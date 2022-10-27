@@ -10,6 +10,7 @@ class CreateNewStickerSet extends TdFunction {
     required this.userId,
     required this.title,
     required this.name,
+    required this.stickerType,
     required this.stickers,
     required this.source,
   });
@@ -23,6 +24,9 @@ class CreateNewStickerSet extends TdFunction {
   /// [name] Sticker set name. Can contain only English letters, digits and
   /// underscores. Must end with *"_by_
   final String name;
+
+  /// [stickerType] Type of the stickers in the set
+  final StickerType stickerType;
 
   /// [stickers] List of stickers to be added to the set; must be non-empty. All
   /// stickers must have the same format. For TGS stickers, uploadStickerFile
@@ -42,6 +46,7 @@ class CreateNewStickerSet extends TdFunction {
         'user_id': userId,
         'title': title,
         'name': name,
+        'sticker_type': stickerType.toJson(),
         'stickers': stickers.map((item) => item.toJson()).toList(),
         'source': source,
         '@type': constructor,

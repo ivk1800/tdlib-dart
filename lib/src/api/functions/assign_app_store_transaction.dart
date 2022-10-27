@@ -2,21 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Informs server about a Telegram Premium purchase through App Store. For
-/// official applications only
+/// Informs server about a purchase through App Store. For official
+/// applications only
 /// Returns [Ok]
 @immutable
 class AssignAppStoreTransaction extends TdFunction {
   const AssignAppStoreTransaction({
     required this.receipt,
-    required this.isRestore,
+    required this.purpose,
   });
 
   /// [receipt] App Store receipt
   final String receipt;
 
-  /// [isRestore] Pass true if this is a restore of a Telegram Premium purchase
-  final bool isRestore;
+  /// [purpose] Transaction purpose
+  final StorePaymentPurpose purpose;
 
   static const String constructor = 'assignAppStoreTransaction';
 
@@ -26,7 +26,7 @@ class AssignAppStoreTransaction extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'receipt': receipt,
-        'is_restore': isRestore,
+        'purpose': purpose.toJson(),
         '@type': constructor,
       };
 

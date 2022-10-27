@@ -13,7 +13,9 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureAdvancedChatManagement]
   /// [PremiumFeatureAnimatedProfilePhoto]
   /// [PremiumFeatureAppIcons]
+  /// [PremiumFeatureCustomEmoji]
   /// [PremiumFeatureDisabledAds]
+  /// [PremiumFeatureEmojiStatus]
   /// [PremiumFeatureImprovedDownloadSpeed]
   /// [PremiumFeatureIncreasedLimits]
   /// [PremiumFeatureIncreasedUploadFileSize]
@@ -33,8 +35,12 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureAnimatedProfilePhoto.fromJson(json);
       case PremiumFeatureAppIcons.constructor:
         return PremiumFeatureAppIcons.fromJson(json);
+      case PremiumFeatureCustomEmoji.constructor:
+        return PremiumFeatureCustomEmoji.fromJson(json);
       case PremiumFeatureDisabledAds.constructor:
         return PremiumFeatureDisabledAds.fromJson(json);
+      case PremiumFeatureEmojiStatus.constructor:
+        return PremiumFeatureEmojiStatus.fromJson(json);
       case PremiumFeatureImprovedDownloadSpeed.constructor:
         return PremiumFeatureImprovedDownloadSpeed.fromJson(json);
       case PremiumFeatureIncreasedLimits.constructor:

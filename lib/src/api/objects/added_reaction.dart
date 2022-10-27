@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class AddedReaction extends TdObject {
   const AddedReaction({
-    required this.reaction,
+    required this.type,
     required this.senderId,
   });
 
-  /// [reaction] Text representation of the reaction
-  final String reaction;
+  /// [type] Type of the reaction
+  final ReactionType type;
 
   /// [senderId] Identifier of the chat member, applied the reaction
   final MessageSender senderId;
@@ -24,7 +24,7 @@ class AddedReaction extends TdObject {
     }
 
     return AddedReaction(
-      reaction: json['reaction'],
+      type: ReactionType.fromJson(json['type'])!,
       senderId: MessageSender.fromJson(json['sender_id'])!,
     );
   }
@@ -34,7 +34,7 @@ class AddedReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction': reaction,
+        'type': type.toJson(),
         'sender_id': senderId.toJson(),
         '@type': constructor,
       };

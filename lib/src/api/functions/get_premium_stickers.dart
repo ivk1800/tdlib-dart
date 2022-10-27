@@ -2,11 +2,16 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns examples of premium stickers for demonstration purposes
+/// Returns premium stickers from regular sticker sets
 /// Returns [Stickers]
 @immutable
 class GetPremiumStickers extends TdFunction {
-  const GetPremiumStickers();
+  const GetPremiumStickers({
+    required this.limit,
+  });
+
+  /// [limit] The maximum number of stickers to be returned; 0-100
+  final int limit;
 
   static const String constructor = 'getPremiumStickers';
 
@@ -15,6 +20,7 @@ class GetPremiumStickers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'limit': limit,
         '@type': constructor,
       };
 

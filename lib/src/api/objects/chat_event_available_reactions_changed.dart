@@ -11,10 +11,10 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
   });
 
   /// [oldAvailableReactions] Previous chat available reactions
-  final List<String> oldAvailableReactions;
+  final ChatAvailableReactions oldAvailableReactions;
 
   /// [newAvailableReactions] New chat available reactions
-  final List<String> newAvailableReactions;
+  final ChatAvailableReactions newAvailableReactions;
 
   static const String constructor = 'chatEventAvailableReactionsChanged';
 
@@ -25,10 +25,10 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
     }
 
     return ChatEventAvailableReactionsChanged(
-      oldAvailableReactions: List<String>.from(
-          (json['old_available_reactions'] ?? []).map((item) => item).toList()),
-      newAvailableReactions: List<String>.from(
-          (json['new_available_reactions'] ?? []).map((item) => item).toList()),
+      oldAvailableReactions:
+          ChatAvailableReactions.fromJson(json['old_available_reactions'])!,
+      newAvailableReactions:
+          ChatAvailableReactions.fromJson(json['new_available_reactions'])!,
     );
   }
 
@@ -37,10 +37,8 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_available_reactions':
-            oldAvailableReactions.map((item) => item).toList(),
-        'new_available_reactions':
-            newAvailableReactions.map((item) => item).toList(),
+        'old_available_reactions': oldAvailableReactions.toJson(),
+        'new_available_reactions': newAvailableReactions.toJson(),
         '@type': constructor,
       };
 

@@ -141,28 +141,23 @@ class _MyAppState extends State<MyApp> {
     if (authorizationState is td.AuthorizationStateWaitTdlibParameters) {
       await _client?.send(
         td.SetTdlibParameters(
-          parameters: td.TdlibParameters(
-            systemVersion: '',
-            useTestDc: true,
-            useSecretChats: false,
-            useMessageDatabase: true,
-            useFileDatabase: true,
-            useChatInfoDatabase: true,
-            ignoreFileNames: true,
-            enableStorageOptimizer: true,
-            filesDirectory: await _getFilesDirectory(),
-            databaseDirectory: await _getDatabaseDirectory(),
-            systemLanguageCode: 'en',
-            deviceModel: 'unknown',
-            applicationVersion: '1.0.0',
-            apiId: getApiId(),
-            apiHash: getApiHash(),
-          ),
+          systemVersion: '',
+          useTestDc: true,
+          useSecretChats: false,
+          useMessageDatabase: true,
+          useFileDatabase: true,
+          useChatInfoDatabase: true,
+          ignoreFileNames: true,
+          enableStorageOptimizer: true,
+          filesDirectory: await _getFilesDirectory(),
+          databaseDirectory: await _getDatabaseDirectory(),
+          systemLanguageCode: 'en',
+          deviceModel: 'unknown',
+          applicationVersion: '1.0.0',
+          apiId: getApiId(),
+          apiHash: getApiHash(),
+          databaseEncryptionKey: '',
         ),
-      );
-    } else if (authorizationState is td.AuthorizationStateWaitEncryptionKey) {
-      await _client?.send(
-        const td.CheckDatabaseEncryptionKey(encryptionKey: ''),
       );
     } else if (authorizationState is td.AuthorizationStateWaitPhoneNumber) {
       await _client?.send(

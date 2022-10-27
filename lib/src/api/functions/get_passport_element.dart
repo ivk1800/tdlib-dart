@@ -14,7 +14,7 @@ class GetPassportElement extends TdFunction {
   /// [type] Telegram Passport element type
   final PassportElementType type;
 
-  /// [password] Password of the current user
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   static const String constructor = 'getPassportElement';

@@ -16,8 +16,8 @@ class RecoverPassword extends TdFunction {
   /// [recoveryCode] Recovery code to check
   final String recoveryCode;
 
-  /// [newPassword] New password of the user; may be empty to remove the
-  /// password
+  /// [newPassword] New 2-step verification password of the user; may be empty
+  /// to remove the password
   final String newPassword;
 
   /// [newHint] New password hint; may be empty

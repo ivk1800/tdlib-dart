@@ -7,14 +7,13 @@ import '../tdapi.dart';
 @immutable
 class GetArchivedStickerSets extends TdFunction {
   const GetArchivedStickerSets({
-    required this.isMasks,
+    required this.stickerType,
     required this.offsetStickerSetId,
     required this.limit,
   });
 
-  /// [isMasks] Pass true to return mask stickers sets; pass false to return
-  /// ordinary sticker sets
-  final bool isMasks;
+  /// [stickerType] Type of the sticker sets to return
+  final StickerType stickerType;
 
   /// [offsetStickerSetId] Identifier of the sticker set from which to return
   /// the result
@@ -30,7 +29,7 @@ class GetArchivedStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_masks': isMasks,
+        'sticker_type': stickerType.toJson(),
         'offset_sticker_set_id': offsetStickerSetId,
         'limit': limit,
         '@type': constructor,

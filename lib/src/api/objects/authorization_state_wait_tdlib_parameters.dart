@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// TDLib needs TdlibParameters for initialization
+/// Initializetion parameters are needed. Call `setTdlibParameters` to provide
+/// them
 @immutable
 class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   const AuthorizationStateWaitTdlibParameters();

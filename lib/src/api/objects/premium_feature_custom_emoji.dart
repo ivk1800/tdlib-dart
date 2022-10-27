@@ -2,19 +2,19 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The sticker is a video in WEBM format
+/// Allowed to use custom emoji stickers in message texts and captions
 @immutable
-class StickerTypeVideo extends StickerType {
-  const StickerTypeVideo();
+class PremiumFeatureCustomEmoji extends PremiumFeature {
+  const PremiumFeatureCustomEmoji();
 
-  static const String constructor = 'stickerTypeVideo';
+  static const String constructor = 'premiumFeatureCustomEmoji';
 
-  static StickerTypeVideo? fromJson(Map<String, dynamic>? json) {
+  static PremiumFeatureCustomEmoji? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const StickerTypeVideo();
+    return const PremiumFeatureCustomEmoji();
   }
 
   @override

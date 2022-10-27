@@ -9,7 +9,7 @@ class GetMessageAddedReactions extends TdFunction {
   const GetMessageAddedReactions({
     required this.chatId,
     required this.messageId,
-    required this.reaction,
+    this.reactionType,
     required this.offset,
     required this.limit,
   });
@@ -20,9 +20,9 @@ class GetMessageAddedReactions extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [reaction] If non-empty, only added reactions with the specified text
-  /// representation will be returned
-  final String reaction;
+  /// [reactionType] Type of the reactions to return; pass null to return all
+  /// added reactions
+  final ReactionType? reactionType;
 
   /// [offset] Offset of the first entry to return as received from the previous
   /// request; use empty string to get the first chunk of results
@@ -41,7 +41,7 @@ class GetMessageAddedReactions extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_id': messageId,
-        'reaction': reaction,
+        'reaction_type': reactionType?.toJson(),
         'offset': offset,
         'limit': limit,
         '@type': constructor,

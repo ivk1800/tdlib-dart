@@ -15,7 +15,7 @@ class SearchStickers extends TdFunction {
   /// [emoji] String representation of emoji; must be non-empty
   final String emoji;
 
-  /// [limit] The maximum number of stickers to be returned
+  /// [limit] The maximum number of stickers to be returned; 0-100
   final int limit;
 
   static const String constructor = 'searchStickers';

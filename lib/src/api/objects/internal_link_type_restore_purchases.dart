@@ -2,19 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The sticker is an animation in TGS format
+/// The link forces restore of App Store purchases when opened. For official
+/// iOS application only
 @immutable
-class StickerTypeAnimated extends StickerType {
-  const StickerTypeAnimated();
+class InternalLinkTypeRestorePurchases extends InternalLinkType {
+  const InternalLinkTypeRestorePurchases();
 
-  static const String constructor = 'stickerTypeAnimated';
+  static const String constructor = 'internalLinkTypeRestorePurchases';
 
-  static StickerTypeAnimated? fromJson(Map<String, dynamic>? json) {
+  static InternalLinkTypeRestorePurchases? fromJson(
+      Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const StickerTypeAnimated();
+    return const InternalLinkTypeRestorePurchases();
   }
 
   @override

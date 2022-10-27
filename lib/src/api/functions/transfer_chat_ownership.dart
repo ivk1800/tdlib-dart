@@ -22,7 +22,7 @@ class TransferChatOwnership extends TdFunction {
   /// ownership can't be transferred to a bot or to a deleted user
   final int userId;
 
-  /// [password] The password of the current user
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   static const String constructor = 'transferChatOwnership';

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Re-sends the code to verify a phone number to be added to a user's
-/// Telegram Passport
+/// Resends the code to verify a phone number to be added to a user's Telegram
+/// Passport
 /// Returns [AuthenticationCodeInfo]
 @immutable
 class ResendPhoneNumberVerificationCode extends TdFunction {

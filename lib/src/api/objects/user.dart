@@ -13,6 +13,7 @@ class User extends TdObject {
     required this.phoneNumber,
     required this.status,
     this.profilePhoto,
+    this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
     required this.isVerified,
@@ -47,6 +48,10 @@ class User extends TdObject {
 
   /// [profilePhoto] Profile photo of the user; may be null
   final ProfilePhoto? profilePhoto;
+
+  /// [emojiStatus] Emoji status to be shown instead of the default Telegram
+  /// Premium badge; may be null. For Telegram Premium users only
+  final EmojiStatus? emojiStatus;
 
   /// [isContact] The user is a contact of the current user
   final bool isContact;
@@ -105,6 +110,7 @@ class User extends TdObject {
       phoneNumber: json['phone_number'],
       status: UserStatus.fromJson(json['status'])!,
       profilePhoto: ProfilePhoto.fromJson(json['profile_photo']),
+      emojiStatus: EmojiStatus.fromJson(json['emoji_status']),
       isContact: json['is_contact'],
       isMutualContact: json['is_mutual_contact'],
       isVerified: json['is_verified'],
@@ -132,6 +138,7 @@ class User extends TdObject {
         'phone_number': phoneNumber,
         'status': status.toJson(),
         'profile_photo': profilePhoto?.toJson(),
+        'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
         'is_verified': isVerified,

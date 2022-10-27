@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A spoiler text. Not supported in secret chats
+/// A spoiler text
 @immutable
 class TextEntityTypeSpoiler extends TextEntityType {
   const TextEntityTypeSpoiler();

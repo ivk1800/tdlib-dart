@@ -8,9 +8,13 @@ import '../tdapi.dart';
 @immutable
 class GetTrendingStickerSets extends TdFunction {
   const GetTrendingStickerSets({
+    required this.stickerType,
     required this.offset,
     required this.limit,
   });
+
+  /// [stickerType] Type of the sticker sets to return
+  final StickerType stickerType;
 
   /// [offset] The offset from which to return the sticker sets; must be
   /// non-negative
@@ -29,6 +33,7 @@ class GetTrendingStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker_type': stickerType.toJson(),
         'offset': offset,
         'limit': limit,
         '@type': constructor,

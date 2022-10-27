@@ -10,24 +10,21 @@ abstract class StickerType extends TdObject {
   static const String constructor = 'stickerType';
 
   /// Inherited by:
-  /// [StickerTypeAnimated]
+  /// [StickerTypeCustomEmoji]
   /// [StickerTypeMask]
-  /// [StickerTypeStatic]
-  /// [StickerTypeVideo]
+  /// [StickerTypeRegular]
   static StickerType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case StickerTypeAnimated.constructor:
-        return StickerTypeAnimated.fromJson(json);
+      case StickerTypeCustomEmoji.constructor:
+        return StickerTypeCustomEmoji.fromJson(json);
       case StickerTypeMask.constructor:
         return StickerTypeMask.fromJson(json);
-      case StickerTypeStatic.constructor:
-        return StickerTypeStatic.fromJson(json);
-      case StickerTypeVideo.constructor:
-        return StickerTypeVideo.fromJson(json);
+      case StickerTypeRegular.constructor:
+        return StickerTypeRegular.fromJson(json);
       default:
         return null;
     }

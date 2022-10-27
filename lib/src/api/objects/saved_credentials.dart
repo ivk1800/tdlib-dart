@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains information about saved card credentials
+/// Contains information about saved payment credentials
 @immutable
 class SavedCredentials extends TdObject {
   const SavedCredentials({

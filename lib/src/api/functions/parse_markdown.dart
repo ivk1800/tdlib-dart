@@ -11,7 +11,9 @@ class ParseMarkdown extends TdFunction {
     required this.text,
   });
 
-  /// [text] The text to parse. For example, "__italic__
+  /// [text] The text to parse. For example, "__italic__ ~~strikethrough~~
+  /// ||spoiler|| **bold** `code` ```pre``` __[italic__ text_url](telegram.org)
+  /// __italic**bold italic__bold**"
   final FormattedText text;
 
   static const String constructor = 'parseMarkdown';

@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the password for the current user. If a new recovery email address
-/// is specified, then the change will not be applied until the new recovery
-/// email address is confirmed
+/// Changes the 2-step verification password for the current user. If a new
+/// recovery email address is specified, then the change will not be applied
+/// until the new recovery email address is confirmed
 /// Returns [PasswordState]
 @immutable
 class SetPassword extends TdFunction {
@@ -16,11 +16,11 @@ class SetPassword extends TdFunction {
     required this.newRecoveryEmailAddress,
   });
 
-  /// [oldPassword] Previous password of the user
+  /// [oldPassword] Previous 2-step verification password of the user
   final String oldPassword;
 
-  /// [newPassword] New password of the user; may be empty to remove the
-  /// password
+  /// [newPassword] New 2-step verification password of the user; may be empty
+  /// to remove the password
   final String newPassword;
 
   /// [newHint] New password hint; may be empty

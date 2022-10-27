@@ -14,6 +14,7 @@ class StickerSetInfo extends TdObject {
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
+    required this.stickerFormat,
     required this.stickerType,
     required this.isViewed,
     required this.size,
@@ -49,6 +50,9 @@ class StickerSetInfo extends TdObject {
   /// [isOfficial] True, if the sticker set is official
   final bool isOfficial;
 
+  /// [stickerFormat] Format of the stickers in the set
+  final StickerFormat stickerFormat;
+
   /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
 
@@ -82,6 +86,7 @@ class StickerSetInfo extends TdObject {
       isInstalled: json['is_installed'],
       isArchived: json['is_archived'],
       isOfficial: json['is_official'],
+      stickerFormat: StickerFormat.fromJson(json['sticker_format'])!,
       stickerType: StickerType.fromJson(json['sticker_type'])!,
       isViewed: json['is_viewed'],
       size: json['size'],
@@ -105,6 +110,7 @@ class StickerSetInfo extends TdObject {
         'is_installed': isInstalled,
         'is_archived': isArchived,
         'is_official': isOfficial,
+        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'is_viewed': isViewed,
         'size': size,

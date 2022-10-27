@@ -8,7 +8,8 @@ class InputSticker extends TdObject {
   const InputSticker({
     required this.sticker,
     required this.emojis,
-    required this.type,
+    required this.format,
+    this.maskPosition,
   });
 
   /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP
@@ -22,8 +23,12 @@ class InputSticker extends TdObject {
   /// [emojis] Emojis corresponding to the sticker
   final String emojis;
 
-  /// [type] Sticker type
-  final StickerType type;
+  /// [format] Sticker format
+  final StickerFormat format;
+
+  /// [maskPosition] Position where the mask is placed; pass null if not
+  /// specified
+  final MaskPosition? maskPosition;
 
   static const String constructor = 'inputSticker';
 
@@ -35,7 +40,8 @@ class InputSticker extends TdObject {
     return InputSticker(
       sticker: InputFile.fromJson(json['sticker'])!,
       emojis: json['emojis'],
-      type: StickerType.fromJson(json['type'])!,
+      format: StickerFormat.fromJson(json['format'])!,
+      maskPosition: MaskPosition.fromJson(json['mask_position']),
     );
   }
 
@@ -46,7 +52,8 @@ class InputSticker extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'sticker': sticker.toJson(),
         'emojis': emojis,
-        'type': type.toJson(),
+        'format': format.toJson(),
+        'mask_position': maskPosition?.toJson(),
         '@type': constructor,
       };
 

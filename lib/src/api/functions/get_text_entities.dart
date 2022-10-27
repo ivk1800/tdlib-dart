@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank
-/// card numbers, URLs, and email addresses) contained in the text. Can be
-/// called synchronously
+/// card numbers, URLs, and email addresses) found in the text. Can be called
+/// synchronously
 /// Returns [TextEntities]
 @immutable
 class GetTextEntities extends TdFunction {

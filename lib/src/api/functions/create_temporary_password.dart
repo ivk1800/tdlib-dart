@@ -11,7 +11,7 @@ class CreateTemporaryPassword extends TdFunction {
     required this.validFor,
   });
 
-  /// [password] Persistent user password
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   /// [validFor] Time during which the temporary password will be valid, in

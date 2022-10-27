@@ -5,12 +5,7 @@ import '../tdapi.dart';
 /// The sticker is a mask in WEBP format to be placed on photos or videos
 @immutable
 class StickerTypeMask extends StickerType {
-  const StickerTypeMask({
-    this.maskPosition,
-  });
-
-  /// [maskPosition] Position where the mask is placed; may be null
-  final MaskPosition? maskPosition;
+  const StickerTypeMask();
 
   static const String constructor = 'stickerTypeMask';
 
@@ -19,9 +14,7 @@ class StickerTypeMask extends StickerType {
       return null;
     }
 
-    return StickerTypeMask(
-      maskPosition: MaskPosition.fromJson(json['mask_position']),
-    );
+    return const StickerTypeMask();
   }
 
   @override
@@ -29,7 +22,6 @@ class StickerTypeMask extends StickerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'mask_position': maskPosition?.toJson(),
         '@type': constructor,
       };
 

@@ -19,7 +19,7 @@ class InputMessageDocument extends InputMessageContent {
   final InputThumbnail? thumbnail;
 
   /// [disableContentTypeDetection] If true, automatic file type detection will
-  /// be disabled and the document will be always sent as file. Always true for
+  /// be disabled and the document will always be sent as file. Always true for
   /// files sent to secret chats
   final bool disableContentTypeDetection;
 

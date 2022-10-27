@@ -114,8 +114,8 @@ class Chat extends TdObject {
   /// [notificationSettings] Notification settings for the chat
   final ChatNotificationSettings notificationSettings;
 
-  /// [availableReactions] List of reactions, available in the chat
-  final List<String> availableReactions;
+  /// [availableReactions] Types of reaction, available in the chat
+  final ChatAvailableReactions availableReactions;
 
   /// [messageTtl] Current message Time To Live setting (self-destruct timer)
   /// for the chat; 0 if not defined. TTL is counted from the time message or
@@ -181,8 +181,8 @@ class Chat extends TdObject {
       unreadReactionCount: json['unread_reaction_count'],
       notificationSettings:
           ChatNotificationSettings.fromJson(json['notification_settings'])!,
-      availableReactions: List<String>.from(
-          (json['available_reactions'] ?? []).map((item) => item).toList()),
+      availableReactions:
+          ChatAvailableReactions.fromJson(json['available_reactions'])!,
       messageTtl: json['message_ttl'],
       themeName: json['theme_name'],
       actionBar: ChatActionBar.fromJson(json['action_bar']),
@@ -222,7 +222,7 @@ class Chat extends TdObject {
         'unread_mention_count': unreadMentionCount,
         'unread_reaction_count': unreadReactionCount,
         'notification_settings': notificationSettings.toJson(),
-        'available_reactions': availableReactions.map((item) => item).toList(),
+        'available_reactions': availableReactions.toJson(),
         'message_ttl': messageTtl,
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),

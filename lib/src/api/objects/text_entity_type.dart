@@ -15,6 +15,7 @@ abstract class TextEntityType extends TdObject {
   /// [TextEntityTypeBotCommand]
   /// [TextEntityTypeCashtag]
   /// [TextEntityTypeCode]
+  /// [TextEntityTypeCustomEmoji]
   /// [TextEntityTypeEmailAddress]
   /// [TextEntityTypeHashtag]
   /// [TextEntityTypeItalic]
@@ -45,6 +46,8 @@ abstract class TextEntityType extends TdObject {
         return TextEntityTypeCashtag.fromJson(json);
       case TextEntityTypeCode.constructor:
         return TextEntityTypeCode.fromJson(json);
+      case TextEntityTypeCustomEmoji.constructor:
+        return TextEntityTypeCustomEmoji.fromJson(json);
       case TextEntityTypeEmailAddress.constructor:
         return TextEntityTypeEmailAddress.fromJson(json);
       case TextEntityTypeHashtag.constructor:

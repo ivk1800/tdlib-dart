@@ -35,6 +35,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageExpiredVideo]
   /// [MessageGameScore]
   /// [MessageGame]
+  /// [MessageGiftedPremium]
   /// [MessageInviteVideoChatParticipants]
   /// [MessageInvoice]
   /// [MessageLocation]
@@ -117,6 +118,8 @@ abstract class MessageContent extends TdObject {
         return MessageGame.fromJson(json);
       case MessageGameScore.constructor:
         return MessageGameScore.fromJson(json);
+      case MessageGiftedPremium.constructor:
+        return MessageGiftedPremium.fromJson(json);
       case MessageInviteVideoChatParticipants.constructor:
         return MessageInviteVideoChatParticipants.fromJson(json);
       case MessageInvoice.constructor:

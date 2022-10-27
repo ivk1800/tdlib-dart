@@ -11,6 +11,7 @@ class PasswordState extends TdObject {
     required this.hasRecoveryEmailAddress,
     required this.hasPassportData,
     this.recoveryEmailAddressCodeInfo,
+    required this.loginEmailAddressPattern,
     required this.pendingResetDate,
   });
 
@@ -30,8 +31,13 @@ class PasswordState extends TdObject {
   /// address to which the confirmation email was sent; may be null
   final EmailAddressAuthenticationCodeInfo? recoveryEmailAddressCodeInfo;
 
+  /// [loginEmailAddressPattern] Pattern of the email address set up for logging
+  /// in
+  final String loginEmailAddressPattern;
+
   /// [pendingResetDate] If not 0, point in time (Unix timestamp) after which
-  /// the password can be reset immediately using resetPassword
+  /// the 2-step verification password can be reset immediately using
+  /// resetPassword
   final int pendingResetDate;
 
   static const String constructor = 'passwordState';
@@ -48,6 +54,7 @@ class PasswordState extends TdObject {
       hasPassportData: json['has_passport_data'],
       recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
           json['recovery_email_address_code_info']),
+      loginEmailAddressPattern: json['login_email_address_pattern'],
       pendingResetDate: json['pending_reset_date'],
     );
   }
@@ -63,6 +70,7 @@ class PasswordState extends TdObject {
         'has_passport_data': hasPassportData,
         'recovery_email_address_code_info':
             recoveryEmailAddressCodeInfo?.toJson(),
+        'login_email_address_pattern': loginEmailAddressPattern,
         'pending_reset_date': pendingResetDate,
         '@type': constructor,
       };

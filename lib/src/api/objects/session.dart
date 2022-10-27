@@ -33,8 +33,8 @@ class Session extends TdObject {
   /// [isCurrent] True, if this session is the current session
   final bool isCurrent;
 
-  /// [isPasswordPending] True, if a password is needed to complete
-  /// authorization of the session
+  /// [isPasswordPending] True, if a 2-step verification password is needed to
+  /// complete authorization of the session
   final bool isPasswordPending;
 
   /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by

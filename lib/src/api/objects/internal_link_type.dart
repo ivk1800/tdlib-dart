@@ -22,6 +22,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeChatInvite]
   /// [InternalLinkTypeFilterSettings]
   /// [InternalLinkTypeGame]
+  /// [InternalLinkTypeInstantView]
   /// [InternalLinkTypeInvoice]
   /// [InternalLinkTypeLanguagePack]
   /// [InternalLinkTypeLanguageSettings]
@@ -34,6 +35,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeProxy]
   /// [InternalLinkTypePublicChat]
   /// [InternalLinkTypeQrCodeAuthentication]
+  /// [InternalLinkTypeRestorePurchases]
   /// [InternalLinkTypeSettings]
   /// [InternalLinkTypeStickerSet]
   /// [InternalLinkTypeThemeSettings]
@@ -70,6 +72,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeFilterSettings.fromJson(json);
       case InternalLinkTypeGame.constructor:
         return InternalLinkTypeGame.fromJson(json);
+      case InternalLinkTypeInstantView.constructor:
+        return InternalLinkTypeInstantView.fromJson(json);
       case InternalLinkTypeInvoice.constructor:
         return InternalLinkTypeInvoice.fromJson(json);
       case InternalLinkTypeLanguagePack.constructor:
@@ -94,6 +98,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypePublicChat.fromJson(json);
       case InternalLinkTypeQrCodeAuthentication.constructor:
         return InternalLinkTypeQrCodeAuthentication.fromJson(json);
+      case InternalLinkTypeRestorePurchases.constructor:
+        return InternalLinkTypeRestorePurchases.fromJson(json);
       case InternalLinkTypeSettings.constructor:
         return InternalLinkTypeSettings.fromJson(json);
       case InternalLinkTypeStickerSet.constructor:

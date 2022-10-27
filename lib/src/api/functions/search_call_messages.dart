@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Searches for call messages. Returns the results in reverse chronological
-/// order (i. e., in order of decreasing message_id). For optimal performance,
+/// order (i.e., in order of decreasing message_id). For optimal performance,
 /// the number of returned messages is chosen by TDLib
 /// Returns [Messages]
 @immutable

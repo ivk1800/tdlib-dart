@@ -8,8 +8,7 @@ import '../tdapi.dart';
 class PremiumState extends TdObject {
   const PremiumState({
     required this.state,
-    required this.currency,
-    required this.monthlyAmount,
+    required this.paymentOptions,
     required this.animations,
   });
 
@@ -17,13 +16,8 @@ class PremiumState extends TdObject {
   /// may be empty if the current user has no Telegram Premium subscription
   final FormattedText state;
 
-  /// [currency] ISO 4217 currency code for Telegram Premium subscription
-  /// payment
-  final String currency;
-
-  /// [monthlyAmount] Monthly subscription payment for Telegram Premium
-  /// subscription, in the smallest units of the currency
-  final int monthlyAmount;
+  /// [paymentOptions] The list of available options for buying Telegram Premium
+  final List<PremiumPaymentOption> paymentOptions;
 
   /// [animations] The list of available promotion animations for Premium
   /// features
@@ -38,8 +32,10 @@ class PremiumState extends TdObject {
 
     return PremiumState(
       state: FormattedText.fromJson(json['state'])!,
-      currency: json['currency'],
-      monthlyAmount: json['monthly_amount'],
+      paymentOptions: List<PremiumPaymentOption>.from(
+          (json['payment_options'] ?? [])
+              .map((item) => PremiumPaymentOption.fromJson(item))
+              .toList()),
       animations: List<PremiumFeaturePromotionAnimation>.from(
           (json['animations'] ?? [])
               .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
@@ -53,8 +49,7 @@ class PremiumState extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'state': state.toJson(),
-        'currency': currency,
-        'monthly_amount': monthlyAmount,
+        'payment_options': paymentOptions.map((item) => item.toJson()).toList(),
         'animations': animations.map((item) => item.toJson()).toList(),
         '@type': constructor,
       };

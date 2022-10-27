@@ -43,7 +43,7 @@ class Supergroup extends TdObject {
   final int date;
 
   /// [status] Status of the current user in the supergroup or channel; custom
-  /// title will be always empty
+  /// title will always be empty
   final ChatMemberStatus status;
 
   /// [memberCount] Number of members in the supergroup or channel; 0 if

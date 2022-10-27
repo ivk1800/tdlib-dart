@@ -10,6 +10,7 @@ abstract class Update extends TdObject {
   static const String constructor = 'update';
 
   /// Inherited by:
+  /// [UpdateActiveEmojiReactions]
   /// [UpdateActiveNotifications]
   /// [UpdateAnimatedEmojiMessageClicked]
   /// [UpdateAnimationSearchParameters]
@@ -48,6 +49,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatUnreadReactionCount]
   /// [UpdateChatVideoChat]
   /// [UpdateConnectionState]
+  /// [UpdateDefaultReactionType]
   /// [UpdateDeleteMessages]
   /// [UpdateDiceEmojis]
   /// [UpdateFavoriteStickers]
@@ -91,7 +93,6 @@ abstract class Update extends TdObject {
   /// [UpdateOption]
   /// [UpdatePollAnswer]
   /// [UpdatePoll]
-  /// [UpdateReactions]
   /// [UpdateRecentStickers]
   /// [UpdateSavedAnimations]
   /// [UpdateSavedNotificationSounds]
@@ -119,6 +120,8 @@ abstract class Update extends TdObject {
     }
 
     switch (json['@type']) {
+      case UpdateActiveEmojiReactions.constructor:
+        return UpdateActiveEmojiReactions.fromJson(json);
       case UpdateActiveNotifications.constructor:
         return UpdateActiveNotifications.fromJson(json);
       case UpdateAnimatedEmojiMessageClicked.constructor:
@@ -195,6 +198,8 @@ abstract class Update extends TdObject {
         return UpdateChatVideoChat.fromJson(json);
       case UpdateConnectionState.constructor:
         return UpdateConnectionState.fromJson(json);
+      case UpdateDefaultReactionType.constructor:
+        return UpdateDefaultReactionType.fromJson(json);
       case UpdateDeleteMessages.constructor:
         return UpdateDeleteMessages.fromJson(json);
       case UpdateDiceEmojis.constructor:
@@ -281,8 +286,6 @@ abstract class Update extends TdObject {
         return UpdatePoll.fromJson(json);
       case UpdatePollAnswer.constructor:
         return UpdatePollAnswer.fromJson(json);
-      case UpdateReactions.constructor:
-        return UpdateReactions.fromJson(json);
       case UpdateRecentStickers.constructor:
         return UpdateRecentStickers.fromJson(json);
       case UpdateSavedAnimations.constructor:

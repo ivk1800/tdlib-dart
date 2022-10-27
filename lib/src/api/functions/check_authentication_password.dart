@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks the authentication password for correctness. Works only when the
-/// current authorization state is authorizationStateWaitPassword
+/// Checks the 2-step verification password for correctness. Works only when
+/// the current authorization state is authorizationStateWaitPassword
 /// Returns [Ok]
 @immutable
 class CheckAuthenticationPassword extends TdFunction {
@@ -11,7 +11,7 @@ class CheckAuthenticationPassword extends TdFunction {
     required this.password,
   });
 
-  /// [password] The password to check
+  /// [password] The 2-step verification password to check
   final String password;
 
   static const String constructor = 'checkAuthenticationPassword';

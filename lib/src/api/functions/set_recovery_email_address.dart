@@ -16,7 +16,7 @@ class SetRecoveryEmailAddress extends TdFunction {
     required this.newRecoveryEmailAddress,
   });
 
-  /// [password] Password of the current user
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   /// [newRecoveryEmailAddress] New recovery email address

@@ -7,7 +7,12 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CanPurchasePremium extends TdFunction {
-  const CanPurchasePremium();
+  const CanPurchasePremium({
+    required this.purpose,
+  });
+
+  /// [purpose] Transaction purpose
+  final StorePaymentPurpose purpose;
 
   static const String constructor = 'canPurchasePremium';
 
@@ -16,6 +21,7 @@ class CanPurchasePremium extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'purpose': purpose.toJson(),
         '@type': constructor,
       };
 

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks whether a password recovery code sent to an email address is valid.
-/// Works only when the current authorization state is
+/// Checks whether a 2-step verification password recovery code sent to an
+/// email address is valid. Works only when the current authorization state is
 /// authorizationStateWaitPassword
 /// Returns [Ok]
 @immutable

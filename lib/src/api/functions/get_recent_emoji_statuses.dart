@@ -2,20 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The sticker is an image in WEBP format
+/// Returns recent emoji statuses
+/// Returns [EmojiStatuses]
 @immutable
-class StickerTypeStatic extends StickerType {
-  const StickerTypeStatic();
+class GetRecentEmojiStatuses extends TdFunction {
+  const GetRecentEmojiStatuses();
 
-  static const String constructor = 'stickerTypeStatic';
-
-  static StickerTypeStatic? fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      return null;
-    }
-
-    return const StickerTypeStatic();
-  }
+  static const String constructor = 'getRecentEmojiStatuses';
 
   @override
   String getConstructor() => constructor;

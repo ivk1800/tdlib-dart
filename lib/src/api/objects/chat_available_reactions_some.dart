@@ -2,26 +2,26 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The list of supported reactions has changed
+/// Only specific reactions are available in the chat
 @immutable
-class UpdateReactions extends Update {
-  const UpdateReactions({
+class ChatAvailableReactionsSome extends ChatAvailableReactions {
+  const ChatAvailableReactionsSome({
     required this.reactions,
   });
 
-  /// [reactions] The new list of supported reactions
-  final List<Reaction> reactions;
+  /// [reactions] The list of reactions
+  final List<ReactionType> reactions;
 
-  static const String constructor = 'updateReactions';
+  static const String constructor = 'chatAvailableReactionsSome';
 
-  static UpdateReactions? fromJson(Map<String, dynamic>? json) {
+  static ChatAvailableReactionsSome? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UpdateReactions(
-      reactions: List<Reaction>.from((json['reactions'] ?? [])
-          .map((item) => Reaction.fromJson(item))
+    return ChatAvailableReactionsSome(
+      reactions: List<ReactionType>.from((json['reactions'] ?? [])
+          .map((item) => ReactionType.fromJson(item))
           .toList()),
     );
   }

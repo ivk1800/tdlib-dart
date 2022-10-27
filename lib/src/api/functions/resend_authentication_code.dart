@@ -2,9 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Re-sends an authentication code to the user. Works only when the current
+/// Resends an authentication code to the user. Works only when the current
 /// authorization state is authorizationStateWaitCode, the next_code_type of
-/// the result is not null and the server-specified timeout has passed
+/// the result is not null and the server-specified timeout has passed, or
+/// when the current authorization state is authorizationStateWaitEmailCode
 /// Returns [Ok]
 @immutable
 class ResendAuthenticationCode extends TdFunction {

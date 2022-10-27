@@ -11,10 +11,15 @@ import '../tdapi.dart';
 class DeleteAccount extends TdFunction {
   const DeleteAccount({
     this.reason,
+    required this.password,
   });
 
   /// [reason] The reason why the account was deleted; optional
   final String? reason;
+
+  /// [password] The 2-step verification password of the current user. If not
+  /// specified, account deletion can be canceled within one week
+  final String password;
 
   static const String constructor = 'deleteAccount';
 
@@ -24,6 +29,7 @@ class DeleteAccount extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'reason': reason,
+        'password': password,
         '@type': constructor,
       };
 

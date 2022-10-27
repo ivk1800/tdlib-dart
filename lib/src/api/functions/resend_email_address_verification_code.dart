@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Re-sends the code to verify an email address to be added to a user's
+/// Resends the code to verify an email address to be added to a user's
 /// Telegram Passport
 /// Returns [EmailAddressAuthenticationCodeInfo]
 @immutable

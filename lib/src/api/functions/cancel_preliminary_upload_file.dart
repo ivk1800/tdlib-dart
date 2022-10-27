@@ -2,19 +2,20 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Stops the uploading of a file. Supported only for files uploaded by using
-/// uploadFile. For other files the behavior is undefined
+/// Stops the preliminary uploading of a file. Supported only for files
+/// uploaded by using preliminaryUploadFile. For other files the behavior is
+/// undefined
 /// Returns [Ok]
 @immutable
-class CancelUploadFile extends TdFunction {
-  const CancelUploadFile({
+class CancelPreliminaryUploadFile extends TdFunction {
+  const CancelPreliminaryUploadFile({
     required this.fileId,
   });
 
   /// [fileId] Identifier of the file to stop uploading
   final int fileId;
 
-  static const String constructor = 'cancelUploadFile';
+  static const String constructor = 'cancelPreliminaryUploadFile';
 
   @override
   String getConstructor() => constructor;

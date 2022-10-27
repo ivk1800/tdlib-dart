@@ -10,7 +10,7 @@ class GetAllPassportElements extends TdFunction {
     required this.password,
   });
 
-  /// [password] Password of the current user
+  /// [password] The 2-step verification password of the current user
   final String password;
 
   static const String constructor = 'getAllPassportElements';

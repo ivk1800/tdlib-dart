@@ -6,13 +6,13 @@ import '../tdapi.dart';
 @immutable
 class UnreadReaction extends TdObject {
   const UnreadReaction({
-    required this.reaction,
+    required this.type,
     required this.senderId,
     required this.isBig,
   });
 
-  /// [reaction] Text representation of the reaction
-  final String reaction;
+  /// [type] Type of the reaction
+  final ReactionType type;
 
   /// [senderId] Identifier of the sender, added the reaction
   final MessageSender senderId;
@@ -28,7 +28,7 @@ class UnreadReaction extends TdObject {
     }
 
     return UnreadReaction(
-      reaction: json['reaction'],
+      type: ReactionType.fromJson(json['type'])!,
       senderId: MessageSender.fromJson(json['sender_id'])!,
       isBig: json['is_big'],
     );
@@ -39,7 +39,7 @@ class UnreadReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction': reaction,
+        'type': type.toJson(),
         'sender_id': senderId.toJson(),
         'is_big': isBig,
         '@type': constructor,

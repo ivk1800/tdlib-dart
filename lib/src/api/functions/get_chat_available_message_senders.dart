@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Returns list of message sender identifiers, which can be used to send
 /// messages in a chat
-/// Returns [MessageSenders]
+/// Returns [ChatMessageSenders]
 @immutable
 class GetChatAvailableMessageSenders extends TdFunction {
   const GetChatAvailableMessageSenders({

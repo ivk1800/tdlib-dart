@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class UpdateInstalledStickerSets extends Update {
   const UpdateInstalledStickerSets({
-    required this.isMasks,
+    required this.stickerType,
     required this.stickerSetIds,
   });
 
-  /// [isMasks] True, if the list of installed mask sticker sets was updated
-  final bool isMasks;
+  /// [stickerType] Type of the affected stickers
+  final StickerType stickerType;
 
   /// [stickerSetIds] The new list of installed ordinary sticker sets
   final List<int> stickerSetIds;
@@ -24,7 +24,7 @@ class UpdateInstalledStickerSets extends Update {
     }
 
     return UpdateInstalledStickerSets(
-      isMasks: json['is_masks'],
+      stickerType: StickerType.fromJson(json['sticker_type'])!,
       stickerSetIds: List<int>.from(
           (json['sticker_set_ids'] ?? []).map((item) => item).toList()),
     );
@@ -35,7 +35,7 @@ class UpdateInstalledStickerSets extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_masks': isMasks,
+        'sticker_type': stickerType.toJson(),
         'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
         '@type': constructor,
       };

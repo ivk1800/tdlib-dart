@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describe an invoice to process
+/// Describes an invoice to process
 @immutable
 abstract class InputInvoice extends TdObject {
   const InputInvoice();

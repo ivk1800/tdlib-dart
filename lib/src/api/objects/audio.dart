@@ -13,6 +13,7 @@ class Audio extends TdObject {
     required this.mimeType,
     this.albumCoverMinithumbnail,
     this.albumCoverThumbnail,
+    required this.externalAlbumCovers,
     required this.audio,
   });
 
@@ -37,8 +38,13 @@ class Audio extends TdObject {
 
   /// [albumCoverThumbnail] The thumbnail of the album cover in JPEG format; as
   /// defined by the sender. The full size thumbnail is supposed to be extracted
-  /// from the downloaded file; may be null
+  /// from the downloaded audio file; may be null
   final Thumbnail? albumCoverThumbnail;
+
+  /// [externalAlbumCovers] Album cover variants to use if the downloaded audio
+  /// file contains no album cover. Provided thumbnail dimensions are
+  /// approximate
+  final List<Thumbnail> externalAlbumCovers;
 
   /// [audio] File containing the audio
   final File audio;
@@ -59,6 +65,10 @@ class Audio extends TdObject {
       albumCoverMinithumbnail:
           Minithumbnail.fromJson(json['album_cover_minithumbnail']),
       albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail']),
+      externalAlbumCovers: List<Thumbnail>.from(
+          (json['external_album_covers'] ?? [])
+              .map((item) => Thumbnail.fromJson(item))
+              .toList()),
       audio: File.fromJson(json['audio'])!,
     );
   }
@@ -75,6 +85,8 @@ class Audio extends TdObject {
         'mime_type': mimeType,
         'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
         'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+        'external_album_covers':
+            externalAlbumCovers.map((item) => item.toJson()).toList(),
         'audio': audio.toJson(),
         '@type': constructor,
       };

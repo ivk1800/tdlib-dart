@@ -23,6 +23,7 @@ class Message extends TdObject {
     required this.canGetMessageThread,
     required this.canGetViewers,
     required this.canGetMediaTimestampLinks,
+    required this.canReportReactions,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
     required this.containsUnreadMention,
@@ -94,7 +95,7 @@ class Message extends TdObject {
   final bool canGetStatistics;
 
   /// [canGetMessageThread] True, if information about the message thread is
-  /// available through getMessageThread
+  /// available through getMessageThread and getMessageThreadHistory
   final bool canGetMessageThread;
 
   /// [canGetViewers] True, if chat members already viewed the message can be
@@ -105,6 +106,10 @@ class Message extends TdObject {
   /// generated for media timestamp entities in the message text, caption or web
   /// page description through getMessageLink
   final bool canGetMediaTimestampLinks;
+
+  /// [canReportReactions] True, if reactions on the message can be reported
+  /// through reportMessageReactions
+  final bool canReportReactions;
 
   /// [hasTimestampedMedia] True, if media timestamp entities refers to a media
   /// in this message as opposed to a media in the replied message
@@ -204,6 +209,7 @@ class Message extends TdObject {
       canGetMessageThread: json['can_get_message_thread'],
       canGetViewers: json['can_get_viewers'],
       canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
+      canReportReactions: json['can_report_reactions'],
       hasTimestampedMedia: json['has_timestamped_media'],
       isChannelPost: json['is_channel_post'],
       containsUnreadMention: json['contains_unread_mention'],
@@ -252,6 +258,7 @@ class Message extends TdObject {
         'can_get_message_thread': canGetMessageThread,
         'can_get_viewers': canGetViewers,
         'can_get_media_timestamp_links': canGetMediaTimestampLinks,
+        'can_report_reactions': canReportReactions,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
         'contains_unread_mention': containsUnreadMention,

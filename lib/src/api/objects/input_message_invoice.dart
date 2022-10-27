@@ -17,6 +17,7 @@ class InputMessageInvoice extends InputMessageContent {
     required this.providerToken,
     required this.providerData,
     required this.startParameter,
+    required this.extendedMediaContent,
   });
 
   /// [invoice] Invoice
@@ -55,6 +56,11 @@ class InputMessageInvoice extends InputMessageContent {
   /// forwards of the invoice message
   final String startParameter;
 
+  /// [extendedMediaContent] The content of extended media attached to the
+  /// invoice. The content of the message to be sent. Must be one of the
+  /// following types: inputMessagePhoto, inputMessageVideo
+  final InputMessageContent extendedMediaContent;
+
   static const String constructor = 'inputMessageInvoice';
 
   static InputMessageInvoice? fromJson(Map<String, dynamic>? json) {
@@ -74,6 +80,8 @@ class InputMessageInvoice extends InputMessageContent {
       providerToken: json['provider_token'],
       providerData: json['provider_data'],
       startParameter: json['start_parameter'],
+      extendedMediaContent:
+          InputMessageContent.fromJson(json['extended_media_content'])!,
     );
   }
 
@@ -93,6 +101,7 @@ class InputMessageInvoice extends InputMessageContent {
         'provider_token': providerToken,
         'provider_data': providerData,
         'start_parameter': startParameter,
+        'extended_media_content': extendedMediaContent.toJson(),
         '@type': constructor,
       };
 

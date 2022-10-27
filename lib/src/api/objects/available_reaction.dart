@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class AvailableReaction extends TdObject {
   const AvailableReaction({
-    required this.reaction,
+    required this.type,
     required this.needsPremium,
   });
 
-  /// [reaction] Text representation of the reaction
-  final String reaction;
+  /// [type] Type of the reaction
+  final ReactionType type;
 
   /// [needsPremium] True, if Telegram Premium is needed to send the reaction
   final bool needsPremium;
@@ -24,7 +24,7 @@ class AvailableReaction extends TdObject {
     }
 
     return AvailableReaction(
-      reaction: json['reaction'],
+      type: ReactionType.fromJson(json['type'])!,
       needsPremium: json['needs_premium'],
     );
   }
@@ -34,7 +34,7 @@ class AvailableReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction': reaction,
+        'type': type.toJson(),
         'needs_premium': needsPremium,
         '@type': constructor,
       };

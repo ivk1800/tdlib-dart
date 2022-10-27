@@ -2,14 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains stickers which must be used for reaction animation rendering
+/// Contains information about a emoji reaction
 @immutable
-class Reaction extends TdObject {
-  const Reaction({
-    required this.reaction,
+class EmojiReaction extends TdObject {
+  const EmojiReaction({
+    required this.emoji,
     required this.title,
     required this.isActive,
-    required this.isPremium,
     required this.staticIcon,
     required this.appearAnimation,
     required this.selectAnimation,
@@ -19,8 +18,8 @@ class Reaction extends TdObject {
     this.centerAnimation,
   });
 
-  /// [reaction] Text representation of the reaction
-  final String reaction;
+  /// [emoji] Text representation of the reaction
+  final String emoji;
 
   /// [title] Reaction title
   final String title;
@@ -28,9 +27,6 @@ class Reaction extends TdObject {
   /// [isActive] True, if the reaction can be added to new messages and enabled
   /// in chats
   final bool isActive;
-
-  /// [isPremium] True, if the reaction is available only for Premium users
-  final bool isPremium;
 
   /// [staticIcon] Static icon for the reaction
   final Sticker staticIcon;
@@ -53,18 +49,17 @@ class Reaction extends TdObject {
   /// [centerAnimation] Center animation for the reaction; may be null
   final Sticker? centerAnimation;
 
-  static const String constructor = 'reaction';
+  static const String constructor = 'emojiReaction';
 
-  static Reaction? fromJson(Map<String, dynamic>? json) {
+  static EmojiReaction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return Reaction(
-      reaction: json['reaction'],
+    return EmojiReaction(
+      emoji: json['emoji'],
       title: json['title'],
       isActive: json['is_active'],
-      isPremium: json['is_premium'],
       staticIcon: Sticker.fromJson(json['static_icon'])!,
       appearAnimation: Sticker.fromJson(json['appear_animation'])!,
       selectAnimation: Sticker.fromJson(json['select_animation'])!,
@@ -80,10 +75,9 @@ class Reaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction': reaction,
+        'emoji': emoji,
         'title': title,
         'is_active': isActive,
-        'is_premium': isPremium,
         'static_icon': staticIcon.toJson(),
         'appear_animation': appearAnimation.toJson(),
         'select_animation': selectAnimation.toJson(),

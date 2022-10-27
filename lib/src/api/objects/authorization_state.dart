@@ -15,7 +15,8 @@ abstract class AuthorizationState extends TdObject {
   /// [AuthorizationStateLoggingOut]
   /// [AuthorizationStateReady]
   /// [AuthorizationStateWaitCode]
-  /// [AuthorizationStateWaitEncryptionKey]
+  /// [AuthorizationStateWaitEmailAddress]
+  /// [AuthorizationStateWaitEmailCode]
   /// [AuthorizationStateWaitOtherDeviceConfirmation]
   /// [AuthorizationStateWaitPassword]
   /// [AuthorizationStateWaitPhoneNumber]
@@ -37,8 +38,10 @@ abstract class AuthorizationState extends TdObject {
         return AuthorizationStateReady.fromJson(json);
       case AuthorizationStateWaitCode.constructor:
         return AuthorizationStateWaitCode.fromJson(json);
-      case AuthorizationStateWaitEncryptionKey.constructor:
-        return AuthorizationStateWaitEncryptionKey.fromJson(json);
+      case AuthorizationStateWaitEmailAddress.constructor:
+        return AuthorizationStateWaitEmailAddress.fromJson(json);
+      case AuthorizationStateWaitEmailCode.constructor:
+        return AuthorizationStateWaitEmailCode.fromJson(json);
       case AuthorizationStateWaitOtherDeviceConfirmation.constructor:
         return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json);
       case AuthorizationStateWaitPassword.constructor:
