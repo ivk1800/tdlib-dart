@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the username of a supergroup or channel, requires owner privileges
-/// in the supergroup or channel
+/// Changes the editable username of a supergroup or channel, requires owner
+/// privileges in the supergroup or channel
 /// Returns [Ok]
 @immutable
 class SetSupergroupUsername extends TdFunction {
@@ -16,7 +16,8 @@ class SetSupergroupUsername extends TdFunction {
   final int supergroupId;
 
   /// [username] New value of the username. Use an empty string to remove the
-  /// username
+  /// username. The username can't be completely removed if there is another
+  /// active or disabled username
   final String username;
 
   static const String constructor = 'setSupergroupUsername';

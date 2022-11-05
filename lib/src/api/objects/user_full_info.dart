@@ -20,7 +20,8 @@ class UserFullInfo extends TdObject {
     this.botInfo,
   });
 
-  /// [photo] User profile photo; may be null
+  /// [photo] User profile photo; may be null if empty or unknown. If non-null,
+  /// then it is the same photo as in user.profile_photo and chat.photo
   final ChatPhoto? photo;
 
   /// [isBlocked] True, if the user is blocked by the current user

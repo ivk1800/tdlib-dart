@@ -10,6 +10,7 @@ class SponsoredMessage extends TdObject {
     required this.isRecommended,
     required this.sponsorChatId,
     this.sponsorChatInfo,
+    required this.showChatPhoto,
     this.link,
     required this.content,
   });
@@ -29,6 +30,9 @@ class SponsoredMessage extends TdObject {
   /// [sponsorChatInfo] Information about the sponsor chat; may be null unless
   /// sponsor_chat_id == 0
   final ChatInviteLinkInfo? sponsorChatInfo;
+
+  /// [showChatPhoto] True, if the sponsor's chat photo must be shown
+  final bool showChatPhoto;
 
   /// [link] An internal link to be opened when the sponsored message is
   /// clicked; may be null if the sponsor chat needs to be opened instead
@@ -50,6 +54,7 @@ class SponsoredMessage extends TdObject {
       isRecommended: json['is_recommended'],
       sponsorChatId: json['sponsor_chat_id'],
       sponsorChatInfo: ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
+      showChatPhoto: json['show_chat_photo'],
       link: InternalLinkType.fromJson(json['link']),
       content: MessageContent.fromJson(json['content'])!,
     );
@@ -64,6 +69,7 @@ class SponsoredMessage extends TdObject {
         'is_recommended': isRecommended,
         'sponsor_chat_id': sponsorChatId,
         'sponsor_chat_info': sponsorChatInfo?.toJson(),
+        'show_chat_photo': showChatPhoto,
         'link': link?.toJson(),
         'content': content.toJson(),
         '@type': constructor,

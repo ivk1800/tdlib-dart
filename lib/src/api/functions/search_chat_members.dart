@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Searches for a specified query in the first name, last name and username
+/// Searches for a specified query in the first name, last name and usernames
 /// of the members of a specified chat. Requires administrator rights in
 /// channels
 /// Returns [ChatMembers]

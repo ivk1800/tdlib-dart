@@ -18,7 +18,7 @@ class InputMessageVoiceNote extends InputMessageContent {
   /// [duration] Duration of the voice note, in seconds
   final int duration;
 
-  /// [waveform] Waveform representation of the voice note, in 5-bit format
+  /// [waveform] Waveform representation of the voice note in 5-bit format
   final String waveform;
 
   /// [caption] Voice note caption; pass null to use an empty caption;

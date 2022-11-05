@@ -12,7 +12,7 @@ import '../tdapi.dart';
 class Supergroup extends TdObject {
   const Supergroup({
     required this.id,
-    required this.username,
+    this.usernames,
     required this.date,
     required this.status,
     required this.memberCount,
@@ -24,6 +24,7 @@ class Supergroup extends TdObject {
     required this.isSlowModeEnabled,
     required this.isChannel,
     required this.isBroadcastGroup,
+    required this.isForum,
     required this.isVerified,
     required this.restrictionReason,
     required this.isScam,
@@ -33,9 +34,8 @@ class Supergroup extends TdObject {
   /// [id] Supergroup or channel identifier
   final int id;
 
-  /// [username] Username of the supergroup or channel; empty for private
-  /// supergroups or channels
-  final String username;
+  /// [usernames] Usernames of the supergroup or channel; may be null
+  final Usernames? usernames;
 
   /// [date] Point in time (Unix timestamp) when the current user joined, or the
   /// point in time when the supergroup or channel was created, in case the user
@@ -86,6 +86,9 @@ class Supergroup extends TdObject {
   /// members
   final bool isBroadcastGroup;
 
+  /// [isForum] True, if the supergroup must be shown as a forum by default
+  final bool isForum;
+
   /// [isVerified] True, if the supergroup or channel is verified
   final bool isVerified;
 
@@ -109,7 +112,7 @@ class Supergroup extends TdObject {
 
     return Supergroup(
       id: json['id'],
-      username: json['username'],
+      usernames: Usernames.fromJson(json['usernames']),
       date: json['date'],
       status: ChatMemberStatus.fromJson(json['status'])!,
       memberCount: json['member_count'],
@@ -121,6 +124,7 @@ class Supergroup extends TdObject {
       isSlowModeEnabled: json['is_slow_mode_enabled'],
       isChannel: json['is_channel'],
       isBroadcastGroup: json['is_broadcast_group'],
+      isForum: json['is_forum'],
       isVerified: json['is_verified'],
       restrictionReason: json['restriction_reason'],
       isScam: json['is_scam'],
@@ -134,7 +138,7 @@ class Supergroup extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,
-        'username': username,
+        'usernames': usernames?.toJson(),
         'date': date,
         'status': status.toJson(),
         'member_count': memberCount,
@@ -146,6 +150,7 @@ class Supergroup extends TdObject {
         'is_slow_mode_enabled': isSlowModeEnabled,
         'is_channel': isChannel,
         'is_broadcast_group': isBroadcastGroup,
+        'is_forum': isForum,
         'is_verified': isVerified,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,

@@ -10,6 +10,7 @@ import '../tdapi.dart';
 class ForwardMessages extends TdFunction {
   const ForwardMessages({
     required this.chatId,
+    required this.messageThreadId,
     required this.fromChatId,
     required this.messageIds,
     this.options,
@@ -20,6 +21,10 @@ class ForwardMessages extends TdFunction {
 
   /// [chatId] Identifier of the chat to which to forward messages
   final int chatId;
+
+  /// [messageThreadId] If not 0, a message thread identifier in which the
+  /// message will be sent; for forum threads only
+  final int messageThreadId;
 
   /// [fromChatId] Identifier of the chat from which to forward messages
   final int fromChatId;
@@ -54,6 +59,7 @@ class ForwardMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
+        'message_thread_id': messageThreadId,
         'from_chat_id': fromChatId,
         'message_ids': messageIds.map((item) => item).toList(),
         'options': options?.toJson(),

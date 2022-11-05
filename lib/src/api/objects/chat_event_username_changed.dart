@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The chat username was changed
+/// The chat editable username was changed
 @immutable
 class ChatEventUsernameChanged extends ChatEventAction {
   const ChatEventUsernameChanged({

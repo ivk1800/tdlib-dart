@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Marks all reactions in a chat as read
+/// Marks all reactions in a chat or a forum topic as read
 /// Returns [Ok]
 @immutable
 class ReadAllChatReactions extends TdFunction {

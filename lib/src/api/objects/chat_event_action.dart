@@ -10,14 +10,21 @@ abstract class ChatEventAction extends TdObject {
   static const String constructor = 'chatEventAction';
 
   /// Inherited by:
+  /// [ChatEventActiveUsernamesChanged]
   /// [ChatEventAvailableReactionsChanged]
   /// [ChatEventDescriptionChanged]
+  /// [ChatEventForumTopicCreated]
+  /// [ChatEventForumTopicDeleted]
+  /// [ChatEventForumTopicEdited]
+  /// [ChatEventForumTopicPinned]
+  /// [ChatEventForumTopicToggleIsClosed]
   /// [ChatEventHasProtectedContentToggled]
   /// [ChatEventInviteLinkDeleted]
   /// [ChatEventInviteLinkEdited]
   /// [ChatEventInviteLinkRevoked]
   /// [ChatEventInvitesToggled]
   /// [ChatEventIsAllHistoryAvailableToggled]
+  /// [ChatEventIsForumToggled]
   /// [ChatEventLinkedChatChanged]
   /// [ChatEventLocationChanged]
   /// [ChatEventMemberInvited]
@@ -51,10 +58,22 @@ abstract class ChatEventAction extends TdObject {
     }
 
     switch (json['@type']) {
+      case ChatEventActiveUsernamesChanged.constructor:
+        return ChatEventActiveUsernamesChanged.fromJson(json);
       case ChatEventAvailableReactionsChanged.constructor:
         return ChatEventAvailableReactionsChanged.fromJson(json);
       case ChatEventDescriptionChanged.constructor:
         return ChatEventDescriptionChanged.fromJson(json);
+      case ChatEventForumTopicCreated.constructor:
+        return ChatEventForumTopicCreated.fromJson(json);
+      case ChatEventForumTopicDeleted.constructor:
+        return ChatEventForumTopicDeleted.fromJson(json);
+      case ChatEventForumTopicEdited.constructor:
+        return ChatEventForumTopicEdited.fromJson(json);
+      case ChatEventForumTopicPinned.constructor:
+        return ChatEventForumTopicPinned.fromJson(json);
+      case ChatEventForumTopicToggleIsClosed.constructor:
+        return ChatEventForumTopicToggleIsClosed.fromJson(json);
       case ChatEventHasProtectedContentToggled.constructor:
         return ChatEventHasProtectedContentToggled.fromJson(json);
       case ChatEventInviteLinkDeleted.constructor:
@@ -67,6 +86,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventInvitesToggled.fromJson(json);
       case ChatEventIsAllHistoryAvailableToggled.constructor:
         return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
+      case ChatEventIsForumToggled.constructor:
+        return ChatEventIsForumToggled.fromJson(json);
       case ChatEventLinkedChatChanged.constructor:
         return ChatEventLinkedChatChanged.fromJson(json);
       case ChatEventLocationChanged.constructor:

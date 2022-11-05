@@ -8,10 +8,10 @@ class MessageLinkInfo extends TdObject {
   const MessageLinkInfo({
     required this.isPublic,
     required this.chatId,
-    this.message,
+    required this.messageThreadId,
+    required this.message,
     required this.mediaTimestamp,
     required this.forAlbum,
-    required this.forComment,
   });
 
   /// [isPublic] True, if the link is a public link for a message in a chat
@@ -21,8 +21,13 @@ class MessageLinkInfo extends TdObject {
   /// otherwise
   final int chatId;
 
-  /// [message] If found, the linked message; may be null
-  final Message? message;
+  /// [messageThreadId] If found, identifier of the message thread in which to
+  /// open the message, or which to open in case of a missing message
+  final int messageThreadId;
+
+  /// [message]_thread_id If found, identifier of the message thread in which to
+  /// open the message, or which to open in case of a missing message
+  final Message message;
 
   /// [mediaTimestamp] Timestamp from which the video/audio/video note/voice
   /// note playing must start, in seconds; 0 if not specified. The media can be
@@ -32,10 +37,6 @@ class MessageLinkInfo extends TdObject {
   /// [forAlbum] True, if the whole media album to which the message belongs is
   /// linked
   final bool forAlbum;
-
-  /// [forComment] True, if the message is linked as a channel post comment or
-  /// from a message thread
-  final bool forComment;
 
   static const String constructor = 'messageLinkInfo';
 
@@ -47,10 +48,10 @@ class MessageLinkInfo extends TdObject {
     return MessageLinkInfo(
       isPublic: json['is_public'],
       chatId: json['chat_id'],
-      message: Message.fromJson(json['message']),
+      messageThreadId: json['message_thread_id'],
+      message: Message.fromJson(json['message'])!,
       mediaTimestamp: json['media_timestamp'],
       forAlbum: json['for_album'],
-      forComment: json['for_comment'],
     );
   }
 
@@ -61,10 +62,10 @@ class MessageLinkInfo extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'is_public': isPublic,
         'chat_id': chatId,
-        'message': message?.toJson(),
+        'message_thread_id': messageThreadId,
+        'message': message.toJson(),
         'media_timestamp': mediaTimestamp,
         'for_album': forAlbum,
-        'for_comment': forComment,
         '@type': constructor,
       };
 

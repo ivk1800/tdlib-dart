@@ -2,19 +2,18 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns sponsored message to be shown in a chat; for channel chats only.
-/// Returns a 404 error if there is no sponsored message in the chat
-/// Returns [SponsoredMessage]
+/// Returns sponsored messages to be shown in a chat; for channel chats only
+/// Returns [SponsoredMessages]
 @immutable
-class GetChatSponsoredMessage extends TdFunction {
-  const GetChatSponsoredMessage({
+class GetChatSponsoredMessages extends TdFunction {
+  const GetChatSponsoredMessages({
     required this.chatId,
   });
 
   /// [chatId] Identifier of the chat
   final int chatId;
 
-  static const String constructor = 'getChatSponsoredMessage';
+  static const String constructor = 'getChatSponsoredMessages';
 
   @override
   String getConstructor() => constructor;

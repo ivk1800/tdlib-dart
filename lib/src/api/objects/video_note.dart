@@ -8,14 +8,20 @@ import '../tdapi.dart';
 class VideoNote extends TdObject {
   const VideoNote({
     required this.duration,
+    required this.waveform,
     required this.length,
     this.minithumbnail,
     this.thumbnail,
+    this.speechRecognitionResult,
     required this.video,
   });
 
   /// [duration] Duration of the video, in seconds; as defined by the sender
   final int duration;
+
+  /// [waveform] A waveform representation of the video note's audio in 5-bit
+  /// format; may be empty if unknown
+  final String waveform;
 
   /// [length] Video width and height; as defined by the sender
   final int length;
@@ -26,6 +32,10 @@ class VideoNote extends TdObject {
   /// [thumbnail] Video thumbnail in JPEG format; as defined by the sender; may
   /// be null
   final Thumbnail? thumbnail;
+
+  /// [speechRecognitionResult] Result of speech recognition in the video note;
+  /// may be null
+  final SpeechRecognitionResult? speechRecognitionResult;
 
   /// [video] File containing the video
   final File video;
@@ -39,9 +49,12 @@ class VideoNote extends TdObject {
 
     return VideoNote(
       duration: json['duration'],
+      waveform: json['waveform'],
       length: json['length'],
       minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
       thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      speechRecognitionResult:
+          SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
       video: File.fromJson(json['video'])!,
     );
   }
@@ -52,9 +65,11 @@ class VideoNote extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'duration': duration,
+        'waveform': waveform,
         'length': length,
         'minithumbnail': minithumbnail?.toJson(),
         'thumbnail': thumbnail?.toJson(),
+        'speech_recognition_result': speechRecognitionResult?.toJson(),
         'video': video.toJson(),
         '@type': constructor,
       };

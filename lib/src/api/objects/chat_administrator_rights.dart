@@ -14,6 +14,7 @@ class ChatAdministratorRights extends TdObject {
     required this.canInviteUsers,
     required this.canRestrictMembers,
     required this.canPinMessages,
+    required this.canManageTopics,
     required this.canPromoteMembers,
     required this.canManageVideoChats,
     required this.isAnonymous,
@@ -53,6 +54,10 @@ class ChatAdministratorRights extends TdObject {
   /// to basic groups and supergroups only
   final bool canPinMessages;
 
+  /// [canManageTopics] True, if the administrator can manage topics; applicable
+  /// to forum supergroups only
+  final bool canManageTopics;
+
   /// [canPromoteMembers] True, if the administrator can add new administrators
   /// with a subset of their own privileges or demote administrators that were
   /// directly or indirectly promoted by them
@@ -81,6 +86,7 @@ class ChatAdministratorRights extends TdObject {
       canInviteUsers: json['can_invite_users'],
       canRestrictMembers: json['can_restrict_members'],
       canPinMessages: json['can_pin_messages'],
+      canManageTopics: json['can_manage_topics'],
       canPromoteMembers: json['can_promote_members'],
       canManageVideoChats: json['can_manage_video_chats'],
       isAnonymous: json['is_anonymous'],
@@ -100,6 +106,7 @@ class ChatAdministratorRights extends TdObject {
         'can_invite_users': canInviteUsers,
         'can_restrict_members': canRestrictMembers,
         'can_pin_messages': canPinMessages,
+        'can_manage_topics': canManageTopics,
         'can_promote_members': canPromoteMembers,
         'can_manage_video_chats': canManageVideoChats,
         'is_anonymous': isAnonymous,

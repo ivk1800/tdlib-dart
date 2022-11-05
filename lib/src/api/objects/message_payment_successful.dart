@@ -16,7 +16,7 @@ class MessagePaymentSuccessful extends MessageContent {
   });
 
   /// [invoiceChatId] Identifier of the chat, containing the corresponding
-  /// invoice message; 0 if unknown
+  /// invoice message
   final int invoiceChatId;
 
   /// [invoiceMessageId] Identifier of the message with the corresponding

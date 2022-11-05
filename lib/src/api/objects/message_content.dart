@@ -33,6 +33,9 @@ abstract class MessageContent extends TdObject {
   /// [MessageDocument]
   /// [MessageExpiredPhoto]
   /// [MessageExpiredVideo]
+  /// [MessageForumTopicCreated]
+  /// [MessageForumTopicEdited]
+  /// [MessageForumTopicIsClosedToggled]
   /// [MessageGameScore]
   /// [MessageGame]
   /// [MessageGiftedPremium]
@@ -114,6 +117,12 @@ abstract class MessageContent extends TdObject {
         return MessageExpiredPhoto.fromJson(json);
       case MessageExpiredVideo.constructor:
         return MessageExpiredVideo.fromJson(json);
+      case MessageForumTopicCreated.constructor:
+        return MessageForumTopicCreated.fromJson(json);
+      case MessageForumTopicEdited.constructor:
+        return MessageForumTopicEdited.fromJson(json);
+      case MessageForumTopicIsClosedToggled.constructor:
+        return MessageForumTopicIsClosedToggled.fromJson(json);
       case MessageGame.constructor:
         return MessageGame.fromJson(json);
       case MessageGameScore.constructor:

@@ -15,6 +15,7 @@ class OpenWebApp extends TdFunction {
     required this.url,
     this.theme,
     required this.applicationName,
+    required this.messageThreadId,
     required this.replyToMessageId,
   });
 
@@ -36,6 +37,10 @@ class OpenWebApp extends TdFunction {
   /// digits, and underscores
   final String applicationName;
 
+  /// [messageThreadId] If not 0, a message thread identifier in which the
+  /// message will be sent
+  final int messageThreadId;
+
   /// [replyToMessageId] Identifier of the replied message for the message sent
   /// by the Web App; 0 if none
   final int replyToMessageId;
@@ -52,6 +57,7 @@ class OpenWebApp extends TdFunction {
         'url': url,
         'theme': theme?.toJson(),
         'application_name': applicationName,
+        'message_thread_id': messageThreadId,
         'reply_to_message_id': replyToMessageId,
         '@type': constructor,
       };

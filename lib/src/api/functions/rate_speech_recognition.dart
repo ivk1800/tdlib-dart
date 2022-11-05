@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Rates recognized speech in a voice note message
+/// Rates recognized speech in a video note or a voice note message
 /// Returns [Ok]
 @immutable
 class RateSpeechRecognition extends TdFunction {

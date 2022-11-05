@@ -1197,16 +1197,21 @@ extension VideoExtensions on Video {
 extension VideoNoteExtensions on VideoNote {
   VideoNote copyWith({
     int? duration,
+    String? waveform,
     int? length,
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
+    SpeechRecognitionResult? speechRecognitionResult,
     File? video,
   }) =>
       VideoNote(
         duration: duration ?? this.duration,
+        waveform: waveform ?? this.waveform,
         length: length ?? this.length,
         minithumbnail: minithumbnail ?? this.minithumbnail,
         thumbnail: thumbnail ?? this.thumbnail,
+        speechRecognitionResult:
+            speechRecognitionResult ?? this.speechRecognitionResult,
         video: video ?? this.video,
       );
 }
@@ -1620,6 +1625,7 @@ extension ChatPermissionsExtensions on ChatPermissions {
     bool? canChangeInfo,
     bool? canInviteUsers,
     bool? canPinMessages,
+    bool? canManageTopics,
   }) =>
       ChatPermissions(
         canSendMessages: canSendMessages ?? this.canSendMessages,
@@ -1631,6 +1637,7 @@ extension ChatPermissionsExtensions on ChatPermissions {
         canChangeInfo: canChangeInfo ?? this.canChangeInfo,
         canInviteUsers: canInviteUsers ?? this.canInviteUsers,
         canPinMessages: canPinMessages ?? this.canPinMessages,
+        canManageTopics: canManageTopics ?? this.canManageTopics,
       );
 }
 
@@ -1644,6 +1651,7 @@ extension ChatAdministratorRightsExtensions on ChatAdministratorRights {
     bool? canInviteUsers,
     bool? canRestrictMembers,
     bool? canPinMessages,
+    bool? canManageTopics,
     bool? canPromoteMembers,
     bool? canManageVideoChats,
     bool? isAnonymous,
@@ -1657,6 +1665,7 @@ extension ChatAdministratorRightsExtensions on ChatAdministratorRights {
         canInviteUsers: canInviteUsers ?? this.canInviteUsers,
         canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
         canPinMessages: canPinMessages ?? this.canPinMessages,
+        canManageTopics: canManageTopics ?? this.canManageTopics,
         canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
         canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
         isAnonymous: isAnonymous ?? this.isAnonymous,
@@ -1700,12 +1709,25 @@ extension EmojiStatusesExtensions on EmojiStatuses {
       );
 }
 
+extension UsernamesExtensions on Usernames {
+  Usernames copyWith({
+    List<String>? activeUsernames,
+    List<String>? disabledUsernames,
+    String? editableUsername,
+  }) =>
+      Usernames(
+        activeUsernames: activeUsernames ?? this.activeUsernames,
+        disabledUsernames: disabledUsernames ?? this.disabledUsernames,
+        editableUsername: editableUsername ?? this.editableUsername,
+      );
+}
+
 extension UserExtensions on User {
   User copyWith({
     int? id,
     String? firstName,
     String? lastName,
-    String? username,
+    Usernames? usernames,
     String? phoneNumber,
     UserStatus? status,
     ProfilePhoto? profilePhoto,
@@ -1727,7 +1749,7 @@ extension UserExtensions on User {
         id: id ?? this.id,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
-        username: username ?? this.username,
+        usernames: usernames ?? this.usernames,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         status: status ?? this.status,
         profilePhoto: profilePhoto ?? this.profilePhoto,
@@ -2415,7 +2437,7 @@ extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
 extension SupergroupExtensions on Supergroup {
   Supergroup copyWith({
     int? id,
-    String? username,
+    Usernames? usernames,
     int? date,
     ChatMemberStatus? status,
     int? memberCount,
@@ -2427,6 +2449,7 @@ extension SupergroupExtensions on Supergroup {
     bool? isSlowModeEnabled,
     bool? isChannel,
     bool? isBroadcastGroup,
+    bool? isForum,
     bool? isVerified,
     String? restrictionReason,
     bool? isScam,
@@ -2434,7 +2457,7 @@ extension SupergroupExtensions on Supergroup {
   }) =>
       Supergroup(
         id: id ?? this.id,
-        username: username ?? this.username,
+        usernames: usernames ?? this.usernames,
         date: date ?? this.date,
         status: status ?? this.status,
         memberCount: memberCount ?? this.memberCount,
@@ -2446,6 +2469,7 @@ extension SupergroupExtensions on Supergroup {
         isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
         isChannel: isChannel ?? this.isChannel,
         isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
+        isForum: isForum ?? this.isForum,
         isVerified: isVerified ?? this.isVerified,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
@@ -2976,6 +3000,7 @@ extension MessageExtensions on Message {
     bool? canReportReactions,
     bool? hasTimestampedMedia,
     bool? isChannelPost,
+    bool? isTopicMessage,
     bool? containsUnreadMention,
     int? date,
     int? editDate,
@@ -3018,6 +3043,7 @@ extension MessageExtensions on Message {
         canReportReactions: canReportReactions ?? this.canReportReactions,
         hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
         isChannelPost: isChannelPost ?? this.isChannelPost,
+        isTopicMessage: isTopicMessage ?? this.isTopicMessage,
         containsUnreadMention:
             containsUnreadMention ?? this.containsUnreadMention,
         date: date ?? this.date,
@@ -3115,6 +3141,7 @@ extension SponsoredMessageExtensions on SponsoredMessage {
     bool? isRecommended,
     int? sponsorChatId,
     ChatInviteLinkInfo? sponsorChatInfo,
+    bool? showChatPhoto,
     InternalLinkType? link,
     MessageContent? content,
   }) =>
@@ -3123,8 +3150,20 @@ extension SponsoredMessageExtensions on SponsoredMessage {
         isRecommended: isRecommended ?? this.isRecommended,
         sponsorChatId: sponsorChatId ?? this.sponsorChatId,
         sponsorChatInfo: sponsorChatInfo ?? this.sponsorChatInfo,
+        showChatPhoto: showChatPhoto ?? this.showChatPhoto,
         link: link ?? this.link,
         content: content ?? this.content,
+      );
+}
+
+extension SponsoredMessagesExtensions on SponsoredMessages {
+  SponsoredMessages copyWith({
+    List<SponsoredMessage>? messages,
+    int? messagesBetween,
+  }) =>
+      SponsoredMessages(
+        messages: messages ?? this.messages,
+        messagesBetween: messagesBetween ?? this.messagesBetween,
       );
 }
 
@@ -4377,6 +4416,67 @@ extension MessageThreadInfoExtensions on MessageThreadInfo {
         replyInfo: replyInfo ?? this.replyInfo,
         unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
         messages: messages ?? this.messages,
+        draftMessage: draftMessage ?? this.draftMessage,
+      );
+}
+
+extension ForumTopicIconExtensions on ForumTopicIcon {
+  ForumTopicIcon copyWith({
+    int? color,
+    int? customEmojiId,
+  }) =>
+      ForumTopicIcon(
+        color: color ?? this.color,
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
+}
+
+extension ForumTopicInfoExtensions on ForumTopicInfo {
+  ForumTopicInfo copyWith({
+    int? messageThreadId,
+    String? name,
+    ForumTopicIcon? icon,
+    int? creationDate,
+    MessageSender? creatorId,
+    bool? isOutgoing,
+    bool? isClosed,
+  }) =>
+      ForumTopicInfo(
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        name: name ?? this.name,
+        icon: icon ?? this.icon,
+        creationDate: creationDate ?? this.creationDate,
+        creatorId: creatorId ?? this.creatorId,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
+        isClosed: isClosed ?? this.isClosed,
+      );
+}
+
+extension ForumTopicExtensions on ForumTopic {
+  ForumTopic copyWith({
+    ForumTopicInfo? info,
+    Message? lastMessage,
+    bool? isPinned,
+    int? unreadCount,
+    int? lastReadInboxMessageId,
+    int? lastReadOutboxMessageId,
+    int? unreadMentionCount,
+    int? unreadReactionCount,
+    ChatNotificationSettings? notificationSettings,
+    DraftMessage? draftMessage,
+  }) =>
+      ForumTopic(
+        info: info ?? this.info,
+        lastMessage: lastMessage ?? this.lastMessage,
+        isPinned: isPinned ?? this.isPinned,
+        unreadCount: unreadCount ?? this.unreadCount,
+        lastReadInboxMessageId:
+            lastReadInboxMessageId ?? this.lastReadInboxMessageId,
+        lastReadOutboxMessageId:
+            lastReadOutboxMessageId ?? this.lastReadOutboxMessageId,
+        unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
+        unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
         draftMessage: draftMessage ?? this.draftMessage,
       );
 }
@@ -7520,6 +7620,12 @@ extension MessageContentExtensions on MessageContent {
         messageScreenshotTaken,
     required TResult Function(MessageChatSetTheme value) messageChatSetTheme,
     required TResult Function(MessageChatSetTtl value) messageChatSetTtl,
+    required TResult Function(MessageForumTopicCreated value)
+        messageForumTopicCreated,
+    required TResult Function(MessageForumTopicEdited value)
+        messageForumTopicEdited,
+    required TResult Function(MessageForumTopicIsClosedToggled value)
+        messageForumTopicIsClosedToggled,
     required TResult Function(MessageCustomServiceAction value)
         messageCustomServiceAction,
     required TResult Function(MessageGameScore value) messageGameScore,
@@ -7627,6 +7733,13 @@ extension MessageContentExtensions on MessageContent {
         return messageChatSetTheme.call(this as MessageChatSetTheme);
       case MessageChatSetTtl.constructor:
         return messageChatSetTtl.call(this as MessageChatSetTtl);
+      case MessageForumTopicCreated.constructor:
+        return messageForumTopicCreated.call(this as MessageForumTopicCreated);
+      case MessageForumTopicEdited.constructor:
+        return messageForumTopicEdited.call(this as MessageForumTopicEdited);
+      case MessageForumTopicIsClosedToggled.constructor:
+        return messageForumTopicIsClosedToggled
+            .call(this as MessageForumTopicIsClosedToggled);
       case MessageCustomServiceAction.constructor:
         return messageCustomServiceAction
             .call(this as MessageCustomServiceAction);
@@ -7706,6 +7819,10 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessageScreenshotTaken value)? messageScreenshotTaken,
     TResult Function(MessageChatSetTheme value)? messageChatSetTheme,
     TResult Function(MessageChatSetTtl value)? messageChatSetTtl,
+    TResult Function(MessageForumTopicCreated value)? messageForumTopicCreated,
+    TResult Function(MessageForumTopicEdited value)? messageForumTopicEdited,
+    TResult Function(MessageForumTopicIsClosedToggled value)?
+        messageForumTopicIsClosedToggled,
     TResult Function(MessageCustomServiceAction value)?
         messageCustomServiceAction,
     TResult Function(MessageGameScore value)? messageGameScore,
@@ -7925,6 +8042,23 @@ extension MessageContentExtensions on MessageContent {
       case MessageChatSetTtl.constructor:
         if (messageChatSetTtl != null) {
           return messageChatSetTtl.call(this as MessageChatSetTtl);
+        }
+        break;
+      case MessageForumTopicCreated.constructor:
+        if (messageForumTopicCreated != null) {
+          return messageForumTopicCreated
+              .call(this as MessageForumTopicCreated);
+        }
+        break;
+      case MessageForumTopicEdited.constructor:
+        if (messageForumTopicEdited != null) {
+          return messageForumTopicEdited.call(this as MessageForumTopicEdited);
+        }
+        break;
+      case MessageForumTopicIsClosedToggled.constructor:
+        if (messageForumTopicIsClosedToggled != null) {
+          return messageForumTopicIsClosedToggled
+              .call(this as MessageForumTopicIsClosedToggled);
         }
         break;
       case MessageCustomServiceAction.constructor:
@@ -8376,6 +8510,41 @@ extension MessageChatSetTtlExtensions on MessageChatSetTtl {
   }) =>
       MessageChatSetTtl(
         ttl: ttl ?? this.ttl,
+      );
+}
+
+extension MessageForumTopicCreatedExtensions on MessageForumTopicCreated {
+  MessageForumTopicCreated copyWith({
+    String? name,
+    ForumTopicIcon? icon,
+  }) =>
+      MessageForumTopicCreated(
+        name: name ?? this.name,
+        icon: icon ?? this.icon,
+      );
+}
+
+extension MessageForumTopicEditedExtensions on MessageForumTopicEdited {
+  MessageForumTopicEdited copyWith({
+    String? name,
+    bool? editIconCustomEmojiId,
+    int? iconCustomEmojiId,
+  }) =>
+      MessageForumTopicEdited(
+        name: name ?? this.name,
+        editIconCustomEmojiId:
+            editIconCustomEmojiId ?? this.editIconCustomEmojiId,
+        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+      );
+}
+
+extension MessageForumTopicIsClosedToggledExtensions
+    on MessageForumTopicIsClosedToggled {
+  MessageForumTopicIsClosedToggled copyWith({
+    bool? isClosed,
+  }) =>
+      MessageForumTopicIsClosedToggled(
+        isClosed: isClosed ?? this.isClosed,
       );
 }
 
@@ -11752,6 +11921,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventTitleChanged,
     required TResult Function(ChatEventUsernameChanged value)
         chatEventUsernameChanged,
+    required TResult Function(ChatEventActiveUsernamesChanged value)
+        chatEventActiveUsernamesChanged,
     required TResult Function(ChatEventHasProtectedContentToggled value)
         chatEventHasProtectedContentToggled,
     required TResult Function(ChatEventInvitesToggled value)
@@ -11778,6 +11949,18 @@ extension ChatEventActionExtensions on ChatEventAction {
     required TResult Function(
             ChatEventVideoChatParticipantVolumeLevelChanged value)
         chatEventVideoChatParticipantVolumeLevelChanged,
+    required TResult Function(ChatEventIsForumToggled value)
+        chatEventIsForumToggled,
+    required TResult Function(ChatEventForumTopicCreated value)
+        chatEventForumTopicCreated,
+    required TResult Function(ChatEventForumTopicEdited value)
+        chatEventForumTopicEdited,
+    required TResult Function(ChatEventForumTopicToggleIsClosed value)
+        chatEventForumTopicToggleIsClosed,
+    required TResult Function(ChatEventForumTopicDeleted value)
+        chatEventForumTopicDeleted,
+    required TResult Function(ChatEventForumTopicPinned value)
+        chatEventForumTopicPinned,
   }) {
     switch (getConstructor()) {
       case ChatEventMessageEdited.constructor:
@@ -11836,6 +12019,9 @@ extension ChatEventActionExtensions on ChatEventAction {
         return chatEventTitleChanged.call(this as ChatEventTitleChanged);
       case ChatEventUsernameChanged.constructor:
         return chatEventUsernameChanged.call(this as ChatEventUsernameChanged);
+      case ChatEventActiveUsernamesChanged.constructor:
+        return chatEventActiveUsernamesChanged
+            .call(this as ChatEventActiveUsernamesChanged);
       case ChatEventHasProtectedContentToggled.constructor:
         return chatEventHasProtectedContentToggled
             .call(this as ChatEventHasProtectedContentToggled);
@@ -11870,6 +12056,23 @@ extension ChatEventActionExtensions on ChatEventAction {
       case ChatEventVideoChatParticipantVolumeLevelChanged.constructor:
         return chatEventVideoChatParticipantVolumeLevelChanged
             .call(this as ChatEventVideoChatParticipantVolumeLevelChanged);
+      case ChatEventIsForumToggled.constructor:
+        return chatEventIsForumToggled.call(this as ChatEventIsForumToggled);
+      case ChatEventForumTopicCreated.constructor:
+        return chatEventForumTopicCreated
+            .call(this as ChatEventForumTopicCreated);
+      case ChatEventForumTopicEdited.constructor:
+        return chatEventForumTopicEdited
+            .call(this as ChatEventForumTopicEdited);
+      case ChatEventForumTopicToggleIsClosed.constructor:
+        return chatEventForumTopicToggleIsClosed
+            .call(this as ChatEventForumTopicToggleIsClosed);
+      case ChatEventForumTopicDeleted.constructor:
+        return chatEventForumTopicDeleted
+            .call(this as ChatEventForumTopicDeleted);
+      case ChatEventForumTopicPinned.constructor:
+        return chatEventForumTopicPinned
+            .call(this as ChatEventForumTopicPinned);
     }
     throw StateError('not handled type Generator');
   }
@@ -11908,6 +12111,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventStickerSetChanged,
     TResult Function(ChatEventTitleChanged value)? chatEventTitleChanged,
     TResult Function(ChatEventUsernameChanged value)? chatEventUsernameChanged,
+    TResult Function(ChatEventActiveUsernamesChanged value)?
+        chatEventActiveUsernamesChanged,
     TResult Function(ChatEventHasProtectedContentToggled value)?
         chatEventHasProtectedContentToggled,
     TResult Function(ChatEventInvitesToggled value)? chatEventInvitesToggled,
@@ -11930,6 +12135,17 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventVideoChatParticipantIsMutedToggled,
     TResult Function(ChatEventVideoChatParticipantVolumeLevelChanged value)?
         chatEventVideoChatParticipantVolumeLevelChanged,
+    TResult Function(ChatEventIsForumToggled value)? chatEventIsForumToggled,
+    TResult Function(ChatEventForumTopicCreated value)?
+        chatEventForumTopicCreated,
+    TResult Function(ChatEventForumTopicEdited value)?
+        chatEventForumTopicEdited,
+    TResult Function(ChatEventForumTopicToggleIsClosed value)?
+        chatEventForumTopicToggleIsClosed,
+    TResult Function(ChatEventForumTopicDeleted value)?
+        chatEventForumTopicDeleted,
+    TResult Function(ChatEventForumTopicPinned value)?
+        chatEventForumTopicPinned,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -12061,6 +12277,12 @@ extension ChatEventActionExtensions on ChatEventAction {
               .call(this as ChatEventUsernameChanged);
         }
         break;
+      case ChatEventActiveUsernamesChanged.constructor:
+        if (chatEventActiveUsernamesChanged != null) {
+          return chatEventActiveUsernamesChanged
+              .call(this as ChatEventActiveUsernamesChanged);
+        }
+        break;
       case ChatEventHasProtectedContentToggled.constructor:
         if (chatEventHasProtectedContentToggled != null) {
           return chatEventHasProtectedContentToggled
@@ -12129,6 +12351,41 @@ extension ChatEventActionExtensions on ChatEventAction {
         if (chatEventVideoChatParticipantVolumeLevelChanged != null) {
           return chatEventVideoChatParticipantVolumeLevelChanged
               .call(this as ChatEventVideoChatParticipantVolumeLevelChanged);
+        }
+        break;
+      case ChatEventIsForumToggled.constructor:
+        if (chatEventIsForumToggled != null) {
+          return chatEventIsForumToggled.call(this as ChatEventIsForumToggled);
+        }
+        break;
+      case ChatEventForumTopicCreated.constructor:
+        if (chatEventForumTopicCreated != null) {
+          return chatEventForumTopicCreated
+              .call(this as ChatEventForumTopicCreated);
+        }
+        break;
+      case ChatEventForumTopicEdited.constructor:
+        if (chatEventForumTopicEdited != null) {
+          return chatEventForumTopicEdited
+              .call(this as ChatEventForumTopicEdited);
+        }
+        break;
+      case ChatEventForumTopicToggleIsClosed.constructor:
+        if (chatEventForumTopicToggleIsClosed != null) {
+          return chatEventForumTopicToggleIsClosed
+              .call(this as ChatEventForumTopicToggleIsClosed);
+        }
+        break;
+      case ChatEventForumTopicDeleted.constructor:
+        if (chatEventForumTopicDeleted != null) {
+          return chatEventForumTopicDeleted
+              .call(this as ChatEventForumTopicDeleted);
+        }
+        break;
+      case ChatEventForumTopicPinned.constructor:
+        if (chatEventForumTopicPinned != null) {
+          return chatEventForumTopicPinned
+              .call(this as ChatEventForumTopicPinned);
         }
         break;
     }
@@ -12367,6 +12624,18 @@ extension ChatEventUsernameChangedExtensions on ChatEventUsernameChanged {
       );
 }
 
+extension ChatEventActiveUsernamesChangedExtensions
+    on ChatEventActiveUsernamesChanged {
+  ChatEventActiveUsernamesChanged copyWith({
+    List<String>? oldUsernames,
+    List<String>? newUsernames,
+  }) =>
+      ChatEventActiveUsernamesChanged(
+        oldUsernames: oldUsernames ?? this.oldUsernames,
+        newUsernames: newUsernames ?? this.newUsernames,
+      );
+}
+
 extension ChatEventHasProtectedContentToggledExtensions
     on ChatEventHasProtectedContentToggled {
   ChatEventHasProtectedContentToggled copyWith({
@@ -12488,6 +12757,65 @@ extension ChatEventVideoChatParticipantVolumeLevelChangedExtensions
       );
 }
 
+extension ChatEventIsForumToggledExtensions on ChatEventIsForumToggled {
+  ChatEventIsForumToggled copyWith({
+    bool? isForum,
+  }) =>
+      ChatEventIsForumToggled(
+        isForum: isForum ?? this.isForum,
+      );
+}
+
+extension ChatEventForumTopicCreatedExtensions on ChatEventForumTopicCreated {
+  ChatEventForumTopicCreated copyWith({
+    ForumTopicInfo? topicInfo,
+  }) =>
+      ChatEventForumTopicCreated(
+        topicInfo: topicInfo ?? this.topicInfo,
+      );
+}
+
+extension ChatEventForumTopicEditedExtensions on ChatEventForumTopicEdited {
+  ChatEventForumTopicEdited copyWith({
+    ForumTopicInfo? oldTopicInfo,
+    ForumTopicInfo? newTopicInfo,
+  }) =>
+      ChatEventForumTopicEdited(
+        oldTopicInfo: oldTopicInfo ?? this.oldTopicInfo,
+        newTopicInfo: newTopicInfo ?? this.newTopicInfo,
+      );
+}
+
+extension ChatEventForumTopicToggleIsClosedExtensions
+    on ChatEventForumTopicToggleIsClosed {
+  ChatEventForumTopicToggleIsClosed copyWith({
+    ForumTopicInfo? topicInfo,
+  }) =>
+      ChatEventForumTopicToggleIsClosed(
+        topicInfo: topicInfo ?? this.topicInfo,
+      );
+}
+
+extension ChatEventForumTopicDeletedExtensions on ChatEventForumTopicDeleted {
+  ChatEventForumTopicDeleted copyWith({
+    ForumTopicInfo? topicInfo,
+  }) =>
+      ChatEventForumTopicDeleted(
+        topicInfo: topicInfo ?? this.topicInfo,
+      );
+}
+
+extension ChatEventForumTopicPinnedExtensions on ChatEventForumTopicPinned {
+  ChatEventForumTopicPinned copyWith({
+    ForumTopicInfo? oldTopicInfo,
+    ForumTopicInfo? newTopicInfo,
+  }) =>
+      ChatEventForumTopicPinned(
+        oldTopicInfo: oldTopicInfo ?? this.oldTopicInfo,
+        newTopicInfo: newTopicInfo ?? this.newTopicInfo,
+      );
+}
+
 extension ChatEventExtensions on ChatEvent {
   ChatEvent copyWith({
     int? id,
@@ -12526,6 +12854,7 @@ extension ChatEventLogFiltersExtensions on ChatEventLogFilters {
     bool? settingChanges,
     bool? inviteLinkChanges,
     bool? videoChatChanges,
+    bool? forumChanges,
   }) =>
       ChatEventLogFilters(
         messageEdits: messageEdits ?? this.messageEdits,
@@ -12540,6 +12869,7 @@ extension ChatEventLogFiltersExtensions on ChatEventLogFilters {
         settingChanges: settingChanges ?? this.settingChanges,
         inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
         videoChatChanges: videoChatChanges ?? this.videoChatChanges,
+        forumChanges: forumChanges ?? this.forumChanges,
       );
 }
 
@@ -12834,6 +13164,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
     required TResult Function(PremiumFeatureEmojiStatus value) emojiStatus,
     required TResult Function(PremiumFeatureAnimatedProfilePhoto value)
         animatedProfilePhoto,
+    required TResult Function(PremiumFeatureForumTopicIcon value)
+        forumTopicIcon,
     required TResult Function(PremiumFeatureAppIcons value) appIcons,
   }) {
     switch (getConstructor()) {
@@ -12865,6 +13197,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
       case PremiumFeatureAnimatedProfilePhoto.constructor:
         return animatedProfilePhoto
             .call(this as PremiumFeatureAnimatedProfilePhoto);
+      case PremiumFeatureForumTopicIcon.constructor:
+        return forumTopicIcon.call(this as PremiumFeatureForumTopicIcon);
       case PremiumFeatureAppIcons.constructor:
         return appIcons.call(this as PremiumFeatureAppIcons);
     }
@@ -12888,6 +13222,7 @@ extension PremiumFeatureExtensions on PremiumFeature {
     TResult Function(PremiumFeatureEmojiStatus value)? emojiStatus,
     TResult Function(PremiumFeatureAnimatedProfilePhoto value)?
         animatedProfilePhoto,
+    TResult Function(PremiumFeatureForumTopicIcon value)? forumTopicIcon,
     TResult Function(PremiumFeatureAppIcons value)? appIcons,
     required TResult Function() orElse,
   }) {
@@ -12954,6 +13289,11 @@ extension PremiumFeatureExtensions on PremiumFeature {
         if (animatedProfilePhoto != null) {
           return animatedProfilePhoto
               .call(this as PremiumFeatureAnimatedProfilePhoto);
+        }
+        break;
+      case PremiumFeatureForumTopicIcon.constructor:
+        if (forumTopicIcon != null) {
+          return forumTopicIcon.call(this as PremiumFeatureForumTopicIcon);
         }
         break;
       case PremiumFeatureAppIcons.constructor:
@@ -16374,18 +16714,18 @@ extension MessageLinkInfoExtensions on MessageLinkInfo {
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
+    int? messageThreadId,
     Message? message,
     int? mediaTimestamp,
     bool? forAlbum,
-    bool? forComment,
   }) =>
       MessageLinkInfo(
         isPublic: isPublic ?? this.isPublic,
         chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
         message: message ?? this.message,
         mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
         forAlbum: forAlbum ?? this.forAlbum,
-        forComment: forComment ?? this.forComment,
       );
 }
 
@@ -17908,6 +18248,7 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateChatFilters value) chatFilters,
     required TResult Function(UpdateChatOnlineMemberCount value)
         chatOnlineMemberCount,
+    required TResult Function(UpdateForumTopicInfo value) forumTopicInfo,
     required TResult Function(UpdateScopeNotificationSettings value)
         scopeNotificationSettings,
     required TResult Function(UpdateNotification value) notification,
@@ -18094,6 +18435,8 @@ extension UpdateExtensions on Update {
         return chatFilters.call(this as UpdateChatFilters);
       case UpdateChatOnlineMemberCount.constructor:
         return chatOnlineMemberCount.call(this as UpdateChatOnlineMemberCount);
+      case UpdateForumTopicInfo.constructor:
+        return forumTopicInfo.call(this as UpdateForumTopicInfo);
       case UpdateScopeNotificationSettings.constructor:
         return scopeNotificationSettings
             .call(this as UpdateScopeNotificationSettings);
@@ -18287,6 +18630,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateChatIsMarkedAsUnread value)? chatIsMarkedAsUnread,
     TResult Function(UpdateChatFilters value)? chatFilters,
     TResult Function(UpdateChatOnlineMemberCount value)? chatOnlineMemberCount,
+    TResult Function(UpdateForumTopicInfo value)? forumTopicInfo,
     TResult Function(UpdateScopeNotificationSettings value)?
         scopeNotificationSettings,
     TResult Function(UpdateNotification value)? notification,
@@ -18573,6 +18917,11 @@ extension UpdateExtensions on Update {
         if (chatOnlineMemberCount != null) {
           return chatOnlineMemberCount
               .call(this as UpdateChatOnlineMemberCount);
+        }
+        break;
+      case UpdateForumTopicInfo.constructor:
+        if (forumTopicInfo != null) {
+          return forumTopicInfo.call(this as UpdateForumTopicInfo);
         }
         break;
       case UpdateScopeNotificationSettings.constructor:
@@ -19381,6 +19730,17 @@ extension UpdateChatOnlineMemberCountExtensions on UpdateChatOnlineMemberCount {
       UpdateChatOnlineMemberCount(
         chatId: chatId ?? this.chatId,
         onlineMemberCount: onlineMemberCount ?? this.onlineMemberCount,
+      );
+}
+
+extension UpdateForumTopicInfoExtensions on UpdateForumTopicInfo {
+  UpdateForumTopicInfo copyWith({
+    int? chatId,
+    ForumTopicInfo? info,
+  }) =>
+      UpdateForumTopicInfo(
+        chatId: chatId ?? this.chatId,
+        info: info ?? this.info,
       );
 }
 
@@ -21180,11 +21540,11 @@ extension GetMessagePublicForwardsExtensions on GetMessagePublicForwards {
       );
 }
 
-extension GetChatSponsoredMessageExtensions on GetChatSponsoredMessage {
-  GetChatSponsoredMessage copyWith({
+extension GetChatSponsoredMessagesExtensions on GetChatSponsoredMessages {
+  GetChatSponsoredMessages copyWith({
     int? chatId,
   }) =>
-      GetChatSponsoredMessage(
+      GetChatSponsoredMessages(
         chatId: chatId ?? this.chatId,
       );
 }
@@ -21217,14 +21577,14 @@ extension GetMessageLinkExtensions on GetMessageLink {
     int? messageId,
     int? mediaTimestamp,
     bool? forAlbum,
-    bool? forComment,
+    bool? inMessageThread,
   }) =>
       GetMessageLink(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
         forAlbum: forAlbum ?? this.forAlbum,
-        forComment: forComment ?? this.forComment,
+        inMessageThread: inMessageThread ?? this.inMessageThread,
       );
 }
 
@@ -21384,6 +21744,7 @@ extension SendInlineQueryResultMessageExtensions
 extension ForwardMessagesExtensions on ForwardMessages {
   ForwardMessages copyWith({
     int? chatId,
+    int? messageThreadId,
     int? fromChatId,
     List<int>? messageIds,
     MessageSendOptions? options,
@@ -21393,6 +21754,7 @@ extension ForwardMessagesExtensions on ForwardMessages {
   }) =>
       ForwardMessages(
         chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
         fromChatId: fromChatId ?? this.fromChatId,
         messageIds: messageIds ?? this.messageIds,
         options: options ?? this.options,
@@ -21635,6 +21997,58 @@ extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         schedulingState: schedulingState ?? this.schedulingState,
+      );
+}
+
+extension CreateForumTopicExtensions on CreateForumTopic {
+  CreateForumTopic copyWith({
+    int? chatId,
+    String? name,
+    ForumTopicIcon? icon,
+  }) =>
+      CreateForumTopic(
+        chatId: chatId ?? this.chatId,
+        name: name ?? this.name,
+        icon: icon ?? this.icon,
+      );
+}
+
+extension EditForumTopicExtensions on EditForumTopic {
+  EditForumTopic copyWith({
+    int? chatId,
+    int? messageThreadId,
+    String? name,
+    int? iconCustomEmojiId,
+  }) =>
+      EditForumTopic(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        name: name ?? this.name,
+        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+      );
+}
+
+extension ToggleForumTopicIsClosedExtensions on ToggleForumTopicIsClosed {
+  ToggleForumTopicIsClosed copyWith({
+    int? chatId,
+    int? messageThreadId,
+    bool? isClosed,
+  }) =>
+      ToggleForumTopicIsClosed(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        isClosed: isClosed ?? this.isClosed,
+      );
+}
+
+extension DeleteForumTopicExtensions on DeleteForumTopic {
+  DeleteForumTopic copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      DeleteForumTopic(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
       );
 }
 
@@ -21980,6 +22394,7 @@ extension OpenWebAppExtensions on OpenWebApp {
     String? url,
     ThemeParameters? theme,
     String? applicationName,
+    int? messageThreadId,
     int? replyToMessageId,
   }) =>
       OpenWebApp(
@@ -21988,6 +22403,7 @@ extension OpenWebAppExtensions on OpenWebApp {
         url: url ?? this.url,
         theme: theme ?? this.theme,
         applicationName: applicationName ?? this.applicationName,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
         replyToMessageId: replyToMessageId ?? this.replyToMessageId,
       );
 }
@@ -22243,12 +22659,36 @@ extension ReadAllChatMentionsExtensions on ReadAllChatMentions {
       );
 }
 
+extension ReadAllMessageThreadMentionsExtensions
+    on ReadAllMessageThreadMentions {
+  ReadAllMessageThreadMentions copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      ReadAllMessageThreadMentions(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
+}
+
 extension ReadAllChatReactionsExtensions on ReadAllChatReactions {
   ReadAllChatReactions copyWith({
     int? chatId,
   }) =>
       ReadAllChatReactions(
         chatId: chatId ?? this.chatId,
+      );
+}
+
+extension ReadAllMessageThreadReactionsExtensions
+    on ReadAllMessageThreadReactions {
+  ReadAllMessageThreadReactions copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      ReadAllMessageThreadReactions(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
       );
 }
 
@@ -22633,6 +23073,18 @@ extension UnpinAllChatMessagesExtensions on UnpinAllChatMessages {
   }) =>
       UnpinAllChatMessages(
         chatId: chatId ?? this.chatId,
+      );
+}
+
+extension UnpinAllMessageThreadMessagesExtensions
+    on UnpinAllMessageThreadMessages {
+  UnpinAllMessageThreadMessages copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      UnpinAllMessageThreadMessages(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
       );
 }
 
@@ -24231,6 +24683,26 @@ extension SetUsernameExtensions on SetUsername {
       );
 }
 
+extension ToggleUsernameIsActiveExtensions on ToggleUsernameIsActive {
+  ToggleUsernameIsActive copyWith({
+    String? username,
+    bool? isActive,
+  }) =>
+      ToggleUsernameIsActive(
+        username: username ?? this.username,
+        isActive: isActive ?? this.isActive,
+      );
+}
+
+extension ReorderActiveUsernamesExtensions on ReorderActiveUsernames {
+  ReorderActiveUsernames copyWith({
+    List<String>? usernames,
+  }) =>
+      ReorderActiveUsernames(
+        usernames: usernames ?? this.usernames,
+      );
+}
+
 extension SetEmojiStatusExtensions on SetEmojiStatus {
   SetEmojiStatus copyWith({
     EmojiStatus? emojiStatus,
@@ -24410,6 +24882,42 @@ extension SetSupergroupUsernameExtensions on SetSupergroupUsername {
       );
 }
 
+extension ToggleSupergroupUsernameIsActiveExtensions
+    on ToggleSupergroupUsernameIsActive {
+  ToggleSupergroupUsernameIsActive copyWith({
+    int? supergroupId,
+    String? username,
+    bool? isActive,
+  }) =>
+      ToggleSupergroupUsernameIsActive(
+        supergroupId: supergroupId ?? this.supergroupId,
+        username: username ?? this.username,
+        isActive: isActive ?? this.isActive,
+      );
+}
+
+extension DisableAllSupergroupUsernamesExtensions
+    on DisableAllSupergroupUsernames {
+  DisableAllSupergroupUsernames copyWith({
+    int? supergroupId,
+  }) =>
+      DisableAllSupergroupUsernames(
+        supergroupId: supergroupId ?? this.supergroupId,
+      );
+}
+
+extension ReorderSupergroupActiveUsernamesExtensions
+    on ReorderSupergroupActiveUsernames {
+  ReorderSupergroupActiveUsernames copyWith({
+    int? supergroupId,
+    List<String>? usernames,
+  }) =>
+      ReorderSupergroupActiveUsernames(
+        supergroupId: supergroupId ?? this.supergroupId,
+        usernames: usernames ?? this.usernames,
+      );
+}
+
 extension SetSupergroupStickerSetExtensions on SetSupergroupStickerSet {
   SetSupergroupStickerSet copyWith({
     int? supergroupId,
@@ -24467,6 +24975,17 @@ extension ToggleSupergroupIsAllHistoryAvailableExtensions
         supergroupId: supergroupId ?? this.supergroupId,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+      );
+}
+
+extension ToggleSupergroupIsForumExtensions on ToggleSupergroupIsForum {
+  ToggleSupergroupIsForum copyWith({
+    int? supergroupId,
+    bool? isForum,
+  }) =>
+      ToggleSupergroupIsForum(
+        supergroupId: supergroupId ?? this.supergroupId,
+        isForum: isForum ?? this.isForum,
       );
 }
 

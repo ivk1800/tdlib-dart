@@ -26,6 +26,7 @@ class Message extends TdObject {
     required this.canReportReactions,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
+    required this.isTopicMessage,
     required this.containsUnreadMention,
     required this.date,
     required this.editDate,
@@ -118,6 +119,9 @@ class Message extends TdObject {
   /// [isChannelPost] True, if the message is a channel post. All messages to
   /// channels are channel posts, all other messages are not channel posts
   final bool isChannelPost;
+
+  /// [isTopicMessage] True, if the message is a forum topic message
+  final bool isTopicMessage;
 
   /// [containsUnreadMention] True, if the message contains an unread mention
   /// for the current user
@@ -212,6 +216,7 @@ class Message extends TdObject {
       canReportReactions: json['can_report_reactions'],
       hasTimestampedMedia: json['has_timestamped_media'],
       isChannelPost: json['is_channel_post'],
+      isTopicMessage: json['is_topic_message'],
       containsUnreadMention: json['contains_unread_mention'],
       date: json['date'],
       editDate: json['edit_date'],
@@ -261,6 +266,7 @@ class Message extends TdObject {
         'can_report_reactions': canReportReactions,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
+        'is_topic_message': isTopicMessage,
         'contains_unread_mention': containsUnreadMention,
         'date': date,
         'edit_date': editDate,

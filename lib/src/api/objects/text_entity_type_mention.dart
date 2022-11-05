@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A mention of a user by their username
+/// A mention of a user, a supergroup, or a channel by their username
 @immutable
 class TextEntityTypeMention extends TextEntityType {
   const TextEntityTypeMention();

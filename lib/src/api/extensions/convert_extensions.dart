@@ -272,10 +272,22 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ChatEvent.fromJson(this);
       case 'chatEventAction':
         return ChatEventAction.fromJson(this);
+      case 'chatEventActiveUsernamesChanged':
+        return ChatEventActiveUsernamesChanged.fromJson(this);
       case 'chatEventAvailableReactionsChanged':
         return ChatEventAvailableReactionsChanged.fromJson(this);
       case 'chatEventDescriptionChanged':
         return ChatEventDescriptionChanged.fromJson(this);
+      case 'chatEventForumTopicCreated':
+        return ChatEventForumTopicCreated.fromJson(this);
+      case 'chatEventForumTopicDeleted':
+        return ChatEventForumTopicDeleted.fromJson(this);
+      case 'chatEventForumTopicEdited':
+        return ChatEventForumTopicEdited.fromJson(this);
+      case 'chatEventForumTopicPinned':
+        return ChatEventForumTopicPinned.fromJson(this);
+      case 'chatEventForumTopicToggleIsClosed':
+        return ChatEventForumTopicToggleIsClosed.fromJson(this);
       case 'chatEventHasProtectedContentToggled':
         return ChatEventHasProtectedContentToggled.fromJson(this);
       case 'chatEventInviteLinkDeleted':
@@ -288,6 +300,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ChatEventInvitesToggled.fromJson(this);
       case 'chatEventIsAllHistoryAvailableToggled':
         return ChatEventIsAllHistoryAvailableToggled.fromJson(this);
+      case 'chatEventIsForumToggled':
+        return ChatEventIsForumToggled.fromJson(this);
       case 'chatEventLinkedChatChanged':
         return ChatEventLinkedChatChanged.fromJson(this);
       case 'chatEventLocationChanged':
@@ -656,6 +670,12 @@ extension ConvertExtensions on Map<String, dynamic> {
         return FileTypeWallpaper.fromJson(this);
       case 'formattedText':
         return FormattedText.fromJson(this);
+      case 'forumTopic':
+        return ForumTopic.fromJson(this);
+      case 'forumTopicIcon':
+        return ForumTopicIcon.fromJson(this);
+      case 'forumTopicInfo':
+        return ForumTopicInfo.fromJson(this);
       case 'foundFileDownloads':
         return FoundFileDownloads.fromJson(this);
       case 'foundMessages':
@@ -1134,6 +1154,12 @@ extension ConvertExtensions on Map<String, dynamic> {
         return MessageFileTypePrivate.fromJson(this);
       case 'messageFileTypeUnknown':
         return MessageFileTypeUnknown.fromJson(this);
+      case 'messageForumTopicCreated':
+        return MessageForumTopicCreated.fromJson(this);
+      case 'messageForumTopicEdited':
+        return MessageForumTopicEdited.fromJson(this);
+      case 'messageForumTopicIsClosedToggled':
+        return MessageForumTopicIsClosedToggled.fromJson(this);
       case 'messageForwardInfo':
         return MessageForwardInfo.fromJson(this);
       case 'messageForwardOrigin':
@@ -1548,6 +1574,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return PremiumFeatureDisabledAds.fromJson(this);
       case 'premiumFeatureEmojiStatus':
         return PremiumFeatureEmojiStatus.fromJson(this);
+      case 'premiumFeatureForumTopicIcon':
+        return PremiumFeatureForumTopicIcon.fromJson(this);
       case 'premiumFeatureImprovedDownloadSpeed':
         return PremiumFeatureImprovedDownloadSpeed.fromJson(this);
       case 'premiumFeatureIncreasedLimits':
@@ -1862,6 +1890,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return SpeechRecognitionResultText.fromJson(this);
       case 'sponsoredMessage':
         return SponsoredMessage.fromJson(this);
+      case 'sponsoredMessages':
+        return SponsoredMessages.fromJson(this);
       case 'statisticalGraph':
         return StatisticalGraph.fromJson(this);
       case 'statisticalGraphAsync':
@@ -2186,6 +2216,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return UpdateFileGenerationStop.fromJson(this);
       case 'updateFileRemovedFromDownloads':
         return UpdateFileRemovedFromDownloads.fromJson(this);
+      case 'updateForumTopicInfo':
+        return UpdateForumTopicInfo.fromJson(this);
       case 'updateGroupCall':
         return UpdateGroupCall.fromJson(this);
       case 'updateGroupCallParticipant':
@@ -2367,6 +2399,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return UserTypeRegular.fromJson(this);
       case 'userTypeUnknown':
         return UserTypeUnknown.fromJson(this);
+      case 'usernames':
+        return Usernames.fromJson(this);
       case 'users':
         return Users.fromJson(this);
       case 'validatedOrderInfo':

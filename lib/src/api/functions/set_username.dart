@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the username of the current user
+/// Changes the editable username of the current user
 /// Returns [Ok]
 @immutable
 class SetUsername extends TdFunction {
@@ -11,7 +11,8 @@ class SetUsername extends TdFunction {
   });
 
   /// [username] The new value of the username. Use an empty string to remove
-  /// the username
+  /// the username. The username can't be completely removed if there is another
+  /// active or disabled username
   final String username;
 
   static const String constructor = 'setUsername';

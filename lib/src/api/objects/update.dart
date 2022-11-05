@@ -60,6 +60,7 @@ abstract class Update extends TdObject {
   /// [UpdateFileGenerationStop]
   /// [UpdateFileRemovedFromDownloads]
   /// [UpdateFile]
+  /// [UpdateForumTopicInfo]
   /// [UpdateGroupCallParticipant]
   /// [UpdateGroupCall]
   /// [UpdateHavePendingNotifications]
@@ -220,6 +221,8 @@ abstract class Update extends TdObject {
         return UpdateFileGenerationStop.fromJson(json);
       case UpdateFileRemovedFromDownloads.constructor:
         return UpdateFileRemovedFromDownloads.fromJson(json);
+      case UpdateForumTopicInfo.constructor:
+        return UpdateForumTopicInfo.fromJson(json);
       case UpdateGroupCall.constructor:
         return UpdateGroupCall.fromJson(json);
       case UpdateGroupCallParticipant.constructor:

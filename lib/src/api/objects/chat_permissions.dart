@@ -14,6 +14,7 @@ class ChatPermissions extends TdObject {
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
+    required this.canManageTopics,
   });
 
   /// [canSendMessages] True, if the user can send text messages, contacts,
@@ -48,6 +49,9 @@ class ChatPermissions extends TdObject {
   /// [canPinMessages] True, if the user can pin messages
   final bool canPinMessages;
 
+  /// [canManageTopics] True, if the user can manage topics
+  final bool canManageTopics;
+
   static const String constructor = 'chatPermissions';
 
   static ChatPermissions? fromJson(Map<String, dynamic>? json) {
@@ -64,6 +68,7 @@ class ChatPermissions extends TdObject {
       canChangeInfo: json['can_change_info'],
       canInviteUsers: json['can_invite_users'],
       canPinMessages: json['can_pin_messages'],
+      canManageTopics: json['can_manage_topics'],
     );
   }
 
@@ -80,6 +85,7 @@ class ChatPermissions extends TdObject {
         'can_change_info': canChangeInfo,
         'can_invite_users': canInviteUsers,
         'can_pin_messages': canPinMessages,
+        'can_manage_topics': canManageTopics,
         '@type': constructor,
       };
 

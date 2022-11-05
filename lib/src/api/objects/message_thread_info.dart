@@ -8,7 +8,7 @@ class MessageThreadInfo extends TdObject {
   const MessageThreadInfo({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyInfo,
+    this.replyInfo,
     required this.unreadMessageCount,
     required this.messages,
     this.draftMessage,
@@ -20,8 +20,9 @@ class MessageThreadInfo extends TdObject {
   /// [messageThreadId] Message thread identifier, unique within the chat
   final int messageThreadId;
 
-  /// [replyInfo] Information about the message thread
-  final MessageReplyInfo replyInfo;
+  /// [replyInfo] Information about the message thread; may be null for forum
+  /// topic threads
+  final MessageReplyInfo? replyInfo;
 
   /// [unreadMessageCount] Approximate number of unread messages in the message
   /// thread
@@ -45,7 +46,7 @@ class MessageThreadInfo extends TdObject {
     return MessageThreadInfo(
       chatId: json['chat_id'],
       messageThreadId: json['message_thread_id'],
-      replyInfo: MessageReplyInfo.fromJson(json['reply_info'])!,
+      replyInfo: MessageReplyInfo.fromJson(json['reply_info']),
       unreadMessageCount: json['unread_message_count'],
       messages: List<Message>.from((json['messages'] ?? [])
           .map((item) => Message.fromJson(item))
@@ -61,7 +62,7 @@ class MessageThreadInfo extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
-        'reply_info': replyInfo.toJson(),
+        'reply_info': replyInfo?.toJson(),
         'unread_message_count': unreadMessageCount,
         'messages': messages.map((item) => item.toJson()).toList(),
         'draft_message': draftMessage?.toJson(),

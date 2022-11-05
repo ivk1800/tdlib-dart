@@ -14,7 +14,8 @@ class BasicGroupFullInfo extends TdObject {
     required this.botCommands,
   });
 
-  /// [photo] Chat photo; may be null
+  /// [photo] Chat photo; may be null if empty or unknown. If non-null, then it
+  /// is the same photo as in chat.photo
   final ChatPhoto? photo;
 
   /// param_[description] Group description. Updated only after the basic group

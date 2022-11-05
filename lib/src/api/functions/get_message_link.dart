@@ -14,7 +14,7 @@ class GetMessageLink extends TdFunction {
     required this.messageId,
     required this.mediaTimestamp,
     required this.forAlbum,
-    required this.forComment,
+    required this.inMessageThread,
   });
 
   /// [chatId] Identifier of the chat to which the message belongs
@@ -31,9 +31,9 @@ class GetMessageLink extends TdFunction {
   /// [forAlbum] Pass true to create a link for the whole media album
   final bool forAlbum;
 
-  /// [forComment] Pass true to create a link to the message as a channel post
-  /// comment, or from a message thread
-  final bool forComment;
+  /// [inMessageThread] Pass true to create a link to the message as a channel
+  /// post comment, in a message thread, or a forum topic
+  final bool inMessageThread;
 
   static const String constructor = 'getMessageLink';
 
@@ -46,7 +46,7 @@ class GetMessageLink extends TdFunction {
         'message_id': messageId,
         'media_timestamp': mediaTimestamp,
         'for_album': forAlbum,
-        'for_comment': forComment,
+        'in_message_thread': inMessageThread,
         '@type': constructor,
       };
 

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The chat is public, because it has username
+/// The chat is public, because it has an active username
 @immutable
 class PublicChatTypeHasUsername extends PublicChatType {
   const PublicChatTypeHasUsername();

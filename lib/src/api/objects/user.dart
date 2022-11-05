@@ -9,7 +9,7 @@ class User extends TdObject {
     required this.id,
     required this.firstName,
     required this.lastName,
-    required this.username,
+    this.usernames,
     required this.phoneNumber,
     required this.status,
     this.profilePhoto,
@@ -37,8 +37,8 @@ class User extends TdObject {
   /// [lastName] Last name of the user
   final String lastName;
 
-  /// [username] Username of the user
-  final String username;
+  /// [usernames] Usernames of the user; may be null
+  final Usernames? usernames;
 
   /// [phoneNumber] Phone number of the user
   final String phoneNumber;
@@ -106,7 +106,7 @@ class User extends TdObject {
       id: json['id'],
       firstName: json['first_name'],
       lastName: json['last_name'],
-      username: json['username'],
+      usernames: Usernames.fromJson(json['usernames']),
       phoneNumber: json['phone_number'],
       status: UserStatus.fromJson(json['status'])!,
       profilePhoto: ProfilePhoto.fromJson(json['profile_photo']),
@@ -134,7 +134,7 @@ class User extends TdObject {
         'id': id,
         'first_name': firstName,
         'last_name': lastName,
-        'username': username,
+        'usernames': usernames?.toJson(),
         'phone_number': phoneNumber,
         'status': status.toJson(),
         'profile_photo': profilePhoto?.toJson(),

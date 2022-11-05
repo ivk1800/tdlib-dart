@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Deletes a chat along with all messages in the corresponding chat for all
-/// chat members. For group chats this will release the username and remove
+/// chat members. For group chats this will release the usernames and remove
 /// all members. Use the field chat.can_be_deleted_for_all_users to find
 /// whether the method can be applied to the chat
 /// Returns [Ok]
