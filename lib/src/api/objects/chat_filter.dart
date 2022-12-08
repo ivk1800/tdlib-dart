@@ -34,21 +34,21 @@ class ChatFilter extends TdObject {
   final String iconName;
 
   /// [pinnedChatIds] The chat identifiers of pinned chats in the filtered chat
-  /// list. There can be up to GetOption("chat_filter_chosen_chat_count_max")
+  /// list. There can be up to getOption("chat_filter_chosen_chat_count_max")
   /// pinned and always included non-secret chats and the same number of secret
   /// chats, but the limit can be increased with Telegram Premium
   final List<int> pinnedChatIds;
 
   /// [includedChatIds] The chat identifiers of always included chats in the
   /// filtered chat list. There can be up to
-  /// GetOption("chat_filter_chosen_chat_count_max") pinned and always included
+  /// getOption("chat_filter_chosen_chat_count_max") pinned and always included
   /// non-secret chats and the same number of secret chats, but the limit can be
   /// increased with Telegram Premium
   final List<int> includedChatIds;
 
   /// [excludedChatIds] The chat identifiers of always excluded chats in the
   /// filtered chat list. There can be up to
-  /// GetOption("chat_filter_chosen_chat_count_max") always excluded non-secret
+  /// getOption("chat_filter_chosen_chat_count_max") always excluded non-secret
   /// chats and the same number of secret chats, but the limit can be increased
   /// with Telegram Premium
   final List<int> excludedChatIds;

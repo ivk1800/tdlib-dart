@@ -25,7 +25,7 @@ class EditMessageCaption extends TdFunction {
   final ReplyMarkup? replyMarkup;
 
   /// [caption] New message content caption;
-  /// 0-GetOption("message_caption_length_max") characters; pass null to remove
+  /// 0-getOption("message_caption_length_max") characters; pass null to remove
   /// caption
   final FormattedText? caption;
 

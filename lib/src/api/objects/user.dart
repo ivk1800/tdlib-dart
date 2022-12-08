@@ -19,6 +19,7 @@ class User extends TdObject {
     required this.isVerified,
     required this.isPremium,
     required this.isSupport,
+    required this.hasAnonymousPhoneNumber,
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
@@ -69,6 +70,10 @@ class User extends TdObject {
   /// [isSupport] True, if the user is Telegram support account
   final bool isSupport;
 
+  /// [hasAnonymousPhoneNumber] True, if the user's phone number was bought on
+  /// Fragment and isn't tied to a SIM card
+  final bool hasAnonymousPhoneNumber;
+
   /// [restrictionReason] If non-empty, it contains a human-readable description
   /// of the reason why access to this user must be restricted
   final String restrictionReason;
@@ -81,7 +86,7 @@ class User extends TdObject {
 
   /// [haveAccess] If false, the user is inaccessible, and the only information
   /// known about the user is inside this class. Identifier of the user can't be
-  /// passed to any method except GetUser
+  /// passed to any method
   final bool haveAccess;
 
   /// [type] Type of the user
@@ -116,6 +121,7 @@ class User extends TdObject {
       isVerified: json['is_verified'],
       isPremium: json['is_premium'],
       isSupport: json['is_support'],
+      hasAnonymousPhoneNumber: json['has_anonymous_phone_number'],
       restrictionReason: json['restriction_reason'],
       isScam: json['is_scam'],
       isFake: json['is_fake'],
@@ -144,6 +150,7 @@ class User extends TdObject {
         'is_verified': isVerified,
         'is_premium': isPremium,
         'is_support': isSupport,
+        'has_anonymous_phone_number': hasAnonymousPhoneNumber,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,

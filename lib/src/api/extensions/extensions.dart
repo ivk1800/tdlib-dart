@@ -20,6 +20,7 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     required TResult Function(AuthenticationCodeTypeFlashCall value) flashCall,
     required TResult Function(AuthenticationCodeTypeMissedCall value)
         missedCall,
+    required TResult Function(AuthenticationCodeTypeFragment value) fragment,
   }) {
     switch (getConstructor()) {
       case AuthenticationCodeTypeTelegramMessage.constructor:
@@ -33,6 +34,8 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
         return flashCall.call(this as AuthenticationCodeTypeFlashCall);
       case AuthenticationCodeTypeMissedCall.constructor:
         return missedCall.call(this as AuthenticationCodeTypeMissedCall);
+      case AuthenticationCodeTypeFragment.constructor:
+        return fragment.call(this as AuthenticationCodeTypeFragment);
     }
     throw StateError('not handled type Generator');
   }
@@ -44,6 +47,7 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     TResult Function(AuthenticationCodeTypeCall value)? call,
     TResult Function(AuthenticationCodeTypeFlashCall value)? flashCall,
     TResult Function(AuthenticationCodeTypeMissedCall value)? missedCall,
+    TResult Function(AuthenticationCodeTypeFragment value)? fragment,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -71,6 +75,11 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
       case AuthenticationCodeTypeMissedCall.constructor:
         if (missedCall != null) {
           return missedCall.call(this as AuthenticationCodeTypeMissedCall);
+        }
+        break;
+      case AuthenticationCodeTypeFragment.constructor:
+        if (fragment != null) {
+          return fragment.call(this as AuthenticationCodeTypeFragment);
         }
         break;
     }
@@ -124,6 +133,18 @@ extension AuthenticationCodeTypeMissedCallExtensions
   }) =>
       AuthenticationCodeTypeMissedCall(
         phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+        length: length ?? this.length,
+      );
+}
+
+extension AuthenticationCodeTypeFragmentExtensions
+    on AuthenticationCodeTypeFragment {
+  AuthenticationCodeTypeFragment copyWith({
+    String? url,
+    int? length,
+  }) =>
+      AuthenticationCodeTypeFragment(
+        url: url ?? this.url,
         length: length ?? this.length,
       );
 }
@@ -1737,6 +1758,7 @@ extension UserExtensions on User {
     bool? isVerified,
     bool? isPremium,
     bool? isSupport,
+    bool? hasAnonymousPhoneNumber,
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
@@ -1759,6 +1781,8 @@ extension UserExtensions on User {
         isVerified: isVerified ?? this.isVerified,
         isPremium: isPremium ?? this.isPremium,
         isSupport: isSupport ?? this.isSupport,
+        hasAnonymousPhoneNumber:
+            hasAnonymousPhoneNumber ?? this.hasAnonymousPhoneNumber,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
         isFake: isFake ?? this.isFake,
@@ -2494,6 +2518,7 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
     bool? canSetLocation,
     bool? canGetStatistics,
     bool? isAllHistoryAvailable,
+    bool? isAggressiveAntiSpamEnabled,
     int? stickerSetId,
     ChatLocation? location,
     ChatInviteLink? inviteLink,
@@ -2519,6 +2544,8 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+        isAggressiveAntiSpamEnabled:
+            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
         stickerSetId: stickerSetId ?? this.stickerSetId,
         location: location ?? this.location,
         inviteLink: inviteLink ?? this.inviteLink,
@@ -4438,8 +4465,10 @@ extension ForumTopicInfoExtensions on ForumTopicInfo {
     ForumTopicIcon? icon,
     int? creationDate,
     MessageSender? creatorId,
+    bool? isGeneral,
     bool? isOutgoing,
     bool? isClosed,
+    bool? isHidden,
   }) =>
       ForumTopicInfo(
         messageThreadId: messageThreadId ?? this.messageThreadId,
@@ -4447,8 +4476,10 @@ extension ForumTopicInfoExtensions on ForumTopicInfo {
         icon: icon ?? this.icon,
         creationDate: creationDate ?? this.creationDate,
         creatorId: creatorId ?? this.creatorId,
+        isGeneral: isGeneral ?? this.isGeneral,
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isClosed: isClosed ?? this.isClosed,
+        isHidden: isHidden ?? this.isHidden,
       );
 }
 
@@ -4478,6 +4509,24 @@ extension ForumTopicExtensions on ForumTopic {
         unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
         notificationSettings: notificationSettings ?? this.notificationSettings,
         draftMessage: draftMessage ?? this.draftMessage,
+      );
+}
+
+extension ForumTopicsExtensions on ForumTopics {
+  ForumTopics copyWith({
+    int? totalCount,
+    List<ForumTopic>? topics,
+    int? nextOffsetDate,
+    int? nextOffsetMessageId,
+    int? nextOffsetMessageThreadId,
+  }) =>
+      ForumTopics(
+        totalCount: totalCount ?? this.totalCount,
+        topics: topics ?? this.topics,
+        nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
+        nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
+        nextOffsetMessageThreadId:
+            nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
       );
 }
 
@@ -7626,6 +7675,8 @@ extension MessageContentExtensions on MessageContent {
         messageForumTopicEdited,
     required TResult Function(MessageForumTopicIsClosedToggled value)
         messageForumTopicIsClosedToggled,
+    required TResult Function(MessageForumTopicIsHiddenToggled value)
+        messageForumTopicIsHiddenToggled,
     required TResult Function(MessageCustomServiceAction value)
         messageCustomServiceAction,
     required TResult Function(MessageGameScore value) messageGameScore,
@@ -7740,6 +7791,9 @@ extension MessageContentExtensions on MessageContent {
       case MessageForumTopicIsClosedToggled.constructor:
         return messageForumTopicIsClosedToggled
             .call(this as MessageForumTopicIsClosedToggled);
+      case MessageForumTopicIsHiddenToggled.constructor:
+        return messageForumTopicIsHiddenToggled
+            .call(this as MessageForumTopicIsHiddenToggled);
       case MessageCustomServiceAction.constructor:
         return messageCustomServiceAction
             .call(this as MessageCustomServiceAction);
@@ -7823,6 +7877,8 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessageForumTopicEdited value)? messageForumTopicEdited,
     TResult Function(MessageForumTopicIsClosedToggled value)?
         messageForumTopicIsClosedToggled,
+    TResult Function(MessageForumTopicIsHiddenToggled value)?
+        messageForumTopicIsHiddenToggled,
     TResult Function(MessageCustomServiceAction value)?
         messageCustomServiceAction,
     TResult Function(MessageGameScore value)? messageGameScore,
@@ -8059,6 +8115,12 @@ extension MessageContentExtensions on MessageContent {
         if (messageForumTopicIsClosedToggled != null) {
           return messageForumTopicIsClosedToggled
               .call(this as MessageForumTopicIsClosedToggled);
+        }
+        break;
+      case MessageForumTopicIsHiddenToggled.constructor:
+        if (messageForumTopicIsHiddenToggled != null) {
+          return messageForumTopicIsHiddenToggled
+              .call(this as MessageForumTopicIsHiddenToggled);
         }
         break;
       case MessageCustomServiceAction.constructor:
@@ -8507,9 +8569,11 @@ extension MessageChatSetThemeExtensions on MessageChatSetTheme {
 extension MessageChatSetTtlExtensions on MessageChatSetTtl {
   MessageChatSetTtl copyWith({
     int? ttl,
+    int? fromUserId,
   }) =>
       MessageChatSetTtl(
         ttl: ttl ?? this.ttl,
+        fromUserId: fromUserId ?? this.fromUserId,
       );
 }
 
@@ -8545,6 +8609,16 @@ extension MessageForumTopicIsClosedToggledExtensions
   }) =>
       MessageForumTopicIsClosedToggled(
         isClosed: isClosed ?? this.isClosed,
+      );
+}
+
+extension MessageForumTopicIsHiddenToggledExtensions
+    on MessageForumTopicIsHiddenToggled {
+  MessageForumTopicIsHiddenToggled copyWith({
+    bool? isHidden,
+  }) =>
+      MessageForumTopicIsHiddenToggled(
+        isHidden: isHidden ?? this.isHidden,
       );
 }
 
@@ -11037,6 +11111,17 @@ extension HttpUrlExtensions on HttpUrl {
       );
 }
 
+extension UserLinkExtensions on UserLink {
+  UserLink copyWith({
+    String? url,
+    int? expiresIn,
+  }) =>
+      UserLink(
+        url: url ?? this.url,
+        expiresIn: expiresIn ?? this.expiresIn,
+      );
+}
+
 extension InputInlineQueryResultExtensions on InputInlineQueryResult {
   TResult map<TResult extends Object?>({
     required TResult Function(InputInlineQueryResultAnimation value) animation,
@@ -11929,6 +12014,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventInvitesToggled,
     required TResult Function(ChatEventIsAllHistoryAvailableToggled value)
         chatEventIsAllHistoryAvailableToggled,
+    required TResult Function(ChatEventIsAggressiveAntiSpamEnabledToggled value)
+        chatEventIsAggressiveAntiSpamEnabledToggled,
     required TResult Function(ChatEventSignMessagesToggled value)
         chatEventSignMessagesToggled,
     required TResult Function(ChatEventInviteLinkEdited value)
@@ -11957,6 +12044,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventForumTopicEdited,
     required TResult Function(ChatEventForumTopicToggleIsClosed value)
         chatEventForumTopicToggleIsClosed,
+    required TResult Function(ChatEventForumTopicToggleIsHidden value)
+        chatEventForumTopicToggleIsHidden,
     required TResult Function(ChatEventForumTopicDeleted value)
         chatEventForumTopicDeleted,
     required TResult Function(ChatEventForumTopicPinned value)
@@ -12030,6 +12119,9 @@ extension ChatEventActionExtensions on ChatEventAction {
       case ChatEventIsAllHistoryAvailableToggled.constructor:
         return chatEventIsAllHistoryAvailableToggled
             .call(this as ChatEventIsAllHistoryAvailableToggled);
+      case ChatEventIsAggressiveAntiSpamEnabledToggled.constructor:
+        return chatEventIsAggressiveAntiSpamEnabledToggled
+            .call(this as ChatEventIsAggressiveAntiSpamEnabledToggled);
       case ChatEventSignMessagesToggled.constructor:
         return chatEventSignMessagesToggled
             .call(this as ChatEventSignMessagesToggled);
@@ -12067,6 +12159,9 @@ extension ChatEventActionExtensions on ChatEventAction {
       case ChatEventForumTopicToggleIsClosed.constructor:
         return chatEventForumTopicToggleIsClosed
             .call(this as ChatEventForumTopicToggleIsClosed);
+      case ChatEventForumTopicToggleIsHidden.constructor:
+        return chatEventForumTopicToggleIsHidden
+            .call(this as ChatEventForumTopicToggleIsHidden);
       case ChatEventForumTopicDeleted.constructor:
         return chatEventForumTopicDeleted
             .call(this as ChatEventForumTopicDeleted);
@@ -12118,6 +12213,8 @@ extension ChatEventActionExtensions on ChatEventAction {
     TResult Function(ChatEventInvitesToggled value)? chatEventInvitesToggled,
     TResult Function(ChatEventIsAllHistoryAvailableToggled value)?
         chatEventIsAllHistoryAvailableToggled,
+    TResult Function(ChatEventIsAggressiveAntiSpamEnabledToggled value)?
+        chatEventIsAggressiveAntiSpamEnabledToggled,
     TResult Function(ChatEventSignMessagesToggled value)?
         chatEventSignMessagesToggled,
     TResult Function(ChatEventInviteLinkEdited value)?
@@ -12142,6 +12239,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventForumTopicEdited,
     TResult Function(ChatEventForumTopicToggleIsClosed value)?
         chatEventForumTopicToggleIsClosed,
+    TResult Function(ChatEventForumTopicToggleIsHidden value)?
+        chatEventForumTopicToggleIsHidden,
     TResult Function(ChatEventForumTopicDeleted value)?
         chatEventForumTopicDeleted,
     TResult Function(ChatEventForumTopicPinned value)?
@@ -12300,6 +12399,12 @@ extension ChatEventActionExtensions on ChatEventAction {
               .call(this as ChatEventIsAllHistoryAvailableToggled);
         }
         break;
+      case ChatEventIsAggressiveAntiSpamEnabledToggled.constructor:
+        if (chatEventIsAggressiveAntiSpamEnabledToggled != null) {
+          return chatEventIsAggressiveAntiSpamEnabledToggled
+              .call(this as ChatEventIsAggressiveAntiSpamEnabledToggled);
+        }
+        break;
       case ChatEventSignMessagesToggled.constructor:
         if (chatEventSignMessagesToggled != null) {
           return chatEventSignMessagesToggled
@@ -12376,6 +12481,12 @@ extension ChatEventActionExtensions on ChatEventAction {
               .call(this as ChatEventForumTopicToggleIsClosed);
         }
         break;
+      case ChatEventForumTopicToggleIsHidden.constructor:
+        if (chatEventForumTopicToggleIsHidden != null) {
+          return chatEventForumTopicToggleIsHidden
+              .call(this as ChatEventForumTopicToggleIsHidden);
+        }
+        break;
       case ChatEventForumTopicDeleted.constructor:
         if (chatEventForumTopicDeleted != null) {
           return chatEventForumTopicDeleted
@@ -12407,9 +12518,12 @@ extension ChatEventMessageEditedExtensions on ChatEventMessageEdited {
 extension ChatEventMessageDeletedExtensions on ChatEventMessageDeleted {
   ChatEventMessageDeleted copyWith({
     Message? message,
+    bool? canReportAntiSpamFalsePositive,
   }) =>
       ChatEventMessageDeleted(
         message: message ?? this.message,
+        canReportAntiSpamFalsePositive: canReportAntiSpamFalsePositive ??
+            this.canReportAntiSpamFalsePositive,
       );
 }
 
@@ -12666,6 +12780,17 @@ extension ChatEventIsAllHistoryAvailableToggledExtensions
       );
 }
 
+extension ChatEventIsAggressiveAntiSpamEnabledToggledExtensions
+    on ChatEventIsAggressiveAntiSpamEnabledToggled {
+  ChatEventIsAggressiveAntiSpamEnabledToggled copyWith({
+    bool? isAggressiveAntiSpamEnabled,
+  }) =>
+      ChatEventIsAggressiveAntiSpamEnabledToggled(
+        isAggressiveAntiSpamEnabled:
+            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
+      );
+}
+
 extension ChatEventSignMessagesToggledExtensions
     on ChatEventSignMessagesToggled {
   ChatEventSignMessagesToggled copyWith({
@@ -12792,6 +12917,16 @@ extension ChatEventForumTopicToggleIsClosedExtensions
     ForumTopicInfo? topicInfo,
   }) =>
       ChatEventForumTopicToggleIsClosed(
+        topicInfo: topicInfo ?? this.topicInfo,
+      );
+}
+
+extension ChatEventForumTopicToggleIsHiddenExtensions
+    on ChatEventForumTopicToggleIsHidden {
+  ChatEventForumTopicToggleIsHidden copyWith({
+    ForumTopicInfo? topicInfo,
+  }) =>
+      ChatEventForumTopicToggleIsHidden(
         topicInfo: topicInfo ?? this.topicInfo,
       );
 }
@@ -14114,8 +14249,10 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
         usernameInvalid,
     required TResult Function(CheckChatUsernameResultUsernameOccupied value)
         usernameOccupied,
-    required TResult Function(CheckChatUsernameResultPublicChatsTooMuch value)
-        publicChatsTooMuch,
+    required TResult Function(CheckChatUsernameResultUsernamePurchasable value)
+        usernamePurchasable,
+    required TResult Function(CheckChatUsernameResultPublicChatsTooMany value)
+        publicChatsTooMany,
     required TResult Function(
             CheckChatUsernameResultPublicGroupsUnavailable value)
         publicGroupsUnavailable,
@@ -14129,9 +14266,12 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
       case CheckChatUsernameResultUsernameOccupied.constructor:
         return usernameOccupied
             .call(this as CheckChatUsernameResultUsernameOccupied);
-      case CheckChatUsernameResultPublicChatsTooMuch.constructor:
-        return publicChatsTooMuch
-            .call(this as CheckChatUsernameResultPublicChatsTooMuch);
+      case CheckChatUsernameResultUsernamePurchasable.constructor:
+        return usernamePurchasable
+            .call(this as CheckChatUsernameResultUsernamePurchasable);
+      case CheckChatUsernameResultPublicChatsTooMany.constructor:
+        return publicChatsTooMany
+            .call(this as CheckChatUsernameResultPublicChatsTooMany);
       case CheckChatUsernameResultPublicGroupsUnavailable.constructor:
         return publicGroupsUnavailable
             .call(this as CheckChatUsernameResultPublicGroupsUnavailable);
@@ -14145,8 +14285,10 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
         usernameInvalid,
     TResult Function(CheckChatUsernameResultUsernameOccupied value)?
         usernameOccupied,
-    TResult Function(CheckChatUsernameResultPublicChatsTooMuch value)?
-        publicChatsTooMuch,
+    TResult Function(CheckChatUsernameResultUsernamePurchasable value)?
+        usernamePurchasable,
+    TResult Function(CheckChatUsernameResultPublicChatsTooMany value)?
+        publicChatsTooMany,
     TResult Function(CheckChatUsernameResultPublicGroupsUnavailable value)?
         publicGroupsUnavailable,
     required TResult Function() orElse,
@@ -14169,10 +14311,16 @@ extension CheckChatUsernameResultExtensions on CheckChatUsernameResult {
               .call(this as CheckChatUsernameResultUsernameOccupied);
         }
         break;
-      case CheckChatUsernameResultPublicChatsTooMuch.constructor:
-        if (publicChatsTooMuch != null) {
-          return publicChatsTooMuch
-              .call(this as CheckChatUsernameResultPublicChatsTooMuch);
+      case CheckChatUsernameResultUsernamePurchasable.constructor:
+        if (usernamePurchasable != null) {
+          return usernamePurchasable
+              .call(this as CheckChatUsernameResultUsernamePurchasable);
+        }
+        break;
+      case CheckChatUsernameResultPublicChatsTooMany.constructor:
+        if (publicChatsTooMany != null) {
+          return publicChatsTooMany
+              .call(this as CheckChatUsernameResultPublicChatsTooMany);
         }
         break;
       case CheckChatUsernameResultPublicGroupsUnavailable.constructor:
@@ -15647,6 +15795,15 @@ extension AccountTtlExtensions on AccountTtl {
       );
 }
 
+extension MessageTtlExtensions on MessageTtl {
+  MessageTtl copyWith({
+    int? ttl,
+  }) =>
+      MessageTtl(
+        ttl: ttl ?? this.ttl,
+      );
+}
+
 extension SessionTypeExtensions on SessionType {
   TResult map<TResult extends Object?>({
     required TResult Function(SessionTypeAndroid value) android,
@@ -16139,6 +16296,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         unsupportedProxy,
     required TResult Function(InternalLinkTypeUserPhoneNumber value)
         userPhoneNumber,
+    required TResult Function(InternalLinkTypeUserToken value) userToken,
     required TResult Function(InternalLinkTypeVideoChat value) videoChat,
   }) {
     switch (getConstructor()) {
@@ -16213,6 +16371,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         return unsupportedProxy.call(this as InternalLinkTypeUnsupportedProxy);
       case InternalLinkTypeUserPhoneNumber.constructor:
         return userPhoneNumber.call(this as InternalLinkTypeUserPhoneNumber);
+      case InternalLinkTypeUserToken.constructor:
+        return userToken.call(this as InternalLinkTypeUserToken);
       case InternalLinkTypeVideoChat.constructor:
         return videoChat.call(this as InternalLinkTypeVideoChat);
     }
@@ -16259,6 +16419,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeUnknownDeepLink value)? unknownDeepLink,
     TResult Function(InternalLinkTypeUnsupportedProxy value)? unsupportedProxy,
     TResult Function(InternalLinkTypeUserPhoneNumber value)? userPhoneNumber,
+    TResult Function(InternalLinkTypeUserToken value)? userToken,
     TResult Function(InternalLinkTypeVideoChat value)? videoChat,
     required TResult Function() orElse,
   }) {
@@ -16431,6 +16592,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeUserPhoneNumber.constructor:
         if (userPhoneNumber != null) {
           return userPhoneNumber.call(this as InternalLinkTypeUserPhoneNumber);
+        }
+        break;
+      case InternalLinkTypeUserToken.constructor:
+        if (userToken != null) {
+          return userToken.call(this as InternalLinkTypeUserToken);
         }
         break;
       case InternalLinkTypeVideoChat.constructor:
@@ -16683,6 +16849,15 @@ extension InternalLinkTypeUserPhoneNumberExtensions
   }) =>
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
+      );
+}
+
+extension InternalLinkTypeUserTokenExtensions on InternalLinkTypeUserToken {
+  InternalLinkTypeUserToken copyWith({
+    String? token,
+  }) =>
+      InternalLinkTypeUserToken(
+        token: token ?? this.token,
       );
 }
 
@@ -22018,13 +22193,71 @@ extension EditForumTopicExtensions on EditForumTopic {
     int? chatId,
     int? messageThreadId,
     String? name,
+    bool? editIconCustomEmoji,
     int? iconCustomEmojiId,
   }) =>
       EditForumTopic(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         name: name ?? this.name,
+        editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
         iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+      );
+}
+
+extension GetForumTopicExtensions on GetForumTopic {
+  GetForumTopic copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      GetForumTopic(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
+}
+
+extension GetForumTopicLinkExtensions on GetForumTopicLink {
+  GetForumTopicLink copyWith({
+    int? chatId,
+    int? messageThreadId,
+  }) =>
+      GetForumTopicLink(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
+}
+
+extension GetForumTopicsExtensions on GetForumTopics {
+  GetForumTopics copyWith({
+    int? chatId,
+    String? query,
+    int? offsetDate,
+    int? offsetMessageId,
+    int? offsetMessageThreadId,
+    int? limit,
+  }) =>
+      GetForumTopics(
+        chatId: chatId ?? this.chatId,
+        query: query ?? this.query,
+        offsetDate: offsetDate ?? this.offsetDate,
+        offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+        offsetMessageThreadId:
+            offsetMessageThreadId ?? this.offsetMessageThreadId,
+        limit: limit ?? this.limit,
+      );
+}
+
+extension SetForumTopicNotificationSettingsExtensions
+    on SetForumTopicNotificationSettings {
+  SetForumTopicNotificationSettings copyWith({
+    int? chatId,
+    int? messageThreadId,
+    ChatNotificationSettings? notificationSettings,
+  }) =>
+      SetForumTopicNotificationSettings(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
       );
 }
 
@@ -22038,6 +22271,18 @@ extension ToggleForumTopicIsClosedExtensions on ToggleForumTopicIsClosed {
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         isClosed: isClosed ?? this.isClosed,
+      );
+}
+
+extension ToggleGeneralForumTopicIsHiddenExtensions
+    on ToggleGeneralForumTopicIsHidden {
+  ToggleGeneralForumTopicIsHidden copyWith({
+    int? chatId,
+    bool? isHidden,
+  }) =>
+      ToggleGeneralForumTopicIsHidden(
+        chatId: chatId ?? this.chatId,
+        isHidden: isHidden ?? this.isHidden,
       );
 }
 
@@ -22738,10 +22983,12 @@ extension CreateNewBasicGroupChatExtensions on CreateNewBasicGroupChat {
   CreateNewBasicGroupChat copyWith({
     List<int>? userIds,
     String? title,
+    int? messageTtl,
   }) =>
       CreateNewBasicGroupChat(
         userIds: userIds ?? this.userIds,
         title: title ?? this.title,
+        messageTtl: messageTtl ?? this.messageTtl,
       );
 }
 
@@ -22751,6 +22998,7 @@ extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
     bool? isChannel,
     String? description,
     ChatLocation? location,
+    int? messageTtl,
     bool? forImport,
   }) =>
       CreateNewSupergroupChat(
@@ -22758,6 +23006,7 @@ extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
         isChannel: isChannel ?? this.isChannel,
         description: description ?? this.description,
         location: location ?? this.location,
+        messageTtl: messageTtl ?? this.messageTtl,
         forImport: forImport ?? this.forImport,
       );
 }
@@ -24743,6 +24992,15 @@ extension CheckChangePhoneNumberCodeExtensions on CheckChangePhoneNumberCode {
       );
 }
 
+extension SearchUserByTokenExtensions on SearchUserByToken {
+  SearchUserByToken copyWith({
+    String? token,
+  }) =>
+      SearchUserByToken(
+        token: token ?? this.token,
+      );
+}
+
 extension SetCommandsExtensions on SetCommands {
   SetCommands copyWith({
     BotCommandScope? scope,
@@ -24978,6 +25236,19 @@ extension ToggleSupergroupIsAllHistoryAvailableExtensions
       );
 }
 
+extension ToggleSupergroupIsAggressiveAntiSpamEnabledExtensions
+    on ToggleSupergroupIsAggressiveAntiSpamEnabled {
+  ToggleSupergroupIsAggressiveAntiSpamEnabled copyWith({
+    int? supergroupId,
+    bool? isAggressiveAntiSpamEnabled,
+  }) =>
+      ToggleSupergroupIsAggressiveAntiSpamEnabled(
+        supergroupId: supergroupId ?? this.supergroupId,
+        isAggressiveAntiSpamEnabled:
+            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
+      );
+}
+
 extension ToggleSupergroupIsForumExtensions on ToggleSupergroupIsForum {
   ToggleSupergroupIsForum copyWith({
     int? supergroupId,
@@ -25007,6 +25278,18 @@ extension ReportSupergroupSpamExtensions on ReportSupergroupSpam {
       ReportSupergroupSpam(
         supergroupId: supergroupId ?? this.supergroupId,
         messageIds: messageIds ?? this.messageIds,
+      );
+}
+
+extension ReportSupergroupAntiSpamFalsePositiveExtensions
+    on ReportSupergroupAntiSpamFalsePositive {
+  ReportSupergroupAntiSpamFalsePositive copyWith({
+    int? supergroupId,
+    int? messageId,
+  }) =>
+      ReportSupergroupAntiSpamFalsePositive(
+        supergroupId: supergroupId ?? this.supergroupId,
+        messageId: messageId ?? this.messageId,
       );
 }
 
@@ -25349,6 +25632,15 @@ extension DeleteAccountExtensions on DeleteAccount {
       DeleteAccount(
         reason: reason ?? this.reason,
         password: password ?? this.password,
+      );
+}
+
+extension SetDefaultMessageTtlExtensions on SetDefaultMessageTtl {
+  SetDefaultMessageTtl copyWith({
+    MessageTtl? ttl,
+  }) =>
+      SetDefaultMessageTtl(
+        ttl: ttl ?? this.ttl,
       );
 }
 

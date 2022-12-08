@@ -12,6 +12,7 @@ class CreateNewSupergroupChat extends TdFunction {
     required this.isChannel,
     required this.description,
     this.location,
+    required this.messageTtl,
     required this.forImport,
   });
 
@@ -28,6 +29,11 @@ class CreateNewSupergroupChat extends TdFunction {
   /// pass null to create an ordinary supergroup chat
   final ChatLocation? location;
 
+  /// [messageTtl] Message TTL value, in seconds; must be from 0 up to 365 *
+  /// 86400 and be divisible by 86400. If 0, then messages aren't deleted
+  /// automatically
+  final int messageTtl;
+
   /// [forImport] Pass true to create a supergroup for importing messages using
   /// importMessage
   final bool forImport;
@@ -43,6 +49,7 @@ class CreateNewSupergroupChat extends TdFunction {
         'is_channel': isChannel,
         'description': description,
         'location': location?.toJson(),
+        'message_ttl': messageTtl,
         'for_import': forImport,
         '@type': constructor,
       };

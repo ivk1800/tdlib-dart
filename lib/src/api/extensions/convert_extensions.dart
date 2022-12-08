@@ -34,6 +34,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return AuthenticationCodeTypeCall.fromJson(this);
       case 'authenticationCodeTypeFlashCall':
         return AuthenticationCodeTypeFlashCall.fromJson(this);
+      case 'authenticationCodeTypeFragment':
+        return AuthenticationCodeTypeFragment.fromJson(this);
       case 'authenticationCodeTypeMissedCall':
         return AuthenticationCodeTypeMissedCall.fromJson(this);
       case 'authenticationCodeTypeSms':
@@ -288,6 +290,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ChatEventForumTopicPinned.fromJson(this);
       case 'chatEventForumTopicToggleIsClosed':
         return ChatEventForumTopicToggleIsClosed.fromJson(this);
+      case 'chatEventForumTopicToggleIsHidden':
+        return ChatEventForumTopicToggleIsHidden.fromJson(this);
       case 'chatEventHasProtectedContentToggled':
         return ChatEventHasProtectedContentToggled.fromJson(this);
       case 'chatEventInviteLinkDeleted':
@@ -298,6 +302,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ChatEventInviteLinkRevoked.fromJson(this);
       case 'chatEventInvitesToggled':
         return ChatEventInvitesToggled.fromJson(this);
+      case 'chatEventIsAggressiveAntiSpamEnabledToggled':
+        return ChatEventIsAggressiveAntiSpamEnabledToggled.fromJson(this);
       case 'chatEventIsAllHistoryAvailableToggled':
         return ChatEventIsAllHistoryAvailableToggled.fromJson(this);
       case 'chatEventIsForumToggled':
@@ -510,14 +516,16 @@ extension ConvertExtensions on Map<String, dynamic> {
         return CheckChatUsernameResult.fromJson(this);
       case 'checkChatUsernameResultOk':
         return CheckChatUsernameResultOk.fromJson(this);
-      case 'checkChatUsernameResultPublicChatsTooMuch':
-        return CheckChatUsernameResultPublicChatsTooMuch.fromJson(this);
+      case 'checkChatUsernameResultPublicChatsTooMany':
+        return CheckChatUsernameResultPublicChatsTooMany.fromJson(this);
       case 'checkChatUsernameResultPublicGroupsUnavailable':
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(this);
       case 'checkChatUsernameResultUsernameInvalid':
         return CheckChatUsernameResultUsernameInvalid.fromJson(this);
       case 'checkChatUsernameResultUsernameOccupied':
         return CheckChatUsernameResultUsernameOccupied.fromJson(this);
+      case 'checkChatUsernameResultUsernamePurchasable':
+        return CheckChatUsernameResultUsernamePurchasable.fromJson(this);
       case 'checkStickerSetNameResult':
         return CheckStickerSetNameResult.fromJson(this);
       case 'checkStickerSetNameResultNameInvalid':
@@ -676,6 +684,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ForumTopicIcon.fromJson(this);
       case 'forumTopicInfo':
         return ForumTopicInfo.fromJson(this);
+      case 'forumTopics':
+        return ForumTopics.fromJson(this);
       case 'foundFileDownloads':
         return FoundFileDownloads.fromJson(this);
       case 'foundMessages':
@@ -994,6 +1004,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return InternalLinkTypeUnsupportedProxy.fromJson(this);
       case 'internalLinkTypeUserPhoneNumber':
         return InternalLinkTypeUserPhoneNumber.fromJson(this);
+      case 'internalLinkTypeUserToken':
+        return InternalLinkTypeUserToken.fromJson(this);
       case 'internalLinkTypeVideoChat':
         return InternalLinkTypeVideoChat.fromJson(this);
       case 'invoice':
@@ -1160,6 +1172,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return MessageForumTopicEdited.fromJson(this);
       case 'messageForumTopicIsClosedToggled':
         return MessageForumTopicIsClosedToggled.fromJson(this);
+      case 'messageForumTopicIsHiddenToggled':
+        return MessageForumTopicIsHiddenToggled.fromJson(this);
       case 'messageForwardInfo':
         return MessageForwardInfo.fromJson(this);
       case 'messageForwardOrigin':
@@ -1250,6 +1264,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return MessageText.fromJson(this);
       case 'messageThreadInfo':
         return MessageThreadInfo.fromJson(this);
+      case 'messageTtl':
+        return MessageTtl.fromJson(this);
       case 'messageUnsupported':
         return MessageUnsupported.fromJson(this);
       case 'messageVenue':
@@ -2332,6 +2348,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return User.fromJson(this);
       case 'userFullInfo':
         return UserFullInfo.fromJson(this);
+      case 'userLink':
+        return UserLink.fromJson(this);
       case 'userPrivacySetting':
         return UserPrivacySetting.fromJson(this);
       case 'userPrivacySettingAllowCalls':

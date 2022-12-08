@@ -38,9 +38,9 @@ class SendInlineQueryResultMessage extends TdFunction {
   final String resultId;
 
   /// [hideViaBot] Pass true to hide the bot, via which the message is sent. Can
-  /// be used only for bots GetOption("animation_search_bot_username"),
-  /// GetOption("photo_search_bot_username"), and
-  /// GetOption("venue_search_bot_username")
+  /// be used only for bots getOption("animation_search_bot_username"),
+  /// getOption("photo_search_bot_username"), and
+  /// getOption("venue_search_bot_username")
   final bool hideViaBot;
 
   static const String constructor = 'sendInlineQueryResultMessage';

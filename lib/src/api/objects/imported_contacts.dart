@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents the result of an ImportContacts request
+/// Represents the result of an importContacts request
 @immutable
 class ImportedContacts extends TdObject {
   const ImportedContacts({

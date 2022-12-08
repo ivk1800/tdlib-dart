@@ -43,6 +43,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeUnknownDeepLink]
   /// [InternalLinkTypeUnsupportedProxy]
   /// [InternalLinkTypeUserPhoneNumber]
+  /// [InternalLinkTypeUserToken]
   /// [InternalLinkTypeVideoChat]
   static InternalLinkType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -114,6 +115,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeUnsupportedProxy.fromJson(json);
       case InternalLinkTypeUserPhoneNumber.constructor:
         return InternalLinkTypeUserPhoneNumber.fromJson(json);
+      case InternalLinkTypeUserToken.constructor:
+        return InternalLinkTypeUserToken.fromJson(json);
       case InternalLinkTypeVideoChat.constructor:
         return InternalLinkTypeVideoChat.fromJson(json);
       default:

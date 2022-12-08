@@ -19,7 +19,7 @@ class EditInlineMessageCaption extends TdFunction {
   final ReplyMarkup? replyMarkup;
 
   /// [caption] New message content caption; pass null to remove caption;
-  /// 0-GetOption("message_caption_length_max") characters
+  /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
   static const String constructor = 'editInlineMessageCaption';

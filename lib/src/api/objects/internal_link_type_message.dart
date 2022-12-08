@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to a Telegram message. Call getMessageLinkInfo with the
-/// given URL to process the link
+/// The link is a link to a Telegram message or a forum topic. Call
+/// getMessageLinkInfo with the given URL to process the link
 @immutable
 class InternalLinkTypeMessage extends InternalLinkType {
   const InternalLinkTypeMessage({

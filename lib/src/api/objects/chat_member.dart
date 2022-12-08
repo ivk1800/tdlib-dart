@@ -21,8 +21,8 @@ class ChatMember extends TdObject {
   /// member in the chat; 0 if unknown
   final int inviterUserId;
 
-  /// [joinedChatDate] Point in time (Unix timestamp) when the user joined the
-  /// chat
+  /// [joinedChatDate] Point in time (Unix timestamp) when the user joined/was
+  /// promoted/was banned in the chat
   final int joinedChatDate;
 
   /// [status] Status of the member in the chat

@@ -33,7 +33,7 @@ class InputMessageAudio extends InputMessageContent {
   final String performer;
 
   /// [caption] Audio caption; pass null to use an empty caption;
-  /// 0-GetOption("message_caption_length_max") characters
+  /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
   static const String constructor = 'inputMessageAudio';

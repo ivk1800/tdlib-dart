@@ -9,7 +9,7 @@ class MessageForumTopicIsClosedToggled extends MessageContent {
     required this.isClosed,
   });
 
-  /// [isClosed] True if the topic was closed or reopened
+  /// [isClosed] True, if the topic was closed, otherwise the topic was reopened
   final bool isClosed;
 
   static const String constructor = 'messageForumTopicIsClosedToggled';

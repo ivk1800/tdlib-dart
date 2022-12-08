@@ -17,7 +17,7 @@ class GroupCallParticipantVideoInfo extends TdObject {
   /// [endpointId] Video channel endpoint identifier
   final String endpointId;
 
-  /// [isPaused] True if the video is paused. This flag needs to be ignored, if
+  /// [isPaused] True, if the video is paused. This flag needs to be ignored, if
   /// new video frames are received
   final bool isPaused;
 

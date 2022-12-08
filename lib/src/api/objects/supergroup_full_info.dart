@@ -21,6 +21,7 @@ class SupergroupFullInfo extends TdObject {
     required this.canSetLocation,
     required this.canGetStatistics,
     required this.isAllHistoryAvailable,
+    required this.isAggressiveAntiSpamEnabled,
     required this.stickerSetId,
     this.location,
     this.inviteLink,
@@ -88,6 +89,11 @@ class SupergroupFullInfo extends TdObject {
   /// only available for chat administrators
   final bool isAllHistoryAvailable;
 
+  /// [isAggressiveAntiSpamEnabled] True, if aggressive anti-spam checks are
+  /// enabled in the supergroup. The value of this field is only available for
+  /// chat administrators
+  final bool isAggressiveAntiSpamEnabled;
+
   /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
   final int stickerSetId;
 
@@ -132,6 +138,7 @@ class SupergroupFullInfo extends TdObject {
       canSetLocation: json['can_set_location'],
       canGetStatistics: json['can_get_statistics'],
       isAllHistoryAvailable: json['is_all_history_available'],
+      isAggressiveAntiSpamEnabled: json['is_aggressive_anti_spam_enabled'],
       stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
       location: ChatLocation.fromJson(json['location']),
       inviteLink: ChatInviteLink.fromJson(json['invite_link']),
@@ -163,6 +170,7 @@ class SupergroupFullInfo extends TdObject {
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,
         'is_all_history_available': isAllHistoryAvailable,
+        'is_aggressive_anti_spam_enabled': isAggressiveAntiSpamEnabled,
         'sticker_set_id': stickerSetId,
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),

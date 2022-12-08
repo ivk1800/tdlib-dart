@@ -7,10 +7,15 @@ import '../tdapi.dart';
 class ChatEventMessageDeleted extends ChatEventAction {
   const ChatEventMessageDeleted({
     required this.message,
+    required this.canReportAntiSpamFalsePositive,
   });
 
   /// [message] Deleted message
   final Message message;
+
+  /// [canReportAntiSpamFalsePositive] True, if the message deletion can be
+  /// reported via reportSupergroupAntiSpamFalsePositive
+  final bool canReportAntiSpamFalsePositive;
 
   static const String constructor = 'chatEventMessageDeleted';
 
@@ -21,6 +26,8 @@ class ChatEventMessageDeleted extends ChatEventAction {
 
     return ChatEventMessageDeleted(
       message: Message.fromJson(json['message'])!,
+      canReportAntiSpamFalsePositive:
+          json['can_report_anti_spam_false_positive'],
     );
   }
 
@@ -30,6 +37,7 @@ class ChatEventMessageDeleted extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'message': message.toJson(),
+        'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
         '@type': constructor,
       };
 

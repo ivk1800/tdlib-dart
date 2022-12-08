@@ -21,7 +21,7 @@ class ForumTopic extends TdObject {
   /// [info] Basic information about the topic
   final ForumTopicInfo info;
 
-  /// [lastMessage] Last message in the topic; may be null
+  /// [lastMessage] Last message in the topic; may be null if unknown
   final Message? lastMessage;
 
   /// [isPinned] True, if the topic is pinned in the topic list

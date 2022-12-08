@@ -11,10 +11,11 @@ abstract class CheckChatUsernameResult extends TdObject {
 
   /// Inherited by:
   /// [CheckChatUsernameResultOk]
-  /// [CheckChatUsernameResultPublicChatsTooMuch]
+  /// [CheckChatUsernameResultPublicChatsTooMany]
   /// [CheckChatUsernameResultPublicGroupsUnavailable]
   /// [CheckChatUsernameResultUsernameInvalid]
   /// [CheckChatUsernameResultUsernameOccupied]
+  /// [CheckChatUsernameResultUsernamePurchasable]
   static CheckChatUsernameResult? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -23,14 +24,16 @@ abstract class CheckChatUsernameResult extends TdObject {
     switch (json['@type']) {
       case CheckChatUsernameResultOk.constructor:
         return CheckChatUsernameResultOk.fromJson(json);
-      case CheckChatUsernameResultPublicChatsTooMuch.constructor:
-        return CheckChatUsernameResultPublicChatsTooMuch.fromJson(json);
+      case CheckChatUsernameResultPublicChatsTooMany.constructor:
+        return CheckChatUsernameResultPublicChatsTooMany.fromJson(json);
       case CheckChatUsernameResultPublicGroupsUnavailable.constructor:
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json);
       case CheckChatUsernameResultUsernameInvalid.constructor:
         return CheckChatUsernameResultUsernameInvalid.fromJson(json);
       case CheckChatUsernameResultUsernameOccupied.constructor:
         return CheckChatUsernameResultUsernameOccupied.fromJson(json);
+      case CheckChatUsernameResultUsernamePurchasable.constructor:
+        return CheckChatUsernameResultUsernamePurchasable.fromJson(json);
       default:
         return null;
     }

@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains information about notification settings for a chat
+/// Contains information about notification settings for a chat or a froum
+/// topic
 @immutable
 class ChatNotificationSettings extends TdObject {
   const ChatNotificationSettings({
@@ -19,14 +20,14 @@ class ChatNotificationSettings extends TdObject {
   });
 
   /// [useDefaultMuteFor] If true, mute_for is ignored and the value for the
-  /// relevant type of chat is used instead
+  /// relevant type of chat or the forum chat is used instead
   final bool useDefaultMuteFor;
 
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   final int muteFor;
 
-  /// [useDefaultSound] If true, the value for the relevant type of chat is used
-  /// instead of sound_id
+  /// [useDefaultSound] If true, the value for the relevant type of chat or the
+  /// forum chat is used instead of sound_id
   final bool useDefaultSound;
 
   /// [soundId] Identifier of the notification sound to be played; 0 if sound is
@@ -34,7 +35,7 @@ class ChatNotificationSettings extends TdObject {
   final int soundId;
 
   /// [useDefaultShowPreview] If true, show_preview is ignored and the value for
-  /// the relevant type of chat is used instead
+  /// the relevant type of chat or the forum chat is used instead
   final bool useDefaultShowPreview;
 
   /// [showPreview] True, if message content must be displayed in notifications
@@ -42,7 +43,7 @@ class ChatNotificationSettings extends TdObject {
 
   /// [useDefaultDisablePinnedMessageNotifications] If true,
   /// disable_pinned_message_notifications is ignored and the value for the
-  /// relevant type of chat is used instead
+  /// relevant type of chat or the forum chat is used instead
   final bool useDefaultDisablePinnedMessageNotifications;
 
   /// [disablePinnedMessageNotifications] If true, notifications for incoming
@@ -51,7 +52,7 @@ class ChatNotificationSettings extends TdObject {
 
   /// [useDefaultDisableMentionNotifications] If true,
   /// disable_mention_notifications is ignored and the value for the relevant
-  /// type of chat is used instead
+  /// type of chat or the forum chat is used instead
   final bool useDefaultDisableMentionNotifications;
 
   /// [disableMentionNotifications] If true, notifications for messages with

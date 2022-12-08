@@ -11,7 +11,7 @@ class EmojiStatus extends TdObject {
 
   /// [customEmojiId] Identifier of the custom emoji in stickerFormatTgs format.
   /// If the custom emoji belongs to the sticker set
-  /// GetOption("themed_emoji_statuses_sticker_set_id"), then it's color must be
+  /// getOption("themed_emoji_statuses_sticker_set_id"), then it's color must be
   /// changed to the color of the Telegram Premium badge
   final int customEmojiId;
 

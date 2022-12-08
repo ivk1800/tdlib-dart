@@ -7,10 +7,15 @@ import '../tdapi.dart';
 class MessageChatSetTtl extends MessageContent {
   const MessageChatSetTtl({
     required this.ttl,
+    required this.fromUserId,
   });
 
   /// [ttl] New message TTL
   final int ttl;
+
+  /// [fromUserId] If not 0, a user identifier, which default setting was
+  /// automatically applied
+  final int fromUserId;
 
   static const String constructor = 'messageChatSetTtl';
 
@@ -21,6 +26,7 @@ class MessageChatSetTtl extends MessageContent {
 
     return MessageChatSetTtl(
       ttl: json['ttl'],
+      fromUserId: json['from_user_id'],
     );
   }
 
@@ -30,6 +36,7 @@ class MessageChatSetTtl extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'ttl': ttl,
+        'from_user_id': fromUserId,
         '@type': constructor,
       };
 

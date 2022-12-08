@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Changes the location of the current user. Needs to be called if
-/// GetOption("is_location_visible") is true and location changes for more
+/// getOption("is_location_visible") is true and location changes for more
 /// than 1 kilometer
 /// Returns [Ok]
 @immutable

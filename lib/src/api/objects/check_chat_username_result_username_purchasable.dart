@@ -2,22 +2,22 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user has too many chats with username, one of them must be made
-/// private first
+/// The username can be purchased at fragment.com
 @immutable
-class CheckChatUsernameResultPublicChatsTooMuch
+class CheckChatUsernameResultUsernamePurchasable
     extends CheckChatUsernameResult {
-  const CheckChatUsernameResultPublicChatsTooMuch();
+  const CheckChatUsernameResultUsernamePurchasable();
 
-  static const String constructor = 'checkChatUsernameResultPublicChatsTooMuch';
+  static const String constructor =
+      'checkChatUsernameResultUsernamePurchasable';
 
-  static CheckChatUsernameResultPublicChatsTooMuch? fromJson(
+  static CheckChatUsernameResultUsernamePurchasable? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const CheckChatUsernameResultPublicChatsTooMuch();
+    return const CheckChatUsernameResultUsernamePurchasable();
   }
 
   @override

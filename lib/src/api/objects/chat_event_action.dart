@@ -18,11 +18,13 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventForumTopicEdited]
   /// [ChatEventForumTopicPinned]
   /// [ChatEventForumTopicToggleIsClosed]
+  /// [ChatEventForumTopicToggleIsHidden]
   /// [ChatEventHasProtectedContentToggled]
   /// [ChatEventInviteLinkDeleted]
   /// [ChatEventInviteLinkEdited]
   /// [ChatEventInviteLinkRevoked]
   /// [ChatEventInvitesToggled]
+  /// [ChatEventIsAggressiveAntiSpamEnabledToggled]
   /// [ChatEventIsAllHistoryAvailableToggled]
   /// [ChatEventIsForumToggled]
   /// [ChatEventLinkedChatChanged]
@@ -74,6 +76,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventForumTopicPinned.fromJson(json);
       case ChatEventForumTopicToggleIsClosed.constructor:
         return ChatEventForumTopicToggleIsClosed.fromJson(json);
+      case ChatEventForumTopicToggleIsHidden.constructor:
+        return ChatEventForumTopicToggleIsHidden.fromJson(json);
       case ChatEventHasProtectedContentToggled.constructor:
         return ChatEventHasProtectedContentToggled.fromJson(json);
       case ChatEventInviteLinkDeleted.constructor:
@@ -84,6 +88,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventInviteLinkRevoked.fromJson(json);
       case ChatEventInvitesToggled.constructor:
         return ChatEventInvitesToggled.fromJson(json);
+      case ChatEventIsAggressiveAntiSpamEnabledToggled.constructor:
+        return ChatEventIsAggressiveAntiSpamEnabledToggled.fromJson(json);
       case ChatEventIsAllHistoryAvailableToggled.constructor:
         return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
       case ChatEventIsForumToggled.constructor:

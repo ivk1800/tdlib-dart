@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the way the text needs to be parsed for TextEntities
+/// Describes the way the text needs to be parsed for text entities
 @immutable
 abstract class TextParseMode extends TdObject {
   const TextParseMode();

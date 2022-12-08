@@ -40,7 +40,7 @@ class InputMessageVideo extends InputMessageContent {
   final bool supportsStreaming;
 
   /// [caption] Video caption; pass null to use an empty caption;
-  /// 0-GetOption("message_caption_length_max") characters
+  /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
   /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains information about a link to a message in a chat
+/// Contains information about a link to a message or a forum topic in a chat
 @immutable
 class MessageLinkInfo extends TdObject {
   const MessageLinkInfo({
@@ -22,11 +22,11 @@ class MessageLinkInfo extends TdObject {
   final int chatId;
 
   /// [messageThreadId] If found, identifier of the message thread in which to
-  /// open the message, or which to open in case of a missing message
+  /// open the message, or a forum topic to open if the message is missing
   final int messageThreadId;
 
   /// [message]_thread_id If found, identifier of the message thread in which to
-  /// open the message, or which to open in case of a missing message
+  /// open the message, or a forum topic to open if the message is missing
   final Message message;
 
   /// [mediaTimestamp] Timestamp from which the video/audio/video note/voice

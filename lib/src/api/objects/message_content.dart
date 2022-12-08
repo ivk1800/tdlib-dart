@@ -36,6 +36,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageForumTopicCreated]
   /// [MessageForumTopicEdited]
   /// [MessageForumTopicIsClosedToggled]
+  /// [MessageForumTopicIsHiddenToggled]
   /// [MessageGameScore]
   /// [MessageGame]
   /// [MessageGiftedPremium]
@@ -123,6 +124,8 @@ abstract class MessageContent extends TdObject {
         return MessageForumTopicEdited.fromJson(json);
       case MessageForumTopicIsClosedToggled.constructor:
         return MessageForumTopicIsClosedToggled.fromJson(json);
+      case MessageForumTopicIsHiddenToggled.constructor:
+        return MessageForumTopicIsHiddenToggled.fromJson(json);
       case MessageGame.constructor:
         return MessageGame.fromJson(json);
       case MessageGameScore.constructor:

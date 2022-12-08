@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The parameters of animation search through
-/// GetOption("animation_search_bot_username") bot has changed
+/// getOption("animation_search_bot_username") bot has changed
 @immutable
 class UpdateAnimationSearchParameters extends Update {
   const UpdateAnimationSearchParameters({

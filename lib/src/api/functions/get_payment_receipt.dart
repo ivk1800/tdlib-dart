@@ -11,7 +11,7 @@ class GetPaymentReceipt extends TdFunction {
     required this.messageId,
   });
 
-  /// [chatId] Chat identifier of the PaymentSuccessful message
+  /// [chatId] Chat identifier of the messagePaymentSuccessful message
   final int chatId;
 
   /// [messageId] Message identifier
