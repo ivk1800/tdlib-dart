@@ -7,7 +7,12 @@ import '../tdapi.dart';
 class ChatPermissions extends TdObject {
   const ChatPermissions({
     required this.canSendMessages,
-    required this.canSendMediaMessages,
+    required this.canSendAudios,
+    required this.canSendDocuments,
+    required this.canSendPhotos,
+    required this.canSendVideos,
+    required this.canSendVideoNotes,
+    required this.canSendVoiceNotes,
     required this.canSendPolls,
     required this.canSendOtherMessages,
     required this.canAddWebPagePreviews,
@@ -18,25 +23,36 @@ class ChatPermissions extends TdObject {
   });
 
   /// [canSendMessages] True, if the user can send text messages, contacts,
-  /// locations, and venues
+  /// invoices, locations, and venues
   final bool canSendMessages;
 
-  /// [canSendMediaMessages] True, if the user can send audio files, documents,
-  /// photos, videos, video notes, and voice notes. Implies can_send_messages
-  /// permissions
-  final bool canSendMediaMessages;
+  /// [canSendAudios] True, if the user can send music files
+  final bool canSendAudios;
 
-  /// [canSendPolls] True, if the user can send polls. Implies can_send_messages
-  /// permissions
+  /// [canSendDocuments] True, if the user can send documents
+  final bool canSendDocuments;
+
+  /// [canSendPhotos] True, if the user can send audio photos
+  final bool canSendPhotos;
+
+  /// [canSendVideos] True, if the user can send audio videos
+  final bool canSendVideos;
+
+  /// [canSendVideoNotes] True, if the user can send video notes
+  final bool canSendVideoNotes;
+
+  /// [canSendVoiceNotes] True, if the user can send voice notes
+  final bool canSendVoiceNotes;
+
+  /// [canSendPolls] True, if the user can send polls
   final bool canSendPolls;
 
   /// [canSendOtherMessages] True, if the user can send animations, games,
-  /// stickers, and dice and use inline bots. Implies can_send_messages
-  /// permissions
+  /// stickers, and dice and use inline bots
   final bool canSendOtherMessages;
 
   /// [canAddWebPagePreviews] True, if the user may add a web page preview to
-  /// their messages. Implies can_send_messages permissions
+  /// their messages
   final bool canAddWebPagePreviews;
 
   /// [canChangeInfo] True, if the user can change the chat title, photo, and
@@ -61,7 +77,12 @@ class ChatPermissions extends TdObject {
 
     return ChatPermissions(
       canSendMessages: json['can_send_messages'],
-      canSendMediaMessages: json['can_send_media_messages'],
+      canSendAudios: json['can_send_audios'],
+      canSendDocuments: json['can_send_documents'],
+      canSendPhotos: json['can_send_photos'],
+      canSendVideos: json['can_send_videos'],
+      canSendVideoNotes: json['can_send_video_notes'],
+      canSendVoiceNotes: json['can_send_voice_notes'],
       canSendPolls: json['can_send_polls'],
       canSendOtherMessages: json['can_send_other_messages'],
       canAddWebPagePreviews: json['can_add_web_page_previews'],
@@ -78,7 +99,12 @@ class ChatPermissions extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'can_send_messages': canSendMessages,
-        'can_send_media_messages': canSendMediaMessages,
+        'can_send_audios': canSendAudios,
+        'can_send_documents': canSendDocuments,
+        'can_send_photos': canSendPhotos,
+        'can_send_videos': canSendVideos,
+        'can_send_video_notes': canSendVideoNotes,
+        'can_send_voice_notes': canSendVoiceNotes,
         'can_send_polls': canSendPolls,
         'can_send_other_messages': canSendOtherMessages,
         'can_add_web_page_previews': canAddWebPagePreviews,

@@ -8,6 +8,7 @@ class UpdateNewChatJoinRequest extends Update {
   const UpdateNewChatJoinRequest({
     required this.chatId,
     required this.request,
+    required this.userChatId,
     this.inviteLink,
   });
 
@@ -16,6 +17,9 @@ class UpdateNewChatJoinRequest extends Update {
 
   /// [request] Join request
   final ChatJoinRequest request;
+
+  /// [userChatId] Chat identifier of the private chat with the user
+  final int userChatId;
 
   /// [inviteLink] The invite link, which was used to send join request; may be
   /// null
@@ -31,6 +35,7 @@ class UpdateNewChatJoinRequest extends Update {
     return UpdateNewChatJoinRequest(
       chatId: json['chat_id'],
       request: ChatJoinRequest.fromJson(json['request'])!,
+      userChatId: json['user_chat_id'],
       inviteLink: ChatInviteLink.fromJson(json['invite_link']),
     );
   }
@@ -42,6 +47,7 @@ class UpdateNewChatJoinRequest extends Update {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'request': request.toJson(),
+        'user_chat_id': userChatId,
         'invite_link': inviteLink?.toJson(),
         '@type': constructor,
       };

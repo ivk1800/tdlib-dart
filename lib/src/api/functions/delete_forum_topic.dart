@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Deletes all messages in a forum topic; requires can_delete_messages
-/// administrator rights in the supergroup unless the user is creator of the
+/// administrator right in the supergroup unless the user is creator of the
 /// topic, the topic has no messages from other users and has at most 11
 /// messages
 /// Returns [Ok]

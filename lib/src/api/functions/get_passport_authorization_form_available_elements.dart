@@ -9,12 +9,12 @@ import '../tdapi.dart';
 @immutable
 class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   const GetPassportAuthorizationFormAvailableElements({
-    required this.autorizationFormId,
+    required this.authorizationFormId,
     required this.password,
   });
 
-  /// [autorizationFormId] Authorization form identifier
-  final int autorizationFormId;
+  /// [authorizationFormId] Authorization form identifier
+  final int authorizationFormId;
 
   /// [password] The 2-step verification password of the current user
   final String password;
@@ -27,7 +27,7 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'autorization_form_id': autorizationFormId,
+        'authorization_form_id': authorizationFormId,
         'password': password,
         '@type': constructor,
       };

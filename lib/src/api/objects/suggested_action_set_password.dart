@@ -11,7 +11,8 @@ class SuggestedActionSetPassword extends SuggestedAction {
   });
 
   /// [authorizationDelay] The number of days to pass between consecutive
-  /// authorizations if the user declines to set password
+  /// authorizations if the user declines to set password; if 0, then the user
+  /// is advised to set the password for security reasons
   final int authorizationDelay;
 
   static const String constructor = 'suggestedActionSetPassword';

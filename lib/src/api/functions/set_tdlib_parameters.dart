@@ -38,7 +38,8 @@ class SetTdlibParameters extends TdFunction {
   /// database_directory will be used
   final String filesDirectory;
 
-  /// [databaseEncryptionKey] Encryption key for the database
+  /// [databaseEncryptionKey] Encryption key for the database. If the encryption
+  /// key is invalid, then an error with code 401 will be returned
   final String databaseEncryptionKey;
 
   /// [useFileDatabase] Pass true to keep information about downloaded and

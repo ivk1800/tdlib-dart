@@ -16,6 +16,7 @@ abstract class Update extends TdObject {
   /// [UpdateAnimationSearchParameters]
   /// [UpdateAttachmentMenuBots]
   /// [UpdateAuthorizationState]
+  /// [UpdateAutosaveSettings]
   /// [UpdateBasicGroupFullInfo]
   /// [UpdateBasicGroup]
   /// [UpdateCall]
@@ -29,10 +30,11 @@ abstract class Update extends TdObject {
   /// [UpdateChatHasScheduledMessages]
   /// [UpdateChatIsBlocked]
   /// [UpdateChatIsMarkedAsUnread]
+  /// [UpdateChatIsTranslatable]
   /// [UpdateChatLastMessage]
   /// [UpdateChatMember]
+  /// [UpdateChatMessageAutoDeleteTime]
   /// [UpdateChatMessageSender]
-  /// [UpdateChatMessageTtl]
   /// [UpdateChatNotificationSettings]
   /// [UpdateChatOnlineMemberCount]
   /// [UpdateChatPendingJoinRequests]
@@ -133,6 +135,8 @@ abstract class Update extends TdObject {
         return UpdateAttachmentMenuBots.fromJson(json);
       case UpdateAuthorizationState.constructor:
         return UpdateAuthorizationState.fromJson(json);
+      case UpdateAutosaveSettings.constructor:
+        return UpdateAutosaveSettings.fromJson(json);
       case UpdateBasicGroup.constructor:
         return UpdateBasicGroup.fromJson(json);
       case UpdateBasicGroupFullInfo.constructor:
@@ -159,14 +163,16 @@ abstract class Update extends TdObject {
         return UpdateChatIsBlocked.fromJson(json);
       case UpdateChatIsMarkedAsUnread.constructor:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
+      case UpdateChatIsTranslatable.constructor:
+        return UpdateChatIsTranslatable.fromJson(json);
       case UpdateChatLastMessage.constructor:
         return UpdateChatLastMessage.fromJson(json);
       case UpdateChatMember.constructor:
         return UpdateChatMember.fromJson(json);
+      case UpdateChatMessageAutoDeleteTime.constructor:
+        return UpdateChatMessageAutoDeleteTime.fromJson(json);
       case UpdateChatMessageSender.constructor:
         return UpdateChatMessageSender.fromJson(json);
-      case UpdateChatMessageTtl.constructor:
-        return UpdateChatMessageTtl.fromJson(json);
       case UpdateChatNotificationSettings.constructor:
         return UpdateChatNotificationSettings.fromJson(json);
       case UpdateChatOnlineMemberCount.constructor:

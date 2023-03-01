@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An HTTP url needs to be open
+/// An HTTP URL needs to be open
 @immutable
 class LoginUrlInfoOpen extends LoginUrlInfo {
   const LoginUrlInfoOpen({

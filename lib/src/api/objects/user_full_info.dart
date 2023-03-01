@@ -6,7 +6,9 @@ import '../tdapi.dart';
 @immutable
 class UserFullInfo extends TdObject {
   const UserFullInfo({
+    this.personalPhoto,
     this.photo,
+    this.publicPhoto,
     required this.isBlocked,
     required this.canBeCalled,
     required this.supportsVideoCalls,
@@ -20,9 +22,26 @@ class UserFullInfo extends TdObject {
     this.botInfo,
   });
 
-  /// [photo] User profile photo; may be null if empty or unknown. If non-null,
-  /// then it is the same photo as in user.profile_photo and chat.photo
+  /// [personalPhoto] User profile photo set by the current user for the
+  /// contact; may be null. If null and user.profile_photo is null, then the
+  /// photo is empty; otherwise, it is unknown.. If non-null, then it is the
+  /// same photo as in user.profile_photo and chat.photo. This photo isn't
+  /// returned in the list of user photos
+  final ChatPhoto? personalPhoto;
+
+  /// [photo] User profile photo; may be null. If null and user.profile_photo is
+  /// null, then the photo is empty; otherwise, it is unknown.. If non-null and
+  /// personal_photo is null, then it is the same photo as in user.profile_photo
+  /// and chat.photo
   final ChatPhoto? photo;
+
+  /// [publicPhoto] User profile photo visible if the main photo is hidden by
+  /// privacy settings; may be null. If null and user.profile_photo is null,
+  /// then the photo is empty; otherwise, it is unknown.. If non-null and both
+  /// photo and personal_photo are null, then it is the same photo as in
+  /// user.profile_photo and chat.photo. This photo isn't returned in the list
+  /// of user photos
+  final ChatPhoto? publicPhoto;
 
   /// [isBlocked] True, if the user is blocked by the current user
   final bool isBlocked;
@@ -72,7 +91,9 @@ class UserFullInfo extends TdObject {
     }
 
     return UserFullInfo(
+      personalPhoto: ChatPhoto.fromJson(json['personal_photo']),
       photo: ChatPhoto.fromJson(json['photo']),
+      publicPhoto: ChatPhoto.fromJson(json['public_photo']),
       isBlocked: json['is_blocked'],
       canBeCalled: json['can_be_called'],
       supportsVideoCalls: json['supports_video_calls'],
@@ -97,7 +118,9 @@ class UserFullInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'personal_photo': personalPhoto?.toJson(),
         'photo': photo?.toJson(),
+        'public_photo': publicPhoto?.toJson(),
         'is_blocked': isBlocked,
         'can_be_called': canBeCalled,
         'supports_video_calls': supportsVideoCalls,

@@ -15,6 +15,8 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionConvertToBroadcastGroup]
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
   /// [SuggestedActionSetPassword]
+  /// [SuggestedActionSubscribeToAnnualPremium]
+  /// [SuggestedActionUpgradePremium]
   /// [SuggestedActionViewChecksHint]
   static SuggestedAction? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -32,6 +34,10 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
       case SuggestedActionSetPassword.constructor:
         return SuggestedActionSetPassword.fromJson(json);
+      case SuggestedActionSubscribeToAnnualPremium.constructor:
+        return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
+      case SuggestedActionUpgradePremium.constructor:
+        return SuggestedActionUpgradePremium.fromJson(json);
       case SuggestedActionViewChecksHint.constructor:
         return SuggestedActionViewChecksHint.fromJson(json);
       default:

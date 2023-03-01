@@ -4,8 +4,8 @@ import '../tdapi.dart';
 
 /// The link contains a request of Telegram passport data. Call
 /// getPassportAuthorizationForm with the given parameters to process the link
-/// if the link was received from outside of the application, otherwise ignore
-/// it
+/// if the link was received from outside of the application; otherwise,
+/// ignore it
 @immutable
 class InternalLinkTypePassportDataRequest extends InternalLinkType {
   const InternalLinkTypePassportDataRequest({
@@ -28,10 +28,12 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
   /// [nonce] Unique request identifier provided by the service
   final String nonce;
 
-  /// [callbackUrl] An HTTP URL to open once the request is finished or canceled
-  /// with the parameter tg_passport=success or tg_passport=cancel respectively.
-  /// If empty, then the link tgbot{bot_user_id}://passport/success or
-  /// tgbot{bot_user_id}://passport/cancel needs to be opened instead
+  /// [callbackUrl] An HTTP URL to open once the request is finished, canceled,
+  /// or failed with the parameters tg_passport=success, tg_passport=cancel, or
+  /// tg_passport=error&error=... respectively.. If empty, then onActivityResult
+  /// method must be used to return response on Android, or the link
+  /// tgbot{bot_user_id}://passport/success or
+  /// tgbot{bot_user_id}://passport/cancel must be opened otherwise
   final String callbackUrl;
 
   static const String constructor = 'internalLinkTypePassportDataRequest';

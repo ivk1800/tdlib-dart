@@ -11,6 +11,7 @@ class ProfilePhoto extends TdObject {
     required this.big,
     this.minithumbnail,
     required this.hasAnimation,
+    required this.isPersonal,
   });
 
   /// [id] Photo identifier; 0 for an empty photo. Can be used to find a photo
@@ -31,6 +32,9 @@ class ProfilePhoto extends TdObject {
   /// [hasAnimation] True, if the photo has animated variant
   final bool hasAnimation;
 
+  /// [isPersonal] True, if the photo is visible only for the current user
+  final bool isPersonal;
+
   static const String constructor = 'profilePhoto';
 
   static ProfilePhoto? fromJson(Map<String, dynamic>? json) {
@@ -44,6 +48,7 @@ class ProfilePhoto extends TdObject {
       big: File.fromJson(json['big'])!,
       minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
       hasAnimation: json['has_animation'],
+      isPersonal: json['is_personal'],
     );
   }
 
@@ -57,6 +62,7 @@ class ProfilePhoto extends TdObject {
         'big': big.toJson(),
         'minithumbnail': minithumbnail?.toJson(),
         'has_animation': hasAnimation,
+        'is_personal': isPersonal,
         '@type': constructor,
       };
 

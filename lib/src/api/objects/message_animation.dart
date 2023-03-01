@@ -8,6 +8,7 @@ class MessageAnimation extends MessageContent {
   const MessageAnimation({
     required this.animation,
     required this.caption,
+    required this.hasSpoiler,
     required this.isSecret,
   });
 
@@ -16,6 +17,10 @@ class MessageAnimation extends MessageContent {
 
   /// [caption] Animation caption
   final FormattedText caption;
+
+  /// [hasSpoiler] True, if the animation preview must be covered by a spoiler
+  /// animation
+  final bool hasSpoiler;
 
   /// [isSecret] True, if the animation thumbnail must be blurred and the
   /// animation must be shown only while tapped
@@ -31,6 +36,7 @@ class MessageAnimation extends MessageContent {
     return MessageAnimation(
       animation: Animation.fromJson(json['animation'])!,
       caption: FormattedText.fromJson(json['caption'])!,
+      hasSpoiler: json['has_spoiler'],
       isSecret: json['is_secret'],
     );
   }
@@ -42,6 +48,7 @@ class MessageAnimation extends MessageContent {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'animation': animation.toJson(),
         'caption': caption.toJson(),
+        'has_spoiler': hasSpoiler,
         'is_secret': isSecret,
         '@type': constructor,
       };

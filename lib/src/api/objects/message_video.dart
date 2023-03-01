@@ -8,6 +8,7 @@ class MessageVideo extends MessageContent {
   const MessageVideo({
     required this.video,
     required this.caption,
+    required this.hasSpoiler,
     required this.isSecret,
   });
 
@@ -16,6 +17,10 @@ class MessageVideo extends MessageContent {
 
   /// [caption] Video caption
   final FormattedText caption;
+
+  /// [hasSpoiler] True, if the video preview must be covered by a spoiler
+  /// animation
+  final bool hasSpoiler;
 
   /// [isSecret] True, if the video thumbnail must be blurred and the video must
   /// be shown only while tapped
@@ -31,6 +36,7 @@ class MessageVideo extends MessageContent {
     return MessageVideo(
       video: Video.fromJson(json['video'])!,
       caption: FormattedText.fromJson(json['caption'])!,
+      hasSpoiler: json['has_spoiler'],
       isSecret: json['is_secret'],
     );
   }
@@ -42,6 +48,7 @@ class MessageVideo extends MessageContent {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'video': video.toJson(),
         'caption': caption.toJson(),
+        'has_spoiler': hasSpoiler,
         'is_secret': isSecret,
         '@type': constructor,
       };

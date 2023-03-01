@@ -15,7 +15,7 @@ class Game extends TdObject {
     this.animation,
   });
 
-  /// [id] Game ID
+  /// [id] Unique game identifier
   final int id;
 
   /// [shortName] Game short name. To share a game use the URL

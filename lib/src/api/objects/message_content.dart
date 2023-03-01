@@ -14,6 +14,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageAnimation]
   /// [MessageAudio]
   /// [MessageBasicGroupChatCreate]
+  /// [MessageBotWriteAccessAllowed]
   /// [MessageCall]
   /// [MessageChatAddMembers]
   /// [MessageChatChangePhoto]
@@ -22,8 +23,9 @@ abstract class MessageContent extends TdObject {
   /// [MessageChatDeletePhoto]
   /// [MessageChatJoinByLink]
   /// [MessageChatJoinByRequest]
+  /// [MessageChatSetMessageAutoDeleteTime]
   /// [MessageChatSetTheme]
-  /// [MessageChatSetTtl]
+  /// [MessageChatShared]
   /// [MessageChatUpgradeFrom]
   /// [MessageChatUpgradeTo]
   /// [MessageContactRegistered]
@@ -53,9 +55,11 @@ abstract class MessageContent extends TdObject {
   /// [MessageProximityAlertTriggered]
   /// [MessageScreenshotTaken]
   /// [MessageSticker]
+  /// [MessageSuggestProfilePhoto]
   /// [MessageSupergroupChatCreate]
   /// [MessageText]
   /// [MessageUnsupported]
+  /// [MessageUserShared]
   /// [MessageVenue]
   /// [MessageVideoChatEnded]
   /// [MessageVideoChatScheduled]
@@ -80,6 +84,8 @@ abstract class MessageContent extends TdObject {
         return MessageAudio.fromJson(json);
       case MessageBasicGroupChatCreate.constructor:
         return MessageBasicGroupChatCreate.fromJson(json);
+      case MessageBotWriteAccessAllowed.constructor:
+        return MessageBotWriteAccessAllowed.fromJson(json);
       case MessageCall.constructor:
         return MessageCall.fromJson(json);
       case MessageChatAddMembers.constructor:
@@ -96,10 +102,12 @@ abstract class MessageContent extends TdObject {
         return MessageChatJoinByLink.fromJson(json);
       case MessageChatJoinByRequest.constructor:
         return MessageChatJoinByRequest.fromJson(json);
+      case MessageChatSetMessageAutoDeleteTime.constructor:
+        return MessageChatSetMessageAutoDeleteTime.fromJson(json);
       case MessageChatSetTheme.constructor:
         return MessageChatSetTheme.fromJson(json);
-      case MessageChatSetTtl.constructor:
-        return MessageChatSetTtl.fromJson(json);
+      case MessageChatShared.constructor:
+        return MessageChatShared.fromJson(json);
       case MessageChatUpgradeFrom.constructor:
         return MessageChatUpgradeFrom.fromJson(json);
       case MessageChatUpgradeTo.constructor:
@@ -158,12 +166,16 @@ abstract class MessageContent extends TdObject {
         return MessageScreenshotTaken.fromJson(json);
       case MessageSticker.constructor:
         return MessageSticker.fromJson(json);
+      case MessageSuggestProfilePhoto.constructor:
+        return MessageSuggestProfilePhoto.fromJson(json);
       case MessageSupergroupChatCreate.constructor:
         return MessageSupergroupChatCreate.fromJson(json);
       case MessageText.constructor:
         return MessageText.fromJson(json);
       case MessageUnsupported.constructor:
         return MessageUnsupported.fromJson(json);
+      case MessageUserShared.constructor:
+        return MessageUserShared.fromJson(json);
       case MessageVenue.constructor:
         return MessageVenue.fromJson(json);
       case MessageVideo.constructor:

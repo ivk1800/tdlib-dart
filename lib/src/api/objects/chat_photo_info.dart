@@ -10,6 +10,7 @@ class ChatPhotoInfo extends TdObject {
     required this.big,
     this.minithumbnail,
     required this.hasAnimation,
+    required this.isPersonal,
   });
 
   /// [small] A small (160x160) chat photo variant in JPEG format. The file can
@@ -26,6 +27,9 @@ class ChatPhotoInfo extends TdObject {
   /// [hasAnimation] True, if the photo has animated variant
   final bool hasAnimation;
 
+  /// [isPersonal] True, if the photo is visible only for the current user
+  final bool isPersonal;
+
   static const String constructor = 'chatPhotoInfo';
 
   static ChatPhotoInfo? fromJson(Map<String, dynamic>? json) {
@@ -38,6 +42,7 @@ class ChatPhotoInfo extends TdObject {
       big: File.fromJson(json['big'])!,
       minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
       hasAnimation: json['has_animation'],
+      isPersonal: json['is_personal'],
     );
   }
 
@@ -50,6 +55,7 @@ class ChatPhotoInfo extends TdObject {
         'big': big.toJson(),
         'minithumbnail': minithumbnail?.toJson(),
         'has_animation': hasAnimation,
+        'is_personal': isPersonal,
         '@type': constructor,
       };
 

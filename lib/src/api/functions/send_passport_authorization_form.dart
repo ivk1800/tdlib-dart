@@ -10,12 +10,12 @@ import '../tdapi.dart';
 @immutable
 class SendPassportAuthorizationForm extends TdFunction {
   const SendPassportAuthorizationForm({
-    required this.autorizationFormId,
+    required this.authorizationFormId,
     required this.types,
   });
 
-  /// [autorizationFormId] Authorization form identifier
-  final int autorizationFormId;
+  /// [authorizationFormId] Authorization form identifier
+  final int authorizationFormId;
 
   /// [types] Types of Telegram Passport elements chosen by user to complete the
   /// authorization form
@@ -28,7 +28,7 @@ class SendPassportAuthorizationForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'autorization_form_id': autorizationFormId,
+        'authorization_form_id': authorizationFormId,
         'types': types.map((item) => item.toJson()).toList(),
         '@type': constructor,
       };

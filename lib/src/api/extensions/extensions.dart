@@ -21,6 +21,10 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     required TResult Function(AuthenticationCodeTypeMissedCall value)
         missedCall,
     required TResult Function(AuthenticationCodeTypeFragment value) fragment,
+    required TResult Function(AuthenticationCodeTypeFirebaseAndroid value)
+        firebaseAndroid,
+    required TResult Function(AuthenticationCodeTypeFirebaseIos value)
+        firebaseIos,
   }) {
     switch (getConstructor()) {
       case AuthenticationCodeTypeTelegramMessage.constructor:
@@ -36,6 +40,11 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
         return missedCall.call(this as AuthenticationCodeTypeMissedCall);
       case AuthenticationCodeTypeFragment.constructor:
         return fragment.call(this as AuthenticationCodeTypeFragment);
+      case AuthenticationCodeTypeFirebaseAndroid.constructor:
+        return firebaseAndroid
+            .call(this as AuthenticationCodeTypeFirebaseAndroid);
+      case AuthenticationCodeTypeFirebaseIos.constructor:
+        return firebaseIos.call(this as AuthenticationCodeTypeFirebaseIos);
     }
     throw StateError('not handled type Generator');
   }
@@ -48,6 +57,9 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     TResult Function(AuthenticationCodeTypeFlashCall value)? flashCall,
     TResult Function(AuthenticationCodeTypeMissedCall value)? missedCall,
     TResult Function(AuthenticationCodeTypeFragment value)? fragment,
+    TResult Function(AuthenticationCodeTypeFirebaseAndroid value)?
+        firebaseAndroid,
+    TResult Function(AuthenticationCodeTypeFirebaseIos value)? firebaseIos,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -80,6 +92,17 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
       case AuthenticationCodeTypeFragment.constructor:
         if (fragment != null) {
           return fragment.call(this as AuthenticationCodeTypeFragment);
+        }
+        break;
+      case AuthenticationCodeTypeFirebaseAndroid.constructor:
+        if (firebaseAndroid != null) {
+          return firebaseAndroid
+              .call(this as AuthenticationCodeTypeFirebaseAndroid);
+        }
+        break;
+      case AuthenticationCodeTypeFirebaseIos.constructor:
+        if (firebaseIos != null) {
+          return firebaseIos.call(this as AuthenticationCodeTypeFirebaseIos);
         }
         break;
     }
@@ -145,6 +168,32 @@ extension AuthenticationCodeTypeFragmentExtensions
   }) =>
       AuthenticationCodeTypeFragment(
         url: url ?? this.url,
+        length: length ?? this.length,
+      );
+}
+
+extension AuthenticationCodeTypeFirebaseAndroidExtensions
+    on AuthenticationCodeTypeFirebaseAndroid {
+  AuthenticationCodeTypeFirebaseAndroid copyWith({
+    String? nonce,
+    int? length,
+  }) =>
+      AuthenticationCodeTypeFirebaseAndroid(
+        nonce: nonce ?? this.nonce,
+        length: length ?? this.length,
+      );
+}
+
+extension AuthenticationCodeTypeFirebaseIosExtensions
+    on AuthenticationCodeTypeFirebaseIos {
+  AuthenticationCodeTypeFirebaseIos copyWith({
+    String? receipt,
+    int? pushTimeout,
+    int? length,
+  }) =>
+      AuthenticationCodeTypeFirebaseIos(
+        receipt: receipt ?? this.receipt,
+        pushTimeout: pushTimeout ?? this.pushTimeout,
         length: length ?? this.length,
       );
 }
@@ -993,6 +1042,79 @@ extension StickerTypeExtensions on StickerType {
   }
 }
 
+extension StickerFullTypeExtensions on StickerFullType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StickerFullTypeRegular value) regular,
+    required TResult Function(StickerFullTypeMask value) mask,
+    required TResult Function(StickerFullTypeCustomEmoji value) customEmoji,
+  }) {
+    switch (getConstructor()) {
+      case StickerFullTypeRegular.constructor:
+        return regular.call(this as StickerFullTypeRegular);
+      case StickerFullTypeMask.constructor:
+        return mask.call(this as StickerFullTypeMask);
+      case StickerFullTypeCustomEmoji.constructor:
+        return customEmoji.call(this as StickerFullTypeCustomEmoji);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StickerFullTypeRegular value)? regular,
+    TResult Function(StickerFullTypeMask value)? mask,
+    TResult Function(StickerFullTypeCustomEmoji value)? customEmoji,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StickerFullTypeRegular.constructor:
+        if (regular != null) {
+          return regular.call(this as StickerFullTypeRegular);
+        }
+        break;
+      case StickerFullTypeMask.constructor:
+        if (mask != null) {
+          return mask.call(this as StickerFullTypeMask);
+        }
+        break;
+      case StickerFullTypeCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as StickerFullTypeCustomEmoji);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension StickerFullTypeRegularExtensions on StickerFullTypeRegular {
+  StickerFullTypeRegular copyWith({
+    File? premiumAnimation,
+  }) =>
+      StickerFullTypeRegular(
+        premiumAnimation: premiumAnimation ?? this.premiumAnimation,
+      );
+}
+
+extension StickerFullTypeMaskExtensions on StickerFullTypeMask {
+  StickerFullTypeMask copyWith({
+    MaskPosition? maskPosition,
+  }) =>
+      StickerFullTypeMask(
+        maskPosition: maskPosition ?? this.maskPosition,
+      );
+}
+
+extension StickerFullTypeCustomEmojiExtensions on StickerFullTypeCustomEmoji {
+  StickerFullTypeCustomEmoji copyWith({
+    int? customEmojiId,
+    bool? needsRepainting,
+  }) =>
+      StickerFullTypeCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
+      );
+}
+
 extension ClosedVectorPathExtensions on ClosedVectorPath {
   ClosedVectorPath copyWith({
     List<VectorPathCommand>? commands,
@@ -1157,33 +1279,27 @@ extension PhotoExtensions on Photo {
 
 extension StickerExtensions on Sticker {
   Sticker copyWith({
+    int? id,
     int? setId,
     int? width,
     int? height,
     String? emoji,
     StickerFormat? format,
-    StickerType? type,
-    MaskPosition? maskPosition,
-    int? customEmojiId,
+    StickerFullType? fullType,
     List<ClosedVectorPath>? outline,
     Thumbnail? thumbnail,
-    bool? isPremium,
-    File? premiumAnimation,
     File? sticker,
   }) =>
       Sticker(
+        id: id ?? this.id,
         setId: setId ?? this.setId,
         width: width ?? this.width,
         height: height ?? this.height,
         emoji: emoji ?? this.emoji,
         format: format ?? this.format,
-        type: type ?? this.type,
-        maskPosition: maskPosition ?? this.maskPosition,
-        customEmojiId: customEmojiId ?? this.customEmojiId,
+        fullType: fullType ?? this.fullType,
         outline: outline ?? this.outline,
         thumbnail: thumbnail ?? this.thumbnail,
-        isPremium: isPremium ?? this.isPremium,
-        premiumAnimation: premiumAnimation ?? this.premiumAnimation,
         sticker: sticker ?? this.sticker,
       );
 }
@@ -1376,6 +1492,7 @@ extension ProfilePhotoExtensions on ProfilePhoto {
     File? big,
     Minithumbnail? minithumbnail,
     bool? hasAnimation,
+    bool? isPersonal,
   }) =>
       ProfilePhoto(
         id: id ?? this.id,
@@ -1383,6 +1500,7 @@ extension ProfilePhotoExtensions on ProfilePhoto {
         big: big ?? this.big,
         minithumbnail: minithumbnail ?? this.minithumbnail,
         hasAnimation: hasAnimation ?? this.hasAnimation,
+        isPersonal: isPersonal ?? this.isPersonal,
       );
 }
 
@@ -1392,12 +1510,14 @@ extension ChatPhotoInfoExtensions on ChatPhotoInfo {
     File? big,
     Minithumbnail? minithumbnail,
     bool? hasAnimation,
+    bool? isPersonal,
   }) =>
       ChatPhotoInfo(
         small: small ?? this.small,
         big: big ?? this.big,
         minithumbnail: minithumbnail ?? this.minithumbnail,
         hasAnimation: hasAnimation ?? this.hasAnimation,
+        isPersonal: isPersonal ?? this.isPersonal,
       );
 }
 
@@ -1520,6 +1640,76 @@ extension ChatLocationExtensions on ChatLocation {
       );
 }
 
+extension ChatPhotoStickerTypeExtensions on ChatPhotoStickerType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatPhotoStickerTypeRegularOrMask value)
+        regularOrMask,
+    required TResult Function(ChatPhotoStickerTypeCustomEmoji value)
+        customEmoji,
+  }) {
+    switch (getConstructor()) {
+      case ChatPhotoStickerTypeRegularOrMask.constructor:
+        return regularOrMask.call(this as ChatPhotoStickerTypeRegularOrMask);
+      case ChatPhotoStickerTypeCustomEmoji.constructor:
+        return customEmoji.call(this as ChatPhotoStickerTypeCustomEmoji);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatPhotoStickerTypeRegularOrMask value)? regularOrMask,
+    TResult Function(ChatPhotoStickerTypeCustomEmoji value)? customEmoji,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ChatPhotoStickerTypeRegularOrMask.constructor:
+        if (regularOrMask != null) {
+          return regularOrMask.call(this as ChatPhotoStickerTypeRegularOrMask);
+        }
+        break;
+      case ChatPhotoStickerTypeCustomEmoji.constructor:
+        if (customEmoji != null) {
+          return customEmoji.call(this as ChatPhotoStickerTypeCustomEmoji);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ChatPhotoStickerTypeRegularOrMaskExtensions
+    on ChatPhotoStickerTypeRegularOrMask {
+  ChatPhotoStickerTypeRegularOrMask copyWith({
+    int? stickerSetId,
+    int? stickerId,
+  }) =>
+      ChatPhotoStickerTypeRegularOrMask(
+        stickerSetId: stickerSetId ?? this.stickerSetId,
+        stickerId: stickerId ?? this.stickerId,
+      );
+}
+
+extension ChatPhotoStickerTypeCustomEmojiExtensions
+    on ChatPhotoStickerTypeCustomEmoji {
+  ChatPhotoStickerTypeCustomEmoji copyWith({
+    int? customEmojiId,
+  }) =>
+      ChatPhotoStickerTypeCustomEmoji(
+        customEmojiId: customEmojiId ?? this.customEmojiId,
+      );
+}
+
+extension ChatPhotoStickerExtensions on ChatPhotoSticker {
+  ChatPhotoSticker copyWith({
+    ChatPhotoStickerType? type,
+    BackgroundFill? backgroundFill,
+  }) =>
+      ChatPhotoSticker(
+        type: type ?? this.type,
+        backgroundFill: backgroundFill ?? this.backgroundFill,
+      );
+}
+
 extension AnimatedChatPhotoExtensions on AnimatedChatPhoto {
   AnimatedChatPhoto copyWith({
     int? length,
@@ -1541,6 +1731,7 @@ extension ChatPhotoExtensions on ChatPhoto {
     List<PhotoSize>? sizes,
     AnimatedChatPhoto? animation,
     AnimatedChatPhoto? smallAnimation,
+    ChatPhotoSticker? sticker,
   }) =>
       ChatPhoto(
         id: id ?? this.id,
@@ -1549,6 +1740,7 @@ extension ChatPhotoExtensions on ChatPhoto {
         sizes: sizes ?? this.sizes,
         animation: animation ?? this.animation,
         smallAnimation: smallAnimation ?? this.smallAnimation,
+        sticker: sticker ?? this.sticker,
       );
 }
 
@@ -1568,6 +1760,7 @@ extension InputChatPhotoExtensions on InputChatPhoto {
     required TResult Function(InputChatPhotoPrevious value) previous,
     required TResult Function(InputChatPhotoStatic value) static,
     required TResult Function(InputChatPhotoAnimation value) animation,
+    required TResult Function(InputChatPhotoSticker value) sticker,
   }) {
     switch (getConstructor()) {
       case InputChatPhotoPrevious.constructor:
@@ -1576,6 +1769,8 @@ extension InputChatPhotoExtensions on InputChatPhoto {
         return static.call(this as InputChatPhotoStatic);
       case InputChatPhotoAnimation.constructor:
         return animation.call(this as InputChatPhotoAnimation);
+      case InputChatPhotoSticker.constructor:
+        return sticker.call(this as InputChatPhotoSticker);
     }
     throw StateError('not handled type Generator');
   }
@@ -1584,6 +1779,7 @@ extension InputChatPhotoExtensions on InputChatPhoto {
     TResult Function(InputChatPhotoPrevious value)? previous,
     TResult Function(InputChatPhotoStatic value)? static,
     TResult Function(InputChatPhotoAnimation value)? animation,
+    TResult Function(InputChatPhotoSticker value)? sticker,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -1600,6 +1796,11 @@ extension InputChatPhotoExtensions on InputChatPhoto {
       case InputChatPhotoAnimation.constructor:
         if (animation != null) {
           return animation.call(this as InputChatPhotoAnimation);
+        }
+        break;
+      case InputChatPhotoSticker.constructor:
+        if (sticker != null) {
+          return sticker.call(this as InputChatPhotoSticker);
         }
         break;
     }
@@ -1636,10 +1837,24 @@ extension InputChatPhotoAnimationExtensions on InputChatPhotoAnimation {
       );
 }
 
+extension InputChatPhotoStickerExtensions on InputChatPhotoSticker {
+  InputChatPhotoSticker copyWith({
+    ChatPhotoSticker? sticker,
+  }) =>
+      InputChatPhotoSticker(
+        sticker: sticker ?? this.sticker,
+      );
+}
+
 extension ChatPermissionsExtensions on ChatPermissions {
   ChatPermissions copyWith({
     bool? canSendMessages,
-    bool? canSendMediaMessages,
+    bool? canSendAudios,
+    bool? canSendDocuments,
+    bool? canSendPhotos,
+    bool? canSendVideos,
+    bool? canSendVideoNotes,
+    bool? canSendVoiceNotes,
     bool? canSendPolls,
     bool? canSendOtherMessages,
     bool? canAddWebPagePreviews,
@@ -1650,7 +1865,12 @@ extension ChatPermissionsExtensions on ChatPermissions {
   }) =>
       ChatPermissions(
         canSendMessages: canSendMessages ?? this.canSendMessages,
-        canSendMediaMessages: canSendMediaMessages ?? this.canSendMediaMessages,
+        canSendAudios: canSendAudios ?? this.canSendAudios,
+        canSendDocuments: canSendDocuments ?? this.canSendDocuments,
+        canSendPhotos: canSendPhotos ?? this.canSendPhotos,
+        canSendVideos: canSendVideos ?? this.canSendVideos,
+        canSendVideoNotes: canSendVideoNotes ?? this.canSendVideoNotes,
+        canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
         canSendPolls: canSendPolls ?? this.canSendPolls,
         canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
         canAddWebPagePreviews:
@@ -1712,6 +1932,21 @@ extension PremiumPaymentOptionExtensions on PremiumPaymentOption {
       );
 }
 
+extension PremiumStatePaymentOptionExtensions on PremiumStatePaymentOption {
+  PremiumStatePaymentOption copyWith({
+    PremiumPaymentOption? paymentOption,
+    bool? isCurrent,
+    bool? isUpgrade,
+    String? lastTransactionId,
+  }) =>
+      PremiumStatePaymentOption(
+        paymentOption: paymentOption ?? this.paymentOption,
+        isCurrent: isCurrent ?? this.isCurrent,
+        isUpgrade: isUpgrade ?? this.isUpgrade,
+        lastTransactionId: lastTransactionId ?? this.lastTransactionId,
+      );
+}
+
 extension EmojiStatusExtensions on EmojiStatus {
   EmojiStatus copyWith({
     int? customEmojiId,
@@ -1758,7 +1993,6 @@ extension UserExtensions on User {
     bool? isVerified,
     bool? isPremium,
     bool? isSupport,
-    bool? hasAnonymousPhoneNumber,
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
@@ -1781,8 +2015,6 @@ extension UserExtensions on User {
         isVerified: isVerified ?? this.isVerified,
         isPremium: isPremium ?? this.isPremium,
         isSupport: isSupport ?? this.isSupport,
-        hasAnonymousPhoneNumber:
-            hasAnonymousPhoneNumber ?? this.hasAnonymousPhoneNumber,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
         isFake: isFake ?? this.isFake,
@@ -1821,7 +2053,9 @@ extension BotInfoExtensions on BotInfo {
 
 extension UserFullInfoExtensions on UserFullInfo {
   UserFullInfo copyWith({
+    ChatPhoto? personalPhoto,
     ChatPhoto? photo,
+    ChatPhoto? publicPhoto,
     bool? isBlocked,
     bool? canBeCalled,
     bool? supportsVideoCalls,
@@ -1835,7 +2069,9 @@ extension UserFullInfoExtensions on UserFullInfo {
     BotInfo? botInfo,
   }) =>
       UserFullInfo(
+        personalPhoto: personalPhoto ?? this.personalPhoto,
         photo: photo ?? this.photo,
+        publicPhoto: publicPhoto ?? this.publicPhoto,
         isBlocked: isBlocked ?? this.isBlocked,
         canBeCalled: canBeCalled ?? this.canBeCalled,
         supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
@@ -2445,6 +2681,8 @@ extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
     String? description,
     int? creatorUserId,
     List<ChatMember>? members,
+    bool? canHideMembers,
+    bool? canToggleAggressiveAntiSpam,
     ChatInviteLink? inviteLink,
     List<BotCommands>? botCommands,
   }) =>
@@ -2453,6 +2691,9 @@ extension BasicGroupFullInfoExtensions on BasicGroupFullInfo {
         description: description ?? this.description,
         creatorUserId: creatorUserId ?? this.creatorUserId,
         members: members ?? this.members,
+        canHideMembers: canHideMembers ?? this.canHideMembers,
+        canToggleAggressiveAntiSpam:
+            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         inviteLink: inviteLink ?? this.inviteLink,
         botCommands: botCommands ?? this.botCommands,
       );
@@ -2513,12 +2754,15 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
     int? slowModeDelay,
     double? slowModeDelayExpiresIn,
     bool? canGetMembers,
+    bool? hasHiddenMembers,
+    bool? canHideMembers,
     bool? canSetUsername,
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
+    bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
-    bool? isAggressiveAntiSpamEnabled,
+    bool? hasAggressiveAntiSpamEnabled,
     int? stickerSetId,
     ChatLocation? location,
     ChatInviteLink? inviteLink,
@@ -2538,14 +2782,18 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
         slowModeDelayExpiresIn:
             slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
         canGetMembers: canGetMembers ?? this.canGetMembers,
+        hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+        canHideMembers: canHideMembers ?? this.canHideMembers,
         canSetUsername: canSetUsername ?? this.canSetUsername,
         canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
         canSetLocation: canSetLocation ?? this.canSetLocation,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canToggleAggressiveAntiSpam:
+            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-        isAggressiveAntiSpamEnabled:
-            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
+        hasAggressiveAntiSpamEnabled:
+            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         stickerSetId: stickerSetId ?? this.stickerSetId,
         location: location ?? this.location,
         inviteLink: inviteLink ?? this.inviteLink,
@@ -3037,8 +3285,9 @@ extension MessageExtensions on Message {
     int? replyInChatId,
     int? replyToMessageId,
     int? messageThreadId,
-    int? ttl,
-    double? ttlExpiresIn,
+    int? selfDestructTime,
+    double? selfDestructIn,
+    double? autoDeleteIn,
     int? viaBotUserId,
     String? authorSignature,
     int? mediaAlbumId,
@@ -3081,8 +3330,9 @@ extension MessageExtensions on Message {
         replyInChatId: replyInChatId ?? this.replyInChatId,
         replyToMessageId: replyToMessageId ?? this.replyToMessageId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        ttl: ttl ?? this.ttl,
-        ttlExpiresIn: ttlExpiresIn ?? this.ttlExpiresIn,
+        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructIn: selfDestructIn ?? this.selfDestructIn,
+        autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
@@ -3113,6 +3363,19 @@ extension FoundMessagesExtensions on FoundMessages {
         totalCount: totalCount ?? this.totalCount,
         messages: messages ?? this.messages,
         nextOffset: nextOffset ?? this.nextOffset,
+      );
+}
+
+extension FoundChatMessagesExtensions on FoundChatMessages {
+  FoundChatMessages copyWith({
+    int? totalCount,
+    List<Message>? messages,
+    int? nextFromMessageId,
+  }) =>
+      FoundChatMessages(
+        totalCount: totalCount ?? this.totalCount,
+        messages: messages ?? this.messages,
+        nextFromMessageId: nextFromMessageId ?? this.nextFromMessageId,
       );
 }
 
@@ -3707,6 +3970,7 @@ extension ChatExtensions on Chat {
     List<ChatPosition>? positions,
     MessageSender? messageSenderId,
     bool? hasProtectedContent,
+    bool? isTranslatable,
     bool? isMarkedAsUnread,
     bool? isBlocked,
     bool? hasScheduledMessages,
@@ -3721,7 +3985,7 @@ extension ChatExtensions on Chat {
     int? unreadReactionCount,
     ChatNotificationSettings? notificationSettings,
     ChatAvailableReactions? availableReactions,
-    int? messageTtl,
+    int? messageAutoDeleteTime,
     String? themeName,
     ChatActionBar? actionBar,
     VideoChat? videoChat,
@@ -3740,6 +4004,7 @@ extension ChatExtensions on Chat {
         positions: positions ?? this.positions,
         messageSenderId: messageSenderId ?? this.messageSenderId,
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+        isTranslatable: isTranslatable ?? this.isTranslatable,
         isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
         isBlocked: isBlocked ?? this.isBlocked,
         hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
@@ -3759,7 +4024,8 @@ extension ChatExtensions on Chat {
         unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
         notificationSettings: notificationSettings ?? this.notificationSettings,
         availableReactions: availableReactions ?? this.availableReactions,
-        messageTtl: messageTtl ?? this.messageTtl,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar ?? this.actionBar,
         videoChat: videoChat ?? this.videoChat,
@@ -3965,6 +4231,8 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
     required TResult Function(KeyboardButtonTypeRequestLocation value)
         requestLocation,
     required TResult Function(KeyboardButtonTypeRequestPoll value) requestPoll,
+    required TResult Function(KeyboardButtonTypeRequestUser value) requestUser,
+    required TResult Function(KeyboardButtonTypeRequestChat value) requestChat,
     required TResult Function(KeyboardButtonTypeWebApp value) webApp,
   }) {
     switch (getConstructor()) {
@@ -3977,6 +4245,10 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
         return requestLocation.call(this as KeyboardButtonTypeRequestLocation);
       case KeyboardButtonTypeRequestPoll.constructor:
         return requestPoll.call(this as KeyboardButtonTypeRequestPoll);
+      case KeyboardButtonTypeRequestUser.constructor:
+        return requestUser.call(this as KeyboardButtonTypeRequestUser);
+      case KeyboardButtonTypeRequestChat.constructor:
+        return requestChat.call(this as KeyboardButtonTypeRequestChat);
       case KeyboardButtonTypeWebApp.constructor:
         return webApp.call(this as KeyboardButtonTypeWebApp);
     }
@@ -3989,6 +4261,8 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
         requestPhoneNumber,
     TResult Function(KeyboardButtonTypeRequestLocation value)? requestLocation,
     TResult Function(KeyboardButtonTypeRequestPoll value)? requestPoll,
+    TResult Function(KeyboardButtonTypeRequestUser value)? requestUser,
+    TResult Function(KeyboardButtonTypeRequestChat value)? requestChat,
     TResult Function(KeyboardButtonTypeWebApp value)? webApp,
     required TResult Function() orElse,
   }) {
@@ -4015,6 +4289,16 @@ extension KeyboardButtonTypeExtensions on KeyboardButtonType {
           return requestPoll.call(this as KeyboardButtonTypeRequestPoll);
         }
         break;
+      case KeyboardButtonTypeRequestUser.constructor:
+        if (requestUser != null) {
+          return requestUser.call(this as KeyboardButtonTypeRequestUser);
+        }
+        break;
+      case KeyboardButtonTypeRequestChat.constructor:
+        if (requestChat != null) {
+          return requestChat.call(this as KeyboardButtonTypeRequestChat);
+        }
+        break;
       case KeyboardButtonTypeWebApp.constructor:
         if (webApp != null) {
           return webApp.call(this as KeyboardButtonTypeWebApp);
@@ -4034,6 +4318,56 @@ extension KeyboardButtonTypeRequestPollExtensions
       KeyboardButtonTypeRequestPoll(
         forceRegular: forceRegular ?? this.forceRegular,
         forceQuiz: forceQuiz ?? this.forceQuiz,
+      );
+}
+
+extension KeyboardButtonTypeRequestUserExtensions
+    on KeyboardButtonTypeRequestUser {
+  KeyboardButtonTypeRequestUser copyWith({
+    int? id,
+    bool? restrictUserIsBot,
+    bool? userIsBot,
+    bool? restrictUserIsPremium,
+    bool? userIsPremium,
+  }) =>
+      KeyboardButtonTypeRequestUser(
+        id: id ?? this.id,
+        restrictUserIsBot: restrictUserIsBot ?? this.restrictUserIsBot,
+        userIsBot: userIsBot ?? this.userIsBot,
+        restrictUserIsPremium:
+            restrictUserIsPremium ?? this.restrictUserIsPremium,
+        userIsPremium: userIsPremium ?? this.userIsPremium,
+      );
+}
+
+extension KeyboardButtonTypeRequestChatExtensions
+    on KeyboardButtonTypeRequestChat {
+  KeyboardButtonTypeRequestChat copyWith({
+    int? id,
+    bool? chatIsChannel,
+    bool? restrictChatIsForum,
+    bool? chatIsForum,
+    bool? restrictChatHasUsername,
+    bool? chatHasUsername,
+    bool? chatIsCreated,
+    ChatAdministratorRights? userAdministratorRights,
+    ChatAdministratorRights? botAdministratorRights,
+    bool? botIsMember,
+  }) =>
+      KeyboardButtonTypeRequestChat(
+        id: id ?? this.id,
+        chatIsChannel: chatIsChannel ?? this.chatIsChannel,
+        restrictChatIsForum: restrictChatIsForum ?? this.restrictChatIsForum,
+        chatIsForum: chatIsForum ?? this.chatIsForum,
+        restrictChatHasUsername:
+            restrictChatHasUsername ?? this.restrictChatHasUsername,
+        chatHasUsername: chatHasUsername ?? this.chatHasUsername,
+        chatIsCreated: chatIsCreated ?? this.chatIsCreated,
+        userAdministratorRights:
+            userAdministratorRights ?? this.userAdministratorRights,
+        botAdministratorRights:
+            botAdministratorRights ?? this.botAdministratorRights,
+        botIsMember: botIsMember ?? this.botIsMember,
       );
 }
 
@@ -4327,6 +4661,7 @@ extension ReplyMarkupForceReplyExtensions on ReplyMarkupForceReply {
 extension ReplyMarkupShowKeyboardExtensions on ReplyMarkupShowKeyboard {
   ReplyMarkupShowKeyboard copyWith({
     List<List<KeyboardButton>>? rows,
+    bool? isPersistent,
     bool? resizeKeyboard,
     bool? oneTime,
     bool? isPersonal,
@@ -4334,6 +4669,7 @@ extension ReplyMarkupShowKeyboardExtensions on ReplyMarkupShowKeyboard {
   }) =>
       ReplyMarkupShowKeyboard(
         rows: rows ?? this.rows,
+        isPersistent: isPersistent ?? this.isPersistent,
         resizeKeyboard: resizeKeyboard ?? this.resizeKeyboard,
         oneTime: oneTime ?? this.oneTime,
         isPersonal: isPersonal ?? this.isPersonal,
@@ -5729,11 +6065,13 @@ extension PhoneNumberInfoExtensions on PhoneNumberInfo {
     CountryInfo? country,
     String? countryCallingCode,
     String? formattedPhoneNumber,
+    bool? isAnonymous,
   }) =>
       PhoneNumberInfo(
         country: country ?? this.country,
         countryCallingCode: countryCallingCode ?? this.countryCallingCode,
         formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
+        isAnonymous: isAnonymous ?? this.isAnonymous,
       );
 }
 
@@ -7668,7 +8006,8 @@ extension MessageContentExtensions on MessageContent {
     required TResult Function(MessageScreenshotTaken value)
         messageScreenshotTaken,
     required TResult Function(MessageChatSetTheme value) messageChatSetTheme,
-    required TResult Function(MessageChatSetTtl value) messageChatSetTtl,
+    required TResult Function(MessageChatSetMessageAutoDeleteTime value)
+        messageChatSetMessageAutoDeleteTime,
     required TResult Function(MessageForumTopicCreated value)
         messageForumTopicCreated,
     required TResult Function(MessageForumTopicEdited value)
@@ -7677,6 +8016,8 @@ extension MessageContentExtensions on MessageContent {
         messageForumTopicIsClosedToggled,
     required TResult Function(MessageForumTopicIsHiddenToggled value)
         messageForumTopicIsHiddenToggled,
+    required TResult Function(MessageSuggestProfilePhoto value)
+        messageSuggestProfilePhoto,
     required TResult Function(MessageCustomServiceAction value)
         messageCustomServiceAction,
     required TResult Function(MessageGameScore value) messageGameScore,
@@ -7687,8 +8028,12 @@ extension MessageContentExtensions on MessageContent {
     required TResult Function(MessageGiftedPremium value) messageGiftedPremium,
     required TResult Function(MessageContactRegistered value)
         messageContactRegistered,
+    required TResult Function(MessageUserShared value) messageUserShared,
+    required TResult Function(MessageChatShared value) messageChatShared,
     required TResult Function(MessageWebsiteConnected value)
         messageWebsiteConnected,
+    required TResult Function(MessageBotWriteAccessAllowed value)
+        messageBotWriteAccessAllowed,
     required TResult Function(MessageWebAppDataSent value)
         messageWebAppDataSent,
     required TResult Function(MessageWebAppDataReceived value)
@@ -7782,8 +8127,9 @@ extension MessageContentExtensions on MessageContent {
         return messageScreenshotTaken.call(this as MessageScreenshotTaken);
       case MessageChatSetTheme.constructor:
         return messageChatSetTheme.call(this as MessageChatSetTheme);
-      case MessageChatSetTtl.constructor:
-        return messageChatSetTtl.call(this as MessageChatSetTtl);
+      case MessageChatSetMessageAutoDeleteTime.constructor:
+        return messageChatSetMessageAutoDeleteTime
+            .call(this as MessageChatSetMessageAutoDeleteTime);
       case MessageForumTopicCreated.constructor:
         return messageForumTopicCreated.call(this as MessageForumTopicCreated);
       case MessageForumTopicEdited.constructor:
@@ -7794,6 +8140,9 @@ extension MessageContentExtensions on MessageContent {
       case MessageForumTopicIsHiddenToggled.constructor:
         return messageForumTopicIsHiddenToggled
             .call(this as MessageForumTopicIsHiddenToggled);
+      case MessageSuggestProfilePhoto.constructor:
+        return messageSuggestProfilePhoto
+            .call(this as MessageSuggestProfilePhoto);
       case MessageCustomServiceAction.constructor:
         return messageCustomServiceAction
             .call(this as MessageCustomServiceAction);
@@ -7808,8 +8157,15 @@ extension MessageContentExtensions on MessageContent {
         return messageGiftedPremium.call(this as MessageGiftedPremium);
       case MessageContactRegistered.constructor:
         return messageContactRegistered.call(this as MessageContactRegistered);
+      case MessageUserShared.constructor:
+        return messageUserShared.call(this as MessageUserShared);
+      case MessageChatShared.constructor:
+        return messageChatShared.call(this as MessageChatShared);
       case MessageWebsiteConnected.constructor:
         return messageWebsiteConnected.call(this as MessageWebsiteConnected);
+      case MessageBotWriteAccessAllowed.constructor:
+        return messageBotWriteAccessAllowed
+            .call(this as MessageBotWriteAccessAllowed);
       case MessageWebAppDataSent.constructor:
         return messageWebAppDataSent.call(this as MessageWebAppDataSent);
       case MessageWebAppDataReceived.constructor:
@@ -7872,13 +8228,16 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessagePinMessage value)? messagePinMessage,
     TResult Function(MessageScreenshotTaken value)? messageScreenshotTaken,
     TResult Function(MessageChatSetTheme value)? messageChatSetTheme,
-    TResult Function(MessageChatSetTtl value)? messageChatSetTtl,
+    TResult Function(MessageChatSetMessageAutoDeleteTime value)?
+        messageChatSetMessageAutoDeleteTime,
     TResult Function(MessageForumTopicCreated value)? messageForumTopicCreated,
     TResult Function(MessageForumTopicEdited value)? messageForumTopicEdited,
     TResult Function(MessageForumTopicIsClosedToggled value)?
         messageForumTopicIsClosedToggled,
     TResult Function(MessageForumTopicIsHiddenToggled value)?
         messageForumTopicIsHiddenToggled,
+    TResult Function(MessageSuggestProfilePhoto value)?
+        messageSuggestProfilePhoto,
     TResult Function(MessageCustomServiceAction value)?
         messageCustomServiceAction,
     TResult Function(MessageGameScore value)? messageGameScore,
@@ -7887,7 +8246,11 @@ extension MessageContentExtensions on MessageContent {
         messagePaymentSuccessfulBot,
     TResult Function(MessageGiftedPremium value)? messageGiftedPremium,
     TResult Function(MessageContactRegistered value)? messageContactRegistered,
+    TResult Function(MessageUserShared value)? messageUserShared,
+    TResult Function(MessageChatShared value)? messageChatShared,
     TResult Function(MessageWebsiteConnected value)? messageWebsiteConnected,
+    TResult Function(MessageBotWriteAccessAllowed value)?
+        messageBotWriteAccessAllowed,
     TResult Function(MessageWebAppDataSent value)? messageWebAppDataSent,
     TResult Function(MessageWebAppDataReceived value)?
         messageWebAppDataReceived,
@@ -8095,9 +8458,10 @@ extension MessageContentExtensions on MessageContent {
           return messageChatSetTheme.call(this as MessageChatSetTheme);
         }
         break;
-      case MessageChatSetTtl.constructor:
-        if (messageChatSetTtl != null) {
-          return messageChatSetTtl.call(this as MessageChatSetTtl);
+      case MessageChatSetMessageAutoDeleteTime.constructor:
+        if (messageChatSetMessageAutoDeleteTime != null) {
+          return messageChatSetMessageAutoDeleteTime
+              .call(this as MessageChatSetMessageAutoDeleteTime);
         }
         break;
       case MessageForumTopicCreated.constructor:
@@ -8121,6 +8485,12 @@ extension MessageContentExtensions on MessageContent {
         if (messageForumTopicIsHiddenToggled != null) {
           return messageForumTopicIsHiddenToggled
               .call(this as MessageForumTopicIsHiddenToggled);
+        }
+        break;
+      case MessageSuggestProfilePhoto.constructor:
+        if (messageSuggestProfilePhoto != null) {
+          return messageSuggestProfilePhoto
+              .call(this as MessageSuggestProfilePhoto);
         }
         break;
       case MessageCustomServiceAction.constructor:
@@ -8157,9 +8527,25 @@ extension MessageContentExtensions on MessageContent {
               .call(this as MessageContactRegistered);
         }
         break;
+      case MessageUserShared.constructor:
+        if (messageUserShared != null) {
+          return messageUserShared.call(this as MessageUserShared);
+        }
+        break;
+      case MessageChatShared.constructor:
+        if (messageChatShared != null) {
+          return messageChatShared.call(this as MessageChatShared);
+        }
+        break;
       case MessageWebsiteConnected.constructor:
         if (messageWebsiteConnected != null) {
           return messageWebsiteConnected.call(this as MessageWebsiteConnected);
+        }
+        break;
+      case MessageBotWriteAccessAllowed.constructor:
+        if (messageBotWriteAccessAllowed != null) {
+          return messageBotWriteAccessAllowed
+              .call(this as MessageBotWriteAccessAllowed);
         }
         break;
       case MessageWebAppDataSent.constructor:
@@ -8215,11 +8601,13 @@ extension MessageAnimationExtensions on MessageAnimation {
   MessageAnimation copyWith({
     Animation? animation,
     FormattedText? caption,
+    bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageAnimation(
         animation: animation ?? this.animation,
         caption: caption ?? this.caption,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
 }
@@ -8250,11 +8638,13 @@ extension MessagePhotoExtensions on MessagePhoto {
   MessagePhoto copyWith({
     Photo? photo,
     FormattedText? caption,
+    bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessagePhoto(
         photo: photo ?? this.photo,
         caption: caption ?? this.caption,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
 }
@@ -8274,11 +8664,13 @@ extension MessageVideoExtensions on MessageVideo {
   MessageVideo copyWith({
     Video? video,
     FormattedText? caption,
+    bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageVideo(
         video: video ?? this.video,
         caption: caption ?? this.caption,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
 }
@@ -8566,13 +8958,15 @@ extension MessageChatSetThemeExtensions on MessageChatSetTheme {
       );
 }
 
-extension MessageChatSetTtlExtensions on MessageChatSetTtl {
-  MessageChatSetTtl copyWith({
-    int? ttl,
+extension MessageChatSetMessageAutoDeleteTimeExtensions
+    on MessageChatSetMessageAutoDeleteTime {
+  MessageChatSetMessageAutoDeleteTime copyWith({
+    int? messageAutoDeleteTime,
     int? fromUserId,
   }) =>
-      MessageChatSetTtl(
-        ttl: ttl ?? this.ttl,
+      MessageChatSetMessageAutoDeleteTime(
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
         fromUserId: fromUserId ?? this.fromUserId,
       );
 }
@@ -8619,6 +9013,15 @@ extension MessageForumTopicIsHiddenToggledExtensions
   }) =>
       MessageForumTopicIsHiddenToggled(
         isHidden: isHidden ?? this.isHidden,
+      );
+}
+
+extension MessageSuggestProfilePhotoExtensions on MessageSuggestProfilePhoto {
+  MessageSuggestProfilePhoto copyWith({
+    ChatPhoto? photo,
+  }) =>
+      MessageSuggestProfilePhoto(
+        photo: photo ?? this.photo,
       );
 }
 
@@ -8704,6 +9107,28 @@ extension MessageGiftedPremiumExtensions on MessageGiftedPremium {
         amount: amount ?? this.amount,
         monthCount: monthCount ?? this.monthCount,
         sticker: sticker ?? this.sticker,
+      );
+}
+
+extension MessageUserSharedExtensions on MessageUserShared {
+  MessageUserShared copyWith({
+    int? userId,
+    int? buttonId,
+  }) =>
+      MessageUserShared(
+        userId: userId ?? this.userId,
+        buttonId: buttonId ?? this.buttonId,
+      );
+}
+
+extension MessageChatSharedExtensions on MessageChatShared {
+  MessageChatShared copyWith({
+    int? chatId,
+    int? buttonId,
+  }) =>
+      MessageChatShared(
+        chatId: chatId ?? this.chatId,
+        buttonId: buttonId ?? this.buttonId,
       );
 }
 
@@ -9306,6 +9731,7 @@ extension InputMessageAnimationExtensions on InputMessageAnimation {
     int? width,
     int? height,
     FormattedText? caption,
+    bool? hasSpoiler,
   }) =>
       InputMessageAnimation(
         animation: animation ?? this.animation,
@@ -9315,6 +9741,7 @@ extension InputMessageAnimationExtensions on InputMessageAnimation {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 }
 
@@ -9361,7 +9788,8 @@ extension InputMessagePhotoExtensions on InputMessagePhoto {
     int? width,
     int? height,
     FormattedText? caption,
-    int? ttl,
+    int? selfDestructTime,
+    bool? hasSpoiler,
   }) =>
       InputMessagePhoto(
         photo: photo ?? this.photo,
@@ -9370,7 +9798,8 @@ extension InputMessagePhotoExtensions on InputMessagePhoto {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
-        ttl: ttl ?? this.ttl,
+        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 }
 
@@ -9401,7 +9830,8 @@ extension InputMessageVideoExtensions on InputMessageVideo {
     int? height,
     bool? supportsStreaming,
     FormattedText? caption,
-    int? ttl,
+    int? selfDestructTime,
+    bool? hasSpoiler,
   }) =>
       InputMessageVideo(
         video: video ?? this.video,
@@ -9412,7 +9842,8 @@ extension InputMessageVideoExtensions on InputMessageVideo {
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
         caption: caption ?? this.caption,
-        ttl: ttl ?? this.ttl,
+        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 }
 
@@ -10161,6 +10592,72 @@ extension TrendingStickerSetsExtensions on TrendingStickerSets {
       );
 }
 
+extension EmojiCategoryExtensions on EmojiCategory {
+  EmojiCategory copyWith({
+    String? name,
+    int? iconCustomEmojiId,
+    List<String>? emojis,
+  }) =>
+      EmojiCategory(
+        name: name ?? this.name,
+        iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,
+        emojis: emojis ?? this.emojis,
+      );
+}
+
+extension EmojiCategoriesExtensions on EmojiCategories {
+  EmojiCategories copyWith({
+    List<EmojiCategory>? categories,
+  }) =>
+      EmojiCategories(
+        categories: categories ?? this.categories,
+      );
+}
+
+extension EmojiCategoryTypeExtensions on EmojiCategoryType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmojiCategoryTypeDefault value) $default,
+    required TResult Function(EmojiCategoryTypeEmojiStatus value) emojiStatus,
+    required TResult Function(EmojiCategoryTypeChatPhoto value) chatPhoto,
+  }) {
+    switch (getConstructor()) {
+      case EmojiCategoryTypeDefault.constructor:
+        return $default.call(this as EmojiCategoryTypeDefault);
+      case EmojiCategoryTypeEmojiStatus.constructor:
+        return emojiStatus.call(this as EmojiCategoryTypeEmojiStatus);
+      case EmojiCategoryTypeChatPhoto.constructor:
+        return chatPhoto.call(this as EmojiCategoryTypeChatPhoto);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmojiCategoryTypeDefault value)? $default,
+    TResult Function(EmojiCategoryTypeEmojiStatus value)? emojiStatus,
+    TResult Function(EmojiCategoryTypeChatPhoto value)? chatPhoto,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case EmojiCategoryTypeDefault.constructor:
+        if ($default != null) {
+          return $default.call(this as EmojiCategoryTypeDefault);
+        }
+        break;
+      case EmojiCategoryTypeEmojiStatus.constructor:
+        if (emojiStatus != null) {
+          return emojiStatus.call(this as EmojiCategoryTypeEmojiStatus);
+        }
+        break;
+      case EmojiCategoryTypeChatPhoto.constructor:
+        if (chatPhoto != null) {
+          return chatPhoto.call(this as EmojiCategoryTypeChatPhoto);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
 extension CallDiscardReasonExtensions on CallDiscardReason {
   TResult map<TResult extends Object?>({
     required TResult Function(CallDiscardReasonEmpty value) empty,
@@ -10794,6 +11291,55 @@ extension CallExtensions on Call {
       );
 }
 
+extension FirebaseAuthenticationSettingsExtensions
+    on FirebaseAuthenticationSettings {
+  TResult map<TResult extends Object?>({
+    required TResult Function(FirebaseAuthenticationSettingsAndroid value)
+        android,
+    required TResult Function(FirebaseAuthenticationSettingsIos value) ios,
+  }) {
+    switch (getConstructor()) {
+      case FirebaseAuthenticationSettingsAndroid.constructor:
+        return android.call(this as FirebaseAuthenticationSettingsAndroid);
+      case FirebaseAuthenticationSettingsIos.constructor:
+        return ios.call(this as FirebaseAuthenticationSettingsIos);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FirebaseAuthenticationSettingsAndroid value)? android,
+    TResult Function(FirebaseAuthenticationSettingsIos value)? ios,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case FirebaseAuthenticationSettingsAndroid.constructor:
+        if (android != null) {
+          return android.call(this as FirebaseAuthenticationSettingsAndroid);
+        }
+        break;
+      case FirebaseAuthenticationSettingsIos.constructor:
+        if (ios != null) {
+          return ios.call(this as FirebaseAuthenticationSettingsIos);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension FirebaseAuthenticationSettingsIosExtensions
+    on FirebaseAuthenticationSettingsIos {
+  FirebaseAuthenticationSettingsIos copyWith({
+    String? deviceToken,
+    bool? isAppSandbox,
+  }) =>
+      FirebaseAuthenticationSettingsIos(
+        deviceToken: deviceToken ?? this.deviceToken,
+        isAppSandbox: isAppSandbox ?? this.isAppSandbox,
+      );
+}
+
 extension PhoneNumberAuthenticationSettingsExtensions
     on PhoneNumberAuthenticationSettings {
   PhoneNumberAuthenticationSettings copyWith({
@@ -10801,6 +11347,7 @@ extension PhoneNumberAuthenticationSettingsExtensions
     bool? allowMissedCall,
     bool? isCurrentPhoneNumber,
     bool? allowSmsRetrieverApi,
+    FirebaseAuthenticationSettings? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
   }) =>
       PhoneNumberAuthenticationSettings(
@@ -10808,6 +11355,8 @@ extension PhoneNumberAuthenticationSettingsExtensions
         allowMissedCall: allowMissedCall ?? this.allowMissedCall,
         isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
         allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
+        firebaseAuthenticationSettings: firebaseAuthenticationSettings ??
+            this.firebaseAuthenticationSettings,
         authenticationTokens: authenticationTokens ?? this.authenticationTokens,
       );
 }
@@ -11063,6 +11612,7 @@ extension AttachmentMenuBotExtensions on AttachmentMenuBot {
     bool? supportsGroupChats,
     bool? supportsChannelChats,
     bool? supportsSettings,
+    bool? requestWriteAccess,
     String? name,
     AttachmentMenuBotColor? nameColor,
     File? defaultIcon,
@@ -11081,6 +11631,7 @@ extension AttachmentMenuBotExtensions on AttachmentMenuBot {
         supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
         supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
         supportsSettings: supportsSettings ?? this.supportsSettings,
+        requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
         name: name ?? this.name,
         nameColor: nameColor ?? this.nameColor,
         defaultIcon: defaultIcon ?? this.defaultIcon,
@@ -11992,8 +12543,8 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventLinkedChatChanged,
     required TResult Function(ChatEventLocationChanged value)
         chatEventLocationChanged,
-    required TResult Function(ChatEventMessageTtlChanged value)
-        chatEventMessageTtlChanged,
+    required TResult Function(ChatEventMessageAutoDeleteTimeChanged value)
+        chatEventMessageAutoDeleteTimeChanged,
     required TResult Function(ChatEventPermissionsChanged value)
         chatEventPermissionsChanged,
     required TResult Function(ChatEventPhotoChanged value)
@@ -12014,8 +12565,9 @@ extension ChatEventActionExtensions on ChatEventAction {
         chatEventInvitesToggled,
     required TResult Function(ChatEventIsAllHistoryAvailableToggled value)
         chatEventIsAllHistoryAvailableToggled,
-    required TResult Function(ChatEventIsAggressiveAntiSpamEnabledToggled value)
-        chatEventIsAggressiveAntiSpamEnabledToggled,
+    required TResult Function(
+            ChatEventHasAggressiveAntiSpamEnabledToggled value)
+        chatEventHasAggressiveAntiSpamEnabledToggled,
     required TResult Function(ChatEventSignMessagesToggled value)
         chatEventSignMessagesToggled,
     required TResult Function(ChatEventInviteLinkEdited value)
@@ -12090,9 +12642,9 @@ extension ChatEventActionExtensions on ChatEventAction {
             .call(this as ChatEventLinkedChatChanged);
       case ChatEventLocationChanged.constructor:
         return chatEventLocationChanged.call(this as ChatEventLocationChanged);
-      case ChatEventMessageTtlChanged.constructor:
-        return chatEventMessageTtlChanged
-            .call(this as ChatEventMessageTtlChanged);
+      case ChatEventMessageAutoDeleteTimeChanged.constructor:
+        return chatEventMessageAutoDeleteTimeChanged
+            .call(this as ChatEventMessageAutoDeleteTimeChanged);
       case ChatEventPermissionsChanged.constructor:
         return chatEventPermissionsChanged
             .call(this as ChatEventPermissionsChanged);
@@ -12119,9 +12671,9 @@ extension ChatEventActionExtensions on ChatEventAction {
       case ChatEventIsAllHistoryAvailableToggled.constructor:
         return chatEventIsAllHistoryAvailableToggled
             .call(this as ChatEventIsAllHistoryAvailableToggled);
-      case ChatEventIsAggressiveAntiSpamEnabledToggled.constructor:
-        return chatEventIsAggressiveAntiSpamEnabledToggled
-            .call(this as ChatEventIsAggressiveAntiSpamEnabledToggled);
+      case ChatEventHasAggressiveAntiSpamEnabledToggled.constructor:
+        return chatEventHasAggressiveAntiSpamEnabledToggled
+            .call(this as ChatEventHasAggressiveAntiSpamEnabledToggled);
       case ChatEventSignMessagesToggled.constructor:
         return chatEventSignMessagesToggled
             .call(this as ChatEventSignMessagesToggled);
@@ -12195,8 +12747,8 @@ extension ChatEventActionExtensions on ChatEventAction {
     TResult Function(ChatEventLinkedChatChanged value)?
         chatEventLinkedChatChanged,
     TResult Function(ChatEventLocationChanged value)? chatEventLocationChanged,
-    TResult Function(ChatEventMessageTtlChanged value)?
-        chatEventMessageTtlChanged,
+    TResult Function(ChatEventMessageAutoDeleteTimeChanged value)?
+        chatEventMessageAutoDeleteTimeChanged,
     TResult Function(ChatEventPermissionsChanged value)?
         chatEventPermissionsChanged,
     TResult Function(ChatEventPhotoChanged value)? chatEventPhotoChanged,
@@ -12213,8 +12765,8 @@ extension ChatEventActionExtensions on ChatEventAction {
     TResult Function(ChatEventInvitesToggled value)? chatEventInvitesToggled,
     TResult Function(ChatEventIsAllHistoryAvailableToggled value)?
         chatEventIsAllHistoryAvailableToggled,
-    TResult Function(ChatEventIsAggressiveAntiSpamEnabledToggled value)?
-        chatEventIsAggressiveAntiSpamEnabledToggled,
+    TResult Function(ChatEventHasAggressiveAntiSpamEnabledToggled value)?
+        chatEventHasAggressiveAntiSpamEnabledToggled,
     TResult Function(ChatEventSignMessagesToggled value)?
         chatEventSignMessagesToggled,
     TResult Function(ChatEventInviteLinkEdited value)?
@@ -12336,10 +12888,10 @@ extension ChatEventActionExtensions on ChatEventAction {
               .call(this as ChatEventLocationChanged);
         }
         break;
-      case ChatEventMessageTtlChanged.constructor:
-        if (chatEventMessageTtlChanged != null) {
-          return chatEventMessageTtlChanged
-              .call(this as ChatEventMessageTtlChanged);
+      case ChatEventMessageAutoDeleteTimeChanged.constructor:
+        if (chatEventMessageAutoDeleteTimeChanged != null) {
+          return chatEventMessageAutoDeleteTimeChanged
+              .call(this as ChatEventMessageAutoDeleteTimeChanged);
         }
         break;
       case ChatEventPermissionsChanged.constructor:
@@ -12399,10 +12951,10 @@ extension ChatEventActionExtensions on ChatEventAction {
               .call(this as ChatEventIsAllHistoryAvailableToggled);
         }
         break;
-      case ChatEventIsAggressiveAntiSpamEnabledToggled.constructor:
-        if (chatEventIsAggressiveAntiSpamEnabledToggled != null) {
-          return chatEventIsAggressiveAntiSpamEnabledToggled
-              .call(this as ChatEventIsAggressiveAntiSpamEnabledToggled);
+      case ChatEventHasAggressiveAntiSpamEnabledToggled.constructor:
+        if (chatEventHasAggressiveAntiSpamEnabledToggled != null) {
+          return chatEventHasAggressiveAntiSpamEnabledToggled
+              .call(this as ChatEventHasAggressiveAntiSpamEnabledToggled);
         }
         break;
       case ChatEventSignMessagesToggled.constructor:
@@ -12660,14 +13212,17 @@ extension ChatEventLocationChangedExtensions on ChatEventLocationChanged {
       );
 }
 
-extension ChatEventMessageTtlChangedExtensions on ChatEventMessageTtlChanged {
-  ChatEventMessageTtlChanged copyWith({
-    int? oldMessageTtl,
-    int? newMessageTtl,
+extension ChatEventMessageAutoDeleteTimeChangedExtensions
+    on ChatEventMessageAutoDeleteTimeChanged {
+  ChatEventMessageAutoDeleteTimeChanged copyWith({
+    int? oldMessageAutoDeleteTime,
+    int? newMessageAutoDeleteTime,
   }) =>
-      ChatEventMessageTtlChanged(
-        oldMessageTtl: oldMessageTtl ?? this.oldMessageTtl,
-        newMessageTtl: newMessageTtl ?? this.newMessageTtl,
+      ChatEventMessageAutoDeleteTimeChanged(
+        oldMessageAutoDeleteTime:
+            oldMessageAutoDeleteTime ?? this.oldMessageAutoDeleteTime,
+        newMessageAutoDeleteTime:
+            newMessageAutoDeleteTime ?? this.newMessageAutoDeleteTime,
       );
 }
 
@@ -12780,14 +13335,14 @@ extension ChatEventIsAllHistoryAvailableToggledExtensions
       );
 }
 
-extension ChatEventIsAggressiveAntiSpamEnabledToggledExtensions
-    on ChatEventIsAggressiveAntiSpamEnabledToggled {
-  ChatEventIsAggressiveAntiSpamEnabledToggled copyWith({
-    bool? isAggressiveAntiSpamEnabled,
+extension ChatEventHasAggressiveAntiSpamEnabledToggledExtensions
+    on ChatEventHasAggressiveAntiSpamEnabledToggled {
+  ChatEventHasAggressiveAntiSpamEnabledToggled copyWith({
+    bool? hasAggressiveAntiSpamEnabled,
   }) =>
-      ChatEventIsAggressiveAntiSpamEnabledToggled(
-        isAggressiveAntiSpamEnabled:
-            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
+      ChatEventHasAggressiveAntiSpamEnabledToggled(
+        hasAggressiveAntiSpamEnabled:
+            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
       );
 }
 
@@ -13302,6 +13857,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
     required TResult Function(PremiumFeatureForumTopicIcon value)
         forumTopicIcon,
     required TResult Function(PremiumFeatureAppIcons value) appIcons,
+    required TResult Function(PremiumFeatureRealTimeChatTranslation value)
+        realTimeChatTranslation,
   }) {
     switch (getConstructor()) {
       case PremiumFeatureIncreasedLimits.constructor:
@@ -13336,6 +13893,9 @@ extension PremiumFeatureExtensions on PremiumFeature {
         return forumTopicIcon.call(this as PremiumFeatureForumTopicIcon);
       case PremiumFeatureAppIcons.constructor:
         return appIcons.call(this as PremiumFeatureAppIcons);
+      case PremiumFeatureRealTimeChatTranslation.constructor:
+        return realTimeChatTranslation
+            .call(this as PremiumFeatureRealTimeChatTranslation);
     }
     throw StateError('not handled type Generator');
   }
@@ -13359,6 +13919,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
         animatedProfilePhoto,
     TResult Function(PremiumFeatureForumTopicIcon value)? forumTopicIcon,
     TResult Function(PremiumFeatureAppIcons value)? appIcons,
+    TResult Function(PremiumFeatureRealTimeChatTranslation value)?
+        realTimeChatTranslation,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -13434,6 +13996,12 @@ extension PremiumFeatureExtensions on PremiumFeature {
       case PremiumFeatureAppIcons.constructor:
         if (appIcons != null) {
           return appIcons.call(this as PremiumFeatureAppIcons);
+        }
+        break;
+      case PremiumFeatureRealTimeChatTranslation.constructor:
+        if (realTimeChatTranslation != null) {
+          return realTimeChatTranslation
+              .call(this as PremiumFeatureRealTimeChatTranslation);
         }
         break;
     }
@@ -13562,7 +14130,7 @@ extension PremiumFeaturePromotionAnimationExtensions
 extension PremiumStateExtensions on PremiumState {
   PremiumState copyWith({
     FormattedText? state,
-    List<PremiumPaymentOption>? paymentOptions,
+    List<PremiumStatePaymentOption>? paymentOptions,
     List<PremiumFeaturePromotionAnimation>? animations,
   }) =>
       PremiumState(
@@ -13616,9 +14184,11 @@ extension StorePaymentPurposePremiumSubscriptionExtensions
     on StorePaymentPurposePremiumSubscription {
   StorePaymentPurposePremiumSubscription copyWith({
     bool? isRestore,
+    bool? isUpgrade,
   }) =>
       StorePaymentPurposePremiumSubscription(
         isRestore: isRestore ?? this.isRestore,
+        isUpgrade: isUpgrade ?? this.isUpgrade,
       );
 }
 
@@ -13651,6 +14221,7 @@ extension DeviceTokenExtensions on DeviceToken {
     required TResult Function(DeviceTokenUbuntuPush value) ubuntuPush,
     required TResult Function(DeviceTokenBlackBerryPush value) blackBerryPush,
     required TResult Function(DeviceTokenTizenPush value) tizenPush,
+    required TResult Function(DeviceTokenHuaweiPush value) huaweiPush,
   }) {
     switch (getConstructor()) {
       case DeviceTokenFirebaseCloudMessaging.constructor:
@@ -13676,6 +14247,8 @@ extension DeviceTokenExtensions on DeviceToken {
         return blackBerryPush.call(this as DeviceTokenBlackBerryPush);
       case DeviceTokenTizenPush.constructor:
         return tizenPush.call(this as DeviceTokenTizenPush);
+      case DeviceTokenHuaweiPush.constructor:
+        return huaweiPush.call(this as DeviceTokenHuaweiPush);
     }
     throw StateError('not handled type Generator');
   }
@@ -13693,6 +14266,7 @@ extension DeviceTokenExtensions on DeviceToken {
     TResult Function(DeviceTokenUbuntuPush value)? ubuntuPush,
     TResult Function(DeviceTokenBlackBerryPush value)? blackBerryPush,
     TResult Function(DeviceTokenTizenPush value)? tizenPush,
+    TResult Function(DeviceTokenHuaweiPush value)? huaweiPush,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -13750,6 +14324,11 @@ extension DeviceTokenExtensions on DeviceToken {
       case DeviceTokenTizenPush.constructor:
         if (tizenPush != null) {
           return tizenPush.call(this as DeviceTokenTizenPush);
+        }
+        break;
+      case DeviceTokenHuaweiPush.constructor:
+        if (huaweiPush != null) {
+          return huaweiPush.call(this as DeviceTokenHuaweiPush);
         }
         break;
     }
@@ -13867,6 +14446,17 @@ extension DeviceTokenTizenPushExtensions on DeviceTokenTizenPush {
   }) =>
       DeviceTokenTizenPush(
         regId: regId ?? this.regId,
+      );
+}
+
+extension DeviceTokenHuaweiPushExtensions on DeviceTokenHuaweiPush {
+  DeviceTokenHuaweiPush copyWith({
+    String? token,
+    bool? encrypt,
+  }) =>
+      DeviceTokenHuaweiPush(
+        token: token ?? this.token,
+        encrypt: encrypt ?? this.encrypt,
       );
 }
 
@@ -14545,6 +15135,8 @@ extension PushMessageContentExtensions on PushMessageContent {
         chatJoinByRequest,
     required TResult Function(PushMessageContentRecurringPayment value)
         recurringPayment,
+    required TResult Function(PushMessageContentSuggestProfilePhoto value)
+        suggestProfilePhoto,
     required TResult Function(PushMessageContentMessageForwards value)
         messageForwards,
     required TResult Function(PushMessageContentMediaAlbum value) mediaAlbum,
@@ -14609,6 +15201,9 @@ extension PushMessageContentExtensions on PushMessageContent {
       case PushMessageContentRecurringPayment.constructor:
         return recurringPayment
             .call(this as PushMessageContentRecurringPayment);
+      case PushMessageContentSuggestProfilePhoto.constructor:
+        return suggestProfilePhoto
+            .call(this as PushMessageContentSuggestProfilePhoto);
       case PushMessageContentMessageForwards.constructor:
         return messageForwards.call(this as PushMessageContentMessageForwards);
       case PushMessageContentMediaAlbum.constructor:
@@ -14650,6 +15245,8 @@ extension PushMessageContentExtensions on PushMessageContent {
         chatJoinByRequest,
     TResult Function(PushMessageContentRecurringPayment value)?
         recurringPayment,
+    TResult Function(PushMessageContentSuggestProfilePhoto value)?
+        suggestProfilePhoto,
     TResult Function(PushMessageContentMessageForwards value)? messageForwards,
     TResult Function(PushMessageContentMediaAlbum value)? mediaAlbum,
     required TResult Function() orElse,
@@ -14796,6 +15393,12 @@ extension PushMessageContentExtensions on PushMessageContent {
         if (recurringPayment != null) {
           return recurringPayment
               .call(this as PushMessageContentRecurringPayment);
+        }
+        break;
+      case PushMessageContentSuggestProfilePhoto.constructor:
+        if (suggestProfilePhoto != null) {
+          return suggestProfilePhoto
+              .call(this as PushMessageContentSuggestProfilePhoto);
         }
         break;
       case PushMessageContentMessageForwards.constructor:
@@ -15795,12 +16398,12 @@ extension AccountTtlExtensions on AccountTtl {
       );
 }
 
-extension MessageTtlExtensions on MessageTtl {
-  MessageTtl copyWith({
-    int? ttl,
+extension MessageAutoDeleteTimeExtensions on MessageAutoDeleteTime {
+  MessageAutoDeleteTime copyWith({
+    int? time,
   }) =>
-      MessageTtl(
-        ttl: ttl ?? this.ttl,
+      MessageAutoDeleteTime(
+        time: time ?? this.time,
       );
 }
 
@@ -16261,6 +16864,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     required TResult Function(InternalLinkTypeChangePhoneNumber value)
         changePhoneNumber,
     required TResult Function(InternalLinkTypeChatInvite value) chatInvite,
+    required TResult Function(
+            InternalLinkTypeDefaultMessageAutoDeleteTimerSettings value)
+        defaultMessageAutoDeleteTimerSettings,
+    required TResult Function(InternalLinkTypeEditProfileSettings value)
+        editProfileSettings,
     required TResult Function(InternalLinkTypeFilterSettings value)
         filterSettings,
     required TResult Function(InternalLinkTypeGame value) game,
@@ -16321,6 +16929,12 @@ extension InternalLinkTypeExtensions on InternalLinkType {
             .call(this as InternalLinkTypeChangePhoneNumber);
       case InternalLinkTypeChatInvite.constructor:
         return chatInvite.call(this as InternalLinkTypeChatInvite);
+      case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
+        return defaultMessageAutoDeleteTimerSettings.call(
+            this as InternalLinkTypeDefaultMessageAutoDeleteTimerSettings);
+      case InternalLinkTypeEditProfileSettings.constructor:
+        return editProfileSettings
+            .call(this as InternalLinkTypeEditProfileSettings);
       case InternalLinkTypeFilterSettings.constructor:
         return filterSettings.call(this as InternalLinkTypeFilterSettings);
       case InternalLinkTypeGame.constructor:
@@ -16392,6 +17006,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeChangePhoneNumber value)?
         changePhoneNumber,
     TResult Function(InternalLinkTypeChatInvite value)? chatInvite,
+    TResult Function(
+            InternalLinkTypeDefaultMessageAutoDeleteTimerSettings value)?
+        defaultMessageAutoDeleteTimerSettings,
+    TResult Function(InternalLinkTypeEditProfileSettings value)?
+        editProfileSettings,
     TResult Function(InternalLinkTypeFilterSettings value)? filterSettings,
     TResult Function(InternalLinkTypeGame value)? game,
     TResult Function(InternalLinkTypeInstantView value)? instantView,
@@ -16470,6 +17089,18 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeChatInvite.constructor:
         if (chatInvite != null) {
           return chatInvite.call(this as InternalLinkTypeChatInvite);
+        }
+        break;
+      case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
+        if (defaultMessageAutoDeleteTimerSettings != null) {
+          return defaultMessageAutoDeleteTimerSettings.call(
+              this as InternalLinkTypeDefaultMessageAutoDeleteTimerSettings);
+        }
+        break;
+      case InternalLinkTypeEditProfileSettings.constructor:
+        if (editProfileSettings != null) {
+          return editProfileSettings
+              .call(this as InternalLinkTypeEditProfileSettings);
         }
         break;
       case InternalLinkTypeFilterSettings.constructor:
@@ -16817,9 +17448,11 @@ extension InternalLinkTypePublicChatExtensions on InternalLinkTypePublicChat {
 extension InternalLinkTypeStickerSetExtensions on InternalLinkTypeStickerSet {
   InternalLinkTypeStickerSet copyWith({
     String? stickerSetName,
+    bool? expectCustomEmoji,
   }) =>
       InternalLinkTypeStickerSet(
         stickerSetName: stickerSetName ?? this.stickerSetName,
+        expectCustomEmoji: expectCustomEmoji ?? this.expectCustomEmoji,
       );
 }
 
@@ -17327,6 +17960,109 @@ extension AutoDownloadSettingsPresetsExtensions on AutoDownloadSettingsPresets {
       );
 }
 
+extension AutosaveSettingsScopeExtensions on AutosaveSettingsScope {
+  TResult map<TResult extends Object?>({
+    required TResult Function(AutosaveSettingsScopePrivateChats value)
+        privateChats,
+    required TResult Function(AutosaveSettingsScopeGroupChats value) groupChats,
+    required TResult Function(AutosaveSettingsScopeChannelChats value)
+        channelChats,
+    required TResult Function(AutosaveSettingsScopeChat value) chat,
+  }) {
+    switch (getConstructor()) {
+      case AutosaveSettingsScopePrivateChats.constructor:
+        return privateChats.call(this as AutosaveSettingsScopePrivateChats);
+      case AutosaveSettingsScopeGroupChats.constructor:
+        return groupChats.call(this as AutosaveSettingsScopeGroupChats);
+      case AutosaveSettingsScopeChannelChats.constructor:
+        return channelChats.call(this as AutosaveSettingsScopeChannelChats);
+      case AutosaveSettingsScopeChat.constructor:
+        return chat.call(this as AutosaveSettingsScopeChat);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AutosaveSettingsScopePrivateChats value)? privateChats,
+    TResult Function(AutosaveSettingsScopeGroupChats value)? groupChats,
+    TResult Function(AutosaveSettingsScopeChannelChats value)? channelChats,
+    TResult Function(AutosaveSettingsScopeChat value)? chat,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case AutosaveSettingsScopePrivateChats.constructor:
+        if (privateChats != null) {
+          return privateChats.call(this as AutosaveSettingsScopePrivateChats);
+        }
+        break;
+      case AutosaveSettingsScopeGroupChats.constructor:
+        if (groupChats != null) {
+          return groupChats.call(this as AutosaveSettingsScopeGroupChats);
+        }
+        break;
+      case AutosaveSettingsScopeChannelChats.constructor:
+        if (channelChats != null) {
+          return channelChats.call(this as AutosaveSettingsScopeChannelChats);
+        }
+        break;
+      case AutosaveSettingsScopeChat.constructor:
+        if (chat != null) {
+          return chat.call(this as AutosaveSettingsScopeChat);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension AutosaveSettingsScopeChatExtensions on AutosaveSettingsScopeChat {
+  AutosaveSettingsScopeChat copyWith({
+    int? chatId,
+  }) =>
+      AutosaveSettingsScopeChat(
+        chatId: chatId ?? this.chatId,
+      );
+}
+
+extension ScopeAutosaveSettingsExtensions on ScopeAutosaveSettings {
+  ScopeAutosaveSettings copyWith({
+    bool? autosavePhotos,
+    bool? autosaveVideos,
+    int? maxVideoFileSize,
+  }) =>
+      ScopeAutosaveSettings(
+        autosavePhotos: autosavePhotos ?? this.autosavePhotos,
+        autosaveVideos: autosaveVideos ?? this.autosaveVideos,
+        maxVideoFileSize: maxVideoFileSize ?? this.maxVideoFileSize,
+      );
+}
+
+extension AutosaveSettingsExceptionExtensions on AutosaveSettingsException {
+  AutosaveSettingsException copyWith({
+    int? chatId,
+    ScopeAutosaveSettings? settings,
+  }) =>
+      AutosaveSettingsException(
+        chatId: chatId ?? this.chatId,
+        settings: settings ?? this.settings,
+      );
+}
+
+extension AutosaveSettingsExtensions on AutosaveSettings {
+  AutosaveSettings copyWith({
+    ScopeAutosaveSettings? privateChatSettings,
+    ScopeAutosaveSettings? groupSettings,
+    ScopeAutosaveSettings? channelSettings,
+    List<AutosaveSettingsException>? exceptions,
+  }) =>
+      AutosaveSettings(
+        privateChatSettings: privateChatSettings ?? this.privateChatSettings,
+        groupSettings: groupSettings ?? this.groupSettings,
+        channelSettings: channelSettings ?? this.channelSettings,
+        exceptions: exceptions ?? this.exceptions,
+      );
+}
+
 extension ConnectionStateExtensions on ConnectionState {
   TResult map<TResult extends Object?>({
     required TResult Function(ConnectionStateWaitingForNetwork value)
@@ -17594,6 +18330,10 @@ extension SuggestedActionExtensions on SuggestedAction {
     required TResult Function(SuggestedActionConvertToBroadcastGroup value)
         convertToBroadcastGroup,
     required TResult Function(SuggestedActionSetPassword value) setPassword,
+    required TResult Function(SuggestedActionUpgradePremium value)
+        upgradePremium,
+    required TResult Function(SuggestedActionSubscribeToAnnualPremium value)
+        subscribeToAnnualPremium,
   }) {
     switch (getConstructor()) {
       case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
@@ -17610,6 +18350,11 @@ extension SuggestedActionExtensions on SuggestedAction {
             .call(this as SuggestedActionConvertToBroadcastGroup);
       case SuggestedActionSetPassword.constructor:
         return setPassword.call(this as SuggestedActionSetPassword);
+      case SuggestedActionUpgradePremium.constructor:
+        return upgradePremium.call(this as SuggestedActionUpgradePremium);
+      case SuggestedActionSubscribeToAnnualPremium.constructor:
+        return subscribeToAnnualPremium
+            .call(this as SuggestedActionSubscribeToAnnualPremium);
     }
     throw StateError('not handled type Generator');
   }
@@ -17623,6 +18368,9 @@ extension SuggestedActionExtensions on SuggestedAction {
     TResult Function(SuggestedActionConvertToBroadcastGroup value)?
         convertToBroadcastGroup,
     TResult Function(SuggestedActionSetPassword value)? setPassword,
+    TResult Function(SuggestedActionUpgradePremium value)? upgradePremium,
+    TResult Function(SuggestedActionSubscribeToAnnualPremium value)?
+        subscribeToAnnualPremium,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -17656,6 +18404,17 @@ extension SuggestedActionExtensions on SuggestedAction {
       case SuggestedActionSetPassword.constructor:
         if (setPassword != null) {
           return setPassword.call(this as SuggestedActionSetPassword);
+        }
+        break;
+      case SuggestedActionUpgradePremium.constructor:
+        if (upgradePremium != null) {
+          return upgradePremium.call(this as SuggestedActionUpgradePremium);
+        }
+        break;
+      case SuggestedActionSubscribeToAnnualPremium.constructor:
+        if (subscribeToAnnualPremium != null) {
+          return subscribeToAnnualPremium
+              .call(this as SuggestedActionSubscribeToAnnualPremium);
         }
         break;
     }
@@ -18399,7 +19158,8 @@ extension UpdateExtensions on Update {
         chatAvailableReactions,
     required TResult Function(UpdateChatDraftMessage value) chatDraftMessage,
     required TResult Function(UpdateChatMessageSender value) chatMessageSender,
-    required TResult Function(UpdateChatMessageTtl value) chatMessageTtl,
+    required TResult Function(UpdateChatMessageAutoDeleteTime value)
+        chatMessageAutoDeleteTime,
     required TResult Function(UpdateChatNotificationSettings value)
         chatNotificationSettings,
     required TResult Function(UpdateChatPendingJoinRequests value)
@@ -18415,11 +19175,13 @@ extension UpdateExtensions on Update {
         chatDefaultDisableNotification,
     required TResult Function(UpdateChatHasProtectedContent value)
         chatHasProtectedContent,
-    required TResult Function(UpdateChatHasScheduledMessages value)
-        chatHasScheduledMessages,
-    required TResult Function(UpdateChatIsBlocked value) chatIsBlocked,
+    required TResult Function(UpdateChatIsTranslatable value)
+        chatIsTranslatable,
     required TResult Function(UpdateChatIsMarkedAsUnread value)
         chatIsMarkedAsUnread,
+    required TResult Function(UpdateChatIsBlocked value) chatIsBlocked,
+    required TResult Function(UpdateChatHasScheduledMessages value)
+        chatHasScheduledMessages,
     required TResult Function(UpdateChatFilters value) chatFilters,
     required TResult Function(UpdateChatOnlineMemberCount value)
         chatOnlineMemberCount,
@@ -18500,6 +19262,7 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateAnimationSearchParameters value)
         animationSearchParameters,
     required TResult Function(UpdateSuggestedActions value) suggestedActions,
+    required TResult Function(UpdateAutosaveSettings value) autosaveSettings,
     required TResult Function(UpdateNewInlineQuery value) newInlineQuery,
     required TResult Function(UpdateNewChosenInlineResult value)
         newChosenInlineResult,
@@ -18573,8 +19336,9 @@ extension UpdateExtensions on Update {
         return chatDraftMessage.call(this as UpdateChatDraftMessage);
       case UpdateChatMessageSender.constructor:
         return chatMessageSender.call(this as UpdateChatMessageSender);
-      case UpdateChatMessageTtl.constructor:
-        return chatMessageTtl.call(this as UpdateChatMessageTtl);
+      case UpdateChatMessageAutoDeleteTime.constructor:
+        return chatMessageAutoDeleteTime
+            .call(this as UpdateChatMessageAutoDeleteTime);
       case UpdateChatNotificationSettings.constructor:
         return chatNotificationSettings
             .call(this as UpdateChatNotificationSettings);
@@ -18599,13 +19363,15 @@ extension UpdateExtensions on Update {
       case UpdateChatHasProtectedContent.constructor:
         return chatHasProtectedContent
             .call(this as UpdateChatHasProtectedContent);
+      case UpdateChatIsTranslatable.constructor:
+        return chatIsTranslatable.call(this as UpdateChatIsTranslatable);
+      case UpdateChatIsMarkedAsUnread.constructor:
+        return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
+      case UpdateChatIsBlocked.constructor:
+        return chatIsBlocked.call(this as UpdateChatIsBlocked);
       case UpdateChatHasScheduledMessages.constructor:
         return chatHasScheduledMessages
             .call(this as UpdateChatHasScheduledMessages);
-      case UpdateChatIsBlocked.constructor:
-        return chatIsBlocked.call(this as UpdateChatIsBlocked);
-      case UpdateChatIsMarkedAsUnread.constructor:
-        return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
       case UpdateChatFilters.constructor:
         return chatFilters.call(this as UpdateChatFilters);
       case UpdateChatOnlineMemberCount.constructor:
@@ -18723,6 +19489,8 @@ extension UpdateExtensions on Update {
             .call(this as UpdateAnimationSearchParameters);
       case UpdateSuggestedActions.constructor:
         return suggestedActions.call(this as UpdateSuggestedActions);
+      case UpdateAutosaveSettings.constructor:
+        return autosaveSettings.call(this as UpdateAutosaveSettings);
       case UpdateNewInlineQuery.constructor:
         return newInlineQuery.call(this as UpdateNewInlineQuery);
       case UpdateNewChosenInlineResult.constructor:
@@ -18783,7 +19551,8 @@ extension UpdateExtensions on Update {
         chatAvailableReactions,
     TResult Function(UpdateChatDraftMessage value)? chatDraftMessage,
     TResult Function(UpdateChatMessageSender value)? chatMessageSender,
-    TResult Function(UpdateChatMessageTtl value)? chatMessageTtl,
+    TResult Function(UpdateChatMessageAutoDeleteTime value)?
+        chatMessageAutoDeleteTime,
     TResult Function(UpdateChatNotificationSettings value)?
         chatNotificationSettings,
     TResult Function(UpdateChatPendingJoinRequests value)?
@@ -18799,10 +19568,11 @@ extension UpdateExtensions on Update {
         chatDefaultDisableNotification,
     TResult Function(UpdateChatHasProtectedContent value)?
         chatHasProtectedContent,
+    TResult Function(UpdateChatIsTranslatable value)? chatIsTranslatable,
+    TResult Function(UpdateChatIsMarkedAsUnread value)? chatIsMarkedAsUnread,
+    TResult Function(UpdateChatIsBlocked value)? chatIsBlocked,
     TResult Function(UpdateChatHasScheduledMessages value)?
         chatHasScheduledMessages,
-    TResult Function(UpdateChatIsBlocked value)? chatIsBlocked,
-    TResult Function(UpdateChatIsMarkedAsUnread value)? chatIsMarkedAsUnread,
     TResult Function(UpdateChatFilters value)? chatFilters,
     TResult Function(UpdateChatOnlineMemberCount value)? chatOnlineMemberCount,
     TResult Function(UpdateForumTopicInfo value)? forumTopicInfo,
@@ -18865,6 +19635,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateAnimationSearchParameters value)?
         animationSearchParameters,
     TResult Function(UpdateSuggestedActions value)? suggestedActions,
+    TResult Function(UpdateAutosaveSettings value)? autosaveSettings,
     TResult Function(UpdateNewInlineQuery value)? newInlineQuery,
     TResult Function(UpdateNewChosenInlineResult value)? newChosenInlineResult,
     TResult Function(UpdateNewCallbackQuery value)? newCallbackQuery,
@@ -19011,9 +19782,10 @@ extension UpdateExtensions on Update {
           return chatMessageSender.call(this as UpdateChatMessageSender);
         }
         break;
-      case UpdateChatMessageTtl.constructor:
-        if (chatMessageTtl != null) {
-          return chatMessageTtl.call(this as UpdateChatMessageTtl);
+      case UpdateChatMessageAutoDeleteTime.constructor:
+        if (chatMessageAutoDeleteTime != null) {
+          return chatMessageAutoDeleteTime
+              .call(this as UpdateChatMessageAutoDeleteTime);
         }
         break;
       case UpdateChatNotificationSettings.constructor:
@@ -19067,10 +19839,14 @@ extension UpdateExtensions on Update {
               .call(this as UpdateChatHasProtectedContent);
         }
         break;
-      case UpdateChatHasScheduledMessages.constructor:
-        if (chatHasScheduledMessages != null) {
-          return chatHasScheduledMessages
-              .call(this as UpdateChatHasScheduledMessages);
+      case UpdateChatIsTranslatable.constructor:
+        if (chatIsTranslatable != null) {
+          return chatIsTranslatable.call(this as UpdateChatIsTranslatable);
+        }
+        break;
+      case UpdateChatIsMarkedAsUnread.constructor:
+        if (chatIsMarkedAsUnread != null) {
+          return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
         }
         break;
       case UpdateChatIsBlocked.constructor:
@@ -19078,9 +19854,10 @@ extension UpdateExtensions on Update {
           return chatIsBlocked.call(this as UpdateChatIsBlocked);
         }
         break;
-      case UpdateChatIsMarkedAsUnread.constructor:
-        if (chatIsMarkedAsUnread != null) {
-          return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
+      case UpdateChatHasScheduledMessages.constructor:
+        if (chatHasScheduledMessages != null) {
+          return chatHasScheduledMessages
+              .call(this as UpdateChatHasScheduledMessages);
         }
         break;
       case UpdateChatFilters.constructor:
@@ -19364,6 +20141,11 @@ extension UpdateExtensions on Update {
       case UpdateSuggestedActions.constructor:
         if (suggestedActions != null) {
           return suggestedActions.call(this as UpdateSuggestedActions);
+        }
+        break;
+      case UpdateAutosaveSettings.constructor:
+        if (autosaveSettings != null) {
+          return autosaveSettings.call(this as UpdateAutosaveSettings);
         }
         break;
       case UpdateNewInlineQuery.constructor:
@@ -19735,14 +20517,16 @@ extension UpdateChatMessageSenderExtensions on UpdateChatMessageSender {
       );
 }
 
-extension UpdateChatMessageTtlExtensions on UpdateChatMessageTtl {
-  UpdateChatMessageTtl copyWith({
+extension UpdateChatMessageAutoDeleteTimeExtensions
+    on UpdateChatMessageAutoDeleteTime {
+  UpdateChatMessageAutoDeleteTime copyWith({
     int? chatId,
-    int? messageTtl,
+    int? messageAutoDeleteTime,
   }) =>
-      UpdateChatMessageTtl(
+      UpdateChatMessageAutoDeleteTime(
         chatId: chatId ?? this.chatId,
-        messageTtl: messageTtl ?? this.messageTtl,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
       );
 }
 
@@ -19852,15 +20636,25 @@ extension UpdateChatHasProtectedContentExtensions
       );
 }
 
-extension UpdateChatHasScheduledMessagesExtensions
-    on UpdateChatHasScheduledMessages {
-  UpdateChatHasScheduledMessages copyWith({
+extension UpdateChatIsTranslatableExtensions on UpdateChatIsTranslatable {
+  UpdateChatIsTranslatable copyWith({
     int? chatId,
-    bool? hasScheduledMessages,
+    bool? isTranslatable,
   }) =>
-      UpdateChatHasScheduledMessages(
+      UpdateChatIsTranslatable(
         chatId: chatId ?? this.chatId,
-        hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
+        isTranslatable: isTranslatable ?? this.isTranslatable,
+      );
+}
+
+extension UpdateChatIsMarkedAsUnreadExtensions on UpdateChatIsMarkedAsUnread {
+  UpdateChatIsMarkedAsUnread copyWith({
+    int? chatId,
+    bool? isMarkedAsUnread,
+  }) =>
+      UpdateChatIsMarkedAsUnread(
+        chatId: chatId ?? this.chatId,
+        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
       );
 }
 
@@ -19875,14 +20669,15 @@ extension UpdateChatIsBlockedExtensions on UpdateChatIsBlocked {
       );
 }
 
-extension UpdateChatIsMarkedAsUnreadExtensions on UpdateChatIsMarkedAsUnread {
-  UpdateChatIsMarkedAsUnread copyWith({
+extension UpdateChatHasScheduledMessagesExtensions
+    on UpdateChatHasScheduledMessages {
+  UpdateChatHasScheduledMessages copyWith({
     int? chatId,
-    bool? isMarkedAsUnread,
+    bool? hasScheduledMessages,
   }) =>
-      UpdateChatIsMarkedAsUnread(
+      UpdateChatHasScheduledMessages(
         chatId: chatId ?? this.chatId,
-        isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+        hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
       );
 }
 
@@ -20505,6 +21300,17 @@ extension UpdateSuggestedActionsExtensions on UpdateSuggestedActions {
       );
 }
 
+extension UpdateAutosaveSettingsExtensions on UpdateAutosaveSettings {
+  UpdateAutosaveSettings copyWith({
+    AutosaveSettingsScope? scope,
+    ScopeAutosaveSettings? settings,
+  }) =>
+      UpdateAutosaveSettings(
+        scope: scope ?? this.scope,
+        settings: settings ?? this.settings,
+      );
+}
+
 extension UpdateNewInlineQueryExtensions on UpdateNewInlineQuery {
   UpdateNewInlineQuery copyWith({
     int? id,
@@ -20681,11 +21487,13 @@ extension UpdateNewChatJoinRequestExtensions on UpdateNewChatJoinRequest {
   UpdateNewChatJoinRequest copyWith({
     int? chatId,
     ChatJoinRequest? request,
+    int? userChatId,
     ChatInviteLink? inviteLink,
   }) =>
       UpdateNewChatJoinRequest(
         chatId: chatId ?? this.chatId,
         request: request ?? this.request,
+        userChatId: userChatId ?? this.userChatId,
         inviteLink: inviteLink ?? this.inviteLink,
       );
 }
@@ -20982,6 +21790,16 @@ extension RecoverAuthenticationPasswordExtensions
         recoveryCode: recoveryCode ?? this.recoveryCode,
         newPassword: newPassword ?? this.newPassword,
         newHint: newHint ?? this.newHint,
+      );
+}
+
+extension SendAuthenticationFirebaseSmsExtensions
+    on SendAuthenticationFirebaseSms {
+  SendAuthenticationFirebaseSms copyWith({
+    String? token,
+  }) =>
+      SendAuthenticationFirebaseSms(
+        token: token ?? this.token,
       );
 }
 
@@ -21539,9 +22357,7 @@ extension SearchMessagesExtensions on SearchMessages {
   SearchMessages copyWith({
     ChatList? chatList,
     String? query,
-    int? offsetDate,
-    int? offsetChatId,
-    int? offsetMessageId,
+    String? offset,
     int? limit,
     SearchMessagesFilter? filter,
     int? minDate,
@@ -21550,9 +22366,7 @@ extension SearchMessagesExtensions on SearchMessages {
       SearchMessages(
         chatList: chatList ?? this.chatList,
         query: query ?? this.query,
-        offsetDate: offsetDate ?? this.offsetDate,
-        offsetChatId: offsetChatId ?? this.offsetChatId,
-        offsetMessageId: offsetMessageId ?? this.offsetMessageId,
+        offset: offset ?? this.offset,
         limit: limit ?? this.limit,
         filter: filter ?? this.filter,
         minDate: minDate ?? this.minDate,
@@ -21579,12 +22393,12 @@ extension SearchSecretMessagesExtensions on SearchSecretMessages {
 
 extension SearchCallMessagesExtensions on SearchCallMessages {
   SearchCallMessages copyWith({
-    int? fromMessageId,
+    String? offset,
     int? limit,
     bool? onlyMissed,
   }) =>
       SearchCallMessages(
-        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
         limit: limit ?? this.limit,
         onlyMissed: onlyMissed ?? this.onlyMissed,
       );
@@ -21787,13 +22601,24 @@ extension GetMessageLinkInfoExtensions on GetMessageLinkInfo {
 
 extension TranslateTextExtensions on TranslateText {
   TranslateText copyWith({
-    String? text,
-    String? fromLanguageCode,
+    FormattedText? text,
     String? toLanguageCode,
   }) =>
       TranslateText(
         text: text ?? this.text,
-        fromLanguageCode: fromLanguageCode ?? this.fromLanguageCode,
+        toLanguageCode: toLanguageCode ?? this.toLanguageCode,
+      );
+}
+
+extension TranslateMessageTextExtensions on TranslateMessageText {
+  TranslateMessageText copyWith({
+    int? chatId,
+    int? messageId,
+    String? toLanguageCode,
+  }) =>
+      TranslateMessageText(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
         toLanguageCode: toLanguageCode ?? this.toLanguageCode,
       );
 }
@@ -22286,6 +23111,30 @@ extension ToggleGeneralForumTopicIsHiddenExtensions
       );
 }
 
+extension ToggleForumTopicIsPinnedExtensions on ToggleForumTopicIsPinned {
+  ToggleForumTopicIsPinned copyWith({
+    int? chatId,
+    int? messageThreadId,
+    bool? isPinned,
+  }) =>
+      ToggleForumTopicIsPinned(
+        chatId: chatId ?? this.chatId,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+        isPinned: isPinned ?? this.isPinned,
+      );
+}
+
+extension SetPinnedForumTopicsExtensions on SetPinnedForumTopics {
+  SetPinnedForumTopics copyWith({
+    int? chatId,
+    List<int>? messageThreadIds,
+  }) =>
+      SetPinnedForumTopics(
+        chatId: chatId ?? this.chatId,
+        messageThreadIds: messageThreadIds ?? this.messageThreadIds,
+      );
+}
+
 extension DeleteForumTopicExtensions on DeleteForumTopic {
   DeleteForumTopic copyWith({
     int? chatId,
@@ -22563,6 +23412,40 @@ extension GetLoginUrlExtensions on GetLoginUrl {
         messageId: messageId ?? this.messageId,
         buttonId: buttonId ?? this.buttonId,
         allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+      );
+}
+
+extension ShareUserWithBotExtensions on ShareUserWithBot {
+  ShareUserWithBot copyWith({
+    int? chatId,
+    int? messageId,
+    int? buttonId,
+    int? sharedUserId,
+    bool? onlyCheck,
+  }) =>
+      ShareUserWithBot(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+        sharedUserId: sharedUserId ?? this.sharedUserId,
+        onlyCheck: onlyCheck ?? this.onlyCheck,
+      );
+}
+
+extension ShareChatWithBotExtensions on ShareChatWithBot {
+  ShareChatWithBot copyWith({
+    int? chatId,
+    int? messageId,
+    int? buttonId,
+    int? sharedChatId,
+    bool? onlyCheck,
+  }) =>
+      ShareChatWithBot(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        buttonId: buttonId ?? this.buttonId,
+        sharedChatId: sharedChatId ?? this.sharedChatId,
+        onlyCheck: onlyCheck ?? this.onlyCheck,
       );
 }
 
@@ -22983,30 +23866,34 @@ extension CreateNewBasicGroupChatExtensions on CreateNewBasicGroupChat {
   CreateNewBasicGroupChat copyWith({
     List<int>? userIds,
     String? title,
-    int? messageTtl,
+    int? messageAutoDeleteTime,
   }) =>
       CreateNewBasicGroupChat(
         userIds: userIds ?? this.userIds,
         title: title ?? this.title,
-        messageTtl: messageTtl ?? this.messageTtl,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
       );
 }
 
 extension CreateNewSupergroupChatExtensions on CreateNewSupergroupChat {
   CreateNewSupergroupChat copyWith({
     String? title,
+    bool? isForum,
     bool? isChannel,
     String? description,
     ChatLocation? location,
-    int? messageTtl,
+    int? messageAutoDeleteTime,
     bool? forImport,
   }) =>
       CreateNewSupergroupChat(
         title: title ?? this.title,
+        isForum: isForum ?? this.isForum,
         isChannel: isChannel ?? this.isChannel,
         description: description ?? this.description,
         location: location ?? this.location,
-        messageTtl: messageTtl ?? this.messageTtl,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
         forImport: forImport ?? this.forImport,
       );
 }
@@ -23131,14 +24018,16 @@ extension SetChatPhotoExtensions on SetChatPhoto {
       );
 }
 
-extension SetChatMessageTtlExtensions on SetChatMessageTtl {
-  SetChatMessageTtl copyWith({
+extension SetChatMessageAutoDeleteTimeExtensions
+    on SetChatMessageAutoDeleteTime {
+  SetChatMessageAutoDeleteTime copyWith({
     int? chatId,
-    int? ttl,
+    int? messageAutoDeleteTime,
   }) =>
-      SetChatMessageTtl(
+      SetChatMessageAutoDeleteTime(
         chatId: chatId ?? this.chatId,
-        ttl: ttl ?? this.ttl,
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
       );
 }
 
@@ -23197,6 +24086,17 @@ extension ToggleChatHasProtectedContentExtensions
       ToggleChatHasProtectedContent(
         chatId: chatId ?? this.chatId,
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+      );
+}
+
+extension ToggleChatIsTranslatableExtensions on ToggleChatIsTranslatable {
+  ToggleChatIsTranslatable copyWith({
+    int? chatId,
+    bool? isTranslatable,
+  }) =>
+      ToggleChatIsTranslatable(
+        chatId: chatId ?? this.chatId,
+        isTranslatable: isTranslatable ?? this.isTranslatable,
       );
 }
 
@@ -23564,10 +24464,12 @@ extension ToggleBotIsAddedToAttachmentMenuExtensions
   ToggleBotIsAddedToAttachmentMenu copyWith({
     int? botUserId,
     bool? isAdded,
+    bool? allowWriteAccess,
   }) =>
       ToggleBotIsAddedToAttachmentMenu(
         botUserId: botUserId ?? this.botUserId,
         isAdded: isAdded ?? this.isAdded,
+        allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
       );
 }
 
@@ -24537,6 +25439,28 @@ extension ChangeImportedContactsExtensions on ChangeImportedContacts {
       );
 }
 
+extension SetUserPersonalProfilePhotoExtensions on SetUserPersonalProfilePhoto {
+  SetUserPersonalProfilePhoto copyWith({
+    int? userId,
+    InputChatPhoto? photo,
+  }) =>
+      SetUserPersonalProfilePhoto(
+        userId: userId ?? this.userId,
+        photo: photo ?? this.photo,
+      );
+}
+
+extension SuggestUserProfilePhotoExtensions on SuggestUserProfilePhoto {
+  SuggestUserProfilePhoto copyWith({
+    int? userId,
+    InputChatPhoto? photo,
+  }) =>
+      SuggestUserProfilePhoto(
+        userId: userId ?? this.userId,
+        photo: photo ?? this.photo,
+      );
+}
+
 extension SearchUserByPhoneNumberExtensions on SearchUserByPhoneNumber {
   SearchUserByPhoneNumber copyWith({
     String? phoneNumber,
@@ -24585,11 +25509,13 @@ extension GetStickersExtensions on GetStickers {
 
 extension SearchStickersExtensions on SearchStickers {
   SearchStickers copyWith({
-    String? emoji,
+    StickerType? stickerType,
+    String? emojis,
     int? limit,
   }) =>
       SearchStickers(
-        emoji: emoji ?? this.emoji,
+        stickerType: stickerType ?? this.stickerType,
+        emojis: emojis ?? this.emojis,
         limit: limit ?? this.limit,
       );
 }
@@ -24800,6 +25726,15 @@ extension SearchEmojisExtensions on SearchEmojis {
       );
 }
 
+extension GetEmojiCategoriesExtensions on GetEmojiCategories {
+  GetEmojiCategories copyWith({
+    EmojiCategoryType? type,
+  }) =>
+      GetEmojiCategories(
+        type: type ?? this.type,
+      );
+}
+
 extension GetAnimatedEmojiExtensions on GetAnimatedEmoji {
   GetAnimatedEmoji copyWith({
     String? emoji,
@@ -24888,9 +25823,11 @@ extension GetWebPageInstantViewExtensions on GetWebPageInstantView {
 extension SetProfilePhotoExtensions on SetProfilePhoto {
   SetProfilePhoto copyWith({
     InputChatPhoto? photo,
+    bool? isPublic,
   }) =>
       SetProfilePhoto(
         photo: photo ?? this.photo,
+        isPublic: isPublic ?? this.isPublic,
       );
 }
 
@@ -25236,16 +26173,28 @@ extension ToggleSupergroupIsAllHistoryAvailableExtensions
       );
 }
 
-extension ToggleSupergroupIsAggressiveAntiSpamEnabledExtensions
-    on ToggleSupergroupIsAggressiveAntiSpamEnabled {
-  ToggleSupergroupIsAggressiveAntiSpamEnabled copyWith({
+extension ToggleSupergroupHasHiddenMembersExtensions
+    on ToggleSupergroupHasHiddenMembers {
+  ToggleSupergroupHasHiddenMembers copyWith({
     int? supergroupId,
-    bool? isAggressiveAntiSpamEnabled,
+    bool? hasHiddenMembers,
   }) =>
-      ToggleSupergroupIsAggressiveAntiSpamEnabled(
+      ToggleSupergroupHasHiddenMembers(
         supergroupId: supergroupId ?? this.supergroupId,
-        isAggressiveAntiSpamEnabled:
-            isAggressiveAntiSpamEnabled ?? this.isAggressiveAntiSpamEnabled,
+        hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+      );
+}
+
+extension ToggleSupergroupHasAggressiveAntiSpamEnabledExtensions
+    on ToggleSupergroupHasAggressiveAntiSpamEnabled {
+  ToggleSupergroupHasAggressiveAntiSpamEnabled copyWith({
+    int? supergroupId,
+    bool? hasAggressiveAntiSpamEnabled,
+  }) =>
+      ToggleSupergroupHasAggressiveAntiSpamEnabled(
+        supergroupId: supergroupId ?? this.supergroupId,
+        hasAggressiveAntiSpamEnabled:
+            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
       );
 }
 
@@ -25635,12 +26584,14 @@ extension DeleteAccountExtensions on DeleteAccount {
       );
 }
 
-extension SetDefaultMessageTtlExtensions on SetDefaultMessageTtl {
-  SetDefaultMessageTtl copyWith({
-    MessageTtl? ttl,
+extension SetDefaultMessageAutoDeleteTimeExtensions
+    on SetDefaultMessageAutoDeleteTime {
+  SetDefaultMessageAutoDeleteTime copyWith({
+    MessageAutoDeleteTime? messageAutoDeleteTime,
   }) =>
-      SetDefaultMessageTtl(
-        ttl: ttl ?? this.ttl,
+      SetDefaultMessageAutoDeleteTime(
+        messageAutoDeleteTime:
+            messageAutoDeleteTime ?? this.messageAutoDeleteTime,
       );
 }
 
@@ -25806,6 +26757,17 @@ extension SetAutoDownloadSettingsExtensions on SetAutoDownloadSettings {
       );
 }
 
+extension SetAutosaveSettingsExtensions on SetAutosaveSettings {
+  SetAutosaveSettings copyWith({
+    AutosaveSettingsScope? scope,
+    ScopeAutosaveSettings? settings,
+  }) =>
+      SetAutosaveSettings(
+        scope: scope ?? this.scope,
+        settings: settings ?? this.settings,
+      );
+}
+
 extension GetBankCardInfoExtensions on GetBankCardInfo {
   GetBankCardInfo copyWith({
     String? bankCardNumber,
@@ -25936,11 +26898,11 @@ extension GetPassportAuthorizationFormExtensions
 extension GetPassportAuthorizationFormAvailableElementsExtensions
     on GetPassportAuthorizationFormAvailableElements {
   GetPassportAuthorizationFormAvailableElements copyWith({
-    int? autorizationFormId,
+    int? authorizationFormId,
     String? password,
   }) =>
       GetPassportAuthorizationFormAvailableElements(
-        autorizationFormId: autorizationFormId ?? this.autorizationFormId,
+        authorizationFormId: authorizationFormId ?? this.authorizationFormId,
         password: password ?? this.password,
       );
 }
@@ -25948,11 +26910,11 @@ extension GetPassportAuthorizationFormAvailableElementsExtensions
 extension SendPassportAuthorizationFormExtensions
     on SendPassportAuthorizationForm {
   SendPassportAuthorizationForm copyWith({
-    int? autorizationFormId,
+    int? authorizationFormId,
     List<PassportElementType>? types,
   }) =>
       SendPassportAuthorizationForm(
-        autorizationFormId: autorizationFormId ?? this.autorizationFormId,
+        authorizationFormId: authorizationFormId ?? this.authorizationFormId,
         types: types ?? this.types,
       );
 }

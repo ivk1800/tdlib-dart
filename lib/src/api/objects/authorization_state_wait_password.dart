@@ -3,7 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The user has been authorized, but needs to enter a 2-step verification
-/// password to start using the application
+/// password to start using the application. Call checkAuthenticationPassword
+/// to provide the password, or requestAuthenticationPasswordRecovery to
+/// recover the password, or deleteAccount to delete the account after a week
 @immutable
 class AuthorizationStateWaitPassword extends AuthorizationState {
   const AuthorizationStateWaitPassword({

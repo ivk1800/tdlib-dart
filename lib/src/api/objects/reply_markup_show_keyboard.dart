@@ -7,6 +7,7 @@ import '../tdapi.dart';
 class ReplyMarkupShowKeyboard extends ReplyMarkup {
   const ReplyMarkupShowKeyboard({
     required this.rows,
+    required this.isPersistent,
     required this.resizeKeyboard,
     required this.oneTime,
     required this.isPersonal,
@@ -15,6 +16,10 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   /// [rows] A list of rows of bot keyboard buttons
   final List<List<KeyboardButton>> rows;
+
+  /// [isPersistent] True, if the keyboard is supposed to always be shown when
+  /// the ordinary keyboard is hidden
+  final bool isPersistent;
 
   /// [resizeKeyboard] True, if the application needs to resize the keyboard
   /// vertically
@@ -46,6 +51,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
                   .map((item) => KeyboardButton.fromJson(item))
                   .toList()))
           .toList()),
+      isPersistent: json['is_persistent'],
       resizeKeyboard: json['resize_keyboard'],
       oneTime: json['one_time'],
       isPersonal: json['is_personal'],
@@ -61,6 +67,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
         'rows': rows
             .map((item) => item.map((item) => item.toJson()).toList())
             .toList(),
+        'is_persistent': isPersistent,
         'resize_keyboard': resizeKeyboard,
         'one_time': oneTime,
         'is_personal': isPersonal,

@@ -14,10 +14,11 @@ class MessageLinkInfo extends TdObject {
     required this.forAlbum,
   });
 
-  /// [isPublic] True, if the link is a public link for a message in a chat
+  /// [isPublic] True, if the link is a public link for a message or a forum
+  /// topic in a chat
   final bool isPublic;
 
-  /// [chatId] If found, identifier of the chat to which the message belongs, 0
+  /// [chatId] If found, identifier of the chat to which the link points, 0
   /// otherwise
   final int chatId;
 

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An expired photo message (self-destructed after TTL has elapsed)
+/// A self-destructed photo message
 @immutable
 class MessageExpiredPhoto extends MessageContent {
   const MessageExpiredPhoto();

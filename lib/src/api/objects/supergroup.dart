@@ -48,7 +48,7 @@ class Supergroup extends TdObject {
 
   /// [memberCount] Number of members in the supergroup or channel; 0 if
   /// unknown. Currently, it is guaranteed to be known only if the supergroup or
-  /// channel was received through searchPublicChats, searchChatsNearby,
+  /// channel was received. through searchPublicChats, searchChatsNearby,
   /// getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon,
   /// or getUserPrivacySettingRules
   final int memberCount;

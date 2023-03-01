@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// An animation in MPEG4 format; must be square, at most 10 seconds long,
-/// have width between 160 and 800 and be at most 2MB in size
+/// have width between 160 and 1280 and be at most 2MB in size
 @immutable
 class InputChatPhotoAnimation extends InputChatPhoto {
   const InputChatPhotoAnimation({

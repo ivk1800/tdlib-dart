@@ -9,17 +9,22 @@ import '../tdapi.dart';
 class CreateNewSupergroupChat extends TdFunction {
   const CreateNewSupergroupChat({
     required this.title,
+    required this.isForum,
     required this.isChannel,
     required this.description,
     this.location,
-    required this.messageTtl,
+    required this.messageAutoDeleteTime,
     required this.forImport,
   });
 
   /// [title] Title of the new chat; 1-128 characters
   final String title;
 
-  /// [isChannel] Pass true to create a channel chat
+  /// [isForum] Pass true to create a forum supergroup chat
+  final bool isForum;
+
+  /// [isChannel] Pass true to create a channel chat; ignored if a forum is
+  /// created
   final bool isChannel;
 
   /// param_[description] Chat description; 0-255 characters
@@ -29,10 +34,10 @@ class CreateNewSupergroupChat extends TdFunction {
   /// pass null to create an ordinary supergroup chat
   final ChatLocation? location;
 
-  /// [messageTtl] Message TTL value, in seconds; must be from 0 up to 365 *
-  /// 86400 and be divisible by 86400. If 0, then messages aren't deleted
-  /// automatically
-  final int messageTtl;
+  /// [messageAutoDeleteTime] Message auto-delete time value, in seconds; must
+  /// be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages
+  /// aren't deleted automatically
+  final int messageAutoDeleteTime;
 
   /// [forImport] Pass true to create a supergroup for importing messages using
   /// importMessage
@@ -46,10 +51,11 @@ class CreateNewSupergroupChat extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
+        'is_forum': isForum,
         'is_channel': isChannel,
         'description': description,
         'location': location?.toJson(),
-        'message_ttl': messageTtl,
+        'message_auto_delete_time': messageAutoDeleteTime,
         'for_import': forImport,
         '@type': constructor,
       };

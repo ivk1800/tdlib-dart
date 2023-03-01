@@ -2,30 +2,31 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The message Time To Live setting for a chat was changed
+/// Contains autosave settings for a chat, which overrides default settings
+/// for the corresponding scope
 @immutable
-class UpdateChatMessageTtl extends Update {
-  const UpdateChatMessageTtl({
+class AutosaveSettingsException extends TdObject {
+  const AutosaveSettingsException({
     required this.chatId,
-    required this.messageTtl,
+    required this.settings,
   });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [messageTtl] New value of message_ttl
-  final int messageTtl;
+  /// [settings] Autosave settings for the chat
+  final ScopeAutosaveSettings settings;
 
-  static const String constructor = 'updateChatMessageTtl';
+  static const String constructor = 'autosaveSettingsException';
 
-  static UpdateChatMessageTtl? fromJson(Map<String, dynamic>? json) {
+  static AutosaveSettingsException? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UpdateChatMessageTtl(
+    return AutosaveSettingsException(
       chatId: json['chat_id'],
-      messageTtl: json['message_ttl'],
+      settings: ScopeAutosaveSettings.fromJson(json['settings'])!,
     );
   }
 
@@ -35,7 +36,7 @@ class UpdateChatMessageTtl extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
-        'message_ttl': messageTtl,
+        'settings': settings.toJson(),
         '@type': constructor,
       };
 

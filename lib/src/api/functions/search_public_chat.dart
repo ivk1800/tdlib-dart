@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Searches a public chat by its username. Currently, only private chats,
 /// supergroups and channels can be public. Returns the chat if found;
-/// otherwise an error is returned
+/// otherwise, an error is returned
 /// Returns [Chat]
 @immutable
 class SearchPublicChat extends TdFunction {

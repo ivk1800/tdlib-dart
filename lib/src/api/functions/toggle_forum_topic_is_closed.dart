@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Toggles whether a topic is closed in a forum supergroup chat; requires
-/// can_manage_topics administrator rights in the supergroup unless the user
-/// is creator of the topic
+/// can_manage_topics administrator right in the supergroup unless the user is
+/// creator of the topic
 /// Returns [Ok]
 @immutable
 class ToggleForumTopicIsClosed extends TdFunction {

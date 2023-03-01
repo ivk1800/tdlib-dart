@@ -2,8 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns a list of sticker sets attached to a file. Currently, only photos
-/// and videos can have attached sticker sets
+/// Returns a list of sticker sets attached to a file, including regular,
+/// mask, and emoji sticker sets. Currently, only animations, photos, and
+/// videos can have attached sticker sets
 /// Returns [StickerSets]
 @immutable
 class GetAttachedStickerSets extends TdFunction {

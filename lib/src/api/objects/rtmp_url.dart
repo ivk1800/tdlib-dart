@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents an RTMP url
+/// Represents an RTMP URL
 @immutable
 class RtmpUrl extends TdObject {
   const RtmpUrl({

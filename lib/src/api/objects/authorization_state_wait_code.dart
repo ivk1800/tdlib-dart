@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// TDLib needs the user's authentication code to authorize
+/// TDLib needs the user's authentication code to authorize. Call
+/// checkAuthenticationCode to check the code
 @immutable
 class AuthorizationStateWaitCode extends AuthorizationState {
   const AuthorizationStateWaitCode({

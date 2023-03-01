@@ -9,6 +9,7 @@ class PhoneNumberInfo extends TdObject {
     this.country,
     required this.countryCallingCode,
     required this.formattedPhoneNumber,
+    required this.isAnonymous,
   });
 
   /// [country] Information about the country to which the phone number belongs;
@@ -24,6 +25,10 @@ class PhoneNumberInfo extends TdObject {
   /// but even more digits might be entered by the user
   final String formattedPhoneNumber;
 
+  /// [isAnonymous] True, if the phone number was bought on Fragment and isn't
+  /// tied to a SIM card
+  final bool isAnonymous;
+
   static const String constructor = 'phoneNumberInfo';
 
   static PhoneNumberInfo? fromJson(Map<String, dynamic>? json) {
@@ -35,6 +40,7 @@ class PhoneNumberInfo extends TdObject {
       country: CountryInfo.fromJson(json['country']),
       countryCallingCode: json['country_calling_code'],
       formattedPhoneNumber: json['formatted_phone_number'],
+      isAnonymous: json['is_anonymous'],
     );
   }
 
@@ -46,6 +52,7 @@ class PhoneNumberInfo extends TdObject {
         'country': country?.toJson(),
         'country_calling_code': countryCallingCode,
         'formatted_phone_number': formattedPhoneNumber,
+        'is_anonymous': isAnonymous,
         '@type': constructor,
       };
 

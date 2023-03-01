@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a bot added to attachment menu
+/// Represents a bot, which can be added to attachment menu
 @immutable
 class AttachmentMenuBot extends TdObject {
   const AttachmentMenuBot({
@@ -13,6 +13,7 @@ class AttachmentMenuBot extends TdObject {
     required this.supportsGroupChats,
     required this.supportsChannelChats,
     required this.supportsSettings,
+    required this.requestWriteAccess,
     required this.name,
     this.nameColor,
     this.defaultIcon,
@@ -50,6 +51,10 @@ class AttachmentMenuBot extends TdObject {
   /// [supportsSettings] True, if the bot supports "settings_button_pressed"
   /// event
   final bool supportsSettings;
+
+  /// [requestWriteAccess] True, if the user needs to be requested to give the
+  /// permission to the bot to send them messages
+  final bool requestWriteAccess;
 
   /// [name] Name for the bot in attachment menu
   final String name;
@@ -101,6 +106,7 @@ class AttachmentMenuBot extends TdObject {
       supportsGroupChats: json['supports_group_chats'],
       supportsChannelChats: json['supports_channel_chats'],
       supportsSettings: json['supports_settings'],
+      requestWriteAccess: json['request_write_access'],
       name: json['name'],
       nameColor: AttachmentMenuBotColor.fromJson(json['name_color']),
       defaultIcon: File.fromJson(json['default_icon']),
@@ -125,6 +131,7 @@ class AttachmentMenuBot extends TdObject {
         'supports_group_chats': supportsGroupChats,
         'supports_channel_chats': supportsChannelChats,
         'supports_settings': supportsSettings,
+        'request_write_access': requestWriteAccess,
         'name': name,
         'name_color': nameColor?.toJson(),
         'default_icon': defaultIcon?.toJson(),

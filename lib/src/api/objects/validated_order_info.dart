@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Contains a temporary identifier of validated order information, which is
-/// stored for one hour. Also contains the available shipping options
+/// stored for one hour, and the available shipping options
 @immutable
 class ValidatedOrderInfo extends TdObject {
   const ValidatedOrderInfo({

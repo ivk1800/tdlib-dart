@@ -12,6 +12,7 @@ class ChatPhoto extends TdObject {
     required this.sizes,
     this.animation,
     this.smallAnimation,
+    this.sticker,
   });
 
   /// [id] Unique photo identifier
@@ -26,13 +27,16 @@ class ChatPhoto extends TdObject {
   /// [sizes] Available variants of the photo in JPEG format, in different size
   final List<PhotoSize> sizes;
 
-  /// [animation] A big (640x640) animated variant of the photo in MPEG4 format;
-  /// may be null
+  /// [animation] A big (up to 1280x1280) animated variant of the photo in MPEG4
+  /// format; may be null
   final AnimatedChatPhoto? animation;
 
   /// [smallAnimation] A small (160x160) animated variant of the photo in MPEG4
   /// format; may be null even the big animation is available
   final AnimatedChatPhoto? smallAnimation;
+
+  /// [sticker] Sticker-based version of the chat photo; may be null
+  final ChatPhotoSticker? sticker;
 
   static const String constructor = 'chatPhoto';
 
@@ -50,6 +54,7 @@ class ChatPhoto extends TdObject {
           .toList()),
       animation: AnimatedChatPhoto.fromJson(json['animation']),
       smallAnimation: AnimatedChatPhoto.fromJson(json['small_animation']),
+      sticker: ChatPhotoSticker.fromJson(json['sticker']),
     );
   }
 
@@ -64,6 +69,7 @@ class ChatPhoto extends TdObject {
         'sizes': sizes.map((item) => item.toJson()).toList(),
         'animation': animation?.toJson(),
         'small_animation': smallAnimation?.toJson(),
+        'sticker': sticker?.toJson(),
         '@type': constructor,
       };
 

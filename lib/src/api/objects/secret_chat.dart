@@ -23,8 +23,8 @@ class SecretChat extends TdObject {
   /// [state] State of the secret chat
   final SecretChatState state;
 
-  /// [isOutbound] True, if the chat was created by the current user; otherwise
-  /// false
+  /// [isOutbound] True, if the chat was created by the current user; false
+  /// otherwise
   final bool isOutbound;
 
   /// [keyHash] Hash of the currently used key for comparison with the hash of
@@ -38,7 +38,8 @@ class SecretChat extends TdObject {
 
   /// [layer] Secret chat layer; determines features supported by the chat
   /// partner's application. Nested text entities and underline and
-  /// strikethrough entities are supported if the layer
+  /// strikethrough entities are supported if the layer. files bigger than
+  /// 2000MB are supported if the layer
   final int layer;
 
   static const String constructor = 'secretChat';

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to the language settings section of the app
+/// The link is a link to the language section of the app settings
 @immutable
 class InternalLinkTypeLanguageSettings extends InternalLinkType {
   const InternalLinkTypeLanguageSettings();

@@ -10,9 +10,11 @@ abstract class KeyboardButtonType extends TdObject {
   static const String constructor = 'keyboardButtonType';
 
   /// Inherited by:
+  /// [KeyboardButtonTypeRequestChat]
   /// [KeyboardButtonTypeRequestLocation]
   /// [KeyboardButtonTypeRequestPhoneNumber]
   /// [KeyboardButtonTypeRequestPoll]
+  /// [KeyboardButtonTypeRequestUser]
   /// [KeyboardButtonTypeText]
   /// [KeyboardButtonTypeWebApp]
   static KeyboardButtonType? fromJson(Map<String, dynamic>? json) {
@@ -21,12 +23,16 @@ abstract class KeyboardButtonType extends TdObject {
     }
 
     switch (json['@type']) {
+      case KeyboardButtonTypeRequestChat.constructor:
+        return KeyboardButtonTypeRequestChat.fromJson(json);
       case KeyboardButtonTypeRequestLocation.constructor:
         return KeyboardButtonTypeRequestLocation.fromJson(json);
       case KeyboardButtonTypeRequestPhoneNumber.constructor:
         return KeyboardButtonTypeRequestPhoneNumber.fromJson(json);
       case KeyboardButtonTypeRequestPoll.constructor:
         return KeyboardButtonTypeRequestPoll.fromJson(json);
+      case KeyboardButtonTypeRequestUser.constructor:
+        return KeyboardButtonTypeRequestUser.fromJson(json);
       case KeyboardButtonTypeText.constructor:
         return KeyboardButtonTypeText.fromJson(json);
       case KeyboardButtonTypeWebApp.constructor:

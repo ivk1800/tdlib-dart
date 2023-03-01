@@ -2,14 +2,20 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns default message Time To Live setting (self-destruct timer) for new
-/// chats
-/// Returns [MessageTtl]
+/// The category must be used by default
 @immutable
-class GetDefaultMessageTtl extends TdFunction {
-  const GetDefaultMessageTtl();
+class EmojiCategoryTypeDefault extends EmojiCategoryType {
+  const EmojiCategoryTypeDefault();
 
-  static const String constructor = 'getDefaultMessageTtl';
+  static const String constructor = 'emojiCategoryTypeDefault';
+
+  static EmojiCategoryTypeDefault? fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      return null;
+    }
+
+    return const EmojiCategoryTypeDefault();
+  }
 
   @override
   String getConstructor() => constructor;

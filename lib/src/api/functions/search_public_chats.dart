@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Searches public chats by looking for specified query in their username and
 /// title. Currently, only private chats, supergroups and channels can be
-/// public. Returns a meaningful number of results.. Excludes private chats
+/// public. Returns a meaningful number of results. Excludes private chats
 /// with contacts and chats from the chat list from the results
 /// Returns [Chats]
 @immutable

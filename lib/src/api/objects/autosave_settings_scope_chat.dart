@@ -2,27 +2,25 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains default message Time To Live setting (self-destruct timer) for
-/// new chats
+/// Autosave settings applied to a chat
 @immutable
-class MessageTtl extends TdObject {
-  const MessageTtl({
-    required this.ttl,
+class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
+  const AutosaveSettingsScopeChat({
+    required this.chatId,
   });
 
-  /// [ttl] Message TTL setting, in seconds. If 0, then messages aren't deleted
-  /// automatically
-  final int ttl;
+  /// [chatId] Chat identifier
+  final int chatId;
 
-  static const String constructor = 'messageTtl';
+  static const String constructor = 'autosaveSettingsScopeChat';
 
-  static MessageTtl? fromJson(Map<String, dynamic>? json) {
+  static AutosaveSettingsScopeChat? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return MessageTtl(
-      ttl: json['ttl'],
+    return AutosaveSettingsScopeChat(
+      chatId: json['chat_id'],
     );
   }
 
@@ -31,7 +29,7 @@ class MessageTtl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'ttl': ttl,
+        'chat_id': chatId,
         '@type': constructor,
       };
 

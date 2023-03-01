@@ -36,8 +36,9 @@ class Message extends TdObject {
     required this.replyInChatId,
     required this.replyToMessageId,
     required this.messageThreadId,
-    required this.ttl,
-    required this.ttlExpiresIn,
+    required this.selfDestructTime,
+    required this.selfDestructIn,
+    required this.autoDeleteIn,
     required this.viaBotUserId,
     this.authorSignature,
     required this.mediaAlbumId,
@@ -156,14 +157,21 @@ class Message extends TdObject {
   /// message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// [ttl] For self-destructing messages, the message's TTL (Time To Live), in
-  /// seconds; 0 if none. TDLib will send updateDeleteMessages or
-  /// updateMessageContent once the TTL expires
-  final int ttl;
+  /// [selfDestructTime] The message's self-destruct time, in seconds; 0 if
+  /// none. TDLib will send updateDeleteMessages or updateMessageContent once
+  /// the time expires
+  final int selfDestructTime;
 
-  /// [ttlExpiresIn] Time left before the message expires, in seconds. If the
-  /// TTL timer isn't started yet, equals to the value of the ttl field
-  final double ttlExpiresIn;
+  /// [selfDestructIn] Time left before the message self-destruct timer expires,
+  /// in seconds. If the self-destruct timer isn't started yet, equals to the
+  /// value of the self_destruct_time field
+  final double selfDestructIn;
+
+  /// [autoDeleteIn] Time left before the message will be automatically deleted
+  /// by message_auto_delete_time setting of the chat, in seconds; 0 if never.
+  /// TDLib will send updateDeleteMessages or updateMessageContent once the time
+  /// expires
+  final double autoDeleteIn;
 
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which
   /// this message was sent
@@ -230,8 +238,9 @@ class Message extends TdObject {
       replyInChatId: json['reply_in_chat_id'],
       replyToMessageId: json['reply_to_message_id'],
       messageThreadId: json['message_thread_id'],
-      ttl: json['ttl'],
-      ttlExpiresIn: json['ttl_expires_in'],
+      selfDestructTime: json['self_destruct_time'],
+      selfDestructIn: json['self_destruct_in'],
+      autoDeleteIn: json['auto_delete_in'],
       viaBotUserId: json['via_bot_user_id'],
       authorSignature: json['author_signature'],
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
@@ -277,8 +286,9 @@ class Message extends TdObject {
         'reply_in_chat_id': replyInChatId,
         'reply_to_message_id': replyToMessageId,
         'message_thread_id': messageThreadId,
-        'ttl': ttl,
-        'ttl_expires_in': ttlExpiresIn,
+        'self_destruct_time': selfDestructTime,
+        'self_destruct_in': selfDestructIn,
+        'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId,

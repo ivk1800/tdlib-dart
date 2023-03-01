@@ -19,7 +19,6 @@ class Animation extends TdObject {
   });
 
   /// [duration] Duration of the animation, in seconds; as defined by the sender
-  ///
   final int duration;
 
   /// [width] Width of the animation

@@ -19,7 +19,7 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
   /// [hasPhotos] True, if the album has at least one photo
   final bool hasPhotos;
 
-  /// [hasVideos] True, if the album has at least one video
+  /// [hasVideos] True, if the album has at least one video file
   final bool hasVideos;
 
   /// [hasAudios] True, if the album has at least one audio file

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns up to 8 themed emoji statuses, which color must be changed to the
-/// color of the Telegram Premium badge
+/// Returns up to 8 emoji statuses, which must be shown right after the
+/// default Premium Badge in the emoji status list
 /// Returns [EmojiStatuses]
 @immutable
 class GetThemedEmojiStatuses extends TdFunction {

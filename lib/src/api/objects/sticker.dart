@@ -6,20 +6,20 @@ import '../tdapi.dart';
 @immutable
 class Sticker extends TdObject {
   const Sticker({
+    required this.id,
     required this.setId,
     required this.width,
     required this.height,
     required this.emoji,
     required this.format,
-    required this.type,
-    this.maskPosition,
-    required this.customEmojiId,
+    required this.fullType,
     required this.outline,
     this.thumbnail,
-    required this.isPremium,
-    this.premiumAnimation,
     required this.sticker,
   });
+
+  /// [id] Unique sticker identifier within the set; 0 if none
+  final int id;
 
   /// [setId] The identifier of the sticker set to which the sticker belongs; 0
   /// if none
@@ -37,15 +37,8 @@ class Sticker extends TdObject {
   /// [format] Sticker format
   final StickerFormat format;
 
-  /// [type] Sticker type
-  final StickerType type;
-
-  /// [maskPosition] Position where the mask is placed; may be null even the
-  /// sticker is a mask
-  final MaskPosition? maskPosition;
-
-  /// [customEmojiId] Identifier of the emoji if the sticker is a custom emoji
-  final int customEmojiId;
+  /// [fullType] Sticker's full type
+  final StickerFullType fullType;
 
   /// [outline] Sticker's outline represented as a list of closed vector paths;
   /// may be empty. The coordinate system origin is in the upper-left corner
@@ -53,12 +46,6 @@ class Sticker extends TdObject {
 
   /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null
   final Thumbnail? thumbnail;
-
-  /// [isPremium] True, if only Premium users can use the sticker
-  final bool isPremium;
-
-  /// [premiumAnimation] Premium animation of the sticker; may be null
-  final File? premiumAnimation;
 
   /// [sticker] File containing the sticker
   final File sticker;
@@ -71,20 +58,17 @@ class Sticker extends TdObject {
     }
 
     return Sticker(
+      id: int.tryParse(json['id']) ?? 0,
       setId: int.tryParse(json['set_id']) ?? 0,
       width: json['width'],
       height: json['height'],
       emoji: json['emoji'],
       format: StickerFormat.fromJson(json['format'])!,
-      type: StickerType.fromJson(json['type'])!,
-      maskPosition: MaskPosition.fromJson(json['mask_position']),
-      customEmojiId: int.tryParse(json['custom_emoji_id']) ?? 0,
+      fullType: StickerFullType.fromJson(json['full_type'])!,
       outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
           .map((item) => ClosedVectorPath.fromJson(item))
           .toList()),
       thumbnail: Thumbnail.fromJson(json['thumbnail']),
-      isPremium: json['is_premium'],
-      premiumAnimation: File.fromJson(json['premium_animation']),
       sticker: File.fromJson(json['sticker'])!,
     );
   }
@@ -94,18 +78,15 @@ class Sticker extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'id': id,
         'set_id': setId,
         'width': width,
         'height': height,
         'emoji': emoji,
         'format': format.toJson(),
-        'type': type.toJson(),
-        'mask_position': maskPosition?.toJson(),
-        'custom_emoji_id': customEmojiId,
+        'full_type': fullType.toJson(),
         'outline': outline.map((item) => item.toJson()).toList(),
         'thumbnail': thumbnail?.toJson(),
-        'is_premium': isPremium,
-        'premium_animation': premiumAnimation?.toJson(),
         'sticker': sticker.toJson(),
         '@type': constructor,
       };

@@ -7,11 +7,16 @@ import '../tdapi.dart';
 class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   const StorePaymentPurposePremiumSubscription({
     required this.isRestore,
+    required this.isUpgrade,
   });
 
   /// [isRestore] Pass true if this is a restore of a Telegram Premium purchase;
   /// only for App Store
   final bool isRestore;
+
+  /// [isUpgrade] Pass true if this is an upgrade from a monthly subscription to
+  /// early subscription; only for App Store
+  final bool isUpgrade;
 
   static const String constructor = 'storePaymentPurposePremiumSubscription';
 
@@ -23,6 +28,7 @@ class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 
     return StorePaymentPurposePremiumSubscription(
       isRestore: json['is_restore'],
+      isUpgrade: json['is_upgrade'],
     );
   }
 
@@ -32,6 +38,7 @@ class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'is_restore': isRestore,
+        'is_upgrade': isUpgrade,
         '@type': constructor,
       };
 

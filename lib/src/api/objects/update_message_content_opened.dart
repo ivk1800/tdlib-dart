@@ -3,8 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The message content was opened. Updates voice note messages to "listened",
-/// video note messages to "viewed" and starts the TTL timer for
-/// self-destructing messages
+/// video note messages to "viewed" and starts the self-destruct timer
 @immutable
 class UpdateMessageContentOpened extends Update {
   const UpdateMessageContentOpened({

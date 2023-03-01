@@ -14,7 +14,7 @@ class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
-  /// [isPaused] True, if screen sharing is paused
+  /// [isPaused] Pass true to pause screen sharing; pass false to unpause it
   final bool isPaused;
 
   static const String constructor = 'toggleGroupCallScreenSharingIsPaused';

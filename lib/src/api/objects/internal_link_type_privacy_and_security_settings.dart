@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to the privacy and security settings section of the app
+/// The link is a link to the privacy and security section of the app settings
 @immutable
 class InternalLinkTypePrivacyAndSecuritySettings extends InternalLinkType {
   const InternalLinkTypePrivacyAndSecuritySettings();

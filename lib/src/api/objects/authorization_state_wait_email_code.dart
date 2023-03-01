@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// TDLib needs the user's authentication code sent to an email address to
-/// authorize. Call `checkAuthenticationEmailCode` to provide the code
+/// authorize. Call checkAuthenticationEmailCode to provide the code
 @immutable
 class AuthorizationStateWaitEmailCode extends AuthorizationState {
   const AuthorizationStateWaitEmailCode({

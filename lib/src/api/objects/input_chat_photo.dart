@@ -13,6 +13,7 @@ abstract class InputChatPhoto extends TdObject {
   /// [InputChatPhotoAnimation]
   /// [InputChatPhotoPrevious]
   /// [InputChatPhotoStatic]
+  /// [InputChatPhotoSticker]
   static InputChatPhoto? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -25,6 +26,8 @@ abstract class InputChatPhoto extends TdObject {
         return InputChatPhotoPrevious.fromJson(json);
       case InputChatPhotoStatic.constructor:
         return InputChatPhotoStatic.fromJson(json);
+      case InputChatPhotoSticker.constructor:
+        return InputChatPhotoSticker.fromJson(json);
       default:
         return null;
     }

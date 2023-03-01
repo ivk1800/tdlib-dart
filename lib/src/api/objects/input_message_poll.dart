@@ -17,7 +17,6 @@ class InputMessagePoll extends InputMessageContent {
   });
 
   /// [question] Poll question; 1-255 characters (up to 300 characters for bots)
-  ///
   final String question;
 
   /// [options] List of poll answer options, 2-10 strings 1-100 characters each

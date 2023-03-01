@@ -13,6 +13,7 @@ class InputMessageAnimation extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.hasSpoiler,
   });
 
   /// [animation] Animation file to be sent
@@ -38,6 +39,10 @@ class InputMessageAnimation extends InputMessageContent {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// [hasSpoiler] True, if the animation preview must be covered by a spoiler
+  /// animation; not supported in secret chats
+  final bool hasSpoiler;
+
   static const String constructor = 'inputMessageAnimation';
 
   static InputMessageAnimation? fromJson(Map<String, dynamic>? json) {
@@ -54,6 +59,7 @@ class InputMessageAnimation extends InputMessageContent {
       width: json['width'],
       height: json['height'],
       caption: FormattedText.fromJson(json['caption']),
+      hasSpoiler: json['has_spoiler'],
     );
   }
 
@@ -70,6 +76,7 @@ class InputMessageAnimation extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
+        'has_spoiler': hasSpoiler,
         '@type': constructor,
       };
 

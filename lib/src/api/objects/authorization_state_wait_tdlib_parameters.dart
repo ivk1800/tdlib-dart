@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Initializetion parameters are needed. Call `setTdlibParameters` to provide
+/// Initializetion parameters are needed. Call setTdlibParameters to provide
 /// them
 @immutable
 class AuthorizationStateWaitTdlibParameters extends AuthorizationState {

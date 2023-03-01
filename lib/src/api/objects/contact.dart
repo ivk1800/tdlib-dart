@@ -26,7 +26,7 @@ class Contact extends TdObject {
   /// length
   final String vcard;
 
-  /// [userId] Identifier of the user, if known; otherwise 0
+  /// [userId] Identifier of the user, if known; 0 otherwise
   final int userId;
 
   static const String constructor = 'contact';

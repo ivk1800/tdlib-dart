@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Returns an HTTPS link to a topic in a forum chat. This is an offline
 /// request
-/// Returns [HttpUrl]
+/// Returns [MessageLink]
 @immutable
 class GetForumTopicLink extends TdFunction {
   const GetForumTopicLink({

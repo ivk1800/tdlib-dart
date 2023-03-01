@@ -11,7 +11,7 @@ class UpdateRecentStickers extends Update {
   });
 
   /// [isAttached] True, if the list of stickers attached to photo or video
-  /// files was updated, otherwise the list of sent stickers is updated
+  /// files was updated; otherwise, the list of sent stickers is updated
   final bool isAttached;
 
   /// [stickerIds] The new list of file identifiers of recently used stickers

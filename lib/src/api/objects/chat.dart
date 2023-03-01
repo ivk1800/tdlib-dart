@@ -15,6 +15,7 @@ class Chat extends TdObject {
     required this.positions,
     this.messageSenderId,
     required this.hasProtectedContent,
+    required this.isTranslatable,
     required this.isMarkedAsUnread,
     required this.isBlocked,
     required this.hasScheduledMessages,
@@ -29,7 +30,7 @@ class Chat extends TdObject {
     required this.unreadReactionCount,
     required this.notificationSettings,
     required this.availableReactions,
-    required this.messageTtl,
+    required this.messageAutoDeleteTime,
     required this.themeName,
     this.actionBar,
     required this.videoChat,
@@ -68,6 +69,10 @@ class Chat extends TdObject {
   /// [hasProtectedContent] True, if chat content can't be saved locally,
   /// forwarded, or copied
   final bool hasProtectedContent;
+
+  /// [isTranslatable] True, if translation of all messages in the chat must be
+  /// suggested to the user
+  final bool isTranslatable;
 
   /// [isMarkedAsUnread] True, if the chat is marked as unread
   final bool isMarkedAsUnread;
@@ -117,11 +122,11 @@ class Chat extends TdObject {
   /// [availableReactions] Types of reaction, available in the chat
   final ChatAvailableReactions availableReactions;
 
-  /// [messageTtl] Current message Time To Live setting (self-destruct timer)
-  /// for the chat; 0 if not defined. TTL is counted from the time message or
-  /// its content is viewed in secret chats and from the send date in other
-  /// chats
-  final int messageTtl;
+  /// [messageAutoDeleteTime] Current message auto-delete or self-destruct timer
+  /// setting for the chat, in seconds; 0 if disabled. Self-destruct timer in
+  /// secret chats starts after the message or its content is viewed.
+  /// Auto-delete timer in other chats starts from the send date
+  final int messageAutoDeleteTime;
 
   /// [themeName] If non-empty, name of a theme, set for the chat
   final String themeName;
@@ -167,6 +172,7 @@ class Chat extends TdObject {
           .toList()),
       messageSenderId: MessageSender.fromJson(json['message_sender_id']),
       hasProtectedContent: json['has_protected_content'],
+      isTranslatable: json['is_translatable'],
       isMarkedAsUnread: json['is_marked_as_unread'],
       isBlocked: json['is_blocked'],
       hasScheduledMessages: json['has_scheduled_messages'],
@@ -183,7 +189,7 @@ class Chat extends TdObject {
           ChatNotificationSettings.fromJson(json['notification_settings'])!,
       availableReactions:
           ChatAvailableReactions.fromJson(json['available_reactions'])!,
-      messageTtl: json['message_ttl'],
+      messageAutoDeleteTime: json['message_auto_delete_time'],
       themeName: json['theme_name'],
       actionBar: ChatActionBar.fromJson(json['action_bar']),
       videoChat: VideoChat.fromJson(json['video_chat'])!,
@@ -209,6 +215,7 @@ class Chat extends TdObject {
         'positions': positions.map((item) => item.toJson()).toList(),
         'message_sender_id': messageSenderId?.toJson(),
         'has_protected_content': hasProtectedContent,
+        'is_translatable': isTranslatable,
         'is_marked_as_unread': isMarkedAsUnread,
         'is_blocked': isBlocked,
         'has_scheduled_messages': hasScheduledMessages,
@@ -223,7 +230,7 @@ class Chat extends TdObject {
         'unread_reaction_count': unreadReactionCount,
         'notification_settings': notificationSettings.toJson(),
         'available_reactions': availableReactions.toJson(),
-        'message_ttl': messageTtl,
+        'message_auto_delete_time': messageAutoDeleteTime,
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
         'video_chat': videoChat.toJson(),

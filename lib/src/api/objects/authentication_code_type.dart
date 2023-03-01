@@ -12,6 +12,8 @@ abstract class AuthenticationCodeType extends TdObject {
 
   /// Inherited by:
   /// [AuthenticationCodeTypeCall]
+  /// [AuthenticationCodeTypeFirebaseAndroid]
+  /// [AuthenticationCodeTypeFirebaseIos]
   /// [AuthenticationCodeTypeFlashCall]
   /// [AuthenticationCodeTypeFragment]
   /// [AuthenticationCodeTypeMissedCall]
@@ -25,6 +27,10 @@ abstract class AuthenticationCodeType extends TdObject {
     switch (json['@type']) {
       case AuthenticationCodeTypeCall.constructor:
         return AuthenticationCodeTypeCall.fromJson(json);
+      case AuthenticationCodeTypeFirebaseAndroid.constructor:
+        return AuthenticationCodeTypeFirebaseAndroid.fromJson(json);
+      case AuthenticationCodeTypeFirebaseIos.constructor:
+        return AuthenticationCodeTypeFirebaseIos.fromJson(json);
       case AuthenticationCodeTypeFlashCall.constructor:
         return AuthenticationCodeTypeFlashCall.fromJson(json);
       case AuthenticationCodeTypeFragment.constructor:

@@ -22,7 +22,6 @@ class SendPaymentForm extends TdFunction {
   final int paymentFormId;
 
   /// [orderInfoId] Identifier returned by validateOrderInfo, or an empty string
-  ///
   final String orderInfoId;
 
   /// [shippingOptionId] Identifier of a chosen shipping option, if applicable

@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The user has been successfully authorized. TDLib is now ready to answer
-/// queries
+/// general requests
 @immutable
 class AuthorizationStateReady extends AuthorizationState {
   const AuthorizationStateReady();

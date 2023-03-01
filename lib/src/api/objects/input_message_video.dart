@@ -14,7 +14,8 @@ class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
-    required this.ttl,
+    required this.selfDestructTime,
+    required this.hasSpoiler,
   });
 
   /// [video] Video to be sent
@@ -43,9 +44,13 @@ class InputMessageVideo extends InputMessageContent {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be
-  /// specified only in private chats
-  final int ttl;
+  /// [selfDestructTime] Video self-destruct time, in seconds (0-60). A non-zero
+  /// self-destruct time can be specified only in private chats
+  final int selfDestructTime;
+
+  /// [hasSpoiler] True, if the video preview must be covered by a spoiler
+  /// animation; not supported in secret chats
+  final bool hasSpoiler;
 
   static const String constructor = 'inputMessageVideo';
 
@@ -64,7 +69,8 @@ class InputMessageVideo extends InputMessageContent {
       height: json['height'],
       supportsStreaming: json['supports_streaming'],
       caption: FormattedText.fromJson(json['caption']),
-      ttl: json['ttl'],
+      selfDestructTime: json['self_destruct_time'],
+      hasSpoiler: json['has_spoiler'],
     );
   }
 
@@ -82,7 +88,8 @@ class InputMessageVideo extends InputMessageContent {
         'height': height,
         'supports_streaming': supportsStreaming,
         'caption': caption?.toJson(),
-        'ttl': ttl,
+        'self_destruct_time': selfDestructTime,
+        'has_spoiler': hasSpoiler,
         '@type': constructor,
       };
 

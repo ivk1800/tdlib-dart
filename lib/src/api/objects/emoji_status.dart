@@ -9,10 +9,7 @@ class EmojiStatus extends TdObject {
     required this.customEmojiId,
   });
 
-  /// [customEmojiId] Identifier of the custom emoji in stickerFormatTgs format.
-  /// If the custom emoji belongs to the sticker set
-  /// getOption("themed_emoji_statuses_sticker_set_id"), then it's color must be
-  /// changed to the color of the Telegram Premium badge
+  /// [customEmojiId] Identifier of the custom emoji in stickerFormatTgs format
   final int customEmojiId;
 
   static const String constructor = 'emojiStatus';

@@ -21,6 +21,7 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureIncreasedLimits]
   /// [PremiumFeatureIncreasedUploadFileSize]
   /// [PremiumFeatureProfileBadge]
+  /// [PremiumFeatureRealTimeChatTranslation]
   /// [PremiumFeatureUniqueReactions]
   /// [PremiumFeatureUniqueStickers]
   /// [PremiumFeatureVoiceRecognition]
@@ -52,6 +53,8 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureIncreasedUploadFileSize.fromJson(json);
       case PremiumFeatureProfileBadge.constructor:
         return PremiumFeatureProfileBadge.fromJson(json);
+      case PremiumFeatureRealTimeChatTranslation.constructor:
+        return PremiumFeatureRealTimeChatTranslation.fromJson(json);
       case PremiumFeatureUniqueReactions.constructor:
         return PremiumFeatureUniqueReactions.fromJson(json);
       case PremiumFeatureUniqueStickers.constructor:

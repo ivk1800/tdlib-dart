@@ -10,6 +10,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     required this.allowMissedCall,
     required this.isCurrentPhoneNumber,
     required this.allowSmsRetrieverApi,
+    this.firebaseAuthenticationSettings,
     required this.authenticationTokens,
   });
 
@@ -30,6 +31,10 @@ class PhoneNumberAuthenticationSettings extends TdObject {
   /// Services
   final bool allowSmsRetrieverApi;
 
+  /// [firebaseAuthenticationSettings] For official Android and iOS applications
+  /// only; pass null otherwise. Settings for Firebase Authentication
+  final FirebaseAuthenticationSettings? firebaseAuthenticationSettings;
+
   /// [authenticationTokens] List of up to 20 authentication tokens, recently
   /// received in updateOption("authentication_token") in previously logged out
   /// sessions
@@ -48,6 +53,8 @@ class PhoneNumberAuthenticationSettings extends TdObject {
       allowMissedCall: json['allow_missed_call'],
       isCurrentPhoneNumber: json['is_current_phone_number'],
       allowSmsRetrieverApi: json['allow_sms_retriever_api'],
+      firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(
+          json['firebase_authentication_settings']),
       authenticationTokens: List<String>.from(
           (json['authentication_tokens'] ?? []).map((item) => item).toList()),
     );
@@ -62,6 +69,8 @@ class PhoneNumberAuthenticationSettings extends TdObject {
         'allow_missed_call': allowMissedCall,
         'is_current_phone_number': isCurrentPhoneNumber,
         'allow_sms_retriever_api': allowSmsRetrieverApi,
+        'firebase_authentication_settings':
+            firebaseAuthenticationSettings?.toJson(),
         'authentication_tokens':
             authenticationTokens.map((item) => item).toList(),
         '@type': constructor,

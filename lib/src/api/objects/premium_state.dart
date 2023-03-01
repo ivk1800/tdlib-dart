@@ -17,7 +17,7 @@ class PremiumState extends TdObject {
   final FormattedText state;
 
   /// [paymentOptions] The list of available options for buying Telegram Premium
-  final List<PremiumPaymentOption> paymentOptions;
+  final List<PremiumStatePaymentOption> paymentOptions;
 
   /// [animations] The list of available promotion animations for Premium
   /// features
@@ -32,9 +32,9 @@ class PremiumState extends TdObject {
 
     return PremiumState(
       state: FormattedText.fromJson(json['state'])!,
-      paymentOptions: List<PremiumPaymentOption>.from(
+      paymentOptions: List<PremiumStatePaymentOption>.from(
           (json['payment_options'] ?? [])
-              .map((item) => PremiumPaymentOption.fromJson(item))
+              .map((item) => PremiumStatePaymentOption.fromJson(item))
               .toList()),
       animations: List<PremiumFeaturePromotionAnimation>.from(
           (json['animations'] ?? [])

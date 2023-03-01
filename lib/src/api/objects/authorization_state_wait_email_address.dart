@@ -3,9 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// TDLib needs the user's email address to authorize. Call
-/// `setAuthenticationEmailAddress` to provide the email address, or directly
-/// call `checkAuthenticationEmailCode` with Apple ID/Google ID token if
-/// allowed
+/// setAuthenticationEmailAddress to provide the email address, or directly
+/// call checkAuthenticationEmailCode with Apple ID/Google ID token if allowed
 @immutable
 class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   const AuthorizationStateWaitEmailAddress({

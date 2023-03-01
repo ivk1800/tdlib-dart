@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Toggles whether the supergroup is a forum; requires owner privileges in
-/// the supergroup
+/// the supergroup. Discussion supergroups can't be converted to forums
 /// Returns [Ok]
 @immutable
 class ToggleSupergroupIsForum extends TdFunction {
@@ -15,8 +15,7 @@ class ToggleSupergroupIsForum extends TdFunction {
   /// [supergroupId] Identifier of the supergroup
   final int supergroupId;
 
-  /// [isForum] New value of is_forum. A supergroup can be converted to a forum,
-  /// only if it has at least getOption("forum_member_count_min") members
+  /// [isForum] New value of is_forum
   final bool isForum;
 
   static const String constructor = 'toggleSupergroupIsForum';

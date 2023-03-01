@@ -9,8 +9,8 @@ class PushMessageContentChatSetTheme extends PushMessageContent {
     required this.themeName,
   });
 
-  /// [themeName] If non-empty, name of a new theme, set for the chat. Otherwise
-  /// chat theme was reset to the default one
+  /// [themeName] If non-empty, name of a new theme, set for the chat.
+  /// Otherwise, the chat theme was reset to the default one
   final String themeName;
 
   static const String constructor = 'pushMessageContentChatSetTheme';

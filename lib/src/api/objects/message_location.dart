@@ -30,7 +30,7 @@ class MessageLocation extends MessageContent {
 
   /// [proximityAlertRadius] For live locations, a maximum distance to another
   /// chat member for proximity alerts, in meters (0-100000). 0 if the
-  /// notification is disabled. Available only for the message sender
+  /// notification is disabled. Available only to the message sender
   final int proximityAlertRadius;
 
   static const String constructor = 'messageLocation';

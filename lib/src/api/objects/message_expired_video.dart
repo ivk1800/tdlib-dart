@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An expired video message (self-destructed after TTL has elapsed)
+/// A self-destructed video message
 @immutable
 class MessageExpiredVideo extends MessageContent {
   const MessageExpiredVideo();

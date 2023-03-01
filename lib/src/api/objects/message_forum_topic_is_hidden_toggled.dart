@@ -9,7 +9,8 @@ class MessageForumTopicIsHiddenToggled extends MessageContent {
     required this.isHidden,
   });
 
-  /// [isHidden] True, if the topic was hidden, otherwise the topic was unhidden
+  /// [isHidden] True, if the topic was hidden; otherwise, the topic was
+  /// unhidden
   final bool isHidden;
 
   static const String constructor = 'messageForumTopicIsHiddenToggled';

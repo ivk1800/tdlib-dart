@@ -20,6 +20,8 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeBotStart]
   /// [InternalLinkTypeChangePhoneNumber]
   /// [InternalLinkTypeChatInvite]
+  /// [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings]
+  /// [InternalLinkTypeEditProfileSettings]
   /// [InternalLinkTypeFilterSettings]
   /// [InternalLinkTypeGame]
   /// [InternalLinkTypeInstantView]
@@ -69,6 +71,11 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
       case InternalLinkTypeChatInvite.constructor:
         return InternalLinkTypeChatInvite.fromJson(json);
+      case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
+        return InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(
+            json);
+      case InternalLinkTypeEditProfileSettings.constructor:
+        return InternalLinkTypeEditProfileSettings.fromJson(json);
       case InternalLinkTypeFilterSettings.constructor:
         return InternalLinkTypeFilterSettings.fromJson(json);
       case InternalLinkTypeGame.constructor:

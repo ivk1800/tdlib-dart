@@ -12,7 +12,8 @@ class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
-    required this.ttl,
+    required this.selfDestructTime,
+    required this.hasSpoiler,
   });
 
   /// [photo] Photo to send. The photo must be at most 10 MB in size. The
@@ -38,9 +39,13 @@ class InputMessagePhoto extends InputMessageContent {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be
-  /// specified only in private chats
-  final int ttl;
+  /// [selfDestructTime] Photo self-destruct time, in seconds (0-60). A non-zero
+  /// self-destruct time can be specified only in private chats
+  final int selfDestructTime;
+
+  /// [hasSpoiler] True, if the photo preview must be covered by a spoiler
+  /// animation; not supported in secret chats
+  final bool hasSpoiler;
 
   static const String constructor = 'inputMessagePhoto';
 
@@ -57,7 +62,8 @@ class InputMessagePhoto extends InputMessageContent {
       width: json['width'],
       height: json['height'],
       caption: FormattedText.fromJson(json['caption']),
-      ttl: json['ttl'],
+      selfDestructTime: json['self_destruct_time'],
+      hasSpoiler: json['has_spoiler'],
     );
   }
 
@@ -73,7 +79,8 @@ class InputMessagePhoto extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
-        'ttl': ttl,
+        'self_destruct_time': selfDestructTime,
+        'has_spoiler': hasSpoiler,
         '@type': constructor,
       };
 

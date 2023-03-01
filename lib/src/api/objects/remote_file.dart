@@ -22,7 +22,7 @@ class RemoteFile extends TdObject {
   /// such a file or if it is sent to a secret chat, TDLib starts a file
   /// generation process by sending updateFileGenerationStart to the application
   /// with the HTTP URL in the original_path and "#url#" as the conversion
-  /// string. Application must generate the file by downloading it to the
+  /// string.. Application must generate the file by downloading it to the
   /// specified location
   final String id;
 

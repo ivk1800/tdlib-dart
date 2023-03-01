@@ -3,9 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Represents a data needed to subscribe for push notifications through
-/// registerDevice method. To use specific push notification service, the
-/// correct application platform must be specified and a valid server
-/// authentication data must be uploaded at https://my.telegram.org
+/// registerDevice method.
 @immutable
 abstract class DeviceToken extends TdObject {
   const DeviceToken();
@@ -17,6 +15,7 @@ abstract class DeviceToken extends TdObject {
   /// [DeviceTokenApplePush]
   /// [DeviceTokenBlackBerryPush]
   /// [DeviceTokenFirebaseCloudMessaging]
+  /// [DeviceTokenHuaweiPush]
   /// [DeviceTokenMicrosoftPushVoIP]
   /// [DeviceTokenMicrosoftPush]
   /// [DeviceTokenSimplePush]
@@ -38,6 +37,8 @@ abstract class DeviceToken extends TdObject {
         return DeviceTokenBlackBerryPush.fromJson(json);
       case DeviceTokenFirebaseCloudMessaging.constructor:
         return DeviceTokenFirebaseCloudMessaging.fromJson(json);
+      case DeviceTokenHuaweiPush.constructor:
+        return DeviceTokenHuaweiPush.fromJson(json);
       case DeviceTokenMicrosoftPush.constructor:
         return DeviceTokenMicrosoftPush.fromJson(json);
       case DeviceTokenMicrosoftPushVoIP.constructor:

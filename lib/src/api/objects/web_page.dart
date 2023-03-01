@@ -95,8 +95,8 @@ class WebPage extends TdObject {
   /// null
   final VoiceNote? voiceNote;
 
-  /// [instantViewVersion] Version of instant view, available for the web page
-  /// (currently, can be 1 or 2), 0 if none
+  /// [instantViewVersion] Version of web page instant view (currently, can be 1
+  /// or 2); 0 if none
   final int instantViewVersion;
 
   static const String constructor = 'webPage';
