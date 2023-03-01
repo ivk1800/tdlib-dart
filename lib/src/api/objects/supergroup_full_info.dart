@@ -101,7 +101,7 @@ class SupergroupFullInfo extends TdObject {
 
   /// [isAllHistoryAvailable] True, if new chat members will have access to old
   /// messages. In public, discussion, of forum groups and all channels, old
-  /// messages are always available,. so this option affects only private
+  /// messages are always available, so this option affects only private
   /// non-forum supergroups without a linked chat. The value of this field is
   /// only available to chat administrators
   final bool isAllHistoryAvailable;

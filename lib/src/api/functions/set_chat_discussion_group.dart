@@ -19,7 +19,7 @@ class SetChatDiscussionGroup extends TdFunction {
 
   /// [discussionChatId] Identifier of a new channel's discussion group. Use 0
   /// to remove the discussion group. Use the method getSuitableDiscussionChats
-  /// to find all suitable groups.. Basic group chats must be first upgraded to
+  /// to find all suitable groups. Basic group chats must be first upgraded to
   /// supergroup chats. If new chat members don't have access to old messages in
   /// the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used
   /// first to change that

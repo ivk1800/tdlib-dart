@@ -18,7 +18,7 @@ class AddContact extends TdFunction {
 
   /// [sharePhoneNumber] Pass true to share the current user's phone number with
   /// the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber
-  /// will be added if needed.. Use the field
+  /// will be added if needed. Use the field
   /// userFullInfo.need_phone_number_privacy_exception to check whether the
   /// current user needs to be asked to share their phone number
   final bool sharePhoneNumber;
