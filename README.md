@@ -2,7 +2,16 @@
 
 A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated schema classes of [td_api.tl](https://github.com/tdlib/td/blob/master/td/generate/scheme/td_api.tl) and a client that interacts with lib through [ffi](https://dart.dev/guides/libraries/c-interop). 
 
-Actual version of tdlib: `1.8.11` [1543c41](https://github.com/tdlib/td/tree/1543c41)
+| Version |                         tdlib commit                          |                                                                 td_api.tl revision |
+|---------|:-------------------------------------------------------------:|-----------------------------------------------------------------------------------:|
+| 1.8.11  | [1b99276](https://github.com/ivk1800/tdlib-dart/tree/1b99276) |   [1543c41](https://github.com/tdlib/td/blob/1543c41/td/generate/scheme/td_api.tl) |
+| 1.8.9   | [5b8706c](https://github.com/ivk1800/tdlib-dart/tree/5b8706c) |   [6cbe182](https://github.com/tdlib/td/blob/6cbe182/td/generate/scheme/td_api.tl) |
+| 1.8.8   | [f069453](https://github.com/ivk1800/tdlib-dart/tree/f069453) |   [bbe37ee](https://github.com/tdlib/td/blob/bbe37ee/td/generate/scheme/td_api.tl) |
+| 1.8.7   | [60c2975](https://github.com/ivk1800/tdlib-dart/tree/60c2975) |   [92f8093](https://github.com/tdlib/td/blob/92f8093/td/generate/scheme/td_api.tl) |
+| 1.8.4   | [324fa2b](https://github.com/ivk1800/tdlib-dart/tree/324fa2b) |   [d489014](https://github.com/tdlib/td/blob/d489014/td/generate/scheme/td_api.tl) |
+| 1.8.0   | [781d969](https://github.com/ivk1800/tdlib-dart/tree/781d969) | [c0385078](https://github.com/tdlib/td/blob/c0385078/td/generate/scheme/td_api.tl) |
+| 1.7.9   | [2dec79f](https://github.com/ivk1800/tdlib-dart/tree/2dec79f) | [8d7bda00](https://github.com/tdlib/td/blob/8d7bda00/td/generate/scheme/td_api.tl) |
+| 1.7.3   | [2a29b25](https://github.com/ivk1800/tdlib-dart/tree/2a29b25) |                                                                                  - |
 
 ### Table of Contents
 
