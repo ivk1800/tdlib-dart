@@ -6,7 +6,7 @@ import '../tdapi.dart';
 @immutable
 class ChatPermissions extends TdObject {
   const ChatPermissions({
-    required this.canSendMessages,
+    required this.canSendBasicMessages,
     required this.canSendAudios,
     required this.canSendDocuments,
     required this.canSendPhotos,
@@ -22,9 +22,9 @@ class ChatPermissions extends TdObject {
     required this.canManageTopics,
   });
 
-  /// [canSendMessages] True, if the user can send text messages, contacts,
+  /// [canSendBasicMessages] True, if the user can send text messages, contacts,
   /// invoices, locations, and venues
-  final bool canSendMessages;
+  final bool canSendBasicMessages;
 
   /// [canSendAudios] True, if the user can send music files
   final bool canSendAudios;
@@ -76,7 +76,7 @@ class ChatPermissions extends TdObject {
     }
 
     return ChatPermissions(
-      canSendMessages: json['can_send_messages'],
+      canSendBasicMessages: json['can_send_basic_messages'],
       canSendAudios: json['can_send_audios'],
       canSendDocuments: json['can_send_documents'],
       canSendPhotos: json['can_send_photos'],
@@ -98,7 +98,7 @@ class ChatPermissions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_send_messages': canSendMessages,
+        'can_send_basic_messages': canSendBasicMessages,
         'can_send_audios': canSendAudios,
         'can_send_documents': canSendDocuments,
         'can_send_photos': canSendPhotos,

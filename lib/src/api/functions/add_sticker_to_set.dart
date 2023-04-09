@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Adds a new sticker to a set; for bots only. Returns the sticker set
-/// Returns [StickerSet]
+/// Adds a new sticker to a set; for bots only
+/// Returns [Ok]
 @immutable
 class AddStickerToSet extends TdFunction {
   const AddStickerToSet({

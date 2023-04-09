@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sets a sticker set thumbnail; for bots only. Returns the sticker set
-/// Returns [StickerSet]
+/// Sets a sticker set thumbnail; for bots only
+/// Returns [Ok]
 @immutable
 class SetStickerSetThumbnail extends TdFunction {
   const SetStickerSetThumbnail({

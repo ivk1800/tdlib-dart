@@ -13,20 +13,20 @@ import '../tdapi.dart';
 class ViewMessages extends TdFunction {
   const ViewMessages({
     required this.chatId,
-    required this.messageThreadId,
     required this.messageIds,
+    this.source,
     required this.forceRead,
   });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the
-  /// messages are being viewed
-  final int messageThreadId;
-
   /// [messageIds] The identifiers of the messages being viewed
   final List<int> messageIds;
+
+  /// [source] Source of the message view; pass null to guess the source based
+  /// on chat open state
+  final MessageSource? source;
 
   /// [forceRead] Pass true to mark as read the specified messages even the chat
   /// is closed
@@ -40,8 +40,8 @@ class ViewMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
         'message_ids': messageIds.map((item) => item).toList(),
+        'source': source?.toJson(),
         'force_read': forceRead,
         '@type': constructor,
       };

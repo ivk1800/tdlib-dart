@@ -11,6 +11,7 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   const AuthorizationStateWaitPassword({
     required this.passwordHint,
     required this.hasRecoveryEmailAddress,
+    required this.hasPassportData,
     required this.recoveryEmailAddressPattern,
   });
 
@@ -20,6 +21,9 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   /// [hasRecoveryEmailAddress] True, if a recovery email address has been set
   /// up
   final bool hasRecoveryEmailAddress;
+
+  /// [hasPassportData] True, if some Telegram Passport elements were saved
+  final bool hasPassportData;
 
   /// [recoveryEmailAddressPattern] Pattern of the email address to which the
   /// recovery email was sent; empty until a recovery email has been sent
@@ -35,6 +39,7 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
     return AuthorizationStateWaitPassword(
       passwordHint: json['password_hint'],
       hasRecoveryEmailAddress: json['has_recovery_email_address'],
+      hasPassportData: json['has_passport_data'],
       recoveryEmailAddressPattern: json['recovery_email_address_pattern'],
     );
   }
@@ -46,6 +51,7 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'password_hint': passwordHint,
         'has_recovery_email_address': hasRecoveryEmailAddress,
+        'has_passport_data': hasPassportData,
         'recovery_email_address_pattern': recoveryEmailAddressPattern,
         '@type': constructor,
       };

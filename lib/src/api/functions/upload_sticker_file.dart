@@ -8,14 +8,18 @@ import '../tdapi.dart';
 class UploadStickerFile extends TdFunction {
   const UploadStickerFile({
     required this.userId,
+    required this.stickerFormat,
     required this.sticker,
   });
 
   /// [userId] Sticker file owner; ignored for regular users
   final int userId;
 
-  /// [sticker] Sticker file to upload
-  final InputSticker sticker;
+  /// [stickerFormat] Sticker format
+  final StickerFormat stickerFormat;
+
+  /// [sticker]_format Sticker format
+  final InputFile sticker;
 
   static const String constructor = 'uploadStickerFile';
 
@@ -25,6 +29,7 @@ class UploadStickerFile extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'user_id': userId,
+        'sticker_format': stickerFormat.toJson(),
         'sticker': sticker.toJson(),
         '@type': constructor,
       };

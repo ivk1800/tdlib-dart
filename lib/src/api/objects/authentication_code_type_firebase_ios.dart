@@ -12,7 +12,7 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
     required this.length,
   });
 
-  /// [receipt] Receipt of successful applikation token validation to compare
+  /// [receipt] Receipt of successful application token validation to compare
   /// with receipt from push notification
   final String receipt;
 

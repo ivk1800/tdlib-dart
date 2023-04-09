@@ -12,6 +12,7 @@ abstract class Update extends TdObject {
   /// Inherited by:
   /// [UpdateActiveEmojiReactions]
   /// [UpdateActiveNotifications]
+  /// [UpdateAddChatMembersPrivacyForbidden]
   /// [UpdateAnimatedEmojiMessageClicked]
   /// [UpdateAnimationSearchParameters]
   /// [UpdateAttachmentMenuBots]
@@ -127,6 +128,8 @@ abstract class Update extends TdObject {
         return UpdateActiveEmojiReactions.fromJson(json);
       case UpdateActiveNotifications.constructor:
         return UpdateActiveNotifications.fromJson(json);
+      case UpdateAddChatMembersPrivacyForbidden.constructor:
+        return UpdateAddChatMembersPrivacyForbidden.fromJson(json);
       case UpdateAnimatedEmojiMessageClicked.constructor:
         return UpdateAnimatedEmojiMessageClicked.fromJson(json);
       case UpdateAnimationSearchParameters.constructor:

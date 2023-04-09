@@ -19,7 +19,8 @@ class OpenWebApp extends TdFunction {
     required this.replyToMessageId,
   });
 
-  /// [chatId] Identifier of the chat in which the Web App is opened
+  /// [chatId] Identifier of the chat in which the Web App is opened. The Web
+  /// App can't be opened in secret chats
   final int chatId;
 
   /// [botUserId] Identifier of the bot, providing the Web App

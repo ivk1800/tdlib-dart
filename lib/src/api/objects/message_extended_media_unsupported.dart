@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The media is unuspported
+/// The media is unsupported
 @immutable
 class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
   const MessageExtendedMediaUnsupported({

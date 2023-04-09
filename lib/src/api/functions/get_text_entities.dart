@@ -12,7 +12,7 @@ class GetTextEntities extends TdFunction {
     required this.text,
   });
 
-  /// [text] The text in which to look for entites
+  /// [text] The text in which to look for entities
   final String text;
 
   static const String constructor = 'getTextEntities';

@@ -5,7 +5,13 @@ import '../tdapi.dart';
 /// The user allowed the bot to send messages
 @immutable
 class MessageBotWriteAccessAllowed extends MessageContent {
-  const MessageBotWriteAccessAllowed();
+  const MessageBotWriteAccessAllowed({
+    this.webApp,
+  });
+
+  /// [webApp] Information about the Web App, which requested the access; may be
+  /// null if none or the Web App was opened from the attachment menu
+  final WebApp? webApp;
 
   static const String constructor = 'messageBotWriteAccessAllowed';
 
@@ -14,7 +20,9 @@ class MessageBotWriteAccessAllowed extends MessageContent {
       return null;
     }
 
-    return const MessageBotWriteAccessAllowed();
+    return MessageBotWriteAccessAllowed(
+      webApp: WebApp.fromJson(json['web_app']),
+    );
   }
 
   @override
@@ -22,6 +30,7 @@ class MessageBotWriteAccessAllowed extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'web_app': webApp?.toJson(),
         '@type': constructor,
       };
 

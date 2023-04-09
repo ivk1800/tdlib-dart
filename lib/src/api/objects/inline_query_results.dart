@@ -8,29 +8,23 @@ import '../tdapi.dart';
 class InlineQueryResults extends TdObject {
   const InlineQueryResults({
     required this.inlineQueryId,
-    required this.nextOffset,
+    this.button,
     required this.results,
-    required this.switchPmText,
-    required this.switchPmParameter,
+    required this.nextOffset,
   });
 
   /// [inlineQueryId] Unique identifier of the inline query
   final int inlineQueryId;
 
-  /// [nextOffset] The offset for the next request. If empty, there are no more
-  /// results
-  final String nextOffset;
+  /// [button] Button to be shown above inline query results; may be null
+  final InlineQueryResultsButton? button;
 
   /// [results] Results of the query
   final List<InlineQueryResult> results;
 
-  /// [switchPmText] If non-empty, this text must be shown on the button, which
-  /// opens a private chat with the bot and sends the bot a start message with
-  /// the switch_pm_parameter
-  final String switchPmText;
-
-  /// [switchPmParameter] Parameter for the bot start message
-  final String switchPmParameter;
+  /// [nextOffset] The offset for the next request. If empty, there are no more
+  /// results
+  final String nextOffset;
 
   static const String constructor = 'inlineQueryResults';
 
@@ -41,12 +35,11 @@ class InlineQueryResults extends TdObject {
 
     return InlineQueryResults(
       inlineQueryId: int.tryParse(json['inline_query_id']) ?? 0,
-      nextOffset: json['next_offset'],
+      button: InlineQueryResultsButton.fromJson(json['button']),
       results: List<InlineQueryResult>.from((json['results'] ?? [])
           .map((item) => InlineQueryResult.fromJson(item))
           .toList()),
-      switchPmText: json['switch_pm_text'],
-      switchPmParameter: json['switch_pm_parameter'],
+      nextOffset: json['next_offset'],
     );
   }
 
@@ -56,10 +49,9 @@ class InlineQueryResults extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'inline_query_id': inlineQueryId,
-        'next_offset': nextOffset,
+        'button': button?.toJson(),
         'results': results.map((item) => item.toJson()).toList(),
-        'switch_pm_text': switchPmText,
-        'switch_pm_parameter': switchPmParameter,
+        'next_offset': nextOffset,
         '@type': constructor,
       };
 

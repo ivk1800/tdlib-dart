@@ -13,6 +13,8 @@ class SponsoredMessage extends TdObject {
     required this.showChatPhoto,
     this.link,
     required this.content,
+    required this.sponsorInfo,
+    required this.additionalInfo,
   });
 
   /// [messageId] Message identifier; unique for the chat to which the sponsored
@@ -42,6 +44,14 @@ class SponsoredMessage extends TdObject {
   /// messageText
   final MessageContent content;
 
+  /// [sponsorInfo] If non-empty, information about the sponsor to be shown
+  /// along with the message
+  final String sponsorInfo;
+
+  /// [additionalInfo] If non-empty, additional information about the sponsored
+  /// message to be shown along with the message
+  final String additionalInfo;
+
   static const String constructor = 'sponsoredMessage';
 
   static SponsoredMessage? fromJson(Map<String, dynamic>? json) {
@@ -57,6 +67,8 @@ class SponsoredMessage extends TdObject {
       showChatPhoto: json['show_chat_photo'],
       link: InternalLinkType.fromJson(json['link']),
       content: MessageContent.fromJson(json['content'])!,
+      sponsorInfo: json['sponsor_info'],
+      additionalInfo: json['additional_info'],
     );
   }
 
@@ -72,6 +84,8 @@ class SponsoredMessage extends TdObject {
         'show_chat_photo': showChatPhoto,
         'link': link?.toJson(),
         'content': content.toJson(),
+        'sponsor_info': sponsorInfo,
+        'additional_info': additionalInfo,
         '@type': constructor,
       };
 

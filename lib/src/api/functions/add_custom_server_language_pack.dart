@@ -11,8 +11,7 @@ class AddCustomServerLanguagePack extends TdFunction {
     required this.languagePackId,
   });
 
-  /// [languagePackId] Identifier of a language pack to be added; may be
-  /// different from a name that is used in an "https://t.me/setlanguage/" link
+  /// [languagePackId] Identifier of a language pack to be added
   final String languagePackId;
 
   static const String constructor = 'addCustomServerLanguagePack';

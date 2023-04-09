@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp
-/// button is pressed
+/// or inlineQueryResultsButtonTypeWebApp button is pressed
 /// Returns [HttpUrl]
 @immutable
 class GetWebAppUrl extends TdFunction {
@@ -17,7 +17,8 @@ class GetWebAppUrl extends TdFunction {
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
-  /// [url] The URL from the keyboardButtonTypeWebApp button
+  /// [url] The URL from the keyboardButtonTypeWebApp or
+  /// inlineQueryResultsButtonTypeWebApp button
   final String url;
 
   /// [theme] Preferred Web App theme; pass null to use the default theme

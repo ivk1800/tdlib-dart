@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A message with an invoice from a bot
+/// A message with an invoice from a bot. Use getInternalLink with
+/// internalLinkTypeBotStart to share the invoice
 @immutable
 class MessageInvoice extends MessageContent {
   const MessageInvoice({
@@ -33,8 +34,8 @@ class MessageInvoice extends MessageContent {
   /// [totalAmount] Product total price in the smallest units of the currency
   final int totalAmount;
 
-  /// [startParameter] Unique invoice bot start_parameter. To share an invoice
-  /// use the URL https://t.me/{bot_username}?start={start_parameter}
+  /// [startParameter] Unique invoice bot start_parameter to be passed to
+  /// getInternalLink
   final String startParameter;
 
   /// [isTest] True, if the invoice is a test invoice

@@ -10,7 +10,9 @@ class CreateNewStickerSet extends TdFunction {
     required this.userId,
     required this.title,
     required this.name,
+    required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
     required this.stickers,
     required this.source,
   });
@@ -25,8 +27,15 @@ class CreateNewStickerSet extends TdFunction {
   /// underscores. Must end with *"_by_
   final String name;
 
+  /// [stickerFormat] Format of the stickers in the set
+  final StickerFormat stickerFormat;
+
   /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
+
+  /// [needsRepainting] Pass true if stickers in the sticker set must be
+  /// repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
 
   /// [stickers] List of stickers to be added to the set; must be non-empty. All
   /// stickers must have the same format. For TGS stickers, uploadStickerFile
@@ -46,7 +55,9 @@ class CreateNewStickerSet extends TdFunction {
         'user_id': userId,
         'title': title,
         'name': name,
+        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
+        'needs_repainting': needsRepainting,
         'stickers': stickers.map((item) => item.toJson()).toList(),
         'source': source,
         '@type': constructor,

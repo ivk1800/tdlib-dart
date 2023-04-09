@@ -6,7 +6,13 @@ import '../tdapi.dart';
 /// server
 @immutable
 class MessageSendingStatePending extends MessageSendingState {
-  const MessageSendingStatePending();
+  const MessageSendingStatePending({
+    required this.sendingId,
+  });
+
+  /// [sendingId] Non-persistent message sending identifier, specified by the
+  /// application
+  final int sendingId;
 
   static const String constructor = 'messageSendingStatePending';
 
@@ -15,7 +21,9 @@ class MessageSendingStatePending extends MessageSendingState {
       return null;
     }
 
-    return const MessageSendingStatePending();
+    return MessageSendingStatePending(
+      sendingId: json['sending_id'],
+    );
   }
 
   @override
@@ -23,6 +31,7 @@ class MessageSendingStatePending extends MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'sending_id': sendingId,
         '@type': constructor,
       };
 

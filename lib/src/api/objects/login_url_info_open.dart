@@ -7,15 +7,15 @@ import '../tdapi.dart';
 class LoginUrlInfoOpen extends LoginUrlInfo {
   const LoginUrlInfoOpen({
     required this.url,
-    required this.skipConfirm,
+    required this.skipConfirmation,
   });
 
   /// [url] The URL to open
   final String url;
 
-  /// [skipConfirm] True, if there is no need to show an ordinary open URL
-  /// confirm
-  final bool skipConfirm;
+  /// [skipConfirmation] True, if there is no need to show an ordinary open URL
+  /// confirmation
+  final bool skipConfirmation;
 
   static const String constructor = 'loginUrlInfoOpen';
 
@@ -26,7 +26,7 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
 
     return LoginUrlInfoOpen(
       url: json['url'],
-      skipConfirm: json['skip_confirm'],
+      skipConfirmation: json['skip_confirmation'],
     );
   }
 
@@ -36,7 +36,7 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'url': url,
-        'skip_confirm': skipConfirm,
+        'skip_confirmation': skipConfirmation,
         '@type': constructor,
       };
 

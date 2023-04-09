@@ -10,7 +10,7 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
     required this.allowAppleId,
     required this.allowGoogleId,
     required this.codeInfo,
-    required this.nextPhoneNumberAuthorizationDate,
+    this.emailAddressResetState,
   });
 
   /// [allowAppleId] True, if authorization through Apple ID is allowed
@@ -22,10 +22,9 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
   /// [codeInfo] Information about the sent authentication code
   final EmailAddressAuthenticationCodeInfo codeInfo;
 
-  /// [nextPhoneNumberAuthorizationDate] Point in time (Unix timestamp) when the
-  /// user will be able to authorize with a code sent to the user's phone
-  /// number; 0 if unknown
-  final int nextPhoneNumberAuthorizationDate;
+  /// [emailAddressResetState] Reset state of the email address; may be null if
+  /// the email address can't be reset
+  final EmailAddressResetState? emailAddressResetState;
 
   static const String constructor = 'authorizationStateWaitEmailCode';
 
@@ -38,8 +37,8 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
       allowAppleId: json['allow_apple_id'],
       allowGoogleId: json['allow_google_id'],
       codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['code_info'])!,
-      nextPhoneNumberAuthorizationDate:
-          json['next_phone_number_authorization_date'],
+      emailAddressResetState:
+          EmailAddressResetState.fromJson(json['email_address_reset_state']),
     );
   }
 
@@ -51,8 +50,7 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
         'allow_apple_id': allowAppleId,
         'allow_google_id': allowGoogleId,
         'code_info': codeInfo.toJson(),
-        'next_phone_number_authorization_date':
-            nextPhoneNumberAuthorizationDate,
+        'email_address_reset_state': emailAddressResetState?.toJson(),
         '@type': constructor,
       };
 

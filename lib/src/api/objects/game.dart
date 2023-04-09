@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a game
+/// Describes a game. Use getInternalLink with internalLinkTypeGame to share
+/// the game
 @immutable
 class Game extends TdObject {
   const Game({
@@ -18,8 +19,7 @@ class Game extends TdObject {
   /// [id] Unique game identifier
   final int id;
 
-  /// [shortName] Game short name. To share a game use the URL
-  /// https://t.me/{bot_username}?game={game_short_name}
+  /// [shortName] Game short name
   final String shortName;
 
   /// [title] Game title

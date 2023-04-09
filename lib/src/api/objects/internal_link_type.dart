@@ -47,6 +47,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeUserPhoneNumber]
   /// [InternalLinkTypeUserToken]
   /// [InternalLinkTypeVideoChat]
+  /// [InternalLinkTypeWebApp]
   static InternalLinkType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -126,6 +127,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeUserToken.fromJson(json);
       case InternalLinkTypeVideoChat.constructor:
         return InternalLinkTypeVideoChat.fromJson(json);
+      case InternalLinkTypeWebApp.constructor:
+        return InternalLinkTypeWebApp.fromJson(json);
       default:
         return null;
     }

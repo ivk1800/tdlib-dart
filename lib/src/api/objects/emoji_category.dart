@@ -8,16 +8,15 @@ import '../tdapi.dart';
 class EmojiCategory extends TdObject {
   const EmojiCategory({
     required this.name,
-    required this.iconCustomEmojiId,
+    required this.icon,
     required this.emojis,
   });
 
   /// [name] Name of the category
   final String name;
 
-  /// [iconCustomEmojiId] Unique identifier of the custom emoji, which
-  /// represents icon of the category
-  final int iconCustomEmojiId;
+  /// [icon] Custom emoji sticker, which represents icon of the category
+  final Sticker icon;
 
   /// [emojis] List of emojis in the category
   final List<String> emojis;
@@ -31,7 +30,7 @@ class EmojiCategory extends TdObject {
 
     return EmojiCategory(
       name: json['name'],
-      iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id']) ?? 0,
+      icon: Sticker.fromJson(json['icon'])!,
       emojis: List<String>.from(
           (json['emojis'] ?? []).map((item) => item).toList()),
     );
@@ -43,7 +42,7 @@ class EmojiCategory extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
-        'icon_custom_emoji_id': iconCustomEmojiId,
+        'icon': icon.toJson(),
         'emojis': emojis.map((item) => item).toList(),
         '@type': constructor,
       };

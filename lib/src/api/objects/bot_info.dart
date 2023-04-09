@@ -6,7 +6,7 @@ import '../tdapi.dart';
 @immutable
 class BotInfo extends TdObject {
   const BotInfo({
-    required this.shareText,
+    required this.shortDescription,
     required this.description,
     this.photo,
     this.animation,
@@ -16,9 +16,9 @@ class BotInfo extends TdObject {
     this.defaultChannelAdministratorRights,
   });
 
-  /// [shareText] The text that is shown on the bot's profile page and is sent
-  /// together with the link when users share the bot
-  final String shareText;
+  /// [shortDescription] The text that is shown on the bot's profile page and is
+  /// sent together with the link when users share the bot
+  final String shortDescription;
 
   /// param_[description] The text shown in the chat with the bot if the chat is
   /// empty
@@ -56,7 +56,7 @@ class BotInfo extends TdObject {
     }
 
     return BotInfo(
-      shareText: json['share_text'],
+      shortDescription: json['short_description'],
       description: json['description'],
       photo: Photo.fromJson(json['photo']),
       animation: Animation.fromJson(json['animation']),
@@ -76,7 +76,7 @@ class BotInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'share_text': shareText,
+        'short_description': shortDescription,
         'description': description,
         'photo': photo?.toJson(),
         'animation': animation?.toJson(),

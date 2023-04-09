@@ -8,6 +8,7 @@ class AddedReaction extends TdObject {
   const AddedReaction({
     required this.type,
     required this.senderId,
+    required this.date,
   });
 
   /// [type] Type of the reaction
@@ -15,6 +16,9 @@ class AddedReaction extends TdObject {
 
   /// [senderId] Identifier of the chat member, applied the reaction
   final MessageSender senderId;
+
+  /// [date] Point in time (Unix timestamp) when the reaction was added
+  final int date;
 
   static const String constructor = 'addedReaction';
 
@@ -26,6 +30,7 @@ class AddedReaction extends TdObject {
     return AddedReaction(
       type: ReactionType.fromJson(json['type'])!,
       senderId: MessageSender.fromJson(json['sender_id'])!,
+      date: json['date'],
     );
   }
 
@@ -36,6 +41,7 @@ class AddedReaction extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'type': type.toJson(),
         'sender_id': senderId.toJson(),
+        'date': date,
         '@type': constructor,
       };
 

@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// An authentication code is delivered via an SMS message to the specified
-/// phone number
+/// phone number; applications may not receive this type of code
 @immutable
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   const AuthenticationCodeTypeSms({

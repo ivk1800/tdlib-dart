@@ -11,6 +11,7 @@ class MessageSendOptions extends TdObject {
     this.protectContent,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
+    required this.sendingId,
   });
 
   /// [disableNotification] Pass true to disable notification for the message
@@ -33,6 +34,11 @@ class MessageSendOptions extends TdObject {
   /// self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
+  /// [sendingId] Non-persistent identifier, which will be returned back in
+  /// messageSendingStatePending object and can be used to match sent messages
+  /// and corresponding updateNewMessage updates
+  final int sendingId;
+
   static const String constructor = 'messageSendOptions';
 
   static MessageSendOptions? fromJson(Map<String, dynamic>? json) {
@@ -48,6 +54,7 @@ class MessageSendOptions extends TdObject {
           json['update_order_of_installed_sticker_sets'],
       schedulingState:
           MessageSchedulingState.fromJson(json['scheduling_state']),
+      sendingId: json['sending_id'],
     );
   }
 
@@ -62,6 +69,7 @@ class MessageSendOptions extends TdObject {
         'update_order_of_installed_sticker_sets':
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
+        'sending_id': sendingId,
         '@type': constructor,
       };
 

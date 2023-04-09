@@ -15,7 +15,7 @@ class TranslateText extends TdFunction {
   /// [text] Text to translate
   final FormattedText text;
 
-  /// [toLanguageCode] ISO language code of the language to which the message is
+  /// [toLanguageCode] Language code of the language to which the message is
   /// translated. Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be",
   /// "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW",
   /// "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr",

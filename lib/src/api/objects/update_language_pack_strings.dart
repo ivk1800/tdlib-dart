@@ -18,7 +18,8 @@ class UpdateLanguagePackStrings extends Update {
   /// [languagePackId] Identifier of the updated language pack
   final String languagePackId;
 
-  /// [strings] List of changed language pack strings
+  /// [strings] List of changed language pack strings; empty if all strings have
+  /// changed
   final List<LanguagePackString> strings;
 
   static const String constructor = 'updateLanguagePackStrings';

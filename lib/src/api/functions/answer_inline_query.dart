@@ -9,11 +9,10 @@ class AnswerInlineQuery extends TdFunction {
   const AnswerInlineQuery({
     required this.inlineQueryId,
     required this.isPersonal,
+    this.button,
     required this.results,
     required this.cacheTime,
     required this.nextOffset,
-    required this.switchPmText,
-    required this.switchPmParameter,
   });
 
   /// [inlineQueryId] Identifier of the inline query
@@ -23,6 +22,9 @@ class AnswerInlineQuery extends TdFunction {
   /// user that sent the query. By default, results may be returned to any user
   /// who sends the same query
   final bool isPersonal;
+
+  /// [button] Button to be shown above inline query results; pass null if none
+  final InlineQueryResultsButton? button;
 
   /// [results] The results of the query
   final List<InputInlineQueryResult> results;
@@ -34,14 +36,6 @@ class AnswerInlineQuery extends TdFunction {
   /// there are no more results
   final String nextOffset;
 
-  /// [switchPmText] If non-empty, this text must be shown on the button that
-  /// opens a private chat with the bot and sends a start message to the bot
-  /// with the parameter switch_pm_parameter
-  final String switchPmText;
-
-  /// [switchPmParameter] The parameter for the bot start message
-  final String switchPmParameter;
-
   static const String constructor = 'answerInlineQuery';
 
   @override
@@ -51,11 +45,10 @@ class AnswerInlineQuery extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'inline_query_id': inlineQueryId,
         'is_personal': isPersonal,
+        'button': button?.toJson(),
         'results': results.map((item) => item.toJson()).toList(),
         'cache_time': cacheTime,
         'next_offset': nextOffset,
-        'switch_pm_text': switchPmText,
-        'switch_pm_parameter': switchPmParameter,
         '@type': constructor,
       };
 

@@ -13,7 +13,8 @@ class CreateNewBasicGroupChat extends TdFunction {
     required this.messageAutoDeleteTime,
   });
 
-  /// [userIds] Identifiers of users to be added to the basic group
+  /// [userIds] Identifiers of users to be added to the basic group; may be
+  /// empty to create a basic group without other members
   final List<int> userIds;
 
   /// [title] Title of the new basic group; 1-128 characters

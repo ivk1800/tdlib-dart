@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Allowed to set a premium appllication icons
+/// Allowed to set a premium application icons
 @immutable
 class PremiumFeatureAppIcons extends PremiumFeature {
   const PremiumFeatureAppIcons();

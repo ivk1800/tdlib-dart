@@ -52,8 +52,8 @@ class AttachmentMenuBot extends TdObject {
   /// event
   final bool supportsSettings;
 
-  /// [requestWriteAccess] True, if the user needs to be requested to give the
-  /// permission to the bot to send them messages
+  /// [requestWriteAccess] True, if the user must be asked for the permission to
+  /// the bot to send them messages
   final bool requestWriteAccess;
 
   /// [name] Name for the bot in attachment menu

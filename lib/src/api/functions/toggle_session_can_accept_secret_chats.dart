@@ -14,7 +14,7 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
   /// [sessionId] Session identifier
   final int sessionId;
 
-  /// [canAcceptSecretChats] Pass true to allow accepring secret chats by the
+  /// [canAcceptSecretChats] Pass true to allow accepting secret chats by the
   /// session; pass false otherwise
   final bool canAcceptSecretChats;
 

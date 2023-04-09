@@ -21,8 +21,8 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   /// [botUserId] User identifier of a bot linked with the website
   final int botUserId;
 
-  /// [requestWriteAccess] True, if the user needs to be requested to give the
-  /// permission to the bot to send them messages
+  /// [requestWriteAccess] True, if the user must be asked for the permission to
+  /// the bot to send them messages
   final bool requestWriteAccess;
 
   static const String constructor = 'loginUrlInfoRequestConfirmation';

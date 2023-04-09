@@ -8,27 +8,27 @@ class InputSticker extends TdObject {
   const InputSticker({
     required this.sticker,
     required this.emojis,
-    required this.format,
     this.maskPosition,
+    required this.keywords,
   });
 
   /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP
-  /// stickers and masks the file must be in PNG format, which will be converted
-  /// to WEBP server-side. Otherwise, the file must be local or uploaded within
-  /// a week. See
+  /// stickers the file must be in WEBP or PNG format, which will be converted
+  /// to WEBP server-side. See
   /// https://core.telegram.org/animated_stickers#technical-requirements for
   /// technical requirements
   final InputFile sticker;
 
-  /// [emojis] Emojis corresponding to the sticker
+  /// [emojis] String with 1-20 emoji corresponding to the sticker
   final String emojis;
-
-  /// [format] Sticker format
-  final StickerFormat format;
 
   /// [maskPosition] Position where the mask is placed; pass null if not
   /// specified
   final MaskPosition? maskPosition;
+
+  /// [keywords] List of up to 20 keywords with total length up to 64
+  /// characters, which can be used to find the sticker
+  final List<String> keywords;
 
   static const String constructor = 'inputSticker';
 
@@ -40,8 +40,9 @@ class InputSticker extends TdObject {
     return InputSticker(
       sticker: InputFile.fromJson(json['sticker'])!,
       emojis: json['emojis'],
-      format: StickerFormat.fromJson(json['format'])!,
       maskPosition: MaskPosition.fromJson(json['mask_position']),
+      keywords: List<String>.from(
+          (json['keywords'] ?? []).map((item) => item).toList()),
     );
   }
 
@@ -52,8 +53,8 @@ class InputSticker extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'sticker': sticker.toJson(),
         'emojis': emojis,
-        'format': format.toJson(),
         'mask_position': maskPosition?.toJson(),
+        'keywords': keywords.map((item) => item).toList(),
         '@type': constructor,
       };
 
