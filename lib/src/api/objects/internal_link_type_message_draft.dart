@@ -28,8 +28,8 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
     }
 
     return InternalLinkTypeMessageDraft(
-      text: FormattedText.fromJson(json['text'])!,
-      containsLink: json['contains_link'],
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      containsLink: json['contains_link'] as bool,
     );
   }
 

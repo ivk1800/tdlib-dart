@@ -58,16 +58,17 @@ class Video extends TdObject {
     }
 
     return Video(
-      duration: json['duration'],
-      width: json['width'],
-      height: json['height'],
-      fileName: json['file_name'],
-      mimeType: json['mime_type'],
-      hasStickers: json['has_stickers'],
-      supportsStreaming: json['supports_streaming'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
-      video: File.fromJson(json['video'])!,
+      duration: json['duration'] as int,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      fileName: json['file_name'] as String,
+      mimeType: json['mime_type'] as String,
+      hasStickers: json['has_stickers'] as bool,
+      supportsStreaming: json['supports_streaming'] as bool,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      video: File.fromJson(json['video'] as Map<String, dynamic>?)!,
     );
   }
 

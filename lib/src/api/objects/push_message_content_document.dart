@@ -25,8 +25,8 @@ class PushMessageContentDocument extends PushMessageContent {
     }
 
     return PushMessageContentDocument(
-      document: Document.fromJson(json['document']),
-      isPinned: json['is_pinned'],
+      document: Document.fromJson(json['document'] as Map<String, dynamic>?),
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

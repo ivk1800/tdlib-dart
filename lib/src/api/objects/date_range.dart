@@ -24,8 +24,8 @@ class DateRange extends TdObject {
     }
 
     return DateRange(
-      startDate: json['start_date'],
-      endDate: json['end_date'],
+      startDate: json['start_date'] as int,
+      endDate: json['end_date'] as int,
     );
   }
 

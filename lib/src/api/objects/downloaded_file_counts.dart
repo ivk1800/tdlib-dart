@@ -28,9 +28,9 @@ class DownloadedFileCounts extends TdObject {
     }
 
     return DownloadedFileCounts(
-      activeCount: json['active_count'],
-      pausedCount: json['paused_count'],
-      completedCount: json['completed_count'],
+      activeCount: json['active_count'] as int,
+      pausedCount: json['paused_count'] as int,
+      completedCount: json['completed_count'] as int,
     );
   }
 

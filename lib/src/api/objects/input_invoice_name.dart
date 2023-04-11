@@ -20,7 +20,7 @@ class InputInvoiceName extends InputInvoice {
     }
 
     return InputInvoiceName(
-      name: json['name'],
+      name: json['name'] as String,
     );
   }
 

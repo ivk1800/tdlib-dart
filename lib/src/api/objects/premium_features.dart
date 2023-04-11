@@ -30,13 +30,16 @@ class PremiumFeatures extends TdObject {
     }
 
     return PremiumFeatures(
-      features: List<PremiumFeature>.from((json['features'] ?? [])
-          .map((item) => PremiumFeature.fromJson(item))
-          .toList()),
-      limits: List<PremiumLimit>.from((json['limits'] ?? [])
-          .map((item) => PremiumLimit.fromJson(item))
-          .toList()),
-      paymentLink: InternalLinkType.fromJson(json['payment_link']),
+      features: List<PremiumFeature>.from(
+          ((json['features'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PremiumFeature.fromJson(item))
+              .toList()),
+      limits: List<PremiumLimit>.from(
+          ((json['limits'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PremiumLimit.fromJson(item))
+              .toList()),
+      paymentLink: InternalLinkType.fromJson(
+          json['payment_link'] as Map<String, dynamic>?),
     );
   }
 

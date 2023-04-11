@@ -21,7 +21,8 @@ class UpdateBasicGroup extends Update {
     }
 
     return UpdateBasicGroup(
-      basicGroup: BasicGroup.fromJson(json['basic_group'])!,
+      basicGroup:
+          BasicGroup.fromJson(json['basic_group'] as Map<String, dynamic>?)!,
     );
   }
 

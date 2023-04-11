@@ -69,19 +69,19 @@ class InputMessageInvoice extends InputMessageContent {
     }
 
     return InputMessageInvoice(
-      invoice: Invoice.fromJson(json['invoice'])!,
-      title: json['title'],
-      description: json['description'],
-      photoUrl: json['photo_url'],
-      photoSize: json['photo_size'],
-      photoWidth: json['photo_width'],
-      photoHeight: json['photo_height'],
-      payload: json['payload'],
-      providerToken: json['provider_token'],
-      providerData: json['provider_data'],
-      startParameter: json['start_parameter'],
-      extendedMediaContent:
-          InputMessageContent.fromJson(json['extended_media_content'])!,
+      invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      photoUrl: json['photo_url'] as String,
+      photoSize: json['photo_size'] as int,
+      photoWidth: json['photo_width'] as int,
+      photoHeight: json['photo_height'] as int,
+      payload: json['payload'] as String,
+      providerToken: json['provider_token'] as String,
+      providerData: json['provider_data'] as String,
+      startParameter: json['start_parameter'] as String,
+      extendedMediaContent: InputMessageContent.fromJson(
+          json['extended_media_content'] as Map<String, dynamic>?)!,
     );
   }
 

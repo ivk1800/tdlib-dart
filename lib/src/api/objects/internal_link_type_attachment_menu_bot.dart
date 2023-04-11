@@ -38,9 +38,10 @@ class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
     }
 
     return InternalLinkTypeAttachmentMenuBot(
-      targetChat: TargetChat.fromJson(json['target_chat'])!,
-      botUsername: json['bot_username'],
-      url: json['url'],
+      targetChat:
+          TargetChat.fromJson(json['target_chat'] as Map<String, dynamic>?)!,
+      botUsername: json['bot_username'] as String,
+      url: json['url'] as String,
     );
   }
 

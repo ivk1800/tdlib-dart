@@ -25,9 +25,9 @@ class UpdateChatPendingJoinRequests extends Update {
     }
 
     return UpdateChatPendingJoinRequests(
-      chatId: json['chat_id'],
-      pendingJoinRequests:
-          ChatJoinRequestsInfo.fromJson(json['pending_join_requests']),
+      chatId: json['chat_id'] as int,
+      pendingJoinRequests: ChatJoinRequestsInfo.fromJson(
+          json['pending_join_requests'] as Map<String, dynamic>?),
     );
   }
 

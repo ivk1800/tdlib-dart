@@ -25,8 +25,8 @@ class MessageLink extends TdObject {
     }
 
     return MessageLink(
-      link: json['link'],
-      isPublic: json['is_public'],
+      link: json['link'] as String,
+      isPublic: json['is_public'] as bool,
     );
   }
 

@@ -20,12 +20,14 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupInlineKeyboard(
-      rows: List<List<InlineKeyboardButton>>.from((json['rows'] ?? [])
-          .map((item) => List<InlineKeyboardButton>.from(
-              (json['List<InlineKeyboardButton>'] ?? [])
-                  .map((item) => InlineKeyboardButton.fromJson(item))
-                  .toList()))
-          .toList()),
+      rows: List<List<InlineKeyboardButton>>.from(
+          ((json['rows'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => List<InlineKeyboardButton>.from(
+                  ((json['List<InlineKeyboardButton>'] as List<dynamic>?) ??
+                          <dynamic>[])
+                      .map((item) => InlineKeyboardButton.fromJson(item))
+                      .toList()))
+              .toList()),
     );
   }
 

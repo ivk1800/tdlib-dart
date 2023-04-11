@@ -21,7 +21,7 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
     }
 
     return DeviceTokenMicrosoftPushVoIP(
-      channelUri: json['channel_uri'],
+      channelUri: json['channel_uri'] as String,
     );
   }
 

@@ -35,11 +35,13 @@ class InlineQueryResults extends TdObject {
 
     return InlineQueryResults(
       inlineQueryId: int.tryParse(json['inline_query_id']) ?? 0,
-      button: InlineQueryResultsButton.fromJson(json['button']),
-      results: List<InlineQueryResult>.from((json['results'] ?? [])
-          .map((item) => InlineQueryResult.fromJson(item))
-          .toList()),
-      nextOffset: json['next_offset'],
+      button: InlineQueryResultsButton.fromJson(
+          json['button'] as Map<String, dynamic>?),
+      results: List<InlineQueryResult>.from(
+          ((json['results'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => InlineQueryResult.fromJson(item))
+              .toList()),
+      nextOffset: json['next_offset'] as String,
     );
   }
 

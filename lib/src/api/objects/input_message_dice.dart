@@ -24,8 +24,8 @@ class InputMessageDice extends InputMessageContent {
     }
 
     return InputMessageDice(
-      emoji: json['emoji'],
-      clearDraft: json['clear_draft'],
+      emoji: json['emoji'] as String,
+      clearDraft: json['clear_draft'] as bool,
     );
   }
 

@@ -24,8 +24,8 @@ class MessageChatShared extends MessageContent {
     }
 
     return MessageChatShared(
-      chatId: json['chat_id'],
-      buttonId: json['button_id'],
+      chatId: json['chat_id'] as int,
+      buttonId: json['button_id'] as int,
     );
   }
 

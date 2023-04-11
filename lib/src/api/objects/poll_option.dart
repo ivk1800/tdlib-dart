@@ -38,11 +38,11 @@ class PollOption extends TdObject {
     }
 
     return PollOption(
-      text: json['text'],
-      voterCount: json['voter_count'],
-      votePercentage: json['vote_percentage'],
-      isChosen: json['is_chosen'],
-      isBeingChosen: json['is_being_chosen'],
+      text: json['text'] as String,
+      voterCount: json['voter_count'] as int,
+      votePercentage: json['vote_percentage'] as int,
+      isChosen: json['is_chosen'] as bool,
+      isBeingChosen: json['is_being_chosen'] as bool,
     );
   }
 

@@ -24,8 +24,10 @@ class PageBlockVoiceNote extends PageBlock {
     }
 
     return PageBlockVoiceNote(
-      voiceNote: VoiceNote.fromJson(json['voice_note']),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
+      voiceNote:
+          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -20,7 +20,7 @@ class JsonValueString extends JsonValue {
     }
 
     return JsonValueString(
-      value: json['value'],
+      value: json['value'] as String,
     );
   }
 

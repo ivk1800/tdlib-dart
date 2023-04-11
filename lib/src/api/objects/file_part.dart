@@ -20,7 +20,7 @@ class FilePart extends TdObject {
     }
 
     return FilePart(
-      data: json['data'],
+      data: json['data'] as String,
     );
   }
 

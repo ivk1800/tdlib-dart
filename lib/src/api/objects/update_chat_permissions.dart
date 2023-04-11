@@ -24,8 +24,9 @@ class UpdateChatPermissions extends Update {
     }
 
     return UpdateChatPermissions(
-      chatId: json['chat_id'],
-      permissions: ChatPermissions.fromJson(json['permissions'])!,
+      chatId: json['chat_id'] as int,
+      permissions: ChatPermissions.fromJson(
+          json['permissions'] as Map<String, dynamic>?)!,
     );
   }
 

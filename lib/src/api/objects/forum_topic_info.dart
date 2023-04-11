@@ -53,15 +53,16 @@ class ForumTopicInfo extends TdObject {
     }
 
     return ForumTopicInfo(
-      messageThreadId: json['message_thread_id'],
-      name: json['name'],
-      icon: ForumTopicIcon.fromJson(json['icon'])!,
-      creationDate: json['creation_date'],
-      creatorId: MessageSender.fromJson(json['creator_id'])!,
-      isGeneral: json['is_general'],
-      isOutgoing: json['is_outgoing'],
-      isClosed: json['is_closed'],
-      isHidden: json['is_hidden'],
+      messageThreadId: json['message_thread_id'] as int,
+      name: json['name'] as String,
+      icon: ForumTopicIcon.fromJson(json['icon'] as Map<String, dynamic>?)!,
+      creationDate: json['creation_date'] as int,
+      creatorId:
+          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?)!,
+      isGeneral: json['is_general'] as bool,
+      isOutgoing: json['is_outgoing'] as bool,
+      isClosed: json['is_closed'] as bool,
+      isHidden: json['is_hidden'] as bool,
     );
   }
 

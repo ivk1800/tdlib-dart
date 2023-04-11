@@ -20,7 +20,7 @@ class PageBlockFooter extends PageBlock {
     }
 
     return PageBlockFooter(
-      footer: RichText.fromJson(json['footer'])!,
+      footer: RichText.fromJson(json['footer'] as Map<String, dynamic>?)!,
     );
   }
 

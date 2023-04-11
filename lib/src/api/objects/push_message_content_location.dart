@@ -25,8 +25,8 @@ class PushMessageContentLocation extends PushMessageContent {
     }
 
     return PushMessageContentLocation(
-      isLive: json['is_live'],
-      isPinned: json['is_pinned'],
+      isLive: json['is_live'] as bool,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

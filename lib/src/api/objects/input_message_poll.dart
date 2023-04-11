@@ -49,14 +49,16 @@ class InputMessagePoll extends InputMessageContent {
     }
 
     return InputMessagePoll(
-      question: json['question'],
+      question: json['question'] as String,
       options: List<String>.from(
-          (json['options'] ?? []).map((item) => item).toList()),
-      isAnonymous: json['is_anonymous'],
-      type: PollType.fromJson(json['type'])!,
-      openPeriod: json['open_period'],
-      closeDate: json['close_date'],
-      isClosed: json['is_closed'],
+          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      isAnonymous: json['is_anonymous'] as bool,
+      type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      openPeriod: json['open_period'] as int,
+      closeDate: json['close_date'] as int,
+      isClosed: json['is_closed'] as bool,
     );
   }
 

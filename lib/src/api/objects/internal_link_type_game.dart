@@ -26,8 +26,8 @@ class InternalLinkTypeGame extends InternalLinkType {
     }
 
     return InternalLinkTypeGame(
-      botUsername: json['bot_username'],
-      gameShortName: json['game_short_name'],
+      botUsername: json['bot_username'] as String,
+      gameShortName: json['game_short_name'] as String,
     );
   }
 

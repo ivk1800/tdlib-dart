@@ -32,9 +32,9 @@ class InternalLinkTypeWebApp extends InternalLinkType {
     }
 
     return InternalLinkTypeWebApp(
-      botUsername: json['bot_username'],
-      webAppShortName: json['web_app_short_name'],
-      startParameter: json['start_parameter'],
+      botUsername: json['bot_username'] as String,
+      webAppShortName: json['web_app_short_name'] as String,
+      startParameter: json['start_parameter'] as String,
     );
   }
 

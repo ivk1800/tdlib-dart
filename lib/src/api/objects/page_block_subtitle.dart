@@ -20,7 +20,7 @@ class PageBlockSubtitle extends PageBlock {
     }
 
     return PageBlockSubtitle(
-      subtitle: RichText.fromJson(json['subtitle'])!,
+      subtitle: RichText.fromJson(json['subtitle'] as Map<String, dynamic>?)!,
     );
   }
 

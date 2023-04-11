@@ -24,8 +24,10 @@ class ChatEventMessageEdited extends ChatEventAction {
     }
 
     return ChatEventMessageEdited(
-      oldMessage: Message.fromJson(json['old_message'])!,
-      newMessage: Message.fromJson(json['new_message'])!,
+      oldMessage:
+          Message.fromJson(json['old_message'] as Map<String, dynamic>?)!,
+      newMessage:
+          Message.fromJson(json['new_message'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -21,7 +21,7 @@ class ChatEventVideoChatEnded extends ChatEventAction {
     }
 
     return ChatEventVideoChatEnded(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] as int,
     );
   }
 

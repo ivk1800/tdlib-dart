@@ -34,10 +34,10 @@ class UpdateMessageSendFailed extends Update {
     }
 
     return UpdateMessageSendFailed(
-      message: Message.fromJson(json['message'])!,
-      oldMessageId: json['old_message_id'],
-      errorCode: json['error_code'],
-      errorMessage: json['error_message'],
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
+      oldMessageId: json['old_message_id'] as int,
+      errorCode: json['error_code'] as int,
+      errorMessage: json['error_message'] as String,
     );
   }
 

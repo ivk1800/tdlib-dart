@@ -20,7 +20,7 @@ class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
     }
 
     return EmailAddressAuthenticationCode(
-      code: json['code'],
+      code: json['code'] as String,
     );
   }
 

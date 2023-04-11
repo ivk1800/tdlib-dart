@@ -20,7 +20,7 @@ class CallId extends TdObject {
     }
 
     return CallId(
-      id: json['id'],
+      id: json['id'] as int,
     );
   }
 

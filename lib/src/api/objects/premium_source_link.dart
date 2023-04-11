@@ -20,7 +20,7 @@ class PremiumSourceLink extends PremiumSource {
     }
 
     return PremiumSourceLink(
-      referrer: json['referrer'],
+      referrer: json['referrer'] as String,
     );
   }
 

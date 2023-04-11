@@ -27,8 +27,8 @@ class AuthorizationStateWaitEmailAddress extends AuthorizationState {
     }
 
     return AuthorizationStateWaitEmailAddress(
-      allowAppleId: json['allow_apple_id'],
-      allowGoogleId: json['allow_google_id'],
+      allowAppleId: json['allow_apple_id'] as bool,
+      allowGoogleId: json['allow_google_id'] as bool,
     );
   }
 

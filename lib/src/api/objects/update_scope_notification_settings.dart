@@ -24,9 +24,10 @@ class UpdateScopeNotificationSettings extends Update {
     }
 
     return UpdateScopeNotificationSettings(
-      scope: NotificationSettingsScope.fromJson(json['scope'])!,
-      notificationSettings:
-          ScopeNotificationSettings.fromJson(json['notification_settings'])!,
+      scope: NotificationSettingsScope.fromJson(
+          json['scope'] as Map<String, dynamic>?)!,
+      notificationSettings: ScopeNotificationSettings.fromJson(
+          json['notification_settings'] as Map<String, dynamic>?)!,
     );
   }
 

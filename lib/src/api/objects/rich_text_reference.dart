@@ -29,9 +29,9 @@ class RichTextReference extends RichText {
     }
 
     return RichTextReference(
-      text: RichText.fromJson(json['text'])!,
-      anchorName: json['anchor_name'],
-      url: json['url'],
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      anchorName: json['anchor_name'] as String,
+      url: json['url'] as String,
     );
   }
 

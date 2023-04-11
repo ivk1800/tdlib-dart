@@ -20,9 +20,10 @@ class ConnectedWebsites extends TdObject {
     }
 
     return ConnectedWebsites(
-      websites: List<ConnectedWebsite>.from((json['websites'] ?? [])
-          .map((item) => ConnectedWebsite.fromJson(item))
-          .toList()),
+      websites: List<ConnectedWebsite>.from(
+          ((json['websites'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ConnectedWebsite.fromJson(item))
+              .toList()),
     );
   }
 

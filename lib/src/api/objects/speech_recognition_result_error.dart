@@ -20,7 +20,7 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
     }
 
     return SpeechRecognitionResultError(
-      error: TdError.fromJson(json['error'])!,
+      error: TdError.fromJson(json['error'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -29,9 +29,9 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
     }
 
     return PushMessageContentChatAddMembers(
-      memberName: json['member_name'],
-      isCurrentUser: json['is_current_user'],
-      isReturned: json['is_returned'],
+      memberName: json['member_name'] as String,
+      isCurrentUser: json['is_current_user'] as bool,
+      isReturned: json['is_returned'] as bool,
     );
   }
 

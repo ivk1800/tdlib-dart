@@ -32,9 +32,9 @@ class InternalLinkTypeBotStart extends InternalLinkType {
     }
 
     return InternalLinkTypeBotStart(
-      botUsername: json['bot_username'],
-      startParameter: json['start_parameter'],
-      autostart: json['autostart'],
+      botUsername: json['bot_username'] as String,
+      startParameter: json['start_parameter'] as String,
+      autostart: json['autostart'] as bool,
     );
   }
 

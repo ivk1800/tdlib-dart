@@ -20,7 +20,7 @@ class DeviceTokenUbuntuPush extends DeviceToken {
     }
 
     return DeviceTokenUbuntuPush(
-      token: json['token'],
+      token: json['token'] as String,
     );
   }
 

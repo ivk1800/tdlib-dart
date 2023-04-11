@@ -20,7 +20,8 @@ class PassportElementPersonalDetails extends PassportElement {
     }
 
     return PassportElementPersonalDetails(
-      personalDetails: PersonalDetails.fromJson(json['personal_details'])!,
+      personalDetails: PersonalDetails.fromJson(
+          json['personal_details'] as Map<String, dynamic>?)!,
     );
   }
 

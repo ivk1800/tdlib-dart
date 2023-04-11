@@ -84,32 +84,42 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     }
 
     return ChatStatisticsSupergroup(
-      period: DateRange.fromJson(json['period'])!,
-      memberCount: StatisticalValue.fromJson(json['member_count'])!,
-      messageCount: StatisticalValue.fromJson(json['message_count'])!,
-      viewerCount: StatisticalValue.fromJson(json['viewer_count'])!,
-      senderCount: StatisticalValue.fromJson(json['sender_count'])!,
-      memberCountGraph: StatisticalGraph.fromJson(json['member_count_graph'])!,
-      joinGraph: StatisticalGraph.fromJson(json['join_graph'])!,
-      joinBySourceGraph:
-          StatisticalGraph.fromJson(json['join_by_source_graph'])!,
-      languageGraph: StatisticalGraph.fromJson(json['language_graph'])!,
-      messageContentGraph:
-          StatisticalGraph.fromJson(json['message_content_graph'])!,
-      actionGraph: StatisticalGraph.fromJson(json['action_graph'])!,
-      dayGraph: StatisticalGraph.fromJson(json['day_graph'])!,
-      weekGraph: StatisticalGraph.fromJson(json['week_graph'])!,
+      period: DateRange.fromJson(json['period'] as Map<String, dynamic>?)!,
+      memberCount: StatisticalValue.fromJson(
+          json['member_count'] as Map<String, dynamic>?)!,
+      messageCount: StatisticalValue.fromJson(
+          json['message_count'] as Map<String, dynamic>?)!,
+      viewerCount: StatisticalValue.fromJson(
+          json['viewer_count'] as Map<String, dynamic>?)!,
+      senderCount: StatisticalValue.fromJson(
+          json['sender_count'] as Map<String, dynamic>?)!,
+      memberCountGraph: StatisticalGraph.fromJson(
+          json['member_count_graph'] as Map<String, dynamic>?)!,
+      joinGraph: StatisticalGraph.fromJson(
+          json['join_graph'] as Map<String, dynamic>?)!,
+      joinBySourceGraph: StatisticalGraph.fromJson(
+          json['join_by_source_graph'] as Map<String, dynamic>?)!,
+      languageGraph: StatisticalGraph.fromJson(
+          json['language_graph'] as Map<String, dynamic>?)!,
+      messageContentGraph: StatisticalGraph.fromJson(
+          json['message_content_graph'] as Map<String, dynamic>?)!,
+      actionGraph: StatisticalGraph.fromJson(
+          json['action_graph'] as Map<String, dynamic>?)!,
+      dayGraph: StatisticalGraph.fromJson(
+          json['day_graph'] as Map<String, dynamic>?)!,
+      weekGraph: StatisticalGraph.fromJson(
+          json['week_graph'] as Map<String, dynamic>?)!,
       topSenders: List<ChatStatisticsMessageSenderInfo>.from(
-          (json['top_senders'] ?? [])
+          ((json['top_senders'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ChatStatisticsMessageSenderInfo.fromJson(item))
               .toList()),
       topAdministrators: List<ChatStatisticsAdministratorActionsInfo>.from(
-          (json['top_administrators'] ?? [])
+          ((json['top_administrators'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) =>
                   ChatStatisticsAdministratorActionsInfo.fromJson(item))
               .toList()),
       topInviters: List<ChatStatisticsInviterInfo>.from(
-          (json['top_inviters'] ?? [])
+          ((json['top_inviters'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ChatStatisticsInviterInfo.fromJson(item))
               .toList()),
     );

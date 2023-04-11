@@ -21,7 +21,7 @@ class InputChatPhotoStatic extends InputChatPhoto {
     }
 
     return InputChatPhotoStatic(
-      photo: InputFile.fromJson(json['photo'])!,
+      photo: InputFile.fromJson(json['photo'] as Map<String, dynamic>?)!,
     );
   }
 

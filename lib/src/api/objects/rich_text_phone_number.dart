@@ -24,8 +24,8 @@ class RichTextPhoneNumber extends RichText {
     }
 
     return RichTextPhoneNumber(
-      text: RichText.fromJson(json['text'])!,
-      phoneNumber: json['phone_number'],
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      phoneNumber: json['phone_number'] as String,
     );
   }
 

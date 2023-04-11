@@ -25,8 +25,8 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
     }
 
     return LoginUrlInfoOpen(
-      url: json['url'],
-      skipConfirmation: json['skip_confirmation'],
+      url: json['url'] as String,
+      skipConfirmation: json['skip_confirmation'] as bool,
     );
   }
 

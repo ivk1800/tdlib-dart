@@ -31,10 +31,10 @@ class VideoChat extends TdObject {
     }
 
     return VideoChat(
-      groupCallId: json['group_call_id'],
-      hasParticipants: json['has_participants'],
-      defaultParticipantId:
-          MessageSender.fromJson(json['default_participant_id']),
+      groupCallId: json['group_call_id'] as int,
+      hasParticipants: json['has_participants'] as bool,
+      defaultParticipantId: MessageSender.fromJson(
+          json['default_participant_id'] as Map<String, dynamic>?),
     );
   }
 

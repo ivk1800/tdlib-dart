@@ -38,10 +38,10 @@ class BackgroundTypePattern extends BackgroundType {
     }
 
     return BackgroundTypePattern(
-      fill: BackgroundFill.fromJson(json['fill'])!,
-      intensity: json['intensity'],
-      isInverted: json['is_inverted'],
-      isMoving: json['is_moving'],
+      fill: BackgroundFill.fromJson(json['fill'] as Map<String, dynamic>?)!,
+      intensity: json['intensity'] as int,
+      isInverted: json['is_inverted'] as bool,
+      isMoving: json['is_moving'] as bool,
     );
   }
 

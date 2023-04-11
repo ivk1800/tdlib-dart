@@ -21,7 +21,7 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeCallback(
-      data: json['data'],
+      data: json['data'] as String,
     );
   }
 

@@ -39,12 +39,13 @@ class ThemeSettings extends TdObject {
     }
 
     return ThemeSettings(
-      accentColor: json['accent_color'],
-      background: Background.fromJson(json['background']),
-      outgoingMessageFill:
-          BackgroundFill.fromJson(json['outgoing_message_fill'])!,
-      animateOutgoingMessageFill: json['animate_outgoing_message_fill'],
-      outgoingMessageAccentColor: json['outgoing_message_accent_color'],
+      accentColor: json['accent_color'] as int,
+      background:
+          Background.fromJson(json['background'] as Map<String, dynamic>?),
+      outgoingMessageFill: BackgroundFill.fromJson(
+          json['outgoing_message_fill'] as Map<String, dynamic>?)!,
+      animateOutgoingMessageFill: json['animate_outgoing_message_fill'] as bool,
+      outgoingMessageAccentColor: json['outgoing_message_accent_color'] as int,
     );
   }
 

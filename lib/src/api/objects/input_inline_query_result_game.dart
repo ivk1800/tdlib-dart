@@ -29,9 +29,10 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultGame(
-      id: json['id'],
-      gameShortName: json['game_short_name'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      id: json['id'] as String,
+      gameShortName: json['game_short_name'] as String,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
     );
   }
 

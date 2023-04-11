@@ -20,7 +20,7 @@ class ChatEventMessageUnpinned extends ChatEventAction {
     }
 
     return ChatEventMessageUnpinned(
-      message: Message.fromJson(json['message'])!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
     );
   }
 

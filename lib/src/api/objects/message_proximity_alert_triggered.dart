@@ -30,9 +30,11 @@ class MessageProximityAlertTriggered extends MessageContent {
     }
 
     return MessageProximityAlertTriggered(
-      travelerId: MessageSender.fromJson(json['traveler_id'])!,
-      watcherId: MessageSender.fromJson(json['watcher_id'])!,
-      distance: json['distance'],
+      travelerId:
+          MessageSender.fromJson(json['traveler_id'] as Map<String, dynamic>?)!,
+      watcherId:
+          MessageSender.fromJson(json['watcher_id'] as Map<String, dynamic>?)!,
+      distance: json['distance'] as int,
     );
   }
 

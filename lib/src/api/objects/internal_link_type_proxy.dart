@@ -29,9 +29,9 @@ class InternalLinkTypeProxy extends InternalLinkType {
     }
 
     return InternalLinkTypeProxy(
-      server: json['server'],
-      port: json['port'],
-      type: ProxyType.fromJson(json['type'])!,
+      server: json['server'] as String,
+      port: json['port'] as int,
+      type: ProxyType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
 

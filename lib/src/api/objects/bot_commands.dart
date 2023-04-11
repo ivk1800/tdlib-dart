@@ -24,10 +24,11 @@ class BotCommands extends TdObject {
     }
 
     return BotCommands(
-      botUserId: json['bot_user_id'],
-      commands: List<BotCommand>.from((json['commands'] ?? [])
-          .map((item) => BotCommand.fromJson(item))
-          .toList()),
+      botUserId: json['bot_user_id'] as int,
+      commands: List<BotCommand>.from(
+          ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => BotCommand.fromJson(item))
+              .toList()),
     );
   }
 

@@ -47,14 +47,14 @@ class MessageSendOptions extends TdObject {
     }
 
     return MessageSendOptions(
-      disableNotification: json['disable_notification'],
-      fromBackground: json['from_background'],
-      protectContent: json['protect_content'],
+      disableNotification: json['disable_notification'] as bool,
+      fromBackground: json['from_background'] as bool,
+      protectContent: json['protect_content'] as bool,
       updateOrderOfInstalledStickerSets:
-          json['update_order_of_installed_sticker_sets'],
-      schedulingState:
-          MessageSchedulingState.fromJson(json['scheduling_state']),
-      sendingId: json['sending_id'],
+          json['update_order_of_installed_sticker_sets'] as bool,
+      schedulingState: MessageSchedulingState.fromJson(
+          json['scheduling_state'] as Map<String, dynamic>?),
+      sendingId: json['sending_id'] as int,
     );
   }
 

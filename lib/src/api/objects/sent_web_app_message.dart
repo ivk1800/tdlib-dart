@@ -20,7 +20,7 @@ class SentWebAppMessage extends TdObject {
     }
 
     return SentWebAppMessage(
-      inlineMessageId: json['inline_message_id'],
+      inlineMessageId: json['inline_message_id'] as String,
     );
   }
 

@@ -61,17 +61,20 @@ class PaymentReceipt extends TdObject {
     }
 
     return PaymentReceipt(
-      title: json['title'],
-      description: FormattedText.fromJson(json['description'])!,
-      photo: Photo.fromJson(json['photo']),
-      date: json['date'],
-      sellerBotUserId: json['seller_bot_user_id'],
-      paymentProviderUserId: json['payment_provider_user_id'],
-      invoice: Invoice.fromJson(json['invoice'])!,
-      orderInfo: OrderInfo.fromJson(json['order_info']),
-      shippingOption: ShippingOption.fromJson(json['shipping_option']),
-      credentialsTitle: json['credentials_title'],
-      tipAmount: json['tip_amount'],
+      title: json['title'] as String,
+      description:
+          FormattedText.fromJson(json['description'] as Map<String, dynamic>?)!,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
+      date: json['date'] as int,
+      sellerBotUserId: json['seller_bot_user_id'] as int,
+      paymentProviderUserId: json['payment_provider_user_id'] as int,
+      invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
+      orderInfo:
+          OrderInfo.fromJson(json['order_info'] as Map<String, dynamic>?),
+      shippingOption: ShippingOption.fromJson(
+          json['shipping_option'] as Map<String, dynamic>?),
+      credentialsTitle: json['credentials_title'] as String,
+      tipAmount: json['tip_amount'] as int,
     );
   }
 

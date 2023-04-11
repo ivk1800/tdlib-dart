@@ -85,22 +85,28 @@ class ChatFilter extends TdObject {
     }
 
     return ChatFilter(
-      title: json['title'],
-      iconName: json['icon_name'],
+      title: json['title'] as String,
+      iconName: json['icon_name'] as String,
       pinnedChatIds: List<int>.from(
-          (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
+          ((json['pinned_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       includedChatIds: List<int>.from(
-          (json['included_chat_ids'] ?? []).map((item) => item).toList()),
+          ((json['included_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       excludedChatIds: List<int>.from(
-          (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-      excludeMuted: json['exclude_muted'],
-      excludeRead: json['exclude_read'],
-      excludeArchived: json['exclude_archived'],
-      includeContacts: json['include_contacts'],
-      includeNonContacts: json['include_non_contacts'],
-      includeBots: json['include_bots'],
-      includeGroups: json['include_groups'],
-      includeChannels: json['include_channels'],
+          ((json['excluded_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      excludeMuted: json['exclude_muted'] as bool,
+      excludeRead: json['exclude_read'] as bool,
+      excludeArchived: json['exclude_archived'] as bool,
+      includeContacts: json['include_contacts'] as bool,
+      includeNonContacts: json['include_non_contacts'] as bool,
+      includeBots: json['include_bots'] as bool,
+      includeGroups: json['include_groups'] as bool,
+      includeChannels: json['include_channels'] as bool,
     );
   }
 

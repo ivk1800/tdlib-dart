@@ -21,7 +21,7 @@ class MessagePinMessage extends MessageContent {
     }
 
     return MessagePinMessage(
-      messageId: json['message_id'],
+      messageId: json['message_id'] as int,
     );
   }
 

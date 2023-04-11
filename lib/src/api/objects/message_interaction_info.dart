@@ -35,12 +35,14 @@ class MessageInteractionInfo extends TdObject {
     }
 
     return MessageInteractionInfo(
-      viewCount: json['view_count'],
-      forwardCount: json['forward_count'],
-      replyInfo: MessageReplyInfo.fromJson(json['reply_info']),
-      reactions: List<MessageReaction>.from((json['reactions'] ?? [])
-          .map((item) => MessageReaction.fromJson(item))
-          .toList()),
+      viewCount: json['view_count'] as int,
+      forwardCount: json['forward_count'] as int,
+      replyInfo: MessageReplyInfo.fromJson(
+          json['reply_info'] as Map<String, dynamic>?),
+      reactions: List<MessageReaction>.from(
+          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => MessageReaction.fromJson(item))
+              .toList()),
     );
   }
 

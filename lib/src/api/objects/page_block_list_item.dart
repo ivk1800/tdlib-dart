@@ -24,10 +24,11 @@ class PageBlockListItem extends TdObject {
     }
 
     return PageBlockListItem(
-      label: json['label'],
-      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-          .map((item) => PageBlock.fromJson(item))
-          .toList()),
+      label: json['label'] as String,
+      pageBlocks: List<PageBlock>.from(
+          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlock.fromJson(item))
+              .toList()),
     );
   }
 

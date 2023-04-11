@@ -20,7 +20,8 @@ class UpdateDefaultReactionType extends Update {
     }
 
     return UpdateDefaultReactionType(
-      reactionType: ReactionType.fromJson(json['reaction_type'])!,
+      reactionType: ReactionType.fromJson(
+          json['reaction_type'] as Map<String, dynamic>?)!,
     );
   }
 

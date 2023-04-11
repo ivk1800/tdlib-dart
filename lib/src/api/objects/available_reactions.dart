@@ -33,18 +33,19 @@ class AvailableReactions extends TdObject {
     }
 
     return AvailableReactions(
-      topReactions: List<AvailableReaction>.from((json['top_reactions'] ?? [])
-          .map((item) => AvailableReaction.fromJson(item))
-          .toList()),
+      topReactions: List<AvailableReaction>.from(
+          ((json['top_reactions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => AvailableReaction.fromJson(item))
+              .toList()),
       recentReactions: List<AvailableReaction>.from(
-          (json['recent_reactions'] ?? [])
+          ((json['recent_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => AvailableReaction.fromJson(item))
               .toList()),
       popularReactions: List<AvailableReaction>.from(
-          (json['popular_reactions'] ?? [])
+          ((json['popular_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => AvailableReaction.fromJson(item))
               .toList()),
-      allowCustomEmoji: json['allow_custom_emoji'],
+      allowCustomEmoji: json['allow_custom_emoji'] as bool,
     );
   }
 

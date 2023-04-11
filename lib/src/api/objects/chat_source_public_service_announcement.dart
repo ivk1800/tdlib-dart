@@ -25,8 +25,8 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
     }
 
     return ChatSourcePublicServiceAnnouncement(
-      type: json['type'],
-      text: json['text'],
+      type: json['type'] as String,
+      text: json['text'] as String,
     );
   }
 

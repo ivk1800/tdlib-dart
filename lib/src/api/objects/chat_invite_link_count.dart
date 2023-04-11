@@ -29,9 +29,9 @@ class ChatInviteLinkCount extends TdObject {
     }
 
     return ChatInviteLinkCount(
-      userId: json['user_id'],
-      inviteLinkCount: json['invite_link_count'],
-      revokedInviteLinkCount: json['revoked_invite_link_count'],
+      userId: json['user_id'] as int,
+      inviteLinkCount: json['invite_link_count'] as int,
+      revokedInviteLinkCount: json['revoked_invite_link_count'] as int,
     );
   }
 

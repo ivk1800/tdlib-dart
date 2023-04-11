@@ -33,13 +33,13 @@ class UpdateMessageUnreadReactions extends Update {
     }
 
     return UpdateMessageUnreadReactions(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
       unreadReactions: List<UnreadReaction>.from(
-          (json['unread_reactions'] ?? [])
+          ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => UnreadReaction.fromJson(item))
               .toList()),
-      unreadReactionCount: json['unread_reaction_count'],
+      unreadReactionCount: json['unread_reaction_count'] as int,
     );
   }
 

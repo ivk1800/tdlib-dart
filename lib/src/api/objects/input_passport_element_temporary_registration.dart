@@ -22,8 +22,8 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
     }
 
     return InputPassportElementTemporaryRegistration(
-      temporaryRegistration:
-          InputPersonalDocument.fromJson(json['temporary_registration'])!,
+      temporaryRegistration: InputPersonalDocument.fromJson(
+          json['temporary_registration'] as Map<String, dynamic>?)!,
     );
   }
 

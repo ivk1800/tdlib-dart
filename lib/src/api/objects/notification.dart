@@ -32,10 +32,10 @@ class Notification extends TdObject {
     }
 
     return Notification(
-      id: json['id'],
-      date: json['date'],
-      isSilent: json['is_silent'],
-      type: NotificationType.fromJson(json['type'])!,
+      id: json['id'] as int,
+      date: json['date'] as int,
+      isSilent: json['is_silent'] as bool,
+      type: NotificationType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
 

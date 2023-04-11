@@ -24,10 +24,12 @@ class PageBlockCollage extends PageBlock {
     }
 
     return PageBlockCollage(
-      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-          .map((item) => PageBlock.fromJson(item))
-          .toList()),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
+      pageBlocks: List<PageBlock>.from(
+          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlock.fromJson(item))
+              .toList()),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

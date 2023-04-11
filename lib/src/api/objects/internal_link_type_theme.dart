@@ -20,7 +20,7 @@ class InternalLinkTypeTheme extends InternalLinkType {
     }
 
     return InternalLinkTypeTheme(
-      themeName: json['theme_name'],
+      themeName: json['theme_name'] as String,
     );
   }
 

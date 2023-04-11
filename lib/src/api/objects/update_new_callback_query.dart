@@ -42,11 +42,12 @@ class UpdateNewCallbackQuery extends Update {
 
     return UpdateNewCallbackQuery(
       id: int.tryParse(json['id']) ?? 0,
-      senderUserId: json['sender_user_id'],
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      senderUserId: json['sender_user_id'] as int,
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
       chatInstance: int.tryParse(json['chat_instance']) ?? 0,
-      payload: CallbackQueryPayload.fromJson(json['payload'])!,
+      payload: CallbackQueryPayload.fromJson(
+          json['payload'] as Map<String, dynamic>?)!,
     );
   }
 

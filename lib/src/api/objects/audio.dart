@@ -57,19 +57,20 @@ class Audio extends TdObject {
     }
 
     return Audio(
-      duration: json['duration'],
-      title: json['title'],
-      performer: json['performer'],
-      fileName: json['file_name'],
-      mimeType: json['mime_type'],
-      albumCoverMinithumbnail:
-          Minithumbnail.fromJson(json['album_cover_minithumbnail']),
-      albumCoverThumbnail: Thumbnail.fromJson(json['album_cover_thumbnail']),
+      duration: json['duration'] as int,
+      title: json['title'] as String,
+      performer: json['performer'] as String,
+      fileName: json['file_name'] as String,
+      mimeType: json['mime_type'] as String,
+      albumCoverMinithumbnail: Minithumbnail.fromJson(
+          json['album_cover_minithumbnail'] as Map<String, dynamic>?),
+      albumCoverThumbnail: Thumbnail.fromJson(
+          json['album_cover_thumbnail'] as Map<String, dynamic>?),
       externalAlbumCovers: List<Thumbnail>.from(
-          (json['external_album_covers'] ?? [])
+          ((json['external_album_covers'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => Thumbnail.fromJson(item))
               .toList()),
-      audio: File.fromJson(json['audio'])!,
+      audio: File.fromJson(json['audio'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -24,8 +24,10 @@ class ChatEventLocationChanged extends ChatEventAction {
     }
 
     return ChatEventLocationChanged(
-      oldLocation: ChatLocation.fromJson(json['old_location']),
-      newLocation: ChatLocation.fromJson(json['new_location']),
+      oldLocation:
+          ChatLocation.fromJson(json['old_location'] as Map<String, dynamic>?),
+      newLocation:
+          ChatLocation.fromJson(json['new_location'] as Map<String, dynamic>?),
     );
   }
 

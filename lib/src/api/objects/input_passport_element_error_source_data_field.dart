@@ -27,8 +27,8 @@ class InputPassportElementErrorSourceDataField
     }
 
     return InputPassportElementErrorSourceDataField(
-      fieldName: json['field_name'],
-      dataHash: json['data_hash'],
+      fieldName: json['field_name'] as String,
+      dataHash: json['data_hash'] as String,
     );
   }
 

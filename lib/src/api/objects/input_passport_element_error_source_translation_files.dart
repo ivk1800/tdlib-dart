@@ -25,7 +25,9 @@ class InputPassportElementErrorSourceTranslationFiles
 
     return InputPassportElementErrorSourceTranslationFiles(
       fileHashes: List<String>.from(
-          (json['file_hashes'] ?? []).map((item) => item).toList()),
+          ((json['file_hashes'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

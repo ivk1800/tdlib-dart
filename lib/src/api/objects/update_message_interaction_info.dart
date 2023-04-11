@@ -29,10 +29,10 @@ class UpdateMessageInteractionInfo extends Update {
     }
 
     return UpdateMessageInteractionInfo(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      interactionInfo:
-          MessageInteractionInfo.fromJson(json['interaction_info']),
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      interactionInfo: MessageInteractionInfo.fromJson(
+          json['interaction_info'] as Map<String, dynamic>?),
     );
   }
 

@@ -31,13 +31,13 @@ class PremiumState extends TdObject {
     }
 
     return PremiumState(
-      state: FormattedText.fromJson(json['state'])!,
+      state: FormattedText.fromJson(json['state'] as Map<String, dynamic>?)!,
       paymentOptions: List<PremiumStatePaymentOption>.from(
-          (json['payment_options'] ?? [])
+          ((json['payment_options'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumStatePaymentOption.fromJson(item))
               .toList()),
       animations: List<PremiumFeaturePromotionAnimation>.from(
-          (json['animations'] ?? [])
+          ((json['animations'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
               .toList()),
     );

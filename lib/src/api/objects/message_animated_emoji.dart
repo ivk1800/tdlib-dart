@@ -24,8 +24,9 @@ class MessageAnimatedEmoji extends MessageContent {
     }
 
     return MessageAnimatedEmoji(
-      animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji'])!,
-      emoji: json['emoji'],
+      animatedEmoji: AnimatedEmoji.fromJson(
+          json['animated_emoji'] as Map<String, dynamic>?)!,
+      emoji: json['emoji'] as String,
     );
   }
 

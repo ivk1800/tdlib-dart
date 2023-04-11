@@ -33,10 +33,10 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
     }
 
     return LoginUrlInfoRequestConfirmation(
-      url: json['url'],
-      domain: json['domain'],
-      botUserId: json['bot_user_id'],
-      requestWriteAccess: json['request_write_access'],
+      url: json['url'] as String,
+      domain: json['domain'] as String,
+      botUserId: json['bot_user_id'] as int,
+      requestWriteAccess: json['request_write_access'] as bool,
     );
   }
 

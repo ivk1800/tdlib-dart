@@ -20,7 +20,7 @@ class MessageCustomServiceAction extends MessageContent {
     }
 
     return MessageCustomServiceAction(
-      text: json['text'],
+      text: json['text'] as String,
     );
   }
 

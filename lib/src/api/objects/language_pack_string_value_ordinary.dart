@@ -20,7 +20,7 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
     }
 
     return LanguagePackStringValueOrdinary(
-      value: json['value'],
+      value: json['value'] as String,
     );
   }
 

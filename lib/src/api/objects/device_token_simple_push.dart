@@ -21,7 +21,7 @@ class DeviceTokenSimplePush extends DeviceToken {
     }
 
     return DeviceTokenSimplePush(
-      endpoint: json['endpoint'],
+      endpoint: json['endpoint'] as String,
     );
   }
 

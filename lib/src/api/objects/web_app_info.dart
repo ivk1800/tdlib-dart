@@ -25,7 +25,7 @@ class WebAppInfo extends TdObject {
 
     return WebAppInfo(
       launchId: int.tryParse(json['launch_id']) ?? 0,
-      url: json['url'],
+      url: json['url'] as String,
     );
   }
 

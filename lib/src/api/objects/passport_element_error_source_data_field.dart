@@ -22,7 +22,7 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
     }
 
     return PassportElementErrorSourceDataField(
-      fieldName: json['field_name'],
+      fieldName: json['field_name'] as String,
     );
   }
 

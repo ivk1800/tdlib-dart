@@ -25,9 +25,11 @@ class UpdateAnimationSearchParameters extends Update {
     }
 
     return UpdateAnimationSearchParameters(
-      provider: json['provider'],
+      provider: json['provider'] as String,
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
+          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

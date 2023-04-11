@@ -27,8 +27,8 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
     }
 
     return InternalLinkTypePhoneNumberConfirmation(
-      hash: json['hash'],
-      phoneNumber: json['phone_number'],
+      hash: json['hash'] as String,
+      phoneNumber: json['phone_number'] as String,
     );
   }
 

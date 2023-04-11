@@ -60,15 +60,17 @@ class SponsoredMessage extends TdObject {
     }
 
     return SponsoredMessage(
-      messageId: json['message_id'],
-      isRecommended: json['is_recommended'],
-      sponsorChatId: json['sponsor_chat_id'],
-      sponsorChatInfo: ChatInviteLinkInfo.fromJson(json['sponsor_chat_info']),
-      showChatPhoto: json['show_chat_photo'],
-      link: InternalLinkType.fromJson(json['link']),
-      content: MessageContent.fromJson(json['content'])!,
-      sponsorInfo: json['sponsor_info'],
-      additionalInfo: json['additional_info'],
+      messageId: json['message_id'] as int,
+      isRecommended: json['is_recommended'] as bool,
+      sponsorChatId: json['sponsor_chat_id'] as int,
+      sponsorChatInfo: ChatInviteLinkInfo.fromJson(
+          json['sponsor_chat_info'] as Map<String, dynamic>?),
+      showChatPhoto: json['show_chat_photo'] as bool,
+      link: InternalLinkType.fromJson(json['link'] as Map<String, dynamic>?),
+      content:
+          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
+      sponsorInfo: json['sponsor_info'] as String,
+      additionalInfo: json['additional_info'] as String,
     );
   }
 

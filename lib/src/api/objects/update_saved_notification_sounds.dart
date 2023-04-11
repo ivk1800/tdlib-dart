@@ -24,7 +24,9 @@ class UpdateSavedNotificationSounds extends Update {
 
     return UpdateSavedNotificationSounds(
       notificationSoundIds: List<int>.from(
-          (json['notification_sound_ids'] ?? []).map((item) => item).toList()),
+          ((json['notification_sound_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

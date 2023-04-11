@@ -20,7 +20,7 @@ class MessageFileTypeGroup extends MessageFileType {
     }
 
     return MessageFileTypeGroup(
-      title: json['title'],
+      title: json['title'] as String,
     );
   }
 

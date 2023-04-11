@@ -21,7 +21,7 @@ class MessageVideoChatStarted extends MessageContent {
     }
 
     return MessageVideoChatStarted(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] as int,
     );
   }
 

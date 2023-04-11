@@ -41,12 +41,14 @@ class PageBlockTableCell extends TdObject {
     }
 
     return PageBlockTableCell(
-      text: RichText.fromJson(json['text']),
-      isHeader: json['is_header'],
-      colspan: json['colspan'],
-      rowspan: json['rowspan'],
-      align: PageBlockHorizontalAlignment.fromJson(json['align'])!,
-      valign: PageBlockVerticalAlignment.fromJson(json['valign'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?),
+      isHeader: json['is_header'] as bool,
+      colspan: json['colspan'] as int,
+      rowspan: json['rowspan'] as int,
+      align: PageBlockHorizontalAlignment.fromJson(
+          json['align'] as Map<String, dynamic>?)!,
+      valign: PageBlockVerticalAlignment.fromJson(
+          json['valign'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -36,10 +36,10 @@ class MaskPosition extends TdObject {
     }
 
     return MaskPosition(
-      point: MaskPoint.fromJson(json['point'])!,
-      xShift: json['x_shift'],
-      yShift: json['y_shift'],
-      scale: json['scale'],
+      point: MaskPoint.fromJson(json['point'] as Map<String, dynamic>?)!,
+      xShift: (json['x_shift'] as num).toDouble(),
+      yShift: (json['y_shift'] as num).toDouble(),
+      scale: (json['scale'] as num).toDouble(),
     );
   }
 

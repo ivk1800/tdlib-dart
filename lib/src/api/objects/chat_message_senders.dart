@@ -21,9 +21,10 @@ class ChatMessageSenders extends TdObject {
     }
 
     return ChatMessageSenders(
-      senders: List<ChatMessageSender>.from((json['senders'] ?? [])
-          .map((item) => ChatMessageSender.fromJson(item))
-          .toList()),
+      senders: List<ChatMessageSender>.from(
+          ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatMessageSender.fromJson(item))
+              .toList()),
     );
   }
 

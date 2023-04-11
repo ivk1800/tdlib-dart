@@ -29,10 +29,12 @@ class EmojiCategory extends TdObject {
     }
 
     return EmojiCategory(
-      name: json['name'],
-      icon: Sticker.fromJson(json['icon'])!,
+      name: json['name'] as String,
+      icon: Sticker.fromJson(json['icon'] as Map<String, dynamic>?)!,
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
+          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

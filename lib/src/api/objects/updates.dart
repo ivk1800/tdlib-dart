@@ -20,9 +20,10 @@ class Updates extends TdObject {
     }
 
     return Updates(
-      updates: List<Update>.from((json['updates'] ?? [])
-          .map((item) => Update.fromJson(item))
-          .toList()),
+      updates: List<Update>.from(
+          ((json['updates'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Update.fromJson(item))
+              .toList()),
     );
   }
 

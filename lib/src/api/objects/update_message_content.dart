@@ -28,9 +28,10 @@ class UpdateMessageContent extends Update {
     }
 
     return UpdateMessageContent(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      newContent: MessageContent.fromJson(json['new_content'])!,
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      newContent: MessageContent.fromJson(
+          json['new_content'] as Map<String, dynamic>?)!,
     );
   }
 

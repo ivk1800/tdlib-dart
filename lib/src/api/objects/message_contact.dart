@@ -20,7 +20,7 @@ class MessageContact extends MessageContent {
     }
 
     return MessageContact(
-      contact: Contact.fromJson(json['contact'])!,
+      contact: Contact.fromJson(json['contact'] as Map<String, dynamic>?)!,
     );
   }
 

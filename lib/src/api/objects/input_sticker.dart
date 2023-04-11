@@ -38,11 +38,14 @@ class InputSticker extends TdObject {
     }
 
     return InputSticker(
-      sticker: InputFile.fromJson(json['sticker'])!,
-      emojis: json['emojis'],
-      maskPosition: MaskPosition.fromJson(json['mask_position']),
+      sticker: InputFile.fromJson(json['sticker'] as Map<String, dynamic>?)!,
+      emojis: json['emojis'] as String,
+      maskPosition:
+          MaskPosition.fromJson(json['mask_position'] as Map<String, dynamic>?),
       keywords: List<String>.from(
-          (json['keywords'] ?? []).map((item) => item).toList()),
+          ((json['keywords'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

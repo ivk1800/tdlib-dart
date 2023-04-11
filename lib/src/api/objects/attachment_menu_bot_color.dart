@@ -24,8 +24,8 @@ class AttachmentMenuBotColor extends TdObject {
     }
 
     return AttachmentMenuBotColor(
-      lightColor: json['light_color'],
-      darkColor: json['dark_color'],
+      lightColor: json['light_color'] as int,
+      darkColor: json['dark_color'] as int,
     );
   }
 

@@ -20,7 +20,7 @@ class OptionValueString extends OptionValue {
     }
 
     return OptionValueString(
-      value: json['value'],
+      value: json['value'] as String,
     );
   }
 

@@ -21,7 +21,7 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginHiddenUser(
-      senderName: json['sender_name'],
+      senderName: json['sender_name'] as String,
     );
   }
 

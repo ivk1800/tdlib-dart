@@ -25,8 +25,8 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginChat(
-      senderChatId: json['sender_chat_id'],
-      authorSignature: json['author_signature'],
+      senderChatId: json['sender_chat_id'] as int,
+      authorSignature: json['author_signature'] as String,
     );
   }
 

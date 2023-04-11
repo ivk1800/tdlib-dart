@@ -24,8 +24,8 @@ class NotificationTypeNewMessage extends NotificationType {
     }
 
     return NotificationTypeNewMessage(
-      message: Message.fromJson(json['message'])!,
-      showPreview: json['show_preview'],
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
+      showPreview: json['show_preview'] as bool,
     );
   }
 

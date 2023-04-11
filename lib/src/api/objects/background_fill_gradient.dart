@@ -29,9 +29,9 @@ class BackgroundFillGradient extends BackgroundFill {
     }
 
     return BackgroundFillGradient(
-      topColor: json['top_color'],
-      bottomColor: json['bottom_color'],
-      rotationAngle: json['rotation_angle'],
+      topColor: json['top_color'] as int,
+      bottomColor: json['bottom_color'] as int,
+      rotationAngle: json['rotation_angle'] as int,
     );
   }
 

@@ -32,15 +32,17 @@ class PageBlockTable extends PageBlock {
     }
 
     return PageBlockTable(
-      caption: RichText.fromJson(json['caption'])!,
-      cells: List<List<PageBlockTableCell>>.from((json['cells'] ?? [])
-          .map((item) => List<PageBlockTableCell>.from(
-              (json['List<PageBlockTableCell>'] ?? [])
-                  .map((item) => PageBlockTableCell.fromJson(item))
-                  .toList()))
-          .toList()),
-      isBordered: json['is_bordered'],
-      isStriped: json['is_striped'],
+      caption: RichText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      cells: List<List<PageBlockTableCell>>.from(
+          ((json['cells'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => List<PageBlockTableCell>.from(
+                  ((json['List<PageBlockTableCell>'] as List<dynamic>?) ??
+                          <dynamic>[])
+                      .map((item) => PageBlockTableCell.fromJson(item))
+                      .toList()))
+              .toList()),
+      isBordered: json['is_bordered'] as bool,
+      isStriped: json['is_striped'] as bool,
     );
   }
 

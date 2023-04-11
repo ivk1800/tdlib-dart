@@ -26,8 +26,8 @@ class UpdateChatDefaultDisableNotification extends Update {
     }
 
     return UpdateChatDefaultDisableNotification(
-      chatId: json['chat_id'],
-      defaultDisableNotification: json['default_disable_notification'],
+      chatId: json['chat_id'] as int,
+      defaultDisableNotification: json['default_disable_notification'] as bool,
     );
   }
 

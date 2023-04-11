@@ -36,11 +36,12 @@ class PageBlockMap extends PageBlock {
     }
 
     return PageBlockMap(
-      location: Location.fromJson(json['location'])!,
-      zoom: json['zoom'],
-      width: json['width'],
-      height: json['height'],
-      caption: PageBlockCaption.fromJson(json['caption'])!,
+      location: Location.fromJson(json['location'] as Map<String, dynamic>?)!,
+      zoom: json['zoom'] as int,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -28,8 +28,9 @@ class PollTypeQuiz extends PollType {
     }
 
     return PollTypeQuiz(
-      correctOptionId: json['correct_option_id'],
-      explanation: FormattedText.fromJson(json['explanation'])!,
+      correctOptionId: json['correct_option_id'] as int,
+      explanation:
+          FormattedText.fromJson(json['explanation'] as Map<String, dynamic>?)!,
     );
   }
 

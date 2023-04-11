@@ -25,8 +25,10 @@ class UpdateTrendingStickerSets extends Update {
     }
 
     return UpdateTrendingStickerSets(
-      stickerType: StickerType.fromJson(json['sticker_type'])!,
-      stickerSets: TrendingStickerSets.fromJson(json['sticker_sets'])!,
+      stickerType:
+          StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      stickerSets: TrendingStickerSets.fromJson(
+          json['sticker_sets'] as Map<String, dynamic>?)!,
     );
   }
 

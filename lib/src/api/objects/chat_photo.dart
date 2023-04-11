@@ -47,14 +47,19 @@ class ChatPhoto extends TdObject {
 
     return ChatPhoto(
       id: int.tryParse(json['id']) ?? 0,
-      addedDate: json['added_date'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      sizes: List<PhotoSize>.from((json['sizes'] ?? [])
-          .map((item) => PhotoSize.fromJson(item))
-          .toList()),
-      animation: AnimatedChatPhoto.fromJson(json['animation']),
-      smallAnimation: AnimatedChatPhoto.fromJson(json['small_animation']),
-      sticker: ChatPhotoSticker.fromJson(json['sticker']),
+      addedDate: json['added_date'] as int,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      sizes: List<PhotoSize>.from(
+          ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PhotoSize.fromJson(item))
+              .toList()),
+      animation: AnimatedChatPhoto.fromJson(
+          json['animation'] as Map<String, dynamic>?),
+      smallAnimation: AnimatedChatPhoto.fromJson(
+          json['small_animation'] as Map<String, dynamic>?),
+      sticker:
+          ChatPhotoSticker.fromJson(json['sticker'] as Map<String, dynamic>?),
     );
   }
 

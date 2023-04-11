@@ -20,7 +20,7 @@ class ChatTypeBasicGroup extends ChatType {
     }
 
     return ChatTypeBasicGroup(
-      basicGroupId: json['basic_group_id'],
+      basicGroupId: json['basic_group_id'] as int,
     );
   }
 

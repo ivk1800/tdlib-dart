@@ -22,7 +22,7 @@ class InternalLinkTypePremiumFeatures extends InternalLinkType {
     }
 
     return InternalLinkTypePremiumFeatures(
-      referrer: json['referrer'],
+      referrer: json['referrer'] as String,
     );
   }
 

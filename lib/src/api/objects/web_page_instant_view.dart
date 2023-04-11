@@ -42,14 +42,16 @@ class WebPageInstantView extends TdObject {
     }
 
     return WebPageInstantView(
-      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-          .map((item) => PageBlock.fromJson(item))
-          .toList()),
-      viewCount: json['view_count'],
-      version: json['version'],
-      isRtl: json['is_rtl'],
-      isFull: json['is_full'],
-      feedbackLink: InternalLinkType.fromJson(json['feedback_link'])!,
+      pageBlocks: List<PageBlock>.from(
+          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlock.fromJson(item))
+              .toList()),
+      viewCount: json['view_count'] as int,
+      version: json['version'] as int,
+      isRtl: json['is_rtl'] as bool,
+      isFull: json['is_full'] as bool,
+      feedbackLink: InternalLinkType.fromJson(
+          json['feedback_link'] as Map<String, dynamic>?)!,
     );
   }
 

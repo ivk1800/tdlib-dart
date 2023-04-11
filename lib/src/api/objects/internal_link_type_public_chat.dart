@@ -21,7 +21,7 @@ class InternalLinkTypePublicChat extends InternalLinkType {
     }
 
     return InternalLinkTypePublicChat(
-      chatUsername: json['chat_username'],
+      chatUsername: json['chat_username'] as String,
     );
   }
 

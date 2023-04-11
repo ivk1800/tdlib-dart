@@ -20,7 +20,7 @@ class PageBlockHeader extends PageBlock {
     }
 
     return PageBlockHeader(
-      header: RichText.fromJson(json['header'])!,
+      header: RichText.fromJson(json['header'] as Map<String, dynamic>?)!,
     );
   }
 

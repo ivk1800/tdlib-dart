@@ -36,10 +36,10 @@ class InputMessageLocation extends InputMessageContent {
     }
 
     return InputMessageLocation(
-      location: Location.fromJson(json['location'])!,
-      livePeriod: json['live_period'],
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      location: Location.fromJson(json['location'] as Map<String, dynamic>?)!,
+      livePeriod: json['live_period'] as int,
+      heading: json['heading'] as int,
+      proximityAlertRadius: json['proximity_alert_radius'] as int,
     );
   }
 

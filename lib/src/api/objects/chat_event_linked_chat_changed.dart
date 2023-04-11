@@ -24,8 +24,8 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
     }
 
     return ChatEventLinkedChatChanged(
-      oldLinkedChatId: json['old_linked_chat_id'],
-      newLinkedChatId: json['new_linked_chat_id'],
+      oldLinkedChatId: json['old_linked_chat_id'] as int,
+      newLinkedChatId: json['new_linked_chat_id'] as int,
     );
   }
 

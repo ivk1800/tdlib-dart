@@ -41,11 +41,11 @@ class MessageLocation extends MessageContent {
     }
 
     return MessageLocation(
-      location: Location.fromJson(json['location'])!,
-      livePeriod: json['live_period'],
-      expiresIn: json['expires_in'],
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      location: Location.fromJson(json['location'] as Map<String, dynamic>?)!,
+      livePeriod: json['live_period'] as int,
+      expiresIn: json['expires_in'] as int,
+      heading: json['heading'] as int,
+      proximityAlertRadius: json['proximity_alert_radius'] as int,
     );
   }
 

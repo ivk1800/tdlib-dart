@@ -49,14 +49,16 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     }
 
     return PhoneNumberAuthenticationSettings(
-      allowFlashCall: json['allow_flash_call'],
-      allowMissedCall: json['allow_missed_call'],
-      isCurrentPhoneNumber: json['is_current_phone_number'],
-      allowSmsRetrieverApi: json['allow_sms_retriever_api'],
+      allowFlashCall: json['allow_flash_call'] as bool,
+      allowMissedCall: json['allow_missed_call'] as bool,
+      isCurrentPhoneNumber: json['is_current_phone_number'] as bool,
+      allowSmsRetrieverApi: json['allow_sms_retriever_api'] as bool,
       firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(
-          json['firebase_authentication_settings']),
+          json['firebase_authentication_settings'] as Map<String, dynamic>?),
       authenticationTokens: List<String>.from(
-          (json['authentication_tokens'] ?? []).map((item) => item).toList()),
+          ((json['authentication_tokens'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

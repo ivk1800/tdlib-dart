@@ -21,7 +21,7 @@ class PassportElementErrorSourceFile extends PassportElementErrorSource {
     }
 
     return PassportElementErrorSourceFile(
-      fileIndex: json['file_index'],
+      fileIndex: json['file_index'] as int,
     );
   }
 

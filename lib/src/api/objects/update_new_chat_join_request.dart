@@ -33,10 +33,12 @@ class UpdateNewChatJoinRequest extends Update {
     }
 
     return UpdateNewChatJoinRequest(
-      chatId: json['chat_id'],
-      request: ChatJoinRequest.fromJson(json['request'])!,
-      userChatId: json['user_chat_id'],
-      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
+      chatId: json['chat_id'] as int,
+      request:
+          ChatJoinRequest.fromJson(json['request'] as Map<String, dynamic>?)!,
+      userChatId: json['user_chat_id'] as int,
+      inviteLink:
+          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
     );
   }
 

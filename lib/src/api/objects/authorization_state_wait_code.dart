@@ -21,7 +21,8 @@ class AuthorizationStateWaitCode extends AuthorizationState {
     }
 
     return AuthorizationStateWaitCode(
-      codeInfo: AuthenticationCodeInfo.fromJson(json['code_info'])!,
+      codeInfo: AuthenticationCodeInfo.fromJson(
+          json['code_info'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -21,8 +21,9 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
     }
 
     return BackgroundFillFreeformGradient(
-      colors:
-          List<int>.from((json['colors'] ?? []).map((item) => item).toList()),
+      colors: List<int>.from(((json['colors'] as List<dynamic>?) ?? <dynamic>[])
+          .map((item) => item)
+          .toList()),
     );
   }
 

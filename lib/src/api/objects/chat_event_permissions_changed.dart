@@ -24,8 +24,10 @@ class ChatEventPermissionsChanged extends ChatEventAction {
     }
 
     return ChatEventPermissionsChanged(
-      oldPermissions: ChatPermissions.fromJson(json['old_permissions'])!,
-      newPermissions: ChatPermissions.fromJson(json['new_permissions'])!,
+      oldPermissions: ChatPermissions.fromJson(
+          json['old_permissions'] as Map<String, dynamic>?)!,
+      newPermissions: ChatPermissions.fromJson(
+          json['new_permissions'] as Map<String, dynamic>?)!,
     );
   }
 

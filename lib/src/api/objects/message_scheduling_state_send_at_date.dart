@@ -22,7 +22,7 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
     }
 
     return MessageSchedulingStateSendAtDate(
-      sendDate: json['send_date'],
+      sendDate: json['send_date'] as int,
     );
   }
 

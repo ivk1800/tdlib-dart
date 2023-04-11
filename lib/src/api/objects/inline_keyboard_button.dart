@@ -24,8 +24,9 @@ class InlineKeyboardButton extends TdObject {
     }
 
     return InlineKeyboardButton(
-      text: json['text'],
-      type: InlineKeyboardButtonType.fromJson(json['type'])!,
+      text: json['text'] as String,
+      type: InlineKeyboardButtonType.fromJson(
+          json['type'] as Map<String, dynamic>?)!,
     );
   }
 

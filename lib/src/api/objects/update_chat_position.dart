@@ -27,8 +27,9 @@ class UpdateChatPosition extends Update {
     }
 
     return UpdateChatPosition(
-      chatId: json['chat_id'],
-      position: ChatPosition.fromJson(json['position'])!,
+      chatId: json['chat_id'] as int,
+      position:
+          ChatPosition.fromJson(json['position'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -44,12 +44,12 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
     }
 
     return LanguagePackStringValuePluralized(
-      zeroValue: json['zero_value'],
-      oneValue: json['one_value'],
-      twoValue: json['two_value'],
-      fewValue: json['few_value'],
-      manyValue: json['many_value'],
-      otherValue: json['other_value'],
+      zeroValue: json['zero_value'] as String,
+      oneValue: json['one_value'] as String,
+      twoValue: json['two_value'] as String,
+      fewValue: json['few_value'] as String,
+      manyValue: json['many_value'] as String,
+      otherValue: json['other_value'] as String,
     );
   }
 

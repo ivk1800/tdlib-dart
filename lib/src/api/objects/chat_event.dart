@@ -33,9 +33,11 @@ class ChatEvent extends TdObject {
 
     return ChatEvent(
       id: int.tryParse(json['id']) ?? 0,
-      date: json['date'],
-      memberId: MessageSender.fromJson(json['member_id'])!,
-      action: ChatEventAction.fromJson(json['action'])!,
+      date: json['date'] as int,
+      memberId:
+          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
+      action:
+          ChatEventAction.fromJson(json['action'] as Map<String, dynamic>?)!,
     );
   }
 

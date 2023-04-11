@@ -20,7 +20,7 @@ class RichTextSubscript extends RichText {
     }
 
     return RichTextSubscript(
-      text: RichText.fromJson(json['text'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
     );
   }
 

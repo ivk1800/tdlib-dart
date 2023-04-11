@@ -23,7 +23,7 @@ class InputPassportElementErrorSourceFrontSide
     }
 
     return InputPassportElementErrorSourceFrontSide(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] as String,
     );
   }
 

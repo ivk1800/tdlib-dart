@@ -26,8 +26,8 @@ class InputCredentialsNew extends InputCredentials {
     }
 
     return InputCredentialsNew(
-      data: json['data'],
-      allowSave: json['allow_save'],
+      data: json['data'] as String,
+      allowSave: json['allow_save'] as bool,
     );
   }
 

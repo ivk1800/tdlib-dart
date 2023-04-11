@@ -26,8 +26,9 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
     }
 
     return ChatEventVideoChatParticipantVolumeLevelChanged(
-      participantId: MessageSender.fromJson(json['participant_id'])!,
-      volumeLevel: json['volume_level'],
+      participantId: MessageSender.fromJson(
+          json['participant_id'] as Map<String, dynamic>?)!,
+      volumeLevel: json['volume_level'] as int,
     );
   }
 

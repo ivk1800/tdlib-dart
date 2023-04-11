@@ -25,8 +25,9 @@ class PushMessageContentVideoNote extends PushMessageContent {
     }
 
     return PushMessageContentVideoNote(
-      videoNote: VideoNote.fromJson(json['video_note']),
-      isPinned: json['is_pinned'],
+      videoNote:
+          VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?),
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

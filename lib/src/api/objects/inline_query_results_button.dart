@@ -24,8 +24,9 @@ class InlineQueryResultsButton extends TdObject {
     }
 
     return InlineQueryResultsButton(
-      text: json['text'],
-      type: InlineQueryResultsButtonType.fromJson(json['type'])!,
+      text: json['text'] as String,
+      type: InlineQueryResultsButtonType.fromJson(
+          json['type'] as Map<String, dynamic>?)!,
     );
   }
 

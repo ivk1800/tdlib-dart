@@ -42,14 +42,17 @@ class IdentityDocument extends TdObject {
     }
 
     return IdentityDocument(
-      number: json['number'],
-      expiryDate: Date.fromJson(json['expiry_date']),
-      frontSide: DatedFile.fromJson(json['front_side'])!,
-      reverseSide: DatedFile.fromJson(json['reverse_side']),
-      selfie: DatedFile.fromJson(json['selfie']),
-      translation: List<DatedFile>.from((json['translation'] ?? [])
-          .map((item) => DatedFile.fromJson(item))
-          .toList()),
+      number: json['number'] as String,
+      expiryDate: Date.fromJson(json['expiry_date'] as Map<String, dynamic>?),
+      frontSide:
+          DatedFile.fromJson(json['front_side'] as Map<String, dynamic>?)!,
+      reverseSide:
+          DatedFile.fromJson(json['reverse_side'] as Map<String, dynamic>?),
+      selfie: DatedFile.fromJson(json['selfie'] as Map<String, dynamic>?),
+      translation: List<DatedFile>.from(
+          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => DatedFile.fromJson(item))
+              .toList()),
     );
   }
 

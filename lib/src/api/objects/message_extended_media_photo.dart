@@ -24,8 +24,9 @@ class MessageExtendedMediaPhoto extends MessageExtendedMedia {
     }
 
     return MessageExtendedMediaPhoto(
-      photo: Photo.fromJson(json['photo'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

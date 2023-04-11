@@ -20,7 +20,7 @@ class RichTextItalic extends RichText {
     }
 
     return RichTextItalic(
-      text: RichText.fromJson(json['text'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
     );
   }
 

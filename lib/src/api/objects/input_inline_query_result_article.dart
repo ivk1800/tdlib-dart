@@ -59,17 +59,18 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultArticle(
-      id: json['id'],
-      url: json['url'],
-      hideUrl: json['hide_url'],
-      title: json['title'],
-      description: json['description'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-      inputMessageContent:
-          InputMessageContent.fromJson(json['input_message_content'])!,
+      id: json['id'] as String,
+      url: json['url'] as String,
+      hideUrl: json['hide_url'] as bool,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      thumbnailUrl: json['thumbnail_url'] as String,
+      thumbnailWidth: json['thumbnail_width'] as int,
+      thumbnailHeight: json['thumbnail_height'] as int,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      inputMessageContent: InputMessageContent.fromJson(
+          json['input_message_content'] as Map<String, dynamic>?)!,
     );
   }
 

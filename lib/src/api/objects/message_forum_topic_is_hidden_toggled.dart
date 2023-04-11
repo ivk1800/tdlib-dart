@@ -22,7 +22,7 @@ class MessageForumTopicIsHiddenToggled extends MessageContent {
     }
 
     return MessageForumTopicIsHiddenToggled(
-      isHidden: json['is_hidden'],
+      isHidden: json['is_hidden'] as bool,
     );
   }
 

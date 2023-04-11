@@ -20,7 +20,7 @@ class ChatEventMessagePinned extends ChatEventAction {
     }
 
     return ChatEventMessagePinned(
-      message: Message.fromJson(json['message'])!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
     );
   }
 

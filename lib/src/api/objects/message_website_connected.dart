@@ -21,7 +21,7 @@ class MessageWebsiteConnected extends MessageContent {
     }
 
     return MessageWebsiteConnected(
-      domainName: json['domain_name'],
+      domainName: json['domain_name'] as String,
     );
   }
 

@@ -102,25 +102,28 @@ class GroupCallParticipant extends TdObject {
     }
 
     return GroupCallParticipant(
-      participantId: MessageSender.fromJson(json['participant_id'])!,
-      audioSourceId: json['audio_source_id'],
-      screenSharingAudioSourceId: json['screen_sharing_audio_source_id'],
-      videoInfo: GroupCallParticipantVideoInfo.fromJson(json['video_info']),
+      participantId: MessageSender.fromJson(
+          json['participant_id'] as Map<String, dynamic>?)!,
+      audioSourceId: json['audio_source_id'] as int,
+      screenSharingAudioSourceId: json['screen_sharing_audio_source_id'] as int,
+      videoInfo: GroupCallParticipantVideoInfo.fromJson(
+          json['video_info'] as Map<String, dynamic>?),
       screenSharingVideoInfo: GroupCallParticipantVideoInfo.fromJson(
-          json['screen_sharing_video_info']),
-      bio: json['bio'],
-      isCurrentUser: json['is_current_user'],
-      isSpeaking: json['is_speaking'],
-      isHandRaised: json['is_hand_raised'],
-      canBeMutedForAllUsers: json['can_be_muted_for_all_users'],
-      canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'],
-      canBeMutedForCurrentUser: json['can_be_muted_for_current_user'],
-      canBeUnmutedForCurrentUser: json['can_be_unmuted_for_current_user'],
-      isMutedForAllUsers: json['is_muted_for_all_users'],
-      isMutedForCurrentUser: json['is_muted_for_current_user'],
-      canUnmuteSelf: json['can_unmute_self'],
-      volumeLevel: json['volume_level'],
-      order: json['order'],
+          json['screen_sharing_video_info'] as Map<String, dynamic>?),
+      bio: json['bio'] as String,
+      isCurrentUser: json['is_current_user'] as bool,
+      isSpeaking: json['is_speaking'] as bool,
+      isHandRaised: json['is_hand_raised'] as bool,
+      canBeMutedForAllUsers: json['can_be_muted_for_all_users'] as bool,
+      canBeUnmutedForAllUsers: json['can_be_unmuted_for_all_users'] as bool,
+      canBeMutedForCurrentUser: json['can_be_muted_for_current_user'] as bool,
+      canBeUnmutedForCurrentUser:
+          json['can_be_unmuted_for_current_user'] as bool,
+      isMutedForAllUsers: json['is_muted_for_all_users'] as bool,
+      isMutedForCurrentUser: json['is_muted_for_current_user'] as bool,
+      canUnmuteSelf: json['can_unmute_self'] as bool,
+      volumeLevel: json['volume_level'] as int,
+      order: json['order'] as String,
     );
   }
 

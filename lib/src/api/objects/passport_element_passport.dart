@@ -20,7 +20,8 @@ class PassportElementPassport extends PassportElement {
     }
 
     return PassportElementPassport(
-      passport: IdentityDocument.fromJson(json['passport'])!,
+      passport:
+          IdentityDocument.fromJson(json['passport'] as Map<String, dynamic>?)!,
     );
   }
 

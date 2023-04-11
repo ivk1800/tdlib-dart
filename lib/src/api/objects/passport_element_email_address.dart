@@ -20,7 +20,7 @@ class PassportElementEmailAddress extends PassportElement {
     }
 
     return PassportElementEmailAddress(
-      emailAddress: json['email_address'],
+      emailAddress: json['email_address'] as String,
     );
   }
 

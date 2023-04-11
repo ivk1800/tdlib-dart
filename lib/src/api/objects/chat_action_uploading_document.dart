@@ -20,7 +20,7 @@ class ChatActionUploadingDocument extends ChatAction {
     }
 
     return ChatActionUploadingDocument(
-      progress: json['progress'],
+      progress: json['progress'] as int,
     );
   }
 

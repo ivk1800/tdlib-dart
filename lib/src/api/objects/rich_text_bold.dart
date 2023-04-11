@@ -20,7 +20,7 @@ class RichTextBold extends RichText {
     }
 
     return RichTextBold(
-      text: RichText.fromJson(json['text'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
     );
   }
 

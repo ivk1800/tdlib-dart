@@ -20,7 +20,7 @@ class Seconds extends TdObject {
     }
 
     return Seconds(
-      seconds: json['seconds'],
+      seconds: (json['seconds'] as num).toDouble(),
     );
   }
 

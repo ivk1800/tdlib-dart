@@ -20,7 +20,7 @@ class VectorPathCommandLine extends VectorPathCommand {
     }
 
     return VectorPathCommandLine(
-      endPoint: Point.fromJson(json['end_point'])!,
+      endPoint: Point.fromJson(json['end_point'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -26,10 +26,11 @@ class SponsoredMessages extends TdObject {
     }
 
     return SponsoredMessages(
-      messages: List<SponsoredMessage>.from((json['messages'] ?? [])
-          .map((item) => SponsoredMessage.fromJson(item))
-          .toList()),
-      messagesBetween: json['messages_between'],
+      messages: List<SponsoredMessage>.from(
+          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => SponsoredMessage.fromJson(item))
+              .toList()),
+      messagesBetween: json['messages_between'] as int,
     );
   }
 

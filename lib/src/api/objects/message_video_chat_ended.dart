@@ -20,7 +20,7 @@ class MessageVideoChatEnded extends MessageContent {
     }
 
     return MessageVideoChatEnded(
-      duration: json['duration'],
+      duration: json['duration'] as int,
     );
   }
 

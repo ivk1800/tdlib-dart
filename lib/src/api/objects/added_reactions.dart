@@ -29,11 +29,12 @@ class AddedReactions extends TdObject {
     }
 
     return AddedReactions(
-      totalCount: json['total_count'],
-      reactions: List<AddedReaction>.from((json['reactions'] ?? [])
-          .map((item) => AddedReaction.fromJson(item))
-          .toList()),
-      nextOffset: json['next_offset'],
+      totalCount: json['total_count'] as int,
+      reactions: List<AddedReaction>.from(
+          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => AddedReaction.fromJson(item))
+              .toList()),
+      nextOffset: json['next_offset'] as String,
     );
   }
 

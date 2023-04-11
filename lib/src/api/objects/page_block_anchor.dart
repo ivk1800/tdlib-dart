@@ -21,7 +21,7 @@ class PageBlockAnchor extends PageBlock {
     }
 
     return PageBlockAnchor(
-      name: json['name'],
+      name: json['name'] as String,
     );
   }
 

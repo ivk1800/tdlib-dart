@@ -28,9 +28,10 @@ class PageBlockPhoto extends PageBlock {
     }
 
     return PageBlockPhoto(
-      photo: Photo.fromJson(json['photo']),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
-      url: json['url'],
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      url: json['url'] as String,
     );
   }
 

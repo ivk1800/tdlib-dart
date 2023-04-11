@@ -24,8 +24,8 @@ class RecommendedChatFilter extends TdObject {
     }
 
     return RecommendedChatFilter(
-      filter: ChatFilter.fromJson(json['filter'])!,
-      description: json['description'],
+      filter: ChatFilter.fromJson(json['filter'] as Map<String, dynamic>?)!,
+      description: json['description'] as String,
     );
   }
 

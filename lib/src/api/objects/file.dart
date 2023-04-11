@@ -37,11 +37,11 @@ class File extends TdObject {
     }
 
     return File(
-      id: json['id'],
-      size: json['size'],
-      expectedSize: json['expected_size'],
-      local: LocalFile.fromJson(json['local'])!,
-      remote: RemoteFile.fromJson(json['remote'])!,
+      id: json['id'] as int,
+      size: json['size'] as int,
+      expectedSize: json['expected_size'] as int,
+      local: LocalFile.fromJson(json['local'] as Map<String, dynamic>?)!,
+      remote: RemoteFile.fromJson(json['remote'] as Map<String, dynamic>?)!,
     );
   }
 

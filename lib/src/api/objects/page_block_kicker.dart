@@ -20,7 +20,7 @@ class PageBlockKicker extends PageBlock {
     }
 
     return PageBlockKicker(
-      kicker: RichText.fromJson(json['kicker'])!,
+      kicker: RichText.fromJson(json['kicker'] as Map<String, dynamic>?)!,
     );
   }
 

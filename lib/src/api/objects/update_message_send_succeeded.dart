@@ -25,8 +25,8 @@ class UpdateMessageSendSucceeded extends Update {
     }
 
     return UpdateMessageSendSucceeded(
-      message: Message.fromJson(json['message'])!,
-      oldMessageId: json['old_message_id'],
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
+      oldMessageId: json['old_message_id'] as int,
     );
   }
 

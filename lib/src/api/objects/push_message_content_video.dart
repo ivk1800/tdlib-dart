@@ -33,10 +33,10 @@ class PushMessageContentVideo extends PushMessageContent {
     }
 
     return PushMessageContentVideo(
-      video: Video.fromJson(json['video']),
-      caption: json['caption'],
-      isSecret: json['is_secret'],
-      isPinned: json['is_pinned'],
+      video: Video.fromJson(json['video'] as Map<String, dynamic>?),
+      caption: json['caption'] as String,
+      isSecret: json['is_secret'] as bool,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

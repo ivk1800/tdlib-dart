@@ -60,17 +60,19 @@ class ChatInviteLinkInfo extends TdObject {
     }
 
     return ChatInviteLinkInfo(
-      chatId: json['chat_id'],
-      accessibleFor: json['accessible_for'],
-      type: ChatType.fromJson(json['type'])!,
-      title: json['title'],
-      photo: ChatPhotoInfo.fromJson(json['photo']),
-      description: json['description'],
-      memberCount: json['member_count'],
+      chatId: json['chat_id'] as int,
+      accessibleFor: json['accessible_for'] as int,
+      type: ChatType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
+      description: json['description'] as String,
+      memberCount: json['member_count'] as int,
       memberUserIds: List<int>.from(
-          (json['member_user_ids'] ?? []).map((item) => item).toList()),
-      createsJoinRequest: json['creates_join_request'],
-      isPublic: json['is_public'],
+          ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      createsJoinRequest: json['creates_join_request'] as bool,
+      isPublic: json['is_public'] as bool,
     );
   }
 

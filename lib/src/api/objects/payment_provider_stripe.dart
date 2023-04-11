@@ -32,10 +32,10 @@ class PaymentProviderStripe extends PaymentProvider {
     }
 
     return PaymentProviderStripe(
-      publishableKey: json['publishable_key'],
-      needCountry: json['need_country'],
-      needPostalCode: json['need_postal_code'],
-      needCardholderName: json['need_cardholder_name'],
+      publishableKey: json['publishable_key'] as String,
+      needCountry: json['need_country'] as bool,
+      needPostalCode: json['need_postal_code'] as bool,
+      needCardholderName: json['need_cardholder_name'] as bool,
     );
   }
 

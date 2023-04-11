@@ -20,8 +20,9 @@ class LogTags extends TdObject {
     }
 
     return LogTags(
-      tags:
-          List<String>.from((json['tags'] ?? []).map((item) => item).toList()),
+      tags: List<String>.from(((json['tags'] as List<dynamic>?) ?? <dynamic>[])
+          .map((item) => item)
+          .toList()),
     );
   }
 

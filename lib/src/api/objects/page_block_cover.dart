@@ -20,7 +20,7 @@ class PageBlockCover extends PageBlock {
     }
 
     return PageBlockCover(
-      cover: PageBlock.fromJson(json['cover'])!,
+      cover: PageBlock.fromJson(json['cover'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -26,9 +26,11 @@ class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
     }
 
     return VectorPathCommandCubicBezierCurve(
-      startControlPoint: Point.fromJson(json['start_control_point'])!,
-      endControlPoint: Point.fromJson(json['end_control_point'])!,
-      endPoint: Point.fromJson(json['end_point'])!,
+      startControlPoint:
+          Point.fromJson(json['start_control_point'] as Map<String, dynamic>?)!,
+      endControlPoint:
+          Point.fromJson(json['end_control_point'] as Map<String, dynamic>?)!,
+      endPoint: Point.fromJson(json['end_point'] as Map<String, dynamic>?)!,
     );
   }
 

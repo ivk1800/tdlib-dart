@@ -24,8 +24,8 @@ class UpdateChatHasScheduledMessages extends Update {
     }
 
     return UpdateChatHasScheduledMessages(
-      chatId: json['chat_id'],
-      hasScheduledMessages: json['has_scheduled_messages'],
+      chatId: json['chat_id'] as int,
+      hasScheduledMessages: json['has_scheduled_messages'] as bool,
     );
   }
 

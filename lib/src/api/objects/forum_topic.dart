@@ -58,17 +58,19 @@ class ForumTopic extends TdObject {
     }
 
     return ForumTopic(
-      info: ForumTopicInfo.fromJson(json['info'])!,
-      lastMessage: Message.fromJson(json['last_message']),
-      isPinned: json['is_pinned'],
-      unreadCount: json['unread_count'],
-      lastReadInboxMessageId: json['last_read_inbox_message_id'],
-      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-      unreadMentionCount: json['unread_mention_count'],
-      unreadReactionCount: json['unread_reaction_count'],
-      notificationSettings:
-          ChatNotificationSettings.fromJson(json['notification_settings'])!,
-      draftMessage: DraftMessage.fromJson(json['draft_message']),
+      info: ForumTopicInfo.fromJson(json['info'] as Map<String, dynamic>?)!,
+      lastMessage:
+          Message.fromJson(json['last_message'] as Map<String, dynamic>?),
+      isPinned: json['is_pinned'] as bool,
+      unreadCount: json['unread_count'] as int,
+      lastReadInboxMessageId: json['last_read_inbox_message_id'] as int,
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'] as int,
+      unreadMentionCount: json['unread_mention_count'] as int,
+      unreadReactionCount: json['unread_reaction_count'] as int,
+      notificationSettings: ChatNotificationSettings.fromJson(
+          json['notification_settings'] as Map<String, dynamic>?)!,
+      draftMessage:
+          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
     );
   }
 

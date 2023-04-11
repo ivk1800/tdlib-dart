@@ -20,7 +20,8 @@ class ChatEventForumTopicDeleted extends ChatEventAction {
     }
 
     return ChatEventForumTopicDeleted(
-      topicInfo: ForumTopicInfo.fromJson(json['topic_info'])!,
+      topicInfo:
+          ForumTopicInfo.fromJson(json['topic_info'] as Map<String, dynamic>?)!,
     );
   }
 

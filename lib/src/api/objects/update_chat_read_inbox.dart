@@ -29,9 +29,9 @@ class UpdateChatReadInbox extends Update {
     }
 
     return UpdateChatReadInbox(
-      chatId: json['chat_id'],
-      lastReadInboxMessageId: json['last_read_inbox_message_id'],
-      unreadCount: json['unread_count'],
+      chatId: json['chat_id'] as int,
+      lastReadInboxMessageId: json['last_read_inbox_message_id'] as int,
+      unreadCount: json['unread_count'] as int,
     );
   }
 

@@ -24,9 +24,9 @@ class UpdateSupergroupFullInfo extends Update {
     }
 
     return UpdateSupergroupFullInfo(
-      supergroupId: json['supergroup_id'],
-      supergroupFullInfo:
-          SupergroupFullInfo.fromJson(json['supergroup_full_info'])!,
+      supergroupId: json['supergroup_id'] as int,
+      supergroupFullInfo: SupergroupFullInfo.fromJson(
+          json['supergroup_full_info'] as Map<String, dynamic>?)!,
     );
   }
 

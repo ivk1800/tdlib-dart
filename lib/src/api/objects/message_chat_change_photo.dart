@@ -20,7 +20,7 @@ class MessageChatChangePhoto extends MessageContent {
     }
 
     return MessageChatChangePhoto(
-      photo: ChatPhoto.fromJson(json['photo'])!,
+      photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?)!,
     );
   }
 

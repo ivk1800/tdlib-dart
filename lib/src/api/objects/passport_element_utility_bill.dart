@@ -20,7 +20,8 @@ class PassportElementUtilityBill extends PassportElement {
     }
 
     return PassportElementUtilityBill(
-      utilityBill: PersonalDocument.fromJson(json['utility_bill'])!,
+      utilityBill: PersonalDocument.fromJson(
+          json['utility_bill'] as Map<String, dynamic>?)!,
     );
   }
 

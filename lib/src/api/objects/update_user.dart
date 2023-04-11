@@ -21,7 +21,7 @@ class UpdateUser extends Update {
     }
 
     return UpdateUser(
-      user: User.fromJson(json['user'])!,
+      user: User.fromJson(json['user'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -25,12 +25,14 @@ class PersonalDocument extends TdObject {
     }
 
     return PersonalDocument(
-      files: List<DatedFile>.from((json['files'] ?? [])
-          .map((item) => DatedFile.fromJson(item))
-          .toList()),
-      translation: List<DatedFile>.from((json['translation'] ?? [])
-          .map((item) => DatedFile.fromJson(item))
-          .toList()),
+      files: List<DatedFile>.from(
+          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => DatedFile.fromJson(item))
+              .toList()),
+      translation: List<DatedFile>.from(
+          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => DatedFile.fromJson(item))
+              .toList()),
     );
   }
 

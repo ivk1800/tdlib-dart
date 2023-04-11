@@ -34,10 +34,11 @@ class MessageVideo extends MessageContent {
     }
 
     return MessageVideo(
-      video: Video.fromJson(json['video'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
-      hasSpoiler: json['has_spoiler'],
-      isSecret: json['is_secret'],
+      video: Video.fromJson(json['video'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      hasSpoiler: json['has_spoiler'] as bool,
+      isSecret: json['is_secret'] as bool,
     );
   }
 

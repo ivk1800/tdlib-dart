@@ -36,11 +36,11 @@ class Call extends TdObject {
     }
 
     return Call(
-      id: json['id'],
-      userId: json['user_id'],
-      isOutgoing: json['is_outgoing'],
-      isVideo: json['is_video'],
-      state: CallState.fromJson(json['state'])!,
+      id: json['id'] as int,
+      userId: json['user_id'] as int,
+      isOutgoing: json['is_outgoing'] as bool,
+      isVideo: json['is_video'] as bool,
+      state: CallState.fromJson(json['state'] as Map<String, dynamic>?)!,
     );
   }
 

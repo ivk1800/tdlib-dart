@@ -32,10 +32,11 @@ class Thumbnail extends TdObject {
     }
 
     return Thumbnail(
-      format: ThumbnailFormat.fromJson(json['format'])!,
-      width: json['width'],
-      height: json['height'],
-      file: File.fromJson(json['file'])!,
+      format:
+          ThumbnailFormat.fromJson(json['format'] as Map<String, dynamic>?)!,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      file: File.fromJson(json['file'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -20,7 +20,7 @@ class StatisticalGraphAsync extends StatisticalGraph {
     }
 
     return StatisticalGraphAsync(
-      token: json['token'],
+      token: json['token'] as String,
     );
   }
 

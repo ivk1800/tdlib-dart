@@ -20,7 +20,7 @@ class MessagePoll extends MessageContent {
     }
 
     return MessagePoll(
-      poll: Poll.fromJson(json['poll'])!,
+      poll: Poll.fromJson(json['poll'] as Map<String, dynamic>?)!,
     );
   }
 

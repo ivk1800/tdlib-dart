@@ -21,7 +21,7 @@ class MessageAutoDeleteTime extends TdObject {
     }
 
     return MessageAutoDeleteTime(
-      time: json['time'],
+      time: json['time'] as int,
     );
   }
 

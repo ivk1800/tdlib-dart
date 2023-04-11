@@ -20,7 +20,7 @@ class InputMessageContact extends InputMessageContent {
     }
 
     return InputMessageContact(
-      contact: Contact.fromJson(json['contact'])!,
+      contact: Contact.fromJson(json['contact'] as Map<String, dynamic>?)!,
     );
   }
 

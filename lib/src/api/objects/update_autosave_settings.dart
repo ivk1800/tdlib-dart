@@ -25,8 +25,10 @@ class UpdateAutosaveSettings extends Update {
     }
 
     return UpdateAutosaveSettings(
-      scope: AutosaveSettingsScope.fromJson(json['scope'])!,
-      settings: ScopeAutosaveSettings.fromJson(json['settings']),
+      scope: AutosaveSettingsScope.fromJson(
+          json['scope'] as Map<String, dynamic>?)!,
+      settings: ScopeAutosaveSettings.fromJson(
+          json['settings'] as Map<String, dynamic>?),
     );
   }
 

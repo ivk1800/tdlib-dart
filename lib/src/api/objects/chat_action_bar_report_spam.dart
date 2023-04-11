@@ -25,7 +25,7 @@ class ChatActionBarReportSpam extends ChatActionBar {
     }
 
     return ChatActionBarReportSpam(
-      canUnarchive: json['can_unarchive'],
+      canUnarchive: json['can_unarchive'] as bool,
     );
   }
 

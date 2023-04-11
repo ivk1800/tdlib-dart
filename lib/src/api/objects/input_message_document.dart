@@ -35,10 +35,12 @@ class InputMessageDocument extends InputMessageContent {
     }
 
     return InputMessageDocument(
-      document: InputFile.fromJson(json['document'])!,
-      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-      disableContentTypeDetection: json['disable_content_type_detection'],
-      caption: FormattedText.fromJson(json['caption']),
+      document: InputFile.fromJson(json['document'] as Map<String, dynamic>?)!,
+      thumbnail:
+          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      disableContentTypeDetection:
+          json['disable_content_type_detection'] as bool,
+      caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
     );
   }
 

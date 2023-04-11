@@ -36,12 +36,14 @@ class CallProtocol extends TdObject {
     }
 
     return CallProtocol(
-      udpP2p: json['udp_p2p'],
-      udpReflector: json['udp_reflector'],
-      minLayer: json['min_layer'],
-      maxLayer: json['max_layer'],
+      udpP2p: json['udp_p2p'] as bool,
+      udpReflector: json['udp_reflector'] as bool,
+      minLayer: json['min_layer'] as int,
+      maxLayer: json['max_layer'] as int,
       libraryVersions: List<String>.from(
-          (json['library_versions'] ?? []).map((item) => item).toList()),
+          ((json['library_versions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

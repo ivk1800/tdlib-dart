@@ -20,7 +20,8 @@ class PassportElementRentalAgreement extends PassportElement {
     }
 
     return PassportElementRentalAgreement(
-      rentalAgreement: PersonalDocument.fromJson(json['rental_agreement'])!,
+      rentalAgreement: PersonalDocument.fromJson(
+          json['rental_agreement'] as Map<String, dynamic>?)!,
     );
   }
 

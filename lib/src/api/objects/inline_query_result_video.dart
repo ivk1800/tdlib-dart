@@ -32,10 +32,10 @@ class InlineQueryResultVideo extends InlineQueryResult {
     }
 
     return InlineQueryResultVideo(
-      id: json['id'],
-      video: Video.fromJson(json['video'])!,
-      title: json['title'],
-      description: json['description'],
+      id: json['id'] as String,
+      video: Video.fromJson(json['video'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      description: json['description'] as String,
     );
   }
 

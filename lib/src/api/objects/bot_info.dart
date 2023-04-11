@@ -56,18 +56,21 @@ class BotInfo extends TdObject {
     }
 
     return BotInfo(
-      shortDescription: json['short_description'],
-      description: json['description'],
-      photo: Photo.fromJson(json['photo']),
-      animation: Animation.fromJson(json['animation']),
-      menuButton: BotMenuButton.fromJson(json['menu_button']),
-      commands: List<BotCommand>.from((json['commands'] ?? [])
-          .map((item) => BotCommand.fromJson(item))
-          .toList()),
+      shortDescription: json['short_description'] as String,
+      description: json['description'] as String,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
+      animation: Animation.fromJson(json['animation'] as Map<String, dynamic>?),
+      menuButton:
+          BotMenuButton.fromJson(json['menu_button'] as Map<String, dynamic>?),
+      commands: List<BotCommand>.from(
+          ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => BotCommand.fromJson(item))
+              .toList()),
       defaultGroupAdministratorRights: ChatAdministratorRights.fromJson(
-          json['default_group_administrator_rights']),
+          json['default_group_administrator_rights'] as Map<String, dynamic>?),
       defaultChannelAdministratorRights: ChatAdministratorRights.fromJson(
-          json['default_channel_administrator_rights']),
+          json['default_channel_administrator_rights']
+              as Map<String, dynamic>?),
     );
   }
 

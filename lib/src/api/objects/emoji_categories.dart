@@ -20,9 +20,10 @@ class EmojiCategories extends TdObject {
     }
 
     return EmojiCategories(
-      categories: List<EmojiCategory>.from((json['categories'] ?? [])
-          .map((item) => EmojiCategory.fromJson(item))
-          .toList()),
+      categories: List<EmojiCategory>.from(
+          ((json['categories'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => EmojiCategory.fromJson(item))
+              .toList()),
     );
   }
 

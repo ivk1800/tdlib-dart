@@ -21,7 +21,7 @@ class MessageBotWriteAccessAllowed extends MessageContent {
     }
 
     return MessageBotWriteAccessAllowed(
-      webApp: WebApp.fromJson(json['web_app']),
+      webApp: WebApp.fromJson(json['web_app'] as Map<String, dynamic>?),
     );
   }
 

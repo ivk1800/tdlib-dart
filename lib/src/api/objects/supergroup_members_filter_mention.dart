@@ -25,8 +25,8 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
     }
 
     return SupergroupMembersFilterMention(
-      query: json['query'],
-      messageThreadId: json['message_thread_id'],
+      query: json['query'] as String,
+      messageThreadId: json['message_thread_id'] as int,
     );
   }
 

@@ -20,9 +20,10 @@ class UpdateChatThemes extends Update {
     }
 
     return UpdateChatThemes(
-      chatThemes: List<ChatTheme>.from((json['chat_themes'] ?? [])
-          .map((item) => ChatTheme.fromJson(item))
-          .toList()),
+      chatThemes: List<ChatTheme>.from(
+          ((json['chat_themes'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatTheme.fromJson(item))
+              .toList()),
     );
   }
 

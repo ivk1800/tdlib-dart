@@ -57,16 +57,23 @@ class EmojiReaction extends TdObject {
     }
 
     return EmojiReaction(
-      emoji: json['emoji'],
-      title: json['title'],
-      isActive: json['is_active'],
-      staticIcon: Sticker.fromJson(json['static_icon'])!,
-      appearAnimation: Sticker.fromJson(json['appear_animation'])!,
-      selectAnimation: Sticker.fromJson(json['select_animation'])!,
-      activateAnimation: Sticker.fromJson(json['activate_animation'])!,
-      effectAnimation: Sticker.fromJson(json['effect_animation'])!,
-      aroundAnimation: Sticker.fromJson(json['around_animation']),
-      centerAnimation: Sticker.fromJson(json['center_animation']),
+      emoji: json['emoji'] as String,
+      title: json['title'] as String,
+      isActive: json['is_active'] as bool,
+      staticIcon:
+          Sticker.fromJson(json['static_icon'] as Map<String, dynamic>?)!,
+      appearAnimation:
+          Sticker.fromJson(json['appear_animation'] as Map<String, dynamic>?)!,
+      selectAnimation:
+          Sticker.fromJson(json['select_animation'] as Map<String, dynamic>?)!,
+      activateAnimation: Sticker.fromJson(
+          json['activate_animation'] as Map<String, dynamic>?)!,
+      effectAnimation:
+          Sticker.fromJson(json['effect_animation'] as Map<String, dynamic>?)!,
+      aroundAnimation:
+          Sticker.fromJson(json['around_animation'] as Map<String, dynamic>?),
+      centerAnimation:
+          Sticker.fromJson(json['center_animation'] as Map<String, dynamic>?),
     );
   }
 

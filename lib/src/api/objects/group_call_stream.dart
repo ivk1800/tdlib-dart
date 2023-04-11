@@ -30,9 +30,9 @@ class GroupCallStream extends TdObject {
     }
 
     return GroupCallStream(
-      channelId: json['channel_id'],
-      scale: json['scale'],
-      timeOffset: json['time_offset'],
+      channelId: json['channel_id'] as int,
+      scale: json['scale'] as int,
+      timeOffset: json['time_offset'] as int,
     );
   }
 

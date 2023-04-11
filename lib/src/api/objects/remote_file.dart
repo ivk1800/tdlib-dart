@@ -50,11 +50,11 @@ class RemoteFile extends TdObject {
     }
 
     return RemoteFile(
-      id: json['id'],
-      uniqueId: json['unique_id'],
-      isUploadingActive: json['is_uploading_active'],
-      isUploadingCompleted: json['is_uploading_completed'],
-      uploadedSize: json['uploaded_size'],
+      id: json['id'] as String,
+      uniqueId: json['unique_id'] as String,
+      isUploadingActive: json['is_uploading_active'] as bool,
+      isUploadingCompleted: json['is_uploading_completed'] as bool,
+      uploadedSize: json['uploaded_size'] as int,
     );
   }
 

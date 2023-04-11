@@ -70,24 +70,29 @@ class PaymentForm extends TdObject {
 
     return PaymentForm(
       id: int.tryParse(json['id']) ?? 0,
-      invoice: Invoice.fromJson(json['invoice'])!,
-      sellerBotUserId: json['seller_bot_user_id'],
-      paymentProviderUserId: json['payment_provider_user_id'],
-      paymentProvider: PaymentProvider.fromJson(json['payment_provider'])!,
+      invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
+      sellerBotUserId: json['seller_bot_user_id'] as int,
+      paymentProviderUserId: json['payment_provider_user_id'] as int,
+      paymentProvider: PaymentProvider.fromJson(
+          json['payment_provider'] as Map<String, dynamic>?)!,
       additionalPaymentOptions: List<PaymentOption>.from(
-          (json['additional_payment_options'] ?? [])
+          ((json['additional_payment_options'] as List<dynamic>?) ??
+                  <dynamic>[])
               .map((item) => PaymentOption.fromJson(item))
               .toList()),
-      savedOrderInfo: OrderInfo.fromJson(json['saved_order_info']),
+      savedOrderInfo:
+          OrderInfo.fromJson(json['saved_order_info'] as Map<String, dynamic>?),
       savedCredentials: List<SavedCredentials>.from(
-          (json['saved_credentials'] ?? [])
+          ((json['saved_credentials'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => SavedCredentials.fromJson(item))
               .toList()),
-      canSaveCredentials: json['can_save_credentials'],
-      needPassword: json['need_password'],
-      productTitle: json['product_title'],
-      productDescription: FormattedText.fromJson(json['product_description'])!,
-      productPhoto: Photo.fromJson(json['product_photo']),
+      canSaveCredentials: json['can_save_credentials'] as bool,
+      needPassword: json['need_password'] as bool,
+      productTitle: json['product_title'] as String,
+      productDescription: FormattedText.fromJson(
+          json['product_description'] as Map<String, dynamic>?)!,
+      productPhoto:
+          Photo.fromJson(json['product_photo'] as Map<String, dynamic>?),
     );
   }
 

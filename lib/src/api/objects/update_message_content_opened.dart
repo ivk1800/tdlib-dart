@@ -25,8 +25,8 @@ class UpdateMessageContentOpened extends Update {
     }
 
     return UpdateMessageContentOpened(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
     );
   }
 

@@ -26,8 +26,9 @@ class UpdateFileRemovedFromDownloads extends Update {
     }
 
     return UpdateFileRemovedFromDownloads(
-      fileId: json['file_id'],
-      counts: DownloadedFileCounts.fromJson(json['counts'])!,
+      fileId: json['file_id'] as int,
+      counts: DownloadedFileCounts.fromJson(
+          json['counts'] as Map<String, dynamic>?)!,
     );
   }
 

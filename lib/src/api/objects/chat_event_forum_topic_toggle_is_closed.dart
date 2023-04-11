@@ -21,7 +21,8 @@ class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
     }
 
     return ChatEventForumTopicToggleIsClosed(
-      topicInfo: ForumTopicInfo.fromJson(json['topic_info'])!,
+      topicInfo:
+          ForumTopicInfo.fromJson(json['topic_info'] as Map<String, dynamic>?)!,
     );
   }
 

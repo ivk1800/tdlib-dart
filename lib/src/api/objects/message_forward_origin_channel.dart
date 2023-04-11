@@ -29,9 +29,9 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginChannel(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      authorSignature: json['author_signature'],
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      authorSignature: json['author_signature'] as String,
     );
   }
 

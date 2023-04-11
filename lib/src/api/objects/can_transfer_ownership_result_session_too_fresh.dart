@@ -23,7 +23,7 @@ class CanTransferOwnershipResultSessionTooFresh
     }
 
     return CanTransferOwnershipResultSessionTooFresh(
-      retryAfter: json['retry_after'],
+      retryAfter: json['retry_after'] as int,
     );
   }
 

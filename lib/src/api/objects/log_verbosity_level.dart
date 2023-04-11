@@ -20,7 +20,7 @@ class LogVerbosityLevel extends TdObject {
     }
 
     return LogVerbosityLevel(
-      verbosityLevel: json['verbosity_level'],
+      verbosityLevel: json['verbosity_level'] as int,
     );
   }
 

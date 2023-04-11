@@ -42,11 +42,11 @@ class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
     }
 
     return KeyboardButtonTypeRequestUser(
-      id: json['id'],
-      restrictUserIsBot: json['restrict_user_is_bot'],
-      userIsBot: json['user_is_bot'],
-      restrictUserIsPremium: json['restrict_user_is_premium'],
-      userIsPremium: json['user_is_premium'],
+      id: json['id'] as int,
+      restrictUserIsBot: json['restrict_user_is_bot'] as bool,
+      userIsBot: json['user_is_bot'] as bool,
+      restrictUserIsPremium: json['restrict_user_is_premium'] as bool,
+      userIsPremium: json['user_is_premium'] as bool,
     );
   }
 

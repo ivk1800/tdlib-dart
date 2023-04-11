@@ -48,14 +48,14 @@ class PasswordState extends TdObject {
     }
 
     return PasswordState(
-      hasPassword: json['has_password'],
-      passwordHint: json['password_hint'],
-      hasRecoveryEmailAddress: json['has_recovery_email_address'],
-      hasPassportData: json['has_passport_data'],
+      hasPassword: json['has_password'] as bool,
+      passwordHint: json['password_hint'] as String,
+      hasRecoveryEmailAddress: json['has_recovery_email_address'] as bool,
+      hasPassportData: json['has_passport_data'] as bool,
       recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
-          json['recovery_email_address_code_info']),
-      loginEmailAddressPattern: json['login_email_address_pattern'],
-      pendingResetDate: json['pending_reset_date'],
+          json['recovery_email_address_code_info'] as Map<String, dynamic>?),
+      loginEmailAddressPattern: json['login_email_address_pattern'] as String,
+      pendingResetDate: json['pending_reset_date'] as int,
     );
   }
 

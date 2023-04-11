@@ -25,8 +25,8 @@ class PageBlockCaption extends TdObject {
     }
 
     return PageBlockCaption(
-      text: RichText.fromJson(json['text'])!,
-      credit: RichText.fromJson(json['credit'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      credit: RichText.fromJson(json['credit'] as Map<String, dynamic>?)!,
     );
   }
 

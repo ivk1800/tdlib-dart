@@ -24,8 +24,8 @@ class KeyboardButton extends TdObject {
     }
 
     return KeyboardButton(
-      text: json['text'],
-      type: KeyboardButtonType.fromJson(json['type'])!,
+      text: json['text'] as String,
+      type: KeyboardButtonType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -32,11 +32,11 @@ class StorageStatisticsByChat extends TdObject {
     }
 
     return StorageStatisticsByChat(
-      chatId: json['chat_id'],
-      size: json['size'],
-      count: json['count'],
+      chatId: json['chat_id'] as int,
+      size: json['size'] as int,
+      count: json['count'] as int,
       byFileType: List<StorageStatisticsByFileType>.from(
-          (json['by_file_type'] ?? [])
+          ((json['by_file_type'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => StorageStatisticsByFileType.fromJson(item))
               .toList()),
     );

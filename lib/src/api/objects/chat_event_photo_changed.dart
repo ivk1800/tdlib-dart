@@ -24,8 +24,8 @@ class ChatEventPhotoChanged extends ChatEventAction {
     }
 
     return ChatEventPhotoChanged(
-      oldPhoto: ChatPhoto.fromJson(json['old_photo']),
-      newPhoto: ChatPhoto.fromJson(json['new_photo']),
+      oldPhoto: ChatPhoto.fromJson(json['old_photo'] as Map<String, dynamic>?),
+      newPhoto: ChatPhoto.fromJson(json['new_photo'] as Map<String, dynamic>?),
     );
   }
 

@@ -77,24 +77,29 @@ class StickerSet extends TdObject {
 
     return StickerSet(
       id: int.tryParse(json['id']) ?? 0,
-      title: json['title'],
-      name: json['name'],
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      title: json['title'] as String,
+      name: json['name'] as String,
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       thumbnailOutline: List<ClosedVectorPath>.from(
-          (json['thumbnail_outline'] ?? [])
+          ((json['thumbnail_outline'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ClosedVectorPath.fromJson(item))
               .toList()),
-      isInstalled: json['is_installed'],
-      isArchived: json['is_archived'],
-      isOfficial: json['is_official'],
-      stickerFormat: StickerFormat.fromJson(json['sticker_format'])!,
-      stickerType: StickerType.fromJson(json['sticker_type'])!,
-      isViewed: json['is_viewed'],
-      stickers: List<Sticker>.from((json['stickers'] ?? [])
-          .map((item) => Sticker.fromJson(item))
-          .toList()),
+      isInstalled: json['is_installed'] as bool,
+      isArchived: json['is_archived'] as bool,
+      isOfficial: json['is_official'] as bool,
+      stickerFormat: StickerFormat.fromJson(
+          json['sticker_format'] as Map<String, dynamic>?)!,
+      stickerType:
+          StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      isViewed: json['is_viewed'] as bool,
+      stickers: List<Sticker>.from(
+          ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Sticker.fromJson(item))
+              .toList()),
       emojis: List<Emojis>.from(
-          (json['emojis'] ?? []).map((item) => Emojis.fromJson(item)).toList()),
+          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Emojis.fromJson(item))
+              .toList()),
     );
   }
 

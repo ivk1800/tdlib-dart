@@ -20,7 +20,8 @@ class UpdateGroupCall extends Update {
     }
 
     return UpdateGroupCall(
-      groupCall: GroupCall.fromJson(json['group_call'])!,
+      groupCall:
+          GroupCall.fromJson(json['group_call'] as Map<String, dynamic>?)!,
     );
   }
 

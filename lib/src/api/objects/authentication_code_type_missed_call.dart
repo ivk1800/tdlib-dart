@@ -28,8 +28,8 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
     }
 
     return AuthenticationCodeTypeMissedCall(
-      phoneNumberPrefix: json['phone_number_prefix'],
-      length: json['length'],
+      phoneNumberPrefix: json['phone_number_prefix'] as String,
+      length: json['length'] as int,
     );
   }
 

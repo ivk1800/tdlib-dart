@@ -20,7 +20,7 @@ class UpdateCall extends Update {
     }
 
     return UpdateCall(
-      call: Call.fromJson(json['call'])!,
+      call: Call.fromJson(json['call'] as Map<String, dynamic>?)!,
     );
   }
 

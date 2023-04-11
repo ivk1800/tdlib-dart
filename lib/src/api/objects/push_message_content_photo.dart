@@ -33,10 +33,10 @@ class PushMessageContentPhoto extends PushMessageContent {
     }
 
     return PushMessageContentPhoto(
-      photo: Photo.fromJson(json['photo']),
-      caption: json['caption'],
-      isSecret: json['is_secret'],
-      isPinned: json['is_pinned'],
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
+      caption: json['caption'] as String,
+      isSecret: json['is_secret'] as bool,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

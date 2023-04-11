@@ -20,7 +20,8 @@ class InputChatPhotoSticker extends InputChatPhoto {
     }
 
     return InputChatPhotoSticker(
-      sticker: ChatPhotoSticker.fromJson(json['sticker'])!,
+      sticker:
+          ChatPhotoSticker.fromJson(json['sticker'] as Map<String, dynamic>?)!,
     );
   }
 

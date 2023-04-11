@@ -27,8 +27,8 @@ class TdError extends TdObject {
     }
 
     return TdError(
-      code: json['code'],
-      message: json['message'],
+      code: json['code'] as int,
+      message: json['message'] as String,
     );
   }
 

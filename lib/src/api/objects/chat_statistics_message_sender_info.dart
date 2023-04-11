@@ -29,9 +29,9 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
     }
 
     return ChatStatisticsMessageSenderInfo(
-      userId: json['user_id'],
-      sentMessageCount: json['sent_message_count'],
-      averageCharacterCount: json['average_character_count'],
+      userId: json['user_id'] as int,
+      sentMessageCount: json['sent_message_count'] as int,
+      averageCharacterCount: json['average_character_count'] as int,
     );
   }
 

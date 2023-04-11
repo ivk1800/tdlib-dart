@@ -99,23 +99,28 @@ class AttachmentMenuBot extends TdObject {
     }
 
     return AttachmentMenuBot(
-      botUserId: json['bot_user_id'],
-      supportsSelfChat: json['supports_self_chat'],
-      supportsUserChats: json['supports_user_chats'],
-      supportsBotChats: json['supports_bot_chats'],
-      supportsGroupChats: json['supports_group_chats'],
-      supportsChannelChats: json['supports_channel_chats'],
-      supportsSettings: json['supports_settings'],
-      requestWriteAccess: json['request_write_access'],
-      name: json['name'],
-      nameColor: AttachmentMenuBotColor.fromJson(json['name_color']),
-      defaultIcon: File.fromJson(json['default_icon']),
-      iosStaticIcon: File.fromJson(json['ios_static_icon']),
-      iosAnimatedIcon: File.fromJson(json['ios_animated_icon']),
-      androidIcon: File.fromJson(json['android_icon']),
-      macosIcon: File.fromJson(json['macos_icon']),
-      iconColor: AttachmentMenuBotColor.fromJson(json['icon_color']),
-      webAppPlaceholder: File.fromJson(json['web_app_placeholder']),
+      botUserId: json['bot_user_id'] as int,
+      supportsSelfChat: json['supports_self_chat'] as bool,
+      supportsUserChats: json['supports_user_chats'] as bool,
+      supportsBotChats: json['supports_bot_chats'] as bool,
+      supportsGroupChats: json['supports_group_chats'] as bool,
+      supportsChannelChats: json['supports_channel_chats'] as bool,
+      supportsSettings: json['supports_settings'] as bool,
+      requestWriteAccess: json['request_write_access'] as bool,
+      name: json['name'] as String,
+      nameColor: AttachmentMenuBotColor.fromJson(
+          json['name_color'] as Map<String, dynamic>?),
+      defaultIcon: File.fromJson(json['default_icon'] as Map<String, dynamic>?),
+      iosStaticIcon:
+          File.fromJson(json['ios_static_icon'] as Map<String, dynamic>?),
+      iosAnimatedIcon:
+          File.fromJson(json['ios_animated_icon'] as Map<String, dynamic>?),
+      androidIcon: File.fromJson(json['android_icon'] as Map<String, dynamic>?),
+      macosIcon: File.fromJson(json['macos_icon'] as Map<String, dynamic>?),
+      iconColor: AttachmentMenuBotColor.fromJson(
+          json['icon_color'] as Map<String, dynamic>?),
+      webAppPlaceholder:
+          File.fromJson(json['web_app_placeholder'] as Map<String, dynamic>?),
     );
   }
 

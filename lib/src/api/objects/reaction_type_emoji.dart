@@ -20,7 +20,7 @@ class ReactionTypeEmoji extends ReactionType {
     }
 
     return ReactionTypeEmoji(
-      emoji: json['emoji'],
+      emoji: json['emoji'] as String,
     );
   }
 

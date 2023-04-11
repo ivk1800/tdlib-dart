@@ -24,10 +24,11 @@ class ChatJoinRequests extends TdObject {
     }
 
     return ChatJoinRequests(
-      totalCount: json['total_count'],
-      requests: List<ChatJoinRequest>.from((json['requests'] ?? [])
-          .map((item) => ChatJoinRequest.fromJson(item))
-          .toList()),
+      totalCount: json['total_count'] as int,
+      requests: List<ChatJoinRequest>.from(
+          ((json['requests'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatJoinRequest.fromJson(item))
+              .toList()),
     );
   }
 

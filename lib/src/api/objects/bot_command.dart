@@ -24,8 +24,8 @@ class BotCommand extends TdObject {
     }
 
     return BotCommand(
-      command: json['command'],
-      description: json['description'],
+      command: json['command'] as String,
+      description: json['description'] as String,
     );
   }
 

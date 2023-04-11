@@ -46,12 +46,13 @@ class PremiumPaymentOption extends TdObject {
     }
 
     return PremiumPaymentOption(
-      currency: json['currency'],
-      amount: json['amount'],
-      discountPercentage: json['discount_percentage'],
-      monthCount: json['month_count'],
-      storeProductId: json['store_product_id'],
-      paymentLink: InternalLinkType.fromJson(json['payment_link']),
+      currency: json['currency'] as String,
+      amount: json['amount'] as int,
+      discountPercentage: json['discount_percentage'] as int,
+      monthCount: json['month_count'] as int,
+      storeProductId: json['store_product_id'] as String,
+      paymentLink: InternalLinkType.fromJson(
+          json['payment_link'] as Map<String, dynamic>?),
     );
   }
 

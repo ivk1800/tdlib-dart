@@ -39,10 +39,11 @@ class UpdateNewInlineCallbackQuery extends Update {
 
     return UpdateNewInlineCallbackQuery(
       id: int.tryParse(json['id']) ?? 0,
-      senderUserId: json['sender_user_id'],
-      inlineMessageId: json['inline_message_id'],
+      senderUserId: json['sender_user_id'] as int,
+      inlineMessageId: json['inline_message_id'] as String,
       chatInstance: int.tryParse(json['chat_instance']) ?? 0,
-      payload: CallbackQueryPayload.fromJson(json['payload'])!,
+      payload: CallbackQueryPayload.fromJson(
+          json['payload'] as Map<String, dynamic>?)!,
     );
   }
 

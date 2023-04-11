@@ -25,8 +25,8 @@ class UpdateChatUnreadMentionCount extends Update {
     }
 
     return UpdateChatUnreadMentionCount(
-      chatId: json['chat_id'],
-      unreadMentionCount: json['unread_mention_count'],
+      chatId: json['chat_id'] as int,
+      unreadMentionCount: json['unread_mention_count'] as int,
     );
   }
 

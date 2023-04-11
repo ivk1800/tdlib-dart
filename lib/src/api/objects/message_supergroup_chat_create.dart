@@ -20,7 +20,7 @@ class MessageSupergroupChatCreate extends MessageContent {
     }
 
     return MessageSupergroupChatCreate(
-      title: json['title'],
+      title: json['title'] as String,
     );
   }
 

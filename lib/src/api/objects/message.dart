@@ -203,50 +203,55 @@ class Message extends TdObject {
     }
 
     return Message(
-      id: json['id'],
-      senderId: MessageSender.fromJson(json['sender_id'])!,
-      chatId: json['chat_id'],
-      sendingState: MessageSendingState.fromJson(json['sending_state']),
-      schedulingState:
-          MessageSchedulingState.fromJson(json['scheduling_state']),
-      isOutgoing: json['is_outgoing'],
-      isPinned: json['is_pinned'],
-      canBeEdited: json['can_be_edited'],
-      canBeForwarded: json['can_be_forwarded'],
-      canBeSaved: json['can_be_saved'],
-      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
-      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
-      canGetAddedReactions: json['can_get_added_reactions'],
-      canGetStatistics: json['can_get_statistics'],
-      canGetMessageThread: json['can_get_message_thread'],
-      canGetViewers: json['can_get_viewers'],
-      canGetMediaTimestampLinks: json['can_get_media_timestamp_links'],
-      canReportReactions: json['can_report_reactions'],
-      hasTimestampedMedia: json['has_timestamped_media'],
-      isChannelPost: json['is_channel_post'],
-      isTopicMessage: json['is_topic_message'],
-      containsUnreadMention: json['contains_unread_mention'],
-      date: json['date'],
-      editDate: json['edit_date'],
-      forwardInfo: MessageForwardInfo.fromJson(json['forward_info']),
-      interactionInfo:
-          MessageInteractionInfo.fromJson(json['interaction_info']),
+      id: json['id'] as int,
+      senderId:
+          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      chatId: json['chat_id'] as int,
+      sendingState: MessageSendingState.fromJson(
+          json['sending_state'] as Map<String, dynamic>?),
+      schedulingState: MessageSchedulingState.fromJson(
+          json['scheduling_state'] as Map<String, dynamic>?),
+      isOutgoing: json['is_outgoing'] as bool,
+      isPinned: json['is_pinned'] as bool,
+      canBeEdited: json['can_be_edited'] as bool,
+      canBeForwarded: json['can_be_forwarded'] as bool,
+      canBeSaved: json['can_be_saved'] as bool,
+      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
+      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
+      canGetAddedReactions: json['can_get_added_reactions'] as bool,
+      canGetStatistics: json['can_get_statistics'] as bool,
+      canGetMessageThread: json['can_get_message_thread'] as bool,
+      canGetViewers: json['can_get_viewers'] as bool,
+      canGetMediaTimestampLinks: json['can_get_media_timestamp_links'] as bool,
+      canReportReactions: json['can_report_reactions'] as bool,
+      hasTimestampedMedia: json['has_timestamped_media'] as bool,
+      isChannelPost: json['is_channel_post'] as bool,
+      isTopicMessage: json['is_topic_message'] as bool,
+      containsUnreadMention: json['contains_unread_mention'] as bool,
+      date: json['date'] as int,
+      editDate: json['edit_date'] as int,
+      forwardInfo: MessageForwardInfo.fromJson(
+          json['forward_info'] as Map<String, dynamic>?),
+      interactionInfo: MessageInteractionInfo.fromJson(
+          json['interaction_info'] as Map<String, dynamic>?),
       unreadReactions: List<UnreadReaction>.from(
-          (json['unread_reactions'] ?? [])
+          ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => UnreadReaction.fromJson(item))
               .toList()),
-      replyInChatId: json['reply_in_chat_id'],
-      replyToMessageId: json['reply_to_message_id'],
-      messageThreadId: json['message_thread_id'],
-      selfDestructTime: json['self_destruct_time'],
-      selfDestructIn: json['self_destruct_in'],
-      autoDeleteIn: json['auto_delete_in'],
-      viaBotUserId: json['via_bot_user_id'],
-      authorSignature: json['author_signature'],
+      replyInChatId: json['reply_in_chat_id'] as int,
+      replyToMessageId: json['reply_to_message_id'] as int,
+      messageThreadId: json['message_thread_id'] as int,
+      selfDestructTime: json['self_destruct_time'] as int,
+      selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
+      autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
+      viaBotUserId: json['via_bot_user_id'] as int,
+      authorSignature: json['author_signature'] as String,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
-      restrictionReason: json['restriction_reason'],
-      content: MessageContent.fromJson(json['content'])!,
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      restrictionReason: json['restriction_reason'] as String,
+      content:
+          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
     );
   }
 

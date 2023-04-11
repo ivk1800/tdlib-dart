@@ -22,7 +22,7 @@ class MessageSendingStatePending extends MessageSendingState {
     }
 
     return MessageSendingStatePending(
-      sendingId: json['sending_id'],
+      sendingId: json['sending_id'] as int,
     );
   }
 

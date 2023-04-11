@@ -21,7 +21,7 @@ class InternalLinkTypeUserToken extends InternalLinkType {
     }
 
     return InternalLinkTypeUserToken(
-      token: json['token'],
+      token: json['token'] as String,
     );
   }
 

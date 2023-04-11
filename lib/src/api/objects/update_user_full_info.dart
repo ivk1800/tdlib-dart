@@ -24,8 +24,9 @@ class UpdateUserFullInfo extends Update {
     }
 
     return UpdateUserFullInfo(
-      userId: json['user_id'],
-      userFullInfo: UserFullInfo.fromJson(json['user_full_info'])!,
+      userId: json['user_id'] as int,
+      userFullInfo: UserFullInfo.fromJson(
+          json['user_full_info'] as Map<String, dynamic>?)!,
     );
   }
 

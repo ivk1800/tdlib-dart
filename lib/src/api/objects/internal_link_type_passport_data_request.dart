@@ -45,11 +45,11 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
     }
 
     return InternalLinkTypePassportDataRequest(
-      botUserId: json['bot_user_id'],
-      scope: json['scope'],
-      publicKey: json['public_key'],
-      nonce: json['nonce'],
-      callbackUrl: json['callback_url'],
+      botUserId: json['bot_user_id'] as int,
+      scope: json['scope'] as String,
+      publicKey: json['public_key'] as String,
+      nonce: json['nonce'] as String,
+      callbackUrl: json['callback_url'] as String,
     );
   }
 

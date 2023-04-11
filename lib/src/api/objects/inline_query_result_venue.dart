@@ -28,9 +28,9 @@ class InlineQueryResultVenue extends InlineQueryResult {
     }
 
     return InlineQueryResultVenue(
-      id: json['id'],
-      venue: Venue.fromJson(json['venue'])!,
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      id: json['id'] as String,
+      venue: Venue.fromJson(json['venue'] as Map<String, dynamic>?)!,
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
     );
   }
 

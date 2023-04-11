@@ -25,8 +25,8 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
     }
 
     return CallbackQueryPayloadDataWithPassword(
-      password: json['password'],
-      data: json['data'],
+      password: json['password'] as String,
+      data: json['data'] as String,
     );
   }
 

@@ -24,10 +24,11 @@ class PageBlockRelatedArticles extends PageBlock {
     }
 
     return PageBlockRelatedArticles(
-      header: RichText.fromJson(json['header'])!,
-      articles: List<PageBlockRelatedArticle>.from((json['articles'] ?? [])
-          .map((item) => PageBlockRelatedArticle.fromJson(item))
-          .toList()),
+      header: RichText.fromJson(json['header'] as Map<String, dynamic>?)!,
+      articles: List<PageBlockRelatedArticle>.from(
+          ((json['articles'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlockRelatedArticle.fromJson(item))
+              .toList()),
     );
   }
 

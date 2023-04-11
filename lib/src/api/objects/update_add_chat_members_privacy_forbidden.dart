@@ -27,9 +27,11 @@ class UpdateAddChatMembersPrivacyForbidden extends Update {
     }
 
     return UpdateAddChatMembersPrivacyForbidden(
-      chatId: json['chat_id'],
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      chatId: json['chat_id'] as int,
+      userIds: List<int>.from(
+          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

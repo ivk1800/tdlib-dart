@@ -78,18 +78,18 @@ class ChatAdministratorRights extends TdObject {
     }
 
     return ChatAdministratorRights(
-      canManageChat: json['can_manage_chat'],
-      canChangeInfo: json['can_change_info'],
-      canPostMessages: json['can_post_messages'],
-      canEditMessages: json['can_edit_messages'],
-      canDeleteMessages: json['can_delete_messages'],
-      canInviteUsers: json['can_invite_users'],
-      canRestrictMembers: json['can_restrict_members'],
-      canPinMessages: json['can_pin_messages'],
-      canManageTopics: json['can_manage_topics'],
-      canPromoteMembers: json['can_promote_members'],
-      canManageVideoChats: json['can_manage_video_chats'],
-      isAnonymous: json['is_anonymous'],
+      canManageChat: json['can_manage_chat'] as bool,
+      canChangeInfo: json['can_change_info'] as bool,
+      canPostMessages: json['can_post_messages'] as bool,
+      canEditMessages: json['can_edit_messages'] as bool,
+      canDeleteMessages: json['can_delete_messages'] as bool,
+      canInviteUsers: json['can_invite_users'] as bool,
+      canRestrictMembers: json['can_restrict_members'] as bool,
+      canPinMessages: json['can_pin_messages'] as bool,
+      canManageTopics: json['can_manage_topics'] as bool,
+      canPromoteMembers: json['can_promote_members'] as bool,
+      canManageVideoChats: json['can_manage_video_chats'] as bool,
+      isAnonymous: json['is_anonymous'] as bool,
     );
   }
 

@@ -32,10 +32,12 @@ class AuthenticationCodeInfo extends TdObject {
     }
 
     return AuthenticationCodeInfo(
-      phoneNumber: json['phone_number'],
-      type: AuthenticationCodeType.fromJson(json['type'])!,
-      nextType: AuthenticationCodeType.fromJson(json['next_type']),
-      timeout: json['timeout'],
+      phoneNumber: json['phone_number'] as String,
+      type: AuthenticationCodeType.fromJson(
+          json['type'] as Map<String, dynamic>?)!,
+      nextType: AuthenticationCodeType.fromJson(
+          json['next_type'] as Map<String, dynamic>?),
+      timeout: json['timeout'] as int,
     );
   }
 

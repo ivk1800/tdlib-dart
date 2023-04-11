@@ -27,10 +27,14 @@ class ImportedContacts extends TdObject {
     }
 
     return ImportedContacts(
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      userIds: List<int>.from(
+          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       importerCount: List<int>.from(
-          (json['importer_count'] ?? []).map((item) => item).toList()),
+          ((json['importer_count'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

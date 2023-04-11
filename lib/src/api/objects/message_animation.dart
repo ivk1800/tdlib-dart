@@ -34,10 +34,12 @@ class MessageAnimation extends MessageContent {
     }
 
     return MessageAnimation(
-      animation: Animation.fromJson(json['animation'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
-      hasSpoiler: json['has_spoiler'],
-      isSecret: json['is_secret'],
+      animation:
+          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      hasSpoiler: json['has_spoiler'] as bool,
+      isSecret: json['is_secret'] as bool,
     );
   }
 

@@ -55,15 +55,18 @@ class InputMessagePhoto extends InputMessageContent {
     }
 
     return InputMessagePhoto(
-      photo: InputFile.fromJson(json['photo'])!,
-      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      photo: InputFile.fromJson(json['photo'] as Map<String, dynamic>?)!,
+      thumbnail:
+          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       addedStickerFileIds: List<int>.from(
-          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-      width: json['width'],
-      height: json['height'],
-      caption: FormattedText.fromJson(json['caption']),
-      selfDestructTime: json['self_destruct_time'],
-      hasSpoiler: json['has_spoiler'],
+          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      width: json['width'] as int,
+      height: json['height'] as int,
+      caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
+      selfDestructTime: json['self_destruct_time'] as int,
+      hasSpoiler: json['has_spoiler'] as bool,
     );
   }
 

@@ -24,8 +24,8 @@ class BotCommandScopeChatMember extends BotCommandScope {
     }
 
     return BotCommandScopeChatMember(
-      chatId: json['chat_id'],
-      userId: json['user_id'],
+      chatId: json['chat_id'] as int,
+      userId: json['user_id'] as int,
     );
   }
 

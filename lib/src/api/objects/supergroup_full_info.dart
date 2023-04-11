@@ -140,33 +140,39 @@ class SupergroupFullInfo extends TdObject {
     }
 
     return SupergroupFullInfo(
-      photo: ChatPhoto.fromJson(json['photo']),
-      description: json['description'],
-      memberCount: json['member_count'],
-      administratorCount: json['administrator_count'],
-      restrictedCount: json['restricted_count'],
-      bannedCount: json['banned_count'],
-      linkedChatId: json['linked_chat_id'],
-      slowModeDelay: json['slow_mode_delay'],
-      slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
-      canGetMembers: json['can_get_members'],
-      hasHiddenMembers: json['has_hidden_members'],
-      canHideMembers: json['can_hide_members'],
-      canSetUsername: json['can_set_username'],
-      canSetStickerSet: json['can_set_sticker_set'],
-      canSetLocation: json['can_set_location'],
-      canGetStatistics: json['can_get_statistics'],
-      canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
-      isAllHistoryAvailable: json['is_all_history_available'],
-      hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+      photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?),
+      description: json['description'] as String,
+      memberCount: json['member_count'] as int,
+      administratorCount: json['administrator_count'] as int,
+      restrictedCount: json['restricted_count'] as int,
+      bannedCount: json['banned_count'] as int,
+      linkedChatId: json['linked_chat_id'] as int,
+      slowModeDelay: json['slow_mode_delay'] as int,
+      slowModeDelayExpiresIn:
+          (json['slow_mode_delay_expires_in'] as num).toDouble(),
+      canGetMembers: json['can_get_members'] as bool,
+      hasHiddenMembers: json['has_hidden_members'] as bool,
+      canHideMembers: json['can_hide_members'] as bool,
+      canSetUsername: json['can_set_username'] as bool,
+      canSetStickerSet: json['can_set_sticker_set'] as bool,
+      canSetLocation: json['can_set_location'] as bool,
+      canGetStatistics: json['can_get_statistics'] as bool,
+      canToggleAggressiveAntiSpam:
+          json['can_toggle_aggressive_anti_spam'] as bool,
+      isAllHistoryAvailable: json['is_all_history_available'] as bool,
+      hasAggressiveAntiSpamEnabled:
+          json['has_aggressive_anti_spam_enabled'] as bool,
       stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
-      location: ChatLocation.fromJson(json['location']),
-      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-      botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
-          .map((item) => BotCommands.fromJson(item))
-          .toList()),
-      upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'],
-      upgradedFromMaxMessageId: json['upgraded_from_max_message_id'],
+      location:
+          ChatLocation.fromJson(json['location'] as Map<String, dynamic>?),
+      inviteLink:
+          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      botCommands: List<BotCommands>.from(
+          ((json['bot_commands'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => BotCommands.fromJson(item))
+              .toList()),
+      upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] as int,
+      upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] as int,
     );
   }
 

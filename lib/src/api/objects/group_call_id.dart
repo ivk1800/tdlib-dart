@@ -20,7 +20,7 @@ class GroupCallId extends TdObject {
     }
 
     return GroupCallId(
-      id: json['id'],
+      id: json['id'] as int,
     );
   }
 

@@ -40,12 +40,12 @@ class InlineQueryResultArticle extends InlineQueryResult {
     }
 
     return InlineQueryResultArticle(
-      id: json['id'],
-      url: json['url'],
-      hideUrl: json['hide_url'],
-      title: json['title'],
-      description: json['description'],
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
+      id: json['id'] as String,
+      url: json['url'] as String,
+      hideUrl: json['hide_url'] as bool,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
     );
   }
 

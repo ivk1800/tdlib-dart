@@ -24,10 +24,12 @@ class PageBlockSlideshow extends PageBlock {
     }
 
     return PageBlockSlideshow(
-      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-          .map((item) => PageBlock.fromJson(item))
-          .toList()),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
+      pageBlocks: List<PageBlock>.from(
+          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlock.fromJson(item))
+              .toList()),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

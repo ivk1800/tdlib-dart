@@ -20,8 +20,8 @@ class UpdateAuthorizationState extends Update {
     }
 
     return UpdateAuthorizationState(
-      authorizationState:
-          AuthorizationState.fromJson(json['authorization_state'])!,
+      authorizationState: AuthorizationState.fromJson(
+          json['authorization_state'] as Map<String, dynamic>?)!,
     );
   }
 

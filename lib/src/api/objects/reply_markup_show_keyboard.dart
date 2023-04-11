@@ -45,17 +45,18 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupShowKeyboard(
-      rows: List<List<KeyboardButton>>.from((json['rows'] ?? [])
+      rows: List<List<KeyboardButton>>.from(((json['rows'] as List<dynamic>?) ??
+              <dynamic>[])
           .map((item) => List<KeyboardButton>.from(
-              (json['List<KeyboardButton>'] ?? [])
+              ((json['List<KeyboardButton>'] as List<dynamic>?) ?? <dynamic>[])
                   .map((item) => KeyboardButton.fromJson(item))
                   .toList()))
           .toList()),
-      isPersistent: json['is_persistent'],
-      resizeKeyboard: json['resize_keyboard'],
-      oneTime: json['one_time'],
-      isPersonal: json['is_personal'],
-      inputFieldPlaceholder: json['input_field_placeholder'],
+      isPersistent: json['is_persistent'] as bool,
+      resizeKeyboard: json['resize_keyboard'] as bool,
+      oneTime: json['one_time'] as bool,
+      isPersonal: json['is_personal'] as bool,
+      inputFieldPlaceholder: json['input_field_placeholder'] as String,
     );
   }
 

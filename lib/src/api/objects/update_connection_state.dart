@@ -21,7 +21,7 @@ class UpdateConnectionState extends Update {
     }
 
     return UpdateConnectionState(
-      state: ConnectionState.fromJson(json['state'])!,
+      state: ConnectionState.fromJson(json['state'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -33,10 +33,14 @@ class Usernames extends TdObject {
 
     return Usernames(
       activeUsernames: List<String>.from(
-          (json['active_usernames'] ?? []).map((item) => item).toList()),
+          ((json['active_usernames'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       disabledUsernames: List<String>.from(
-          (json['disabled_usernames'] ?? []).map((item) => item).toList()),
-      editableUsername: json['editable_username'],
+          ((json['disabled_usernames'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      editableUsername: json['editable_username'] as String,
     );
   }
 

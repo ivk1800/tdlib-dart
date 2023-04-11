@@ -34,9 +34,10 @@ class UpdateNewShippingQuery extends Update {
 
     return UpdateNewShippingQuery(
       id: int.tryParse(json['id']) ?? 0,
-      senderUserId: json['sender_user_id'],
-      invoicePayload: json['invoice_payload'],
-      shippingAddress: Address.fromJson(json['shipping_address'])!,
+      senderUserId: json['sender_user_id'] as int,
+      invoicePayload: json['invoice_payload'] as String,
+      shippingAddress:
+          Address.fromJson(json['shipping_address'] as Map<String, dynamic>?)!,
     );
   }
 

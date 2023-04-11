@@ -24,8 +24,10 @@ class ChatEventForumTopicEdited extends ChatEventAction {
     }
 
     return ChatEventForumTopicEdited(
-      oldTopicInfo: ForumTopicInfo.fromJson(json['old_topic_info'])!,
-      newTopicInfo: ForumTopicInfo.fromJson(json['new_topic_info'])!,
+      oldTopicInfo: ForumTopicInfo.fromJson(
+          json['old_topic_info'] as Map<String, dynamic>?)!,
+      newTopicInfo: ForumTopicInfo.fromJson(
+          json['new_topic_info'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -20,7 +20,7 @@ class UserStatusOffline extends UserStatus {
     }
 
     return UserStatusOffline(
-      wasOnline: json['was_online'],
+      wasOnline: json['was_online'] as int,
     );
   }
 

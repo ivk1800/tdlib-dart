@@ -41,12 +41,15 @@ class UpdateChatMember extends Update {
     }
 
     return UpdateChatMember(
-      chatId: json['chat_id'],
-      actorUserId: json['actor_user_id'],
-      date: json['date'],
-      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-      oldChatMember: ChatMember.fromJson(json['old_chat_member'])!,
-      newChatMember: ChatMember.fromJson(json['new_chat_member'])!,
+      chatId: json['chat_id'] as int,
+      actorUserId: json['actor_user_id'] as int,
+      date: json['date'] as int,
+      inviteLink:
+          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      oldChatMember: ChatMember.fromJson(
+          json['old_chat_member'] as Map<String, dynamic>?)!,
+      newChatMember: ChatMember.fromJson(
+          json['new_chat_member'] as Map<String, dynamic>?)!,
     );
   }
 

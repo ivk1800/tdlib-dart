@@ -34,9 +34,10 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
     }
 
     return ChatMemberStatusAdministrator(
-      customTitle: json['custom_title'],
-      canBeEdited: json['can_be_edited'],
-      rights: ChatAdministratorRights.fromJson(json['rights'])!,
+      customTitle: json['custom_title'] as String,
+      canBeEdited: json['can_be_edited'] as bool,
+      rights: ChatAdministratorRights.fromJson(
+          json['rights'] as Map<String, dynamic>?)!,
     );
   }
 

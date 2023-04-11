@@ -38,13 +38,14 @@ class ForumTopics extends TdObject {
     }
 
     return ForumTopics(
-      totalCount: json['total_count'],
-      topics: List<ForumTopic>.from((json['topics'] ?? [])
-          .map((item) => ForumTopic.fromJson(item))
-          .toList()),
-      nextOffsetDate: json['next_offset_date'],
-      nextOffsetMessageId: json['next_offset_message_id'],
-      nextOffsetMessageThreadId: json['next_offset_message_thread_id'],
+      totalCount: json['total_count'] as int,
+      topics: List<ForumTopic>.from(
+          ((json['topics'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ForumTopic.fromJson(item))
+              .toList()),
+      nextOffsetDate: json['next_offset_date'] as int,
+      nextOffsetMessageId: json['next_offset_message_id'] as int,
+      nextOffsetMessageThreadId: json['next_offset_message_thread_id'] as int,
     );
   }
 

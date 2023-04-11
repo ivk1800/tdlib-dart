@@ -47,12 +47,12 @@ class MessageLinkInfo extends TdObject {
     }
 
     return MessageLinkInfo(
-      isPublic: json['is_public'],
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
-      message: Message.fromJson(json['message'])!,
-      mediaTimestamp: json['media_timestamp'],
-      forAlbum: json['for_album'],
+      isPublic: json['is_public'] as bool,
+      chatId: json['chat_id'] as int,
+      messageThreadId: json['message_thread_id'] as int,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
+      mediaTimestamp: json['media_timestamp'] as int,
+      forAlbum: json['for_album'] as bool,
     );
   }
 

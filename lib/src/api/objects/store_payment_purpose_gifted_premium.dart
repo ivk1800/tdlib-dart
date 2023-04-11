@@ -29,9 +29,9 @@ class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
     }
 
     return StorePaymentPurposeGiftedPremium(
-      userId: json['user_id'],
-      currency: json['currency'],
-      amount: json['amount'],
+      userId: json['user_id'] as int,
+      currency: json['currency'] as String,
+      amount: json['amount'] as int,
     );
   }
 

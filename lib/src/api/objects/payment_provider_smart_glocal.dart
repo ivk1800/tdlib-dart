@@ -20,7 +20,7 @@ class PaymentProviderSmartGlocal extends PaymentProvider {
     }
 
     return PaymentProviderSmartGlocal(
-      publicToken: json['public_token'],
+      publicToken: json['public_token'] as String,
     );
   }
 

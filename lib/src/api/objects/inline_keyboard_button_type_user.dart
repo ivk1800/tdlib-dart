@@ -21,7 +21,7 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeUser(
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
     );
   }
 

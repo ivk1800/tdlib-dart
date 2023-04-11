@@ -29,9 +29,9 @@ class PageBlockChatLink extends PageBlock {
     }
 
     return PageBlockChatLink(
-      title: json['title'],
-      photo: ChatPhotoInfo.fromJson(json['photo']),
-      username: json['username'],
+      title: json['title'] as String,
+      photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
+      username: json['username'] as String,
     );
   }
 

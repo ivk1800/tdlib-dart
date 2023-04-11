@@ -29,9 +29,9 @@ class ScopeAutosaveSettings extends TdObject {
     }
 
     return ScopeAutosaveSettings(
-      autosavePhotos: json['autosave_photos'],
-      autosaveVideos: json['autosave_videos'],
-      maxVideoFileSize: json['max_video_file_size'],
+      autosavePhotos: json['autosave_photos'] as bool,
+      autosaveVideos: json['autosave_videos'] as bool,
+      maxVideoFileSize: json['max_video_file_size'] as int,
     );
   }
 

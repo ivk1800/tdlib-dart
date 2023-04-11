@@ -20,7 +20,7 @@ class FileDownloadedPrefixSize extends TdObject {
     }
 
     return FileDownloadedPrefixSize(
-      size: json['size'],
+      size: json['size'] as int,
     );
   }
 

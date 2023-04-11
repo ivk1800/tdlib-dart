@@ -23,7 +23,8 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
     }
 
     return AuthorizationStateWaitRegistration(
-      termsOfService: TermsOfService.fromJson(json['terms_of_service'])!,
+      termsOfService: TermsOfService.fromJson(
+          json['terms_of_service'] as Map<String, dynamic>?)!,
     );
   }
 

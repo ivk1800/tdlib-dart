@@ -33,10 +33,10 @@ class ChatPosition extends TdObject {
     }
 
     return ChatPosition(
-      list: ChatList.fromJson(json['list'])!,
+      list: ChatList.fromJson(json['list'] as Map<String, dynamic>?)!,
       order: int.tryParse(json['order']) ?? 0,
-      isPinned: json['is_pinned'],
-      source: ChatSource.fromJson(json['source']),
+      isPinned: json['is_pinned'] as bool,
+      source: ChatSource.fromJson(json['source'] as Map<String, dynamic>?),
     );
   }
 

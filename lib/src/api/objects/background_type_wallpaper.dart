@@ -26,8 +26,8 @@ class BackgroundTypeWallpaper extends BackgroundType {
     }
 
     return BackgroundTypeWallpaper(
-      isBlurred: json['is_blurred'],
-      isMoving: json['is_moving'],
+      isBlurred: json['is_blurred'] as bool,
+      isMoving: json['is_moving'] as bool,
     );
   }
 

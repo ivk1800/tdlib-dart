@@ -35,10 +35,11 @@ class UpdateFileDownload extends Update {
     }
 
     return UpdateFileDownload(
-      fileId: json['file_id'],
-      completeDate: json['complete_date'],
-      isPaused: json['is_paused'],
-      counts: DownloadedFileCounts.fromJson(json['counts'])!,
+      fileId: json['file_id'] as int,
+      completeDate: json['complete_date'] as int,
+      isPaused: json['is_paused'] as bool,
+      counts: DownloadedFileCounts.fromJson(
+          json['counts'] as Map<String, dynamic>?)!,
     );
   }
 

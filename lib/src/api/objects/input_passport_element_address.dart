@@ -20,7 +20,7 @@ class InputPassportElementAddress extends InputPassportElement {
     }
 
     return InputPassportElementAddress(
-      address: Address.fromJson(json['address'])!,
+      address: Address.fromJson(json['address'] as Map<String, dynamic>?)!,
     );
   }
 

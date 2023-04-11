@@ -51,15 +51,19 @@ class InputMessageAnimation extends InputMessageContent {
     }
 
     return InputMessageAnimation(
-      animation: InputFile.fromJson(json['animation'])!,
-      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+      animation:
+          InputFile.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      thumbnail:
+          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       addedStickerFileIds: List<int>.from(
-          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-      duration: json['duration'],
-      width: json['width'],
-      height: json['height'],
-      caption: FormattedText.fromJson(json['caption']),
-      hasSpoiler: json['has_spoiler'],
+          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      duration: json['duration'] as int,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
+      hasSpoiler: json['has_spoiler'] as bool,
     );
   }
 

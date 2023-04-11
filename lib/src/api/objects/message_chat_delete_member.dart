@@ -20,7 +20,7 @@ class MessageChatDeleteMember extends MessageContent {
     }
 
     return MessageChatDeleteMember(
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
     );
   }
 

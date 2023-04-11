@@ -20,7 +20,8 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
     }
 
     return ChatEventInviteLinkDeleted(
-      inviteLink: ChatInviteLink.fromJson(json['invite_link'])!,
+      inviteLink: ChatInviteLink.fromJson(
+          json['invite_link'] as Map<String, dynamic>?)!,
     );
   }
 

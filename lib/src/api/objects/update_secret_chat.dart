@@ -21,7 +21,8 @@ class UpdateSecretChat extends Update {
     }
 
     return UpdateSecretChat(
-      secretChat: SecretChat.fromJson(json['secret_chat'])!,
+      secretChat:
+          SecretChat.fromJson(json['secret_chat'] as Map<String, dynamic>?)!,
     );
   }
 

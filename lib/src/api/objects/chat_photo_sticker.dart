@@ -27,8 +27,10 @@ class ChatPhotoSticker extends TdObject {
     }
 
     return ChatPhotoSticker(
-      type: ChatPhotoStickerType.fromJson(json['type'])!,
-      backgroundFill: BackgroundFill.fromJson(json['background_fill'])!,
+      type:
+          ChatPhotoStickerType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      backgroundFill: BackgroundFill.fromJson(
+          json['background_fill'] as Map<String, dynamic>?)!,
     );
   }
 

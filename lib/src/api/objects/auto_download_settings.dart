@@ -55,14 +55,14 @@ class AutoDownloadSettings extends TdObject {
     }
 
     return AutoDownloadSettings(
-      isAutoDownloadEnabled: json['is_auto_download_enabled'],
-      maxPhotoFileSize: json['max_photo_file_size'],
-      maxVideoFileSize: json['max_video_file_size'],
-      maxOtherFileSize: json['max_other_file_size'],
-      videoUploadBitrate: json['video_upload_bitrate'],
-      preloadLargeVideos: json['preload_large_videos'],
-      preloadNextAudio: json['preload_next_audio'],
-      useLessDataForCalls: json['use_less_data_for_calls'],
+      isAutoDownloadEnabled: json['is_auto_download_enabled'] as bool,
+      maxPhotoFileSize: json['max_photo_file_size'] as int,
+      maxVideoFileSize: json['max_video_file_size'] as int,
+      maxOtherFileSize: json['max_other_file_size'] as int,
+      videoUploadBitrate: json['video_upload_bitrate'] as int,
+      preloadLargeVideos: json['preload_large_videos'] as bool,
+      preloadNextAudio: json['preload_next_audio'] as bool,
+      useLessDataForCalls: json['use_less_data_for_calls'] as bool,
     );
   }
 

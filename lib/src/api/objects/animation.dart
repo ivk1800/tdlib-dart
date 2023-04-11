@@ -54,15 +54,16 @@ class Animation extends TdObject {
     }
 
     return Animation(
-      duration: json['duration'],
-      width: json['width'],
-      height: json['height'],
-      fileName: json['file_name'],
-      mimeType: json['mime_type'],
-      hasStickers: json['has_stickers'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
-      animation: File.fromJson(json['animation'])!,
+      duration: json['duration'] as int,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      fileName: json['file_name'] as String,
+      mimeType: json['mime_type'] as String,
+      hasStickers: json['has_stickers'] as bool,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      animation: File.fromJson(json['animation'] as Map<String, dynamic>?)!,
     );
   }
 

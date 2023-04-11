@@ -28,10 +28,11 @@ class FormattedText extends TdObject {
     }
 
     return FormattedText(
-      text: json['text'],
-      entities: List<TextEntity>.from((json['entities'] ?? [])
-          .map((item) => TextEntity.fromJson(item))
-          .toList()),
+      text: json['text'] as String,
+      entities: List<TextEntity>.from(
+          ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => TextEntity.fromJson(item))
+              .toList()),
     );
   }
 

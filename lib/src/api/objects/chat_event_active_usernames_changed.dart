@@ -25,9 +25,13 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
     return ChatEventActiveUsernamesChanged(
       oldUsernames: List<String>.from(
-          (json['old_usernames'] ?? []).map((item) => item).toList()),
+          ((json['old_usernames'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       newUsernames: List<String>.from(
-          (json['new_usernames'] ?? []).map((item) => item).toList()),
+          ((json['new_usernames'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

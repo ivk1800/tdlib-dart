@@ -28,9 +28,9 @@ class UpdateMessageIsPinned extends Update {
     }
 
     return UpdateMessageIsPinned(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      isPinned: json['is_pinned'],
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

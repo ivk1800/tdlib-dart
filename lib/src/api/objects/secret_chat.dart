@@ -50,12 +50,12 @@ class SecretChat extends TdObject {
     }
 
     return SecretChat(
-      id: json['id'],
-      userId: json['user_id'],
-      state: SecretChatState.fromJson(json['state'])!,
-      isOutbound: json['is_outbound'],
-      keyHash: json['key_hash'],
-      layer: json['layer'],
+      id: json['id'] as int,
+      userId: json['user_id'] as int,
+      state: SecretChatState.fromJson(json['state'] as Map<String, dynamic>?)!,
+      isOutbound: json['is_outbound'] as bool,
+      keyHash: json['key_hash'] as String,
+      layer: json['layer'] as int,
     );
   }
 

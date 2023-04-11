@@ -29,9 +29,9 @@ class TextEntity extends TdObject {
     }
 
     return TextEntity(
-      offset: json['offset'],
-      length: json['length'],
-      type: TextEntityType.fromJson(json['type'])!,
+      offset: json['offset'] as int,
+      length: json['length'] as int,
+      type: TextEntityType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
 

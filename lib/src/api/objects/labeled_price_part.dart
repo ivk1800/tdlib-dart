@@ -24,8 +24,8 @@ class LabeledPricePart extends TdObject {
     }
 
     return LabeledPricePart(
-      label: json['label'],
-      amount: json['amount'],
+      label: json['label'] as String,
+      amount: json['amount'] as int,
     );
   }
 

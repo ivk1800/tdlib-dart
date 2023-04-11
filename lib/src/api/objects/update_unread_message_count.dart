@@ -29,9 +29,9 @@ class UpdateUnreadMessageCount extends Update {
     }
 
     return UpdateUnreadMessageCount(
-      chatList: ChatList.fromJson(json['chat_list'])!,
-      unreadCount: json['unread_count'],
-      unreadUnmutedCount: json['unread_unmuted_count'],
+      chatList: ChatList.fromJson(json['chat_list'] as Map<String, dynamic>?)!,
+      unreadCount: json['unread_count'] as int,
+      unreadUnmutedCount: json['unread_unmuted_count'] as int,
     );
   }
 

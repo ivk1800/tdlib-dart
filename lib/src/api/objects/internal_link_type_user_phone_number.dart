@@ -21,7 +21,7 @@ class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
     }
 
     return InternalLinkTypeUserPhoneNumber(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] as String,
     );
   }
 

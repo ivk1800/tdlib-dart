@@ -20,9 +20,10 @@ class RecommendedChatFilters extends TdObject {
     }
 
     return RecommendedChatFilters(
-      chatFilters: List<RecommendedChatFilter>.from((json['chat_filters'] ?? [])
-          .map((item) => RecommendedChatFilter.fromJson(item))
-          .toList()),
+      chatFilters: List<RecommendedChatFilter>.from(
+          ((json['chat_filters'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => RecommendedChatFilter.fromJson(item))
+              .toList()),
     );
   }
 

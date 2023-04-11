@@ -21,8 +21,8 @@ class MessageStatistics extends TdObject {
     }
 
     return MessageStatistics(
-      messageInteractionGraph:
-          StatisticalGraph.fromJson(json['message_interaction_graph'])!,
+      messageInteractionGraph: StatisticalGraph.fromJson(
+          json['message_interaction_graph'] as Map<String, dynamic>?)!,
     );
   }
 

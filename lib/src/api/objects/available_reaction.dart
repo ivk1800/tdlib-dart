@@ -24,8 +24,8 @@ class AvailableReaction extends TdObject {
     }
 
     return AvailableReaction(
-      type: ReactionType.fromJson(json['type'])!,
-      needsPremium: json['needs_premium'],
+      type: ReactionType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      needsPremium: json['needs_premium'] as bool,
     );
   }
 

@@ -20,7 +20,7 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
     }
 
     return CallbackQueryPayloadData(
-      data: json['data'],
+      data: json['data'] as String,
     );
   }
 

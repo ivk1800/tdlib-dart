@@ -27,8 +27,9 @@ class UpdateServiceNotification extends Update {
     }
 
     return UpdateServiceNotification(
-      type: json['type'],
-      content: MessageContent.fromJson(json['content'])!,
+      type: json['type'] as String,
+      content:
+          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
     );
   }
 

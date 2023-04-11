@@ -20,7 +20,7 @@ class MessageGame extends MessageContent {
     }
 
     return MessageGame(
-      game: Game.fromJson(json['game'])!,
+      game: Game.fromJson(json['game'] as Map<String, dynamic>?)!,
     );
   }
 

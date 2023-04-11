@@ -26,8 +26,8 @@ class MessageVideoChatScheduled extends MessageContent {
     }
 
     return MessageVideoChatScheduled(
-      groupCallId: json['group_call_id'],
-      startDate: json['start_date'],
+      groupCallId: json['group_call_id'] as int,
+      startDate: json['start_date'] as int,
     );
   }
 

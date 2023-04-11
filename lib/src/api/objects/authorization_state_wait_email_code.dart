@@ -34,11 +34,12 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
     }
 
     return AuthorizationStateWaitEmailCode(
-      allowAppleId: json['allow_apple_id'],
-      allowGoogleId: json['allow_google_id'],
-      codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(json['code_info'])!,
-      emailAddressResetState:
-          EmailAddressResetState.fromJson(json['email_address_reset_state']),
+      allowAppleId: json['allow_apple_id'] as bool,
+      allowGoogleId: json['allow_google_id'] as bool,
+      codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
+          json['code_info'] as Map<String, dynamic>?)!,
+      emailAddressResetState: EmailAddressResetState.fromJson(
+          json['email_address_reset_state'] as Map<String, dynamic>?),
     );
   }
 

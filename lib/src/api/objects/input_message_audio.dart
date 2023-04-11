@@ -44,13 +44,13 @@ class InputMessageAudio extends InputMessageContent {
     }
 
     return InputMessageAudio(
-      audio: InputFile.fromJson(json['audio'])!,
-      albumCoverThumbnail:
-          InputThumbnail.fromJson(json['album_cover_thumbnail']),
-      duration: json['duration'],
-      title: json['title'],
-      performer: json['performer'],
-      caption: FormattedText.fromJson(json['caption']),
+      audio: InputFile.fromJson(json['audio'] as Map<String, dynamic>?)!,
+      albumCoverThumbnail: InputThumbnail.fromJson(
+          json['album_cover_thumbnail'] as Map<String, dynamic>?),
+      duration: json['duration'] as int,
+      title: json['title'] as String,
+      performer: json['performer'] as String,
+      caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
     );
   }
 

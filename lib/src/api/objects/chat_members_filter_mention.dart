@@ -21,7 +21,7 @@ class ChatMembersFilterMention extends ChatMembersFilter {
     }
 
     return ChatMembersFilterMention(
-      messageThreadId: json['message_thread_id'],
+      messageThreadId: json['message_thread_id'] as int,
     );
   }
 

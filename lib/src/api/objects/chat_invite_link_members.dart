@@ -24,10 +24,11 @@ class ChatInviteLinkMembers extends TdObject {
     }
 
     return ChatInviteLinkMembers(
-      totalCount: json['total_count'],
-      members: List<ChatInviteLinkMember>.from((json['members'] ?? [])
-          .map((item) => ChatInviteLinkMember.fromJson(item))
-          .toList()),
+      totalCount: json['total_count'] as int,
+      members: List<ChatInviteLinkMember>.from(
+          ((json['members'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatInviteLinkMember.fromJson(item))
+              .toList()),
     );
   }
 

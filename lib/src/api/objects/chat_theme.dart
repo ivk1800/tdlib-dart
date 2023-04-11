@@ -28,9 +28,11 @@ class ChatTheme extends TdObject {
     }
 
     return ChatTheme(
-      name: json['name'],
-      lightSettings: ThemeSettings.fromJson(json['light_settings'])!,
-      darkSettings: ThemeSettings.fromJson(json['dark_settings'])!,
+      name: json['name'] as String,
+      lightSettings: ThemeSettings.fromJson(
+          json['light_settings'] as Map<String, dynamic>?)!,
+      darkSettings: ThemeSettings.fromJson(
+          json['dark_settings'] as Map<String, dynamic>?)!,
     );
   }
 

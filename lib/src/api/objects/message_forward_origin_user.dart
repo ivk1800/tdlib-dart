@@ -20,7 +20,7 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginUser(
-      senderUserId: json['sender_user_id'],
+      senderUserId: json['sender_user_id'] as int,
     );
   }
 

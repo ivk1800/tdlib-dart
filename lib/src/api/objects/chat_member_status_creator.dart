@@ -30,9 +30,9 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
     }
 
     return ChatMemberStatusCreator(
-      customTitle: json['custom_title'],
-      isAnonymous: json['is_anonymous'],
-      isMember: json['is_member'],
+      customTitle: json['custom_title'] as String,
+      isAnonymous: json['is_anonymous'] as bool,
+      isMember: json['is_member'] as bool,
     );
   }
 

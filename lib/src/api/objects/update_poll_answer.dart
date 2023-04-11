@@ -29,9 +29,11 @@ class UpdatePollAnswer extends Update {
 
     return UpdatePollAnswer(
       pollId: int.tryParse(json['poll_id']) ?? 0,
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
       optionIds: List<int>.from(
-          (json['option_ids'] ?? []).map((item) => item).toList()),
+          ((json['option_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

@@ -44,14 +44,17 @@ class MessageThreadInfo extends TdObject {
     }
 
     return MessageThreadInfo(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
-      replyInfo: MessageReplyInfo.fromJson(json['reply_info']),
-      unreadMessageCount: json['unread_message_count'],
-      messages: List<Message>.from((json['messages'] ?? [])
-          .map((item) => Message.fromJson(item))
-          .toList()),
-      draftMessage: DraftMessage.fromJson(json['draft_message']),
+      chatId: json['chat_id'] as int,
+      messageThreadId: json['message_thread_id'] as int,
+      replyInfo: MessageReplyInfo.fromJson(
+          json['reply_info'] as Map<String, dynamic>?),
+      unreadMessageCount: json['unread_message_count'] as int,
+      messages: List<Message>.from(
+          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Message.fromJson(item))
+              .toList()),
+      draftMessage:
+          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
     );
   }
 

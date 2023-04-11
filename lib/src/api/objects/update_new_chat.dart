@@ -22,7 +22,7 @@ class UpdateNewChat extends Update {
     }
 
     return UpdateNewChat(
-      chat: Chat.fromJson(json['chat'])!,
+      chat: Chat.fromJson(json['chat'] as Map<String, dynamic>?)!,
     );
   }
 

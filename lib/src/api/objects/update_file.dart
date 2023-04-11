@@ -20,7 +20,7 @@ class UpdateFile extends Update {
     }
 
     return UpdateFile(
-      file: File.fromJson(json['file'])!,
+      file: File.fromJson(json['file'] as Map<String, dynamic>?)!,
     );
   }
 

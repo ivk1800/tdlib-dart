@@ -25,10 +25,10 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
     }
 
     return ChatEventAvailableReactionsChanged(
-      oldAvailableReactions:
-          ChatAvailableReactions.fromJson(json['old_available_reactions'])!,
-      newAvailableReactions:
-          ChatAvailableReactions.fromJson(json['new_available_reactions'])!,
+      oldAvailableReactions: ChatAvailableReactions.fromJson(
+          json['old_available_reactions'] as Map<String, dynamic>?)!,
+      newAvailableReactions: ChatAvailableReactions.fromJson(
+          json['new_available_reactions'] as Map<String, dynamic>?)!,
     );
   }
 

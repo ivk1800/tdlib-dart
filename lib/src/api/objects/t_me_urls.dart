@@ -20,8 +20,9 @@ class TMeUrls extends TdObject {
     }
 
     return TMeUrls(
-      urls: List<TMeUrl>.from(
-          (json['urls'] ?? []).map((item) => TMeUrl.fromJson(item)).toList()),
+      urls: List<TMeUrl>.from(((json['urls'] as List<dynamic>?) ?? <dynamic>[])
+          .map((item) => TMeUrl.fromJson(item))
+          .toList()),
     );
   }
 

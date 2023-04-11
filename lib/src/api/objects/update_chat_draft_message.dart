@@ -30,11 +30,13 @@ class UpdateChatDraftMessage extends Update {
     }
 
     return UpdateChatDraftMessage(
-      chatId: json['chat_id'],
-      draftMessage: DraftMessage.fromJson(json['draft_message']),
-      positions: List<ChatPosition>.from((json['positions'] ?? [])
-          .map((item) => ChatPosition.fromJson(item))
-          .toList()),
+      chatId: json['chat_id'] as int,
+      draftMessage:
+          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
+      positions: List<ChatPosition>.from(
+          ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatPosition.fromJson(item))
+              .toList()),
     );
   }
 

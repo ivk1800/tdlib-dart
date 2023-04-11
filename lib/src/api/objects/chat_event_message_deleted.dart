@@ -25,9 +25,9 @@ class ChatEventMessageDeleted extends ChatEventAction {
     }
 
     return ChatEventMessageDeleted(
-      message: Message.fromJson(json['message'])!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
       canReportAntiSpamFalsePositive:
-          json['can_report_anti_spam_false_positive'],
+          json['can_report_anti_spam_false_positive'] as bool,
     );
   }
 

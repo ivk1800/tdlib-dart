@@ -28,9 +28,10 @@ class AddedReaction extends TdObject {
     }
 
     return AddedReaction(
-      type: ReactionType.fromJson(json['type'])!,
-      senderId: MessageSender.fromJson(json['sender_id'])!,
-      date: json['date'],
+      type: ReactionType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      senderId:
+          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      date: json['date'] as int,
     );
   }
 

@@ -31,9 +31,9 @@ class RichTextIcon extends RichText {
     }
 
     return RichTextIcon(
-      document: Document.fromJson(json['document'])!,
-      width: json['width'],
-      height: json['height'],
+      document: Document.fromJson(json['document'] as Map<String, dynamic>?)!,
+      width: json['width'] as int,
+      height: json['height'] as int,
     );
   }
 

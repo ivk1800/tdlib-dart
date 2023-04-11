@@ -20,7 +20,7 @@ class InputCredentialsApplePay extends InputCredentials {
     }
 
     return InputCredentialsApplePay(
-      data: json['data'],
+      data: json['data'] as String,
     );
   }
 

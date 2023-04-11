@@ -24,8 +24,8 @@ class MessageCalendarDay extends TdObject {
     }
 
     return MessageCalendarDay(
-      totalCount: json['total_count'],
-      message: Message.fromJson(json['message'])!,
+      totalCount: json['total_count'] as int,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
     );
   }
 

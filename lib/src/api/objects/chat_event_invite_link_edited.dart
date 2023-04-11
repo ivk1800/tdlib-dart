@@ -24,8 +24,10 @@ class ChatEventInviteLinkEdited extends ChatEventAction {
     }
 
     return ChatEventInviteLinkEdited(
-      oldInviteLink: ChatInviteLink.fromJson(json['old_invite_link'])!,
-      newInviteLink: ChatInviteLink.fromJson(json['new_invite_link'])!,
+      oldInviteLink: ChatInviteLink.fromJson(
+          json['old_invite_link'] as Map<String, dynamic>?)!,
+      newInviteLink: ChatInviteLink.fromJson(
+          json['new_invite_link'] as Map<String, dynamic>?)!,
     );
   }
 

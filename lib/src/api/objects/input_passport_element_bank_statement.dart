@@ -22,7 +22,8 @@ class InputPassportElementBankStatement extends InputPassportElement {
     }
 
     return InputPassportElementBankStatement(
-      bankStatement: InputPersonalDocument.fromJson(json['bank_statement'])!,
+      bankStatement: InputPersonalDocument.fromJson(
+          json['bank_statement'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -22,7 +22,7 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
     }
 
     return AuthenticationCodeTypeFlashCall(
-      pattern: json['pattern'],
+      pattern: json['pattern'] as String,
     );
   }
 

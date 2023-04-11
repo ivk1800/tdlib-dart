@@ -42,11 +42,12 @@ class UpdateNewInlineQuery extends Update {
 
     return UpdateNewInlineQuery(
       id: int.tryParse(json['id']) ?? 0,
-      senderUserId: json['sender_user_id'],
-      userLocation: Location.fromJson(json['user_location']),
-      chatType: ChatType.fromJson(json['chat_type']),
-      query: json['query'],
-      offset: json['offset'],
+      senderUserId: json['sender_user_id'] as int,
+      userLocation:
+          Location.fromJson(json['user_location'] as Map<String, dynamic>?),
+      chatType: ChatType.fromJson(json['chat_type'] as Map<String, dynamic>?),
+      query: json['query'] as String,
+      offset: json['offset'] as String,
     );
   }
 

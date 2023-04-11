@@ -30,11 +30,11 @@ class GroupCallParticipantVideoInfo extends TdObject {
 
     return GroupCallParticipantVideoInfo(
       sourceGroups: List<GroupCallVideoSourceGroup>.from(
-          (json['source_groups'] ?? [])
+          ((json['source_groups'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => GroupCallVideoSourceGroup.fromJson(item))
               .toList()),
-      endpointId: json['endpoint_id'],
-      isPaused: json['is_paused'],
+      endpointId: json['endpoint_id'] as String,
+      isPaused: json['is_paused'] as bool,
     );
   }
 

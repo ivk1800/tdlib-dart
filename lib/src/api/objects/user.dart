@@ -103,26 +103,28 @@ class User extends TdObject {
     }
 
     return User(
-      id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      usernames: Usernames.fromJson(json['usernames']),
-      phoneNumber: json['phone_number'],
-      status: UserStatus.fromJson(json['status'])!,
-      profilePhoto: ProfilePhoto.fromJson(json['profile_photo']),
-      emojiStatus: EmojiStatus.fromJson(json['emoji_status']),
-      isContact: json['is_contact'],
-      isMutualContact: json['is_mutual_contact'],
-      isVerified: json['is_verified'],
-      isPremium: json['is_premium'],
-      isSupport: json['is_support'],
-      restrictionReason: json['restriction_reason'],
-      isScam: json['is_scam'],
-      isFake: json['is_fake'],
-      haveAccess: json['have_access'],
-      type: UserType.fromJson(json['type'])!,
-      languageCode: json['language_code'],
-      addedToAttachmentMenu: json['added_to_attachment_menu'],
+      id: json['id'] as int,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
+      usernames: Usernames.fromJson(json['usernames'] as Map<String, dynamic>?),
+      phoneNumber: json['phone_number'] as String,
+      status: UserStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      profilePhoto:
+          ProfilePhoto.fromJson(json['profile_photo'] as Map<String, dynamic>?),
+      emojiStatus:
+          EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
+      isContact: json['is_contact'] as bool,
+      isMutualContact: json['is_mutual_contact'] as bool,
+      isVerified: json['is_verified'] as bool,
+      isPremium: json['is_premium'] as bool,
+      isSupport: json['is_support'] as bool,
+      restrictionReason: json['restriction_reason'] as String,
+      isScam: json['is_scam'] as bool,
+      isFake: json['is_fake'] as bool,
+      haveAccess: json['have_access'] as bool,
+      type: UserType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      languageCode: json['language_code'] as String,
+      addedToAttachmentMenu: json['added_to_attachment_menu'] as bool,
     );
   }
 

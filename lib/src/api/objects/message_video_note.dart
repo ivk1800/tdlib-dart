@@ -30,9 +30,10 @@ class MessageVideoNote extends MessageContent {
     }
 
     return MessageVideoNote(
-      videoNote: VideoNote.fromJson(json['video_note'])!,
-      isViewed: json['is_viewed'],
-      isSecret: json['is_secret'],
+      videoNote:
+          VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?)!,
+      isViewed: json['is_viewed'] as bool,
+      isSecret: json['is_secret'] as bool,
     );
   }
 

@@ -20,7 +20,7 @@ class ChatListFilter extends ChatList {
     }
 
     return ChatListFilter(
-      chatFilterId: json['chat_filter_id'],
+      chatFilterId: json['chat_filter_id'] as int,
     );
   }
 

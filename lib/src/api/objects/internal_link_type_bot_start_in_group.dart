@@ -44,10 +44,10 @@ class InternalLinkTypeBotStartInGroup extends InternalLinkType {
     }
 
     return InternalLinkTypeBotStartInGroup(
-      botUsername: json['bot_username'],
-      startParameter: json['start_parameter'],
-      administratorRights:
-          ChatAdministratorRights.fromJson(json['administrator_rights']),
+      botUsername: json['bot_username'] as String,
+      startParameter: json['start_parameter'] as String,
+      administratorRights: ChatAdministratorRights.fromJson(
+          json['administrator_rights'] as Map<String, dynamic>?),
     );
   }
 

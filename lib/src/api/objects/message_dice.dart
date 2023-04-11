@@ -43,11 +43,14 @@ class MessageDice extends MessageContent {
     }
 
     return MessageDice(
-      initialState: DiceStickers.fromJson(json['initial_state']),
-      finalState: DiceStickers.fromJson(json['final_state']),
-      emoji: json['emoji'],
-      value: json['value'],
-      successAnimationFrameNumber: json['success_animation_frame_number'],
+      initialState:
+          DiceStickers.fromJson(json['initial_state'] as Map<String, dynamic>?),
+      finalState:
+          DiceStickers.fromJson(json['final_state'] as Map<String, dynamic>?),
+      emoji: json['emoji'] as String,
+      value: json['value'] as int,
+      successAnimationFrameNumber:
+          json['success_animation_frame_number'] as int,
     );
   }
 

@@ -20,7 +20,7 @@ class ChatEventInvitesToggled extends ChatEventAction {
     }
 
     return ChatEventInvitesToggled(
-      canInviteUsers: json['can_invite_users'],
+      canInviteUsers: json['can_invite_users'] as bool,
     );
   }
 

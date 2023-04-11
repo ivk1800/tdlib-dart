@@ -37,12 +37,14 @@ class CountryInfo extends TdObject {
     }
 
     return CountryInfo(
-      countryCode: json['country_code'],
-      name: json['name'],
-      englishName: json['english_name'],
-      isHidden: json['is_hidden'],
+      countryCode: json['country_code'] as String,
+      name: json['name'] as String,
+      englishName: json['english_name'] as String,
+      isHidden: json['is_hidden'] as bool,
       callingCodes: List<String>.from(
-          (json['calling_codes'] ?? []).map((item) => item).toList()),
+          ((json['calling_codes'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

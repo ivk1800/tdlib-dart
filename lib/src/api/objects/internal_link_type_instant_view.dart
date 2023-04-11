@@ -25,8 +25,8 @@ class InternalLinkTypeInstantView extends InternalLinkType {
     }
 
     return InternalLinkTypeInstantView(
-      url: json['url'],
-      fallbackUrl: json['fallback_url'],
+      url: json['url'] as String,
+      fallbackUrl: json['fallback_url'] as String,
     );
   }
 

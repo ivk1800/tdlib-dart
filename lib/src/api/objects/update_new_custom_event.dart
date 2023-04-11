@@ -20,7 +20,7 @@ class UpdateNewCustomEvent extends Update {
     }
 
     return UpdateNewCustomEvent(
-      event: json['event'],
+      event: json['event'] as String,
     );
   }
 

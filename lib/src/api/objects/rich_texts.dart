@@ -20,9 +20,10 @@ class RichTexts extends RichText {
     }
 
     return RichTexts(
-      texts: List<RichText>.from((json['texts'] ?? [])
-          .map((item) => RichText.fromJson(item))
-          .toList()),
+      texts: List<RichText>.from(
+          ((json['texts'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => RichText.fromJson(item))
+              .toList()),
     );
   }
 

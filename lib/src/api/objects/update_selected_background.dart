@@ -24,8 +24,9 @@ class UpdateSelectedBackground extends Update {
     }
 
     return UpdateSelectedBackground(
-      forDarkTheme: json['for_dark_theme'],
-      background: Background.fromJson(json['background']),
+      forDarkTheme: json['for_dark_theme'] as bool,
+      background:
+          Background.fromJson(json['background'] as Map<String, dynamic>?),
     );
   }
 

@@ -24,8 +24,9 @@ class MessageDocument extends MessageContent {
     }
 
     return MessageDocument(
-      document: Document.fromJson(json['document'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
+      document: Document.fromJson(json['document'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

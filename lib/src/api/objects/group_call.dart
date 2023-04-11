@@ -111,30 +111,31 @@ class GroupCall extends TdObject {
     }
 
     return GroupCall(
-      id: json['id'],
-      title: json['title'],
-      scheduledStartDate: json['scheduled_start_date'],
-      enabledStartNotification: json['enabled_start_notification'],
-      isActive: json['is_active'],
-      isRtmpStream: json['is_rtmp_stream'],
-      isJoined: json['is_joined'],
-      needRejoin: json['need_rejoin'],
-      canBeManaged: json['can_be_managed'],
-      participantCount: json['participant_count'],
-      hasHiddenListeners: json['has_hidden_listeners'],
-      loadedAllParticipants: json['loaded_all_participants'],
+      id: json['id'] as int,
+      title: json['title'] as String,
+      scheduledStartDate: json['scheduled_start_date'] as int,
+      enabledStartNotification: json['enabled_start_notification'] as bool,
+      isActive: json['is_active'] as bool,
+      isRtmpStream: json['is_rtmp_stream'] as bool,
+      isJoined: json['is_joined'] as bool,
+      needRejoin: json['need_rejoin'] as bool,
+      canBeManaged: json['can_be_managed'] as bool,
+      participantCount: json['participant_count'] as int,
+      hasHiddenListeners: json['has_hidden_listeners'] as bool,
+      loadedAllParticipants: json['loaded_all_participants'] as bool,
       recentSpeakers: List<GroupCallRecentSpeaker>.from(
-          (json['recent_speakers'] ?? [])
+          ((json['recent_speakers'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => GroupCallRecentSpeaker.fromJson(item))
               .toList()),
-      isMyVideoEnabled: json['is_my_video_enabled'],
-      isMyVideoPaused: json['is_my_video_paused'],
-      canEnableVideo: json['can_enable_video'],
-      muteNewParticipants: json['mute_new_participants'],
-      canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
-      recordDuration: json['record_duration'],
-      isVideoRecorded: json['is_video_recorded'],
-      duration: json['duration'],
+      isMyVideoEnabled: json['is_my_video_enabled'] as bool,
+      isMyVideoPaused: json['is_my_video_paused'] as bool,
+      canEnableVideo: json['can_enable_video'] as bool,
+      muteNewParticipants: json['mute_new_participants'] as bool,
+      canToggleMuteNewParticipants:
+          json['can_toggle_mute_new_participants'] as bool,
+      recordDuration: json['record_duration'] as int,
+      isVideoRecorded: json['is_video_recorded'] as bool,
+      duration: json['duration'] as int,
     );
   }
 

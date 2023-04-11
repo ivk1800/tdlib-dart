@@ -32,10 +32,10 @@ class TargetChatChosen extends TargetChat {
     }
 
     return TargetChatChosen(
-      allowUserChats: json['allow_user_chats'],
-      allowBotChats: json['allow_bot_chats'],
-      allowGroupChats: json['allow_group_chats'],
-      allowChannelChats: json['allow_channel_chats'],
+      allowUserChats: json['allow_user_chats'] as bool,
+      allowBotChats: json['allow_bot_chats'] as bool,
+      allowGroupChats: json['allow_group_chats'] as bool,
+      allowChannelChats: json['allow_channel_chats'] as bool,
     );
   }
 

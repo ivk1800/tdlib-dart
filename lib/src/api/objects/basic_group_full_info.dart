@@ -56,18 +56,22 @@ class BasicGroupFullInfo extends TdObject {
     }
 
     return BasicGroupFullInfo(
-      photo: ChatPhoto.fromJson(json['photo']),
-      description: json['description'],
-      creatorUserId: json['creator_user_id'],
-      members: List<ChatMember>.from((json['members'] ?? [])
-          .map((item) => ChatMember.fromJson(item))
-          .toList()),
-      canHideMembers: json['can_hide_members'],
-      canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
-      inviteLink: ChatInviteLink.fromJson(json['invite_link']),
-      botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
-          .map((item) => BotCommands.fromJson(item))
-          .toList()),
+      photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?),
+      description: json['description'] as String,
+      creatorUserId: json['creator_user_id'] as int,
+      members: List<ChatMember>.from(
+          ((json['members'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatMember.fromJson(item))
+              .toList()),
+      canHideMembers: json['can_hide_members'] as bool,
+      canToggleAggressiveAntiSpam:
+          json['can_toggle_aggressive_anti_spam'] as bool,
+      inviteLink:
+          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      botCommands: List<BotCommands>.from(
+          ((json['bot_commands'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => BotCommands.fromJson(item))
+              .toList()),
     );
   }
 

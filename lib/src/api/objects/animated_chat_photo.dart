@@ -28,9 +28,9 @@ class AnimatedChatPhoto extends TdObject {
     }
 
     return AnimatedChatPhoto(
-      length: json['length'],
-      file: File.fromJson(json['file'])!,
-      mainFrameTimestamp: json['main_frame_timestamp'],
+      length: json['length'] as int,
+      file: File.fromJson(json['file'] as Map<String, dynamic>?)!,
+      mainFrameTimestamp: (json['main_frame_timestamp'] as num).toDouble(),
     );
   }
 

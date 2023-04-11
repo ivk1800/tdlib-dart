@@ -45,13 +45,13 @@ class ThemeParameters extends TdObject {
     }
 
     return ThemeParameters(
-      backgroundColor: json['background_color'],
-      secondaryBackgroundColor: json['secondary_background_color'],
-      textColor: json['text_color'],
-      hintColor: json['hint_color'],
-      linkColor: json['link_color'],
-      buttonColor: json['button_color'],
-      buttonTextColor: json['button_text_color'],
+      backgroundColor: json['background_color'] as int,
+      secondaryBackgroundColor: json['secondary_background_color'] as int,
+      textColor: json['text_color'] as int,
+      hintColor: json['hint_color'] as int,
+      linkColor: json['link_color'] as int,
+      buttonColor: json['button_color'] as int,
+      buttonTextColor: json['button_text_color'] as int,
     );
   }
 

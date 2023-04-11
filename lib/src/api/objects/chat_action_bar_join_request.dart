@@ -30,9 +30,9 @@ class ChatActionBarJoinRequest extends ChatActionBar {
     }
 
     return ChatActionBarJoinRequest(
-      title: json['title'],
-      isChannel: json['is_channel'],
-      requestDate: json['request_date'],
+      title: json['title'] as String,
+      isChannel: json['is_channel'] as bool,
+      requestDate: json['request_date'] as int,
     );
   }
 

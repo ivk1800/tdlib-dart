@@ -24,9 +24,11 @@ class Users extends TdObject {
     }
 
     return Users(
-      totalCount: json['total_count'],
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      totalCount: json['total_count'] as int,
+      userIds: List<int>.from(
+          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

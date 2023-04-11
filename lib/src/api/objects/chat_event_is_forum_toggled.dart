@@ -20,7 +20,7 @@ class ChatEventIsForumToggled extends ChatEventAction {
     }
 
     return ChatEventIsForumToggled(
-      isForum: json['is_forum'],
+      isForum: json['is_forum'] as bool,
     );
   }
 

@@ -33,10 +33,11 @@ class UpdateChatAction extends Update {
     }
 
     return UpdateChatAction(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
-      senderId: MessageSender.fromJson(json['sender_id'])!,
-      action: ChatAction.fromJson(json['action'])!,
+      chatId: json['chat_id'] as int,
+      messageThreadId: json['message_thread_id'] as int,
+      senderId:
+          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      action: ChatAction.fromJson(json['action'] as Map<String, dynamic>?)!,
     );
   }
 

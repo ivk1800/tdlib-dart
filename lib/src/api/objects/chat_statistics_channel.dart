@@ -86,28 +86,37 @@ class ChatStatisticsChannel extends ChatStatistics {
     }
 
     return ChatStatisticsChannel(
-      period: DateRange.fromJson(json['period'])!,
-      memberCount: StatisticalValue.fromJson(json['member_count'])!,
-      meanViewCount: StatisticalValue.fromJson(json['mean_view_count'])!,
-      meanShareCount: StatisticalValue.fromJson(json['mean_share_count'])!,
-      enabledNotificationsPercentage: json['enabled_notifications_percentage'],
-      memberCountGraph: StatisticalGraph.fromJson(json['member_count_graph'])!,
-      joinGraph: StatisticalGraph.fromJson(json['join_graph'])!,
-      muteGraph: StatisticalGraph.fromJson(json['mute_graph'])!,
-      viewCountByHourGraph:
-          StatisticalGraph.fromJson(json['view_count_by_hour_graph'])!,
-      viewCountBySourceGraph:
-          StatisticalGraph.fromJson(json['view_count_by_source_graph'])!,
-      joinBySourceGraph:
-          StatisticalGraph.fromJson(json['join_by_source_graph'])!,
-      languageGraph: StatisticalGraph.fromJson(json['language_graph'])!,
-      messageInteractionGraph:
-          StatisticalGraph.fromJson(json['message_interaction_graph'])!,
-      instantViewInteractionGraph:
-          StatisticalGraph.fromJson(json['instant_view_interaction_graph'])!,
+      period: DateRange.fromJson(json['period'] as Map<String, dynamic>?)!,
+      memberCount: StatisticalValue.fromJson(
+          json['member_count'] as Map<String, dynamic>?)!,
+      meanViewCount: StatisticalValue.fromJson(
+          json['mean_view_count'] as Map<String, dynamic>?)!,
+      meanShareCount: StatisticalValue.fromJson(
+          json['mean_share_count'] as Map<String, dynamic>?)!,
+      enabledNotificationsPercentage:
+          (json['enabled_notifications_percentage'] as num).toDouble(),
+      memberCountGraph: StatisticalGraph.fromJson(
+          json['member_count_graph'] as Map<String, dynamic>?)!,
+      joinGraph: StatisticalGraph.fromJson(
+          json['join_graph'] as Map<String, dynamic>?)!,
+      muteGraph: StatisticalGraph.fromJson(
+          json['mute_graph'] as Map<String, dynamic>?)!,
+      viewCountByHourGraph: StatisticalGraph.fromJson(
+          json['view_count_by_hour_graph'] as Map<String, dynamic>?)!,
+      viewCountBySourceGraph: StatisticalGraph.fromJson(
+          json['view_count_by_source_graph'] as Map<String, dynamic>?)!,
+      joinBySourceGraph: StatisticalGraph.fromJson(
+          json['join_by_source_graph'] as Map<String, dynamic>?)!,
+      languageGraph: StatisticalGraph.fromJson(
+          json['language_graph'] as Map<String, dynamic>?)!,
+      messageInteractionGraph: StatisticalGraph.fromJson(
+          json['message_interaction_graph'] as Map<String, dynamic>?)!,
+      instantViewInteractionGraph: StatisticalGraph.fromJson(
+          json['instant_view_interaction_graph'] as Map<String, dynamic>?)!,
       recentMessageInteractions:
           List<ChatStatisticsMessageInteractionInfo>.from(
-              (json['recent_message_interactions'] ?? [])
+              ((json['recent_message_interactions'] as List<dynamic>?) ??
+                      <dynamic>[])
                   .map((item) =>
                       ChatStatisticsMessageInteractionInfo.fromJson(item))
                   .toList()),

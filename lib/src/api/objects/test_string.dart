@@ -20,7 +20,7 @@ class TestString extends TdObject {
     }
 
     return TestString(
-      value: json['value'],
+      value: json['value'] as String,
     );
   }
 

@@ -20,7 +20,8 @@ class UpdateStickerSet extends Update {
     }
 
     return UpdateStickerSet(
-      stickerSet: StickerSet.fromJson(json['sticker_set'])!,
+      stickerSet:
+          StickerSet.fromJson(json['sticker_set'] as Map<String, dynamic>?)!,
     );
   }
 

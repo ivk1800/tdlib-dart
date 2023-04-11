@@ -20,7 +20,7 @@ class MessageSenderUser extends MessageSender {
     }
 
     return MessageSenderUser(
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
     );
   }
 

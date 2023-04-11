@@ -29,10 +29,10 @@ class DraftMessage extends TdObject {
     }
 
     return DraftMessage(
-      replyToMessageId: json['reply_to_message_id'],
-      date: json['date'],
-      inputMessageText:
-          InputMessageContent.fromJson(json['input_message_text'])!,
+      replyToMessageId: json['reply_to_message_id'] as int,
+      date: json['date'] as int,
+      inputMessageText: InputMessageContent.fromJson(
+          json['input_message_text'] as Map<String, dynamic>?)!,
     );
   }
 

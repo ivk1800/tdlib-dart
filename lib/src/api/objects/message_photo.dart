@@ -34,10 +34,11 @@ class MessagePhoto extends MessageContent {
     }
 
     return MessagePhoto(
-      photo: Photo.fromJson(json['photo'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
-      hasSpoiler: json['has_spoiler'],
-      isSecret: json['is_secret'],
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      hasSpoiler: json['has_spoiler'] as bool,
+      isSecret: json['is_secret'] as bool,
     );
   }
 

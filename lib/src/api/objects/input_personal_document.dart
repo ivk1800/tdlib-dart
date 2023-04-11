@@ -25,12 +25,14 @@ class InputPersonalDocument extends TdObject {
     }
 
     return InputPersonalDocument(
-      files: List<InputFile>.from((json['files'] ?? [])
-          .map((item) => InputFile.fromJson(item))
-          .toList()),
-      translation: List<InputFile>.from((json['translation'] ?? [])
-          .map((item) => InputFile.fromJson(item))
-          .toList()),
+      files: List<InputFile>.from(
+          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => InputFile.fromJson(item))
+              .toList()),
+      translation: List<InputFile>.from(
+          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => InputFile.fromJson(item))
+              .toList()),
     );
   }
 

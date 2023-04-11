@@ -21,7 +21,7 @@ class MessageChatSetTheme extends MessageContent {
     }
 
     return MessageChatSetTheme(
-      themeName: json['theme_name'],
+      themeName: json['theme_name'] as String,
     );
   }
 

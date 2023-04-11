@@ -33,10 +33,10 @@ class MessageGiftedPremium extends MessageContent {
     }
 
     return MessageGiftedPremium(
-      currency: json['currency'],
-      amount: json['amount'],
-      monthCount: json['month_count'],
-      sticker: Sticker.fromJson(json['sticker']),
+      currency: json['currency'] as String,
+      amount: json['amount'] as int,
+      monthCount: json['month_count'] as int,
+      sticker: Sticker.fromJson(json['sticker'] as Map<String, dynamic>?),
     );
   }
 

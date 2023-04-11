@@ -28,9 +28,10 @@ class MessageCall extends MessageContent {
     }
 
     return MessageCall(
-      isVideo: json['is_video'],
-      discardReason: CallDiscardReason.fromJson(json['discard_reason'])!,
-      duration: json['duration'],
+      isVideo: json['is_video'] as bool,
+      discardReason: CallDiscardReason.fromJson(
+          json['discard_reason'] as Map<String, dynamic>?)!,
+      duration: json['duration'] as int,
     );
   }
 

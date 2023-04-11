@@ -21,7 +21,7 @@ class DeviceTokenTizenPush extends DeviceToken {
     }
 
     return DeviceTokenTizenPush(
-      regId: json['reg_id'],
+      regId: json['reg_id'] as String,
     );
   }
 

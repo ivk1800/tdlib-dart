@@ -21,7 +21,7 @@ class CallStateError extends CallState {
     }
 
     return CallStateError(
-      error: TdError.fromJson(json['error'])!,
+      error: TdError.fromJson(json['error'] as Map<String, dynamic>?)!,
     );
   }
 

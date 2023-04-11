@@ -25,8 +25,9 @@ class PushMessageContentVoiceNote extends PushMessageContent {
     }
 
     return PushMessageContentVoiceNote(
-      voiceNote: VoiceNote.fromJson(json['voice_note']),
-      isPinned: json['is_pinned'],
+      voiceNote:
+          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

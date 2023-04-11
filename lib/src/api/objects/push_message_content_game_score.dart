@@ -29,9 +29,9 @@ class PushMessageContentGameScore extends PushMessageContent {
     }
 
     return PushMessageContentGameScore(
-      title: json['title'],
-      score: json['score'],
-      isPinned: json['is_pinned'],
+      title: json['title'] as String,
+      score: json['score'] as int,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

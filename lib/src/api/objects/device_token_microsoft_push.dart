@@ -21,7 +21,7 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
     }
 
     return DeviceTokenMicrosoftPush(
-      channelUri: json['channel_uri'],
+      channelUri: json['channel_uri'] as String,
     );
   }
 

@@ -21,7 +21,7 @@ class PushMessageContentChatSetTheme extends PushMessageContent {
     }
 
     return PushMessageContentChatSetTheme(
-      themeName: json['theme_name'],
+      themeName: json['theme_name'] as String,
     );
   }
 

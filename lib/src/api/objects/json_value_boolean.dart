@@ -20,7 +20,7 @@ class JsonValueBoolean extends JsonValue {
     }
 
     return JsonValueBoolean(
-      value: json['value'],
+      value: json['value'] as bool,
     );
   }
 

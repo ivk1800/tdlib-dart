@@ -60,16 +60,18 @@ class Sticker extends TdObject {
     return Sticker(
       id: int.tryParse(json['id']) ?? 0,
       setId: int.tryParse(json['set_id']) ?? 0,
-      width: json['width'],
-      height: json['height'],
-      emoji: json['emoji'],
-      format: StickerFormat.fromJson(json['format'])!,
-      fullType: StickerFullType.fromJson(json['full_type'])!,
-      outline: List<ClosedVectorPath>.from((json['outline'] ?? [])
-          .map((item) => ClosedVectorPath.fromJson(item))
-          .toList()),
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
-      sticker: File.fromJson(json['sticker'])!,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      emoji: json['emoji'] as String,
+      format: StickerFormat.fromJson(json['format'] as Map<String, dynamic>?)!,
+      fullType:
+          StickerFullType.fromJson(json['full_type'] as Map<String, dynamic>?)!,
+      outline: List<ClosedVectorPath>.from(
+          ((json['outline'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ClosedVectorPath.fromJson(item))
+              .toList()),
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      sticker: File.fromJson(json['sticker'] as Map<String, dynamic>?)!,
     );
   }
 

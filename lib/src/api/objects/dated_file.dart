@@ -24,8 +24,8 @@ class DatedFile extends TdObject {
     }
 
     return DatedFile(
-      file: File.fromJson(json['file'])!,
-      date: json['date'],
+      file: File.fromJson(json['file'] as Map<String, dynamic>?)!,
+      date: json['date'] as int,
     );
   }
 

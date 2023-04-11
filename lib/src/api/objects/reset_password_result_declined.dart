@@ -21,7 +21,7 @@ class ResetPasswordResultDeclined extends ResetPasswordResult {
     }
 
     return ResetPasswordResultDeclined(
-      retryDate: json['retry_date'],
+      retryDate: json['retry_date'] as int,
     );
   }
 

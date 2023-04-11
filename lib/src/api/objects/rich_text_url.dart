@@ -28,9 +28,9 @@ class RichTextUrl extends RichText {
     }
 
     return RichTextUrl(
-      text: RichText.fromJson(json['text'])!,
-      url: json['url'],
-      isCached: json['is_cached'],
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      url: json['url'] as String,
+      isCached: json['is_cached'] as bool,
     );
   }
 

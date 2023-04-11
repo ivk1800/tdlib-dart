@@ -36,11 +36,12 @@ class InputMessageSticker extends InputMessageContent {
     }
 
     return InputMessageSticker(
-      sticker: InputFile.fromJson(json['sticker'])!,
-      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-      width: json['width'],
-      height: json['height'],
-      emoji: json['emoji'],
+      sticker: InputFile.fromJson(json['sticker'] as Map<String, dynamic>?)!,
+      thumbnail:
+          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      width: json['width'] as int,
+      height: json['height'] as int,
+      emoji: json['emoji'] as String,
     );
   }
 

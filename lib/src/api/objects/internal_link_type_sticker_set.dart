@@ -26,8 +26,8 @@ class InternalLinkTypeStickerSet extends InternalLinkType {
     }
 
     return InternalLinkTypeStickerSet(
-      stickerSetName: json['sticker_set_name'],
-      expectCustomEmoji: json['expect_custom_emoji'],
+      stickerSetName: json['sticker_set_name'] as String,
+      expectCustomEmoji: json['expect_custom_emoji'] as bool,
     );
   }
 

@@ -24,9 +24,11 @@ class GroupCallVideoSourceGroup extends TdObject {
     }
 
     return GroupCallVideoSourceGroup(
-      semantics: json['semantics'],
+      semantics: json['semantics'] as String,
       sourceIds: List<int>.from(
-          (json['source_ids'] ?? []).map((item) => item).toList()),
+          ((json['source_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

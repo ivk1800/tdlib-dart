@@ -20,7 +20,7 @@ class UpdatePoll extends Update {
     }
 
     return UpdatePoll(
-      poll: Poll.fromJson(json['poll'])!,
+      poll: Poll.fromJson(json['poll'] as Map<String, dynamic>?)!,
     );
   }
 

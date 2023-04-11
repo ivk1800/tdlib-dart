@@ -20,7 +20,7 @@ class PassportElementAddress extends PassportElement {
     }
 
     return PassportElementAddress(
-      address: Address.fromJson(json['address'])!,
+      address: Address.fromJson(json['address'] as Map<String, dynamic>?)!,
     );
   }
 

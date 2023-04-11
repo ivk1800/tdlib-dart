@@ -20,7 +20,7 @@ class CustomRequestResult extends TdObject {
     }
 
     return CustomRequestResult(
-      result: json['result'],
+      result: json['result'] as String,
     );
   }
 

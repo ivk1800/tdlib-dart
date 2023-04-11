@@ -28,9 +28,9 @@ class Minithumbnail extends TdObject {
     }
 
     return Minithumbnail(
-      width: json['width'],
-      height: json['height'],
-      data: json['data'],
+      width: json['width'] as int,
+      height: json['height'] as int,
+      data: json['data'] as String,
     );
   }
 

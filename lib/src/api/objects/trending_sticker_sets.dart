@@ -28,11 +28,12 @@ class TrendingStickerSets extends TdObject {
     }
 
     return TrendingStickerSets(
-      totalCount: json['total_count'],
-      sets: List<StickerSetInfo>.from((json['sets'] ?? [])
-          .map((item) => StickerSetInfo.fromJson(item))
-          .toList()),
-      isPremium: json['is_premium'],
+      totalCount: json['total_count'] as int,
+      sets: List<StickerSetInfo>.from(
+          ((json['sets'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => StickerSetInfo.fromJson(item))
+              .toList()),
+      isPremium: json['is_premium'] as bool,
     );
   }
 

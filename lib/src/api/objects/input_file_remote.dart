@@ -25,7 +25,7 @@ class InputFileRemote extends InputFile {
     }
 
     return InputFileRemote(
-      id: json['id'],
+      id: json['id'] as String,
     );
   }
 

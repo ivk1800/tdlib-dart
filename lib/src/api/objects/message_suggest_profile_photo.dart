@@ -21,7 +21,7 @@ class MessageSuggestProfilePhoto extends MessageContent {
     }
 
     return MessageSuggestProfilePhoto(
-      photo: ChatPhoto.fromJson(json['photo'])!,
+      photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -24,8 +24,9 @@ class PageBlockAudio extends PageBlock {
     }
 
     return PageBlockAudio(
-      audio: Audio.fromJson(json['audio']),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
+      audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

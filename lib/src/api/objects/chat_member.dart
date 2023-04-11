@@ -36,10 +36,12 @@ class ChatMember extends TdObject {
     }
 
     return ChatMember(
-      memberId: MessageSender.fromJson(json['member_id'])!,
-      inviterUserId: json['inviter_user_id'],
-      joinedChatDate: json['joined_chat_date'],
-      status: ChatMemberStatus.fromJson(json['status'])!,
+      memberId:
+          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
+      inviterUserId: json['inviter_user_id'] as int,
+      joinedChatDate: json['joined_chat_date'] as int,
+      status:
+          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
     );
   }
 

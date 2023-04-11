@@ -20,9 +20,10 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
     }
 
     return ChatAvailableReactionsSome(
-      reactions: List<ReactionType>.from((json['reactions'] ?? [])
-          .map((item) => ReactionType.fromJson(item))
-          .toList()),
+      reactions: List<ReactionType>.from(
+          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ReactionType.fromJson(item))
+              .toList()),
     );
   }
 

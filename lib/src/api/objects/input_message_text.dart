@@ -32,9 +32,9 @@ class InputMessageText extends InputMessageContent {
     }
 
     return InputMessageText(
-      text: FormattedText.fromJson(json['text'])!,
-      disableWebPagePreview: json['disable_web_page_preview'],
-      clearDraft: json['clear_draft'],
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      disableWebPagePreview: json['disable_web_page_preview'] as bool,
+      clearDraft: json['clear_draft'] as bool,
     );
   }
 

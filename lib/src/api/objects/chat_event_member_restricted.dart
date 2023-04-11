@@ -29,9 +29,12 @@ class ChatEventMemberRestricted extends ChatEventAction {
     }
 
     return ChatEventMemberRestricted(
-      memberId: MessageSender.fromJson(json['member_id'])!,
-      oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
-      newStatus: ChatMemberStatus.fromJson(json['new_status'])!,
+      memberId:
+          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
+      oldStatus: ChatMemberStatus.fromJson(
+          json['old_status'] as Map<String, dynamic>?)!,
+      newStatus: ChatMemberStatus.fromJson(
+          json['new_status'] as Map<String, dynamic>?)!,
     );
   }
 

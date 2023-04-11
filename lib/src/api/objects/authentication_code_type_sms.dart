@@ -21,7 +21,7 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
     }
 
     return AuthenticationCodeTypeSms(
-      length: json['length'],
+      length: json['length'] as int,
     );
   }
 

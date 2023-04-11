@@ -45,13 +45,14 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultVoiceNote(
-      id: json['id'],
-      title: json['title'],
-      voiceNoteUrl: json['voice_note_url'],
-      voiceNoteDuration: json['voice_note_duration'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-      inputMessageContent:
-          InputMessageContent.fromJson(json['input_message_content'])!,
+      id: json['id'] as String,
+      title: json['title'] as String,
+      voiceNoteUrl: json['voice_note_url'] as String,
+      voiceNoteDuration: json['voice_note_duration'] as int,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      inputMessageContent: InputMessageContent.fromJson(
+          json['input_message_content'] as Map<String, dynamic>?)!,
     );
   }
 

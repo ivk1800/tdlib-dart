@@ -29,9 +29,9 @@ class ProxyTypeHttp extends ProxyType {
     }
 
     return ProxyTypeHttp(
-      username: json['username'],
-      password: json['password'],
-      httpOnly: json['http_only'],
+      username: json['username'] as String,
+      password: json['password'] as String,
+      httpOnly: json['http_only'] as bool,
     );
   }
 

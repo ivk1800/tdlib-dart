@@ -24,8 +24,8 @@ class RtmpUrl extends TdObject {
     }
 
     return RtmpUrl(
-      url: json['url'],
-      streamKey: json['stream_key'],
+      url: json['url'] as String,
+      streamKey: json['stream_key'] as String,
     );
   }
 

@@ -23,7 +23,7 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupRemoveKeyboard(
-      isPersonal: json['is_personal'],
+      isPersonal: json['is_personal'] as bool,
     );
   }
 

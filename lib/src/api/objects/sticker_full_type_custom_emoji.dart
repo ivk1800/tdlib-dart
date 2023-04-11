@@ -28,7 +28,7 @@ class StickerFullTypeCustomEmoji extends StickerFullType {
 
     return StickerFullTypeCustomEmoji(
       customEmojiId: int.tryParse(json['custom_emoji_id']) ?? 0,
-      needsRepainting: json['needs_repainting'],
+      needsRepainting: json['needs_repainting'] as bool,
     );
   }
 

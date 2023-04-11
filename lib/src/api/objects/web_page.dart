@@ -107,27 +107,30 @@ class WebPage extends TdObject {
     }
 
     return WebPage(
-      url: json['url'],
-      displayUrl: json['display_url'],
-      type: json['type'],
-      siteName: json['site_name'],
-      title: json['title'],
-      description: FormattedText.fromJson(json['description'])!,
-      photo: Photo.fromJson(json['photo']),
-      embedUrl: json['embed_url'],
-      embedType: json['embed_type'],
-      embedWidth: json['embed_width'],
-      embedHeight: json['embed_height'],
-      duration: json['duration'],
-      author: json['author'],
-      animation: Animation.fromJson(json['animation']),
-      audio: Audio.fromJson(json['audio']),
-      document: Document.fromJson(json['document']),
-      sticker: Sticker.fromJson(json['sticker']),
-      video: Video.fromJson(json['video']),
-      videoNote: VideoNote.fromJson(json['video_note']),
-      voiceNote: VoiceNote.fromJson(json['voice_note']),
-      instantViewVersion: json['instant_view_version'],
+      url: json['url'] as String,
+      displayUrl: json['display_url'] as String,
+      type: json['type'] as String,
+      siteName: json['site_name'] as String,
+      title: json['title'] as String,
+      description:
+          FormattedText.fromJson(json['description'] as Map<String, dynamic>?)!,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
+      embedUrl: json['embed_url'] as String,
+      embedType: json['embed_type'] as String,
+      embedWidth: json['embed_width'] as int,
+      embedHeight: json['embed_height'] as int,
+      duration: json['duration'] as int,
+      author: json['author'] as String,
+      animation: Animation.fromJson(json['animation'] as Map<String, dynamic>?),
+      audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?),
+      document: Document.fromJson(json['document'] as Map<String, dynamic>?),
+      sticker: Sticker.fromJson(json['sticker'] as Map<String, dynamic>?),
+      video: Video.fromJson(json['video'] as Map<String, dynamic>?),
+      videoNote:
+          VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?),
+      voiceNote:
+          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
+      instantViewVersion: json['instant_view_version'] as int,
     );
   }
 

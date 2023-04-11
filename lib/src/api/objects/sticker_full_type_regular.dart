@@ -21,7 +21,8 @@ class StickerFullTypeRegular extends StickerFullType {
     }
 
     return StickerFullTypeRegular(
-      premiumAnimation: File.fromJson(json['premium_animation']),
+      premiumAnimation:
+          File.fromJson(json['premium_animation'] as Map<String, dynamic>?),
     );
   }
 

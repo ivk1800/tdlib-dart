@@ -22,7 +22,8 @@ class UpdateSupergroup extends Update {
     }
 
     return UpdateSupergroup(
-      supergroup: Supergroup.fromJson(json['supergroup'])!,
+      supergroup:
+          Supergroup.fromJson(json['supergroup'] as Map<String, dynamic>?)!,
     );
   }
 

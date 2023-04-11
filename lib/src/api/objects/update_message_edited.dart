@@ -33,10 +33,11 @@ class UpdateMessageEdited extends Update {
     }
 
     return UpdateMessageEdited(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      editDate: json['edit_date'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      editDate: json['edit_date'] as int,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
     );
   }
 

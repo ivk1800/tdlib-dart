@@ -21,7 +21,7 @@ class PollTypeRegular extends PollType {
     }
 
     return PollTypeRegular(
-      allowMultipleAnswers: json['allow_multiple_answers'],
+      allowMultipleAnswers: json['allow_multiple_answers'] as bool,
     );
   }
 

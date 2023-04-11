@@ -24,9 +24,9 @@ class UpdateBasicGroupFullInfo extends Update {
     }
 
     return UpdateBasicGroupFullInfo(
-      basicGroupId: json['basic_group_id'],
-      basicGroupFullInfo:
-          BasicGroupFullInfo.fromJson(json['basic_group_full_info'])!,
+      basicGroupId: json['basic_group_id'] as int,
+      basicGroupFullInfo: BasicGroupFullInfo.fromJson(
+          json['basic_group_full_info'] as Map<String, dynamic>?)!,
     );
   }
 

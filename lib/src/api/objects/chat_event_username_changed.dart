@@ -24,8 +24,8 @@ class ChatEventUsernameChanged extends ChatEventAction {
     }
 
     return ChatEventUsernameChanged(
-      oldUsername: json['old_username'],
-      newUsername: json['new_username'],
+      oldUsername: json['old_username'] as String,
+      newUsername: json['new_username'] as String,
     );
   }
 

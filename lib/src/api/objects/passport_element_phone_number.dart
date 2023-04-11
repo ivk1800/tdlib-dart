@@ -20,7 +20,7 @@ class PassportElementPhoneNumber extends PassportElement {
     }
 
     return PassportElementPhoneNumber(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] as String,
     );
   }
 

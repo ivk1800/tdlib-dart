@@ -29,11 +29,13 @@ class FoundFileDownloads extends TdObject {
     }
 
     return FoundFileDownloads(
-      totalCounts: DownloadedFileCounts.fromJson(json['total_counts'])!,
-      files: List<FileDownload>.from((json['files'] ?? [])
-          .map((item) => FileDownload.fromJson(item))
-          .toList()),
-      nextOffset: json['next_offset'],
+      totalCounts: DownloadedFileCounts.fromJson(
+          json['total_counts'] as Map<String, dynamic>?)!,
+      files: List<FileDownload>.from(
+          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => FileDownload.fromJson(item))
+              .toList()),
+      nextOffset: json['next_offset'] as String,
     );
   }
 

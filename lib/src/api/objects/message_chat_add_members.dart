@@ -21,7 +21,9 @@ class MessageChatAddMembers extends MessageContent {
 
     return MessageChatAddMembers(
       memberUserIds: List<int>.from(
-          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+          ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

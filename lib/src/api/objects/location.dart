@@ -30,9 +30,9 @@ class Location extends TdObject {
     }
 
     return Location(
-      latitude: json['latitude'],
-      longitude: json['longitude'],
-      horizontalAccuracy: json['horizontal_accuracy'],
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      horizontalAccuracy: (json['horizontal_accuracy'] as num).toDouble(),
     );
   }
 

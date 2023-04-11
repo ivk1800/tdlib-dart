@@ -25,8 +25,8 @@ class ChatMessageSender extends TdObject {
     }
 
     return ChatMessageSender(
-      sender: MessageSender.fromJson(json['sender'])!,
-      needsPremium: json['needs_premium'],
+      sender: MessageSender.fromJson(json['sender'] as Map<String, dynamic>?)!,
+      needsPremium: json['needs_premium'] as bool,
     );
   }
 

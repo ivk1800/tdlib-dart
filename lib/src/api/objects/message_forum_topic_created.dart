@@ -24,8 +24,8 @@ class MessageForumTopicCreated extends MessageContent {
     }
 
     return MessageForumTopicCreated(
-      name: json['name'],
-      icon: ForumTopicIcon.fromJson(json['icon'])!,
+      name: json['name'] as String,
+      icon: ForumTopicIcon.fromJson(json['icon'] as Map<String, dynamic>?)!,
     );
   }
 

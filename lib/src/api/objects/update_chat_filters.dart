@@ -25,10 +25,11 @@ class UpdateChatFilters extends Update {
     }
 
     return UpdateChatFilters(
-      chatFilters: List<ChatFilterInfo>.from((json['chat_filters'] ?? [])
-          .map((item) => ChatFilterInfo.fromJson(item))
-          .toList()),
-      mainChatListPosition: json['main_chat_list_position'],
+      chatFilters: List<ChatFilterInfo>.from(
+          ((json['chat_filters'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatFilterInfo.fromJson(item))
+              .toList()),
+      mainChatListPosition: json['main_chat_list_position'] as int,
     );
   }
 

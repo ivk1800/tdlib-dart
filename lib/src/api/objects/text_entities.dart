@@ -20,9 +20,10 @@ class TextEntities extends TdObject {
     }
 
     return TextEntities(
-      entities: List<TextEntity>.from((json['entities'] ?? [])
-          .map((item) => TextEntity.fromJson(item))
-          .toList()),
+      entities: List<TextEntity>.from(
+          ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => TextEntity.fromJson(item))
+              .toList()),
     );
   }
 

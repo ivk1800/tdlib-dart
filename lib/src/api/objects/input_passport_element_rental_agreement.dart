@@ -22,8 +22,8 @@ class InputPassportElementRentalAgreement extends InputPassportElement {
     }
 
     return InputPassportElementRentalAgreement(
-      rentalAgreement:
-          InputPersonalDocument.fromJson(json['rental_agreement'])!,
+      rentalAgreement: InputPersonalDocument.fromJson(
+          json['rental_agreement'] as Map<String, dynamic>?)!,
     );
   }
 

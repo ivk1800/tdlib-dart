@@ -27,8 +27,8 @@ class ReplyMarkupForceReply extends ReplyMarkup {
     }
 
     return ReplyMarkupForceReply(
-      isPersonal: json['is_personal'],
-      inputFieldPlaceholder: json['input_field_placeholder'],
+      isPersonal: json['is_personal'] as bool,
+      inputFieldPlaceholder: json['input_field_placeholder'] as String,
     );
   }
 

@@ -37,10 +37,11 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
     }
 
     return AuthorizationStateWaitPassword(
-      passwordHint: json['password_hint'],
-      hasRecoveryEmailAddress: json['has_recovery_email_address'],
-      hasPassportData: json['has_passport_data'],
-      recoveryEmailAddressPattern: json['recovery_email_address_pattern'],
+      passwordHint: json['password_hint'] as String,
+      hasRecoveryEmailAddress: json['has_recovery_email_address'] as bool,
+      hasPassportData: json['has_passport_data'] as bool,
+      recoveryEmailAddressPattern:
+          json['recovery_email_address_pattern'] as String,
     );
   }
 

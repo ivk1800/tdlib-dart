@@ -30,8 +30,8 @@ class MessageForumTopicEdited extends MessageContent {
     }
 
     return MessageForumTopicEdited(
-      name: json['name'],
-      editIconCustomEmojiId: json['edit_icon_custom_emoji_id'],
+      name: json['name'] as String,
+      editIconCustomEmojiId: json['edit_icon_custom_emoji_id'] as bool,
       iconCustomEmojiId: int.tryParse(json['icon_custom_emoji_id']) ?? 0,
     );
   }

@@ -20,7 +20,7 @@ class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeWebApp(
-      url: json['url'],
+      url: json['url'] as String,
     );
   }
 

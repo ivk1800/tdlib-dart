@@ -24,12 +24,14 @@ class UpdateSuggestedActions extends Update {
     }
 
     return UpdateSuggestedActions(
-      addedActions: List<SuggestedAction>.from((json['added_actions'] ?? [])
-          .map((item) => SuggestedAction.fromJson(item))
-          .toList()),
-      removedActions: List<SuggestedAction>.from((json['removed_actions'] ?? [])
-          .map((item) => SuggestedAction.fromJson(item))
-          .toList()),
+      addedActions: List<SuggestedAction>.from(
+          ((json['added_actions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => SuggestedAction.fromJson(item))
+              .toList()),
+      removedActions: List<SuggestedAction>.from(
+          ((json['removed_actions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => SuggestedAction.fromJson(item))
+              .toList()),
     );
   }
 

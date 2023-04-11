@@ -25,8 +25,8 @@ class PushMessageContentGame extends PushMessageContent {
     }
 
     return PushMessageContentGame(
-      title: json['title'],
-      isPinned: json['is_pinned'],
+      title: json['title'] as String,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

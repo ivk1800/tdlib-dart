@@ -24,8 +24,8 @@ class UpdateForumTopicInfo extends Update {
     }
 
     return UpdateForumTopicInfo(
-      chatId: json['chat_id'],
-      info: ForumTopicInfo.fromJson(json['info'])!,
+      chatId: json['chat_id'] as int,
+      info: ForumTopicInfo.fromJson(json['info'] as Map<String, dynamic>?)!,
     );
   }
 

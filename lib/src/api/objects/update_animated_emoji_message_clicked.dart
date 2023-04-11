@@ -32,9 +32,9 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
     }
 
     return UpdateAnimatedEmojiMessageClicked(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      sticker: Sticker.fromJson(json['sticker'])!,
+      chatId: json['chat_id'] as int,
+      messageId: json['message_id'] as int,
+      sticker: Sticker.fromJson(json['sticker'] as Map<String, dynamic>?)!,
     );
   }
 

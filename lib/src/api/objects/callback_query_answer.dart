@@ -29,9 +29,9 @@ class CallbackQueryAnswer extends TdObject {
     }
 
     return CallbackQueryAnswer(
-      text: json['text'],
-      showAlert: json['show_alert'],
-      url: json['url'],
+      text: json['text'] as String,
+      showAlert: json['show_alert'] as bool,
+      url: json['url'] as String,
     );
   }
 

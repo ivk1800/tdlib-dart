@@ -20,7 +20,7 @@ class UpdateNewMessage extends Update {
     }
 
     return UpdateNewMessage(
-      message: Message.fromJson(json['message'])!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
     );
   }
 

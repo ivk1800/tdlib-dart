@@ -68,18 +68,19 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultAnimation(
-      id: json['id'],
-      title: json['title'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailMimeType: json['thumbnail_mime_type'],
-      videoUrl: json['video_url'],
-      videoMimeType: json['video_mime_type'],
-      videoDuration: json['video_duration'],
-      videoWidth: json['video_width'],
-      videoHeight: json['video_height'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-      inputMessageContent:
-          InputMessageContent.fromJson(json['input_message_content'])!,
+      id: json['id'] as String,
+      title: json['title'] as String,
+      thumbnailUrl: json['thumbnail_url'] as String,
+      thumbnailMimeType: json['thumbnail_mime_type'] as String,
+      videoUrl: json['video_url'] as String,
+      videoMimeType: json['video_mime_type'] as String,
+      videoDuration: json['video_duration'] as int,
+      videoWidth: json['video_width'] as int,
+      videoHeight: json['video_height'] as int,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      inputMessageContent: InputMessageContent.fromJson(
+          json['input_message_content'] as Map<String, dynamic>?)!,
     );
   }
 

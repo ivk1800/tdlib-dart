@@ -41,15 +41,19 @@ class CallStateReady extends CallState {
     }
 
     return CallStateReady(
-      protocol: CallProtocol.fromJson(json['protocol'])!,
-      servers: List<CallServer>.from((json['servers'] ?? [])
-          .map((item) => CallServer.fromJson(item))
-          .toList()),
-      config: json['config'],
-      encryptionKey: json['encryption_key'],
+      protocol:
+          CallProtocol.fromJson(json['protocol'] as Map<String, dynamic>?)!,
+      servers: List<CallServer>.from(
+          ((json['servers'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => CallServer.fromJson(item))
+              .toList()),
+      config: json['config'] as String,
+      encryptionKey: json['encryption_key'] as String,
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
-      allowP2p: json['allow_p2p'],
+          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      allowP2p: json['allow_p2p'] as bool,
     );
   }
 

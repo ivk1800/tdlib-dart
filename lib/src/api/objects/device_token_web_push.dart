@@ -30,9 +30,9 @@ class DeviceTokenWebPush extends DeviceToken {
     }
 
     return DeviceTokenWebPush(
-      endpoint: json['endpoint'],
-      p256dhBase64url: json['p256dh_base64url'],
-      authBase64url: json['auth_base64url'],
+      endpoint: json['endpoint'] as String,
+      p256dhBase64url: json['p256dh_base64url'] as String,
+      authBase64url: json['auth_base64url'] as String,
     );
   }
 

@@ -22,7 +22,8 @@ class InputBackgroundLocal extends InputBackground {
     }
 
     return InputBackgroundLocal(
-      background: InputFile.fromJson(json['background'])!,
+      background:
+          InputFile.fromJson(json['background'] as Map<String, dynamic>?)!,
     );
   }
 

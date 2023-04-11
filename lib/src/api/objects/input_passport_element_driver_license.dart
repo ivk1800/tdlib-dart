@@ -22,7 +22,8 @@ class InputPassportElementDriverLicense extends InputPassportElement {
     }
 
     return InputPassportElementDriverLicense(
-      driverLicense: InputIdentityDocument.fromJson(json['driver_license'])!,
+      driverLicense: InputIdentityDocument.fromJson(
+          json['driver_license'] as Map<String, dynamic>?)!,
     );
   }
 

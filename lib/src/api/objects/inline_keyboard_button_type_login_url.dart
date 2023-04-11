@@ -30,9 +30,9 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeLoginUrl(
-      url: json['url'],
-      id: json['id'],
-      forwardText: json['forward_text'],
+      url: json['url'] as String,
+      id: json['id'] as int,
+      forwardText: json['forward_text'] as String,
     );
   }
 

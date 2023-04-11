@@ -20,7 +20,7 @@ class MessageFileTypePrivate extends MessageFileType {
     }
 
     return MessageFileTypePrivate(
-      name: json['name'],
+      name: json['name'] as String,
     );
   }
 

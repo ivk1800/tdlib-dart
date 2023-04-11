@@ -20,7 +20,7 @@ class SpeechRecognitionResultText extends SpeechRecognitionResult {
     }
 
     return SpeechRecognitionResultText(
-      text: json['text'],
+      text: json['text'] as String,
     );
   }
 

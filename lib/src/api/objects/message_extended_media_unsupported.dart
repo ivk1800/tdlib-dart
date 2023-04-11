@@ -20,7 +20,8 @@ class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
     }
 
     return MessageExtendedMediaUnsupported(
-      caption: FormattedText.fromJson(json['caption'])!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

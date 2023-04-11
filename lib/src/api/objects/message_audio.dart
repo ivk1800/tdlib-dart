@@ -24,8 +24,9 @@ class MessageAudio extends MessageContent {
     }
 
     return MessageAudio(
-      audio: Audio.fromJson(json['audio'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
+      audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

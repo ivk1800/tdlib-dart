@@ -77,23 +77,27 @@ class Invoice extends TdObject {
     }
 
     return Invoice(
-      currency: json['currency'],
-      priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
-          .map((item) => LabeledPricePart.fromJson(item))
-          .toList()),
-      maxTipAmount: json['max_tip_amount'],
+      currency: json['currency'] as String,
+      priceParts: List<LabeledPricePart>.from(
+          ((json['price_parts'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => LabeledPricePart.fromJson(item))
+              .toList()),
+      maxTipAmount: json['max_tip_amount'] as int,
       suggestedTipAmounts: List<int>.from(
-          (json['suggested_tip_amounts'] ?? []).map((item) => item).toList()),
+          ((json['suggested_tip_amounts'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       recurringPaymentTermsOfServiceUrl:
-          json['recurring_payment_terms_of_service_url'],
-      isTest: json['is_test'],
-      needName: json['need_name'],
-      needPhoneNumber: json['need_phone_number'],
-      needEmailAddress: json['need_email_address'],
-      needShippingAddress: json['need_shipping_address'],
-      sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
-      sendEmailAddressToProvider: json['send_email_address_to_provider'],
-      isFlexible: json['is_flexible'],
+          json['recurring_payment_terms_of_service_url'] as String,
+      isTest: json['is_test'] as bool,
+      needName: json['need_name'] as bool,
+      needPhoneNumber: json['need_phone_number'] as bool,
+      needEmailAddress: json['need_email_address'] as bool,
+      needShippingAddress: json['need_shipping_address'] as bool,
+      sendPhoneNumberToProvider: json['send_phone_number_to_provider'] as bool,
+      sendEmailAddressToProvider:
+          json['send_email_address_to_provider'] as bool,
+      isFlexible: json['is_flexible'] as bool,
     );
   }
 

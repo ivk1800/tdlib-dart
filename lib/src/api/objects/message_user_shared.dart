@@ -24,8 +24,8 @@ class MessageUserShared extends MessageContent {
     }
 
     return MessageUserShared(
-      userId: json['user_id'],
-      buttonId: json['button_id'],
+      userId: json['user_id'] as int,
+      buttonId: json['button_id'] as int,
     );
   }
 

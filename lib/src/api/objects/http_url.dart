@@ -20,7 +20,7 @@ class HttpUrl extends TdObject {
     }
 
     return HttpUrl(
-      url: json['url'],
+      url: json['url'] as String,
     );
   }
 

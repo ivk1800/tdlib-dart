@@ -21,7 +21,7 @@ class InternalLinkTypeMessage extends InternalLinkType {
     }
 
     return InternalLinkTypeMessage(
-      url: json['url'],
+      url: json['url'] as String,
     );
   }
 

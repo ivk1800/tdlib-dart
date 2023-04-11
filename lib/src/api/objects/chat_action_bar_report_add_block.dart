@@ -33,8 +33,8 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
     }
 
     return ChatActionBarReportAddBlock(
-      canUnarchive: json['can_unarchive'],
-      distance: json['distance'],
+      canUnarchive: json['can_unarchive'] as bool,
+      distance: json['distance'] as int,
     );
   }
 

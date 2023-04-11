@@ -32,10 +32,10 @@ class InlineQueryResultPhoto extends InlineQueryResult {
     }
 
     return InlineQueryResultPhoto(
-      id: json['id'],
-      photo: Photo.fromJson(json['photo'])!,
-      title: json['title'],
-      description: json['description'],
+      id: json['id'] as String,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      description: json['description'] as String,
     );
   }
 

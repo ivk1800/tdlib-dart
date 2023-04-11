@@ -21,7 +21,7 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
     }
 
     return SupergroupMembersFilterBanned(
-      query: json['query'],
+      query: json['query'] as String,
     );
   }
 

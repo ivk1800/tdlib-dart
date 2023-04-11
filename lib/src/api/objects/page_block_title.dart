@@ -20,7 +20,7 @@ class PageBlockTitle extends PageBlock {
     }
 
     return PageBlockTitle(
-      title: RichText.fromJson(json['title'])!,
+      title: RichText.fromJson(json['title'] as Map<String, dynamic>?)!,
     );
   }
 

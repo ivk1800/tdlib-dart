@@ -38,11 +38,13 @@ class DiceStickersSlotMachine extends DiceStickers {
     }
 
     return DiceStickersSlotMachine(
-      background: Sticker.fromJson(json['background'])!,
-      lever: Sticker.fromJson(json['lever'])!,
-      leftReel: Sticker.fromJson(json['left_reel'])!,
-      centerReel: Sticker.fromJson(json['center_reel'])!,
-      rightReel: Sticker.fromJson(json['right_reel'])!,
+      background:
+          Sticker.fromJson(json['background'] as Map<String, dynamic>?)!,
+      lever: Sticker.fromJson(json['lever'] as Map<String, dynamic>?)!,
+      leftReel: Sticker.fromJson(json['left_reel'] as Map<String, dynamic>?)!,
+      centerReel:
+          Sticker.fromJson(json['center_reel'] as Map<String, dynamic>?)!,
+      rightReel: Sticker.fromJson(json['right_reel'] as Map<String, dynamic>?)!,
     );
   }
 

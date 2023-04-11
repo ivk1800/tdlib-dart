@@ -20,7 +20,8 @@ class PremiumSourceLimitExceeded extends PremiumSource {
     }
 
     return PremiumSourceLimitExceeded(
-      limitType: PremiumLimitType.fromJson(json['limit_type'])!,
+      limitType: PremiumLimitType.fromJson(
+          json['limit_type'] as Map<String, dynamic>?)!,
     );
   }
 

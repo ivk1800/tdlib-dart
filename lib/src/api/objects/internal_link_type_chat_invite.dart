@@ -21,7 +21,7 @@ class InternalLinkTypeChatInvite extends InternalLinkType {
     }
 
     return InternalLinkTypeChatInvite(
-      inviteLink: json['invite_link'],
+      inviteLink: json['invite_link'] as String,
     );
   }
 

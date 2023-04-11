@@ -25,8 +25,8 @@ class MessageText extends MessageContent {
     }
 
     return MessageText(
-      text: FormattedText.fromJson(json['text'])!,
-      webPage: WebPage.fromJson(json['web_page']),
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
+      webPage: WebPage.fromJson(json['web_page'] as Map<String, dynamic>?),
     );
   }
 

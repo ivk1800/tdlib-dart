@@ -20,9 +20,10 @@ class LocalizationTargetInfo extends TdObject {
     }
 
     return LocalizationTargetInfo(
-      languagePacks: List<LanguagePackInfo>.from((json['language_packs'] ?? [])
-          .map((item) => LanguagePackInfo.fromJson(item))
-          .toList()),
+      languagePacks: List<LanguagePackInfo>.from(
+          ((json['language_packs'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => LanguagePackInfo.fromJson(item))
+              .toList()),
     );
   }
 

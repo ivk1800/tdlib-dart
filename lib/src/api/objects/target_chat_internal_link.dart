@@ -20,7 +20,7 @@ class TargetChatInternalLink extends TargetChat {
     }
 
     return TargetChatInternalLink(
-      link: InternalLinkType.fromJson(json['link'])!,
+      link: InternalLinkType.fromJson(json['link'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -26,8 +26,8 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
     }
 
     return AuthenticationCodeTypeFirebaseAndroid(
-      nonce: json['nonce'],
-      length: json['length'],
+      nonce: json['nonce'] as String,
+      length: json['length'] as int,
     );
   }
 

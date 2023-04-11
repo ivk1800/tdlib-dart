@@ -67,19 +67,20 @@ class ChatNotificationSettings extends TdObject {
     }
 
     return ChatNotificationSettings(
-      useDefaultMuteFor: json['use_default_mute_for'],
-      muteFor: json['mute_for'],
-      useDefaultSound: json['use_default_sound'],
+      useDefaultMuteFor: json['use_default_mute_for'] as bool,
+      muteFor: json['mute_for'] as int,
+      useDefaultSound: json['use_default_sound'] as bool,
       soundId: int.tryParse(json['sound_id']) ?? 0,
-      useDefaultShowPreview: json['use_default_show_preview'],
-      showPreview: json['show_preview'],
+      useDefaultShowPreview: json['use_default_show_preview'] as bool,
+      showPreview: json['show_preview'] as bool,
       useDefaultDisablePinnedMessageNotifications:
-          json['use_default_disable_pinned_message_notifications'],
+          json['use_default_disable_pinned_message_notifications'] as bool,
       disablePinnedMessageNotifications:
-          json['disable_pinned_message_notifications'],
+          json['disable_pinned_message_notifications'] as bool,
       useDefaultDisableMentionNotifications:
-          json['use_default_disable_mention_notifications'],
-      disableMentionNotifications: json['disable_mention_notifications'],
+          json['use_default_disable_mention_notifications'] as bool,
+      disableMentionNotifications:
+          json['disable_mention_notifications'] as bool,
     );
   }
 

@@ -21,7 +21,7 @@ class ResetPasswordResultPending extends ResetPasswordResult {
     }
 
     return ResetPasswordResultPending(
-      pendingResetDate: json['pending_reset_date'],
+      pendingResetDate: json['pending_reset_date'] as int,
     );
   }
 

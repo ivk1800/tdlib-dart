@@ -28,11 +28,12 @@ class PageBlockDetails extends PageBlock {
     }
 
     return PageBlockDetails(
-      header: RichText.fromJson(json['header'])!,
-      pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
-          .map((item) => PageBlock.fromJson(item))
-          .toList()),
-      isOpen: json['is_open'],
+      header: RichText.fromJson(json['header'] as Map<String, dynamic>?)!,
+      pageBlocks: List<PageBlock>.from(
+          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PageBlock.fromJson(item))
+              .toList()),
+      isOpen: json['is_open'] as bool,
     );
   }
 

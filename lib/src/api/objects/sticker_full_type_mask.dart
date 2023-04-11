@@ -20,7 +20,8 @@ class StickerFullTypeMask extends StickerFullType {
     }
 
     return StickerFullTypeMask(
-      maskPosition: MaskPosition.fromJson(json['mask_position']),
+      maskPosition:
+          MaskPosition.fromJson(json['mask_position'] as Map<String, dynamic>?),
     );
   }
 

@@ -29,9 +29,9 @@ class ChatStatisticsMessageInteractionInfo extends TdObject {
     }
 
     return ChatStatisticsMessageInteractionInfo(
-      messageId: json['message_id'],
-      viewCount: json['view_count'],
-      forwardCount: json['forward_count'],
+      messageId: json['message_id'] as int,
+      viewCount: json['view_count'] as int,
+      forwardCount: json['forward_count'] as int,
     );
   }
 

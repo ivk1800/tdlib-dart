@@ -24,8 +24,8 @@ class UpdateChatIsTranslatable extends Update {
     }
 
     return UpdateChatIsTranslatable(
-      chatId: json['chat_id'],
-      isTranslatable: json['is_translatable'],
+      chatId: json['chat_id'] as int,
+      isTranslatable: json['is_translatable'] as bool,
     );
   }
 

@@ -21,7 +21,7 @@ class MessageForwardOriginMessageImport extends MessageForwardOrigin {
     }
 
     return MessageForwardOriginMessageImport(
-      senderName: json['sender_name'],
+      senderName: json['sender_name'] as String,
     );
   }
 

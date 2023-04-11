@@ -20,7 +20,7 @@ class MessageVenue extends MessageContent {
     }
 
     return MessageVenue(
-      venue: Venue.fromJson(json['venue'])!,
+      venue: Venue.fromJson(json['venue'] as Map<String, dynamic>?)!,
     );
   }
 

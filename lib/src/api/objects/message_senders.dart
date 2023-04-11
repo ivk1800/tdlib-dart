@@ -24,10 +24,11 @@ class MessageSenders extends TdObject {
     }
 
     return MessageSenders(
-      totalCount: json['total_count'],
-      senders: List<MessageSender>.from((json['senders'] ?? [])
-          .map((item) => MessageSender.fromJson(item))
-          .toList()),
+      totalCount: json['total_count'] as int,
+      senders: List<MessageSender>.from(
+          ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => MessageSender.fromJson(item))
+              .toList()),
     );
   }
 

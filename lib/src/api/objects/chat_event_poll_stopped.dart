@@ -20,7 +20,7 @@ class ChatEventPollStopped extends ChatEventAction {
     }
 
     return ChatEventPollStopped(
-      message: Message.fromJson(json['message'])!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
     );
   }
 

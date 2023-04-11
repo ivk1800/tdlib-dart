@@ -21,7 +21,7 @@ class TextParseModeMarkdown extends TextParseMode {
     }
 
     return TextParseModeMarkdown(
-      version: json['version'],
+      version: json['version'] as int,
     );
   }
 

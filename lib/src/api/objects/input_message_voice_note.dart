@@ -33,10 +33,11 @@ class InputMessageVoiceNote extends InputMessageContent {
     }
 
     return InputMessageVoiceNote(
-      voiceNote: InputFile.fromJson(json['voice_note'])!,
-      duration: json['duration'],
-      waveform: json['waveform'],
-      caption: FormattedText.fromJson(json['caption']),
+      voiceNote:
+          InputFile.fromJson(json['voice_note'] as Map<String, dynamic>?)!,
+      duration: json['duration'] as int,
+      waveform: json['waveform'] as String,
+      caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
     );
   }
 

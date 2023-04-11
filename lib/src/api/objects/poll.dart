@@ -60,18 +60,21 @@ class Poll extends TdObject {
 
     return Poll(
       id: int.tryParse(json['id']) ?? 0,
-      question: json['question'],
-      options: List<PollOption>.from((json['options'] ?? [])
-          .map((item) => PollOption.fromJson(item))
-          .toList()),
-      totalVoterCount: json['total_voter_count'],
+      question: json['question'] as String,
+      options: List<PollOption>.from(
+          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PollOption.fromJson(item))
+              .toList()),
+      totalVoterCount: json['total_voter_count'] as int,
       recentVoterUserIds: List<int>.from(
-          (json['recent_voter_user_ids'] ?? []).map((item) => item).toList()),
-      isAnonymous: json['is_anonymous'],
-      type: PollType.fromJson(json['type'])!,
-      openPeriod: json['open_period'],
-      closeDate: json['close_date'],
-      isClosed: json['is_closed'],
+          ((json['recent_voter_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
+      isAnonymous: json['is_anonymous'] as bool,
+      type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      openPeriod: json['open_period'] as int,
+      closeDate: json['close_date'] as int,
+      isClosed: json['is_closed'] as bool,
     );
   }
 

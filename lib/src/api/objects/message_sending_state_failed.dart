@@ -38,11 +38,11 @@ class MessageSendingStateFailed extends MessageSendingState {
     }
 
     return MessageSendingStateFailed(
-      errorCode: json['error_code'],
-      errorMessage: json['error_message'],
-      canRetry: json['can_retry'],
-      needAnotherSender: json['need_another_sender'],
-      retryAfter: json['retry_after'],
+      errorCode: json['error_code'] as int,
+      errorMessage: json['error_message'] as String,
+      canRetry: json['can_retry'] as bool,
+      needAnotherSender: json['need_another_sender'] as bool,
+      retryAfter: (json['retry_after'] as num).toDouble(),
     );
   }
 

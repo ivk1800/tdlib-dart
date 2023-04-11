@@ -39,12 +39,13 @@ class ScopeNotificationSettings extends TdObject {
     }
 
     return ScopeNotificationSettings(
-      muteFor: json['mute_for'],
+      muteFor: json['mute_for'] as int,
       soundId: int.tryParse(json['sound_id']) ?? 0,
-      showPreview: json['show_preview'],
+      showPreview: json['show_preview'] as bool,
       disablePinnedMessageNotifications:
-          json['disable_pinned_message_notifications'],
-      disableMentionNotifications: json['disable_mention_notifications'],
+          json['disable_pinned_message_notifications'] as bool,
+      disableMentionNotifications:
+          json['disable_mention_notifications'] as bool,
     );
   }
 

@@ -22,8 +22,8 @@ class InputPassportElementInternalPassport extends InputPassportElement {
     }
 
     return InputPassportElementInternalPassport(
-      internalPassport:
-          InputIdentityDocument.fromJson(json['internal_passport'])!,
+      internalPassport: InputIdentityDocument.fromJson(
+          json['internal_passport'] as Map<String, dynamic>?)!,
     );
   }
 

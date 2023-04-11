@@ -44,12 +44,12 @@ class Venue extends TdObject {
     }
 
     return Venue(
-      location: Location.fromJson(json['location'])!,
-      title: json['title'],
-      address: json['address'],
-      provider: json['provider'],
-      id: json['id'],
-      type: json['type'],
+      location: Location.fromJson(json['location'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      address: json['address'] as String,
+      provider: json['provider'] as String,
+      id: json['id'] as String,
+      type: json['type'] as String,
     );
   }
 

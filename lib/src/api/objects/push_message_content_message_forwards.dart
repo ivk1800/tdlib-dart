@@ -21,7 +21,7 @@ class PushMessageContentMessageForwards extends PushMessageContent {
     }
 
     return PushMessageContentMessageForwards(
-      totalCount: json['total_count'],
+      totalCount: json['total_count'] as int,
     );
   }
 

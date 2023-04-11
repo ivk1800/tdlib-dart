@@ -23,7 +23,8 @@ class ChatEventHasAggressiveAntiSpamEnabledToggled extends ChatEventAction {
     }
 
     return ChatEventHasAggressiveAntiSpamEnabledToggled(
-      hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+      hasAggressiveAntiSpamEnabled:
+          json['has_aggressive_anti_spam_enabled'] as bool,
     );
   }
 

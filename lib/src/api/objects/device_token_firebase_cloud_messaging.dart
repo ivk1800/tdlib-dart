@@ -25,8 +25,8 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
     }
 
     return DeviceTokenFirebaseCloudMessaging(
-      token: json['token'],
-      encrypt: json['encrypt'],
+      token: json['token'] as String,
+      encrypt: json['encrypt'] as bool,
     );
   }
 

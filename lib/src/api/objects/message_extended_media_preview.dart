@@ -36,11 +36,13 @@ class MessageExtendedMediaPreview extends MessageExtendedMedia {
     }
 
     return MessageExtendedMediaPreview(
-      width: json['width'],
-      height: json['height'],
-      duration: json['duration'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      caption: FormattedText.fromJson(json['caption'])!,
+      width: json['width'] as int,
+      height: json['height'] as int,
+      duration: json['duration'] as int,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

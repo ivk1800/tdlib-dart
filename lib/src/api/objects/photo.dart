@@ -29,11 +29,13 @@ class Photo extends TdObject {
     }
 
     return Photo(
-      hasStickers: json['has_stickers'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      sizes: List<PhotoSize>.from((json['sizes'] ?? [])
-          .map((item) => PhotoSize.fromJson(item))
-          .toList()),
+      hasStickers: json['has_stickers'] as bool,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      sizes: List<PhotoSize>.from(
+          ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => PhotoSize.fromJson(item))
+              .toList()),
     );
   }
 

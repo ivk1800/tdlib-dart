@@ -24,8 +24,10 @@ class UpdateUserPrivacySettingRules extends Update {
     }
 
     return UpdateUserPrivacySettingRules(
-      setting: UserPrivacySetting.fromJson(json['setting'])!,
-      rules: UserPrivacySettingRules.fromJson(json['rules'])!,
+      setting: UserPrivacySetting.fromJson(
+          json['setting'] as Map<String, dynamic>?)!,
+      rules: UserPrivacySettingRules.fromJson(
+          json['rules'] as Map<String, dynamic>?)!,
     );
   }
 

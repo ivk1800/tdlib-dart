@@ -20,7 +20,7 @@ class BotCommandScopeChat extends BotCommandScope {
     }
 
     return BotCommandScopeChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] as int,
     );
   }
 

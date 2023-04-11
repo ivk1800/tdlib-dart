@@ -48,14 +48,15 @@ class VideoNote extends TdObject {
     }
 
     return VideoNote(
-      duration: json['duration'],
-      waveform: json['waveform'],
-      length: json['length'],
-      minithumbnail: Minithumbnail.fromJson(json['minithumbnail']),
-      thumbnail: Thumbnail.fromJson(json['thumbnail']),
-      speechRecognitionResult:
-          SpeechRecognitionResult.fromJson(json['speech_recognition_result']),
-      video: File.fromJson(json['video'])!,
+      duration: json['duration'] as int,
+      waveform: json['waveform'] as String,
+      length: json['length'] as int,
+      minithumbnail: Minithumbnail.fromJson(
+          json['minithumbnail'] as Map<String, dynamic>?),
+      thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      speechRecognitionResult: SpeechRecognitionResult.fromJson(
+          json['speech_recognition_result'] as Map<String, dynamic>?),
+      video: File.fromJson(json['video'] as Map<String, dynamic>?)!,
     );
   }
 

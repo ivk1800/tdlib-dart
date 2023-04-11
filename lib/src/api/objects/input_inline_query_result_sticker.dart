@@ -49,14 +49,15 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     }
 
     return InputInlineQueryResultSticker(
-      id: json['id'],
-      thumbnailUrl: json['thumbnail_url'],
-      stickerUrl: json['sticker_url'],
-      stickerWidth: json['sticker_width'],
-      stickerHeight: json['sticker_height'],
-      replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
-      inputMessageContent:
-          InputMessageContent.fromJson(json['input_message_content'])!,
+      id: json['id'] as String,
+      thumbnailUrl: json['thumbnail_url'] as String,
+      stickerUrl: json['sticker_url'] as String,
+      stickerWidth: json['sticker_width'] as int,
+      stickerHeight: json['sticker_height'] as int,
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      inputMessageContent: InputMessageContent.fromJson(
+          json['input_message_content'] as Map<String, dynamic>?)!,
     );
   }
 

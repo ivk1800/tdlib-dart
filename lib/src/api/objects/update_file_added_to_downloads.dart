@@ -26,8 +26,10 @@ class UpdateFileAddedToDownloads extends Update {
     }
 
     return UpdateFileAddedToDownloads(
-      fileDownload: FileDownload.fromJson(json['file_download'])!,
-      counts: DownloadedFileCounts.fromJson(json['counts'])!,
+      fileDownload: FileDownload.fromJson(
+          json['file_download'] as Map<String, dynamic>?)!,
+      counts: DownloadedFileCounts.fromJson(
+          json['counts'] as Map<String, dynamic>?)!,
     );
   }
 

@@ -20,7 +20,7 @@ class NotificationTypeNewCall extends NotificationType {
     }
 
     return NotificationTypeNewCall(
-      callId: json['call_id'],
+      callId: json['call_id'] as int,
     );
   }
 

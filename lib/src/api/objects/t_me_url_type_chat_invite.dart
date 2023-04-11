@@ -20,7 +20,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
     }
 
     return TMeUrlTypeChatInvite(
-      info: ChatInviteLinkInfo.fromJson(json['info'])!,
+      info: ChatInviteLinkInfo.fromJson(json['info'] as Map<String, dynamic>?)!,
     );
   }
 

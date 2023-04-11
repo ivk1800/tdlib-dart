@@ -25,8 +25,8 @@ class UpdateChatUnreadReactionCount extends Update {
     }
 
     return UpdateChatUnreadReactionCount(
-      chatId: json['chat_id'],
-      unreadReactionCount: json['unread_reaction_count'],
+      chatId: json['chat_id'] as int,
+      unreadReactionCount: json['unread_reaction_count'] as int,
     );
   }
 

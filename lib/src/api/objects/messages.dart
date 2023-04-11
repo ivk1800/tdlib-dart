@@ -24,10 +24,11 @@ class Messages extends TdObject {
     }
 
     return Messages(
-      totalCount: json['total_count'],
-      messages: List<Message>.from((json['messages'] ?? [])
-          .map((item) => Message.fromJson(item))
-          .toList()),
+      totalCount: json['total_count'] as int,
+      messages: List<Message>.from(
+          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Message.fromJson(item))
+              .toList()),
     );
   }
 

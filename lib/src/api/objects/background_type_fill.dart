@@ -20,7 +20,7 @@ class BackgroundTypeFill extends BackgroundType {
     }
 
     return BackgroundTypeFill(
-      fill: BackgroundFill.fromJson(json['fill'])!,
+      fill: BackgroundFill.fromJson(json['fill'] as Map<String, dynamic>?)!,
     );
   }
 

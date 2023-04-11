@@ -21,7 +21,9 @@ class Emojis extends TdObject {
 
     return Emojis(
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
+          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

@@ -25,8 +25,8 @@ class MessageViewer extends TdObject {
     }
 
     return MessageViewer(
-      userId: json['user_id'],
-      viewDate: json['view_date'],
+      userId: json['user_id'] as int,
+      viewDate: json['view_date'] as int,
     );
   }
 

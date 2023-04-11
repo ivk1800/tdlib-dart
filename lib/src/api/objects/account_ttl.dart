@@ -22,7 +22,7 @@ class AccountTtl extends TdObject {
     }
 
     return AccountTtl(
-      days: json['days'],
+      days: json['days'] as int,
     );
   }
 

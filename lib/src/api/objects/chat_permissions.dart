@@ -76,20 +76,20 @@ class ChatPermissions extends TdObject {
     }
 
     return ChatPermissions(
-      canSendBasicMessages: json['can_send_basic_messages'],
-      canSendAudios: json['can_send_audios'],
-      canSendDocuments: json['can_send_documents'],
-      canSendPhotos: json['can_send_photos'],
-      canSendVideos: json['can_send_videos'],
-      canSendVideoNotes: json['can_send_video_notes'],
-      canSendVoiceNotes: json['can_send_voice_notes'],
-      canSendPolls: json['can_send_polls'],
-      canSendOtherMessages: json['can_send_other_messages'],
-      canAddWebPagePreviews: json['can_add_web_page_previews'],
-      canChangeInfo: json['can_change_info'],
-      canInviteUsers: json['can_invite_users'],
-      canPinMessages: json['can_pin_messages'],
-      canManageTopics: json['can_manage_topics'],
+      canSendBasicMessages: json['can_send_basic_messages'] as bool,
+      canSendAudios: json['can_send_audios'] as bool,
+      canSendDocuments: json['can_send_documents'] as bool,
+      canSendPhotos: json['can_send_photos'] as bool,
+      canSendVideos: json['can_send_videos'] as bool,
+      canSendVideoNotes: json['can_send_video_notes'] as bool,
+      canSendVoiceNotes: json['can_send_voice_notes'] as bool,
+      canSendPolls: json['can_send_polls'] as bool,
+      canSendOtherMessages: json['can_send_other_messages'] as bool,
+      canAddWebPagePreviews: json['can_add_web_page_previews'] as bool,
+      canChangeInfo: json['can_change_info'] as bool,
+      canInviteUsers: json['can_invite_users'] as bool,
+      canPinMessages: json['can_pin_messages'] as bool,
+      canManageTopics: json['can_manage_topics'] as bool,
     );
   }
 

@@ -91,25 +91,27 @@ class UserFullInfo extends TdObject {
     }
 
     return UserFullInfo(
-      personalPhoto: ChatPhoto.fromJson(json['personal_photo']),
-      photo: ChatPhoto.fromJson(json['photo']),
-      publicPhoto: ChatPhoto.fromJson(json['public_photo']),
-      isBlocked: json['is_blocked'],
-      canBeCalled: json['can_be_called'],
-      supportsVideoCalls: json['supports_video_calls'],
-      hasPrivateCalls: json['has_private_calls'],
-      hasPrivateForwards: json['has_private_forwards'],
+      personalPhoto:
+          ChatPhoto.fromJson(json['personal_photo'] as Map<String, dynamic>?),
+      photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?),
+      publicPhoto:
+          ChatPhoto.fromJson(json['public_photo'] as Map<String, dynamic>?),
+      isBlocked: json['is_blocked'] as bool,
+      canBeCalled: json['can_be_called'] as bool,
+      supportsVideoCalls: json['supports_video_calls'] as bool,
+      hasPrivateCalls: json['has_private_calls'] as bool,
+      hasPrivateForwards: json['has_private_forwards'] as bool,
       hasRestrictedVoiceAndVideoNoteMessages:
-          json['has_restricted_voice_and_video_note_messages'],
+          json['has_restricted_voice_and_video_note_messages'] as bool,
       needPhoneNumberPrivacyException:
-          json['need_phone_number_privacy_exception'],
-      bio: FormattedText.fromJson(json['bio']),
+          json['need_phone_number_privacy_exception'] as bool,
+      bio: FormattedText.fromJson(json['bio'] as Map<String, dynamic>?),
       premiumGiftOptions: List<PremiumPaymentOption>.from(
-          (json['premium_gift_options'] ?? [])
+          ((json['premium_gift_options'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumPaymentOption.fromJson(item))
               .toList()),
-      groupInCommonCount: json['group_in_common_count'],
-      botInfo: BotInfo.fromJson(json['bot_info']),
+      groupInCommonCount: json['group_in_common_count'] as int,
+      botInfo: BotInfo.fromJson(json['bot_info'] as Map<String, dynamic>?),
     );
   }
 

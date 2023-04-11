@@ -41,12 +41,12 @@ class Proxy extends TdObject {
     }
 
     return Proxy(
-      id: json['id'],
-      server: json['server'],
-      port: json['port'],
-      lastUsedDate: json['last_used_date'],
-      isEnabled: json['is_enabled'],
-      type: ProxyType.fromJson(json['type'])!,
+      id: json['id'] as int,
+      server: json['server'] as String,
+      port: json['port'] as int,
+      lastUsedDate: json['last_used_date'] as int,
+      isEnabled: json['is_enabled'] as bool,
+      type: ProxyType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
 

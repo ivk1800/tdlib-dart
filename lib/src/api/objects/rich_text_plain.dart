@@ -20,7 +20,7 @@ class RichTextPlain extends RichText {
     }
 
     return RichTextPlain(
-      text: json['text'],
+      text: json['text'] as String,
     );
   }
 

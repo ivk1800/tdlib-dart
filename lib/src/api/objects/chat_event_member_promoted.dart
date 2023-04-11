@@ -29,9 +29,11 @@ class ChatEventMemberPromoted extends ChatEventAction {
     }
 
     return ChatEventMemberPromoted(
-      userId: json['user_id'],
-      oldStatus: ChatMemberStatus.fromJson(json['old_status'])!,
-      newStatus: ChatMemberStatus.fromJson(json['new_status'])!,
+      userId: json['user_id'] as int,
+      oldStatus: ChatMemberStatus.fromJson(
+          json['old_status'] as Map<String, dynamic>?)!,
+      newStatus: ChatMemberStatus.fromJson(
+          json['new_status'] as Map<String, dynamic>?)!,
     );
   }
 

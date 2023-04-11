@@ -24,8 +24,9 @@ class MessageExtendedMediaVideo extends MessageExtendedMedia {
     }
 
     return MessageExtendedMediaVideo(
-      video: Video.fromJson(json['video'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
+      video: Video.fromJson(json['video'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
   }
 

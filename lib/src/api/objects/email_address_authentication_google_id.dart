@@ -21,7 +21,7 @@ class EmailAddressAuthenticationGoogleId extends EmailAddressAuthentication {
     }
 
     return EmailAddressAuthenticationGoogleId(
-      token: json['token'],
+      token: json['token'] as String,
     );
   }
 

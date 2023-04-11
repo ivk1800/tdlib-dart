@@ -20,8 +20,10 @@ class TestVectorString extends TdObject {
     }
 
     return TestVectorString(
-      value:
-          List<String>.from((json['value'] ?? []).map((item) => item).toList()),
+      value: List<String>.from(
+          ((json['value'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

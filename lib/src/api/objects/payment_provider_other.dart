@@ -20,7 +20,7 @@ class PaymentProviderOther extends PaymentProvider {
     }
 
     return PaymentProviderOther(
-      url: json['url'],
+      url: json['url'] as String,
     );
   }
 

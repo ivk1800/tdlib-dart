@@ -24,8 +24,8 @@ class PaymentOption extends TdObject {
     }
 
     return PaymentOption(
-      title: json['title'],
-      url: json['url'],
+      title: json['title'] as String,
+      url: json['url'] as String,
     );
   }
 

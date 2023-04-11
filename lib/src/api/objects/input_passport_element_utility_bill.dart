@@ -20,7 +20,8 @@ class InputPassportElementUtilityBill extends InputPassportElement {
     }
 
     return InputPassportElementUtilityBill(
-      utilityBill: InputPersonalDocument.fromJson(json['utility_bill'])!,
+      utilityBill: InputPersonalDocument.fromJson(
+          json['utility_bill'] as Map<String, dynamic>?)!,
     );
   }
 

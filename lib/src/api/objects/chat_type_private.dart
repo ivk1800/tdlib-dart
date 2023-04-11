@@ -20,7 +20,7 @@ class ChatTypePrivate extends ChatType {
     }
 
     return ChatTypePrivate(
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
     );
   }
 

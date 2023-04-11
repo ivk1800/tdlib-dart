@@ -68,18 +68,18 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     }
 
     return KeyboardButtonTypeRequestChat(
-      id: json['id'],
-      chatIsChannel: json['chat_is_channel'],
-      restrictChatIsForum: json['restrict_chat_is_forum'],
-      chatIsForum: json['chat_is_forum'],
-      restrictChatHasUsername: json['restrict_chat_has_username'],
-      chatHasUsername: json['chat_has_username'],
-      chatIsCreated: json['chat_is_created'],
-      userAdministratorRights:
-          ChatAdministratorRights.fromJson(json['user_administrator_rights']),
-      botAdministratorRights:
-          ChatAdministratorRights.fromJson(json['bot_administrator_rights']),
-      botIsMember: json['bot_is_member'],
+      id: json['id'] as int,
+      chatIsChannel: json['chat_is_channel'] as bool,
+      restrictChatIsForum: json['restrict_chat_is_forum'] as bool,
+      chatIsForum: json['chat_is_forum'] as bool,
+      restrictChatHasUsername: json['restrict_chat_has_username'] as bool,
+      chatHasUsername: json['chat_has_username'] as bool,
+      chatIsCreated: json['chat_is_created'] as bool,
+      userAdministratorRights: ChatAdministratorRights.fromJson(
+          json['user_administrator_rights'] as Map<String, dynamic>?),
+      botAdministratorRights: ChatAdministratorRights.fromJson(
+          json['bot_administrator_rights'] as Map<String, dynamic>?),
+      botIsMember: json['bot_is_member'] as bool,
     );
   }
 

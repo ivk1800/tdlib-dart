@@ -25,10 +25,11 @@ class MessageCalendar extends TdObject {
     }
 
     return MessageCalendar(
-      totalCount: json['total_count'],
-      days: List<MessageCalendarDay>.from((json['days'] ?? [])
-          .map((item) => MessageCalendarDay.fromJson(item))
-          .toList()),
+      totalCount: json['total_count'] as int,
+      days: List<MessageCalendarDay>.from(
+          ((json['days'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => MessageCalendarDay.fromJson(item))
+              .toList()),
     );
   }
 

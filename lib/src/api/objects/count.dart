@@ -20,7 +20,7 @@ class Count extends TdObject {
     }
 
     return Count(
-      count: json['count'],
+      count: json['count'] as int,
     );
   }
 

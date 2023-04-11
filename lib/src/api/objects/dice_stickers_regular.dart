@@ -20,7 +20,7 @@ class DiceStickersRegular extends DiceStickers {
     }
 
     return DiceStickersRegular(
-      sticker: Sticker.fromJson(json['sticker'])!,
+      sticker: Sticker.fromJson(json['sticker'] as Map<String, dynamic>?)!,
     );
   }
 

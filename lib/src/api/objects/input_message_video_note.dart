@@ -32,10 +32,12 @@ class InputMessageVideoNote extends InputMessageContent {
     }
 
     return InputMessageVideoNote(
-      videoNote: InputFile.fromJson(json['video_note'])!,
-      thumbnail: InputThumbnail.fromJson(json['thumbnail']),
-      duration: json['duration'],
-      length: json['length'],
+      videoNote:
+          InputFile.fromJson(json['video_note'] as Map<String, dynamic>?)!,
+      thumbnail:
+          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      duration: json['duration'] as int,
+      length: json['length'] as int,
     );
   }
 

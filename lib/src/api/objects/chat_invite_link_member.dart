@@ -30,9 +30,9 @@ class ChatInviteLinkMember extends TdObject {
     }
 
     return ChatInviteLinkMember(
-      userId: json['user_id'],
-      joinedChatDate: json['joined_chat_date'],
-      approverUserId: json['approver_user_id'],
+      userId: json['user_id'] as int,
+      joinedChatDate: json['joined_chat_date'] as int,
+      approverUserId: json['approver_user_id'] as int,
     );
   }
 

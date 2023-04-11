@@ -35,10 +35,11 @@ class InputMessageForwarded extends InputMessageContent {
     }
 
     return InputMessageForwarded(
-      fromChatId: json['from_chat_id'],
-      messageId: json['message_id'],
-      inGameShare: json['in_game_share'],
-      copyOptions: MessageCopyOptions.fromJson(json['copy_options']),
+      fromChatId: json['from_chat_id'] as int,
+      messageId: json['message_id'] as int,
+      inGameShare: json['in_game_share'] as bool,
+      copyOptions: MessageCopyOptions.fromJson(
+          json['copy_options'] as Map<String, dynamic>?),
     );
   }
 

@@ -24,8 +24,8 @@ class ChatTypeSupergroup extends ChatType {
     }
 
     return ChatTypeSupergroup(
-      supergroupId: json['supergroup_id'],
-      isChannel: json['is_channel'],
+      supergroupId: json['supergroup_id'] as int,
+      isChannel: json['is_channel'] as bool,
     );
   }
 

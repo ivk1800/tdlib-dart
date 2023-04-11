@@ -111,24 +111,25 @@ class Supergroup extends TdObject {
     }
 
     return Supergroup(
-      id: json['id'],
-      usernames: Usernames.fromJson(json['usernames']),
-      date: json['date'],
-      status: ChatMemberStatus.fromJson(json['status'])!,
-      memberCount: json['member_count'],
-      hasLinkedChat: json['has_linked_chat'],
-      hasLocation: json['has_location'],
-      signMessages: json['sign_messages'],
-      joinToSendMessages: json['join_to_send_messages'],
-      joinByRequest: json['join_by_request'],
-      isSlowModeEnabled: json['is_slow_mode_enabled'],
-      isChannel: json['is_channel'],
-      isBroadcastGroup: json['is_broadcast_group'],
-      isForum: json['is_forum'],
-      isVerified: json['is_verified'],
-      restrictionReason: json['restriction_reason'],
-      isScam: json['is_scam'],
-      isFake: json['is_fake'],
+      id: json['id'] as int,
+      usernames: Usernames.fromJson(json['usernames'] as Map<String, dynamic>?),
+      date: json['date'] as int,
+      status:
+          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      memberCount: json['member_count'] as int,
+      hasLinkedChat: json['has_linked_chat'] as bool,
+      hasLocation: json['has_location'] as bool,
+      signMessages: json['sign_messages'] as bool,
+      joinToSendMessages: json['join_to_send_messages'] as bool,
+      joinByRequest: json['join_by_request'] as bool,
+      isSlowModeEnabled: json['is_slow_mode_enabled'] as bool,
+      isChannel: json['is_channel'] as bool,
+      isBroadcastGroup: json['is_broadcast_group'] as bool,
+      isForum: json['is_forum'] as bool,
+      isVerified: json['is_verified'] as bool,
+      restrictionReason: json['restriction_reason'] as String,
+      isScam: json['is_scam'] as bool,
+      isFake: json['is_fake'] as bool,
     );
   }
 

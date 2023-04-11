@@ -24,8 +24,8 @@ class MessageChatUpgradeFrom extends MessageContent {
     }
 
     return MessageChatUpgradeFrom(
-      title: json['title'],
-      basicGroupId: json['basic_group_id'],
+      title: json['title'] as String,
+      basicGroupId: json['basic_group_id'] as int,
     );
   }
 

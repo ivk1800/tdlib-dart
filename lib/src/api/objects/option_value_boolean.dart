@@ -20,7 +20,7 @@ class OptionValueBoolean extends OptionValue {
     }
 
     return OptionValueBoolean(
-      value: json['value'],
+      value: json['value'] as bool,
     );
   }
 

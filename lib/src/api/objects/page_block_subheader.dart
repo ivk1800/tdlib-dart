@@ -20,7 +20,7 @@ class PageBlockSubheader extends PageBlock {
     }
 
     return PageBlockSubheader(
-      subheader: RichText.fromJson(json['subheader'])!,
+      subheader: RichText.fromJson(json['subheader'] as Map<String, dynamic>?)!,
     );
   }
 

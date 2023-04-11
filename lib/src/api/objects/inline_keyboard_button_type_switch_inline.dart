@@ -27,8 +27,8 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
     }
 
     return InlineKeyboardButtonTypeSwitchInline(
-      query: json['query'],
-      inCurrentChat: json['in_current_chat'],
+      query: json['query'] as String,
+      inCurrentChat: json['in_current_chat'] as bool,
     );
   }
 

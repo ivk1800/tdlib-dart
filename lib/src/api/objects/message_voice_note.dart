@@ -29,9 +29,11 @@ class MessageVoiceNote extends MessageContent {
     }
 
     return MessageVoiceNote(
-      voiceNote: VoiceNote.fromJson(json['voice_note'])!,
-      caption: FormattedText.fromJson(json['caption'])!,
-      isListened: json['is_listened'],
+      voiceNote:
+          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?)!,
+      caption:
+          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      isListened: json['is_listened'] as bool,
     );
   }
 

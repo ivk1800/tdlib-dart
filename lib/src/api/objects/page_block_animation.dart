@@ -28,9 +28,10 @@ class PageBlockAnimation extends PageBlock {
     }
 
     return PageBlockAnimation(
-      animation: Animation.fromJson(json['animation']),
-      caption: PageBlockCaption.fromJson(json['caption'])!,
-      needAutoplay: json['need_autoplay'],
+      animation: Animation.fromJson(json['animation'] as Map<String, dynamic>?),
+      caption:
+          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      needAutoplay: json['need_autoplay'] as bool,
     );
   }
 

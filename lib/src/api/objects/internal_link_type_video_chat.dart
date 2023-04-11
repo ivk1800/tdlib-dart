@@ -32,9 +32,9 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
     }
 
     return InternalLinkTypeVideoChat(
-      chatUsername: json['chat_username'],
-      inviteHash: json['invite_hash'],
-      isLiveStream: json['is_live_stream'],
+      chatUsername: json['chat_username'] as String,
+      inviteHash: json['invite_hash'] as String,
+      isLiveStream: json['is_live_stream'] as bool,
     );
   }
 

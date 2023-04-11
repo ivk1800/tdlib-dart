@@ -20,7 +20,7 @@ class DatabaseStatistics extends TdObject {
     }
 
     return DatabaseStatistics(
-      statistics: json['statistics'],
+      statistics: json['statistics'] as String,
     );
   }
 

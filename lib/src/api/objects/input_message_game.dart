@@ -24,8 +24,8 @@ class InputMessageGame extends InputMessageContent {
     }
 
     return InputMessageGame(
-      botUserId: json['bot_user_id'],
-      gameShortName: json['game_short_name'],
+      botUserId: json['bot_user_id'] as int,
+      gameShortName: json['game_short_name'] as String,
     );
   }
 

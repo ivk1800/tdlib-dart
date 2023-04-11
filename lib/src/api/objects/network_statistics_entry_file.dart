@@ -35,10 +35,11 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
     }
 
     return NetworkStatisticsEntryFile(
-      fileType: FileType.fromJson(json['file_type']),
-      networkType: NetworkType.fromJson(json['network_type'])!,
-      sentBytes: json['sent_bytes'],
-      receivedBytes: json['received_bytes'],
+      fileType: FileType.fromJson(json['file_type'] as Map<String, dynamic>?),
+      networkType:
+          NetworkType.fromJson(json['network_type'] as Map<String, dynamic>?)!,
+      sentBytes: json['sent_bytes'] as int,
+      receivedBytes: json['received_bytes'] as int,
     );
   }
 

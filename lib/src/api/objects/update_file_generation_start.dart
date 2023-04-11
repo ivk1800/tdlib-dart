@@ -37,9 +37,9 @@ class UpdateFileGenerationStart extends Update {
 
     return UpdateFileGenerationStart(
       generationId: int.tryParse(json['generation_id']) ?? 0,
-      originalPath: json['original_path'],
-      destinationPath: json['destination_path'],
-      conversion: json['conversion'],
+      originalPath: json['original_path'] as String,
+      destinationPath: json['destination_path'] as String,
+      conversion: json['conversion'] as String,
     );
   }
 

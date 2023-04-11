@@ -24,8 +24,8 @@ class UpdateChatIsBlocked extends Update {
     }
 
     return UpdateChatIsBlocked(
-      chatId: json['chat_id'],
-      isBlocked: json['is_blocked'],
+      chatId: json['chat_id'] as int,
+      isBlocked: json['is_blocked'] as bool,
     );
   }
 

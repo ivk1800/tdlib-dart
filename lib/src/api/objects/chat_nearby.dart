@@ -24,8 +24,8 @@ class ChatNearby extends TdObject {
     }
 
     return ChatNearby(
-      chatId: json['chat_id'],
-      distance: json['distance'],
+      chatId: json['chat_id'] as int,
+      distance: json['distance'] as int,
     );
   }
 

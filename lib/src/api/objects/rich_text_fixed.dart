@@ -20,7 +20,7 @@ class RichTextFixed extends RichText {
     }
 
     return RichTextFixed(
-      text: RichText.fromJson(json['text'])!,
+      text: RichText.fromJson(json['text'] as Map<String, dynamic>?)!,
     );
   }
 

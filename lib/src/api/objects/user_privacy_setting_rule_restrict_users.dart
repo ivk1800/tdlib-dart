@@ -22,8 +22,10 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
     }
 
     return UserPrivacySettingRuleRestrictUsers(
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      userIds: List<int>.from(
+          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
     );
   }
 

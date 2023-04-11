@@ -25,8 +25,8 @@ class PushMessageContentContact extends PushMessageContent {
     }
 
     return PushMessageContentContact(
-      name: json['name'],
-      isPinned: json['is_pinned'],
+      name: json['name'] as String,
+      isPinned: json['is_pinned'] as bool,
     );
   }
 

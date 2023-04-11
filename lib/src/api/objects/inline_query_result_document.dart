@@ -32,10 +32,10 @@ class InlineQueryResultDocument extends InlineQueryResult {
     }
 
     return InlineQueryResultDocument(
-      id: json['id'],
-      document: Document.fromJson(json['document'])!,
-      title: json['title'],
-      description: json['description'],
+      id: json['id'] as String,
+      document: Document.fromJson(json['document'] as Map<String, dynamic>?)!,
+      title: json['title'] as String,
+      description: json['description'] as String,
     );
   }
 

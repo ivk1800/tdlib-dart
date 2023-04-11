@@ -46,12 +46,13 @@ class UserTypeBot extends UserType {
     }
 
     return UserTypeBot(
-      canJoinGroups: json['can_join_groups'],
-      canReadAllGroupMessages: json['can_read_all_group_messages'],
-      isInline: json['is_inline'],
-      inlineQueryPlaceholder: json['inline_query_placeholder'],
-      needLocation: json['need_location'],
-      canBeAddedToAttachmentMenu: json['can_be_added_to_attachment_menu'],
+      canJoinGroups: json['can_join_groups'] as bool,
+      canReadAllGroupMessages: json['can_read_all_group_messages'] as bool,
+      isInline: json['is_inline'] as bool,
+      inlineQueryPlaceholder: json['inline_query_placeholder'] as String,
+      needLocation: json['need_location'] as bool,
+      canBeAddedToAttachmentMenu:
+          json['can_be_added_to_attachment_menu'] as bool,
     );
   }
 

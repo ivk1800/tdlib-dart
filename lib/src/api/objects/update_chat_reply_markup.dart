@@ -27,8 +27,8 @@ class UpdateChatReplyMarkup extends Update {
     }
 
     return UpdateChatReplyMarkup(
-      chatId: json['chat_id'],
-      replyMarkupMessageId: json['reply_markup_message_id'],
+      chatId: json['chat_id'] as int,
+      replyMarkupMessageId: json['reply_markup_message_id'] as int,
     );
   }
 

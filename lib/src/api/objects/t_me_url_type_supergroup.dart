@@ -20,7 +20,7 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
     }
 
     return TMeUrlTypeSupergroup(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] as int,
     );
   }
 

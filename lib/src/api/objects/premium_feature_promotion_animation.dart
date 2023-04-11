@@ -25,8 +25,10 @@ class PremiumFeaturePromotionAnimation extends TdObject {
     }
 
     return PremiumFeaturePromotionAnimation(
-      feature: PremiumFeature.fromJson(json['feature'])!,
-      animation: Animation.fromJson(json['animation'])!,
+      feature:
+          PremiumFeature.fromJson(json['feature'] as Map<String, dynamic>?)!,
+      animation:
+          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
     );
   }
 

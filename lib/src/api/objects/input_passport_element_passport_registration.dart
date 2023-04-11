@@ -22,8 +22,8 @@ class InputPassportElementPassportRegistration extends InputPassportElement {
     }
 
     return InputPassportElementPassportRegistration(
-      passportRegistration:
-          InputPersonalDocument.fromJson(json['passport_registration'])!,
+      passportRegistration: InputPersonalDocument.fromJson(
+          json['passport_registration'] as Map<String, dynamic>?)!,
     );
   }
 

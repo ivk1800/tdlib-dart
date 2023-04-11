@@ -24,8 +24,9 @@ class ChatEventMemberInvited extends ChatEventAction {
     }
 
     return ChatEventMemberInvited(
-      userId: json['user_id'],
-      status: ChatMemberStatus.fromJson(json['status'])!,
+      userId: json['user_id'] as int,
+      status:
+          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
     );
   }
 

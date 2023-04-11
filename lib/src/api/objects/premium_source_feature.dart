@@ -20,7 +20,8 @@ class PremiumSourceFeature extends PremiumSource {
     }
 
     return PremiumSourceFeature(
-      feature: PremiumFeature.fromJson(json['feature'])!,
+      feature:
+          PremiumFeature.fromJson(json['feature'] as Map<String, dynamic>?)!,
     );
   }
 

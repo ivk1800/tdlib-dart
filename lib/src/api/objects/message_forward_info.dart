@@ -43,11 +43,13 @@ class MessageForwardInfo extends TdObject {
     }
 
     return MessageForwardInfo(
-      origin: MessageForwardOrigin.fromJson(json['origin'])!,
-      date: json['date'],
-      publicServiceAnnouncementType: json['public_service_announcement_type'],
-      fromChatId: json['from_chat_id'],
-      fromMessageId: json['from_message_id'],
+      origin: MessageForwardOrigin.fromJson(
+          json['origin'] as Map<String, dynamic>?)!,
+      date: json['date'] as int,
+      publicServiceAnnouncementType:
+          json['public_service_announcement_type'] as String,
+      fromChatId: json['from_chat_id'] as int,
+      fromMessageId: json['from_message_id'] as int,
     );
   }
 

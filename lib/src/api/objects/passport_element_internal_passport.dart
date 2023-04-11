@@ -20,7 +20,8 @@ class PassportElementInternalPassport extends PassportElement {
     }
 
     return PassportElementInternalPassport(
-      internalPassport: IdentityDocument.fromJson(json['internal_passport'])!,
+      internalPassport: IdentityDocument.fromJson(
+          json['internal_passport'] as Map<String, dynamic>?)!,
     );
   }
 

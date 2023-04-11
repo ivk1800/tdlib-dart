@@ -21,7 +21,7 @@ class TextEntityTypeMentionName extends TextEntityType {
     }
 
     return TextEntityTypeMentionName(
-      userId: json['user_id'],
+      userId: json['user_id'] as int,
     );
   }
 
