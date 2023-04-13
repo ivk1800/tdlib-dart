@@ -36,7 +36,7 @@ class ForumTopicIcon extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'color': color,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         '@type': constructor,
       };
 

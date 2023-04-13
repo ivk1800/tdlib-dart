@@ -50,7 +50,7 @@ class InlineQueryResults extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_query_id': inlineQueryId,
+        'inline_query_id': inlineQueryId.toString(),
         'button': button?.toJson(),
         'results': results.map((item) => item.toJson()).toList(),
         'next_offset': nextOffset,

@@ -42,7 +42,7 @@ class MessageGameScore extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'game_message_id': gameMessageId,
-        'game_id': gameId,
+        'game_id': gameId.toString(),
         'score': score,
         '@type': constructor,
       };

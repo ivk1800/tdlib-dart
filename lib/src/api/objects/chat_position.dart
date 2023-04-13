@@ -46,7 +46,7 @@ class ChatPosition extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'list': list.toJson(),
-        'order': order,
+        'order': order.toString(),
         'is_pinned': isPinned,
         'source': source?.toJson(),
         '@type': constructor,

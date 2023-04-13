@@ -43,7 +43,7 @@ class MessageForumTopicEdited extends MessageContent {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
         'edit_icon_custom_emoji_id': editIconCustomEmojiId,
-        'icon_custom_emoji_id': iconCustomEmojiId,
+        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
         '@type': constructor,
       };
 

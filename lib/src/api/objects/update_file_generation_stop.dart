@@ -29,7 +29,7 @@ class UpdateFileGenerationStop extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
         '@type': constructor,
       };
 

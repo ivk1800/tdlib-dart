@@ -101,7 +101,7 @@ class PaymentForm extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'invoice': invoice.toJson(),
         'seller_bot_user_id': sellerBotUserId,
         'payment_provider_user_id': paymentProviderUserId,

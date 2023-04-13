@@ -60,7 +60,7 @@ class Game extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'short_name': shortName,
         'title': title,
         'text': text.toJson(),

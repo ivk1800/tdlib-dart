@@ -56,7 +56,7 @@ class UpdateNewInlineQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'user_location': userLocation?.toJson(),
         'chat_type': chatType?.toJson(),

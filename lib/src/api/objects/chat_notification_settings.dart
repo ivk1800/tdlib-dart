@@ -92,7 +92,7 @@ class ChatNotificationSettings extends TdObject {
         'use_default_mute_for': useDefaultMuteFor,
         'mute_for': muteFor,
         'use_default_sound': useDefaultSound,
-        'sound_id': soundId,
+        'sound_id': soundId.toString(),
         'use_default_show_preview': useDefaultShowPreview,
         'show_preview': showPreview,
         'use_default_disable_pinned_message_notifications':

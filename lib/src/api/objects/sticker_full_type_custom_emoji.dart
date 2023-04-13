@@ -37,7 +37,7 @@ class StickerFullTypeCustomEmoji extends StickerFullType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         'needs_repainting': needsRepainting,
         '@type': constructor,
       };

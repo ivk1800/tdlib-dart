@@ -63,7 +63,7 @@ class UpdateNewPreCheckoutQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'currency': currency,
         'total_amount': totalAmount,

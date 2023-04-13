@@ -108,7 +108,7 @@ class StickerSet extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'title': title,
         'name': name,
         'thumbnail': thumbnail?.toJson(),

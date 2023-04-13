@@ -29,7 +29,7 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_id': stickerSetId,
+        'sticker_set_id': stickerSetId.toString(),
         '@type': constructor,
       };
 

@@ -30,7 +30,7 @@ class PushReceiverId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         '@type': constructor,
       };
 

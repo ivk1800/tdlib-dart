@@ -29,7 +29,7 @@ class InputChatPhotoPrevious extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_photo_id': chatPhotoId,
+        'chat_photo_id': chatPhotoId.toString(),
         '@type': constructor,
       };
 

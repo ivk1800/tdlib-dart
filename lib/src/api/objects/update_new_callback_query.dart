@@ -56,11 +56,11 @@ class UpdateNewCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'chat_id': chatId,
         'message_id': messageId,
-        'chat_instance': chatInstance,
+        'chat_instance': chatInstance.toString(),
         'payload': payload.toJson(),
         '@type': constructor,
       };

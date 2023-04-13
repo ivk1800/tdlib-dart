@@ -42,7 +42,7 @@ class UpdatePollAnswer extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'poll_id': pollId,
+        'poll_id': pollId.toString(),
         'user_id': userId,
         'option_ids': optionIds.map((item) => item).toList(),
         '@type': constructor,

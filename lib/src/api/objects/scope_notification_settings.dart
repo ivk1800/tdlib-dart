@@ -55,7 +55,7 @@ class ScopeNotificationSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'mute_for': muteFor,
-        'sound_id': soundId,
+        'sound_id': soundId.toString(),
         'show_preview': showPreview,
         'disable_pinned_message_notifications':
             disablePinnedMessageNotifications,

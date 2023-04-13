@@ -56,7 +56,7 @@ class Background extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'is_default': isDefault,
         'is_dark': isDark,
         'name': name,

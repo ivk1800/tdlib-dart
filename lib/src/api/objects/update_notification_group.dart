@@ -81,7 +81,7 @@ class UpdateNotificationGroup extends Update {
         'type': type.toJson(),
         'chat_id': chatId,
         'notification_settings_chat_id': notificationSettingsChatId,
-        'notification_sound_id': notificationSoundId,
+        'notification_sound_id': notificationSoundId.toString(),
         'total_count': totalCount,
         'added_notifications':
             addedNotifications.map((item) => item.toJson()).toList(),

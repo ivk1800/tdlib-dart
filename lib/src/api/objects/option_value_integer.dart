@@ -29,7 +29,7 @@ class OptionValueInteger extends OptionValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
+        'value': value.toString(),
         '@type': constructor,
       };
 

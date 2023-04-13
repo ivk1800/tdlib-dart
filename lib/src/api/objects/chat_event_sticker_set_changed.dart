@@ -34,8 +34,8 @@ class ChatEventStickerSetChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_sticker_set_id': oldStickerSetId,
-        'new_sticker_set_id': newStickerSetId,
+        'old_sticker_set_id': oldStickerSetId.toString(),
+        'new_sticker_set_id': newStickerSetId.toString(),
         '@type': constructor,
       };
 

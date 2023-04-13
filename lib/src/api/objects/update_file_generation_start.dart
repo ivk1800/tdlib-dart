@@ -48,7 +48,7 @@ class UpdateFileGenerationStart extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
         'original_path': originalPath,
         'destination_path': destinationPath,
         'conversion': conversion,

@@ -35,8 +35,8 @@ class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_id': stickerSetId,
-        'sticker_id': stickerId,
+        'sticker_set_id': stickerSetId.toString(),
+        'sticker_id': stickerId.toString(),
         '@type': constructor,
       };
 

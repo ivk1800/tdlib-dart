@@ -30,7 +30,7 @@ class TextEntityTypeCustomEmoji extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         '@type': constructor,
       };
 

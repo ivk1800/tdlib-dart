@@ -68,7 +68,7 @@ class ChatPhoto extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'added_date': addedDate,
         'minithumbnail': minithumbnail?.toJson(),
         'sizes': sizes.map((item) => item.toJson()).toList(),

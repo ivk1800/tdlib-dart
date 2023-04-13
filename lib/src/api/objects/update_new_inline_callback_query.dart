@@ -52,10 +52,10 @@ class UpdateNewInlineCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'inline_message_id': inlineMessageId,
-        'chat_instance': chatInstance,
+        'chat_instance': chatInstance.toString(),
         'payload': payload.toJson(),
         '@type': constructor,
       };
