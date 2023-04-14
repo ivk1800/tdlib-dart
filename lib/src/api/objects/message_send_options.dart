@@ -49,7 +49,7 @@ class MessageSendOptions extends TdObject {
     return MessageSendOptions(
       disableNotification: json['disable_notification'] as bool,
       fromBackground: json['from_background'] as bool,
-      protectContent: json['protect_content'] as bool,
+      protectContent: json['protect_content'] as bool?,
       updateOrderOfInstalledStickerSets:
           json['update_order_of_installed_sticker_sets'] as bool,
       schedulingState: MessageSchedulingState.fromJson(

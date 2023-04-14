@@ -245,7 +245,7 @@ class Message extends TdObject {
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
-      authorSignature: json['author_signature'] as String,
+      authorSignature: json['author_signature'] as String?,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
       restrictionReason: json['restriction_reason'] as String,
       content:
