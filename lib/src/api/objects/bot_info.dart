@@ -14,6 +14,10 @@ class BotInfo extends TdObject {
     required this.commands,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    this.editCommandsLink,
+    this.editDescriptionLink,
+    this.editDescriptionMediaLink,
+    this.editSettingsLink,
   });
 
   /// [shortDescription] The text that is shown on the bot's profile page and is
@@ -48,6 +52,23 @@ class BotInfo extends TdObject {
   /// adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
 
+  /// [editCommandsLink] The internal link, which can be used to edit bot
+  /// commands; may be null
+  final InternalLinkType? editCommandsLink;
+
+  /// [editDescriptionLink] The internal link, which can be used to edit bot
+  /// description; may be null
+  final InternalLinkType? editDescriptionLink;
+
+  /// [editDescriptionMediaLink] The internal link, which can be used to edit
+  /// the photo or animation shown in the chat with the bot if the chat is
+  /// empty; may be null
+  final InternalLinkType? editDescriptionMediaLink;
+
+  /// [editSettingsLink] The internal link, which can be used to edit bot
+  /// settings; may be null
+  final InternalLinkType? editSettingsLink;
+
   static const String constructor = 'botInfo';
 
   static BotInfo? fromJson(Map<String, dynamic>? json) {
@@ -71,6 +92,14 @@ class BotInfo extends TdObject {
       defaultChannelAdministratorRights: ChatAdministratorRights.fromJson(
           json['default_channel_administrator_rights']
               as Map<String, dynamic>?),
+      editCommandsLink: InternalLinkType.fromJson(
+          json['edit_commands_link'] as Map<String, dynamic>?),
+      editDescriptionLink: InternalLinkType.fromJson(
+          json['edit_description_link'] as Map<String, dynamic>?),
+      editDescriptionMediaLink: InternalLinkType.fromJson(
+          json['edit_description_media_link'] as Map<String, dynamic>?),
+      editSettingsLink: InternalLinkType.fromJson(
+          json['edit_settings_link'] as Map<String, dynamic>?),
     );
   }
 
@@ -89,6 +118,10 @@ class BotInfo extends TdObject {
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
             defaultChannelAdministratorRights?.toJson(),
+        'edit_commands_link': editCommandsLink?.toJson(),
+        'edit_description_link': editDescriptionLink?.toJson(),
+        'edit_description_media_link': editDescriptionMediaLink?.toJson(),
+        'edit_settings_link': editSettingsLink?.toJson(),
         '@type': constructor,
       };
 

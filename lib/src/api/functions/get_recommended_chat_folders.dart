@@ -2,20 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The maximum number of chat filters
+/// Returns recommended chat folders for the current user
+/// Returns [RecommendedChatFolders]
 @immutable
-class PremiumLimitTypeChatFilterCount extends PremiumLimitType {
-  const PremiumLimitTypeChatFilterCount();
+class GetRecommendedChatFolders extends TdFunction {
+  const GetRecommendedChatFolders();
 
-  static const String constructor = 'premiumLimitTypeChatFilterCount';
-
-  static PremiumLimitTypeChatFilterCount? fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      return null;
-    }
-
-    return const PremiumLimitTypeChatFilterCount();
-  }
+  static const String constructor = 'getRecommendedChatFolders';
 
   @override
   String getConstructor() => constructor;

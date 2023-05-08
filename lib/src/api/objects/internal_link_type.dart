@@ -19,10 +19,11 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeBotStartInGroup]
   /// [InternalLinkTypeBotStart]
   /// [InternalLinkTypeChangePhoneNumber]
+  /// [InternalLinkTypeChatFolderInvite]
+  /// [InternalLinkTypeChatFolderSettings]
   /// [InternalLinkTypeChatInvite]
   /// [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings]
   /// [InternalLinkTypeEditProfileSettings]
-  /// [InternalLinkTypeFilterSettings]
   /// [InternalLinkTypeGame]
   /// [InternalLinkTypeInstantView]
   /// [InternalLinkTypeInvoice]
@@ -70,6 +71,10 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeBotStartInGroup.fromJson(json);
       case InternalLinkTypeChangePhoneNumber.constructor:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
+      case InternalLinkTypeChatFolderInvite.constructor:
+        return InternalLinkTypeChatFolderInvite.fromJson(json);
+      case InternalLinkTypeChatFolderSettings.constructor:
+        return InternalLinkTypeChatFolderSettings.fromJson(json);
       case InternalLinkTypeChatInvite.constructor:
         return InternalLinkTypeChatInvite.fromJson(json);
       case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
@@ -77,8 +82,6 @@ abstract class InternalLinkType extends TdObject {
             json);
       case InternalLinkTypeEditProfileSettings.constructor:
         return InternalLinkTypeEditProfileSettings.fromJson(json);
-      case InternalLinkTypeFilterSettings.constructor:
-        return InternalLinkTypeFilterSettings.fromJson(json);
       case InternalLinkTypeGame.constructor:
         return InternalLinkTypeGame.fromJson(json);
       case InternalLinkTypeInstantView.constructor:

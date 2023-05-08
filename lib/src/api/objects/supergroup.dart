@@ -50,7 +50,8 @@ class Supergroup extends TdObject {
   /// unknown. Currently, it is guaranteed to be known only if the supergroup or
   /// channel was received through searchPublicChats, searchChatsNearby,
   /// getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon,
-  /// or getUserPrivacySettingRules
+  /// getUserPrivacySettingRules, or in
+  /// chatFolderInviteLinkInfo.missing_chat_ids
   final int memberCount;
 
   /// [hasLinkedChat] True, if the channel has a discussion group, or the

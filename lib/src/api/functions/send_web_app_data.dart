@@ -19,7 +19,7 @@ class SendWebAppData extends TdFunction {
   /// Web App
   final String buttonText;
 
-  /// [data] Received data
+  /// [data] The data
   final String data;
 
   static const String constructor = 'sendWebAppData';

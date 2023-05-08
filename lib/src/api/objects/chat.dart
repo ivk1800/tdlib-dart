@@ -31,6 +31,7 @@ class Chat extends TdObject {
     required this.notificationSettings,
     required this.availableReactions,
     required this.messageAutoDeleteTime,
+    this.background,
     required this.themeName,
     this.actionBar,
     required this.videoChat,
@@ -128,6 +129,9 @@ class Chat extends TdObject {
   /// Auto-delete timer in other chats starts from the send date
   final int messageAutoDeleteTime;
 
+  /// [background] Background set for the chat; may be null if none
+  final ChatBackground? background;
+
   /// [themeName] If non-empty, name of a theme, set for the chat
   final String themeName;
 
@@ -194,6 +198,8 @@ class Chat extends TdObject {
       availableReactions: ChatAvailableReactions.fromJson(
           json['available_reactions'] as Map<String, dynamic>?)!,
       messageAutoDeleteTime: json['message_auto_delete_time'] as int,
+      background:
+          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?),
       themeName: json['theme_name'] as String,
       actionBar:
           ChatActionBar.fromJson(json['action_bar'] as Map<String, dynamic>?),
@@ -238,6 +244,7 @@ class Chat extends TdObject {
         'notification_settings': notificationSettings.toJson(),
         'available_reactions': availableReactions.toJson(),
         'message_auto_delete_time': messageAutoDeleteTime,
+        'background': background?.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
         'video_chat': videoChat.toJson(),

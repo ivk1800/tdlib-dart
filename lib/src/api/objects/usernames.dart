@@ -13,15 +13,17 @@ class Usernames extends TdObject {
 
   /// [activeUsernames] List of active usernames; the first one must be shown as
   /// the primary username. The order of active usernames can be changed with
-  /// reorderActiveUsernames or reorderSupergroupActiveUsernames
+  /// reorderActiveUsernames, reorderBotActiveUsernames or
+  /// reorderSupergroupActiveUsernames
   final List<String> activeUsernames;
 
   /// [disabledUsernames] List of currently disabled usernames; the username can
-  /// be activated with toggleUsernameIsActive/toggleSupergroupUsernameIsActive
+  /// be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or
+  /// toggleSupergroupUsernameIsActive
   final List<String> disabledUsernames;
 
   /// [editableUsername] The active username, which can be changed with
-  /// setUsername/setSupergroupUsername
+  /// setUsername or setSupergroupUsername
   final String editableUsername;
 
   static const String constructor = 'usernames';

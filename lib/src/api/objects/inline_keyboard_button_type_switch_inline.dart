@@ -8,15 +8,14 @@ import '../tdapi.dart';
 class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   const InlineKeyboardButtonTypeSwitchInline({
     required this.query,
-    required this.inCurrentChat,
+    required this.targetChat,
   });
 
   /// [query] Inline query to be sent to the bot
   final String query;
 
-  /// [inCurrentChat] True, if the inline query must be sent from the current
-  /// chat
-  final bool inCurrentChat;
+  /// [targetChat] Target chat from which to send the inline query
+  final TargetChat targetChat;
 
   static const String constructor = 'inlineKeyboardButtonTypeSwitchInline';
 
@@ -28,7 +27,8 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
 
     return InlineKeyboardButtonTypeSwitchInline(
       query: json['query'] as String,
-      inCurrentChat: json['in_current_chat'] as bool,
+      targetChat:
+          TargetChat.fromJson(json['target_chat'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -38,7 +38,7 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'query': query,
-        'in_current_chat': inCurrentChat,
+        'target_chat': targetChat.toJson(),
         '@type': constructor,
       };
 

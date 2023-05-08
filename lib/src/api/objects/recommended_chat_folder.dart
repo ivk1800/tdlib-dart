@@ -2,29 +2,29 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a recommended chat filter
+/// Describes a recommended chat folder
 @immutable
-class RecommendedChatFilter extends TdObject {
-  const RecommendedChatFilter({
-    required this.filter,
+class RecommendedChatFolder extends TdObject {
+  const RecommendedChatFolder({
+    required this.folder,
     required this.description,
   });
 
-  /// [filter] The chat filter
-  final ChatFilter filter;
+  /// [folder] The chat folder
+  final ChatFolder folder;
 
-  /// param_[description] Chat filter description
+  /// param_[description] Chat folder description
   final String description;
 
-  static const String constructor = 'recommendedChatFilter';
+  static const String constructor = 'recommendedChatFolder';
 
-  static RecommendedChatFilter? fromJson(Map<String, dynamic>? json) {
+  static RecommendedChatFolder? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return RecommendedChatFilter(
-      filter: ChatFilter.fromJson(json['filter'] as Map<String, dynamic>?)!,
+    return RecommendedChatFolder(
+      folder: ChatFolder.fromJson(json['folder'] as Map<String, dynamic>?)!,
       description: json['description'] as String,
     );
   }
@@ -34,7 +34,7 @@ class RecommendedChatFilter extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'filter': filter.toJson(),
+        'folder': folder.toJson(),
         'description': description,
         '@type': constructor,
       };

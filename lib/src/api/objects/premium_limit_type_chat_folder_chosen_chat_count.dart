@@ -3,20 +3,20 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The maximum number of pinned and always included, or always excluded chats
-/// in a chat filter
+/// in a chat folder
 @immutable
-class PremiumLimitTypeChatFilterChosenChatCount extends PremiumLimitType {
-  const PremiumLimitTypeChatFilterChosenChatCount();
+class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
+  const PremiumLimitTypeChatFolderChosenChatCount();
 
-  static const String constructor = 'premiumLimitTypeChatFilterChosenChatCount';
+  static const String constructor = 'premiumLimitTypeChatFolderChosenChatCount';
 
-  static PremiumLimitTypeChatFilterChosenChatCount? fromJson(
+  static PremiumLimitTypeChatFolderChosenChatCount? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const PremiumLimitTypeChatFilterChosenChatCount();
+    return const PremiumLimitTypeChatFolderChosenChatCount();
   }
 
   @override

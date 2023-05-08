@@ -12,13 +12,15 @@ abstract class PremiumLimitType extends TdObject {
   /// Inherited by:
   /// [PremiumLimitTypeBioLength]
   /// [PremiumLimitTypeCaptionLength]
-  /// [PremiumLimitTypeChatFilterChosenChatCount]
-  /// [PremiumLimitTypeChatFilterCount]
+  /// [PremiumLimitTypeChatFolderChosenChatCount]
+  /// [PremiumLimitTypeChatFolderCount]
+  /// [PremiumLimitTypeChatFolderInviteLinkCount]
   /// [PremiumLimitTypeCreatedPublicChatCount]
   /// [PremiumLimitTypeFavoriteStickerCount]
   /// [PremiumLimitTypePinnedArchivedChatCount]
   /// [PremiumLimitTypePinnedChatCount]
   /// [PremiumLimitTypeSavedAnimationCount]
+  /// [PremiumLimitTypeShareableChatFolderCount]
   /// [PremiumLimitTypeSupergroupCount]
   static PremiumLimitType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -30,10 +32,12 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeBioLength.fromJson(json);
       case PremiumLimitTypeCaptionLength.constructor:
         return PremiumLimitTypeCaptionLength.fromJson(json);
-      case PremiumLimitTypeChatFilterChosenChatCount.constructor:
-        return PremiumLimitTypeChatFilterChosenChatCount.fromJson(json);
-      case PremiumLimitTypeChatFilterCount.constructor:
-        return PremiumLimitTypeChatFilterCount.fromJson(json);
+      case PremiumLimitTypeChatFolderChosenChatCount.constructor:
+        return PremiumLimitTypeChatFolderChosenChatCount.fromJson(json);
+      case PremiumLimitTypeChatFolderCount.constructor:
+        return PremiumLimitTypeChatFolderCount.fromJson(json);
+      case PremiumLimitTypeChatFolderInviteLinkCount.constructor:
+        return PremiumLimitTypeChatFolderInviteLinkCount.fromJson(json);
       case PremiumLimitTypeCreatedPublicChatCount.constructor:
         return PremiumLimitTypeCreatedPublicChatCount.fromJson(json);
       case PremiumLimitTypeFavoriteStickerCount.constructor:
@@ -44,6 +48,8 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypePinnedChatCount.fromJson(json);
       case PremiumLimitTypeSavedAnimationCount.constructor:
         return PremiumLimitTypeSavedAnimationCount.fromJson(json);
+      case PremiumLimitTypeShareableChatFolderCount.constructor:
+        return PremiumLimitTypeShareableChatFolderCount.fromJson(json);
       case PremiumLimitTypeSupergroupCount.constructor:
         return PremiumLimitTypeSupergroupCount.fromJson(json);
       default:

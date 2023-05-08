@@ -2,25 +2,25 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Deletes existing chat filter
-/// Returns [Ok]
+/// Returns information about a chat folder by its identifier
+/// Returns [ChatFolder]
 @immutable
-class DeleteChatFilter extends TdFunction {
-  const DeleteChatFilter({
-    required this.chatFilterId,
+class GetChatFolder extends TdFunction {
+  const GetChatFolder({
+    required this.chatFolderId,
   });
 
-  /// [chatFilterId] Chat filter identifier
-  final int chatFilterId;
+  /// [chatFolderId] Chat folder identifier
+  final int chatFolderId;
 
-  static const String constructor = 'deleteChatFilter';
+  static const String constructor = 'getChatFolder';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_filter_id': chatFilterId,
+        'chat_folder_id': chatFolderId,
         '@type': constructor,
       };
 

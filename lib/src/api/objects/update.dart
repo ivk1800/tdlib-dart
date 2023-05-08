@@ -24,9 +24,10 @@ abstract class Update extends TdObject {
   /// [UpdateChatActionBar]
   /// [UpdateChatAction]
   /// [UpdateChatAvailableReactions]
+  /// [UpdateChatBackground]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatDraftMessage]
-  /// [UpdateChatFilters]
+  /// [UpdateChatFolders]
   /// [UpdateChatHasProtectedContent]
   /// [UpdateChatHasScheduledMessages]
   /// [UpdateChatIsBlocked]
@@ -152,12 +153,14 @@ abstract class Update extends TdObject {
         return UpdateChatActionBar.fromJson(json);
       case UpdateChatAvailableReactions.constructor:
         return UpdateChatAvailableReactions.fromJson(json);
+      case UpdateChatBackground.constructor:
+        return UpdateChatBackground.fromJson(json);
       case UpdateChatDefaultDisableNotification.constructor:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatDraftMessage.constructor:
         return UpdateChatDraftMessage.fromJson(json);
-      case UpdateChatFilters.constructor:
-        return UpdateChatFilters.fromJson(json);
+      case UpdateChatFolders.constructor:
+        return UpdateChatFolders.fromJson(json);
       case UpdateChatHasProtectedContent.constructor:
         return UpdateChatHasProtectedContent.fromJson(json);
       case UpdateChatHasScheduledMessages.constructor:

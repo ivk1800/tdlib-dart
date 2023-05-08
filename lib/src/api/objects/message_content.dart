@@ -23,6 +23,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageChatDeletePhoto]
   /// [MessageChatJoinByLink]
   /// [MessageChatJoinByRequest]
+  /// [MessageChatSetBackground]
   /// [MessageChatSetMessageAutoDeleteTime]
   /// [MessageChatSetTheme]
   /// [MessageChatShared]
@@ -102,6 +103,8 @@ abstract class MessageContent extends TdObject {
         return MessageChatJoinByLink.fromJson(json);
       case MessageChatJoinByRequest.constructor:
         return MessageChatJoinByRequest.fromJson(json);
+      case MessageChatSetBackground.constructor:
+        return MessageChatSetBackground.fromJson(json);
       case MessageChatSetMessageAutoDeleteTime.constructor:
         return MessageChatSetMessageAutoDeleteTime.fromJson(json);
       case MessageChatSetTheme.constructor:

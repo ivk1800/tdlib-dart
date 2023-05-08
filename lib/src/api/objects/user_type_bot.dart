@@ -6,6 +6,7 @@ import '../tdapi.dart';
 @immutable
 class UserTypeBot extends UserType {
   const UserTypeBot({
+    required this.canBeEdited,
     required this.canJoinGroups,
     required this.canReadAllGroupMessages,
     required this.isInline,
@@ -13,6 +14,12 @@ class UserTypeBot extends UserType {
     required this.needLocation,
     required this.canBeAddedToAttachmentMenu,
   });
+
+  /// [canBeEdited] True, if the bot is owned by the current user and can be
+  /// edited using the methods toggleBotUsernameIsActive,
+  /// reorderBotActiveUsernames, setBotProfilePhoto, setBotName,
+  /// setBotInfoDescription, and setBotInfoShortDescription
+  final bool canBeEdited;
 
   /// [canJoinGroups] True, if the bot can be invited to basic group and
   /// supergroup chats
@@ -46,6 +53,7 @@ class UserTypeBot extends UserType {
     }
 
     return UserTypeBot(
+      canBeEdited: json['can_be_edited'] as bool,
       canJoinGroups: json['can_join_groups'] as bool,
       canReadAllGroupMessages: json['can_read_all_group_messages'] as bool,
       isInline: json['is_inline'] as bool,
@@ -61,6 +69,7 @@ class UserTypeBot extends UserType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'can_be_edited': canBeEdited,
         'can_join_groups': canJoinGroups,
         'can_read_all_group_messages': canReadAllGroupMessages,
         'is_inline': isInline,

@@ -2,19 +2,25 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns recommended chat filters for the current user
-/// Returns [RecommendedChatFilters]
+/// Returns default icon name for a folder. Can be called synchronously
+/// Returns [ChatFolderIcon]
 @immutable
-class GetRecommendedChatFilters extends TdFunction {
-  const GetRecommendedChatFilters();
+class GetChatFolderDefaultIconName extends TdFunction {
+  const GetChatFolderDefaultIconName({
+    required this.folder,
+  });
 
-  static const String constructor = 'getRecommendedChatFilters';
+  /// [folder] Chat folder
+  final ChatFolder folder;
+
+  static const String constructor = 'getChatFolderDefaultIconName';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'folder': folder.toJson(),
         '@type': constructor,
       };
 

@@ -11,6 +11,7 @@ abstract class InputBackground extends TdObject {
 
   /// Inherited by:
   /// [InputBackgroundLocal]
+  /// [InputBackgroundPrevious]
   /// [InputBackgroundRemote]
   static InputBackground? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,6 +21,8 @@ abstract class InputBackground extends TdObject {
     switch (json['@type']) {
       case InputBackgroundLocal.constructor:
         return InputBackgroundLocal.fromJson(json);
+      case InputBackgroundPrevious.constructor:
+        return InputBackgroundPrevious.fromJson(json);
       case InputBackgroundRemote.constructor:
         return InputBackgroundRemote.fromJson(json);
       default:

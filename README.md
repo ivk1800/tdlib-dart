@@ -4,6 +4,7 @@ A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated sche
 
 | Version |                         tdlib commit                          |                                                                 td_api.tl revision |
 |---------|:-------------------------------------------------------------:|-----------------------------------------------------------------------------------:|
+| 1.8.14  |                          last commit                          |   [4041ecb](https://github.com/tdlib/td/blob/4041ecb/td/generate/scheme/td_api.tl) |
 | 1.8.13  | [d5ed66a](https://github.com/ivk1800/tdlib-dart/tree/d5ed66a) |   [c95598e](https://github.com/tdlib/td/blob/c95598e/td/generate/scheme/td_api.tl) |
 | 1.8.11  | [1b99276](https://github.com/ivk1800/tdlib-dart/tree/1b99276) |   [1543c41](https://github.com/tdlib/td/blob/1543c41/td/generate/scheme/td_api.tl) |
 | 1.8.9   | [5b8706c](https://github.com/ivk1800/tdlib-dart/tree/5b8706c) |   [6cbe182](https://github.com/tdlib/td/blob/6cbe182/td/generate/scheme/td_api.tl) |

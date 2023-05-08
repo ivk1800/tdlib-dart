@@ -2,12 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a filter of user chats
+/// Represents a folder for user chats
 @immutable
-class ChatFilter extends TdObject {
-  const ChatFilter({
+class ChatFolder extends TdObject {
+  const ChatFolder({
     required this.title,
-    required this.iconName,
+    this.icon,
+    required this.isShareable,
     required this.pinnedChatIds,
     required this.includedChatIds,
     required this.excludedChatIds,
@@ -21,36 +22,32 @@ class ChatFilter extends TdObject {
     required this.includeChannels,
   });
 
-  /// [title] The title of the filter; 1-12 characters without line feeds
+  /// [title] The title of the folder; 1-12 characters without line feeds
   final String title;
 
-  /// [iconName] The chosen icon name for short filter representation. If
-  /// non-empty, must be one of "All", "Unread", "Unmuted", "Bots", "Channels",
-  /// "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite",
-  /// "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study",
-  /// "Trade", "Travel", "Work", "Airplane", "Book", "Light", "Like", "Money",
-  /// "Note", "Palette". If empty, use getChatFilterDefaultIconName to get
-  /// default icon name for the filter
-  final String iconName;
+  /// [icon] The chosen icon for the chat folder; may be null. If null, use
+  /// getChatFolderDefaultIconName to get default icon name for the folder
+  final ChatFolderIcon? icon;
 
-  /// [pinnedChatIds] The chat identifiers of pinned chats in the filtered chat
-  /// list. There can be up to getOption("chat_filter_chosen_chat_count_max")
-  /// pinned and always included non-secret chats and the same number of secret
-  /// chats, but the limit can be increased with Telegram Premium
+  /// [isShareable] True, if at least one link has been created for the folder
+  final bool isShareable;
+
+  /// [pinnedChatIds] The chat identifiers of pinned chats in the folder. There
+  /// can be up to getOption("chat_folder_chosen_chat_count_max") pinned and
+  /// always included non-secret chats and the same number of secret chats, but
+  /// the limit can be increased with Telegram Premium
   final List<int> pinnedChatIds;
 
   /// [includedChatIds] The chat identifiers of always included chats in the
-  /// filtered chat list. There can be up to
-  /// getOption("chat_filter_chosen_chat_count_max") pinned and always included
-  /// non-secret chats and the same number of secret chats, but the limit can be
-  /// increased with Telegram Premium
+  /// folder. There can be up to getOption("chat_folder_chosen_chat_count_max")
+  /// pinned and always included non-secret chats and the same number of secret
+  /// chats, but the limit can be increased with Telegram Premium
   final List<int> includedChatIds;
 
   /// [excludedChatIds] The chat identifiers of always excluded chats in the
-  /// filtered chat list. There can be up to
-  /// getOption("chat_filter_chosen_chat_count_max") always excluded non-secret
-  /// chats and the same number of secret chats, but the limit can be increased
-  /// with Telegram Premium
+  /// folder. There can be up to getOption("chat_folder_chosen_chat_count_max")
+  /// always excluded non-secret chats and the same number of secret chats, but
+  /// the limit can be increased with Telegram Premium
   final List<int> excludedChatIds;
 
   /// [excludeMuted] True, if muted chats need to be excluded
@@ -77,16 +74,17 @@ class ChatFilter extends TdObject {
   /// [includeChannels] True, if channels need to be included
   final bool includeChannels;
 
-  static const String constructor = 'chatFilter';
+  static const String constructor = 'chatFolder';
 
-  static ChatFilter? fromJson(Map<String, dynamic>? json) {
+  static ChatFolder? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return ChatFilter(
+    return ChatFolder(
       title: json['title'] as String,
-      iconName: json['icon_name'] as String,
+      icon: ChatFolderIcon.fromJson(json['icon'] as Map<String, dynamic>?),
+      isShareable: json['is_shareable'] as bool,
       pinnedChatIds: List<int>.from(
           ((json['pinned_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
@@ -116,7 +114,8 @@ class ChatFilter extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
-        'icon_name': iconName,
+        'icon': icon?.toJson(),
+        'is_shareable': isShareable,
         'pinned_chat_ids': pinnedChatIds.map((item) => item).toList(),
         'included_chat_ids': includedChatIds.map((item) => item).toList(),
         'excluded_chat_ids': excludedChatIds.map((item) => item).toList(),

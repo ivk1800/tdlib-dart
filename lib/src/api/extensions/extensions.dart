@@ -1559,6 +1559,45 @@ extension PollExtensions on Poll {
       );
 }
 
+extension BackgroundExtensions on Background {
+  Background copyWith({
+    int? id,
+    bool? isDefault,
+    bool? isDark,
+    String? name,
+    Document? document,
+    BackgroundType? type,
+  }) =>
+      Background(
+        id: id ?? this.id,
+        isDefault: isDefault ?? this.isDefault,
+        isDark: isDark ?? this.isDark,
+        name: name ?? this.name,
+        document: document ?? this.document,
+        type: type ?? this.type,
+      );
+}
+
+extension BackgroundsExtensions on Backgrounds {
+  Backgrounds copyWith({
+    List<Background>? backgrounds,
+  }) =>
+      Backgrounds(
+        backgrounds: backgrounds ?? this.backgrounds,
+      );
+}
+
+extension ChatBackgroundExtensions on ChatBackground {
+  ChatBackground copyWith({
+    Background? background,
+    int? darkThemeDimming,
+  }) =>
+      ChatBackground(
+        background: background ?? this.background,
+        darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
+      );
+}
+
 extension ProfilePhotoExtensions on ProfilePhoto {
   ProfilePhoto copyWith({
     int? id,
@@ -1650,6 +1689,7 @@ extension UserTypeExtensions on UserType {
 
 extension UserTypeBotExtensions on UserTypeBot {
   UserTypeBot copyWith({
+    bool? canBeEdited,
     bool? canJoinGroups,
     bool? canReadAllGroupMessages,
     bool? isInline,
@@ -1658,6 +1698,7 @@ extension UserTypeBotExtensions on UserTypeBot {
     bool? canBeAddedToAttachmentMenu,
   }) =>
       UserTypeBot(
+        canBeEdited: canBeEdited ?? this.canBeEdited,
         canJoinGroups: canJoinGroups ?? this.canJoinGroups,
         canReadAllGroupMessages:
             canReadAllGroupMessages ?? this.canReadAllGroupMessages,
@@ -2110,6 +2151,10 @@ extension BotInfoExtensions on BotInfo {
     List<BotCommand>? commands,
     ChatAdministratorRights? defaultGroupAdministratorRights,
     ChatAdministratorRights? defaultChannelAdministratorRights,
+    InternalLinkType? editCommandsLink,
+    InternalLinkType? editDescriptionLink,
+    InternalLinkType? editDescriptionMediaLink,
+    InternalLinkType? editSettingsLink,
   }) =>
       BotInfo(
         shortDescription: shortDescription ?? this.shortDescription,
@@ -2122,6 +2167,11 @@ extension BotInfoExtensions on BotInfo {
             this.defaultGroupAdministratorRights,
         defaultChannelAdministratorRights: defaultChannelAdministratorRights ??
             this.defaultChannelAdministratorRights,
+        editCommandsLink: editCommandsLink ?? this.editCommandsLink,
+        editDescriptionLink: editDescriptionLink ?? this.editDescriptionLink,
+        editDescriptionMediaLink:
+            editDescriptionMediaLink ?? this.editDescriptionMediaLink,
+        editSettingsLink: editSettingsLink ?? this.editSettingsLink,
       );
 }
 
@@ -2649,11 +2699,14 @@ extension ChatInviteLinkMemberExtensions on ChatInviteLinkMember {
   ChatInviteLinkMember copyWith({
     int? userId,
     int? joinedChatDate,
+    bool? viaChatFolderInviteLink,
     int? approverUserId,
   }) =>
       ChatInviteLinkMember(
         userId: userId ?? this.userId,
         joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+        viaChatFolderInviteLink:
+            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
         approverUserId: approverUserId ?? this.approverUserId,
       );
 }
@@ -3918,10 +3971,20 @@ extension ChatTypeSecretExtensions on ChatTypeSecret {
       );
 }
 
-extension ChatFilterExtensions on ChatFilter {
-  ChatFilter copyWith({
+extension ChatFolderIconExtensions on ChatFolderIcon {
+  ChatFolderIcon copyWith({
+    String? name,
+  }) =>
+      ChatFolderIcon(
+        name: name ?? this.name,
+      );
+}
+
+extension ChatFolderExtensions on ChatFolder {
+  ChatFolder copyWith({
     String? title,
-    String? iconName,
+    ChatFolderIcon? icon,
+    bool? isShareable,
     List<int>? pinnedChatIds,
     List<int>? includedChatIds,
     List<int>? excludedChatIds,
@@ -3934,9 +3997,10 @@ extension ChatFilterExtensions on ChatFilter {
     bool? includeGroups,
     bool? includeChannels,
   }) =>
-      ChatFilter(
+      ChatFolder(
         title: title ?? this.title,
-        iconName: iconName ?? this.iconName,
+        icon: icon ?? this.icon,
+        isShareable: isShareable ?? this.isShareable,
         pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
         includedChatIds: includedChatIds ?? this.includedChatIds,
         excludedChatIds: excludedChatIds ?? this.excludedChatIds,
@@ -3951,36 +4015,73 @@ extension ChatFilterExtensions on ChatFilter {
       );
 }
 
-extension ChatFilterInfoExtensions on ChatFilterInfo {
-  ChatFilterInfo copyWith({
+extension ChatFolderInfoExtensions on ChatFolderInfo {
+  ChatFolderInfo copyWith({
     int? id,
     String? title,
-    String? iconName,
+    ChatFolderIcon? icon,
+    bool? hasMyInviteLinks,
   }) =>
-      ChatFilterInfo(
+      ChatFolderInfo(
         id: id ?? this.id,
         title: title ?? this.title,
-        iconName: iconName ?? this.iconName,
+        icon: icon ?? this.icon,
+        hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
       );
 }
 
-extension RecommendedChatFilterExtensions on RecommendedChatFilter {
-  RecommendedChatFilter copyWith({
-    ChatFilter? filter,
+extension ChatFolderInviteLinkExtensions on ChatFolderInviteLink {
+  ChatFolderInviteLink copyWith({
+    String? inviteLink,
+    String? name,
+    List<int>? chatIds,
+  }) =>
+      ChatFolderInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension ChatFolderInviteLinksExtensions on ChatFolderInviteLinks {
+  ChatFolderInviteLinks copyWith({
+    List<ChatFolderInviteLink>? inviteLinks,
+  }) =>
+      ChatFolderInviteLinks(
+        inviteLinks: inviteLinks ?? this.inviteLinks,
+      );
+}
+
+extension ChatFolderInviteLinkInfoExtensions on ChatFolderInviteLinkInfo {
+  ChatFolderInviteLinkInfo copyWith({
+    ChatFolderInfo? chatFolderInfo,
+    List<int>? missingChatIds,
+    List<int>? addedChatIds,
+  }) =>
+      ChatFolderInviteLinkInfo(
+        chatFolderInfo: chatFolderInfo ?? this.chatFolderInfo,
+        missingChatIds: missingChatIds ?? this.missingChatIds,
+        addedChatIds: addedChatIds ?? this.addedChatIds,
+      );
+}
+
+extension RecommendedChatFolderExtensions on RecommendedChatFolder {
+  RecommendedChatFolder copyWith({
+    ChatFolder? folder,
     String? description,
   }) =>
-      RecommendedChatFilter(
-        filter: filter ?? this.filter,
+      RecommendedChatFolder(
+        folder: folder ?? this.folder,
         description: description ?? this.description,
       );
 }
 
-extension RecommendedChatFiltersExtensions on RecommendedChatFilters {
-  RecommendedChatFilters copyWith({
-    List<RecommendedChatFilter>? chatFilters,
+extension RecommendedChatFoldersExtensions on RecommendedChatFolders {
+  RecommendedChatFolders copyWith({
+    List<RecommendedChatFolder>? chatFolders,
   }) =>
-      RecommendedChatFilters(
-        chatFilters: chatFilters ?? this.chatFilters,
+      RecommendedChatFolders(
+        chatFolders: chatFolders ?? this.chatFolders,
       );
 }
 
@@ -3988,15 +4089,15 @@ extension ChatListExtensions on ChatList {
   TResult map<TResult extends Object?>({
     required TResult Function(ChatListMain value) main,
     required TResult Function(ChatListArchive value) archive,
-    required TResult Function(ChatListFilter value) filter,
+    required TResult Function(ChatListFolder value) folder,
   }) {
     switch (getConstructor()) {
       case ChatListMain.constructor:
         return main.call(this as ChatListMain);
       case ChatListArchive.constructor:
         return archive.call(this as ChatListArchive);
-      case ChatListFilter.constructor:
-        return filter.call(this as ChatListFilter);
+      case ChatListFolder.constructor:
+        return folder.call(this as ChatListFolder);
     }
     throw StateError('not handled type Generator');
   }
@@ -4004,7 +4105,7 @@ extension ChatListExtensions on ChatList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ChatListMain value)? main,
     TResult Function(ChatListArchive value)? archive,
-    TResult Function(ChatListFilter value)? filter,
+    TResult Function(ChatListFolder value)? folder,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -4018,9 +4119,9 @@ extension ChatListExtensions on ChatList {
           return archive.call(this as ChatListArchive);
         }
         break;
-      case ChatListFilter.constructor:
-        if (filter != null) {
-          return filter.call(this as ChatListFilter);
+      case ChatListFolder.constructor:
+        if (folder != null) {
+          return folder.call(this as ChatListFolder);
         }
         break;
     }
@@ -4028,12 +4129,12 @@ extension ChatListExtensions on ChatList {
   }
 }
 
-extension ChatListFilterExtensions on ChatListFilter {
-  ChatListFilter copyWith({
-    int? chatFilterId,
+extension ChatListFolderExtensions on ChatListFolder {
+  ChatListFolder copyWith({
+    int? chatFolderId,
   }) =>
-      ChatListFilter(
-        chatFilterId: chatFilterId ?? this.chatFilterId,
+      ChatListFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
       );
 }
 
@@ -4196,6 +4297,7 @@ extension ChatExtensions on Chat {
     ChatNotificationSettings? notificationSettings,
     ChatAvailableReactions? availableReactions,
     int? messageAutoDeleteTime,
+    ChatBackground? background,
     String? themeName,
     ChatActionBar? actionBar,
     VideoChat? videoChat,
@@ -4236,6 +4338,7 @@ extension ChatExtensions on Chat {
         availableReactions: availableReactions ?? this.availableReactions,
         messageAutoDeleteTime:
             messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+        background: background ?? this.background,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar ?? this.actionBar,
         videoChat: videoChat ?? this.videoChat,
@@ -4765,11 +4868,11 @@ extension InlineKeyboardButtonTypeSwitchInlineExtensions
     on InlineKeyboardButtonTypeSwitchInline {
   InlineKeyboardButtonTypeSwitchInline copyWith({
     String? query,
-    bool? inCurrentChat,
+    TargetChat? targetChat,
   }) =>
       InlineKeyboardButtonTypeSwitchInline(
         query: query ?? this.query,
-        inCurrentChat: inCurrentChat ?? this.inCurrentChat,
+        targetChat: targetChat ?? this.targetChat,
       );
 }
 
@@ -8228,6 +8331,8 @@ extension MessageContentExtensions on MessageContent {
     required TResult Function(MessagePinMessage value) messagePinMessage,
     required TResult Function(MessageScreenshotTaken value)
         messageScreenshotTaken,
+    required TResult Function(MessageChatSetBackground value)
+        messageChatSetBackground,
     required TResult Function(MessageChatSetTheme value) messageChatSetTheme,
     required TResult Function(MessageChatSetMessageAutoDeleteTime value)
         messageChatSetMessageAutoDeleteTime,
@@ -8348,6 +8453,8 @@ extension MessageContentExtensions on MessageContent {
         return messagePinMessage.call(this as MessagePinMessage);
       case MessageScreenshotTaken.constructor:
         return messageScreenshotTaken.call(this as MessageScreenshotTaken);
+      case MessageChatSetBackground.constructor:
+        return messageChatSetBackground.call(this as MessageChatSetBackground);
       case MessageChatSetTheme.constructor:
         return messageChatSetTheme.call(this as MessageChatSetTheme);
       case MessageChatSetMessageAutoDeleteTime.constructor:
@@ -8450,6 +8557,7 @@ extension MessageContentExtensions on MessageContent {
     TResult Function(MessageChatUpgradeFrom value)? messageChatUpgradeFrom,
     TResult Function(MessagePinMessage value)? messagePinMessage,
     TResult Function(MessageScreenshotTaken value)? messageScreenshotTaken,
+    TResult Function(MessageChatSetBackground value)? messageChatSetBackground,
     TResult Function(MessageChatSetTheme value)? messageChatSetTheme,
     TResult Function(MessageChatSetMessageAutoDeleteTime value)?
         messageChatSetMessageAutoDeleteTime,
@@ -8674,6 +8782,12 @@ extension MessageContentExtensions on MessageContent {
       case MessageScreenshotTaken.constructor:
         if (messageScreenshotTaken != null) {
           return messageScreenshotTaken.call(this as MessageScreenshotTaken);
+        }
+        break;
+      case MessageChatSetBackground.constructor:
+        if (messageChatSetBackground != null) {
+          return messageChatSetBackground
+              .call(this as MessageChatSetBackground);
         }
         break;
       case MessageChatSetTheme.constructor:
@@ -9172,6 +9286,18 @@ extension MessagePinMessageExtensions on MessagePinMessage {
       );
 }
 
+extension MessageChatSetBackgroundExtensions on MessageChatSetBackground {
+  MessageChatSetBackground copyWith({
+    int? oldBackgroundMessageId,
+    ChatBackground? background,
+  }) =>
+      MessageChatSetBackground(
+        oldBackgroundMessageId:
+            oldBackgroundMessageId ?? this.oldBackgroundMessageId,
+        background: background ?? this.background,
+      );
+}
+
 extension MessageChatSetThemeExtensions on MessageChatSetTheme {
   MessageChatSetTheme copyWith({
     String? themeName,
@@ -9320,14 +9446,20 @@ extension MessagePaymentSuccessfulBotExtensions on MessagePaymentSuccessfulBot {
 
 extension MessageGiftedPremiumExtensions on MessageGiftedPremium {
   MessageGiftedPremium copyWith({
+    int? gifterUserId,
     String? currency,
     int? amount,
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
     int? monthCount,
     Sticker? sticker,
   }) =>
       MessageGiftedPremium(
+        gifterUserId: gifterUserId ?? this.gifterUserId,
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
         monthCount: monthCount ?? this.monthCount,
         sticker: sticker ?? this.sticker,
       );
@@ -13413,9 +13545,12 @@ extension ChatEventMemberJoinedByInviteLinkExtensions
     on ChatEventMemberJoinedByInviteLink {
   ChatEventMemberJoinedByInviteLink copyWith({
     ChatInviteLink? inviteLink,
+    bool? viaChatFolderInviteLink,
   }) =>
       ChatEventMemberJoinedByInviteLink(
         inviteLink: inviteLink ?? this.inviteLink,
+        viaChatFolderInviteLink:
+            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
       );
 }
 
@@ -14016,15 +14151,19 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
         savedAnimationCount,
     required TResult Function(PremiumLimitTypeFavoriteStickerCount value)
         favoriteStickerCount,
-    required TResult Function(PremiumLimitTypeChatFilterCount value)
-        chatFilterCount,
-    required TResult Function(PremiumLimitTypeChatFilterChosenChatCount value)
-        chatFilterChosenChatCount,
+    required TResult Function(PremiumLimitTypeChatFolderCount value)
+        chatFolderCount,
+    required TResult Function(PremiumLimitTypeChatFolderChosenChatCount value)
+        chatFolderChosenChatCount,
     required TResult Function(PremiumLimitTypePinnedArchivedChatCount value)
         pinnedArchivedChatCount,
     required TResult Function(PremiumLimitTypeCaptionLength value)
         captionLength,
     required TResult Function(PremiumLimitTypeBioLength value) bioLength,
+    required TResult Function(PremiumLimitTypeChatFolderInviteLinkCount value)
+        chatFolderInviteLinkCount,
+    required TResult Function(PremiumLimitTypeShareableChatFolderCount value)
+        shareableChatFolderCount,
   }) {
     switch (getConstructor()) {
       case PremiumLimitTypeSupergroupCount.constructor:
@@ -14040,11 +14179,11 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
       case PremiumLimitTypeFavoriteStickerCount.constructor:
         return favoriteStickerCount
             .call(this as PremiumLimitTypeFavoriteStickerCount);
-      case PremiumLimitTypeChatFilterCount.constructor:
-        return chatFilterCount.call(this as PremiumLimitTypeChatFilterCount);
-      case PremiumLimitTypeChatFilterChosenChatCount.constructor:
-        return chatFilterChosenChatCount
-            .call(this as PremiumLimitTypeChatFilterChosenChatCount);
+      case PremiumLimitTypeChatFolderCount.constructor:
+        return chatFolderCount.call(this as PremiumLimitTypeChatFolderCount);
+      case PremiumLimitTypeChatFolderChosenChatCount.constructor:
+        return chatFolderChosenChatCount
+            .call(this as PremiumLimitTypeChatFolderChosenChatCount);
       case PremiumLimitTypePinnedArchivedChatCount.constructor:
         return pinnedArchivedChatCount
             .call(this as PremiumLimitTypePinnedArchivedChatCount);
@@ -14052,6 +14191,12 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
         return captionLength.call(this as PremiumLimitTypeCaptionLength);
       case PremiumLimitTypeBioLength.constructor:
         return bioLength.call(this as PremiumLimitTypeBioLength);
+      case PremiumLimitTypeChatFolderInviteLinkCount.constructor:
+        return chatFolderInviteLinkCount
+            .call(this as PremiumLimitTypeChatFolderInviteLinkCount);
+      case PremiumLimitTypeShareableChatFolderCount.constructor:
+        return shareableChatFolderCount
+            .call(this as PremiumLimitTypeShareableChatFolderCount);
     }
     throw StateError('not handled type Generator');
   }
@@ -14065,13 +14210,17 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
         savedAnimationCount,
     TResult Function(PremiumLimitTypeFavoriteStickerCount value)?
         favoriteStickerCount,
-    TResult Function(PremiumLimitTypeChatFilterCount value)? chatFilterCount,
-    TResult Function(PremiumLimitTypeChatFilterChosenChatCount value)?
-        chatFilterChosenChatCount,
+    TResult Function(PremiumLimitTypeChatFolderCount value)? chatFolderCount,
+    TResult Function(PremiumLimitTypeChatFolderChosenChatCount value)?
+        chatFolderChosenChatCount,
     TResult Function(PremiumLimitTypePinnedArchivedChatCount value)?
         pinnedArchivedChatCount,
     TResult Function(PremiumLimitTypeCaptionLength value)? captionLength,
     TResult Function(PremiumLimitTypeBioLength value)? bioLength,
+    TResult Function(PremiumLimitTypeChatFolderInviteLinkCount value)?
+        chatFolderInviteLinkCount,
+    TResult Function(PremiumLimitTypeShareableChatFolderCount value)?
+        shareableChatFolderCount,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -14103,15 +14252,15 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
               .call(this as PremiumLimitTypeFavoriteStickerCount);
         }
         break;
-      case PremiumLimitTypeChatFilterCount.constructor:
-        if (chatFilterCount != null) {
-          return chatFilterCount.call(this as PremiumLimitTypeChatFilterCount);
+      case PremiumLimitTypeChatFolderCount.constructor:
+        if (chatFolderCount != null) {
+          return chatFolderCount.call(this as PremiumLimitTypeChatFolderCount);
         }
         break;
-      case PremiumLimitTypeChatFilterChosenChatCount.constructor:
-        if (chatFilterChosenChatCount != null) {
-          return chatFilterChosenChatCount
-              .call(this as PremiumLimitTypeChatFilterChosenChatCount);
+      case PremiumLimitTypeChatFolderChosenChatCount.constructor:
+        if (chatFolderChosenChatCount != null) {
+          return chatFolderChosenChatCount
+              .call(this as PremiumLimitTypeChatFolderChosenChatCount);
         }
         break;
       case PremiumLimitTypePinnedArchivedChatCount.constructor:
@@ -14128,6 +14277,18 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
       case PremiumLimitTypeBioLength.constructor:
         if (bioLength != null) {
           return bioLength.call(this as PremiumLimitTypeBioLength);
+        }
+        break;
+      case PremiumLimitTypeChatFolderInviteLinkCount.constructor:
+        if (chatFolderInviteLinkCount != null) {
+          return chatFolderInviteLinkCount
+              .call(this as PremiumLimitTypeChatFolderInviteLinkCount);
+        }
+        break;
+      case PremiumLimitTypeShareableChatFolderCount.constructor:
+        if (shareableChatFolderCount != null) {
+          return shareableChatFolderCount
+              .call(this as PremiumLimitTypeShareableChatFolderCount);
         }
         break;
     }
@@ -14928,44 +15089,19 @@ extension BackgroundTypeFillExtensions on BackgroundTypeFill {
       );
 }
 
-extension BackgroundExtensions on Background {
-  Background copyWith({
-    int? id,
-    bool? isDefault,
-    bool? isDark,
-    String? name,
-    Document? document,
-    BackgroundType? type,
-  }) =>
-      Background(
-        id: id ?? this.id,
-        isDefault: isDefault ?? this.isDefault,
-        isDark: isDark ?? this.isDark,
-        name: name ?? this.name,
-        document: document ?? this.document,
-        type: type ?? this.type,
-      );
-}
-
-extension BackgroundsExtensions on Backgrounds {
-  Backgrounds copyWith({
-    List<Background>? backgrounds,
-  }) =>
-      Backgrounds(
-        backgrounds: backgrounds ?? this.backgrounds,
-      );
-}
-
 extension InputBackgroundExtensions on InputBackground {
   TResult map<TResult extends Object?>({
     required TResult Function(InputBackgroundLocal value) local,
     required TResult Function(InputBackgroundRemote value) remote,
+    required TResult Function(InputBackgroundPrevious value) previous,
   }) {
     switch (getConstructor()) {
       case InputBackgroundLocal.constructor:
         return local.call(this as InputBackgroundLocal);
       case InputBackgroundRemote.constructor:
         return remote.call(this as InputBackgroundRemote);
+      case InputBackgroundPrevious.constructor:
+        return previous.call(this as InputBackgroundPrevious);
     }
     throw StateError('not handled type Generator');
   }
@@ -14973,6 +15109,7 @@ extension InputBackgroundExtensions on InputBackground {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InputBackgroundLocal value)? local,
     TResult Function(InputBackgroundRemote value)? remote,
+    TResult Function(InputBackgroundPrevious value)? previous,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -14984,6 +15121,11 @@ extension InputBackgroundExtensions on InputBackground {
       case InputBackgroundRemote.constructor:
         if (remote != null) {
           return remote.call(this as InputBackgroundRemote);
+        }
+        break;
+      case InputBackgroundPrevious.constructor:
+        if (previous != null) {
+          return previous.call(this as InputBackgroundPrevious);
         }
         break;
     }
@@ -15006,6 +15148,15 @@ extension InputBackgroundRemoteExtensions on InputBackgroundRemote {
   }) =>
       InputBackgroundRemote(
         backgroundId: backgroundId ?? this.backgroundId,
+      );
+}
+
+extension InputBackgroundPreviousExtensions on InputBackgroundPrevious {
+  InputBackgroundPrevious copyWith({
+    int? messageId,
+  }) =>
+      InputBackgroundPrevious(
+        messageId: messageId ?? this.messageId,
       );
 }
 
@@ -15428,6 +15579,8 @@ extension PushMessageContentExtensions on PushMessageContent {
         chatChangePhoto,
     required TResult Function(PushMessageContentChatChangeTitle value)
         chatChangeTitle,
+    required TResult Function(PushMessageContentChatSetBackground value)
+        chatSetBackground,
     required TResult Function(PushMessageContentChatSetTheme value)
         chatSetTheme,
     required TResult Function(PushMessageContentChatDeleteMember value)
@@ -15491,6 +15644,9 @@ extension PushMessageContentExtensions on PushMessageContent {
         return chatChangePhoto.call(this as PushMessageContentChatChangePhoto);
       case PushMessageContentChatChangeTitle.constructor:
         return chatChangeTitle.call(this as PushMessageContentChatChangeTitle);
+      case PushMessageContentChatSetBackground.constructor:
+        return chatSetBackground
+            .call(this as PushMessageContentChatSetBackground);
       case PushMessageContentChatSetTheme.constructor:
         return chatSetTheme.call(this as PushMessageContentChatSetTheme);
       case PushMessageContentChatDeleteMember.constructor:
@@ -15540,6 +15696,8 @@ extension PushMessageContentExtensions on PushMessageContent {
     TResult Function(PushMessageContentChatAddMembers value)? chatAddMembers,
     TResult Function(PushMessageContentChatChangePhoto value)? chatChangePhoto,
     TResult Function(PushMessageContentChatChangeTitle value)? chatChangeTitle,
+    TResult Function(PushMessageContentChatSetBackground value)?
+        chatSetBackground,
     TResult Function(PushMessageContentChatSetTheme value)? chatSetTheme,
     TResult Function(PushMessageContentChatDeleteMember value)?
         chatDeleteMember,
@@ -15668,6 +15826,12 @@ extension PushMessageContentExtensions on PushMessageContent {
         if (chatChangeTitle != null) {
           return chatChangeTitle
               .call(this as PushMessageContentChatChangeTitle);
+        }
+        break;
+      case PushMessageContentChatSetBackground.constructor:
+        if (chatSetBackground != null) {
+          return chatSetBackground
+              .call(this as PushMessageContentChatSetBackground);
         }
         break;
       case PushMessageContentChatSetTheme.constructor:
@@ -15931,6 +16095,16 @@ extension PushMessageContentChatChangeTitleExtensions
   }) =>
       PushMessageContentChatChangeTitle(
         title: title ?? this.title,
+      );
+}
+
+extension PushMessageContentChatSetBackgroundExtensions
+    on PushMessageContentChatSetBackground {
+  PushMessageContentChatSetBackground copyWith({
+    bool? isSame,
+  }) =>
+      PushMessageContentChatSetBackground(
+        isSame: isSame ?? this.isSame,
       );
 }
 
@@ -17166,14 +17340,16 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         botStartInGroup,
     required TResult Function(InternalLinkTypeChangePhoneNumber value)
         changePhoneNumber,
+    required TResult Function(InternalLinkTypeChatFolderInvite value)
+        chatFolderInvite,
+    required TResult Function(InternalLinkTypeChatFolderSettings value)
+        chatFolderSettings,
     required TResult Function(InternalLinkTypeChatInvite value) chatInvite,
     required TResult Function(
             InternalLinkTypeDefaultMessageAutoDeleteTimerSettings value)
         defaultMessageAutoDeleteTimerSettings,
     required TResult Function(InternalLinkTypeEditProfileSettings value)
         editProfileSettings,
-    required TResult Function(InternalLinkTypeFilterSettings value)
-        filterSettings,
     required TResult Function(InternalLinkTypeGame value) game,
     required TResult Function(InternalLinkTypeInstantView value) instantView,
     required TResult Function(InternalLinkTypeInvoice value) invoice,
@@ -17231,6 +17407,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeChangePhoneNumber.constructor:
         return changePhoneNumber
             .call(this as InternalLinkTypeChangePhoneNumber);
+      case InternalLinkTypeChatFolderInvite.constructor:
+        return chatFolderInvite.call(this as InternalLinkTypeChatFolderInvite);
+      case InternalLinkTypeChatFolderSettings.constructor:
+        return chatFolderSettings
+            .call(this as InternalLinkTypeChatFolderSettings);
       case InternalLinkTypeChatInvite.constructor:
         return chatInvite.call(this as InternalLinkTypeChatInvite);
       case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
@@ -17239,8 +17420,6 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeEditProfileSettings.constructor:
         return editProfileSettings
             .call(this as InternalLinkTypeEditProfileSettings);
-      case InternalLinkTypeFilterSettings.constructor:
-        return filterSettings.call(this as InternalLinkTypeFilterSettings);
       case InternalLinkTypeGame.constructor:
         return game.call(this as InternalLinkTypeGame);
       case InternalLinkTypeInstantView.constructor:
@@ -17311,13 +17490,15 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeBotStartInGroup value)? botStartInGroup,
     TResult Function(InternalLinkTypeChangePhoneNumber value)?
         changePhoneNumber,
+    TResult Function(InternalLinkTypeChatFolderInvite value)? chatFolderInvite,
+    TResult Function(InternalLinkTypeChatFolderSettings value)?
+        chatFolderSettings,
     TResult Function(InternalLinkTypeChatInvite value)? chatInvite,
     TResult Function(
             InternalLinkTypeDefaultMessageAutoDeleteTimerSettings value)?
         defaultMessageAutoDeleteTimerSettings,
     TResult Function(InternalLinkTypeEditProfileSettings value)?
         editProfileSettings,
-    TResult Function(InternalLinkTypeFilterSettings value)? filterSettings,
     TResult Function(InternalLinkTypeGame value)? game,
     TResult Function(InternalLinkTypeInstantView value)? instantView,
     TResult Function(InternalLinkTypeInvoice value)? invoice,
@@ -17393,6 +17574,18 @@ extension InternalLinkTypeExtensions on InternalLinkType {
               .call(this as InternalLinkTypeChangePhoneNumber);
         }
         break;
+      case InternalLinkTypeChatFolderInvite.constructor:
+        if (chatFolderInvite != null) {
+          return chatFolderInvite
+              .call(this as InternalLinkTypeChatFolderInvite);
+        }
+        break;
+      case InternalLinkTypeChatFolderSettings.constructor:
+        if (chatFolderSettings != null) {
+          return chatFolderSettings
+              .call(this as InternalLinkTypeChatFolderSettings);
+        }
+        break;
       case InternalLinkTypeChatInvite.constructor:
         if (chatInvite != null) {
           return chatInvite.call(this as InternalLinkTypeChatInvite);
@@ -17408,11 +17601,6 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         if (editProfileSettings != null) {
           return editProfileSettings
               .call(this as InternalLinkTypeEditProfileSettings);
-        }
-        break;
-      case InternalLinkTypeFilterSettings.constructor:
-        if (filterSettings != null) {
-          return filterSettings.call(this as InternalLinkTypeFilterSettings);
         }
         break;
       case InternalLinkTypeGame.constructor:
@@ -17621,6 +17809,16 @@ extension InternalLinkTypeBotStartInGroupExtensions
         botUsername: botUsername ?? this.botUsername,
         startParameter: startParameter ?? this.startParameter,
         administratorRights: administratorRights ?? this.administratorRights,
+      );
+}
+
+extension InternalLinkTypeChatFolderInviteExtensions
+    on InternalLinkTypeChatFolderInvite {
+  InternalLinkTypeChatFolderInvite copyWith({
+    String? inviteLink,
+  }) =>
+      InternalLinkTypeChatFolderInvite(
+        inviteLink: inviteLink ?? this.inviteLink,
       );
 }
 
@@ -19490,6 +19688,7 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateChatPendingJoinRequests value)
         chatPendingJoinRequests,
     required TResult Function(UpdateChatReplyMarkup value) chatReplyMarkup,
+    required TResult Function(UpdateChatBackground value) chatBackground,
     required TResult Function(UpdateChatTheme value) chatTheme,
     required TResult Function(UpdateChatUnreadMentionCount value)
         chatUnreadMentionCount,
@@ -19507,7 +19706,7 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateChatIsBlocked value) chatIsBlocked,
     required TResult Function(UpdateChatHasScheduledMessages value)
         chatHasScheduledMessages,
-    required TResult Function(UpdateChatFilters value) chatFilters,
+    required TResult Function(UpdateChatFolders value) chatFolders,
     required TResult Function(UpdateChatOnlineMemberCount value)
         chatOnlineMemberCount,
     required TResult Function(UpdateForumTopicInfo value) forumTopicInfo,
@@ -19674,6 +19873,8 @@ extension UpdateExtensions on Update {
             .call(this as UpdateChatPendingJoinRequests);
       case UpdateChatReplyMarkup.constructor:
         return chatReplyMarkup.call(this as UpdateChatReplyMarkup);
+      case UpdateChatBackground.constructor:
+        return chatBackground.call(this as UpdateChatBackground);
       case UpdateChatTheme.constructor:
         return chatTheme.call(this as UpdateChatTheme);
       case UpdateChatUnreadMentionCount.constructor:
@@ -19699,8 +19900,8 @@ extension UpdateExtensions on Update {
       case UpdateChatHasScheduledMessages.constructor:
         return chatHasScheduledMessages
             .call(this as UpdateChatHasScheduledMessages);
-      case UpdateChatFilters.constructor:
-        return chatFilters.call(this as UpdateChatFilters);
+      case UpdateChatFolders.constructor:
+        return chatFolders.call(this as UpdateChatFolders);
       case UpdateChatOnlineMemberCount.constructor:
         return chatOnlineMemberCount.call(this as UpdateChatOnlineMemberCount);
       case UpdateForumTopicInfo.constructor:
@@ -19888,6 +20089,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateChatPendingJoinRequests value)?
         chatPendingJoinRequests,
     TResult Function(UpdateChatReplyMarkup value)? chatReplyMarkup,
+    TResult Function(UpdateChatBackground value)? chatBackground,
     TResult Function(UpdateChatTheme value)? chatTheme,
     TResult Function(UpdateChatUnreadMentionCount value)?
         chatUnreadMentionCount,
@@ -19903,7 +20105,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateChatIsBlocked value)? chatIsBlocked,
     TResult Function(UpdateChatHasScheduledMessages value)?
         chatHasScheduledMessages,
-    TResult Function(UpdateChatFilters value)? chatFilters,
+    TResult Function(UpdateChatFolders value)? chatFolders,
     TResult Function(UpdateChatOnlineMemberCount value)? chatOnlineMemberCount,
     TResult Function(UpdateForumTopicInfo value)? forumTopicInfo,
     TResult Function(UpdateScopeNotificationSettings value)?
@@ -20137,6 +20339,11 @@ extension UpdateExtensions on Update {
           return chatReplyMarkup.call(this as UpdateChatReplyMarkup);
         }
         break;
+      case UpdateChatBackground.constructor:
+        if (chatBackground != null) {
+          return chatBackground.call(this as UpdateChatBackground);
+        }
+        break;
       case UpdateChatTheme.constructor:
         if (chatTheme != null) {
           return chatTheme.call(this as UpdateChatTheme);
@@ -20192,9 +20399,9 @@ extension UpdateExtensions on Update {
               .call(this as UpdateChatHasScheduledMessages);
         }
         break;
-      case UpdateChatFilters.constructor:
-        if (chatFilters != null) {
-          return chatFilters.call(this as UpdateChatFilters);
+      case UpdateChatFolders.constructor:
+        if (chatFolders != null) {
+          return chatFolders.call(this as UpdateChatFolders);
         }
         break;
       case UpdateChatOnlineMemberCount.constructor:
@@ -20903,6 +21110,17 @@ extension UpdateChatReplyMarkupExtensions on UpdateChatReplyMarkup {
       );
 }
 
+extension UpdateChatBackgroundExtensions on UpdateChatBackground {
+  UpdateChatBackground copyWith({
+    int? chatId,
+    ChatBackground? background,
+  }) =>
+      UpdateChatBackground(
+        chatId: chatId ?? this.chatId,
+        background: background ?? this.background,
+      );
+}
+
 extension UpdateChatThemeExtensions on UpdateChatTheme {
   UpdateChatTheme copyWith({
     int? chatId,
@@ -21019,13 +21237,13 @@ extension UpdateChatHasScheduledMessagesExtensions
       );
 }
 
-extension UpdateChatFiltersExtensions on UpdateChatFilters {
-  UpdateChatFilters copyWith({
-    List<ChatFilterInfo>? chatFilters,
+extension UpdateChatFoldersExtensions on UpdateChatFolders {
+  UpdateChatFolders copyWith({
+    List<ChatFolderInfo>? chatFolders,
     int? mainChatListPosition,
   }) =>
-      UpdateChatFilters(
-        chatFilters: chatFilters ?? this.chatFilters,
+      UpdateChatFolders(
+        chatFolders: chatFolders ?? this.chatFolders,
         mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
       );
 }
@@ -21820,6 +22038,7 @@ extension UpdateChatMemberExtensions on UpdateChatMember {
     int? actorUserId,
     int? date,
     ChatInviteLink? inviteLink,
+    bool? viaChatFolderInviteLink,
     ChatMember? oldChatMember,
     ChatMember? newChatMember,
   }) =>
@@ -21828,6 +22047,8 @@ extension UpdateChatMemberExtensions on UpdateChatMember {
         actorUserId: actorUserId ?? this.actorUserId,
         date: date ?? this.date,
         inviteLink: inviteLink ?? this.inviteLink,
+        viaChatFolderInviteLink:
+            viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
         oldChatMember: oldChatMember ?? this.oldChatMember,
         newChatMember: newChatMember ?? this.newChatMember,
       );
@@ -24328,62 +24549,171 @@ extension AddChatToListExtensions on AddChatToList {
       );
 }
 
-extension GetChatFilterExtensions on GetChatFilter {
-  GetChatFilter copyWith({
-    int? chatFilterId,
+extension GetChatFolderExtensions on GetChatFolder {
+  GetChatFolder copyWith({
+    int? chatFolderId,
   }) =>
-      GetChatFilter(
-        chatFilterId: chatFilterId ?? this.chatFilterId,
+      GetChatFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
       );
 }
 
-extension CreateChatFilterExtensions on CreateChatFilter {
-  CreateChatFilter copyWith({
-    ChatFilter? filter,
+extension CreateChatFolderExtensions on CreateChatFolder {
+  CreateChatFolder copyWith({
+    ChatFolder? folder,
   }) =>
-      CreateChatFilter(
-        filter: filter ?? this.filter,
+      CreateChatFolder(
+        folder: folder ?? this.folder,
       );
 }
 
-extension EditChatFilterExtensions on EditChatFilter {
-  EditChatFilter copyWith({
-    int? chatFilterId,
-    ChatFilter? filter,
+extension EditChatFolderExtensions on EditChatFolder {
+  EditChatFolder copyWith({
+    int? chatFolderId,
+    ChatFolder? folder,
   }) =>
-      EditChatFilter(
-        chatFilterId: chatFilterId ?? this.chatFilterId,
-        filter: filter ?? this.filter,
+      EditChatFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        folder: folder ?? this.folder,
       );
 }
 
-extension DeleteChatFilterExtensions on DeleteChatFilter {
-  DeleteChatFilter copyWith({
-    int? chatFilterId,
+extension DeleteChatFolderExtensions on DeleteChatFolder {
+  DeleteChatFolder copyWith({
+    int? chatFolderId,
+    List<int>? leaveChatIds,
   }) =>
-      DeleteChatFilter(
-        chatFilterId: chatFilterId ?? this.chatFilterId,
+      DeleteChatFolder(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        leaveChatIds: leaveChatIds ?? this.leaveChatIds,
       );
 }
 
-extension ReorderChatFiltersExtensions on ReorderChatFilters {
-  ReorderChatFilters copyWith({
-    List<int>? chatFilterIds,
+extension GetChatFolderChatsToLeaveExtensions on GetChatFolderChatsToLeave {
+  GetChatFolderChatsToLeave copyWith({
+    int? chatFolderId,
+  }) =>
+      GetChatFolderChatsToLeave(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
+}
+
+extension ReorderChatFoldersExtensions on ReorderChatFolders {
+  ReorderChatFolders copyWith({
+    List<int>? chatFolderIds,
     int? mainChatListPosition,
   }) =>
-      ReorderChatFilters(
-        chatFilterIds: chatFilterIds ?? this.chatFilterIds,
+      ReorderChatFolders(
+        chatFolderIds: chatFolderIds ?? this.chatFolderIds,
         mainChatListPosition: mainChatListPosition ?? this.mainChatListPosition,
       );
 }
 
-extension GetChatFilterDefaultIconNameExtensions
-    on GetChatFilterDefaultIconName {
-  GetChatFilterDefaultIconName copyWith({
-    ChatFilter? filter,
+extension GetChatFolderDefaultIconNameExtensions
+    on GetChatFolderDefaultIconName {
+  GetChatFolderDefaultIconName copyWith({
+    ChatFolder? folder,
   }) =>
-      GetChatFilterDefaultIconName(
-        filter: filter ?? this.filter,
+      GetChatFolderDefaultIconName(
+        folder: folder ?? this.folder,
+      );
+}
+
+extension GetChatsForChatFolderInviteLinkExtensions
+    on GetChatsForChatFolderInviteLink {
+  GetChatsForChatFolderInviteLink copyWith({
+    int? chatFolderId,
+  }) =>
+      GetChatsForChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
+}
+
+extension CreateChatFolderInviteLinkExtensions on CreateChatFolderInviteLink {
+  CreateChatFolderInviteLink copyWith({
+    int? chatFolderId,
+    String? name,
+    List<int>? chatIds,
+  }) =>
+      CreateChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        name: name ?? this.name,
+        chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension GetChatFolderInviteLinksExtensions on GetChatFolderInviteLinks {
+  GetChatFolderInviteLinks copyWith({
+    int? chatFolderId,
+  }) =>
+      GetChatFolderInviteLinks(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
+}
+
+extension EditChatFolderInviteLinkExtensions on EditChatFolderInviteLink {
+  EditChatFolderInviteLink copyWith({
+    int? chatFolderId,
+    String? inviteLink,
+    String? name,
+    List<int>? chatIds,
+  }) =>
+      EditChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        inviteLink: inviteLink ?? this.inviteLink,
+        name: name ?? this.name,
+        chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension DeleteChatFolderInviteLinkExtensions on DeleteChatFolderInviteLink {
+  DeleteChatFolderInviteLink copyWith({
+    int? chatFolderId,
+    String? inviteLink,
+  }) =>
+      DeleteChatFolderInviteLink(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
+}
+
+extension CheckChatFolderInviteLinkExtensions on CheckChatFolderInviteLink {
+  CheckChatFolderInviteLink copyWith({
+    String? inviteLink,
+  }) =>
+      CheckChatFolderInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
+}
+
+extension AddChatFolderByInviteLinkExtensions on AddChatFolderByInviteLink {
+  AddChatFolderByInviteLink copyWith({
+    String? inviteLink,
+    List<int>? chatIds,
+  }) =>
+      AddChatFolderByInviteLink(
+        inviteLink: inviteLink ?? this.inviteLink,
+        chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension GetChatFolderNewChatsExtensions on GetChatFolderNewChats {
+  GetChatFolderNewChats copyWith({
+    int? chatFolderId,
+  }) =>
+      GetChatFolderNewChats(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+      );
+}
+
+extension ProcessChatFolderNewChatsExtensions on ProcessChatFolderNewChats {
+  ProcessChatFolderNewChats copyWith({
+    int? chatFolderId,
+    List<int>? addedChatIds,
+  }) =>
+      ProcessChatFolderNewChats(
+        chatFolderId: chatFolderId ?? this.chatFolderId,
+        addedChatIds: addedChatIds ?? this.addedChatIds,
       );
 }
 
@@ -24430,6 +24760,21 @@ extension SetChatPermissionsExtensions on SetChatPermissions {
       SetChatPermissions(
         chatId: chatId ?? this.chatId,
         permissions: permissions ?? this.permissions,
+      );
+}
+
+extension SetChatBackgroundExtensions on SetChatBackground {
+  SetChatBackground copyWith({
+    int? chatId,
+    InputBackground? background,
+    BackgroundType? type,
+    int? darkThemeDimming,
+  }) =>
+      SetChatBackground(
+        chatId: chatId ?? this.chatId,
+        background: background ?? this.background,
+        type: type ?? this.type,
+        darkThemeDimming: darkThemeDimming ?? this.darkThemeDimming,
       );
 }
 
@@ -24838,6 +25183,15 @@ extension SetPinnedChatsExtensions on SetPinnedChats {
       SetPinnedChats(
         chatList: chatList ?? this.chatList,
         chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension ReadChatListExtensions on ReadChatList {
+  ReadChatList copyWith({
+    ChatList? chatList,
+  }) =>
+      ReadChatList(
+        chatList: chatList ?? this.chatList,
       );
 }
 
@@ -26406,12 +26760,73 @@ extension SetDefaultChannelAdministratorRightsExtensions
       );
 }
 
+extension SetBotNameExtensions on SetBotName {
+  SetBotName copyWith({
+    int? botUserId,
+    String? languageCode,
+    String? name,
+  }) =>
+      SetBotName(
+        botUserId: botUserId ?? this.botUserId,
+        languageCode: languageCode ?? this.languageCode,
+        name: name ?? this.name,
+      );
+}
+
+extension GetBotNameExtensions on GetBotName {
+  GetBotName copyWith({
+    int? botUserId,
+    String? languageCode,
+  }) =>
+      GetBotName(
+        botUserId: botUserId ?? this.botUserId,
+        languageCode: languageCode ?? this.languageCode,
+      );
+}
+
+extension SetBotProfilePhotoExtensions on SetBotProfilePhoto {
+  SetBotProfilePhoto copyWith({
+    int? botUserId,
+    InputChatPhoto? photo,
+  }) =>
+      SetBotProfilePhoto(
+        botUserId: botUserId ?? this.botUserId,
+        photo: photo ?? this.photo,
+      );
+}
+
+extension ToggleBotUsernameIsActiveExtensions on ToggleBotUsernameIsActive {
+  ToggleBotUsernameIsActive copyWith({
+    int? botUserId,
+    String? username,
+    bool? isActive,
+  }) =>
+      ToggleBotUsernameIsActive(
+        botUserId: botUserId ?? this.botUserId,
+        username: username ?? this.username,
+        isActive: isActive ?? this.isActive,
+      );
+}
+
+extension ReorderActiveBotUsernamesExtensions on ReorderActiveBotUsernames {
+  ReorderActiveBotUsernames copyWith({
+    int? botUserId,
+    List<String>? usernames,
+  }) =>
+      ReorderActiveBotUsernames(
+        botUserId: botUserId ?? this.botUserId,
+        usernames: usernames ?? this.usernames,
+      );
+}
+
 extension SetBotInfoDescriptionExtensions on SetBotInfoDescription {
   SetBotInfoDescription copyWith({
+    int? botUserId,
     String? languageCode,
     String? description,
   }) =>
       SetBotInfoDescription(
+        botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,
         description: description ?? this.description,
       );
@@ -26419,19 +26834,23 @@ extension SetBotInfoDescriptionExtensions on SetBotInfoDescription {
 
 extension GetBotInfoDescriptionExtensions on GetBotInfoDescription {
   GetBotInfoDescription copyWith({
+    int? botUserId,
     String? languageCode,
   }) =>
       GetBotInfoDescription(
+        botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,
       );
 }
 
 extension SetBotInfoShortDescriptionExtensions on SetBotInfoShortDescription {
   SetBotInfoShortDescription copyWith({
+    int? botUserId,
     String? languageCode,
     String? shortDescription,
   }) =>
       SetBotInfoShortDescription(
+        botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,
         shortDescription: shortDescription ?? this.shortDescription,
       );
@@ -26439,9 +26858,11 @@ extension SetBotInfoShortDescriptionExtensions on SetBotInfoShortDescription {
 
 extension GetBotInfoShortDescriptionExtensions on GetBotInfoShortDescription {
   GetBotInfoShortDescription copyWith({
+    int? botUserId,
     String? languageCode,
   }) =>
       GetBotInfoShortDescription(
+        botUserId: botUserId ?? this.botUserId,
         languageCode: languageCode ?? this.languageCode,
       );
 }

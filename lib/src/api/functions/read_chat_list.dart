@@ -2,25 +2,26 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a chat filter by its identifier
-/// Returns [ChatFilter]
+/// Traverse all chats in a chat list and marks all messages in the chats as
+/// read
+/// Returns [Ok]
 @immutable
-class GetChatFilter extends TdFunction {
-  const GetChatFilter({
-    required this.chatFilterId,
+class ReadChatList extends TdFunction {
+  const ReadChatList({
+    required this.chatList,
   });
 
-  /// [chatFilterId] Chat filter identifier
-  final int chatFilterId;
+  /// [chatList] Chat list in which to mark all chats as read
+  final ChatList chatList;
 
-  static const String constructor = 'getChatFilter';
+  static const String constructor = 'readChatList';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_filter_id': chatFilterId,
+        'chat_list': chatList.toJson(),
         '@type': constructor,
       };
 

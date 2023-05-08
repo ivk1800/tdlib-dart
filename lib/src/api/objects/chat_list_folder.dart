@@ -2,19 +2,26 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to the filter section of the app settings
+/// A list of chats added to a chat folder
 @immutable
-class InternalLinkTypeFilterSettings extends InternalLinkType {
-  const InternalLinkTypeFilterSettings();
+class ChatListFolder extends ChatList {
+  const ChatListFolder({
+    required this.chatFolderId,
+  });
 
-  static const String constructor = 'internalLinkTypeFilterSettings';
+  /// [chatFolderId] Chat folder identifier
+  final int chatFolderId;
 
-  static InternalLinkTypeFilterSettings? fromJson(Map<String, dynamic>? json) {
+  static const String constructor = 'chatListFolder';
+
+  static ChatListFolder? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const InternalLinkTypeFilterSettings();
+    return ChatListFolder(
+      chatFolderId: json['chat_folder_id'] as int,
+    );
   }
 
   @override
@@ -22,6 +29,7 @@ class InternalLinkTypeFilterSettings extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_folder_id': chatFolderId,
         '@type': constructor,
       };
 

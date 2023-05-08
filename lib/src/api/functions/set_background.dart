@@ -14,7 +14,7 @@ class SetBackground extends TdFunction {
   });
 
   /// [background] The input background to use; pass null to create a new filled
-  /// backgrounds or to remove the current background
+  /// background or to remove the current background
   final InputBackground? background;
 
   /// [type] Background type; pass null to use the default type of the remote

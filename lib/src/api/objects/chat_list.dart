@@ -11,7 +11,7 @@ abstract class ChatList extends TdObject {
 
   /// Inherited by:
   /// [ChatListArchive]
-  /// [ChatListFilter]
+  /// [ChatListFolder]
   /// [ChatListMain]
   static ChatList? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -21,8 +21,8 @@ abstract class ChatList extends TdObject {
     switch (json['@type']) {
       case ChatListArchive.constructor:
         return ChatListArchive.fromJson(json);
-      case ChatListFilter.constructor:
-        return ChatListFilter.fromJson(json);
+      case ChatListFolder.constructor:
+        return ChatListFolder.fromJson(json);
       case ChatListMain.constructor:
         return ChatListMain.fromJson(json);
       default:

@@ -2,26 +2,20 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A list of chats belonging to a chat filter
+/// The maximum number of invite links for a chat folder
 @immutable
-class ChatListFilter extends ChatList {
-  const ChatListFilter({
-    required this.chatFilterId,
-  });
+class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
+  const PremiumLimitTypeChatFolderInviteLinkCount();
 
-  /// [chatFilterId] Chat filter identifier
-  final int chatFilterId;
+  static const String constructor = 'premiumLimitTypeChatFolderInviteLinkCount';
 
-  static const String constructor = 'chatListFilter';
-
-  static ChatListFilter? fromJson(Map<String, dynamic>? json) {
+  static PremiumLimitTypeChatFolderInviteLinkCount? fromJson(
+      Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return ChatListFilter(
-      chatFilterId: json['chat_filter_id'] as int,
-    );
+    return const PremiumLimitTypeChatFolderInviteLinkCount();
   }
 
   @override
@@ -29,7 +23,6 @@ class ChatListFilter extends ChatList {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_filter_id': chatFilterId,
         '@type': constructor,
       };
 

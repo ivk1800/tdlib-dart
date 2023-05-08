@@ -19,6 +19,7 @@ abstract class PushMessageContent extends TdObject {
   /// [PushMessageContentChatDeleteMember]
   /// [PushMessageContentChatJoinByLink]
   /// [PushMessageContentChatJoinByRequest]
+  /// [PushMessageContentChatSetBackground]
   /// [PushMessageContentChatSetTheme]
   /// [PushMessageContentContactRegistered]
   /// [PushMessageContentContact]
@@ -64,6 +65,8 @@ abstract class PushMessageContent extends TdObject {
         return PushMessageContentChatJoinByLink.fromJson(json);
       case PushMessageContentChatJoinByRequest.constructor:
         return PushMessageContentChatJoinByRequest.fromJson(json);
+      case PushMessageContentChatSetBackground.constructor:
+        return PushMessageContentChatSetBackground.fromJson(json);
       case PushMessageContentChatSetTheme.constructor:
         return PushMessageContentChatSetTheme.fromJson(json);
       case PushMessageContentContact.constructor:

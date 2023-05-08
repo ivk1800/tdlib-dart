@@ -2,25 +2,26 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns default icon name for a filter. Can be called synchronously
-/// Returns [Text]
+/// The maximum number of chat folders
 @immutable
-class GetChatFilterDefaultIconName extends TdFunction {
-  const GetChatFilterDefaultIconName({
-    required this.filter,
-  });
+class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
+  const PremiumLimitTypeChatFolderCount();
 
-  /// [filter] Chat filter
-  final ChatFilter filter;
+  static const String constructor = 'premiumLimitTypeChatFolderCount';
 
-  static const String constructor = 'getChatFilterDefaultIconName';
+  static PremiumLimitTypeChatFolderCount? fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      return null;
+    }
+
+    return const PremiumLimitTypeChatFolderCount();
+  }
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'filter': filter.toJson(),
         '@type': constructor,
       };
 

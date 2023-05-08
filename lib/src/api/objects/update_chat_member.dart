@@ -10,6 +10,7 @@ class UpdateChatMember extends Update {
     required this.actorUserId,
     required this.date,
     this.inviteLink,
+    required this.viaChatFolderInviteLink,
     required this.oldChatMember,
     required this.newChatMember,
   });
@@ -26,6 +27,10 @@ class UpdateChatMember extends Update {
   /// [inviteLink] If user has joined the chat using an invite link, the invite
   /// link; may be null
   final ChatInviteLink? inviteLink;
+
+  /// [viaChatFolderInviteLink] True, if the user has joined the chat using an
+  /// invite link for a chat folder
+  final bool viaChatFolderInviteLink;
 
   /// [oldChatMember] Previous chat member
   final ChatMember oldChatMember;
@@ -46,6 +51,7 @@ class UpdateChatMember extends Update {
       date: json['date'] as int,
       inviteLink:
           ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      viaChatFolderInviteLink: json['via_chat_folder_invite_link'] as bool,
       oldChatMember: ChatMember.fromJson(
           json['old_chat_member'] as Map<String, dynamic>?)!,
       newChatMember: ChatMember.fromJson(
@@ -62,6 +68,7 @@ class UpdateChatMember extends Update {
         'actor_user_id': actorUserId,
         'date': date,
         'invite_link': inviteLink?.toJson(),
+        'via_chat_folder_invite_link': viaChatFolderInviteLink,
         'old_chat_member': oldChatMember.toJson(),
         'new_chat_member': newChatMember.toJson(),
         '@type': constructor,

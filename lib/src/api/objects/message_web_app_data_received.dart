@@ -14,7 +14,7 @@ class MessageWebAppDataReceived extends MessageContent {
   /// Web App
   final String buttonText;
 
-  /// [data] Received data
+  /// [data] The data
   final String data;
 
   static const String constructor = 'messageWebAppDataReceived';

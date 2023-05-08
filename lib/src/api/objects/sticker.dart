@@ -21,8 +21,8 @@ class Sticker extends TdObject {
   /// [id] Unique sticker identifier within the set; 0 if none
   final int id;
 
-  /// [setId] The identifier of the sticker set to which the sticker belongs; 0
-  /// if none
+  /// [setId] Identifier of the sticker set to which the sticker belongs; 0 if
+  /// none
   final int setId;
 
   /// [width] Sticker width; as defined by the sender

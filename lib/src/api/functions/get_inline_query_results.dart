@@ -16,7 +16,7 @@ class GetInlineQueryResults extends TdFunction {
     required this.offset,
   });
 
-  /// [botUserId] The identifier of the target bot
+  /// [botUserId] Identifier of the target bot
   final int botUserId;
 
   /// [chatId] Identifier of the chat where the query was sent

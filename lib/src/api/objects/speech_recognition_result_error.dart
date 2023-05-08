@@ -9,7 +9,7 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
     required this.error,
   });
 
-  /// [error] Received error
+  /// [error] Recognition error
   final TdError error;
 
   static const String constructor = 'speechRecognitionResultError';
