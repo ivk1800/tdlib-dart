@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Searches for the specified query in the title and username of already
-/// known chats, this is an offline request. Returns chats in the order seen
+/// known chats; this is an offline request. Returns chats in the order seen
 /// in the main chat list
 /// Returns [Chats]
 @immutable

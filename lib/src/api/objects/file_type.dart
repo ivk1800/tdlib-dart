@@ -15,6 +15,7 @@ abstract class FileType extends TdObject {
   /// [FileTypeDocument]
   /// [FileTypeNone]
   /// [FileTypeNotificationSound]
+  /// [FileTypePhotoStory]
   /// [FileTypePhoto]
   /// [FileTypeProfilePhoto]
   /// [FileTypeSecretThumbnail]
@@ -24,6 +25,7 @@ abstract class FileType extends TdObject {
   /// [FileTypeThumbnail]
   /// [FileTypeUnknown]
   /// [FileTypeVideoNote]
+  /// [FileTypeVideoStory]
   /// [FileTypeVideo]
   /// [FileTypeVoiceNote]
   /// [FileTypeWallpaper]
@@ -45,6 +47,8 @@ abstract class FileType extends TdObject {
         return FileTypeNotificationSound.fromJson(json);
       case FileTypePhoto.constructor:
         return FileTypePhoto.fromJson(json);
+      case FileTypePhotoStory.constructor:
+        return FileTypePhotoStory.fromJson(json);
       case FileTypeProfilePhoto.constructor:
         return FileTypeProfilePhoto.fromJson(json);
       case FileTypeSecret.constructor:
@@ -63,6 +67,8 @@ abstract class FileType extends TdObject {
         return FileTypeVideo.fromJson(json);
       case FileTypeVideoNote.constructor:
         return FileTypeVideoNote.fromJson(json);
+      case FileTypeVideoStory.constructor:
+        return FileTypeVideoStory.fromJson(json);
       case FileTypeVoiceNote.constructor:
         return FileTypeVoiceNote.fromJson(json);
       case FileTypeWallpaper.constructor:

@@ -33,8 +33,7 @@ class Message extends TdObject {
     this.forwardInfo,
     this.interactionInfo,
     required this.unreadReactions,
-    required this.replyInChatId,
-    required this.replyToMessageId,
+    this.replyTo,
     required this.messageThreadId,
     required this.selfDestructTime,
     required this.selfDestructIn,
@@ -144,14 +143,9 @@ class Message extends TdObject {
   /// [unreadReactions] Information about unread reactions added to the message
   final List<UnreadReaction> unreadReactions;
 
-  /// [replyInChatId] If non-zero, the identifier of the chat to which the
-  /// replied message belongs; Currently, only messages in the Replies chat can
-  /// have different reply_in_chat_id and chat_id
-  final int replyInChatId;
-
-  /// [replyToMessageId] If non-zero, the identifier of the message this message
-  /// is replying to; can be the identifier of a deleted message
-  final int replyToMessageId;
+  /// [replyTo] Information about the message or the story this message is
+  /// replying to; may be null if none
+  final MessageReplyTo? replyTo;
 
   /// [messageThreadId] If non-zero, the identifier of the message thread the
   /// message belongs to; unique within the chat to which the message belongs
@@ -238,14 +232,14 @@ class Message extends TdObject {
           ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => UnreadReaction.fromJson(item))
               .toList()),
-      replyInChatId: json['reply_in_chat_id'] as int,
-      replyToMessageId: json['reply_to_message_id'] as int,
+      replyTo:
+          MessageReplyTo.fromJson(json['reply_to'] as Map<String, dynamic>?),
       messageThreadId: json['message_thread_id'] as int,
       selfDestructTime: json['self_destruct_time'] as int,
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
-      authorSignature: json['author_signature'] as String?,
+      authorSignature: json['author_signature'] as String,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
       restrictionReason: json['restriction_reason'] as String,
       content:
@@ -288,8 +282,7 @@ class Message extends TdObject {
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions':
             unreadReactions.map((item) => item.toJson()).toList(),
-        'reply_in_chat_id': replyInChatId,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
         'self_destruct_time': selfDestructTime,
         'self_destruct_in': selfDestructIn,

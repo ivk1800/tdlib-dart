@@ -9,15 +9,10 @@ import '../tdapi.dart';
 class SetEmojiStatus extends TdFunction {
   const SetEmojiStatus({
     this.emojiStatus,
-    required this.duration,
   });
 
   /// [emojiStatus] New emoji status; pass null to switch to the default badge
   final EmojiStatus? emojiStatus;
-
-  /// [duration] Duration of the status, in seconds; pass 0 to keep the status
-  /// active until it will be changed manually
-  final int duration;
 
   static const String constructor = 'setEmojiStatus';
 
@@ -27,7 +22,6 @@ class SetEmojiStatus extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'emoji_status': emojiStatus?.toJson(),
-        'duration': duration,
         '@type': constructor,
       };
 

@@ -16,12 +16,15 @@ class User extends TdObject {
     this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
+    required this.isCloseFriend,
     required this.isVerified,
     required this.isPremium,
     required this.isSupport,
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
+    required this.hasActiveStories,
+    required this.hasUnreadActiveStories,
     required this.haveAccess,
     required this.type,
     required this.languageCode,
@@ -60,6 +63,10 @@ class User extends TdObject {
   /// current user is a contact of the user
   final bool isMutualContact;
 
+  /// [isCloseFriend] The user is a close friend of the current user; implies
+  /// that the user is a contact
+  final bool isCloseFriend;
+
   /// [isVerified] True, if the user is verified
   final bool isVerified;
 
@@ -78,6 +85,14 @@ class User extends TdObject {
 
   /// [isFake] True, if many users reported this user as a fake account
   final bool isFake;
+
+  /// [hasActiveStories] True, if the user has non-expired stories available to
+  /// the current user
+  final bool hasActiveStories;
+
+  /// [hasUnreadActiveStories] True, if the user has unread non-expired stories
+  /// available to the current user
+  final bool hasUnreadActiveStories;
 
   /// [haveAccess] If false, the user is inaccessible, and the only information
   /// known about the user is inside this class. Identifier of the user can't be
@@ -115,12 +130,15 @@ class User extends TdObject {
           EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
       isContact: json['is_contact'] as bool,
       isMutualContact: json['is_mutual_contact'] as bool,
+      isCloseFriend: json['is_close_friend'] as bool,
       isVerified: json['is_verified'] as bool,
       isPremium: json['is_premium'] as bool,
       isSupport: json['is_support'] as bool,
       restrictionReason: json['restriction_reason'] as String,
       isScam: json['is_scam'] as bool,
       isFake: json['is_fake'] as bool,
+      hasActiveStories: json['has_active_stories'] as bool,
+      hasUnreadActiveStories: json['has_unread_active_stories'] as bool,
       haveAccess: json['have_access'] as bool,
       type: UserType.fromJson(json['type'] as Map<String, dynamic>?)!,
       languageCode: json['language_code'] as String,
@@ -143,12 +161,15 @@ class User extends TdObject {
         'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
+        'is_close_friend': isCloseFriend,
         'is_verified': isVerified,
         'is_premium': isPremium,
         'is_support': isSupport,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,
+        'has_active_stories': hasActiveStories,
+        'has_unread_active_stories': hasUnreadActiveStories,
         'have_access': haveAccess,
         'type': type.toJson(),
         'language_code': languageCode,

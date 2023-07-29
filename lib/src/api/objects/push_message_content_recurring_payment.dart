@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A new recurrent payment was made by the current user
+/// A new recurring payment was made by the current user
 @immutable
 class PushMessageContentRecurringPayment extends PushMessageContent {
   const PushMessageContentRecurringPayment({

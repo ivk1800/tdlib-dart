@@ -18,7 +18,6 @@ class SupergroupFullInfo extends TdObject {
     required this.canGetMembers,
     required this.hasHiddenMembers,
     required this.canHideMembers,
-    required this.canSetUsername,
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
@@ -81,9 +80,6 @@ class SupergroupFullInfo extends TdObject {
   /// responses to getSupergroupMembers and searchChatMembers for
   /// non-administrators
   final bool canHideMembers;
-
-  /// [canSetUsername] True, if the chat username can be changed
-  final bool canSetUsername;
 
   /// [canSetStickerSet] True, if the supergroup sticker set can be changed
   final bool canSetStickerSet;
@@ -153,7 +149,6 @@ class SupergroupFullInfo extends TdObject {
       canGetMembers: json['can_get_members'] as bool,
       hasHiddenMembers: json['has_hidden_members'] as bool,
       canHideMembers: json['can_hide_members'] as bool,
-      canSetUsername: json['can_set_username'] as bool,
       canSetStickerSet: json['can_set_sticker_set'] as bool,
       canSetLocation: json['can_set_location'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
@@ -193,7 +188,6 @@ class SupergroupFullInfo extends TdObject {
         'can_get_members': canGetMembers,
         'has_hidden_members': hasHiddenMembers,
         'can_hide_members': canHideMembers,
-        'can_set_username': canSetUsername,
         'can_set_sticker_set': canSetStickerSet,
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,

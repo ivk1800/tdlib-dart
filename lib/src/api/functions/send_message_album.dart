@@ -12,7 +12,7 @@ class SendMessageAlbum extends TdFunction {
   const SendMessageAlbum({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     required this.inputMessageContents,
     required this.onlyPreview,
@@ -25,8 +25,8 @@ class SendMessageAlbum extends TdFunction {
   /// messages will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of a replied message; 0 if none
-  final int replyToMessageId;
+  /// [replyTo] Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// [options] Options to be used to send the messages; pass null to use
   /// default options
@@ -49,7 +49,7 @@ class SendMessageAlbum extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'input_message_contents':
             inputMessageContents.map((item) => item.toJson()).toList(),

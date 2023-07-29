@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a chat by its identifier, this is an offline
+/// Returns information about a chat by its identifier; this is an offline
 /// request if the current user is not a bot
 /// Returns [Chat]
 @immutable

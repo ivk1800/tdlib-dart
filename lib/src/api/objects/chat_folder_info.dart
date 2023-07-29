@@ -9,6 +9,7 @@ class ChatFolderInfo extends TdObject {
     required this.id,
     required this.title,
     required this.icon,
+    required this.isShareable,
     required this.hasMyInviteLinks,
   });
 
@@ -20,6 +21,9 @@ class ChatFolderInfo extends TdObject {
 
   /// [icon] The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
+
+  /// [isShareable] True, if at least one link has been created for the folder
+  final bool isShareable;
 
   /// [hasMyInviteLinks] True, if the chat folder has invite links created by
   /// the current user
@@ -36,6 +40,7 @@ class ChatFolderInfo extends TdObject {
       id: json['id'] as int,
       title: json['title'] as String,
       icon: ChatFolderIcon.fromJson(json['icon'] as Map<String, dynamic>?)!,
+      isShareable: json['is_shareable'] as bool,
       hasMyInviteLinks: json['has_my_invite_links'] as bool,
     );
   }
@@ -48,6 +53,7 @@ class ChatFolderInfo extends TdObject {
         'id': id,
         'title': title,
         'icon': icon.toJson(),
+        'is_shareable': isShareable,
         'has_my_invite_links': hasMyInviteLinks,
         '@type': constructor,
       };

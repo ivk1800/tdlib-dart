@@ -10,7 +10,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   const SendInlineQueryResultMessage({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     required this.queryId,
     required this.resultId,
@@ -24,8 +24,8 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of a replied message; 0 if none
-  final int replyToMessageId;
+  /// [replyTo] Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// [options] Options to be used to send the message; pass null to use default
   /// options
@@ -52,7 +52,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'query_id': queryId,
         'result_id': resultId,

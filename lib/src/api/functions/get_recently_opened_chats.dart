@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns recently opened chats, this is an offline request. Returns chats
+/// Returns recently opened chats; this is an offline request. Returns chats
 /// in the order of last opening
 /// Returns [Chats]
 @immutable

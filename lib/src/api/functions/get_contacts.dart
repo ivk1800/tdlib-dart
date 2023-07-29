@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns all user contacts
+/// Returns all contacts of the user
 /// Returns [Users]
 @immutable
 class GetContacts extends TdFunction {

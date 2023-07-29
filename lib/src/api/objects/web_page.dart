@@ -26,6 +26,8 @@ class WebPage extends TdObject {
     this.video,
     this.videoNote,
     this.voiceNote,
+    required this.storySenderChatId,
+    required this.storyId,
     required this.instantViewVersion,
   });
 
@@ -95,6 +97,13 @@ class WebPage extends TdObject {
   /// null
   final VoiceNote? voiceNote;
 
+  /// [storySenderChatId] The identifier of the sender of the previewed story; 0
+  /// if none
+  final int storySenderChatId;
+
+  /// [storyId] The identifier of the previewed story; 0 if none
+  final int storyId;
+
   /// [instantViewVersion] Version of web page instant view (currently, can be 1
   /// or 2); 0 if none
   final int instantViewVersion;
@@ -130,6 +139,8 @@ class WebPage extends TdObject {
           VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?),
       voiceNote:
           VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
+      storySenderChatId: json['story_sender_chat_id'] as int,
+      storyId: json['story_id'] as int,
       instantViewVersion: json['instant_view_version'] as int,
     );
   }
@@ -159,6 +170,8 @@ class WebPage extends TdObject {
         'video': video?.toJson(),
         'video_note': videoNote?.toJson(),
         'voice_note': voiceNote?.toJson(),
+        'story_sender_chat_id': storySenderChatId,
+        'story_id': storyId,
         'instant_view_version': instantViewVersion,
         '@type': constructor,
       };

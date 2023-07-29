@@ -15,6 +15,7 @@ class UserFullInfo extends TdObject {
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
     required this.hasRestrictedVoiceAndVideoNoteMessages,
+    required this.hasPinnedStories,
     required this.needPhoneNumberPrivacyException,
     this.bio,
     required this.premiumGiftOptions,
@@ -64,6 +65,9 @@ class UserFullInfo extends TdObject {
   /// can't be sent or forwarded to the user
   final bool hasRestrictedVoiceAndVideoNoteMessages;
 
+  /// [hasPinnedStories] True, if the user has pinned stories
+  final bool hasPinnedStories;
+
   /// [needPhoneNumberPrivacyException] True, if the current user needs to
   /// explicitly allow to share their phone number with the user when the method
   /// addContact is used
@@ -103,6 +107,7 @@ class UserFullInfo extends TdObject {
       hasPrivateForwards: json['has_private_forwards'] as bool,
       hasRestrictedVoiceAndVideoNoteMessages:
           json['has_restricted_voice_and_video_note_messages'] as bool,
+      hasPinnedStories: json['has_pinned_stories'] as bool,
       needPhoneNumberPrivacyException:
           json['need_phone_number_privacy_exception'] as bool,
       bio: FormattedText.fromJson(json['bio'] as Map<String, dynamic>?),
@@ -130,6 +135,7 @@ class UserFullInfo extends TdObject {
         'has_private_forwards': hasPrivateForwards,
         'has_restricted_voice_and_video_note_messages':
             hasRestrictedVoiceAndVideoNoteMessages,
+        'has_pinned_stories': hasPinnedStories,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
         'bio': bio?.toJson(),
         'premium_gift_options':

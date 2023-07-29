@@ -22,6 +22,7 @@ abstract class InputMessageContent extends TdObject {
   /// [InputMessagePhoto]
   /// [InputMessagePoll]
   /// [InputMessageSticker]
+  /// [InputMessageStory]
   /// [InputMessageText]
   /// [InputMessageVenue]
   /// [InputMessageVideoNote]
@@ -57,6 +58,8 @@ abstract class InputMessageContent extends TdObject {
         return InputMessagePoll.fromJson(json);
       case InputMessageSticker.constructor:
         return InputMessageSticker.fromJson(json);
+      case InputMessageStory.constructor:
+        return InputMessageStory.fromJson(json);
       case InputMessageText.constructor:
         return InputMessageText.fromJson(json);
       case InputMessageVenue.constructor:

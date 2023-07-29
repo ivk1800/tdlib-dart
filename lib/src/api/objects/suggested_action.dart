@@ -14,6 +14,7 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionCheckPhoneNumber]
   /// [SuggestedActionConvertToBroadcastGroup]
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
+  /// [SuggestedActionRestorePremium]
   /// [SuggestedActionSetPassword]
   /// [SuggestedActionSubscribeToAnnualPremium]
   /// [SuggestedActionUpgradePremium]
@@ -32,6 +33,8 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionConvertToBroadcastGroup.fromJson(json);
       case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
+      case SuggestedActionRestorePremium.constructor:
+        return SuggestedActionRestorePremium.fromJson(json);
       case SuggestedActionSetPassword.constructor:
         return SuggestedActionSetPassword.fromJson(json);
       case SuggestedActionSubscribeToAnnualPremium.constructor:

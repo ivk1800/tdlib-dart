@@ -22,7 +22,7 @@ class ReportChat extends TdFunction {
   final List<int> messageIds;
 
   /// [reason] The reason for reporting the chat
-  final ChatReportReason reason;
+  final ReportReason reason;
 
   /// [text] Additional report details; 0-1024 characters
   final String text;

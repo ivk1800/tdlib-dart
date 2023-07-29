@@ -56,6 +56,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageProximityAlertTriggered]
   /// [MessageScreenshotTaken]
   /// [MessageSticker]
+  /// [MessageStory]
   /// [MessageSuggestProfilePhoto]
   /// [MessageSupergroupChatCreate]
   /// [MessageText]
@@ -169,6 +170,8 @@ abstract class MessageContent extends TdObject {
         return MessageScreenshotTaken.fromJson(json);
       case MessageSticker.constructor:
         return MessageSticker.fromJson(json);
+      case MessageStory.constructor:
+        return MessageStory.fromJson(json);
       case MessageSuggestProfilePhoto.constructor:
         return MessageSuggestProfilePhoto.fromJson(json);
       case MessageSupergroupChatCreate.constructor:

@@ -22,7 +22,7 @@ class CallProtocol extends TdObject {
   /// [minLayer] The minimum supported API layer; use 65
   final int minLayer;
 
-  /// [maxLayer] The maximum supported API layer; use 65
+  /// [maxLayer] The maximum supported API layer; use 92
   final int maxLayer;
 
   /// [libraryVersions] List of supported tgcalls versions

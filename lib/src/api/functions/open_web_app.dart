@@ -16,7 +16,7 @@ class OpenWebApp extends TdFunction {
     this.theme,
     required this.applicationName,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
   });
 
   /// [chatId] Identifier of the chat in which the Web App is opened. The Web
@@ -42,9 +42,9 @@ class OpenWebApp extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of the replied message for the message sent
-  /// by the Web App; 0 if none
-  final int replyToMessageId;
+  /// [replyTo] Identifier of the replied message or story for the message sent
+  /// by the Web App; pass null if none
+  final MessageReplyTo? replyTo;
 
   static const String constructor = 'openWebApp';
 
@@ -59,7 +59,7 @@ class OpenWebApp extends TdFunction {
         'theme': theme?.toJson(),
         'application_name': applicationName,
         'message_thread_id': messageThreadId,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         '@type': constructor,
       };
 

@@ -7,7 +7,7 @@ import '../tdapi.dart';
 class InputIdentityDocument extends TdObject {
   const InputIdentityDocument({
     required this.number,
-    this.expiryDate,
+    this.expirationDate,
     required this.frontSide,
     this.reverseSide,
     this.selfie,
@@ -17,8 +17,8 @@ class InputIdentityDocument extends TdObject {
   /// [number] Document number; 1-24 characters
   final String number;
 
-  /// [expiryDate] Document expiry date; pass null if not applicable
-  final Date? expiryDate;
+  /// [expirationDate] Document expiration date; pass null if not applicable
+  final Date? expirationDate;
 
   /// [frontSide] Front side of the document
   final InputFile frontSide;
@@ -43,7 +43,8 @@ class InputIdentityDocument extends TdObject {
 
     return InputIdentityDocument(
       number: json['number'] as String,
-      expiryDate: Date.fromJson(json['expiry_date'] as Map<String, dynamic>?),
+      expirationDate:
+          Date.fromJson(json['expiration_date'] as Map<String, dynamic>?),
       frontSide:
           InputFile.fromJson(json['front_side'] as Map<String, dynamic>?)!,
       reverseSide:
@@ -62,7 +63,7 @@ class InputIdentityDocument extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'number': number,
-        'expiry_date': expiryDate?.toJson(),
+        'expiration_date': expirationDate?.toJson(),
         'front_side': frontSide.toJson(),
         'reverse_side': reverseSide?.toJson(),
         'selfie': selfie?.toJson(),

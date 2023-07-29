@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Message content that is not supported in the current TDLib version
+/// A message content that is not supported in the current TDLib version
 @immutable
 class MessageUnsupported extends MessageContent {
   const MessageUnsupported();

@@ -18,6 +18,7 @@ abstract class MessageSource extends TdObject {
   /// [MessageSourceMessageThreadHistory]
   /// [MessageSourceNotification]
   /// [MessageSourceOther]
+  /// [MessageSourceScreenshot]
   /// [MessageSourceSearch]
   static MessageSource? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -41,6 +42,8 @@ abstract class MessageSource extends TdObject {
         return MessageSourceNotification.fromJson(json);
       case MessageSourceOther.constructor:
         return MessageSourceOther.fromJson(json);
+      case MessageSourceScreenshot.constructor:
+        return MessageSourceScreenshot.fromJson(json);
       case MessageSourceSearch.constructor:
         return MessageSourceSearch.fromJson(json);
       default:

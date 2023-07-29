@@ -9,7 +9,7 @@ class SendMessage extends TdFunction {
   const SendMessage({
     required this.chatId,
     required this.messageThreadId,
-    required this.replyToMessageId,
+    this.replyTo,
     this.options,
     this.replyMarkup,
     required this.inputMessageContent,
@@ -22,8 +22,8 @@ class SendMessage extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyToMessageId] Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// [replyTo] Identifier of the replied message or story; pass null if none
+  final MessageReplyTo? replyTo;
 
   /// [options] Options to be used to send the message; pass null to use default
   /// options
@@ -45,7 +45,7 @@ class SendMessage extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'reply_markup': replyMarkup?.toJson(),
         'input_message_content': inputMessageContent.toJson(),

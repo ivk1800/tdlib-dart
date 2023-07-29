@@ -9,6 +9,10 @@ class ScopeNotificationSettings extends TdObject {
     required this.muteFor,
     required this.soundId,
     required this.showPreview,
+    required this.useDefaultMuteStories,
+    required this.muteStories,
+    required this.storySoundId,
+    required this.showStorySender,
     required this.disablePinnedMessageNotifications,
     required this.disableMentionNotifications,
   });
@@ -22,6 +26,21 @@ class ScopeNotificationSettings extends TdObject {
 
   /// [showPreview] True, if message content must be displayed in notifications
   final bool showPreview;
+
+  /// [useDefaultMuteStories] If true, mute_stories is ignored and stories are
+  /// unmuted only for the first 5 chats from topChatCategoryUsers
+  final bool useDefaultMuteStories;
+
+  /// [muteStories] True, if story notifications are received without sound
+  final bool muteStories;
+
+  /// [storySoundId] Identifier of the notification sound to be played for
+  /// stories; 0 if sound is disabled
+  final int storySoundId;
+
+  /// [showStorySender] True, if the sender of stories must be displayed in
+  /// notifications
+  final bool showStorySender;
 
   /// [disablePinnedMessageNotifications] True, if notifications for incoming
   /// pinned messages will be created as for an ordinary unread message
@@ -42,6 +61,10 @@ class ScopeNotificationSettings extends TdObject {
       muteFor: json['mute_for'] as int,
       soundId: int.tryParse(json['sound_id']) ?? 0,
       showPreview: json['show_preview'] as bool,
+      useDefaultMuteStories: json['use_default_mute_stories'] as bool,
+      muteStories: json['mute_stories'] as bool,
+      storySoundId: int.tryParse(json['story_sound_id']) ?? 0,
+      showStorySender: json['show_story_sender'] as bool,
       disablePinnedMessageNotifications:
           json['disable_pinned_message_notifications'] as bool,
       disableMentionNotifications:
@@ -57,6 +80,10 @@ class ScopeNotificationSettings extends TdObject {
         'mute_for': muteFor,
         'sound_id': soundId.toString(),
         'show_preview': showPreview,
+        'use_default_mute_stories': useDefaultMuteStories,
+        'mute_stories': muteStories,
+        'story_sound_id': storySoundId.toString(),
+        'show_story_sender': showStorySender,
         'disable_pinned_message_notifications':
             disablePinnedMessageNotifications,
         'disable_mention_notifications': disableMentionNotifications,

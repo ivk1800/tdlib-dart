@@ -7,15 +7,16 @@ import '../tdapi.dart';
 class UpdatePollAnswer extends Update {
   const UpdatePollAnswer({
     required this.pollId,
-    required this.userId,
+    required this.voterId,
     required this.optionIds,
   });
 
   /// [pollId] Unique poll identifier
   final int pollId;
 
-  /// [userId] The user, who changed the answer to the poll
-  final int userId;
+  /// [voterId] Identifier of the message sender that changed the answer to the
+  /// poll
+  final MessageSender voterId;
 
   /// [optionIds] 0-based identifiers of answer options, chosen by the user
   final List<int> optionIds;
@@ -29,7 +30,8 @@ class UpdatePollAnswer extends Update {
 
     return UpdatePollAnswer(
       pollId: int.tryParse(json['poll_id']) ?? 0,
-      userId: json['user_id'] as int,
+      voterId:
+          MessageSender.fromJson(json['voter_id'] as Map<String, dynamic>?)!,
       optionIds: List<int>.from(
           ((json['option_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
@@ -43,7 +45,7 @@ class UpdatePollAnswer extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'poll_id': pollId.toString(),
-        'user_id': userId,
+        'voter_id': voterId.toJson(),
         'option_ids': optionIds.map((item) => item).toList(),
         '@type': constructor,
       };

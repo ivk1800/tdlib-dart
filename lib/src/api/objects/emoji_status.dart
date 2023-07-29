@@ -7,10 +7,15 @@ import '../tdapi.dart';
 class EmojiStatus extends TdObject {
   const EmojiStatus({
     required this.customEmojiId,
+    required this.expirationDate,
   });
 
   /// [customEmojiId] Identifier of the custom emoji in stickerFormatTgs format
   final int customEmojiId;
+
+  /// [expirationDate] Point in time (Unix timestamp) when the status will
+  /// expire; 0 if never
+  final int expirationDate;
 
   static const String constructor = 'emojiStatus';
 
@@ -21,6 +26,7 @@ class EmojiStatus extends TdObject {
 
     return EmojiStatus(
       customEmojiId: int.tryParse(json['custom_emoji_id']) ?? 0,
+      expirationDate: json['expiration_date'] as int,
     );
   }
 
@@ -30,6 +36,7 @@ class EmojiStatus extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'custom_emoji_id': customEmojiId.toString(),
+        'expiration_date': expirationDate,
         '@type': constructor,
       };
 

@@ -23,6 +23,7 @@ abstract class Update extends TdObject {
   /// [UpdateCall]
   /// [UpdateChatActionBar]
   /// [UpdateChatAction]
+  /// [UpdateChatActiveStories]
   /// [UpdateChatAvailableReactions]
   /// [UpdateChatBackground]
   /// [UpdateChatDefaultDisableNotification]
@@ -106,6 +107,9 @@ abstract class Update extends TdObject {
   /// [UpdateSelectedBackground]
   /// [UpdateServiceNotification]
   /// [UpdateStickerSet]
+  /// [UpdateStoryDeleted]
+  /// [UpdateStoryListChatCount]
+  /// [UpdateStory]
   /// [UpdateSuggestedActions]
   /// [UpdateSupergroupFullInfo]
   /// [UpdateSupergroup]
@@ -151,6 +155,8 @@ abstract class Update extends TdObject {
         return UpdateChatAction.fromJson(json);
       case UpdateChatActionBar.constructor:
         return UpdateChatActionBar.fromJson(json);
+      case UpdateChatActiveStories.constructor:
+        return UpdateChatActiveStories.fromJson(json);
       case UpdateChatAvailableReactions.constructor:
         return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatBackground.constructor:
@@ -317,6 +323,12 @@ abstract class Update extends TdObject {
         return UpdateServiceNotification.fromJson(json);
       case UpdateStickerSet.constructor:
         return UpdateStickerSet.fromJson(json);
+      case UpdateStory.constructor:
+        return UpdateStory.fromJson(json);
+      case UpdateStoryDeleted.constructor:
+        return UpdateStoryDeleted.fromJson(json);
+      case UpdateStoryListChatCount.constructor:
+        return UpdateStoryListChatCount.fromJson(json);
       case UpdateSuggestedActions.constructor:
         return UpdateSuggestedActions.fromJson(json);
       case UpdateSupergroup.constructor:

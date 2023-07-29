@@ -1420,7 +1420,7 @@ extension PollDataClassExtensions on Poll {
           const DeepCollectionEquality()
               .equals(other.totalVoterCount, totalVoterCount) &&
           const DeepCollectionEquality()
-              .equals(other.recentVoterUserIds, recentVoterUserIds) &&
+              .equals(other.recentVoterIds, recentVoterIds) &&
           const DeepCollectionEquality()
               .equals(other.isAnonymous, isAnonymous) &&
           const DeepCollectionEquality().equals(other.type, type) &&
@@ -1434,7 +1434,7 @@ extension PollDataClassExtensions on Poll {
         const DeepCollectionEquality().hash(question),
         const DeepCollectionEquality().hash(options),
         const DeepCollectionEquality().hash(totalVoterCount),
-        const DeepCollectionEquality().hash(recentVoterUserIds),
+        const DeepCollectionEquality().hash(recentVoterIds),
         const DeepCollectionEquality().hash(isAnonymous),
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(openPeriod),
@@ -1994,10 +1994,15 @@ extension EmojiStatusDataClassExtensions on EmojiStatus {
       (other.runtimeType == runtimeType &&
           other is EmojiStatus &&
           const DeepCollectionEquality()
-              .equals(other.customEmojiId, customEmojiId));
+              .equals(other.customEmojiId, customEmojiId) &&
+          const DeepCollectionEquality()
+              .equals(other.expirationDate, expirationDate));
 
-  int get overriddenHashCode => Object.hashAll(
-      [runtimeType, const DeepCollectionEquality().hash(customEmojiId)]);
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(customEmojiId),
+        const DeepCollectionEquality().hash(expirationDate)
+      ]);
 }
 
 extension EmojiStatusesDataClassExtensions on EmojiStatuses {
@@ -2006,10 +2011,10 @@ extension EmojiStatusesDataClassExtensions on EmojiStatuses {
       (other.runtimeType == runtimeType &&
           other is EmojiStatuses &&
           const DeepCollectionEquality()
-              .equals(other.emojiStatuses, emojiStatuses));
+              .equals(other.customEmojiIds, customEmojiIds));
 
   int get overriddenHashCode => Object.hashAll(
-      [runtimeType, const DeepCollectionEquality().hash(emojiStatuses)]);
+      [runtimeType, const DeepCollectionEquality().hash(customEmojiIds)]);
 }
 
 extension UsernamesDataClassExtensions on Usernames {
@@ -2051,6 +2056,8 @@ extension UserDataClassExtensions on User {
           const DeepCollectionEquality().equals(other.isContact, isContact) &&
           const DeepCollectionEquality()
               .equals(other.isMutualContact, isMutualContact) &&
+          const DeepCollectionEquality()
+              .equals(other.isCloseFriend, isCloseFriend) &&
           const DeepCollectionEquality().equals(other.isVerified, isVerified) &&
           const DeepCollectionEquality().equals(other.isPremium, isPremium) &&
           const DeepCollectionEquality().equals(other.isSupport, isSupport) &&
@@ -2058,6 +2065,10 @@ extension UserDataClassExtensions on User {
               .equals(other.restrictionReason, restrictionReason) &&
           const DeepCollectionEquality().equals(other.isScam, isScam) &&
           const DeepCollectionEquality().equals(other.isFake, isFake) &&
+          const DeepCollectionEquality()
+              .equals(other.hasActiveStories, hasActiveStories) &&
+          const DeepCollectionEquality()
+              .equals(other.hasUnreadActiveStories, hasUnreadActiveStories) &&
           const DeepCollectionEquality().equals(other.haveAccess, haveAccess) &&
           const DeepCollectionEquality().equals(other.type, type) &&
           const DeepCollectionEquality()
@@ -2077,12 +2088,15 @@ extension UserDataClassExtensions on User {
         const DeepCollectionEquality().hash(emojiStatus),
         const DeepCollectionEquality().hash(isContact),
         const DeepCollectionEquality().hash(isMutualContact),
+        const DeepCollectionEquality().hash(isCloseFriend),
         const DeepCollectionEquality().hash(isVerified),
         const DeepCollectionEquality().hash(isPremium),
         const DeepCollectionEquality().hash(isSupport),
         const DeepCollectionEquality().hash(restrictionReason),
         const DeepCollectionEquality().hash(isScam),
         const DeepCollectionEquality().hash(isFake),
+        const DeepCollectionEquality().hash(hasActiveStories),
+        const DeepCollectionEquality().hash(hasUnreadActiveStories),
         const DeepCollectionEquality().hash(haveAccess),
         const DeepCollectionEquality().hash(type),
         const DeepCollectionEquality().hash(languageCode),
@@ -2157,6 +2171,8 @@ extension UserFullInfoDataClassExtensions on UserFullInfo {
           const DeepCollectionEquality().equals(
               other.hasRestrictedVoiceAndVideoNoteMessages,
               hasRestrictedVoiceAndVideoNoteMessages) &&
+          const DeepCollectionEquality()
+              .equals(other.hasPinnedStories, hasPinnedStories) &&
           const DeepCollectionEquality().equals(
               other.needPhoneNumberPrivacyException,
               needPhoneNumberPrivacyException) &&
@@ -2179,6 +2195,7 @@ extension UserFullInfoDataClassExtensions on UserFullInfo {
         const DeepCollectionEquality().hash(hasPrivateForwards),
         const DeepCollectionEquality()
             .hash(hasRestrictedVoiceAndVideoNoteMessages),
+        const DeepCollectionEquality().hash(hasPinnedStories),
         const DeepCollectionEquality().hash(needPhoneNumberPrivacyException),
         const DeepCollectionEquality().hash(bio),
         const DeepCollectionEquality().hash(premiumGiftOptions),
@@ -2892,8 +2909,6 @@ extension SupergroupFullInfoDataClassExtensions on SupergroupFullInfo {
           const DeepCollectionEquality()
               .equals(other.canHideMembers, canHideMembers) &&
           const DeepCollectionEquality()
-              .equals(other.canSetUsername, canSetUsername) &&
-          const DeepCollectionEquality()
               .equals(other.canSetStickerSet, canSetStickerSet) &&
           const DeepCollectionEquality()
               .equals(other.canSetLocation, canSetLocation) &&
@@ -2931,7 +2946,6 @@ extension SupergroupFullInfoDataClassExtensions on SupergroupFullInfo {
         const DeepCollectionEquality().hash(canGetMembers),
         const DeepCollectionEquality().hash(hasHiddenMembers),
         const DeepCollectionEquality().hash(canHideMembers),
-        const DeepCollectionEquality().hash(canSetUsername),
         const DeepCollectionEquality().hash(canSetStickerSet),
         const DeepCollectionEquality().hash(canSetLocation),
         const DeepCollectionEquality().hash(canGetStatistics),
@@ -3364,6 +3378,45 @@ extension MessageSendingStateFailedDataClassExtensions
       ]);
 }
 
+extension MessageReplyToDataClassExtensions on MessageReplyTo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is MessageReplyTo);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension MessageReplyToMessageDataClassExtensions on MessageReplyToMessage {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageReplyToMessage &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality().equals(other.messageId, messageId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(messageId)
+      ]);
+}
+
+extension MessageReplyToStoryDataClassExtensions on MessageReplyToStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageReplyToStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId)
+      ]);
+}
+
 extension MessageDataClassExtensions on Message {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -3415,10 +3468,7 @@ extension MessageDataClassExtensions on Message {
               .equals(other.interactionInfo, interactionInfo) &&
           const DeepCollectionEquality()
               .equals(other.unreadReactions, unreadReactions) &&
-          const DeepCollectionEquality()
-              .equals(other.replyInChatId, replyInChatId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId) &&
+          const DeepCollectionEquality().equals(other.replyTo, replyTo) &&
           const DeepCollectionEquality()
               .equals(other.messageThreadId, messageThreadId) &&
           const DeepCollectionEquality()
@@ -3468,8 +3518,7 @@ extension MessageDataClassExtensions on Message {
         const DeepCollectionEquality().hash(forwardInfo),
         const DeepCollectionEquality().hash(interactionInfo),
         const DeepCollectionEquality().hash(unreadReactions),
-        const DeepCollectionEquality().hash(replyInChatId),
-        const DeepCollectionEquality().hash(replyToMessageId),
+        const DeepCollectionEquality().hash(replyTo),
         const DeepCollectionEquality().hash(messageThreadId),
         const DeepCollectionEquality().hash(selfDestructTime),
         const DeepCollectionEquality().hash(selfDestructIn),
@@ -3676,12 +3725,109 @@ extension MessageSourceNotificationDataClassExtensions
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
+extension MessageSourceScreenshotDataClassExtensions
+    on MessageSourceScreenshot {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is MessageSourceScreenshot);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
 extension MessageSourceOtherDataClassExtensions on MessageSourceOther {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType && other is MessageSourceOther);
 
   int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension MessageSponsorTypeDataClassExtensions on MessageSponsorType {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is MessageSponsorType);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension MessageSponsorTypeBotDataClassExtensions on MessageSponsorTypeBot {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageSponsorTypeBot &&
+          const DeepCollectionEquality().equals(other.botUserId, botUserId) &&
+          const DeepCollectionEquality().equals(other.link, link));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(botUserId),
+        const DeepCollectionEquality().hash(link)
+      ]);
+}
+
+extension MessageSponsorTypePublicChannelDataClassExtensions
+    on MessageSponsorTypePublicChannel {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageSponsorTypePublicChannel &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality().equals(other.link, link));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(link)
+      ]);
+}
+
+extension MessageSponsorTypePrivateChannelDataClassExtensions
+    on MessageSponsorTypePrivateChannel {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageSponsorTypePrivateChannel &&
+          const DeepCollectionEquality().equals(other.title, title) &&
+          const DeepCollectionEquality().equals(other.inviteLink, inviteLink));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(title),
+        const DeepCollectionEquality().hash(inviteLink)
+      ]);
+}
+
+extension MessageSponsorTypeWebsiteDataClassExtensions
+    on MessageSponsorTypeWebsite {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageSponsorTypeWebsite &&
+          const DeepCollectionEquality().equals(other.url, url) &&
+          const DeepCollectionEquality().equals(other.name, name));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(url),
+        const DeepCollectionEquality().hash(name)
+      ]);
+}
+
+extension MessageSponsorDataClassExtensions on MessageSponsor {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageSponsor &&
+          const DeepCollectionEquality().equals(other.type, type) &&
+          const DeepCollectionEquality().equals(other.photo, photo) &&
+          const DeepCollectionEquality().equals(other.info, info));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(type),
+        const DeepCollectionEquality().hash(photo),
+        const DeepCollectionEquality().hash(info)
+      ]);
 }
 
 extension SponsoredMessageDataClassExtensions on SponsoredMessage {
@@ -3692,16 +3838,8 @@ extension SponsoredMessageDataClassExtensions on SponsoredMessage {
           const DeepCollectionEquality().equals(other.messageId, messageId) &&
           const DeepCollectionEquality()
               .equals(other.isRecommended, isRecommended) &&
-          const DeepCollectionEquality()
-              .equals(other.sponsorChatId, sponsorChatId) &&
-          const DeepCollectionEquality()
-              .equals(other.sponsorChatInfo, sponsorChatInfo) &&
-          const DeepCollectionEquality()
-              .equals(other.showChatPhoto, showChatPhoto) &&
-          const DeepCollectionEquality().equals(other.link, link) &&
           const DeepCollectionEquality().equals(other.content, content) &&
-          const DeepCollectionEquality()
-              .equals(other.sponsorInfo, sponsorInfo) &&
+          const DeepCollectionEquality().equals(other.sponsor, sponsor) &&
           const DeepCollectionEquality()
               .equals(other.additionalInfo, additionalInfo));
 
@@ -3709,12 +3847,8 @@ extension SponsoredMessageDataClassExtensions on SponsoredMessage {
         runtimeType,
         const DeepCollectionEquality().hash(messageId),
         const DeepCollectionEquality().hash(isRecommended),
-        const DeepCollectionEquality().hash(sponsorChatId),
-        const DeepCollectionEquality().hash(sponsorChatInfo),
-        const DeepCollectionEquality().hash(showChatPhoto),
-        const DeepCollectionEquality().hash(link),
         const DeepCollectionEquality().hash(content),
-        const DeepCollectionEquality().hash(sponsorInfo),
+        const DeepCollectionEquality().hash(sponsor),
         const DeepCollectionEquality().hash(additionalInfo)
       ]);
 }
@@ -3850,6 +3984,18 @@ extension ChatNotificationSettingsDataClassExtensions
               .equals(other.useDefaultShowPreview, useDefaultShowPreview) &&
           const DeepCollectionEquality()
               .equals(other.showPreview, showPreview) &&
+          const DeepCollectionEquality()
+              .equals(other.useDefaultMuteStories, useDefaultMuteStories) &&
+          const DeepCollectionEquality()
+              .equals(other.muteStories, muteStories) &&
+          const DeepCollectionEquality()
+              .equals(other.useDefaultStorySound, useDefaultStorySound) &&
+          const DeepCollectionEquality()
+              .equals(other.storySoundId, storySoundId) &&
+          const DeepCollectionEquality().equals(
+              other.useDefaultShowStorySender, useDefaultShowStorySender) &&
+          const DeepCollectionEquality()
+              .equals(other.showStorySender, showStorySender) &&
           const DeepCollectionEquality().equals(
               other.useDefaultDisablePinnedMessageNotifications,
               useDefaultDisablePinnedMessageNotifications) &&
@@ -3870,6 +4016,12 @@ extension ChatNotificationSettingsDataClassExtensions
         const DeepCollectionEquality().hash(soundId),
         const DeepCollectionEquality().hash(useDefaultShowPreview),
         const DeepCollectionEquality().hash(showPreview),
+        const DeepCollectionEquality().hash(useDefaultMuteStories),
+        const DeepCollectionEquality().hash(muteStories),
+        const DeepCollectionEquality().hash(useDefaultStorySound),
+        const DeepCollectionEquality().hash(storySoundId),
+        const DeepCollectionEquality().hash(useDefaultShowStorySender),
+        const DeepCollectionEquality().hash(showStorySender),
         const DeepCollectionEquality()
             .hash(useDefaultDisablePinnedMessageNotifications),
         const DeepCollectionEquality().hash(disablePinnedMessageNotifications),
@@ -3889,6 +4041,14 @@ extension ScopeNotificationSettingsDataClassExtensions
           const DeepCollectionEquality().equals(other.soundId, soundId) &&
           const DeepCollectionEquality()
               .equals(other.showPreview, showPreview) &&
+          const DeepCollectionEquality()
+              .equals(other.useDefaultMuteStories, useDefaultMuteStories) &&
+          const DeepCollectionEquality()
+              .equals(other.muteStories, muteStories) &&
+          const DeepCollectionEquality()
+              .equals(other.storySoundId, storySoundId) &&
+          const DeepCollectionEquality()
+              .equals(other.showStorySender, showStorySender) &&
           const DeepCollectionEquality().equals(
               other.disablePinnedMessageNotifications,
               disablePinnedMessageNotifications) &&
@@ -3900,6 +4060,10 @@ extension ScopeNotificationSettingsDataClassExtensions
         const DeepCollectionEquality().hash(muteFor),
         const DeepCollectionEquality().hash(soundId),
         const DeepCollectionEquality().hash(showPreview),
+        const DeepCollectionEquality().hash(useDefaultMuteStories),
+        const DeepCollectionEquality().hash(muteStories),
+        const DeepCollectionEquality().hash(storySoundId),
+        const DeepCollectionEquality().hash(showStorySender),
         const DeepCollectionEquality().hash(disablePinnedMessageNotifications),
         const DeepCollectionEquality().hash(disableMentionNotifications)
       ]);
@@ -4058,6 +4222,8 @@ extension ChatFolderInfoDataClassExtensions on ChatFolderInfo {
           const DeepCollectionEquality().equals(other.title, title) &&
           const DeepCollectionEquality().equals(other.icon, icon) &&
           const DeepCollectionEquality()
+              .equals(other.isShareable, isShareable) &&
+          const DeepCollectionEquality()
               .equals(other.hasMyInviteLinks, hasMyInviteLinks));
 
   int get overriddenHashCode => Object.hashAll([
@@ -4065,6 +4231,7 @@ extension ChatFolderInfoDataClassExtensions on ChatFolderInfo {
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(title),
         const DeepCollectionEquality().hash(icon),
+        const DeepCollectionEquality().hash(isShareable),
         const DeepCollectionEquality().hash(hasMyInviteLinks)
       ]);
 }
@@ -4145,6 +4312,30 @@ extension RecommendedChatFoldersDataClassExtensions on RecommendedChatFolders {
 
   int get overriddenHashCode => Object.hashAll(
       [runtimeType, const DeepCollectionEquality().hash(chatFolders)]);
+}
+
+extension ArchiveChatListSettingsDataClassExtensions
+    on ArchiveChatListSettings {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is ArchiveChatListSettings &&
+          const DeepCollectionEquality().equals(
+              other.archiveAndMuteNewChatsFromUnknownUsers,
+              archiveAndMuteNewChatsFromUnknownUsers) &&
+          const DeepCollectionEquality().equals(
+              other.keepUnmutedChatsArchived, keepUnmutedChatsArchived) &&
+          const DeepCollectionEquality().equals(
+              other.keepChatsFromFoldersArchived,
+              keepChatsFromFoldersArchived));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality()
+            .hash(archiveAndMuteNewChatsFromUnknownUsers),
+        const DeepCollectionEquality().hash(keepUnmutedChatsArchived),
+        const DeepCollectionEquality().hash(keepChatsFromFoldersArchived)
+      ]);
 }
 
 extension ChatListDataClassExtensions on ChatList {
@@ -6022,6 +6213,9 @@ extension WebPageDataClassExtensions on WebPage {
           const DeepCollectionEquality().equals(other.videoNote, videoNote) &&
           const DeepCollectionEquality().equals(other.voiceNote, voiceNote) &&
           const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality()
               .equals(other.instantViewVersion, instantViewVersion));
 
   int get overriddenHashCode => Object.hashAll([
@@ -6046,6 +6240,8 @@ extension WebPageDataClassExtensions on WebPage {
         const DeepCollectionEquality().hash(video),
         const DeepCollectionEquality().hash(videoNote),
         const DeepCollectionEquality().hash(voiceNote),
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId),
         const DeepCollectionEquality().hash(instantViewVersion)
       ]);
 }
@@ -6875,7 +7071,8 @@ extension IdentityDocumentDataClassExtensions on IdentityDocument {
       (other.runtimeType == runtimeType &&
           other is IdentityDocument &&
           const DeepCollectionEquality().equals(other.number, number) &&
-          const DeepCollectionEquality().equals(other.expiryDate, expiryDate) &&
+          const DeepCollectionEquality()
+              .equals(other.expirationDate, expirationDate) &&
           const DeepCollectionEquality().equals(other.frontSide, frontSide) &&
           const DeepCollectionEquality()
               .equals(other.reverseSide, reverseSide) &&
@@ -6886,7 +7083,7 @@ extension IdentityDocumentDataClassExtensions on IdentityDocument {
   int get overriddenHashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(number),
-        const DeepCollectionEquality().hash(expiryDate),
+        const DeepCollectionEquality().hash(expirationDate),
         const DeepCollectionEquality().hash(frontSide),
         const DeepCollectionEquality().hash(reverseSide),
         const DeepCollectionEquality().hash(selfie),
@@ -6900,7 +7097,8 @@ extension InputIdentityDocumentDataClassExtensions on InputIdentityDocument {
       (other.runtimeType == runtimeType &&
           other is InputIdentityDocument &&
           const DeepCollectionEquality().equals(other.number, number) &&
-          const DeepCollectionEquality().equals(other.expiryDate, expiryDate) &&
+          const DeepCollectionEquality()
+              .equals(other.expirationDate, expirationDate) &&
           const DeepCollectionEquality().equals(other.frontSide, frontSide) &&
           const DeepCollectionEquality()
               .equals(other.reverseSide, reverseSide) &&
@@ -6911,7 +7109,7 @@ extension InputIdentityDocumentDataClassExtensions on InputIdentityDocument {
   int get overriddenHashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(number),
-        const DeepCollectionEquality().hash(expiryDate),
+        const DeepCollectionEquality().hash(expirationDate),
         const DeepCollectionEquality().hash(frontSide),
         const DeepCollectionEquality().hash(reverseSide),
         const DeepCollectionEquality().hash(selfie),
@@ -7977,6 +8175,24 @@ extension MessagePollDataClassExtensions on MessagePoll {
 
   int get overriddenHashCode =>
       Object.hashAll([runtimeType, const DeepCollectionEquality().hash(poll)]);
+}
+
+extension MessageStoryDataClassExtensions on MessageStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is MessageStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.viaMention, viaMention));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(viaMention)
+      ]);
 }
 
 extension MessageInvoiceDataClassExtensions on MessageInvoice {
@@ -9275,6 +9491,22 @@ extension InputMessagePollDataClassExtensions on InputMessagePoll {
         const DeepCollectionEquality().hash(openPeriod),
         const DeepCollectionEquality().hash(closeDate),
         const DeepCollectionEquality().hash(isClosed)
+      ]);
+}
+
+extension InputMessageStoryDataClassExtensions on InputMessageStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is InputMessageStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId)
       ]);
 }
 
@@ -12747,6 +12979,16 @@ extension PremiumLimitTypeShareableChatFolderCountDataClassExtensions
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
+extension PremiumLimitTypeActiveStoryCountDataClassExtensions
+    on PremiumLimitTypeActiveStoryCount {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is PremiumLimitTypeActiveStoryCount);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
 extension PremiumFeatureDataClassExtensions on PremiumFeature {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -13916,6 +14158,18 @@ extension PushMessageContentStickerDataClassExtensions
       ]);
 }
 
+extension PushMessageContentStoryDataClassExtensions
+    on PushMessageContentStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is PushMessageContentStory &&
+          const DeepCollectionEquality().equals(other.isPinned, isPinned));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(isPinned)]);
+}
+
 extension PushMessageContentTextDataClassExtensions on PushMessageContentText {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -14481,6 +14735,59 @@ extension JsonValueObjectDataClassExtensions on JsonValueObject {
       [runtimeType, const DeepCollectionEquality().hash(members)]);
 }
 
+extension StoryPrivacySettingsDataClassExtensions on StoryPrivacySettings {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryPrivacySettings);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryPrivacySettingsEveryoneDataClassExtensions
+    on StoryPrivacySettingsEveryone {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryPrivacySettingsEveryone);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryPrivacySettingsContactsDataClassExtensions
+    on StoryPrivacySettingsContacts {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryPrivacySettingsContacts &&
+          const DeepCollectionEquality()
+              .equals(other.exceptUserIds, exceptUserIds));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(exceptUserIds)]);
+}
+
+extension StoryPrivacySettingsCloseFriendsDataClassExtensions
+    on StoryPrivacySettingsCloseFriends {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryPrivacySettingsCloseFriends);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryPrivacySettingsSelectedContactsDataClassExtensions
+    on StoryPrivacySettingsSelectedContacts {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryPrivacySettingsSelectedContacts &&
+          const DeepCollectionEquality().equals(other.userIds, userIds));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(userIds)]);
+}
+
 extension UserPrivacySettingRuleDataClassExtensions on UserPrivacySettingRule {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -14633,6 +14940,15 @@ extension UserPrivacySettingShowPhoneNumberDataClassExtensions
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
           other is UserPrivacySettingShowPhoneNumber);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension UserPrivacySettingShowBioDataClassExtensions
+    on UserPrivacySettingShowBio {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is UserPrivacySettingShowBio);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
@@ -14966,101 +15282,96 @@ extension ConnectedWebsitesDataClassExtensions on ConnectedWebsites {
       [runtimeType, const DeepCollectionEquality().hash(websites)]);
 }
 
-extension ChatReportReasonDataClassExtensions on ChatReportReason {
+extension ReportReasonDataClassExtensions on ReportReason {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReason);
+      (other.runtimeType == runtimeType && other is ReportReason);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonSpamDataClassExtensions on ChatReportReasonSpam {
+extension ReportReasonSpamDataClassExtensions on ReportReasonSpam {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonSpam);
+      (other.runtimeType == runtimeType && other is ReportReasonSpam);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonViolenceDataClassExtensions
-    on ChatReportReasonViolence {
+extension ReportReasonViolenceDataClassExtensions on ReportReasonViolence {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonViolence);
+      (other.runtimeType == runtimeType && other is ReportReasonViolence);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonPornographyDataClassExtensions
-    on ChatReportReasonPornography {
+extension ReportReasonPornographyDataClassExtensions
+    on ReportReasonPornography {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is ReportReasonPornography);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension ReportReasonChildAbuseDataClassExtensions on ReportReasonChildAbuse {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is ReportReasonChildAbuse);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension ReportReasonCopyrightDataClassExtensions on ReportReasonCopyright {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is ReportReasonCopyright);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension ReportReasonUnrelatedLocationDataClassExtensions
+    on ReportReasonUnrelatedLocation {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
-          other is ChatReportReasonPornography);
+          other is ReportReasonUnrelatedLocation);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonChildAbuseDataClassExtensions
-    on ChatReportReasonChildAbuse {
+extension ReportReasonFakeDataClassExtensions on ReportReasonFake {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonChildAbuse);
+      (other.runtimeType == runtimeType && other is ReportReasonFake);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonCopyrightDataClassExtensions
-    on ChatReportReasonCopyright {
+extension ReportReasonIllegalDrugsDataClassExtensions
+    on ReportReasonIllegalDrugs {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonCopyright);
+      (other.runtimeType == runtimeType && other is ReportReasonIllegalDrugs);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonUnrelatedLocationDataClassExtensions
-    on ChatReportReasonUnrelatedLocation {
-  bool overriddenEquality(Object other) =>
-      identical(this, other) ||
-      (other.runtimeType == runtimeType &&
-          other is ChatReportReasonUnrelatedLocation);
-
-  int get overriddenHashCode => runtimeType.hashCode;
-}
-
-extension ChatReportReasonFakeDataClassExtensions on ChatReportReasonFake {
-  bool overriddenEquality(Object other) =>
-      identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonFake);
-
-  int get overriddenHashCode => runtimeType.hashCode;
-}
-
-extension ChatReportReasonIllegalDrugsDataClassExtensions
-    on ChatReportReasonIllegalDrugs {
+extension ReportReasonPersonalDetailsDataClassExtensions
+    on ReportReasonPersonalDetails {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
-          other is ChatReportReasonIllegalDrugs);
+          other is ReportReasonPersonalDetails);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
-extension ChatReportReasonPersonalDetailsDataClassExtensions
-    on ChatReportReasonPersonalDetails {
+extension ReportReasonCustomDataClassExtensions on ReportReasonCustom {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
-      (other.runtimeType == runtimeType &&
-          other is ChatReportReasonPersonalDetails);
-
-  int get overriddenHashCode => runtimeType.hashCode;
-}
-
-extension ChatReportReasonCustomDataClassExtensions on ChatReportReasonCustom {
-  bool overriddenEquality(Object other) =>
-      identical(this, other) ||
-      (other.runtimeType == runtimeType && other is ChatReportReasonCustom);
+      (other.runtimeType == runtimeType && other is ReportReasonCustom);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
@@ -15538,6 +15849,22 @@ extension InternalLinkTypeStickerSetDataClassExtensions
       ]);
 }
 
+extension InternalLinkTypeStoryDataClassExtensions on InternalLinkTypeStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is InternalLinkTypeStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderUsername, storySenderUsername) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderUsername),
+        const DeepCollectionEquality().hash(storyId)
+      ]);
+}
+
 extension InternalLinkTypeThemeDataClassExtensions on InternalLinkTypeTheme {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -15686,6 +16013,273 @@ extension MessageLinkInfoDataClassExtensions on MessageLinkInfo {
       ]);
 }
 
+extension StoryVideoDataClassExtensions on StoryVideo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryVideo &&
+          const DeepCollectionEquality().equals(other.duration, duration) &&
+          const DeepCollectionEquality().equals(other.width, width) &&
+          const DeepCollectionEquality().equals(other.height, height) &&
+          const DeepCollectionEquality()
+              .equals(other.hasStickers, hasStickers) &&
+          const DeepCollectionEquality()
+              .equals(other.isAnimation, isAnimation) &&
+          const DeepCollectionEquality()
+              .equals(other.minithumbnail, minithumbnail) &&
+          const DeepCollectionEquality().equals(other.thumbnail, thumbnail) &&
+          const DeepCollectionEquality()
+              .equals(other.preloadPrefixSize, preloadPrefixSize) &&
+          const DeepCollectionEquality().equals(other.video, video));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(duration),
+        const DeepCollectionEquality().hash(width),
+        const DeepCollectionEquality().hash(height),
+        const DeepCollectionEquality().hash(hasStickers),
+        const DeepCollectionEquality().hash(isAnimation),
+        const DeepCollectionEquality().hash(minithumbnail),
+        const DeepCollectionEquality().hash(thumbnail),
+        const DeepCollectionEquality().hash(preloadPrefixSize),
+        const DeepCollectionEquality().hash(video)
+      ]);
+}
+
+extension StoryContentDataClassExtensions on StoryContent {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryContent);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryContentPhotoDataClassExtensions on StoryContentPhoto {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryContentPhoto &&
+          const DeepCollectionEquality().equals(other.photo, photo));
+
+  int get overriddenHashCode =>
+      Object.hashAll([runtimeType, const DeepCollectionEquality().hash(photo)]);
+}
+
+extension StoryContentVideoDataClassExtensions on StoryContentVideo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryContentVideo &&
+          const DeepCollectionEquality().equals(other.video, video) &&
+          const DeepCollectionEquality()
+              .equals(other.alternativeVideo, alternativeVideo));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(video),
+        const DeepCollectionEquality().hash(alternativeVideo)
+      ]);
+}
+
+extension StoryContentUnsupportedDataClassExtensions
+    on StoryContentUnsupported {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryContentUnsupported);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension InputStoryContentDataClassExtensions on InputStoryContent {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is InputStoryContent);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension InputStoryContentPhotoDataClassExtensions on InputStoryContentPhoto {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is InputStoryContentPhoto &&
+          const DeepCollectionEquality().equals(other.photo, photo) &&
+          const DeepCollectionEquality()
+              .equals(other.addedStickerFileIds, addedStickerFileIds));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(photo),
+        const DeepCollectionEquality().hash(addedStickerFileIds)
+      ]);
+}
+
+extension InputStoryContentVideoDataClassExtensions on InputStoryContentVideo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is InputStoryContentVideo &&
+          const DeepCollectionEquality().equals(other.video, video) &&
+          const DeepCollectionEquality()
+              .equals(other.addedStickerFileIds, addedStickerFileIds) &&
+          const DeepCollectionEquality().equals(other.duration, duration) &&
+          const DeepCollectionEquality()
+              .equals(other.isAnimation, isAnimation));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(video),
+        const DeepCollectionEquality().hash(addedStickerFileIds),
+        const DeepCollectionEquality().hash(duration),
+        const DeepCollectionEquality().hash(isAnimation)
+      ]);
+}
+
+extension StoryListDataClassExtensions on StoryList {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryList);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryListMainDataClassExtensions on StoryListMain {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryListMain);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryListArchiveDataClassExtensions on StoryListArchive {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is StoryListArchive);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension StoryInteractionInfoDataClassExtensions on StoryInteractionInfo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryInteractionInfo &&
+          const DeepCollectionEquality().equals(other.viewCount, viewCount) &&
+          const DeepCollectionEquality()
+              .equals(other.recentViewerUserIds, recentViewerUserIds));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(viewCount),
+        const DeepCollectionEquality().hash(recentViewerUserIds)
+      ]);
+}
+
+extension StoryDataClassExtensions on Story {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is Story &&
+          const DeepCollectionEquality().equals(other.id, id) &&
+          const DeepCollectionEquality()
+              .equals(other.senderChatId, senderChatId) &&
+          const DeepCollectionEquality().equals(other.date, date) &&
+          const DeepCollectionEquality()
+              .equals(other.isBeingEdited, isBeingEdited) &&
+          const DeepCollectionEquality().equals(other.isEdited, isEdited) &&
+          const DeepCollectionEquality().equals(other.isPinned, isPinned) &&
+          const DeepCollectionEquality()
+              .equals(other.isVisibleOnlyForSelf, isVisibleOnlyForSelf) &&
+          const DeepCollectionEquality()
+              .equals(other.canBeForwarded, canBeForwarded) &&
+          const DeepCollectionEquality()
+              .equals(other.canBeReplied, canBeReplied) &&
+          const DeepCollectionEquality()
+              .equals(other.canGetViewers, canGetViewers) &&
+          const DeepCollectionEquality()
+              .equals(other.hasExpiredViewers, hasExpiredViewers) &&
+          const DeepCollectionEquality()
+              .equals(other.interactionInfo, interactionInfo) &&
+          const DeepCollectionEquality()
+              .equals(other.privacySettings, privacySettings) &&
+          const DeepCollectionEquality().equals(other.content, content) &&
+          const DeepCollectionEquality().equals(other.caption, caption));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(senderChatId),
+        const DeepCollectionEquality().hash(date),
+        const DeepCollectionEquality().hash(isBeingEdited),
+        const DeepCollectionEquality().hash(isEdited),
+        const DeepCollectionEquality().hash(isPinned),
+        const DeepCollectionEquality().hash(isVisibleOnlyForSelf),
+        const DeepCollectionEquality().hash(canBeForwarded),
+        const DeepCollectionEquality().hash(canBeReplied),
+        const DeepCollectionEquality().hash(canGetViewers),
+        const DeepCollectionEquality().hash(hasExpiredViewers),
+        const DeepCollectionEquality().hash(interactionInfo),
+        const DeepCollectionEquality().hash(privacySettings),
+        const DeepCollectionEquality().hash(content),
+        const DeepCollectionEquality().hash(caption)
+      ]);
+}
+
+extension StoriesDataClassExtensions on Stories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is Stories &&
+          const DeepCollectionEquality().equals(other.totalCount, totalCount) &&
+          const DeepCollectionEquality().equals(other.stories, stories));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(totalCount),
+        const DeepCollectionEquality().hash(stories)
+      ]);
+}
+
+extension StoryInfoDataClassExtensions on StoryInfo {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is StoryInfo &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.date, date) &&
+          const DeepCollectionEquality()
+              .equals(other.isForCloseFriends, isForCloseFriends));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(date),
+        const DeepCollectionEquality().hash(isForCloseFriends)
+      ]);
+}
+
+extension ChatActiveStoriesDataClassExtensions on ChatActiveStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is ChatActiveStories &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality().equals(other.list, list) &&
+          const DeepCollectionEquality().equals(other.order, order) &&
+          const DeepCollectionEquality()
+              .equals(other.maxReadStoryId, maxReadStoryId) &&
+          const DeepCollectionEquality().equals(other.stories, stories));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(list),
+        const DeepCollectionEquality().hash(order),
+        const DeepCollectionEquality().hash(maxReadStoryId),
+        const DeepCollectionEquality().hash(stories)
+      ]);
+}
+
 extension FilePartDataClassExtensions on FilePart {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -15750,6 +16344,14 @@ extension FileTypePhotoDataClassExtensions on FileTypePhoto {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType && other is FileTypePhoto);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension FileTypePhotoStoryDataClassExtensions on FileTypePhotoStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is FileTypePhotoStory);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
@@ -15823,6 +16425,14 @@ extension FileTypeVideoNoteDataClassExtensions on FileTypeVideoNote {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType && other is FileTypeVideoNote);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension FileTypeVideoStoryDataClassExtensions on FileTypeVideoStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is FileTypeVideoStory);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
@@ -16068,6 +16678,8 @@ extension AutoDownloadSettingsDataClassExtensions on AutoDownloadSettings {
           const DeepCollectionEquality()
               .equals(other.preloadNextAudio, preloadNextAudio) &&
           const DeepCollectionEquality()
+              .equals(other.preloadStories, preloadStories) &&
+          const DeepCollectionEquality()
               .equals(other.useLessDataForCalls, useLessDataForCalls));
 
   int get overriddenHashCode => Object.hashAll([
@@ -16079,6 +16691,7 @@ extension AutoDownloadSettingsDataClassExtensions on AutoDownloadSettings {
         const DeepCollectionEquality().hash(videoUploadBitrate),
         const DeepCollectionEquality().hash(preloadLargeVideos),
         const DeepCollectionEquality().hash(preloadNextAudio),
+        const DeepCollectionEquality().hash(preloadStories),
         const DeepCollectionEquality().hash(useLessDataForCalls)
       ]);
 }
@@ -16491,6 +17104,16 @@ extension SuggestedActionUpgradePremiumDataClassExtensions
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
           other is SuggestedActionUpgradePremium);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension SuggestedActionRestorePremiumDataClassExtensions
+    on SuggestedActionRestorePremium {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SuggestedActionRestorePremium);
 
   int get overriddenHashCode => runtimeType.hashCode;
 }
@@ -18349,6 +18972,62 @@ extension UpdateUnreadChatCountDataClassExtensions on UpdateUnreadChatCount {
       ]);
 }
 
+extension UpdateStoryDataClassExtensions on UpdateStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is UpdateStory &&
+          const DeepCollectionEquality().equals(other.story, story));
+
+  int get overriddenHashCode =>
+      Object.hashAll([runtimeType, const DeepCollectionEquality().hash(story)]);
+}
+
+extension UpdateStoryDeletedDataClassExtensions on UpdateStoryDeleted {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is UpdateStoryDeleted &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId)
+      ]);
+}
+
+extension UpdateChatActiveStoriesDataClassExtensions
+    on UpdateChatActiveStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is UpdateChatActiveStories &&
+          const DeepCollectionEquality()
+              .equals(other.activeStories, activeStories));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(activeStories)]);
+}
+
+extension UpdateStoryListChatCountDataClassExtensions
+    on UpdateStoryListChatCount {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is UpdateStoryListChatCount &&
+          const DeepCollectionEquality().equals(other.storyList, storyList) &&
+          const DeepCollectionEquality().equals(other.chatCount, chatCount));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyList),
+        const DeepCollectionEquality().hash(chatCount)
+      ]);
+}
+
 extension UpdateOptionDataClassExtensions on UpdateOption {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -18890,13 +19569,13 @@ extension UpdatePollAnswerDataClassExtensions on UpdatePollAnswer {
       (other.runtimeType == runtimeType &&
           other is UpdatePollAnswer &&
           const DeepCollectionEquality().equals(other.pollId, pollId) &&
-          const DeepCollectionEquality().equals(other.userId, userId) &&
+          const DeepCollectionEquality().equals(other.voterId, voterId) &&
           const DeepCollectionEquality().equals(other.optionIds, optionIds));
 
   int get overriddenHashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(pollId),
-        const DeepCollectionEquality().hash(userId),
+        const DeepCollectionEquality().hash(voterId),
         const DeepCollectionEquality().hash(optionIds)
       ]);
 }
@@ -19993,6 +20672,22 @@ extension RemoveTopChatDataClassExtensions on RemoveTopChat {
       ]);
 }
 
+extension SearchRecentlyFoundChatsDataClassExtensions
+    on SearchRecentlyFoundChats {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SearchRecentlyFoundChats &&
+          const DeepCollectionEquality().equals(other.query, query) &&
+          const DeepCollectionEquality().equals(other.limit, limit));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(query),
+        const DeepCollectionEquality().hash(limit)
+      ]);
+}
+
 extension AddRecentlyFoundChatDataClassExtensions on AddRecentlyFoundChat {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -20465,6 +21160,22 @@ extension GetChatSponsoredMessagesDataClassExtensions
       [runtimeType, const DeepCollectionEquality().hash(chatId)]);
 }
 
+extension ClickChatSponsoredMessageDataClassExtensions
+    on ClickChatSponsoredMessage {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is ClickChatSponsoredMessage &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality().equals(other.messageId, messageId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(messageId)
+      ]);
+}
+
 extension RemoveNotificationDataClassExtensions on RemoveNotification {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -20654,8 +21365,7 @@ extension SendMessageDataClassExtensions on SendMessage {
           const DeepCollectionEquality().equals(other.chatId, chatId) &&
           const DeepCollectionEquality()
               .equals(other.messageThreadId, messageThreadId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId) &&
+          const DeepCollectionEquality().equals(other.replyTo, replyTo) &&
           const DeepCollectionEquality().equals(other.options, options) &&
           const DeepCollectionEquality()
               .equals(other.replyMarkup, replyMarkup) &&
@@ -20666,7 +21376,7 @@ extension SendMessageDataClassExtensions on SendMessage {
         runtimeType,
         const DeepCollectionEquality().hash(chatId),
         const DeepCollectionEquality().hash(messageThreadId),
-        const DeepCollectionEquality().hash(replyToMessageId),
+        const DeepCollectionEquality().hash(replyTo),
         const DeepCollectionEquality().hash(options),
         const DeepCollectionEquality().hash(replyMarkup),
         const DeepCollectionEquality().hash(inputMessageContent)
@@ -20681,8 +21391,7 @@ extension SendMessageAlbumDataClassExtensions on SendMessageAlbum {
           const DeepCollectionEquality().equals(other.chatId, chatId) &&
           const DeepCollectionEquality()
               .equals(other.messageThreadId, messageThreadId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId) &&
+          const DeepCollectionEquality().equals(other.replyTo, replyTo) &&
           const DeepCollectionEquality().equals(other.options, options) &&
           const DeepCollectionEquality()
               .equals(other.inputMessageContents, inputMessageContents) &&
@@ -20693,7 +21402,7 @@ extension SendMessageAlbumDataClassExtensions on SendMessageAlbum {
         runtimeType,
         const DeepCollectionEquality().hash(chatId),
         const DeepCollectionEquality().hash(messageThreadId),
-        const DeepCollectionEquality().hash(replyToMessageId),
+        const DeepCollectionEquality().hash(replyTo),
         const DeepCollectionEquality().hash(options),
         const DeepCollectionEquality().hash(inputMessageContents),
         const DeepCollectionEquality().hash(onlyPreview)
@@ -20726,8 +21435,7 @@ extension SendInlineQueryResultMessageDataClassExtensions
           const DeepCollectionEquality().equals(other.chatId, chatId) &&
           const DeepCollectionEquality()
               .equals(other.messageThreadId, messageThreadId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId) &&
+          const DeepCollectionEquality().equals(other.replyTo, replyTo) &&
           const DeepCollectionEquality().equals(other.options, options) &&
           const DeepCollectionEquality().equals(other.queryId, queryId) &&
           const DeepCollectionEquality().equals(other.resultId, resultId) &&
@@ -20737,7 +21445,7 @@ extension SendInlineQueryResultMessageDataClassExtensions
         runtimeType,
         const DeepCollectionEquality().hash(chatId),
         const DeepCollectionEquality().hash(messageThreadId),
-        const DeepCollectionEquality().hash(replyToMessageId),
+        const DeepCollectionEquality().hash(replyTo),
         const DeepCollectionEquality().hash(options),
         const DeepCollectionEquality().hash(queryId),
         const DeepCollectionEquality().hash(resultId),
@@ -20790,18 +21498,6 @@ extension ResendMessagesDataClassExtensions on ResendMessages {
       ]);
 }
 
-extension SendChatScreenshotTakenNotificationDataClassExtensions
-    on SendChatScreenshotTakenNotification {
-  bool overriddenEquality(Object other) =>
-      identical(this, other) ||
-      (other.runtimeType == runtimeType &&
-          other is SendChatScreenshotTakenNotification &&
-          const DeepCollectionEquality().equals(other.chatId, chatId));
-
-  int get overriddenHashCode => Object.hashAll(
-      [runtimeType, const DeepCollectionEquality().hash(chatId)]);
-}
-
 extension AddLocalMessageDataClassExtensions on AddLocalMessage {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -20809,8 +21505,7 @@ extension AddLocalMessageDataClassExtensions on AddLocalMessage {
           other is AddLocalMessage &&
           const DeepCollectionEquality().equals(other.chatId, chatId) &&
           const DeepCollectionEquality().equals(other.senderId, senderId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId) &&
+          const DeepCollectionEquality().equals(other.replyTo, replyTo) &&
           const DeepCollectionEquality()
               .equals(other.disableNotification, disableNotification) &&
           const DeepCollectionEquality()
@@ -20820,7 +21515,7 @@ extension AddLocalMessageDataClassExtensions on AddLocalMessage {
         runtimeType,
         const DeepCollectionEquality().hash(chatId),
         const DeepCollectionEquality().hash(senderId),
-        const DeepCollectionEquality().hash(replyToMessageId),
+        const DeepCollectionEquality().hash(replyTo),
         const DeepCollectionEquality().hash(disableNotification),
         const DeepCollectionEquality().hash(inputMessageContent)
       ]);
@@ -21869,8 +22564,7 @@ extension OpenWebAppDataClassExtensions on OpenWebApp {
               .equals(other.applicationName, applicationName) &&
           const DeepCollectionEquality()
               .equals(other.messageThreadId, messageThreadId) &&
-          const DeepCollectionEquality()
-              .equals(other.replyToMessageId, replyToMessageId));
+          const DeepCollectionEquality().equals(other.replyTo, replyTo));
 
   int get overriddenHashCode => Object.hashAll([
         runtimeType,
@@ -21880,7 +22574,7 @@ extension OpenWebAppDataClassExtensions on OpenWebApp {
         const DeepCollectionEquality().hash(theme),
         const DeepCollectionEquality().hash(applicationName),
         const DeepCollectionEquality().hash(messageThreadId),
-        const DeepCollectionEquality().hash(replyToMessageId)
+        const DeepCollectionEquality().hash(replyTo)
       ]);
 }
 
@@ -22507,6 +23201,17 @@ extension GetChatFolderChatsToLeaveDataClassExtensions
       [runtimeType, const DeepCollectionEquality().hash(chatFolderId)]);
 }
 
+extension GetChatFolderChatCountDataClassExtensions on GetChatFolderChatCount {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetChatFolderChatCount &&
+          const DeepCollectionEquality().equals(other.folder, folder));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(folder)]);
+}
+
 extension ReorderChatFoldersDataClassExtensions on ReorderChatFolders {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
@@ -22684,6 +23389,27 @@ extension ProcessChatFolderNewChatsDataClassExtensions
         const DeepCollectionEquality().hash(chatFolderId),
         const DeepCollectionEquality().hash(addedChatIds)
       ]);
+}
+
+extension GetArchiveChatListSettingsDataClassExtensions
+    on GetArchiveChatListSettings {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is GetArchiveChatListSettings);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension SetArchiveChatListSettingsDataClassExtensions
+    on SetArchiveChatListSettings {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SetArchiveChatListSettings &&
+          const DeepCollectionEquality().equals(other.settings, settings));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(settings)]);
 }
 
 extension SetChatTitleDataClassExtensions on SetChatTitle {
@@ -23366,6 +24092,262 @@ extension ReadChatListDataClassExtensions on ReadChatList {
 
   int get overriddenHashCode => Object.hashAll(
       [runtimeType, const DeepCollectionEquality().hash(chatList)]);
+}
+
+extension GetStoryDataClassExtensions on GetStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.onlyLocal, onlyLocal));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(onlyLocal)
+      ]);
+}
+
+extension SendStoryDataClassExtensions on SendStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SendStory &&
+          const DeepCollectionEquality().equals(other.content, content) &&
+          const DeepCollectionEquality().equals(other.caption, caption) &&
+          const DeepCollectionEquality()
+              .equals(other.privacySettings, privacySettings) &&
+          const DeepCollectionEquality()
+              .equals(other.activePeriod, activePeriod) &&
+          const DeepCollectionEquality().equals(other.isPinned, isPinned) &&
+          const DeepCollectionEquality()
+              .equals(other.protectContent, protectContent));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(content),
+        const DeepCollectionEquality().hash(caption),
+        const DeepCollectionEquality().hash(privacySettings),
+        const DeepCollectionEquality().hash(activePeriod),
+        const DeepCollectionEquality().hash(isPinned),
+        const DeepCollectionEquality().hash(protectContent)
+      ]);
+}
+
+extension EditStoryDataClassExtensions on EditStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is EditStory &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.content, content) &&
+          const DeepCollectionEquality().equals(other.caption, caption));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(content),
+        const DeepCollectionEquality().hash(caption)
+      ]);
+}
+
+extension SetStoryPrivacySettingsDataClassExtensions
+    on SetStoryPrivacySettings {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SetStoryPrivacySettings &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality()
+              .equals(other.privacySettings, privacySettings));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(privacySettings)
+      ]);
+}
+
+extension ToggleStoryIsPinnedDataClassExtensions on ToggleStoryIsPinned {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is ToggleStoryIsPinned &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.isPinned, isPinned));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(isPinned)
+      ]);
+}
+
+extension DeleteStoryDataClassExtensions on DeleteStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is DeleteStory &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(storyId)]);
+}
+
+extension GetStoryNotificationSettingsExceptionsDataClassExtensions
+    on GetStoryNotificationSettingsExceptions {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetStoryNotificationSettingsExceptions);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
+extension LoadActiveStoriesDataClassExtensions on LoadActiveStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is LoadActiveStories &&
+          const DeepCollectionEquality().equals(other.storyList, storyList));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(storyList)]);
+}
+
+extension SetChatActiveStoriesListDataClassExtensions
+    on SetChatActiveStoriesList {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SetChatActiveStoriesList &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality().equals(other.storyList, storyList));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(storyList)
+      ]);
+}
+
+extension GetChatActiveStoriesDataClassExtensions on GetChatActiveStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetChatActiveStories &&
+          const DeepCollectionEquality().equals(other.chatId, chatId));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(chatId)]);
+}
+
+extension GetChatPinnedStoriesDataClassExtensions on GetChatPinnedStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetChatPinnedStories &&
+          const DeepCollectionEquality().equals(other.chatId, chatId) &&
+          const DeepCollectionEquality()
+              .equals(other.fromStoryId, fromStoryId) &&
+          const DeepCollectionEquality().equals(other.limit, limit));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(chatId),
+        const DeepCollectionEquality().hash(fromStoryId),
+        const DeepCollectionEquality().hash(limit)
+      ]);
+}
+
+extension GetArchivedStoriesDataClassExtensions on GetArchivedStories {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetArchivedStories &&
+          const DeepCollectionEquality()
+              .equals(other.fromStoryId, fromStoryId) &&
+          const DeepCollectionEquality().equals(other.limit, limit));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(fromStoryId),
+        const DeepCollectionEquality().hash(limit)
+      ]);
+}
+
+extension OpenStoryDataClassExtensions on OpenStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is OpenStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId)
+      ]);
+}
+
+extension CloseStoryDataClassExtensions on CloseStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is CloseStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId)
+      ]);
+}
+
+extension GetStoryViewersDataClassExtensions on GetStoryViewers {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is GetStoryViewers &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality()
+              .equals(other.offsetViewer, offsetViewer) &&
+          const DeepCollectionEquality().equals(other.limit, limit));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(offsetViewer),
+        const DeepCollectionEquality().hash(limit)
+      ]);
+}
+
+extension ReportStoryDataClassExtensions on ReportStory {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is ReportStory &&
+          const DeepCollectionEquality()
+              .equals(other.storySenderChatId, storySenderChatId) &&
+          const DeepCollectionEquality().equals(other.storyId, storyId) &&
+          const DeepCollectionEquality().equals(other.reason, reason) &&
+          const DeepCollectionEquality().equals(other.text, text));
+
+  int get overriddenHashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(storySenderChatId),
+        const DeepCollectionEquality().hash(storyId),
+        const DeepCollectionEquality().hash(reason),
+        const DeepCollectionEquality().hash(text)
+      ]);
 }
 
 extension GetAttachmentMenuBotDataClassExtensions on GetAttachmentMenuBot {
@@ -24792,6 +25774,25 @@ extension ClearImportedContactsDataClassExtensions on ClearImportedContacts {
   int get overriddenHashCode => runtimeType.hashCode;
 }
 
+extension SetCloseFriendsDataClassExtensions on SetCloseFriends {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType &&
+          other is SetCloseFriends &&
+          const DeepCollectionEquality().equals(other.userIds, userIds));
+
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(userIds)]);
+}
+
+extension GetCloseFriendsDataClassExtensions on GetCloseFriends {
+  bool overriddenEquality(Object other) =>
+      identical(this, other) ||
+      (other.runtimeType == runtimeType && other is GetCloseFriends);
+
+  int get overriddenHashCode => runtimeType.hashCode;
+}
+
 extension SetUserPersonalProfilePhotoDataClassExtensions
     on SetUserPersonalProfilePhoto {
   bool overriddenEquality(Object other) =>
@@ -25439,14 +26440,10 @@ extension SetEmojiStatusDataClassExtensions on SetEmojiStatus {
       (other.runtimeType == runtimeType &&
           other is SetEmojiStatus &&
           const DeepCollectionEquality()
-              .equals(other.emojiStatus, emojiStatus) &&
-          const DeepCollectionEquality().equals(other.duration, duration));
+              .equals(other.emojiStatus, emojiStatus));
 
-  int get overriddenHashCode => Object.hashAll([
-        runtimeType,
-        const DeepCollectionEquality().hash(emojiStatus),
-        const DeepCollectionEquality().hash(duration)
-      ]);
+  int get overriddenHashCode => Object.hashAll(
+      [runtimeType, const DeepCollectionEquality().hash(emojiStatus)]);
 }
 
 extension SetLocationDataClassExtensions on SetLocation {
@@ -25692,12 +26689,12 @@ extension ToggleBotUsernameIsActiveDataClassExtensions
       ]);
 }
 
-extension ReorderActiveBotUsernamesDataClassExtensions
-    on ReorderActiveBotUsernames {
+extension ReorderBotActiveUsernamesDataClassExtensions
+    on ReorderBotActiveUsernames {
   bool overriddenEquality(Object other) =>
       identical(this, other) ||
       (other.runtimeType == runtimeType &&
-          other is ReorderActiveBotUsernames &&
+          other is ReorderBotActiveUsernames &&
           const DeepCollectionEquality().equals(other.botUserId, botUserId) &&
           const DeepCollectionEquality().equals(other.usernames, usernames));
 

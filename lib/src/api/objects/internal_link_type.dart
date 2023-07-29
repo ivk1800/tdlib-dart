@@ -41,6 +41,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeRestorePurchases]
   /// [InternalLinkTypeSettings]
   /// [InternalLinkTypeStickerSet]
+  /// [InternalLinkTypeStory]
   /// [InternalLinkTypeThemeSettings]
   /// [InternalLinkTypeTheme]
   /// [InternalLinkTypeUnknownDeepLink]
@@ -116,6 +117,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeSettings.fromJson(json);
       case InternalLinkTypeStickerSet.constructor:
         return InternalLinkTypeStickerSet.fromJson(json);
+      case InternalLinkTypeStory.constructor:
+        return InternalLinkTypeStory.fromJson(json);
       case InternalLinkTypeTheme.constructor:
         return InternalLinkTypeTheme.fromJson(json);
       case InternalLinkTypeThemeSettings.constructor:

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A rule to restrict all contacts of a user from doing something
+/// A rule to restrict all contacts of the user from doing something
 @immutable
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   const UserPrivacySettingRuleRestrictContacts();

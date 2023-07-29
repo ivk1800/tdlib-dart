@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a single rule for managing privacy settings
+/// Represents a single rule for managing user privacy settings
 @immutable
 abstract class UserPrivacySettingRule extends TdObject {
   const UserPrivacySettingRule();

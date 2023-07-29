@@ -10,7 +10,7 @@ class Poll extends TdObject {
     required this.question,
     required this.options,
     required this.totalVoterCount,
-    required this.recentVoterUserIds,
+    required this.recentVoterIds,
     required this.isAnonymous,
     required this.type,
     required this.openPeriod,
@@ -30,9 +30,9 @@ class Poll extends TdObject {
   /// [totalVoterCount] Total number of voters, participating in the poll
   final int totalVoterCount;
 
-  /// [recentVoterUserIds] User identifiers of recent voters, if the poll is
+  /// [recentVoterIds] Identifiers of recent voters, if the poll is
   /// non-anonymous
-  final List<int> recentVoterUserIds;
+  final List<MessageSender> recentVoterIds;
 
   /// [isAnonymous] True, if the poll is anonymous
   final bool isAnonymous;
@@ -66,9 +66,9 @@ class Poll extends TdObject {
               .map((item) => PollOption.fromJson(item))
               .toList()),
       totalVoterCount: json['total_voter_count'] as int,
-      recentVoterUserIds: List<int>.from(
-          ((json['recent_voter_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
+      recentVoterIds: List<MessageSender>.from(
+          ((json['recent_voter_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => MessageSender.fromJson(item))
               .toList()),
       isAnonymous: json['is_anonymous'] as bool,
       type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
@@ -87,8 +87,8 @@ class Poll extends TdObject {
         'question': question,
         'options': options.map((item) => item.toJson()).toList(),
         'total_voter_count': totalVoterCount,
-        'recent_voter_user_ids':
-            recentVoterUserIds.map((item) => item).toList(),
+        'recent_voter_ids':
+            recentVoterIds.map((item) => item.toJson()).toList(),
         'is_anonymous': isAnonymous,
         'type': type.toJson(),
         'open_period': openPeriod,

@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of chats with non-default notification settings
+/// Returns list of chats with non-default notification settings for new
+/// messages
 /// Returns [Chats]
 @immutable
 class GetChatNotificationSettingsExceptions extends TdFunction {

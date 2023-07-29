@@ -22,7 +22,7 @@ class ReportChatPhoto extends TdFunction {
   final int fileId;
 
   /// [reason] The reason for reporting the chat photo
-  final ChatReportReason reason;
+  final ReportReason reason;
 
   /// [text] Additional report details; 0-1024 characters
   final String text;

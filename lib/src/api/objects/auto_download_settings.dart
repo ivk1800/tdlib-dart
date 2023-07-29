@@ -13,6 +13,7 @@ class AutoDownloadSettings extends TdObject {
     required this.videoUploadBitrate,
     required this.preloadLargeVideos,
     required this.preloadNextAudio,
+    required this.preloadStories,
     required this.useLessDataForCalls,
   });
 
@@ -43,6 +44,9 @@ class AutoDownloadSettings extends TdObject {
   /// while the user is listening to an audio file
   final bool preloadNextAudio;
 
+  /// [preloadStories] True, if stories needs to be preloaded
+  final bool preloadStories;
+
   /// [useLessDataForCalls] True, if "use less data for calls" option needs to
   /// be enabled
   final bool useLessDataForCalls;
@@ -62,6 +66,7 @@ class AutoDownloadSettings extends TdObject {
       videoUploadBitrate: json['video_upload_bitrate'] as int,
       preloadLargeVideos: json['preload_large_videos'] as bool,
       preloadNextAudio: json['preload_next_audio'] as bool,
+      preloadStories: json['preload_stories'] as bool,
       useLessDataForCalls: json['use_less_data_for_calls'] as bool,
     );
   }
@@ -78,6 +83,7 @@ class AutoDownloadSettings extends TdObject {
         'video_upload_bitrate': videoUploadBitrate,
         'preload_large_videos': preloadLargeVideos,
         'preload_next_audio': preloadNextAudio,
+        'preload_stories': preloadStories,
         'use_less_data_for_calls': useLessDataForCalls,
         '@type': constructor,
       };

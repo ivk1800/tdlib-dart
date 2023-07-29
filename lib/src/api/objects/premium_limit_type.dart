@@ -10,6 +10,7 @@ abstract class PremiumLimitType extends TdObject {
   static const String constructor = 'premiumLimitType';
 
   /// Inherited by:
+  /// [PremiumLimitTypeActiveStoryCount]
   /// [PremiumLimitTypeBioLength]
   /// [PremiumLimitTypeCaptionLength]
   /// [PremiumLimitTypeChatFolderChosenChatCount]
@@ -28,6 +29,8 @@ abstract class PremiumLimitType extends TdObject {
     }
 
     switch (json['@type']) {
+      case PremiumLimitTypeActiveStoryCount.constructor:
+        return PremiumLimitTypeActiveStoryCount.fromJson(json);
       case PremiumLimitTypeBioLength.constructor:
         return PremiumLimitTypeBioLength.fromJson(json);
       case PremiumLimitTypeCaptionLength.constructor:

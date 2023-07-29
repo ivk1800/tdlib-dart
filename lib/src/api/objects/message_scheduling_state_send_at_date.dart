@@ -9,8 +9,8 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
     required this.sendDate,
   });
 
-  /// [sendDate] Date the message will be sent. The date must be within 367 days
-  /// in the future
+  /// [sendDate] Point in time (Unix timestamp) when the message will be sent.
+  /// The date must be within 367 days in the future
   final int sendDate;
 
   static const String constructor = 'messageSchedulingStateSendAtDate';

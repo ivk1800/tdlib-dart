@@ -2,9 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns users voted for the specified option in a non-anonymous polls. For
-/// optimal performance, the number of returned users is chosen by TDLib
-/// Returns [Users]
+/// Returns message senders voted for the specified option in a non-anonymous
+/// polls. For optimal performance, the number of returned users is chosen by
+/// TDLib
+/// Returns [MessageSenders]
 @immutable
 class GetPollVoters extends TdFunction {
   const GetPollVoters({
@@ -24,13 +25,13 @@ class GetPollVoters extends TdFunction {
   /// [optionId] 0-based identifier of the answer option
   final int optionId;
 
-  /// [offset] Number of users to skip in the result; must be non-negative
+  /// [offset] Number of voters to skip in the result; must be non-negative
   final int offset;
 
-  /// [limit] The maximum number of users to be returned; must be positive and
+  /// [limit] The maximum number of voters to be returned; must be positive and
   /// can't be greater than 50. For optimal performance, the number of returned
-  /// users is chosen by TDLib and can be smaller than the specified limit, even
-  /// if the end of the voter list has not been reached
+  /// voters is chosen by TDLib and can be smaller than the specified limit,
+  /// even if the end of the voter list has not been reached
   final int limit;
 
   static const String constructor = 'getPollVoters';
