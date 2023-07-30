@@ -56,9 +56,9 @@ class InputMessagePoll extends InputMessageContent {
               .toList()),
       isAnonymous: json['is_anonymous'] as bool,
       type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
-      openPeriod: json['open_period'] as int,
-      closeDate: json['close_date'] as int,
-      isClosed: json['is_closed'] as bool,
+      openPeriod: json['open_period'] as int?,
+      closeDate: json['close_date'] as int?,
+      isClosed: json['is_closed'] as bool?,
     );
   }
 

@@ -31,7 +31,7 @@ class MessageSponsor extends TdObject {
     return MessageSponsor(
       type: MessageSponsorType.fromJson(json['type'] as Map<String, dynamic>?)!,
       photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
-      info: json['info'] as String,
+      info: json['info'] as String?,
     );
   }
 

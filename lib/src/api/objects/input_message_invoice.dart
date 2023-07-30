@@ -72,7 +72,7 @@ class InputMessageInvoice extends InputMessageContent {
       invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
       title: json['title'] as String,
       description: json['description'] as String,
-      photoUrl: json['photo_url'] as String,
+      photoUrl: json['photo_url'] as String?,
       photoSize: json['photo_size'] as int,
       photoWidth: json['photo_width'] as int,
       photoHeight: json['photo_height'] as int,
