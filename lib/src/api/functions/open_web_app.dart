@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Informs TDLib that a Web App is being opened from attachment menu, a
+/// Informs TDLib that a Web App is being opened from the attachment menu, a
 /// botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an
 /// inlineKeyboardButtonTypeWebApp button. For each bot, a confirmation alert
 /// about data sent to the bot must be shown once
@@ -27,7 +27,7 @@ class OpenWebApp extends TdFunction {
   final int botUserId;
 
   /// [url] The URL from an inlineKeyboardButtonTypeWebApp button, a
-  /// botMenuButton button, or an internalLinkTypeAttachmentMenuBot link, or an
+  /// botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an
   /// empty string otherwise
   final String url;
 

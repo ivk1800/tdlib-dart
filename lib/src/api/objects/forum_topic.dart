@@ -47,7 +47,7 @@ class ForumTopic extends TdObject {
   /// [notificationSettings] Notification settings for the topic
   final ChatNotificationSettings notificationSettings;
 
-  /// [draftMessage] A draft of a message in the topic; may be null
+  /// [draftMessage] A draft of a message in the topic; may be null if none
   final DraftMessage? draftMessage;
 
   static const String constructor = 'forumTopic';

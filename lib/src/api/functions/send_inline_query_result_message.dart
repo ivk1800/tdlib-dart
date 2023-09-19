@@ -34,7 +34,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// [queryId] Identifier of the inline query
   final int queryId;
 
-  /// [resultId] Identifier of the inline result
+  /// [resultId] Identifier of the inline query result
   final String resultId;
 
   /// [hideViaBot] Pass true to hide the bot, via which the message is sent. Can

@@ -2,8 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp
-/// or inlineQueryResultsButtonTypeWebApp button is pressed
+/// Returns an HTTPS URL of a Web App to open from the side menu, a
+/// keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp
+/// button, or an internalLinkTypeSideMenuBot link
 /// Returns [HttpUrl]
 @immutable
 class GetWebAppUrl extends TdFunction {
@@ -17,8 +18,9 @@ class GetWebAppUrl extends TdFunction {
   /// [botUserId] Identifier of the target bot
   final int botUserId;
 
-  /// [url] The URL from the keyboardButtonTypeWebApp or
-  /// inlineQueryResultsButtonTypeWebApp button
+  /// [url] The URL from a keyboardButtonTypeWebApp button,
+  /// inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot
+  /// link, or an empty when the bot is opened from the side menu
   final String url;
 
   /// [theme] Preferred Web App theme; pass null to use the default theme

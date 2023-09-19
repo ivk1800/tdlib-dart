@@ -29,7 +29,8 @@ class GetInlineQueryResults extends TdFunction {
   /// [query] Text of the query
   final String query;
 
-  /// [offset] Offset of the first entry to return
+  /// [offset] Offset of the first entry to return; use empty string to get the
+  /// first chunk of results
   final String offset;
 
   static const String constructor = 'getInlineQueryResults';

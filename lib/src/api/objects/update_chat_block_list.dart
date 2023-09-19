@@ -4,28 +4,29 @@ import '../tdapi.dart';
 
 /// A chat was blocked or unblocked
 @immutable
-class UpdateChatIsBlocked extends Update {
-  const UpdateChatIsBlocked({
+class UpdateChatBlockList extends Update {
+  const UpdateChatBlockList({
     required this.chatId,
-    required this.isBlocked,
+    this.blockList,
   });
 
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [isBlocked] New value of is_blocked
-  final bool isBlocked;
+  /// [blockList] Block list to which the chat is added; may be null if none
+  final BlockList? blockList;
 
-  static const String constructor = 'updateChatIsBlocked';
+  static const String constructor = 'updateChatBlockList';
 
-  static UpdateChatIsBlocked? fromJson(Map<String, dynamic>? json) {
+  static UpdateChatBlockList? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return UpdateChatIsBlocked(
+    return UpdateChatBlockList(
       chatId: json['chat_id'] as int,
-      isBlocked: json['is_blocked'] as bool,
+      blockList:
+          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
     );
   }
 
@@ -35,7 +36,7 @@ class UpdateChatIsBlocked extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
-        'is_blocked': isBlocked,
+        'block_list': blockList?.toJson(),
         '@type': constructor,
       };
 

@@ -7,11 +7,15 @@ import '../tdapi.dart';
 class StoryInteractionInfo extends TdObject {
   const StoryInteractionInfo({
     required this.viewCount,
+    required this.reactionCount,
     required this.recentViewerUserIds,
   });
 
   /// [viewCount] Number of times the story was viewed
   final int viewCount;
+
+  /// [reactionCount] Number of reactions added to the story
+  final int reactionCount;
 
   /// [recentViewerUserIds] Identifiers of at most 3 recent viewers of the story
   final List<int> recentViewerUserIds;
@@ -25,6 +29,7 @@ class StoryInteractionInfo extends TdObject {
 
     return StoryInteractionInfo(
       viewCount: json['view_count'] as int,
+      reactionCount: json['reaction_count'] as int,
       recentViewerUserIds: List<int>.from(
           ((json['recent_viewer_user_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
@@ -38,6 +43,7 @@ class StoryInteractionInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'view_count': viewCount,
+        'reaction_count': reactionCount,
         'recent_viewer_user_ids':
             recentViewerUserIds.map((item) => item).toList(),
         '@type': constructor,

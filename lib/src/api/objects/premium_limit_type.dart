@@ -18,11 +18,14 @@ abstract class PremiumLimitType extends TdObject {
   /// [PremiumLimitTypeChatFolderInviteLinkCount]
   /// [PremiumLimitTypeCreatedPublicChatCount]
   /// [PremiumLimitTypeFavoriteStickerCount]
+  /// [PremiumLimitTypeMonthlySentStoryCount]
   /// [PremiumLimitTypePinnedArchivedChatCount]
   /// [PremiumLimitTypePinnedChatCount]
   /// [PremiumLimitTypeSavedAnimationCount]
   /// [PremiumLimitTypeShareableChatFolderCount]
+  /// [PremiumLimitTypeStoryCaptionLength]
   /// [PremiumLimitTypeSupergroupCount]
+  /// [PremiumLimitTypeWeeklySentStoryCount]
   static PremiumLimitType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -45,6 +48,8 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeCreatedPublicChatCount.fromJson(json);
       case PremiumLimitTypeFavoriteStickerCount.constructor:
         return PremiumLimitTypeFavoriteStickerCount.fromJson(json);
+      case PremiumLimitTypeMonthlySentStoryCount.constructor:
+        return PremiumLimitTypeMonthlySentStoryCount.fromJson(json);
       case PremiumLimitTypePinnedArchivedChatCount.constructor:
         return PremiumLimitTypePinnedArchivedChatCount.fromJson(json);
       case PremiumLimitTypePinnedChatCount.constructor:
@@ -53,8 +58,12 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeSavedAnimationCount.fromJson(json);
       case PremiumLimitTypeShareableChatFolderCount.constructor:
         return PremiumLimitTypeShareableChatFolderCount.fromJson(json);
+      case PremiumLimitTypeStoryCaptionLength.constructor:
+        return PremiumLimitTypeStoryCaptionLength.fromJson(json);
       case PremiumLimitTypeSupergroupCount.constructor:
         return PremiumLimitTypeSupergroupCount.fromJson(json);
+      case PremiumLimitTypeWeeklySentStoryCount.constructor:
+        return PremiumLimitTypeWeeklySentStoryCount.fromJson(json);
       default:
         return null;
     }

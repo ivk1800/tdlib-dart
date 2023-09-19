@@ -12,7 +12,7 @@ class CheckChatUsername extends TdFunction {
   });
 
   /// [chatId] Chat identifier; must be identifier of a supergroup chat, or a
-  /// channel chat, or a private chat with self, or zero if the chat is being
+  /// channel chat, or a private chat with self, or 0 if the chat is being
   /// created
   final int chatId;
 

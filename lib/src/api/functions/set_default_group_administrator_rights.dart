@@ -12,7 +12,8 @@ class SetDefaultGroupAdministratorRights extends TdFunction {
   });
 
   /// [defaultGroupAdministratorRights] Default administrator rights for adding
-  /// the bot to basic group and supergroup chats; may be null
+  /// the bot to basic group and supergroup chats; pass null to remove default
+  /// rights
   final ChatAdministratorRights? defaultGroupAdministratorRights;
 
   static const String constructor = 'setDefaultGroupAdministratorRights';

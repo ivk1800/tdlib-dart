@@ -51,7 +51,7 @@ class ChatNotificationSettings extends TdObject {
   /// the relevant type of chat is used instead
   final bool useDefaultMuteStories;
 
-  /// [muteStories] True, if story notifications are received without sound
+  /// [muteStories] True, if story notifications are disabled for the chat
   final bool muteStories;
 
   /// [useDefaultStorySound] If true, the value for the relevant type of chat is

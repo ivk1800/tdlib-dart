@@ -12,7 +12,7 @@ class SetDefaultChannelAdministratorRights extends TdFunction {
   });
 
   /// [defaultChannelAdministratorRights] Default administrator rights for
-  /// adding the bot to channels; may be null
+  /// adding the bot to channels; pass null to remove default rights
   final ChatAdministratorRights? defaultChannelAdministratorRights;
 
   static const String constructor = 'setDefaultChannelAdministratorRights';

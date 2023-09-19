@@ -42,7 +42,7 @@ class UserTypeBot extends UserType {
   final bool needLocation;
 
   /// [canBeAddedToAttachmentMenu] True, if the bot can be added to attachment
-  /// menu
+  /// or side menu
   final bool canBeAddedToAttachmentMenu;
 
   static const String constructor = 'userTypeBot';

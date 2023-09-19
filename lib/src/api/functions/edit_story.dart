@@ -9,6 +9,7 @@ class EditStory extends TdFunction {
   const EditStory({
     required this.storyId,
     this.content,
+    this.areas,
     this.caption,
   });
 
@@ -17,6 +18,11 @@ class EditStory extends TdFunction {
 
   /// [content] New content of the story; pass null to keep the current content
   final InputStoryContent? content;
+
+  /// [areas] New clickable rectangle areas to be shown on the story media; pass
+  /// null to keep the current areas. Areas can't be edited if story content
+  /// isn't changed
+  final InputStoryAreas? areas;
 
   /// [caption] New story caption; pass null to keep the current caption
   final FormattedText? caption;
@@ -30,6 +36,7 @@ class EditStory extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'story_id': storyId,
         'content': content?.toJson(),
+        'areas': areas?.toJson(),
         'caption': caption?.toJson(),
         '@type': constructor,
       };

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A emoji status shown along with the user's name
+/// An emoji status shown along with the user's name
 @immutable
 class PremiumFeatureEmojiStatus extends PremiumFeature {
   const PremiumFeatureEmojiStatus();

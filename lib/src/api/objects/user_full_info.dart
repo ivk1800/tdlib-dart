@@ -9,7 +9,7 @@ class UserFullInfo extends TdObject {
     this.personalPhoto,
     this.photo,
     this.publicPhoto,
-    required this.isBlocked,
+    this.blockList,
     required this.canBeCalled,
     required this.supportsVideoCalls,
     required this.hasPrivateCalls,
@@ -44,8 +44,8 @@ class UserFullInfo extends TdObject {
   /// of user photos
   final ChatPhoto? publicPhoto;
 
-  /// [isBlocked] True, if the user is blocked by the current user
-  final bool isBlocked;
+  /// [blockList] Block list to which the user is added; may be null if none
+  final BlockList? blockList;
 
   /// [canBeCalled] True, if the user can be called
   final bool canBeCalled;
@@ -84,7 +84,8 @@ class UserFullInfo extends TdObject {
   /// the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
-  /// [botInfo] For bots, information about the bot; may be null
+  /// [botInfo] For bots, information about the bot; may be null if the user
+  /// isn't a bot
   final BotInfo? botInfo;
 
   static const String constructor = 'userFullInfo';
@@ -100,7 +101,8 @@ class UserFullInfo extends TdObject {
       photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?),
       publicPhoto:
           ChatPhoto.fromJson(json['public_photo'] as Map<String, dynamic>?),
-      isBlocked: json['is_blocked'] as bool,
+      blockList:
+          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
       canBeCalled: json['can_be_called'] as bool,
       supportsVideoCalls: json['supports_video_calls'] as bool,
       hasPrivateCalls: json['has_private_calls'] as bool,
@@ -128,7 +130,7 @@ class UserFullInfo extends TdObject {
         'personal_photo': personalPhoto?.toJson(),
         'photo': photo?.toJson(),
         'public_photo': publicPhoto?.toJson(),
-        'is_blocked': isBlocked,
+        'block_list': blockList?.toJson(),
         'can_be_called': canBeCalled,
         'supports_video_calls': supportsVideoCalls,
         'has_private_calls': hasPrivateCalls,

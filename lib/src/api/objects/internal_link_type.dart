@@ -40,6 +40,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeQrCodeAuthentication]
   /// [InternalLinkTypeRestorePurchases]
   /// [InternalLinkTypeSettings]
+  /// [InternalLinkTypeSideMenuBot]
   /// [InternalLinkTypeStickerSet]
   /// [InternalLinkTypeStory]
   /// [InternalLinkTypeThemeSettings]
@@ -115,6 +116,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeRestorePurchases.fromJson(json);
       case InternalLinkTypeSettings.constructor:
         return InternalLinkTypeSettings.fromJson(json);
+      case InternalLinkTypeSideMenuBot.constructor:
+        return InternalLinkTypeSideMenuBot.fromJson(json);
       case InternalLinkTypeStickerSet.constructor:
         return InternalLinkTypeStickerSet.fromJson(json);
       case InternalLinkTypeStory.constructor:

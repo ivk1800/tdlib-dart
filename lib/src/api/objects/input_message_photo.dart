@@ -12,7 +12,7 @@ class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.hasSpoiler,
   });
 
@@ -39,9 +39,9 @@ class InputMessagePhoto extends InputMessageContent {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [selfDestructTime] Photo self-destruct time, in seconds (0-60). A non-zero
-  /// self-destruct time can be specified only in private chats
-  final int selfDestructTime;
+  /// [selfDestructType] Photo self-destruct type; pass null if none; private
+  /// chats only
+  final MessageSelfDestructType? selfDestructType;
 
   /// [hasSpoiler] True, if the photo preview must be covered by a spoiler
   /// animation; not supported in secret chats
@@ -65,7 +65,8 @@ class InputMessagePhoto extends InputMessageContent {
       width: json['width'] as int,
       height: json['height'] as int,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
-      selfDestructTime: json['self_destruct_time'] as int,
+      selfDestructType: MessageSelfDestructType.fromJson(
+          json['self_destruct_type'] as Map<String, dynamic>?),
       hasSpoiler: json['has_spoiler'] as bool,
     );
   }
@@ -82,7 +83,7 @@ class InputMessagePhoto extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
-        'self_destruct_time': selfDestructTime,
+        'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
         '@type': constructor,
       };

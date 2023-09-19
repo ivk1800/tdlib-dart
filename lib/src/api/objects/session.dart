@@ -10,6 +10,7 @@ class Session extends TdObject {
     required this.id,
     required this.isCurrent,
     required this.isPasswordPending,
+    required this.isUnconfirmed,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
     required this.type,
@@ -22,9 +23,8 @@ class Session extends TdObject {
     required this.systemVersion,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
-    required this.country,
-    required this.region,
+    required this.ipAddress,
+    required this.location,
   });
 
   /// [id] Session identifier
@@ -36,6 +36,9 @@ class Session extends TdObject {
   /// [isPasswordPending] True, if a 2-step verification password is needed to
   /// complete authorization of the session
   final bool isPasswordPending;
+
+  /// [isUnconfirmed] True, if the session wasn't confirmed from another session
+  final bool isUnconfirmed;
 
   /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by
   /// the session
@@ -81,17 +84,13 @@ class Session extends TdObject {
   /// used
   final int lastActiveDate;
 
-  /// [ip] IP address from which the session was created, in human-readable
-  /// format
-  final String ip;
+  /// [ipAddress] IP address from which the session was created, in
+  /// human-readable format
+  final String ipAddress;
 
-  /// [country] A two-letter country code for the country from which the session
-  /// was created, based on the IP address
-  final String country;
-
-  /// [region] Region code from which the session was created, based on the IP
-  /// address
-  final String region;
+  /// [location] A human-readable description of the location from which the
+  /// session was created, based on the IP address
+  final String location;
 
   static const String constructor = 'session';
 
@@ -104,6 +103,7 @@ class Session extends TdObject {
       id: int.tryParse(json['id']) ?? 0,
       isCurrent: json['is_current'] as bool,
       isPasswordPending: json['is_password_pending'] as bool,
+      isUnconfirmed: json['is_unconfirmed'] as bool,
       canAcceptSecretChats: json['can_accept_secret_chats'] as bool,
       canAcceptCalls: json['can_accept_calls'] as bool,
       type: SessionType.fromJson(json['type'] as Map<String, dynamic>?)!,
@@ -116,9 +116,8 @@ class Session extends TdObject {
       systemVersion: json['system_version'] as String,
       logInDate: json['log_in_date'] as int,
       lastActiveDate: json['last_active_date'] as int,
-      ip: json['ip'] as String,
-      country: json['country'] as String,
-      region: json['region'] as String,
+      ipAddress: json['ip_address'] as String,
+      location: json['location'] as String,
     );
   }
 
@@ -130,6 +129,7 @@ class Session extends TdObject {
         'id': id.toString(),
         'is_current': isCurrent,
         'is_password_pending': isPasswordPending,
+        'is_unconfirmed': isUnconfirmed,
         'can_accept_secret_chats': canAcceptSecretChats,
         'can_accept_calls': canAcceptCalls,
         'type': type.toJson(),
@@ -142,9 +142,8 @@ class Session extends TdObject {
         'system_version': systemVersion,
         'log_in_date': logInDate,
         'last_active_date': lastActiveDate,
-        'ip': ip,
-        'country': country,
-        'region': region,
+        'ip_address': ipAddress,
+        'location': location,
         '@type': constructor,
       };
 

@@ -17,7 +17,7 @@ class Proxy extends TdObject {
   /// [id] Unique identifier of the proxy
   final int id;
 
-  /// [server] Proxy server IP address
+  /// [server] Proxy server domain or IP address
   final String server;
 
   /// [port] Proxy server port

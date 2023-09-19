@@ -110,7 +110,8 @@ class SupergroupFullInfo extends TdObject {
   /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
   final int stickerSetId;
 
-  /// [location] Location to which the supergroup is connected; may be null
+  /// [location] Location to which the supergroup is connected; may be null if
+  /// none
   final ChatLocation? location;
 
   /// [inviteLink] Primary invite link for the chat; may be null. For chat

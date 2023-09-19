@@ -4,23 +4,24 @@ import '../tdapi.dart';
 
 /// The story can be viewed by certain specified users
 @immutable
-class StoryPrivacySettingsSelectedContacts extends StoryPrivacySettings {
-  const StoryPrivacySettingsSelectedContacts({
+class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
+  const StoryPrivacySettingsSelectedUsers({
     required this.userIds,
   });
 
-  /// [userIds] Identifiers of the users; always empty for non-owned stories
+  /// [userIds] Identifiers of the users; always unknown and empty for non-owned
+  /// stories
   final List<int> userIds;
 
-  static const String constructor = 'storyPrivacySettingsSelectedContacts';
+  static const String constructor = 'storyPrivacySettingsSelectedUsers';
 
-  static StoryPrivacySettingsSelectedContacts? fromJson(
+  static StoryPrivacySettingsSelectedUsers? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return StoryPrivacySettingsSelectedContacts(
+    return StoryPrivacySettingsSelectedUsers(
       userIds: List<int>.from(
           ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)

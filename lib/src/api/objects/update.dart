@@ -26,12 +26,12 @@ abstract class Update extends TdObject {
   /// [UpdateChatActiveStories]
   /// [UpdateChatAvailableReactions]
   /// [UpdateChatBackground]
+  /// [UpdateChatBlockList]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatDraftMessage]
   /// [UpdateChatFolders]
   /// [UpdateChatHasProtectedContent]
   /// [UpdateChatHasScheduledMessages]
-  /// [UpdateChatIsBlocked]
   /// [UpdateChatIsMarkedAsUnread]
   /// [UpdateChatIsTranslatable]
   /// [UpdateChatLastMessage]
@@ -109,12 +109,16 @@ abstract class Update extends TdObject {
   /// [UpdateStickerSet]
   /// [UpdateStoryDeleted]
   /// [UpdateStoryListChatCount]
+  /// [UpdateStorySendFailed]
+  /// [UpdateStorySendSucceeded]
+  /// [UpdateStoryStealthMode]
   /// [UpdateStory]
   /// [UpdateSuggestedActions]
   /// [UpdateSupergroupFullInfo]
   /// [UpdateSupergroup]
   /// [UpdateTermsOfService]
   /// [UpdateTrendingStickerSets]
+  /// [UpdateUnconfirmedSession]
   /// [UpdateUnreadChatCount]
   /// [UpdateUnreadMessageCount]
   /// [UpdateUserFullInfo]
@@ -161,6 +165,8 @@ abstract class Update extends TdObject {
         return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatBackground.constructor:
         return UpdateChatBackground.fromJson(json);
+      case UpdateChatBlockList.constructor:
+        return UpdateChatBlockList.fromJson(json);
       case UpdateChatDefaultDisableNotification.constructor:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatDraftMessage.constructor:
@@ -171,8 +177,6 @@ abstract class Update extends TdObject {
         return UpdateChatHasProtectedContent.fromJson(json);
       case UpdateChatHasScheduledMessages.constructor:
         return UpdateChatHasScheduledMessages.fromJson(json);
-      case UpdateChatIsBlocked.constructor:
-        return UpdateChatIsBlocked.fromJson(json);
       case UpdateChatIsMarkedAsUnread.constructor:
         return UpdateChatIsMarkedAsUnread.fromJson(json);
       case UpdateChatIsTranslatable.constructor:
@@ -329,6 +333,12 @@ abstract class Update extends TdObject {
         return UpdateStoryDeleted.fromJson(json);
       case UpdateStoryListChatCount.constructor:
         return UpdateStoryListChatCount.fromJson(json);
+      case UpdateStorySendFailed.constructor:
+        return UpdateStorySendFailed.fromJson(json);
+      case UpdateStorySendSucceeded.constructor:
+        return UpdateStorySendSucceeded.fromJson(json);
+      case UpdateStoryStealthMode.constructor:
+        return UpdateStoryStealthMode.fromJson(json);
       case UpdateSuggestedActions.constructor:
         return UpdateSuggestedActions.fromJson(json);
       case UpdateSupergroup.constructor:
@@ -339,6 +349,8 @@ abstract class Update extends TdObject {
         return UpdateTermsOfService.fromJson(json);
       case UpdateTrendingStickerSets.constructor:
         return UpdateTrendingStickerSets.fromJson(json);
+      case UpdateUnconfirmedSession.constructor:
+        return UpdateUnconfirmedSession.fromJson(json);
       case UpdateUnreadChatCount.constructor:
         return UpdateUnreadChatCount.fromJson(json);
       case UpdateUnreadMessageCount.constructor:

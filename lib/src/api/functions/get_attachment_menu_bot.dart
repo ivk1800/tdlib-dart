@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a bot that can be added to attachment menu
+/// Returns information about a bot that can be added to attachment or side
+/// menu
 /// Returns [AttachmentMenuBot]
 @immutable
 class GetAttachmentMenuBot extends TdFunction {

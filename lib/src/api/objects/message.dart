@@ -35,7 +35,7 @@ class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
@@ -55,10 +55,12 @@ class Message extends TdObject {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [sendingState] The sending state of the message; may be null
+  /// [sendingState] The sending state of the message; may be null if the
+  /// message isn't being sent and didn't fail to be sent
   final MessageSendingState? sendingState;
 
-  /// [schedulingState] The scheduling state of the message; may be null
+  /// [schedulingState] The scheduling state of the message; may be null if the
+  /// message isn't scheduled
   final MessageSchedulingState? schedulingState;
 
   /// [isOutgoing] True, if the message is outgoing
@@ -133,11 +135,12 @@ class Message extends TdObject {
   /// [editDate] Point in time (Unix timestamp) when the message was last edited
   final int editDate;
 
-  /// [forwardInfo] Information about the initial message sender; may be null
+  /// [forwardInfo] Information about the initial message sender; may be null if
+  /// none or unknown
   final MessageForwardInfo? forwardInfo;
 
   /// [interactionInfo] Information about interactions with the message; may be
-  /// null
+  /// null if none
   final MessageInteractionInfo? interactionInfo;
 
   /// [unreadReactions] Information about unread reactions added to the message
@@ -151,20 +154,15 @@ class Message extends TdObject {
   /// message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// [selfDestructTime] The message's self-destruct time, in seconds; 0 if
-  /// none. TDLib will send updateDeleteMessages or updateMessageContent once
-  /// the time expires
-  final int selfDestructTime;
+  /// [selfDestructType] The message's self-destruct type; may be null if none
+  final MessageSelfDestructType? selfDestructType;
 
   /// [selfDestructIn] Time left before the message self-destruct timer expires,
-  /// in seconds. If the self-destruct timer isn't started yet, equals to the
-  /// value of the self_destruct_time field
+  /// in seconds; 0 if self-desctruction isn't scheduled yet
   final double selfDestructIn;
 
   /// [autoDeleteIn] Time left before the message will be automatically deleted
-  /// by message_auto_delete_time setting of the chat, in seconds; 0 if never.
-  /// TDLib will send updateDeleteMessages or updateMessageContent once the time
-  /// expires
+  /// by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which
@@ -186,7 +184,7 @@ class Message extends TdObject {
   /// [content] Content of the message
   final MessageContent content;
 
-  /// [replyMarkup] Reply markup for the message; may be null
+  /// [replyMarkup] Reply markup for the message; may be null if none
   final ReplyMarkup? replyMarkup;
 
   static const String constructor = 'message';
@@ -235,7 +233,8 @@ class Message extends TdObject {
       replyTo:
           MessageReplyTo.fromJson(json['reply_to'] as Map<String, dynamic>?),
       messageThreadId: json['message_thread_id'] as int,
-      selfDestructTime: json['self_destruct_time'] as int,
+      selfDestructType: MessageSelfDestructType.fromJson(
+          json['self_destruct_type'] as Map<String, dynamic>?),
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
@@ -284,7 +283,7 @@ class Message extends TdObject {
             unreadReactions.map((item) => item.toJson()).toList(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
-        'self_destruct_time': selfDestructTime,
+        'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,

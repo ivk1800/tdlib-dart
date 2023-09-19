@@ -14,10 +14,10 @@ class Chat extends TdObject {
     this.lastMessage,
     required this.positions,
     this.messageSenderId,
+    this.blockList,
     required this.hasProtectedContent,
     required this.isTranslatable,
     required this.isMarkedAsUnread,
-    required this.isBlocked,
     required this.hasScheduledMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -57,7 +57,7 @@ class Chat extends TdObject {
   /// take in the chat
   final ChatPermissions permissions;
 
-  /// [lastMessage] Last message in the chat; may be null
+  /// [lastMessage] Last message in the chat; may be null if none or unknown
   final Message? lastMessage;
 
   /// [positions] Positions of the chat in chat lists
@@ -66,6 +66,9 @@ class Chat extends TdObject {
   /// [messageSenderId] Identifier of a user or chat that is selected to send
   /// messages in the chat; may be null if the user can't change message sender
   final MessageSender? messageSenderId;
+
+  /// [blockList] Block list to which the chat is added; may be null if none
+  final BlockList? blockList;
 
   /// [hasProtectedContent] True, if chat content can't be saved locally,
   /// forwarded, or copied
@@ -77,10 +80,6 @@ class Chat extends TdObject {
 
   /// [isMarkedAsUnread] True, if the chat is marked as unread
   final bool isMarkedAsUnread;
-
-  /// [isBlocked] True, if the chat is blocked by the current user and private
-  /// messages from the chat can't be received
-  final bool isBlocked;
 
   /// [hasScheduledMessages] True, if the chat has scheduled messages
   final bool hasScheduledMessages;
@@ -136,20 +135,21 @@ class Chat extends TdObject {
   final String themeName;
 
   /// [actionBar] Information about actions which must be possible to do through
-  /// the chat action bar; may be null
+  /// the chat action bar; may be null if none
   final ChatActionBar? actionBar;
 
   /// [videoChat] Information about video chat of the chat
   final VideoChat videoChat;
 
   /// [pendingJoinRequests] Information about pending join requests; may be null
+  /// if none
   final ChatJoinRequestsInfo? pendingJoinRequests;
 
   /// [replyMarkupMessageId] Identifier of the message from which reply markup
   /// needs to be used; 0 if there is no default custom reply markup in the chat
   final int replyMarkupMessageId;
 
-  /// [draftMessage] A draft of a message in the chat; may be null
+  /// [draftMessage] A draft of a message in the chat; may be null if none
   final DraftMessage? draftMessage;
 
   /// [clientData] Application-specific data associated with the chat. (For
@@ -179,10 +179,11 @@ class Chat extends TdObject {
               .toList()),
       messageSenderId: MessageSender.fromJson(
           json['message_sender_id'] as Map<String, dynamic>?),
+      blockList:
+          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
       hasProtectedContent: json['has_protected_content'] as bool,
       isTranslatable: json['is_translatable'] as bool,
       isMarkedAsUnread: json['is_marked_as_unread'] as bool,
-      isBlocked: json['is_blocked'] as bool,
       hasScheduledMessages: json['has_scheduled_messages'] as bool,
       canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
       canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
@@ -227,10 +228,10 @@ class Chat extends TdObject {
         'last_message': lastMessage?.toJson(),
         'positions': positions.map((item) => item.toJson()).toList(),
         'message_sender_id': messageSenderId?.toJson(),
+        'block_list': blockList?.toJson(),
         'has_protected_content': hasProtectedContent,
         'is_translatable': isTranslatable,
         'is_marked_as_unread': isMarkedAsUnread,
-        'is_blocked': isBlocked,
         'has_scheduled_messages': hasScheduledMessages,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,

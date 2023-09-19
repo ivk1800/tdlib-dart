@@ -2189,7 +2189,7 @@ extension UserFullInfoExtensions on UserFullInfo {
     ChatPhoto? personalPhoto,
     ChatPhoto? photo,
     ChatPhoto? publicPhoto,
-    bool? isBlocked,
+    BlockList? blockList,
     bool? canBeCalled,
     bool? supportsVideoCalls,
     bool? hasPrivateCalls,
@@ -2206,7 +2206,7 @@ extension UserFullInfoExtensions on UserFullInfo {
         personalPhoto: personalPhoto ?? this.personalPhoto,
         photo: photo ?? this.photo,
         publicPhoto: publicPhoto ?? this.publicPhoto,
-        isBlocked: isBlocked ?? this.isBlocked,
+        blockList: blockList ?? this.blockList,
         canBeCalled: canBeCalled ?? this.canBeCalled,
         supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
         hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
@@ -2733,11 +2733,55 @@ extension ChatInviteLinkMembersExtensions on ChatInviteLinkMembers {
       );
 }
 
+extension InviteLinkChatTypeExtensions on InviteLinkChatType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(InviteLinkChatTypeBasicGroup value) basicGroup,
+    required TResult Function(InviteLinkChatTypeSupergroup value) supergroup,
+    required TResult Function(InviteLinkChatTypeChannel value) channel,
+  }) {
+    switch (getConstructor()) {
+      case InviteLinkChatTypeBasicGroup.constructor:
+        return basicGroup.call(this as InviteLinkChatTypeBasicGroup);
+      case InviteLinkChatTypeSupergroup.constructor:
+        return supergroup.call(this as InviteLinkChatTypeSupergroup);
+      case InviteLinkChatTypeChannel.constructor:
+        return channel.call(this as InviteLinkChatTypeChannel);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InviteLinkChatTypeBasicGroup value)? basicGroup,
+    TResult Function(InviteLinkChatTypeSupergroup value)? supergroup,
+    TResult Function(InviteLinkChatTypeChannel value)? channel,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case InviteLinkChatTypeBasicGroup.constructor:
+        if (basicGroup != null) {
+          return basicGroup.call(this as InviteLinkChatTypeBasicGroup);
+        }
+        break;
+      case InviteLinkChatTypeSupergroup.constructor:
+        if (supergroup != null) {
+          return supergroup.call(this as InviteLinkChatTypeSupergroup);
+        }
+        break;
+      case InviteLinkChatTypeChannel.constructor:
+        if (channel != null) {
+          return channel.call(this as InviteLinkChatTypeChannel);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
 extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
-    ChatType? type,
+    InviteLinkChatType? type,
     String? title,
     ChatPhotoInfo? photo,
     String? description,
@@ -2745,6 +2789,9 @@ extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
     List<int>? memberUserIds,
     bool? createsJoinRequest,
     bool? isPublic,
+    bool? isVerified,
+    bool? isScam,
+    bool? isFake,
   }) =>
       ChatInviteLinkInfo(
         chatId: chatId ?? this.chatId,
@@ -2757,6 +2804,9 @@ extension ChatInviteLinkInfoExtensions on ChatInviteLinkInfo {
         memberUserIds: memberUserIds ?? this.memberUserIds,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
         isPublic: isPublic ?? this.isPublic,
+        isVerified: isVerified ?? this.isVerified,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
       );
 }
 
@@ -3506,7 +3556,7 @@ extension MessageExtensions on Message {
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? replyTo,
     int? messageThreadId,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
@@ -3550,7 +3600,7 @@ extension MessageExtensions on Message {
         unreadReactions: unreadReactions ?? this.unreadReactions,
         replyTo: replyTo ?? this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
@@ -4501,10 +4551,10 @@ extension ChatExtensions on Chat {
     Message? lastMessage,
     List<ChatPosition>? positions,
     MessageSender? messageSenderId,
+    BlockList? blockList,
     bool? hasProtectedContent,
     bool? isTranslatable,
     bool? isMarkedAsUnread,
-    bool? isBlocked,
     bool? hasScheduledMessages,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -4536,10 +4586,10 @@ extension ChatExtensions on Chat {
         lastMessage: lastMessage ?? this.lastMessage,
         positions: positions ?? this.positions,
         messageSenderId: messageSenderId ?? this.messageSenderId,
+        blockList: blockList ?? this.blockList,
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
         isTranslatable: isTranslatable ?? this.isTranslatable,
         isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-        isBlocked: isBlocked ?? this.isBlocked,
         hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
@@ -5290,11 +5340,13 @@ extension LoginUrlInfoRequestConfirmationExtensions
 extension FoundWebAppExtensions on FoundWebApp {
   FoundWebApp copyWith({
     WebApp? webApp,
+    bool? supportsSettings,
     bool? requestWriteAccess,
     bool? skipConfirmation,
   }) =>
       FoundWebApp(
         webApp: webApp ?? this.webApp,
+        supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
         skipConfirmation: skipConfirmation ?? this.skipConfirmation,
       );
@@ -9747,9 +9799,11 @@ extension MessageBotWriteAccessAllowedExtensions
     on MessageBotWriteAccessAllowed {
   MessageBotWriteAccessAllowed copyWith({
     WebApp? webApp,
+    bool? byRequest,
   }) =>
       MessageBotWriteAccessAllowed(
         webApp: webApp ?? this.webApp,
+        byRequest: byRequest ?? this.byRequest,
       );
 }
 
@@ -10115,6 +10169,52 @@ extension MessageSchedulingStateSendAtDateExtensions
       );
 }
 
+extension MessageSelfDestructTypeExtensions on MessageSelfDestructType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessageSelfDestructTypeTimer value) timer,
+    required TResult Function(MessageSelfDestructTypeImmediately value)
+        immediately,
+  }) {
+    switch (getConstructor()) {
+      case MessageSelfDestructTypeTimer.constructor:
+        return timer.call(this as MessageSelfDestructTypeTimer);
+      case MessageSelfDestructTypeImmediately.constructor:
+        return immediately.call(this as MessageSelfDestructTypeImmediately);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessageSelfDestructTypeTimer value)? timer,
+    TResult Function(MessageSelfDestructTypeImmediately value)? immediately,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case MessageSelfDestructTypeTimer.constructor:
+        if (timer != null) {
+          return timer.call(this as MessageSelfDestructTypeTimer);
+        }
+        break;
+      case MessageSelfDestructTypeImmediately.constructor:
+        if (immediately != null) {
+          return immediately.call(this as MessageSelfDestructTypeImmediately);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension MessageSelfDestructTypeTimerExtensions
+    on MessageSelfDestructTypeTimer {
+  MessageSelfDestructTypeTimer copyWith({
+    int? selfDestructTime,
+  }) =>
+      MessageSelfDestructTypeTimer(
+        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+      );
+}
+
 extension MessageSendOptionsExtensions on MessageSendOptions {
   MessageSendOptions copyWith({
     bool? disableNotification,
@@ -10411,7 +10511,7 @@ extension InputMessagePhotoExtensions on InputMessagePhoto {
     int? width,
     int? height,
     FormattedText? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) =>
       InputMessagePhoto(
@@ -10421,7 +10521,7 @@ extension InputMessagePhotoExtensions on InputMessagePhoto {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 }
@@ -10453,7 +10553,7 @@ extension InputMessageVideoExtensions on InputMessageVideo {
     int? height,
     bool? supportsStreaming,
     FormattedText? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? selfDestructType,
     bool? hasSpoiler,
   }) =>
       InputMessageVideo(
@@ -10465,7 +10565,7 @@ extension InputMessageVideoExtensions on InputMessageVideo {
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
         caption: caption ?? this.caption,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType ?? this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 }
@@ -11290,6 +11390,497 @@ extension EmojiCategoryTypeExtensions on EmojiCategoryType {
     }
     return orElse.call();
   }
+}
+
+extension StoryViewerExtensions on StoryViewer {
+  StoryViewer copyWith({
+    int? userId,
+    int? viewDate,
+    BlockList? blockList,
+    ReactionType? chosenReactionType,
+  }) =>
+      StoryViewer(
+        userId: userId ?? this.userId,
+        viewDate: viewDate ?? this.viewDate,
+        blockList: blockList ?? this.blockList,
+        chosenReactionType: chosenReactionType ?? this.chosenReactionType,
+      );
+}
+
+extension StoryViewersExtensions on StoryViewers {
+  StoryViewers copyWith({
+    int? totalCount,
+    int? totalReactionCount,
+    List<StoryViewer>? viewers,
+    String? nextOffset,
+  }) =>
+      StoryViewers(
+        totalCount: totalCount ?? this.totalCount,
+        totalReactionCount: totalReactionCount ?? this.totalReactionCount,
+        viewers: viewers ?? this.viewers,
+        nextOffset: nextOffset ?? this.nextOffset,
+      );
+}
+
+extension StoryAreaPositionExtensions on StoryAreaPosition {
+  StoryAreaPosition copyWith({
+    double? xPercentage,
+    double? yPercentage,
+    double? widthPercentage,
+    double? heightPercentage,
+    double? rotationAngle,
+  }) =>
+      StoryAreaPosition(
+        xPercentage: xPercentage ?? this.xPercentage,
+        yPercentage: yPercentage ?? this.yPercentage,
+        widthPercentage: widthPercentage ?? this.widthPercentage,
+        heightPercentage: heightPercentage ?? this.heightPercentage,
+        rotationAngle: rotationAngle ?? this.rotationAngle,
+      );
+}
+
+extension StoryAreaTypeExtensions on StoryAreaType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoryAreaTypeLocation value) location,
+    required TResult Function(StoryAreaTypeVenue value) venue,
+  }) {
+    switch (getConstructor()) {
+      case StoryAreaTypeLocation.constructor:
+        return location.call(this as StoryAreaTypeLocation);
+      case StoryAreaTypeVenue.constructor:
+        return venue.call(this as StoryAreaTypeVenue);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StoryAreaTypeLocation value)? location,
+    TResult Function(StoryAreaTypeVenue value)? venue,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StoryAreaTypeLocation.constructor:
+        if (location != null) {
+          return location.call(this as StoryAreaTypeLocation);
+        }
+        break;
+      case StoryAreaTypeVenue.constructor:
+        if (venue != null) {
+          return venue.call(this as StoryAreaTypeVenue);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension StoryAreaTypeLocationExtensions on StoryAreaTypeLocation {
+  StoryAreaTypeLocation copyWith({
+    Location? location,
+  }) =>
+      StoryAreaTypeLocation(
+        location: location ?? this.location,
+      );
+}
+
+extension StoryAreaTypeVenueExtensions on StoryAreaTypeVenue {
+  StoryAreaTypeVenue copyWith({
+    Venue? venue,
+  }) =>
+      StoryAreaTypeVenue(
+        venue: venue ?? this.venue,
+      );
+}
+
+extension StoryAreaExtensions on StoryArea {
+  StoryArea copyWith({
+    StoryAreaPosition? position,
+    StoryAreaType? type,
+  }) =>
+      StoryArea(
+        position: position ?? this.position,
+        type: type ?? this.type,
+      );
+}
+
+extension InputStoryAreaTypeExtensions on InputStoryAreaType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(InputStoryAreaTypeLocation value) location,
+    required TResult Function(InputStoryAreaTypeFoundVenue value) foundVenue,
+    required TResult Function(InputStoryAreaTypePreviousVenue value)
+        previousVenue,
+  }) {
+    switch (getConstructor()) {
+      case InputStoryAreaTypeLocation.constructor:
+        return location.call(this as InputStoryAreaTypeLocation);
+      case InputStoryAreaTypeFoundVenue.constructor:
+        return foundVenue.call(this as InputStoryAreaTypeFoundVenue);
+      case InputStoryAreaTypePreviousVenue.constructor:
+        return previousVenue.call(this as InputStoryAreaTypePreviousVenue);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InputStoryAreaTypeLocation value)? location,
+    TResult Function(InputStoryAreaTypeFoundVenue value)? foundVenue,
+    TResult Function(InputStoryAreaTypePreviousVenue value)? previousVenue,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case InputStoryAreaTypeLocation.constructor:
+        if (location != null) {
+          return location.call(this as InputStoryAreaTypeLocation);
+        }
+        break;
+      case InputStoryAreaTypeFoundVenue.constructor:
+        if (foundVenue != null) {
+          return foundVenue.call(this as InputStoryAreaTypeFoundVenue);
+        }
+        break;
+      case InputStoryAreaTypePreviousVenue.constructor:
+        if (previousVenue != null) {
+          return previousVenue.call(this as InputStoryAreaTypePreviousVenue);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension InputStoryAreaTypeLocationExtensions on InputStoryAreaTypeLocation {
+  InputStoryAreaTypeLocation copyWith({
+    Location? location,
+  }) =>
+      InputStoryAreaTypeLocation(
+        location: location ?? this.location,
+      );
+}
+
+extension InputStoryAreaTypeFoundVenueExtensions
+    on InputStoryAreaTypeFoundVenue {
+  InputStoryAreaTypeFoundVenue copyWith({
+    int? queryId,
+    String? resultId,
+  }) =>
+      InputStoryAreaTypeFoundVenue(
+        queryId: queryId ?? this.queryId,
+        resultId: resultId ?? this.resultId,
+      );
+}
+
+extension InputStoryAreaTypePreviousVenueExtensions
+    on InputStoryAreaTypePreviousVenue {
+  InputStoryAreaTypePreviousVenue copyWith({
+    String? venueProvider,
+    String? venueId,
+  }) =>
+      InputStoryAreaTypePreviousVenue(
+        venueProvider: venueProvider ?? this.venueProvider,
+        venueId: venueId ?? this.venueId,
+      );
+}
+
+extension InputStoryAreaExtensions on InputStoryArea {
+  InputStoryArea copyWith({
+    StoryAreaPosition? position,
+    InputStoryAreaType? type,
+  }) =>
+      InputStoryArea(
+        position: position ?? this.position,
+        type: type ?? this.type,
+      );
+}
+
+extension InputStoryAreasExtensions on InputStoryAreas {
+  InputStoryAreas copyWith({
+    List<InputStoryArea>? areas,
+  }) =>
+      InputStoryAreas(
+        areas: areas ?? this.areas,
+      );
+}
+
+extension StoryVideoExtensions on StoryVideo {
+  StoryVideo copyWith({
+    double? duration,
+    int? width,
+    int? height,
+    bool? hasStickers,
+    bool? isAnimation,
+    Minithumbnail? minithumbnail,
+    Thumbnail? thumbnail,
+    int? preloadPrefixSize,
+    File? video,
+  }) =>
+      StoryVideo(
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        hasStickers: hasStickers ?? this.hasStickers,
+        isAnimation: isAnimation ?? this.isAnimation,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
+        video: video ?? this.video,
+      );
+}
+
+extension StoryContentExtensions on StoryContent {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoryContentPhoto value) photo,
+    required TResult Function(StoryContentVideo value) video,
+    required TResult Function(StoryContentUnsupported value) unsupported,
+  }) {
+    switch (getConstructor()) {
+      case StoryContentPhoto.constructor:
+        return photo.call(this as StoryContentPhoto);
+      case StoryContentVideo.constructor:
+        return video.call(this as StoryContentVideo);
+      case StoryContentUnsupported.constructor:
+        return unsupported.call(this as StoryContentUnsupported);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StoryContentPhoto value)? photo,
+    TResult Function(StoryContentVideo value)? video,
+    TResult Function(StoryContentUnsupported value)? unsupported,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StoryContentPhoto.constructor:
+        if (photo != null) {
+          return photo.call(this as StoryContentPhoto);
+        }
+        break;
+      case StoryContentVideo.constructor:
+        if (video != null) {
+          return video.call(this as StoryContentVideo);
+        }
+        break;
+      case StoryContentUnsupported.constructor:
+        if (unsupported != null) {
+          return unsupported.call(this as StoryContentUnsupported);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension StoryContentPhotoExtensions on StoryContentPhoto {
+  StoryContentPhoto copyWith({
+    Photo? photo,
+  }) =>
+      StoryContentPhoto(
+        photo: photo ?? this.photo,
+      );
+}
+
+extension StoryContentVideoExtensions on StoryContentVideo {
+  StoryContentVideo copyWith({
+    StoryVideo? video,
+    StoryVideo? alternativeVideo,
+  }) =>
+      StoryContentVideo(
+        video: video ?? this.video,
+        alternativeVideo: alternativeVideo ?? this.alternativeVideo,
+      );
+}
+
+extension InputStoryContentExtensions on InputStoryContent {
+  TResult map<TResult extends Object?>({
+    required TResult Function(InputStoryContentPhoto value) photo,
+    required TResult Function(InputStoryContentVideo value) video,
+  }) {
+    switch (getConstructor()) {
+      case InputStoryContentPhoto.constructor:
+        return photo.call(this as InputStoryContentPhoto);
+      case InputStoryContentVideo.constructor:
+        return video.call(this as InputStoryContentVideo);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InputStoryContentPhoto value)? photo,
+    TResult Function(InputStoryContentVideo value)? video,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case InputStoryContentPhoto.constructor:
+        if (photo != null) {
+          return photo.call(this as InputStoryContentPhoto);
+        }
+        break;
+      case InputStoryContentVideo.constructor:
+        if (video != null) {
+          return video.call(this as InputStoryContentVideo);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension InputStoryContentPhotoExtensions on InputStoryContentPhoto {
+  InputStoryContentPhoto copyWith({
+    InputFile? photo,
+    List<int>? addedStickerFileIds,
+  }) =>
+      InputStoryContentPhoto(
+        photo: photo ?? this.photo,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+      );
+}
+
+extension InputStoryContentVideoExtensions on InputStoryContentVideo {
+  InputStoryContentVideo copyWith({
+    InputFile? video,
+    List<int>? addedStickerFileIds,
+    double? duration,
+    bool? isAnimation,
+  }) =>
+      InputStoryContentVideo(
+        video: video ?? this.video,
+        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+        duration: duration ?? this.duration,
+        isAnimation: isAnimation ?? this.isAnimation,
+      );
+}
+
+extension StoryListExtensions on StoryList {
+  TResult map<TResult extends Object?>({
+    required TResult Function(StoryListMain value) main,
+    required TResult Function(StoryListArchive value) archive,
+  }) {
+    switch (getConstructor()) {
+      case StoryListMain.constructor:
+        return main.call(this as StoryListMain);
+      case StoryListArchive.constructor:
+        return archive.call(this as StoryListArchive);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StoryListMain value)? main,
+    TResult Function(StoryListArchive value)? archive,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case StoryListMain.constructor:
+        if (main != null) {
+          return main.call(this as StoryListMain);
+        }
+        break;
+      case StoryListArchive.constructor:
+        if (archive != null) {
+          return archive.call(this as StoryListArchive);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension StoryInteractionInfoExtensions on StoryInteractionInfo {
+  StoryInteractionInfo copyWith({
+    int? viewCount,
+    int? reactionCount,
+    List<int>? recentViewerUserIds,
+  }) =>
+      StoryInteractionInfo(
+        viewCount: viewCount ?? this.viewCount,
+        reactionCount: reactionCount ?? this.reactionCount,
+        recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
+      );
+}
+
+extension StoryExtensions on Story {
+  Story copyWith({
+    int? id,
+    int? senderChatId,
+    int? date,
+    bool? isBeingSent,
+    bool? isBeingEdited,
+    bool? isEdited,
+    bool? isPinned,
+    bool? isVisibleOnlyForSelf,
+    bool? canBeForwarded,
+    bool? canBeReplied,
+    bool? canGetViewers,
+    bool? hasExpiredViewers,
+    StoryInteractionInfo? interactionInfo,
+    ReactionType? chosenReactionType,
+    StoryPrivacySettings? privacySettings,
+    StoryContent? content,
+    List<StoryArea>? areas,
+    FormattedText? caption,
+  }) =>
+      Story(
+        id: id ?? this.id,
+        senderChatId: senderChatId ?? this.senderChatId,
+        date: date ?? this.date,
+        isBeingSent: isBeingSent ?? this.isBeingSent,
+        isBeingEdited: isBeingEdited ?? this.isBeingEdited,
+        isEdited: isEdited ?? this.isEdited,
+        isPinned: isPinned ?? this.isPinned,
+        isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
+        canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+        canBeReplied: canBeReplied ?? this.canBeReplied,
+        canGetViewers: canGetViewers ?? this.canGetViewers,
+        hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
+        interactionInfo: interactionInfo ?? this.interactionInfo,
+        chosenReactionType: chosenReactionType ?? this.chosenReactionType,
+        privacySettings: privacySettings ?? this.privacySettings,
+        content: content ?? this.content,
+        areas: areas ?? this.areas,
+        caption: caption ?? this.caption,
+      );
+}
+
+extension StoriesExtensions on Stories {
+  Stories copyWith({
+    int? totalCount,
+    List<Story>? stories,
+  }) =>
+      Stories(
+        totalCount: totalCount ?? this.totalCount,
+        stories: stories ?? this.stories,
+      );
+}
+
+extension StoryInfoExtensions on StoryInfo {
+  StoryInfo copyWith({
+    int? storyId,
+    int? date,
+    bool? isForCloseFriends,
+  }) =>
+      StoryInfo(
+        storyId: storyId ?? this.storyId,
+        date: date ?? this.date,
+        isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
+      );
+}
+
+extension ChatActiveStoriesExtensions on ChatActiveStories {
+  ChatActiveStories copyWith({
+    int? chatId,
+    StoryList? list,
+    int? order,
+    int? maxReadStoryId,
+    List<StoryInfo>? stories,
+  }) =>
+      ChatActiveStories(
+        chatId: chatId ?? this.chatId,
+        list: list ?? this.list,
+        order: order ?? this.order,
+        maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
+        stories: stories ?? this.stories,
+      );
 }
 
 extension CallDiscardReasonExtensions on CallDiscardReason {
@@ -12249,13 +12840,20 @@ extension AttachmentMenuBotExtensions on AttachmentMenuBot {
     bool? supportsChannelChats,
     bool? supportsSettings,
     bool? requestWriteAccess,
+    bool? isAdded,
+    bool? showInAttachmentMenu,
+    bool? showInSideMenu,
+    bool? showDisclaimerInSideMenu,
     String? name,
     AttachmentMenuBotColor? nameColor,
     File? defaultIcon,
     File? iosStaticIcon,
     File? iosAnimatedIcon,
+    File? iosSideMenuIcon,
     File? androidIcon,
+    File? androidSideMenuIcon,
     File? macosIcon,
+    File? macosSideMenuIcon,
     AttachmentMenuBotColor? iconColor,
     File? webAppPlaceholder,
   }) =>
@@ -12268,13 +12866,21 @@ extension AttachmentMenuBotExtensions on AttachmentMenuBot {
         supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
         supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+        isAdded: isAdded ?? this.isAdded,
+        showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
+        showInSideMenu: showInSideMenu ?? this.showInSideMenu,
+        showDisclaimerInSideMenu:
+            showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
         name: name ?? this.name,
         nameColor: nameColor ?? this.nameColor,
         defaultIcon: defaultIcon ?? this.defaultIcon,
         iosStaticIcon: iosStaticIcon ?? this.iosStaticIcon,
         iosAnimatedIcon: iosAnimatedIcon ?? this.iosAnimatedIcon,
+        iosSideMenuIcon: iosSideMenuIcon ?? this.iosSideMenuIcon,
         androidIcon: androidIcon ?? this.androidIcon,
+        androidSideMenuIcon: androidSideMenuIcon ?? this.androidSideMenuIcon,
         macosIcon: macosIcon ?? this.macosIcon,
+        macosSideMenuIcon: macosSideMenuIcon ?? this.macosSideMenuIcon,
         iconColor: iconColor ?? this.iconColor,
         webAppPlaceholder: webAppPlaceholder ?? this.webAppPlaceholder,
       );
@@ -14433,6 +15039,12 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
         shareableChatFolderCount,
     required TResult Function(PremiumLimitTypeActiveStoryCount value)
         activeStoryCount,
+    required TResult Function(PremiumLimitTypeWeeklySentStoryCount value)
+        weeklySentStoryCount,
+    required TResult Function(PremiumLimitTypeMonthlySentStoryCount value)
+        monthlySentStoryCount,
+    required TResult Function(PremiumLimitTypeStoryCaptionLength value)
+        storyCaptionLength,
   }) {
     switch (getConstructor()) {
       case PremiumLimitTypeSupergroupCount.constructor:
@@ -14468,6 +15080,15 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
             .call(this as PremiumLimitTypeShareableChatFolderCount);
       case PremiumLimitTypeActiveStoryCount.constructor:
         return activeStoryCount.call(this as PremiumLimitTypeActiveStoryCount);
+      case PremiumLimitTypeWeeklySentStoryCount.constructor:
+        return weeklySentStoryCount
+            .call(this as PremiumLimitTypeWeeklySentStoryCount);
+      case PremiumLimitTypeMonthlySentStoryCount.constructor:
+        return monthlySentStoryCount
+            .call(this as PremiumLimitTypeMonthlySentStoryCount);
+      case PremiumLimitTypeStoryCaptionLength.constructor:
+        return storyCaptionLength
+            .call(this as PremiumLimitTypeStoryCaptionLength);
     }
     throw StateError('not handled type Generator');
   }
@@ -14493,6 +15114,12 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
     TResult Function(PremiumLimitTypeShareableChatFolderCount value)?
         shareableChatFolderCount,
     TResult Function(PremiumLimitTypeActiveStoryCount value)? activeStoryCount,
+    TResult Function(PremiumLimitTypeWeeklySentStoryCount value)?
+        weeklySentStoryCount,
+    TResult Function(PremiumLimitTypeMonthlySentStoryCount value)?
+        monthlySentStoryCount,
+    TResult Function(PremiumLimitTypeStoryCaptionLength value)?
+        storyCaptionLength,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -14569,6 +15196,24 @@ extension PremiumLimitTypeExtensions on PremiumLimitType {
               .call(this as PremiumLimitTypeActiveStoryCount);
         }
         break;
+      case PremiumLimitTypeWeeklySentStoryCount.constructor:
+        if (weeklySentStoryCount != null) {
+          return weeklySentStoryCount
+              .call(this as PremiumLimitTypeWeeklySentStoryCount);
+        }
+        break;
+      case PremiumLimitTypeMonthlySentStoryCount.constructor:
+        if (monthlySentStoryCount != null) {
+          return monthlySentStoryCount
+              .call(this as PremiumLimitTypeMonthlySentStoryCount);
+        }
+        break;
+      case PremiumLimitTypeStoryCaptionLength.constructor:
+        if (storyCaptionLength != null) {
+          return storyCaptionLength
+              .call(this as PremiumLimitTypeStoryCaptionLength);
+        }
+        break;
     }
     return orElse.call();
   }
@@ -14601,6 +15246,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
     required TResult Function(PremiumFeatureAppIcons value) appIcons,
     required TResult Function(PremiumFeatureRealTimeChatTranslation value)
         realTimeChatTranslation,
+    required TResult Function(PremiumFeatureUpgradedStories value)
+        upgradedStories,
   }) {
     switch (getConstructor()) {
       case PremiumFeatureIncreasedLimits.constructor:
@@ -14638,6 +15285,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
       case PremiumFeatureRealTimeChatTranslation.constructor:
         return realTimeChatTranslation
             .call(this as PremiumFeatureRealTimeChatTranslation);
+      case PremiumFeatureUpgradedStories.constructor:
+        return upgradedStories.call(this as PremiumFeatureUpgradedStories);
     }
     throw StateError('not handled type Generator');
   }
@@ -14663,6 +15312,7 @@ extension PremiumFeatureExtensions on PremiumFeature {
     TResult Function(PremiumFeatureAppIcons value)? appIcons,
     TResult Function(PremiumFeatureRealTimeChatTranslation value)?
         realTimeChatTranslation,
+    TResult Function(PremiumFeatureUpgradedStories value)? upgradedStories,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -14746,6 +15396,95 @@ extension PremiumFeatureExtensions on PremiumFeature {
               .call(this as PremiumFeatureRealTimeChatTranslation);
         }
         break;
+      case PremiumFeatureUpgradedStories.constructor:
+        if (upgradedStories != null) {
+          return upgradedStories.call(this as PremiumFeatureUpgradedStories);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension PremiumStoryFeatureExtensions on PremiumStoryFeature {
+  TResult map<TResult extends Object?>({
+    required TResult Function(PremiumStoryFeaturePriorityOrder value)
+        priorityOrder,
+    required TResult Function(PremiumStoryFeatureStealthMode value) stealthMode,
+    required TResult Function(PremiumStoryFeaturePermanentViewsHistory value)
+        permanentViewsHistory,
+    required TResult Function(PremiumStoryFeatureCustomExpirationDuration value)
+        customExpirationDuration,
+    required TResult Function(PremiumStoryFeatureSaveStories value) saveStories,
+    required TResult Function(PremiumStoryFeatureLinksAndFormatting value)
+        linksAndFormatting,
+  }) {
+    switch (getConstructor()) {
+      case PremiumStoryFeaturePriorityOrder.constructor:
+        return priorityOrder.call(this as PremiumStoryFeaturePriorityOrder);
+      case PremiumStoryFeatureStealthMode.constructor:
+        return stealthMode.call(this as PremiumStoryFeatureStealthMode);
+      case PremiumStoryFeaturePermanentViewsHistory.constructor:
+        return permanentViewsHistory
+            .call(this as PremiumStoryFeaturePermanentViewsHistory);
+      case PremiumStoryFeatureCustomExpirationDuration.constructor:
+        return customExpirationDuration
+            .call(this as PremiumStoryFeatureCustomExpirationDuration);
+      case PremiumStoryFeatureSaveStories.constructor:
+        return saveStories.call(this as PremiumStoryFeatureSaveStories);
+      case PremiumStoryFeatureLinksAndFormatting.constructor:
+        return linksAndFormatting
+            .call(this as PremiumStoryFeatureLinksAndFormatting);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PremiumStoryFeaturePriorityOrder value)? priorityOrder,
+    TResult Function(PremiumStoryFeatureStealthMode value)? stealthMode,
+    TResult Function(PremiumStoryFeaturePermanentViewsHistory value)?
+        permanentViewsHistory,
+    TResult Function(PremiumStoryFeatureCustomExpirationDuration value)?
+        customExpirationDuration,
+    TResult Function(PremiumStoryFeatureSaveStories value)? saveStories,
+    TResult Function(PremiumStoryFeatureLinksAndFormatting value)?
+        linksAndFormatting,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case PremiumStoryFeaturePriorityOrder.constructor:
+        if (priorityOrder != null) {
+          return priorityOrder.call(this as PremiumStoryFeaturePriorityOrder);
+        }
+        break;
+      case PremiumStoryFeatureStealthMode.constructor:
+        if (stealthMode != null) {
+          return stealthMode.call(this as PremiumStoryFeatureStealthMode);
+        }
+        break;
+      case PremiumStoryFeaturePermanentViewsHistory.constructor:
+        if (permanentViewsHistory != null) {
+          return permanentViewsHistory
+              .call(this as PremiumStoryFeaturePermanentViewsHistory);
+        }
+        break;
+      case PremiumStoryFeatureCustomExpirationDuration.constructor:
+        if (customExpirationDuration != null) {
+          return customExpirationDuration
+              .call(this as PremiumStoryFeatureCustomExpirationDuration);
+        }
+        break;
+      case PremiumStoryFeatureSaveStories.constructor:
+        if (saveStories != null) {
+          return saveStories.call(this as PremiumStoryFeatureSaveStories);
+        }
+        break;
+      case PremiumStoryFeatureLinksAndFormatting.constructor:
+        if (linksAndFormatting != null) {
+          return linksAndFormatting
+              .call(this as PremiumStoryFeatureLinksAndFormatting);
+        }
+        break;
     }
     return orElse.call();
   }
@@ -14781,6 +15520,7 @@ extension PremiumSourceExtensions on PremiumSource {
   TResult map<TResult extends Object?>({
     required TResult Function(PremiumSourceLimitExceeded value) limitExceeded,
     required TResult Function(PremiumSourceFeature value) feature,
+    required TResult Function(PremiumSourceStoryFeature value) storyFeature,
     required TResult Function(PremiumSourceLink value) link,
     required TResult Function(PremiumSourceSettings value) settings,
   }) {
@@ -14789,6 +15529,8 @@ extension PremiumSourceExtensions on PremiumSource {
         return limitExceeded.call(this as PremiumSourceLimitExceeded);
       case PremiumSourceFeature.constructor:
         return feature.call(this as PremiumSourceFeature);
+      case PremiumSourceStoryFeature.constructor:
+        return storyFeature.call(this as PremiumSourceStoryFeature);
       case PremiumSourceLink.constructor:
         return link.call(this as PremiumSourceLink);
       case PremiumSourceSettings.constructor:
@@ -14800,6 +15542,7 @@ extension PremiumSourceExtensions on PremiumSource {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PremiumSourceLimitExceeded value)? limitExceeded,
     TResult Function(PremiumSourceFeature value)? feature,
+    TResult Function(PremiumSourceStoryFeature value)? storyFeature,
     TResult Function(PremiumSourceLink value)? link,
     TResult Function(PremiumSourceSettings value)? settings,
     required TResult Function() orElse,
@@ -14813,6 +15556,11 @@ extension PremiumSourceExtensions on PremiumSource {
       case PremiumSourceFeature.constructor:
         if (feature != null) {
           return feature.call(this as PremiumSourceFeature);
+        }
+        break;
+      case PremiumSourceStoryFeature.constructor:
+        if (storyFeature != null) {
+          return storyFeature.call(this as PremiumSourceStoryFeature);
         }
         break;
       case PremiumSourceLink.constructor:
@@ -14844,6 +15592,15 @@ extension PremiumSourceFeatureExtensions on PremiumSourceFeature {
     PremiumFeature? feature,
   }) =>
       PremiumSourceFeature(
+        feature: feature ?? this.feature,
+      );
+}
+
+extension PremiumSourceStoryFeatureExtensions on PremiumSourceStoryFeature {
+  PremiumSourceStoryFeature copyWith({
+    PremiumStoryFeature? feature,
+  }) =>
+      PremiumSourceStoryFeature(
         feature: feature ?? this.feature,
       );
 }
@@ -15476,6 +16233,101 @@ extension HashtagsExtensions on Hashtags {
   }) =>
       Hashtags(
         hashtags: hashtags ?? this.hashtags,
+      );
+}
+
+extension CanSendStoryResultExtensions on CanSendStoryResult {
+  TResult map<TResult extends Object?>({
+    required TResult Function(CanSendStoryResultOk value) ok,
+    required TResult Function(CanSendStoryResultPremiumNeeded value)
+        premiumNeeded,
+    required TResult Function(CanSendStoryResultActiveStoryLimitExceeded value)
+        activeStoryLimitExceeded,
+    required TResult Function(CanSendStoryResultWeeklyLimitExceeded value)
+        weeklyLimitExceeded,
+    required TResult Function(CanSendStoryResultMonthlyLimitExceeded value)
+        monthlyLimitExceeded,
+  }) {
+    switch (getConstructor()) {
+      case CanSendStoryResultOk.constructor:
+        return ok.call(this as CanSendStoryResultOk);
+      case CanSendStoryResultPremiumNeeded.constructor:
+        return premiumNeeded.call(this as CanSendStoryResultPremiumNeeded);
+      case CanSendStoryResultActiveStoryLimitExceeded.constructor:
+        return activeStoryLimitExceeded
+            .call(this as CanSendStoryResultActiveStoryLimitExceeded);
+      case CanSendStoryResultWeeklyLimitExceeded.constructor:
+        return weeklyLimitExceeded
+            .call(this as CanSendStoryResultWeeklyLimitExceeded);
+      case CanSendStoryResultMonthlyLimitExceeded.constructor:
+        return monthlyLimitExceeded
+            .call(this as CanSendStoryResultMonthlyLimitExceeded);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CanSendStoryResultOk value)? ok,
+    TResult Function(CanSendStoryResultPremiumNeeded value)? premiumNeeded,
+    TResult Function(CanSendStoryResultActiveStoryLimitExceeded value)?
+        activeStoryLimitExceeded,
+    TResult Function(CanSendStoryResultWeeklyLimitExceeded value)?
+        weeklyLimitExceeded,
+    TResult Function(CanSendStoryResultMonthlyLimitExceeded value)?
+        monthlyLimitExceeded,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case CanSendStoryResultOk.constructor:
+        if (ok != null) {
+          return ok.call(this as CanSendStoryResultOk);
+        }
+        break;
+      case CanSendStoryResultPremiumNeeded.constructor:
+        if (premiumNeeded != null) {
+          return premiumNeeded.call(this as CanSendStoryResultPremiumNeeded);
+        }
+        break;
+      case CanSendStoryResultActiveStoryLimitExceeded.constructor:
+        if (activeStoryLimitExceeded != null) {
+          return activeStoryLimitExceeded
+              .call(this as CanSendStoryResultActiveStoryLimitExceeded);
+        }
+        break;
+      case CanSendStoryResultWeeklyLimitExceeded.constructor:
+        if (weeklyLimitExceeded != null) {
+          return weeklyLimitExceeded
+              .call(this as CanSendStoryResultWeeklyLimitExceeded);
+        }
+        break;
+      case CanSendStoryResultMonthlyLimitExceeded.constructor:
+        if (monthlyLimitExceeded != null) {
+          return monthlyLimitExceeded
+              .call(this as CanSendStoryResultMonthlyLimitExceeded);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension CanSendStoryResultWeeklyLimitExceededExtensions
+    on CanSendStoryResultWeeklyLimitExceeded {
+  CanSendStoryResultWeeklyLimitExceeded copyWith({
+    int? retryAfter,
+  }) =>
+      CanSendStoryResultWeeklyLimitExceeded(
+        retryAfter: retryAfter ?? this.retryAfter,
+      );
+}
+
+extension CanSendStoryResultMonthlyLimitExceededExtensions
+    on CanSendStoryResultMonthlyLimitExceeded {
+  CanSendStoryResultMonthlyLimitExceeded copyWith({
+    int? retryAfter,
+  }) =>
+      CanSendStoryResultMonthlyLimitExceeded(
+        retryAfter: retryAfter ?? this.retryAfter,
       );
 }
 
@@ -16885,8 +17737,8 @@ extension StoryPrivacySettingsExtensions on StoryPrivacySettings {
     required TResult Function(StoryPrivacySettingsContacts value) contacts,
     required TResult Function(StoryPrivacySettingsCloseFriends value)
         closeFriends,
-    required TResult Function(StoryPrivacySettingsSelectedContacts value)
-        selectedContacts,
+    required TResult Function(StoryPrivacySettingsSelectedUsers value)
+        selectedUsers,
   }) {
     switch (getConstructor()) {
       case StoryPrivacySettingsEveryone.constructor:
@@ -16895,9 +17747,8 @@ extension StoryPrivacySettingsExtensions on StoryPrivacySettings {
         return contacts.call(this as StoryPrivacySettingsContacts);
       case StoryPrivacySettingsCloseFriends.constructor:
         return closeFriends.call(this as StoryPrivacySettingsCloseFriends);
-      case StoryPrivacySettingsSelectedContacts.constructor:
-        return selectedContacts
-            .call(this as StoryPrivacySettingsSelectedContacts);
+      case StoryPrivacySettingsSelectedUsers.constructor:
+        return selectedUsers.call(this as StoryPrivacySettingsSelectedUsers);
     }
     throw StateError('not handled type Generator');
   }
@@ -16906,8 +17757,7 @@ extension StoryPrivacySettingsExtensions on StoryPrivacySettings {
     TResult Function(StoryPrivacySettingsEveryone value)? everyone,
     TResult Function(StoryPrivacySettingsContacts value)? contacts,
     TResult Function(StoryPrivacySettingsCloseFriends value)? closeFriends,
-    TResult Function(StoryPrivacySettingsSelectedContacts value)?
-        selectedContacts,
+    TResult Function(StoryPrivacySettingsSelectedUsers value)? selectedUsers,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -16926,15 +17776,24 @@ extension StoryPrivacySettingsExtensions on StoryPrivacySettings {
           return closeFriends.call(this as StoryPrivacySettingsCloseFriends);
         }
         break;
-      case StoryPrivacySettingsSelectedContacts.constructor:
-        if (selectedContacts != null) {
-          return selectedContacts
-              .call(this as StoryPrivacySettingsSelectedContacts);
+      case StoryPrivacySettingsSelectedUsers.constructor:
+        if (selectedUsers != null) {
+          return selectedUsers.call(this as StoryPrivacySettingsSelectedUsers);
         }
         break;
     }
     return orElse.call();
   }
+}
+
+extension StoryPrivacySettingsEveryoneExtensions
+    on StoryPrivacySettingsEveryone {
+  StoryPrivacySettingsEveryone copyWith({
+    List<int>? exceptUserIds,
+  }) =>
+      StoryPrivacySettingsEveryone(
+        exceptUserIds: exceptUserIds ?? this.exceptUserIds,
+      );
 }
 
 extension StoryPrivacySettingsContactsExtensions
@@ -16947,12 +17806,12 @@ extension StoryPrivacySettingsContactsExtensions
       );
 }
 
-extension StoryPrivacySettingsSelectedContactsExtensions
-    on StoryPrivacySettingsSelectedContacts {
-  StoryPrivacySettingsSelectedContacts copyWith({
+extension StoryPrivacySettingsSelectedUsersExtensions
+    on StoryPrivacySettingsSelectedUsers {
+  StoryPrivacySettingsSelectedUsers copyWith({
     List<int>? userIds,
   }) =>
-      StoryPrivacySettingsSelectedContacts(
+      StoryPrivacySettingsSelectedUsers(
         userIds: userIds ?? this.userIds,
       );
 }
@@ -17442,6 +18301,7 @@ extension SessionExtensions on Session {
     int? id,
     bool? isCurrent,
     bool? isPasswordPending,
+    bool? isUnconfirmed,
     bool? canAcceptSecretChats,
     bool? canAcceptCalls,
     SessionType? type,
@@ -17454,14 +18314,14 @@ extension SessionExtensions on Session {
     String? systemVersion,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
-    String? country,
-    String? region,
+    String? ipAddress,
+    String? location,
   }) =>
       Session(
         id: id ?? this.id,
         isCurrent: isCurrent ?? this.isCurrent,
         isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+        isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
         canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
         canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
         type: type ?? this.type,
@@ -17475,9 +18335,8 @@ extension SessionExtensions on Session {
         systemVersion: systemVersion ?? this.systemVersion,
         logInDate: logInDate ?? this.logInDate,
         lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ip: ip ?? this.ip,
-        country: country ?? this.country,
-        region: region ?? this.region,
+        ipAddress: ipAddress ?? this.ipAddress,
+        location: location ?? this.location,
       );
 }
 
@@ -17493,6 +18352,21 @@ extension SessionsExtensions on Sessions {
       );
 }
 
+extension UnconfirmedSessionExtensions on UnconfirmedSession {
+  UnconfirmedSession copyWith({
+    int? id,
+    int? logInDate,
+    String? deviceModel,
+    String? location,
+  }) =>
+      UnconfirmedSession(
+        id: id ?? this.id,
+        logInDate: logInDate ?? this.logInDate,
+        deviceModel: deviceModel ?? this.deviceModel,
+        location: location ?? this.location,
+      );
+}
+
 extension ConnectedWebsiteExtensions on ConnectedWebsite {
   ConnectedWebsite copyWith({
     int? id,
@@ -17502,7 +18376,7 @@ extension ConnectedWebsiteExtensions on ConnectedWebsite {
     String? platform,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
+    String? ipAddress,
     String? location,
   }) =>
       ConnectedWebsite(
@@ -17513,7 +18387,7 @@ extension ConnectedWebsiteExtensions on ConnectedWebsite {
         platform: platform ?? this.platform,
         logInDate: logInDate ?? this.logInDate,
         lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ip: ip ?? this.ip,
+        ipAddress: ipAddress ?? this.ipAddress,
         location: location ?? this.location,
       );
 }
@@ -17753,6 +18627,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     required TResult Function(InternalLinkTypeRestorePurchases value)
         restorePurchases,
     required TResult Function(InternalLinkTypeSettings value) settings,
+    required TResult Function(InternalLinkTypeSideMenuBot value) sideMenuBot,
     required TResult Function(InternalLinkTypeStickerSet value) stickerSet,
     required TResult Function(InternalLinkTypeStory value) story,
     required TResult Function(InternalLinkTypeTheme value) theme,
@@ -17837,6 +18712,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         return restorePurchases.call(this as InternalLinkTypeRestorePurchases);
       case InternalLinkTypeSettings.constructor:
         return settings.call(this as InternalLinkTypeSettings);
+      case InternalLinkTypeSideMenuBot.constructor:
+        return sideMenuBot.call(this as InternalLinkTypeSideMenuBot);
       case InternalLinkTypeStickerSet.constructor:
         return stickerSet.call(this as InternalLinkTypeStickerSet);
       case InternalLinkTypeStory.constructor:
@@ -17902,6 +18779,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         qrCodeAuthentication,
     TResult Function(InternalLinkTypeRestorePurchases value)? restorePurchases,
     TResult Function(InternalLinkTypeSettings value)? settings,
+    TResult Function(InternalLinkTypeSideMenuBot value)? sideMenuBot,
     TResult Function(InternalLinkTypeStickerSet value)? stickerSet,
     TResult Function(InternalLinkTypeStory value)? story,
     TResult Function(InternalLinkTypeTheme value)? theme,
@@ -18071,6 +18949,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeSettings.constructor:
         if (settings != null) {
           return settings.call(this as InternalLinkTypeSettings);
+        }
+        break;
+      case InternalLinkTypeSideMenuBot.constructor:
+        if (sideMenuBot != null) {
+          return sideMenuBot.call(this as InternalLinkTypeSideMenuBot);
         }
         break;
       case InternalLinkTypeStickerSet.constructor:
@@ -18344,6 +19227,17 @@ extension InternalLinkTypePublicChatExtensions on InternalLinkTypePublicChat {
       );
 }
 
+extension InternalLinkTypeSideMenuBotExtensions on InternalLinkTypeSideMenuBot {
+  InternalLinkTypeSideMenuBot copyWith({
+    String? botUsername,
+    String? url,
+  }) =>
+      InternalLinkTypeSideMenuBot(
+        botUsername: botUsername ?? this.botUsername,
+        url: url ?? this.url,
+      );
+}
+
 extension InternalLinkTypeStickerSetExtensions on InternalLinkTypeStickerSet {
   InternalLinkTypeStickerSet copyWith({
     String? stickerSetName,
@@ -18460,278 +19354,39 @@ extension MessageLinkInfoExtensions on MessageLinkInfo {
       );
 }
 
-extension StoryVideoExtensions on StoryVideo {
-  StoryVideo copyWith({
-    double? duration,
-    int? width,
-    int? height,
-    bool? hasStickers,
-    bool? isAnimation,
-    Minithumbnail? minithumbnail,
-    Thumbnail? thumbnail,
-    int? preloadPrefixSize,
-    File? video,
-  }) =>
-      StoryVideo(
-        duration: duration ?? this.duration,
-        width: width ?? this.width,
-        height: height ?? this.height,
-        hasStickers: hasStickers ?? this.hasStickers,
-        isAnimation: isAnimation ?? this.isAnimation,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
-        preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
-        video: video ?? this.video,
-      );
-}
-
-extension StoryContentExtensions on StoryContent {
+extension BlockListExtensions on BlockList {
   TResult map<TResult extends Object?>({
-    required TResult Function(StoryContentPhoto value) photo,
-    required TResult Function(StoryContentVideo value) video,
-    required TResult Function(StoryContentUnsupported value) unsupported,
+    required TResult Function(BlockListMain value) main,
+    required TResult Function(BlockListStories value) stories,
   }) {
     switch (getConstructor()) {
-      case StoryContentPhoto.constructor:
-        return photo.call(this as StoryContentPhoto);
-      case StoryContentVideo.constructor:
-        return video.call(this as StoryContentVideo);
-      case StoryContentUnsupported.constructor:
-        return unsupported.call(this as StoryContentUnsupported);
+      case BlockListMain.constructor:
+        return main.call(this as BlockListMain);
+      case BlockListStories.constructor:
+        return stories.call(this as BlockListStories);
     }
     throw StateError('not handled type Generator');
   }
 
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoryContentPhoto value)? photo,
-    TResult Function(StoryContentVideo value)? video,
-    TResult Function(StoryContentUnsupported value)? unsupported,
+    TResult Function(BlockListMain value)? main,
+    TResult Function(BlockListStories value)? stories,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
-      case StoryContentPhoto.constructor:
-        if (photo != null) {
-          return photo.call(this as StoryContentPhoto);
-        }
-        break;
-      case StoryContentVideo.constructor:
-        if (video != null) {
-          return video.call(this as StoryContentVideo);
-        }
-        break;
-      case StoryContentUnsupported.constructor:
-        if (unsupported != null) {
-          return unsupported.call(this as StoryContentUnsupported);
-        }
-        break;
-    }
-    return orElse.call();
-  }
-}
-
-extension StoryContentPhotoExtensions on StoryContentPhoto {
-  StoryContentPhoto copyWith({
-    Photo? photo,
-  }) =>
-      StoryContentPhoto(
-        photo: photo ?? this.photo,
-      );
-}
-
-extension StoryContentVideoExtensions on StoryContentVideo {
-  StoryContentVideo copyWith({
-    StoryVideo? video,
-    StoryVideo? alternativeVideo,
-  }) =>
-      StoryContentVideo(
-        video: video ?? this.video,
-        alternativeVideo: alternativeVideo ?? this.alternativeVideo,
-      );
-}
-
-extension InputStoryContentExtensions on InputStoryContent {
-  TResult map<TResult extends Object?>({
-    required TResult Function(InputStoryContentPhoto value) photo,
-    required TResult Function(InputStoryContentVideo value) video,
-  }) {
-    switch (getConstructor()) {
-      case InputStoryContentPhoto.constructor:
-        return photo.call(this as InputStoryContentPhoto);
-      case InputStoryContentVideo.constructor:
-        return video.call(this as InputStoryContentVideo);
-    }
-    throw StateError('not handled type Generator');
-  }
-
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InputStoryContentPhoto value)? photo,
-    TResult Function(InputStoryContentVideo value)? video,
-    required TResult Function() orElse,
-  }) {
-    switch (getConstructor()) {
-      case InputStoryContentPhoto.constructor:
-        if (photo != null) {
-          return photo.call(this as InputStoryContentPhoto);
-        }
-        break;
-      case InputStoryContentVideo.constructor:
-        if (video != null) {
-          return video.call(this as InputStoryContentVideo);
-        }
-        break;
-    }
-    return orElse.call();
-  }
-}
-
-extension InputStoryContentPhotoExtensions on InputStoryContentPhoto {
-  InputStoryContentPhoto copyWith({
-    InputFile? photo,
-    List<int>? addedStickerFileIds,
-  }) =>
-      InputStoryContentPhoto(
-        photo: photo ?? this.photo,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-      );
-}
-
-extension InputStoryContentVideoExtensions on InputStoryContentVideo {
-  InputStoryContentVideo copyWith({
-    InputFile? video,
-    List<int>? addedStickerFileIds,
-    double? duration,
-    bool? isAnimation,
-  }) =>
-      InputStoryContentVideo(
-        video: video ?? this.video,
-        addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
-        duration: duration ?? this.duration,
-        isAnimation: isAnimation ?? this.isAnimation,
-      );
-}
-
-extension StoryListExtensions on StoryList {
-  TResult map<TResult extends Object?>({
-    required TResult Function(StoryListMain value) main,
-    required TResult Function(StoryListArchive value) archive,
-  }) {
-    switch (getConstructor()) {
-      case StoryListMain.constructor:
-        return main.call(this as StoryListMain);
-      case StoryListArchive.constructor:
-        return archive.call(this as StoryListArchive);
-    }
-    throw StateError('not handled type Generator');
-  }
-
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(StoryListMain value)? main,
-    TResult Function(StoryListArchive value)? archive,
-    required TResult Function() orElse,
-  }) {
-    switch (getConstructor()) {
-      case StoryListMain.constructor:
+      case BlockListMain.constructor:
         if (main != null) {
-          return main.call(this as StoryListMain);
+          return main.call(this as BlockListMain);
         }
         break;
-      case StoryListArchive.constructor:
-        if (archive != null) {
-          return archive.call(this as StoryListArchive);
+      case BlockListStories.constructor:
+        if (stories != null) {
+          return stories.call(this as BlockListStories);
         }
         break;
     }
     return orElse.call();
   }
-}
-
-extension StoryInteractionInfoExtensions on StoryInteractionInfo {
-  StoryInteractionInfo copyWith({
-    int? viewCount,
-    List<int>? recentViewerUserIds,
-  }) =>
-      StoryInteractionInfo(
-        viewCount: viewCount ?? this.viewCount,
-        recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
-      );
-}
-
-extension StoryExtensions on Story {
-  Story copyWith({
-    int? id,
-    int? senderChatId,
-    int? date,
-    bool? isBeingEdited,
-    bool? isEdited,
-    bool? isPinned,
-    bool? isVisibleOnlyForSelf,
-    bool? canBeForwarded,
-    bool? canBeReplied,
-    bool? canGetViewers,
-    bool? hasExpiredViewers,
-    StoryInteractionInfo? interactionInfo,
-    StoryPrivacySettings? privacySettings,
-    StoryContent? content,
-    FormattedText? caption,
-  }) =>
-      Story(
-        id: id ?? this.id,
-        senderChatId: senderChatId ?? this.senderChatId,
-        date: date ?? this.date,
-        isBeingEdited: isBeingEdited ?? this.isBeingEdited,
-        isEdited: isEdited ?? this.isEdited,
-        isPinned: isPinned ?? this.isPinned,
-        isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
-        canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-        canBeReplied: canBeReplied ?? this.canBeReplied,
-        canGetViewers: canGetViewers ?? this.canGetViewers,
-        hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
-        interactionInfo: interactionInfo ?? this.interactionInfo,
-        privacySettings: privacySettings ?? this.privacySettings,
-        content: content ?? this.content,
-        caption: caption ?? this.caption,
-      );
-}
-
-extension StoriesExtensions on Stories {
-  Stories copyWith({
-    int? totalCount,
-    List<Story>? stories,
-  }) =>
-      Stories(
-        totalCount: totalCount ?? this.totalCount,
-        stories: stories ?? this.stories,
-      );
-}
-
-extension StoryInfoExtensions on StoryInfo {
-  StoryInfo copyWith({
-    int? storyId,
-    int? date,
-    bool? isForCloseFriends,
-  }) =>
-      StoryInfo(
-        storyId: storyId ?? this.storyId,
-        date: date ?? this.date,
-        isForCloseFriends: isForCloseFriends ?? this.isForCloseFriends,
-      );
-}
-
-extension ChatActiveStoriesExtensions on ChatActiveStories {
-  ChatActiveStories copyWith({
-    int? chatId,
-    StoryList? list,
-    int? order,
-    int? maxReadStoryId,
-    List<StoryInfo>? stories,
-  }) =>
-      ChatActiveStories(
-        chatId: chatId ?? this.chatId,
-        list: list ?? this.list,
-        order: order ?? this.order,
-        maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
-        stories: stories ?? this.stories,
-      );
 }
 
 extension FilePartExtensions on FilePart {
@@ -19424,6 +20079,17 @@ extension TopChatCategoryExtensions on TopChatCategory {
     }
     return orElse.call();
   }
+}
+
+extension FoundPositionsExtensions on FoundPositions {
+  FoundPositions copyWith({
+    int? totalCount,
+    List<int>? positions,
+  }) =>
+      FoundPositions(
+        totalCount: totalCount ?? this.totalCount,
+        positions: positions ?? this.positions,
+      );
 }
 
 extension TMeUrlTypeExtensions on TMeUrlType {
@@ -20407,7 +21073,7 @@ extension UpdateExtensions on Update {
         chatIsTranslatable,
     required TResult Function(UpdateChatIsMarkedAsUnread value)
         chatIsMarkedAsUnread,
-    required TResult Function(UpdateChatIsBlocked value) chatIsBlocked,
+    required TResult Function(UpdateChatBlockList value) chatBlockList,
     required TResult Function(UpdateChatHasScheduledMessages value)
         chatHasScheduledMessages,
     required TResult Function(UpdateChatFolders value) chatFolders,
@@ -20460,9 +21126,13 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateUnreadChatCount value) unreadChatCount,
     required TResult Function(UpdateStory value) story,
     required TResult Function(UpdateStoryDeleted value) storyDeleted,
+    required TResult Function(UpdateStorySendSucceeded value)
+        storySendSucceeded,
+    required TResult Function(UpdateStorySendFailed value) storySendFailed,
     required TResult Function(UpdateChatActiveStories value) chatActiveStories,
     required TResult Function(UpdateStoryListChatCount value)
         storyListChatCount,
+    required TResult Function(UpdateStoryStealthMode value) storyStealthMode,
     required TResult Function(UpdateOption value) option,
     required TResult Function(UpdateStickerSet value) stickerSet,
     required TResult Function(UpdateInstalledStickerSets value)
@@ -20482,6 +21152,8 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateConnectionState value) connectionState,
     required TResult Function(UpdateTermsOfService value) termsOfService,
     required TResult Function(UpdateUsersNearby value) usersNearby,
+    required TResult Function(UpdateUnconfirmedSession value)
+        unconfirmedSession,
     required TResult Function(UpdateAttachmentMenuBots value)
         attachmentMenuBots,
     required TResult Function(UpdateWebAppMessageSent value) webAppMessageSent,
@@ -20604,8 +21276,8 @@ extension UpdateExtensions on Update {
         return chatIsTranslatable.call(this as UpdateChatIsTranslatable);
       case UpdateChatIsMarkedAsUnread.constructor:
         return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
-      case UpdateChatIsBlocked.constructor:
-        return chatIsBlocked.call(this as UpdateChatIsBlocked);
+      case UpdateChatBlockList.constructor:
+        return chatBlockList.call(this as UpdateChatBlockList);
       case UpdateChatHasScheduledMessages.constructor:
         return chatHasScheduledMessages
             .call(this as UpdateChatHasScheduledMessages);
@@ -20683,10 +21355,16 @@ extension UpdateExtensions on Update {
         return story.call(this as UpdateStory);
       case UpdateStoryDeleted.constructor:
         return storyDeleted.call(this as UpdateStoryDeleted);
+      case UpdateStorySendSucceeded.constructor:
+        return storySendSucceeded.call(this as UpdateStorySendSucceeded);
+      case UpdateStorySendFailed.constructor:
+        return storySendFailed.call(this as UpdateStorySendFailed);
       case UpdateChatActiveStories.constructor:
         return chatActiveStories.call(this as UpdateChatActiveStories);
       case UpdateStoryListChatCount.constructor:
         return storyListChatCount.call(this as UpdateStoryListChatCount);
+      case UpdateStoryStealthMode.constructor:
+        return storyStealthMode.call(this as UpdateStoryStealthMode);
       case UpdateOption.constructor:
         return option.call(this as UpdateOption);
       case UpdateStickerSet.constructor:
@@ -20716,6 +21394,8 @@ extension UpdateExtensions on Update {
         return termsOfService.call(this as UpdateTermsOfService);
       case UpdateUsersNearby.constructor:
         return usersNearby.call(this as UpdateUsersNearby);
+      case UpdateUnconfirmedSession.constructor:
+        return unconfirmedSession.call(this as UpdateUnconfirmedSession);
       case UpdateAttachmentMenuBots.constructor:
         return attachmentMenuBots.call(this as UpdateAttachmentMenuBots);
       case UpdateWebAppMessageSent.constructor:
@@ -20819,7 +21499,7 @@ extension UpdateExtensions on Update {
         chatHasProtectedContent,
     TResult Function(UpdateChatIsTranslatable value)? chatIsTranslatable,
     TResult Function(UpdateChatIsMarkedAsUnread value)? chatIsMarkedAsUnread,
-    TResult Function(UpdateChatIsBlocked value)? chatIsBlocked,
+    TResult Function(UpdateChatBlockList value)? chatBlockList,
     TResult Function(UpdateChatHasScheduledMessages value)?
         chatHasScheduledMessages,
     TResult Function(UpdateChatFolders value)? chatFolders,
@@ -20861,8 +21541,11 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateUnreadChatCount value)? unreadChatCount,
     TResult Function(UpdateStory value)? story,
     TResult Function(UpdateStoryDeleted value)? storyDeleted,
+    TResult Function(UpdateStorySendSucceeded value)? storySendSucceeded,
+    TResult Function(UpdateStorySendFailed value)? storySendFailed,
     TResult Function(UpdateChatActiveStories value)? chatActiveStories,
     TResult Function(UpdateStoryListChatCount value)? storyListChatCount,
+    TResult Function(UpdateStoryStealthMode value)? storyStealthMode,
     TResult Function(UpdateOption value)? option,
     TResult Function(UpdateStickerSet value)? stickerSet,
     TResult Function(UpdateInstalledStickerSets value)? installedStickerSets,
@@ -20878,6 +21561,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateConnectionState value)? connectionState,
     TResult Function(UpdateTermsOfService value)? termsOfService,
     TResult Function(UpdateUsersNearby value)? usersNearby,
+    TResult Function(UpdateUnconfirmedSession value)? unconfirmedSession,
     TResult Function(UpdateAttachmentMenuBots value)? attachmentMenuBots,
     TResult Function(UpdateWebAppMessageSent value)? webAppMessageSent,
     TResult Function(UpdateActiveEmojiReactions value)? activeEmojiReactions,
@@ -21109,9 +21793,9 @@ extension UpdateExtensions on Update {
           return chatIsMarkedAsUnread.call(this as UpdateChatIsMarkedAsUnread);
         }
         break;
-      case UpdateChatIsBlocked.constructor:
-        if (chatIsBlocked != null) {
-          return chatIsBlocked.call(this as UpdateChatIsBlocked);
+      case UpdateChatBlockList.constructor:
+        if (chatBlockList != null) {
+          return chatBlockList.call(this as UpdateChatBlockList);
         }
         break;
       case UpdateChatHasScheduledMessages.constructor:
@@ -21300,6 +21984,16 @@ extension UpdateExtensions on Update {
           return storyDeleted.call(this as UpdateStoryDeleted);
         }
         break;
+      case UpdateStorySendSucceeded.constructor:
+        if (storySendSucceeded != null) {
+          return storySendSucceeded.call(this as UpdateStorySendSucceeded);
+        }
+        break;
+      case UpdateStorySendFailed.constructor:
+        if (storySendFailed != null) {
+          return storySendFailed.call(this as UpdateStorySendFailed);
+        }
+        break;
       case UpdateChatActiveStories.constructor:
         if (chatActiveStories != null) {
           return chatActiveStories.call(this as UpdateChatActiveStories);
@@ -21308,6 +22002,11 @@ extension UpdateExtensions on Update {
       case UpdateStoryListChatCount.constructor:
         if (storyListChatCount != null) {
           return storyListChatCount.call(this as UpdateStoryListChatCount);
+        }
+        break;
+      case UpdateStoryStealthMode.constructor:
+        if (storyStealthMode != null) {
+          return storyStealthMode.call(this as UpdateStoryStealthMode);
         }
         break;
       case UpdateOption.constructor:
@@ -21379,6 +22078,11 @@ extension UpdateExtensions on Update {
       case UpdateUsersNearby.constructor:
         if (usersNearby != null) {
           return usersNearby.call(this as UpdateUsersNearby);
+        }
+        break;
+      case UpdateUnconfirmedSession.constructor:
+        if (unconfirmedSession != null) {
+          return unconfirmedSession.call(this as UpdateUnconfirmedSession);
         }
         break;
       case UpdateAttachmentMenuBots.constructor:
@@ -21955,14 +22659,14 @@ extension UpdateChatIsMarkedAsUnreadExtensions on UpdateChatIsMarkedAsUnread {
       );
 }
 
-extension UpdateChatIsBlockedExtensions on UpdateChatIsBlocked {
-  UpdateChatIsBlocked copyWith({
+extension UpdateChatBlockListExtensions on UpdateChatBlockList {
+  UpdateChatBlockList copyWith({
     int? chatId,
-    bool? isBlocked,
+    BlockList? blockList,
   }) =>
-      UpdateChatIsBlocked(
+      UpdateChatBlockList(
         chatId: chatId ?? this.chatId,
-        isBlocked: isBlocked ?? this.isBlocked,
+        blockList: blockList ?? this.blockList,
       );
 }
 
@@ -22392,6 +23096,32 @@ extension UpdateStoryDeletedExtensions on UpdateStoryDeleted {
       );
 }
 
+extension UpdateStorySendSucceededExtensions on UpdateStorySendSucceeded {
+  UpdateStorySendSucceeded copyWith({
+    Story? story,
+    int? oldStoryId,
+  }) =>
+      UpdateStorySendSucceeded(
+        story: story ?? this.story,
+        oldStoryId: oldStoryId ?? this.oldStoryId,
+      );
+}
+
+extension UpdateStorySendFailedExtensions on UpdateStorySendFailed {
+  UpdateStorySendFailed copyWith({
+    Story? story,
+    CanSendStoryResult? error,
+    int? errorCode,
+    String? errorMessage,
+  }) =>
+      UpdateStorySendFailed(
+        story: story ?? this.story,
+        error: error ?? this.error,
+        errorCode: errorCode ?? this.errorCode,
+        errorMessage: errorMessage ?? this.errorMessage,
+      );
+}
+
 extension UpdateChatActiveStoriesExtensions on UpdateChatActiveStories {
   UpdateChatActiveStories copyWith({
     ChatActiveStories? activeStories,
@@ -22409,6 +23139,17 @@ extension UpdateStoryListChatCountExtensions on UpdateStoryListChatCount {
       UpdateStoryListChatCount(
         storyList: storyList ?? this.storyList,
         chatCount: chatCount ?? this.chatCount,
+      );
+}
+
+extension UpdateStoryStealthModeExtensions on UpdateStoryStealthMode {
+  UpdateStoryStealthMode copyWith({
+    int? activeUntilDate,
+    int? cooldownUntilDate,
+  }) =>
+      UpdateStoryStealthMode(
+        activeUntilDate: activeUntilDate ?? this.activeUntilDate,
+        cooldownUntilDate: cooldownUntilDate ?? this.cooldownUntilDate,
       );
 }
 
@@ -22552,6 +23293,15 @@ extension UpdateUsersNearbyExtensions on UpdateUsersNearby {
   }) =>
       UpdateUsersNearby(
         usersNearby: usersNearby ?? this.usersNearby,
+      );
+}
+
+extension UpdateUnconfirmedSessionExtensions on UpdateUnconfirmedSession {
+  UpdateUnconfirmedSession copyWith({
+    UnconfirmedSession? session,
+  }) =>
+      UpdateUnconfirmedSession(
+        session: session ?? this.session,
       );
 }
 
@@ -26022,6 +26772,7 @@ extension GetStoryExtensions on GetStory {
 extension SendStoryExtensions on SendStory {
   SendStory copyWith({
     InputStoryContent? content,
+    InputStoryAreas? areas,
     FormattedText? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
@@ -26030,6 +26781,7 @@ extension SendStoryExtensions on SendStory {
   }) =>
       SendStory(
         content: content ?? this.content,
+        areas: areas ?? this.areas,
         caption: caption ?? this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
@@ -26042,11 +26794,13 @@ extension EditStoryExtensions on EditStory {
   EditStory copyWith({
     int? storyId,
     InputStoryContent? content,
+    InputStoryAreas? areas,
     FormattedText? caption,
   }) =>
       EditStory(
         storyId: storyId ?? this.storyId,
         content: content ?? this.content,
+        areas: areas ?? this.areas,
         caption: caption ?? this.caption,
       );
 }
@@ -26157,15 +26911,46 @@ extension CloseStoryExtensions on CloseStory {
       );
 }
 
+extension GetStoryAvailableReactionsExtensions on GetStoryAvailableReactions {
+  GetStoryAvailableReactions copyWith({
+    int? rowSize,
+  }) =>
+      GetStoryAvailableReactions(
+        rowSize: rowSize ?? this.rowSize,
+      );
+}
+
+extension SetStoryReactionExtensions on SetStoryReaction {
+  SetStoryReaction copyWith({
+    int? storySenderChatId,
+    int? storyId,
+    ReactionType? reactionType,
+    bool? updateRecentReactions,
+  }) =>
+      SetStoryReaction(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        reactionType: reactionType ?? this.reactionType,
+        updateRecentReactions:
+            updateRecentReactions ?? this.updateRecentReactions,
+      );
+}
+
 extension GetStoryViewersExtensions on GetStoryViewers {
   GetStoryViewers copyWith({
     int? storyId,
-    MessageViewer? offsetViewer,
+    String? query,
+    bool? onlyContacts,
+    bool? preferWithReaction,
+    String? offset,
     int? limit,
   }) =>
       GetStoryViewers(
         storyId: storyId ?? this.storyId,
-        offsetViewer: offsetViewer ?? this.offsetViewer,
+        query: query ?? this.query,
+        onlyContacts: onlyContacts ?? this.onlyContacts,
+        preferWithReaction: preferWithReaction ?? this.preferWithReaction,
+        offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
 }
@@ -27086,15 +27871,14 @@ extension GetGroupCallStreamSegmentExtensions on GetGroupCallStreamSegment {
       );
 }
 
-extension ToggleMessageSenderIsBlockedExtensions
-    on ToggleMessageSenderIsBlocked {
-  ToggleMessageSenderIsBlocked copyWith({
+extension SetMessageSenderBlockListExtensions on SetMessageSenderBlockList {
+  SetMessageSenderBlockList copyWith({
     MessageSender? senderId,
-    bool? isBlocked,
+    BlockList? blockList,
   }) =>
-      ToggleMessageSenderIsBlocked(
+      SetMessageSenderBlockList(
         senderId: senderId ?? this.senderId,
-        isBlocked: isBlocked ?? this.isBlocked,
+        blockList: blockList ?? this.blockList,
       );
 }
 
@@ -27116,10 +27900,12 @@ extension BlockMessageSenderFromRepliesExtensions
 
 extension GetBlockedMessageSendersExtensions on GetBlockedMessageSenders {
   GetBlockedMessageSenders copyWith({
+    BlockList? blockList,
     int? offset,
     int? limit,
   }) =>
       GetBlockedMessageSenders(
+        blockList: blockList ?? this.blockList,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
@@ -27248,6 +28034,21 @@ extension GetStickersExtensions on GetStickers {
         query: query ?? this.query,
         limit: limit ?? this.limit,
         chatId: chatId ?? this.chatId,
+      );
+}
+
+extension GetAllStickerEmojisExtensions on GetAllStickerEmojis {
+  GetAllStickerEmojis copyWith({
+    StickerType? stickerType,
+    String? query,
+    int? chatId,
+    bool? returnOnlyMainEmoji,
+  }) =>
+      GetAllStickerEmojis(
+        stickerType: stickerType ?? this.stickerType,
+        query: query ?? this.query,
+        chatId: chatId ?? this.chatId,
+        returnOnlyMainEmoji: returnOnlyMainEmoji ?? this.returnOnlyMainEmoji,
       );
 }
 
@@ -27757,6 +28558,37 @@ extension SetDefaultChannelAdministratorRightsExtensions
       );
 }
 
+extension CanBotSendMessagesExtensions on CanBotSendMessages {
+  CanBotSendMessages copyWith({
+    int? botUserId,
+  }) =>
+      CanBotSendMessages(
+        botUserId: botUserId ?? this.botUserId,
+      );
+}
+
+extension AllowBotToSendMessagesExtensions on AllowBotToSendMessages {
+  AllowBotToSendMessages copyWith({
+    int? botUserId,
+  }) =>
+      AllowBotToSendMessages(
+        botUserId: botUserId ?? this.botUserId,
+      );
+}
+
+extension SendWebAppCustomRequestExtensions on SendWebAppCustomRequest {
+  SendWebAppCustomRequest copyWith({
+    int? botUserId,
+    String? method,
+    String? parameters,
+  }) =>
+      SendWebAppCustomRequest(
+        botUserId: botUserId ?? this.botUserId,
+        method: method ?? this.method,
+        parameters: parameters ?? this.parameters,
+      );
+}
+
 extension SetBotNameExtensions on SetBotName {
   SetBotName copyWith({
     int? botUserId,
@@ -27869,6 +28701,15 @@ extension TerminateSessionExtensions on TerminateSession {
     int? sessionId,
   }) =>
       TerminateSession(
+        sessionId: sessionId ?? this.sessionId,
+      );
+}
+
+extension ConfirmSessionExtensions on ConfirmSession {
+  ConfirmSession copyWith({
+    int? sessionId,
+  }) =>
+      ConfirmSession(
         sessionId: sessionId ?? this.sessionId,
       );
 }
@@ -29055,6 +29896,22 @@ extension AcceptTermsOfServiceExtensions on AcceptTermsOfService {
   }) =>
       AcceptTermsOfService(
         termsOfServiceId: termsOfServiceId ?? this.termsOfServiceId,
+      );
+}
+
+extension SearchStringsByPrefixExtensions on SearchStringsByPrefix {
+  SearchStringsByPrefix copyWith({
+    List<String>? strings,
+    String? query,
+    int? limit,
+    bool? returnNoneForEmptyQuery,
+  }) =>
+      SearchStringsByPrefix(
+        strings: strings ?? this.strings,
+        query: query ?? this.query,
+        limit: limit ?? this.limit,
+        returnNoneForEmptyQuery:
+            returnNoneForEmptyQuery ?? this.returnNoneForEmptyQuery,
       );
 }
 

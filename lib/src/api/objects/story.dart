@@ -9,6 +9,7 @@ class Story extends TdObject {
     required this.id,
     required this.senderChatId,
     required this.date,
+    required this.isBeingSent,
     required this.isBeingEdited,
     required this.isEdited,
     required this.isPinned,
@@ -18,8 +19,10 @@ class Story extends TdObject {
     required this.canGetViewers,
     required this.hasExpiredViewers,
     this.interactionInfo,
+    this.chosenReactionType,
     required this.privacySettings,
     required this.content,
+    required this.areas,
     required this.caption,
   });
 
@@ -31,6 +34,9 @@ class Story extends TdObject {
 
   /// [date] Point in time (Unix timestamp) when the story was published
   final int date;
+
+  /// [isBeingSent] True, if the story is being sent by the current user
+  final bool isBeingSent;
 
   /// [isBeingEdited] True, if the story is being edited by the current user
   final bool isBeingEdited;
@@ -68,12 +74,18 @@ class Story extends TdObject {
   /// null if the story isn't owned or there were no interactions
   final StoryInteractionInfo? interactionInfo;
 
+  /// [chosenReactionType] Type of the chosen reaction; may be null if none
+  final ReactionType? chosenReactionType;
+
   /// [privacySettings] Privacy rules affecting story visibility; may be
   /// approximate for non-owned stories
   final StoryPrivacySettings privacySettings;
 
   /// [content] Content of the story
   final StoryContent content;
+
+  /// [areas] Clickable areas to be shown on the story content
+  final List<StoryArea> areas;
 
   /// [caption] Caption of the story
   final FormattedText caption;
@@ -89,6 +101,7 @@ class Story extends TdObject {
       id: json['id'] as int,
       senderChatId: json['sender_chat_id'] as int,
       date: json['date'] as int,
+      isBeingSent: json['is_being_sent'] as bool,
       isBeingEdited: json['is_being_edited'] as bool,
       isEdited: json['is_edited'] as bool,
       isPinned: json['is_pinned'] as bool,
@@ -99,9 +112,15 @@ class Story extends TdObject {
       hasExpiredViewers: json['has_expired_viewers'] as bool,
       interactionInfo: StoryInteractionInfo.fromJson(
           json['interaction_info'] as Map<String, dynamic>?),
+      chosenReactionType: ReactionType.fromJson(
+          json['chosen_reaction_type'] as Map<String, dynamic>?),
       privacySettings: StoryPrivacySettings.fromJson(
           json['privacy_settings'] as Map<String, dynamic>?)!,
       content: StoryContent.fromJson(json['content'] as Map<String, dynamic>?)!,
+      areas: List<StoryArea>.from(
+          ((json['areas'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => StoryArea.fromJson(item))
+              .toList()),
       caption:
           FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
     );
@@ -115,6 +134,7 @@ class Story extends TdObject {
         'id': id,
         'sender_chat_id': senderChatId,
         'date': date,
+        'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
         'is_edited': isEdited,
         'is_pinned': isPinned,
@@ -124,8 +144,10 @@ class Story extends TdObject {
         'can_get_viewers': canGetViewers,
         'has_expired_viewers': hasExpiredViewers,
         'interaction_info': interactionInfo?.toJson(),
+        'chosen_reaction_type': chosenReactionType?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'content': content.toJson(),
+        'areas': areas.map((item) => item.toJson()).toList(),
         'caption': caption.toJson(),
         '@type': constructor,
       };

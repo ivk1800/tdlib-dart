@@ -39,11 +39,11 @@ class UpdateNotificationGroup extends Update {
   final int totalCount;
 
   /// [addedNotifications] List of added group notifications, sorted by
-  /// notification ID
+  /// notification identifier
   final List<Notification> addedNotifications;
 
   /// [removedNotificationIds] Identifiers of removed group notifications,
-  /// sorted by notification ID
+  /// sorted by notification identifier
   final List<int> removedNotificationIds;
 
   static const String constructor = 'updateNotificationGroup';

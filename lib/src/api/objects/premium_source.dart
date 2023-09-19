@@ -14,6 +14,7 @@ abstract class PremiumSource extends TdObject {
   /// [PremiumSourceLimitExceeded]
   /// [PremiumSourceLink]
   /// [PremiumSourceSettings]
+  /// [PremiumSourceStoryFeature]
   static PremiumSource? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -28,6 +29,8 @@ abstract class PremiumSource extends TdObject {
         return PremiumSourceLink.fromJson(json);
       case PremiumSourceSettings.constructor:
         return PremiumSourceSettings.fromJson(json);
+      case PremiumSourceStoryFeature.constructor:
+        return PremiumSourceStoryFeature.fromJson(json);
       default:
         return null;
     }

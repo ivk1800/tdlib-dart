@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Adds or removes a bot to attachment menu. Bot can be added to attachment
+/// Adds or removes a bot to attachment and side menu. Bot can be added to the
 /// menu, only if userTypeBot.can_be_added_to_attachment_menu == true
 /// Returns [Ok]
 @immutable

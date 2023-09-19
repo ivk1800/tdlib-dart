@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A file defined by its unique ID
+/// A file defined by its unique identifier
 @immutable
 class InputFileId extends InputFile {
   const InputFileId({

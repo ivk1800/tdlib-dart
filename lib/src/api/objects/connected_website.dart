@@ -14,7 +14,7 @@ class ConnectedWebsite extends TdObject {
     required this.platform,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
+    required this.ipAddress,
     required this.location,
   });
 
@@ -40,9 +40,9 @@ class ConnectedWebsite extends TdObject {
   /// authorization was last used
   final int lastActiveDate;
 
-  /// [ip] IP address from which the user was logged in, in human-readable
-  /// format
-  final String ip;
+  /// [ipAddress] IP address from which the user was logged in, in
+  /// human-readable format
+  final String ipAddress;
 
   /// [location] Human-readable description of a country and a region from which
   /// the user was logged in, based on the IP address
@@ -63,7 +63,7 @@ class ConnectedWebsite extends TdObject {
       platform: json['platform'] as String,
       logInDate: json['log_in_date'] as int,
       lastActiveDate: json['last_active_date'] as int,
-      ip: json['ip'] as String,
+      ipAddress: json['ip_address'] as String,
       location: json['location'] as String,
     );
   }
@@ -80,7 +80,7 @@ class ConnectedWebsite extends TdObject {
         'platform': platform,
         'log_in_date': logInDate,
         'last_active_date': lastActiveDate,
-        'ip': ip,
+        'ip_address': ipAddress,
         'location': location,
         '@type': constructor,
       };

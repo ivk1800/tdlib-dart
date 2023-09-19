@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns a list of frequently used chats. Supported only if the chat info
-/// database is enabled
+/// Returns a list of frequently used chats
 /// Returns [Chats]
 @immutable
 class GetTopChats extends TdFunction {

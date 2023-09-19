@@ -33,7 +33,8 @@ class MessageThreadInfo extends TdObject {
   /// message_id)
   final List<Message> messages;
 
-  /// [draftMessage] A draft of a message in the message thread; may be null
+  /// [draftMessage] A draft of a message in the message thread; may be null if
+  /// none
   final DraftMessage? draftMessage;
 
   static const String constructor = 'messageThreadInfo';

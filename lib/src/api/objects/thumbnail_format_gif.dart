@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The thumbnail is in static GIF format. It will be used only for some bot
-/// inline results
+/// inline query results
 @immutable
 class ThumbnailFormatGif extends ThumbnailFormat {
   const ThumbnailFormatGif();

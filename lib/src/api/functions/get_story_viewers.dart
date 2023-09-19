@@ -2,29 +2,40 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns viewers of a recent outgoing story. The method can be called if
-/// story.can_get_viewers == true. The views are returned in a reverse
-/// chronological order (i.e., in order of decreasing view_date) For optimal
-/// performance, the number of returned stories is chosen by TDLib
-/// Returns [MessageViewers]
+/// Returns viewers of a story. The method can be called if
+/// story.can_get_viewers == true
+/// Returns [StoryViewers]
 @immutable
 class GetStoryViewers extends TdFunction {
   const GetStoryViewers({
     required this.storyId,
-    this.offsetViewer,
+    required this.query,
+    required this.onlyContacts,
+    required this.preferWithReaction,
+    required this.offset,
     required this.limit,
   });
 
   /// [storyId] Story identifier
   final int storyId;
 
-  /// [offsetViewer] A viewer from which to return next viewers; pass null to
-  /// get results from the beginning
-  final MessageViewer? offsetViewer;
+  /// [query] Query to search for in names and usernames of the viewers; may be
+  /// empty to get all relevant viewers
+  final String query;
 
-  /// [limit] The maximum number of story viewers to return For optimal
-  /// performance, the number of returned stories is chosen by TDLib and can be
-  /// smaller than the specified limit
+  /// [onlyContacts] Pass true to get only contacts; pass false to get all
+  /// relevant viewers
+  final bool onlyContacts;
+
+  /// [preferWithReaction] Pass true to get viewers with reaction first; pass
+  /// false to get viewers sorted just by view_date
+  final bool preferWithReaction;
+
+  /// [offset] Offset of the first entry to return as received from the previous
+  /// request; use empty string to get the first chunk of results
+  final String offset;
+
+  /// [limit] The maximum number of story viewers to return
   final int limit;
 
   static const String constructor = 'getStoryViewers';
@@ -35,7 +46,10 @@ class GetStoryViewers extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'story_id': storyId,
-        'offset_viewer': offsetViewer?.toJson(),
+        'query': query,
+        'only_contacts': onlyContacts,
+        'prefer_with_reaction': preferWithReaction,
+        'offset': offset,
         'limit': limit,
         '@type': constructor,
       };

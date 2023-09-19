@@ -13,7 +13,7 @@ abstract class StoryPrivacySettings extends TdObject {
   /// [StoryPrivacySettingsCloseFriends]
   /// [StoryPrivacySettingsContacts]
   /// [StoryPrivacySettingsEveryone]
-  /// [StoryPrivacySettingsSelectedContacts]
+  /// [StoryPrivacySettingsSelectedUsers]
   static StoryPrivacySettings? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -26,8 +26,8 @@ abstract class StoryPrivacySettings extends TdObject {
         return StoryPrivacySettingsContacts.fromJson(json);
       case StoryPrivacySettingsEveryone.constructor:
         return StoryPrivacySettingsEveryone.fromJson(json);
-      case StoryPrivacySettingsSelectedContacts.constructor:
-        return StoryPrivacySettingsSelectedContacts.fromJson(json);
+      case StoryPrivacySettingsSelectedUsers.constructor:
+        return StoryPrivacySettingsSelectedUsers.fromJson(json);
       default:
         return null;
     }

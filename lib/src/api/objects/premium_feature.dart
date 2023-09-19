@@ -24,6 +24,7 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureRealTimeChatTranslation]
   /// [PremiumFeatureUniqueReactions]
   /// [PremiumFeatureUniqueStickers]
+  /// [PremiumFeatureUpgradedStories]
   /// [PremiumFeatureVoiceRecognition]
   static PremiumFeature? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -59,6 +60,8 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureUniqueReactions.fromJson(json);
       case PremiumFeatureUniqueStickers.constructor:
         return PremiumFeatureUniqueStickers.fromJson(json);
+      case PremiumFeatureUpgradedStories.constructor:
+        return PremiumFeatureUpgradedStories.fromJson(json);
       case PremiumFeatureVoiceRecognition.constructor:
         return PremiumFeatureVoiceRecognition.fromJson(json);
       default:

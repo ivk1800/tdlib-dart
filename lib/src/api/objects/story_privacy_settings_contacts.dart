@@ -10,7 +10,7 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
   });
 
   /// [exceptUserIds] User identifiers of the contacts that can't see the story;
-  /// always empty for non-owned stories
+  /// always unknown and empty for non-owned stories
   final List<int> exceptUserIds;
 
   static const String constructor = 'storyPrivacySettingsContacts';

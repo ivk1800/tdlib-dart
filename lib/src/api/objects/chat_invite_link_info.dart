@@ -16,6 +16,9 @@ class ChatInviteLinkInfo extends TdObject {
     required this.memberUserIds,
     required this.createsJoinRequest,
     required this.isPublic,
+    required this.isVerified,
+    required this.isScam,
+    required this.isFake,
   });
 
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access
@@ -27,7 +30,7 @@ class ChatInviteLinkInfo extends TdObject {
   final int accessibleFor;
 
   /// [type] Type of the chat
-  final ChatType type;
+  final InviteLinkChatType type;
 
   /// [title] Title of the chat
   final String title;
@@ -52,6 +55,15 @@ class ChatInviteLinkInfo extends TdObject {
   /// has a username or it is a location-based supergroup
   final bool isPublic;
 
+  /// [isVerified] True, if the chat is verified
+  final bool isVerified;
+
+  /// [isScam] True, if many users reported this chat as a scam
+  final bool isScam;
+
+  /// [isFake] True, if many users reported this chat as a fake account
+  final bool isFake;
+
   static const String constructor = 'chatInviteLinkInfo';
 
   static ChatInviteLinkInfo? fromJson(Map<String, dynamic>? json) {
@@ -62,7 +74,7 @@ class ChatInviteLinkInfo extends TdObject {
     return ChatInviteLinkInfo(
       chatId: json['chat_id'] as int,
       accessibleFor: json['accessible_for'] as int,
-      type: ChatType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      type: InviteLinkChatType.fromJson(json['type'] as Map<String, dynamic>?)!,
       title: json['title'] as String,
       photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
       description: json['description'] as String,
@@ -73,6 +85,9 @@ class ChatInviteLinkInfo extends TdObject {
               .toList()),
       createsJoinRequest: json['creates_join_request'] as bool,
       isPublic: json['is_public'] as bool,
+      isVerified: json['is_verified'] as bool,
+      isScam: json['is_scam'] as bool,
+      isFake: json['is_fake'] as bool,
     );
   }
 
@@ -91,6 +106,9 @@ class ChatInviteLinkInfo extends TdObject {
         'member_user_ids': memberUserIds.map((item) => item).toList(),
         'creates_join_request': createsJoinRequest,
         'is_public': isPublic,
+        'is_verified': isVerified,
+        'is_scam': isScam,
+        'is_fake': isFake,
         '@type': constructor,
       };
 

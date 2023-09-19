@@ -2,15 +2,15 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The list of bots added to attachment menu has changed
+/// The list of bots added to attachment or side menu has changed
 @immutable
 class UpdateAttachmentMenuBots extends Update {
   const UpdateAttachmentMenuBots({
     required this.bots,
   });
 
-  /// [bots] The new list of bots added to attachment menu. The bots must not be
-  /// shown on scheduled messages screen
+  /// [bots] The new list of bots. The bots must not be shown on scheduled
+  /// messages screen
   final List<AttachmentMenuBot> bots;
 
   static const String constructor = 'updateAttachmentMenuBots';
