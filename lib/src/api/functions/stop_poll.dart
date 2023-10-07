@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Stops a poll. A poll in a message can be stopped when the message has
-/// can_be_edited flag set
+/// can_be_edited flag is set
 /// Returns [Ok]
 @immutable
 class StopPoll extends TdFunction {

@@ -6,18 +6,14 @@ import '../tdapi.dart';
 @immutable
 class MessageSendingStateFailed extends MessageSendingState {
   const MessageSendingStateFailed({
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
     required this.canRetry,
     required this.needAnotherSender,
     required this.retryAfter,
   });
 
-  /// [errorCode] An error code; 0 if unknown
-  final int errorCode;
-
-  /// [errorMessage] Error message
-  final String errorMessage;
+  /// [error] The cause of the message sending failure
+  final TdError error;
 
   /// [canRetry] True, if the message can be re-sent
   final bool canRetry;
@@ -38,8 +34,7 @@ class MessageSendingStateFailed extends MessageSendingState {
     }
 
     return MessageSendingStateFailed(
-      errorCode: json['error_code'] as int,
-      errorMessage: json['error_message'] as String,
+      error: TdError.fromJson(json['error'] as Map<String, dynamic>?)!,
       canRetry: json['can_retry'] as bool,
       needAnotherSender: json['need_another_sender'] as bool,
       retryAfter: (json['retry_after'] as num).toDouble(),
@@ -51,8 +46,7 @@ class MessageSendingStateFailed extends MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
         'can_retry': canRetry,
         'need_another_sender': needAnotherSender,
         'retry_after': retryAfter,

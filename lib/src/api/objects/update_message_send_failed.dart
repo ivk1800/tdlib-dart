@@ -10,8 +10,7 @@ class UpdateMessageSendFailed extends Update {
   const UpdateMessageSendFailed({
     required this.message,
     required this.oldMessageId,
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
   });
 
   /// [message] The failed to send message
@@ -20,11 +19,8 @@ class UpdateMessageSendFailed extends Update {
   /// [oldMessageId] The previous temporary message identifier
   final int oldMessageId;
 
-  /// [errorCode] An error code
-  final int errorCode;
-
-  /// [errorMessage] Error message
-  final String errorMessage;
+  /// [error] The cause of the message sending failure
+  final TdError error;
 
   static const String constructor = 'updateMessageSendFailed';
 
@@ -36,8 +32,7 @@ class UpdateMessageSendFailed extends Update {
     return UpdateMessageSendFailed(
       message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
       oldMessageId: json['old_message_id'] as int,
-      errorCode: json['error_code'] as int,
-      errorMessage: json['error_message'] as String,
+      error: TdError.fromJson(json['error'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -48,8 +43,7 @@ class UpdateMessageSendFailed extends Update {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'message': message.toJson(),
         'old_message_id': oldMessageId,
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
         '@type': constructor,
       };
 

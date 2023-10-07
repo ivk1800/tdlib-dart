@@ -37,7 +37,7 @@ class ChatStatisticsChannel extends ChatStatistics {
   final StatisticalValue meanShareCount;
 
   /// [enabledNotificationsPercentage] A percentage of users with enabled
-  /// notifications for the chat
+  /// notifications for the chat; 0-100
   final double enabledNotificationsPercentage;
 
   /// [memberCountGraph] A graph containing number of members in the chat

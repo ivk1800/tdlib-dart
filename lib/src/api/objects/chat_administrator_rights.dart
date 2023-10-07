@@ -17,21 +17,25 @@ class ChatAdministratorRights extends TdObject {
     required this.canManageTopics,
     required this.canPromoteMembers,
     required this.canManageVideoChats,
+    required this.canPostStories,
+    required this.canEditStories,
+    required this.canDeleteStories,
     required this.isAnonymous,
   });
 
   /// [canManageChat] True, if the administrator can get chat event log, get
-  /// chat statistics, get message statistics in channels, get channel members,
-  /// see anonymous administrators in supergroups and ignore slow mode. Implied
-  /// by any other privilege; applicable to supergroups and channels only
+  /// chat boosts in channels, get channel members, report supergroup spam
+  /// messages, see anonymous administrators in supergroups and ignore slow
+  /// mode. Implied by any other privilege; applicable to supergroups and
+  /// channels only
   final bool canManageChat;
 
   /// [canChangeInfo] True, if the administrator can change the chat title,
   /// photo, and other settings
   final bool canChangeInfo;
 
-  /// [canPostMessages] True, if the administrator can create channel posts;
-  /// applicable to channels only
+  /// [canPostMessages] True, if the administrator can create channel posts or
+  /// view channel statistics; applicable to channels only
   final bool canPostMessages;
 
   /// [canEditMessages] True, if the administrator can edit messages of other
@@ -47,7 +51,7 @@ class ChatAdministratorRights extends TdObject {
   final bool canInviteUsers;
 
   /// [canRestrictMembers] True, if the administrator can restrict, ban, or
-  /// unban chat members; always true for channels
+  /// unban chat members or view supergroup statistics; always true for channels
   final bool canRestrictMembers;
 
   /// [canPinMessages] True, if the administrator can pin messages; applicable
@@ -65,6 +69,19 @@ class ChatAdministratorRights extends TdObject {
 
   /// [canManageVideoChats] True, if the administrator can manage video chats
   final bool canManageVideoChats;
+
+  /// [canPostStories] True, if the administrator can create new channel
+  /// stories, or edit and delete posted stories; applicable to channels only
+  final bool canPostStories;
+
+  /// [canEditStories] True, if the administrator can edit stories posted by
+  /// other users, pin stories and access story archive; applicable to channels
+  /// only
+  final bool canEditStories;
+
+  /// [canDeleteStories] True, if the administrator can delete stories posted by
+  /// other users; applicable to channels only
+  final bool canDeleteStories;
 
   /// [isAnonymous] True, if the administrator isn't shown in the chat member
   /// list and sends messages anonymously; applicable to supergroups only
@@ -89,6 +106,9 @@ class ChatAdministratorRights extends TdObject {
       canManageTopics: json['can_manage_topics'] as bool,
       canPromoteMembers: json['can_promote_members'] as bool,
       canManageVideoChats: json['can_manage_video_chats'] as bool,
+      canPostStories: json['can_post_stories'] as bool,
+      canEditStories: json['can_edit_stories'] as bool,
+      canDeleteStories: json['can_delete_stories'] as bool,
       isAnonymous: json['is_anonymous'] as bool,
     );
   }
@@ -109,6 +129,9 @@ class ChatAdministratorRights extends TdObject {
         'can_manage_topics': canManageTopics,
         'can_promote_members': canPromoteMembers,
         'can_manage_video_chats': canManageVideoChats,
+        'can_post_stories': canPostStories,
+        'can_edit_stories': canEditStories,
+        'can_delete_stories': canDeleteStories,
         'is_anonymous': isAnonymous,
         '@type': constructor,
       };

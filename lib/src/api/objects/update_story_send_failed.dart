@@ -8,22 +8,18 @@ import '../tdapi.dart';
 class UpdateStorySendFailed extends Update {
   const UpdateStorySendFailed({
     required this.story,
-    this.error,
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
+    this.errorType,
   });
 
   /// [story] The failed to send story
   final Story story;
 
-  /// [error] The cause of the failure; may be null if unknown
-  final CanSendStoryResult? error;
+  /// [error] The cause of the story sending failure
+  final TdError error;
 
-  /// [errorCode] An error code
-  final int errorCode;
-
-  /// [errorMessage] Error message
-  final String errorMessage;
+  /// [errorType] Type of the error; may be null if unknown
+  final CanSendStoryResult? errorType;
 
   static const String constructor = 'updateStorySendFailed';
 
@@ -34,10 +30,9 @@ class UpdateStorySendFailed extends Update {
 
     return UpdateStorySendFailed(
       story: Story.fromJson(json['story'] as Map<String, dynamic>?)!,
-      error:
-          CanSendStoryResult.fromJson(json['error'] as Map<String, dynamic>?),
-      errorCode: json['error_code'] as int,
-      errorMessage: json['error_message'] as String,
+      error: TdError.fromJson(json['error'] as Map<String, dynamic>?)!,
+      errorType: CanSendStoryResult.fromJson(
+          json['error_type'] as Map<String, dynamic>?),
     );
   }
 
@@ -47,9 +42,8 @@ class UpdateStorySendFailed extends Update {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'story': story.toJson(),
-        'error': error?.toJson(),
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
+        'error_type': errorType?.toJson(),
         '@type': constructor,
       };
 

@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns forwarded copies of a channel message to different public
-/// channels. For optimal performance, the number of returned messages is
-/// chosen by TDLib
+/// channels. Can be used only if message.can_get_statistics == true. For
+/// optimal performance, the number of returned messages is chosen by TDLib
 /// Returns [FoundMessages]
 @immutable
 class GetMessagePublicForwards extends TdFunction {

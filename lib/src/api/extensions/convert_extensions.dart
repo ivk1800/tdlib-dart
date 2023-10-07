@@ -224,10 +224,26 @@ extension ConvertExtensions on Map<String, dynamic> {
         return CallbackQueryPayloadDataWithPassword.fromJson(this);
       case 'callbackQueryPayloadGame':
         return CallbackQueryPayloadGame.fromJson(this);
+      case 'canBoostChatResult':
+        return CanBoostChatResult.fromJson(this);
+      case 'canBoostChatResultAlreadyBoosted':
+        return CanBoostChatResultAlreadyBoosted.fromJson(this);
+      case 'canBoostChatResultInvalidChat':
+        return CanBoostChatResultInvalidChat.fromJson(this);
+      case 'canBoostChatResultOk':
+        return CanBoostChatResultOk.fromJson(this);
+      case 'canBoostChatResultPremiumNeeded':
+        return CanBoostChatResultPremiumNeeded.fromJson(this);
+      case 'canBoostChatResultPremiumSubscriptionNeeded':
+        return CanBoostChatResultPremiumSubscriptionNeeded.fromJson(this);
+      case 'canBoostChatResultWaitNeeded':
+        return CanBoostChatResultWaitNeeded.fromJson(this);
       case 'canSendStoryResult':
         return CanSendStoryResult.fromJson(this);
       case 'canSendStoryResultActiveStoryLimitExceeded':
         return CanSendStoryResultActiveStoryLimitExceeded.fromJson(this);
+      case 'canSendStoryResultBoostNeeded':
+        return CanSendStoryResultBoostNeeded.fromJson(this);
       case 'canSendStoryResultMonthlyLimitExceeded':
         return CanSendStoryResultMonthlyLimitExceeded.fromJson(this);
       case 'canSendStoryResultOk':
@@ -312,6 +328,14 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ChatAvailableReactionsSome.fromJson(this);
       case 'chatBackground':
         return ChatBackground.fromJson(this);
+      case 'chatBoost':
+        return ChatBoost.fromJson(this);
+      case 'chatBoostLink':
+        return ChatBoostLink.fromJson(this);
+      case 'chatBoostLinkInfo':
+        return ChatBoostLinkInfo.fromJson(this);
+      case 'chatBoostStatus':
+        return ChatBoostStatus.fromJson(this);
       case 'chatEvent':
         return ChatEvent.fromJson(this);
       case 'chatEventAction':
@@ -752,6 +776,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return ForumTopicInfo.fromJson(this);
       case 'forumTopics':
         return ForumTopics.fromJson(this);
+      case 'foundChatBoosts':
+        return FoundChatBoosts.fromJson(this);
       case 'foundChatMessages':
         return FoundChatMessages.fromJson(this);
       case 'foundFileDownloads':
@@ -1032,6 +1058,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return InputStoryAreaTypeLocation.fromJson(this);
       case 'inputStoryAreaTypePreviousVenue':
         return InputStoryAreaTypePreviousVenue.fromJson(this);
+      case 'inputStoryAreaTypeSuggestedReaction':
+        return InputStoryAreaTypeSuggestedReaction.fromJson(this);
       case 'inputStoryAreas':
         return InputStoryAreas.fromJson(this);
       case 'inputStoryContent':
@@ -1060,6 +1088,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return InternalLinkTypeBotStartInGroup.fromJson(this);
       case 'internalLinkTypeChangePhoneNumber':
         return InternalLinkTypeChangePhoneNumber.fromJson(this);
+      case 'internalLinkTypeChatBoost':
+        return InternalLinkTypeChatBoost.fromJson(this);
       case 'internalLinkTypeChatFolderInvite':
         return InternalLinkTypeChatFolderInvite.fromJson(this);
       case 'internalLinkTypeChatFolderSettings':
@@ -1775,6 +1805,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return PremiumFeatureAnimatedProfilePhoto.fromJson(this);
       case 'premiumFeatureAppIcons':
         return PremiumFeatureAppIcons.fromJson(this);
+      case 'premiumFeatureChatBoost':
+        return PremiumFeatureChatBoost.fromJson(this);
       case 'premiumFeatureCustomEmoji':
         return PremiumFeatureCustomEmoji.fromJson(this);
       case 'premiumFeatureDisabledAds':
@@ -1837,6 +1869,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return PremiumLimitTypeShareableChatFolderCount.fromJson(this);
       case 'premiumLimitTypeStoryCaptionLength':
         return PremiumLimitTypeStoryCaptionLength.fromJson(this);
+      case 'premiumLimitTypeStorySuggestedReactionAreaCount':
+        return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(this);
       case 'premiumLimitTypeSupergroupCount':
         return PremiumLimitTypeSupergroupCount.fromJson(this);
       case 'premiumLimitTypeWeeklySentStoryCount':
@@ -2233,6 +2267,8 @@ extension ConvertExtensions on Map<String, dynamic> {
         return StoryAreaType.fromJson(this);
       case 'storyAreaTypeLocation':
         return StoryAreaTypeLocation.fromJson(this);
+      case 'storyAreaTypeSuggestedReaction':
+        return StoryAreaTypeSuggestedReaction.fromJson(this);
       case 'storyAreaTypeVenue':
         return StoryAreaTypeVenue.fromJson(this);
       case 'storyContent':

@@ -2,26 +2,26 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks whether the current user can send a story on behalf of a chat;
-/// requires can_post_stories rights for channel chats
-/// Returns [CanSendStoryResult]
+/// Returns information about a link to boost a chat. Can be called for any
+/// internal link of the type internalLinkTypeChatBoost
+/// Returns [ChatBoostLinkInfo]
 @immutable
-class CanSendStory extends TdFunction {
-  const CanSendStory({
-    required this.chatId,
+class GetChatBoostLinkInfo extends TdFunction {
+  const GetChatBoostLinkInfo({
+    required this.url,
   });
 
-  /// [chatId] Chat identifier
-  final int chatId;
+  /// [url] The link to boost a chat
+  final String url;
 
-  static const String constructor = 'canSendStory';
+  static const String constructor = 'getChatBoostLinkInfo';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
+        'url': url,
         '@type': constructor,
       };
 

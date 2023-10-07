@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns an invoice payment form. This method must be called when the user
-/// presses inlineKeyboardButtonBuy
+/// presses inline button of the type inlineKeyboardButtonTypeBuy
 /// Returns [PaymentForm]
 @immutable
 class GetPaymentForm extends TdFunction {

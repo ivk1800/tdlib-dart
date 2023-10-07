@@ -14,8 +14,11 @@ class Story extends TdObject {
     required this.isEdited,
     required this.isPinned,
     required this.isVisibleOnlyForSelf,
+    required this.canBeDeleted,
+    required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
+    required this.canToggleIsPinned,
     required this.canGetViewers,
     required this.hasExpiredViewers,
     this.interactionInfo,
@@ -52,6 +55,12 @@ class Story extends TdObject {
   /// user
   final bool isVisibleOnlyForSelf;
 
+  /// [canBeDeleted] True, if the story can be deleted
+  final bool canBeDeleted;
+
+  /// [canBeEdited] True, if the story can be edited
+  final bool canBeEdited;
+
   /// [canBeForwarded] True, if the story can be forwarded as a message.
   /// Otherwise, screenshots and saving of the story content must be also
   /// forbidden
@@ -60,6 +69,9 @@ class Story extends TdObject {
   /// [canBeReplied] True, if the story can be replied in the chat with the
   /// story sender
   final bool canBeReplied;
+
+  /// [canToggleIsPinned] True, if the story's is_pinned value can be changed
+  final bool canToggleIsPinned;
 
   /// [canGetViewers] True, if users viewed the story can be received through
   /// getStoryViewers
@@ -106,8 +118,11 @@ class Story extends TdObject {
       isEdited: json['is_edited'] as bool,
       isPinned: json['is_pinned'] as bool,
       isVisibleOnlyForSelf: json['is_visible_only_for_self'] as bool,
+      canBeDeleted: json['can_be_deleted'] as bool,
+      canBeEdited: json['can_be_edited'] as bool,
       canBeForwarded: json['can_be_forwarded'] as bool,
       canBeReplied: json['can_be_replied'] as bool,
+      canToggleIsPinned: json['can_toggle_is_pinned'] as bool,
       canGetViewers: json['can_get_viewers'] as bool,
       hasExpiredViewers: json['has_expired_viewers'] as bool,
       interactionInfo: StoryInteractionInfo.fromJson(
@@ -139,8 +154,11 @@ class Story extends TdObject {
         'is_edited': isEdited,
         'is_pinned': isPinned,
         'is_visible_only_for_self': isVisibleOnlyForSelf,
+        'can_be_deleted': canBeDeleted,
+        'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied': canBeReplied,
+        'can_toggle_is_pinned': canToggleIsPinned,
         'can_get_viewers': canGetViewers,
         'has_expired_viewers': hasExpiredViewers,
         'interaction_info': interactionInfo?.toJson(),

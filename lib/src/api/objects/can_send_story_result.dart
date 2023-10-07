@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents result of checking whether the current user can send a story
+/// Represents result of checking whether the current user can send a story in
+/// the specific chat
 @immutable
 abstract class CanSendStoryResult extends TdObject {
   const CanSendStoryResult();
@@ -11,6 +12,7 @@ abstract class CanSendStoryResult extends TdObject {
 
   /// Inherited by:
   /// [CanSendStoryResultActiveStoryLimitExceeded]
+  /// [CanSendStoryResultBoostNeeded]
   /// [CanSendStoryResultMonthlyLimitExceeded]
   /// [CanSendStoryResultOk]
   /// [CanSendStoryResultPremiumNeeded]
@@ -23,6 +25,8 @@ abstract class CanSendStoryResult extends TdObject {
     switch (json['@type']) {
       case CanSendStoryResultActiveStoryLimitExceeded.constructor:
         return CanSendStoryResultActiveStoryLimitExceeded.fromJson(json);
+      case CanSendStoryResultBoostNeeded.constructor:
+        return CanSendStoryResultBoostNeeded.fromJson(json);
       case CanSendStoryResultMonthlyLimitExceeded.constructor:
         return CanSendStoryResultMonthlyLimitExceeded.fromJson(json);
       case CanSendStoryResultOk.constructor:

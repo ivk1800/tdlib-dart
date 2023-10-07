@@ -40,7 +40,7 @@ class CreateNewSupergroupChat extends TdFunction {
   final int messageAutoDeleteTime;
 
   /// [forImport] Pass true to create a supergroup for importing messages using
-  /// importMessage
+  /// importMessages
   final bool forImport;
 
   static const String constructor = 'createNewSupergroupChat';

@@ -11,6 +11,7 @@ class Invoice extends TdObject {
     required this.maxTipAmount,
     required this.suggestedTipAmounts,
     required this.recurringPaymentTermsOfServiceUrl,
+    required this.termsOfServiceUrl,
     required this.isTest,
     required this.needName,
     required this.needPhoneNumber,
@@ -41,6 +42,11 @@ class Invoice extends TdObject {
   /// recurring payments and the user must accept the terms of service before
   /// allowed to pay
   final String recurringPaymentTermsOfServiceUrl;
+
+  /// [termsOfServiceUrl] An HTTP URL with terms of service for non-recurring
+  /// payments. If non-empty, then the user must accept the terms of service
+  /// before allowed to pay
+  final String termsOfServiceUrl;
 
   /// [isTest] True, if the payment is a test payment
   final bool isTest;
@@ -89,6 +95,7 @@ class Invoice extends TdObject {
               .toList()),
       recurringPaymentTermsOfServiceUrl:
           json['recurring_payment_terms_of_service_url'] as String,
+      termsOfServiceUrl: json['terms_of_service_url'] as String,
       isTest: json['is_test'] as bool,
       needName: json['need_name'] as bool,
       needPhoneNumber: json['need_phone_number'] as bool,
@@ -113,6 +120,7 @@ class Invoice extends TdObject {
             suggestedTipAmounts.map((item) => item).toList(),
         'recurring_payment_terms_of_service_url':
             recurringPaymentTermsOfServiceUrl,
+        'terms_of_service_url': termsOfServiceUrl,
         'is_test': isTest,
         'need_name': needName,
         'need_phone_number': needPhoneNumber,

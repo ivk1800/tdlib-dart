@@ -10,8 +10,8 @@ import '../tdapi.dart';
 /// disclaimer about Mini Apps being a third-party apps instead of the dialog
 /// and ask the user to accept their Terms of service. If the user accept the
 /// terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to
-/// add the bot. Then call getWebAppLinkUrl and open the returned URL as a Web
-/// App
+/// add the bot. Then, call getWebAppLinkUrl and open the returned URL as a
+/// Web App
 @immutable
 class InternalLinkTypeWebApp extends InternalLinkType {
   const InternalLinkTypeWebApp({

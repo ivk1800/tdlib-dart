@@ -2,21 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// User stories are displayed before stories of non-premium contacts and
-/// channels
+/// The maximum number of suggested reaction areas on a story
 @immutable
-class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
-  const PremiumStoryFeaturePriorityOrder();
+class PremiumLimitTypeStorySuggestedReactionAreaCount extends PremiumLimitType {
+  const PremiumLimitTypeStorySuggestedReactionAreaCount();
 
-  static const String constructor = 'premiumStoryFeaturePriorityOrder';
+  static const String constructor =
+      'premiumLimitTypeStorySuggestedReactionAreaCount';
 
-  static PremiumStoryFeaturePriorityOrder? fromJson(
+  static PremiumLimitTypeStorySuggestedReactionAreaCount? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const PremiumStoryFeaturePriorityOrder();
+    return const PremiumLimitTypeStorySuggestedReactionAreaCount();
   }
 
   @override

@@ -2,21 +2,20 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// User stories are displayed before stories of non-premium contacts and
-/// channels
+/// The chat is already boosted by the user
 @immutable
-class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
-  const PremiumStoryFeaturePriorityOrder();
+class CanBoostChatResultAlreadyBoosted extends CanBoostChatResult {
+  const CanBoostChatResultAlreadyBoosted();
 
-  static const String constructor = 'premiumStoryFeaturePriorityOrder';
+  static const String constructor = 'canBoostChatResultAlreadyBoosted';
 
-  static PremiumStoryFeaturePriorityOrder? fromJson(
+  static CanBoostChatResultAlreadyBoosted? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const PremiumStoryFeaturePriorityOrder();
+    return const CanBoostChatResultAlreadyBoosted();
   }
 
   @override

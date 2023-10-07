@@ -24,6 +24,7 @@ abstract class PremiumLimitType extends TdObject {
   /// [PremiumLimitTypeSavedAnimationCount]
   /// [PremiumLimitTypeShareableChatFolderCount]
   /// [PremiumLimitTypeStoryCaptionLength]
+  /// [PremiumLimitTypeStorySuggestedReactionAreaCount]
   /// [PremiumLimitTypeSupergroupCount]
   /// [PremiumLimitTypeWeeklySentStoryCount]
   static PremiumLimitType? fromJson(Map<String, dynamic>? json) {
@@ -60,6 +61,8 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeShareableChatFolderCount.fromJson(json);
       case PremiumLimitTypeStoryCaptionLength.constructor:
         return PremiumLimitTypeStoryCaptionLength.fromJson(json);
+      case PremiumLimitTypeStorySuggestedReactionAreaCount.constructor:
+        return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(json);
       case PremiumLimitTypeSupergroupCount.constructor:
         return PremiumLimitTypeSupergroupCount.fromJson(json);
       case PremiumLimitTypeWeeklySentStoryCount.constructor:

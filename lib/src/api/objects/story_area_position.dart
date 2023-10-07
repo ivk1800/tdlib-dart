@@ -25,8 +25,8 @@ class StoryAreaPosition extends TdObject {
   /// width
   final double widthPercentage;
 
-  /// [heightPercentage] The ordinate of the rectangle's center, as a percentage
-  /// of the media height
+  /// [heightPercentage] The height of the rectangle, as a percentage of the
+  /// media height
   final double heightPercentage;
 
   /// [rotationAngle] Clockwise rotation angle of the rectangle, in degrees;

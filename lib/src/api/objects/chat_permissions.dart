@@ -32,10 +32,10 @@ class ChatPermissions extends TdObject {
   /// [canSendDocuments] True, if the user can send documents
   final bool canSendDocuments;
 
-  /// [canSendPhotos] True, if the user can send audio photos
+  /// [canSendPhotos] True, if the user can send photos
   final bool canSendPhotos;
 
-  /// [canSendVideos] True, if the user can send audio videos
+  /// [canSendVideos] True, if the user can send videos
   final bool canSendVideos;
 
   /// [canSendVideoNotes] True, if the user can send video notes

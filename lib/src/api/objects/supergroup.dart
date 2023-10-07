@@ -29,6 +29,8 @@ class Supergroup extends TdObject {
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
+    required this.hasActiveStories,
+    required this.hasUnreadActiveStories,
   });
 
   /// [id] Supergroup or channel identifier
@@ -104,6 +106,14 @@ class Supergroup extends TdObject {
   /// account
   final bool isFake;
 
+  /// [hasActiveStories] True, if the channel has non-expired stories available
+  /// to the current user
+  final bool hasActiveStories;
+
+  /// [hasUnreadActiveStories] True, if the channel has unread non-expired
+  /// stories available to the current user
+  final bool hasUnreadActiveStories;
+
   static const String constructor = 'supergroup';
 
   static Supergroup? fromJson(Map<String, dynamic>? json) {
@@ -131,6 +141,8 @@ class Supergroup extends TdObject {
       restrictionReason: json['restriction_reason'] as String,
       isScam: json['is_scam'] as bool,
       isFake: json['is_fake'] as bool,
+      hasActiveStories: json['has_active_stories'] as bool,
+      hasUnreadActiveStories: json['has_unread_active_stories'] as bool,
     );
   }
 
@@ -157,6 +169,8 @@ class Supergroup extends TdObject {
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,
+        'has_active_stories': hasActiveStories,
+        'has_unread_active_stories': hasUnreadActiveStories,
         '@type': constructor,
       };
 

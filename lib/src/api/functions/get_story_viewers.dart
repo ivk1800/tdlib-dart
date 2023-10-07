@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns viewers of a story. The method can be called if
-/// story.can_get_viewers == true
+/// Returns viewers of a story. The method can be called only for stories
+/// posted on behalf of the current user
 /// Returns [StoryViewers]
 @immutable
 class GetStoryViewers extends TdFunction {

@@ -2,21 +2,22 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// User stories are displayed before stories of non-premium contacts and
-/// channels
+/// The user must have Telegram Premium subscription instead of a gifted
+/// Telegram Premium
 @immutable
-class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
-  const PremiumStoryFeaturePriorityOrder();
+class CanBoostChatResultPremiumSubscriptionNeeded extends CanBoostChatResult {
+  const CanBoostChatResultPremiumSubscriptionNeeded();
 
-  static const String constructor = 'premiumStoryFeaturePriorityOrder';
+  static const String constructor =
+      'canBoostChatResultPremiumSubscriptionNeeded';
 
-  static PremiumStoryFeaturePriorityOrder? fromJson(
+  static CanBoostChatResultPremiumSubscriptionNeeded? fromJson(
       Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
-    return const PremiumStoryFeaturePriorityOrder();
+    return const CanBoostChatResultPremiumSubscriptionNeeded();
   }
 
   @override

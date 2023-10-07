@@ -2,11 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sends a new story. Returns a temporary story
+/// Sends a new story to a chat; requires can_post_stories rights for channel
+/// chats. Returns a temporary story
 /// Returns [Story]
 @immutable
 class SendStory extends TdFunction {
   const SendStory({
+    required this.chatId,
     required this.content,
     this.areas,
     this.caption,
@@ -15,6 +17,9 @@ class SendStory extends TdFunction {
     required this.isPinned,
     required this.protectContent,
   });
+
+  /// [chatId] Identifier of the chat that will post the story
+  final int chatId;
 
   /// [content] Content of the story
   final InputStoryContent content;
@@ -49,6 +54,7 @@ class SendStory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
         'content': content.toJson(),
         'areas': areas?.toJson(),
         'caption': caption?.toJson(),

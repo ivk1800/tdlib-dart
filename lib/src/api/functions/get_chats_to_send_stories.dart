@@ -2,26 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks whether the current user can send a story on behalf of a chat;
-/// requires can_post_stories rights for channel chats
-/// Returns [CanSendStoryResult]
+/// Returns channel chats in which the current user has the right to post
+/// stories. The chats must be rechecked with canSendStory before actually
+/// trying to post a story there
+/// Returns [Chats]
 @immutable
-class CanSendStory extends TdFunction {
-  const CanSendStory({
-    required this.chatId,
-  });
+class GetChatsToSendStories extends TdFunction {
+  const GetChatsToSendStories();
 
-  /// [chatId] Chat identifier
-  final int chatId;
-
-  static const String constructor = 'canSendStory';
+  static const String constructor = 'getChatsToSendStories';
 
   @override
   String getConstructor() => constructor;
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
         '@type': constructor,
       };
 

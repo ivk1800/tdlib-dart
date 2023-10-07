@@ -31,8 +31,8 @@ class MessageLinkInfo extends TdObject {
   final Message message;
 
   /// [mediaTimestamp] Timestamp from which the video/audio/video note/voice
-  /// note playing must start, in seconds; 0 if not specified. The media can be
-  /// in the message content or in its web page preview
+  /// note/story playing must start, in seconds; 0 if not specified. The media
+  /// can be in the message content or in its web page preview
   final int mediaTimestamp;
 
   /// [forAlbum] True, if the whole media album to which the message belongs is

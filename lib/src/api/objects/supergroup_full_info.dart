@@ -24,6 +24,7 @@ class SupergroupFullInfo extends TdObject {
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.hasAggressiveAntiSpamEnabled,
+    required this.hasPinnedStories,
     required this.stickerSetId,
     this.location,
     this.inviteLink,
@@ -107,6 +108,9 @@ class SupergroupFullInfo extends TdObject {
   /// chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
+  /// [hasPinnedStories] True, if the channel has pinned stories
+  final bool hasPinnedStories;
+
   /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
   final int stickerSetId;
 
@@ -158,6 +162,7 @@ class SupergroupFullInfo extends TdObject {
       isAllHistoryAvailable: json['is_all_history_available'] as bool,
       hasAggressiveAntiSpamEnabled:
           json['has_aggressive_anti_spam_enabled'] as bool,
+      hasPinnedStories: json['has_pinned_stories'] as bool,
       stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
       location:
           ChatLocation.fromJson(json['location'] as Map<String, dynamic>?),
@@ -195,6 +200,7 @@ class SupergroupFullInfo extends TdObject {
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+        'has_pinned_stories': hasPinnedStories,
         'sticker_set_id': stickerSetId.toString(),
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),

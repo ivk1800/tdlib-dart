@@ -2,16 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes content and caption of a previously sent story
+/// Changes content and caption of a story. Can be called only if
+/// story.can_be_edited == true
 /// Returns [Ok]
 @immutable
 class EditStory extends TdFunction {
   const EditStory({
+    required this.storySenderChatId,
     required this.storyId,
     this.content,
     this.areas,
     this.caption,
   });
+
+  /// [storySenderChatId] Identifier of the chat that posted the story
+  final int storySenderChatId;
 
   /// [storyId] Identifier of the story to edit
   final int storyId;
@@ -34,6 +39,7 @@ class EditStory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
         'content': content?.toJson(),
         'areas': areas?.toJson(),

@@ -2,19 +2,18 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks whether the current user can send a story on behalf of a chat;
-/// requires can_post_stories rights for channel chats
-/// Returns [CanSendStoryResult]
+/// Returns the current boost status for a channel chat
+/// Returns [ChatBoostStatus]
 @immutable
-class CanSendStory extends TdFunction {
-  const CanSendStory({
+class GetChatBoostStatus extends TdFunction {
+  const GetChatBoostStatus({
     required this.chatId,
   });
 
-  /// [chatId] Chat identifier
+  /// [chatId] Identifier of the channel chat
   final int chatId;
 
-  static const String constructor = 'canSendStory';
+  static const String constructor = 'getChatBoostStatus';
 
   @override
   String getConstructor() => constructor;
