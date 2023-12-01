@@ -13,6 +13,8 @@ class User extends TdObject {
     required this.phoneNumber,
     required this.status,
     this.profilePhoto,
+    required this.accentColorId,
+    required this.backgroundCustomEmojiId,
     this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
@@ -51,6 +53,14 @@ class User extends TdObject {
 
   /// [profilePhoto] Profile photo of the user; may be null
   final ProfilePhoto? profilePhoto;
+
+  /// [accentColorId] Identifier of the accent color for name, and backgrounds
+  /// of profile photo, reply header, and link preview
+  final int accentColorId;
+
+  /// [backgroundCustomEmojiId] Identifier of a custom emoji to be shown on the
+  /// reply header background; 0 if none. For Telegram Premium users only
+  final int backgroundCustomEmojiId;
 
   /// [emojiStatus] Emoji status to be shown instead of the default Telegram
   /// Premium badge; may be null. For Telegram Premium users only
@@ -126,6 +136,9 @@ class User extends TdObject {
       status: UserStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
       profilePhoto:
           ProfilePhoto.fromJson(json['profile_photo'] as Map<String, dynamic>?),
+      accentColorId: json['accent_color_id'] as int,
+      backgroundCustomEmojiId:
+          int.tryParse(json['background_custom_emoji_id']) ?? 0,
       emojiStatus:
           EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
       isContact: json['is_contact'] as bool,
@@ -158,6 +171,8 @@ class User extends TdObject {
         'phone_number': phoneNumber,
         'status': status.toJson(),
         'profile_photo': profilePhoto?.toJson(),
+        'accent_color_id': accentColorId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
         'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,

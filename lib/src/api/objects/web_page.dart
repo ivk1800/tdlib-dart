@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a web page preview
+/// Describes a link preview
 @immutable
 class WebPage extends TdObject {
   const WebPage({
@@ -19,6 +19,10 @@ class WebPage extends TdObject {
     required this.embedHeight,
     required this.duration,
     required this.author,
+    required this.hasLargeMedia,
+    required this.showLargeMedia,
+    required this.skipConfirmation,
+    required this.showAboveText,
     this.animation,
     this.audio,
     this.document,
@@ -71,6 +75,23 @@ class WebPage extends TdObject {
 
   /// [author] Author of the content
   final String author;
+
+  /// [hasLargeMedia] True, if size of media in the preview can be changed
+  final bool hasLargeMedia;
+
+  /// [showLargeMedia] True, if large media preview must be shown; otherwise,
+  /// the media preview must be shown small and only the first frame must be
+  /// shown for videos
+  final bool showLargeMedia;
+
+  /// [skipConfirmation] True, if there is no need to show an ordinary open URL
+  /// confirmation, when opening the URL from the preview, because the URL is
+  /// shown in the message text in clear
+  final bool skipConfirmation;
+
+  /// [showAboveText] True, if the link preview must be shown above message
+  /// text; otherwise, the link preview must be shown below the message text
+  final bool showAboveText;
 
   /// [animation] Preview of the content as an animation, if available; may be
   /// null
@@ -130,6 +151,10 @@ class WebPage extends TdObject {
       embedHeight: json['embed_height'] as int,
       duration: json['duration'] as int,
       author: json['author'] as String,
+      hasLargeMedia: json['has_large_media'] as bool,
+      showLargeMedia: json['show_large_media'] as bool,
+      skipConfirmation: json['skip_confirmation'] as bool,
+      showAboveText: json['show_above_text'] as bool,
       animation: Animation.fromJson(json['animation'] as Map<String, dynamic>?),
       audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?),
       document: Document.fromJson(json['document'] as Map<String, dynamic>?),
@@ -163,6 +188,10 @@ class WebPage extends TdObject {
         'embed_height': embedHeight,
         'duration': duration,
         'author': author,
+        'has_large_media': hasLargeMedia,
+        'show_large_media': showLargeMedia,
+        'skip_confirmation': skipConfirmation,
+        'show_above_text': showAboveText,
         'animation': animation?.toJson(),
         'audio': audio?.toJson(),
         'document': document?.toJson(),

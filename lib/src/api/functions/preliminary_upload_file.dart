@@ -6,7 +6,7 @@ import '../tdapi.dart';
 /// which can be useful for uploading of being recorded voice and video notes.
 /// Updates updateFile will be used to notify about upload progress and
 /// successful completion of the upload. The file will not have a persistent
-/// remote identifier until it will be sent in a message
+/// remote identifier until it is sent in a message
 /// Returns [File]
 @immutable
 class PreliminaryUploadFile extends TdFunction {

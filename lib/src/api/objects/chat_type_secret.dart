@@ -13,7 +13,7 @@ class ChatTypeSecret extends ChatType {
   /// [secretChatId] Secret chat identifier
   final int secretChatId;
 
-  /// [userId] User identifier of the secret chat peer
+  /// [userId] User identifier of the other user in the secret chat
   final int userId;
 
   static const String constructor = 'chatTypeSecret';

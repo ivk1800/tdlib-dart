@@ -12,7 +12,6 @@ class AttachmentMenuBot extends TdObject {
     required this.supportsBotChats,
     required this.supportsGroupChats,
     required this.supportsChannelChats,
-    required this.supportsSettings,
     required this.requestWriteAccess,
     required this.isAdded,
     required this.showInAttachmentMenu,
@@ -54,10 +53,6 @@ class AttachmentMenuBot extends TdObject {
   /// [supportsChannelChats] True, if the bot supports opening from attachment
   /// menu in channel chats
   final bool supportsChannelChats;
-
-  /// [supportsSettings] True, if the bot supports "settings_button_pressed"
-  /// event
-  final bool supportsSettings;
 
   /// [requestWriteAccess] True, if the user must be asked for the permission to
   /// send messages to the bot
@@ -139,7 +134,6 @@ class AttachmentMenuBot extends TdObject {
       supportsBotChats: json['supports_bot_chats'] as bool,
       supportsGroupChats: json['supports_group_chats'] as bool,
       supportsChannelChats: json['supports_channel_chats'] as bool,
-      supportsSettings: json['supports_settings'] as bool,
       requestWriteAccess: json['request_write_access'] as bool,
       isAdded: json['is_added'] as bool,
       showInAttachmentMenu: json['show_in_attachment_menu'] as bool,
@@ -179,7 +173,6 @@ class AttachmentMenuBot extends TdObject {
         'supports_bot_chats': supportsBotChats,
         'supports_group_chats': supportsGroupChats,
         'supports_channel_chats': supportsChannelChats,
-        'supports_settings': supportsSettings,
         'request_write_access': requestWriteAccess,
         'is_added': isAdded,
         'show_in_attachment_menu': showInAttachmentMenu,

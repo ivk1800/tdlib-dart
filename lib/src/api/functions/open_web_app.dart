@@ -42,9 +42,9 @@ class OpenWebApp extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyTo] Identifier of the replied message or story for the message sent
-  /// by the Web App; pass null if none
-  final MessageReplyTo? replyTo;
+  /// [replyTo] Information about the message or story to be replied in the
+  /// message sent by the Web App; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   static const String constructor = 'openWebApp';
 

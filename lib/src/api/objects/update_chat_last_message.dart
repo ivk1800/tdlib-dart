@@ -2,9 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The last message of a chat was changed. If last_message is null, then the
-/// last message in the chat became unknown. Some new unknown messages might
-/// be added to the chat in this case
+/// The last message of a chat was changed
 @immutable
 class UpdateChatLastMessage extends Update {
   const UpdateChatLastMessage({
@@ -16,7 +14,9 @@ class UpdateChatLastMessage extends Update {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [lastMessage] The new last message in the chat; may be null
+  /// [lastMessage] The new last message in the chat; may be null if the last
+  /// message became unknown. While the last message is unknown, new messages
+  /// can be added to the chat without corresponding updateNewMessage update
   final Message? lastMessage;
 
   /// [positions] The new chat positions in the chat lists

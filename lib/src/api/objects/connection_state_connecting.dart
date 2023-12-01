@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Currently establishing a connection to the Telegram servers
+/// Establishing a connection to the Telegram servers
 @immutable
 class ConnectionStateConnecting extends ConnectionState {
   const ConnectionStateConnecting();

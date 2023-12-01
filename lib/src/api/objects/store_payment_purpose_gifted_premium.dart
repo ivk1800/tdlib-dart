@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user gifted Telegram Premium to another user
+/// The user gifting Telegram Premium to another user
 @immutable
 class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
   const StorePaymentPurposeGiftedPremium({
@@ -11,7 +11,7 @@ class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
     required this.amount,
   });
 
-  /// [userId] Identifier of the user for which Premium was gifted
+  /// [userId] Identifier of the user to which Premium was gifted
   final int userId;
 
   /// [currency] ISO 4217 currency code of the payment currency

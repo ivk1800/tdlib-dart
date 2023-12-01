@@ -25,8 +25,8 @@ class ChatNotificationSettings extends TdObject {
     required this.disableMentionNotifications,
   });
 
-  /// [useDefaultMuteFor] If true, mute_for is ignored and the value for the
-  /// relevant type of chat or the forum chat is used instead
+  /// [useDefaultMuteFor] If true, the value for the relevant type of chat or
+  /// the forum chat is used instead of mute_for
   final bool useDefaultMuteFor;
 
   /// [muteFor] Time left before notifications will be unmuted, in seconds
@@ -40,15 +40,15 @@ class ChatNotificationSettings extends TdObject {
   /// 0 if sound is disabled
   final int soundId;
 
-  /// [useDefaultShowPreview] If true, show_preview is ignored and the value for
-  /// the relevant type of chat or the forum chat is used instead
+  /// [useDefaultShowPreview] If true, the value for the relevant type of chat
+  /// or the forum chat is used instead of show_preview
   final bool useDefaultShowPreview;
 
   /// [showPreview] True, if message content must be displayed in notifications
   final bool showPreview;
 
-  /// [useDefaultMuteStories] If true, mute_stories is ignored and the value for
-  /// the relevant type of chat is used instead
+  /// [useDefaultMuteStories] If true, the value for the relevant type of chat
+  /// is used instead of mute_stories
   final bool useDefaultMuteStories;
 
   /// [muteStories] True, if story notifications are disabled for the chat
@@ -62,26 +62,26 @@ class ChatNotificationSettings extends TdObject {
   /// stories; 0 if sound is disabled
   final int storySoundId;
 
-  /// [useDefaultShowStorySender] If true, show_story_sender is ignored and the
-  /// value for the relevant type of chat is used instead
+  /// [useDefaultShowStorySender] If true, the value for the relevant type of
+  /// chat is used instead of show_story_sender
   final bool useDefaultShowStorySender;
 
   /// [showStorySender] True, if the sender of stories must be displayed in
   /// notifications
   final bool showStorySender;
 
-  /// [useDefaultDisablePinnedMessageNotifications] If true,
-  /// disable_pinned_message_notifications is ignored and the value for the
-  /// relevant type of chat or the forum chat is used instead
+  /// [useDefaultDisablePinnedMessageNotifications] If true, the value for the
+  /// relevant type of chat or the forum chat is used instead of
+  /// disable_pinned_message_notifications
   final bool useDefaultDisablePinnedMessageNotifications;
 
   /// [disablePinnedMessageNotifications] If true, notifications for incoming
   /// pinned messages will be created as for an ordinary unread message
   final bool disablePinnedMessageNotifications;
 
-  /// [useDefaultDisableMentionNotifications] If true,
-  /// disable_mention_notifications is ignored and the value for the relevant
-  /// type of chat or the forum chat is used instead
+  /// [useDefaultDisableMentionNotifications] If true, the value for the
+  /// relevant type of chat or the forum chat is used instead of
+  /// disable_mention_notifications
   final bool useDefaultDisableMentionNotifications;
 
   /// [disableMentionNotifications] If true, notifications for messages with

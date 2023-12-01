@@ -10,8 +10,10 @@ abstract class ChatEventAction extends TdObject {
   static const String constructor = 'chatEventAction';
 
   /// Inherited by:
+  /// [ChatEventAccentColorChanged]
   /// [ChatEventActiveUsernamesChanged]
   /// [ChatEventAvailableReactionsChanged]
+  /// [ChatEventBackgroundCustomEmojiChanged]
   /// [ChatEventDescriptionChanged]
   /// [ChatEventForumTopicCreated]
   /// [ChatEventForumTopicDeleted]
@@ -60,10 +62,14 @@ abstract class ChatEventAction extends TdObject {
     }
 
     switch (json['@type']) {
+      case ChatEventAccentColorChanged.constructor:
+        return ChatEventAccentColorChanged.fromJson(json);
       case ChatEventActiveUsernamesChanged.constructor:
         return ChatEventActiveUsernamesChanged.fromJson(json);
       case ChatEventAvailableReactionsChanged.constructor:
         return ChatEventAvailableReactionsChanged.fromJson(json);
+      case ChatEventBackgroundCustomEmojiChanged.constructor:
+        return ChatEventBackgroundCustomEmojiChanged.fromJson(json);
       case ChatEventDescriptionChanged.constructor:
         return ChatEventDescriptionChanged.fromJson(json);
       case ChatEventForumTopicCreated.constructor:

@@ -3,10 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// A request to send a message has reached the Telegram server. This doesn't
-/// mean that the message will be sent successfully or even that the send
-/// message request will be processed. This update will be sent only if the
-/// option "use_quick_ack" is set to true. This update may be sent multiple
-/// times for the same message
+/// mean that the message will be sent successfully. This update is sent only
+/// if the option "use_quick_ack" is set to true. This update may be sent
+/// multiple times for the same message
 @immutable
 class UpdateMessageSendAcknowledged extends Update {
   const UpdateMessageSendAcknowledged({

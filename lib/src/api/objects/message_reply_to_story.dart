@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a replied story
+/// Describes a story replied by a given message
 @immutable
 class MessageReplyToStory extends MessageReplyTo {
   const MessageReplyToStory({
@@ -10,11 +10,10 @@ class MessageReplyToStory extends MessageReplyTo {
     required this.storyId,
   });
 
-  /// [storySenderChatId] The identifier of the sender of the replied story.
-  /// Currently, stories can be replied only in the sender's chat
+  /// [storySenderChatId] The identifier of the sender of the story
   final int storySenderChatId;
 
-  /// [storyId] The identifier of the replied story
+  /// [storyId] The identifier of the story
   final int storyId;
 
   static const String constructor = 'messageReplyToStory';

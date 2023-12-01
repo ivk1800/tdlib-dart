@@ -21,8 +21,8 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   /// setChatNotificationSettings
   final bool canUnarchive;
 
-  /// [distance] If non-negative, the current user was found by the peer through
-  /// searchChatsNearby and this is the distance between the users
+  /// [distance] If non-negative, the current user was found by the other user
+  /// through searchChatsNearby and this is the distance between the users
   final int distance;
 
   static const String constructor = 'chatActionBarReportAddBlock';

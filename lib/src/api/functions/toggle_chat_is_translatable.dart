@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the translatable state of a chat; for Telegram Premium users only
+/// Changes the translatable state of a chat
 /// Returns [Ok]
 @immutable
 class ToggleChatIsTranslatable extends TdFunction {

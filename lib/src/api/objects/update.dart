@@ -10,6 +10,7 @@ abstract class Update extends TdObject {
   static const String constructor = 'update';
 
   /// Inherited by:
+  /// [UpdateAccentColors]
   /// [UpdateActiveEmojiReactions]
   /// [UpdateActiveNotifications]
   /// [UpdateAddChatMembersPrivacyForbidden]
@@ -21,12 +22,15 @@ abstract class Update extends TdObject {
   /// [UpdateBasicGroupFullInfo]
   /// [UpdateBasicGroup]
   /// [UpdateCall]
+  /// [UpdateChatAccentColor]
   /// [UpdateChatActionBar]
   /// [UpdateChatAction]
   /// [UpdateChatActiveStories]
   /// [UpdateChatAvailableReactions]
+  /// [UpdateChatBackgroundCustomEmoji]
   /// [UpdateChatBackground]
   /// [UpdateChatBlockList]
+  /// [UpdateChatBoost]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatDraftMessage]
   /// [UpdateChatFolders]
@@ -133,6 +137,8 @@ abstract class Update extends TdObject {
     }
 
     switch (json['@type']) {
+      case UpdateAccentColors.constructor:
+        return UpdateAccentColors.fromJson(json);
       case UpdateActiveEmojiReactions.constructor:
         return UpdateActiveEmojiReactions.fromJson(json);
       case UpdateActiveNotifications.constructor:
@@ -155,6 +161,8 @@ abstract class Update extends TdObject {
         return UpdateBasicGroupFullInfo.fromJson(json);
       case UpdateCall.constructor:
         return UpdateCall.fromJson(json);
+      case UpdateChatAccentColor.constructor:
+        return UpdateChatAccentColor.fromJson(json);
       case UpdateChatAction.constructor:
         return UpdateChatAction.fromJson(json);
       case UpdateChatActionBar.constructor:
@@ -165,8 +173,12 @@ abstract class Update extends TdObject {
         return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatBackground.constructor:
         return UpdateChatBackground.fromJson(json);
+      case UpdateChatBackgroundCustomEmoji.constructor:
+        return UpdateChatBackgroundCustomEmoji.fromJson(json);
       case UpdateChatBlockList.constructor:
         return UpdateChatBlockList.fromJson(json);
+      case UpdateChatBoost.constructor:
+        return UpdateChatBoost.fromJson(json);
       case UpdateChatDefaultDisableNotification.constructor:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatDraftMessage.constructor:

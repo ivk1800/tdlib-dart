@@ -53,6 +53,9 @@ abstract class MessageContent extends TdObject {
   /// [MessagePhoto]
   /// [MessagePinMessage]
   /// [MessagePoll]
+  /// [MessagePremiumGiftCode]
+  /// [MessagePremiumGiveawayCreated]
+  /// [MessagePremiumGiveaway]
   /// [MessageProximityAlertTriggered]
   /// [MessageScreenshotTaken]
   /// [MessageSticker]
@@ -71,7 +74,6 @@ abstract class MessageContent extends TdObject {
   /// [MessageVoiceNote]
   /// [MessageWebAppDataReceived]
   /// [MessageWebAppDataSent]
-  /// [MessageWebsiteConnected]
   static MessageContent? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -164,6 +166,12 @@ abstract class MessageContent extends TdObject {
         return MessagePinMessage.fromJson(json);
       case MessagePoll.constructor:
         return MessagePoll.fromJson(json);
+      case MessagePremiumGiftCode.constructor:
+        return MessagePremiumGiftCode.fromJson(json);
+      case MessagePremiumGiveaway.constructor:
+        return MessagePremiumGiveaway.fromJson(json);
+      case MessagePremiumGiveawayCreated.constructor:
+        return MessagePremiumGiveawayCreated.fromJson(json);
       case MessageProximityAlertTriggered.constructor:
         return MessageProximityAlertTriggered.fromJson(json);
       case MessageScreenshotTaken.constructor:
@@ -200,8 +208,6 @@ abstract class MessageContent extends TdObject {
         return MessageWebAppDataReceived.fromJson(json);
       case MessageWebAppDataSent.constructor:
         return MessageWebAppDataSent.fromJson(json);
-      case MessageWebsiteConnected.constructor:
-        return MessageWebsiteConnected.fromJson(json);
       default:
         return null;
     }

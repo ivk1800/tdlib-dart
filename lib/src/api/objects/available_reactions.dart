@@ -21,7 +21,7 @@ class AvailableReactions extends TdObject {
   /// [popularReactions] List of popular reactions
   final List<AvailableReaction> popularReactions;
 
-  /// [allowCustomEmoji] True, if custom emoji reactions could be added by
+  /// [allowCustomEmoji] True, if any custom emoji reaction can be added by
   /// Telegram Premium subscribers
   final bool allowCustomEmoji;
 

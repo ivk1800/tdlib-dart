@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Currently establishing a connection with a proxy server
+/// Establishing a connection with a proxy server
 @immutable
 class ConnectionStateConnectingToProxy extends ConnectionState {
   const ConnectionStateConnectingToProxy();

@@ -16,7 +16,7 @@ class Call extends TdObject {
   /// [id] Call identifier, not persistent
   final int id;
 
-  /// [userId] Peer user identifier
+  /// [userId] User identifier of the other call participant
   final int userId;
 
   /// [isOutgoing] True, if the call is outgoing

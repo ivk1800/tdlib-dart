@@ -11,6 +11,7 @@ class ChatInviteLinkInfo extends TdObject {
     required this.type,
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
@@ -37,6 +38,10 @@ class ChatInviteLinkInfo extends TdObject {
 
   /// [photo] Chat photo; may be null
   final ChatPhotoInfo? photo;
+
+  /// [accentColorId] Identifier of the accent color for chat title and
+  /// background of chat photo
+  final int accentColorId;
 
   /// param_[description] Chat description
   final String description;
@@ -77,6 +82,7 @@ class ChatInviteLinkInfo extends TdObject {
       type: InviteLinkChatType.fromJson(json['type'] as Map<String, dynamic>?)!,
       title: json['title'] as String,
       photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
+      accentColorId: json['accent_color_id'] as int,
       description: json['description'] as String,
       memberCount: json['member_count'] as int,
       memberUserIds: List<int>.from(
@@ -101,6 +107,7 @@ class ChatInviteLinkInfo extends TdObject {
         'type': type.toJson(),
         'title': title,
         'photo': photo?.toJson(),
+        'accent_color_id': accentColorId,
         'description': description,
         'member_count': memberCount,
         'member_user_ids': memberUserIds.map((item) => item).toList(),

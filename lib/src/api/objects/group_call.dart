@@ -41,7 +41,7 @@ class GroupCall extends TdObject {
   final int scheduledStartDate;
 
   /// [enabledStartNotification] True, if the group call is scheduled and the
-  /// current user will receive a notification when the group call will start
+  /// current user will receive a notification when the group call starts
   final bool enabledStartNotification;
 
   /// [isActive] True, if the call is active

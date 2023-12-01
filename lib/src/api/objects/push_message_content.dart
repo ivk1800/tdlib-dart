@@ -33,6 +33,8 @@ abstract class PushMessageContent extends TdObject {
   /// [PushMessageContentMessageForwards]
   /// [PushMessageContentPhoto]
   /// [PushMessageContentPoll]
+  /// [PushMessageContentPremiumGiftCode]
+  /// [PushMessageContentPremiumGiveaway]
   /// [PushMessageContentRecurringPayment]
   /// [PushMessageContentScreenshotTaken]
   /// [PushMessageContentSticker]
@@ -94,6 +96,10 @@ abstract class PushMessageContent extends TdObject {
         return PushMessageContentPhoto.fromJson(json);
       case PushMessageContentPoll.constructor:
         return PushMessageContentPoll.fromJson(json);
+      case PushMessageContentPremiumGiftCode.constructor:
+        return PushMessageContentPremiumGiftCode.fromJson(json);
+      case PushMessageContentPremiumGiveaway.constructor:
+        return PushMessageContentPremiumGiveaway.fromJson(json);
       case PushMessageContentRecurringPayment.constructor:
         return PushMessageContentRecurringPayment.fromJson(json);
       case PushMessageContentScreenshotTaken.constructor:

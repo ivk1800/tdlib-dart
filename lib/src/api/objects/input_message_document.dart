@@ -18,9 +18,9 @@ class InputMessageDocument extends InputMessageContent {
   /// [thumbnail] Document thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [disableContentTypeDetection] If true, automatic file type detection will
-  /// be disabled and the document will always be sent as file. Always true for
-  /// files sent to secret chats
+  /// [disableContentTypeDetection] True, if automatic file type detection is
+  /// disabled and the document must be sent as a file. Always true for files
+  /// sent to secret chats
   final bool disableContentTypeDetection;
 
   /// [caption] Document caption; pass null to use an empty caption;

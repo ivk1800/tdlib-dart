@@ -11,6 +11,7 @@ abstract class TextEntityType extends TdObject {
 
   /// Inherited by:
   /// [TextEntityTypeBankCardNumber]
+  /// [TextEntityTypeBlockQuote]
   /// [TextEntityTypeBold]
   /// [TextEntityTypeBotCommand]
   /// [TextEntityTypeCashtag]
@@ -38,6 +39,8 @@ abstract class TextEntityType extends TdObject {
     switch (json['@type']) {
       case TextEntityTypeBankCardNumber.constructor:
         return TextEntityTypeBankCardNumber.fromJson(json);
+      case TextEntityTypeBlockQuote.constructor:
+        return TextEntityTypeBlockQuote.fromJson(json);
       case TextEntityTypeBold.constructor:
         return TextEntityTypeBold.fromJson(json);
       case TextEntityTypeBotCommand.constructor:

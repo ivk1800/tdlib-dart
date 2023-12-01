@@ -7,19 +7,19 @@ import '../tdapi.dart';
 class InputMessageText extends InputMessageContent {
   const InputMessageText({
     required this.text,
-    required this.disableWebPagePreview,
+    this.linkPreviewOptions,
     required this.clearDraft,
   });
 
-  /// [text] Formatted text to be sent; 1-getOption("message_text_length_max")
+  /// [text] Formatted text to be sent; 0-getOption("message_text_length_max")
   /// characters. Only Bold, Italic, Underline, Strikethrough, Spoiler,
-  /// CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are
-  /// allowed to be specified manually
+  /// CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName
+  /// entities are allowed to be specified manually
   final FormattedText text;
 
-  /// [disableWebPagePreview] True, if rich web page previews for URLs in the
-  /// message text must be disabled
-  final bool disableWebPagePreview;
+  /// [linkPreviewOptions] Options to be used for generation of a link preview;
+  /// pass null to use default link preview options
+  final LinkPreviewOptions? linkPreviewOptions;
 
   /// [clearDraft] True, if a chat message draft must be deleted
   final bool clearDraft;
@@ -33,7 +33,8 @@ class InputMessageText extends InputMessageContent {
 
     return InputMessageText(
       text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
-      disableWebPagePreview: json['disable_web_page_preview'] as bool,
+      linkPreviewOptions: LinkPreviewOptions.fromJson(
+          json['link_preview_options'] as Map<String, dynamic>?),
       clearDraft: json['clear_draft'] as bool,
     );
   }
@@ -44,7 +45,7 @@ class InputMessageText extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'text': text.toJson(),
-        'disable_web_page_preview': disableWebPagePreview,
+        'link_preview_options': linkPreviewOptions?.toJson(),
         'clear_draft': clearDraft,
         '@type': constructor,
       };

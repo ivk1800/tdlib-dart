@@ -15,7 +15,8 @@ class InputMessageForwarded extends InputMessageContent {
   /// [fromChatId] Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// [messageId] Identifier of the message to forward
+  /// [messageId] Identifier of the message to forward. A message can be
+  /// forwarded only if message.can_be_forwarded
   final int messageId;
 
   /// [inGameShare] True, if a game message is being shared from a launched

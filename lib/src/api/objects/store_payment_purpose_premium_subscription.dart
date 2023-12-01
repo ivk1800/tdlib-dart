@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user subscribed to Telegram Premium
+/// The user subscribing to Telegram Premium
 @immutable
 class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   const StorePaymentPurposePremiumSubscription({

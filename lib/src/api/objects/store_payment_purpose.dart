@@ -11,6 +11,8 @@ abstract class StorePaymentPurpose extends TdObject {
 
   /// Inherited by:
   /// [StorePaymentPurposeGiftedPremium]
+  /// [StorePaymentPurposePremiumGiftCodes]
+  /// [StorePaymentPurposePremiumGiveaway]
   /// [StorePaymentPurposePremiumSubscription]
   static StorePaymentPurpose? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,6 +22,10 @@ abstract class StorePaymentPurpose extends TdObject {
     switch (json['@type']) {
       case StorePaymentPurposeGiftedPremium.constructor:
         return StorePaymentPurposeGiftedPremium.fromJson(json);
+      case StorePaymentPurposePremiumGiftCodes.constructor:
+        return StorePaymentPurposePremiumGiftCodes.fromJson(json);
+      case StorePaymentPurposePremiumGiveaway.constructor:
+        return StorePaymentPurposePremiumGiveaway.fromJson(json);
       case StorePaymentPurposePremiumSubscription.constructor:
         return StorePaymentPurposePremiumSubscription.fromJson(json);
       default:

@@ -13,8 +13,8 @@ class MessageForwardInfo extends TdObject {
     required this.fromMessageId,
   });
 
-  /// [origin] Origin of a forwarded message
-  final MessageForwardOrigin origin;
+  /// [origin] Origin of the forwarded message
+  final MessageOrigin origin;
 
   /// [date] Point in time (Unix timestamp) when the message was originally sent
   final int date;
@@ -43,8 +43,7 @@ class MessageForwardInfo extends TdObject {
     }
 
     return MessageForwardInfo(
-      origin: MessageForwardOrigin.fromJson(
-          json['origin'] as Map<String, dynamic>?)!,
+      origin: MessageOrigin.fromJson(json['origin'] as Map<String, dynamic>?)!,
       date: json['date'] as int,
       publicServiceAnnouncementType:
           json['public_service_announcement_type'] as String,

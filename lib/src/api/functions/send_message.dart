@@ -22,8 +22,9 @@ class SendMessage extends TdFunction {
   /// message will be sent
   final int messageThreadId;
 
-  /// [replyTo] Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// [replyTo] Information about the message or story to be replied; pass null
+  /// if none
+  final InputMessageReplyTo? replyTo;
 
   /// [options] Options to be used to send the message; pass null to use default
   /// options

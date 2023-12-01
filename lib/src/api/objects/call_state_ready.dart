@@ -14,7 +14,7 @@ class CallStateReady extends CallState {
     required this.allowP2p,
   });
 
-  /// [protocol] Call protocols supported by the peer
+  /// [protocol] Call protocols supported by the other call participant
   final CallProtocol protocol;
 
   /// [servers] List of available call servers

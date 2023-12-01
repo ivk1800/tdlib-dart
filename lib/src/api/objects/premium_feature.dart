@@ -10,6 +10,7 @@ abstract class PremiumFeature extends TdObject {
   static const String constructor = 'premiumFeature';
 
   /// Inherited by:
+  /// [PremiumFeatureAccentColor]
   /// [PremiumFeatureAdvancedChatManagement]
   /// [PremiumFeatureAnimatedProfilePhoto]
   /// [PremiumFeatureAppIcons]
@@ -33,6 +34,8 @@ abstract class PremiumFeature extends TdObject {
     }
 
     switch (json['@type']) {
+      case PremiumFeatureAccentColor.constructor:
+        return PremiumFeatureAccentColor.fromJson(json);
       case PremiumFeatureAdvancedChatManagement.constructor:
         return PremiumFeatureAdvancedChatManagement.fromJson(json);
       case PremiumFeatureAnimatedProfilePhoto.constructor:

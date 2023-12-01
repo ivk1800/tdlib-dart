@@ -2,20 +2,30 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a boost of a chat
+/// Describes a boost applied to a chat
 @immutable
 class ChatBoost extends TdObject {
   const ChatBoost({
-    required this.userId,
+    required this.id,
+    required this.count,
+    required this.source,
+    required this.startDate,
     required this.expirationDate,
   });
 
-  /// [userId] Identifier of a user that boosted the chat
-  final int userId;
+  /// [id] Unique identifier of the boost
+  final String id;
 
-  /// [expirationDate] Point in time (Unix timestamp) when the boost will
-  /// automatically expire if the user will not prolongate their Telegram
-  /// Premium subscription
+  /// [count] The number of identical boosts applied
+  final int count;
+
+  /// [source] Source of the boost
+  final ChatBoostSource source;
+
+  /// [startDate] Point in time (Unix timestamp) when the chat was boosted
+  final int startDate;
+
+  /// [expirationDate] Point in time (Unix timestamp) when the boost will expire
   final int expirationDate;
 
   static const String constructor = 'chatBoost';
@@ -26,7 +36,11 @@ class ChatBoost extends TdObject {
     }
 
     return ChatBoost(
-      userId: json['user_id'] as int,
+      id: json['id'] as String,
+      count: json['count'] as int,
+      source:
+          ChatBoostSource.fromJson(json['source'] as Map<String, dynamic>?)!,
+      startDate: json['start_date'] as int,
       expirationDate: json['expiration_date'] as int,
     );
   }
@@ -36,7 +50,10 @@ class ChatBoost extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
+        'id': id,
+        'count': count,
+        'source': source.toJson(),
+        'start_date': startDate,
         'expiration_date': expirationDate,
         '@type': constructor,
       };

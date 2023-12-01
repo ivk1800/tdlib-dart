@@ -16,6 +16,7 @@ class StickerSetInfo extends TdObject {
     required this.isOfficial,
     required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
     required this.isViewed,
     required this.size,
     required this.covers,
@@ -56,6 +57,10 @@ class StickerSetInfo extends TdObject {
   /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
 
+  /// [needsRepainting] True, if stickers in the sticker set are custom emoji
+  /// that must be repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
+
   /// [isViewed] True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -90,6 +95,7 @@ class StickerSetInfo extends TdObject {
           json['sticker_format'] as Map<String, dynamic>?)!,
       stickerType:
           StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      needsRepainting: json['needs_repainting'] as bool,
       isViewed: json['is_viewed'] as bool,
       size: json['size'] as int,
       covers: List<Sticker>.from(
@@ -115,6 +121,7 @@ class StickerSetInfo extends TdObject {
         'is_official': isOfficial,
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
+        'needs_repainting': needsRepainting,
         'is_viewed': isViewed,
         'size': size,
         'covers': covers.map((item) => item.toJson()).toList(),

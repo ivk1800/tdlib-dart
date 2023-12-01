@@ -15,6 +15,7 @@ class ResendMessages extends TdFunction {
   const ResendMessages({
     required this.chatId,
     required this.messageIds,
+    this.quote,
   });
 
   /// [chatId] Identifier of the chat to send messages
@@ -23,6 +24,11 @@ class ResendMessages extends TdFunction {
   /// [messageIds] Identifiers of the messages to resend. Message identifiers
   /// must be in a strictly increasing order
   final List<int> messageIds;
+
+  /// [quote] New manually chosen quote from the message to be replied; pass
+  /// null if none. Ignored if more than one message is re-sent, or if
+  /// messageSendingStateFailed.need_another_reply_quote == false
+  final FormattedText? quote;
 
   static const String constructor = 'resendMessages';
 
@@ -33,6 +39,7 @@ class ResendMessages extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_id': chatId,
         'message_ids': messageIds.map((item) => item).toList(),
+        'quote': quote?.toJson(),
         '@type': constructor,
       };
 

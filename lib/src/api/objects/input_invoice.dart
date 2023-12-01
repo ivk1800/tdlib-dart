@@ -12,6 +12,7 @@ abstract class InputInvoice extends TdObject {
   /// Inherited by:
   /// [InputInvoiceMessage]
   /// [InputInvoiceName]
+  /// [InputInvoiceTelegram]
   static InputInvoice? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -22,6 +23,8 @@ abstract class InputInvoice extends TdObject {
         return InputInvoiceMessage.fromJson(json);
       case InputInvoiceName.constructor:
         return InputInvoiceName.fromJson(json);
+      case InputInvoiceTelegram.constructor:
+        return InputInvoiceTelegram.fromJson(json);
       default:
         return null;
     }

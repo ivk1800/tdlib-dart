@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Currently waiting for the network to become available. Use setNetworkType
-/// to change the available network type
+/// Waiting for the network to become available. Use setNetworkType to change
+/// the available network type
 @immutable
 class ConnectionStateWaitingForNetwork extends ConnectionState {
   const ConnectionStateWaitingForNetwork();

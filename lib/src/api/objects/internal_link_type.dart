@@ -35,6 +35,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypePassportDataRequest]
   /// [InternalLinkTypePhoneNumberConfirmation]
   /// [InternalLinkTypePremiumFeatures]
+  /// [InternalLinkTypePremiumGiftCode]
   /// [InternalLinkTypePrivacyAndSecuritySettings]
   /// [InternalLinkTypeProxy]
   /// [InternalLinkTypePublicChat]
@@ -107,6 +108,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypePhoneNumberConfirmation.fromJson(json);
       case InternalLinkTypePremiumFeatures.constructor:
         return InternalLinkTypePremiumFeatures.fromJson(json);
+      case InternalLinkTypePremiumGiftCode.constructor:
+        return InternalLinkTypePremiumGiftCode.fromJson(json);
       case InternalLinkTypePrivacyAndSecuritySettings.constructor:
         return InternalLinkTypePrivacyAndSecuritySettings.fromJson(json);
       case InternalLinkTypeProxy.constructor:

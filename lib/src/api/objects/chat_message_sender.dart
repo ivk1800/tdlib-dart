@@ -10,7 +10,7 @@ class ChatMessageSender extends TdObject {
     required this.needsPremium,
   });
 
-  /// [sender] Available message senders
+  /// [sender] The message sender
   final MessageSender sender;
 
   /// [needsPremium] True, if Telegram Premium is needed to use the message

@@ -9,7 +9,8 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
     required this.error,
   });
 
-  /// [error] Recognition error
+  /// [error] Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is
+  /// returned when media duration is too big to be recognized
   final TdError error;
 
   static const String constructor = 'speechRecognitionResultError';

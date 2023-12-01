@@ -15,6 +15,7 @@ class Message extends TdObject {
     required this.isPinned,
     required this.canBeEdited,
     required this.canBeForwarded,
+    required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -31,6 +32,7 @@ class Message extends TdObject {
     required this.date,
     required this.editDate,
     this.forwardInfo,
+    this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
     this.replyTo,
@@ -76,6 +78,10 @@ class Message extends TdObject {
 
   /// [canBeForwarded] True, if the message can be forwarded
   final bool canBeForwarded;
+
+  /// [canBeRepliedInAnotherChat] True, if the message can be replied in another
+  /// chat or topic
+  final bool canBeRepliedInAnotherChat;
 
   /// [canBeSaved] True, if content of the message can be saved locally or
   /// copied
@@ -139,6 +145,10 @@ class Message extends TdObject {
   /// none or unknown
   final MessageForwardInfo? forwardInfo;
 
+  /// [importInfo] Information about the initial message for messages created
+  /// with importMessages; may be null if the message isn't imported
+  final MessageImportInfo? importInfo;
+
   /// [interactionInfo] Information about interactions with the message; may be
   /// null if none
   final MessageInteractionInfo? interactionInfo;
@@ -158,7 +168,7 @@ class Message extends TdObject {
   final MessageSelfDestructType? selfDestructType;
 
   /// [selfDestructIn] Time left before the message self-destruct timer expires,
-  /// in seconds; 0 if self-desctruction isn't scheduled yet
+  /// in seconds; 0 if self-destruction isn't scheduled yet
   final double selfDestructIn;
 
   /// [autoDeleteIn] Time left before the message will be automatically deleted
@@ -207,6 +217,7 @@ class Message extends TdObject {
       isPinned: json['is_pinned'] as bool,
       canBeEdited: json['can_be_edited'] as bool,
       canBeForwarded: json['can_be_forwarded'] as bool,
+      canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'] as bool,
       canBeSaved: json['can_be_saved'] as bool,
       canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
       canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
@@ -224,6 +235,8 @@ class Message extends TdObject {
       editDate: json['edit_date'] as int,
       forwardInfo: MessageForwardInfo.fromJson(
           json['forward_info'] as Map<String, dynamic>?),
+      importInfo: MessageImportInfo.fromJson(
+          json['import_info'] as Map<String, dynamic>?),
       interactionInfo: MessageInteractionInfo.fromJson(
           json['interaction_info'] as Map<String, dynamic>?),
       unreadReactions: List<UnreadReaction>.from(
@@ -262,6 +275,7 @@ class Message extends TdObject {
         'is_pinned': isPinned,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
+        'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
         'can_be_saved': canBeSaved,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -278,6 +292,7 @@ class Message extends TdObject {
         'date': date,
         'edit_date': editDate,
         'forward_info': forwardInfo?.toJson(),
+        'import_info': importInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions':
             unreadReactions.map((item) => item.toJson()).toList(),

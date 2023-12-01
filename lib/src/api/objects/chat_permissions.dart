@@ -23,7 +23,7 @@ class ChatPermissions extends TdObject {
   });
 
   /// [canSendBasicMessages] True, if the user can send text messages, contacts,
-  /// invoices, locations, and venues
+  /// giveaways, invoices, locations, and venues
   final bool canSendBasicMessages;
 
   /// [canSendAudios] True, if the user can send music files

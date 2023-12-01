@@ -16,7 +16,6 @@ class ForwardMessages extends TdFunction {
     this.options,
     required this.sendCopy,
     required this.removeCaption,
-    required this.onlyPreview,
   });
 
   /// [chatId] Identifier of the chat to which to forward messages
@@ -31,7 +30,8 @@ class ForwardMessages extends TdFunction {
 
   /// [messageIds] Identifiers of the messages to forward. Message identifiers
   /// must be in a strictly increasing order. At most 100 messages can be
-  /// forwarded simultaneously
+  /// forwarded simultaneously. A message can be forwarded only if
+  /// message.can_be_forwarded
   final List<int> messageIds;
 
   /// [options] Options to be used to send the messages; pass null to use
@@ -47,10 +47,6 @@ class ForwardMessages extends TdFunction {
   /// Ignored if send_copy is false
   final bool removeCaption;
 
-  /// [onlyPreview] Pass true to get fake messages instead of actually
-  /// forwarding them
-  final bool onlyPreview;
-
   static const String constructor = 'forwardMessages';
 
   @override
@@ -65,7 +61,6 @@ class ForwardMessages extends TdFunction {
         'options': options?.toJson(),
         'send_copy': sendCopy,
         'remove_caption': removeCaption,
-        'only_preview': onlyPreview,
         '@type': constructor,
       };
 

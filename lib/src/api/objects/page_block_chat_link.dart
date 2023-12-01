@@ -8,6 +8,7 @@ class PageBlockChatLink extends PageBlock {
   const PageBlockChatLink({
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.username,
   });
 
@@ -16,6 +17,10 @@ class PageBlockChatLink extends PageBlock {
 
   /// [photo] Chat photo; may be null
   final ChatPhotoInfo? photo;
+
+  /// [accentColorId] Identifier of the accent color for chat title and
+  /// background of chat photo
+  final int accentColorId;
 
   /// [username] Chat username by which all other information about the chat can
   /// be resolved
@@ -31,6 +36,7 @@ class PageBlockChatLink extends PageBlock {
     return PageBlockChatLink(
       title: json['title'] as String,
       photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
+      accentColorId: json['accent_color_id'] as int,
       username: json['username'] as String,
     );
   }
@@ -42,6 +48,7 @@ class PageBlockChatLink extends PageBlock {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
         'photo': photo?.toJson(),
+        'accent_color_id': accentColorId,
         'username': username,
         '@type': constructor,
       };

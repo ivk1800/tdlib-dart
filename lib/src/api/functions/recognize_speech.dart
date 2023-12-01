@@ -3,9 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Recognizes speech in a video note or a voice note message. The message
-/// must be successfully sent and must not be scheduled. May return an error
-/// with a message "MSG_VOICE_TOO_LONG" if media duration is too big to be
-/// recognized
+/// must be successfully sent and must not be scheduled
 /// Returns [Ok]
 @immutable
 class RecognizeSpeech extends TdFunction {

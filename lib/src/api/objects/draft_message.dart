@@ -6,13 +6,14 @@ import '../tdapi.dart';
 @immutable
 class DraftMessage extends TdObject {
   const DraftMessage({
-    required this.replyToMessageId,
+    this.replyTo,
     required this.date,
     required this.inputMessageText,
   });
 
-  /// [replyToMessageId] Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// [replyTo] Information about the message to be replied; must be of the type
+  /// inputMessageReplyToMessage; may be null if none
+  final InputMessageReplyTo? replyTo;
 
   /// [date] Point in time (Unix timestamp) when the draft was created
   final int date;
@@ -29,7 +30,8 @@ class DraftMessage extends TdObject {
     }
 
     return DraftMessage(
-      replyToMessageId: json['reply_to_message_id'] as int,
+      replyTo: InputMessageReplyTo.fromJson(
+          json['reply_to'] as Map<String, dynamic>?),
       date: json['date'] as int,
       inputMessageText: InputMessageContent.fromJson(
           json['input_message_text'] as Map<String, dynamic>?)!,
@@ -41,7 +43,7 @@ class DraftMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'date': date,
         'input_message_text': inputMessageText.toJson(),
         '@type': constructor,

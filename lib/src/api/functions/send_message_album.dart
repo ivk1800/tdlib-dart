@@ -15,7 +15,6 @@ class SendMessageAlbum extends TdFunction {
     this.replyTo,
     this.options,
     required this.inputMessageContents,
-    required this.onlyPreview,
   });
 
   /// [chatId] Target chat
@@ -25,8 +24,9 @@ class SendMessageAlbum extends TdFunction {
   /// messages will be sent
   final int messageThreadId;
 
-  /// [replyTo] Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// [replyTo] Information about the message or story to be replied; pass null
+  /// if none
+  final InputMessageReplyTo? replyTo;
 
   /// [options] Options to be used to send the messages; pass null to use
   /// default options
@@ -35,10 +35,6 @@ class SendMessageAlbum extends TdFunction {
   /// [inputMessageContents] Contents of messages to be sent. At most 10
   /// messages can be added to an album
   final List<InputMessageContent> inputMessageContents;
-
-  /// [onlyPreview] Pass true to get fake messages instead of actually sending
-  /// them
-  final bool onlyPreview;
 
   static const String constructor = 'sendMessageAlbum';
 
@@ -53,7 +49,6 @@ class SendMessageAlbum extends TdFunction {
         'options': options?.toJson(),
         'input_message_contents':
             inputMessageContents.map((item) => item.toJson()).toList(),
-        'only_preview': onlyPreview,
         '@type': constructor,
       };
 

@@ -12,6 +12,7 @@ class MessageSendOptions extends TdObject {
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.sendingId,
+    required this.onlyPreview,
   });
 
   /// [disableNotification] Pass true to disable notification for the message
@@ -39,6 +40,10 @@ class MessageSendOptions extends TdObject {
   /// and corresponding updateNewMessage updates
   final int sendingId;
 
+  /// [onlyPreview] Pass true to get a fake message instead of actually sending
+  /// them
+  final bool onlyPreview;
+
   static const String constructor = 'messageSendOptions';
 
   static MessageSendOptions? fromJson(Map<String, dynamic>? json) {
@@ -55,6 +60,7 @@ class MessageSendOptions extends TdObject {
       schedulingState: MessageSchedulingState.fromJson(
           json['scheduling_state'] as Map<String, dynamic>?),
       sendingId: json['sending_id'] as int,
+      onlyPreview: json['only_preview'] as bool,
     );
   }
 
@@ -70,6 +76,7 @@ class MessageSendOptions extends TdObject {
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
         'sending_id': sendingId,
+        'only_preview': onlyPreview,
         '@type': constructor,
       };
 

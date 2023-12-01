@@ -9,6 +9,7 @@ class MessageReaction extends TdObject {
     required this.type,
     required this.totalCount,
     required this.isChosen,
+    this.usedSenderId,
     required this.recentSenderIds,
   });
 
@@ -20,6 +21,10 @@ class MessageReaction extends TdObject {
 
   /// [isChosen] True, if the reaction is chosen by the current user
   final bool isChosen;
+
+  /// [usedSenderId] Identifier of the message sender used by the current user
+  /// to add the reaction; may be null if unknown or the reaction isn't chosen
+  final MessageSender? usedSenderId;
 
   /// [recentSenderIds] Identifiers of at most 3 recent message senders, added
   /// the reaction; available in private, basic group and supergroup chats
@@ -36,6 +41,8 @@ class MessageReaction extends TdObject {
       type: ReactionType.fromJson(json['type'] as Map<String, dynamic>?)!,
       totalCount: json['total_count'] as int,
       isChosen: json['is_chosen'] as bool,
+      usedSenderId: MessageSender.fromJson(
+          json['used_sender_id'] as Map<String, dynamic>?),
       recentSenderIds: List<MessageSender>.from(
           ((json['recent_sender_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => MessageSender.fromJson(item))
@@ -51,6 +58,7 @@ class MessageReaction extends TdObject {
         'type': type.toJson(),
         'total_count': totalCount,
         'is_chosen': isChosen,
+        'used_sender_id': usedSenderId?.toJson(),
         'recent_sender_ids':
             recentSenderIds.map((item) => item.toJson()).toList(),
         '@type': constructor,
