@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns an HTTPS link to boost the specified channel chat
+/// Returns an HTTPS link to boost the specified supergroup or channel chat
 /// Returns [ChatBoostLink]
 @immutable
 class GetChatBoostLink extends TdFunction {

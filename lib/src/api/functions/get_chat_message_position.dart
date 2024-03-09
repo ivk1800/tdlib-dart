@@ -13,6 +13,7 @@ class GetChatMessagePosition extends TdFunction {
     required this.messageId,
     required this.filter,
     required this.messageThreadId,
+    required this.savedMessagesTopicId,
   });
 
   /// [chatId] Identifier of the chat in which to find message position
@@ -30,6 +31,11 @@ class GetChatMessagePosition extends TdFunction {
   /// considered; supergroups only
   final int messageThreadId;
 
+  /// [savedMessagesTopicId] If not 0, only messages in the specified Saved
+  /// Messages topic will be considered; pass 0 to consider all relevant
+  /// messages, or for chats other than Saved Messages
+  final int savedMessagesTopicId;
+
   static const String constructor = 'getChatMessagePosition';
 
   @override
@@ -41,6 +47,7 @@ class GetChatMessagePosition extends TdFunction {
         'message_id': messageId,
         'filter': filter.toJson(),
         'message_thread_id': messageThreadId,
+        'saved_messages_topic_id': savedMessagesTopicId,
         '@type': constructor,
       };
 

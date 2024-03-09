@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Adds a reaction to a message. Use getMessageAvailableReactions to receive
-/// the list of available reactions for the message
+/// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to
+/// receive the list of available reactions for the message
 /// Returns [Ok]
 @immutable
 class AddMessageReaction extends TdFunction {
@@ -28,7 +28,7 @@ class AddMessageReaction extends TdFunction {
   final bool isBig;
 
   /// [updateRecentReactions] Pass true if the reaction needs to be added to
-  /// recent reactions
+  /// recent reactions; tags are never added to the list of recent reactions
   final bool updateRecentReactions;
 
   static const String constructor = 'addMessageReaction';

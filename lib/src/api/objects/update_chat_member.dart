@@ -21,7 +21,7 @@ class UpdateChatMember extends Update {
   /// [actorUserId] Identifier of the user, changing the rights
   final int actorUserId;
 
-  /// [date] Point in time (Unix timestamp) when the user rights was changed
+  /// [date] Point in time (Unix timestamp) when the user rights were changed
   final int date;
 
   /// [inviteLink] If user has joined the chat using an invite link, the invite

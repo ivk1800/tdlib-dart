@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a chat invite link. Call checkChatInviteLink with the given
-/// invite link to process the link
+/// invite link to process the link. If the link is valid and the user wants
+/// to join the chat, then call joinChatByInviteLink
 @immutable
 class InternalLinkTypeChatInvite extends InternalLinkType {
   const InternalLinkTypeChatInvite({

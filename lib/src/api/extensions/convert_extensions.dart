@@ -1,1462 +1,3122 @@
 import 'package:tdlib/td_api.dart';
 
 extension ConvertExtensions on Map<String, dynamic> {
-TdObject? toTdObject() {
-final String type = this['@type']!;
-switch (type) {
-case 'accentColor': return AccentColor.fromJson(this);
-case 'accountTtl': return AccountTtl.fromJson(this);
-case 'addedReaction': return AddedReaction.fromJson(this);
-case 'addedReactions': return AddedReactions.fromJson(this);
-case 'address': return Address.fromJson(this);
-case 'animatedChatPhoto': return AnimatedChatPhoto.fromJson(this);
-case 'animatedEmoji': return AnimatedEmoji.fromJson(this);
-case 'animation': return Animation.fromJson(this);
-case 'animations': return Animations.fromJson(this);
-case 'archiveChatListSettings': return ArchiveChatListSettings.fromJson(this);
-case 'attachmentMenuBot': return AttachmentMenuBot.fromJson(this);
-case 'attachmentMenuBotColor': return AttachmentMenuBotColor.fromJson(this);
-case 'audio': return Audio.fromJson(this);
-case 'authenticationCodeInfo': return AuthenticationCodeInfo.fromJson(this);
-case 'authenticationCodeType': return AuthenticationCodeType.fromJson(this);
-case 'authenticationCodeTypeCall': return AuthenticationCodeTypeCall.fromJson(this);
-case 'authenticationCodeTypeFirebaseAndroid': return AuthenticationCodeTypeFirebaseAndroid.fromJson(this);
-case 'authenticationCodeTypeFirebaseIos': return AuthenticationCodeTypeFirebaseIos.fromJson(this);
-case 'authenticationCodeTypeFlashCall': return AuthenticationCodeTypeFlashCall.fromJson(this);
-case 'authenticationCodeTypeFragment': return AuthenticationCodeTypeFragment.fromJson(this);
-case 'authenticationCodeTypeMissedCall': return AuthenticationCodeTypeMissedCall.fromJson(this);
-case 'authenticationCodeTypeSms': return AuthenticationCodeTypeSms.fromJson(this);
-case 'authenticationCodeTypeTelegramMessage': return AuthenticationCodeTypeTelegramMessage.fromJson(this);
-case 'authorizationState': return AuthorizationState.fromJson(this);
-case 'authorizationStateClosed': return AuthorizationStateClosed.fromJson(this);
-case 'authorizationStateClosing': return AuthorizationStateClosing.fromJson(this);
-case 'authorizationStateLoggingOut': return AuthorizationStateLoggingOut.fromJson(this);
-case 'authorizationStateReady': return AuthorizationStateReady.fromJson(this);
-case 'authorizationStateWaitCode': return AuthorizationStateWaitCode.fromJson(this);
-case 'authorizationStateWaitEmailAddress': return AuthorizationStateWaitEmailAddress.fromJson(this);
-case 'authorizationStateWaitEmailCode': return AuthorizationStateWaitEmailCode.fromJson(this);
-case 'authorizationStateWaitOtherDeviceConfirmation': return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(this);
-case 'authorizationStateWaitPassword': return AuthorizationStateWaitPassword.fromJson(this);
-case 'authorizationStateWaitPhoneNumber': return AuthorizationStateWaitPhoneNumber.fromJson(this);
-case 'authorizationStateWaitRegistration': return AuthorizationStateWaitRegistration.fromJson(this);
-case 'authorizationStateWaitTdlibParameters': return AuthorizationStateWaitTdlibParameters.fromJson(this);
-case 'autoDownloadSettings': return AutoDownloadSettings.fromJson(this);
-case 'autoDownloadSettingsPresets': return AutoDownloadSettingsPresets.fromJson(this);
-case 'autosaveSettings': return AutosaveSettings.fromJson(this);
-case 'autosaveSettingsException': return AutosaveSettingsException.fromJson(this);
-case 'autosaveSettingsScope': return AutosaveSettingsScope.fromJson(this);
-case 'autosaveSettingsScopeChannelChats': return AutosaveSettingsScopeChannelChats.fromJson(this);
-case 'autosaveSettingsScopeChat': return AutosaveSettingsScopeChat.fromJson(this);
-case 'autosaveSettingsScopeGroupChats': return AutosaveSettingsScopeGroupChats.fromJson(this);
-case 'autosaveSettingsScopePrivateChats': return AutosaveSettingsScopePrivateChats.fromJson(this);
-case 'availableReaction': return AvailableReaction.fromJson(this);
-case 'availableReactions': return AvailableReactions.fromJson(this);
-case 'background': return Background.fromJson(this);
-case 'backgroundFill': return BackgroundFill.fromJson(this);
-case 'backgroundFillFreeformGradient': return BackgroundFillFreeformGradient.fromJson(this);
-case 'backgroundFillGradient': return BackgroundFillGradient.fromJson(this);
-case 'backgroundFillSolid': return BackgroundFillSolid.fromJson(this);
-case 'backgroundType': return BackgroundType.fromJson(this);
-case 'backgroundTypeFill': return BackgroundTypeFill.fromJson(this);
-case 'backgroundTypePattern': return BackgroundTypePattern.fromJson(this);
-case 'backgroundTypeWallpaper': return BackgroundTypeWallpaper.fromJson(this);
-case 'backgrounds': return Backgrounds.fromJson(this);
-case 'bankCardActionOpenUrl': return BankCardActionOpenUrl.fromJson(this);
-case 'bankCardInfo': return BankCardInfo.fromJson(this);
-case 'basicGroup': return BasicGroup.fromJson(this);
-case 'basicGroupFullInfo': return BasicGroupFullInfo.fromJson(this);
-case 'blockList': return BlockList.fromJson(this);
-case 'blockListMain': return BlockListMain.fromJson(this);
-case 'blockListStories': return BlockListStories.fromJson(this);
-case 'botCommand': return BotCommand.fromJson(this);
-case 'botCommandScope': return BotCommandScope.fromJson(this);
-case 'botCommandScopeAllChatAdministrators': return BotCommandScopeAllChatAdministrators.fromJson(this);
-case 'botCommandScopeAllGroupChats': return BotCommandScopeAllGroupChats.fromJson(this);
-case 'botCommandScopeAllPrivateChats': return BotCommandScopeAllPrivateChats.fromJson(this);
-case 'botCommandScopeChat': return BotCommandScopeChat.fromJson(this);
-case 'botCommandScopeChatAdministrators': return BotCommandScopeChatAdministrators.fromJson(this);
-case 'botCommandScopeChatMember': return BotCommandScopeChatMember.fromJson(this);
-case 'botCommandScopeDefault': return BotCommandScopeDefault.fromJson(this);
-case 'botCommands': return BotCommands.fromJson(this);
-case 'botInfo': return BotInfo.fromJson(this);
-case 'botMenuButton': return BotMenuButton.fromJson(this);
-case 'botWriteAccessAllowReason': return BotWriteAccessAllowReason.fromJson(this);
-case 'botWriteAccessAllowReasonAcceptedRequest': return BotWriteAccessAllowReasonAcceptedRequest.fromJson(this);
-case 'botWriteAccessAllowReasonAddedToAttachmentMenu': return BotWriteAccessAllowReasonAddedToAttachmentMenu.fromJson(this);
-case 'botWriteAccessAllowReasonConnectedWebsite': return BotWriteAccessAllowReasonConnectedWebsite.fromJson(this);
-case 'botWriteAccessAllowReasonLaunchedWebApp': return BotWriteAccessAllowReasonLaunchedWebApp.fromJson(this);
-case 'call': return Call.fromJson(this);
-case 'callDiscardReason': return CallDiscardReason.fromJson(this);
-case 'callDiscardReasonDeclined': return CallDiscardReasonDeclined.fromJson(this);
-case 'callDiscardReasonDisconnected': return CallDiscardReasonDisconnected.fromJson(this);
-case 'callDiscardReasonEmpty': return CallDiscardReasonEmpty.fromJson(this);
-case 'callDiscardReasonHungUp': return CallDiscardReasonHungUp.fromJson(this);
-case 'callDiscardReasonMissed': return CallDiscardReasonMissed.fromJson(this);
-case 'callId': return CallId.fromJson(this);
-case 'callProblem': return CallProblem.fromJson(this);
-case 'callProblemDistortedSpeech': return CallProblemDistortedSpeech.fromJson(this);
-case 'callProblemDistortedVideo': return CallProblemDistortedVideo.fromJson(this);
-case 'callProblemDropped': return CallProblemDropped.fromJson(this);
-case 'callProblemEcho': return CallProblemEcho.fromJson(this);
-case 'callProblemInterruptions': return CallProblemInterruptions.fromJson(this);
-case 'callProblemNoise': return CallProblemNoise.fromJson(this);
-case 'callProblemPixelatedVideo': return CallProblemPixelatedVideo.fromJson(this);
-case 'callProblemSilentLocal': return CallProblemSilentLocal.fromJson(this);
-case 'callProblemSilentRemote': return CallProblemSilentRemote.fromJson(this);
-case 'callProtocol': return CallProtocol.fromJson(this);
-case 'callServer': return CallServer.fromJson(this);
-case 'callServerType': return CallServerType.fromJson(this);
-case 'callServerTypeTelegramReflector': return CallServerTypeTelegramReflector.fromJson(this);
-case 'callServerTypeWebrtc': return CallServerTypeWebrtc.fromJson(this);
-case 'callState': return CallState.fromJson(this);
-case 'callStateDiscarded': return CallStateDiscarded.fromJson(this);
-case 'callStateError': return CallStateError.fromJson(this);
-case 'callStateExchangingKeys': return CallStateExchangingKeys.fromJson(this);
-case 'callStateHangingUp': return CallStateHangingUp.fromJson(this);
-case 'callStatePending': return CallStatePending.fromJson(this);
-case 'callStateReady': return CallStateReady.fromJson(this);
-case 'callbackQueryAnswer': return CallbackQueryAnswer.fromJson(this);
-case 'callbackQueryPayload': return CallbackQueryPayload.fromJson(this);
-case 'callbackQueryPayloadData': return CallbackQueryPayloadData.fromJson(this);
-case 'callbackQueryPayloadDataWithPassword': return CallbackQueryPayloadDataWithPassword.fromJson(this);
-case 'callbackQueryPayloadGame': return CallbackQueryPayloadGame.fromJson(this);
-case 'canSendStoryResult': return CanSendStoryResult.fromJson(this);
-case 'canSendStoryResultActiveStoryLimitExceeded': return CanSendStoryResultActiveStoryLimitExceeded.fromJson(this);
-case 'canSendStoryResultBoostNeeded': return CanSendStoryResultBoostNeeded.fromJson(this);
-case 'canSendStoryResultMonthlyLimitExceeded': return CanSendStoryResultMonthlyLimitExceeded.fromJson(this);
-case 'canSendStoryResultOk': return CanSendStoryResultOk.fromJson(this);
-case 'canSendStoryResultPremiumNeeded': return CanSendStoryResultPremiumNeeded.fromJson(this);
-case 'canSendStoryResultWeeklyLimitExceeded': return CanSendStoryResultWeeklyLimitExceeded.fromJson(this);
-case 'canTransferOwnershipResult': return CanTransferOwnershipResult.fromJson(this);
-case 'canTransferOwnershipResultOk': return CanTransferOwnershipResultOk.fromJson(this);
-case 'canTransferOwnershipResultPasswordNeeded': return CanTransferOwnershipResultPasswordNeeded.fromJson(this);
-case 'canTransferOwnershipResultPasswordTooFresh': return CanTransferOwnershipResultPasswordTooFresh.fromJson(this);
-case 'canTransferOwnershipResultSessionTooFresh': return CanTransferOwnershipResultSessionTooFresh.fromJson(this);
-case 'chat': return Chat.fromJson(this);
-case 'chatAction': return ChatAction.fromJson(this);
-case 'chatActionBar': return ChatActionBar.fromJson(this);
-case 'chatActionBarAddContact': return ChatActionBarAddContact.fromJson(this);
-case 'chatActionBarInviteMembers': return ChatActionBarInviteMembers.fromJson(this);
-case 'chatActionBarJoinRequest': return ChatActionBarJoinRequest.fromJson(this);
-case 'chatActionBarReportAddBlock': return ChatActionBarReportAddBlock.fromJson(this);
-case 'chatActionBarReportSpam': return ChatActionBarReportSpam.fromJson(this);
-case 'chatActionBarReportUnrelatedLocation': return ChatActionBarReportUnrelatedLocation.fromJson(this);
-case 'chatActionBarSharePhoneNumber': return ChatActionBarSharePhoneNumber.fromJson(this);
-case 'chatActionCancel': return ChatActionCancel.fromJson(this);
-case 'chatActionChoosingContact': return ChatActionChoosingContact.fromJson(this);
-case 'chatActionChoosingLocation': return ChatActionChoosingLocation.fromJson(this);
-case 'chatActionChoosingSticker': return ChatActionChoosingSticker.fromJson(this);
-case 'chatActionRecordingVideo': return ChatActionRecordingVideo.fromJson(this);
-case 'chatActionRecordingVideoNote': return ChatActionRecordingVideoNote.fromJson(this);
-case 'chatActionRecordingVoiceNote': return ChatActionRecordingVoiceNote.fromJson(this);
-case 'chatActionStartPlayingGame': return ChatActionStartPlayingGame.fromJson(this);
-case 'chatActionTyping': return ChatActionTyping.fromJson(this);
-case 'chatActionUploadingDocument': return ChatActionUploadingDocument.fromJson(this);
-case 'chatActionUploadingPhoto': return ChatActionUploadingPhoto.fromJson(this);
-case 'chatActionUploadingVideo': return ChatActionUploadingVideo.fromJson(this);
-case 'chatActionUploadingVideoNote': return ChatActionUploadingVideoNote.fromJson(this);
-case 'chatActionUploadingVoiceNote': return ChatActionUploadingVoiceNote.fromJson(this);
-case 'chatActionWatchingAnimations': return ChatActionWatchingAnimations.fromJson(this);
-case 'chatActiveStories': return ChatActiveStories.fromJson(this);
-case 'chatAdministrator': return ChatAdministrator.fromJson(this);
-case 'chatAdministratorRights': return ChatAdministratorRights.fromJson(this);
-case 'chatAdministrators': return ChatAdministrators.fromJson(this);
-case 'chatAvailableReactions': return ChatAvailableReactions.fromJson(this);
-case 'chatAvailableReactionsAll': return ChatAvailableReactionsAll.fromJson(this);
-case 'chatAvailableReactionsSome': return ChatAvailableReactionsSome.fromJson(this);
-case 'chatBackground': return ChatBackground.fromJson(this);
-case 'chatBoost': return ChatBoost.fromJson(this);
-case 'chatBoostLink': return ChatBoostLink.fromJson(this);
-case 'chatBoostLinkInfo': return ChatBoostLinkInfo.fromJson(this);
-case 'chatBoostSlot': return ChatBoostSlot.fromJson(this);
-case 'chatBoostSlots': return ChatBoostSlots.fromJson(this);
-case 'chatBoostSource': return ChatBoostSource.fromJson(this);
-case 'chatBoostSourceGiftCode': return ChatBoostSourceGiftCode.fromJson(this);
-case 'chatBoostSourceGiveaway': return ChatBoostSourceGiveaway.fromJson(this);
-case 'chatBoostSourcePremium': return ChatBoostSourcePremium.fromJson(this);
-case 'chatBoostStatus': return ChatBoostStatus.fromJson(this);
-case 'chatEvent': return ChatEvent.fromJson(this);
-case 'chatEventAccentColorChanged': return ChatEventAccentColorChanged.fromJson(this);
-case 'chatEventAction': return ChatEventAction.fromJson(this);
-case 'chatEventActiveUsernamesChanged': return ChatEventActiveUsernamesChanged.fromJson(this);
-case 'chatEventAvailableReactionsChanged': return ChatEventAvailableReactionsChanged.fromJson(this);
-case 'chatEventBackgroundCustomEmojiChanged': return ChatEventBackgroundCustomEmojiChanged.fromJson(this);
-case 'chatEventDescriptionChanged': return ChatEventDescriptionChanged.fromJson(this);
-case 'chatEventForumTopicCreated': return ChatEventForumTopicCreated.fromJson(this);
-case 'chatEventForumTopicDeleted': return ChatEventForumTopicDeleted.fromJson(this);
-case 'chatEventForumTopicEdited': return ChatEventForumTopicEdited.fromJson(this);
-case 'chatEventForumTopicPinned': return ChatEventForumTopicPinned.fromJson(this);
-case 'chatEventForumTopicToggleIsClosed': return ChatEventForumTopicToggleIsClosed.fromJson(this);
-case 'chatEventForumTopicToggleIsHidden': return ChatEventForumTopicToggleIsHidden.fromJson(this);
-case 'chatEventHasAggressiveAntiSpamEnabledToggled': return ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(this);
-case 'chatEventHasProtectedContentToggled': return ChatEventHasProtectedContentToggled.fromJson(this);
-case 'chatEventInviteLinkDeleted': return ChatEventInviteLinkDeleted.fromJson(this);
-case 'chatEventInviteLinkEdited': return ChatEventInviteLinkEdited.fromJson(this);
-case 'chatEventInviteLinkRevoked': return ChatEventInviteLinkRevoked.fromJson(this);
-case 'chatEventInvitesToggled': return ChatEventInvitesToggled.fromJson(this);
-case 'chatEventIsAllHistoryAvailableToggled': return ChatEventIsAllHistoryAvailableToggled.fromJson(this);
-case 'chatEventIsForumToggled': return ChatEventIsForumToggled.fromJson(this);
-case 'chatEventLinkedChatChanged': return ChatEventLinkedChatChanged.fromJson(this);
-case 'chatEventLocationChanged': return ChatEventLocationChanged.fromJson(this);
-case 'chatEventLogFilters': return ChatEventLogFilters.fromJson(this);
-case 'chatEventMemberInvited': return ChatEventMemberInvited.fromJson(this);
-case 'chatEventMemberJoined': return ChatEventMemberJoined.fromJson(this);
-case 'chatEventMemberJoinedByInviteLink': return ChatEventMemberJoinedByInviteLink.fromJson(this);
-case 'chatEventMemberJoinedByRequest': return ChatEventMemberJoinedByRequest.fromJson(this);
-case 'chatEventMemberLeft': return ChatEventMemberLeft.fromJson(this);
-case 'chatEventMemberPromoted': return ChatEventMemberPromoted.fromJson(this);
-case 'chatEventMemberRestricted': return ChatEventMemberRestricted.fromJson(this);
-case 'chatEventMessageAutoDeleteTimeChanged': return ChatEventMessageAutoDeleteTimeChanged.fromJson(this);
-case 'chatEventMessageDeleted': return ChatEventMessageDeleted.fromJson(this);
-case 'chatEventMessageEdited': return ChatEventMessageEdited.fromJson(this);
-case 'chatEventMessagePinned': return ChatEventMessagePinned.fromJson(this);
-case 'chatEventMessageUnpinned': return ChatEventMessageUnpinned.fromJson(this);
-case 'chatEventPermissionsChanged': return ChatEventPermissionsChanged.fromJson(this);
-case 'chatEventPhotoChanged': return ChatEventPhotoChanged.fromJson(this);
-case 'chatEventPollStopped': return ChatEventPollStopped.fromJson(this);
-case 'chatEventSignMessagesToggled': return ChatEventSignMessagesToggled.fromJson(this);
-case 'chatEventSlowModeDelayChanged': return ChatEventSlowModeDelayChanged.fromJson(this);
-case 'chatEventStickerSetChanged': return ChatEventStickerSetChanged.fromJson(this);
-case 'chatEventTitleChanged': return ChatEventTitleChanged.fromJson(this);
-case 'chatEventUsernameChanged': return ChatEventUsernameChanged.fromJson(this);
-case 'chatEventVideoChatCreated': return ChatEventVideoChatCreated.fromJson(this);
-case 'chatEventVideoChatEnded': return ChatEventVideoChatEnded.fromJson(this);
-case 'chatEventVideoChatMuteNewParticipantsToggled': return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(this);
-case 'chatEventVideoChatParticipantIsMutedToggled': return ChatEventVideoChatParticipantIsMutedToggled.fromJson(this);
-case 'chatEventVideoChatParticipantVolumeLevelChanged': return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(this);
-case 'chatEvents': return ChatEvents.fromJson(this);
-case 'chatFolder': return ChatFolder.fromJson(this);
-case 'chatFolderIcon': return ChatFolderIcon.fromJson(this);
-case 'chatFolderInfo': return ChatFolderInfo.fromJson(this);
-case 'chatFolderInviteLink': return ChatFolderInviteLink.fromJson(this);
-case 'chatFolderInviteLinkInfo': return ChatFolderInviteLinkInfo.fromJson(this);
-case 'chatFolderInviteLinks': return ChatFolderInviteLinks.fromJson(this);
-case 'chatInviteLink': return ChatInviteLink.fromJson(this);
-case 'chatInviteLinkCount': return ChatInviteLinkCount.fromJson(this);
-case 'chatInviteLinkCounts': return ChatInviteLinkCounts.fromJson(this);
-case 'chatInviteLinkInfo': return ChatInviteLinkInfo.fromJson(this);
-case 'chatInviteLinkMember': return ChatInviteLinkMember.fromJson(this);
-case 'chatInviteLinkMembers': return ChatInviteLinkMembers.fromJson(this);
-case 'chatInviteLinks': return ChatInviteLinks.fromJson(this);
-case 'chatJoinRequest': return ChatJoinRequest.fromJson(this);
-case 'chatJoinRequests': return ChatJoinRequests.fromJson(this);
-case 'chatJoinRequestsInfo': return ChatJoinRequestsInfo.fromJson(this);
-case 'chatList': return ChatList.fromJson(this);
-case 'chatListArchive': return ChatListArchive.fromJson(this);
-case 'chatListFolder': return ChatListFolder.fromJson(this);
-case 'chatListMain': return ChatListMain.fromJson(this);
-case 'chatLists': return ChatLists.fromJson(this);
-case 'chatLocation': return ChatLocation.fromJson(this);
-case 'chatMember': return ChatMember.fromJson(this);
-case 'chatMemberStatus': return ChatMemberStatus.fromJson(this);
-case 'chatMemberStatusAdministrator': return ChatMemberStatusAdministrator.fromJson(this);
-case 'chatMemberStatusBanned': return ChatMemberStatusBanned.fromJson(this);
-case 'chatMemberStatusCreator': return ChatMemberStatusCreator.fromJson(this);
-case 'chatMemberStatusLeft': return ChatMemberStatusLeft.fromJson(this);
-case 'chatMemberStatusMember': return ChatMemberStatusMember.fromJson(this);
-case 'chatMemberStatusRestricted': return ChatMemberStatusRestricted.fromJson(this);
-case 'chatMembers': return ChatMembers.fromJson(this);
-case 'chatMembersFilter': return ChatMembersFilter.fromJson(this);
-case 'chatMembersFilterAdministrators': return ChatMembersFilterAdministrators.fromJson(this);
-case 'chatMembersFilterBanned': return ChatMembersFilterBanned.fromJson(this);
-case 'chatMembersFilterBots': return ChatMembersFilterBots.fromJson(this);
-case 'chatMembersFilterContacts': return ChatMembersFilterContacts.fromJson(this);
-case 'chatMembersFilterMembers': return ChatMembersFilterMembers.fromJson(this);
-case 'chatMembersFilterMention': return ChatMembersFilterMention.fromJson(this);
-case 'chatMembersFilterRestricted': return ChatMembersFilterRestricted.fromJson(this);
-case 'chatMessageSender': return ChatMessageSender.fromJson(this);
-case 'chatMessageSenders': return ChatMessageSenders.fromJson(this);
-case 'chatNearby': return ChatNearby.fromJson(this);
-case 'chatNotificationSettings': return ChatNotificationSettings.fromJson(this);
-case 'chatPermissions': return ChatPermissions.fromJson(this);
-case 'chatPhoto': return ChatPhoto.fromJson(this);
-case 'chatPhotoInfo': return ChatPhotoInfo.fromJson(this);
-case 'chatPhotoSticker': return ChatPhotoSticker.fromJson(this);
-case 'chatPhotoStickerType': return ChatPhotoStickerType.fromJson(this);
-case 'chatPhotoStickerTypeCustomEmoji': return ChatPhotoStickerTypeCustomEmoji.fromJson(this);
-case 'chatPhotoStickerTypeRegularOrMask': return ChatPhotoStickerTypeRegularOrMask.fromJson(this);
-case 'chatPhotos': return ChatPhotos.fromJson(this);
-case 'chatPosition': return ChatPosition.fromJson(this);
-case 'chatSource': return ChatSource.fromJson(this);
-case 'chatSourceMtprotoProxy': return ChatSourceMtprotoProxy.fromJson(this);
-case 'chatSourcePublicServiceAnnouncement': return ChatSourcePublicServiceAnnouncement.fromJson(this);
-case 'chatStatistics': return ChatStatistics.fromJson(this);
-case 'chatStatisticsAdministratorActionsInfo': return ChatStatisticsAdministratorActionsInfo.fromJson(this);
-case 'chatStatisticsChannel': return ChatStatisticsChannel.fromJson(this);
-case 'chatStatisticsInviterInfo': return ChatStatisticsInviterInfo.fromJson(this);
-case 'chatStatisticsMessageInteractionInfo': return ChatStatisticsMessageInteractionInfo.fromJson(this);
-case 'chatStatisticsMessageSenderInfo': return ChatStatisticsMessageSenderInfo.fromJson(this);
-case 'chatStatisticsSupergroup': return ChatStatisticsSupergroup.fromJson(this);
-case 'chatTheme': return ChatTheme.fromJson(this);
-case 'chatType': return ChatType.fromJson(this);
-case 'chatTypeBasicGroup': return ChatTypeBasicGroup.fromJson(this);
-case 'chatTypePrivate': return ChatTypePrivate.fromJson(this);
-case 'chatTypeSecret': return ChatTypeSecret.fromJson(this);
-case 'chatTypeSupergroup': return ChatTypeSupergroup.fromJson(this);
-case 'chats': return Chats.fromJson(this);
-case 'chatsNearby': return ChatsNearby.fromJson(this);
-case 'checkChatUsernameResult': return CheckChatUsernameResult.fromJson(this);
-case 'checkChatUsernameResultOk': return CheckChatUsernameResultOk.fromJson(this);
-case 'checkChatUsernameResultPublicChatsTooMany': return CheckChatUsernameResultPublicChatsTooMany.fromJson(this);
-case 'checkChatUsernameResultPublicGroupsUnavailable': return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(this);
-case 'checkChatUsernameResultUsernameInvalid': return CheckChatUsernameResultUsernameInvalid.fromJson(this);
-case 'checkChatUsernameResultUsernameOccupied': return CheckChatUsernameResultUsernameOccupied.fromJson(this);
-case 'checkChatUsernameResultUsernamePurchasable': return CheckChatUsernameResultUsernamePurchasable.fromJson(this);
-case 'checkStickerSetNameResult': return CheckStickerSetNameResult.fromJson(this);
-case 'checkStickerSetNameResultNameInvalid': return CheckStickerSetNameResultNameInvalid.fromJson(this);
-case 'checkStickerSetNameResultNameOccupied': return CheckStickerSetNameResultNameOccupied.fromJson(this);
-case 'checkStickerSetNameResultOk': return CheckStickerSetNameResultOk.fromJson(this);
-case 'closedVectorPath': return ClosedVectorPath.fromJson(this);
-case 'connectedWebsite': return ConnectedWebsite.fromJson(this);
-case 'connectedWebsites': return ConnectedWebsites.fromJson(this);
-case 'connectionState': return ConnectionState.fromJson(this);
-case 'connectionStateConnecting': return ConnectionStateConnecting.fromJson(this);
-case 'connectionStateConnectingToProxy': return ConnectionStateConnectingToProxy.fromJson(this);
-case 'connectionStateReady': return ConnectionStateReady.fromJson(this);
-case 'connectionStateUpdating': return ConnectionStateUpdating.fromJson(this);
-case 'connectionStateWaitingForNetwork': return ConnectionStateWaitingForNetwork.fromJson(this);
-case 'contact': return Contact.fromJson(this);
-case 'count': return Count.fromJson(this);
-case 'countries': return Countries.fromJson(this);
-case 'countryInfo': return CountryInfo.fromJson(this);
-case 'customRequestResult': return CustomRequestResult.fromJson(this);
-case 'databaseStatistics': return DatabaseStatistics.fromJson(this);
-case 'date': return Date.fromJson(this);
-case 'dateRange': return DateRange.fromJson(this);
-case 'datedFile': return DatedFile.fromJson(this);
-case 'deepLinkInfo': return DeepLinkInfo.fromJson(this);
-case 'deviceToken': return DeviceToken.fromJson(this);
-case 'deviceTokenApplePush': return DeviceTokenApplePush.fromJson(this);
-case 'deviceTokenApplePushVoIP': return DeviceTokenApplePushVoIP.fromJson(this);
-case 'deviceTokenBlackBerryPush': return DeviceTokenBlackBerryPush.fromJson(this);
-case 'deviceTokenFirebaseCloudMessaging': return DeviceTokenFirebaseCloudMessaging.fromJson(this);
-case 'deviceTokenHuaweiPush': return DeviceTokenHuaweiPush.fromJson(this);
-case 'deviceTokenMicrosoftPush': return DeviceTokenMicrosoftPush.fromJson(this);
-case 'deviceTokenMicrosoftPushVoIP': return DeviceTokenMicrosoftPushVoIP.fromJson(this);
-case 'deviceTokenSimplePush': return DeviceTokenSimplePush.fromJson(this);
-case 'deviceTokenTizenPush': return DeviceTokenTizenPush.fromJson(this);
-case 'deviceTokenUbuntuPush': return DeviceTokenUbuntuPush.fromJson(this);
-case 'deviceTokenWebPush': return DeviceTokenWebPush.fromJson(this);
-case 'deviceTokenWindowsPush': return DeviceTokenWindowsPush.fromJson(this);
-case 'diceStickers': return DiceStickers.fromJson(this);
-case 'diceStickersRegular': return DiceStickersRegular.fromJson(this);
-case 'diceStickersSlotMachine': return DiceStickersSlotMachine.fromJson(this);
-case 'document': return Document.fromJson(this);
-case 'downloadedFileCounts': return DownloadedFileCounts.fromJson(this);
-case 'draftMessage': return DraftMessage.fromJson(this);
-case 'emailAddressAuthentication': return EmailAddressAuthentication.fromJson(this);
-case 'emailAddressAuthenticationAppleId': return EmailAddressAuthenticationAppleId.fromJson(this);
-case 'emailAddressAuthenticationCode': return EmailAddressAuthenticationCode.fromJson(this);
-case 'emailAddressAuthenticationCodeInfo': return EmailAddressAuthenticationCodeInfo.fromJson(this);
-case 'emailAddressAuthenticationGoogleId': return EmailAddressAuthenticationGoogleId.fromJson(this);
-case 'emailAddressResetState': return EmailAddressResetState.fromJson(this);
-case 'emailAddressResetStateAvailable': return EmailAddressResetStateAvailable.fromJson(this);
-case 'emailAddressResetStatePending': return EmailAddressResetStatePending.fromJson(this);
-case 'emojiCategories': return EmojiCategories.fromJson(this);
-case 'emojiCategory': return EmojiCategory.fromJson(this);
-case 'emojiCategoryType': return EmojiCategoryType.fromJson(this);
-case 'emojiCategoryTypeChatPhoto': return EmojiCategoryTypeChatPhoto.fromJson(this);
-case 'emojiCategoryTypeDefault': return EmojiCategoryTypeDefault.fromJson(this);
-case 'emojiCategoryTypeEmojiStatus': return EmojiCategoryTypeEmojiStatus.fromJson(this);
-case 'emojiReaction': return EmojiReaction.fromJson(this);
-case 'emojiStatus': return EmojiStatus.fromJson(this);
-case 'emojiStatuses': return EmojiStatuses.fromJson(this);
-case 'emojis': return Emojis.fromJson(this);
-case 'encryptedCredentials': return EncryptedCredentials.fromJson(this);
-case 'encryptedPassportElement': return EncryptedPassportElement.fromJson(this);
-case 'error': return TdError.fromJson(this);
-case 'file': return File.fromJson(this);
-case 'fileDownload': return FileDownload.fromJson(this);
-case 'fileDownloadedPrefixSize': return FileDownloadedPrefixSize.fromJson(this);
-case 'filePart': return FilePart.fromJson(this);
-case 'fileType': return FileType.fromJson(this);
-case 'fileTypeAnimation': return FileTypeAnimation.fromJson(this);
-case 'fileTypeAudio': return FileTypeAudio.fromJson(this);
-case 'fileTypeDocument': return FileTypeDocument.fromJson(this);
-case 'fileTypeNone': return FileTypeNone.fromJson(this);
-case 'fileTypeNotificationSound': return FileTypeNotificationSound.fromJson(this);
-case 'fileTypePhoto': return FileTypePhoto.fromJson(this);
-case 'fileTypePhotoStory': return FileTypePhotoStory.fromJson(this);
-case 'fileTypeProfilePhoto': return FileTypeProfilePhoto.fromJson(this);
-case 'fileTypeSecret': return FileTypeSecret.fromJson(this);
-case 'fileTypeSecretThumbnail': return FileTypeSecretThumbnail.fromJson(this);
-case 'fileTypeSecure': return FileTypeSecure.fromJson(this);
-case 'fileTypeSticker': return FileTypeSticker.fromJson(this);
-case 'fileTypeThumbnail': return FileTypeThumbnail.fromJson(this);
-case 'fileTypeUnknown': return FileTypeUnknown.fromJson(this);
-case 'fileTypeVideo': return FileTypeVideo.fromJson(this);
-case 'fileTypeVideoNote': return FileTypeVideoNote.fromJson(this);
-case 'fileTypeVideoStory': return FileTypeVideoStory.fromJson(this);
-case 'fileTypeVoiceNote': return FileTypeVoiceNote.fromJson(this);
-case 'fileTypeWallpaper': return FileTypeWallpaper.fromJson(this);
-case 'firebaseAuthenticationSettings': return FirebaseAuthenticationSettings.fromJson(this);
-case 'firebaseAuthenticationSettingsAndroid': return FirebaseAuthenticationSettingsAndroid.fromJson(this);
-case 'firebaseAuthenticationSettingsIos': return FirebaseAuthenticationSettingsIos.fromJson(this);
-case 'formattedText': return FormattedText.fromJson(this);
-case 'forumTopic': return ForumTopic.fromJson(this);
-case 'forumTopicIcon': return ForumTopicIcon.fromJson(this);
-case 'forumTopicInfo': return ForumTopicInfo.fromJson(this);
-case 'forumTopics': return ForumTopics.fromJson(this);
-case 'foundChatBoosts': return FoundChatBoosts.fromJson(this);
-case 'foundChatMessages': return FoundChatMessages.fromJson(this);
-case 'foundFileDownloads': return FoundFileDownloads.fromJson(this);
-case 'foundMessages': return FoundMessages.fromJson(this);
-case 'foundPosition': return FoundPosition.fromJson(this);
-case 'foundPositions': return FoundPositions.fromJson(this);
-case 'foundWebApp': return FoundWebApp.fromJson(this);
-case 'game': return Game.fromJson(this);
-case 'gameHighScore': return GameHighScore.fromJson(this);
-case 'gameHighScores': return GameHighScores.fromJson(this);
-case 'groupCall': return GroupCall.fromJson(this);
-case 'groupCallId': return GroupCallId.fromJson(this);
-case 'groupCallParticipant': return GroupCallParticipant.fromJson(this);
-case 'groupCallParticipantVideoInfo': return GroupCallParticipantVideoInfo.fromJson(this);
-case 'groupCallRecentSpeaker': return GroupCallRecentSpeaker.fromJson(this);
-case 'groupCallStream': return GroupCallStream.fromJson(this);
-case 'groupCallStreams': return GroupCallStreams.fromJson(this);
-case 'groupCallVideoQuality': return GroupCallVideoQuality.fromJson(this);
-case 'groupCallVideoQualityFull': return GroupCallVideoQualityFull.fromJson(this);
-case 'groupCallVideoQualityMedium': return GroupCallVideoQualityMedium.fromJson(this);
-case 'groupCallVideoQualityThumbnail': return GroupCallVideoQualityThumbnail.fromJson(this);
-case 'groupCallVideoSourceGroup': return GroupCallVideoSourceGroup.fromJson(this);
-case 'hashtags': return Hashtags.fromJson(this);
-case 'httpUrl': return HttpUrl.fromJson(this);
-case 'identityDocument': return IdentityDocument.fromJson(this);
-case 'importedContacts': return ImportedContacts.fromJson(this);
-case 'inlineKeyboardButton': return InlineKeyboardButton.fromJson(this);
-case 'inlineKeyboardButtonType': return InlineKeyboardButtonType.fromJson(this);
-case 'inlineKeyboardButtonTypeBuy': return InlineKeyboardButtonTypeBuy.fromJson(this);
-case 'inlineKeyboardButtonTypeCallback': return InlineKeyboardButtonTypeCallback.fromJson(this);
-case 'inlineKeyboardButtonTypeCallbackGame': return InlineKeyboardButtonTypeCallbackGame.fromJson(this);
-case 'inlineKeyboardButtonTypeCallbackWithPassword': return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(this);
-case 'inlineKeyboardButtonTypeLoginUrl': return InlineKeyboardButtonTypeLoginUrl.fromJson(this);
-case 'inlineKeyboardButtonTypeSwitchInline': return InlineKeyboardButtonTypeSwitchInline.fromJson(this);
-case 'inlineKeyboardButtonTypeUrl': return InlineKeyboardButtonTypeUrl.fromJson(this);
-case 'inlineKeyboardButtonTypeUser': return InlineKeyboardButtonTypeUser.fromJson(this);
-case 'inlineKeyboardButtonTypeWebApp': return InlineKeyboardButtonTypeWebApp.fromJson(this);
-case 'inlineQueryResult': return InlineQueryResult.fromJson(this);
-case 'inlineQueryResultAnimation': return InlineQueryResultAnimation.fromJson(this);
-case 'inlineQueryResultArticle': return InlineQueryResultArticle.fromJson(this);
-case 'inlineQueryResultAudio': return InlineQueryResultAudio.fromJson(this);
-case 'inlineQueryResultContact': return InlineQueryResultContact.fromJson(this);
-case 'inlineQueryResultDocument': return InlineQueryResultDocument.fromJson(this);
-case 'inlineQueryResultGame': return InlineQueryResultGame.fromJson(this);
-case 'inlineQueryResultLocation': return InlineQueryResultLocation.fromJson(this);
-case 'inlineQueryResultPhoto': return InlineQueryResultPhoto.fromJson(this);
-case 'inlineQueryResultSticker': return InlineQueryResultSticker.fromJson(this);
-case 'inlineQueryResultVenue': return InlineQueryResultVenue.fromJson(this);
-case 'inlineQueryResultVideo': return InlineQueryResultVideo.fromJson(this);
-case 'inlineQueryResultVoiceNote': return InlineQueryResultVoiceNote.fromJson(this);
-case 'inlineQueryResults': return InlineQueryResults.fromJson(this);
-case 'inlineQueryResultsButton': return InlineQueryResultsButton.fromJson(this);
-case 'inlineQueryResultsButtonType': return InlineQueryResultsButtonType.fromJson(this);
-case 'inlineQueryResultsButtonTypeStartBot': return InlineQueryResultsButtonTypeStartBot.fromJson(this);
-case 'inlineQueryResultsButtonTypeWebApp': return InlineQueryResultsButtonTypeWebApp.fromJson(this);
-case 'inputBackground': return InputBackground.fromJson(this);
-case 'inputBackgroundLocal': return InputBackgroundLocal.fromJson(this);
-case 'inputBackgroundPrevious': return InputBackgroundPrevious.fromJson(this);
-case 'inputBackgroundRemote': return InputBackgroundRemote.fromJson(this);
-case 'inputChatPhoto': return InputChatPhoto.fromJson(this);
-case 'inputChatPhotoAnimation': return InputChatPhotoAnimation.fromJson(this);
-case 'inputChatPhotoPrevious': return InputChatPhotoPrevious.fromJson(this);
-case 'inputChatPhotoStatic': return InputChatPhotoStatic.fromJson(this);
-case 'inputChatPhotoSticker': return InputChatPhotoSticker.fromJson(this);
-case 'inputCredentials': return InputCredentials.fromJson(this);
-case 'inputCredentialsApplePay': return InputCredentialsApplePay.fromJson(this);
-case 'inputCredentialsGooglePay': return InputCredentialsGooglePay.fromJson(this);
-case 'inputCredentialsNew': return InputCredentialsNew.fromJson(this);
-case 'inputCredentialsSaved': return InputCredentialsSaved.fromJson(this);
-case 'inputFile': return InputFile.fromJson(this);
-case 'inputFileGenerated': return InputFileGenerated.fromJson(this);
-case 'inputFileId': return InputFileId.fromJson(this);
-case 'inputFileLocal': return InputFileLocal.fromJson(this);
-case 'inputFileRemote': return InputFileRemote.fromJson(this);
-case 'inputIdentityDocument': return InputIdentityDocument.fromJson(this);
-case 'inputInlineQueryResult': return InputInlineQueryResult.fromJson(this);
-case 'inputInlineQueryResultAnimation': return InputInlineQueryResultAnimation.fromJson(this);
-case 'inputInlineQueryResultArticle': return InputInlineQueryResultArticle.fromJson(this);
-case 'inputInlineQueryResultAudio': return InputInlineQueryResultAudio.fromJson(this);
-case 'inputInlineQueryResultContact': return InputInlineQueryResultContact.fromJson(this);
-case 'inputInlineQueryResultDocument': return InputInlineQueryResultDocument.fromJson(this);
-case 'inputInlineQueryResultGame': return InputInlineQueryResultGame.fromJson(this);
-case 'inputInlineQueryResultLocation': return InputInlineQueryResultLocation.fromJson(this);
-case 'inputInlineQueryResultPhoto': return InputInlineQueryResultPhoto.fromJson(this);
-case 'inputInlineQueryResultSticker': return InputInlineQueryResultSticker.fromJson(this);
-case 'inputInlineQueryResultVenue': return InputInlineQueryResultVenue.fromJson(this);
-case 'inputInlineQueryResultVideo': return InputInlineQueryResultVideo.fromJson(this);
-case 'inputInlineQueryResultVoiceNote': return InputInlineQueryResultVoiceNote.fromJson(this);
-case 'inputInvoice': return InputInvoice.fromJson(this);
-case 'inputInvoiceMessage': return InputInvoiceMessage.fromJson(this);
-case 'inputInvoiceName': return InputInvoiceName.fromJson(this);
-case 'inputInvoiceTelegram': return InputInvoiceTelegram.fromJson(this);
-case 'inputMessageAnimation': return InputMessageAnimation.fromJson(this);
-case 'inputMessageAudio': return InputMessageAudio.fromJson(this);
-case 'inputMessageContact': return InputMessageContact.fromJson(this);
-case 'inputMessageContent': return InputMessageContent.fromJson(this);
-case 'inputMessageDice': return InputMessageDice.fromJson(this);
-case 'inputMessageDocument': return InputMessageDocument.fromJson(this);
-case 'inputMessageForwarded': return InputMessageForwarded.fromJson(this);
-case 'inputMessageGame': return InputMessageGame.fromJson(this);
-case 'inputMessageInvoice': return InputMessageInvoice.fromJson(this);
-case 'inputMessageLocation': return InputMessageLocation.fromJson(this);
-case 'inputMessagePhoto': return InputMessagePhoto.fromJson(this);
-case 'inputMessagePoll': return InputMessagePoll.fromJson(this);
-case 'inputMessageReplyTo': return InputMessageReplyTo.fromJson(this);
-case 'inputMessageReplyToMessage': return InputMessageReplyToMessage.fromJson(this);
-case 'inputMessageReplyToStory': return InputMessageReplyToStory.fromJson(this);
-case 'inputMessageSticker': return InputMessageSticker.fromJson(this);
-case 'inputMessageStory': return InputMessageStory.fromJson(this);
-case 'inputMessageText': return InputMessageText.fromJson(this);
-case 'inputMessageVenue': return InputMessageVenue.fromJson(this);
-case 'inputMessageVideo': return InputMessageVideo.fromJson(this);
-case 'inputMessageVideoNote': return InputMessageVideoNote.fromJson(this);
-case 'inputMessageVoiceNote': return InputMessageVoiceNote.fromJson(this);
-case 'inputPassportElement': return InputPassportElement.fromJson(this);
-case 'inputPassportElementAddress': return InputPassportElementAddress.fromJson(this);
-case 'inputPassportElementBankStatement': return InputPassportElementBankStatement.fromJson(this);
-case 'inputPassportElementDriverLicense': return InputPassportElementDriverLicense.fromJson(this);
-case 'inputPassportElementEmailAddress': return InputPassportElementEmailAddress.fromJson(this);
-case 'inputPassportElementError': return InputPassportElementError.fromJson(this);
-case 'inputPassportElementErrorSource': return InputPassportElementErrorSource.fromJson(this);
-case 'inputPassportElementErrorSourceDataField': return InputPassportElementErrorSourceDataField.fromJson(this);
-case 'inputPassportElementErrorSourceFile': return InputPassportElementErrorSourceFile.fromJson(this);
-case 'inputPassportElementErrorSourceFiles': return InputPassportElementErrorSourceFiles.fromJson(this);
-case 'inputPassportElementErrorSourceFrontSide': return InputPassportElementErrorSourceFrontSide.fromJson(this);
-case 'inputPassportElementErrorSourceReverseSide': return InputPassportElementErrorSourceReverseSide.fromJson(this);
-case 'inputPassportElementErrorSourceSelfie': return InputPassportElementErrorSourceSelfie.fromJson(this);
-case 'inputPassportElementErrorSourceTranslationFile': return InputPassportElementErrorSourceTranslationFile.fromJson(this);
-case 'inputPassportElementErrorSourceTranslationFiles': return InputPassportElementErrorSourceTranslationFiles.fromJson(this);
-case 'inputPassportElementErrorSourceUnspecified': return InputPassportElementErrorSourceUnspecified.fromJson(this);
-case 'inputPassportElementIdentityCard': return InputPassportElementIdentityCard.fromJson(this);
-case 'inputPassportElementInternalPassport': return InputPassportElementInternalPassport.fromJson(this);
-case 'inputPassportElementPassport': return InputPassportElementPassport.fromJson(this);
-case 'inputPassportElementPassportRegistration': return InputPassportElementPassportRegistration.fromJson(this);
-case 'inputPassportElementPersonalDetails': return InputPassportElementPersonalDetails.fromJson(this);
-case 'inputPassportElementPhoneNumber': return InputPassportElementPhoneNumber.fromJson(this);
-case 'inputPassportElementRentalAgreement': return InputPassportElementRentalAgreement.fromJson(this);
-case 'inputPassportElementTemporaryRegistration': return InputPassportElementTemporaryRegistration.fromJson(this);
-case 'inputPassportElementUtilityBill': return InputPassportElementUtilityBill.fromJson(this);
-case 'inputPersonalDocument': return InputPersonalDocument.fromJson(this);
-case 'inputSticker': return InputSticker.fromJson(this);
-case 'inputStoryArea': return InputStoryArea.fromJson(this);
-case 'inputStoryAreaType': return InputStoryAreaType.fromJson(this);
-case 'inputStoryAreaTypeFoundVenue': return InputStoryAreaTypeFoundVenue.fromJson(this);
-case 'inputStoryAreaTypeLocation': return InputStoryAreaTypeLocation.fromJson(this);
-case 'inputStoryAreaTypePreviousVenue': return InputStoryAreaTypePreviousVenue.fromJson(this);
-case 'inputStoryAreaTypeSuggestedReaction': return InputStoryAreaTypeSuggestedReaction.fromJson(this);
-case 'inputStoryAreas': return InputStoryAreas.fromJson(this);
-case 'inputStoryContent': return InputStoryContent.fromJson(this);
-case 'inputStoryContentPhoto': return InputStoryContentPhoto.fromJson(this);
-case 'inputStoryContentVideo': return InputStoryContentVideo.fromJson(this);
-case 'inputThumbnail': return InputThumbnail.fromJson(this);
-case 'internalLinkType': return InternalLinkType.fromJson(this);
-case 'internalLinkTypeActiveSessions': return InternalLinkTypeActiveSessions.fromJson(this);
-case 'internalLinkTypeAttachmentMenuBot': return InternalLinkTypeAttachmentMenuBot.fromJson(this);
-case 'internalLinkTypeAuthenticationCode': return InternalLinkTypeAuthenticationCode.fromJson(this);
-case 'internalLinkTypeBackground': return InternalLinkTypeBackground.fromJson(this);
-case 'internalLinkTypeBotAddToChannel': return InternalLinkTypeBotAddToChannel.fromJson(this);
-case 'internalLinkTypeBotStart': return InternalLinkTypeBotStart.fromJson(this);
-case 'internalLinkTypeBotStartInGroup': return InternalLinkTypeBotStartInGroup.fromJson(this);
-case 'internalLinkTypeChangePhoneNumber': return InternalLinkTypeChangePhoneNumber.fromJson(this);
-case 'internalLinkTypeChatBoost': return InternalLinkTypeChatBoost.fromJson(this);
-case 'internalLinkTypeChatFolderInvite': return InternalLinkTypeChatFolderInvite.fromJson(this);
-case 'internalLinkTypeChatFolderSettings': return InternalLinkTypeChatFolderSettings.fromJson(this);
-case 'internalLinkTypeChatInvite': return InternalLinkTypeChatInvite.fromJson(this);
-case 'internalLinkTypeDefaultMessageAutoDeleteTimerSettings': return InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(this);
-case 'internalLinkTypeEditProfileSettings': return InternalLinkTypeEditProfileSettings.fromJson(this);
-case 'internalLinkTypeGame': return InternalLinkTypeGame.fromJson(this);
-case 'internalLinkTypeInstantView': return InternalLinkTypeInstantView.fromJson(this);
-case 'internalLinkTypeInvoice': return InternalLinkTypeInvoice.fromJson(this);
-case 'internalLinkTypeLanguagePack': return InternalLinkTypeLanguagePack.fromJson(this);
-case 'internalLinkTypeLanguageSettings': return InternalLinkTypeLanguageSettings.fromJson(this);
-case 'internalLinkTypeMessage': return InternalLinkTypeMessage.fromJson(this);
-case 'internalLinkTypeMessageDraft': return InternalLinkTypeMessageDraft.fromJson(this);
-case 'internalLinkTypePassportDataRequest': return InternalLinkTypePassportDataRequest.fromJson(this);
-case 'internalLinkTypePhoneNumberConfirmation': return InternalLinkTypePhoneNumberConfirmation.fromJson(this);
-case 'internalLinkTypePremiumFeatures': return InternalLinkTypePremiumFeatures.fromJson(this);
-case 'internalLinkTypePremiumGiftCode': return InternalLinkTypePremiumGiftCode.fromJson(this);
-case 'internalLinkTypePrivacyAndSecuritySettings': return InternalLinkTypePrivacyAndSecuritySettings.fromJson(this);
-case 'internalLinkTypeProxy': return InternalLinkTypeProxy.fromJson(this);
-case 'internalLinkTypePublicChat': return InternalLinkTypePublicChat.fromJson(this);
-case 'internalLinkTypeQrCodeAuthentication': return InternalLinkTypeQrCodeAuthentication.fromJson(this);
-case 'internalLinkTypeRestorePurchases': return InternalLinkTypeRestorePurchases.fromJson(this);
-case 'internalLinkTypeSettings': return InternalLinkTypeSettings.fromJson(this);
-case 'internalLinkTypeSideMenuBot': return InternalLinkTypeSideMenuBot.fromJson(this);
-case 'internalLinkTypeStickerSet': return InternalLinkTypeStickerSet.fromJson(this);
-case 'internalLinkTypeStory': return InternalLinkTypeStory.fromJson(this);
-case 'internalLinkTypeTheme': return InternalLinkTypeTheme.fromJson(this);
-case 'internalLinkTypeThemeSettings': return InternalLinkTypeThemeSettings.fromJson(this);
-case 'internalLinkTypeUnknownDeepLink': return InternalLinkTypeUnknownDeepLink.fromJson(this);
-case 'internalLinkTypeUnsupportedProxy': return InternalLinkTypeUnsupportedProxy.fromJson(this);
-case 'internalLinkTypeUserPhoneNumber': return InternalLinkTypeUserPhoneNumber.fromJson(this);
-case 'internalLinkTypeUserToken': return InternalLinkTypeUserToken.fromJson(this);
-case 'internalLinkTypeVideoChat': return InternalLinkTypeVideoChat.fromJson(this);
-case 'internalLinkTypeWebApp': return InternalLinkTypeWebApp.fromJson(this);
-case 'inviteLinkChatType': return InviteLinkChatType.fromJson(this);
-case 'inviteLinkChatTypeBasicGroup': return InviteLinkChatTypeBasicGroup.fromJson(this);
-case 'inviteLinkChatTypeChannel': return InviteLinkChatTypeChannel.fromJson(this);
-case 'inviteLinkChatTypeSupergroup': return InviteLinkChatTypeSupergroup.fromJson(this);
-case 'invoice': return Invoice.fromJson(this);
-case 'jsonObjectMember': return JsonObjectMember.fromJson(this);
-case 'jsonValue': return JsonValue.fromJson(this);
-case 'jsonValueArray': return JsonValueArray.fromJson(this);
-case 'jsonValueBoolean': return JsonValueBoolean.fromJson(this);
-case 'jsonValueNull': return JsonValueNull.fromJson(this);
-case 'jsonValueNumber': return JsonValueNumber.fromJson(this);
-case 'jsonValueObject': return JsonValueObject.fromJson(this);
-case 'jsonValueString': return JsonValueString.fromJson(this);
-case 'keyboardButton': return KeyboardButton.fromJson(this);
-case 'keyboardButtonType': return KeyboardButtonType.fromJson(this);
-case 'keyboardButtonTypeRequestChat': return KeyboardButtonTypeRequestChat.fromJson(this);
-case 'keyboardButtonTypeRequestLocation': return KeyboardButtonTypeRequestLocation.fromJson(this);
-case 'keyboardButtonTypeRequestPhoneNumber': return KeyboardButtonTypeRequestPhoneNumber.fromJson(this);
-case 'keyboardButtonTypeRequestPoll': return KeyboardButtonTypeRequestPoll.fromJson(this);
-case 'keyboardButtonTypeRequestUser': return KeyboardButtonTypeRequestUser.fromJson(this);
-case 'keyboardButtonTypeText': return KeyboardButtonTypeText.fromJson(this);
-case 'keyboardButtonTypeWebApp': return KeyboardButtonTypeWebApp.fromJson(this);
-case 'labeledPricePart': return LabeledPricePart.fromJson(this);
-case 'languagePackInfo': return LanguagePackInfo.fromJson(this);
-case 'languagePackString': return LanguagePackString.fromJson(this);
-case 'languagePackStringValue': return LanguagePackStringValue.fromJson(this);
-case 'languagePackStringValueDeleted': return LanguagePackStringValueDeleted.fromJson(this);
-case 'languagePackStringValueOrdinary': return LanguagePackStringValueOrdinary.fromJson(this);
-case 'languagePackStringValuePluralized': return LanguagePackStringValuePluralized.fromJson(this);
-case 'languagePackStrings': return LanguagePackStrings.fromJson(this);
-case 'linkPreviewOptions': return LinkPreviewOptions.fromJson(this);
-case 'localFile': return LocalFile.fromJson(this);
-case 'localizationTargetInfo': return LocalizationTargetInfo.fromJson(this);
-case 'location': return Location.fromJson(this);
-case 'logStream': return LogStream.fromJson(this);
-case 'logStreamDefault': return LogStreamDefault.fromJson(this);
-case 'logStreamEmpty': return LogStreamEmpty.fromJson(this);
-case 'logStreamFile': return LogStreamFile.fromJson(this);
-case 'logTags': return LogTags.fromJson(this);
-case 'logVerbosityLevel': return LogVerbosityLevel.fromJson(this);
-case 'loginUrlInfo': return LoginUrlInfo.fromJson(this);
-case 'loginUrlInfoOpen': return LoginUrlInfoOpen.fromJson(this);
-case 'loginUrlInfoRequestConfirmation': return LoginUrlInfoRequestConfirmation.fromJson(this);
-case 'maskPoint': return MaskPoint.fromJson(this);
-case 'maskPointChin': return MaskPointChin.fromJson(this);
-case 'maskPointEyes': return MaskPointEyes.fromJson(this);
-case 'maskPointForehead': return MaskPointForehead.fromJson(this);
-case 'maskPointMouth': return MaskPointMouth.fromJson(this);
-case 'maskPosition': return MaskPosition.fromJson(this);
-case 'message': return Message.fromJson(this);
-case 'messageAnimatedEmoji': return MessageAnimatedEmoji.fromJson(this);
-case 'messageAnimation': return MessageAnimation.fromJson(this);
-case 'messageAudio': return MessageAudio.fromJson(this);
-case 'messageAutoDeleteTime': return MessageAutoDeleteTime.fromJson(this);
-case 'messageBasicGroupChatCreate': return MessageBasicGroupChatCreate.fromJson(this);
-case 'messageBotWriteAccessAllowed': return MessageBotWriteAccessAllowed.fromJson(this);
-case 'messageCalendar': return MessageCalendar.fromJson(this);
-case 'messageCalendarDay': return MessageCalendarDay.fromJson(this);
-case 'messageCall': return MessageCall.fromJson(this);
-case 'messageChatAddMembers': return MessageChatAddMembers.fromJson(this);
-case 'messageChatChangePhoto': return MessageChatChangePhoto.fromJson(this);
-case 'messageChatChangeTitle': return MessageChatChangeTitle.fromJson(this);
-case 'messageChatDeleteMember': return MessageChatDeleteMember.fromJson(this);
-case 'messageChatDeletePhoto': return MessageChatDeletePhoto.fromJson(this);
-case 'messageChatJoinByLink': return MessageChatJoinByLink.fromJson(this);
-case 'messageChatJoinByRequest': return MessageChatJoinByRequest.fromJson(this);
-case 'messageChatSetBackground': return MessageChatSetBackground.fromJson(this);
-case 'messageChatSetMessageAutoDeleteTime': return MessageChatSetMessageAutoDeleteTime.fromJson(this);
-case 'messageChatSetTheme': return MessageChatSetTheme.fromJson(this);
-case 'messageChatShared': return MessageChatShared.fromJson(this);
-case 'messageChatUpgradeFrom': return MessageChatUpgradeFrom.fromJson(this);
-case 'messageChatUpgradeTo': return MessageChatUpgradeTo.fromJson(this);
-case 'messageContact': return MessageContact.fromJson(this);
-case 'messageContactRegistered': return MessageContactRegistered.fromJson(this);
-case 'messageContent': return MessageContent.fromJson(this);
-case 'messageCopyOptions': return MessageCopyOptions.fromJson(this);
-case 'messageCustomServiceAction': return MessageCustomServiceAction.fromJson(this);
-case 'messageDice': return MessageDice.fromJson(this);
-case 'messageDocument': return MessageDocument.fromJson(this);
-case 'messageExpiredPhoto': return MessageExpiredPhoto.fromJson(this);
-case 'messageExpiredVideo': return MessageExpiredVideo.fromJson(this);
-case 'messageExtendedMedia': return MessageExtendedMedia.fromJson(this);
-case 'messageExtendedMediaPhoto': return MessageExtendedMediaPhoto.fromJson(this);
-case 'messageExtendedMediaPreview': return MessageExtendedMediaPreview.fromJson(this);
-case 'messageExtendedMediaUnsupported': return MessageExtendedMediaUnsupported.fromJson(this);
-case 'messageExtendedMediaVideo': return MessageExtendedMediaVideo.fromJson(this);
-case 'messageFileType': return MessageFileType.fromJson(this);
-case 'messageFileTypeGroup': return MessageFileTypeGroup.fromJson(this);
-case 'messageFileTypePrivate': return MessageFileTypePrivate.fromJson(this);
-case 'messageFileTypeUnknown': return MessageFileTypeUnknown.fromJson(this);
-case 'messageForumTopicCreated': return MessageForumTopicCreated.fromJson(this);
-case 'messageForumTopicEdited': return MessageForumTopicEdited.fromJson(this);
-case 'messageForumTopicIsClosedToggled': return MessageForumTopicIsClosedToggled.fromJson(this);
-case 'messageForumTopicIsHiddenToggled': return MessageForumTopicIsHiddenToggled.fromJson(this);
-case 'messageForwardInfo': return MessageForwardInfo.fromJson(this);
-case 'messageGame': return MessageGame.fromJson(this);
-case 'messageGameScore': return MessageGameScore.fromJson(this);
-case 'messageGiftedPremium': return MessageGiftedPremium.fromJson(this);
-case 'messageImportInfo': return MessageImportInfo.fromJson(this);
-case 'messageInteractionInfo': return MessageInteractionInfo.fromJson(this);
-case 'messageInviteVideoChatParticipants': return MessageInviteVideoChatParticipants.fromJson(this);
-case 'messageInvoice': return MessageInvoice.fromJson(this);
-case 'messageLink': return MessageLink.fromJson(this);
-case 'messageLinkInfo': return MessageLinkInfo.fromJson(this);
-case 'messageLocation': return MessageLocation.fromJson(this);
-case 'messageOrigin': return MessageOrigin.fromJson(this);
-case 'messageOriginChannel': return MessageOriginChannel.fromJson(this);
-case 'messageOriginChat': return MessageOriginChat.fromJson(this);
-case 'messageOriginHiddenUser': return MessageOriginHiddenUser.fromJson(this);
-case 'messageOriginUser': return MessageOriginUser.fromJson(this);
-case 'messagePassportDataReceived': return MessagePassportDataReceived.fromJson(this);
-case 'messagePassportDataSent': return MessagePassportDataSent.fromJson(this);
-case 'messagePaymentSuccessful': return MessagePaymentSuccessful.fromJson(this);
-case 'messagePaymentSuccessfulBot': return MessagePaymentSuccessfulBot.fromJson(this);
-case 'messagePhoto': return MessagePhoto.fromJson(this);
-case 'messagePinMessage': return MessagePinMessage.fromJson(this);
-case 'messagePoll': return MessagePoll.fromJson(this);
-case 'messagePosition': return MessagePosition.fromJson(this);
-case 'messagePositions': return MessagePositions.fromJson(this);
-case 'messagePremiumGiftCode': return MessagePremiumGiftCode.fromJson(this);
-case 'messagePremiumGiveaway': return MessagePremiumGiveaway.fromJson(this);
-case 'messagePremiumGiveawayCreated': return MessagePremiumGiveawayCreated.fromJson(this);
-case 'messageProximityAlertTriggered': return MessageProximityAlertTriggered.fromJson(this);
-case 'messageReaction': return MessageReaction.fromJson(this);
-case 'messageReplyInfo': return MessageReplyInfo.fromJson(this);
-case 'messageReplyTo': return MessageReplyTo.fromJson(this);
-case 'messageReplyToMessage': return MessageReplyToMessage.fromJson(this);
-case 'messageReplyToStory': return MessageReplyToStory.fromJson(this);
-case 'messageSchedulingState': return MessageSchedulingState.fromJson(this);
-case 'messageSchedulingStateSendAtDate': return MessageSchedulingStateSendAtDate.fromJson(this);
-case 'messageSchedulingStateSendWhenOnline': return MessageSchedulingStateSendWhenOnline.fromJson(this);
-case 'messageScreenshotTaken': return MessageScreenshotTaken.fromJson(this);
-case 'messageSelfDestructType': return MessageSelfDestructType.fromJson(this);
-case 'messageSelfDestructTypeImmediately': return MessageSelfDestructTypeImmediately.fromJson(this);
-case 'messageSelfDestructTypeTimer': return MessageSelfDestructTypeTimer.fromJson(this);
-case 'messageSendOptions': return MessageSendOptions.fromJson(this);
-case 'messageSender': return MessageSender.fromJson(this);
-case 'messageSenderChat': return MessageSenderChat.fromJson(this);
-case 'messageSenderUser': return MessageSenderUser.fromJson(this);
-case 'messageSenders': return MessageSenders.fromJson(this);
-case 'messageSendingState': return MessageSendingState.fromJson(this);
-case 'messageSendingStateFailed': return MessageSendingStateFailed.fromJson(this);
-case 'messageSendingStatePending': return MessageSendingStatePending.fromJson(this);
-case 'messageSource': return MessageSource.fromJson(this);
-case 'messageSourceChatEventLog': return MessageSourceChatEventLog.fromJson(this);
-case 'messageSourceChatHistory': return MessageSourceChatHistory.fromJson(this);
-case 'messageSourceChatList': return MessageSourceChatList.fromJson(this);
-case 'messageSourceForumTopicHistory': return MessageSourceForumTopicHistory.fromJson(this);
-case 'messageSourceHistoryPreview': return MessageSourceHistoryPreview.fromJson(this);
-case 'messageSourceMessageThreadHistory': return MessageSourceMessageThreadHistory.fromJson(this);
-case 'messageSourceNotification': return MessageSourceNotification.fromJson(this);
-case 'messageSourceOther': return MessageSourceOther.fromJson(this);
-case 'messageSourceScreenshot': return MessageSourceScreenshot.fromJson(this);
-case 'messageSourceSearch': return MessageSourceSearch.fromJson(this);
-case 'messageSponsor': return MessageSponsor.fromJson(this);
-case 'messageSponsorType': return MessageSponsorType.fromJson(this);
-case 'messageSponsorTypeBot': return MessageSponsorTypeBot.fromJson(this);
-case 'messageSponsorTypePrivateChannel': return MessageSponsorTypePrivateChannel.fromJson(this);
-case 'messageSponsorTypePublicChannel': return MessageSponsorTypePublicChannel.fromJson(this);
-case 'messageSponsorTypeWebsite': return MessageSponsorTypeWebsite.fromJson(this);
-case 'messageStatistics': return MessageStatistics.fromJson(this);
-case 'messageSticker': return MessageSticker.fromJson(this);
-case 'messageStory': return MessageStory.fromJson(this);
-case 'messageSuggestProfilePhoto': return MessageSuggestProfilePhoto.fromJson(this);
-case 'messageSupergroupChatCreate': return MessageSupergroupChatCreate.fromJson(this);
-case 'messageText': return MessageText.fromJson(this);
-case 'messageThreadInfo': return MessageThreadInfo.fromJson(this);
-case 'messageUnsupported': return MessageUnsupported.fromJson(this);
-case 'messageUserShared': return MessageUserShared.fromJson(this);
-case 'messageVenue': return MessageVenue.fromJson(this);
-case 'messageVideo': return MessageVideo.fromJson(this);
-case 'messageVideoChatEnded': return MessageVideoChatEnded.fromJson(this);
-case 'messageVideoChatScheduled': return MessageVideoChatScheduled.fromJson(this);
-case 'messageVideoChatStarted': return MessageVideoChatStarted.fromJson(this);
-case 'messageVideoNote': return MessageVideoNote.fromJson(this);
-case 'messageViewer': return MessageViewer.fromJson(this);
-case 'messageViewers': return MessageViewers.fromJson(this);
-case 'messageVoiceNote': return MessageVoiceNote.fromJson(this);
-case 'messageWebAppDataReceived': return MessageWebAppDataReceived.fromJson(this);
-case 'messageWebAppDataSent': return MessageWebAppDataSent.fromJson(this);
-case 'messages': return Messages.fromJson(this);
-case 'minithumbnail': return Minithumbnail.fromJson(this);
-case 'networkStatistics': return NetworkStatistics.fromJson(this);
-case 'networkStatisticsEntry': return NetworkStatisticsEntry.fromJson(this);
-case 'networkStatisticsEntryCall': return NetworkStatisticsEntryCall.fromJson(this);
-case 'networkStatisticsEntryFile': return NetworkStatisticsEntryFile.fromJson(this);
-case 'networkType': return NetworkType.fromJson(this);
-case 'networkTypeMobile': return NetworkTypeMobile.fromJson(this);
-case 'networkTypeMobileRoaming': return NetworkTypeMobileRoaming.fromJson(this);
-case 'networkTypeNone': return NetworkTypeNone.fromJson(this);
-case 'networkTypeOther': return NetworkTypeOther.fromJson(this);
-case 'networkTypeWiFi': return NetworkTypeWiFi.fromJson(this);
-case 'notification': return Notification.fromJson(this);
-case 'notificationGroup': return NotificationGroup.fromJson(this);
-case 'notificationGroupType': return NotificationGroupType.fromJson(this);
-case 'notificationGroupTypeCalls': return NotificationGroupTypeCalls.fromJson(this);
-case 'notificationGroupTypeMentions': return NotificationGroupTypeMentions.fromJson(this);
-case 'notificationGroupTypeMessages': return NotificationGroupTypeMessages.fromJson(this);
-case 'notificationGroupTypeSecretChat': return NotificationGroupTypeSecretChat.fromJson(this);
-case 'notificationSettingsScope': return NotificationSettingsScope.fromJson(this);
-case 'notificationSettingsScopeChannelChats': return NotificationSettingsScopeChannelChats.fromJson(this);
-case 'notificationSettingsScopeGroupChats': return NotificationSettingsScopeGroupChats.fromJson(this);
-case 'notificationSettingsScopePrivateChats': return NotificationSettingsScopePrivateChats.fromJson(this);
-case 'notificationSound': return NotificationSound.fromJson(this);
-case 'notificationSounds': return NotificationSounds.fromJson(this);
-case 'notificationType': return NotificationType.fromJson(this);
-case 'notificationTypeNewCall': return NotificationTypeNewCall.fromJson(this);
-case 'notificationTypeNewMessage': return NotificationTypeNewMessage.fromJson(this);
-case 'notificationTypeNewPushMessage': return NotificationTypeNewPushMessage.fromJson(this);
-case 'notificationTypeNewSecretChat': return NotificationTypeNewSecretChat.fromJson(this);
-case 'ok': return Ok.fromJson(this);
-case 'optionValue': return OptionValue.fromJson(this);
-case 'optionValueBoolean': return OptionValueBoolean.fromJson(this);
-case 'optionValueEmpty': return OptionValueEmpty.fromJson(this);
-case 'optionValueInteger': return OptionValueInteger.fromJson(this);
-case 'optionValueString': return OptionValueString.fromJson(this);
-case 'orderInfo': return OrderInfo.fromJson(this);
-case 'pageBlock': return PageBlock.fromJson(this);
-case 'pageBlockAnchor': return PageBlockAnchor.fromJson(this);
-case 'pageBlockAnimation': return PageBlockAnimation.fromJson(this);
-case 'pageBlockAudio': return PageBlockAudio.fromJson(this);
-case 'pageBlockAuthorDate': return PageBlockAuthorDate.fromJson(this);
-case 'pageBlockBlockQuote': return PageBlockBlockQuote.fromJson(this);
-case 'pageBlockCaption': return PageBlockCaption.fromJson(this);
-case 'pageBlockChatLink': return PageBlockChatLink.fromJson(this);
-case 'pageBlockCollage': return PageBlockCollage.fromJson(this);
-case 'pageBlockCover': return PageBlockCover.fromJson(this);
-case 'pageBlockDetails': return PageBlockDetails.fromJson(this);
-case 'pageBlockDivider': return PageBlockDivider.fromJson(this);
-case 'pageBlockEmbedded': return PageBlockEmbedded.fromJson(this);
-case 'pageBlockEmbeddedPost': return PageBlockEmbeddedPost.fromJson(this);
-case 'pageBlockFooter': return PageBlockFooter.fromJson(this);
-case 'pageBlockHeader': return PageBlockHeader.fromJson(this);
-case 'pageBlockHorizontalAlignment': return PageBlockHorizontalAlignment.fromJson(this);
-case 'pageBlockHorizontalAlignmentCenter': return PageBlockHorizontalAlignmentCenter.fromJson(this);
-case 'pageBlockHorizontalAlignmentLeft': return PageBlockHorizontalAlignmentLeft.fromJson(this);
-case 'pageBlockHorizontalAlignmentRight': return PageBlockHorizontalAlignmentRight.fromJson(this);
-case 'pageBlockKicker': return PageBlockKicker.fromJson(this);
-case 'pageBlockList': return PageBlockList.fromJson(this);
-case 'pageBlockListItem': return PageBlockListItem.fromJson(this);
-case 'pageBlockMap': return PageBlockMap.fromJson(this);
-case 'pageBlockParagraph': return PageBlockParagraph.fromJson(this);
-case 'pageBlockPhoto': return PageBlockPhoto.fromJson(this);
-case 'pageBlockPreformatted': return PageBlockPreformatted.fromJson(this);
-case 'pageBlockPullQuote': return PageBlockPullQuote.fromJson(this);
-case 'pageBlockRelatedArticle': return PageBlockRelatedArticle.fromJson(this);
-case 'pageBlockRelatedArticles': return PageBlockRelatedArticles.fromJson(this);
-case 'pageBlockSlideshow': return PageBlockSlideshow.fromJson(this);
-case 'pageBlockSubheader': return PageBlockSubheader.fromJson(this);
-case 'pageBlockSubtitle': return PageBlockSubtitle.fromJson(this);
-case 'pageBlockTable': return PageBlockTable.fromJson(this);
-case 'pageBlockTableCell': return PageBlockTableCell.fromJson(this);
-case 'pageBlockTitle': return PageBlockTitle.fromJson(this);
-case 'pageBlockVerticalAlignment': return PageBlockVerticalAlignment.fromJson(this);
-case 'pageBlockVerticalAlignmentBottom': return PageBlockVerticalAlignmentBottom.fromJson(this);
-case 'pageBlockVerticalAlignmentMiddle': return PageBlockVerticalAlignmentMiddle.fromJson(this);
-case 'pageBlockVerticalAlignmentTop': return PageBlockVerticalAlignmentTop.fromJson(this);
-case 'pageBlockVideo': return PageBlockVideo.fromJson(this);
-case 'pageBlockVoiceNote': return PageBlockVoiceNote.fromJson(this);
-case 'passportAuthorizationForm': return PassportAuthorizationForm.fromJson(this);
-case 'passportElement': return PassportElement.fromJson(this);
-case 'passportElementAddress': return PassportElementAddress.fromJson(this);
-case 'passportElementBankStatement': return PassportElementBankStatement.fromJson(this);
-case 'passportElementDriverLicense': return PassportElementDriverLicense.fromJson(this);
-case 'passportElementEmailAddress': return PassportElementEmailAddress.fromJson(this);
-case 'passportElementError': return PassportElementError.fromJson(this);
-case 'passportElementErrorSource': return PassportElementErrorSource.fromJson(this);
-case 'passportElementErrorSourceDataField': return PassportElementErrorSourceDataField.fromJson(this);
-case 'passportElementErrorSourceFile': return PassportElementErrorSourceFile.fromJson(this);
-case 'passportElementErrorSourceFiles': return PassportElementErrorSourceFiles.fromJson(this);
-case 'passportElementErrorSourceFrontSide': return PassportElementErrorSourceFrontSide.fromJson(this);
-case 'passportElementErrorSourceReverseSide': return PassportElementErrorSourceReverseSide.fromJson(this);
-case 'passportElementErrorSourceSelfie': return PassportElementErrorSourceSelfie.fromJson(this);
-case 'passportElementErrorSourceTranslationFile': return PassportElementErrorSourceTranslationFile.fromJson(this);
-case 'passportElementErrorSourceTranslationFiles': return PassportElementErrorSourceTranslationFiles.fromJson(this);
-case 'passportElementErrorSourceUnspecified': return PassportElementErrorSourceUnspecified.fromJson(this);
-case 'passportElementIdentityCard': return PassportElementIdentityCard.fromJson(this);
-case 'passportElementInternalPassport': return PassportElementInternalPassport.fromJson(this);
-case 'passportElementPassport': return PassportElementPassport.fromJson(this);
-case 'passportElementPassportRegistration': return PassportElementPassportRegistration.fromJson(this);
-case 'passportElementPersonalDetails': return PassportElementPersonalDetails.fromJson(this);
-case 'passportElementPhoneNumber': return PassportElementPhoneNumber.fromJson(this);
-case 'passportElementRentalAgreement': return PassportElementRentalAgreement.fromJson(this);
-case 'passportElementTemporaryRegistration': return PassportElementTemporaryRegistration.fromJson(this);
-case 'passportElementType': return PassportElementType.fromJson(this);
-case 'passportElementTypeAddress': return PassportElementTypeAddress.fromJson(this);
-case 'passportElementTypeBankStatement': return PassportElementTypeBankStatement.fromJson(this);
-case 'passportElementTypeDriverLicense': return PassportElementTypeDriverLicense.fromJson(this);
-case 'passportElementTypeEmailAddress': return PassportElementTypeEmailAddress.fromJson(this);
-case 'passportElementTypeIdentityCard': return PassportElementTypeIdentityCard.fromJson(this);
-case 'passportElementTypeInternalPassport': return PassportElementTypeInternalPassport.fromJson(this);
-case 'passportElementTypePassport': return PassportElementTypePassport.fromJson(this);
-case 'passportElementTypePassportRegistration': return PassportElementTypePassportRegistration.fromJson(this);
-case 'passportElementTypePersonalDetails': return PassportElementTypePersonalDetails.fromJson(this);
-case 'passportElementTypePhoneNumber': return PassportElementTypePhoneNumber.fromJson(this);
-case 'passportElementTypeRentalAgreement': return PassportElementTypeRentalAgreement.fromJson(this);
-case 'passportElementTypeTemporaryRegistration': return PassportElementTypeTemporaryRegistration.fromJson(this);
-case 'passportElementTypeUtilityBill': return PassportElementTypeUtilityBill.fromJson(this);
-case 'passportElementUtilityBill': return PassportElementUtilityBill.fromJson(this);
-case 'passportElements': return PassportElements.fromJson(this);
-case 'passportElementsWithErrors': return PassportElementsWithErrors.fromJson(this);
-case 'passportRequiredElement': return PassportRequiredElement.fromJson(this);
-case 'passportSuitableElement': return PassportSuitableElement.fromJson(this);
-case 'passwordState': return PasswordState.fromJson(this);
-case 'paymentForm': return PaymentForm.fromJson(this);
-case 'paymentOption': return PaymentOption.fromJson(this);
-case 'paymentProvider': return PaymentProvider.fromJson(this);
-case 'paymentProviderOther': return PaymentProviderOther.fromJson(this);
-case 'paymentProviderSmartGlocal': return PaymentProviderSmartGlocal.fromJson(this);
-case 'paymentProviderStripe': return PaymentProviderStripe.fromJson(this);
-case 'paymentReceipt': return PaymentReceipt.fromJson(this);
-case 'paymentResult': return PaymentResult.fromJson(this);
-case 'personalDetails': return PersonalDetails.fromJson(this);
-case 'personalDocument': return PersonalDocument.fromJson(this);
-case 'phoneNumberAuthenticationSettings': return PhoneNumberAuthenticationSettings.fromJson(this);
-case 'phoneNumberInfo': return PhoneNumberInfo.fromJson(this);
-case 'photo': return Photo.fromJson(this);
-case 'photoSize': return PhotoSize.fromJson(this);
-case 'point': return Point.fromJson(this);
-case 'poll': return Poll.fromJson(this);
-case 'pollOption': return PollOption.fromJson(this);
-case 'pollType': return PollType.fromJson(this);
-case 'pollTypeQuiz': return PollTypeQuiz.fromJson(this);
-case 'pollTypeRegular': return PollTypeRegular.fromJson(this);
-case 'premiumFeature': return PremiumFeature.fromJson(this);
-case 'premiumFeatureAccentColor': return PremiumFeatureAccentColor.fromJson(this);
-case 'premiumFeatureAdvancedChatManagement': return PremiumFeatureAdvancedChatManagement.fromJson(this);
-case 'premiumFeatureAnimatedProfilePhoto': return PremiumFeatureAnimatedProfilePhoto.fromJson(this);
-case 'premiumFeatureAppIcons': return PremiumFeatureAppIcons.fromJson(this);
-case 'premiumFeatureChatBoost': return PremiumFeatureChatBoost.fromJson(this);
-case 'premiumFeatureCustomEmoji': return PremiumFeatureCustomEmoji.fromJson(this);
-case 'premiumFeatureDisabledAds': return PremiumFeatureDisabledAds.fromJson(this);
-case 'premiumFeatureEmojiStatus': return PremiumFeatureEmojiStatus.fromJson(this);
-case 'premiumFeatureForumTopicIcon': return PremiumFeatureForumTopicIcon.fromJson(this);
-case 'premiumFeatureImprovedDownloadSpeed': return PremiumFeatureImprovedDownloadSpeed.fromJson(this);
-case 'premiumFeatureIncreasedLimits': return PremiumFeatureIncreasedLimits.fromJson(this);
-case 'premiumFeatureIncreasedUploadFileSize': return PremiumFeatureIncreasedUploadFileSize.fromJson(this);
-case 'premiumFeatureProfileBadge': return PremiumFeatureProfileBadge.fromJson(this);
-case 'premiumFeaturePromotionAnimation': return PremiumFeaturePromotionAnimation.fromJson(this);
-case 'premiumFeatureRealTimeChatTranslation': return PremiumFeatureRealTimeChatTranslation.fromJson(this);
-case 'premiumFeatureUniqueReactions': return PremiumFeatureUniqueReactions.fromJson(this);
-case 'premiumFeatureUniqueStickers': return PremiumFeatureUniqueStickers.fromJson(this);
-case 'premiumFeatureUpgradedStories': return PremiumFeatureUpgradedStories.fromJson(this);
-case 'premiumFeatureVoiceRecognition': return PremiumFeatureVoiceRecognition.fromJson(this);
-case 'premiumFeatures': return PremiumFeatures.fromJson(this);
-case 'premiumGiftCodeInfo': return PremiumGiftCodeInfo.fromJson(this);
-case 'premiumGiftCodePaymentOption': return PremiumGiftCodePaymentOption.fromJson(this);
-case 'premiumGiftCodePaymentOptions': return PremiumGiftCodePaymentOptions.fromJson(this);
-case 'premiumGiveawayInfo': return PremiumGiveawayInfo.fromJson(this);
-case 'premiumGiveawayInfoCompleted': return PremiumGiveawayInfoCompleted.fromJson(this);
-case 'premiumGiveawayInfoOngoing': return PremiumGiveawayInfoOngoing.fromJson(this);
-case 'premiumGiveawayParameters': return PremiumGiveawayParameters.fromJson(this);
-case 'premiumGiveawayParticipantStatus': return PremiumGiveawayParticipantStatus.fromJson(this);
-case 'premiumGiveawayParticipantStatusAdministrator': return PremiumGiveawayParticipantStatusAdministrator.fromJson(this);
-case 'premiumGiveawayParticipantStatusAlreadyWasMember': return PremiumGiveawayParticipantStatusAlreadyWasMember.fromJson(this);
-case 'premiumGiveawayParticipantStatusDisallowedCountry': return PremiumGiveawayParticipantStatusDisallowedCountry.fromJson(this);
-case 'premiumGiveawayParticipantStatusEligible': return PremiumGiveawayParticipantStatusEligible.fromJson(this);
-case 'premiumGiveawayParticipantStatusParticipating': return PremiumGiveawayParticipantStatusParticipating.fromJson(this);
-case 'premiumLimit': return PremiumLimit.fromJson(this);
-case 'premiumLimitType': return PremiumLimitType.fromJson(this);
-case 'premiumLimitTypeActiveStoryCount': return PremiumLimitTypeActiveStoryCount.fromJson(this);
-case 'premiumLimitTypeBioLength': return PremiumLimitTypeBioLength.fromJson(this);
-case 'premiumLimitTypeCaptionLength': return PremiumLimitTypeCaptionLength.fromJson(this);
-case 'premiumLimitTypeChatFolderChosenChatCount': return PremiumLimitTypeChatFolderChosenChatCount.fromJson(this);
-case 'premiumLimitTypeChatFolderCount': return PremiumLimitTypeChatFolderCount.fromJson(this);
-case 'premiumLimitTypeChatFolderInviteLinkCount': return PremiumLimitTypeChatFolderInviteLinkCount.fromJson(this);
-case 'premiumLimitTypeCreatedPublicChatCount': return PremiumLimitTypeCreatedPublicChatCount.fromJson(this);
-case 'premiumLimitTypeFavoriteStickerCount': return PremiumLimitTypeFavoriteStickerCount.fromJson(this);
-case 'premiumLimitTypeMonthlySentStoryCount': return PremiumLimitTypeMonthlySentStoryCount.fromJson(this);
-case 'premiumLimitTypePinnedArchivedChatCount': return PremiumLimitTypePinnedArchivedChatCount.fromJson(this);
-case 'premiumLimitTypePinnedChatCount': return PremiumLimitTypePinnedChatCount.fromJson(this);
-case 'premiumLimitTypeSavedAnimationCount': return PremiumLimitTypeSavedAnimationCount.fromJson(this);
-case 'premiumLimitTypeShareableChatFolderCount': return PremiumLimitTypeShareableChatFolderCount.fromJson(this);
-case 'premiumLimitTypeStoryCaptionLength': return PremiumLimitTypeStoryCaptionLength.fromJson(this);
-case 'premiumLimitTypeStorySuggestedReactionAreaCount': return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(this);
-case 'premiumLimitTypeSupergroupCount': return PremiumLimitTypeSupergroupCount.fromJson(this);
-case 'premiumLimitTypeWeeklySentStoryCount': return PremiumLimitTypeWeeklySentStoryCount.fromJson(this);
-case 'premiumPaymentOption': return PremiumPaymentOption.fromJson(this);
-case 'premiumSource': return PremiumSource.fromJson(this);
-case 'premiumSourceFeature': return PremiumSourceFeature.fromJson(this);
-case 'premiumSourceLimitExceeded': return PremiumSourceLimitExceeded.fromJson(this);
-case 'premiumSourceLink': return PremiumSourceLink.fromJson(this);
-case 'premiumSourceSettings': return PremiumSourceSettings.fromJson(this);
-case 'premiumSourceStoryFeature': return PremiumSourceStoryFeature.fromJson(this);
-case 'premiumState': return PremiumState.fromJson(this);
-case 'premiumStatePaymentOption': return PremiumStatePaymentOption.fromJson(this);
-case 'premiumStoryFeature': return PremiumStoryFeature.fromJson(this);
-case 'premiumStoryFeatureCustomExpirationDuration': return PremiumStoryFeatureCustomExpirationDuration.fromJson(this);
-case 'premiumStoryFeatureLinksAndFormatting': return PremiumStoryFeatureLinksAndFormatting.fromJson(this);
-case 'premiumStoryFeaturePermanentViewsHistory': return PremiumStoryFeaturePermanentViewsHistory.fromJson(this);
-case 'premiumStoryFeaturePriorityOrder': return PremiumStoryFeaturePriorityOrder.fromJson(this);
-case 'premiumStoryFeatureSaveStories': return PremiumStoryFeatureSaveStories.fromJson(this);
-case 'premiumStoryFeatureStealthMode': return PremiumStoryFeatureStealthMode.fromJson(this);
-case 'prepaidPremiumGiveaway': return PrepaidPremiumGiveaway.fromJson(this);
-case 'profilePhoto': return ProfilePhoto.fromJson(this);
-case 'proxies': return Proxies.fromJson(this);
-case 'proxy': return Proxy.fromJson(this);
-case 'proxyType': return ProxyType.fromJson(this);
-case 'proxyTypeHttp': return ProxyTypeHttp.fromJson(this);
-case 'proxyTypeMtproto': return ProxyTypeMtproto.fromJson(this);
-case 'proxyTypeSocks5': return ProxyTypeSocks5.fromJson(this);
-case 'publicChatType': return PublicChatType.fromJson(this);
-case 'publicChatTypeHasUsername': return PublicChatTypeHasUsername.fromJson(this);
-case 'publicChatTypeIsLocationBased': return PublicChatTypeIsLocationBased.fromJson(this);
-case 'pushMessageContent': return PushMessageContent.fromJson(this);
-case 'pushMessageContentAnimation': return PushMessageContentAnimation.fromJson(this);
-case 'pushMessageContentAudio': return PushMessageContentAudio.fromJson(this);
-case 'pushMessageContentBasicGroupChatCreate': return PushMessageContentBasicGroupChatCreate.fromJson(this);
-case 'pushMessageContentChatAddMembers': return PushMessageContentChatAddMembers.fromJson(this);
-case 'pushMessageContentChatChangePhoto': return PushMessageContentChatChangePhoto.fromJson(this);
-case 'pushMessageContentChatChangeTitle': return PushMessageContentChatChangeTitle.fromJson(this);
-case 'pushMessageContentChatDeleteMember': return PushMessageContentChatDeleteMember.fromJson(this);
-case 'pushMessageContentChatJoinByLink': return PushMessageContentChatJoinByLink.fromJson(this);
-case 'pushMessageContentChatJoinByRequest': return PushMessageContentChatJoinByRequest.fromJson(this);
-case 'pushMessageContentChatSetBackground': return PushMessageContentChatSetBackground.fromJson(this);
-case 'pushMessageContentChatSetTheme': return PushMessageContentChatSetTheme.fromJson(this);
-case 'pushMessageContentContact': return PushMessageContentContact.fromJson(this);
-case 'pushMessageContentContactRegistered': return PushMessageContentContactRegistered.fromJson(this);
-case 'pushMessageContentDocument': return PushMessageContentDocument.fromJson(this);
-case 'pushMessageContentGame': return PushMessageContentGame.fromJson(this);
-case 'pushMessageContentGameScore': return PushMessageContentGameScore.fromJson(this);
-case 'pushMessageContentHidden': return PushMessageContentHidden.fromJson(this);
-case 'pushMessageContentInvoice': return PushMessageContentInvoice.fromJson(this);
-case 'pushMessageContentLocation': return PushMessageContentLocation.fromJson(this);
-case 'pushMessageContentMediaAlbum': return PushMessageContentMediaAlbum.fromJson(this);
-case 'pushMessageContentMessageForwards': return PushMessageContentMessageForwards.fromJson(this);
-case 'pushMessageContentPhoto': return PushMessageContentPhoto.fromJson(this);
-case 'pushMessageContentPoll': return PushMessageContentPoll.fromJson(this);
-case 'pushMessageContentPremiumGiftCode': return PushMessageContentPremiumGiftCode.fromJson(this);
-case 'pushMessageContentPremiumGiveaway': return PushMessageContentPremiumGiveaway.fromJson(this);
-case 'pushMessageContentRecurringPayment': return PushMessageContentRecurringPayment.fromJson(this);
-case 'pushMessageContentScreenshotTaken': return PushMessageContentScreenshotTaken.fromJson(this);
-case 'pushMessageContentSticker': return PushMessageContentSticker.fromJson(this);
-case 'pushMessageContentStory': return PushMessageContentStory.fromJson(this);
-case 'pushMessageContentSuggestProfilePhoto': return PushMessageContentSuggestProfilePhoto.fromJson(this);
-case 'pushMessageContentText': return PushMessageContentText.fromJson(this);
-case 'pushMessageContentVideo': return PushMessageContentVideo.fromJson(this);
-case 'pushMessageContentVideoNote': return PushMessageContentVideoNote.fromJson(this);
-case 'pushMessageContentVoiceNote': return PushMessageContentVoiceNote.fromJson(this);
-case 'pushReceiverId': return PushReceiverId.fromJson(this);
-case 'reactionType': return ReactionType.fromJson(this);
-case 'reactionTypeCustomEmoji': return ReactionTypeCustomEmoji.fromJson(this);
-case 'reactionTypeEmoji': return ReactionTypeEmoji.fromJson(this);
-case 'recommendedChatFolder': return RecommendedChatFolder.fromJson(this);
-case 'recommendedChatFolders': return RecommendedChatFolders.fromJson(this);
-case 'recoveryEmailAddress': return RecoveryEmailAddress.fromJson(this);
-case 'remoteFile': return RemoteFile.fromJson(this);
-case 'replyMarkup': return ReplyMarkup.fromJson(this);
-case 'replyMarkupForceReply': return ReplyMarkupForceReply.fromJson(this);
-case 'replyMarkupInlineKeyboard': return ReplyMarkupInlineKeyboard.fromJson(this);
-case 'replyMarkupRemoveKeyboard': return ReplyMarkupRemoveKeyboard.fromJson(this);
-case 'replyMarkupShowKeyboard': return ReplyMarkupShowKeyboard.fromJson(this);
-case 'reportReason': return ReportReason.fromJson(this);
-case 'reportReasonChildAbuse': return ReportReasonChildAbuse.fromJson(this);
-case 'reportReasonCopyright': return ReportReasonCopyright.fromJson(this);
-case 'reportReasonCustom': return ReportReasonCustom.fromJson(this);
-case 'reportReasonFake': return ReportReasonFake.fromJson(this);
-case 'reportReasonIllegalDrugs': return ReportReasonIllegalDrugs.fromJson(this);
-case 'reportReasonPersonalDetails': return ReportReasonPersonalDetails.fromJson(this);
-case 'reportReasonPornography': return ReportReasonPornography.fromJson(this);
-case 'reportReasonSpam': return ReportReasonSpam.fromJson(this);
-case 'reportReasonUnrelatedLocation': return ReportReasonUnrelatedLocation.fromJson(this);
-case 'reportReasonViolence': return ReportReasonViolence.fromJson(this);
-case 'resetPasswordResult': return ResetPasswordResult.fromJson(this);
-case 'resetPasswordResultDeclined': return ResetPasswordResultDeclined.fromJson(this);
-case 'resetPasswordResultOk': return ResetPasswordResultOk.fromJson(this);
-case 'resetPasswordResultPending': return ResetPasswordResultPending.fromJson(this);
-case 'richText': return RichText.fromJson(this);
-case 'richTextAnchor': return RichTextAnchor.fromJson(this);
-case 'richTextAnchorLink': return RichTextAnchorLink.fromJson(this);
-case 'richTextBold': return RichTextBold.fromJson(this);
-case 'richTextEmailAddress': return RichTextEmailAddress.fromJson(this);
-case 'richTextFixed': return RichTextFixed.fromJson(this);
-case 'richTextIcon': return RichTextIcon.fromJson(this);
-case 'richTextItalic': return RichTextItalic.fromJson(this);
-case 'richTextMarked': return RichTextMarked.fromJson(this);
-case 'richTextPhoneNumber': return RichTextPhoneNumber.fromJson(this);
-case 'richTextPlain': return RichTextPlain.fromJson(this);
-case 'richTextReference': return RichTextReference.fromJson(this);
-case 'richTextStrikethrough': return RichTextStrikethrough.fromJson(this);
-case 'richTextSubscript': return RichTextSubscript.fromJson(this);
-case 'richTextSuperscript': return RichTextSuperscript.fromJson(this);
-case 'richTextUnderline': return RichTextUnderline.fromJson(this);
-case 'richTextUrl': return RichTextUrl.fromJson(this);
-case 'richTexts': return RichTexts.fromJson(this);
-case 'rtmpUrl': return RtmpUrl.fromJson(this);
-case 'savedCredentials': return SavedCredentials.fromJson(this);
-case 'scopeAutosaveSettings': return ScopeAutosaveSettings.fromJson(this);
-case 'scopeNotificationSettings': return ScopeNotificationSettings.fromJson(this);
-case 'searchMessagesFilter': return SearchMessagesFilter.fromJson(this);
-case 'searchMessagesFilterAnimation': return SearchMessagesFilterAnimation.fromJson(this);
-case 'searchMessagesFilterAudio': return SearchMessagesFilterAudio.fromJson(this);
-case 'searchMessagesFilterChatPhoto': return SearchMessagesFilterChatPhoto.fromJson(this);
-case 'searchMessagesFilterDocument': return SearchMessagesFilterDocument.fromJson(this);
-case 'searchMessagesFilterEmpty': return SearchMessagesFilterEmpty.fromJson(this);
-case 'searchMessagesFilterFailedToSend': return SearchMessagesFilterFailedToSend.fromJson(this);
-case 'searchMessagesFilterMention': return SearchMessagesFilterMention.fromJson(this);
-case 'searchMessagesFilterPhoto': return SearchMessagesFilterPhoto.fromJson(this);
-case 'searchMessagesFilterPhotoAndVideo': return SearchMessagesFilterPhotoAndVideo.fromJson(this);
-case 'searchMessagesFilterPinned': return SearchMessagesFilterPinned.fromJson(this);
-case 'searchMessagesFilterUnreadMention': return SearchMessagesFilterUnreadMention.fromJson(this);
-case 'searchMessagesFilterUnreadReaction': return SearchMessagesFilterUnreadReaction.fromJson(this);
-case 'searchMessagesFilterUrl': return SearchMessagesFilterUrl.fromJson(this);
-case 'searchMessagesFilterVideo': return SearchMessagesFilterVideo.fromJson(this);
-case 'searchMessagesFilterVideoNote': return SearchMessagesFilterVideoNote.fromJson(this);
-case 'searchMessagesFilterVoiceAndVideoNote': return SearchMessagesFilterVoiceAndVideoNote.fromJson(this);
-case 'searchMessagesFilterVoiceNote': return SearchMessagesFilterVoiceNote.fromJson(this);
-case 'seconds': return Seconds.fromJson(this);
-case 'secretChat': return SecretChat.fromJson(this);
-case 'secretChatState': return SecretChatState.fromJson(this);
-case 'secretChatStateClosed': return SecretChatStateClosed.fromJson(this);
-case 'secretChatStatePending': return SecretChatStatePending.fromJson(this);
-case 'secretChatStateReady': return SecretChatStateReady.fromJson(this);
-case 'sentWebAppMessage': return SentWebAppMessage.fromJson(this);
-case 'session': return Session.fromJson(this);
-case 'sessionType': return SessionType.fromJson(this);
-case 'sessionTypeAndroid': return SessionTypeAndroid.fromJson(this);
-case 'sessionTypeApple': return SessionTypeApple.fromJson(this);
-case 'sessionTypeBrave': return SessionTypeBrave.fromJson(this);
-case 'sessionTypeChrome': return SessionTypeChrome.fromJson(this);
-case 'sessionTypeEdge': return SessionTypeEdge.fromJson(this);
-case 'sessionTypeFirefox': return SessionTypeFirefox.fromJson(this);
-case 'sessionTypeIpad': return SessionTypeIpad.fromJson(this);
-case 'sessionTypeIphone': return SessionTypeIphone.fromJson(this);
-case 'sessionTypeLinux': return SessionTypeLinux.fromJson(this);
-case 'sessionTypeMac': return SessionTypeMac.fromJson(this);
-case 'sessionTypeOpera': return SessionTypeOpera.fromJson(this);
-case 'sessionTypeSafari': return SessionTypeSafari.fromJson(this);
-case 'sessionTypeUbuntu': return SessionTypeUbuntu.fromJson(this);
-case 'sessionTypeUnknown': return SessionTypeUnknown.fromJson(this);
-case 'sessionTypeVivaldi': return SessionTypeVivaldi.fromJson(this);
-case 'sessionTypeWindows': return SessionTypeWindows.fromJson(this);
-case 'sessionTypeXbox': return SessionTypeXbox.fromJson(this);
-case 'sessions': return Sessions.fromJson(this);
-case 'shippingOption': return ShippingOption.fromJson(this);
-case 'speechRecognitionResult': return SpeechRecognitionResult.fromJson(this);
-case 'speechRecognitionResultError': return SpeechRecognitionResultError.fromJson(this);
-case 'speechRecognitionResultPending': return SpeechRecognitionResultPending.fromJson(this);
-case 'speechRecognitionResultText': return SpeechRecognitionResultText.fromJson(this);
-case 'sponsoredMessage': return SponsoredMessage.fromJson(this);
-case 'sponsoredMessages': return SponsoredMessages.fromJson(this);
-case 'statisticalGraph': return StatisticalGraph.fromJson(this);
-case 'statisticalGraphAsync': return StatisticalGraphAsync.fromJson(this);
-case 'statisticalGraphData': return StatisticalGraphData.fromJson(this);
-case 'statisticalGraphError': return StatisticalGraphError.fromJson(this);
-case 'statisticalValue': return StatisticalValue.fromJson(this);
-case 'sticker': return Sticker.fromJson(this);
-case 'stickerFormat': return StickerFormat.fromJson(this);
-case 'stickerFormatTgs': return StickerFormatTgs.fromJson(this);
-case 'stickerFormatWebm': return StickerFormatWebm.fromJson(this);
-case 'stickerFormatWebp': return StickerFormatWebp.fromJson(this);
-case 'stickerFullType': return StickerFullType.fromJson(this);
-case 'stickerFullTypeCustomEmoji': return StickerFullTypeCustomEmoji.fromJson(this);
-case 'stickerFullTypeMask': return StickerFullTypeMask.fromJson(this);
-case 'stickerFullTypeRegular': return StickerFullTypeRegular.fromJson(this);
-case 'stickerSet': return StickerSet.fromJson(this);
-case 'stickerSetInfo': return StickerSetInfo.fromJson(this);
-case 'stickerSets': return StickerSets.fromJson(this);
-case 'stickerType': return StickerType.fromJson(this);
-case 'stickerTypeCustomEmoji': return StickerTypeCustomEmoji.fromJson(this);
-case 'stickerTypeMask': return StickerTypeMask.fromJson(this);
-case 'stickerTypeRegular': return StickerTypeRegular.fromJson(this);
-case 'stickers': return Stickers.fromJson(this);
-case 'storageStatistics': return StorageStatistics.fromJson(this);
-case 'storageStatisticsByChat': return StorageStatisticsByChat.fromJson(this);
-case 'storageStatisticsByFileType': return StorageStatisticsByFileType.fromJson(this);
-case 'storageStatisticsFast': return StorageStatisticsFast.fromJson(this);
-case 'storePaymentPurpose': return StorePaymentPurpose.fromJson(this);
-case 'storePaymentPurposeGiftedPremium': return StorePaymentPurposeGiftedPremium.fromJson(this);
-case 'storePaymentPurposePremiumGiftCodes': return StorePaymentPurposePremiumGiftCodes.fromJson(this);
-case 'storePaymentPurposePremiumGiveaway': return StorePaymentPurposePremiumGiveaway.fromJson(this);
-case 'storePaymentPurposePremiumSubscription': return StorePaymentPurposePremiumSubscription.fromJson(this);
-case 'stories': return Stories.fromJson(this);
-case 'story': return Story.fromJson(this);
-case 'storyArea': return StoryArea.fromJson(this);
-case 'storyAreaPosition': return StoryAreaPosition.fromJson(this);
-case 'storyAreaType': return StoryAreaType.fromJson(this);
-case 'storyAreaTypeLocation': return StoryAreaTypeLocation.fromJson(this);
-case 'storyAreaTypeSuggestedReaction': return StoryAreaTypeSuggestedReaction.fromJson(this);
-case 'storyAreaTypeVenue': return StoryAreaTypeVenue.fromJson(this);
-case 'storyContent': return StoryContent.fromJson(this);
-case 'storyContentPhoto': return StoryContentPhoto.fromJson(this);
-case 'storyContentUnsupported': return StoryContentUnsupported.fromJson(this);
-case 'storyContentVideo': return StoryContentVideo.fromJson(this);
-case 'storyInfo': return StoryInfo.fromJson(this);
-case 'storyInteractionInfo': return StoryInteractionInfo.fromJson(this);
-case 'storyList': return StoryList.fromJson(this);
-case 'storyListArchive': return StoryListArchive.fromJson(this);
-case 'storyListMain': return StoryListMain.fromJson(this);
-case 'storyPrivacySettings': return StoryPrivacySettings.fromJson(this);
-case 'storyPrivacySettingsCloseFriends': return StoryPrivacySettingsCloseFriends.fromJson(this);
-case 'storyPrivacySettingsContacts': return StoryPrivacySettingsContacts.fromJson(this);
-case 'storyPrivacySettingsEveryone': return StoryPrivacySettingsEveryone.fromJson(this);
-case 'storyPrivacySettingsSelectedUsers': return StoryPrivacySettingsSelectedUsers.fromJson(this);
-case 'storyVideo': return StoryVideo.fromJson(this);
-case 'storyViewer': return StoryViewer.fromJson(this);
-case 'storyViewers': return StoryViewers.fromJson(this);
-case 'suggestedAction': return SuggestedAction.fromJson(this);
-case 'suggestedActionCheckPassword': return SuggestedActionCheckPassword.fromJson(this);
-case 'suggestedActionCheckPhoneNumber': return SuggestedActionCheckPhoneNumber.fromJson(this);
-case 'suggestedActionConvertToBroadcastGroup': return SuggestedActionConvertToBroadcastGroup.fromJson(this);
-case 'suggestedActionEnableArchiveAndMuteNewChats': return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(this);
-case 'suggestedActionRestorePremium': return SuggestedActionRestorePremium.fromJson(this);
-case 'suggestedActionSetPassword': return SuggestedActionSetPassword.fromJson(this);
-case 'suggestedActionSubscribeToAnnualPremium': return SuggestedActionSubscribeToAnnualPremium.fromJson(this);
-case 'suggestedActionUpgradePremium': return SuggestedActionUpgradePremium.fromJson(this);
-case 'suggestedActionViewChecksHint': return SuggestedActionViewChecksHint.fromJson(this);
-case 'supergroup': return Supergroup.fromJson(this);
-case 'supergroupFullInfo': return SupergroupFullInfo.fromJson(this);
-case 'supergroupMembersFilter': return SupergroupMembersFilter.fromJson(this);
-case 'supergroupMembersFilterAdministrators': return SupergroupMembersFilterAdministrators.fromJson(this);
-case 'supergroupMembersFilterBanned': return SupergroupMembersFilterBanned.fromJson(this);
-case 'supergroupMembersFilterBots': return SupergroupMembersFilterBots.fromJson(this);
-case 'supergroupMembersFilterContacts': return SupergroupMembersFilterContacts.fromJson(this);
-case 'supergroupMembersFilterMention': return SupergroupMembersFilterMention.fromJson(this);
-case 'supergroupMembersFilterRecent': return SupergroupMembersFilterRecent.fromJson(this);
-case 'supergroupMembersFilterRestricted': return SupergroupMembersFilterRestricted.fromJson(this);
-case 'supergroupMembersFilterSearch': return SupergroupMembersFilterSearch.fromJson(this);
-case 'tMeUrl': return TMeUrl.fromJson(this);
-case 'tMeUrlType': return TMeUrlType.fromJson(this);
-case 'tMeUrlTypeChatInvite': return TMeUrlTypeChatInvite.fromJson(this);
-case 'tMeUrlTypeStickerSet': return TMeUrlTypeStickerSet.fromJson(this);
-case 'tMeUrlTypeSupergroup': return TMeUrlTypeSupergroup.fromJson(this);
-case 'tMeUrlTypeUser': return TMeUrlTypeUser.fromJson(this);
-case 'tMeUrls': return TMeUrls.fromJson(this);
-case 'targetChat': return TargetChat.fromJson(this);
-case 'targetChatChosen': return TargetChatChosen.fromJson(this);
-case 'targetChatCurrent': return TargetChatCurrent.fromJson(this);
-case 'targetChatInternalLink': return TargetChatInternalLink.fromJson(this);
-case 'telegramPaymentPurpose': return TelegramPaymentPurpose.fromJson(this);
-case 'telegramPaymentPurposePremiumGiftCodes': return TelegramPaymentPurposePremiumGiftCodes.fromJson(this);
-case 'telegramPaymentPurposePremiumGiveaway': return TelegramPaymentPurposePremiumGiveaway.fromJson(this);
-case 'temporaryPasswordState': return TemporaryPasswordState.fromJson(this);
-case 'termsOfService': return TermsOfService.fromJson(this);
-case 'testBytes': return TestBytes.fromJson(this);
-case 'testInt': return TestInt.fromJson(this);
-case 'testString': return TestString.fromJson(this);
-case 'testVectorInt': return TestVectorInt.fromJson(this);
-case 'testVectorIntObject': return TestVectorIntObject.fromJson(this);
-case 'testVectorString': return TestVectorString.fromJson(this);
-case 'testVectorStringObject': return TestVectorStringObject.fromJson(this);
-case 'text': return Text.fromJson(this);
-case 'textEntities': return TextEntities.fromJson(this);
-case 'textEntity': return TextEntity.fromJson(this);
-case 'textEntityType': return TextEntityType.fromJson(this);
-case 'textEntityTypeBankCardNumber': return TextEntityTypeBankCardNumber.fromJson(this);
-case 'textEntityTypeBlockQuote': return TextEntityTypeBlockQuote.fromJson(this);
-case 'textEntityTypeBold': return TextEntityTypeBold.fromJson(this);
-case 'textEntityTypeBotCommand': return TextEntityTypeBotCommand.fromJson(this);
-case 'textEntityTypeCashtag': return TextEntityTypeCashtag.fromJson(this);
-case 'textEntityTypeCode': return TextEntityTypeCode.fromJson(this);
-case 'textEntityTypeCustomEmoji': return TextEntityTypeCustomEmoji.fromJson(this);
-case 'textEntityTypeEmailAddress': return TextEntityTypeEmailAddress.fromJson(this);
-case 'textEntityTypeHashtag': return TextEntityTypeHashtag.fromJson(this);
-case 'textEntityTypeItalic': return TextEntityTypeItalic.fromJson(this);
-case 'textEntityTypeMediaTimestamp': return TextEntityTypeMediaTimestamp.fromJson(this);
-case 'textEntityTypeMention': return TextEntityTypeMention.fromJson(this);
-case 'textEntityTypeMentionName': return TextEntityTypeMentionName.fromJson(this);
-case 'textEntityTypePhoneNumber': return TextEntityTypePhoneNumber.fromJson(this);
-case 'textEntityTypePre': return TextEntityTypePre.fromJson(this);
-case 'textEntityTypePreCode': return TextEntityTypePreCode.fromJson(this);
-case 'textEntityTypeSpoiler': return TextEntityTypeSpoiler.fromJson(this);
-case 'textEntityTypeStrikethrough': return TextEntityTypeStrikethrough.fromJson(this);
-case 'textEntityTypeTextUrl': return TextEntityTypeTextUrl.fromJson(this);
-case 'textEntityTypeUnderline': return TextEntityTypeUnderline.fromJson(this);
-case 'textEntityTypeUrl': return TextEntityTypeUrl.fromJson(this);
-case 'textParseMode': return TextParseMode.fromJson(this);
-case 'textParseModeHTML': return TextParseModeHTML.fromJson(this);
-case 'textParseModeMarkdown': return TextParseModeMarkdown.fromJson(this);
-case 'themeParameters': return ThemeParameters.fromJson(this);
-case 'themeSettings': return ThemeSettings.fromJson(this);
-case 'thumbnail': return Thumbnail.fromJson(this);
-case 'thumbnailFormat': return ThumbnailFormat.fromJson(this);
-case 'thumbnailFormatGif': return ThumbnailFormatGif.fromJson(this);
-case 'thumbnailFormatJpeg': return ThumbnailFormatJpeg.fromJson(this);
-case 'thumbnailFormatMpeg4': return ThumbnailFormatMpeg4.fromJson(this);
-case 'thumbnailFormatPng': return ThumbnailFormatPng.fromJson(this);
-case 'thumbnailFormatTgs': return ThumbnailFormatTgs.fromJson(this);
-case 'thumbnailFormatWebm': return ThumbnailFormatWebm.fromJson(this);
-case 'thumbnailFormatWebp': return ThumbnailFormatWebp.fromJson(this);
-case 'topChatCategory': return TopChatCategory.fromJson(this);
-case 'topChatCategoryBots': return TopChatCategoryBots.fromJson(this);
-case 'topChatCategoryCalls': return TopChatCategoryCalls.fromJson(this);
-case 'topChatCategoryChannels': return TopChatCategoryChannels.fromJson(this);
-case 'topChatCategoryForwardChats': return TopChatCategoryForwardChats.fromJson(this);
-case 'topChatCategoryGroups': return TopChatCategoryGroups.fromJson(this);
-case 'topChatCategoryInlineBots': return TopChatCategoryInlineBots.fromJson(this);
-case 'topChatCategoryUsers': return TopChatCategoryUsers.fromJson(this);
-case 'trendingStickerSets': return TrendingStickerSets.fromJson(this);
-case 'unconfirmedSession': return UnconfirmedSession.fromJson(this);
-case 'unreadReaction': return UnreadReaction.fromJson(this);
-case 'update': return Update.fromJson(this);
-case 'updateAccentColors': return UpdateAccentColors.fromJson(this);
-case 'updateActiveEmojiReactions': return UpdateActiveEmojiReactions.fromJson(this);
-case 'updateActiveNotifications': return UpdateActiveNotifications.fromJson(this);
-case 'updateAddChatMembersPrivacyForbidden': return UpdateAddChatMembersPrivacyForbidden.fromJson(this);
-case 'updateAnimatedEmojiMessageClicked': return UpdateAnimatedEmojiMessageClicked.fromJson(this);
-case 'updateAnimationSearchParameters': return UpdateAnimationSearchParameters.fromJson(this);
-case 'updateAttachmentMenuBots': return UpdateAttachmentMenuBots.fromJson(this);
-case 'updateAuthorizationState': return UpdateAuthorizationState.fromJson(this);
-case 'updateAutosaveSettings': return UpdateAutosaveSettings.fromJson(this);
-case 'updateBasicGroup': return UpdateBasicGroup.fromJson(this);
-case 'updateBasicGroupFullInfo': return UpdateBasicGroupFullInfo.fromJson(this);
-case 'updateCall': return UpdateCall.fromJson(this);
-case 'updateChatAccentColor': return UpdateChatAccentColor.fromJson(this);
-case 'updateChatAction': return UpdateChatAction.fromJson(this);
-case 'updateChatActionBar': return UpdateChatActionBar.fromJson(this);
-case 'updateChatActiveStories': return UpdateChatActiveStories.fromJson(this);
-case 'updateChatAvailableReactions': return UpdateChatAvailableReactions.fromJson(this);
-case 'updateChatBackground': return UpdateChatBackground.fromJson(this);
-case 'updateChatBackgroundCustomEmoji': return UpdateChatBackgroundCustomEmoji.fromJson(this);
-case 'updateChatBlockList': return UpdateChatBlockList.fromJson(this);
-case 'updateChatBoost': return UpdateChatBoost.fromJson(this);
-case 'updateChatDefaultDisableNotification': return UpdateChatDefaultDisableNotification.fromJson(this);
-case 'updateChatDraftMessage': return UpdateChatDraftMessage.fromJson(this);
-case 'updateChatFolders': return UpdateChatFolders.fromJson(this);
-case 'updateChatHasProtectedContent': return UpdateChatHasProtectedContent.fromJson(this);
-case 'updateChatHasScheduledMessages': return UpdateChatHasScheduledMessages.fromJson(this);
-case 'updateChatIsMarkedAsUnread': return UpdateChatIsMarkedAsUnread.fromJson(this);
-case 'updateChatIsTranslatable': return UpdateChatIsTranslatable.fromJson(this);
-case 'updateChatLastMessage': return UpdateChatLastMessage.fromJson(this);
-case 'updateChatMember': return UpdateChatMember.fromJson(this);
-case 'updateChatMessageAutoDeleteTime': return UpdateChatMessageAutoDeleteTime.fromJson(this);
-case 'updateChatMessageSender': return UpdateChatMessageSender.fromJson(this);
-case 'updateChatNotificationSettings': return UpdateChatNotificationSettings.fromJson(this);
-case 'updateChatOnlineMemberCount': return UpdateChatOnlineMemberCount.fromJson(this);
-case 'updateChatPendingJoinRequests': return UpdateChatPendingJoinRequests.fromJson(this);
-case 'updateChatPermissions': return UpdateChatPermissions.fromJson(this);
-case 'updateChatPhoto': return UpdateChatPhoto.fromJson(this);
-case 'updateChatPosition': return UpdateChatPosition.fromJson(this);
-case 'updateChatReadInbox': return UpdateChatReadInbox.fromJson(this);
-case 'updateChatReadOutbox': return UpdateChatReadOutbox.fromJson(this);
-case 'updateChatReplyMarkup': return UpdateChatReplyMarkup.fromJson(this);
-case 'updateChatTheme': return UpdateChatTheme.fromJson(this);
-case 'updateChatThemes': return UpdateChatThemes.fromJson(this);
-case 'updateChatTitle': return UpdateChatTitle.fromJson(this);
-case 'updateChatUnreadMentionCount': return UpdateChatUnreadMentionCount.fromJson(this);
-case 'updateChatUnreadReactionCount': return UpdateChatUnreadReactionCount.fromJson(this);
-case 'updateChatVideoChat': return UpdateChatVideoChat.fromJson(this);
-case 'updateConnectionState': return UpdateConnectionState.fromJson(this);
-case 'updateDefaultReactionType': return UpdateDefaultReactionType.fromJson(this);
-case 'updateDeleteMessages': return UpdateDeleteMessages.fromJson(this);
-case 'updateDiceEmojis': return UpdateDiceEmojis.fromJson(this);
-case 'updateFavoriteStickers': return UpdateFavoriteStickers.fromJson(this);
-case 'updateFile': return UpdateFile.fromJson(this);
-case 'updateFileAddedToDownloads': return UpdateFileAddedToDownloads.fromJson(this);
-case 'updateFileDownload': return UpdateFileDownload.fromJson(this);
-case 'updateFileDownloads': return UpdateFileDownloads.fromJson(this);
-case 'updateFileGenerationStart': return UpdateFileGenerationStart.fromJson(this);
-case 'updateFileGenerationStop': return UpdateFileGenerationStop.fromJson(this);
-case 'updateFileRemovedFromDownloads': return UpdateFileRemovedFromDownloads.fromJson(this);
-case 'updateForumTopicInfo': return UpdateForumTopicInfo.fromJson(this);
-case 'updateGroupCall': return UpdateGroupCall.fromJson(this);
-case 'updateGroupCallParticipant': return UpdateGroupCallParticipant.fromJson(this);
-case 'updateHavePendingNotifications': return UpdateHavePendingNotifications.fromJson(this);
-case 'updateInstalledStickerSets': return UpdateInstalledStickerSets.fromJson(this);
-case 'updateLanguagePackStrings': return UpdateLanguagePackStrings.fromJson(this);
-case 'updateMessageContent': return UpdateMessageContent.fromJson(this);
-case 'updateMessageContentOpened': return UpdateMessageContentOpened.fromJson(this);
-case 'updateMessageEdited': return UpdateMessageEdited.fromJson(this);
-case 'updateMessageInteractionInfo': return UpdateMessageInteractionInfo.fromJson(this);
-case 'updateMessageIsPinned': return UpdateMessageIsPinned.fromJson(this);
-case 'updateMessageLiveLocationViewed': return UpdateMessageLiveLocationViewed.fromJson(this);
-case 'updateMessageMentionRead': return UpdateMessageMentionRead.fromJson(this);
-case 'updateMessageSendAcknowledged': return UpdateMessageSendAcknowledged.fromJson(this);
-case 'updateMessageSendFailed': return UpdateMessageSendFailed.fromJson(this);
-case 'updateMessageSendSucceeded': return UpdateMessageSendSucceeded.fromJson(this);
-case 'updateMessageUnreadReactions': return UpdateMessageUnreadReactions.fromJson(this);
-case 'updateNewCallSignalingData': return UpdateNewCallSignalingData.fromJson(this);
-case 'updateNewCallbackQuery': return UpdateNewCallbackQuery.fromJson(this);
-case 'updateNewChat': return UpdateNewChat.fromJson(this);
-case 'updateNewChatJoinRequest': return UpdateNewChatJoinRequest.fromJson(this);
-case 'updateNewChosenInlineResult': return UpdateNewChosenInlineResult.fromJson(this);
-case 'updateNewCustomEvent': return UpdateNewCustomEvent.fromJson(this);
-case 'updateNewCustomQuery': return UpdateNewCustomQuery.fromJson(this);
-case 'updateNewInlineCallbackQuery': return UpdateNewInlineCallbackQuery.fromJson(this);
-case 'updateNewInlineQuery': return UpdateNewInlineQuery.fromJson(this);
-case 'updateNewMessage': return UpdateNewMessage.fromJson(this);
-case 'updateNewPreCheckoutQuery': return UpdateNewPreCheckoutQuery.fromJson(this);
-case 'updateNewShippingQuery': return UpdateNewShippingQuery.fromJson(this);
-case 'updateNotification': return UpdateNotification.fromJson(this);
-case 'updateNotificationGroup': return UpdateNotificationGroup.fromJson(this);
-case 'updateOption': return UpdateOption.fromJson(this);
-case 'updatePoll': return UpdatePoll.fromJson(this);
-case 'updatePollAnswer': return UpdatePollAnswer.fromJson(this);
-case 'updateRecentStickers': return UpdateRecentStickers.fromJson(this);
-case 'updateSavedAnimations': return UpdateSavedAnimations.fromJson(this);
-case 'updateSavedNotificationSounds': return UpdateSavedNotificationSounds.fromJson(this);
-case 'updateScopeNotificationSettings': return UpdateScopeNotificationSettings.fromJson(this);
-case 'updateSecretChat': return UpdateSecretChat.fromJson(this);
-case 'updateSelectedBackground': return UpdateSelectedBackground.fromJson(this);
-case 'updateServiceNotification': return UpdateServiceNotification.fromJson(this);
-case 'updateStickerSet': return UpdateStickerSet.fromJson(this);
-case 'updateStory': return UpdateStory.fromJson(this);
-case 'updateStoryDeleted': return UpdateStoryDeleted.fromJson(this);
-case 'updateStoryListChatCount': return UpdateStoryListChatCount.fromJson(this);
-case 'updateStorySendFailed': return UpdateStorySendFailed.fromJson(this);
-case 'updateStorySendSucceeded': return UpdateStorySendSucceeded.fromJson(this);
-case 'updateStoryStealthMode': return UpdateStoryStealthMode.fromJson(this);
-case 'updateSuggestedActions': return UpdateSuggestedActions.fromJson(this);
-case 'updateSupergroup': return UpdateSupergroup.fromJson(this);
-case 'updateSupergroupFullInfo': return UpdateSupergroupFullInfo.fromJson(this);
-case 'updateTermsOfService': return UpdateTermsOfService.fromJson(this);
-case 'updateTrendingStickerSets': return UpdateTrendingStickerSets.fromJson(this);
-case 'updateUnconfirmedSession': return UpdateUnconfirmedSession.fromJson(this);
-case 'updateUnreadChatCount': return UpdateUnreadChatCount.fromJson(this);
-case 'updateUnreadMessageCount': return UpdateUnreadMessageCount.fromJson(this);
-case 'updateUser': return UpdateUser.fromJson(this);
-case 'updateUserFullInfo': return UpdateUserFullInfo.fromJson(this);
-case 'updateUserPrivacySettingRules': return UpdateUserPrivacySettingRules.fromJson(this);
-case 'updateUserStatus': return UpdateUserStatus.fromJson(this);
-case 'updateUsersNearby': return UpdateUsersNearby.fromJson(this);
-case 'updateWebAppMessageSent': return UpdateWebAppMessageSent.fromJson(this);
-case 'updates': return Updates.fromJson(this);
-case 'user': return User.fromJson(this);
-case 'userFullInfo': return UserFullInfo.fromJson(this);
-case 'userLink': return UserLink.fromJson(this);
-case 'userPrivacySetting': return UserPrivacySetting.fromJson(this);
-case 'userPrivacySettingAllowCalls': return UserPrivacySettingAllowCalls.fromJson(this);
-case 'userPrivacySettingAllowChatInvites': return UserPrivacySettingAllowChatInvites.fromJson(this);
-case 'userPrivacySettingAllowFindingByPhoneNumber': return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(this);
-case 'userPrivacySettingAllowPeerToPeerCalls': return UserPrivacySettingAllowPeerToPeerCalls.fromJson(this);
-case 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages': return UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(this);
-case 'userPrivacySettingRule': return UserPrivacySettingRule.fromJson(this);
-case 'userPrivacySettingRuleAllowAll': return UserPrivacySettingRuleAllowAll.fromJson(this);
-case 'userPrivacySettingRuleAllowChatMembers': return UserPrivacySettingRuleAllowChatMembers.fromJson(this);
-case 'userPrivacySettingRuleAllowContacts': return UserPrivacySettingRuleAllowContacts.fromJson(this);
-case 'userPrivacySettingRuleAllowUsers': return UserPrivacySettingRuleAllowUsers.fromJson(this);
-case 'userPrivacySettingRuleRestrictAll': return UserPrivacySettingRuleRestrictAll.fromJson(this);
-case 'userPrivacySettingRuleRestrictChatMembers': return UserPrivacySettingRuleRestrictChatMembers.fromJson(this);
-case 'userPrivacySettingRuleRestrictContacts': return UserPrivacySettingRuleRestrictContacts.fromJson(this);
-case 'userPrivacySettingRuleRestrictUsers': return UserPrivacySettingRuleRestrictUsers.fromJson(this);
-case 'userPrivacySettingRules': return UserPrivacySettingRules.fromJson(this);
-case 'userPrivacySettingShowBio': return UserPrivacySettingShowBio.fromJson(this);
-case 'userPrivacySettingShowLinkInForwardedMessages': return UserPrivacySettingShowLinkInForwardedMessages.fromJson(this);
-case 'userPrivacySettingShowPhoneNumber': return UserPrivacySettingShowPhoneNumber.fromJson(this);
-case 'userPrivacySettingShowProfilePhoto': return UserPrivacySettingShowProfilePhoto.fromJson(this);
-case 'userPrivacySettingShowStatus': return UserPrivacySettingShowStatus.fromJson(this);
-case 'userStatus': return UserStatus.fromJson(this);
-case 'userStatusEmpty': return UserStatusEmpty.fromJson(this);
-case 'userStatusLastMonth': return UserStatusLastMonth.fromJson(this);
-case 'userStatusLastWeek': return UserStatusLastWeek.fromJson(this);
-case 'userStatusOffline': return UserStatusOffline.fromJson(this);
-case 'userStatusOnline': return UserStatusOnline.fromJson(this);
-case 'userStatusRecently': return UserStatusRecently.fromJson(this);
-case 'userSupportInfo': return UserSupportInfo.fromJson(this);
-case 'userType': return UserType.fromJson(this);
-case 'userTypeBot': return UserTypeBot.fromJson(this);
-case 'userTypeDeleted': return UserTypeDeleted.fromJson(this);
-case 'userTypeRegular': return UserTypeRegular.fromJson(this);
-case 'userTypeUnknown': return UserTypeUnknown.fromJson(this);
-case 'usernames': return Usernames.fromJson(this);
-case 'users': return Users.fromJson(this);
-case 'validatedOrderInfo': return ValidatedOrderInfo.fromJson(this);
-case 'vectorPathCommand': return VectorPathCommand.fromJson(this);
-case 'vectorPathCommandCubicBezierCurve': return VectorPathCommandCubicBezierCurve.fromJson(this);
-case 'vectorPathCommandLine': return VectorPathCommandLine.fromJson(this);
-case 'venue': return Venue.fromJson(this);
-case 'video': return Video.fromJson(this);
-case 'videoChat': return VideoChat.fromJson(this);
-case 'videoNote': return VideoNote.fromJson(this);
-case 'voiceNote': return VoiceNote.fromJson(this);
-case 'webApp': return WebApp.fromJson(this);
-case 'webAppInfo': return WebAppInfo.fromJson(this);
-case 'webPage': return WebPage.fromJson(this);
-case 'webPageInstantView': return WebPageInstantView.fromJson(this);
-default: return null;
-} } }
+  TdObject? toTdObject() {
+    final String type = this['@type']!;
+    switch (type) {
+      case 'accentColor':
+        return AccentColor.fromJson(this);
+      case 'accountTtl':
+        return AccountTtl.fromJson(this);
+      case 'addedReaction':
+        return AddedReaction.fromJson(this);
+      case 'addedReactions':
+        return AddedReactions.fromJson(this);
+      case 'address':
+        return Address.fromJson(this);
+      case 'animatedChatPhoto':
+        return AnimatedChatPhoto.fromJson(this);
+      case 'animatedEmoji':
+        return AnimatedEmoji.fromJson(this);
+      case 'animation':
+        return Animation.fromJson(this);
+      case 'animations':
+        return Animations.fromJson(this);
+      case 'archiveChatListSettings':
+        return ArchiveChatListSettings.fromJson(this);
+      case 'attachmentMenuBot':
+        return AttachmentMenuBot.fromJson(this);
+      case 'attachmentMenuBotColor':
+        return AttachmentMenuBotColor.fromJson(this);
+      case 'audio':
+        return Audio.fromJson(this);
+      case 'authenticationCodeInfo':
+        return AuthenticationCodeInfo.fromJson(this);
+      case 'authenticationCodeType':
+        return AuthenticationCodeType.fromJson(this);
+      case 'authenticationCodeTypeCall':
+        return AuthenticationCodeTypeCall.fromJson(this);
+      case 'authenticationCodeTypeFirebaseAndroid':
+        return AuthenticationCodeTypeFirebaseAndroid.fromJson(this);
+      case 'authenticationCodeTypeFirebaseIos':
+        return AuthenticationCodeTypeFirebaseIos.fromJson(this);
+      case 'authenticationCodeTypeFlashCall':
+        return AuthenticationCodeTypeFlashCall.fromJson(this);
+      case 'authenticationCodeTypeFragment':
+        return AuthenticationCodeTypeFragment.fromJson(this);
+      case 'authenticationCodeTypeMissedCall':
+        return AuthenticationCodeTypeMissedCall.fromJson(this);
+      case 'authenticationCodeTypeSms':
+        return AuthenticationCodeTypeSms.fromJson(this);
+      case 'authenticationCodeTypeTelegramMessage':
+        return AuthenticationCodeTypeTelegramMessage.fromJson(this);
+      case 'authorizationState':
+        return AuthorizationState.fromJson(this);
+      case 'authorizationStateClosed':
+        return AuthorizationStateClosed.fromJson(this);
+      case 'authorizationStateClosing':
+        return AuthorizationStateClosing.fromJson(this);
+      case 'authorizationStateLoggingOut':
+        return AuthorizationStateLoggingOut.fromJson(this);
+      case 'authorizationStateReady':
+        return AuthorizationStateReady.fromJson(this);
+      case 'authorizationStateWaitCode':
+        return AuthorizationStateWaitCode.fromJson(this);
+      case 'authorizationStateWaitEmailAddress':
+        return AuthorizationStateWaitEmailAddress.fromJson(this);
+      case 'authorizationStateWaitEmailCode':
+        return AuthorizationStateWaitEmailCode.fromJson(this);
+      case 'authorizationStateWaitOtherDeviceConfirmation':
+        return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(this);
+      case 'authorizationStateWaitPassword':
+        return AuthorizationStateWaitPassword.fromJson(this);
+      case 'authorizationStateWaitPhoneNumber':
+        return AuthorizationStateWaitPhoneNumber.fromJson(this);
+      case 'authorizationStateWaitRegistration':
+        return AuthorizationStateWaitRegistration.fromJson(this);
+      case 'authorizationStateWaitTdlibParameters':
+        return AuthorizationStateWaitTdlibParameters.fromJson(this);
+      case 'autoDownloadSettings':
+        return AutoDownloadSettings.fromJson(this);
+      case 'autoDownloadSettingsPresets':
+        return AutoDownloadSettingsPresets.fromJson(this);
+      case 'autosaveSettings':
+        return AutosaveSettings.fromJson(this);
+      case 'autosaveSettingsException':
+        return AutosaveSettingsException.fromJson(this);
+      case 'autosaveSettingsScope':
+        return AutosaveSettingsScope.fromJson(this);
+      case 'autosaveSettingsScopeChannelChats':
+        return AutosaveSettingsScopeChannelChats.fromJson(this);
+      case 'autosaveSettingsScopeChat':
+        return AutosaveSettingsScopeChat.fromJson(this);
+      case 'autosaveSettingsScopeGroupChats':
+        return AutosaveSettingsScopeGroupChats.fromJson(this);
+      case 'autosaveSettingsScopePrivateChats':
+        return AutosaveSettingsScopePrivateChats.fromJson(this);
+      case 'availableReaction':
+        return AvailableReaction.fromJson(this);
+      case 'availableReactions':
+        return AvailableReactions.fromJson(this);
+      case 'background':
+        return Background.fromJson(this);
+      case 'backgroundFill':
+        return BackgroundFill.fromJson(this);
+      case 'backgroundFillFreeformGradient':
+        return BackgroundFillFreeformGradient.fromJson(this);
+      case 'backgroundFillGradient':
+        return BackgroundFillGradient.fromJson(this);
+      case 'backgroundFillSolid':
+        return BackgroundFillSolid.fromJson(this);
+      case 'backgroundType':
+        return BackgroundType.fromJson(this);
+      case 'backgroundTypeChatTheme':
+        return BackgroundTypeChatTheme.fromJson(this);
+      case 'backgroundTypeFill':
+        return BackgroundTypeFill.fromJson(this);
+      case 'backgroundTypePattern':
+        return BackgroundTypePattern.fromJson(this);
+      case 'backgroundTypeWallpaper':
+        return BackgroundTypeWallpaper.fromJson(this);
+      case 'backgrounds':
+        return Backgrounds.fromJson(this);
+      case 'bankCardActionOpenUrl':
+        return BankCardActionOpenUrl.fromJson(this);
+      case 'bankCardInfo':
+        return BankCardInfo.fromJson(this);
+      case 'basicGroup':
+        return BasicGroup.fromJson(this);
+      case 'basicGroupFullInfo':
+        return BasicGroupFullInfo.fromJson(this);
+      case 'blockList':
+        return BlockList.fromJson(this);
+      case 'blockListMain':
+        return BlockListMain.fromJson(this);
+      case 'blockListStories':
+        return BlockListStories.fromJson(this);
+      case 'botCommand':
+        return BotCommand.fromJson(this);
+      case 'botCommandScope':
+        return BotCommandScope.fromJson(this);
+      case 'botCommandScopeAllChatAdministrators':
+        return BotCommandScopeAllChatAdministrators.fromJson(this);
+      case 'botCommandScopeAllGroupChats':
+        return BotCommandScopeAllGroupChats.fromJson(this);
+      case 'botCommandScopeAllPrivateChats':
+        return BotCommandScopeAllPrivateChats.fromJson(this);
+      case 'botCommandScopeChat':
+        return BotCommandScopeChat.fromJson(this);
+      case 'botCommandScopeChatAdministrators':
+        return BotCommandScopeChatAdministrators.fromJson(this);
+      case 'botCommandScopeChatMember':
+        return BotCommandScopeChatMember.fromJson(this);
+      case 'botCommandScopeDefault':
+        return BotCommandScopeDefault.fromJson(this);
+      case 'botCommands':
+        return BotCommands.fromJson(this);
+      case 'botInfo':
+        return BotInfo.fromJson(this);
+      case 'botMenuButton':
+        return BotMenuButton.fromJson(this);
+      case 'botWriteAccessAllowReason':
+        return BotWriteAccessAllowReason.fromJson(this);
+      case 'botWriteAccessAllowReasonAcceptedRequest':
+        return BotWriteAccessAllowReasonAcceptedRequest.fromJson(this);
+      case 'botWriteAccessAllowReasonAddedToAttachmentMenu':
+        return BotWriteAccessAllowReasonAddedToAttachmentMenu.fromJson(this);
+      case 'botWriteAccessAllowReasonConnectedWebsite':
+        return BotWriteAccessAllowReasonConnectedWebsite.fromJson(this);
+      case 'botWriteAccessAllowReasonLaunchedWebApp':
+        return BotWriteAccessAllowReasonLaunchedWebApp.fromJson(this);
+      case 'businessAwayMessageSchedule':
+        return BusinessAwayMessageSchedule.fromJson(this);
+      case 'businessAwayMessageScheduleAlways':
+        return BusinessAwayMessageScheduleAlways.fromJson(this);
+      case 'businessAwayMessageScheduleCustom':
+        return BusinessAwayMessageScheduleCustom.fromJson(this);
+      case 'businessAwayMessageScheduleOutsideOfOpeningHours':
+        return BusinessAwayMessageScheduleOutsideOfOpeningHours.fromJson(this);
+      case 'businessAwayMessageSettings':
+        return BusinessAwayMessageSettings.fromJson(this);
+      case 'businessConnectedBot':
+        return BusinessConnectedBot.fromJson(this);
+      case 'businessGreetingMessageSettings':
+        return BusinessGreetingMessageSettings.fromJson(this);
+      case 'businessInfo':
+        return BusinessInfo.fromJson(this);
+      case 'businessLocation':
+        return BusinessLocation.fromJson(this);
+      case 'businessOpeningHours':
+        return BusinessOpeningHours.fromJson(this);
+      case 'businessOpeningHoursInterval':
+        return BusinessOpeningHoursInterval.fromJson(this);
+      case 'businessRecipients':
+        return BusinessRecipients.fromJson(this);
+      case 'call':
+        return Call.fromJson(this);
+      case 'callDiscardReason':
+        return CallDiscardReason.fromJson(this);
+      case 'callDiscardReasonDeclined':
+        return CallDiscardReasonDeclined.fromJson(this);
+      case 'callDiscardReasonDisconnected':
+        return CallDiscardReasonDisconnected.fromJson(this);
+      case 'callDiscardReasonEmpty':
+        return CallDiscardReasonEmpty.fromJson(this);
+      case 'callDiscardReasonHungUp':
+        return CallDiscardReasonHungUp.fromJson(this);
+      case 'callDiscardReasonMissed':
+        return CallDiscardReasonMissed.fromJson(this);
+      case 'callId':
+        return CallId.fromJson(this);
+      case 'callProblem':
+        return CallProblem.fromJson(this);
+      case 'callProblemDistortedSpeech':
+        return CallProblemDistortedSpeech.fromJson(this);
+      case 'callProblemDistortedVideo':
+        return CallProblemDistortedVideo.fromJson(this);
+      case 'callProblemDropped':
+        return CallProblemDropped.fromJson(this);
+      case 'callProblemEcho':
+        return CallProblemEcho.fromJson(this);
+      case 'callProblemInterruptions':
+        return CallProblemInterruptions.fromJson(this);
+      case 'callProblemNoise':
+        return CallProblemNoise.fromJson(this);
+      case 'callProblemPixelatedVideo':
+        return CallProblemPixelatedVideo.fromJson(this);
+      case 'callProblemSilentLocal':
+        return CallProblemSilentLocal.fromJson(this);
+      case 'callProblemSilentRemote':
+        return CallProblemSilentRemote.fromJson(this);
+      case 'callProtocol':
+        return CallProtocol.fromJson(this);
+      case 'callServer':
+        return CallServer.fromJson(this);
+      case 'callServerType':
+        return CallServerType.fromJson(this);
+      case 'callServerTypeTelegramReflector':
+        return CallServerTypeTelegramReflector.fromJson(this);
+      case 'callServerTypeWebrtc':
+        return CallServerTypeWebrtc.fromJson(this);
+      case 'callState':
+        return CallState.fromJson(this);
+      case 'callStateDiscarded':
+        return CallStateDiscarded.fromJson(this);
+      case 'callStateError':
+        return CallStateError.fromJson(this);
+      case 'callStateExchangingKeys':
+        return CallStateExchangingKeys.fromJson(this);
+      case 'callStateHangingUp':
+        return CallStateHangingUp.fromJson(this);
+      case 'callStatePending':
+        return CallStatePending.fromJson(this);
+      case 'callStateReady':
+        return CallStateReady.fromJson(this);
+      case 'callbackQueryAnswer':
+        return CallbackQueryAnswer.fromJson(this);
+      case 'callbackQueryPayload':
+        return CallbackQueryPayload.fromJson(this);
+      case 'callbackQueryPayloadData':
+        return CallbackQueryPayloadData.fromJson(this);
+      case 'callbackQueryPayloadDataWithPassword':
+        return CallbackQueryPayloadDataWithPassword.fromJson(this);
+      case 'callbackQueryPayloadGame':
+        return CallbackQueryPayloadGame.fromJson(this);
+      case 'canSendMessageToUserResult':
+        return CanSendMessageToUserResult.fromJson(this);
+      case 'canSendMessageToUserResultOk':
+        return CanSendMessageToUserResultOk.fromJson(this);
+      case 'canSendMessageToUserResultUserIsDeleted':
+        return CanSendMessageToUserResultUserIsDeleted.fromJson(this);
+      case 'canSendMessageToUserResultUserRestrictsNewChats':
+        return CanSendMessageToUserResultUserRestrictsNewChats.fromJson(this);
+      case 'canSendStoryResult':
+        return CanSendStoryResult.fromJson(this);
+      case 'canSendStoryResultActiveStoryLimitExceeded':
+        return CanSendStoryResultActiveStoryLimitExceeded.fromJson(this);
+      case 'canSendStoryResultBoostNeeded':
+        return CanSendStoryResultBoostNeeded.fromJson(this);
+      case 'canSendStoryResultMonthlyLimitExceeded':
+        return CanSendStoryResultMonthlyLimitExceeded.fromJson(this);
+      case 'canSendStoryResultOk':
+        return CanSendStoryResultOk.fromJson(this);
+      case 'canSendStoryResultPremiumNeeded':
+        return CanSendStoryResultPremiumNeeded.fromJson(this);
+      case 'canSendStoryResultWeeklyLimitExceeded':
+        return CanSendStoryResultWeeklyLimitExceeded.fromJson(this);
+      case 'canTransferOwnershipResult':
+        return CanTransferOwnershipResult.fromJson(this);
+      case 'canTransferOwnershipResultOk':
+        return CanTransferOwnershipResultOk.fromJson(this);
+      case 'canTransferOwnershipResultPasswordNeeded':
+        return CanTransferOwnershipResultPasswordNeeded.fromJson(this);
+      case 'canTransferOwnershipResultPasswordTooFresh':
+        return CanTransferOwnershipResultPasswordTooFresh.fromJson(this);
+      case 'canTransferOwnershipResultSessionTooFresh':
+        return CanTransferOwnershipResultSessionTooFresh.fromJson(this);
+      case 'chat':
+        return Chat.fromJson(this);
+      case 'chatAction':
+        return ChatAction.fromJson(this);
+      case 'chatActionBar':
+        return ChatActionBar.fromJson(this);
+      case 'chatActionBarAddContact':
+        return ChatActionBarAddContact.fromJson(this);
+      case 'chatActionBarInviteMembers':
+        return ChatActionBarInviteMembers.fromJson(this);
+      case 'chatActionBarJoinRequest':
+        return ChatActionBarJoinRequest.fromJson(this);
+      case 'chatActionBarReportAddBlock':
+        return ChatActionBarReportAddBlock.fromJson(this);
+      case 'chatActionBarReportSpam':
+        return ChatActionBarReportSpam.fromJson(this);
+      case 'chatActionBarReportUnrelatedLocation':
+        return ChatActionBarReportUnrelatedLocation.fromJson(this);
+      case 'chatActionBarSharePhoneNumber':
+        return ChatActionBarSharePhoneNumber.fromJson(this);
+      case 'chatActionCancel':
+        return ChatActionCancel.fromJson(this);
+      case 'chatActionChoosingContact':
+        return ChatActionChoosingContact.fromJson(this);
+      case 'chatActionChoosingLocation':
+        return ChatActionChoosingLocation.fromJson(this);
+      case 'chatActionChoosingSticker':
+        return ChatActionChoosingSticker.fromJson(this);
+      case 'chatActionRecordingVideo':
+        return ChatActionRecordingVideo.fromJson(this);
+      case 'chatActionRecordingVideoNote':
+        return ChatActionRecordingVideoNote.fromJson(this);
+      case 'chatActionRecordingVoiceNote':
+        return ChatActionRecordingVoiceNote.fromJson(this);
+      case 'chatActionStartPlayingGame':
+        return ChatActionStartPlayingGame.fromJson(this);
+      case 'chatActionTyping':
+        return ChatActionTyping.fromJson(this);
+      case 'chatActionUploadingDocument':
+        return ChatActionUploadingDocument.fromJson(this);
+      case 'chatActionUploadingPhoto':
+        return ChatActionUploadingPhoto.fromJson(this);
+      case 'chatActionUploadingVideo':
+        return ChatActionUploadingVideo.fromJson(this);
+      case 'chatActionUploadingVideoNote':
+        return ChatActionUploadingVideoNote.fromJson(this);
+      case 'chatActionUploadingVoiceNote':
+        return ChatActionUploadingVoiceNote.fromJson(this);
+      case 'chatActionWatchingAnimations':
+        return ChatActionWatchingAnimations.fromJson(this);
+      case 'chatActiveStories':
+        return ChatActiveStories.fromJson(this);
+      case 'chatAdministrator':
+        return ChatAdministrator.fromJson(this);
+      case 'chatAdministratorRights':
+        return ChatAdministratorRights.fromJson(this);
+      case 'chatAdministrators':
+        return ChatAdministrators.fromJson(this);
+      case 'chatAvailableReactions':
+        return ChatAvailableReactions.fromJson(this);
+      case 'chatAvailableReactionsAll':
+        return ChatAvailableReactionsAll.fromJson(this);
+      case 'chatAvailableReactionsSome':
+        return ChatAvailableReactionsSome.fromJson(this);
+      case 'chatBackground':
+        return ChatBackground.fromJson(this);
+      case 'chatBoost':
+        return ChatBoost.fromJson(this);
+      case 'chatBoostFeatures':
+        return ChatBoostFeatures.fromJson(this);
+      case 'chatBoostLevelFeatures':
+        return ChatBoostLevelFeatures.fromJson(this);
+      case 'chatBoostLink':
+        return ChatBoostLink.fromJson(this);
+      case 'chatBoostLinkInfo':
+        return ChatBoostLinkInfo.fromJson(this);
+      case 'chatBoostSlot':
+        return ChatBoostSlot.fromJson(this);
+      case 'chatBoostSlots':
+        return ChatBoostSlots.fromJson(this);
+      case 'chatBoostSource':
+        return ChatBoostSource.fromJson(this);
+      case 'chatBoostSourceGiftCode':
+        return ChatBoostSourceGiftCode.fromJson(this);
+      case 'chatBoostSourceGiveaway':
+        return ChatBoostSourceGiveaway.fromJson(this);
+      case 'chatBoostSourcePremium':
+        return ChatBoostSourcePremium.fromJson(this);
+      case 'chatBoostStatus':
+        return ChatBoostStatus.fromJson(this);
+      case 'chatEvent':
+        return ChatEvent.fromJson(this);
+      case 'chatEventAccentColorChanged':
+        return ChatEventAccentColorChanged.fromJson(this);
+      case 'chatEventAction':
+        return ChatEventAction.fromJson(this);
+      case 'chatEventActiveUsernamesChanged':
+        return ChatEventActiveUsernamesChanged.fromJson(this);
+      case 'chatEventAvailableReactionsChanged':
+        return ChatEventAvailableReactionsChanged.fromJson(this);
+      case 'chatEventBackgroundChanged':
+        return ChatEventBackgroundChanged.fromJson(this);
+      case 'chatEventCustomEmojiStickerSetChanged':
+        return ChatEventCustomEmojiStickerSetChanged.fromJson(this);
+      case 'chatEventDescriptionChanged':
+        return ChatEventDescriptionChanged.fromJson(this);
+      case 'chatEventEmojiStatusChanged':
+        return ChatEventEmojiStatusChanged.fromJson(this);
+      case 'chatEventForumTopicCreated':
+        return ChatEventForumTopicCreated.fromJson(this);
+      case 'chatEventForumTopicDeleted':
+        return ChatEventForumTopicDeleted.fromJson(this);
+      case 'chatEventForumTopicEdited':
+        return ChatEventForumTopicEdited.fromJson(this);
+      case 'chatEventForumTopicPinned':
+        return ChatEventForumTopicPinned.fromJson(this);
+      case 'chatEventForumTopicToggleIsClosed':
+        return ChatEventForumTopicToggleIsClosed.fromJson(this);
+      case 'chatEventForumTopicToggleIsHidden':
+        return ChatEventForumTopicToggleIsHidden.fromJson(this);
+      case 'chatEventHasAggressiveAntiSpamEnabledToggled':
+        return ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(this);
+      case 'chatEventHasProtectedContentToggled':
+        return ChatEventHasProtectedContentToggled.fromJson(this);
+      case 'chatEventInviteLinkDeleted':
+        return ChatEventInviteLinkDeleted.fromJson(this);
+      case 'chatEventInviteLinkEdited':
+        return ChatEventInviteLinkEdited.fromJson(this);
+      case 'chatEventInviteLinkRevoked':
+        return ChatEventInviteLinkRevoked.fromJson(this);
+      case 'chatEventInvitesToggled':
+        return ChatEventInvitesToggled.fromJson(this);
+      case 'chatEventIsAllHistoryAvailableToggled':
+        return ChatEventIsAllHistoryAvailableToggled.fromJson(this);
+      case 'chatEventIsForumToggled':
+        return ChatEventIsForumToggled.fromJson(this);
+      case 'chatEventLinkedChatChanged':
+        return ChatEventLinkedChatChanged.fromJson(this);
+      case 'chatEventLocationChanged':
+        return ChatEventLocationChanged.fromJson(this);
+      case 'chatEventLogFilters':
+        return ChatEventLogFilters.fromJson(this);
+      case 'chatEventMemberInvited':
+        return ChatEventMemberInvited.fromJson(this);
+      case 'chatEventMemberJoined':
+        return ChatEventMemberJoined.fromJson(this);
+      case 'chatEventMemberJoinedByInviteLink':
+        return ChatEventMemberJoinedByInviteLink.fromJson(this);
+      case 'chatEventMemberJoinedByRequest':
+        return ChatEventMemberJoinedByRequest.fromJson(this);
+      case 'chatEventMemberLeft':
+        return ChatEventMemberLeft.fromJson(this);
+      case 'chatEventMemberPromoted':
+        return ChatEventMemberPromoted.fromJson(this);
+      case 'chatEventMemberRestricted':
+        return ChatEventMemberRestricted.fromJson(this);
+      case 'chatEventMessageAutoDeleteTimeChanged':
+        return ChatEventMessageAutoDeleteTimeChanged.fromJson(this);
+      case 'chatEventMessageDeleted':
+        return ChatEventMessageDeleted.fromJson(this);
+      case 'chatEventMessageEdited':
+        return ChatEventMessageEdited.fromJson(this);
+      case 'chatEventMessagePinned':
+        return ChatEventMessagePinned.fromJson(this);
+      case 'chatEventMessageUnpinned':
+        return ChatEventMessageUnpinned.fromJson(this);
+      case 'chatEventPermissionsChanged':
+        return ChatEventPermissionsChanged.fromJson(this);
+      case 'chatEventPhotoChanged':
+        return ChatEventPhotoChanged.fromJson(this);
+      case 'chatEventPollStopped':
+        return ChatEventPollStopped.fromJson(this);
+      case 'chatEventProfileAccentColorChanged':
+        return ChatEventProfileAccentColorChanged.fromJson(this);
+      case 'chatEventSignMessagesToggled':
+        return ChatEventSignMessagesToggled.fromJson(this);
+      case 'chatEventSlowModeDelayChanged':
+        return ChatEventSlowModeDelayChanged.fromJson(this);
+      case 'chatEventStickerSetChanged':
+        return ChatEventStickerSetChanged.fromJson(this);
+      case 'chatEventTitleChanged':
+        return ChatEventTitleChanged.fromJson(this);
+      case 'chatEventUsernameChanged':
+        return ChatEventUsernameChanged.fromJson(this);
+      case 'chatEventVideoChatCreated':
+        return ChatEventVideoChatCreated.fromJson(this);
+      case 'chatEventVideoChatEnded':
+        return ChatEventVideoChatEnded.fromJson(this);
+      case 'chatEventVideoChatMuteNewParticipantsToggled':
+        return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(this);
+      case 'chatEventVideoChatParticipantIsMutedToggled':
+        return ChatEventVideoChatParticipantIsMutedToggled.fromJson(this);
+      case 'chatEventVideoChatParticipantVolumeLevelChanged':
+        return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(this);
+      case 'chatEvents':
+        return ChatEvents.fromJson(this);
+      case 'chatFolder':
+        return ChatFolder.fromJson(this);
+      case 'chatFolderIcon':
+        return ChatFolderIcon.fromJson(this);
+      case 'chatFolderInfo':
+        return ChatFolderInfo.fromJson(this);
+      case 'chatFolderInviteLink':
+        return ChatFolderInviteLink.fromJson(this);
+      case 'chatFolderInviteLinkInfo':
+        return ChatFolderInviteLinkInfo.fromJson(this);
+      case 'chatFolderInviteLinks':
+        return ChatFolderInviteLinks.fromJson(this);
+      case 'chatInviteLink':
+        return ChatInviteLink.fromJson(this);
+      case 'chatInviteLinkCount':
+        return ChatInviteLinkCount.fromJson(this);
+      case 'chatInviteLinkCounts':
+        return ChatInviteLinkCounts.fromJson(this);
+      case 'chatInviteLinkInfo':
+        return ChatInviteLinkInfo.fromJson(this);
+      case 'chatInviteLinkMember':
+        return ChatInviteLinkMember.fromJson(this);
+      case 'chatInviteLinkMembers':
+        return ChatInviteLinkMembers.fromJson(this);
+      case 'chatInviteLinks':
+        return ChatInviteLinks.fromJson(this);
+      case 'chatJoinRequest':
+        return ChatJoinRequest.fromJson(this);
+      case 'chatJoinRequests':
+        return ChatJoinRequests.fromJson(this);
+      case 'chatJoinRequestsInfo':
+        return ChatJoinRequestsInfo.fromJson(this);
+      case 'chatList':
+        return ChatList.fromJson(this);
+      case 'chatListArchive':
+        return ChatListArchive.fromJson(this);
+      case 'chatListFolder':
+        return ChatListFolder.fromJson(this);
+      case 'chatListMain':
+        return ChatListMain.fromJson(this);
+      case 'chatLists':
+        return ChatLists.fromJson(this);
+      case 'chatLocation':
+        return ChatLocation.fromJson(this);
+      case 'chatMember':
+        return ChatMember.fromJson(this);
+      case 'chatMemberStatus':
+        return ChatMemberStatus.fromJson(this);
+      case 'chatMemberStatusAdministrator':
+        return ChatMemberStatusAdministrator.fromJson(this);
+      case 'chatMemberStatusBanned':
+        return ChatMemberStatusBanned.fromJson(this);
+      case 'chatMemberStatusCreator':
+        return ChatMemberStatusCreator.fromJson(this);
+      case 'chatMemberStatusLeft':
+        return ChatMemberStatusLeft.fromJson(this);
+      case 'chatMemberStatusMember':
+        return ChatMemberStatusMember.fromJson(this);
+      case 'chatMemberStatusRestricted':
+        return ChatMemberStatusRestricted.fromJson(this);
+      case 'chatMembers':
+        return ChatMembers.fromJson(this);
+      case 'chatMembersFilter':
+        return ChatMembersFilter.fromJson(this);
+      case 'chatMembersFilterAdministrators':
+        return ChatMembersFilterAdministrators.fromJson(this);
+      case 'chatMembersFilterBanned':
+        return ChatMembersFilterBanned.fromJson(this);
+      case 'chatMembersFilterBots':
+        return ChatMembersFilterBots.fromJson(this);
+      case 'chatMembersFilterContacts':
+        return ChatMembersFilterContacts.fromJson(this);
+      case 'chatMembersFilterMembers':
+        return ChatMembersFilterMembers.fromJson(this);
+      case 'chatMembersFilterMention':
+        return ChatMembersFilterMention.fromJson(this);
+      case 'chatMembersFilterRestricted':
+        return ChatMembersFilterRestricted.fromJson(this);
+      case 'chatMessageSender':
+        return ChatMessageSender.fromJson(this);
+      case 'chatMessageSenders':
+        return ChatMessageSenders.fromJson(this);
+      case 'chatNearby':
+        return ChatNearby.fromJson(this);
+      case 'chatNotificationSettings':
+        return ChatNotificationSettings.fromJson(this);
+      case 'chatPermissions':
+        return ChatPermissions.fromJson(this);
+      case 'chatPhoto':
+        return ChatPhoto.fromJson(this);
+      case 'chatPhotoInfo':
+        return ChatPhotoInfo.fromJson(this);
+      case 'chatPhotoSticker':
+        return ChatPhotoSticker.fromJson(this);
+      case 'chatPhotoStickerType':
+        return ChatPhotoStickerType.fromJson(this);
+      case 'chatPhotoStickerTypeCustomEmoji':
+        return ChatPhotoStickerTypeCustomEmoji.fromJson(this);
+      case 'chatPhotoStickerTypeRegularOrMask':
+        return ChatPhotoStickerTypeRegularOrMask.fromJson(this);
+      case 'chatPhotos':
+        return ChatPhotos.fromJson(this);
+      case 'chatPosition':
+        return ChatPosition.fromJson(this);
+      case 'chatSource':
+        return ChatSource.fromJson(this);
+      case 'chatSourceMtprotoProxy':
+        return ChatSourceMtprotoProxy.fromJson(this);
+      case 'chatSourcePublicServiceAnnouncement':
+        return ChatSourcePublicServiceAnnouncement.fromJson(this);
+      case 'chatStatistics':
+        return ChatStatistics.fromJson(this);
+      case 'chatStatisticsAdministratorActionsInfo':
+        return ChatStatisticsAdministratorActionsInfo.fromJson(this);
+      case 'chatStatisticsChannel':
+        return ChatStatisticsChannel.fromJson(this);
+      case 'chatStatisticsInteractionInfo':
+        return ChatStatisticsInteractionInfo.fromJson(this);
+      case 'chatStatisticsInviterInfo':
+        return ChatStatisticsInviterInfo.fromJson(this);
+      case 'chatStatisticsMessageSenderInfo':
+        return ChatStatisticsMessageSenderInfo.fromJson(this);
+      case 'chatStatisticsObjectType':
+        return ChatStatisticsObjectType.fromJson(this);
+      case 'chatStatisticsObjectTypeMessage':
+        return ChatStatisticsObjectTypeMessage.fromJson(this);
+      case 'chatStatisticsObjectTypeStory':
+        return ChatStatisticsObjectTypeStory.fromJson(this);
+      case 'chatStatisticsSupergroup':
+        return ChatStatisticsSupergroup.fromJson(this);
+      case 'chatTheme':
+        return ChatTheme.fromJson(this);
+      case 'chatType':
+        return ChatType.fromJson(this);
+      case 'chatTypeBasicGroup':
+        return ChatTypeBasicGroup.fromJson(this);
+      case 'chatTypePrivate':
+        return ChatTypePrivate.fromJson(this);
+      case 'chatTypeSecret':
+        return ChatTypeSecret.fromJson(this);
+      case 'chatTypeSupergroup':
+        return ChatTypeSupergroup.fromJson(this);
+      case 'chats':
+        return Chats.fromJson(this);
+      case 'chatsNearby':
+        return ChatsNearby.fromJson(this);
+      case 'checkChatUsernameResult':
+        return CheckChatUsernameResult.fromJson(this);
+      case 'checkChatUsernameResultOk':
+        return CheckChatUsernameResultOk.fromJson(this);
+      case 'checkChatUsernameResultPublicChatsTooMany':
+        return CheckChatUsernameResultPublicChatsTooMany.fromJson(this);
+      case 'checkChatUsernameResultPublicGroupsUnavailable':
+        return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(this);
+      case 'checkChatUsernameResultUsernameInvalid':
+        return CheckChatUsernameResultUsernameInvalid.fromJson(this);
+      case 'checkChatUsernameResultUsernameOccupied':
+        return CheckChatUsernameResultUsernameOccupied.fromJson(this);
+      case 'checkChatUsernameResultUsernamePurchasable':
+        return CheckChatUsernameResultUsernamePurchasable.fromJson(this);
+      case 'checkStickerSetNameResult':
+        return CheckStickerSetNameResult.fromJson(this);
+      case 'checkStickerSetNameResultNameInvalid':
+        return CheckStickerSetNameResultNameInvalid.fromJson(this);
+      case 'checkStickerSetNameResultNameOccupied':
+        return CheckStickerSetNameResultNameOccupied.fromJson(this);
+      case 'checkStickerSetNameResultOk':
+        return CheckStickerSetNameResultOk.fromJson(this);
+      case 'closedVectorPath':
+        return ClosedVectorPath.fromJson(this);
+      case 'connectedWebsite':
+        return ConnectedWebsite.fromJson(this);
+      case 'connectedWebsites':
+        return ConnectedWebsites.fromJson(this);
+      case 'connectionState':
+        return ConnectionState.fromJson(this);
+      case 'connectionStateConnecting':
+        return ConnectionStateConnecting.fromJson(this);
+      case 'connectionStateConnectingToProxy':
+        return ConnectionStateConnectingToProxy.fromJson(this);
+      case 'connectionStateReady':
+        return ConnectionStateReady.fromJson(this);
+      case 'connectionStateUpdating':
+        return ConnectionStateUpdating.fromJson(this);
+      case 'connectionStateWaitingForNetwork':
+        return ConnectionStateWaitingForNetwork.fromJson(this);
+      case 'contact':
+        return Contact.fromJson(this);
+      case 'count':
+        return Count.fromJson(this);
+      case 'countries':
+        return Countries.fromJson(this);
+      case 'countryInfo':
+        return CountryInfo.fromJson(this);
+      case 'customRequestResult':
+        return CustomRequestResult.fromJson(this);
+      case 'databaseStatistics':
+        return DatabaseStatistics.fromJson(this);
+      case 'date':
+        return Date.fromJson(this);
+      case 'dateRange':
+        return DateRange.fromJson(this);
+      case 'datedFile':
+        return DatedFile.fromJson(this);
+      case 'deepLinkInfo':
+        return DeepLinkInfo.fromJson(this);
+      case 'deviceToken':
+        return DeviceToken.fromJson(this);
+      case 'deviceTokenApplePush':
+        return DeviceTokenApplePush.fromJson(this);
+      case 'deviceTokenApplePushVoIP':
+        return DeviceTokenApplePushVoIP.fromJson(this);
+      case 'deviceTokenBlackBerryPush':
+        return DeviceTokenBlackBerryPush.fromJson(this);
+      case 'deviceTokenFirebaseCloudMessaging':
+        return DeviceTokenFirebaseCloudMessaging.fromJson(this);
+      case 'deviceTokenHuaweiPush':
+        return DeviceTokenHuaweiPush.fromJson(this);
+      case 'deviceTokenMicrosoftPush':
+        return DeviceTokenMicrosoftPush.fromJson(this);
+      case 'deviceTokenMicrosoftPushVoIP':
+        return DeviceTokenMicrosoftPushVoIP.fromJson(this);
+      case 'deviceTokenSimplePush':
+        return DeviceTokenSimplePush.fromJson(this);
+      case 'deviceTokenTizenPush':
+        return DeviceTokenTizenPush.fromJson(this);
+      case 'deviceTokenUbuntuPush':
+        return DeviceTokenUbuntuPush.fromJson(this);
+      case 'deviceTokenWebPush':
+        return DeviceTokenWebPush.fromJson(this);
+      case 'deviceTokenWindowsPush':
+        return DeviceTokenWindowsPush.fromJson(this);
+      case 'diceStickers':
+        return DiceStickers.fromJson(this);
+      case 'diceStickersRegular':
+        return DiceStickersRegular.fromJson(this);
+      case 'diceStickersSlotMachine':
+        return DiceStickersSlotMachine.fromJson(this);
+      case 'document':
+        return Document.fromJson(this);
+      case 'downloadedFileCounts':
+        return DownloadedFileCounts.fromJson(this);
+      case 'draftMessage':
+        return DraftMessage.fromJson(this);
+      case 'emailAddressAuthentication':
+        return EmailAddressAuthentication.fromJson(this);
+      case 'emailAddressAuthenticationAppleId':
+        return EmailAddressAuthenticationAppleId.fromJson(this);
+      case 'emailAddressAuthenticationCode':
+        return EmailAddressAuthenticationCode.fromJson(this);
+      case 'emailAddressAuthenticationCodeInfo':
+        return EmailAddressAuthenticationCodeInfo.fromJson(this);
+      case 'emailAddressAuthenticationGoogleId':
+        return EmailAddressAuthenticationGoogleId.fromJson(this);
+      case 'emailAddressResetState':
+        return EmailAddressResetState.fromJson(this);
+      case 'emailAddressResetStateAvailable':
+        return EmailAddressResetStateAvailable.fromJson(this);
+      case 'emailAddressResetStatePending':
+        return EmailAddressResetStatePending.fromJson(this);
+      case 'emojiCategories':
+        return EmojiCategories.fromJson(this);
+      case 'emojiCategory':
+        return EmojiCategory.fromJson(this);
+      case 'emojiCategoryType':
+        return EmojiCategoryType.fromJson(this);
+      case 'emojiCategoryTypeChatPhoto':
+        return EmojiCategoryTypeChatPhoto.fromJson(this);
+      case 'emojiCategoryTypeDefault':
+        return EmojiCategoryTypeDefault.fromJson(this);
+      case 'emojiCategoryTypeEmojiStatus':
+        return EmojiCategoryTypeEmojiStatus.fromJson(this);
+      case 'emojiKeyword':
+        return EmojiKeyword.fromJson(this);
+      case 'emojiKeywords':
+        return EmojiKeywords.fromJson(this);
+      case 'emojiReaction':
+        return EmojiReaction.fromJson(this);
+      case 'emojiStatus':
+        return EmojiStatus.fromJson(this);
+      case 'emojiStatuses':
+        return EmojiStatuses.fromJson(this);
+      case 'emojis':
+        return Emojis.fromJson(this);
+      case 'encryptedCredentials':
+        return EncryptedCredentials.fromJson(this);
+      case 'encryptedPassportElement':
+        return EncryptedPassportElement.fromJson(this);
+      case 'error':
+        return TdError.fromJson(this);
+      case 'file':
+        return File.fromJson(this);
+      case 'fileDownload':
+        return FileDownload.fromJson(this);
+      case 'fileDownloadedPrefixSize':
+        return FileDownloadedPrefixSize.fromJson(this);
+      case 'filePart':
+        return FilePart.fromJson(this);
+      case 'fileType':
+        return FileType.fromJson(this);
+      case 'fileTypeAnimation':
+        return FileTypeAnimation.fromJson(this);
+      case 'fileTypeAudio':
+        return FileTypeAudio.fromJson(this);
+      case 'fileTypeDocument':
+        return FileTypeDocument.fromJson(this);
+      case 'fileTypeNone':
+        return FileTypeNone.fromJson(this);
+      case 'fileTypeNotificationSound':
+        return FileTypeNotificationSound.fromJson(this);
+      case 'fileTypePhoto':
+        return FileTypePhoto.fromJson(this);
+      case 'fileTypePhotoStory':
+        return FileTypePhotoStory.fromJson(this);
+      case 'fileTypeProfilePhoto':
+        return FileTypeProfilePhoto.fromJson(this);
+      case 'fileTypeSecret':
+        return FileTypeSecret.fromJson(this);
+      case 'fileTypeSecretThumbnail':
+        return FileTypeSecretThumbnail.fromJson(this);
+      case 'fileTypeSecure':
+        return FileTypeSecure.fromJson(this);
+      case 'fileTypeSticker':
+        return FileTypeSticker.fromJson(this);
+      case 'fileTypeThumbnail':
+        return FileTypeThumbnail.fromJson(this);
+      case 'fileTypeUnknown':
+        return FileTypeUnknown.fromJson(this);
+      case 'fileTypeVideo':
+        return FileTypeVideo.fromJson(this);
+      case 'fileTypeVideoNote':
+        return FileTypeVideoNote.fromJson(this);
+      case 'fileTypeVideoStory':
+        return FileTypeVideoStory.fromJson(this);
+      case 'fileTypeVoiceNote':
+        return FileTypeVoiceNote.fromJson(this);
+      case 'fileTypeWallpaper':
+        return FileTypeWallpaper.fromJson(this);
+      case 'firebaseAuthenticationSettings':
+        return FirebaseAuthenticationSettings.fromJson(this);
+      case 'firebaseAuthenticationSettingsAndroid':
+        return FirebaseAuthenticationSettingsAndroid.fromJson(this);
+      case 'firebaseAuthenticationSettingsIos':
+        return FirebaseAuthenticationSettingsIos.fromJson(this);
+      case 'formattedText':
+        return FormattedText.fromJson(this);
+      case 'forumTopic':
+        return ForumTopic.fromJson(this);
+      case 'forumTopicIcon':
+        return ForumTopicIcon.fromJson(this);
+      case 'forumTopicInfo':
+        return ForumTopicInfo.fromJson(this);
+      case 'forumTopics':
+        return ForumTopics.fromJson(this);
+      case 'forwardSource':
+        return ForwardSource.fromJson(this);
+      case 'foundChatBoosts':
+        return FoundChatBoosts.fromJson(this);
+      case 'foundChatMessages':
+        return FoundChatMessages.fromJson(this);
+      case 'foundFileDownloads':
+        return FoundFileDownloads.fromJson(this);
+      case 'foundMessages':
+        return FoundMessages.fromJson(this);
+      case 'foundPosition':
+        return FoundPosition.fromJson(this);
+      case 'foundPositions':
+        return FoundPositions.fromJson(this);
+      case 'foundWebApp':
+        return FoundWebApp.fromJson(this);
+      case 'game':
+        return Game.fromJson(this);
+      case 'gameHighScore':
+        return GameHighScore.fromJson(this);
+      case 'gameHighScores':
+        return GameHighScores.fromJson(this);
+      case 'groupCall':
+        return GroupCall.fromJson(this);
+      case 'groupCallId':
+        return GroupCallId.fromJson(this);
+      case 'groupCallParticipant':
+        return GroupCallParticipant.fromJson(this);
+      case 'groupCallParticipantVideoInfo':
+        return GroupCallParticipantVideoInfo.fromJson(this);
+      case 'groupCallRecentSpeaker':
+        return GroupCallRecentSpeaker.fromJson(this);
+      case 'groupCallStream':
+        return GroupCallStream.fromJson(this);
+      case 'groupCallStreams':
+        return GroupCallStreams.fromJson(this);
+      case 'groupCallVideoQuality':
+        return GroupCallVideoQuality.fromJson(this);
+      case 'groupCallVideoQualityFull':
+        return GroupCallVideoQualityFull.fromJson(this);
+      case 'groupCallVideoQualityMedium':
+        return GroupCallVideoQualityMedium.fromJson(this);
+      case 'groupCallVideoQualityThumbnail':
+        return GroupCallVideoQualityThumbnail.fromJson(this);
+      case 'groupCallVideoSourceGroup':
+        return GroupCallVideoSourceGroup.fromJson(this);
+      case 'hashtags':
+        return Hashtags.fromJson(this);
+      case 'httpUrl':
+        return HttpUrl.fromJson(this);
+      case 'identityDocument':
+        return IdentityDocument.fromJson(this);
+      case 'importedContacts':
+        return ImportedContacts.fromJson(this);
+      case 'inlineKeyboardButton':
+        return InlineKeyboardButton.fromJson(this);
+      case 'inlineKeyboardButtonType':
+        return InlineKeyboardButtonType.fromJson(this);
+      case 'inlineKeyboardButtonTypeBuy':
+        return InlineKeyboardButtonTypeBuy.fromJson(this);
+      case 'inlineKeyboardButtonTypeCallback':
+        return InlineKeyboardButtonTypeCallback.fromJson(this);
+      case 'inlineKeyboardButtonTypeCallbackGame':
+        return InlineKeyboardButtonTypeCallbackGame.fromJson(this);
+      case 'inlineKeyboardButtonTypeCallbackWithPassword':
+        return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(this);
+      case 'inlineKeyboardButtonTypeLoginUrl':
+        return InlineKeyboardButtonTypeLoginUrl.fromJson(this);
+      case 'inlineKeyboardButtonTypeSwitchInline':
+        return InlineKeyboardButtonTypeSwitchInline.fromJson(this);
+      case 'inlineKeyboardButtonTypeUrl':
+        return InlineKeyboardButtonTypeUrl.fromJson(this);
+      case 'inlineKeyboardButtonTypeUser':
+        return InlineKeyboardButtonTypeUser.fromJson(this);
+      case 'inlineKeyboardButtonTypeWebApp':
+        return InlineKeyboardButtonTypeWebApp.fromJson(this);
+      case 'inlineQueryResult':
+        return InlineQueryResult.fromJson(this);
+      case 'inlineQueryResultAnimation':
+        return InlineQueryResultAnimation.fromJson(this);
+      case 'inlineQueryResultArticle':
+        return InlineQueryResultArticle.fromJson(this);
+      case 'inlineQueryResultAudio':
+        return InlineQueryResultAudio.fromJson(this);
+      case 'inlineQueryResultContact':
+        return InlineQueryResultContact.fromJson(this);
+      case 'inlineQueryResultDocument':
+        return InlineQueryResultDocument.fromJson(this);
+      case 'inlineQueryResultGame':
+        return InlineQueryResultGame.fromJson(this);
+      case 'inlineQueryResultLocation':
+        return InlineQueryResultLocation.fromJson(this);
+      case 'inlineQueryResultPhoto':
+        return InlineQueryResultPhoto.fromJson(this);
+      case 'inlineQueryResultSticker':
+        return InlineQueryResultSticker.fromJson(this);
+      case 'inlineQueryResultVenue':
+        return InlineQueryResultVenue.fromJson(this);
+      case 'inlineQueryResultVideo':
+        return InlineQueryResultVideo.fromJson(this);
+      case 'inlineQueryResultVoiceNote':
+        return InlineQueryResultVoiceNote.fromJson(this);
+      case 'inlineQueryResults':
+        return InlineQueryResults.fromJson(this);
+      case 'inlineQueryResultsButton':
+        return InlineQueryResultsButton.fromJson(this);
+      case 'inlineQueryResultsButtonType':
+        return InlineQueryResultsButtonType.fromJson(this);
+      case 'inlineQueryResultsButtonTypeStartBot':
+        return InlineQueryResultsButtonTypeStartBot.fromJson(this);
+      case 'inlineQueryResultsButtonTypeWebApp':
+        return InlineQueryResultsButtonTypeWebApp.fromJson(this);
+      case 'inputBackground':
+        return InputBackground.fromJson(this);
+      case 'inputBackgroundLocal':
+        return InputBackgroundLocal.fromJson(this);
+      case 'inputBackgroundPrevious':
+        return InputBackgroundPrevious.fromJson(this);
+      case 'inputBackgroundRemote':
+        return InputBackgroundRemote.fromJson(this);
+      case 'inputChatPhoto':
+        return InputChatPhoto.fromJson(this);
+      case 'inputChatPhotoAnimation':
+        return InputChatPhotoAnimation.fromJson(this);
+      case 'inputChatPhotoPrevious':
+        return InputChatPhotoPrevious.fromJson(this);
+      case 'inputChatPhotoStatic':
+        return InputChatPhotoStatic.fromJson(this);
+      case 'inputChatPhotoSticker':
+        return InputChatPhotoSticker.fromJson(this);
+      case 'inputCredentials':
+        return InputCredentials.fromJson(this);
+      case 'inputCredentialsApplePay':
+        return InputCredentialsApplePay.fromJson(this);
+      case 'inputCredentialsGooglePay':
+        return InputCredentialsGooglePay.fromJson(this);
+      case 'inputCredentialsNew':
+        return InputCredentialsNew.fromJson(this);
+      case 'inputCredentialsSaved':
+        return InputCredentialsSaved.fromJson(this);
+      case 'inputFile':
+        return InputFile.fromJson(this);
+      case 'inputFileGenerated':
+        return InputFileGenerated.fromJson(this);
+      case 'inputFileId':
+        return InputFileId.fromJson(this);
+      case 'inputFileLocal':
+        return InputFileLocal.fromJson(this);
+      case 'inputFileRemote':
+        return InputFileRemote.fromJson(this);
+      case 'inputIdentityDocument':
+        return InputIdentityDocument.fromJson(this);
+      case 'inputInlineQueryResult':
+        return InputInlineQueryResult.fromJson(this);
+      case 'inputInlineQueryResultAnimation':
+        return InputInlineQueryResultAnimation.fromJson(this);
+      case 'inputInlineQueryResultArticle':
+        return InputInlineQueryResultArticle.fromJson(this);
+      case 'inputInlineQueryResultAudio':
+        return InputInlineQueryResultAudio.fromJson(this);
+      case 'inputInlineQueryResultContact':
+        return InputInlineQueryResultContact.fromJson(this);
+      case 'inputInlineQueryResultDocument':
+        return InputInlineQueryResultDocument.fromJson(this);
+      case 'inputInlineQueryResultGame':
+        return InputInlineQueryResultGame.fromJson(this);
+      case 'inputInlineQueryResultLocation':
+        return InputInlineQueryResultLocation.fromJson(this);
+      case 'inputInlineQueryResultPhoto':
+        return InputInlineQueryResultPhoto.fromJson(this);
+      case 'inputInlineQueryResultSticker':
+        return InputInlineQueryResultSticker.fromJson(this);
+      case 'inputInlineQueryResultVenue':
+        return InputInlineQueryResultVenue.fromJson(this);
+      case 'inputInlineQueryResultVideo':
+        return InputInlineQueryResultVideo.fromJson(this);
+      case 'inputInlineQueryResultVoiceNote':
+        return InputInlineQueryResultVoiceNote.fromJson(this);
+      case 'inputInvoice':
+        return InputInvoice.fromJson(this);
+      case 'inputInvoiceMessage':
+        return InputInvoiceMessage.fromJson(this);
+      case 'inputInvoiceName':
+        return InputInvoiceName.fromJson(this);
+      case 'inputInvoiceTelegram':
+        return InputInvoiceTelegram.fromJson(this);
+      case 'inputMessageAnimation':
+        return InputMessageAnimation.fromJson(this);
+      case 'inputMessageAudio':
+        return InputMessageAudio.fromJson(this);
+      case 'inputMessageContact':
+        return InputMessageContact.fromJson(this);
+      case 'inputMessageContent':
+        return InputMessageContent.fromJson(this);
+      case 'inputMessageDice':
+        return InputMessageDice.fromJson(this);
+      case 'inputMessageDocument':
+        return InputMessageDocument.fromJson(this);
+      case 'inputMessageForwarded':
+        return InputMessageForwarded.fromJson(this);
+      case 'inputMessageGame':
+        return InputMessageGame.fromJson(this);
+      case 'inputMessageInvoice':
+        return InputMessageInvoice.fromJson(this);
+      case 'inputMessageLocation':
+        return InputMessageLocation.fromJson(this);
+      case 'inputMessagePhoto':
+        return InputMessagePhoto.fromJson(this);
+      case 'inputMessagePoll':
+        return InputMessagePoll.fromJson(this);
+      case 'inputMessageReplyTo':
+        return InputMessageReplyTo.fromJson(this);
+      case 'inputMessageReplyToMessage':
+        return InputMessageReplyToMessage.fromJson(this);
+      case 'inputMessageReplyToStory':
+        return InputMessageReplyToStory.fromJson(this);
+      case 'inputMessageSticker':
+        return InputMessageSticker.fromJson(this);
+      case 'inputMessageStory':
+        return InputMessageStory.fromJson(this);
+      case 'inputMessageText':
+        return InputMessageText.fromJson(this);
+      case 'inputMessageVenue':
+        return InputMessageVenue.fromJson(this);
+      case 'inputMessageVideo':
+        return InputMessageVideo.fromJson(this);
+      case 'inputMessageVideoNote':
+        return InputMessageVideoNote.fromJson(this);
+      case 'inputMessageVoiceNote':
+        return InputMessageVoiceNote.fromJson(this);
+      case 'inputPassportElement':
+        return InputPassportElement.fromJson(this);
+      case 'inputPassportElementAddress':
+        return InputPassportElementAddress.fromJson(this);
+      case 'inputPassportElementBankStatement':
+        return InputPassportElementBankStatement.fromJson(this);
+      case 'inputPassportElementDriverLicense':
+        return InputPassportElementDriverLicense.fromJson(this);
+      case 'inputPassportElementEmailAddress':
+        return InputPassportElementEmailAddress.fromJson(this);
+      case 'inputPassportElementError':
+        return InputPassportElementError.fromJson(this);
+      case 'inputPassportElementErrorSource':
+        return InputPassportElementErrorSource.fromJson(this);
+      case 'inputPassportElementErrorSourceDataField':
+        return InputPassportElementErrorSourceDataField.fromJson(this);
+      case 'inputPassportElementErrorSourceFile':
+        return InputPassportElementErrorSourceFile.fromJson(this);
+      case 'inputPassportElementErrorSourceFiles':
+        return InputPassportElementErrorSourceFiles.fromJson(this);
+      case 'inputPassportElementErrorSourceFrontSide':
+        return InputPassportElementErrorSourceFrontSide.fromJson(this);
+      case 'inputPassportElementErrorSourceReverseSide':
+        return InputPassportElementErrorSourceReverseSide.fromJson(this);
+      case 'inputPassportElementErrorSourceSelfie':
+        return InputPassportElementErrorSourceSelfie.fromJson(this);
+      case 'inputPassportElementErrorSourceTranslationFile':
+        return InputPassportElementErrorSourceTranslationFile.fromJson(this);
+      case 'inputPassportElementErrorSourceTranslationFiles':
+        return InputPassportElementErrorSourceTranslationFiles.fromJson(this);
+      case 'inputPassportElementErrorSourceUnspecified':
+        return InputPassportElementErrorSourceUnspecified.fromJson(this);
+      case 'inputPassportElementIdentityCard':
+        return InputPassportElementIdentityCard.fromJson(this);
+      case 'inputPassportElementInternalPassport':
+        return InputPassportElementInternalPassport.fromJson(this);
+      case 'inputPassportElementPassport':
+        return InputPassportElementPassport.fromJson(this);
+      case 'inputPassportElementPassportRegistration':
+        return InputPassportElementPassportRegistration.fromJson(this);
+      case 'inputPassportElementPersonalDetails':
+        return InputPassportElementPersonalDetails.fromJson(this);
+      case 'inputPassportElementPhoneNumber':
+        return InputPassportElementPhoneNumber.fromJson(this);
+      case 'inputPassportElementRentalAgreement':
+        return InputPassportElementRentalAgreement.fromJson(this);
+      case 'inputPassportElementTemporaryRegistration':
+        return InputPassportElementTemporaryRegistration.fromJson(this);
+      case 'inputPassportElementUtilityBill':
+        return InputPassportElementUtilityBill.fromJson(this);
+      case 'inputPersonalDocument':
+        return InputPersonalDocument.fromJson(this);
+      case 'inputSticker':
+        return InputSticker.fromJson(this);
+      case 'inputStoryArea':
+        return InputStoryArea.fromJson(this);
+      case 'inputStoryAreaType':
+        return InputStoryAreaType.fromJson(this);
+      case 'inputStoryAreaTypeFoundVenue':
+        return InputStoryAreaTypeFoundVenue.fromJson(this);
+      case 'inputStoryAreaTypeLocation':
+        return InputStoryAreaTypeLocation.fromJson(this);
+      case 'inputStoryAreaTypeMessage':
+        return InputStoryAreaTypeMessage.fromJson(this);
+      case 'inputStoryAreaTypePreviousVenue':
+        return InputStoryAreaTypePreviousVenue.fromJson(this);
+      case 'inputStoryAreaTypeSuggestedReaction':
+        return InputStoryAreaTypeSuggestedReaction.fromJson(this);
+      case 'inputStoryAreas':
+        return InputStoryAreas.fromJson(this);
+      case 'inputStoryContent':
+        return InputStoryContent.fromJson(this);
+      case 'inputStoryContentPhoto':
+        return InputStoryContentPhoto.fromJson(this);
+      case 'inputStoryContentVideo':
+        return InputStoryContentVideo.fromJson(this);
+      case 'inputTextQuote':
+        return InputTextQuote.fromJson(this);
+      case 'inputThumbnail':
+        return InputThumbnail.fromJson(this);
+      case 'internalLinkType':
+        return InternalLinkType.fromJson(this);
+      case 'internalLinkTypeActiveSessions':
+        return InternalLinkTypeActiveSessions.fromJson(this);
+      case 'internalLinkTypeAttachmentMenuBot':
+        return InternalLinkTypeAttachmentMenuBot.fromJson(this);
+      case 'internalLinkTypeAuthenticationCode':
+        return InternalLinkTypeAuthenticationCode.fromJson(this);
+      case 'internalLinkTypeBackground':
+        return InternalLinkTypeBackground.fromJson(this);
+      case 'internalLinkTypeBotAddToChannel':
+        return InternalLinkTypeBotAddToChannel.fromJson(this);
+      case 'internalLinkTypeBotStart':
+        return InternalLinkTypeBotStart.fromJson(this);
+      case 'internalLinkTypeBotStartInGroup':
+        return InternalLinkTypeBotStartInGroup.fromJson(this);
+      case 'internalLinkTypeChangePhoneNumber':
+        return InternalLinkTypeChangePhoneNumber.fromJson(this);
+      case 'internalLinkTypeChatBoost':
+        return InternalLinkTypeChatBoost.fromJson(this);
+      case 'internalLinkTypeChatFolderInvite':
+        return InternalLinkTypeChatFolderInvite.fromJson(this);
+      case 'internalLinkTypeChatFolderSettings':
+        return InternalLinkTypeChatFolderSettings.fromJson(this);
+      case 'internalLinkTypeChatInvite':
+        return InternalLinkTypeChatInvite.fromJson(this);
+      case 'internalLinkTypeDefaultMessageAutoDeleteTimerSettings':
+        return InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(
+            this);
+      case 'internalLinkTypeEditProfileSettings':
+        return InternalLinkTypeEditProfileSettings.fromJson(this);
+      case 'internalLinkTypeGame':
+        return InternalLinkTypeGame.fromJson(this);
+      case 'internalLinkTypeInstantView':
+        return InternalLinkTypeInstantView.fromJson(this);
+      case 'internalLinkTypeInvoice':
+        return InternalLinkTypeInvoice.fromJson(this);
+      case 'internalLinkTypeLanguagePack':
+        return InternalLinkTypeLanguagePack.fromJson(this);
+      case 'internalLinkTypeLanguageSettings':
+        return InternalLinkTypeLanguageSettings.fromJson(this);
+      case 'internalLinkTypeMessage':
+        return InternalLinkTypeMessage.fromJson(this);
+      case 'internalLinkTypeMessageDraft':
+        return InternalLinkTypeMessageDraft.fromJson(this);
+      case 'internalLinkTypePassportDataRequest':
+        return InternalLinkTypePassportDataRequest.fromJson(this);
+      case 'internalLinkTypePhoneNumberConfirmation':
+        return InternalLinkTypePhoneNumberConfirmation.fromJson(this);
+      case 'internalLinkTypePremiumFeatures':
+        return InternalLinkTypePremiumFeatures.fromJson(this);
+      case 'internalLinkTypePremiumGift':
+        return InternalLinkTypePremiumGift.fromJson(this);
+      case 'internalLinkTypePremiumGiftCode':
+        return InternalLinkTypePremiumGiftCode.fromJson(this);
+      case 'internalLinkTypePrivacyAndSecuritySettings':
+        return InternalLinkTypePrivacyAndSecuritySettings.fromJson(this);
+      case 'internalLinkTypeProxy':
+        return InternalLinkTypeProxy.fromJson(this);
+      case 'internalLinkTypePublicChat':
+        return InternalLinkTypePublicChat.fromJson(this);
+      case 'internalLinkTypeQrCodeAuthentication':
+        return InternalLinkTypeQrCodeAuthentication.fromJson(this);
+      case 'internalLinkTypeRestorePurchases':
+        return InternalLinkTypeRestorePurchases.fromJson(this);
+      case 'internalLinkTypeSettings':
+        return InternalLinkTypeSettings.fromJson(this);
+      case 'internalLinkTypeSideMenuBot':
+        return InternalLinkTypeSideMenuBot.fromJson(this);
+      case 'internalLinkTypeStickerSet':
+        return InternalLinkTypeStickerSet.fromJson(this);
+      case 'internalLinkTypeStory':
+        return InternalLinkTypeStory.fromJson(this);
+      case 'internalLinkTypeTheme':
+        return InternalLinkTypeTheme.fromJson(this);
+      case 'internalLinkTypeThemeSettings':
+        return InternalLinkTypeThemeSettings.fromJson(this);
+      case 'internalLinkTypeUnknownDeepLink':
+        return InternalLinkTypeUnknownDeepLink.fromJson(this);
+      case 'internalLinkTypeUnsupportedProxy':
+        return InternalLinkTypeUnsupportedProxy.fromJson(this);
+      case 'internalLinkTypeUserPhoneNumber':
+        return InternalLinkTypeUserPhoneNumber.fromJson(this);
+      case 'internalLinkTypeUserToken':
+        return InternalLinkTypeUserToken.fromJson(this);
+      case 'internalLinkTypeVideoChat':
+        return InternalLinkTypeVideoChat.fromJson(this);
+      case 'internalLinkTypeWebApp':
+        return InternalLinkTypeWebApp.fromJson(this);
+      case 'inviteLinkChatType':
+        return InviteLinkChatType.fromJson(this);
+      case 'inviteLinkChatTypeBasicGroup':
+        return InviteLinkChatTypeBasicGroup.fromJson(this);
+      case 'inviteLinkChatTypeChannel':
+        return InviteLinkChatTypeChannel.fromJson(this);
+      case 'inviteLinkChatTypeSupergroup':
+        return InviteLinkChatTypeSupergroup.fromJson(this);
+      case 'invoice':
+        return Invoice.fromJson(this);
+      case 'jsonObjectMember':
+        return JsonObjectMember.fromJson(this);
+      case 'jsonValue':
+        return JsonValue.fromJson(this);
+      case 'jsonValueArray':
+        return JsonValueArray.fromJson(this);
+      case 'jsonValueBoolean':
+        return JsonValueBoolean.fromJson(this);
+      case 'jsonValueNull':
+        return JsonValueNull.fromJson(this);
+      case 'jsonValueNumber':
+        return JsonValueNumber.fromJson(this);
+      case 'jsonValueObject':
+        return JsonValueObject.fromJson(this);
+      case 'jsonValueString':
+        return JsonValueString.fromJson(this);
+      case 'keyboardButton':
+        return KeyboardButton.fromJson(this);
+      case 'keyboardButtonType':
+        return KeyboardButtonType.fromJson(this);
+      case 'keyboardButtonTypeRequestChat':
+        return KeyboardButtonTypeRequestChat.fromJson(this);
+      case 'keyboardButtonTypeRequestLocation':
+        return KeyboardButtonTypeRequestLocation.fromJson(this);
+      case 'keyboardButtonTypeRequestPhoneNumber':
+        return KeyboardButtonTypeRequestPhoneNumber.fromJson(this);
+      case 'keyboardButtonTypeRequestPoll':
+        return KeyboardButtonTypeRequestPoll.fromJson(this);
+      case 'keyboardButtonTypeRequestUsers':
+        return KeyboardButtonTypeRequestUsers.fromJson(this);
+      case 'keyboardButtonTypeText':
+        return KeyboardButtonTypeText.fromJson(this);
+      case 'keyboardButtonTypeWebApp':
+        return KeyboardButtonTypeWebApp.fromJson(this);
+      case 'labeledPricePart':
+        return LabeledPricePart.fromJson(this);
+      case 'languagePackInfo':
+        return LanguagePackInfo.fromJson(this);
+      case 'languagePackString':
+        return LanguagePackString.fromJson(this);
+      case 'languagePackStringValue':
+        return LanguagePackStringValue.fromJson(this);
+      case 'languagePackStringValueDeleted':
+        return LanguagePackStringValueDeleted.fromJson(this);
+      case 'languagePackStringValueOrdinary':
+        return LanguagePackStringValueOrdinary.fromJson(this);
+      case 'languagePackStringValuePluralized':
+        return LanguagePackStringValuePluralized.fromJson(this);
+      case 'languagePackStrings':
+        return LanguagePackStrings.fromJson(this);
+      case 'linkPreviewOptions':
+        return LinkPreviewOptions.fromJson(this);
+      case 'localFile':
+        return LocalFile.fromJson(this);
+      case 'localizationTargetInfo':
+        return LocalizationTargetInfo.fromJson(this);
+      case 'location':
+        return Location.fromJson(this);
+      case 'logStream':
+        return LogStream.fromJson(this);
+      case 'logStreamDefault':
+        return LogStreamDefault.fromJson(this);
+      case 'logStreamEmpty':
+        return LogStreamEmpty.fromJson(this);
+      case 'logStreamFile':
+        return LogStreamFile.fromJson(this);
+      case 'logTags':
+        return LogTags.fromJson(this);
+      case 'logVerbosityLevel':
+        return LogVerbosityLevel.fromJson(this);
+      case 'loginUrlInfo':
+        return LoginUrlInfo.fromJson(this);
+      case 'loginUrlInfoOpen':
+        return LoginUrlInfoOpen.fromJson(this);
+      case 'loginUrlInfoRequestConfirmation':
+        return LoginUrlInfoRequestConfirmation.fromJson(this);
+      case 'maskPoint':
+        return MaskPoint.fromJson(this);
+      case 'maskPointChin':
+        return MaskPointChin.fromJson(this);
+      case 'maskPointEyes':
+        return MaskPointEyes.fromJson(this);
+      case 'maskPointForehead':
+        return MaskPointForehead.fromJson(this);
+      case 'maskPointMouth':
+        return MaskPointMouth.fromJson(this);
+      case 'maskPosition':
+        return MaskPosition.fromJson(this);
+      case 'message':
+        return Message.fromJson(this);
+      case 'messageAnimatedEmoji':
+        return MessageAnimatedEmoji.fromJson(this);
+      case 'messageAnimation':
+        return MessageAnimation.fromJson(this);
+      case 'messageAudio':
+        return MessageAudio.fromJson(this);
+      case 'messageAutoDeleteTime':
+        return MessageAutoDeleteTime.fromJson(this);
+      case 'messageBasicGroupChatCreate':
+        return MessageBasicGroupChatCreate.fromJson(this);
+      case 'messageBotWriteAccessAllowed':
+        return MessageBotWriteAccessAllowed.fromJson(this);
+      case 'messageCalendar':
+        return MessageCalendar.fromJson(this);
+      case 'messageCalendarDay':
+        return MessageCalendarDay.fromJson(this);
+      case 'messageCall':
+        return MessageCall.fromJson(this);
+      case 'messageChatAddMembers':
+        return MessageChatAddMembers.fromJson(this);
+      case 'messageChatBoost':
+        return MessageChatBoost.fromJson(this);
+      case 'messageChatChangePhoto':
+        return MessageChatChangePhoto.fromJson(this);
+      case 'messageChatChangeTitle':
+        return MessageChatChangeTitle.fromJson(this);
+      case 'messageChatDeleteMember':
+        return MessageChatDeleteMember.fromJson(this);
+      case 'messageChatDeletePhoto':
+        return MessageChatDeletePhoto.fromJson(this);
+      case 'messageChatJoinByLink':
+        return MessageChatJoinByLink.fromJson(this);
+      case 'messageChatJoinByRequest':
+        return MessageChatJoinByRequest.fromJson(this);
+      case 'messageChatSetBackground':
+        return MessageChatSetBackground.fromJson(this);
+      case 'messageChatSetMessageAutoDeleteTime':
+        return MessageChatSetMessageAutoDeleteTime.fromJson(this);
+      case 'messageChatSetTheme':
+        return MessageChatSetTheme.fromJson(this);
+      case 'messageChatShared':
+        return MessageChatShared.fromJson(this);
+      case 'messageChatUpgradeFrom':
+        return MessageChatUpgradeFrom.fromJson(this);
+      case 'messageChatUpgradeTo':
+        return MessageChatUpgradeTo.fromJson(this);
+      case 'messageContact':
+        return MessageContact.fromJson(this);
+      case 'messageContactRegistered':
+        return MessageContactRegistered.fromJson(this);
+      case 'messageContent':
+        return MessageContent.fromJson(this);
+      case 'messageCopyOptions':
+        return MessageCopyOptions.fromJson(this);
+      case 'messageCustomServiceAction':
+        return MessageCustomServiceAction.fromJson(this);
+      case 'messageDice':
+        return MessageDice.fromJson(this);
+      case 'messageDocument':
+        return MessageDocument.fromJson(this);
+      case 'messageExpiredPhoto':
+        return MessageExpiredPhoto.fromJson(this);
+      case 'messageExpiredVideo':
+        return MessageExpiredVideo.fromJson(this);
+      case 'messageExpiredVideoNote':
+        return MessageExpiredVideoNote.fromJson(this);
+      case 'messageExpiredVoiceNote':
+        return MessageExpiredVoiceNote.fromJson(this);
+      case 'messageExtendedMedia':
+        return MessageExtendedMedia.fromJson(this);
+      case 'messageExtendedMediaPhoto':
+        return MessageExtendedMediaPhoto.fromJson(this);
+      case 'messageExtendedMediaPreview':
+        return MessageExtendedMediaPreview.fromJson(this);
+      case 'messageExtendedMediaUnsupported':
+        return MessageExtendedMediaUnsupported.fromJson(this);
+      case 'messageExtendedMediaVideo':
+        return MessageExtendedMediaVideo.fromJson(this);
+      case 'messageFileType':
+        return MessageFileType.fromJson(this);
+      case 'messageFileTypeGroup':
+        return MessageFileTypeGroup.fromJson(this);
+      case 'messageFileTypePrivate':
+        return MessageFileTypePrivate.fromJson(this);
+      case 'messageFileTypeUnknown':
+        return MessageFileTypeUnknown.fromJson(this);
+      case 'messageForumTopicCreated':
+        return MessageForumTopicCreated.fromJson(this);
+      case 'messageForumTopicEdited':
+        return MessageForumTopicEdited.fromJson(this);
+      case 'messageForumTopicIsClosedToggled':
+        return MessageForumTopicIsClosedToggled.fromJson(this);
+      case 'messageForumTopicIsHiddenToggled':
+        return MessageForumTopicIsHiddenToggled.fromJson(this);
+      case 'messageForwardInfo':
+        return MessageForwardInfo.fromJson(this);
+      case 'messageGame':
+        return MessageGame.fromJson(this);
+      case 'messageGameScore':
+        return MessageGameScore.fromJson(this);
+      case 'messageGiftedPremium':
+        return MessageGiftedPremium.fromJson(this);
+      case 'messageImportInfo':
+        return MessageImportInfo.fromJson(this);
+      case 'messageInteractionInfo':
+        return MessageInteractionInfo.fromJson(this);
+      case 'messageInviteVideoChatParticipants':
+        return MessageInviteVideoChatParticipants.fromJson(this);
+      case 'messageInvoice':
+        return MessageInvoice.fromJson(this);
+      case 'messageLink':
+        return MessageLink.fromJson(this);
+      case 'messageLinkInfo':
+        return MessageLinkInfo.fromJson(this);
+      case 'messageLocation':
+        return MessageLocation.fromJson(this);
+      case 'messageOrigin':
+        return MessageOrigin.fromJson(this);
+      case 'messageOriginChannel':
+        return MessageOriginChannel.fromJson(this);
+      case 'messageOriginChat':
+        return MessageOriginChat.fromJson(this);
+      case 'messageOriginHiddenUser':
+        return MessageOriginHiddenUser.fromJson(this);
+      case 'messageOriginUser':
+        return MessageOriginUser.fromJson(this);
+      case 'messagePassportDataReceived':
+        return MessagePassportDataReceived.fromJson(this);
+      case 'messagePassportDataSent':
+        return MessagePassportDataSent.fromJson(this);
+      case 'messagePaymentSuccessful':
+        return MessagePaymentSuccessful.fromJson(this);
+      case 'messagePaymentSuccessfulBot':
+        return MessagePaymentSuccessfulBot.fromJson(this);
+      case 'messagePhoto':
+        return MessagePhoto.fromJson(this);
+      case 'messagePinMessage':
+        return MessagePinMessage.fromJson(this);
+      case 'messagePoll':
+        return MessagePoll.fromJson(this);
+      case 'messagePosition':
+        return MessagePosition.fromJson(this);
+      case 'messagePositions':
+        return MessagePositions.fromJson(this);
+      case 'messagePremiumGiftCode':
+        return MessagePremiumGiftCode.fromJson(this);
+      case 'messagePremiumGiveaway':
+        return MessagePremiumGiveaway.fromJson(this);
+      case 'messagePremiumGiveawayCompleted':
+        return MessagePremiumGiveawayCompleted.fromJson(this);
+      case 'messagePremiumGiveawayCreated':
+        return MessagePremiumGiveawayCreated.fromJson(this);
+      case 'messagePremiumGiveawayWinners':
+        return MessagePremiumGiveawayWinners.fromJson(this);
+      case 'messageProximityAlertTriggered':
+        return MessageProximityAlertTriggered.fromJson(this);
+      case 'messageReaction':
+        return MessageReaction.fromJson(this);
+      case 'messageReactions':
+        return MessageReactions.fromJson(this);
+      case 'messageReadDate':
+        return MessageReadDate.fromJson(this);
+      case 'messageReadDateMyPrivacyRestricted':
+        return MessageReadDateMyPrivacyRestricted.fromJson(this);
+      case 'messageReadDateRead':
+        return MessageReadDateRead.fromJson(this);
+      case 'messageReadDateTooOld':
+        return MessageReadDateTooOld.fromJson(this);
+      case 'messageReadDateUnread':
+        return MessageReadDateUnread.fromJson(this);
+      case 'messageReadDateUserPrivacyRestricted':
+        return MessageReadDateUserPrivacyRestricted.fromJson(this);
+      case 'messageReplyInfo':
+        return MessageReplyInfo.fromJson(this);
+      case 'messageReplyTo':
+        return MessageReplyTo.fromJson(this);
+      case 'messageReplyToMessage':
+        return MessageReplyToMessage.fromJson(this);
+      case 'messageReplyToStory':
+        return MessageReplyToStory.fromJson(this);
+      case 'messageSchedulingState':
+        return MessageSchedulingState.fromJson(this);
+      case 'messageSchedulingStateSendAtDate':
+        return MessageSchedulingStateSendAtDate.fromJson(this);
+      case 'messageSchedulingStateSendWhenOnline':
+        return MessageSchedulingStateSendWhenOnline.fromJson(this);
+      case 'messageScreenshotTaken':
+        return MessageScreenshotTaken.fromJson(this);
+      case 'messageSelfDestructType':
+        return MessageSelfDestructType.fromJson(this);
+      case 'messageSelfDestructTypeImmediately':
+        return MessageSelfDestructTypeImmediately.fromJson(this);
+      case 'messageSelfDestructTypeTimer':
+        return MessageSelfDestructTypeTimer.fromJson(this);
+      case 'messageSendOptions':
+        return MessageSendOptions.fromJson(this);
+      case 'messageSender':
+        return MessageSender.fromJson(this);
+      case 'messageSenderChat':
+        return MessageSenderChat.fromJson(this);
+      case 'messageSenderUser':
+        return MessageSenderUser.fromJson(this);
+      case 'messageSenders':
+        return MessageSenders.fromJson(this);
+      case 'messageSendingState':
+        return MessageSendingState.fromJson(this);
+      case 'messageSendingStateFailed':
+        return MessageSendingStateFailed.fromJson(this);
+      case 'messageSendingStatePending':
+        return MessageSendingStatePending.fromJson(this);
+      case 'messageSource':
+        return MessageSource.fromJson(this);
+      case 'messageSourceChatEventLog':
+        return MessageSourceChatEventLog.fromJson(this);
+      case 'messageSourceChatHistory':
+        return MessageSourceChatHistory.fromJson(this);
+      case 'messageSourceChatList':
+        return MessageSourceChatList.fromJson(this);
+      case 'messageSourceForumTopicHistory':
+        return MessageSourceForumTopicHistory.fromJson(this);
+      case 'messageSourceHistoryPreview':
+        return MessageSourceHistoryPreview.fromJson(this);
+      case 'messageSourceMessageThreadHistory':
+        return MessageSourceMessageThreadHistory.fromJson(this);
+      case 'messageSourceNotification':
+        return MessageSourceNotification.fromJson(this);
+      case 'messageSourceOther':
+        return MessageSourceOther.fromJson(this);
+      case 'messageSourceScreenshot':
+        return MessageSourceScreenshot.fromJson(this);
+      case 'messageSourceSearch':
+        return MessageSourceSearch.fromJson(this);
+      case 'messageSponsor':
+        return MessageSponsor.fromJson(this);
+      case 'messageSponsorType':
+        return MessageSponsorType.fromJson(this);
+      case 'messageSponsorTypeBot':
+        return MessageSponsorTypeBot.fromJson(this);
+      case 'messageSponsorTypePrivateChannel':
+        return MessageSponsorTypePrivateChannel.fromJson(this);
+      case 'messageSponsorTypePublicChannel':
+        return MessageSponsorTypePublicChannel.fromJson(this);
+      case 'messageSponsorTypeWebApp':
+        return MessageSponsorTypeWebApp.fromJson(this);
+      case 'messageSponsorTypeWebsite':
+        return MessageSponsorTypeWebsite.fromJson(this);
+      case 'messageStatistics':
+        return MessageStatistics.fromJson(this);
+      case 'messageSticker':
+        return MessageSticker.fromJson(this);
+      case 'messageStory':
+        return MessageStory.fromJson(this);
+      case 'messageSuggestProfilePhoto':
+        return MessageSuggestProfilePhoto.fromJson(this);
+      case 'messageSupergroupChatCreate':
+        return MessageSupergroupChatCreate.fromJson(this);
+      case 'messageText':
+        return MessageText.fromJson(this);
+      case 'messageThreadInfo':
+        return MessageThreadInfo.fromJson(this);
+      case 'messageUnsupported':
+        return MessageUnsupported.fromJson(this);
+      case 'messageUsersShared':
+        return MessageUsersShared.fromJson(this);
+      case 'messageVenue':
+        return MessageVenue.fromJson(this);
+      case 'messageVideo':
+        return MessageVideo.fromJson(this);
+      case 'messageVideoChatEnded':
+        return MessageVideoChatEnded.fromJson(this);
+      case 'messageVideoChatScheduled':
+        return MessageVideoChatScheduled.fromJson(this);
+      case 'messageVideoChatStarted':
+        return MessageVideoChatStarted.fromJson(this);
+      case 'messageVideoNote':
+        return MessageVideoNote.fromJson(this);
+      case 'messageViewer':
+        return MessageViewer.fromJson(this);
+      case 'messageViewers':
+        return MessageViewers.fromJson(this);
+      case 'messageVoiceNote':
+        return MessageVoiceNote.fromJson(this);
+      case 'messageWebAppDataReceived':
+        return MessageWebAppDataReceived.fromJson(this);
+      case 'messageWebAppDataSent':
+        return MessageWebAppDataSent.fromJson(this);
+      case 'messages':
+        return Messages.fromJson(this);
+      case 'minithumbnail':
+        return Minithumbnail.fromJson(this);
+      case 'networkStatistics':
+        return NetworkStatistics.fromJson(this);
+      case 'networkStatisticsEntry':
+        return NetworkStatisticsEntry.fromJson(this);
+      case 'networkStatisticsEntryCall':
+        return NetworkStatisticsEntryCall.fromJson(this);
+      case 'networkStatisticsEntryFile':
+        return NetworkStatisticsEntryFile.fromJson(this);
+      case 'networkType':
+        return NetworkType.fromJson(this);
+      case 'networkTypeMobile':
+        return NetworkTypeMobile.fromJson(this);
+      case 'networkTypeMobileRoaming':
+        return NetworkTypeMobileRoaming.fromJson(this);
+      case 'networkTypeNone':
+        return NetworkTypeNone.fromJson(this);
+      case 'networkTypeOther':
+        return NetworkTypeOther.fromJson(this);
+      case 'networkTypeWiFi':
+        return NetworkTypeWiFi.fromJson(this);
+      case 'newChatPrivacySettings':
+        return NewChatPrivacySettings.fromJson(this);
+      case 'notification':
+        return Notification.fromJson(this);
+      case 'notificationGroup':
+        return NotificationGroup.fromJson(this);
+      case 'notificationGroupType':
+        return NotificationGroupType.fromJson(this);
+      case 'notificationGroupTypeCalls':
+        return NotificationGroupTypeCalls.fromJson(this);
+      case 'notificationGroupTypeMentions':
+        return NotificationGroupTypeMentions.fromJson(this);
+      case 'notificationGroupTypeMessages':
+        return NotificationGroupTypeMessages.fromJson(this);
+      case 'notificationGroupTypeSecretChat':
+        return NotificationGroupTypeSecretChat.fromJson(this);
+      case 'notificationSettingsScope':
+        return NotificationSettingsScope.fromJson(this);
+      case 'notificationSettingsScopeChannelChats':
+        return NotificationSettingsScopeChannelChats.fromJson(this);
+      case 'notificationSettingsScopeGroupChats':
+        return NotificationSettingsScopeGroupChats.fromJson(this);
+      case 'notificationSettingsScopePrivateChats':
+        return NotificationSettingsScopePrivateChats.fromJson(this);
+      case 'notificationSound':
+        return NotificationSound.fromJson(this);
+      case 'notificationSounds':
+        return NotificationSounds.fromJson(this);
+      case 'notificationType':
+        return NotificationType.fromJson(this);
+      case 'notificationTypeNewCall':
+        return NotificationTypeNewCall.fromJson(this);
+      case 'notificationTypeNewMessage':
+        return NotificationTypeNewMessage.fromJson(this);
+      case 'notificationTypeNewPushMessage':
+        return NotificationTypeNewPushMessage.fromJson(this);
+      case 'notificationTypeNewSecretChat':
+        return NotificationTypeNewSecretChat.fromJson(this);
+      case 'ok':
+        return Ok.fromJson(this);
+      case 'optionValue':
+        return OptionValue.fromJson(this);
+      case 'optionValueBoolean':
+        return OptionValueBoolean.fromJson(this);
+      case 'optionValueEmpty':
+        return OptionValueEmpty.fromJson(this);
+      case 'optionValueInteger':
+        return OptionValueInteger.fromJson(this);
+      case 'optionValueString':
+        return OptionValueString.fromJson(this);
+      case 'orderInfo':
+        return OrderInfo.fromJson(this);
+      case 'pageBlock':
+        return PageBlock.fromJson(this);
+      case 'pageBlockAnchor':
+        return PageBlockAnchor.fromJson(this);
+      case 'pageBlockAnimation':
+        return PageBlockAnimation.fromJson(this);
+      case 'pageBlockAudio':
+        return PageBlockAudio.fromJson(this);
+      case 'pageBlockAuthorDate':
+        return PageBlockAuthorDate.fromJson(this);
+      case 'pageBlockBlockQuote':
+        return PageBlockBlockQuote.fromJson(this);
+      case 'pageBlockCaption':
+        return PageBlockCaption.fromJson(this);
+      case 'pageBlockChatLink':
+        return PageBlockChatLink.fromJson(this);
+      case 'pageBlockCollage':
+        return PageBlockCollage.fromJson(this);
+      case 'pageBlockCover':
+        return PageBlockCover.fromJson(this);
+      case 'pageBlockDetails':
+        return PageBlockDetails.fromJson(this);
+      case 'pageBlockDivider':
+        return PageBlockDivider.fromJson(this);
+      case 'pageBlockEmbedded':
+        return PageBlockEmbedded.fromJson(this);
+      case 'pageBlockEmbeddedPost':
+        return PageBlockEmbeddedPost.fromJson(this);
+      case 'pageBlockFooter':
+        return PageBlockFooter.fromJson(this);
+      case 'pageBlockHeader':
+        return PageBlockHeader.fromJson(this);
+      case 'pageBlockHorizontalAlignment':
+        return PageBlockHorizontalAlignment.fromJson(this);
+      case 'pageBlockHorizontalAlignmentCenter':
+        return PageBlockHorizontalAlignmentCenter.fromJson(this);
+      case 'pageBlockHorizontalAlignmentLeft':
+        return PageBlockHorizontalAlignmentLeft.fromJson(this);
+      case 'pageBlockHorizontalAlignmentRight':
+        return PageBlockHorizontalAlignmentRight.fromJson(this);
+      case 'pageBlockKicker':
+        return PageBlockKicker.fromJson(this);
+      case 'pageBlockList':
+        return PageBlockList.fromJson(this);
+      case 'pageBlockListItem':
+        return PageBlockListItem.fromJson(this);
+      case 'pageBlockMap':
+        return PageBlockMap.fromJson(this);
+      case 'pageBlockParagraph':
+        return PageBlockParagraph.fromJson(this);
+      case 'pageBlockPhoto':
+        return PageBlockPhoto.fromJson(this);
+      case 'pageBlockPreformatted':
+        return PageBlockPreformatted.fromJson(this);
+      case 'pageBlockPullQuote':
+        return PageBlockPullQuote.fromJson(this);
+      case 'pageBlockRelatedArticle':
+        return PageBlockRelatedArticle.fromJson(this);
+      case 'pageBlockRelatedArticles':
+        return PageBlockRelatedArticles.fromJson(this);
+      case 'pageBlockSlideshow':
+        return PageBlockSlideshow.fromJson(this);
+      case 'pageBlockSubheader':
+        return PageBlockSubheader.fromJson(this);
+      case 'pageBlockSubtitle':
+        return PageBlockSubtitle.fromJson(this);
+      case 'pageBlockTable':
+        return PageBlockTable.fromJson(this);
+      case 'pageBlockTableCell':
+        return PageBlockTableCell.fromJson(this);
+      case 'pageBlockTitle':
+        return PageBlockTitle.fromJson(this);
+      case 'pageBlockVerticalAlignment':
+        return PageBlockVerticalAlignment.fromJson(this);
+      case 'pageBlockVerticalAlignmentBottom':
+        return PageBlockVerticalAlignmentBottom.fromJson(this);
+      case 'pageBlockVerticalAlignmentMiddle':
+        return PageBlockVerticalAlignmentMiddle.fromJson(this);
+      case 'pageBlockVerticalAlignmentTop':
+        return PageBlockVerticalAlignmentTop.fromJson(this);
+      case 'pageBlockVideo':
+        return PageBlockVideo.fromJson(this);
+      case 'pageBlockVoiceNote':
+        return PageBlockVoiceNote.fromJson(this);
+      case 'passportAuthorizationForm':
+        return PassportAuthorizationForm.fromJson(this);
+      case 'passportElement':
+        return PassportElement.fromJson(this);
+      case 'passportElementAddress':
+        return PassportElementAddress.fromJson(this);
+      case 'passportElementBankStatement':
+        return PassportElementBankStatement.fromJson(this);
+      case 'passportElementDriverLicense':
+        return PassportElementDriverLicense.fromJson(this);
+      case 'passportElementEmailAddress':
+        return PassportElementEmailAddress.fromJson(this);
+      case 'passportElementError':
+        return PassportElementError.fromJson(this);
+      case 'passportElementErrorSource':
+        return PassportElementErrorSource.fromJson(this);
+      case 'passportElementErrorSourceDataField':
+        return PassportElementErrorSourceDataField.fromJson(this);
+      case 'passportElementErrorSourceFile':
+        return PassportElementErrorSourceFile.fromJson(this);
+      case 'passportElementErrorSourceFiles':
+        return PassportElementErrorSourceFiles.fromJson(this);
+      case 'passportElementErrorSourceFrontSide':
+        return PassportElementErrorSourceFrontSide.fromJson(this);
+      case 'passportElementErrorSourceReverseSide':
+        return PassportElementErrorSourceReverseSide.fromJson(this);
+      case 'passportElementErrorSourceSelfie':
+        return PassportElementErrorSourceSelfie.fromJson(this);
+      case 'passportElementErrorSourceTranslationFile':
+        return PassportElementErrorSourceTranslationFile.fromJson(this);
+      case 'passportElementErrorSourceTranslationFiles':
+        return PassportElementErrorSourceTranslationFiles.fromJson(this);
+      case 'passportElementErrorSourceUnspecified':
+        return PassportElementErrorSourceUnspecified.fromJson(this);
+      case 'passportElementIdentityCard':
+        return PassportElementIdentityCard.fromJson(this);
+      case 'passportElementInternalPassport':
+        return PassportElementInternalPassport.fromJson(this);
+      case 'passportElementPassport':
+        return PassportElementPassport.fromJson(this);
+      case 'passportElementPassportRegistration':
+        return PassportElementPassportRegistration.fromJson(this);
+      case 'passportElementPersonalDetails':
+        return PassportElementPersonalDetails.fromJson(this);
+      case 'passportElementPhoneNumber':
+        return PassportElementPhoneNumber.fromJson(this);
+      case 'passportElementRentalAgreement':
+        return PassportElementRentalAgreement.fromJson(this);
+      case 'passportElementTemporaryRegistration':
+        return PassportElementTemporaryRegistration.fromJson(this);
+      case 'passportElementType':
+        return PassportElementType.fromJson(this);
+      case 'passportElementTypeAddress':
+        return PassportElementTypeAddress.fromJson(this);
+      case 'passportElementTypeBankStatement':
+        return PassportElementTypeBankStatement.fromJson(this);
+      case 'passportElementTypeDriverLicense':
+        return PassportElementTypeDriverLicense.fromJson(this);
+      case 'passportElementTypeEmailAddress':
+        return PassportElementTypeEmailAddress.fromJson(this);
+      case 'passportElementTypeIdentityCard':
+        return PassportElementTypeIdentityCard.fromJson(this);
+      case 'passportElementTypeInternalPassport':
+        return PassportElementTypeInternalPassport.fromJson(this);
+      case 'passportElementTypePassport':
+        return PassportElementTypePassport.fromJson(this);
+      case 'passportElementTypePassportRegistration':
+        return PassportElementTypePassportRegistration.fromJson(this);
+      case 'passportElementTypePersonalDetails':
+        return PassportElementTypePersonalDetails.fromJson(this);
+      case 'passportElementTypePhoneNumber':
+        return PassportElementTypePhoneNumber.fromJson(this);
+      case 'passportElementTypeRentalAgreement':
+        return PassportElementTypeRentalAgreement.fromJson(this);
+      case 'passportElementTypeTemporaryRegistration':
+        return PassportElementTypeTemporaryRegistration.fromJson(this);
+      case 'passportElementTypeUtilityBill':
+        return PassportElementTypeUtilityBill.fromJson(this);
+      case 'passportElementUtilityBill':
+        return PassportElementUtilityBill.fromJson(this);
+      case 'passportElements':
+        return PassportElements.fromJson(this);
+      case 'passportElementsWithErrors':
+        return PassportElementsWithErrors.fromJson(this);
+      case 'passportRequiredElement':
+        return PassportRequiredElement.fromJson(this);
+      case 'passportSuitableElement':
+        return PassportSuitableElement.fromJson(this);
+      case 'passwordState':
+        return PasswordState.fromJson(this);
+      case 'paymentForm':
+        return PaymentForm.fromJson(this);
+      case 'paymentOption':
+        return PaymentOption.fromJson(this);
+      case 'paymentProvider':
+        return PaymentProvider.fromJson(this);
+      case 'paymentProviderOther':
+        return PaymentProviderOther.fromJson(this);
+      case 'paymentProviderSmartGlocal':
+        return PaymentProviderSmartGlocal.fromJson(this);
+      case 'paymentProviderStripe':
+        return PaymentProviderStripe.fromJson(this);
+      case 'paymentReceipt':
+        return PaymentReceipt.fromJson(this);
+      case 'paymentResult':
+        return PaymentResult.fromJson(this);
+      case 'personalDetails':
+        return PersonalDetails.fromJson(this);
+      case 'personalDocument':
+        return PersonalDocument.fromJson(this);
+      case 'phoneNumberAuthenticationSettings':
+        return PhoneNumberAuthenticationSettings.fromJson(this);
+      case 'phoneNumberInfo':
+        return PhoneNumberInfo.fromJson(this);
+      case 'photo':
+        return Photo.fromJson(this);
+      case 'photoSize':
+        return PhotoSize.fromJson(this);
+      case 'point':
+        return Point.fromJson(this);
+      case 'poll':
+        return Poll.fromJson(this);
+      case 'pollOption':
+        return PollOption.fromJson(this);
+      case 'pollType':
+        return PollType.fromJson(this);
+      case 'pollTypeQuiz':
+        return PollTypeQuiz.fromJson(this);
+      case 'pollTypeRegular':
+        return PollTypeRegular.fromJson(this);
+      case 'premiumFeature':
+        return PremiumFeature.fromJson(this);
+      case 'premiumFeatureAccentColor':
+        return PremiumFeatureAccentColor.fromJson(this);
+      case 'premiumFeatureAdvancedChatManagement':
+        return PremiumFeatureAdvancedChatManagement.fromJson(this);
+      case 'premiumFeatureAnimatedProfilePhoto':
+        return PremiumFeatureAnimatedProfilePhoto.fromJson(this);
+      case 'premiumFeatureAppIcons':
+        return PremiumFeatureAppIcons.fromJson(this);
+      case 'premiumFeatureBackgroundForBoth':
+        return PremiumFeatureBackgroundForBoth.fromJson(this);
+      case 'premiumFeatureChatBoost':
+        return PremiumFeatureChatBoost.fromJson(this);
+      case 'premiumFeatureCustomEmoji':
+        return PremiumFeatureCustomEmoji.fromJson(this);
+      case 'premiumFeatureDisabledAds':
+        return PremiumFeatureDisabledAds.fromJson(this);
+      case 'premiumFeatureEmojiStatus':
+        return PremiumFeatureEmojiStatus.fromJson(this);
+      case 'premiumFeatureForumTopicIcon':
+        return PremiumFeatureForumTopicIcon.fromJson(this);
+      case 'premiumFeatureImprovedDownloadSpeed':
+        return PremiumFeatureImprovedDownloadSpeed.fromJson(this);
+      case 'premiumFeatureIncreasedLimits':
+        return PremiumFeatureIncreasedLimits.fromJson(this);
+      case 'premiumFeatureIncreasedUploadFileSize':
+        return PremiumFeatureIncreasedUploadFileSize.fromJson(this);
+      case 'premiumFeatureLastSeenTimes':
+        return PremiumFeatureLastSeenTimes.fromJson(this);
+      case 'premiumFeatureMessagePrivacy':
+        return PremiumFeatureMessagePrivacy.fromJson(this);
+      case 'premiumFeatureProfileBadge':
+        return PremiumFeatureProfileBadge.fromJson(this);
+      case 'premiumFeaturePromotionAnimation':
+        return PremiumFeaturePromotionAnimation.fromJson(this);
+      case 'premiumFeatureRealTimeChatTranslation':
+        return PremiumFeatureRealTimeChatTranslation.fromJson(this);
+      case 'premiumFeatureSavedMessagesTags':
+        return PremiumFeatureSavedMessagesTags.fromJson(this);
+      case 'premiumFeatureUniqueReactions':
+        return PremiumFeatureUniqueReactions.fromJson(this);
+      case 'premiumFeatureUniqueStickers':
+        return PremiumFeatureUniqueStickers.fromJson(this);
+      case 'premiumFeatureUpgradedStories':
+        return PremiumFeatureUpgradedStories.fromJson(this);
+      case 'premiumFeatureVoiceRecognition':
+        return PremiumFeatureVoiceRecognition.fromJson(this);
+      case 'premiumFeatures':
+        return PremiumFeatures.fromJson(this);
+      case 'premiumGiftCodeInfo':
+        return PremiumGiftCodeInfo.fromJson(this);
+      case 'premiumGiftCodePaymentOption':
+        return PremiumGiftCodePaymentOption.fromJson(this);
+      case 'premiumGiftCodePaymentOptions':
+        return PremiumGiftCodePaymentOptions.fromJson(this);
+      case 'premiumGiveawayInfo':
+        return PremiumGiveawayInfo.fromJson(this);
+      case 'premiumGiveawayInfoCompleted':
+        return PremiumGiveawayInfoCompleted.fromJson(this);
+      case 'premiumGiveawayInfoOngoing':
+        return PremiumGiveawayInfoOngoing.fromJson(this);
+      case 'premiumGiveawayParameters':
+        return PremiumGiveawayParameters.fromJson(this);
+      case 'premiumGiveawayParticipantStatus':
+        return PremiumGiveawayParticipantStatus.fromJson(this);
+      case 'premiumGiveawayParticipantStatusAdministrator':
+        return PremiumGiveawayParticipantStatusAdministrator.fromJson(this);
+      case 'premiumGiveawayParticipantStatusAlreadyWasMember':
+        return PremiumGiveawayParticipantStatusAlreadyWasMember.fromJson(this);
+      case 'premiumGiveawayParticipantStatusDisallowedCountry':
+        return PremiumGiveawayParticipantStatusDisallowedCountry.fromJson(this);
+      case 'premiumGiveawayParticipantStatusEligible':
+        return PremiumGiveawayParticipantStatusEligible.fromJson(this);
+      case 'premiumGiveawayParticipantStatusParticipating':
+        return PremiumGiveawayParticipantStatusParticipating.fromJson(this);
+      case 'premiumLimit':
+        return PremiumLimit.fromJson(this);
+      case 'premiumLimitType':
+        return PremiumLimitType.fromJson(this);
+      case 'premiumLimitTypeActiveStoryCount':
+        return PremiumLimitTypeActiveStoryCount.fromJson(this);
+      case 'premiumLimitTypeBioLength':
+        return PremiumLimitTypeBioLength.fromJson(this);
+      case 'premiumLimitTypeCaptionLength':
+        return PremiumLimitTypeCaptionLength.fromJson(this);
+      case 'premiumLimitTypeChatFolderChosenChatCount':
+        return PremiumLimitTypeChatFolderChosenChatCount.fromJson(this);
+      case 'premiumLimitTypeChatFolderCount':
+        return PremiumLimitTypeChatFolderCount.fromJson(this);
+      case 'premiumLimitTypeChatFolderInviteLinkCount':
+        return PremiumLimitTypeChatFolderInviteLinkCount.fromJson(this);
+      case 'premiumLimitTypeCreatedPublicChatCount':
+        return PremiumLimitTypeCreatedPublicChatCount.fromJson(this);
+      case 'premiumLimitTypeFavoriteStickerCount':
+        return PremiumLimitTypeFavoriteStickerCount.fromJson(this);
+      case 'premiumLimitTypeMonthlySentStoryCount':
+        return PremiumLimitTypeMonthlySentStoryCount.fromJson(this);
+      case 'premiumLimitTypePinnedArchivedChatCount':
+        return PremiumLimitTypePinnedArchivedChatCount.fromJson(this);
+      case 'premiumLimitTypePinnedChatCount':
+        return PremiumLimitTypePinnedChatCount.fromJson(this);
+      case 'premiumLimitTypePinnedSavedMessagesTopicCount':
+        return PremiumLimitTypePinnedSavedMessagesTopicCount.fromJson(this);
+      case 'premiumLimitTypeSavedAnimationCount':
+        return PremiumLimitTypeSavedAnimationCount.fromJson(this);
+      case 'premiumLimitTypeShareableChatFolderCount':
+        return PremiumLimitTypeShareableChatFolderCount.fromJson(this);
+      case 'premiumLimitTypeSimilarChatCount':
+        return PremiumLimitTypeSimilarChatCount.fromJson(this);
+      case 'premiumLimitTypeStoryCaptionLength':
+        return PremiumLimitTypeStoryCaptionLength.fromJson(this);
+      case 'premiumLimitTypeStorySuggestedReactionAreaCount':
+        return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(this);
+      case 'premiumLimitTypeSupergroupCount':
+        return PremiumLimitTypeSupergroupCount.fromJson(this);
+      case 'premiumLimitTypeWeeklySentStoryCount':
+        return PremiumLimitTypeWeeklySentStoryCount.fromJson(this);
+      case 'premiumPaymentOption':
+        return PremiumPaymentOption.fromJson(this);
+      case 'premiumSource':
+        return PremiumSource.fromJson(this);
+      case 'premiumSourceFeature':
+        return PremiumSourceFeature.fromJson(this);
+      case 'premiumSourceLimitExceeded':
+        return PremiumSourceLimitExceeded.fromJson(this);
+      case 'premiumSourceLink':
+        return PremiumSourceLink.fromJson(this);
+      case 'premiumSourceSettings':
+        return PremiumSourceSettings.fromJson(this);
+      case 'premiumSourceStoryFeature':
+        return PremiumSourceStoryFeature.fromJson(this);
+      case 'premiumState':
+        return PremiumState.fromJson(this);
+      case 'premiumStatePaymentOption':
+        return PremiumStatePaymentOption.fromJson(this);
+      case 'premiumStoryFeature':
+        return PremiumStoryFeature.fromJson(this);
+      case 'premiumStoryFeatureCustomExpirationDuration':
+        return PremiumStoryFeatureCustomExpirationDuration.fromJson(this);
+      case 'premiumStoryFeatureLinksAndFormatting':
+        return PremiumStoryFeatureLinksAndFormatting.fromJson(this);
+      case 'premiumStoryFeaturePermanentViewsHistory':
+        return PremiumStoryFeaturePermanentViewsHistory.fromJson(this);
+      case 'premiumStoryFeaturePriorityOrder':
+        return PremiumStoryFeaturePriorityOrder.fromJson(this);
+      case 'premiumStoryFeatureSaveStories':
+        return PremiumStoryFeatureSaveStories.fromJson(this);
+      case 'premiumStoryFeatureStealthMode':
+        return PremiumStoryFeatureStealthMode.fromJson(this);
+      case 'premiumStoryFeatureVideoQuality':
+        return PremiumStoryFeatureVideoQuality.fromJson(this);
+      case 'prepaidPremiumGiveaway':
+        return PrepaidPremiumGiveaway.fromJson(this);
+      case 'profileAccentColor':
+        return ProfileAccentColor.fromJson(this);
+      case 'profileAccentColors':
+        return ProfileAccentColors.fromJson(this);
+      case 'profilePhoto':
+        return ProfilePhoto.fromJson(this);
+      case 'proxies':
+        return Proxies.fromJson(this);
+      case 'proxy':
+        return Proxy.fromJson(this);
+      case 'proxyType':
+        return ProxyType.fromJson(this);
+      case 'proxyTypeHttp':
+        return ProxyTypeHttp.fromJson(this);
+      case 'proxyTypeMtproto':
+        return ProxyTypeMtproto.fromJson(this);
+      case 'proxyTypeSocks5':
+        return ProxyTypeSocks5.fromJson(this);
+      case 'publicChatType':
+        return PublicChatType.fromJson(this);
+      case 'publicChatTypeHasUsername':
+        return PublicChatTypeHasUsername.fromJson(this);
+      case 'publicChatTypeIsLocationBased':
+        return PublicChatTypeIsLocationBased.fromJson(this);
+      case 'publicForward':
+        return PublicForward.fromJson(this);
+      case 'publicForwardMessage':
+        return PublicForwardMessage.fromJson(this);
+      case 'publicForwardStory':
+        return PublicForwardStory.fromJson(this);
+      case 'publicForwards':
+        return PublicForwards.fromJson(this);
+      case 'pushMessageContent':
+        return PushMessageContent.fromJson(this);
+      case 'pushMessageContentAnimation':
+        return PushMessageContentAnimation.fromJson(this);
+      case 'pushMessageContentAudio':
+        return PushMessageContentAudio.fromJson(this);
+      case 'pushMessageContentBasicGroupChatCreate':
+        return PushMessageContentBasicGroupChatCreate.fromJson(this);
+      case 'pushMessageContentChatAddMembers':
+        return PushMessageContentChatAddMembers.fromJson(this);
+      case 'pushMessageContentChatChangePhoto':
+        return PushMessageContentChatChangePhoto.fromJson(this);
+      case 'pushMessageContentChatChangeTitle':
+        return PushMessageContentChatChangeTitle.fromJson(this);
+      case 'pushMessageContentChatDeleteMember':
+        return PushMessageContentChatDeleteMember.fromJson(this);
+      case 'pushMessageContentChatJoinByLink':
+        return PushMessageContentChatJoinByLink.fromJson(this);
+      case 'pushMessageContentChatJoinByRequest':
+        return PushMessageContentChatJoinByRequest.fromJson(this);
+      case 'pushMessageContentChatSetBackground':
+        return PushMessageContentChatSetBackground.fromJson(this);
+      case 'pushMessageContentChatSetTheme':
+        return PushMessageContentChatSetTheme.fromJson(this);
+      case 'pushMessageContentContact':
+        return PushMessageContentContact.fromJson(this);
+      case 'pushMessageContentContactRegistered':
+        return PushMessageContentContactRegistered.fromJson(this);
+      case 'pushMessageContentDocument':
+        return PushMessageContentDocument.fromJson(this);
+      case 'pushMessageContentGame':
+        return PushMessageContentGame.fromJson(this);
+      case 'pushMessageContentGameScore':
+        return PushMessageContentGameScore.fromJson(this);
+      case 'pushMessageContentHidden':
+        return PushMessageContentHidden.fromJson(this);
+      case 'pushMessageContentInvoice':
+        return PushMessageContentInvoice.fromJson(this);
+      case 'pushMessageContentLocation':
+        return PushMessageContentLocation.fromJson(this);
+      case 'pushMessageContentMediaAlbum':
+        return PushMessageContentMediaAlbum.fromJson(this);
+      case 'pushMessageContentMessageForwards':
+        return PushMessageContentMessageForwards.fromJson(this);
+      case 'pushMessageContentPhoto':
+        return PushMessageContentPhoto.fromJson(this);
+      case 'pushMessageContentPoll':
+        return PushMessageContentPoll.fromJson(this);
+      case 'pushMessageContentPremiumGiftCode':
+        return PushMessageContentPremiumGiftCode.fromJson(this);
+      case 'pushMessageContentPremiumGiveaway':
+        return PushMessageContentPremiumGiveaway.fromJson(this);
+      case 'pushMessageContentRecurringPayment':
+        return PushMessageContentRecurringPayment.fromJson(this);
+      case 'pushMessageContentScreenshotTaken':
+        return PushMessageContentScreenshotTaken.fromJson(this);
+      case 'pushMessageContentSticker':
+        return PushMessageContentSticker.fromJson(this);
+      case 'pushMessageContentStory':
+        return PushMessageContentStory.fromJson(this);
+      case 'pushMessageContentSuggestProfilePhoto':
+        return PushMessageContentSuggestProfilePhoto.fromJson(this);
+      case 'pushMessageContentText':
+        return PushMessageContentText.fromJson(this);
+      case 'pushMessageContentVideo':
+        return PushMessageContentVideo.fromJson(this);
+      case 'pushMessageContentVideoNote':
+        return PushMessageContentVideoNote.fromJson(this);
+      case 'pushMessageContentVoiceNote':
+        return PushMessageContentVoiceNote.fromJson(this);
+      case 'pushReceiverId':
+        return PushReceiverId.fromJson(this);
+      case 'quickReplyMessage':
+        return QuickReplyMessage.fromJson(this);
+      case 'quickReplyShortcut':
+        return QuickReplyShortcut.fromJson(this);
+      case 'reactionType':
+        return ReactionType.fromJson(this);
+      case 'reactionTypeCustomEmoji':
+        return ReactionTypeCustomEmoji.fromJson(this);
+      case 'reactionTypeEmoji':
+        return ReactionTypeEmoji.fromJson(this);
+      case 'reactionUnavailabilityReason':
+        return ReactionUnavailabilityReason.fromJson(this);
+      case 'reactionUnavailabilityReasonAnonymousAdministrator':
+        return ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(
+            this);
+      case 'reactionUnavailabilityReasonGuest':
+        return ReactionUnavailabilityReasonGuest.fromJson(this);
+      case 'readDatePrivacySettings':
+        return ReadDatePrivacySettings.fromJson(this);
+      case 'recommendedChatFolder':
+        return RecommendedChatFolder.fromJson(this);
+      case 'recommendedChatFolders':
+        return RecommendedChatFolders.fromJson(this);
+      case 'recoveryEmailAddress':
+        return RecoveryEmailAddress.fromJson(this);
+      case 'remoteFile':
+        return RemoteFile.fromJson(this);
+      case 'replyMarkup':
+        return ReplyMarkup.fromJson(this);
+      case 'replyMarkupForceReply':
+        return ReplyMarkupForceReply.fromJson(this);
+      case 'replyMarkupInlineKeyboard':
+        return ReplyMarkupInlineKeyboard.fromJson(this);
+      case 'replyMarkupRemoveKeyboard':
+        return ReplyMarkupRemoveKeyboard.fromJson(this);
+      case 'replyMarkupShowKeyboard':
+        return ReplyMarkupShowKeyboard.fromJson(this);
+      case 'reportReason':
+        return ReportReason.fromJson(this);
+      case 'reportReasonChildAbuse':
+        return ReportReasonChildAbuse.fromJson(this);
+      case 'reportReasonCopyright':
+        return ReportReasonCopyright.fromJson(this);
+      case 'reportReasonCustom':
+        return ReportReasonCustom.fromJson(this);
+      case 'reportReasonFake':
+        return ReportReasonFake.fromJson(this);
+      case 'reportReasonIllegalDrugs':
+        return ReportReasonIllegalDrugs.fromJson(this);
+      case 'reportReasonPersonalDetails':
+        return ReportReasonPersonalDetails.fromJson(this);
+      case 'reportReasonPornography':
+        return ReportReasonPornography.fromJson(this);
+      case 'reportReasonSpam':
+        return ReportReasonSpam.fromJson(this);
+      case 'reportReasonUnrelatedLocation':
+        return ReportReasonUnrelatedLocation.fromJson(this);
+      case 'reportReasonViolence':
+        return ReportReasonViolence.fromJson(this);
+      case 'resetPasswordResult':
+        return ResetPasswordResult.fromJson(this);
+      case 'resetPasswordResultDeclined':
+        return ResetPasswordResultDeclined.fromJson(this);
+      case 'resetPasswordResultOk':
+        return ResetPasswordResultOk.fromJson(this);
+      case 'resetPasswordResultPending':
+        return ResetPasswordResultPending.fromJson(this);
+      case 'richText':
+        return RichText.fromJson(this);
+      case 'richTextAnchor':
+        return RichTextAnchor.fromJson(this);
+      case 'richTextAnchorLink':
+        return RichTextAnchorLink.fromJson(this);
+      case 'richTextBold':
+        return RichTextBold.fromJson(this);
+      case 'richTextEmailAddress':
+        return RichTextEmailAddress.fromJson(this);
+      case 'richTextFixed':
+        return RichTextFixed.fromJson(this);
+      case 'richTextIcon':
+        return RichTextIcon.fromJson(this);
+      case 'richTextItalic':
+        return RichTextItalic.fromJson(this);
+      case 'richTextMarked':
+        return RichTextMarked.fromJson(this);
+      case 'richTextPhoneNumber':
+        return RichTextPhoneNumber.fromJson(this);
+      case 'richTextPlain':
+        return RichTextPlain.fromJson(this);
+      case 'richTextReference':
+        return RichTextReference.fromJson(this);
+      case 'richTextStrikethrough':
+        return RichTextStrikethrough.fromJson(this);
+      case 'richTextSubscript':
+        return RichTextSubscript.fromJson(this);
+      case 'richTextSuperscript':
+        return RichTextSuperscript.fromJson(this);
+      case 'richTextUnderline':
+        return RichTextUnderline.fromJson(this);
+      case 'richTextUrl':
+        return RichTextUrl.fromJson(this);
+      case 'richTexts':
+        return RichTexts.fromJson(this);
+      case 'rtmpUrl':
+        return RtmpUrl.fromJson(this);
+      case 'savedCredentials':
+        return SavedCredentials.fromJson(this);
+      case 'savedMessagesTag':
+        return SavedMessagesTag.fromJson(this);
+      case 'savedMessagesTags':
+        return SavedMessagesTags.fromJson(this);
+      case 'savedMessagesTopic':
+        return SavedMessagesTopic.fromJson(this);
+      case 'savedMessagesTopicType':
+        return SavedMessagesTopicType.fromJson(this);
+      case 'savedMessagesTopicTypeAuthorHidden':
+        return SavedMessagesTopicTypeAuthorHidden.fromJson(this);
+      case 'savedMessagesTopicTypeMyNotes':
+        return SavedMessagesTopicTypeMyNotes.fromJson(this);
+      case 'savedMessagesTopicTypeSavedFromChat':
+        return SavedMessagesTopicTypeSavedFromChat.fromJson(this);
+      case 'scopeAutosaveSettings':
+        return ScopeAutosaveSettings.fromJson(this);
+      case 'scopeNotificationSettings':
+        return ScopeNotificationSettings.fromJson(this);
+      case 'searchMessagesFilter':
+        return SearchMessagesFilter.fromJson(this);
+      case 'searchMessagesFilterAnimation':
+        return SearchMessagesFilterAnimation.fromJson(this);
+      case 'searchMessagesFilterAudio':
+        return SearchMessagesFilterAudio.fromJson(this);
+      case 'searchMessagesFilterChatPhoto':
+        return SearchMessagesFilterChatPhoto.fromJson(this);
+      case 'searchMessagesFilterDocument':
+        return SearchMessagesFilterDocument.fromJson(this);
+      case 'searchMessagesFilterEmpty':
+        return SearchMessagesFilterEmpty.fromJson(this);
+      case 'searchMessagesFilterFailedToSend':
+        return SearchMessagesFilterFailedToSend.fromJson(this);
+      case 'searchMessagesFilterMention':
+        return SearchMessagesFilterMention.fromJson(this);
+      case 'searchMessagesFilterPhoto':
+        return SearchMessagesFilterPhoto.fromJson(this);
+      case 'searchMessagesFilterPhotoAndVideo':
+        return SearchMessagesFilterPhotoAndVideo.fromJson(this);
+      case 'searchMessagesFilterPinned':
+        return SearchMessagesFilterPinned.fromJson(this);
+      case 'searchMessagesFilterUnreadMention':
+        return SearchMessagesFilterUnreadMention.fromJson(this);
+      case 'searchMessagesFilterUnreadReaction':
+        return SearchMessagesFilterUnreadReaction.fromJson(this);
+      case 'searchMessagesFilterUrl':
+        return SearchMessagesFilterUrl.fromJson(this);
+      case 'searchMessagesFilterVideo':
+        return SearchMessagesFilterVideo.fromJson(this);
+      case 'searchMessagesFilterVideoNote':
+        return SearchMessagesFilterVideoNote.fromJson(this);
+      case 'searchMessagesFilterVoiceAndVideoNote':
+        return SearchMessagesFilterVoiceAndVideoNote.fromJson(this);
+      case 'searchMessagesFilterVoiceNote':
+        return SearchMessagesFilterVoiceNote.fromJson(this);
+      case 'seconds':
+        return Seconds.fromJson(this);
+      case 'secretChat':
+        return SecretChat.fromJson(this);
+      case 'secretChatState':
+        return SecretChatState.fromJson(this);
+      case 'secretChatStateClosed':
+        return SecretChatStateClosed.fromJson(this);
+      case 'secretChatStatePending':
+        return SecretChatStatePending.fromJson(this);
+      case 'secretChatStateReady':
+        return SecretChatStateReady.fromJson(this);
+      case 'sentWebAppMessage':
+        return SentWebAppMessage.fromJson(this);
+      case 'session':
+        return Session.fromJson(this);
+      case 'sessionType':
+        return SessionType.fromJson(this);
+      case 'sessionTypeAndroid':
+        return SessionTypeAndroid.fromJson(this);
+      case 'sessionTypeApple':
+        return SessionTypeApple.fromJson(this);
+      case 'sessionTypeBrave':
+        return SessionTypeBrave.fromJson(this);
+      case 'sessionTypeChrome':
+        return SessionTypeChrome.fromJson(this);
+      case 'sessionTypeEdge':
+        return SessionTypeEdge.fromJson(this);
+      case 'sessionTypeFirefox':
+        return SessionTypeFirefox.fromJson(this);
+      case 'sessionTypeIpad':
+        return SessionTypeIpad.fromJson(this);
+      case 'sessionTypeIphone':
+        return SessionTypeIphone.fromJson(this);
+      case 'sessionTypeLinux':
+        return SessionTypeLinux.fromJson(this);
+      case 'sessionTypeMac':
+        return SessionTypeMac.fromJson(this);
+      case 'sessionTypeOpera':
+        return SessionTypeOpera.fromJson(this);
+      case 'sessionTypeSafari':
+        return SessionTypeSafari.fromJson(this);
+      case 'sessionTypeUbuntu':
+        return SessionTypeUbuntu.fromJson(this);
+      case 'sessionTypeUnknown':
+        return SessionTypeUnknown.fromJson(this);
+      case 'sessionTypeVivaldi':
+        return SessionTypeVivaldi.fromJson(this);
+      case 'sessionTypeWindows':
+        return SessionTypeWindows.fromJson(this);
+      case 'sessionTypeXbox':
+        return SessionTypeXbox.fromJson(this);
+      case 'sessions':
+        return Sessions.fromJson(this);
+      case 'shippingOption':
+        return ShippingOption.fromJson(this);
+      case 'speechRecognitionResult':
+        return SpeechRecognitionResult.fromJson(this);
+      case 'speechRecognitionResultError':
+        return SpeechRecognitionResultError.fromJson(this);
+      case 'speechRecognitionResultPending':
+        return SpeechRecognitionResultPending.fromJson(this);
+      case 'speechRecognitionResultText':
+        return SpeechRecognitionResultText.fromJson(this);
+      case 'sponsoredMessage':
+        return SponsoredMessage.fromJson(this);
+      case 'sponsoredMessages':
+        return SponsoredMessages.fromJson(this);
+      case 'statisticalGraph':
+        return StatisticalGraph.fromJson(this);
+      case 'statisticalGraphAsync':
+        return StatisticalGraphAsync.fromJson(this);
+      case 'statisticalGraphData':
+        return StatisticalGraphData.fromJson(this);
+      case 'statisticalGraphError':
+        return StatisticalGraphError.fromJson(this);
+      case 'statisticalValue':
+        return StatisticalValue.fromJson(this);
+      case 'sticker':
+        return Sticker.fromJson(this);
+      case 'stickerFormat':
+        return StickerFormat.fromJson(this);
+      case 'stickerFormatTgs':
+        return StickerFormatTgs.fromJson(this);
+      case 'stickerFormatWebm':
+        return StickerFormatWebm.fromJson(this);
+      case 'stickerFormatWebp':
+        return StickerFormatWebp.fromJson(this);
+      case 'stickerFullType':
+        return StickerFullType.fromJson(this);
+      case 'stickerFullTypeCustomEmoji':
+        return StickerFullTypeCustomEmoji.fromJson(this);
+      case 'stickerFullTypeMask':
+        return StickerFullTypeMask.fromJson(this);
+      case 'stickerFullTypeRegular':
+        return StickerFullTypeRegular.fromJson(this);
+      case 'stickerSet':
+        return StickerSet.fromJson(this);
+      case 'stickerSetInfo':
+        return StickerSetInfo.fromJson(this);
+      case 'stickerSets':
+        return StickerSets.fromJson(this);
+      case 'stickerType':
+        return StickerType.fromJson(this);
+      case 'stickerTypeCustomEmoji':
+        return StickerTypeCustomEmoji.fromJson(this);
+      case 'stickerTypeMask':
+        return StickerTypeMask.fromJson(this);
+      case 'stickerTypeRegular':
+        return StickerTypeRegular.fromJson(this);
+      case 'stickers':
+        return Stickers.fromJson(this);
+      case 'storageStatistics':
+        return StorageStatistics.fromJson(this);
+      case 'storageStatisticsByChat':
+        return StorageStatisticsByChat.fromJson(this);
+      case 'storageStatisticsByFileType':
+        return StorageStatisticsByFileType.fromJson(this);
+      case 'storageStatisticsFast':
+        return StorageStatisticsFast.fromJson(this);
+      case 'storePaymentPurpose':
+        return StorePaymentPurpose.fromJson(this);
+      case 'storePaymentPurposeGiftedPremium':
+        return StorePaymentPurposeGiftedPremium.fromJson(this);
+      case 'storePaymentPurposePremiumGiftCodes':
+        return StorePaymentPurposePremiumGiftCodes.fromJson(this);
+      case 'storePaymentPurposePremiumGiveaway':
+        return StorePaymentPurposePremiumGiveaway.fromJson(this);
+      case 'storePaymentPurposePremiumSubscription':
+        return StorePaymentPurposePremiumSubscription.fromJson(this);
+      case 'stories':
+        return Stories.fromJson(this);
+      case 'story':
+        return Story.fromJson(this);
+      case 'storyArea':
+        return StoryArea.fromJson(this);
+      case 'storyAreaPosition':
+        return StoryAreaPosition.fromJson(this);
+      case 'storyAreaType':
+        return StoryAreaType.fromJson(this);
+      case 'storyAreaTypeLocation':
+        return StoryAreaTypeLocation.fromJson(this);
+      case 'storyAreaTypeMessage':
+        return StoryAreaTypeMessage.fromJson(this);
+      case 'storyAreaTypeSuggestedReaction':
+        return StoryAreaTypeSuggestedReaction.fromJson(this);
+      case 'storyAreaTypeVenue':
+        return StoryAreaTypeVenue.fromJson(this);
+      case 'storyContent':
+        return StoryContent.fromJson(this);
+      case 'storyContentPhoto':
+        return StoryContentPhoto.fromJson(this);
+      case 'storyContentUnsupported':
+        return StoryContentUnsupported.fromJson(this);
+      case 'storyContentVideo':
+        return StoryContentVideo.fromJson(this);
+      case 'storyFullId':
+        return StoryFullId.fromJson(this);
+      case 'storyInfo':
+        return StoryInfo.fromJson(this);
+      case 'storyInteraction':
+        return StoryInteraction.fromJson(this);
+      case 'storyInteractionInfo':
+        return StoryInteractionInfo.fromJson(this);
+      case 'storyInteractionType':
+        return StoryInteractionType.fromJson(this);
+      case 'storyInteractionTypeForward':
+        return StoryInteractionTypeForward.fromJson(this);
+      case 'storyInteractionTypeRepost':
+        return StoryInteractionTypeRepost.fromJson(this);
+      case 'storyInteractionTypeView':
+        return StoryInteractionTypeView.fromJson(this);
+      case 'storyInteractions':
+        return StoryInteractions.fromJson(this);
+      case 'storyList':
+        return StoryList.fromJson(this);
+      case 'storyListArchive':
+        return StoryListArchive.fromJson(this);
+      case 'storyListMain':
+        return StoryListMain.fromJson(this);
+      case 'storyOrigin':
+        return StoryOrigin.fromJson(this);
+      case 'storyOriginHiddenUser':
+        return StoryOriginHiddenUser.fromJson(this);
+      case 'storyOriginPublicStory':
+        return StoryOriginPublicStory.fromJson(this);
+      case 'storyPrivacySettings':
+        return StoryPrivacySettings.fromJson(this);
+      case 'storyPrivacySettingsCloseFriends':
+        return StoryPrivacySettingsCloseFriends.fromJson(this);
+      case 'storyPrivacySettingsContacts':
+        return StoryPrivacySettingsContacts.fromJson(this);
+      case 'storyPrivacySettingsEveryone':
+        return StoryPrivacySettingsEveryone.fromJson(this);
+      case 'storyPrivacySettingsSelectedUsers':
+        return StoryPrivacySettingsSelectedUsers.fromJson(this);
+      case 'storyRepostInfo':
+        return StoryRepostInfo.fromJson(this);
+      case 'storyStatistics':
+        return StoryStatistics.fromJson(this);
+      case 'storyVideo':
+        return StoryVideo.fromJson(this);
+      case 'suggestedAction':
+        return SuggestedAction.fromJson(this);
+      case 'suggestedActionCheckPassword':
+        return SuggestedActionCheckPassword.fromJson(this);
+      case 'suggestedActionCheckPhoneNumber':
+        return SuggestedActionCheckPhoneNumber.fromJson(this);
+      case 'suggestedActionConvertToBroadcastGroup':
+        return SuggestedActionConvertToBroadcastGroup.fromJson(this);
+      case 'suggestedActionEnableArchiveAndMuteNewChats':
+        return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(this);
+      case 'suggestedActionGiftPremiumForChristmas':
+        return SuggestedActionGiftPremiumForChristmas.fromJson(this);
+      case 'suggestedActionRestorePremium':
+        return SuggestedActionRestorePremium.fromJson(this);
+      case 'suggestedActionSetPassword':
+        return SuggestedActionSetPassword.fromJson(this);
+      case 'suggestedActionSubscribeToAnnualPremium':
+        return SuggestedActionSubscribeToAnnualPremium.fromJson(this);
+      case 'suggestedActionUpgradePremium':
+        return SuggestedActionUpgradePremium.fromJson(this);
+      case 'suggestedActionViewChecksHint':
+        return SuggestedActionViewChecksHint.fromJson(this);
+      case 'supergroup':
+        return Supergroup.fromJson(this);
+      case 'supergroupFullInfo':
+        return SupergroupFullInfo.fromJson(this);
+      case 'supergroupMembersFilter':
+        return SupergroupMembersFilter.fromJson(this);
+      case 'supergroupMembersFilterAdministrators':
+        return SupergroupMembersFilterAdministrators.fromJson(this);
+      case 'supergroupMembersFilterBanned':
+        return SupergroupMembersFilterBanned.fromJson(this);
+      case 'supergroupMembersFilterBots':
+        return SupergroupMembersFilterBots.fromJson(this);
+      case 'supergroupMembersFilterContacts':
+        return SupergroupMembersFilterContacts.fromJson(this);
+      case 'supergroupMembersFilterMention':
+        return SupergroupMembersFilterMention.fromJson(this);
+      case 'supergroupMembersFilterRecent':
+        return SupergroupMembersFilterRecent.fromJson(this);
+      case 'supergroupMembersFilterRestricted':
+        return SupergroupMembersFilterRestricted.fromJson(this);
+      case 'supergroupMembersFilterSearch':
+        return SupergroupMembersFilterSearch.fromJson(this);
+      case 'tMeUrl':
+        return TMeUrl.fromJson(this);
+      case 'tMeUrlType':
+        return TMeUrlType.fromJson(this);
+      case 'tMeUrlTypeChatInvite':
+        return TMeUrlTypeChatInvite.fromJson(this);
+      case 'tMeUrlTypeStickerSet':
+        return TMeUrlTypeStickerSet.fromJson(this);
+      case 'tMeUrlTypeSupergroup':
+        return TMeUrlTypeSupergroup.fromJson(this);
+      case 'tMeUrlTypeUser':
+        return TMeUrlTypeUser.fromJson(this);
+      case 'tMeUrls':
+        return TMeUrls.fromJson(this);
+      case 'targetChat':
+        return TargetChat.fromJson(this);
+      case 'targetChatChosen':
+        return TargetChatChosen.fromJson(this);
+      case 'targetChatCurrent':
+        return TargetChatCurrent.fromJson(this);
+      case 'targetChatInternalLink':
+        return TargetChatInternalLink.fromJson(this);
+      case 'telegramPaymentPurpose':
+        return TelegramPaymentPurpose.fromJson(this);
+      case 'telegramPaymentPurposePremiumGiftCodes':
+        return TelegramPaymentPurposePremiumGiftCodes.fromJson(this);
+      case 'telegramPaymentPurposePremiumGiveaway':
+        return TelegramPaymentPurposePremiumGiveaway.fromJson(this);
+      case 'temporaryPasswordState':
+        return TemporaryPasswordState.fromJson(this);
+      case 'termsOfService':
+        return TermsOfService.fromJson(this);
+      case 'testBytes':
+        return TestBytes.fromJson(this);
+      case 'testInt':
+        return TestInt.fromJson(this);
+      case 'testString':
+        return TestString.fromJson(this);
+      case 'testVectorInt':
+        return TestVectorInt.fromJson(this);
+      case 'testVectorIntObject':
+        return TestVectorIntObject.fromJson(this);
+      case 'testVectorString':
+        return TestVectorString.fromJson(this);
+      case 'testVectorStringObject':
+        return TestVectorStringObject.fromJson(this);
+      case 'text':
+        return Text.fromJson(this);
+      case 'textEntities':
+        return TextEntities.fromJson(this);
+      case 'textEntity':
+        return TextEntity.fromJson(this);
+      case 'textEntityType':
+        return TextEntityType.fromJson(this);
+      case 'textEntityTypeBankCardNumber':
+        return TextEntityTypeBankCardNumber.fromJson(this);
+      case 'textEntityTypeBlockQuote':
+        return TextEntityTypeBlockQuote.fromJson(this);
+      case 'textEntityTypeBold':
+        return TextEntityTypeBold.fromJson(this);
+      case 'textEntityTypeBotCommand':
+        return TextEntityTypeBotCommand.fromJson(this);
+      case 'textEntityTypeCashtag':
+        return TextEntityTypeCashtag.fromJson(this);
+      case 'textEntityTypeCode':
+        return TextEntityTypeCode.fromJson(this);
+      case 'textEntityTypeCustomEmoji':
+        return TextEntityTypeCustomEmoji.fromJson(this);
+      case 'textEntityTypeEmailAddress':
+        return TextEntityTypeEmailAddress.fromJson(this);
+      case 'textEntityTypeHashtag':
+        return TextEntityTypeHashtag.fromJson(this);
+      case 'textEntityTypeItalic':
+        return TextEntityTypeItalic.fromJson(this);
+      case 'textEntityTypeMediaTimestamp':
+        return TextEntityTypeMediaTimestamp.fromJson(this);
+      case 'textEntityTypeMention':
+        return TextEntityTypeMention.fromJson(this);
+      case 'textEntityTypeMentionName':
+        return TextEntityTypeMentionName.fromJson(this);
+      case 'textEntityTypePhoneNumber':
+        return TextEntityTypePhoneNumber.fromJson(this);
+      case 'textEntityTypePre':
+        return TextEntityTypePre.fromJson(this);
+      case 'textEntityTypePreCode':
+        return TextEntityTypePreCode.fromJson(this);
+      case 'textEntityTypeSpoiler':
+        return TextEntityTypeSpoiler.fromJson(this);
+      case 'textEntityTypeStrikethrough':
+        return TextEntityTypeStrikethrough.fromJson(this);
+      case 'textEntityTypeTextUrl':
+        return TextEntityTypeTextUrl.fromJson(this);
+      case 'textEntityTypeUnderline':
+        return TextEntityTypeUnderline.fromJson(this);
+      case 'textEntityTypeUrl':
+        return TextEntityTypeUrl.fromJson(this);
+      case 'textParseMode':
+        return TextParseMode.fromJson(this);
+      case 'textParseModeHTML':
+        return TextParseModeHTML.fromJson(this);
+      case 'textParseModeMarkdown':
+        return TextParseModeMarkdown.fromJson(this);
+      case 'textQuote':
+        return TextQuote.fromJson(this);
+      case 'themeParameters':
+        return ThemeParameters.fromJson(this);
+      case 'themeSettings':
+        return ThemeSettings.fromJson(this);
+      case 'thumbnail':
+        return Thumbnail.fromJson(this);
+      case 'thumbnailFormat':
+        return ThumbnailFormat.fromJson(this);
+      case 'thumbnailFormatGif':
+        return ThumbnailFormatGif.fromJson(this);
+      case 'thumbnailFormatJpeg':
+        return ThumbnailFormatJpeg.fromJson(this);
+      case 'thumbnailFormatMpeg4':
+        return ThumbnailFormatMpeg4.fromJson(this);
+      case 'thumbnailFormatPng':
+        return ThumbnailFormatPng.fromJson(this);
+      case 'thumbnailFormatTgs':
+        return ThumbnailFormatTgs.fromJson(this);
+      case 'thumbnailFormatWebm':
+        return ThumbnailFormatWebm.fromJson(this);
+      case 'thumbnailFormatWebp':
+        return ThumbnailFormatWebp.fromJson(this);
+      case 'timeZone':
+        return TimeZone.fromJson(this);
+      case 'timeZones':
+        return TimeZones.fromJson(this);
+      case 'topChatCategory':
+        return TopChatCategory.fromJson(this);
+      case 'topChatCategoryBots':
+        return TopChatCategoryBots.fromJson(this);
+      case 'topChatCategoryCalls':
+        return TopChatCategoryCalls.fromJson(this);
+      case 'topChatCategoryChannels':
+        return TopChatCategoryChannels.fromJson(this);
+      case 'topChatCategoryForwardChats':
+        return TopChatCategoryForwardChats.fromJson(this);
+      case 'topChatCategoryGroups':
+        return TopChatCategoryGroups.fromJson(this);
+      case 'topChatCategoryInlineBots':
+        return TopChatCategoryInlineBots.fromJson(this);
+      case 'topChatCategoryUsers':
+        return TopChatCategoryUsers.fromJson(this);
+      case 'trendingStickerSets':
+        return TrendingStickerSets.fromJson(this);
+      case 'unconfirmedSession':
+        return UnconfirmedSession.fromJson(this);
+      case 'unreadReaction':
+        return UnreadReaction.fromJson(this);
+      case 'update':
+        return Update.fromJson(this);
+      case 'updateAccentColors':
+        return UpdateAccentColors.fromJson(this);
+      case 'updateActiveEmojiReactions':
+        return UpdateActiveEmojiReactions.fromJson(this);
+      case 'updateActiveNotifications':
+        return UpdateActiveNotifications.fromJson(this);
+      case 'updateAddChatMembersPrivacyForbidden':
+        return UpdateAddChatMembersPrivacyForbidden.fromJson(this);
+      case 'updateAnimatedEmojiMessageClicked':
+        return UpdateAnimatedEmojiMessageClicked.fromJson(this);
+      case 'updateAnimationSearchParameters':
+        return UpdateAnimationSearchParameters.fromJson(this);
+      case 'updateAttachmentMenuBots':
+        return UpdateAttachmentMenuBots.fromJson(this);
+      case 'updateAuthorizationState':
+        return UpdateAuthorizationState.fromJson(this);
+      case 'updateAutosaveSettings':
+        return UpdateAutosaveSettings.fromJson(this);
+      case 'updateBasicGroup':
+        return UpdateBasicGroup.fromJson(this);
+      case 'updateBasicGroupFullInfo':
+        return UpdateBasicGroupFullInfo.fromJson(this);
+      case 'updateCall':
+        return UpdateCall.fromJson(this);
+      case 'updateChatAccentColors':
+        return UpdateChatAccentColors.fromJson(this);
+      case 'updateChatAction':
+        return UpdateChatAction.fromJson(this);
+      case 'updateChatActionBar':
+        return UpdateChatActionBar.fromJson(this);
+      case 'updateChatActiveStories':
+        return UpdateChatActiveStories.fromJson(this);
+      case 'updateChatAddedToList':
+        return UpdateChatAddedToList.fromJson(this);
+      case 'updateChatAvailableReactions':
+        return UpdateChatAvailableReactions.fromJson(this);
+      case 'updateChatBackground':
+        return UpdateChatBackground.fromJson(this);
+      case 'updateChatBlockList':
+        return UpdateChatBlockList.fromJson(this);
+      case 'updateChatBoost':
+        return UpdateChatBoost.fromJson(this);
+      case 'updateChatDefaultDisableNotification':
+        return UpdateChatDefaultDisableNotification.fromJson(this);
+      case 'updateChatDraftMessage':
+        return UpdateChatDraftMessage.fromJson(this);
+      case 'updateChatEmojiStatus':
+        return UpdateChatEmojiStatus.fromJson(this);
+      case 'updateChatFolders':
+        return UpdateChatFolders.fromJson(this);
+      case 'updateChatHasProtectedContent':
+        return UpdateChatHasProtectedContent.fromJson(this);
+      case 'updateChatHasScheduledMessages':
+        return UpdateChatHasScheduledMessages.fromJson(this);
+      case 'updateChatIsMarkedAsUnread':
+        return UpdateChatIsMarkedAsUnread.fromJson(this);
+      case 'updateChatIsTranslatable':
+        return UpdateChatIsTranslatable.fromJson(this);
+      case 'updateChatLastMessage':
+        return UpdateChatLastMessage.fromJson(this);
+      case 'updateChatMember':
+        return UpdateChatMember.fromJson(this);
+      case 'updateChatMessageAutoDeleteTime':
+        return UpdateChatMessageAutoDeleteTime.fromJson(this);
+      case 'updateChatMessageSender':
+        return UpdateChatMessageSender.fromJson(this);
+      case 'updateChatNotificationSettings':
+        return UpdateChatNotificationSettings.fromJson(this);
+      case 'updateChatOnlineMemberCount':
+        return UpdateChatOnlineMemberCount.fromJson(this);
+      case 'updateChatPendingJoinRequests':
+        return UpdateChatPendingJoinRequests.fromJson(this);
+      case 'updateChatPermissions':
+        return UpdateChatPermissions.fromJson(this);
+      case 'updateChatPhoto':
+        return UpdateChatPhoto.fromJson(this);
+      case 'updateChatPosition':
+        return UpdateChatPosition.fromJson(this);
+      case 'updateChatReadInbox':
+        return UpdateChatReadInbox.fromJson(this);
+      case 'updateChatReadOutbox':
+        return UpdateChatReadOutbox.fromJson(this);
+      case 'updateChatRemovedFromList':
+        return UpdateChatRemovedFromList.fromJson(this);
+      case 'updateChatReplyMarkup':
+        return UpdateChatReplyMarkup.fromJson(this);
+      case 'updateChatTheme':
+        return UpdateChatTheme.fromJson(this);
+      case 'updateChatThemes':
+        return UpdateChatThemes.fromJson(this);
+      case 'updateChatTitle':
+        return UpdateChatTitle.fromJson(this);
+      case 'updateChatUnreadMentionCount':
+        return UpdateChatUnreadMentionCount.fromJson(this);
+      case 'updateChatUnreadReactionCount':
+        return UpdateChatUnreadReactionCount.fromJson(this);
+      case 'updateChatVideoChat':
+        return UpdateChatVideoChat.fromJson(this);
+      case 'updateChatViewAsTopics':
+        return UpdateChatViewAsTopics.fromJson(this);
+      case 'updateConnectionState':
+        return UpdateConnectionState.fromJson(this);
+      case 'updateDefaultBackground':
+        return UpdateDefaultBackground.fromJson(this);
+      case 'updateDefaultReactionType':
+        return UpdateDefaultReactionType.fromJson(this);
+      case 'updateDeleteMessages':
+        return UpdateDeleteMessages.fromJson(this);
+      case 'updateDiceEmojis':
+        return UpdateDiceEmojis.fromJson(this);
+      case 'updateFavoriteStickers':
+        return UpdateFavoriteStickers.fromJson(this);
+      case 'updateFile':
+        return UpdateFile.fromJson(this);
+      case 'updateFileAddedToDownloads':
+        return UpdateFileAddedToDownloads.fromJson(this);
+      case 'updateFileDownload':
+        return UpdateFileDownload.fromJson(this);
+      case 'updateFileDownloads':
+        return UpdateFileDownloads.fromJson(this);
+      case 'updateFileGenerationStart':
+        return UpdateFileGenerationStart.fromJson(this);
+      case 'updateFileGenerationStop':
+        return UpdateFileGenerationStop.fromJson(this);
+      case 'updateFileRemovedFromDownloads':
+        return UpdateFileRemovedFromDownloads.fromJson(this);
+      case 'updateForumTopicInfo':
+        return UpdateForumTopicInfo.fromJson(this);
+      case 'updateGroupCall':
+        return UpdateGroupCall.fromJson(this);
+      case 'updateGroupCallParticipant':
+        return UpdateGroupCallParticipant.fromJson(this);
+      case 'updateHavePendingNotifications':
+        return UpdateHavePendingNotifications.fromJson(this);
+      case 'updateInstalledStickerSets':
+        return UpdateInstalledStickerSets.fromJson(this);
+      case 'updateLanguagePackStrings':
+        return UpdateLanguagePackStrings.fromJson(this);
+      case 'updateMessageContent':
+        return UpdateMessageContent.fromJson(this);
+      case 'updateMessageContentOpened':
+        return UpdateMessageContentOpened.fromJson(this);
+      case 'updateMessageEdited':
+        return UpdateMessageEdited.fromJson(this);
+      case 'updateMessageInteractionInfo':
+        return UpdateMessageInteractionInfo.fromJson(this);
+      case 'updateMessageIsPinned':
+        return UpdateMessageIsPinned.fromJson(this);
+      case 'updateMessageLiveLocationViewed':
+        return UpdateMessageLiveLocationViewed.fromJson(this);
+      case 'updateMessageMentionRead':
+        return UpdateMessageMentionRead.fromJson(this);
+      case 'updateMessageReaction':
+        return UpdateMessageReaction.fromJson(this);
+      case 'updateMessageReactions':
+        return UpdateMessageReactions.fromJson(this);
+      case 'updateMessageSendAcknowledged':
+        return UpdateMessageSendAcknowledged.fromJson(this);
+      case 'updateMessageSendFailed':
+        return UpdateMessageSendFailed.fromJson(this);
+      case 'updateMessageSendSucceeded':
+        return UpdateMessageSendSucceeded.fromJson(this);
+      case 'updateMessageUnreadReactions':
+        return UpdateMessageUnreadReactions.fromJson(this);
+      case 'updateNewCallSignalingData':
+        return UpdateNewCallSignalingData.fromJson(this);
+      case 'updateNewCallbackQuery':
+        return UpdateNewCallbackQuery.fromJson(this);
+      case 'updateNewChat':
+        return UpdateNewChat.fromJson(this);
+      case 'updateNewChatJoinRequest':
+        return UpdateNewChatJoinRequest.fromJson(this);
+      case 'updateNewChosenInlineResult':
+        return UpdateNewChosenInlineResult.fromJson(this);
+      case 'updateNewCustomEvent':
+        return UpdateNewCustomEvent.fromJson(this);
+      case 'updateNewCustomQuery':
+        return UpdateNewCustomQuery.fromJson(this);
+      case 'updateNewInlineCallbackQuery':
+        return UpdateNewInlineCallbackQuery.fromJson(this);
+      case 'updateNewInlineQuery':
+        return UpdateNewInlineQuery.fromJson(this);
+      case 'updateNewMessage':
+        return UpdateNewMessage.fromJson(this);
+      case 'updateNewPreCheckoutQuery':
+        return UpdateNewPreCheckoutQuery.fromJson(this);
+      case 'updateNewShippingQuery':
+        return UpdateNewShippingQuery.fromJson(this);
+      case 'updateNotification':
+        return UpdateNotification.fromJson(this);
+      case 'updateNotificationGroup':
+        return UpdateNotificationGroup.fromJson(this);
+      case 'updateOption':
+        return UpdateOption.fromJson(this);
+      case 'updatePoll':
+        return UpdatePoll.fromJson(this);
+      case 'updatePollAnswer':
+        return UpdatePollAnswer.fromJson(this);
+      case 'updateProfileAccentColors':
+        return UpdateProfileAccentColors.fromJson(this);
+      case 'updateQuickReplyShortcut':
+        return UpdateQuickReplyShortcut.fromJson(this);
+      case 'updateQuickReplyShortcutDeleted':
+        return UpdateQuickReplyShortcutDeleted.fromJson(this);
+      case 'updateQuickReplyShortcutMessages':
+        return UpdateQuickReplyShortcutMessages.fromJson(this);
+      case 'updateQuickReplyShortcuts':
+        return UpdateQuickReplyShortcuts.fromJson(this);
+      case 'updateRecentStickers':
+        return UpdateRecentStickers.fromJson(this);
+      case 'updateSavedAnimations':
+        return UpdateSavedAnimations.fromJson(this);
+      case 'updateSavedMessagesTags':
+        return UpdateSavedMessagesTags.fromJson(this);
+      case 'updateSavedMessagesTopic':
+        return UpdateSavedMessagesTopic.fromJson(this);
+      case 'updateSavedMessagesTopicCount':
+        return UpdateSavedMessagesTopicCount.fromJson(this);
+      case 'updateSavedNotificationSounds':
+        return UpdateSavedNotificationSounds.fromJson(this);
+      case 'updateScopeNotificationSettings':
+        return UpdateScopeNotificationSettings.fromJson(this);
+      case 'updateSecretChat':
+        return UpdateSecretChat.fromJson(this);
+      case 'updateServiceNotification':
+        return UpdateServiceNotification.fromJson(this);
+      case 'updateSpeechRecognitionTrial':
+        return UpdateSpeechRecognitionTrial.fromJson(this);
+      case 'updateStickerSet':
+        return UpdateStickerSet.fromJson(this);
+      case 'updateStory':
+        return UpdateStory.fromJson(this);
+      case 'updateStoryDeleted':
+        return UpdateStoryDeleted.fromJson(this);
+      case 'updateStoryListChatCount':
+        return UpdateStoryListChatCount.fromJson(this);
+      case 'updateStorySendFailed':
+        return UpdateStorySendFailed.fromJson(this);
+      case 'updateStorySendSucceeded':
+        return UpdateStorySendSucceeded.fromJson(this);
+      case 'updateStoryStealthMode':
+        return UpdateStoryStealthMode.fromJson(this);
+      case 'updateSuggestedActions':
+        return UpdateSuggestedActions.fromJson(this);
+      case 'updateSupergroup':
+        return UpdateSupergroup.fromJson(this);
+      case 'updateSupergroupFullInfo':
+        return UpdateSupergroupFullInfo.fromJson(this);
+      case 'updateTermsOfService':
+        return UpdateTermsOfService.fromJson(this);
+      case 'updateTrendingStickerSets':
+        return UpdateTrendingStickerSets.fromJson(this);
+      case 'updateUnconfirmedSession':
+        return UpdateUnconfirmedSession.fromJson(this);
+      case 'updateUnreadChatCount':
+        return UpdateUnreadChatCount.fromJson(this);
+      case 'updateUnreadMessageCount':
+        return UpdateUnreadMessageCount.fromJson(this);
+      case 'updateUser':
+        return UpdateUser.fromJson(this);
+      case 'updateUserFullInfo':
+        return UpdateUserFullInfo.fromJson(this);
+      case 'updateUserPrivacySettingRules':
+        return UpdateUserPrivacySettingRules.fromJson(this);
+      case 'updateUserStatus':
+        return UpdateUserStatus.fromJson(this);
+      case 'updateUsersNearby':
+        return UpdateUsersNearby.fromJson(this);
+      case 'updateWebAppMessageSent':
+        return UpdateWebAppMessageSent.fromJson(this);
+      case 'updates':
+        return Updates.fromJson(this);
+      case 'user':
+        return User.fromJson(this);
+      case 'userFullInfo':
+        return UserFullInfo.fromJson(this);
+      case 'userLink':
+        return UserLink.fromJson(this);
+      case 'userPrivacySetting':
+        return UserPrivacySetting.fromJson(this);
+      case 'userPrivacySettingAllowCalls':
+        return UserPrivacySettingAllowCalls.fromJson(this);
+      case 'userPrivacySettingAllowChatInvites':
+        return UserPrivacySettingAllowChatInvites.fromJson(this);
+      case 'userPrivacySettingAllowFindingByPhoneNumber':
+        return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(this);
+      case 'userPrivacySettingAllowPeerToPeerCalls':
+        return UserPrivacySettingAllowPeerToPeerCalls.fromJson(this);
+      case 'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages':
+        return UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(
+            this);
+      case 'userPrivacySettingRule':
+        return UserPrivacySettingRule.fromJson(this);
+      case 'userPrivacySettingRuleAllowAll':
+        return UserPrivacySettingRuleAllowAll.fromJson(this);
+      case 'userPrivacySettingRuleAllowChatMembers':
+        return UserPrivacySettingRuleAllowChatMembers.fromJson(this);
+      case 'userPrivacySettingRuleAllowContacts':
+        return UserPrivacySettingRuleAllowContacts.fromJson(this);
+      case 'userPrivacySettingRuleAllowUsers':
+        return UserPrivacySettingRuleAllowUsers.fromJson(this);
+      case 'userPrivacySettingRuleRestrictAll':
+        return UserPrivacySettingRuleRestrictAll.fromJson(this);
+      case 'userPrivacySettingRuleRestrictChatMembers':
+        return UserPrivacySettingRuleRestrictChatMembers.fromJson(this);
+      case 'userPrivacySettingRuleRestrictContacts':
+        return UserPrivacySettingRuleRestrictContacts.fromJson(this);
+      case 'userPrivacySettingRuleRestrictUsers':
+        return UserPrivacySettingRuleRestrictUsers.fromJson(this);
+      case 'userPrivacySettingRules':
+        return UserPrivacySettingRules.fromJson(this);
+      case 'userPrivacySettingShowBio':
+        return UserPrivacySettingShowBio.fromJson(this);
+      case 'userPrivacySettingShowLinkInForwardedMessages':
+        return UserPrivacySettingShowLinkInForwardedMessages.fromJson(this);
+      case 'userPrivacySettingShowPhoneNumber':
+        return UserPrivacySettingShowPhoneNumber.fromJson(this);
+      case 'userPrivacySettingShowProfilePhoto':
+        return UserPrivacySettingShowProfilePhoto.fromJson(this);
+      case 'userPrivacySettingShowStatus':
+        return UserPrivacySettingShowStatus.fromJson(this);
+      case 'userStatus':
+        return UserStatus.fromJson(this);
+      case 'userStatusEmpty':
+        return UserStatusEmpty.fromJson(this);
+      case 'userStatusLastMonth':
+        return UserStatusLastMonth.fromJson(this);
+      case 'userStatusLastWeek':
+        return UserStatusLastWeek.fromJson(this);
+      case 'userStatusOffline':
+        return UserStatusOffline.fromJson(this);
+      case 'userStatusOnline':
+        return UserStatusOnline.fromJson(this);
+      case 'userStatusRecently':
+        return UserStatusRecently.fromJson(this);
+      case 'userSupportInfo':
+        return UserSupportInfo.fromJson(this);
+      case 'userType':
+        return UserType.fromJson(this);
+      case 'userTypeBot':
+        return UserTypeBot.fromJson(this);
+      case 'userTypeDeleted':
+        return UserTypeDeleted.fromJson(this);
+      case 'userTypeRegular':
+        return UserTypeRegular.fromJson(this);
+      case 'userTypeUnknown':
+        return UserTypeUnknown.fromJson(this);
+      case 'usernames':
+        return Usernames.fromJson(this);
+      case 'users':
+        return Users.fromJson(this);
+      case 'validatedOrderInfo':
+        return ValidatedOrderInfo.fromJson(this);
+      case 'vectorPathCommand':
+        return VectorPathCommand.fromJson(this);
+      case 'vectorPathCommandCubicBezierCurve':
+        return VectorPathCommandCubicBezierCurve.fromJson(this);
+      case 'vectorPathCommandLine':
+        return VectorPathCommandLine.fromJson(this);
+      case 'venue':
+        return Venue.fromJson(this);
+      case 'video':
+        return Video.fromJson(this);
+      case 'videoChat':
+        return VideoChat.fromJson(this);
+      case 'videoNote':
+        return VideoNote.fromJson(this);
+      case 'voiceNote':
+        return VoiceNote.fromJson(this);
+      case 'webApp':
+        return WebApp.fromJson(this);
+      case 'webAppInfo':
+        return WebAppInfo.fromJson(this);
+      case 'webPage':
+        return WebPage.fromJson(this);
+      case 'webPageInstantView':
+        return WebPageInstantView.fromJson(this);
+      default:
+        return null;
+    }
+  }
+}

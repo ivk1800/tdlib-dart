@@ -28,7 +28,7 @@ class Background extends TdObject {
   final String name;
 
   /// [document] Document with the background; may be null. Null only for filled
-  /// backgrounds
+  /// and chat theme backgrounds
   final Document? document;
 
   /// [type] Type of the background

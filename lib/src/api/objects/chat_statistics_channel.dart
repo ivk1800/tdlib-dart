@@ -8,8 +8,12 @@ class ChatStatisticsChannel extends ChatStatistics {
   const ChatStatisticsChannel({
     required this.period,
     required this.memberCount,
-    required this.meanViewCount,
-    required this.meanShareCount,
+    required this.meanMessageViewCount,
+    required this.meanMessageShareCount,
+    required this.meanMessageReactionCount,
+    required this.meanStoryViewCount,
+    required this.meanStoryShareCount,
+    required this.meanStoryReactionCount,
     required this.enabledNotificationsPercentage,
     required this.memberCountGraph,
     required this.joinGraph,
@@ -19,8 +23,11 @@ class ChatStatisticsChannel extends ChatStatistics {
     required this.joinBySourceGraph,
     required this.languageGraph,
     required this.messageInteractionGraph,
+    required this.messageReactionGraph,
+    required this.storyInteractionGraph,
+    required this.storyReactionGraph,
     required this.instantViewInteractionGraph,
-    required this.recentMessageInteractions,
+    required this.recentInteractions,
   });
 
   /// [period] A period to which the statistics applies
@@ -29,12 +36,29 @@ class ChatStatisticsChannel extends ChatStatistics {
   /// [memberCount] Number of members in the chat
   final StatisticalValue memberCount;
 
-  /// [meanViewCount] Mean number of times the recently sent messages was viewed
-  final StatisticalValue meanViewCount;
+  /// [meanMessageViewCount] Mean number of times the recently sent messages
+  /// were viewed
+  final StatisticalValue meanMessageViewCount;
 
-  /// [meanShareCount] Mean number of times the recently sent messages was
+  /// [meanMessageShareCount] Mean number of times the recently sent messages
+  /// were shared
+  final StatisticalValue meanMessageShareCount;
+
+  /// [meanMessageReactionCount] Mean number of times reactions were added to
+  /// the recently sent messages
+  final StatisticalValue meanMessageReactionCount;
+
+  /// [meanStoryViewCount] Mean number of times the recently sent stories were
+  /// viewed
+  final StatisticalValue meanStoryViewCount;
+
+  /// [meanStoryShareCount] Mean number of times the recently sent stories were
   /// shared
-  final StatisticalValue meanShareCount;
+  final StatisticalValue meanStoryShareCount;
+
+  /// [meanStoryReactionCount] Mean number of times reactions were added to the
+  /// recently sent stories
+  final StatisticalValue meanStoryReactionCount;
 
   /// [enabledNotificationsPercentage] A percentage of users with enabled
   /// notifications for the chat; 0-100
@@ -70,13 +94,23 @@ class ChatStatisticsChannel extends ChatStatistics {
   /// and shares
   final StatisticalGraph messageInteractionGraph;
 
+  /// [messageReactionGraph] A graph containing number of reactions on messages
+  final StatisticalGraph messageReactionGraph;
+
+  /// [storyInteractionGraph] A graph containing number of story views and
+  /// shares
+  final StatisticalGraph storyInteractionGraph;
+
+  /// [storyReactionGraph] A graph containing number of reactions on stories
+  final StatisticalGraph storyReactionGraph;
+
   /// [instantViewInteractionGraph] A graph containing number of views of
   /// associated with the chat instant views
   final StatisticalGraph instantViewInteractionGraph;
 
-  /// [recentMessageInteractions] Detailed statistics about number of views and
-  /// shares of recently sent messages
-  final List<ChatStatisticsMessageInteractionInfo> recentMessageInteractions;
+  /// [recentInteractions] Detailed statistics about number of views and shares
+  /// of recently sent messages and stories
+  final List<ChatStatisticsInteractionInfo> recentInteractions;
 
   static const String constructor = 'chatStatisticsChannel';
 
@@ -89,10 +123,18 @@ class ChatStatisticsChannel extends ChatStatistics {
       period: DateRange.fromJson(json['period'] as Map<String, dynamic>?)!,
       memberCount: StatisticalValue.fromJson(
           json['member_count'] as Map<String, dynamic>?)!,
-      meanViewCount: StatisticalValue.fromJson(
-          json['mean_view_count'] as Map<String, dynamic>?)!,
-      meanShareCount: StatisticalValue.fromJson(
-          json['mean_share_count'] as Map<String, dynamic>?)!,
+      meanMessageViewCount: StatisticalValue.fromJson(
+          json['mean_message_view_count'] as Map<String, dynamic>?)!,
+      meanMessageShareCount: StatisticalValue.fromJson(
+          json['mean_message_share_count'] as Map<String, dynamic>?)!,
+      meanMessageReactionCount: StatisticalValue.fromJson(
+          json['mean_message_reaction_count'] as Map<String, dynamic>?)!,
+      meanStoryViewCount: StatisticalValue.fromJson(
+          json['mean_story_view_count'] as Map<String, dynamic>?)!,
+      meanStoryShareCount: StatisticalValue.fromJson(
+          json['mean_story_share_count'] as Map<String, dynamic>?)!,
+      meanStoryReactionCount: StatisticalValue.fromJson(
+          json['mean_story_reaction_count'] as Map<String, dynamic>?)!,
       enabledNotificationsPercentage:
           (json['enabled_notifications_percentage'] as num).toDouble(),
       memberCountGraph: StatisticalGraph.fromJson(
@@ -111,15 +153,18 @@ class ChatStatisticsChannel extends ChatStatistics {
           json['language_graph'] as Map<String, dynamic>?)!,
       messageInteractionGraph: StatisticalGraph.fromJson(
           json['message_interaction_graph'] as Map<String, dynamic>?)!,
+      messageReactionGraph: StatisticalGraph.fromJson(
+          json['message_reaction_graph'] as Map<String, dynamic>?)!,
+      storyInteractionGraph: StatisticalGraph.fromJson(
+          json['story_interaction_graph'] as Map<String, dynamic>?)!,
+      storyReactionGraph: StatisticalGraph.fromJson(
+          json['story_reaction_graph'] as Map<String, dynamic>?)!,
       instantViewInteractionGraph: StatisticalGraph.fromJson(
           json['instant_view_interaction_graph'] as Map<String, dynamic>?)!,
-      recentMessageInteractions:
-          List<ChatStatisticsMessageInteractionInfo>.from(
-              ((json['recent_message_interactions'] as List<dynamic>?) ??
-                      <dynamic>[])
-                  .map((item) =>
-                      ChatStatisticsMessageInteractionInfo.fromJson(item))
-                  .toList()),
+      recentInteractions: List<ChatStatisticsInteractionInfo>.from(
+          ((json['recent_interactions'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatStatisticsInteractionInfo.fromJson(item))
+              .toList()),
     );
   }
 
@@ -130,8 +175,12 @@ class ChatStatisticsChannel extends ChatStatistics {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'period': period.toJson(),
         'member_count': memberCount.toJson(),
-        'mean_view_count': meanViewCount.toJson(),
-        'mean_share_count': meanShareCount.toJson(),
+        'mean_message_view_count': meanMessageViewCount.toJson(),
+        'mean_message_share_count': meanMessageShareCount.toJson(),
+        'mean_message_reaction_count': meanMessageReactionCount.toJson(),
+        'mean_story_view_count': meanStoryViewCount.toJson(),
+        'mean_story_share_count': meanStoryShareCount.toJson(),
+        'mean_story_reaction_count': meanStoryReactionCount.toJson(),
         'enabled_notifications_percentage': enabledNotificationsPercentage,
         'member_count_graph': memberCountGraph.toJson(),
         'join_graph': joinGraph.toJson(),
@@ -141,9 +190,12 @@ class ChatStatisticsChannel extends ChatStatistics {
         'join_by_source_graph': joinBySourceGraph.toJson(),
         'language_graph': languageGraph.toJson(),
         'message_interaction_graph': messageInteractionGraph.toJson(),
+        'message_reaction_graph': messageReactionGraph.toJson(),
+        'story_interaction_graph': storyInteractionGraph.toJson(),
+        'story_reaction_graph': storyReactionGraph.toJson(),
         'instant_view_interaction_graph': instantViewInteractionGraph.toJson(),
-        'recent_message_interactions':
-            recentMessageInteractions.map((item) => item.toJson()).toList(),
+        'recent_interactions':
+            recentInteractions.map((item) => item.toJson()).toList(),
         '@type': constructor,
       };
 

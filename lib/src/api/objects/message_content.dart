@@ -17,6 +17,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageBotWriteAccessAllowed]
   /// [MessageCall]
   /// [MessageChatAddMembers]
+  /// [MessageChatBoost]
   /// [MessageChatChangePhoto]
   /// [MessageChatChangeTitle]
   /// [MessageChatDeleteMember]
@@ -35,7 +36,9 @@ abstract class MessageContent extends TdObject {
   /// [MessageDice]
   /// [MessageDocument]
   /// [MessageExpiredPhoto]
+  /// [MessageExpiredVideoNote]
   /// [MessageExpiredVideo]
+  /// [MessageExpiredVoiceNote]
   /// [MessageForumTopicCreated]
   /// [MessageForumTopicEdited]
   /// [MessageForumTopicIsClosedToggled]
@@ -54,7 +57,9 @@ abstract class MessageContent extends TdObject {
   /// [MessagePinMessage]
   /// [MessagePoll]
   /// [MessagePremiumGiftCode]
+  /// [MessagePremiumGiveawayCompleted]
   /// [MessagePremiumGiveawayCreated]
+  /// [MessagePremiumGiveawayWinners]
   /// [MessagePremiumGiveaway]
   /// [MessageProximityAlertTriggered]
   /// [MessageScreenshotTaken]
@@ -64,7 +69,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageSupergroupChatCreate]
   /// [MessageText]
   /// [MessageUnsupported]
-  /// [MessageUserShared]
+  /// [MessageUsersShared]
   /// [MessageVenue]
   /// [MessageVideoChatEnded]
   /// [MessageVideoChatScheduled]
@@ -94,6 +99,8 @@ abstract class MessageContent extends TdObject {
         return MessageCall.fromJson(json);
       case MessageChatAddMembers.constructor:
         return MessageChatAddMembers.fromJson(json);
+      case MessageChatBoost.constructor:
+        return MessageChatBoost.fromJson(json);
       case MessageChatChangePhoto.constructor:
         return MessageChatChangePhoto.fromJson(json);
       case MessageChatChangeTitle.constructor:
@@ -132,6 +139,10 @@ abstract class MessageContent extends TdObject {
         return MessageExpiredPhoto.fromJson(json);
       case MessageExpiredVideo.constructor:
         return MessageExpiredVideo.fromJson(json);
+      case MessageExpiredVideoNote.constructor:
+        return MessageExpiredVideoNote.fromJson(json);
+      case MessageExpiredVoiceNote.constructor:
+        return MessageExpiredVoiceNote.fromJson(json);
       case MessageForumTopicCreated.constructor:
         return MessageForumTopicCreated.fromJson(json);
       case MessageForumTopicEdited.constructor:
@@ -170,8 +181,12 @@ abstract class MessageContent extends TdObject {
         return MessagePremiumGiftCode.fromJson(json);
       case MessagePremiumGiveaway.constructor:
         return MessagePremiumGiveaway.fromJson(json);
+      case MessagePremiumGiveawayCompleted.constructor:
+        return MessagePremiumGiveawayCompleted.fromJson(json);
       case MessagePremiumGiveawayCreated.constructor:
         return MessagePremiumGiveawayCreated.fromJson(json);
+      case MessagePremiumGiveawayWinners.constructor:
+        return MessagePremiumGiveawayWinners.fromJson(json);
       case MessageProximityAlertTriggered.constructor:
         return MessageProximityAlertTriggered.fromJson(json);
       case MessageScreenshotTaken.constructor:
@@ -188,8 +203,8 @@ abstract class MessageContent extends TdObject {
         return MessageText.fromJson(json);
       case MessageUnsupported.constructor:
         return MessageUnsupported.fromJson(json);
-      case MessageUserShared.constructor:
-        return MessageUserShared.fromJson(json);
+      case MessageUsersShared.constructor:
+        return MessageUsersShared.fromJson(json);
       case MessageVenue.constructor:
         return MessageVenue.fromJson(json);
       case MessageVideo.constructor:

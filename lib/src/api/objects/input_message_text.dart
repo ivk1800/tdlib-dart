@@ -18,7 +18,7 @@ class InputMessageText extends InputMessageContent {
   final FormattedText text;
 
   /// [linkPreviewOptions] Options to be used for generation of a link preview;
-  /// pass null to use default link preview options
+  /// may be null if none; pass null to use default link preview options
   final LinkPreviewOptions? linkPreviewOptions;
 
   /// [clearDraft] True, if a chat message draft must be deleted

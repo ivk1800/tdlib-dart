@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains a list of custom emoji identifiers, which can be set as emoji
-/// statuses
+/// Contains a list of custom emoji identifiers for emoji statuses
 @immutable
 class EmojiStatuses extends TdObject {
   const EmojiStatuses({

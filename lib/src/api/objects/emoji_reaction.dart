@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains information about a emoji reaction
+/// Contains information about an emoji reaction
 @immutable
 class EmojiReaction extends TdObject {
   const EmojiReaction({

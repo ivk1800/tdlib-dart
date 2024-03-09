@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Checks whether the current user can send a story on behalf of a chat;
-/// requires can_post_stories rights for channel chats
+/// requires can_post_stories right for supergroup and channel chats
 /// Returns [CanSendStoryResult]
 @immutable
 class CanSendStory extends TdFunction {

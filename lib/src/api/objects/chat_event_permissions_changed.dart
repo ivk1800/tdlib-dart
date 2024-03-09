@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The chat permissions was changed
+/// The chat permissions were changed
 @immutable
 class ChatEventPermissionsChanged extends ChatEventAction {
   const ChatEventPermissionsChanged({

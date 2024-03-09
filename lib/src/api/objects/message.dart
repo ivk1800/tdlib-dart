@@ -22,6 +22,7 @@ class Message extends TdObject {
     required this.canGetAddedReactions,
     required this.canGetStatistics,
     required this.canGetMessageThread,
+    required this.canGetReadDate,
     required this.canGetViewers,
     required this.canGetMediaTimestampLinks,
     required this.canReportReactions,
@@ -37,10 +38,12 @@ class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
+    required this.savedMessagesTopicId,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBoostCount,
     this.authorSignature,
     required this.mediaAlbumId,
     required this.restrictionReason,
@@ -107,6 +110,10 @@ class Message extends TdObject {
   /// available through getMessageThread and getMessageThreadHistory
   final bool canGetMessageThread;
 
+  /// [canGetReadDate] True, if read date of the message can be received through
+  /// getMessageReadDate
+  final bool canGetReadDate;
+
   /// [canGetViewers] True, if chat members already viewed the message can be
   /// received through getMessageViewers
   final bool canGetViewers;
@@ -164,6 +171,10 @@ class Message extends TdObject {
   /// message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
+  /// [savedMessagesTopicId] Identifier of the Saved Messages topic for the
+  /// message; 0 for messages not from Saved Messages
+  final int savedMessagesTopicId;
+
   /// [selfDestructType] The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
 
@@ -178,6 +189,12 @@ class Message extends TdObject {
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which
   /// this message was sent
   final int viaBotUserId;
+
+  /// [senderBoostCount] Number of times the sender of the message boosted the
+  /// supergroup at the time the message was sent; 0 if none or unknown. For
+  /// messages sent by the current user, supergroupFullInfo.my_boost_count must
+  /// be used instead
+  final int senderBoostCount;
 
   /// [authorSignature] For channel posts and anonymous group messages, optional
   /// author signature
@@ -224,6 +241,7 @@ class Message extends TdObject {
       canGetAddedReactions: json['can_get_added_reactions'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
       canGetMessageThread: json['can_get_message_thread'] as bool,
+      canGetReadDate: json['can_get_read_date'] as bool,
       canGetViewers: json['can_get_viewers'] as bool,
       canGetMediaTimestampLinks: json['can_get_media_timestamp_links'] as bool,
       canReportReactions: json['can_report_reactions'] as bool,
@@ -246,11 +264,13 @@ class Message extends TdObject {
       replyTo:
           MessageReplyTo.fromJson(json['reply_to'] as Map<String, dynamic>?),
       messageThreadId: json['message_thread_id'] as int,
+      savedMessagesTopicId: json['saved_messages_topic_id'] as int,
       selfDestructType: MessageSelfDestructType.fromJson(
           json['self_destruct_type'] as Map<String, dynamic>?),
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
+      senderBoostCount: json['sender_boost_count'] as int,
       authorSignature: json['author_signature'] as String?,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
       restrictionReason: json['restriction_reason'] as String,
@@ -282,6 +302,7 @@ class Message extends TdObject {
         'can_get_added_reactions': canGetAddedReactions,
         'can_get_statistics': canGetStatistics,
         'can_get_message_thread': canGetMessageThread,
+        'can_get_read_date': canGetReadDate,
         'can_get_viewers': canGetViewers,
         'can_get_media_timestamp_links': canGetMediaTimestampLinks,
         'can_report_reactions': canReportReactions,
@@ -298,10 +319,12 @@ class Message extends TdObject {
             unreadReactions.map((item) => item.toJson()).toList(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
+        'saved_messages_topic_id': savedMessagesTopicId,
         'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
+        'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
         'restriction_reason': restrictionReason,

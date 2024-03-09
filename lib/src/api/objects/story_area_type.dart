@@ -11,6 +11,7 @@ abstract class StoryAreaType extends TdObject {
 
   /// Inherited by:
   /// [StoryAreaTypeLocation]
+  /// [StoryAreaTypeMessage]
   /// [StoryAreaTypeSuggestedReaction]
   /// [StoryAreaTypeVenue]
   static StoryAreaType? fromJson(Map<String, dynamic>? json) {
@@ -21,6 +22,8 @@ abstract class StoryAreaType extends TdObject {
     switch (json['@type']) {
       case StoryAreaTypeLocation.constructor:
         return StoryAreaTypeLocation.fromJson(json);
+      case StoryAreaTypeMessage.constructor:
+        return StoryAreaTypeMessage.fromJson(json);
       case StoryAreaTypeSuggestedReaction.constructor:
         return StoryAreaTypeSuggestedReaction.fromJson(json);
       case StoryAreaTypeVenue.constructor:

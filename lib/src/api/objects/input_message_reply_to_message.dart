@@ -21,12 +21,9 @@ class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// specified chat
   final int messageId;
 
-  /// [quote] Manually chosen quote from the message to be replied; pass null if
-  /// none; 0-getOption("message_reply_quote_length_max") characters. Must
-  /// always be null for replies in secret chats. Only Bold, Italic, Underline,
-  /// Strikethrough, Spoiler, and CustomEmoji entities are allowed to be kept
-  /// and must be kept in the quote
-  final FormattedText? quote;
+  /// [quote] Quote from the message to be replied; pass null if none. Must
+  /// always be null for replies in secret chats
+  final InputTextQuote? quote;
 
   static const String constructor = 'inputMessageReplyToMessage';
 
@@ -38,7 +35,7 @@ class InputMessageReplyToMessage extends InputMessageReplyTo {
     return InputMessageReplyToMessage(
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
-      quote: FormattedText.fromJson(json['quote'] as Map<String, dynamic>?),
+      quote: InputTextQuote.fromJson(json['quote'] as Map<String, dynamic>?),
     );
   }
 

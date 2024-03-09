@@ -14,7 +14,7 @@ class GetBackgroundUrl extends TdFunction {
   /// [name] Background name
   final String name;
 
-  /// [type] Background type
+  /// [type] Background type; backgroundTypeChatTheme isn't supported
   final BackgroundType type;
 
   static const String constructor = 'getBackgroundUrl';

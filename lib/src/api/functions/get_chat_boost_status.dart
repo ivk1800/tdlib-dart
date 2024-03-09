@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns the current boost status for a channel chat
+/// Returns the current boost status for a supergroup or a channel chat
 /// Returns [ChatBoostStatus]
 @immutable
 class GetChatBoostStatus extends TdFunction {
@@ -10,7 +10,7 @@ class GetChatBoostStatus extends TdFunction {
     required this.chatId,
   });
 
-  /// [chatId] Identifier of the channel chat
+  /// [chatId] Identifier of the chat
   final int chatId;
 
   static const String constructor = 'getChatBoostStatus';

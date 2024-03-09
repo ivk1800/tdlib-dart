@@ -10,12 +10,14 @@ class InputMessageVideoNote extends InputMessageContent {
     this.thumbnail,
     required this.duration,
     required this.length,
+    this.selfDestructType,
   });
 
   /// [videoNote] Video note to be sent
   final InputFile videoNote;
 
-  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading
+  /// [thumbnail] Video thumbnail; may be null if empty; pass null to skip
+  /// thumbnail uploading
   final InputThumbnail? thumbnail;
 
   /// [duration] Duration of the video, in seconds
@@ -23,6 +25,10 @@ class InputMessageVideoNote extends InputMessageContent {
 
   /// [length] Video width and height; must be positive and not greater than 640
   final int length;
+
+  /// [selfDestructType] Video note self-destruct type; may be null if none;
+  /// pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   static const String constructor = 'inputMessageVideoNote';
 
@@ -38,6 +44,8 @@ class InputMessageVideoNote extends InputMessageContent {
           InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       duration: json['duration'] as int,
       length: json['length'] as int,
+      selfDestructType: MessageSelfDestructType.fromJson(
+          json['self_destruct_type'] as Map<String, dynamic>?),
     );
   }
 
@@ -50,6 +58,7 @@ class InputMessageVideoNote extends InputMessageContent {
         'thumbnail': thumbnail?.toJson(),
         'duration': duration,
         'length': length,
+        'self_destruct_type': selfDestructType?.toJson(),
         '@type': constructor,
       };
 

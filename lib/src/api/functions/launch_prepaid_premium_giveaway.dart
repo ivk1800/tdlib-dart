@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Launches a prepaid Telegram Premium giveaway for subscribers of channel
-/// chats; requires can_post_messages rights in the channels
+/// Launches a prepaid Telegram Premium giveaway
 /// Returns [Ok]
 @immutable
 class LaunchPrepaidPremiumGiveaway extends TdFunction {

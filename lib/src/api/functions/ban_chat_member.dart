@@ -2,9 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Bans a member in a chat. Members can't be banned in private or secret
-/// chats. In supergroups and channels, the user will not be able to return to
-/// the group on their own using invite links, etc., unless unbanned first
+/// Bans a member in a chat; requires can_restrict_members administrator
+/// right. Members can't be banned in private or secret chats. In supergroups
+/// and channels, the user will not be able to return to the group on their
+/// own using invite links, etc., unless unbanned first
 /// Returns [Ok]
 @immutable
 class BanChatMember extends TdFunction {

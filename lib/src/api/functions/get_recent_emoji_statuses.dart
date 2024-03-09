@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns recent emoji statuses
+/// Returns recent emoji statuses for self status
 /// Returns [EmojiStatuses]
 @immutable
 class GetRecentEmojiStatuses extends TdFunction {

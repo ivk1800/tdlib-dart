@@ -3,8 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Options to be used when a message content is copied without reference to
-/// the original sender. Service messages, and messages with messageInvoice or
-/// messagePremiumGiveaway content can't be copied
+/// the original sender. Service messages, messages with messageInvoice,
+/// messagePremiumGiveaway, or messagePremiumGiveawayWinners content can't be
+/// copied
 @immutable
 class MessageCopyOptions extends TdObject {
   const MessageCopyOptions({

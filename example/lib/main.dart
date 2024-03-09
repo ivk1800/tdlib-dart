@@ -147,8 +147,6 @@ class _MyAppState extends State<MyApp> {
           useMessageDatabase: true,
           useFileDatabase: true,
           useChatInfoDatabase: true,
-          ignoreFileNames: true,
-          enableStorageOptimizer: true,
           filesDirectory: await _getFilesDirectory(),
           databaseDirectory: await _getDatabaseDirectory(),
           systemLanguageCode: 'en',

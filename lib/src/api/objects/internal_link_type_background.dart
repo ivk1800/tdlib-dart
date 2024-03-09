@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a background. Call searchBackground with the given
-/// background name to process the link
+/// background name to process the link If background is found and the user
+/// wants to apply it, then call setDefaultBackground
 @immutable
 class InternalLinkTypeBackground extends InternalLinkType {
   const InternalLinkTypeBackground({

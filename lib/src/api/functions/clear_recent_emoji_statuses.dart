@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Clears the list of recently used emoji statuses
+/// Clears the list of recently used emoji statuses for self status
 /// Returns [Ok]
 @immutable
 class ClearRecentEmojiStatuses extends TdFunction {

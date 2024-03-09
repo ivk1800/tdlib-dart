@@ -13,6 +13,7 @@ abstract class MessageSponsorType extends TdObject {
   /// [MessageSponsorTypeBot]
   /// [MessageSponsorTypePrivateChannel]
   /// [MessageSponsorTypePublicChannel]
+  /// [MessageSponsorTypeWebApp]
   /// [MessageSponsorTypeWebsite]
   static MessageSponsorType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -26,6 +27,8 @@ abstract class MessageSponsorType extends TdObject {
         return MessageSponsorTypePrivateChannel.fromJson(json);
       case MessageSponsorTypePublicChannel.constructor:
         return MessageSponsorTypePublicChannel.fromJson(json);
+      case MessageSponsorTypeWebApp.constructor:
+        return MessageSponsorTypeWebApp.fromJson(json);
       case MessageSponsorTypeWebsite.constructor:
         return MessageSponsorTypeWebsite.fromJson(json);
       default:

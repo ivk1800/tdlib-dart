@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The list of saved notifications sounds was updated. This update may not be
+/// The list of saved notification sounds was updated. This update may not be
 /// sent until information about a notification sound was requested for the
 /// first time
 @immutable

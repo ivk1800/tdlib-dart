@@ -15,6 +15,7 @@ class GetChatSparseMessagePositions extends TdFunction {
     required this.filter,
     required this.fromMessageId,
     required this.limit,
+    required this.savedMessagesTopicId,
   });
 
   /// [chatId] Identifier of the chat in which to return information about
@@ -35,6 +36,11 @@ class GetChatSparseMessagePositions extends TdFunction {
   /// appropriate messages
   final int limit;
 
+  /// [savedMessagesTopicId] If not 0, only messages in the specified Saved
+  /// Messages topic will be considered; pass 0 to consider all messages, or for
+  /// chats other than Saved Messages
+  final int savedMessagesTopicId;
+
   static const String constructor = 'getChatSparseMessagePositions';
 
   @override
@@ -46,6 +52,7 @@ class GetChatSparseMessagePositions extends TdFunction {
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
         'limit': limit,
+        'saved_messages_topic_id': savedMessagesTopicId,
         '@type': constructor,
       };
 

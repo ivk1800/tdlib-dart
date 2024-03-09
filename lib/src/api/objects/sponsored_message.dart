@@ -10,6 +10,7 @@ class SponsoredMessage extends TdObject {
     required this.isRecommended,
     required this.content,
     required this.sponsor,
+    required this.buttonText,
     required this.additionalInfo,
   });
 
@@ -27,6 +28,9 @@ class SponsoredMessage extends TdObject {
 
   /// [sponsor] Information about the sponsor of the message
   final MessageSponsor sponsor;
+
+  /// [buttonText] If non-empty, text for the message action button
+  final String buttonText;
 
   /// [additionalInfo] If non-empty, additional information about the sponsored
   /// message to be shown along with the message
@@ -46,6 +50,7 @@ class SponsoredMessage extends TdObject {
           MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
       sponsor:
           MessageSponsor.fromJson(json['sponsor'] as Map<String, dynamic>?)!,
+      buttonText: json['button_text'] as String,
       additionalInfo: json['additional_info'] as String,
     );
   }
@@ -59,6 +64,7 @@ class SponsoredMessage extends TdObject {
         'is_recommended': isRecommended,
         'content': content.toJson(),
         'sponsor': sponsor.toJson(),
+        'button_text': buttonText,
         'additional_info': additionalInfo,
         '@type': constructor,
       };

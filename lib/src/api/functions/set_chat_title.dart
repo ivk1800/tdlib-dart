@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Changes the chat title. Supported only for basic groups, supergroups and
-/// channels. Requires can_change_info administrator right
+/// channels. Requires can_change_info member right
 /// Returns [Ok]
 @immutable
 class SetChatTitle extends TdFunction {

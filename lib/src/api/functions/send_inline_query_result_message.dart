@@ -20,7 +20,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// [chatId] Target chat
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the
+  /// [messageThreadId] If not 0, the message thread identifier in which the
   /// message will be sent
   final int messageThreadId;
 

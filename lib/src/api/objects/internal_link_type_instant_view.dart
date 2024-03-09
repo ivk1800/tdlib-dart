@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link must be opened in an Instant View. Call getWebPageInstantView
-/// with the given URL to process the link
+/// with the given URL to process the link. If Instant View is found, then
+/// show it, otherwise, open the fallback URL in an external browser
 @immutable
 class InternalLinkTypeInstantView extends InternalLinkType {
   const InternalLinkTypeInstantView({

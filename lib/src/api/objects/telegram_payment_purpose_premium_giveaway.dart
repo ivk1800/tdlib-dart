@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user creating a Telegram Premium giveaway for subscribers of channel
-/// chats; requires can_post_messages rights in the channels
+/// The user creating a Telegram Premium giveaway
 @immutable
 class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
   const TelegramPaymentPurposePremiumGiveaway({
@@ -27,7 +26,7 @@ class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
   /// codes
   final int winnerCount;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active for the users
   final int monthCount;
 

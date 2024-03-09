@@ -15,11 +15,13 @@ class SetChatDraftMessage extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the draft
-  /// was changed
+  /// [messageThreadId] If not 0, the message thread identifier in which the
+  /// draft was changed
   final int messageThreadId;
 
-  /// [draftMessage] New draft message; pass null to remove the draft
+  /// [draftMessage] New draft message; pass null to remove the draft. All files
+  /// in draft message content must be of the type inputFileLocal. Media
+  /// thumbnails and captions are ignored
   final DraftMessage? draftMessage;
 
   static const String constructor = 'setChatDraftMessage';

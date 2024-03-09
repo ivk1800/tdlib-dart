@@ -38,7 +38,7 @@ class OpenWebApp extends TdFunction {
   /// digits, and underscores
   final String applicationName;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the
+  /// [messageThreadId] If not 0, the message thread identifier in which the
   /// message will be sent
   final int messageThreadId;
 

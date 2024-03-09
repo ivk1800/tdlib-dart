@@ -10,7 +10,8 @@ import '../tdapi.dart';
 /// user to accept their Terms of service and confirm adding the bot to side
 /// and attachment menu. If the user accept the terms and confirms adding,
 /// then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is
-/// added to side menu, then use getWebAppUrl with the given URL
+/// added to side menu, then use getWebAppUrl with the given URL and open the
+/// returned URL as a Web App
 @immutable
 class InternalLinkTypeSideMenuBot extends InternalLinkType {
   const InternalLinkTypeSideMenuBot({

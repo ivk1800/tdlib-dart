@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns list of boosts applied to a chat; requires administrator rights in
-/// the channel chat
+/// the chat
 /// Returns [FoundChatBoosts]
 @immutable
 class GetChatBoosts extends TdFunction {

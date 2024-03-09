@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user status was never changed
+/// The user's status has never been changed
 @immutable
 class UserStatusEmpty extends UserStatus {
   const UserStatusEmpty();

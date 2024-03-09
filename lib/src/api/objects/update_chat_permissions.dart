@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Chat permissions was changed
+/// Chat permissions were changed
 @immutable
 class UpdateChatPermissions extends Update {
   const UpdateChatPermissions({

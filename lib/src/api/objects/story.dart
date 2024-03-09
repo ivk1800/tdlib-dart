@@ -8,6 +8,7 @@ class Story extends TdObject {
   const Story({
     required this.id,
     required this.senderChatId,
+    this.senderId,
     required this.date,
     required this.isBeingSent,
     required this.isBeingEdited,
@@ -19,8 +20,10 @@ class Story extends TdObject {
     required this.canBeForwarded,
     required this.canBeReplied,
     required this.canToggleIsPinned,
-    required this.canGetViewers,
+    required this.canGetStatistics,
+    required this.canGetInteractions,
     required this.hasExpiredViewers,
+    this.repostInfo,
     this.interactionInfo,
     this.chosenReactionType,
     required this.privacySettings,
@@ -34,6 +37,10 @@ class Story extends TdObject {
 
   /// [senderChatId] Identifier of the chat that posted the story
   final int senderChatId;
+
+  /// [senderId] Identifier of the sender of the story; may be null if the story
+  /// is posted on behalf of the sender_chat_id
+  final MessageSender? senderId;
 
   /// [date] Point in time (Unix timestamp) when the story was published
   final int date;
@@ -73,14 +80,22 @@ class Story extends TdObject {
   /// [canToggleIsPinned] True, if the story's is_pinned value can be changed
   final bool canToggleIsPinned;
 
-  /// [canGetViewers] True, if users viewed the story can be received through
-  /// getStoryViewers
-  final bool canGetViewers;
+  /// [canGetStatistics] True, if the story statistics are available through
+  /// getStoryStatistics
+  final bool canGetStatistics;
+
+  /// [canGetInteractions] True, if interactions with the story can be received
+  /// through getStoryInteractions
+  final bool canGetInteractions;
 
   /// [hasExpiredViewers] True, if users viewed the story can't be received,
   /// because the story has expired more than
   /// getOption("story_viewers_expiration_delay") seconds ago
   final bool hasExpiredViewers;
+
+  /// [repostInfo] Information about the original story; may be null if the
+  /// story wasn't reposted
+  final StoryRepostInfo? repostInfo;
 
   /// [interactionInfo] Information about interactions with the story; may be
   /// null if the story isn't owned or there were no interactions
@@ -112,6 +127,8 @@ class Story extends TdObject {
     return Story(
       id: json['id'] as int,
       senderChatId: json['sender_chat_id'] as int,
+      senderId:
+          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?),
       date: json['date'] as int,
       isBeingSent: json['is_being_sent'] as bool,
       isBeingEdited: json['is_being_edited'] as bool,
@@ -123,8 +140,11 @@ class Story extends TdObject {
       canBeForwarded: json['can_be_forwarded'] as bool,
       canBeReplied: json['can_be_replied'] as bool,
       canToggleIsPinned: json['can_toggle_is_pinned'] as bool,
-      canGetViewers: json['can_get_viewers'] as bool,
+      canGetStatistics: json['can_get_statistics'] as bool,
+      canGetInteractions: json['can_get_interactions'] as bool,
       hasExpiredViewers: json['has_expired_viewers'] as bool,
+      repostInfo: StoryRepostInfo.fromJson(
+          json['repost_info'] as Map<String, dynamic>?),
       interactionInfo: StoryInteractionInfo.fromJson(
           json['interaction_info'] as Map<String, dynamic>?),
       chosenReactionType: ReactionType.fromJson(
@@ -148,6 +168,7 @@ class Story extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id,
         'sender_chat_id': senderChatId,
+        'sender_id': senderId?.toJson(),
         'date': date,
         'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
@@ -159,8 +180,10 @@ class Story extends TdObject {
         'can_be_forwarded': canBeForwarded,
         'can_be_replied': canBeReplied,
         'can_toggle_is_pinned': canToggleIsPinned,
-        'can_get_viewers': canGetViewers,
+        'can_get_statistics': canGetStatistics,
+        'can_get_interactions': canGetInteractions,
         'has_expired_viewers': hasExpiredViewers,
+        'repost_info': repostInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
         'chosen_reaction_type': chosenReactionType?.toJson(),
         'privacy_settings': privacySettings.toJson(),

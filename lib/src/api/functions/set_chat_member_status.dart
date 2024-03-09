@@ -2,8 +2,11 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the status of a chat member, needs appropriate privileges. This
-/// function is currently not suitable for transferring chat ownership; use
+/// Changes the status of a chat member; requires can_invite_users member
+/// right to add a chat member, can_promote_members administrator right to
+/// change administrator rights of the member, and can_restrict_members
+/// administrator right to change restrictions of a user. This function is
+/// currently not suitable for transferring chat ownership; use
 /// transferChatOwnership instead. Use addChatMember or banChatMember if some
 /// additional parameters needs to be passed
 /// Returns [Ok]

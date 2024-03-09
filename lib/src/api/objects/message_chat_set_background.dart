@@ -8,6 +8,7 @@ class MessageChatSetBackground extends MessageContent {
   const MessageChatSetBackground({
     required this.oldBackgroundMessageId,
     required this.background,
+    required this.onlyForSelf,
   });
 
   /// [oldBackgroundMessageId] Identifier of the message with a previously set
@@ -16,6 +17,9 @@ class MessageChatSetBackground extends MessageContent {
 
   /// [background] The new background
   final ChatBackground background;
+
+  /// [onlyForSelf] True, if the background was set only for self
+  final bool onlyForSelf;
 
   static const String constructor = 'messageChatSetBackground';
 
@@ -28,6 +32,7 @@ class MessageChatSetBackground extends MessageContent {
       oldBackgroundMessageId: json['old_background_message_id'] as int,
       background:
           ChatBackground.fromJson(json['background'] as Map<String, dynamic>?)!,
+      onlyForSelf: json['only_for_self'] as bool,
     );
   }
 
@@ -38,6 +43,7 @@ class MessageChatSetBackground extends MessageContent {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'old_background_message_id': oldBackgroundMessageId,
         'background': background.toJson(),
+        'only_for_self': onlyForSelf,
         '@type': constructor,
       };
 

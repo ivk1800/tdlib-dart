@@ -2,14 +2,18 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Searches for ordinary sticker sets by looking for specified query in their
-/// title and name. Excludes installed sticker sets from the results
+/// Searches for sticker sets by looking for specified query in their title
+/// and name. Excludes installed sticker sets from the results
 /// Returns [StickerSets]
 @immutable
 class SearchStickerSets extends TdFunction {
   const SearchStickerSets({
+    required this.stickerType,
     required this.query,
   });
+
+  /// [stickerType] Type of the sticker sets to return
+  final StickerType stickerType;
 
   /// [query] Query to search for
   final String query;
@@ -21,6 +25,7 @@ class SearchStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'sticker_type': stickerType.toJson(),
         'query': query,
         '@type': constructor,
       };

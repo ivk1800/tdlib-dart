@@ -17,9 +17,11 @@ class UserFullInfo extends TdObject {
     required this.hasRestrictedVoiceAndVideoNoteMessages,
     required this.hasPinnedStories,
     required this.needPhoneNumberPrivacyException,
+    required this.setChatBackground,
     this.bio,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
+    this.businessInfo,
     this.botInfo,
   });
 
@@ -73,6 +75,10 @@ class UserFullInfo extends TdObject {
   /// addContact is used
   final bool needPhoneNumberPrivacyException;
 
+  /// [setChatBackground] True, if the user set chat background for both chat
+  /// users and it wasn't reverted yet
+  final bool setChatBackground;
+
   /// [bio] A short user bio; may be null for bots
   final FormattedText? bio;
 
@@ -83,6 +89,10 @@ class UserFullInfo extends TdObject {
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
   final int groupInCommonCount;
+
+  /// [businessInfo] Information about business settings for Telegram Business
+  /// accounts; may be null if none
+  final BusinessInfo? businessInfo;
 
   /// [botInfo] For bots, information about the bot; may be null if the user
   /// isn't a bot
@@ -112,12 +122,15 @@ class UserFullInfo extends TdObject {
       hasPinnedStories: json['has_pinned_stories'] as bool,
       needPhoneNumberPrivacyException:
           json['need_phone_number_privacy_exception'] as bool,
+      setChatBackground: json['set_chat_background'] as bool,
       bio: FormattedText.fromJson(json['bio'] as Map<String, dynamic>?),
       premiumGiftOptions: List<PremiumPaymentOption>.from(
           ((json['premium_gift_options'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumPaymentOption.fromJson(item))
               .toList()),
       groupInCommonCount: json['group_in_common_count'] as int,
+      businessInfo:
+          BusinessInfo.fromJson(json['business_info'] as Map<String, dynamic>?),
       botInfo: BotInfo.fromJson(json['bot_info'] as Map<String, dynamic>?),
     );
   }
@@ -139,10 +152,12 @@ class UserFullInfo extends TdObject {
             hasRestrictedVoiceAndVideoNoteMessages,
         'has_pinned_stories': hasPinnedStories,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
+        'set_chat_background': setChatBackground,
         'bio': bio?.toJson(),
         'premium_gift_options':
             premiumGiftOptions.map((item) => item.toJson()).toList(),
         'group_in_common_count': groupInCommonCount,
+        'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
         '@type': constructor,
       };

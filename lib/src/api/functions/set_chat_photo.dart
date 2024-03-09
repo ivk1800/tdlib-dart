@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Changes the photo of a chat. Supported only for basic groups, supergroups
-/// and channels. Requires can_change_info administrator right
+/// and channels. Requires can_change_info member right
 /// Returns [Ok]
 @immutable
 class SetChatPhoto extends TdFunction {

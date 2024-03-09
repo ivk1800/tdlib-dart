@@ -23,6 +23,7 @@ class SearchChatMessages extends TdFunction {
     required this.limit,
     this.filter,
     required this.messageThreadId,
+    required this.savedMessagesTopicId,
   });
 
   /// [chatId] Identifier of the chat in which to search messages
@@ -39,8 +40,8 @@ class SearchChatMessages extends TdFunction {
   /// be fetched; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// [offset] Specify 0 to get results from exactly the from_message_id or a
-  /// negative offset to get the specified message and some newer messages
+  /// [offset] Specify 0 to get results from exactly the message from_message_id
+  /// or a negative offset to get the specified message and some newer messages
   final int offset;
 
   /// [limit] The maximum number of messages to be returned; must be positive
@@ -57,6 +58,11 @@ class SearchChatMessages extends TdFunction {
   /// returned; supergroups only
   final int messageThreadId;
 
+  /// [savedMessagesTopicId] If not 0, only messages in the specified Saved
+  /// Messages topic will be returned; pass 0 to return all messages, or for
+  /// chats other than Saved Messages
+  final int savedMessagesTopicId;
+
   static const String constructor = 'searchChatMessages';
 
   @override
@@ -72,6 +78,7 @@ class SearchChatMessages extends TdFunction {
         'limit': limit,
         'filter': filter?.toJson(),
         'message_thread_id': messageThreadId,
+        'saved_messages_topic_id': savedMessagesTopicId,
         '@type': constructor,
       };
 

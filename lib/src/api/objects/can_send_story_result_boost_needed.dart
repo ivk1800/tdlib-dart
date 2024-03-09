@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The channel chat must be boosted first by Telegram Premium subscribers to
-/// post more stories. Call getChatBoostStatus to get current boost status of
-/// the chat
+/// The chat must be boosted first by Telegram Premium subscribers to post
+/// more stories. Call getChatBoostStatus to get current boost status of the
+/// chat
 @immutable
 class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
   const CanSendStoryResultBoostNeeded();

@@ -13,8 +13,8 @@ class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
     required this.monthCount,
   });
 
-  /// [boostedChatId] Identifier of the channel chat, which will be
-  /// automatically boosted by the users for duration of the Premium
+  /// [boostedChatId] Identifier of the supergroup or channel chat, which will
+  /// be automatically boosted by the users for duration of the Premium
   /// subscription and which is administered by the user; 0 if none
   final int boostedChatId;
 
@@ -27,7 +27,7 @@ class TelegramPaymentPurposePremiumGiftCodes extends TelegramPaymentPurpose {
   /// [userIds] Identifiers of the users which can activate the gift codes
   final List<int> userIds;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active for the users
   final int monthCount;
 

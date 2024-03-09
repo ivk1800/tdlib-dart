@@ -8,6 +8,7 @@ class ChatFolder extends TdObject {
   const ChatFolder({
     required this.title,
     this.icon,
+    required this.colorId,
     required this.isShareable,
     required this.pinnedChatIds,
     required this.includedChatIds,
@@ -28,6 +29,10 @@ class ChatFolder extends TdObject {
   /// [icon] The chosen icon for the chat folder; may be null. If null, use
   /// getChatFolderDefaultIconName to get default icon name for the folder
   final ChatFolderIcon? icon;
+
+  /// [colorId] The identifier of the chosen color for the chat folder icon;
+  /// from -1 to 6. If -1, then color is didabled
+  final int colorId;
 
   /// [isShareable] True, if at least one link has been created for the folder
   final bool isShareable;
@@ -84,6 +89,7 @@ class ChatFolder extends TdObject {
     return ChatFolder(
       title: json['title'] as String,
       icon: ChatFolderIcon.fromJson(json['icon'] as Map<String, dynamic>?),
+      colorId: json['color_id'] as int,
       isShareable: json['is_shareable'] as bool,
       pinnedChatIds: List<int>.from(
           ((json['pinned_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
@@ -115,6 +121,7 @@ class ChatFolder extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'title': title,
         'icon': icon?.toJson(),
+        'color_id': colorId,
         'is_shareable': isShareable,
         'pinned_chat_ids': pinnedChatIds.map((item) => item).toList(),
         'included_chat_ids': includedChatIds.map((item) => item).toList(),

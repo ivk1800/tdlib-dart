@@ -7,10 +7,14 @@ import '../tdapi.dart';
 class PaymentProviderSmartGlocal extends PaymentProvider {
   const PaymentProviderSmartGlocal({
     required this.publicToken,
+    required this.tokenizeUrl,
   });
 
   /// [publicToken] Public payment token
   final String publicToken;
+
+  /// [tokenizeUrl] URL for sending card tokenization requests
+  final String tokenizeUrl;
 
   static const String constructor = 'paymentProviderSmartGlocal';
 
@@ -21,6 +25,7 @@ class PaymentProviderSmartGlocal extends PaymentProvider {
 
     return PaymentProviderSmartGlocal(
       publicToken: json['public_token'] as String,
+      tokenizeUrl: json['tokenize_url'] as String,
     );
   }
 
@@ -30,6 +35,7 @@ class PaymentProviderSmartGlocal extends PaymentProvider {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'public_token': publicToken,
+        'tokenize_url': tokenizeUrl,
         '@type': constructor,
       };
 

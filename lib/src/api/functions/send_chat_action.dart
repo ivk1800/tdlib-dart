@@ -15,7 +15,7 @@ class SendChatAction extends TdFunction {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [messageThreadId] If not 0, a message thread identifier in which the
+  /// [messageThreadId] If not 0, the message thread identifier in which the
   /// action was performed
   final int messageThreadId;
 

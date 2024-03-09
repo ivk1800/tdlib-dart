@@ -13,8 +13,10 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventAccentColorChanged]
   /// [ChatEventActiveUsernamesChanged]
   /// [ChatEventAvailableReactionsChanged]
-  /// [ChatEventBackgroundCustomEmojiChanged]
+  /// [ChatEventBackgroundChanged]
+  /// [ChatEventCustomEmojiStickerSetChanged]
   /// [ChatEventDescriptionChanged]
+  /// [ChatEventEmojiStatusChanged]
   /// [ChatEventForumTopicCreated]
   /// [ChatEventForumTopicDeleted]
   /// [ChatEventForumTopicEdited]
@@ -46,6 +48,7 @@ abstract class ChatEventAction extends TdObject {
   /// [ChatEventPermissionsChanged]
   /// [ChatEventPhotoChanged]
   /// [ChatEventPollStopped]
+  /// [ChatEventProfileAccentColorChanged]
   /// [ChatEventSignMessagesToggled]
   /// [ChatEventSlowModeDelayChanged]
   /// [ChatEventStickerSetChanged]
@@ -68,10 +71,14 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventActiveUsernamesChanged.fromJson(json);
       case ChatEventAvailableReactionsChanged.constructor:
         return ChatEventAvailableReactionsChanged.fromJson(json);
-      case ChatEventBackgroundCustomEmojiChanged.constructor:
-        return ChatEventBackgroundCustomEmojiChanged.fromJson(json);
+      case ChatEventBackgroundChanged.constructor:
+        return ChatEventBackgroundChanged.fromJson(json);
+      case ChatEventCustomEmojiStickerSetChanged.constructor:
+        return ChatEventCustomEmojiStickerSetChanged.fromJson(json);
       case ChatEventDescriptionChanged.constructor:
         return ChatEventDescriptionChanged.fromJson(json);
+      case ChatEventEmojiStatusChanged.constructor:
+        return ChatEventEmojiStatusChanged.fromJson(json);
       case ChatEventForumTopicCreated.constructor:
         return ChatEventForumTopicCreated.fromJson(json);
       case ChatEventForumTopicDeleted.constructor:
@@ -134,6 +141,8 @@ abstract class ChatEventAction extends TdObject {
         return ChatEventPhotoChanged.fromJson(json);
       case ChatEventPollStopped.constructor:
         return ChatEventPollStopped.fromJson(json);
+      case ChatEventProfileAccentColorChanged.constructor:
+        return ChatEventProfileAccentColorChanged.fromJson(json);
       case ChatEventSignMessagesToggled.constructor:
         return ChatEventSignMessagesToggled.fromJson(json);
       case ChatEventSlowModeDelayChanged.constructor:

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The ability to choose accent color
+/// The ability to choose accent color for replies and user profile
 @immutable
 class PremiumFeatureAccentColor extends PremiumFeature {
   const PremiumFeatureAccentColor();

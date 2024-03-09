@@ -8,9 +8,8 @@ class MessageForwardInfo extends TdObject {
   const MessageForwardInfo({
     required this.origin,
     required this.date,
+    this.source,
     required this.publicServiceAnnouncementType,
-    required this.fromChatId,
-    required this.fromMessageId,
   });
 
   /// [origin] Origin of the forwarded message
@@ -19,21 +18,15 @@ class MessageForwardInfo extends TdObject {
   /// [date] Point in time (Unix timestamp) when the message was originally sent
   final int date;
 
+  /// [source] For messages forwarded to the chat with the current user (Saved
+  /// Messages), to the Replies bot chat, or to the channel's discussion group,
+  /// information about the source message from which the message was forwarded
+  /// last time; may be null for other forwards or if unknown
+  final ForwardSource? source;
+
   /// [publicServiceAnnouncementType] The type of a public service announcement
   /// for the forwarded message
   final String publicServiceAnnouncementType;
-
-  /// [fromChatId] For messages forwarded to the chat with the current user
-  /// (Saved Messages), to the Replies bot chat, or to the channel's discussion
-  /// group, the identifier of the chat from which the message was forwarded
-  /// last time; 0 if unknown
-  final int fromChatId;
-
-  /// [fromMessageId] For messages forwarded to the chat with the current user
-  /// (Saved Messages), to the Replies bot chat, or to the channel's discussion
-  /// group, the identifier of the original message from which the new message
-  /// was forwarded last time; 0 if unknown
-  final int fromMessageId;
 
   static const String constructor = 'messageForwardInfo';
 
@@ -45,10 +38,9 @@ class MessageForwardInfo extends TdObject {
     return MessageForwardInfo(
       origin: MessageOrigin.fromJson(json['origin'] as Map<String, dynamic>?)!,
       date: json['date'] as int,
+      source: ForwardSource.fromJson(json['source'] as Map<String, dynamic>?),
       publicServiceAnnouncementType:
           json['public_service_announcement_type'] as String,
-      fromChatId: json['from_chat_id'] as int,
-      fromMessageId: json['from_message_id'] as int,
     );
   }
 
@@ -59,9 +51,8 @@ class MessageForwardInfo extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'origin': origin.toJson(),
         'date': date,
+        'source': source?.toJson(),
         'public_service_announcement_type': publicServiceAnnouncementType,
-        'from_chat_id': fromChatId,
-        'from_message_id': fromMessageId,
         '@type': constructor,
       };
 

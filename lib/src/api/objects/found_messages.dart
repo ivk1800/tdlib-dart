@@ -17,8 +17,8 @@ class FoundMessages extends TdObject {
   /// [messages] List of messages
   final List<Message> messages;
 
-  /// [nextOffset] The offset for the next request. If empty, there are no more
-  /// results
+  /// [nextOffset] The offset for the next request. If empty, then there are no
+  /// more results
   final String nextOffset;
 
   static const String constructor = 'foundMessages';

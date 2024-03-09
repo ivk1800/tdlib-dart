@@ -8,6 +8,7 @@ class UpdateChatFolders extends Update {
   const UpdateChatFolders({
     required this.chatFolders,
     required this.mainChatListPosition,
+    required this.areTagsEnabled,
   });
 
   /// [chatFolders] The new list of chat folders
@@ -16,6 +17,9 @@ class UpdateChatFolders extends Update {
   /// [mainChatListPosition] Position of the main chat list among chat folders,
   /// 0-based
   final int mainChatListPosition;
+
+  /// [areTagsEnabled] True, if folder tags are enabled
+  final bool areTagsEnabled;
 
   static const String constructor = 'updateChatFolders';
 
@@ -30,6 +34,7 @@ class UpdateChatFolders extends Update {
               .map((item) => ChatFolderInfo.fromJson(item))
               .toList()),
       mainChatListPosition: json['main_chat_list_position'] as int,
+      areTagsEnabled: json['are_tags_enabled'] as bool,
     );
   }
 
@@ -40,6 +45,7 @@ class UpdateChatFolders extends Update {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_folders': chatFolders.map((item) => item.toJson()).toList(),
         'main_chat_list_position': mainChatListPosition,
+        'are_tags_enabled': areTagsEnabled,
         '@type': constructor,
       };
 

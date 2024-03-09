@@ -23,11 +23,10 @@ class ChatAdministratorRights extends TdObject {
     required this.isAnonymous,
   });
 
-  /// [canManageChat] True, if the administrator can get chat event log, get
-  /// chat boosts in channels, get channel members, report supergroup spam
-  /// messages, see anonymous administrators in supergroups and ignore slow
-  /// mode. Implied by any other privilege; applicable to supergroups and
-  /// channels only
+  /// [canManageChat] True, if the administrator can access the chat event log,
+  /// get boost list, see hidden supergroup and channel members, report
+  /// supergroup spam messages and ignore slow mode. Implied by any other
+  /// privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
   /// [canChangeInfo] True, if the administrator can change the chat title,
@@ -58,8 +57,9 @@ class ChatAdministratorRights extends TdObject {
   /// to basic groups and supergroups only
   final bool canPinMessages;
 
-  /// [canManageTopics] True, if the administrator can manage topics; applicable
-  /// to forum supergroups only
+  /// [canManageTopics] True, if the administrator can create, rename, close,
+  /// reopen, hide, and unhide forum topics; applicable to forum supergroups
+  /// only
   final bool canManageTopics;
 
   /// [canPromoteMembers] True, if the administrator can add new administrators
@@ -70,17 +70,18 @@ class ChatAdministratorRights extends TdObject {
   /// [canManageVideoChats] True, if the administrator can manage video chats
   final bool canManageVideoChats;
 
-  /// [canPostStories] True, if the administrator can create new channel
-  /// stories, or edit and delete posted stories; applicable to channels only
+  /// [canPostStories] True, if the administrator can create new chat stories,
+  /// or edit and delete posted stories; applicable to supergroups and channels
+  /// only
   final bool canPostStories;
 
   /// [canEditStories] True, if the administrator can edit stories posted by
-  /// other users, pin stories and access story archive; applicable to channels
-  /// only
+  /// other users, pin stories and access story archive; applicable to
+  /// supergroups and channels only
   final bool canEditStories;
 
   /// [canDeleteStories] True, if the administrator can delete stories posted by
-  /// other users; applicable to channels only
+  /// other users; applicable to supergroups and channels only
   final bool canDeleteStories;
 
   /// [isAnonymous] True, if the administrator isn't shown in the chat member

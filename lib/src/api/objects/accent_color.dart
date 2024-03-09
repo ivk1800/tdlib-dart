@@ -11,6 +11,7 @@ class AccentColor extends TdObject {
     required this.builtInAccentColorId,
     required this.lightThemeColors,
     required this.darkThemeColors,
+    required this.minChannelChatBoostLevel,
   });
 
   /// [id] Accent color identifier
@@ -27,6 +28,10 @@ class AccentColor extends TdObject {
   /// [darkThemeColors] The list of 1-3 colors in RGB format, describing the
   /// accent color, as expected to be shown in dark themes
   final List<int> darkThemeColors;
+
+  /// [minChannelChatBoostLevel] The minimum chat boost level required to use
+  /// the color in a channel chat
+  final int minChannelChatBoostLevel;
 
   static const String constructor = 'accentColor';
 
@@ -46,6 +51,7 @@ class AccentColor extends TdObject {
           ((json['dark_theme_colors'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
               .toList()),
+      minChannelChatBoostLevel: json['min_channel_chat_boost_level'] as int,
     );
   }
 
@@ -58,6 +64,7 @@ class AccentColor extends TdObject {
         'built_in_accent_color_id': builtInAccentColorId,
         'light_theme_colors': lightThemeColors.map((item) => item).toList(),
         'dark_theme_colors': darkThemeColors.map((item) => item).toList(),
+        'min_channel_chat_boost_level': minChannelChatBoostLevel,
         '@type': constructor,
       };
 

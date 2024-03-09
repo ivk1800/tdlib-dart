@@ -12,8 +12,8 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     required this.userIds,
   });
 
-  /// [boostedChatId] Identifier of the channel chat, which will be
-  /// automatically boosted by the users for duration of the Premium
+  /// [boostedChatId] Identifier of the supergroup or channel chat, which will
+  /// be automatically boosted by the users for duration of the Premium
   /// subscription and which is administered by the user; 0 if none
   final int boostedChatId;
 

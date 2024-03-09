@@ -15,7 +15,7 @@ class PushMessageContentPremiumGiveaway extends PushMessageContent {
   /// subscription gift codes; 0 for pinned message
   final int winnerCount;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active after code activation; 0 for pinned message
   final int monthCount;
 

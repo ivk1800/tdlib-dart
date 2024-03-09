@@ -19,7 +19,7 @@ class PrepaidPremiumGiveaway extends TdObject {
   /// subscription gift codes
   final int winnerCount;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active after code activation
   final int monthCount;
 

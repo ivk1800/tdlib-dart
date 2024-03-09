@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Creates a video chat (a group call bound to a chat). Available only for
 /// basic groups, supergroups and channels; requires can_manage_video_chats
-/// rights
+/// administrator right
 /// Returns [GroupCallId]
 @immutable
 class CreateVideoChat extends TdFunction {
@@ -27,7 +27,7 @@ class CreateVideoChat extends TdFunction {
   final int startDate;
 
   /// [isRtmpStream] Pass true to create an RTMP stream instead of an ordinary
-  /// video chat; requires creator privileges
+  /// video chat; requires owner privileges
   final bool isRtmpStream;
 
   static const String constructor = 'createVideoChat';

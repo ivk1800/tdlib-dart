@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a emoji reaction. Returns a 404 error if the
+/// Returns information about an emoji reaction. Returns a 404 error if the
 /// reaction is not found
 /// Returns [EmojiReaction]
 @immutable

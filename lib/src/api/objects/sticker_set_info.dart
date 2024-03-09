@@ -17,6 +17,7 @@ class StickerSetInfo extends TdObject {
     required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.size,
     required this.covers,
@@ -32,7 +33,8 @@ class StickerSetInfo extends TdObject {
   final String name;
 
   /// [thumbnail] Sticker set thumbnail in WEBP, TGS, or WEBM format with width
-  /// and height 100; may be null
+  /// and height 100; may be null. The file can be downloaded only before the
+  /// thumbnail is changed
   final Thumbnail? thumbnail;
 
   /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list
@@ -60,6 +62,11 @@ class StickerSetInfo extends TdObject {
   /// [needsRepainting] True, if stickers in the sticker set are custom emoji
   /// that must be repainted; for custom emoji sticker sets only
   final bool needsRepainting;
+
+  /// [isAllowedAsChatEmojiStatus] True, if stickers in the sticker set are
+  /// custom emoji that can be used as chat emoji status; for custom emoji
+  /// sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
 
   /// [isViewed] True for already viewed trending sticker sets
   final bool isViewed;
@@ -96,6 +103,8 @@ class StickerSetInfo extends TdObject {
       stickerType:
           StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
       needsRepainting: json['needs_repainting'] as bool,
+      isAllowedAsChatEmojiStatus:
+          json['is_allowed_as_chat_emoji_status'] as bool,
       isViewed: json['is_viewed'] as bool,
       size: json['size'] as int,
       covers: List<Sticker>.from(
@@ -122,6 +131,7 @@ class StickerSetInfo extends TdObject {
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
+        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
         'is_viewed': isViewed,
         'size': size,
         'covers': covers.map((item) => item.toJson()).toList(),

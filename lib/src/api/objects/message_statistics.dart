@@ -7,11 +7,15 @@ import '../tdapi.dart';
 class MessageStatistics extends TdObject {
   const MessageStatistics({
     required this.messageInteractionGraph,
+    required this.messageReactionGraph,
   });
 
   /// [messageInteractionGraph] A graph containing number of message views and
   /// shares
   final StatisticalGraph messageInteractionGraph;
+
+  /// [messageReactionGraph] A graph containing number of message reactions
+  final StatisticalGraph messageReactionGraph;
 
   static const String constructor = 'messageStatistics';
 
@@ -23,6 +27,8 @@ class MessageStatistics extends TdObject {
     return MessageStatistics(
       messageInteractionGraph: StatisticalGraph.fromJson(
           json['message_interaction_graph'] as Map<String, dynamic>?)!,
+      messageReactionGraph: StatisticalGraph.fromJson(
+          json['message_reaction_graph'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -32,6 +38,7 @@ class MessageStatistics extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'message_interaction_graph': messageInteractionGraph.toJson(),
+        'message_reaction_graph': messageReactionGraph.toJson(),
         '@type': constructor,
       };
 

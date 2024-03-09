@@ -9,7 +9,7 @@ class MessageInteractionInfo extends TdObject {
     required this.viewCount,
     required this.forwardCount,
     this.replyInfo,
-    required this.reactions,
+    this.reactions,
   });
 
   /// [viewCount] Number of times the message was viewed
@@ -24,8 +24,9 @@ class MessageInteractionInfo extends TdObject {
   /// itself
   final MessageReplyInfo? replyInfo;
 
-  /// [reactions] The list of reactions added to the message
-  final List<MessageReaction> reactions;
+  /// [reactions] The list of reactions or tags added to the message; may be
+  /// null
+  final MessageReactions? reactions;
 
   static const String constructor = 'messageInteractionInfo';
 
@@ -39,10 +40,8 @@ class MessageInteractionInfo extends TdObject {
       forwardCount: json['forward_count'] as int,
       replyInfo: MessageReplyInfo.fromJson(
           json['reply_info'] as Map<String, dynamic>?),
-      reactions: List<MessageReaction>.from(
-          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageReaction.fromJson(item))
-              .toList()),
+      reactions:
+          MessageReactions.fromJson(json['reactions'] as Map<String, dynamic>?),
     );
   }
 
@@ -54,7 +53,7 @@ class MessageInteractionInfo extends TdObject {
         'view_count': viewCount,
         'forward_count': forwardCount,
         'reply_info': replyInfo?.toJson(),
-        'reactions': reactions.map((item) => item.toJson()).toList(),
+        'reactions': reactions?.toJson(),
         '@type': constructor,
       };
 

@@ -12,6 +12,7 @@ abstract class InputStoryAreaType extends TdObject {
   /// Inherited by:
   /// [InputStoryAreaTypeFoundVenue]
   /// [InputStoryAreaTypeLocation]
+  /// [InputStoryAreaTypeMessage]
   /// [InputStoryAreaTypePreviousVenue]
   /// [InputStoryAreaTypeSuggestedReaction]
   static InputStoryAreaType? fromJson(Map<String, dynamic>? json) {
@@ -24,6 +25,8 @@ abstract class InputStoryAreaType extends TdObject {
         return InputStoryAreaTypeFoundVenue.fromJson(json);
       case InputStoryAreaTypeLocation.constructor:
         return InputStoryAreaTypeLocation.fromJson(json);
+      case InputStoryAreaTypeMessage.constructor:
+        return InputStoryAreaTypeMessage.fromJson(json);
       case InputStoryAreaTypePreviousVenue.constructor:
         return InputStoryAreaTypePreviousVenue.fromJson(json);
       case InputStoryAreaTypeSuggestedReaction.constructor:

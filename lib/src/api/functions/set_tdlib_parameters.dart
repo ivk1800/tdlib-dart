@@ -22,8 +22,6 @@ class SetTdlibParameters extends TdFunction {
     required this.deviceModel,
     required this.systemVersion,
     required this.applicationVersion,
-    required this.enableStorageOptimizer,
-    required this.ignoreFileNames,
   });
 
   /// [useTestDc] Pass true to use Telegram test environment instead of the
@@ -81,15 +79,6 @@ class SetTdlibParameters extends TdFunction {
   /// [applicationVersion] Application version; must be non-empty
   final String applicationVersion;
 
-  /// [enableStorageOptimizer] Pass true to automatically delete old files in
-  /// background
-  final bool enableStorageOptimizer;
-
-  /// [ignoreFileNames] Pass true to ignore original file names for downloaded
-  /// files. Otherwise, downloaded files are saved under names as close as
-  /// possible to the original name
-  final bool ignoreFileNames;
-
   static const String constructor = 'setTdlibParameters';
 
   @override
@@ -111,8 +100,6 @@ class SetTdlibParameters extends TdFunction {
         'device_model': deviceModel,
         'system_version': systemVersion,
         'application_version': applicationVersion,
-        'enable_storage_optimizer': enableStorageOptimizer,
-        'ignore_file_names': ignoreFileNames,
         '@type': constructor,
       };
 

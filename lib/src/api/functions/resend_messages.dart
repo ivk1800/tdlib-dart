@@ -28,7 +28,7 @@ class ResendMessages extends TdFunction {
   /// [quote] New manually chosen quote from the message to be replied; pass
   /// null if none. Ignored if more than one message is re-sent, or if
   /// messageSendingStateFailed.need_another_reply_quote == false
-  final FormattedText? quote;
+  final InputTextQuote? quote;
 
   static const String constructor = 'resendMessages';
 

@@ -10,6 +10,7 @@ class InputMessageVoiceNote extends InputMessageContent {
     required this.duration,
     required this.waveform,
     this.caption,
+    this.selfDestructType,
   });
 
   /// [voiceNote] Voice note to be sent
@@ -21,9 +22,13 @@ class InputMessageVoiceNote extends InputMessageContent {
   /// [waveform] Waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// [caption] Voice note caption; pass null to use an empty caption;
-  /// 0-getOption("message_caption_length_max") characters
+  /// [caption] Voice note caption; may be null if empty; pass null to use an
+  /// empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
+
+  /// [selfDestructType] Voice note self-destruct type; may be null if none;
+  /// pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   static const String constructor = 'inputMessageVoiceNote';
 
@@ -38,6 +43,8 @@ class InputMessageVoiceNote extends InputMessageContent {
       duration: json['duration'] as int,
       waveform: json['waveform'] as String,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
+      selfDestructType: MessageSelfDestructType.fromJson(
+          json['self_destruct_type'] as Map<String, dynamic>?),
     );
   }
 
@@ -50,6 +57,7 @@ class InputMessageVoiceNote extends InputMessageContent {
         'duration': duration,
         'waveform': waveform,
         'caption': caption?.toJson(),
+        'self_destruct_type': selfDestructType?.toJson(),
         '@type': constructor,
       };
 

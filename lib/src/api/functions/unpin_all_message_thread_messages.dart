@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Removes all pinned messages from a forum topic; requires can_pin_messages
-/// rights in the supergroup
+/// member right in the supergroup
 /// Returns [Ok]
 @immutable
 class UnpinAllMessageThreadMessages extends TdFunction {

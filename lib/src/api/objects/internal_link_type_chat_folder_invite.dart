@@ -3,7 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is an invite link to a chat folder. Call
-/// checkChatFolderInviteLink with the given invite link to process the link
+/// checkChatFolderInviteLink with the given invite link to process the link.
+/// If the link is valid and the user wants to join the chat folder, then call
+/// addChatFolderByInviteLink
 @immutable
 class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   const InternalLinkTypeChatFolderInvite({

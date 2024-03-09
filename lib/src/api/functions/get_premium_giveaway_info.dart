@@ -14,7 +14,8 @@ class GetPremiumGiveawayInfo extends TdFunction {
   /// [chatId] Identifier of the channel chat which started the giveaway
   final int chatId;
 
-  /// [messageId] Identifier of the giveaway message in the chat
+  /// [messageId] Identifier of the giveaway or a giveaway winners message in
+  /// the chat
   final int messageId;
 
   static const String constructor = 'getPremiumGiveawayInfo';

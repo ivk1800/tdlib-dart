@@ -25,7 +25,7 @@ class PremiumPaymentOption extends TdObject {
   /// percentage
   final int discountPercentage;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active
   final int monthCount;
 

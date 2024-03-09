@@ -19,11 +19,11 @@ class ChatPermissions extends TdObject {
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
-    required this.canManageTopics,
+    required this.canCreateTopics,
   });
 
   /// [canSendBasicMessages] True, if the user can send text messages, contacts,
-  /// giveaways, invoices, locations, and venues
+  /// giveaways, giveaway winners, invoices, locations, and venues
   final bool canSendBasicMessages;
 
   /// [canSendAudios] True, if the user can send music files
@@ -65,8 +65,8 @@ class ChatPermissions extends TdObject {
   /// [canPinMessages] True, if the user can pin messages
   final bool canPinMessages;
 
-  /// [canManageTopics] True, if the user can manage topics
-  final bool canManageTopics;
+  /// [canCreateTopics] True, if the user can create topics
+  final bool canCreateTopics;
 
   static const String constructor = 'chatPermissions';
 
@@ -89,7 +89,7 @@ class ChatPermissions extends TdObject {
       canChangeInfo: json['can_change_info'] as bool,
       canInviteUsers: json['can_invite_users'] as bool,
       canPinMessages: json['can_pin_messages'] as bool,
-      canManageTopics: json['can_manage_topics'] as bool,
+      canCreateTopics: json['can_create_topics'] as bool,
     );
   }
 
@@ -111,7 +111,7 @@ class ChatPermissions extends TdObject {
         'can_change_info': canChangeInfo,
         'can_invite_users': canInviteUsers,
         'can_pin_messages': canPinMessages,
-        'can_manage_topics': canManageTopics,
+        'can_create_topics': canCreateTopics,
         '@type': constructor,
       };
 

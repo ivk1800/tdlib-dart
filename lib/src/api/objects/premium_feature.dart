@@ -14,6 +14,7 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureAdvancedChatManagement]
   /// [PremiumFeatureAnimatedProfilePhoto]
   /// [PremiumFeatureAppIcons]
+  /// [PremiumFeatureBackgroundForBoth]
   /// [PremiumFeatureChatBoost]
   /// [PremiumFeatureCustomEmoji]
   /// [PremiumFeatureDisabledAds]
@@ -22,8 +23,11 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureImprovedDownloadSpeed]
   /// [PremiumFeatureIncreasedLimits]
   /// [PremiumFeatureIncreasedUploadFileSize]
+  /// [PremiumFeatureLastSeenTimes]
+  /// [PremiumFeatureMessagePrivacy]
   /// [PremiumFeatureProfileBadge]
   /// [PremiumFeatureRealTimeChatTranslation]
+  /// [PremiumFeatureSavedMessagesTags]
   /// [PremiumFeatureUniqueReactions]
   /// [PremiumFeatureUniqueStickers]
   /// [PremiumFeatureUpgradedStories]
@@ -42,6 +46,8 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureAnimatedProfilePhoto.fromJson(json);
       case PremiumFeatureAppIcons.constructor:
         return PremiumFeatureAppIcons.fromJson(json);
+      case PremiumFeatureBackgroundForBoth.constructor:
+        return PremiumFeatureBackgroundForBoth.fromJson(json);
       case PremiumFeatureChatBoost.constructor:
         return PremiumFeatureChatBoost.fromJson(json);
       case PremiumFeatureCustomEmoji.constructor:
@@ -58,10 +64,16 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureIncreasedLimits.fromJson(json);
       case PremiumFeatureIncreasedUploadFileSize.constructor:
         return PremiumFeatureIncreasedUploadFileSize.fromJson(json);
+      case PremiumFeatureLastSeenTimes.constructor:
+        return PremiumFeatureLastSeenTimes.fromJson(json);
+      case PremiumFeatureMessagePrivacy.constructor:
+        return PremiumFeatureMessagePrivacy.fromJson(json);
       case PremiumFeatureProfileBadge.constructor:
         return PremiumFeatureProfileBadge.fromJson(json);
       case PremiumFeatureRealTimeChatTranslation.constructor:
         return PremiumFeatureRealTimeChatTranslation.fromJson(json);
+      case PremiumFeatureSavedMessagesTags.constructor:
+        return PremiumFeatureSavedMessagesTags.fromJson(json);
       case PremiumFeatureUniqueReactions.constructor:
         return PremiumFeatureUniqueReactions.fromJson(json);
       case PremiumFeatureUniqueStickers.constructor:

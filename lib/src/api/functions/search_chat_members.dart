@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Searches for a specified query in the first name, last name and usernames
-/// of the members of a specified chat. Requires administrator rights in
-/// channels
+/// of the members of a specified chat. Requires administrator rights if the
+/// chat is a channel
 /// Returns [ChatMembers]
 @immutable
 class SearchChatMembers extends TdFunction {

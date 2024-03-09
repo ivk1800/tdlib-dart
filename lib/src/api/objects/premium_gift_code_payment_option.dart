@@ -23,7 +23,7 @@ class PremiumGiftCodePaymentOption extends TdObject {
   /// [userCount] Number of users which will be able to activate the gift codes
   final int userCount;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active
   final int monthCount;
 

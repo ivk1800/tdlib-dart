@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a user by a temporary token. Call searchUserByToken
-/// with the given token to process the link
+/// with the given token to process the link. If the user is found, then call
+/// createPrivateChat and open the chat
 @immutable
 class InternalLinkTypeUserToken extends InternalLinkType {
   const InternalLinkTypeUserToken({

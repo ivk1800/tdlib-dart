@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// User stories are displayed before stories of non-premium contacts and
-/// channels
+/// Stories of the current user are displayed before stories of non-Premium
+/// contacts, supergroups, and channels
 @immutable
 class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
   const PremiumStoryFeaturePriorityOrder();

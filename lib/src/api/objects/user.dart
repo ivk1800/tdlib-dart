@@ -15,6 +15,8 @@ class User extends TdObject {
     this.profilePhoto,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
     this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
@@ -27,6 +29,7 @@ class User extends TdObject {
     required this.isFake,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
+    required this.restrictsNewChats,
     required this.haveAccess,
     required this.type,
     required this.languageCode,
@@ -55,12 +58,23 @@ class User extends TdObject {
   final ProfilePhoto? profilePhoto;
 
   /// [accentColorId] Identifier of the accent color for name, and backgrounds
-  /// of profile photo, reply header, and link preview
+  /// of profile photo, reply header, and link preview. For Telegram Premium
+  /// users only
   final int accentColorId;
 
   /// [backgroundCustomEmojiId] Identifier of a custom emoji to be shown on the
-  /// reply header background; 0 if none. For Telegram Premium users only
+  /// reply header and link preview background; 0 if none. For Telegram Premium
+  /// users only
   final int backgroundCustomEmojiId;
+
+  /// [profileAccentColorId] Identifier of the accent color for the user's
+  /// profile; -1 if none. For Telegram Premium users only
+  final int profileAccentColorId;
+
+  /// [profileBackgroundCustomEmojiId] Identifier of a custom emoji to be shown
+  /// on the background of the user's profile; 0 if none. For Telegram Premium
+  /// users only
+  final int profileBackgroundCustomEmojiId;
 
   /// [emojiStatus] Emoji status to be shown instead of the default Telegram
   /// Premium badge; may be null. For Telegram Premium users only
@@ -104,6 +118,11 @@ class User extends TdObject {
   /// available to the current user
   final bool hasUnreadActiveStories;
 
+  /// [restrictsNewChats] True, if the user may restrict new chats with
+  /// non-contacts. Use canSendMessageToUser to check whether the current user
+  /// can message the user or try to create a chat with them
+  final bool restrictsNewChats;
+
   /// [haveAccess] If false, the user is inaccessible, and the only information
   /// known about the user is inside this class. Identifier of the user can't be
   /// passed to any method
@@ -139,6 +158,9 @@ class User extends TdObject {
       accentColorId: json['accent_color_id'] as int,
       backgroundCustomEmojiId:
           int.tryParse(json['background_custom_emoji_id']) ?? 0,
+      profileAccentColorId: json['profile_accent_color_id'] as int,
+      profileBackgroundCustomEmojiId:
+          int.tryParse(json['profile_background_custom_emoji_id']) ?? 0,
       emojiStatus:
           EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
       isContact: json['is_contact'] as bool,
@@ -152,6 +174,7 @@ class User extends TdObject {
       isFake: json['is_fake'] as bool,
       hasActiveStories: json['has_active_stories'] as bool,
       hasUnreadActiveStories: json['has_unread_active_stories'] as bool,
+      restrictsNewChats: json['restricts_new_chats'] as bool,
       haveAccess: json['have_access'] as bool,
       type: UserType.fromJson(json['type'] as Map<String, dynamic>?)!,
       languageCode: json['language_code'] as String,
@@ -173,6 +196,9 @@ class User extends TdObject {
         'profile_photo': profilePhoto?.toJson(),
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'profile_accent_color_id': profileAccentColorId,
+        'profile_background_custom_emoji_id':
+            profileBackgroundCustomEmojiId.toString(),
         'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
@@ -185,6 +211,7 @@ class User extends TdObject {
         'is_fake': isFake,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
+        'restricts_new_chats': restrictsNewChats,
         'have_access': haveAccess,
         'type': type.toJson(),
         'language_code': languageCode,

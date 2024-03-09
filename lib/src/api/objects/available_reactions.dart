@@ -10,6 +10,8 @@ class AvailableReactions extends TdObject {
     required this.recentReactions,
     required this.popularReactions,
     required this.allowCustomEmoji,
+    required this.areTags,
+    this.unavailabilityReason,
   });
 
   /// [topReactions] List of reactions to be shown at the top
@@ -24,6 +26,14 @@ class AvailableReactions extends TdObject {
   /// [allowCustomEmoji] True, if any custom emoji reaction can be added by
   /// Telegram Premium subscribers
   final bool allowCustomEmoji;
+
+  /// [areTags] True, if the reactions will be tags and the message can be found
+  /// by them
+  final bool areTags;
+
+  /// [unavailabilityReason] The reason why the current user can't add reactions
+  /// to the message, despite some other users can; may be null if none
+  final ReactionUnavailabilityReason? unavailabilityReason;
 
   static const String constructor = 'availableReactions';
 
@@ -46,6 +56,9 @@ class AvailableReactions extends TdObject {
               .map((item) => AvailableReaction.fromJson(item))
               .toList()),
       allowCustomEmoji: json['allow_custom_emoji'] as bool,
+      areTags: json['are_tags'] as bool,
+      unavailabilityReason: ReactionUnavailabilityReason.fromJson(
+          json['unavailability_reason'] as Map<String, dynamic>?),
     );
   }
 
@@ -60,6 +73,8 @@ class AvailableReactions extends TdObject {
         'popular_reactions':
             popularReactions.map((item) => item.toJson()).toList(),
         'allow_custom_emoji': allowCustomEmoji,
+        'are_tags': areTags,
+        'unavailability_reason': unavailabilityReason?.toJson(),
         '@type': constructor,
       };
 

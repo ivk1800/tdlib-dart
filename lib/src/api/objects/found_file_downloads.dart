@@ -17,8 +17,8 @@ class FoundFileDownloads extends TdObject {
   /// [files] The list of files
   final List<FileDownload> files;
 
-  /// [nextOffset] The offset for the next request. If empty, there are no more
-  /// results
+  /// [nextOffset] The offset for the next request. If empty, then there are no
+  /// more results
   final String nextOffset;
 
   static const String constructor = 'foundFileDownloads';

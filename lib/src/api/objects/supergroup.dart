@@ -16,6 +16,7 @@ class Supergroup extends TdObject {
     required this.date,
     required this.status,
     required this.memberCount,
+    required this.boostLevel,
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
@@ -50,12 +51,18 @@ class Supergroup extends TdObject {
 
   /// [memberCount] Number of members in the supergroup or channel; 0 if
   /// unknown. Currently, it is guaranteed to be known only if the supergroup or
-  /// channel was received through getChatsToSendStories, getCreatedPublicChats,
-  /// getGroupsInCommon, getInactiveSupergroupChats, getSuitableDiscussionChats,
-  /// getUserPrivacySettingRules, getVideoChatAvailableParticipants,
-  /// searchChatsNearby, searchPublicChats, or in
-  /// chatFolderInviteLinkInfo.missing_chat_ids
+  /// channel was received through getChatSimilarChats, getChatsToSendStories,
+  /// getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats,
+  /// getSuitableDiscussionChats, getUserPrivacySettingRules,
+  /// getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats,
+  /// or in chatFolderInviteLinkInfo.missing_chat_ids, or for public chats in
+  /// which where sent messages and posted stories from publicForwards, or for
+  /// public chats in which where sent messages from getMessagePublicForwards
+  /// response
   final int memberCount;
+
+  /// [boostLevel] Approximate boost level for the chat
+  final int boostLevel;
 
   /// [hasLinkedChat] True, if the channel has a discussion group, or the
   /// supergroup is the designated discussion group for a channel
@@ -90,7 +97,7 @@ class Supergroup extends TdObject {
   /// members
   final bool isBroadcastGroup;
 
-  /// [isForum] True, if the supergroup must be shown as a forum by default
+  /// [isForum] True, if the supergroup is a forum with topics
   final bool isForum;
 
   /// [isVerified] True, if the supergroup or channel is verified
@@ -107,12 +114,12 @@ class Supergroup extends TdObject {
   /// account
   final bool isFake;
 
-  /// [hasActiveStories] True, if the channel has non-expired stories available
-  /// to the current user
+  /// [hasActiveStories] True, if the supergroup or channel has non-expired
+  /// stories available to the current user
   final bool hasActiveStories;
 
-  /// [hasUnreadActiveStories] True, if the channel has unread non-expired
-  /// stories available to the current user
+  /// [hasUnreadActiveStories] True, if the supergroup or channel has unread
+  /// non-expired stories available to the current user
   final bool hasUnreadActiveStories;
 
   static const String constructor = 'supergroup';
@@ -129,6 +136,7 @@ class Supergroup extends TdObject {
       status:
           ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
       memberCount: json['member_count'] as int,
+      boostLevel: json['boost_level'] as int,
       hasLinkedChat: json['has_linked_chat'] as bool,
       hasLocation: json['has_location'] as bool,
       signMessages: json['sign_messages'] as bool,
@@ -157,6 +165,7 @@ class Supergroup extends TdObject {
         'date': date,
         'status': status.toJson(),
         'member_count': memberCount,
+        'boost_level': boostLevel,
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,

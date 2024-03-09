@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// A privacy setting for managing whether the user can receive voice and
-/// video messages in private chats
+/// video messages in private chats; for Telegram Premium users only
 @immutable
 class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
     extends UserPrivacySetting {

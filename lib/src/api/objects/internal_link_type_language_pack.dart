@@ -3,7 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a language pack. Call getLanguagePackInfo with the
-/// given language pack identifier to process the link
+/// given language pack identifier to process the link. If the language pack
+/// is found and the user wants to apply it, then call setOption for the
+/// option "language_pack_id"
 @immutable
 class InternalLinkTypeLanguagePack extends InternalLinkType {
   const InternalLinkTypeLanguagePack({

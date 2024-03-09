@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Replaces the current RTMP URL for streaming to the chat; requires creator
+/// Replaces the current RTMP URL for streaming to the chat; requires owner
 /// privileges
 /// Returns [RtmpUrl]
 @immutable

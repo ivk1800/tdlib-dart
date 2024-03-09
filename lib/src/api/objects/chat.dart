@@ -12,14 +12,18 @@ class Chat extends TdObject {
     this.photo,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
     required this.permissions,
     this.lastMessage,
     required this.positions,
+    required this.chatLists,
     this.messageSenderId,
     this.blockList,
     required this.hasProtectedContent,
     required this.isTranslatable,
     required this.isMarkedAsUnread,
+    required this.viewAsTopics,
     required this.hasScheduledMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -33,6 +37,7 @@ class Chat extends TdObject {
     required this.notificationSettings,
     required this.availableReactions,
     required this.messageAutoDeleteTime,
+    this.emojiStatus,
     required this.background,
     required this.themeName,
     this.actionBar,
@@ -60,8 +65,17 @@ class Chat extends TdObject {
   final int accentColorId;
 
   /// [backgroundCustomEmojiId] Identifier of a custom emoji to be shown on the
-  /// reply header background in replies to messages sent by the chat; 0 if none
+  /// reply header and link preview background for messages sent by the chat; 0
+  /// if none
   final int backgroundCustomEmojiId;
+
+  /// [profileAccentColorId] Identifier of the profile accent color for the
+  /// chat's profile; -1 if none
+  final int profileAccentColorId;
+
+  /// [profileBackgroundCustomEmojiId] Identifier of a custom emoji to be shown
+  /// on the background of the chat's profile; 0 if none
+  final int profileBackgroundCustomEmojiId;
 
   /// [permissions] Actions that non-administrator chat members are allowed to
   /// take in the chat
@@ -72,6 +86,11 @@ class Chat extends TdObject {
 
   /// [positions] Positions of the chat in chat lists
   final List<ChatPosition> positions;
+
+  /// [chatLists] Chat lists to which the chat belongs. A chat can have a
+  /// non-zero position in a chat list even it doesn't belong to the chat list
+  /// and have no position in a chat list even it belongs to the chat list
+  final List<ChatList> chatLists;
 
   /// [messageSenderId] Identifier of a user or chat that is selected to send
   /// messages in the chat; may be null if the user can't change message sender
@@ -90,6 +109,11 @@ class Chat extends TdObject {
 
   /// [isMarkedAsUnread] True, if the chat is marked as unread
   final bool isMarkedAsUnread;
+
+  /// [viewAsTopics] True, if the chat is a forum supergroup that must be shown
+  /// in the "View as topics" mode, or Saved Messages chat that must be shown in
+  /// the "View as chats"
+  final bool viewAsTopics;
 
   /// [hasScheduledMessages] True, if the chat has scheduled messages
   final bool hasScheduledMessages;
@@ -138,9 +162,12 @@ class Chat extends TdObject {
   /// Auto-delete timer in other chats starts from the send date
   final int messageAutoDeleteTime;
 
+  /// [emojiStatus] Emoji status to be shown along with chat title; may be null
+  final EmojiStatus? emojiStatus;
+
   /// [background]_custom_emoji_id Identifier of a custom emoji to be shown on
-  /// the reply header background in replies to messages sent by the chat; 0 if
-  /// none
+  /// the reply header and link preview background for messages sent by the
+  /// chat; 0 if none
   final ChatBackground background;
 
   /// [themeName] If non-empty, name of a theme, set for the chat
@@ -184,6 +211,9 @@ class Chat extends TdObject {
       accentColorId: json['accent_color_id'] as int,
       backgroundCustomEmojiId:
           int.tryParse(json['background_custom_emoji_id']) ?? 0,
+      profileAccentColorId: json['profile_accent_color_id'] as int,
+      profileBackgroundCustomEmojiId:
+          int.tryParse(json['profile_background_custom_emoji_id']) ?? 0,
       permissions: ChatPermissions.fromJson(
           json['permissions'] as Map<String, dynamic>?)!,
       lastMessage:
@@ -192,6 +222,10 @@ class Chat extends TdObject {
           ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ChatPosition.fromJson(item))
               .toList()),
+      chatLists: List<ChatList>.from(
+          ((json['chat_lists'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => ChatList.fromJson(item))
+              .toList()),
       messageSenderId: MessageSender.fromJson(
           json['message_sender_id'] as Map<String, dynamic>?),
       blockList:
@@ -199,6 +233,7 @@ class Chat extends TdObject {
       hasProtectedContent: json['has_protected_content'] as bool,
       isTranslatable: json['is_translatable'] as bool,
       isMarkedAsUnread: json['is_marked_as_unread'] as bool,
+      viewAsTopics: json['view_as_topics'] as bool,
       hasScheduledMessages: json['has_scheduled_messages'] as bool,
       canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
       canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
@@ -214,6 +249,8 @@ class Chat extends TdObject {
       availableReactions: ChatAvailableReactions.fromJson(
           json['available_reactions'] as Map<String, dynamic>?)!,
       messageAutoDeleteTime: json['message_auto_delete_time'] as int,
+      emojiStatus:
+          EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
       background:
           ChatBackground.fromJson(json['background'] as Map<String, dynamic>?)!,
       themeName: json['theme_name'] as String,
@@ -241,14 +278,19 @@ class Chat extends TdObject {
         'photo': photo?.toJson(),
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'profile_accent_color_id': profileAccentColorId,
+        'profile_background_custom_emoji_id':
+            profileBackgroundCustomEmojiId.toString(),
         'permissions': permissions.toJson(),
         'last_message': lastMessage?.toJson(),
         'positions': positions.map((item) => item.toJson()).toList(),
+        'chat_lists': chatLists.map((item) => item.toJson()).toList(),
         'message_sender_id': messageSenderId?.toJson(),
         'block_list': blockList?.toJson(),
         'has_protected_content': hasProtectedContent,
         'is_translatable': isTranslatable,
         'is_marked_as_unread': isMarkedAsUnread,
+        'view_as_topics': viewAsTopics,
         'has_scheduled_messages': hasScheduledMessages,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -262,6 +304,7 @@ class Chat extends TdObject {
         'notification_settings': notificationSettings.toJson(),
         'available_reactions': availableReactions.toJson(),
         'message_auto_delete_time': messageAutoDeleteTime,
+        'emoji_status': emojiStatus?.toJson(),
         'background': background.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),

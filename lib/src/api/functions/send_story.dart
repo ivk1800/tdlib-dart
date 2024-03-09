@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sends a new story to a chat; requires can_post_stories rights for channel
-/// chats. Returns a temporary story
+/// Sends a new story to a chat; requires can_post_stories right for
+/// supergroup and channel chats. Returns a temporary story
 /// Returns [Story]
 @immutable
 class SendStory extends TdFunction {
@@ -14,6 +14,7 @@ class SendStory extends TdFunction {
     this.caption,
     required this.privacySettings,
     required this.activePeriod,
+    required this.fromStoryFullId,
     required this.isPinned,
     required this.protectContent,
   });
@@ -32,13 +33,18 @@ class SendStory extends TdFunction {
   /// 0-getOption("story_caption_length_max") characters
   final FormattedText? caption;
 
-  /// [privacySettings] The privacy settings for the story
+  /// [privacySettings] The privacy settings for the story; ignored for stories
+  /// sent to supergroup and channel chats
   final StoryPrivacySettings privacySettings;
 
   /// [activePeriod] Period after which the story is moved to archive, in
   /// seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for
   /// Telegram Premium users, and 86400 otherwise
   final int activePeriod;
+
+  /// [fromStoryFullId] Full identifier of the original story, which content was
+  /// used to create the story
+  final StoryFullId fromStoryFullId;
 
   /// [isPinned] Pass true to keep the story accessible after expiration
   final bool isPinned;
@@ -60,6 +66,7 @@ class SendStory extends TdFunction {
         'caption': caption?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
+        'from_story_full_id': fromStoryFullId.toJson(),
         'is_pinned': isPinned,
         'protect_content': protectContent,
         '@type': constructor,

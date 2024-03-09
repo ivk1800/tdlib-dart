@@ -4,7 +4,9 @@ import '../tdapi.dart';
 
 /// The link can be used to confirm ownership of a phone number to prevent
 /// account deletion. Call sendPhoneNumberConfirmationCode with the given hash
-/// and phone number to process the link
+/// and phone number to process the link. If succeeded, call
+/// checkPhoneNumberConfirmationCode to check entered by the user code, or
+/// resendPhoneNumberConfirmationCode to resend it
 @immutable
 class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   const InternalLinkTypePhoneNumberConfirmation({

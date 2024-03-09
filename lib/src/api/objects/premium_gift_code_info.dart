@@ -6,7 +6,7 @@ import '../tdapi.dart';
 @immutable
 class PremiumGiftCodeInfo extends TdObject {
   const PremiumGiftCodeInfo({
-    required this.creatorId,
+    this.creatorId,
     required this.creationDate,
     required this.isFromGiveaway,
     required this.giveawayMessageId,
@@ -15,8 +15,10 @@ class PremiumGiftCodeInfo extends TdObject {
     required this.useDate,
   });
 
-  /// [creatorId] Identifier of a chat or a user that created the gift code
-  final MessageSender creatorId;
+  /// [creatorId] Identifier of a chat or a user that created the gift code; may
+  /// be null if unknown. If null and the code is from messagePremiumGiftCode
+  /// message, then creator_id from the message can be used
+  final MessageSender? creatorId;
 
   /// [creationDate] Point in time (Unix timestamp) when the code was created
   final int creationDate;
@@ -28,7 +30,7 @@ class PremiumGiftCodeInfo extends TdObject {
   /// the creator_id chat; can be 0 or an identifier of a deleted message
   final int giveawayMessageId;
 
-  /// [monthCount] Number of month the Telegram Premium subscription will be
+  /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active after code activation
   final int monthCount;
 
@@ -48,7 +50,7 @@ class PremiumGiftCodeInfo extends TdObject {
 
     return PremiumGiftCodeInfo(
       creatorId:
-          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?)!,
+          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?),
       creationDate: json['creation_date'] as int,
       isFromGiveaway: json['is_from_giveaway'] as bool,
       giveawayMessageId: json['giveaway_message_id'] as int,
@@ -63,7 +65,7 @@ class PremiumGiftCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'creator_id': creatorId.toJson(),
+        'creator_id': creatorId?.toJson(),
         'creation_date': creationDate,
         'is_from_giveaway': isFromGiveaway,
         'giveaway_message_id': giveawayMessageId,

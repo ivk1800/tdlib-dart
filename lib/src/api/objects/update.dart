@@ -22,17 +22,18 @@ abstract class Update extends TdObject {
   /// [UpdateBasicGroupFullInfo]
   /// [UpdateBasicGroup]
   /// [UpdateCall]
-  /// [UpdateChatAccentColor]
+  /// [UpdateChatAccentColors]
   /// [UpdateChatActionBar]
   /// [UpdateChatAction]
   /// [UpdateChatActiveStories]
+  /// [UpdateChatAddedToList]
   /// [UpdateChatAvailableReactions]
-  /// [UpdateChatBackgroundCustomEmoji]
   /// [UpdateChatBackground]
   /// [UpdateChatBlockList]
   /// [UpdateChatBoost]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatDraftMessage]
+  /// [UpdateChatEmojiStatus]
   /// [UpdateChatFolders]
   /// [UpdateChatHasProtectedContent]
   /// [UpdateChatHasScheduledMessages]
@@ -50,6 +51,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatPosition]
   /// [UpdateChatReadInbox]
   /// [UpdateChatReadOutbox]
+  /// [UpdateChatRemovedFromList]
   /// [UpdateChatReplyMarkup]
   /// [UpdateChatTheme]
   /// [UpdateChatThemes]
@@ -57,7 +59,9 @@ abstract class Update extends TdObject {
   /// [UpdateChatUnreadMentionCount]
   /// [UpdateChatUnreadReactionCount]
   /// [UpdateChatVideoChat]
+  /// [UpdateChatViewAsTopics]
   /// [UpdateConnectionState]
+  /// [UpdateDefaultBackground]
   /// [UpdateDefaultReactionType]
   /// [UpdateDeleteMessages]
   /// [UpdateDiceEmojis]
@@ -82,6 +86,8 @@ abstract class Update extends TdObject {
   /// [UpdateMessageIsPinned]
   /// [UpdateMessageLiveLocationViewed]
   /// [UpdateMessageMentionRead]
+  /// [UpdateMessageReaction]
+  /// [UpdateMessageReactions]
   /// [UpdateMessageSendAcknowledged]
   /// [UpdateMessageSendFailed]
   /// [UpdateMessageSendSucceeded]
@@ -103,13 +109,21 @@ abstract class Update extends TdObject {
   /// [UpdateOption]
   /// [UpdatePollAnswer]
   /// [UpdatePoll]
+  /// [UpdateProfileAccentColors]
+  /// [UpdateQuickReplyShortcutDeleted]
+  /// [UpdateQuickReplyShortcutMessages]
+  /// [UpdateQuickReplyShortcut]
+  /// [UpdateQuickReplyShortcuts]
   /// [UpdateRecentStickers]
   /// [UpdateSavedAnimations]
+  /// [UpdateSavedMessagesTags]
+  /// [UpdateSavedMessagesTopicCount]
+  /// [UpdateSavedMessagesTopic]
   /// [UpdateSavedNotificationSounds]
   /// [UpdateScopeNotificationSettings]
   /// [UpdateSecretChat]
-  /// [UpdateSelectedBackground]
   /// [UpdateServiceNotification]
+  /// [UpdateSpeechRecognitionTrial]
   /// [UpdateStickerSet]
   /// [UpdateStoryDeleted]
   /// [UpdateStoryListChatCount]
@@ -161,20 +175,20 @@ abstract class Update extends TdObject {
         return UpdateBasicGroupFullInfo.fromJson(json);
       case UpdateCall.constructor:
         return UpdateCall.fromJson(json);
-      case UpdateChatAccentColor.constructor:
-        return UpdateChatAccentColor.fromJson(json);
+      case UpdateChatAccentColors.constructor:
+        return UpdateChatAccentColors.fromJson(json);
       case UpdateChatAction.constructor:
         return UpdateChatAction.fromJson(json);
       case UpdateChatActionBar.constructor:
         return UpdateChatActionBar.fromJson(json);
       case UpdateChatActiveStories.constructor:
         return UpdateChatActiveStories.fromJson(json);
+      case UpdateChatAddedToList.constructor:
+        return UpdateChatAddedToList.fromJson(json);
       case UpdateChatAvailableReactions.constructor:
         return UpdateChatAvailableReactions.fromJson(json);
       case UpdateChatBackground.constructor:
         return UpdateChatBackground.fromJson(json);
-      case UpdateChatBackgroundCustomEmoji.constructor:
-        return UpdateChatBackgroundCustomEmoji.fromJson(json);
       case UpdateChatBlockList.constructor:
         return UpdateChatBlockList.fromJson(json);
       case UpdateChatBoost.constructor:
@@ -183,6 +197,8 @@ abstract class Update extends TdObject {
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatDraftMessage.constructor:
         return UpdateChatDraftMessage.fromJson(json);
+      case UpdateChatEmojiStatus.constructor:
+        return UpdateChatEmojiStatus.fromJson(json);
       case UpdateChatFolders.constructor:
         return UpdateChatFolders.fromJson(json);
       case UpdateChatHasProtectedContent.constructor:
@@ -217,6 +233,8 @@ abstract class Update extends TdObject {
         return UpdateChatReadInbox.fromJson(json);
       case UpdateChatReadOutbox.constructor:
         return UpdateChatReadOutbox.fromJson(json);
+      case UpdateChatRemovedFromList.constructor:
+        return UpdateChatRemovedFromList.fromJson(json);
       case UpdateChatReplyMarkup.constructor:
         return UpdateChatReplyMarkup.fromJson(json);
       case UpdateChatTheme.constructor:
@@ -231,8 +249,12 @@ abstract class Update extends TdObject {
         return UpdateChatUnreadReactionCount.fromJson(json);
       case UpdateChatVideoChat.constructor:
         return UpdateChatVideoChat.fromJson(json);
+      case UpdateChatViewAsTopics.constructor:
+        return UpdateChatViewAsTopics.fromJson(json);
       case UpdateConnectionState.constructor:
         return UpdateConnectionState.fromJson(json);
+      case UpdateDefaultBackground.constructor:
+        return UpdateDefaultBackground.fromJson(json);
       case UpdateDefaultReactionType.constructor:
         return UpdateDefaultReactionType.fromJson(json);
       case UpdateDeleteMessages.constructor:
@@ -281,6 +303,10 @@ abstract class Update extends TdObject {
         return UpdateMessageLiveLocationViewed.fromJson(json);
       case UpdateMessageMentionRead.constructor:
         return UpdateMessageMentionRead.fromJson(json);
+      case UpdateMessageReaction.constructor:
+        return UpdateMessageReaction.fromJson(json);
+      case UpdateMessageReactions.constructor:
+        return UpdateMessageReactions.fromJson(json);
       case UpdateMessageSendAcknowledged.constructor:
         return UpdateMessageSendAcknowledged.fromJson(json);
       case UpdateMessageSendFailed.constructor:
@@ -323,20 +349,36 @@ abstract class Update extends TdObject {
         return UpdatePoll.fromJson(json);
       case UpdatePollAnswer.constructor:
         return UpdatePollAnswer.fromJson(json);
+      case UpdateProfileAccentColors.constructor:
+        return UpdateProfileAccentColors.fromJson(json);
+      case UpdateQuickReplyShortcut.constructor:
+        return UpdateQuickReplyShortcut.fromJson(json);
+      case UpdateQuickReplyShortcutDeleted.constructor:
+        return UpdateQuickReplyShortcutDeleted.fromJson(json);
+      case UpdateQuickReplyShortcutMessages.constructor:
+        return UpdateQuickReplyShortcutMessages.fromJson(json);
+      case UpdateQuickReplyShortcuts.constructor:
+        return UpdateQuickReplyShortcuts.fromJson(json);
       case UpdateRecentStickers.constructor:
         return UpdateRecentStickers.fromJson(json);
       case UpdateSavedAnimations.constructor:
         return UpdateSavedAnimations.fromJson(json);
+      case UpdateSavedMessagesTags.constructor:
+        return UpdateSavedMessagesTags.fromJson(json);
+      case UpdateSavedMessagesTopic.constructor:
+        return UpdateSavedMessagesTopic.fromJson(json);
+      case UpdateSavedMessagesTopicCount.constructor:
+        return UpdateSavedMessagesTopicCount.fromJson(json);
       case UpdateSavedNotificationSounds.constructor:
         return UpdateSavedNotificationSounds.fromJson(json);
       case UpdateScopeNotificationSettings.constructor:
         return UpdateScopeNotificationSettings.fromJson(json);
       case UpdateSecretChat.constructor:
         return UpdateSecretChat.fromJson(json);
-      case UpdateSelectedBackground.constructor:
-        return UpdateSelectedBackground.fromJson(json);
       case UpdateServiceNotification.constructor:
         return UpdateServiceNotification.fromJson(json);
+      case UpdateSpeechRecognitionTrial.constructor:
+        return UpdateSpeechRecognitionTrial.fromJson(json);
       case UpdateStickerSet.constructor:
         return UpdateStickerSet.fromJson(json);
       case UpdateStory.constructor:

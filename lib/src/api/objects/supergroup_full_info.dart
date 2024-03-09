@@ -25,7 +25,10 @@ class SupergroupFullInfo extends TdObject {
     required this.isAllHistoryAvailable,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
+    required this.myBoostCount,
+    required this.unrestrictBoostCount,
     required this.stickerSetId,
+    required this.customEmojiStickerSetId,
     this.location,
     this.inviteLink,
     required this.botCommands,
@@ -108,11 +111,26 @@ class SupergroupFullInfo extends TdObject {
   /// chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
-  /// [hasPinnedStories] True, if the channel has pinned stories
+  /// [hasPinnedStories] True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
 
-  /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
+  /// [myBoostCount] Number of times the current user boosted the supergroup or
+  /// channel
+  final int myBoostCount;
+
+  /// [unrestrictBoostCount] Number of times the supergroup must be boosted by a
+  /// user to ignore slow mode and chat permission restrictions; 0 if
+  /// unspecified
+  final int unrestrictBoostCount;
+
+  /// [stickerSetId] Identifier of the supergroup sticker set that must be shown
+  /// before user sticker sets; 0 if none
   final int stickerSetId;
+
+  /// [customEmojiStickerSetId] Identifier of the custom emoji sticker set that
+  /// can be used in the supergroup without Telegram Premium subscription; 0 if
+  /// none
+  final int customEmojiStickerSetId;
 
   /// [location] Location to which the supergroup is connected; may be null if
   /// none
@@ -163,7 +181,11 @@ class SupergroupFullInfo extends TdObject {
       hasAggressiveAntiSpamEnabled:
           json['has_aggressive_anti_spam_enabled'] as bool,
       hasPinnedStories: json['has_pinned_stories'] as bool,
+      myBoostCount: json['my_boost_count'] as int,
+      unrestrictBoostCount: json['unrestrict_boost_count'] as int,
       stickerSetId: int.tryParse(json['sticker_set_id']) ?? 0,
+      customEmojiStickerSetId:
+          int.tryParse(json['custom_emoji_sticker_set_id']) ?? 0,
       location:
           ChatLocation.fromJson(json['location'] as Map<String, dynamic>?),
       inviteLink:
@@ -201,7 +223,10 @@ class SupergroupFullInfo extends TdObject {
         'is_all_history_available': isAllHistoryAvailable,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
         'has_pinned_stories': hasPinnedStories,
+        'my_boost_count': myBoostCount,
+        'unrestrict_boost_count': unrestrictBoostCount,
         'sticker_set_id': stickerSetId.toString(),
+        'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),
         'bot_commands': botCommands.map((item) => item.toJson()).toList(),

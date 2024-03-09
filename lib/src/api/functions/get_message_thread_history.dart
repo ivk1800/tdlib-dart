@@ -29,8 +29,8 @@ class GetMessageThreadHistory extends TdFunction {
   /// be fetched; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// [offset] Specify 0 to get results from exactly the from_message_id or a
-  /// negative offset up to 99 to get additionally some newer messages
+  /// [offset] Specify 0 to get results from exactly the message from_message_id
+  /// or a negative offset up to 99 to get additionally some newer messages
   final int offset;
 
   /// [limit] The maximum number of messages to be returned; must be positive

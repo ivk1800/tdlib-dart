@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a chat by its username. Call searchPublicChat with
-/// the given chat username to process the link
+/// the given chat username to process the link If the chat is found, open its
+/// profile information screen or the chat itself
 @immutable
 class InternalLinkTypePublicChat extends InternalLinkType {
   const InternalLinkTypePublicChat({

@@ -14,7 +14,7 @@ class ChatBackground extends TdObject {
   final Background background;
 
   /// [darkThemeDimming] Dimming of the background in dark themes, as a
-  /// percentage; 0-100
+  /// percentage; 0-100. Applied only to Wallpaper and Fill types of background
   final int darkThemeDimming;
 
   static const String constructor = 'chatBackground';

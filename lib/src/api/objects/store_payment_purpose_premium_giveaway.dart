@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user creating a Telegram Premium giveaway for subscribers of channel
-/// chats; requires can_post_messages rights in the channels
+/// The user creating a Telegram Premium giveaway
 @immutable
 class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   const StorePaymentPurposePremiumGiveaway({

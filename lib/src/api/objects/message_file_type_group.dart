@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The messages was exported from a group chat
+/// The messages were exported from a group chat
 @immutable
 class MessageFileTypeGroup extends MessageFileType {
   const MessageFileTypeGroup({

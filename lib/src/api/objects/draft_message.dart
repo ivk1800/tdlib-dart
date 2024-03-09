@@ -19,7 +19,7 @@ class DraftMessage extends TdObject {
   final int date;
 
   /// [inputMessageText] Content of the message draft; must be of the type
-  /// inputMessageText
+  /// inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
 
   static const String constructor = 'draftMessage';

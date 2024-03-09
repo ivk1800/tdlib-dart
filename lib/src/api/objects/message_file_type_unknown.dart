@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The messages was exported from a chat of unknown type
+/// The messages were exported from a chat of unknown type
 @immutable
 class MessageFileTypeUnknown extends MessageFileType {
   const MessageFileTypeUnknown();

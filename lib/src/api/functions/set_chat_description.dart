@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Changes information about a chat. Available for basic groups, supergroups,
-/// and channels. Requires can_change_info administrator right
+/// and channels. Requires can_change_info member right
 /// Returns [Ok]
 @immutable
 class SetChatDescription extends TdFunction {

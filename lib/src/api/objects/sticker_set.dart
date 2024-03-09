@@ -17,6 +17,7 @@ class StickerSet extends TdObject {
     required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -62,6 +63,11 @@ class StickerSet extends TdObject {
   /// that must be repainted; for custom emoji sticker sets only
   final bool needsRepainting;
 
+  /// [isAllowedAsChatEmojiStatus] True, if stickers in the sticker set are
+  /// custom emoji that can be used as chat emoji status; for custom emoji
+  /// sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
+
   /// [isViewed] True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -97,6 +103,8 @@ class StickerSet extends TdObject {
       stickerType:
           StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
       needsRepainting: json['needs_repainting'] as bool,
+      isAllowedAsChatEmojiStatus:
+          json['is_allowed_as_chat_emoji_status'] as bool,
       isViewed: json['is_viewed'] as bool,
       stickers: List<Sticker>.from(
           ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
@@ -126,6 +134,7 @@ class StickerSet extends TdObject {
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
+        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
         'is_viewed': isViewed,
         'stickers': stickers.map((item) => item.toJson()).toList(),
         'emojis': emojis.map((item) => item.toJson()).toList(),

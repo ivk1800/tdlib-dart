@@ -16,6 +16,7 @@ abstract class PremiumStoryFeature extends TdObject {
   /// [PremiumStoryFeaturePriorityOrder]
   /// [PremiumStoryFeatureSaveStories]
   /// [PremiumStoryFeatureStealthMode]
+  /// [PremiumStoryFeatureVideoQuality]
   static PremiumStoryFeature? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -34,6 +35,8 @@ abstract class PremiumStoryFeature extends TdObject {
         return PremiumStoryFeatureSaveStories.fromJson(json);
       case PremiumStoryFeatureStealthMode.constructor:
         return PremiumStoryFeatureStealthMode.fromJson(json);
+      case PremiumStoryFeatureVideoQuality.constructor:
+        return PremiumStoryFeatureVideoQuality.fromJson(json);
       default:
         return null;
     }

@@ -5,7 +5,14 @@ import '../tdapi.dart';
 /// The user is offline, but was online last week
 @immutable
 class UserStatusLastWeek extends UserStatus {
-  const UserStatusLastWeek();
+  const UserStatusLastWeek({
+    required this.byMyPrivacySettings,
+  });
+
+  /// [byMyPrivacySettings] Exact user's status is hidden because the current
+  /// user enabled userPrivacySettingShowStatus privacy setting for the user and
+  /// has no Telegram Premium
+  final bool byMyPrivacySettings;
 
   static const String constructor = 'userStatusLastWeek';
 
@@ -14,7 +21,9 @@ class UserStatusLastWeek extends UserStatus {
       return null;
     }
 
-    return const UserStatusLastWeek();
+    return UserStatusLastWeek(
+      byMyPrivacySettings: json['by_my_privacy_settings'] as bool,
+    );
   }
 
   @override
@@ -22,6 +31,7 @@ class UserStatusLastWeek extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'by_my_privacy_settings': byMyPrivacySettings,
         '@type': constructor,
       };
 

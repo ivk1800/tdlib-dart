@@ -13,6 +13,7 @@ class GetChatMessageCalendar extends TdFunction {
     required this.chatId,
     required this.filter,
     required this.fromMessageId,
+    required this.savedMessagesTopicId,
   });
 
   /// [chatId] Identifier of the chat in which to return information about
@@ -28,6 +29,11 @@ class GetChatMessageCalendar extends TdFunction {
   /// about messages; use 0 to get results from the last message
   final int fromMessageId;
 
+  /// [savedMessagesTopicId] If not0, only messages in the specified Saved
+  /// Messages topic will be considered; pass 0 to consider all messages, or for
+  /// chats other than Saved Messages
+  final int savedMessagesTopicId;
+
   static const String constructor = 'getChatMessageCalendar';
 
   @override
@@ -38,6 +44,7 @@ class GetChatMessageCalendar extends TdFunction {
         'chat_id': chatId,
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
+        'saved_messages_topic_id': savedMessagesTopicId,
         '@type': constructor,
       };
 

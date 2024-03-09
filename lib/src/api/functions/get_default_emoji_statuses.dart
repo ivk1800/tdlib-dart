@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns default emoji statuses
+/// Returns default emoji statuses for self status
 /// Returns [EmojiStatuses]
 @immutable
 class GetDefaultEmojiStatuses extends TdFunction {

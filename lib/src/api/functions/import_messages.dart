@@ -14,7 +14,7 @@ class ImportMessages extends TdFunction {
 
   /// [chatId] Identifier of a chat to which the messages will be imported. It
   /// must be an identifier of a private chat with a mutual contact or an
-  /// identifier of a supergroup chat with can_change_info administrator right
+  /// identifier of a supergroup chat with can_change_info member right
   final int chatId;
 
   /// [messageFile] File with messages to import. Only inputFileLocal and

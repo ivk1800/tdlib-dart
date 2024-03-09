@@ -10,6 +10,7 @@ abstract class BackgroundType extends TdObject {
   static const String constructor = 'backgroundType';
 
   /// Inherited by:
+  /// [BackgroundTypeChatTheme]
   /// [BackgroundTypeFill]
   /// [BackgroundTypePattern]
   /// [BackgroundTypeWallpaper]
@@ -19,6 +20,8 @@ abstract class BackgroundType extends TdObject {
     }
 
     switch (json['@type']) {
+      case BackgroundTypeChatTheme.constructor:
+        return BackgroundTypeChatTheme.fromJson(json);
       case BackgroundTypeFill.constructor:
         return BackgroundTypeFill.fromJson(json);
       case BackgroundTypePattern.constructor:

@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Toggles whether a General topic is hidden in a forum supergroup chat;
-/// requires can_manage_topics administrator right in the supergroup
+/// requires can_manage_topics right in the supergroup
 /// Returns [Ok]
 @immutable
 class ToggleGeneralForumTopicIsHidden extends TdFunction {

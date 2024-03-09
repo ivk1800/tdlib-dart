@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Changes the location of the current user. Needs to be called if
 /// getOption("is_location_visible") is true and location changes for more
-/// than 1 kilometer
+/// than 1 kilometer. Must not be called if the user has a business location
 /// Returns [Ok]
 @immutable
 class SetLocation extends TdFunction {

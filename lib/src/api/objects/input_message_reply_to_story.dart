@@ -11,7 +11,8 @@ class InputMessageReplyToStory extends InputMessageReplyTo {
   });
 
   /// [storySenderChatId] The identifier of the sender of the story. Currently,
-  /// stories can be replied only in the sender's chat
+  /// stories can be replied only in the sender's chat and channel stories can't
+  /// be replied
   final int storySenderChatId;
 
   /// [storyId] The identifier of the story

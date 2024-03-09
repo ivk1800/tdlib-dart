@@ -17,8 +17,8 @@ class FoundChatBoosts extends TdObject {
   /// [boosts] List of boosts
   final List<ChatBoost> boosts;
 
-  /// [nextOffset] The offset for the next request. If empty, there are no more
-  /// results
+  /// [nextOffset] The offset for the next request. If empty, then there are no
+  /// more results
   final String nextOffset;
 
   static const String constructor = 'foundChatBoosts';

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes chosen reaction on a story
+/// Changes chosen reaction on a story that has already been sent
 /// Returns [Ok]
 @immutable
 class SetStoryReaction extends TdFunction {

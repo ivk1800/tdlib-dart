@@ -14,7 +14,7 @@ class SetChatDiscussionGroup extends TdFunction {
 
   /// [chatId] Identifier of the channel chat. Pass 0 to remove a link from the
   /// supergroup passed in the second argument to a linked channel chat
-  /// (requires can_pin_messages rights in the supergroup)
+  /// (requires can_pin_messages member right in the supergroup)
   final int chatId;
 
   /// [discussionChatId] Identifier of a new channel's discussion group. Use 0

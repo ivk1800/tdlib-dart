@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Toggles whether the message history of a supergroup is available to new
-/// members; requires can_change_info administrator right
+/// members; requires can_change_info member right
 /// Returns [Ok]
 @immutable
 class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {

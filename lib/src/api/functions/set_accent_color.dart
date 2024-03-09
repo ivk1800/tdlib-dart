@@ -16,7 +16,7 @@ class SetAccentColor extends TdFunction {
   final int accentColorId;
 
   /// [backgroundCustomEmojiId] Identifier of a custom emoji to be shown on the
-  /// reply header background; 0 if none
+  /// reply header and link preview background; 0 if none
   final int backgroundCustomEmojiId;
 
   static const String constructor = 'setAccentColor';

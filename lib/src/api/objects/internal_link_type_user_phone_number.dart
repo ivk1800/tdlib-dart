@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a user by its phone number. Call
-/// searchUserByPhoneNumber with the given phone number to process the link
+/// searchUserByPhoneNumber with the given phone number to process the link.
+/// If the user is found, then call createPrivateChat and open the chat
 @immutable
 class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   const InternalLinkTypeUserPhoneNumber({

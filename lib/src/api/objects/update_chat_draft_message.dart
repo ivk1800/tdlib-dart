@@ -16,7 +16,7 @@ class UpdateChatDraftMessage extends Update {
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [draftMessage] The new draft message; may be null
+  /// [draftMessage] The new draft message; may be null if none
   final DraftMessage? draftMessage;
 
   /// [positions] The new chat positions in the chat lists
