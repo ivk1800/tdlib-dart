@@ -9,7 +9,7 @@ class MessageLinkInfo extends TdObject {
     required this.isPublic,
     required this.chatId,
     required this.messageThreadId,
-    required this.message,
+    this.message,
     required this.mediaTimestamp,
     required this.forAlbum,
   });
@@ -26,9 +26,8 @@ class MessageLinkInfo extends TdObject {
   /// open the message, or a forum topic to open if the message is missing
   final int messageThreadId;
 
-  /// [message]_thread_id If found, identifier of the message thread in which to
-  /// open the message, or a forum topic to open if the message is missing
-  final Message message;
+  /// [message] If found, the linked message; may be null
+  final Message? message;
 
   /// [mediaTimestamp] Timestamp from which the video/audio/video note/voice
   /// note/story playing must start, in seconds; 0 if not specified. The media
@@ -50,7 +49,7 @@ class MessageLinkInfo extends TdObject {
       isPublic: json['is_public'] as bool,
       chatId: json['chat_id'] as int,
       messageThreadId: json['message_thread_id'] as int,
-      message: Message.fromJson(json['message'] as Map<String, dynamic>?)!,
+      message: Message.fromJson(json['message'] as Map<String, dynamic>?),
       mediaTimestamp: json['media_timestamp'] as int,
       forAlbum: json['for_album'] as bool,
     );
@@ -64,7 +63,7 @@ class MessageLinkInfo extends TdObject {
         'is_public': isPublic,
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
-        'message': message.toJson(),
+        'message': message?.toJson(),
         'media_timestamp': mediaTimestamp,
         'for_album': forAlbum,
         '@type': constructor,

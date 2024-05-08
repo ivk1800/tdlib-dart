@@ -13,7 +13,7 @@ class UpdateNotification extends Update {
   /// [notificationGroupId] Unique notification group identifier
   final int notificationGroupId;
 
-  /// [notification]_group_id Unique notification group identifier
+  /// [notification] Changed notification
   final Notification notification;
 
   static const String constructor = 'updateNotification';

@@ -33,7 +33,7 @@ class PaymentForm extends TdObject {
   /// [paymentProviderUserId] User identifier of the payment provider bot
   final int paymentProviderUserId;
 
-  /// [paymentProvider]_user_id User identifier of the payment provider bot
+  /// [paymentProvider] Information about the payment provider
   final PaymentProvider paymentProvider;
 
   /// [additionalPaymentOptions] The list of additional payment options

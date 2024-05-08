@@ -38,7 +38,7 @@ class Chat extends TdObject {
     required this.availableReactions,
     required this.messageAutoDeleteTime,
     this.emojiStatus,
-    required this.background,
+    this.background,
     required this.themeName,
     this.actionBar,
     required this.videoChat,
@@ -165,10 +165,8 @@ class Chat extends TdObject {
   /// [emojiStatus] Emoji status to be shown along with chat title; may be null
   final EmojiStatus? emojiStatus;
 
-  /// [background]_custom_emoji_id Identifier of a custom emoji to be shown on
-  /// the reply header and link preview background for messages sent by the
-  /// chat; 0 if none
-  final ChatBackground background;
+  /// [background] Background set for the chat; may be null if none
+  final ChatBackground? background;
 
   /// [themeName] If non-empty, name of a theme, set for the chat
   final String themeName;
@@ -252,7 +250,7 @@ class Chat extends TdObject {
       emojiStatus:
           EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
       background:
-          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?)!,
+          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?),
       themeName: json['theme_name'] as String,
       actionBar:
           ChatActionBar.fromJson(json['action_bar'] as Map<String, dynamic>?),
@@ -305,7 +303,7 @@ class Chat extends TdObject {
         'available_reactions': availableReactions.toJson(),
         'message_auto_delete_time': messageAutoDeleteTime,
         'emoji_status': emojiStatus?.toJson(),
-        'background': background.toJson(),
+        'background': background?.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
         'video_chat': videoChat.toJson(),

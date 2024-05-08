@@ -15,7 +15,7 @@ class UpdateTermsOfService extends Update {
   /// [termsOfServiceId] Identifier of the terms of service
   final String termsOfServiceId;
 
-  /// [termsOfService]_id Identifier of the terms of service
+  /// [termsOfService] The new terms of service
   final TermsOfService termsOfService;
 
   static const String constructor = 'updateTermsOfService';
