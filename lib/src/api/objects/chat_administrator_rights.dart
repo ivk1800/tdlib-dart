@@ -76,8 +76,8 @@ class ChatAdministratorRights extends TdObject {
   final bool canPostStories;
 
   /// [canEditStories] True, if the administrator can edit stories posted by
-  /// other users, pin stories and access story archive; applicable to
-  /// supergroups and channels only
+  /// other users, post stories to the chat page, pin chat stories, and access
+  /// story archive; applicable to supergroups and channels only
   final bool canEditStories;
 
   /// [canDeleteStories] True, if the administrator can delete stories posted by

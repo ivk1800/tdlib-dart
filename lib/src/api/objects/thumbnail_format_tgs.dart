@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The thumbnail is in TGS format. It will be used only for TGS sticker sets
+/// The thumbnail is in TGS format. It will be used only for sticker sets
 @immutable
 class ThumbnailFormatTgs extends ThumbnailFormat {
   const ThumbnailFormatTgs();

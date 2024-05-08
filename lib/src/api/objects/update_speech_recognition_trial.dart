@@ -14,7 +14,7 @@ class UpdateSpeechRecognitionTrial extends Update {
   });
 
   /// [maxMediaDuration] The maximum allowed duration of media for speech
-  /// recognition without Telegram Premium subscription
+  /// recognition without Telegram Premium subscription, in seconds
   final int maxMediaDuration;
 
   /// [weeklyCount] The total number of allowed speech recognitions per week; 0

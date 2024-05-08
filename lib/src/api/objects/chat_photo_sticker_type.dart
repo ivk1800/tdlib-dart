@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of a sticker, which was used to create a chat photo
+/// Describes type of sticker, which was used to create a chat photo
 @immutable
 abstract class ChatPhotoStickerType extends TdObject {
   const ChatPhotoStickerType();

@@ -3,10 +3,10 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link can be used to confirm ownership of a phone number to prevent
-/// account deletion. Call sendPhoneNumberConfirmationCode with the given hash
-/// and phone number to process the link. If succeeded, call
-/// checkPhoneNumberConfirmationCode to check entered by the user code, or
-/// resendPhoneNumberConfirmationCode to resend it
+/// account deletion. Call sendPhoneNumberCode with the given phone number and
+/// with phoneNumberCodeTypeConfirmOwnership with the given hash to process
+/// the link. If succeeded, call checkPhoneNumberCode to check entered by the
+/// user code, or resendPhoneNumberCode to resend it
 @immutable
 class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   const InternalLinkTypePhoneNumberConfirmation({

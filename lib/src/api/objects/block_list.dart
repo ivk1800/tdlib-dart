@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a type of a block list
+/// Describes a type of block list
 @immutable
 abstract class BlockList extends TdObject {
   const BlockList();

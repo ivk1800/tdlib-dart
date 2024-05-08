@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of a clickable rectangle area on a story media to be added
+/// Describes type of clickable rectangle area on a story media to be added
 @immutable
 abstract class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();

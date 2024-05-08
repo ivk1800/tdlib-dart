@@ -16,6 +16,7 @@ abstract class UserPrivacySetting extends TdObject {
   /// [UserPrivacySettingAllowPeerToPeerCalls]
   /// [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]
   /// [UserPrivacySettingShowBio]
+  /// [UserPrivacySettingShowBirthdate]
   /// [UserPrivacySettingShowLinkInForwardedMessages]
   /// [UserPrivacySettingShowPhoneNumber]
   /// [UserPrivacySettingShowProfilePhoto]
@@ -39,6 +40,8 @@ abstract class UserPrivacySetting extends TdObject {
             json);
       case UserPrivacySettingShowBio.constructor:
         return UserPrivacySettingShowBio.fromJson(json);
+      case UserPrivacySettingShowBirthdate.constructor:
+        return UserPrivacySettingShowBirthdate.fromJson(json);
       case UserPrivacySettingShowLinkInForwardedMessages.constructor:
         return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
       case UserPrivacySettingShowPhoneNumber.constructor:

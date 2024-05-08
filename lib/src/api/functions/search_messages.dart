@@ -12,6 +12,7 @@ import '../tdapi.dart';
 class SearchMessages extends TdFunction {
   const SearchMessages({
     this.chatList,
+    required this.onlyInChannels,
     required this.query,
     required this.offset,
     required this.limit,
@@ -24,6 +25,9 @@ class SearchMessages extends TdFunction {
   /// all chats regardless of their chat list. Only Main and Archive chat lists
   /// are supported
   final ChatList? chatList;
+
+  /// [onlyInChannels] Pass true to search only for messages in channels
+  final bool onlyInChannels;
 
   /// [query] Query to search for
   final String query;
@@ -58,6 +62,7 @@ class SearchMessages extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_list': chatList?.toJson(),
+        'only_in_channels': onlyInChannels,
         'query': query,
         'offset': offset,
         'limit': limit,

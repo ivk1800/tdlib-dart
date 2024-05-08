@@ -13,7 +13,9 @@ class InputMessageVoiceNote extends InputMessageContent {
     this.selfDestructType,
   });
 
-  /// [voiceNote] Voice note to be sent
+  /// [voiceNote] Voice note to be sent. The voice note must be encoded with the
+  /// Opus codec and stored inside an OGG container with a single audio channel,
+  /// or be in MP3 or M4A format as regular audio
   final InputFile voiceNote;
 
   /// [duration] Duration of the voice note, in seconds

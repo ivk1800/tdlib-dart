@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents the type of a file
+/// Represents the type of file
 @immutable
 abstract class FileType extends TdObject {
   const FileType();

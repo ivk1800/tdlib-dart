@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents the type of a session
+/// Represents the type of session
 @immutable
 abstract class SessionType extends TdObject {
   const SessionType();

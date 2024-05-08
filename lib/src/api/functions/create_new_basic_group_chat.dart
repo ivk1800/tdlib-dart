@@ -3,8 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Creates a new basic group and sends a corresponding
-/// messageBasicGroupChatCreate. Returns the newly created chat
-/// Returns [Chat]
+/// messageBasicGroupChatCreate. Returns information about the newly created
+/// chat
+/// Returns [CreatedBasicGroupChat]
 @immutable
 class CreateNewBasicGroupChat extends TdFunction {
   const CreateNewBasicGroupChat({

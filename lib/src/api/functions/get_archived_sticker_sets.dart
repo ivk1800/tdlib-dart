@@ -16,7 +16,7 @@ class GetArchivedStickerSets extends TdFunction {
   final StickerType stickerType;
 
   /// [offsetStickerSetId] Identifier of the sticker set from which to return
-  /// the result
+  /// the result; use 0 to get results from the beginning
   final int offsetStickerSetId;
 
   /// [limit] The maximum number of sticker sets to return; up to 100

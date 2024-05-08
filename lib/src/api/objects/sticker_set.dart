@@ -11,10 +11,10 @@ class StickerSet extends TdObject {
     required this.name,
     this.thumbnail,
     required this.thumbnailOutline,
+    required this.isOwned,
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
     required this.isAllowedAsChatEmojiStatus,
@@ -42,6 +42,9 @@ class StickerSet extends TdObject {
   /// the upper-left corner
   final List<ClosedVectorPath> thumbnailOutline;
 
+  /// [isOwned] True, if the sticker set is owned by the current user
+  final bool isOwned;
+
   /// [isInstalled] True, if the sticker set has been installed by the current
   /// user
   final bool isInstalled;
@@ -52,9 +55,6 @@ class StickerSet extends TdObject {
 
   /// [isOfficial] True, if the sticker set is official
   final bool isOfficial;
-
-  /// [stickerFormat] Format of the stickers in the set
-  final StickerFormat stickerFormat;
 
   /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
@@ -95,11 +95,10 @@ class StickerSet extends TdObject {
           ((json['thumbnail_outline'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ClosedVectorPath.fromJson(item))
               .toList()),
+      isOwned: json['is_owned'] as bool,
       isInstalled: json['is_installed'] as bool,
       isArchived: json['is_archived'] as bool,
       isOfficial: json['is_official'] as bool,
-      stickerFormat: StickerFormat.fromJson(
-          json['sticker_format'] as Map<String, dynamic>?)!,
       stickerType:
           StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
       needsRepainting: json['needs_repainting'] as bool,
@@ -128,10 +127,10 @@ class StickerSet extends TdObject {
         'thumbnail': thumbnail?.toJson(),
         'thumbnail_outline':
             thumbnailOutline.map((item) => item.toJson()).toList(),
+        'is_owned': isOwned,
         'is_installed': isInstalled,
         'is_archived': isArchived,
         'is_official': isOfficial,
-        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
         'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,

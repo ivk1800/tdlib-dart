@@ -21,8 +21,9 @@ class Poll extends TdObject {
   /// [id] Unique poll identifier
   final int id;
 
-  /// [question] Poll question; 1-300 characters
-  final String question;
+  /// [question] Poll question; 1-300 characters. Only custom emoji entities are
+  /// allowed
+  final FormattedText question;
 
   /// [options] List of poll answer options
   final List<PollOption> options;
@@ -60,7 +61,8 @@ class Poll extends TdObject {
 
     return Poll(
       id: int.tryParse(json['id']) ?? 0,
-      question: json['question'] as String,
+      question:
+          FormattedText.fromJson(json['question'] as Map<String, dynamic>?)!,
       options: List<PollOption>.from(
           ((json['options'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PollOption.fromJson(item))
@@ -84,7 +86,7 @@ class Poll extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'id': id.toString(),
-        'question': question,
+        'question': question.toJson(),
         'options': options.map((item) => item.toJson()).toList(),
         'total_voter_count': totalVoterCount,
         'recent_voter_ids':

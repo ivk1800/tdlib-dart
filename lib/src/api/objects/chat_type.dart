@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a chat
+/// Describes the type of chat
 @immutable
 abstract class ChatType extends TdObject {
   const ChatType();

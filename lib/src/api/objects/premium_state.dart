@@ -10,6 +10,7 @@ class PremiumState extends TdObject {
     required this.state,
     required this.paymentOptions,
     required this.animations,
+    required this.businessAnimations,
   });
 
   /// [state] Text description of the state of the current Premium subscription;
@@ -22,6 +23,10 @@ class PremiumState extends TdObject {
   /// [animations] The list of available promotion animations for Premium
   /// features
   final List<PremiumFeaturePromotionAnimation> animations;
+
+  /// [businessAnimations] The list of available promotion animations for
+  /// Business features
+  final List<BusinessFeaturePromotionAnimation> businessAnimations;
 
   static const String constructor = 'premiumState';
 
@@ -40,6 +45,10 @@ class PremiumState extends TdObject {
           ((json['animations'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
               .toList()),
+      businessAnimations: List<BusinessFeaturePromotionAnimation>.from(
+          ((json['business_animations'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => BusinessFeaturePromotionAnimation.fromJson(item))
+              .toList()),
     );
   }
 
@@ -51,6 +60,8 @@ class PremiumState extends TdObject {
         'state': state.toJson(),
         'payment_options': paymentOptions.map((item) => item.toJson()).toList(),
         'animations': animations.map((item) => item.toJson()).toList(),
+        'business_animations':
+            businessAnimations.map((item) => item.toJson()).toList(),
         '@type': constructor,
       };
 

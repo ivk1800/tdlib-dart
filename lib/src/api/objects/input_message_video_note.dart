@@ -20,7 +20,7 @@ class InputMessageVideoNote extends InputMessageContent {
   /// thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// [duration] Duration of the video, in seconds
+  /// [duration] Duration of the video, in seconds; 0-60
   final int duration;
 
   /// [length] Video width and height; must be positive and not greater than 640

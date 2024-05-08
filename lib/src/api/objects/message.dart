@@ -13,6 +13,7 @@ class Message extends TdObject {
     this.schedulingState,
     required this.isOutgoing,
     required this.isPinned,
+    required this.isFromOffline,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeRepliedInAnotherChat,
@@ -43,6 +44,7 @@ class Message extends TdObject {
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBusinessBotUserId,
     required this.senderBoostCount,
     this.authorSignature,
     required this.mediaAlbumId,
@@ -73,6 +75,11 @@ class Message extends TdObject {
 
   /// [isPinned] True, if the message is pinned
   final bool isPinned;
+
+  /// [isFromOffline] True, if the message was sent because of a scheduled
+  /// action by the message sender, for example, as away, or greeting service
+  /// message
+  final bool isFromOffline;
 
   /// [canBeEdited] True, if the message can be edited. For live location and
   /// poll messages this fields shows whether editMessageLiveLocation or
@@ -186,9 +193,13 @@ class Message extends TdObject {
   /// by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
-  /// [viaBotUserId] If non-zero, the user identifier of the bot through which
-  /// this message was sent
+  /// [viaBotUserId] If non-zero, the user identifier of the inline bot through
+  /// which this message was sent
   final int viaBotUserId;
+
+  /// [senderBusinessBotUserId] If non-zero, the user identifier of the business
+  /// bot that sent this message
+  final int senderBusinessBotUserId;
 
   /// [senderBoostCount] Number of times the sender of the message boosted the
   /// supergroup at the time the message was sent; 0 if none or unknown. For
@@ -200,8 +211,9 @@ class Message extends TdObject {
   /// author signature
   final String? authorSignature;
 
-  /// [mediaAlbumId] Unique identifier of an album this message belongs to. Only
-  /// audios, documents, photos and videos can be grouped together in albums
+  /// [mediaAlbumId] Unique identifier of an album this message belongs to; 0 if
+  /// none. Only audios, documents, photos and videos can be grouped together in
+  /// albums
   final int mediaAlbumId;
 
   /// [restrictionReason] If non-empty, contains a human-readable description of
@@ -232,6 +244,7 @@ class Message extends TdObject {
           json['scheduling_state'] as Map<String, dynamic>?),
       isOutgoing: json['is_outgoing'] as bool,
       isPinned: json['is_pinned'] as bool,
+      isFromOffline: json['is_from_offline'] as bool,
       canBeEdited: json['can_be_edited'] as bool,
       canBeForwarded: json['can_be_forwarded'] as bool,
       canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'] as bool,
@@ -270,6 +283,7 @@ class Message extends TdObject {
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
+      senderBusinessBotUserId: json['sender_business_bot_user_id'] as int,
       senderBoostCount: json['sender_boost_count'] as int,
       authorSignature: json['author_signature'] as String?,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
@@ -293,6 +307,7 @@ class Message extends TdObject {
         'scheduling_state': schedulingState?.toJson(),
         'is_outgoing': isOutgoing,
         'is_pinned': isPinned,
+        'is_from_offline': isFromOffline,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
@@ -324,6 +339,7 @@ class Message extends TdObject {
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
+        'sender_business_bot_user_id': senderBusinessBotUserId,
         'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),

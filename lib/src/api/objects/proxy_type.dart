@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a proxy server
+/// Describes the type of proxy server
 @immutable
 abstract class ProxyType extends TdObject {
   const ProxyType();

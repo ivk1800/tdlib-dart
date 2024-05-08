@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a type of a button in results of inline query
+/// Represents a type of button in results of inline query
 @immutable
 abstract class InlineQueryResultsButtonType extends TdObject {
   const InlineQueryResultsButtonType();

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents the type of a user. The following types are possible: regular
+/// Represents the type of user. The following types are possible: regular
 /// users, deleted users and bots
 @immutable
 abstract class UserType extends TdObject {

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sets a sticker set thumbnail; for bots only
+/// Sets a sticker set thumbnail
 /// Returns [Ok]
 @immutable
 class SetStickerSetThumbnail extends TdFunction {
@@ -10,18 +10,21 @@ class SetStickerSetThumbnail extends TdFunction {
     required this.userId,
     required this.name,
     this.thumbnail,
+    this.format,
   });
 
-  /// [userId] Sticker set owner
+  /// [userId] Sticker set owner; ignored for regular users
   final int userId;
 
-  /// [name] Sticker set name
+  /// [name] Sticker set name. The sticker set must be owned by the current user
   final String name;
 
-  /// [thumbnail] Thumbnail to set in PNG, TGS, or WEBM format; pass null to
-  /// remove the sticker set thumbnail. Thumbnail format must match the format
-  /// of stickers in the set
+  /// [thumbnail] Thumbnail to set; pass null to remove the sticker set
+  /// thumbnail
   final InputFile? thumbnail;
+
+  /// [format] Format of the thumbnail; pass null if thumbnail is removed
+  final StickerFormat? format;
 
   static const String constructor = 'setStickerSetThumbnail';
 
@@ -33,6 +36,7 @@ class SetStickerSetThumbnail extends TdFunction {
         'user_id': userId,
         'name': name,
         'thumbnail': thumbnail?.toJson(),
+        'format': format?.toJson(),
         '@type': constructor,
       };
 

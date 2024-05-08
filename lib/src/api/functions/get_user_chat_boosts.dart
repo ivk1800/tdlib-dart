@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of boosts applied to a chat by a given user; requires
+/// Returns the list of boosts applied to a chat by a given user; requires
 /// administrator rights in the chat; for bots only
 /// Returns [FoundChatBoosts]
 @immutable

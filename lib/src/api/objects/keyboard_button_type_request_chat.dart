@@ -18,6 +18,9 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     this.userAdministratorRights,
     this.botAdministratorRights,
     required this.botIsMember,
+    required this.requestTitle,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// [id] Unique button identifier
@@ -60,6 +63,15 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// group and supergroup chats only
   final bool botIsMember;
 
+  /// [requestTitle] Pass true to request title of the chat; bots only
+  final bool requestTitle;
+
+  /// [requestUsername] Pass true to request username of the chat; bots only
+  final bool requestUsername;
+
+  /// [requestPhoto] Pass true to request photo of the chat; bots only
+  final bool requestPhoto;
+
   static const String constructor = 'keyboardButtonTypeRequestChat';
 
   static KeyboardButtonTypeRequestChat? fromJson(Map<String, dynamic>? json) {
@@ -80,6 +92,9 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
       botAdministratorRights: ChatAdministratorRights.fromJson(
           json['bot_administrator_rights'] as Map<String, dynamic>?),
       botIsMember: json['bot_is_member'] as bool,
+      requestTitle: json['request_title'] as bool,
+      requestUsername: json['request_username'] as bool,
+      requestPhoto: json['request_photo'] as bool,
     );
   }
 
@@ -98,6 +113,9 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         'user_administrator_rights': userAdministratorRights?.toJson(),
         'bot_administrator_rights': botAdministratorRights?.toJson(),
         'bot_is_member': botIsMember,
+        'request_title': requestTitle,
+        'request_username': requestUsername,
+        'request_photo': requestPhoto,
         '@type': constructor,
       };
 

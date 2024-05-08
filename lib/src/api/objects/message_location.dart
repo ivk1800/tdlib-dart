@@ -17,10 +17,12 @@ class MessageLocation extends MessageContent {
   final Location location;
 
   /// [livePeriod] Time relative to the message send date, for which the
-  /// location can be updated, in seconds
+  /// location can be updated, in seconds; if 0x7FFFFFFF, then location can be
+  /// updated forever
   final int livePeriod;
 
   /// [expiresIn] Left time for which the location can be updated, in seconds.
+  /// If 0, then the location can't be updated anymore. The update
   /// updateMessageContent is not sent when this field changes
   final int expiresIn;
 

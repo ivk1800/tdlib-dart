@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes reset state of a email address
+/// Describes reset state of an email address
 @immutable
 abstract class EmailAddressResetState extends TdObject {
   const EmailAddressResetState();

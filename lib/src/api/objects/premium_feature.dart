@@ -15,6 +15,7 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureAnimatedProfilePhoto]
   /// [PremiumFeatureAppIcons]
   /// [PremiumFeatureBackgroundForBoth]
+  /// [PremiumFeatureBusiness]
   /// [PremiumFeatureChatBoost]
   /// [PremiumFeatureCustomEmoji]
   /// [PremiumFeatureDisabledAds]
@@ -48,6 +49,8 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureAppIcons.fromJson(json);
       case PremiumFeatureBackgroundForBoth.constructor:
         return PremiumFeatureBackgroundForBoth.fromJson(json);
+      case PremiumFeatureBusiness.constructor:
+        return PremiumFeatureBusiness.fromJson(json);
       case PremiumFeatureChatBoost.constructor:
         return PremiumFeatureChatBoost.fromJson(json);
       case PremiumFeatureCustomEmoji.constructor:

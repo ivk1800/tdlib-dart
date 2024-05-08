@@ -26,16 +26,17 @@ class QuickReplyMessage extends TdObject {
   /// [canBeEdited] True, if the message can be edited
   final bool canBeEdited;
 
-  /// [replyToMessageId] Information about the identifier of the quick reply
-  /// message to which the message replies
+  /// [replyToMessageId] The identifier of the quick reply message to which the
+  /// message replies; 0 if none
   final int replyToMessageId;
 
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which
   /// this message was sent
   final int viaBotUserId;
 
-  /// [mediaAlbumId] Unique identifier of an album this message belongs to. Only
-  /// audios, documents, photos and videos can be grouped together in albums
+  /// [mediaAlbumId] Unique identifier of an album this message belongs to; 0 if
+  /// none. Only audios, documents, photos and videos can be grouped together in
+  /// albums
   final int mediaAlbumId;
 
   /// [content] Content of the message

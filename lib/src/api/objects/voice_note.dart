@@ -2,9 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a voice note. The voice note must be encoded with the Opus
-/// codec, and stored inside an OGG container. Voice notes can have only a
-/// single audio channel
+/// Describes a voice note
 @immutable
 class VoiceNote extends TdObject {
   const VoiceNote({
@@ -22,7 +20,9 @@ class VoiceNote extends TdObject {
   /// [waveform] A waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// [mimeType] MIME type of the file; as defined by the sender
+  /// [mimeType] MIME type of the file; as defined by the sender. Usually, one
+  /// of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3
+  /// audio, or "audio/mp4" for an M4A audio
   final String mimeType;
 
   /// [speechRecognitionResult] Result of speech recognition in the voice note;

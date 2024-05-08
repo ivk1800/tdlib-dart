@@ -10,12 +10,14 @@ class BusinessOpeningHoursInterval extends TdObject {
     required this.endMinute,
   });
 
-  /// [startMinute] The first minute of the interval since start of the week;
+  /// [startMinute] The minute's sequence number in a week, starting on Monday,
+  /// marking the start of the time interval during which the business is open;
   /// 0-7*24*60
   final int startMinute;
 
-  /// [endMinute] The first minute after the end of the interval since start of
-  /// the week; 1-8*24*60
+  /// [endMinute] The minute's sequence number in a week, starting on Monday,
+  /// marking the end of the time interval during which the business is open;
+  /// 1-8*24*60
   final int endMinute;
 
   static const String constructor = 'businessOpeningHoursInterval';

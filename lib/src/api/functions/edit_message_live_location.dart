@@ -13,6 +13,7 @@ class EditMessageLiveLocation extends TdFunction {
     required this.messageId,
     this.replyMarkup,
     this.location,
+    required this.livePeriod,
     required this.heading,
     required this.proximityAlertRadius,
   });
@@ -30,6 +31,13 @@ class EditMessageLiveLocation extends TdFunction {
   /// [location] New location content of the message; pass null to stop sharing
   /// the live location
   final Location? location;
+
+  /// [livePeriod] New time relative to the message send date, for which the
+  /// location can be updated, in seconds. If 0x7FFFFFFF specified, then the
+  /// location can be updated forever. Otherwise, must not exceed the current
+  /// live_period by more than a day, and the live location expiration date must
+  /// remain in the next 90 days. Pass 0 to keep the current live_period
+  final int livePeriod;
 
   /// [heading] The new direction in which the location moves, in degrees;
   /// 1-360. Pass 0 if unknown
@@ -50,6 +58,7 @@ class EditMessageLiveLocation extends TdFunction {
         'message_id': messageId,
         'reply_markup': replyMarkup?.toJson(),
         'location': location?.toJson(),
+        'live_period': livePeriod,
         'heading': heading,
         'proximity_alert_radius': proximityAlertRadius,
         '@type': constructor,

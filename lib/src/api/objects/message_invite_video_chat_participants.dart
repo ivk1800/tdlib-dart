@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A message with information about an invite to a video chat
+/// A message with information about an invitation to a video chat
 @immutable
 class MessageInviteVideoChatParticipants extends MessageContent {
   const MessageInviteVideoChatParticipants({

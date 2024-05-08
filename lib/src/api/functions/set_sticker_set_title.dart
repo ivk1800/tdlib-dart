@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sets a sticker set title; for bots only
+/// Sets a sticker set title
 /// Returns [Ok]
 @immutable
 class SetStickerSetTitle extends TdFunction {
@@ -11,7 +11,8 @@ class SetStickerSetTitle extends TdFunction {
     required this.title,
   });
 
-  /// [name] Sticker set name
+  /// [name] Sticker set name. The sticker set must be owned by the current user
+  ///
   final String name;
 
   /// [title] New sticker set title

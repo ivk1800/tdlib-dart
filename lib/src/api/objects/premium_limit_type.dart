@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of a limit, increased for Premium users
+/// Describes type of limit, increased for Premium users
 @immutable
 abstract class PremiumLimitType extends TdObject {
   const PremiumLimitType();

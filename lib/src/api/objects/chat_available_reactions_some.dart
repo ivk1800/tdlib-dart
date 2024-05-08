@@ -7,10 +7,15 @@ import '../tdapi.dart';
 class ChatAvailableReactionsSome extends ChatAvailableReactions {
   const ChatAvailableReactionsSome({
     required this.reactions,
+    required this.maxReactionCount,
   });
 
   /// [reactions] The list of reactions
   final List<ReactionType> reactions;
+
+  /// [maxReactionCount] The maximum allowed number of reactions per message;
+  /// 1-11
+  final int maxReactionCount;
 
   static const String constructor = 'chatAvailableReactionsSome';
 
@@ -24,6 +29,7 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
           ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => ReactionType.fromJson(item))
               .toList()),
+      maxReactionCount: json['max_reaction_count'] as int,
     );
   }
 
@@ -33,6 +39,7 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'reactions': reactions.map((item) => item.toJson()).toList(),
+        'max_reaction_count': maxReactionCount,
         '@type': constructor,
       };
 

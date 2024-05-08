@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a background
+/// Describes the type of background
 @immutable
 abstract class BackgroundType extends TdObject {
   const BackgroundType();

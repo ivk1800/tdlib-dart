@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of participant identifiers, on whose behalf a video chat in
-/// the chat can be joined
+/// Returns the list of participant identifiers, on whose behalf a video chat
+/// in the chat can be joined
 /// Returns [MessageSenders]
 @immutable
 class GetVideoChatAvailableParticipants extends TdFunction {

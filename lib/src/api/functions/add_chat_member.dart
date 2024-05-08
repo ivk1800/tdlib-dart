@@ -3,8 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Adds a new member to a chat; requires can_invite_users member right.
-/// Members can't be added to private or secret chats
-/// Returns [Ok]
+/// Members can't be added to private or secret chats. Returns information
+/// about members that weren't added
+/// Returns [FailedToAddMembers]
 @immutable
 class AddChatMember extends TdFunction {
   const AddChatMember({

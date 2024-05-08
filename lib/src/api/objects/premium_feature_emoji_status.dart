@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An emoji status shown along with the user's name
+/// The ability to show an emoji status along with the user's name
 @immutable
 class PremiumFeatureEmojiStatus extends PremiumFeature {
   const PremiumFeatureEmojiStatus();

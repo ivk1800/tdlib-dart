@@ -14,8 +14,7 @@ class AnimatedEmoji extends TdObject {
   });
 
   /// [sticker] Sticker for the emoji; may be null if yet unknown for a custom
-  /// emoji. If the sticker is a custom emoji, it can have arbitrary format
-  /// different from stickerFormatTgs
+  /// emoji. If the sticker is a custom emoji, then it can have arbitrary format
   final Sticker? sticker;
 
   /// [stickerWidth] Expected width of the sticker, which can be used if the

@@ -41,6 +41,7 @@ class Chat extends TdObject {
     this.background,
     required this.themeName,
     this.actionBar,
+    this.businessBotManageBar,
     required this.videoChat,
     this.pendingJoinRequests,
     required this.replyMarkupMessageId,
@@ -175,6 +176,10 @@ class Chat extends TdObject {
   /// the chat action bar; may be null if none
   final ChatActionBar? actionBar;
 
+  /// [businessBotManageBar] Information about bar for managing a business bot
+  /// in the chat; may be null if none
+  final BusinessBotManageBar? businessBotManageBar;
+
   /// [videoChat] Information about video chat of the chat
   final VideoChat videoChat;
 
@@ -254,6 +259,8 @@ class Chat extends TdObject {
       themeName: json['theme_name'] as String,
       actionBar:
           ChatActionBar.fromJson(json['action_bar'] as Map<String, dynamic>?),
+      businessBotManageBar: BusinessBotManageBar.fromJson(
+          json['business_bot_manage_bar'] as Map<String, dynamic>?),
       videoChat:
           VideoChat.fromJson(json['video_chat'] as Map<String, dynamic>?)!,
       pendingJoinRequests: ChatJoinRequestsInfo.fromJson(
@@ -306,6 +313,7 @@ class Chat extends TdObject {
         'background': background?.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
+        'business_bot_manage_bar': businessBotManageBar?.toJson(),
         'video_chat': videoChat.toJson(),
         'pending_join_requests': pendingJoinRequests?.toJson(),
         'reply_markup_message_id': replyMarkupMessageId,

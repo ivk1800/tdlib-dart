@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An authentication code is delivered via Firebase Authentication to the
-/// official iOS application
+/// A digit-only authentication code is delivered via Firebase Authentication
+/// to the official iOS application
 @immutable
 class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   const AuthenticationCodeTypeFirebaseIos({

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of saved notification sounds. If a sound isn't in the list,
-/// then default sound needs to be used
+/// Returns the list of saved notification sounds. If a sound isn't in the
+/// list, then default sound needs to be used
 /// Returns [NotificationSounds]
 @immutable
 class GetSavedNotificationSounds extends TdFunction {

@@ -10,7 +10,6 @@ class CreateNewStickerSet extends TdFunction {
     required this.userId,
     required this.title,
     required this.name,
-    required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
     required this.stickers,
@@ -24,11 +23,9 @@ class CreateNewStickerSet extends TdFunction {
   final String title;
 
   /// [name] Sticker set name. Can contain only English letters, digits and
-  /// underscores. Must end with *"_by_
+  /// underscores. Must end with *"_by_ If empty, then the name returned by
+  /// getSuggestedStickerSetName will be used automatically
   final String name;
-
-  /// [stickerFormat] Format of the stickers in the set
-  final StickerFormat stickerFormat;
 
   /// [stickerType] Type of the stickers in the set
   final StickerType stickerType;
@@ -37,9 +34,9 @@ class CreateNewStickerSet extends TdFunction {
   /// repainted; for custom emoji sticker sets only
   final bool needsRepainting;
 
-  /// [stickers] List of stickers to be added to the set; must be non-empty. All
-  /// stickers must have the same format. For TGS stickers, uploadStickerFile
-  /// must be used before the sticker is shown
+  /// [stickers] List of stickers to be added to the set; 1-200 stickers for
+  /// custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers,
+  /// uploadStickerFile must be used before the sticker is shown
   final List<InputSticker> stickers;
 
   /// [source] Source of the sticker set; may be empty if unknown
@@ -55,7 +52,6 @@ class CreateNewStickerSet extends TdFunction {
         'user_id': userId,
         'title': title,
         'name': name,
-        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
         'stickers': stickers.map((item) => item.toJson()).toList(),

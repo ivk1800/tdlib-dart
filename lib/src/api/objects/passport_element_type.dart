@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains the type of a Telegram Passport element
+/// Contains the type of Telegram Passport element
 @immutable
 abstract class PassportElementType extends TdObject {
   const PassportElementType();

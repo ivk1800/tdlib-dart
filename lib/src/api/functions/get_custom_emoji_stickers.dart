@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of custom emoji stickers by their identifiers. Stickers are
-/// returned in arbitrary order. Only found stickers are returned
+/// Returns the list of custom emoji stickers by their identifiers. Stickers
+/// are returned in arbitrary order. Only found stickers are returned
 /// Returns [Stickers]
 @immutable
 class GetCustomEmojiStickers extends TdFunction {

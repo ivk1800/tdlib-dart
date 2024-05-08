@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of message sender identifiers, which can be used to send
+/// Returns the list of message sender identifiers, which can be used to send
 /// messages in a chat
 /// Returns [ChatMessageSenders]
 @immutable

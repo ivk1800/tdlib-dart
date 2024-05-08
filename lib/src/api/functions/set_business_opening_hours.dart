@@ -12,7 +12,7 @@ class SetBusinessOpeningHours extends TdFunction {
   });
 
   /// [openingHours] The new opening hours of the business; pass null to remove
-  /// the opening hours
+  /// the opening hours; up to 28 time intervals can be specified
   final BusinessOpeningHours? openingHours;
 
   static const String constructor = 'setBusinessOpeningHours';

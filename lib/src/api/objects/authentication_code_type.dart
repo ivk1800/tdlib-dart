@@ -17,6 +17,8 @@ abstract class AuthenticationCodeType extends TdObject {
   /// [AuthenticationCodeTypeFlashCall]
   /// [AuthenticationCodeTypeFragment]
   /// [AuthenticationCodeTypeMissedCall]
+  /// [AuthenticationCodeTypeSmsPhrase]
+  /// [AuthenticationCodeTypeSmsWord]
   /// [AuthenticationCodeTypeSms]
   /// [AuthenticationCodeTypeTelegramMessage]
   static AuthenticationCodeType? fromJson(Map<String, dynamic>? json) {
@@ -39,6 +41,10 @@ abstract class AuthenticationCodeType extends TdObject {
         return AuthenticationCodeTypeMissedCall.fromJson(json);
       case AuthenticationCodeTypeSms.constructor:
         return AuthenticationCodeTypeSms.fromJson(json);
+      case AuthenticationCodeTypeSmsPhrase.constructor:
+        return AuthenticationCodeTypeSmsPhrase.fromJson(json);
+      case AuthenticationCodeTypeSmsWord.constructor:
+        return AuthenticationCodeTypeSmsWord.fromJson(json);
       case AuthenticationCodeTypeTelegramMessage.constructor:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
       default:

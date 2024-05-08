@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a poll
+/// Describes the type of poll
 @immutable
 abstract class PollType extends TdObject {
   const PollType();

@@ -14,6 +14,7 @@ class ChatBoostFeatures extends TdObject {
     required this.minCustomBackgroundBoostLevel,
     required this.minCustomEmojiStickerSetBoostLevel,
     required this.minSpeechRecognitionBoostLevel,
+    required this.minSponsoredMessageDisableBoostLevel,
   });
 
   /// [features] The list of features
@@ -49,6 +50,10 @@ class ChatBoostFeatures extends TdObject {
   /// users; for supergroup chats only
   final int minSpeechRecognitionBoostLevel;
 
+  /// [minSponsoredMessageDisableBoostLevel] The minimum boost level allowing to
+  /// disable sponsored messages in the chat; for channel chats only
+  final int minSponsoredMessageDisableBoostLevel;
+
   static const String constructor = 'chatBoostFeatures';
 
   static ChatBoostFeatures? fromJson(Map<String, dynamic>? json) {
@@ -74,6 +79,8 @@ class ChatBoostFeatures extends TdObject {
           json['min_custom_emoji_sticker_set_boost_level'] as int,
       minSpeechRecognitionBoostLevel:
           json['min_speech_recognition_boost_level'] as int,
+      minSponsoredMessageDisableBoostLevel:
+          json['min_sponsored_message_disable_boost_level'] as int,
     );
   }
 
@@ -94,6 +101,8 @@ class ChatBoostFeatures extends TdObject {
         'min_custom_emoji_sticker_set_boost_level':
             minCustomEmojiStickerSetBoostLevel,
         'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
+        'min_sponsored_message_disable_boost_level':
+            minSponsoredMessageDisableBoostLevel,
         '@type': constructor,
       };
 

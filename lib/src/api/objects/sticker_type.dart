@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of a sticker
+/// Describes type of sticker
 @immutable
 abstract class StickerType extends TdObject {
   const StickerType();

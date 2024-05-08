@@ -15,10 +15,13 @@ class UserFullInfo extends TdObject {
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
     required this.hasRestrictedVoiceAndVideoNoteMessages,
-    required this.hasPinnedStories,
+    required this.hasPostedToProfileStories,
+    required this.hasSponsoredMessagesEnabled,
     required this.needPhoneNumberPrivacyException,
     required this.setChatBackground,
     this.bio,
+    this.birthdate,
+    required this.personalChatId,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
     this.businessInfo,
@@ -67,8 +70,13 @@ class UserFullInfo extends TdObject {
   /// can't be sent or forwarded to the user
   final bool hasRestrictedVoiceAndVideoNoteMessages;
 
-  /// [hasPinnedStories] True, if the user has pinned stories
-  final bool hasPinnedStories;
+  /// [hasPostedToProfileStories] True, if the user has posted to profile
+  /// stories
+  final bool hasPostedToProfileStories;
+
+  /// [hasSponsoredMessagesEnabled] True, if the user always enabled sponsored
+  /// messages; known only for the current user
+  final bool hasSponsoredMessagesEnabled;
 
   /// [needPhoneNumberPrivacyException] True, if the current user needs to
   /// explicitly allow to share their phone number with the user when the method
@@ -81,6 +89,12 @@ class UserFullInfo extends TdObject {
 
   /// [bio] A short user bio; may be null for bots
   final FormattedText? bio;
+
+  /// [birthdate] Birthdate of the user; may be null if unknown
+  final Birthdate? birthdate;
+
+  /// [personalChatId] Identifier of the personal chat of the user; 0 if none
+  final int personalChatId;
 
   /// [premiumGiftOptions] The list of available options for gifting Telegram
   /// Premium to the user
@@ -119,11 +133,15 @@ class UserFullInfo extends TdObject {
       hasPrivateForwards: json['has_private_forwards'] as bool,
       hasRestrictedVoiceAndVideoNoteMessages:
           json['has_restricted_voice_and_video_note_messages'] as bool,
-      hasPinnedStories: json['has_pinned_stories'] as bool,
+      hasPostedToProfileStories: json['has_posted_to_profile_stories'] as bool,
+      hasSponsoredMessagesEnabled:
+          json['has_sponsored_messages_enabled'] as bool,
       needPhoneNumberPrivacyException:
           json['need_phone_number_privacy_exception'] as bool,
       setChatBackground: json['set_chat_background'] as bool,
       bio: FormattedText.fromJson(json['bio'] as Map<String, dynamic>?),
+      birthdate: Birthdate.fromJson(json['birthdate'] as Map<String, dynamic>?),
+      personalChatId: json['personal_chat_id'] as int,
       premiumGiftOptions: List<PremiumPaymentOption>.from(
           ((json['premium_gift_options'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => PremiumPaymentOption.fromJson(item))
@@ -150,10 +168,13 @@ class UserFullInfo extends TdObject {
         'has_private_forwards': hasPrivateForwards,
         'has_restricted_voice_and_video_note_messages':
             hasRestrictedVoiceAndVideoNoteMessages,
-        'has_pinned_stories': hasPinnedStories,
+        'has_posted_to_profile_stories': hasPostedToProfileStories,
+        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
         'set_chat_background': setChatBackground,
         'bio': bio?.toJson(),
+        'birthdate': birthdate?.toJson(),
+        'personal_chat_id': personalChatId,
         'premium_gift_options':
             premiumGiftOptions.map((item) => item.toJson()).toList(),
         'group_in_common_count': groupInCommonCount,

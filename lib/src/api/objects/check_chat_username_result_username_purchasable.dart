@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The username can be purchased at fragment.com
+/// The username can be purchased at https://fragment.com. Information about
+/// the username can be received using getCollectibleItemInfo
 @immutable
 class CheckChatUsernameResultUsernamePurchasable
     extends CheckChatUsernameResult {

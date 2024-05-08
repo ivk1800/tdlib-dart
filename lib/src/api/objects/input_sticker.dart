@@ -7,6 +7,7 @@ import '../tdapi.dart';
 class InputSticker extends TdObject {
   const InputSticker({
     required this.sticker,
+    required this.format,
     required this.emojis,
     this.maskPosition,
     required this.keywords,
@@ -18,6 +19,9 @@ class InputSticker extends TdObject {
   /// https://core.telegram.org/animated_stickers#technical-requirements for
   /// technical requirements
   final InputFile sticker;
+
+  /// [format] Format of the sticker
+  final StickerFormat format;
 
   /// [emojis] String with 1-20 emoji corresponding to the sticker
   final String emojis;
@@ -39,6 +43,7 @@ class InputSticker extends TdObject {
 
     return InputSticker(
       sticker: InputFile.fromJson(json['sticker'] as Map<String, dynamic>?)!,
+      format: StickerFormat.fromJson(json['format'] as Map<String, dynamic>?)!,
       emojis: json['emojis'] as String,
       maskPosition:
           MaskPosition.fromJson(json['mask_position'] as Map<String, dynamic>?),
@@ -55,6 +60,7 @@ class InputSticker extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'sticker': sticker.toJson(),
+        'format': format.toJson(),
         'emojis': emojis,
         'mask_position': maskPosition?.toJson(),
         'keywords': keywords.map((item) => item).toList(),

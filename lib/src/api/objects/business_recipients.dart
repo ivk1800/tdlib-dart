@@ -7,6 +7,7 @@ import '../tdapi.dart';
 class BusinessRecipients extends TdObject {
   const BusinessRecipients({
     required this.chatIds,
+    required this.excludedChatIds,
     required this.selectExistingChats,
     required this.selectNewChats,
     required this.selectContacts,
@@ -16,6 +17,10 @@ class BusinessRecipients extends TdObject {
 
   /// [chatIds] Identifiers of selected private chats
   final List<int> chatIds;
+
+  /// [excludedChatIds] Identifiers of private chats that are always excluded;
+  /// for businessConnectedBot only
+  final List<int> excludedChatIds;
 
   /// [selectExistingChats] True, if all existing private chats are selected
   final bool selectExistingChats;
@@ -46,6 +51,10 @@ class BusinessRecipients extends TdObject {
           ((json['chat_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
               .toList()),
+      excludedChatIds: List<int>.from(
+          ((json['excluded_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => item)
+              .toList()),
       selectExistingChats: json['select_existing_chats'] as bool,
       selectNewChats: json['select_new_chats'] as bool,
       selectContacts: json['select_contacts'] as bool,
@@ -60,6 +69,7 @@ class BusinessRecipients extends TdObject {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'chat_ids': chatIds.map((item) => item).toList(),
+        'excluded_chat_ids': excludedChatIds.map((item) => item).toList(),
         'select_existing_chats': selectExistingChats,
         'select_new_chats': selectNewChats,
         'select_contacts': selectContacts,

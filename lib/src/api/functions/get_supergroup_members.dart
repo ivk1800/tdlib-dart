@@ -25,7 +25,7 @@ class GetSupergroupMembers extends TdFunction {
   /// [offset] Number of users to skip
   final int offset;
 
-  /// [limit] The maximum number of users be returned; up to 200
+  /// [limit] The maximum number of users to be returned; up to 200
   final int limit;
 
   static const String constructor = 'getSupergroupMembers';

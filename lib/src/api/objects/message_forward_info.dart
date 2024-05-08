@@ -24,7 +24,7 @@ class MessageForwardInfo extends TdObject {
   /// last time; may be null for other forwards or if unknown
   final ForwardSource? source;
 
-  /// [publicServiceAnnouncementType] The type of a public service announcement
+  /// [publicServiceAnnouncementType] The type of public service announcement
   /// for the forwarded message
   final String publicServiceAnnouncementType;
 

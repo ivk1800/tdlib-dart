@@ -14,13 +14,13 @@ class MessageDice extends MessageContent {
   });
 
   /// [initialState] The animated stickers with the initial dice animation; may
-  /// be null if unknown. updateMessageContent will be sent when the sticker
-  /// became known
+  /// be null if unknown. The update updateMessageContent will be sent when the
+  /// sticker became known
   final DiceStickers? initialState;
 
   /// [finalState] The animated stickers with the final dice animation; may be
-  /// null if unknown. updateMessageContent will be sent when the sticker became
-  /// known
+  /// null if unknown. The update updateMessageContent will be sent when the
+  /// sticker became known
   final DiceStickers? finalState;
 
   /// [emoji] Emoji on which the dice throw animation is based

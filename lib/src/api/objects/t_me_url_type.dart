@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a URL linking to an internal Telegram entity
+/// Describes the type of URL linking to an internal Telegram entity
 @immutable
 abstract class TMeUrlType extends TdObject {
   const TMeUrlType();

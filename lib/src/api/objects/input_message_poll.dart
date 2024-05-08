@@ -16,11 +16,15 @@ class InputMessagePoll extends InputMessageContent {
     this.isClosed,
   });
 
-  /// [question] Poll question; 1-255 characters (up to 300 characters for bots)
-  final String question;
+  /// [question] Poll question; 1-255 characters (up to 300 characters for
+  /// bots). Only custom emoji entities are allowed to be added and only by
+  /// Premium users
+  final FormattedText question;
 
-  /// [options] List of poll answer options, 2-10 strings 1-100 characters each
-  final List<String> options;
+  /// [options] List of poll answer options, 2-10 strings 1-100 characters each.
+  /// Only custom emoji entities are allowed to be added and only by Premium
+  /// users
+  final List<FormattedText> options;
 
   /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls
   /// can't be sent or forwarded to channels
@@ -49,10 +53,11 @@ class InputMessagePoll extends InputMessageContent {
     }
 
     return InputMessagePoll(
-      question: json['question'] as String,
-      options: List<String>.from(
+      question:
+          FormattedText.fromJson(json['question'] as Map<String, dynamic>?)!,
+      options: List<FormattedText>.from(
           ((json['options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
+              .map((item) => FormattedText.fromJson(item))
               .toList()),
       isAnonymous: json['is_anonymous'] as bool,
       type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
@@ -67,8 +72,8 @@ class InputMessagePoll extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'question': question,
-        'options': options.map((item) => item).toList(),
+        'question': question.toJson(),
+        'options': options.map((item) => item.toJson()).toList(),
         'is_anonymous': isAnonymous,
         'type': type.toJson(),
         'open_period': openPeriod,

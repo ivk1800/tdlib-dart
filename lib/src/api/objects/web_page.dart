@@ -32,6 +32,7 @@ class WebPage extends TdObject {
     this.voiceNote,
     required this.storySenderChatId,
     required this.storyId,
+    required this.stickers,
     required this.instantViewVersion,
   });
 
@@ -125,6 +126,9 @@ class WebPage extends TdObject {
   /// [storyId] The identifier of the previewed story; 0 if none
   final int storyId;
 
+  /// [stickers] Up to 4 stickers from the sticker set available via the link
+  final List<Sticker> stickers;
+
   /// [instantViewVersion] Version of web page instant view (currently, can be 1
   /// or 2); 0 if none
   final int instantViewVersion;
@@ -166,6 +170,10 @@ class WebPage extends TdObject {
           VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
       storySenderChatId: json['story_sender_chat_id'] as int,
       storyId: json['story_id'] as int,
+      stickers: List<Sticker>.from(
+          ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => Sticker.fromJson(item))
+              .toList()),
       instantViewVersion: json['instant_view_version'] as int,
     );
   }
@@ -201,6 +209,7 @@ class WebPage extends TdObject {
         'voice_note': voiceNote?.toJson(),
         'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
+        'stickers': stickers.map((item) => item.toJson()).toList(),
         'instant_view_version': instantViewVersion,
         '@type': constructor,
       };

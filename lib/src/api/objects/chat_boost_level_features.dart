@@ -19,6 +19,7 @@ class ChatBoostLevelFeatures extends TdObject {
     required this.canSetCustomBackground,
     required this.canSetCustomEmojiStickerSet,
     required this.canRecognizeSpeech,
+    required this.canDisableSponsoredMessages,
   });
 
   /// [level] Target chat boost level
@@ -69,6 +70,10 @@ class ChatBoostLevelFeatures extends TdObject {
   /// note and voice note messages by all users
   final bool canRecognizeSpeech;
 
+  /// [canDisableSponsoredMessages] True, if sponsored messages can be disabled
+  /// in the chat
+  final bool canDisableSponsoredMessages;
+
   static const String constructor = 'chatBoostLevelFeatures';
 
   static ChatBoostLevelFeatures? fromJson(Map<String, dynamic>? json) {
@@ -93,6 +98,8 @@ class ChatBoostLevelFeatures extends TdObject {
       canSetCustomEmojiStickerSet:
           json['can_set_custom_emoji_sticker_set'] as bool,
       canRecognizeSpeech: json['can_recognize_speech'] as bool,
+      canDisableSponsoredMessages:
+          json['can_disable_sponsored_messages'] as bool,
     );
   }
 
@@ -115,6 +122,7 @@ class ChatBoostLevelFeatures extends TdObject {
         'can_set_custom_background': canSetCustomBackground,
         'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
         'can_recognize_speech': canRecognizeSpeech,
+        'can_disable_sponsored_messages': canDisableSponsoredMessages,
         '@type': constructor,
       };
 

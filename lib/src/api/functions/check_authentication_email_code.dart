@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Checks the authentication of a email address. Works only when the current
+/// Checks the authentication of an email address. Works only when the current
 /// authorization state is authorizationStateWaitEmailCode
 /// Returns [Ok]
 @immutable

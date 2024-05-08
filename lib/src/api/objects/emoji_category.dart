@@ -2,14 +2,14 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains a list of similar emoji to search for in getStickers and
-/// searchStickers
+/// Describes an emoji category
 @immutable
 class EmojiCategory extends TdObject {
   const EmojiCategory({
     required this.name,
     required this.icon,
-    required this.emojis,
+    required this.source,
+    required this.isGreeting,
   });
 
   /// [name] Name of the category
@@ -18,8 +18,12 @@ class EmojiCategory extends TdObject {
   /// [icon] Custom emoji sticker, which represents icon of the category
   final Sticker icon;
 
-  /// [emojis] List of emojis in the category
-  final List<String> emojis;
+  /// [source] Source of stickers for the emoji category
+  final EmojiCategorySource source;
+
+  /// [isGreeting] True, if the category must be shown first when choosing a
+  /// sticker for the start page
+  final bool isGreeting;
 
   static const String constructor = 'emojiCategory';
 
@@ -31,10 +35,9 @@ class EmojiCategory extends TdObject {
     return EmojiCategory(
       name: json['name'] as String,
       icon: Sticker.fromJson(json['icon'] as Map<String, dynamic>?)!,
-      emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+      source: EmojiCategorySource.fromJson(
+          json['source'] as Map<String, dynamic>?)!,
+      isGreeting: json['is_greeting'] as bool,
     );
   }
 
@@ -45,7 +48,8 @@ class EmojiCategory extends TdObject {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
         'icon': icon.toJson(),
-        'emojis': emojis.map((item) => item).toList(),
+        'source': source.toJson(),
+        'is_greeting': isGreeting,
         '@type': constructor,
       };
 

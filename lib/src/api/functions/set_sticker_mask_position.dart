@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the mask position of a mask sticker; for bots only. The sticker
-/// must belong to a mask sticker set created by the bot
+/// Changes the mask position of a mask sticker. The sticker must belong to a
+/// mask sticker set that is owned by the current user
 /// Returns [Ok]
 @immutable
 class SetStickerMaskPosition extends TdFunction {

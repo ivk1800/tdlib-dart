@@ -16,7 +16,8 @@ class InputMessageLocation extends InputMessageContent {
   final Location location;
 
   /// [livePeriod] Period for which the location can be updated, in seconds;
-  /// must be between 60 and 86400 for a live location and 0 otherwise
+  /// must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for
+  /// permanent live location, and 0 otherwise
   final int livePeriod;
 
   /// [heading] For live locations, a direction in which the location moves, in

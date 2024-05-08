@@ -6,7 +6,7 @@ import '../tdapi.dart';
 /// progress and completion of the download will be notified through
 /// updateFile updates. If message database is used, the list of file
 /// downloads is persistent across application restarts. The downloading is
-/// independent from download using downloadFile, i.e. it continues if
+/// independent of download using downloadFile, i.e. it continues if
 /// downloadFile is canceled or is used to download a part of the file
 /// Returns [File]
 @immutable

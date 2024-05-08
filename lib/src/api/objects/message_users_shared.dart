@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class MessageUsersShared extends MessageContent {
   const MessageUsersShared({
-    required this.userIds,
+    required this.users,
     required this.buttonId,
   });
 
-  /// [userIds] Identifier of the shared users
-  final List<int> userIds;
+  /// [users] The shared users
+  final List<SharedUser> users;
 
   /// [buttonId] Identifier of the keyboard button with the request
   final int buttonId;
@@ -24,9 +24,9 @@ class MessageUsersShared extends MessageContent {
     }
 
     return MessageUsersShared(
-      userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
+      users: List<SharedUser>.from(
+          ((json['users'] as List<dynamic>?) ?? <dynamic>[])
+              .map((item) => SharedUser.fromJson(item))
               .toList()),
       buttonId: json['button_id'] as int,
     );
@@ -37,7 +37,7 @@ class MessageUsersShared extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
+        'users': users.map((item) => item.toJson()).toList(),
         'button_id': buttonId,
         '@type': constructor,
       };

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An authentication code is delivered to https://fragment.com. The user must
-/// be logged in there via a wallet owning the phone number's NFT
+/// A digit-only authentication code is delivered to https://fragment.com. The
+/// user must be logged in there via a wallet owning the phone number's NFT
 @immutable
 class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   const AuthenticationCodeTypeFragment({

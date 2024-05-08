@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Informs TDLib that a chat was opened from the list of similar chats. The
-/// method is independent from openChat and closeChat methods
+/// method is independent of openChat and closeChat methods
 /// Returns [Ok]
 @immutable
 class OpenChatSimilarChat extends TdFunction {

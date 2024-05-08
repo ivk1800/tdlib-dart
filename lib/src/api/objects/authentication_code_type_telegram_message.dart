@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An authentication code is delivered via a private Telegram message, which
-/// can be viewed from another active session
+/// A digit-only authentication code is delivered via a private Telegram
+/// message, which can be viewed from another active session
 @immutable
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   const AuthenticationCodeTypeTelegramMessage({

@@ -10,6 +10,7 @@ abstract class PremiumSource extends TdObject {
   static const String constructor = 'premiumSource';
 
   /// Inherited by:
+  /// [PremiumSourceBusinessFeature]
   /// [PremiumSourceFeature]
   /// [PremiumSourceLimitExceeded]
   /// [PremiumSourceLink]
@@ -21,6 +22,8 @@ abstract class PremiumSource extends TdObject {
     }
 
     switch (json['@type']) {
+      case PremiumSourceBusinessFeature.constructor:
+        return PremiumSourceBusinessFeature.fromJson(json);
       case PremiumSourceFeature.constructor:
         return PremiumSourceFeature.fromJson(json);
       case PremiumSourceLimitExceeded.constructor:

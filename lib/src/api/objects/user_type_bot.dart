@@ -12,6 +12,7 @@ class UserTypeBot extends UserType {
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
+    required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
   });
 
@@ -41,6 +42,10 @@ class UserTypeBot extends UserType {
   /// with every inline query to this bot
   final bool needLocation;
 
+  /// [canConnectToBusiness] True, if the bot supports connection to Telegram
+  /// Business accounts
+  final bool canConnectToBusiness;
+
   /// [canBeAddedToAttachmentMenu] True, if the bot can be added to attachment
   /// or side menu
   final bool canBeAddedToAttachmentMenu;
@@ -59,6 +64,7 @@ class UserTypeBot extends UserType {
       isInline: json['is_inline'] as bool,
       inlineQueryPlaceholder: json['inline_query_placeholder'] as String,
       needLocation: json['need_location'] as bool,
+      canConnectToBusiness: json['can_connect_to_business'] as bool,
       canBeAddedToAttachmentMenu:
           json['can_be_added_to_attachment_menu'] as bool,
     );
@@ -75,6 +81,7 @@ class UserTypeBot extends UserType {
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
+        'can_connect_to_business': canConnectToBusiness,
         'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
         '@type': constructor,
       };

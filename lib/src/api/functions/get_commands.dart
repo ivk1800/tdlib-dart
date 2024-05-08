@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of commands supported by the bot for the given user scope and
-/// language; for bots only
+/// Returns the list of commands supported by the bot for the given user scope
+/// and language; for bots only
 /// Returns [BotCommands]
 @immutable
 class GetCommands extends TdFunction {

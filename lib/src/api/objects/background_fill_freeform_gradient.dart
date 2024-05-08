@@ -9,7 +9,7 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
     required this.colors,
   });
 
-  /// [colors] A list of 3 or 4 colors of the freeform gradients in the RGB24
+  /// [colors] A list of 3 or 4 colors of the freeform gradient in the RGB24
   /// format
   final List<int> colors;
 

@@ -6,7 +6,7 @@ import '../tdapi.dart';
 /// changed only if the current user already has login email and
 /// passwordState.login_email_address_pattern is non-empty. The change will
 /// not be applied until the new login email address is confirmed with
-/// checkLoginEmailAddressCode. To use Apple ID/Google ID instead of a email
+/// checkLoginEmailAddressCode. To use Apple ID/Google ID instead of an email
 /// address, call checkLoginEmailAddressCode directly
 /// Returns [EmailAddressAuthenticationCodeInfo]
 @immutable

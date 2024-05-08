@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of a chat to which points an invite link
+/// Describes the type of chat to which points an invite link
 @immutable
 abstract class InviteLinkChatType extends TdObject {
   const InviteLinkChatType();

@@ -5,7 +5,13 @@ import '../tdapi.dart';
 /// All reactions are available in the chat
 @immutable
 class ChatAvailableReactionsAll extends ChatAvailableReactions {
-  const ChatAvailableReactionsAll();
+  const ChatAvailableReactionsAll({
+    required this.maxReactionCount,
+  });
+
+  /// [maxReactionCount] The maximum allowed number of reactions per message;
+  /// 1-11
+  final int maxReactionCount;
 
   static const String constructor = 'chatAvailableReactionsAll';
 
@@ -14,7 +20,9 @@ class ChatAvailableReactionsAll extends ChatAvailableReactions {
       return null;
     }
 
-    return const ChatAvailableReactionsAll();
+    return ChatAvailableReactionsAll(
+      maxReactionCount: json['max_reaction_count'] as int,
+    );
   }
 
   @override
@@ -22,6 +30,7 @@ class ChatAvailableReactionsAll extends ChatAvailableReactions {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'max_reaction_count': maxReactionCount,
         '@type': constructor,
       };
 

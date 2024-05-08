@@ -16,6 +16,8 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     required TResult Function(AuthenticationCodeTypeTelegramMessage value)
         telegramMessage,
     required TResult Function(AuthenticationCodeTypeSms value) sms,
+    required TResult Function(AuthenticationCodeTypeSmsWord value) smsWord,
+    required TResult Function(AuthenticationCodeTypeSmsPhrase value) smsPhrase,
     required TResult Function(AuthenticationCodeTypeCall value) call,
     required TResult Function(AuthenticationCodeTypeFlashCall value) flashCall,
     required TResult Function(AuthenticationCodeTypeMissedCall value)
@@ -32,6 +34,10 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
             .call(this as AuthenticationCodeTypeTelegramMessage);
       case AuthenticationCodeTypeSms.constructor:
         return sms.call(this as AuthenticationCodeTypeSms);
+      case AuthenticationCodeTypeSmsWord.constructor:
+        return smsWord.call(this as AuthenticationCodeTypeSmsWord);
+      case AuthenticationCodeTypeSmsPhrase.constructor:
+        return smsPhrase.call(this as AuthenticationCodeTypeSmsPhrase);
       case AuthenticationCodeTypeCall.constructor:
         return call.call(this as AuthenticationCodeTypeCall);
       case AuthenticationCodeTypeFlashCall.constructor:
@@ -53,6 +59,8 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
     TResult Function(AuthenticationCodeTypeTelegramMessage value)?
         telegramMessage,
     TResult Function(AuthenticationCodeTypeSms value)? sms,
+    TResult Function(AuthenticationCodeTypeSmsWord value)? smsWord,
+    TResult Function(AuthenticationCodeTypeSmsPhrase value)? smsPhrase,
     TResult Function(AuthenticationCodeTypeCall value)? call,
     TResult Function(AuthenticationCodeTypeFlashCall value)? flashCall,
     TResult Function(AuthenticationCodeTypeMissedCall value)? missedCall,
@@ -72,6 +80,16 @@ extension AuthenticationCodeTypeExtensions on AuthenticationCodeType {
       case AuthenticationCodeTypeSms.constructor:
         if (sms != null) {
           return sms.call(this as AuthenticationCodeTypeSms);
+        }
+        break;
+      case AuthenticationCodeTypeSmsWord.constructor:
+        if (smsWord != null) {
+          return smsWord.call(this as AuthenticationCodeTypeSmsWord);
+        }
+        break;
+      case AuthenticationCodeTypeSmsPhrase.constructor:
+        if (smsPhrase != null) {
+          return smsPhrase.call(this as AuthenticationCodeTypeSmsPhrase);
         }
         break;
       case AuthenticationCodeTypeCall.constructor:
@@ -126,6 +144,26 @@ extension AuthenticationCodeTypeSmsExtensions on AuthenticationCodeTypeSms {
   }) =>
       AuthenticationCodeTypeSms(
         length: length ?? this.length,
+      );
+}
+
+extension AuthenticationCodeTypeSmsWordExtensions
+    on AuthenticationCodeTypeSmsWord {
+  AuthenticationCodeTypeSmsWord copyWith({
+    String? firstLetter,
+  }) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: firstLetter ?? this.firstLetter,
+      );
+}
+
+extension AuthenticationCodeTypeSmsPhraseExtensions
+    on AuthenticationCodeTypeSmsPhrase {
+  AuthenticationCodeTypeSmsPhrase copyWith({
+    String? firstWord,
+  }) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: firstWord ?? this.firstWord,
       );
 }
 
@@ -1183,7 +1221,7 @@ extension ClosedVectorPathExtensions on ClosedVectorPath {
 
 extension PollOptionExtensions on PollOption {
   PollOption copyWith({
-    String? text,
+    FormattedText? text,
     int? voterCount,
     int? votePercentage,
     bool? isChosen,
@@ -1535,7 +1573,7 @@ extension WebAppExtensions on WebApp {
 extension PollExtensions on Poll {
   Poll copyWith({
     int? id,
-    String? question,
+    FormattedText? question,
     List<PollOption>? options,
     int? totalVoterCount,
     List<MessageSender>? recentVoterIds,
@@ -1695,6 +1733,7 @@ extension UserTypeBotExtensions on UserTypeBot {
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
+    bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
   }) =>
       UserTypeBot(
@@ -1706,6 +1745,7 @@ extension UserTypeBotExtensions on UserTypeBot {
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
         needLocation: needLocation ?? this.needLocation,
+        canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
         canBeAddedToAttachmentMenu:
             canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
       );
@@ -1752,6 +1792,30 @@ extension ChatLocationExtensions on ChatLocation {
       ChatLocation(
         location: location ?? this.location,
         address: address ?? this.address,
+      );
+}
+
+extension BirthdateExtensions on Birthdate {
+  Birthdate copyWith({
+    int? day,
+    int? month,
+    int? year,
+  }) =>
+      Birthdate(
+        day: day ?? this.day,
+        month: month ?? this.month,
+        year: year ?? this.year,
+      );
+}
+
+extension CloseBirthdayUserExtensions on CloseBirthdayUser {
+  CloseBirthdayUser copyWith({
+    int? userId,
+    Birthdate? birthdate,
+  }) =>
+      CloseBirthdayUser(
+        userId: userId ?? this.userId,
+        birthdate: birthdate ?? this.birthdate,
       );
 }
 
@@ -1830,6 +1894,7 @@ extension BusinessLocationExtensions on BusinessLocation {
 extension BusinessRecipientsExtensions on BusinessRecipients {
   BusinessRecipients copyWith({
     List<int>? chatIds,
+    List<int>? excludedChatIds,
     bool? selectExistingChats,
     bool? selectNewChats,
     bool? selectContacts,
@@ -1838,6 +1903,7 @@ extension BusinessRecipientsExtensions on BusinessRecipients {
   }) =>
       BusinessRecipients(
         chatIds: chatIds ?? this.chatIds,
+        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
         selectExistingChats: selectExistingChats ?? this.selectExistingChats,
         selectNewChats: selectNewChats ?? this.selectNewChats,
         selectContacts: selectContacts ?? this.selectContacts,
@@ -1888,6 +1954,32 @@ extension BusinessConnectedBotExtensions on BusinessConnectedBot {
       );
 }
 
+extension BusinessStartPageExtensions on BusinessStartPage {
+  BusinessStartPage copyWith({
+    String? title,
+    String? message,
+    Sticker? sticker,
+  }) =>
+      BusinessStartPage(
+        title: title ?? this.title,
+        message: message ?? this.message,
+        sticker: sticker ?? this.sticker,
+      );
+}
+
+extension InputBusinessStartPageExtensions on InputBusinessStartPage {
+  InputBusinessStartPage copyWith({
+    String? title,
+    String? message,
+    InputFile? sticker,
+  }) =>
+      InputBusinessStartPage(
+        title: title ?? this.title,
+        message: message ?? this.message,
+        sticker: sticker ?? this.sticker,
+      );
+}
+
 extension BusinessOpeningHoursIntervalExtensions
     on BusinessOpeningHoursInterval {
   BusinessOpeningHoursInterval copyWith({
@@ -1915,15 +2007,69 @@ extension BusinessInfoExtensions on BusinessInfo {
   BusinessInfo copyWith({
     BusinessLocation? location,
     BusinessOpeningHours? openingHours,
+    BusinessOpeningHours? localOpeningHours,
+    int? nextOpenIn,
+    int? nextCloseIn,
     BusinessGreetingMessageSettings? greetingMessageSettings,
     BusinessAwayMessageSettings? awayMessageSettings,
+    BusinessStartPage? startPage,
   }) =>
       BusinessInfo(
         location: location ?? this.location,
         openingHours: openingHours ?? this.openingHours,
+        localOpeningHours: localOpeningHours ?? this.localOpeningHours,
+        nextOpenIn: nextOpenIn ?? this.nextOpenIn,
+        nextCloseIn: nextCloseIn ?? this.nextCloseIn,
         greetingMessageSettings:
             greetingMessageSettings ?? this.greetingMessageSettings,
         awayMessageSettings: awayMessageSettings ?? this.awayMessageSettings,
+        startPage: startPage ?? this.startPage,
+      );
+}
+
+extension BusinessChatLinkExtensions on BusinessChatLink {
+  BusinessChatLink copyWith({
+    String? link,
+    FormattedText? text,
+    String? title,
+    int? viewCount,
+  }) =>
+      BusinessChatLink(
+        link: link ?? this.link,
+        text: text ?? this.text,
+        title: title ?? this.title,
+        viewCount: viewCount ?? this.viewCount,
+      );
+}
+
+extension BusinessChatLinksExtensions on BusinessChatLinks {
+  BusinessChatLinks copyWith({
+    List<BusinessChatLink>? links,
+  }) =>
+      BusinessChatLinks(
+        links: links ?? this.links,
+      );
+}
+
+extension InputBusinessChatLinkExtensions on InputBusinessChatLink {
+  InputBusinessChatLink copyWith({
+    FormattedText? text,
+    String? title,
+  }) =>
+      InputBusinessChatLink(
+        text: text ?? this.text,
+        title: title ?? this.title,
+      );
+}
+
+extension BusinessChatLinkInfoExtensions on BusinessChatLinkInfo {
+  BusinessChatLinkInfo copyWith({
+    int? chatId,
+    FormattedText? text,
+  }) =>
+      BusinessChatLinkInfo(
+        chatId: chatId ?? this.chatId,
+        text: text ?? this.text,
       );
 }
 
@@ -2670,10 +2816,13 @@ extension UserFullInfoExtensions on UserFullInfo {
     bool? hasPrivateCalls,
     bool? hasPrivateForwards,
     bool? hasRestrictedVoiceAndVideoNoteMessages,
-    bool? hasPinnedStories,
+    bool? hasPostedToProfileStories,
+    bool? hasSponsoredMessagesEnabled,
     bool? needPhoneNumberPrivacyException,
     bool? setChatBackground,
     FormattedText? bio,
+    Birthdate? birthdate,
+    int? personalChatId,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
     BusinessInfo? businessInfo,
@@ -2691,11 +2840,16 @@ extension UserFullInfoExtensions on UserFullInfo {
         hasRestrictedVoiceAndVideoNoteMessages:
             hasRestrictedVoiceAndVideoNoteMessages ??
                 this.hasRestrictedVoiceAndVideoNoteMessages,
-        hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        hasPostedToProfileStories:
+            hasPostedToProfileStories ?? this.hasPostedToProfileStories,
+        hasSponsoredMessagesEnabled:
+            hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
         needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
             this.needPhoneNumberPrivacyException,
         setChatBackground: setChatBackground ?? this.setChatBackground,
         bio: bio ?? this.bio,
+        birthdate: birthdate ?? this.birthdate,
+        personalChatId: personalChatId ?? this.personalChatId,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
         businessInfo: businessInfo ?? this.businessInfo,
@@ -3435,8 +3589,10 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
+    bool? canGetRevenueStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
+    bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPinnedStories,
     int? myBoostCount,
@@ -3466,10 +3622,14 @@ extension SupergroupFullInfoExtensions on SupergroupFullInfo {
         canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
         canSetLocation: canSetLocation ?? this.canSetLocation,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetRevenueStatistics:
+            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+        canHaveSponsoredMessages:
+            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
@@ -4224,6 +4384,7 @@ extension MessageExtensions on Message {
     MessageSchedulingState? schedulingState,
     bool? isOutgoing,
     bool? isPinned,
+    bool? isFromOffline,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeRepliedInAnotherChat,
@@ -4254,6 +4415,7 @@ extension MessageExtensions on Message {
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    int? senderBusinessBotUserId,
     int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
@@ -4269,6 +4431,7 @@ extension MessageExtensions on Message {
         schedulingState: schedulingState ?? this.schedulingState,
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isPinned: isPinned ?? this.isPinned,
+        isFromOffline: isFromOffline ?? this.isFromOffline,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeRepliedInAnotherChat:
@@ -4304,6 +4467,8 @@ extension MessageExtensions on Message {
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+        senderBusinessBotUserId:
+            senderBusinessBotUserId ?? this.senderBusinessBotUserId,
         senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
@@ -4393,6 +4558,26 @@ extension MessageCalendarExtensions on MessageCalendar {
       MessageCalendar(
         totalCount: totalCount ?? this.totalCount,
         days: days ?? this.days,
+      );
+}
+
+extension BusinessMessageExtensions on BusinessMessage {
+  BusinessMessage copyWith({
+    Message? message,
+    Message? replyToMessage,
+  }) =>
+      BusinessMessage(
+        message: message ?? this.message,
+        replyToMessage: replyToMessage ?? this.replyToMessage,
+      );
+}
+
+extension BusinessMessagesExtensions on BusinessMessages {
+  BusinessMessages copyWith({
+    List<BusinessMessage>? messages,
+  }) =>
+      BusinessMessages(
+        messages: messages ?? this.messages,
       );
 }
 
@@ -4508,135 +4693,14 @@ extension MessageSourceExtensions on MessageSource {
   }
 }
 
-extension MessageSponsorTypeExtensions on MessageSponsorType {
-  TResult map<TResult extends Object?>({
-    required TResult Function(MessageSponsorTypeBot value) bot,
-    required TResult Function(MessageSponsorTypeWebApp value) webApp,
-    required TResult Function(MessageSponsorTypePublicChannel value)
-        publicChannel,
-    required TResult Function(MessageSponsorTypePrivateChannel value)
-        privateChannel,
-    required TResult Function(MessageSponsorTypeWebsite value) website,
-  }) {
-    switch (getConstructor()) {
-      case MessageSponsorTypeBot.constructor:
-        return bot.call(this as MessageSponsorTypeBot);
-      case MessageSponsorTypeWebApp.constructor:
-        return webApp.call(this as MessageSponsorTypeWebApp);
-      case MessageSponsorTypePublicChannel.constructor:
-        return publicChannel.call(this as MessageSponsorTypePublicChannel);
-      case MessageSponsorTypePrivateChannel.constructor:
-        return privateChannel.call(this as MessageSponsorTypePrivateChannel);
-      case MessageSponsorTypeWebsite.constructor:
-        return website.call(this as MessageSponsorTypeWebsite);
-    }
-    throw StateError('not handled type Generator');
-  }
-
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(MessageSponsorTypeBot value)? bot,
-    TResult Function(MessageSponsorTypeWebApp value)? webApp,
-    TResult Function(MessageSponsorTypePublicChannel value)? publicChannel,
-    TResult Function(MessageSponsorTypePrivateChannel value)? privateChannel,
-    TResult Function(MessageSponsorTypeWebsite value)? website,
-    required TResult Function() orElse,
-  }) {
-    switch (getConstructor()) {
-      case MessageSponsorTypeBot.constructor:
-        if (bot != null) {
-          return bot.call(this as MessageSponsorTypeBot);
-        }
-        break;
-      case MessageSponsorTypeWebApp.constructor:
-        if (webApp != null) {
-          return webApp.call(this as MessageSponsorTypeWebApp);
-        }
-        break;
-      case MessageSponsorTypePublicChannel.constructor:
-        if (publicChannel != null) {
-          return publicChannel.call(this as MessageSponsorTypePublicChannel);
-        }
-        break;
-      case MessageSponsorTypePrivateChannel.constructor:
-        if (privateChannel != null) {
-          return privateChannel.call(this as MessageSponsorTypePrivateChannel);
-        }
-        break;
-      case MessageSponsorTypeWebsite.constructor:
-        if (website != null) {
-          return website.call(this as MessageSponsorTypeWebsite);
-        }
-        break;
-    }
-    return orElse.call();
-  }
-}
-
-extension MessageSponsorTypeBotExtensions on MessageSponsorTypeBot {
-  MessageSponsorTypeBot copyWith({
-    int? botUserId,
-    InternalLinkType? link,
-  }) =>
-      MessageSponsorTypeBot(
-        botUserId: botUserId ?? this.botUserId,
-        link: link ?? this.link,
-      );
-}
-
-extension MessageSponsorTypeWebAppExtensions on MessageSponsorTypeWebApp {
-  MessageSponsorTypeWebApp copyWith({
-    String? webAppTitle,
-    InternalLinkType? link,
-  }) =>
-      MessageSponsorTypeWebApp(
-        webAppTitle: webAppTitle ?? this.webAppTitle,
-        link: link ?? this.link,
-      );
-}
-
-extension MessageSponsorTypePublicChannelExtensions
-    on MessageSponsorTypePublicChannel {
-  MessageSponsorTypePublicChannel copyWith({
-    int? chatId,
-    InternalLinkType? link,
-  }) =>
-      MessageSponsorTypePublicChannel(
-        chatId: chatId ?? this.chatId,
-        link: link ?? this.link,
-      );
-}
-
-extension MessageSponsorTypePrivateChannelExtensions
-    on MessageSponsorTypePrivateChannel {
-  MessageSponsorTypePrivateChannel copyWith({
-    String? title,
-    String? inviteLink,
-  }) =>
-      MessageSponsorTypePrivateChannel(
-        title: title ?? this.title,
-        inviteLink: inviteLink ?? this.inviteLink,
-      );
-}
-
-extension MessageSponsorTypeWebsiteExtensions on MessageSponsorTypeWebsite {
-  MessageSponsorTypeWebsite copyWith({
-    String? url,
-    String? name,
-  }) =>
-      MessageSponsorTypeWebsite(
-        url: url ?? this.url,
-        name: name ?? this.name,
-      );
-}
-
 extension MessageSponsorExtensions on MessageSponsor {
   MessageSponsor copyWith({
-    MessageSponsorType? type,
-    ChatPhotoInfo? photo,
+    String? url,
+    Photo? photo,
     String? info,
   }) =>
       MessageSponsor(
-        type: type ?? this.type,
+        url: url ?? this.url,
         photo: photo ?? this.photo,
         info: info ?? this.info,
       );
@@ -4646,17 +4710,26 @@ extension SponsoredMessageExtensions on SponsoredMessage {
   SponsoredMessage copyWith({
     int? messageId,
     bool? isRecommended,
+    bool? canBeReported,
     MessageContent? content,
     MessageSponsor? sponsor,
+    String? title,
     String? buttonText,
+    int? accentColorId,
+    int? backgroundCustomEmojiId,
     String? additionalInfo,
   }) =>
       SponsoredMessage(
         messageId: messageId ?? this.messageId,
         isRecommended: isRecommended ?? this.isRecommended,
+        canBeReported: canBeReported ?? this.canBeReported,
         content: content ?? this.content,
         sponsor: sponsor ?? this.sponsor,
+        title: title ?? this.title,
         buttonText: buttonText ?? this.buttonText,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
         additionalInfo: additionalInfo ?? this.additionalInfo,
       );
 }
@@ -4669,6 +4742,108 @@ extension SponsoredMessagesExtensions on SponsoredMessages {
       SponsoredMessages(
         messages: messages ?? this.messages,
         messagesBetween: messagesBetween ?? this.messagesBetween,
+      );
+}
+
+extension ReportChatSponsoredMessageOptionExtensions
+    on ReportChatSponsoredMessageOption {
+  ReportChatSponsoredMessageOption copyWith({
+    String? id,
+    String? text,
+  }) =>
+      ReportChatSponsoredMessageOption(
+        id: id ?? this.id,
+        text: text ?? this.text,
+      );
+}
+
+extension ReportChatSponsoredMessageResultExtensions
+    on ReportChatSponsoredMessageResult {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReportChatSponsoredMessageResultOk value) ok,
+    required TResult Function(ReportChatSponsoredMessageResultFailed value)
+        failed,
+    required TResult Function(
+            ReportChatSponsoredMessageResultOptionRequired value)
+        optionRequired,
+    required TResult Function(ReportChatSponsoredMessageResultAdsHidden value)
+        adsHidden,
+    required TResult Function(
+            ReportChatSponsoredMessageResultPremiumRequired value)
+        premiumRequired,
+  }) {
+    switch (getConstructor()) {
+      case ReportChatSponsoredMessageResultOk.constructor:
+        return ok.call(this as ReportChatSponsoredMessageResultOk);
+      case ReportChatSponsoredMessageResultFailed.constructor:
+        return failed.call(this as ReportChatSponsoredMessageResultFailed);
+      case ReportChatSponsoredMessageResultOptionRequired.constructor:
+        return optionRequired
+            .call(this as ReportChatSponsoredMessageResultOptionRequired);
+      case ReportChatSponsoredMessageResultAdsHidden.constructor:
+        return adsHidden
+            .call(this as ReportChatSponsoredMessageResultAdsHidden);
+      case ReportChatSponsoredMessageResultPremiumRequired.constructor:
+        return premiumRequired
+            .call(this as ReportChatSponsoredMessageResultPremiumRequired);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReportChatSponsoredMessageResultOk value)? ok,
+    TResult Function(ReportChatSponsoredMessageResultFailed value)? failed,
+    TResult Function(ReportChatSponsoredMessageResultOptionRequired value)?
+        optionRequired,
+    TResult Function(ReportChatSponsoredMessageResultAdsHidden value)?
+        adsHidden,
+    TResult Function(ReportChatSponsoredMessageResultPremiumRequired value)?
+        premiumRequired,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ReportChatSponsoredMessageResultOk.constructor:
+        if (ok != null) {
+          return ok.call(this as ReportChatSponsoredMessageResultOk);
+        }
+        break;
+      case ReportChatSponsoredMessageResultFailed.constructor:
+        if (failed != null) {
+          return failed.call(this as ReportChatSponsoredMessageResultFailed);
+        }
+        break;
+      case ReportChatSponsoredMessageResultOptionRequired.constructor:
+        if (optionRequired != null) {
+          return optionRequired
+              .call(this as ReportChatSponsoredMessageResultOptionRequired);
+        }
+        break;
+      case ReportChatSponsoredMessageResultAdsHidden.constructor:
+        if (adsHidden != null) {
+          return adsHidden
+              .call(this as ReportChatSponsoredMessageResultAdsHidden);
+        }
+        break;
+      case ReportChatSponsoredMessageResultPremiumRequired.constructor:
+        if (premiumRequired != null) {
+          return premiumRequired
+              .call(this as ReportChatSponsoredMessageResultPremiumRequired);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ReportChatSponsoredMessageResultOptionRequiredExtensions
+    on ReportChatSponsoredMessageResultOptionRequired {
+  ReportChatSponsoredMessageResultOptionRequired copyWith({
+    String? title,
+    List<ReportChatSponsoredMessageOption>? options,
+  }) =>
+      ReportChatSponsoredMessageResultOptionRequired(
+        title: title ?? this.title,
+        options: options ?? this.options,
       );
 }
 
@@ -4837,6 +5012,68 @@ extension ScopeNotificationSettingsExtensions on ScopeNotificationSettings {
             this.disablePinnedMessageNotifications,
         disableMentionNotifications:
             disableMentionNotifications ?? this.disableMentionNotifications,
+      );
+}
+
+extension ReactionNotificationSourceExtensions on ReactionNotificationSource {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReactionNotificationSourceNone value) none,
+    required TResult Function(ReactionNotificationSourceContacts value)
+        contacts,
+    required TResult Function(ReactionNotificationSourceAll value) all,
+  }) {
+    switch (getConstructor()) {
+      case ReactionNotificationSourceNone.constructor:
+        return none.call(this as ReactionNotificationSourceNone);
+      case ReactionNotificationSourceContacts.constructor:
+        return contacts.call(this as ReactionNotificationSourceContacts);
+      case ReactionNotificationSourceAll.constructor:
+        return all.call(this as ReactionNotificationSourceAll);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReactionNotificationSourceNone value)? none,
+    TResult Function(ReactionNotificationSourceContacts value)? contacts,
+    TResult Function(ReactionNotificationSourceAll value)? all,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ReactionNotificationSourceNone.constructor:
+        if (none != null) {
+          return none.call(this as ReactionNotificationSourceNone);
+        }
+        break;
+      case ReactionNotificationSourceContacts.constructor:
+        if (contacts != null) {
+          return contacts.call(this as ReactionNotificationSourceContacts);
+        }
+        break;
+      case ReactionNotificationSourceAll.constructor:
+        if (all != null) {
+          return all.call(this as ReactionNotificationSourceAll);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ReactionNotificationSettingsExtensions
+    on ReactionNotificationSettings {
+  ReactionNotificationSettings copyWith({
+    ReactionNotificationSource? messageReactionSource,
+    ReactionNotificationSource? storyReactionSource,
+    int? soundId,
+    bool? showPreview,
+  }) =>
+      ReactionNotificationSettings(
+        messageReactionSource:
+            messageReactionSource ?? this.messageReactionSource,
+        storyReactionSource: storyReactionSource ?? this.storyReactionSource,
+        soundId: soundId ?? this.soundId,
+        showPreview: showPreview ?? this.showPreview,
       );
 }
 
@@ -5246,12 +5483,23 @@ extension ChatAvailableReactionsExtensions on ChatAvailableReactions {
   }
 }
 
+extension ChatAvailableReactionsAllExtensions on ChatAvailableReactionsAll {
+  ChatAvailableReactionsAll copyWith({
+    int? maxReactionCount,
+  }) =>
+      ChatAvailableReactionsAll(
+        maxReactionCount: maxReactionCount ?? this.maxReactionCount,
+      );
+}
+
 extension ChatAvailableReactionsSomeExtensions on ChatAvailableReactionsSome {
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,
+    int? maxReactionCount,
   }) =>
       ChatAvailableReactionsSome(
         reactions: reactions ?? this.reactions,
+        maxReactionCount: maxReactionCount ?? this.maxReactionCount,
       );
 }
 
@@ -5274,6 +5522,21 @@ extension SavedMessagesTagsExtensions on SavedMessagesTags {
   }) =>
       SavedMessagesTags(
         tags: tags ?? this.tags,
+      );
+}
+
+extension BusinessBotManageBarExtensions on BusinessBotManageBar {
+  BusinessBotManageBar copyWith({
+    int? botUserId,
+    String? manageUrl,
+    bool? isBotPaused,
+    bool? canBotReply,
+  }) =>
+      BusinessBotManageBar(
+        botUserId: botUserId ?? this.botUserId,
+        manageUrl: manageUrl ?? this.manageUrl,
+        isBotPaused: isBotPaused ?? this.isBotPaused,
+        canBotReply: canBotReply ?? this.canBotReply,
       );
 }
 
@@ -5327,6 +5590,7 @@ extension ChatExtensions on Chat {
     ChatBackground? background,
     String? themeName,
     ChatActionBar? actionBar,
+    BusinessBotManageBar? businessBotManageBar,
     VideoChat? videoChat,
     ChatJoinRequestsInfo? pendingJoinRequests,
     int? replyMarkupMessageId,
@@ -5377,6 +5641,7 @@ extension ChatExtensions on Chat {
         background: background ?? this.background,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar ?? this.actionBar,
+        businessBotManageBar: businessBotManageBar ?? this.businessBotManageBar,
         videoChat: videoChat ?? this.videoChat,
         pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
         replyMarkupMessageId: replyMarkupMessageId ?? this.replyMarkupMessageId,
@@ -5393,6 +5658,41 @@ extension ChatsExtensions on Chats {
       Chats(
         totalCount: totalCount ?? this.totalCount,
         chatIds: chatIds ?? this.chatIds,
+      );
+}
+
+extension FailedToAddMemberExtensions on FailedToAddMember {
+  FailedToAddMember copyWith({
+    int? userId,
+    bool? premiumWouldAllowInvite,
+    bool? premiumRequiredToSendMessages,
+  }) =>
+      FailedToAddMember(
+        userId: userId ?? this.userId,
+        premiumWouldAllowInvite:
+            premiumWouldAllowInvite ?? this.premiumWouldAllowInvite,
+        premiumRequiredToSendMessages:
+            premiumRequiredToSendMessages ?? this.premiumRequiredToSendMessages,
+      );
+}
+
+extension FailedToAddMembersExtensions on FailedToAddMembers {
+  FailedToAddMembers copyWith({
+    List<FailedToAddMember>? failedToAddMembers,
+  }) =>
+      FailedToAddMembers(
+        failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
+      );
+}
+
+extension CreatedBasicGroupChatExtensions on CreatedBasicGroupChat {
+  CreatedBasicGroupChat copyWith({
+    int? chatId,
+    FailedToAddMembers? failedToAddMembers,
+  }) =>
+      CreatedBasicGroupChat(
+        chatId: chatId ?? this.chatId,
+        failedToAddMembers: failedToAddMembers ?? this.failedToAddMembers,
       );
 }
 
@@ -5680,6 +5980,9 @@ extension KeyboardButtonTypeRequestUsersExtensions
     bool? restrictUserIsPremium,
     bool? userIsPremium,
     int? maxQuantity,
+    bool? requestName,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestUsers(
         id: id ?? this.id,
@@ -5689,6 +5992,9 @@ extension KeyboardButtonTypeRequestUsersExtensions
             restrictUserIsPremium ?? this.restrictUserIsPremium,
         userIsPremium: userIsPremium ?? this.userIsPremium,
         maxQuantity: maxQuantity ?? this.maxQuantity,
+        requestName: requestName ?? this.requestName,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 }
 
@@ -5705,6 +6011,9 @@ extension KeyboardButtonTypeRequestChatExtensions
     ChatAdministratorRights? userAdministratorRights,
     ChatAdministratorRights? botAdministratorRights,
     bool? botIsMember,
+    bool? requestTitle,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestChat(
         id: id ?? this.id,
@@ -5720,6 +6029,9 @@ extension KeyboardButtonTypeRequestChatExtensions
         botAdministratorRights:
             botAdministratorRights ?? this.botAdministratorRights,
         botIsMember: botIsMember ?? this.botIsMember,
+        requestTitle: requestTitle ?? this.requestTitle,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 }
 
@@ -6321,6 +6633,38 @@ extension LinkPreviewOptionsExtensions on LinkPreviewOptions {
         forceSmallMedia: forceSmallMedia ?? this.forceSmallMedia,
         forceLargeMedia: forceLargeMedia ?? this.forceLargeMedia,
         showAboveText: showAboveText ?? this.showAboveText,
+      );
+}
+
+extension SharedUserExtensions on SharedUser {
+  SharedUser copyWith({
+    int? userId,
+    String? firstName,
+    String? lastName,
+    String? username,
+    Photo? photo,
+  }) =>
+      SharedUser(
+        userId: userId ?? this.userId,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        username: username ?? this.username,
+        photo: photo ?? this.photo,
+      );
+}
+
+extension SharedChatExtensions on SharedChat {
+  SharedChat copyWith({
+    int? chatId,
+    String? title,
+    String? username,
+    Photo? photo,
+  }) =>
+      SharedChat(
+        chatId: chatId ?? this.chatId,
+        title: title ?? this.title,
+        username: username ?? this.username,
+        photo: photo ?? this.photo,
       );
 }
 
@@ -7473,6 +7817,7 @@ extension WebPageExtensions on WebPage {
     VoiceNote? voiceNote,
     int? storySenderChatId,
     int? storyId,
+    List<Sticker>? stickers,
     int? instantViewVersion,
   }) =>
       WebPage(
@@ -7502,6 +7847,7 @@ extension WebPageExtensions on WebPage {
         voiceNote: voiceNote ?? this.voiceNote,
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
+        stickers: stickers ?? this.stickers,
         instantViewVersion: instantViewVersion ?? this.instantViewVersion,
       );
 }
@@ -7544,6 +7890,79 @@ extension PhoneNumberInfoExtensions on PhoneNumberInfo {
         countryCallingCode: countryCallingCode ?? this.countryCallingCode,
         formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
         isAnonymous: isAnonymous ?? this.isAnonymous,
+      );
+}
+
+extension CollectibleItemTypeExtensions on CollectibleItemType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(CollectibleItemTypeUsername value) username,
+    required TResult Function(CollectibleItemTypePhoneNumber value) phoneNumber,
+  }) {
+    switch (getConstructor()) {
+      case CollectibleItemTypeUsername.constructor:
+        return username.call(this as CollectibleItemTypeUsername);
+      case CollectibleItemTypePhoneNumber.constructor:
+        return phoneNumber.call(this as CollectibleItemTypePhoneNumber);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CollectibleItemTypeUsername value)? username,
+    TResult Function(CollectibleItemTypePhoneNumber value)? phoneNumber,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case CollectibleItemTypeUsername.constructor:
+        if (username != null) {
+          return username.call(this as CollectibleItemTypeUsername);
+        }
+        break;
+      case CollectibleItemTypePhoneNumber.constructor:
+        if (phoneNumber != null) {
+          return phoneNumber.call(this as CollectibleItemTypePhoneNumber);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension CollectibleItemTypeUsernameExtensions on CollectibleItemTypeUsername {
+  CollectibleItemTypeUsername copyWith({
+    String? username,
+  }) =>
+      CollectibleItemTypeUsername(
+        username: username ?? this.username,
+      );
+}
+
+extension CollectibleItemTypePhoneNumberExtensions
+    on CollectibleItemTypePhoneNumber {
+  CollectibleItemTypePhoneNumber copyWith({
+    String? phoneNumber,
+  }) =>
+      CollectibleItemTypePhoneNumber(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+      );
+}
+
+extension CollectibleItemInfoExtensions on CollectibleItemInfo {
+  CollectibleItemInfo copyWith({
+    int? purchaseDate,
+    String? currency,
+    int? amount,
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
+    String? url,
+  }) =>
+      CollectibleItemInfo(
+        purchaseDate: purchaseDate ?? this.purchaseDate,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+        url: url ?? this.url,
       );
 }
 
@@ -10871,22 +11290,22 @@ extension MessagePremiumGiveawayWinnersExtensions
 
 extension MessageUsersSharedExtensions on MessageUsersShared {
   MessageUsersShared copyWith({
-    List<int>? userIds,
+    List<SharedUser>? users,
     int? buttonId,
   }) =>
       MessageUsersShared(
-        userIds: userIds ?? this.userIds,
+        users: users ?? this.users,
         buttonId: buttonId ?? this.buttonId,
       );
 }
 
 extension MessageChatSharedExtensions on MessageChatShared {
   MessageChatShared copyWith({
-    int? chatId,
+    SharedChat? chat,
     int? buttonId,
   }) =>
       MessageChatShared(
-        chatId: chatId ?? this.chatId,
+        chat: chat ?? this.chat,
         buttonId: buttonId ?? this.buttonId,
       );
 }
@@ -11796,8 +12215,8 @@ extension InputMessageInvoiceExtensions on InputMessageInvoice {
 
 extension InputMessagePollExtensions on InputMessagePoll {
   InputMessagePoll copyWith({
-    String? question,
-    List<String>? options,
+    FormattedText? question,
+    List<FormattedText>? options,
     bool? isAnonymous,
     PollType? type,
     int? openPeriod,
@@ -12398,10 +12817,10 @@ extension StickerSetExtensions on StickerSet {
     String? name,
     Thumbnail? thumbnail,
     List<ClosedVectorPath>? thumbnailOutline,
+    bool? isOwned,
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     bool? isAllowedAsChatEmojiStatus,
@@ -12415,10 +12834,10 @@ extension StickerSetExtensions on StickerSet {
         name: name ?? this.name,
         thumbnail: thumbnail ?? this.thumbnail,
         thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isOwned: isOwned ?? this.isOwned,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         isAllowedAsChatEmojiStatus:
@@ -12436,10 +12855,10 @@ extension StickerSetInfoExtensions on StickerSetInfo {
     String? name,
     Thumbnail? thumbnail,
     List<ClosedVectorPath>? thumbnailOutline,
+    bool? isOwned,
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     bool? isAllowedAsChatEmojiStatus,
@@ -12453,10 +12872,10 @@ extension StickerSetInfoExtensions on StickerSetInfo {
         name: name ?? this.name,
         thumbnail: thumbnail ?? this.thumbnail,
         thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isOwned: isOwned ?? this.isOwned,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         isAllowedAsChatEmojiStatus:
@@ -12491,16 +12910,62 @@ extension TrendingStickerSetsExtensions on TrendingStickerSets {
       );
 }
 
+extension EmojiCategorySourceExtensions on EmojiCategorySource {
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmojiCategorySourceSearch value) search,
+    required TResult Function(EmojiCategorySourcePremium value) premium,
+  }) {
+    switch (getConstructor()) {
+      case EmojiCategorySourceSearch.constructor:
+        return search.call(this as EmojiCategorySourceSearch);
+      case EmojiCategorySourcePremium.constructor:
+        return premium.call(this as EmojiCategorySourcePremium);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmojiCategorySourceSearch value)? search,
+    TResult Function(EmojiCategorySourcePremium value)? premium,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case EmojiCategorySourceSearch.constructor:
+        if (search != null) {
+          return search.call(this as EmojiCategorySourceSearch);
+        }
+        break;
+      case EmojiCategorySourcePremium.constructor:
+        if (premium != null) {
+          return premium.call(this as EmojiCategorySourcePremium);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension EmojiCategorySourceSearchExtensions on EmojiCategorySourceSearch {
+  EmojiCategorySourceSearch copyWith({
+    List<String>? emojis,
+  }) =>
+      EmojiCategorySourceSearch(
+        emojis: emojis ?? this.emojis,
+      );
+}
+
 extension EmojiCategoryExtensions on EmojiCategory {
   EmojiCategory copyWith({
     String? name,
     Sticker? icon,
-    List<String>? emojis,
+    EmojiCategorySource? source,
+    bool? isGreeting,
   }) =>
       EmojiCategory(
         name: name ?? this.name,
         icon: icon ?? this.icon,
-        emojis: emojis ?? this.emojis,
+        source: source ?? this.source,
+        isGreeting: isGreeting ?? this.isGreeting,
       );
 }
 
@@ -12516,12 +12981,16 @@ extension EmojiCategoriesExtensions on EmojiCategories {
 extension EmojiCategoryTypeExtensions on EmojiCategoryType {
   TResult map<TResult extends Object?>({
     required TResult Function(EmojiCategoryTypeDefault value) $default,
+    required TResult Function(EmojiCategoryTypeRegularStickers value)
+        regularStickers,
     required TResult Function(EmojiCategoryTypeEmojiStatus value) emojiStatus,
     required TResult Function(EmojiCategoryTypeChatPhoto value) chatPhoto,
   }) {
     switch (getConstructor()) {
       case EmojiCategoryTypeDefault.constructor:
         return $default.call(this as EmojiCategoryTypeDefault);
+      case EmojiCategoryTypeRegularStickers.constructor:
+        return regularStickers.call(this as EmojiCategoryTypeRegularStickers);
       case EmojiCategoryTypeEmojiStatus.constructor:
         return emojiStatus.call(this as EmojiCategoryTypeEmojiStatus);
       case EmojiCategoryTypeChatPhoto.constructor:
@@ -12532,6 +13001,7 @@ extension EmojiCategoryTypeExtensions on EmojiCategoryType {
 
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmojiCategoryTypeDefault value)? $default,
+    TResult Function(EmojiCategoryTypeRegularStickers value)? regularStickers,
     TResult Function(EmojiCategoryTypeEmojiStatus value)? emojiStatus,
     TResult Function(EmojiCategoryTypeChatPhoto value)? chatPhoto,
     required TResult Function() orElse,
@@ -12540,6 +13010,11 @@ extension EmojiCategoryTypeExtensions on EmojiCategoryType {
       case EmojiCategoryTypeDefault.constructor:
         if ($default != null) {
           return $default.call(this as EmojiCategoryTypeDefault);
+        }
+        break;
+      case EmojiCategoryTypeRegularStickers.constructor:
+        if (regularStickers != null) {
+          return regularStickers.call(this as EmojiCategoryTypeRegularStickers);
         }
         break;
       case EmojiCategoryTypeEmojiStatus.constructor:
@@ -13104,13 +13579,13 @@ extension StoryExtensions on Story {
     bool? isBeingSent,
     bool? isBeingEdited,
     bool? isEdited,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? isVisibleOnlyForSelf,
     bool? canBeDeleted,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeReplied,
-    bool? canToggleIsPinned,
+    bool? canToggleIsPostedToChatPage,
     bool? canGetStatistics,
     bool? canGetInteractions,
     bool? hasExpiredViewers,
@@ -13130,13 +13605,14 @@ extension StoryExtensions on Story {
         isBeingSent: isBeingSent ?? this.isBeingSent,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,
         isEdited: isEdited ?? this.isEdited,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
         canBeDeleted: canBeDeleted ?? this.canBeDeleted,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeReplied: canBeReplied ?? this.canBeReplied,
-        canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
+        canToggleIsPostedToChatPage:
+            canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetInteractions: canGetInteractions ?? this.canGetInteractions,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
@@ -13154,10 +13630,12 @@ extension StoriesExtensions on Stories {
   Stories copyWith({
     int? totalCount,
     List<Story>? stories,
+    List<int>? pinnedStoryIds,
   }) =>
       Stories(
         totalCount: totalCount ?? this.totalCount,
         stories: stories ?? this.stories,
+        pinnedStoryIds: pinnedStoryIds ?? this.pinnedStoryIds,
       );
 }
 
@@ -13328,6 +13806,15 @@ extension QuickReplyMessageExtensions on QuickReplyMessage {
       );
 }
 
+extension QuickReplyMessagesExtensions on QuickReplyMessages {
+  QuickReplyMessages copyWith({
+    List<QuickReplyMessage>? messages,
+  }) =>
+      QuickReplyMessages(
+        messages: messages ?? this.messages,
+      );
+}
+
 extension QuickReplyShortcutExtensions on QuickReplyShortcut {
   QuickReplyShortcut copyWith({
     int? id,
@@ -13424,6 +13911,7 @@ extension ChatBoostLevelFeaturesExtensions on ChatBoostLevelFeatures {
     bool? canSetCustomBackground,
     bool? canSetCustomEmojiStickerSet,
     bool? canRecognizeSpeech,
+    bool? canDisableSponsoredMessages,
   }) =>
       ChatBoostLevelFeatures(
         level: level ?? this.level,
@@ -13447,6 +13935,8 @@ extension ChatBoostLevelFeaturesExtensions on ChatBoostLevelFeatures {
         canSetCustomEmojiStickerSet:
             canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
         canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
+        canDisableSponsoredMessages:
+            canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,
       );
 }
 
@@ -13460,6 +13950,7 @@ extension ChatBoostFeaturesExtensions on ChatBoostFeatures {
     int? minCustomBackgroundBoostLevel,
     int? minCustomEmojiStickerSetBoostLevel,
     int? minSpeechRecognitionBoostLevel,
+    int? minSponsoredMessageDisableBoostLevel,
   }) =>
       ChatBoostFeatures(
         features: features ?? this.features,
@@ -13480,6 +13971,9 @@ extension ChatBoostFeaturesExtensions on ChatBoostFeatures {
                 this.minCustomEmojiStickerSetBoostLevel,
         minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
             this.minSpeechRecognitionBoostLevel,
+        minSponsoredMessageDisableBoostLevel:
+            minSponsoredMessageDisableBoostLevel ??
+                this.minSponsoredMessageDisableBoostLevel,
       );
 }
 
@@ -13931,6 +14425,7 @@ extension CallStateReadyExtensions on CallStateReady {
     String? encryptionKey,
     List<String>? emojis,
     bool? allowP2p,
+    String? customParameters,
   }) =>
       CallStateReady(
         protocol: protocol ?? this.protocol,
@@ -13939,6 +14434,7 @@ extension CallStateReadyExtensions on CallStateReady {
         encryptionKey: encryptionKey ?? this.encryptionKey,
         emojis: emojis ?? this.emojis,
         allowP2p: allowP2p ?? this.allowP2p,
+        customParameters: customParameters ?? this.customParameters,
       );
 }
 
@@ -14351,6 +14847,7 @@ extension PhoneNumberAuthenticationSettingsExtensions
     bool? allowFlashCall,
     bool? allowMissedCall,
     bool? isCurrentPhoneNumber,
+    bool? hasUnknownPhoneNumber,
     bool? allowSmsRetrieverApi,
     FirebaseAuthenticationSettings? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
@@ -14359,6 +14856,8 @@ extension PhoneNumberAuthenticationSettingsExtensions
         allowFlashCall: allowFlashCall ?? this.allowFlashCall,
         allowMissedCall: allowMissedCall ?? this.allowMissedCall,
         isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
+        hasUnknownPhoneNumber:
+            hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
         allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
         firebaseAuthenticationSettings: firebaseAuthenticationSettings ??
             this.firebaseAuthenticationSettings,
@@ -14643,6 +15142,25 @@ extension SpeechRecognitionResultErrorExtensions
   }) =>
       SpeechRecognitionResultError(
         error: error ?? this.error,
+      );
+}
+
+extension BusinessConnectionExtensions on BusinessConnection {
+  BusinessConnection copyWith({
+    String? id,
+    int? userId,
+    int? userChatId,
+    int? date,
+    bool? canReply,
+    bool? isEnabled,
+  }) =>
+      BusinessConnection(
+        id: id ?? this.id,
+        userId: userId ?? this.userId,
+        userChatId: userChatId ?? this.userChatId,
+        date: date ?? this.date,
+        canReply: canReply ?? this.canReply,
+        isEnabled: isEnabled ?? this.isEnabled,
       );
 }
 
@@ -17347,6 +17865,7 @@ extension PremiumFeatureExtensions on PremiumFeature {
     required TResult Function(PremiumFeatureMessagePrivacy value)
         messagePrivacy,
     required TResult Function(PremiumFeatureLastSeenTimes value) lastSeenTimes,
+    required TResult Function(PremiumFeatureBusiness value) business,
   }) {
     switch (getConstructor()) {
       case PremiumFeatureIncreasedLimits.constructor:
@@ -17398,6 +17917,8 @@ extension PremiumFeatureExtensions on PremiumFeature {
         return messagePrivacy.call(this as PremiumFeatureMessagePrivacy);
       case PremiumFeatureLastSeenTimes.constructor:
         return lastSeenTimes.call(this as PremiumFeatureLastSeenTimes);
+      case PremiumFeatureBusiness.constructor:
+        return business.call(this as PremiumFeatureBusiness);
     }
     throw StateError('not handled type Generator');
   }
@@ -17430,6 +17951,7 @@ extension PremiumFeatureExtensions on PremiumFeature {
     TResult Function(PremiumFeatureSavedMessagesTags value)? savedMessagesTags,
     TResult Function(PremiumFeatureMessagePrivacy value)? messagePrivacy,
     TResult Function(PremiumFeatureLastSeenTimes value)? lastSeenTimes,
+    TResult Function(PremiumFeatureBusiness value)? business,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -17548,6 +18070,130 @@ extension PremiumFeatureExtensions on PremiumFeature {
       case PremiumFeatureLastSeenTimes.constructor:
         if (lastSeenTimes != null) {
           return lastSeenTimes.call(this as PremiumFeatureLastSeenTimes);
+        }
+        break;
+      case PremiumFeatureBusiness.constructor:
+        if (business != null) {
+          return business.call(this as PremiumFeatureBusiness);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension BusinessFeatureExtensions on BusinessFeature {
+  TResult map<TResult extends Object?>({
+    required TResult Function(BusinessFeatureLocation value) location,
+    required TResult Function(BusinessFeatureOpeningHours value) openingHours,
+    required TResult Function(BusinessFeatureQuickReplies value) quickReplies,
+    required TResult Function(BusinessFeatureGreetingMessage value)
+        greetingMessage,
+    required TResult Function(BusinessFeatureAwayMessage value) awayMessage,
+    required TResult Function(BusinessFeatureAccountLinks value) accountLinks,
+    required TResult Function(BusinessFeatureStartPage value) startPage,
+    required TResult Function(BusinessFeatureBots value) bots,
+    required TResult Function(BusinessFeatureEmojiStatus value) emojiStatus,
+    required TResult Function(BusinessFeatureChatFolderTags value)
+        chatFolderTags,
+    required TResult Function(BusinessFeatureUpgradedStories value)
+        upgradedStories,
+  }) {
+    switch (getConstructor()) {
+      case BusinessFeatureLocation.constructor:
+        return location.call(this as BusinessFeatureLocation);
+      case BusinessFeatureOpeningHours.constructor:
+        return openingHours.call(this as BusinessFeatureOpeningHours);
+      case BusinessFeatureQuickReplies.constructor:
+        return quickReplies.call(this as BusinessFeatureQuickReplies);
+      case BusinessFeatureGreetingMessage.constructor:
+        return greetingMessage.call(this as BusinessFeatureGreetingMessage);
+      case BusinessFeatureAwayMessage.constructor:
+        return awayMessage.call(this as BusinessFeatureAwayMessage);
+      case BusinessFeatureAccountLinks.constructor:
+        return accountLinks.call(this as BusinessFeatureAccountLinks);
+      case BusinessFeatureStartPage.constructor:
+        return startPage.call(this as BusinessFeatureStartPage);
+      case BusinessFeatureBots.constructor:
+        return bots.call(this as BusinessFeatureBots);
+      case BusinessFeatureEmojiStatus.constructor:
+        return emojiStatus.call(this as BusinessFeatureEmojiStatus);
+      case BusinessFeatureChatFolderTags.constructor:
+        return chatFolderTags.call(this as BusinessFeatureChatFolderTags);
+      case BusinessFeatureUpgradedStories.constructor:
+        return upgradedStories.call(this as BusinessFeatureUpgradedStories);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BusinessFeatureLocation value)? location,
+    TResult Function(BusinessFeatureOpeningHours value)? openingHours,
+    TResult Function(BusinessFeatureQuickReplies value)? quickReplies,
+    TResult Function(BusinessFeatureGreetingMessage value)? greetingMessage,
+    TResult Function(BusinessFeatureAwayMessage value)? awayMessage,
+    TResult Function(BusinessFeatureAccountLinks value)? accountLinks,
+    TResult Function(BusinessFeatureStartPage value)? startPage,
+    TResult Function(BusinessFeatureBots value)? bots,
+    TResult Function(BusinessFeatureEmojiStatus value)? emojiStatus,
+    TResult Function(BusinessFeatureChatFolderTags value)? chatFolderTags,
+    TResult Function(BusinessFeatureUpgradedStories value)? upgradedStories,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case BusinessFeatureLocation.constructor:
+        if (location != null) {
+          return location.call(this as BusinessFeatureLocation);
+        }
+        break;
+      case BusinessFeatureOpeningHours.constructor:
+        if (openingHours != null) {
+          return openingHours.call(this as BusinessFeatureOpeningHours);
+        }
+        break;
+      case BusinessFeatureQuickReplies.constructor:
+        if (quickReplies != null) {
+          return quickReplies.call(this as BusinessFeatureQuickReplies);
+        }
+        break;
+      case BusinessFeatureGreetingMessage.constructor:
+        if (greetingMessage != null) {
+          return greetingMessage.call(this as BusinessFeatureGreetingMessage);
+        }
+        break;
+      case BusinessFeatureAwayMessage.constructor:
+        if (awayMessage != null) {
+          return awayMessage.call(this as BusinessFeatureAwayMessage);
+        }
+        break;
+      case BusinessFeatureAccountLinks.constructor:
+        if (accountLinks != null) {
+          return accountLinks.call(this as BusinessFeatureAccountLinks);
+        }
+        break;
+      case BusinessFeatureStartPage.constructor:
+        if (startPage != null) {
+          return startPage.call(this as BusinessFeatureStartPage);
+        }
+        break;
+      case BusinessFeatureBots.constructor:
+        if (bots != null) {
+          return bots.call(this as BusinessFeatureBots);
+        }
+        break;
+      case BusinessFeatureEmojiStatus.constructor:
+        if (emojiStatus != null) {
+          return emojiStatus.call(this as BusinessFeatureEmojiStatus);
+        }
+        break;
+      case BusinessFeatureChatFolderTags.constructor:
+        if (chatFolderTags != null) {
+          return chatFolderTags.call(this as BusinessFeatureChatFolderTags);
+        }
+        break;
+      case BusinessFeatureUpgradedStories.constructor:
+        if (upgradedStories != null) {
+          return upgradedStories.call(this as BusinessFeatureUpgradedStories);
         }
         break;
     }
@@ -17675,10 +18321,21 @@ extension PremiumFeaturesExtensions on PremiumFeatures {
       );
 }
 
+extension BusinessFeaturesExtensions on BusinessFeatures {
+  BusinessFeatures copyWith({
+    List<BusinessFeature>? features,
+  }) =>
+      BusinessFeatures(
+        features: features ?? this.features,
+      );
+}
+
 extension PremiumSourceExtensions on PremiumSource {
   TResult map<TResult extends Object?>({
     required TResult Function(PremiumSourceLimitExceeded value) limitExceeded,
     required TResult Function(PremiumSourceFeature value) feature,
+    required TResult Function(PremiumSourceBusinessFeature value)
+        businessFeature,
     required TResult Function(PremiumSourceStoryFeature value) storyFeature,
     required TResult Function(PremiumSourceLink value) link,
     required TResult Function(PremiumSourceSettings value) settings,
@@ -17688,6 +18345,8 @@ extension PremiumSourceExtensions on PremiumSource {
         return limitExceeded.call(this as PremiumSourceLimitExceeded);
       case PremiumSourceFeature.constructor:
         return feature.call(this as PremiumSourceFeature);
+      case PremiumSourceBusinessFeature.constructor:
+        return businessFeature.call(this as PremiumSourceBusinessFeature);
       case PremiumSourceStoryFeature.constructor:
         return storyFeature.call(this as PremiumSourceStoryFeature);
       case PremiumSourceLink.constructor:
@@ -17701,6 +18360,7 @@ extension PremiumSourceExtensions on PremiumSource {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PremiumSourceLimitExceeded value)? limitExceeded,
     TResult Function(PremiumSourceFeature value)? feature,
+    TResult Function(PremiumSourceBusinessFeature value)? businessFeature,
     TResult Function(PremiumSourceStoryFeature value)? storyFeature,
     TResult Function(PremiumSourceLink value)? link,
     TResult Function(PremiumSourceSettings value)? settings,
@@ -17715,6 +18375,11 @@ extension PremiumSourceExtensions on PremiumSource {
       case PremiumSourceFeature.constructor:
         if (feature != null) {
           return feature.call(this as PremiumSourceFeature);
+        }
+        break;
+      case PremiumSourceBusinessFeature.constructor:
+        if (businessFeature != null) {
+          return businessFeature.call(this as PremiumSourceBusinessFeature);
         }
         break;
       case PremiumSourceStoryFeature.constructor:
@@ -17755,6 +18420,16 @@ extension PremiumSourceFeatureExtensions on PremiumSourceFeature {
       );
 }
 
+extension PremiumSourceBusinessFeatureExtensions
+    on PremiumSourceBusinessFeature {
+  PremiumSourceBusinessFeature copyWith({
+    BusinessFeature? feature,
+  }) =>
+      PremiumSourceBusinessFeature(
+        feature: feature ?? this.feature,
+      );
+}
+
 extension PremiumSourceStoryFeatureExtensions on PremiumSourceStoryFeature {
   PremiumSourceStoryFeature copyWith({
     PremiumStoryFeature? feature,
@@ -17785,16 +18460,30 @@ extension PremiumFeaturePromotionAnimationExtensions
       );
 }
 
+extension BusinessFeaturePromotionAnimationExtensions
+    on BusinessFeaturePromotionAnimation {
+  BusinessFeaturePromotionAnimation copyWith({
+    BusinessFeature? feature,
+    Animation? animation,
+  }) =>
+      BusinessFeaturePromotionAnimation(
+        feature: feature ?? this.feature,
+        animation: animation ?? this.animation,
+      );
+}
+
 extension PremiumStateExtensions on PremiumState {
   PremiumState copyWith({
     FormattedText? state,
     List<PremiumStatePaymentOption>? paymentOptions,
     List<PremiumFeaturePromotionAnimation>? animations,
+    List<BusinessFeaturePromotionAnimation>? businessAnimations,
   }) =>
       PremiumState(
         state: state ?? this.state,
         paymentOptions: paymentOptions ?? this.paymentOptions,
         animations: animations ?? this.animations,
+        businessAnimations: businessAnimations ?? this.businessAnimations,
       );
 }
 
@@ -20208,6 +20897,8 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
     required TResult Function(UserPrivacySettingRuleAllowAll value) allowAll,
     required TResult Function(UserPrivacySettingRuleAllowContacts value)
         allowContacts,
+    required TResult Function(UserPrivacySettingRuleAllowPremiumUsers value)
+        allowPremiumUsers,
     required TResult Function(UserPrivacySettingRuleAllowUsers value)
         allowUsers,
     required TResult Function(UserPrivacySettingRuleAllowChatMembers value)
@@ -20226,6 +20917,9 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
         return allowAll.call(this as UserPrivacySettingRuleAllowAll);
       case UserPrivacySettingRuleAllowContacts.constructor:
         return allowContacts.call(this as UserPrivacySettingRuleAllowContacts);
+      case UserPrivacySettingRuleAllowPremiumUsers.constructor:
+        return allowPremiumUsers
+            .call(this as UserPrivacySettingRuleAllowPremiumUsers);
       case UserPrivacySettingRuleAllowUsers.constructor:
         return allowUsers.call(this as UserPrivacySettingRuleAllowUsers);
       case UserPrivacySettingRuleAllowChatMembers.constructor:
@@ -20248,6 +20942,8 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UserPrivacySettingRuleAllowAll value)? allowAll,
     TResult Function(UserPrivacySettingRuleAllowContacts value)? allowContacts,
+    TResult Function(UserPrivacySettingRuleAllowPremiumUsers value)?
+        allowPremiumUsers,
     TResult Function(UserPrivacySettingRuleAllowUsers value)? allowUsers,
     TResult Function(UserPrivacySettingRuleAllowChatMembers value)?
         allowChatMembers,
@@ -20269,6 +20965,12 @@ extension UserPrivacySettingRuleExtensions on UserPrivacySettingRule {
         if (allowContacts != null) {
           return allowContacts
               .call(this as UserPrivacySettingRuleAllowContacts);
+        }
+        break;
+      case UserPrivacySettingRuleAllowPremiumUsers.constructor:
+        if (allowPremiumUsers != null) {
+          return allowPremiumUsers
+              .call(this as UserPrivacySettingRuleAllowPremiumUsers);
         }
         break;
       case UserPrivacySettingRuleAllowUsers.constructor:
@@ -20370,6 +21072,8 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
     required TResult Function(UserPrivacySettingShowPhoneNumber value)
         showPhoneNumber,
     required TResult Function(UserPrivacySettingShowBio value) showBio,
+    required TResult Function(UserPrivacySettingShowBirthdate value)
+        showBirthdate,
     required TResult Function(UserPrivacySettingAllowChatInvites value)
         allowChatInvites,
     required TResult Function(UserPrivacySettingAllowCalls value) allowCalls,
@@ -20394,6 +21098,8 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         return showPhoneNumber.call(this as UserPrivacySettingShowPhoneNumber);
       case UserPrivacySettingShowBio.constructor:
         return showBio.call(this as UserPrivacySettingShowBio);
+      case UserPrivacySettingShowBirthdate.constructor:
+        return showBirthdate.call(this as UserPrivacySettingShowBirthdate);
       case UserPrivacySettingAllowChatInvites.constructor:
         return allowChatInvites
             .call(this as UserPrivacySettingAllowChatInvites);
@@ -20420,6 +21126,7 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
         showLinkInForwardedMessages,
     TResult Function(UserPrivacySettingShowPhoneNumber value)? showPhoneNumber,
     TResult Function(UserPrivacySettingShowBio value)? showBio,
+    TResult Function(UserPrivacySettingShowBirthdate value)? showBirthdate,
     TResult Function(UserPrivacySettingAllowChatInvites value)?
         allowChatInvites,
     TResult Function(UserPrivacySettingAllowCalls value)? allowCalls,
@@ -20459,6 +21166,11 @@ extension UserPrivacySettingExtensions on UserPrivacySetting {
       case UserPrivacySettingShowBio.constructor:
         if (showBio != null) {
           return showBio.call(this as UserPrivacySettingShowBio);
+        }
+        break;
+      case UserPrivacySettingShowBirthdate.constructor:
+        if (showBirthdate != null) {
+          return showBirthdate.call(this as UserPrivacySettingShowBirthdate);
         }
         break;
       case UserPrivacySettingAllowChatInvites.constructor:
@@ -21051,6 +21763,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     required TResult Function(InternalLinkTypeBotStart value) botStart,
     required TResult Function(InternalLinkTypeBotStartInGroup value)
         botStartInGroup,
+    required TResult Function(InternalLinkTypeBusinessChat value) businessChat,
     required TResult Function(InternalLinkTypeChangePhoneNumber value)
         changePhoneNumber,
     required TResult Function(InternalLinkTypeChatBoost value) chatBoost,
@@ -21123,6 +21836,8 @@ extension InternalLinkTypeExtensions on InternalLinkType {
         return botStart.call(this as InternalLinkTypeBotStart);
       case InternalLinkTypeBotStartInGroup.constructor:
         return botStartInGroup.call(this as InternalLinkTypeBotStartInGroup);
+      case InternalLinkTypeBusinessChat.constructor:
+        return businessChat.call(this as InternalLinkTypeBusinessChat);
       case InternalLinkTypeChangePhoneNumber.constructor:
         return changePhoneNumber
             .call(this as InternalLinkTypeChangePhoneNumber);
@@ -21217,6 +21932,7 @@ extension InternalLinkTypeExtensions on InternalLinkType {
     TResult Function(InternalLinkTypeBotAddToChannel value)? botAddToChannel,
     TResult Function(InternalLinkTypeBotStart value)? botStart,
     TResult Function(InternalLinkTypeBotStartInGroup value)? botStartInGroup,
+    TResult Function(InternalLinkTypeBusinessChat value)? businessChat,
     TResult Function(InternalLinkTypeChangePhoneNumber value)?
         changePhoneNumber,
     TResult Function(InternalLinkTypeChatBoost value)? chatBoost,
@@ -21300,6 +22016,11 @@ extension InternalLinkTypeExtensions on InternalLinkType {
       case InternalLinkTypeBotStartInGroup.constructor:
         if (botStartInGroup != null) {
           return botStartInGroup.call(this as InternalLinkTypeBotStartInGroup);
+        }
+        break;
+      case InternalLinkTypeBusinessChat.constructor:
+        if (businessChat != null) {
+          return businessChat.call(this as InternalLinkTypeBusinessChat);
         }
         break;
       case InternalLinkTypeChangePhoneNumber.constructor:
@@ -21571,6 +22292,16 @@ extension InternalLinkTypeBotStartInGroupExtensions
       );
 }
 
+extension InternalLinkTypeBusinessChatExtensions
+    on InternalLinkTypeBusinessChat {
+  InternalLinkTypeBusinessChat copyWith({
+    String? linkName,
+  }) =>
+      InternalLinkTypeBusinessChat(
+        linkName: linkName ?? this.linkName,
+      );
+}
+
 extension InternalLinkTypeChatBoostExtensions on InternalLinkTypeChatBoost {
   InternalLinkTypeChatBoost copyWith({
     String? url,
@@ -21736,9 +22467,11 @@ extension InternalLinkTypeProxyExtensions on InternalLinkTypeProxy {
 extension InternalLinkTypePublicChatExtensions on InternalLinkTypePublicChat {
   InternalLinkTypePublicChat copyWith({
     String? chatUsername,
+    String? draftText,
   }) =>
       InternalLinkTypePublicChat(
         chatUsername: chatUsername ?? this.chatUsername,
+        draftText: draftText ?? this.draftText,
       );
 }
 
@@ -21798,9 +22531,11 @@ extension InternalLinkTypeUserPhoneNumberExtensions
     on InternalLinkTypeUserPhoneNumber {
   InternalLinkTypeUserPhoneNumber copyWith({
     String? phoneNumber,
+    String? draftText,
   }) =>
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
+        draftText: draftText ?? this.draftText,
       );
 }
 
@@ -22767,6 +23502,8 @@ extension SuggestedActionExtensions on SuggestedAction {
         subscribeToAnnualPremium,
     required TResult Function(SuggestedActionGiftPremiumForChristmas value)
         giftPremiumForChristmas,
+    required TResult Function(SuggestedActionSetBirthdate value) setBirthdate,
+    required TResult Function(SuggestedActionExtendPremium value) extendPremium,
   }) {
     switch (getConstructor()) {
       case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
@@ -22793,6 +23530,10 @@ extension SuggestedActionExtensions on SuggestedAction {
       case SuggestedActionGiftPremiumForChristmas.constructor:
         return giftPremiumForChristmas
             .call(this as SuggestedActionGiftPremiumForChristmas);
+      case SuggestedActionSetBirthdate.constructor:
+        return setBirthdate.call(this as SuggestedActionSetBirthdate);
+      case SuggestedActionExtendPremium.constructor:
+        return extendPremium.call(this as SuggestedActionExtendPremium);
     }
     throw StateError('not handled type Generator');
   }
@@ -22812,6 +23553,8 @@ extension SuggestedActionExtensions on SuggestedAction {
         subscribeToAnnualPremium,
     TResult Function(SuggestedActionGiftPremiumForChristmas value)?
         giftPremiumForChristmas,
+    TResult Function(SuggestedActionSetBirthdate value)? setBirthdate,
+    TResult Function(SuggestedActionExtendPremium value)? extendPremium,
     required TResult Function() orElse,
   }) {
     switch (getConstructor()) {
@@ -22869,6 +23612,16 @@ extension SuggestedActionExtensions on SuggestedAction {
               .call(this as SuggestedActionGiftPremiumForChristmas);
         }
         break;
+      case SuggestedActionSetBirthdate.constructor:
+        if (setBirthdate != null) {
+          return setBirthdate.call(this as SuggestedActionSetBirthdate);
+        }
+        break;
+      case SuggestedActionExtendPremium.constructor:
+        if (extendPremium != null) {
+          return extendPremium.call(this as SuggestedActionExtendPremium);
+        }
+        break;
     }
     return orElse.call();
   }
@@ -22890,6 +23643,17 @@ extension SuggestedActionSetPasswordExtensions on SuggestedActionSetPassword {
   }) =>
       SuggestedActionSetPassword(
         authorizationDelay: authorizationDelay ?? this.authorizationDelay,
+      );
+}
+
+extension SuggestedActionExtendPremiumExtensions
+    on SuggestedActionExtendPremium {
+  SuggestedActionExtendPremium copyWith({
+    String? managePremiumSubscriptionUrl,
+  }) =>
+      SuggestedActionExtendPremium(
+        managePremiumSubscriptionUrl:
+            managePremiumSubscriptionUrl ?? this.managePremiumSubscriptionUrl,
       );
 }
 
@@ -23093,12 +23857,14 @@ extension ProxiesExtensions on Proxies {
 extension InputStickerExtensions on InputSticker {
   InputSticker copyWith({
     InputFile? sticker,
+    StickerFormat? format,
     String? emojis,
     MaskPosition? maskPosition,
     List<String>? keywords,
   }) =>
       InputSticker(
         sticker: sticker ?? this.sticker,
+        format: format ?? this.format,
         emojis: emojis ?? this.emojis,
         maskPosition: maskPosition ?? this.maskPosition,
         keywords: keywords ?? this.keywords,
@@ -23448,6 +24214,36 @@ extension ChatStatisticsChannelExtensions on ChatStatisticsChannel {
       );
 }
 
+extension ChatRevenueAmountExtensions on ChatRevenueAmount {
+  ChatRevenueAmount copyWith({
+    String? cryptocurrency,
+    int? totalAmount,
+    int? balanceAmount,
+    int? availableAmount,
+  }) =>
+      ChatRevenueAmount(
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        balanceAmount: balanceAmount ?? this.balanceAmount,
+        availableAmount: availableAmount ?? this.availableAmount,
+      );
+}
+
+extension ChatRevenueStatisticsExtensions on ChatRevenueStatistics {
+  ChatRevenueStatistics copyWith({
+    StatisticalGraph? revenueByHourGraph,
+    StatisticalGraph? revenueGraph,
+    ChatRevenueAmount? revenueAmount,
+    double? usdRate,
+  }) =>
+      ChatRevenueStatistics(
+        revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
+        revenueGraph: revenueGraph ?? this.revenueGraph,
+        revenueAmount: revenueAmount ?? this.revenueAmount,
+        usdRate: usdRate ?? this.usdRate,
+      );
+}
+
 extension MessageStatisticsExtensions on MessageStatistics {
   MessageStatistics copyWith({
     StatisticalGraph? messageInteractionGraph,
@@ -23469,6 +24265,171 @@ extension StoryStatisticsExtensions on StoryStatistics {
         storyInteractionGraph:
             storyInteractionGraph ?? this.storyInteractionGraph,
         storyReactionGraph: storyReactionGraph ?? this.storyReactionGraph,
+      );
+}
+
+extension ChatRevenueWithdrawalStateExtensions on ChatRevenueWithdrawalState {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatRevenueWithdrawalStatePending value) pending,
+    required TResult Function(ChatRevenueWithdrawalStateCompleted value)
+        completed,
+    required TResult Function(ChatRevenueWithdrawalStateFailed value) failed,
+  }) {
+    switch (getConstructor()) {
+      case ChatRevenueWithdrawalStatePending.constructor:
+        return pending.call(this as ChatRevenueWithdrawalStatePending);
+      case ChatRevenueWithdrawalStateCompleted.constructor:
+        return completed.call(this as ChatRevenueWithdrawalStateCompleted);
+      case ChatRevenueWithdrawalStateFailed.constructor:
+        return failed.call(this as ChatRevenueWithdrawalStateFailed);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatRevenueWithdrawalStatePending value)? pending,
+    TResult Function(ChatRevenueWithdrawalStateCompleted value)? completed,
+    TResult Function(ChatRevenueWithdrawalStateFailed value)? failed,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ChatRevenueWithdrawalStatePending.constructor:
+        if (pending != null) {
+          return pending.call(this as ChatRevenueWithdrawalStatePending);
+        }
+        break;
+      case ChatRevenueWithdrawalStateCompleted.constructor:
+        if (completed != null) {
+          return completed.call(this as ChatRevenueWithdrawalStateCompleted);
+        }
+        break;
+      case ChatRevenueWithdrawalStateFailed.constructor:
+        if (failed != null) {
+          return failed.call(this as ChatRevenueWithdrawalStateFailed);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ChatRevenueWithdrawalStateCompletedExtensions
+    on ChatRevenueWithdrawalStateCompleted {
+  ChatRevenueWithdrawalStateCompleted copyWith({
+    int? date,
+    String? url,
+  }) =>
+      ChatRevenueWithdrawalStateCompleted(
+        date: date ?? this.date,
+        url: url ?? this.url,
+      );
+}
+
+extension ChatRevenueTransactionTypeExtensions on ChatRevenueTransactionType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatRevenueTransactionTypeEarnings value)
+        earnings,
+    required TResult Function(ChatRevenueTransactionTypeWithdrawal value)
+        withdrawal,
+    required TResult Function(ChatRevenueTransactionTypeRefund value) refund,
+  }) {
+    switch (getConstructor()) {
+      case ChatRevenueTransactionTypeEarnings.constructor:
+        return earnings.call(this as ChatRevenueTransactionTypeEarnings);
+      case ChatRevenueTransactionTypeWithdrawal.constructor:
+        return withdrawal.call(this as ChatRevenueTransactionTypeWithdrawal);
+      case ChatRevenueTransactionTypeRefund.constructor:
+        return refund.call(this as ChatRevenueTransactionTypeRefund);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatRevenueTransactionTypeEarnings value)? earnings,
+    TResult Function(ChatRevenueTransactionTypeWithdrawal value)? withdrawal,
+    TResult Function(ChatRevenueTransactionTypeRefund value)? refund,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case ChatRevenueTransactionTypeEarnings.constructor:
+        if (earnings != null) {
+          return earnings.call(this as ChatRevenueTransactionTypeEarnings);
+        }
+        break;
+      case ChatRevenueTransactionTypeWithdrawal.constructor:
+        if (withdrawal != null) {
+          return withdrawal.call(this as ChatRevenueTransactionTypeWithdrawal);
+        }
+        break;
+      case ChatRevenueTransactionTypeRefund.constructor:
+        if (refund != null) {
+          return refund.call(this as ChatRevenueTransactionTypeRefund);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension ChatRevenueTransactionTypeEarningsExtensions
+    on ChatRevenueTransactionTypeEarnings {
+  ChatRevenueTransactionTypeEarnings copyWith({
+    int? startDate,
+    int? endDate,
+  }) =>
+      ChatRevenueTransactionTypeEarnings(
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate,
+      );
+}
+
+extension ChatRevenueTransactionTypeWithdrawalExtensions
+    on ChatRevenueTransactionTypeWithdrawal {
+  ChatRevenueTransactionTypeWithdrawal copyWith({
+    int? withdrawalDate,
+    String? provider,
+    ChatRevenueWithdrawalState? state,
+  }) =>
+      ChatRevenueTransactionTypeWithdrawal(
+        withdrawalDate: withdrawalDate ?? this.withdrawalDate,
+        provider: provider ?? this.provider,
+        state: state ?? this.state,
+      );
+}
+
+extension ChatRevenueTransactionTypeRefundExtensions
+    on ChatRevenueTransactionTypeRefund {
+  ChatRevenueTransactionTypeRefund copyWith({
+    int? refundDate,
+    String? provider,
+  }) =>
+      ChatRevenueTransactionTypeRefund(
+        refundDate: refundDate ?? this.refundDate,
+        provider: provider ?? this.provider,
+      );
+}
+
+extension ChatRevenueTransactionExtensions on ChatRevenueTransaction {
+  ChatRevenueTransaction copyWith({
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
+    ChatRevenueTransactionType? type,
+  }) =>
+      ChatRevenueTransaction(
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+        type: type ?? this.type,
+      );
+}
+
+extension ChatRevenueTransactionsExtensions on ChatRevenueTransactions {
+  ChatRevenueTransactions copyWith({
+    int? totalCount,
+    List<ChatRevenueTransaction>? transactions,
+  }) =>
+      ChatRevenueTransactions(
+        totalCount: totalCount ?? this.totalCount,
+        transactions: transactions ?? this.transactions,
       );
 }
 
@@ -23662,6 +24623,64 @@ extension BotCommandScopeChatMemberExtensions on BotCommandScopeChatMember {
       );
 }
 
+extension PhoneNumberCodeTypeExtensions on PhoneNumberCodeType {
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberCodeTypeChange value) change,
+    required TResult Function(PhoneNumberCodeTypeVerify value) verify,
+    required TResult Function(PhoneNumberCodeTypeConfirmOwnership value)
+        confirmOwnership,
+  }) {
+    switch (getConstructor()) {
+      case PhoneNumberCodeTypeChange.constructor:
+        return change.call(this as PhoneNumberCodeTypeChange);
+      case PhoneNumberCodeTypeVerify.constructor:
+        return verify.call(this as PhoneNumberCodeTypeVerify);
+      case PhoneNumberCodeTypeConfirmOwnership.constructor:
+        return confirmOwnership
+            .call(this as PhoneNumberCodeTypeConfirmOwnership);
+    }
+    throw StateError('not handled type Generator');
+  }
+
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberCodeTypeChange value)? change,
+    TResult Function(PhoneNumberCodeTypeVerify value)? verify,
+    TResult Function(PhoneNumberCodeTypeConfirmOwnership value)?
+        confirmOwnership,
+    required TResult Function() orElse,
+  }) {
+    switch (getConstructor()) {
+      case PhoneNumberCodeTypeChange.constructor:
+        if (change != null) {
+          return change.call(this as PhoneNumberCodeTypeChange);
+        }
+        break;
+      case PhoneNumberCodeTypeVerify.constructor:
+        if (verify != null) {
+          return verify.call(this as PhoneNumberCodeTypeVerify);
+        }
+        break;
+      case PhoneNumberCodeTypeConfirmOwnership.constructor:
+        if (confirmOwnership != null) {
+          return confirmOwnership
+              .call(this as PhoneNumberCodeTypeConfirmOwnership);
+        }
+        break;
+    }
+    return orElse.call();
+  }
+}
+
+extension PhoneNumberCodeTypeConfirmOwnershipExtensions
+    on PhoneNumberCodeTypeConfirmOwnership {
+  PhoneNumberCodeTypeConfirmOwnership copyWith({
+    String? hash,
+  }) =>
+      PhoneNumberCodeTypeConfirmOwnership(
+        hash: hash ?? this.hash,
+      );
+}
+
 extension UpdateExtensions on Update {
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateAuthorizationState value)
@@ -23698,6 +24717,8 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateChatReadInbox value) chatReadInbox,
     required TResult Function(UpdateChatReadOutbox value) chatReadOutbox,
     required TResult Function(UpdateChatActionBar value) chatActionBar,
+    required TResult Function(UpdateChatBusinessBotManageBar value)
+        chatBusinessBotManageBar,
     required TResult Function(UpdateChatAvailableReactions value)
         chatAvailableReactions,
     required TResult Function(UpdateChatDraftMessage value) chatDraftMessage,
@@ -23747,6 +24768,8 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateForumTopicInfo value) forumTopicInfo,
     required TResult Function(UpdateScopeNotificationSettings value)
         scopeNotificationSettings,
+    required TResult Function(UpdateReactionNotificationSettings value)
+        reactionNotificationSettings,
     required TResult Function(UpdateNotification value) notification,
     required TResult Function(UpdateNotificationGroup value) notificationGroup,
     required TResult Function(UpdateActiveNotifications value)
@@ -23829,6 +24852,7 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateDefaultReactionType value)
         defaultReactionType,
     required TResult Function(UpdateSavedMessagesTags value) savedMessagesTags,
+    required TResult Function(UpdateChatRevenueAmount value) chatRevenueAmount,
     required TResult Function(UpdateSpeechRecognitionTrial value)
         speechRecognitionTrial,
     required TResult Function(UpdateDiceEmojis value) diceEmojis,
@@ -23837,9 +24861,19 @@ extension UpdateExtensions on Update {
     required TResult Function(UpdateAnimationSearchParameters value)
         animationSearchParameters,
     required TResult Function(UpdateSuggestedActions value) suggestedActions,
-    required TResult Function(UpdateAddChatMembersPrivacyForbidden value)
-        addChatMembersPrivacyForbidden,
+    required TResult Function(UpdateSpeedLimitNotification value)
+        speedLimitNotification,
+    required TResult Function(UpdateContactCloseBirthdays value)
+        contactCloseBirthdays,
     required TResult Function(UpdateAutosaveSettings value) autosaveSettings,
+    required TResult Function(UpdateBusinessConnection value)
+        businessConnection,
+    required TResult Function(UpdateNewBusinessMessage value)
+        newBusinessMessage,
+    required TResult Function(UpdateBusinessMessageEdited value)
+        businessMessageEdited,
+    required TResult Function(UpdateBusinessMessagesDeleted value)
+        businessMessagesDeleted,
     required TResult Function(UpdateNewInlineQuery value) newInlineQuery,
     required TResult Function(UpdateNewChosenInlineResult value)
         newChosenInlineResult,
@@ -23915,6 +24949,9 @@ extension UpdateExtensions on Update {
         return chatReadOutbox.call(this as UpdateChatReadOutbox);
       case UpdateChatActionBar.constructor:
         return chatActionBar.call(this as UpdateChatActionBar);
+      case UpdateChatBusinessBotManageBar.constructor:
+        return chatBusinessBotManageBar
+            .call(this as UpdateChatBusinessBotManageBar);
       case UpdateChatAvailableReactions.constructor:
         return chatAvailableReactions
             .call(this as UpdateChatAvailableReactions);
@@ -23988,6 +25025,9 @@ extension UpdateExtensions on Update {
       case UpdateScopeNotificationSettings.constructor:
         return scopeNotificationSettings
             .call(this as UpdateScopeNotificationSettings);
+      case UpdateReactionNotificationSettings.constructor:
+        return reactionNotificationSettings
+            .call(this as UpdateReactionNotificationSettings);
       case UpdateNotification.constructor:
         return notification.call(this as UpdateNotification);
       case UpdateNotificationGroup.constructor:
@@ -24108,6 +25148,8 @@ extension UpdateExtensions on Update {
         return defaultReactionType.call(this as UpdateDefaultReactionType);
       case UpdateSavedMessagesTags.constructor:
         return savedMessagesTags.call(this as UpdateSavedMessagesTags);
+      case UpdateChatRevenueAmount.constructor:
+        return chatRevenueAmount.call(this as UpdateChatRevenueAmount);
       case UpdateSpeechRecognitionTrial.constructor:
         return speechRecognitionTrial
             .call(this as UpdateSpeechRecognitionTrial);
@@ -24121,11 +25163,22 @@ extension UpdateExtensions on Update {
             .call(this as UpdateAnimationSearchParameters);
       case UpdateSuggestedActions.constructor:
         return suggestedActions.call(this as UpdateSuggestedActions);
-      case UpdateAddChatMembersPrivacyForbidden.constructor:
-        return addChatMembersPrivacyForbidden
-            .call(this as UpdateAddChatMembersPrivacyForbidden);
+      case UpdateSpeedLimitNotification.constructor:
+        return speedLimitNotification
+            .call(this as UpdateSpeedLimitNotification);
+      case UpdateContactCloseBirthdays.constructor:
+        return contactCloseBirthdays.call(this as UpdateContactCloseBirthdays);
       case UpdateAutosaveSettings.constructor:
         return autosaveSettings.call(this as UpdateAutosaveSettings);
+      case UpdateBusinessConnection.constructor:
+        return businessConnection.call(this as UpdateBusinessConnection);
+      case UpdateNewBusinessMessage.constructor:
+        return newBusinessMessage.call(this as UpdateNewBusinessMessage);
+      case UpdateBusinessMessageEdited.constructor:
+        return businessMessageEdited.call(this as UpdateBusinessMessageEdited);
+      case UpdateBusinessMessagesDeleted.constructor:
+        return businessMessagesDeleted
+            .call(this as UpdateBusinessMessagesDeleted);
       case UpdateNewInlineQuery.constructor:
         return newInlineQuery.call(this as UpdateNewInlineQuery);
       case UpdateNewChosenInlineResult.constructor:
@@ -24191,6 +25244,8 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateChatReadInbox value)? chatReadInbox,
     TResult Function(UpdateChatReadOutbox value)? chatReadOutbox,
     TResult Function(UpdateChatActionBar value)? chatActionBar,
+    TResult Function(UpdateChatBusinessBotManageBar value)?
+        chatBusinessBotManageBar,
     TResult Function(UpdateChatAvailableReactions value)?
         chatAvailableReactions,
     TResult Function(UpdateChatDraftMessage value)? chatDraftMessage,
@@ -24234,6 +25289,8 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateForumTopicInfo value)? forumTopicInfo,
     TResult Function(UpdateScopeNotificationSettings value)?
         scopeNotificationSettings,
+    TResult Function(UpdateReactionNotificationSettings value)?
+        reactionNotificationSettings,
     TResult Function(UpdateNotification value)? notification,
     TResult Function(UpdateNotificationGroup value)? notificationGroup,
     TResult Function(UpdateActiveNotifications value)? activeNotifications,
@@ -24296,6 +25353,7 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateActiveEmojiReactions value)? activeEmojiReactions,
     TResult Function(UpdateDefaultReactionType value)? defaultReactionType,
     TResult Function(UpdateSavedMessagesTags value)? savedMessagesTags,
+    TResult Function(UpdateChatRevenueAmount value)? chatRevenueAmount,
     TResult Function(UpdateSpeechRecognitionTrial value)?
         speechRecognitionTrial,
     TResult Function(UpdateDiceEmojis value)? diceEmojis,
@@ -24304,9 +25362,15 @@ extension UpdateExtensions on Update {
     TResult Function(UpdateAnimationSearchParameters value)?
         animationSearchParameters,
     TResult Function(UpdateSuggestedActions value)? suggestedActions,
-    TResult Function(UpdateAddChatMembersPrivacyForbidden value)?
-        addChatMembersPrivacyForbidden,
+    TResult Function(UpdateSpeedLimitNotification value)?
+        speedLimitNotification,
+    TResult Function(UpdateContactCloseBirthdays value)? contactCloseBirthdays,
     TResult Function(UpdateAutosaveSettings value)? autosaveSettings,
+    TResult Function(UpdateBusinessConnection value)? businessConnection,
+    TResult Function(UpdateNewBusinessMessage value)? newBusinessMessage,
+    TResult Function(UpdateBusinessMessageEdited value)? businessMessageEdited,
+    TResult Function(UpdateBusinessMessagesDeleted value)?
+        businessMessagesDeleted,
     TResult Function(UpdateNewInlineQuery value)? newInlineQuery,
     TResult Function(UpdateNewChosenInlineResult value)? newChosenInlineResult,
     TResult Function(UpdateNewCallbackQuery value)? newCallbackQuery,
@@ -24453,6 +25517,12 @@ extension UpdateExtensions on Update {
       case UpdateChatActionBar.constructor:
         if (chatActionBar != null) {
           return chatActionBar.call(this as UpdateChatActionBar);
+        }
+        break;
+      case UpdateChatBusinessBotManageBar.constructor:
+        if (chatBusinessBotManageBar != null) {
+          return chatBusinessBotManageBar
+              .call(this as UpdateChatBusinessBotManageBar);
         }
         break;
       case UpdateChatAvailableReactions.constructor:
@@ -24617,6 +25687,12 @@ extension UpdateExtensions on Update {
         if (scopeNotificationSettings != null) {
           return scopeNotificationSettings
               .call(this as UpdateScopeNotificationSettings);
+        }
+        break;
+      case UpdateReactionNotificationSettings.constructor:
+        if (reactionNotificationSettings != null) {
+          return reactionNotificationSettings
+              .call(this as UpdateReactionNotificationSettings);
         }
         break;
       case UpdateNotification.constructor:
@@ -24913,6 +25989,11 @@ extension UpdateExtensions on Update {
           return savedMessagesTags.call(this as UpdateSavedMessagesTags);
         }
         break;
+      case UpdateChatRevenueAmount.constructor:
+        if (chatRevenueAmount != null) {
+          return chatRevenueAmount.call(this as UpdateChatRevenueAmount);
+        }
+        break;
       case UpdateSpeechRecognitionTrial.constructor:
         if (speechRecognitionTrial != null) {
           return speechRecognitionTrial
@@ -24941,15 +26022,43 @@ extension UpdateExtensions on Update {
           return suggestedActions.call(this as UpdateSuggestedActions);
         }
         break;
-      case UpdateAddChatMembersPrivacyForbidden.constructor:
-        if (addChatMembersPrivacyForbidden != null) {
-          return addChatMembersPrivacyForbidden
-              .call(this as UpdateAddChatMembersPrivacyForbidden);
+      case UpdateSpeedLimitNotification.constructor:
+        if (speedLimitNotification != null) {
+          return speedLimitNotification
+              .call(this as UpdateSpeedLimitNotification);
+        }
+        break;
+      case UpdateContactCloseBirthdays.constructor:
+        if (contactCloseBirthdays != null) {
+          return contactCloseBirthdays
+              .call(this as UpdateContactCloseBirthdays);
         }
         break;
       case UpdateAutosaveSettings.constructor:
         if (autosaveSettings != null) {
           return autosaveSettings.call(this as UpdateAutosaveSettings);
+        }
+        break;
+      case UpdateBusinessConnection.constructor:
+        if (businessConnection != null) {
+          return businessConnection.call(this as UpdateBusinessConnection);
+        }
+        break;
+      case UpdateNewBusinessMessage.constructor:
+        if (newBusinessMessage != null) {
+          return newBusinessMessage.call(this as UpdateNewBusinessMessage);
+        }
+        break;
+      case UpdateBusinessMessageEdited.constructor:
+        if (businessMessageEdited != null) {
+          return businessMessageEdited
+              .call(this as UpdateBusinessMessageEdited);
+        }
+        break;
+      case UpdateBusinessMessagesDeleted.constructor:
+        if (businessMessagesDeleted != null) {
+          return businessMessagesDeleted
+              .call(this as UpdateBusinessMessagesDeleted);
         }
         break;
       case UpdateNewInlineQuery.constructor:
@@ -25339,6 +26448,18 @@ extension UpdateChatActionBarExtensions on UpdateChatActionBar {
       );
 }
 
+extension UpdateChatBusinessBotManageBarExtensions
+    on UpdateChatBusinessBotManageBar {
+  UpdateChatBusinessBotManageBar copyWith({
+    int? chatId,
+    BusinessBotManageBar? businessBotManageBar,
+  }) =>
+      UpdateChatBusinessBotManageBar(
+        chatId: chatId ?? this.chatId,
+        businessBotManageBar: businessBotManageBar ?? this.businessBotManageBar,
+      );
+}
+
 extension UpdateChatAvailableReactionsExtensions
     on UpdateChatAvailableReactions {
   UpdateChatAvailableReactions copyWith({
@@ -25674,6 +26795,16 @@ extension UpdateScopeNotificationSettingsExtensions
   }) =>
       UpdateScopeNotificationSettings(
         scope: scope ?? this.scope,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+      );
+}
+
+extension UpdateReactionNotificationSettingsExtensions
+    on UpdateReactionNotificationSettings {
+  UpdateReactionNotificationSettings copyWith({
+    ReactionNotificationSettings? notificationSettings,
+  }) =>
+      UpdateReactionNotificationSettings(
         notificationSettings: notificationSettings ?? this.notificationSettings,
       );
 }
@@ -26387,15 +27518,22 @@ extension UpdateSuggestedActionsExtensions on UpdateSuggestedActions {
       );
 }
 
-extension UpdateAddChatMembersPrivacyForbiddenExtensions
-    on UpdateAddChatMembersPrivacyForbidden {
-  UpdateAddChatMembersPrivacyForbidden copyWith({
-    int? chatId,
-    List<int>? userIds,
+extension UpdateSpeedLimitNotificationExtensions
+    on UpdateSpeedLimitNotification {
+  UpdateSpeedLimitNotification copyWith({
+    bool? isUpload,
   }) =>
-      UpdateAddChatMembersPrivacyForbidden(
-        chatId: chatId ?? this.chatId,
-        userIds: userIds ?? this.userIds,
+      UpdateSpeedLimitNotification(
+        isUpload: isUpload ?? this.isUpload,
+      );
+}
+
+extension UpdateContactCloseBirthdaysExtensions on UpdateContactCloseBirthdays {
+  UpdateContactCloseBirthdays copyWith({
+    List<CloseBirthdayUser>? closeBirthdayUsers,
+  }) =>
+      UpdateContactCloseBirthdays(
+        closeBirthdayUsers: closeBirthdayUsers ?? this.closeBirthdayUsers,
       );
 }
 
@@ -26407,6 +27545,51 @@ extension UpdateAutosaveSettingsExtensions on UpdateAutosaveSettings {
       UpdateAutosaveSettings(
         scope: scope ?? this.scope,
         settings: settings ?? this.settings,
+      );
+}
+
+extension UpdateBusinessConnectionExtensions on UpdateBusinessConnection {
+  UpdateBusinessConnection copyWith({
+    BusinessConnection? connection,
+  }) =>
+      UpdateBusinessConnection(
+        connection: connection ?? this.connection,
+      );
+}
+
+extension UpdateNewBusinessMessageExtensions on UpdateNewBusinessMessage {
+  UpdateNewBusinessMessage copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+  }) =>
+      UpdateNewBusinessMessage(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+      );
+}
+
+extension UpdateBusinessMessageEditedExtensions on UpdateBusinessMessageEdited {
+  UpdateBusinessMessageEdited copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+  }) =>
+      UpdateBusinessMessageEdited(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+      );
+}
+
+extension UpdateBusinessMessagesDeletedExtensions
+    on UpdateBusinessMessagesDeleted {
+  UpdateBusinessMessagesDeleted copyWith({
+    String? connectionId,
+    int? chatId,
+    List<int>? messageIds,
+  }) =>
+      UpdateBusinessMessagesDeleted(
+        connectionId: connectionId ?? this.connectionId,
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
       );
 }
 
@@ -26569,6 +27752,7 @@ extension UpdateChatMemberExtensions on UpdateChatMember {
     int? actorUserId,
     int? date,
     ChatInviteLink? inviteLink,
+    bool? viaJoinRequest,
     bool? viaChatFolderInviteLink,
     ChatMember? oldChatMember,
     ChatMember? newChatMember,
@@ -26578,6 +27762,7 @@ extension UpdateChatMemberExtensions on UpdateChatMember {
         actorUserId: actorUserId ?? this.actorUserId,
         date: date ?? this.date,
         inviteLink: inviteLink ?? this.inviteLink,
+        viaJoinRequest: viaJoinRequest ?? this.viaJoinRequest,
         viaChatFolderInviteLink:
             viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
         oldChatMember: oldChatMember ?? this.oldChatMember,
@@ -26944,6 +28129,16 @@ extension SendAuthenticationFirebaseSmsExtensions
   }) =>
       SendAuthenticationFirebaseSms(
         token: token ?? this.token,
+      );
+}
+
+extension ReportAuthenticationCodeMissingExtensions
+    on ReportAuthenticationCodeMissing {
+  ReportAuthenticationCodeMissing copyWith({
+    String? mobileNetworkCode,
+  }) =>
+      ReportAuthenticationCodeMissing(
+        mobileNetworkCode: mobileNetworkCode ?? this.mobileNetworkCode,
       );
 }
 
@@ -27639,6 +28834,7 @@ extension SearchChatMessagesExtensions on SearchChatMessages {
 extension SearchMessagesExtensions on SearchMessages {
   SearchMessages copyWith({
     ChatList? chatList,
+    bool? onlyInChannels,
     String? query,
     String? offset,
     int? limit,
@@ -27648,6 +28844,7 @@ extension SearchMessagesExtensions on SearchMessages {
   }) =>
       SearchMessages(
         chatList: chatList ?? this.chatList,
+        onlyInChannels: onlyInChannels ?? this.onlyInChannels,
         query: query ?? this.query,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
@@ -27841,6 +29038,19 @@ extension ClickChatSponsoredMessageExtensions on ClickChatSponsoredMessage {
       ClickChatSponsoredMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
+      );
+}
+
+extension ReportChatSponsoredMessageExtensions on ReportChatSponsoredMessage {
+  ReportChatSponsoredMessage copyWith({
+    int? chatId,
+    int? messageId,
+    String? optionId,
+  }) =>
+      ReportChatSponsoredMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        optionId: optionId ?? this.optionId,
       );
 }
 
@@ -28170,6 +29380,7 @@ extension EditMessageLiveLocationExtensions on EditMessageLiveLocation {
     int? messageId,
     ReplyMarkup? replyMarkup,
     Location? location,
+    int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
   }) =>
@@ -28178,6 +29389,7 @@ extension EditMessageLiveLocationExtensions on EditMessageLiveLocation {
         messageId: messageId ?? this.messageId,
         replyMarkup: replyMarkup ?? this.replyMarkup,
         location: location ?? this.location,
+        livePeriod: livePeriod ?? this.livePeriod,
         heading: heading ?? this.heading,
         proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
       );
@@ -28245,6 +29457,7 @@ extension EditInlineMessageLiveLocationExtensions
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     Location? location,
+    int? livePeriod,
     int? heading,
     int? proximityAlertRadius,
   }) =>
@@ -28252,6 +29465,7 @@ extension EditInlineMessageLiveLocationExtensions
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
         replyMarkup: replyMarkup ?? this.replyMarkup,
         location: location ?? this.location,
+        livePeriod: livePeriod ?? this.livePeriod,
         heading: heading ?? this.heading,
         proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
       );
@@ -28305,6 +29519,46 @@ extension EditMessageSchedulingStateExtensions on EditMessageSchedulingState {
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         schedulingState: schedulingState ?? this.schedulingState,
+      );
+}
+
+extension SendBusinessMessageExtensions on SendBusinessMessage {
+  SendBusinessMessage copyWith({
+    String? businessConnectionId,
+    int? chatId,
+    InputMessageReplyTo? replyTo,
+    bool? disableNotification,
+    bool? protectContent,
+    ReplyMarkup? replyMarkup,
+    InputMessageContent? inputMessageContent,
+  }) =>
+      SendBusinessMessage(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+        chatId: chatId ?? this.chatId,
+        replyTo: replyTo ?? this.replyTo,
+        disableNotification: disableNotification ?? this.disableNotification,
+        protectContent: protectContent ?? this.protectContent,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
+}
+
+extension SendBusinessMessageAlbumExtensions on SendBusinessMessageAlbum {
+  SendBusinessMessageAlbum copyWith({
+    String? businessConnectionId,
+    int? chatId,
+    InputMessageReplyTo? replyTo,
+    bool? disableNotification,
+    bool? protectContent,
+    List<InputMessageContent>? inputMessageContents,
+  }) =>
+      SendBusinessMessageAlbum(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
+        chatId: chatId ?? this.chatId,
+        replyTo: replyTo ?? this.replyTo,
+        disableNotification: disableNotification ?? this.disableNotification,
+        protectContent: protectContent ?? this.protectContent,
+        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
       );
 }
 
@@ -28365,6 +29619,77 @@ extension DeleteQuickReplyShortcutMessagesExtensions
       DeleteQuickReplyShortcutMessages(
         shortcutId: shortcutId ?? this.shortcutId,
         messageIds: messageIds ?? this.messageIds,
+      );
+}
+
+extension AddQuickReplyShortcutMessageExtensions
+    on AddQuickReplyShortcutMessage {
+  AddQuickReplyShortcutMessage copyWith({
+    String? shortcutName,
+    int? replyToMessageId,
+    InputMessageContent? inputMessageContent,
+  }) =>
+      AddQuickReplyShortcutMessage(
+        shortcutName: shortcutName ?? this.shortcutName,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
+}
+
+extension AddQuickReplyShortcutInlineQueryResultMessageExtensions
+    on AddQuickReplyShortcutInlineQueryResultMessage {
+  AddQuickReplyShortcutInlineQueryResultMessage copyWith({
+    String? shortcutName,
+    int? replyToMessageId,
+    int? queryId,
+    String? resultId,
+    bool? hideViaBot,
+  }) =>
+      AddQuickReplyShortcutInlineQueryResultMessage(
+        shortcutName: shortcutName ?? this.shortcutName,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        queryId: queryId ?? this.queryId,
+        resultId: resultId ?? this.resultId,
+        hideViaBot: hideViaBot ?? this.hideViaBot,
+      );
+}
+
+extension AddQuickReplyShortcutMessageAlbumExtensions
+    on AddQuickReplyShortcutMessageAlbum {
+  AddQuickReplyShortcutMessageAlbum copyWith({
+    String? shortcutName,
+    int? replyToMessageId,
+    List<InputMessageContent>? inputMessageContents,
+  }) =>
+      AddQuickReplyShortcutMessageAlbum(
+        shortcutName: shortcutName ?? this.shortcutName,
+        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        inputMessageContents: inputMessageContents ?? this.inputMessageContents,
+      );
+}
+
+extension ReaddQuickReplyShortcutMessagesExtensions
+    on ReaddQuickReplyShortcutMessages {
+  ReaddQuickReplyShortcutMessages copyWith({
+    String? shortcutName,
+    List<int>? messageIds,
+  }) =>
+      ReaddQuickReplyShortcutMessages(
+        shortcutName: shortcutName ?? this.shortcutName,
+        messageIds: messageIds ?? this.messageIds,
+      );
+}
+
+extension EditQuickReplyMessageExtensions on EditQuickReplyMessage {
+  EditQuickReplyMessage copyWith({
+    int? shortcutId,
+    int? messageId,
+    InputMessageContent? inputMessageContent,
+  }) =>
+      EditQuickReplyMessage(
+        shortcutId: shortcutId ?? this.shortcutId,
+        messageId: messageId ?? this.messageId,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 }
 
@@ -28812,6 +30137,15 @@ extension HideSuggestedActionExtensions on HideSuggestedAction {
       );
 }
 
+extension GetBusinessConnectionExtensions on GetBusinessConnection {
+  GetBusinessConnection copyWith({
+    String? connectionId,
+  }) =>
+      GetBusinessConnection(
+        connectionId: connectionId ?? this.connectionId,
+      );
+}
+
 extension GetLoginUrlInfoExtensions on GetLoginUrlInfo {
   GetLoginUrlInfo copyWith({
     int? chatId,
@@ -29140,11 +30474,13 @@ extension SendChatActionExtensions on SendChatAction {
   SendChatAction copyWith({
     int? chatId,
     int? messageThreadId,
+    String? businessConnectionId,
     ChatAction? action,
   }) =>
       SendChatAction(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         action: action ?? this.action,
       );
 }
@@ -30106,6 +31442,16 @@ extension SetScopeNotificationSettingsExtensions
       );
 }
 
+extension SetReactionNotificationSettingsExtensions
+    on SetReactionNotificationSettings {
+  SetReactionNotificationSettings copyWith({
+    ReactionNotificationSettings? notificationSettings,
+  }) =>
+      SetReactionNotificationSettings(
+        notificationSettings: notificationSettings ?? this.notificationSettings,
+      );
+}
+
 extension ToggleChatIsPinnedExtensions on ToggleChatIsPinned {
   ToggleChatIsPinned copyWith({
     ChatList? chatList,
@@ -30170,7 +31516,7 @@ extension SendStoryExtensions on SendStory {
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
     StoryFullId? fromStoryFullId,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? protectContent,
   }) =>
       SendStory(
@@ -30181,7 +31527,7 @@ extension SendStoryExtensions on SendStory {
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
         fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         protectContent: protectContent ?? this.protectContent,
       );
 }
@@ -30214,16 +31560,17 @@ extension SetStoryPrivacySettingsExtensions on SetStoryPrivacySettings {
       );
 }
 
-extension ToggleStoryIsPinnedExtensions on ToggleStoryIsPinned {
-  ToggleStoryIsPinned copyWith({
+extension ToggleStoryIsPostedToChatPageExtensions
+    on ToggleStoryIsPostedToChatPage {
+  ToggleStoryIsPostedToChatPage copyWith({
     int? storySenderChatId,
     int? storyId,
-    bool? isPinned,
+    bool? isPostedToChatPage,
   }) =>
-      ToggleStoryIsPinned(
+      ToggleStoryIsPostedToChatPage(
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
       );
 }
 
@@ -30267,13 +31614,14 @@ extension GetChatActiveStoriesExtensions on GetChatActiveStories {
       );
 }
 
-extension GetChatPinnedStoriesExtensions on GetChatPinnedStories {
-  GetChatPinnedStories copyWith({
+extension GetChatPostedToChatPageStoriesExtensions
+    on GetChatPostedToChatPageStories {
+  GetChatPostedToChatPageStories copyWith({
     int? chatId,
     int? fromStoryId,
     int? limit,
   }) =>
-      GetChatPinnedStories(
+      GetChatPostedToChatPageStories(
         chatId: chatId ?? this.chatId,
         fromStoryId: fromStoryId ?? this.fromStoryId,
         limit: limit ?? this.limit,
@@ -30290,6 +31638,17 @@ extension GetChatArchivedStoriesExtensions on GetChatArchivedStories {
         chatId: chatId ?? this.chatId,
         fromStoryId: fromStoryId ?? this.fromStoryId,
         limit: limit ?? this.limit,
+      );
+}
+
+extension SetChatPinnedStoriesExtensions on SetChatPinnedStories {
+  SetChatPinnedStories copyWith({
+    int? chatId,
+    List<int>? storyIds,
+  }) =>
+      SetChatPinnedStories(
+        chatId: chatId ?? this.chatId,
+        storyIds: storyIds ?? this.storyIds,
       );
 }
 
@@ -31995,6 +33354,24 @@ extension ReorderActiveUsernamesExtensions on ReorderActiveUsernames {
       );
 }
 
+extension SetBirthdateExtensions on SetBirthdate {
+  SetBirthdate copyWith({
+    Birthdate? birthdate,
+  }) =>
+      SetBirthdate(
+        birthdate: birthdate ?? this.birthdate,
+      );
+}
+
+extension SetPersonalChatExtensions on SetPersonalChat {
+  SetPersonalChat copyWith({
+    int? chatId,
+  }) =>
+      SetPersonalChat(
+        chatId: chatId ?? this.chatId,
+      );
+}
+
 extension SetEmojiStatusExtensions on SetEmojiStatus {
   SetEmojiStatus copyWith({
     EmojiStatus? emojiStatus,
@@ -32010,6 +33387,17 @@ extension SetLocationExtensions on SetLocation {
   }) =>
       SetLocation(
         location: location ?? this.location,
+      );
+}
+
+extension ToggleHasSponsoredMessagesEnabledExtensions
+    on ToggleHasSponsoredMessagesEnabled {
+  ToggleHasSponsoredMessagesEnabled copyWith({
+    bool? hasSponsoredMessagesEnabled,
+  }) =>
+      ToggleHasSponsoredMessagesEnabled(
+        hasSponsoredMessagesEnabled:
+            hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
       );
 }
 
@@ -32052,22 +33440,52 @@ extension SetBusinessAwayMessageSettingsExtensions
       );
 }
 
-extension ChangePhoneNumberExtensions on ChangePhoneNumber {
-  ChangePhoneNumber copyWith({
-    String? phoneNumber,
-    PhoneNumberAuthenticationSettings? settings,
+extension SetBusinessStartPageExtensions on SetBusinessStartPage {
+  SetBusinessStartPage copyWith({
+    InputBusinessStartPage? startPage,
   }) =>
-      ChangePhoneNumber(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings ?? this.settings,
+      SetBusinessStartPage(
+        startPage: startPage ?? this.startPage,
       );
 }
 
-extension CheckChangePhoneNumberCodeExtensions on CheckChangePhoneNumberCode {
-  CheckChangePhoneNumberCode copyWith({
+extension SendPhoneNumberCodeExtensions on SendPhoneNumberCode {
+  SendPhoneNumberCode copyWith({
+    String? phoneNumber,
+    PhoneNumberAuthenticationSettings? settings,
+    PhoneNumberCodeType? type,
+  }) =>
+      SendPhoneNumberCode(
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        settings: settings ?? this.settings,
+        type: type ?? this.type,
+      );
+}
+
+extension SendPhoneNumberFirebaseSmsExtensions on SendPhoneNumberFirebaseSms {
+  SendPhoneNumberFirebaseSms copyWith({
+    String? token,
+  }) =>
+      SendPhoneNumberFirebaseSms(
+        token: token ?? this.token,
+      );
+}
+
+extension ReportPhoneNumberCodeMissingExtensions
+    on ReportPhoneNumberCodeMissing {
+  ReportPhoneNumberCodeMissing copyWith({
+    String? mobileNetworkCode,
+  }) =>
+      ReportPhoneNumberCodeMissing(
+        mobileNetworkCode: mobileNetworkCode ?? this.mobileNetworkCode,
+      );
+}
+
+extension CheckPhoneNumberCodeExtensions on CheckPhoneNumberCode {
+  CheckPhoneNumberCode copyWith({
     String? code,
   }) =>
-      CheckChangePhoneNumberCode(
+      CheckPhoneNumberCode(
         code: code ?? this.code,
       );
 }
@@ -32087,6 +33505,66 @@ extension DeleteBusinessConnectedBotExtensions on DeleteBusinessConnectedBot {
   }) =>
       DeleteBusinessConnectedBot(
         botUserId: botUserId ?? this.botUserId,
+      );
+}
+
+extension ToggleBusinessConnectedBotChatIsPausedExtensions
+    on ToggleBusinessConnectedBotChatIsPaused {
+  ToggleBusinessConnectedBotChatIsPaused copyWith({
+    int? chatId,
+    bool? isPaused,
+  }) =>
+      ToggleBusinessConnectedBotChatIsPaused(
+        chatId: chatId ?? this.chatId,
+        isPaused: isPaused ?? this.isPaused,
+      );
+}
+
+extension RemoveBusinessConnectedBotFromChatExtensions
+    on RemoveBusinessConnectedBotFromChat {
+  RemoveBusinessConnectedBotFromChat copyWith({
+    int? chatId,
+  }) =>
+      RemoveBusinessConnectedBotFromChat(
+        chatId: chatId ?? this.chatId,
+      );
+}
+
+extension CreateBusinessChatLinkExtensions on CreateBusinessChatLink {
+  CreateBusinessChatLink copyWith({
+    InputBusinessChatLink? linkInfo,
+  }) =>
+      CreateBusinessChatLink(
+        linkInfo: linkInfo ?? this.linkInfo,
+      );
+}
+
+extension EditBusinessChatLinkExtensions on EditBusinessChatLink {
+  EditBusinessChatLink copyWith({
+    String? link,
+    InputBusinessChatLink? linkInfo,
+  }) =>
+      EditBusinessChatLink(
+        link: link ?? this.link,
+        linkInfo: linkInfo ?? this.linkInfo,
+      );
+}
+
+extension DeleteBusinessChatLinkExtensions on DeleteBusinessChatLink {
+  DeleteBusinessChatLink copyWith({
+    String? link,
+  }) =>
+      DeleteBusinessChatLink(
+        link: link ?? this.link,
+      );
+}
+
+extension GetBusinessChatLinkInfoExtensions on GetBusinessChatLinkInfo {
+  GetBusinessChatLinkInfo copyWith({
+    String? linkName,
+  }) =>
+      GetBusinessChatLinkInfo(
+        linkName: linkName ?? this.linkName,
       );
 }
 
@@ -32503,6 +33981,19 @@ extension ToggleSupergroupIsAllHistoryAvailableExtensions
         supergroupId: supergroupId ?? this.supergroupId,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+      );
+}
+
+extension ToggleSupergroupCanHaveSponsoredMessagesExtensions
+    on ToggleSupergroupCanHaveSponsoredMessages {
+  ToggleSupergroupCanHaveSponsoredMessages copyWith({
+    int? supergroupId,
+    bool? canHaveSponsoredMessages,
+  }) =>
+      ToggleSupergroupCanHaveSponsoredMessages(
+        supergroupId: supergroupId ?? this.supergroupId,
+        canHaveSponsoredMessages:
+            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
       );
 }
 
@@ -33018,6 +34509,41 @@ extension ReportMessageReactionsExtensions on ReportMessageReactions {
       );
 }
 
+extension GetChatRevenueStatisticsExtensions on GetChatRevenueStatistics {
+  GetChatRevenueStatistics copyWith({
+    int? chatId,
+    bool? isDark,
+  }) =>
+      GetChatRevenueStatistics(
+        chatId: chatId ?? this.chatId,
+        isDark: isDark ?? this.isDark,
+      );
+}
+
+extension GetChatRevenueWithdrawalUrlExtensions on GetChatRevenueWithdrawalUrl {
+  GetChatRevenueWithdrawalUrl copyWith({
+    int? chatId,
+    String? password,
+  }) =>
+      GetChatRevenueWithdrawalUrl(
+        chatId: chatId ?? this.chatId,
+        password: password ?? this.password,
+      );
+}
+
+extension GetChatRevenueTransactionsExtensions on GetChatRevenueTransactions {
+  GetChatRevenueTransactions copyWith({
+    int? chatId,
+    int? offset,
+    int? limit,
+  }) =>
+      GetChatRevenueTransactions(
+        chatId: chatId ?? this.chatId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+      );
+}
+
 extension GetChatStatisticsExtensions on GetChatStatistics {
   GetChatStatistics copyWith({
     int? chatId,
@@ -33236,28 +34762,6 @@ extension GetPreferredCountryLanguageExtensions on GetPreferredCountryLanguage {
       );
 }
 
-extension SendPhoneNumberVerificationCodeExtensions
-    on SendPhoneNumberVerificationCode {
-  SendPhoneNumberVerificationCode copyWith({
-    String? phoneNumber,
-    PhoneNumberAuthenticationSettings? settings,
-  }) =>
-      SendPhoneNumberVerificationCode(
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings ?? this.settings,
-      );
-}
-
-extension CheckPhoneNumberVerificationCodeExtensions
-    on CheckPhoneNumberVerificationCode {
-  CheckPhoneNumberVerificationCode copyWith({
-    String? code,
-  }) =>
-      CheckPhoneNumberVerificationCode(
-        code: code ?? this.code,
-      );
-}
-
 extension SendEmailAddressVerificationCodeExtensions
     on SendEmailAddressVerificationCode {
   SendEmailAddressVerificationCode copyWith({
@@ -33318,30 +34822,6 @@ extension SendPassportAuthorizationFormExtensions
       );
 }
 
-extension SendPhoneNumberConfirmationCodeExtensions
-    on SendPhoneNumberConfirmationCode {
-  SendPhoneNumberConfirmationCode copyWith({
-    String? hash,
-    String? phoneNumber,
-    PhoneNumberAuthenticationSettings? settings,
-  }) =>
-      SendPhoneNumberConfirmationCode(
-        hash: hash ?? this.hash,
-        phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings ?? this.settings,
-      );
-}
-
-extension CheckPhoneNumberConfirmationCodeExtensions
-    on CheckPhoneNumberConfirmationCode {
-  CheckPhoneNumberConfirmationCode copyWith({
-    String? code,
-  }) =>
-      CheckPhoneNumberConfirmationCode(
-        code: code ?? this.code,
-      );
-}
-
 extension SetBotUpdatesStatusExtensions on SetBotUpdatesStatus {
   SetBotUpdatesStatus copyWith({
     int? pendingUpdateCount,
@@ -33389,7 +34869,6 @@ extension CreateNewStickerSetExtensions on CreateNewStickerSet {
     int? userId,
     String? title,
     String? name,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     List<InputSticker>? stickers,
@@ -33399,7 +34878,6 @@ extension CreateNewStickerSetExtensions on CreateNewStickerSet {
         userId: userId ?? this.userId,
         title: title ?? this.title,
         name: name ?? this.name,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         stickers: stickers ?? this.stickers,
@@ -33420,16 +34898,33 @@ extension AddStickerToSetExtensions on AddStickerToSet {
       );
 }
 
+extension ReplaceStickerInSetExtensions on ReplaceStickerInSet {
+  ReplaceStickerInSet copyWith({
+    int? userId,
+    String? name,
+    InputFile? oldSticker,
+    InputSticker? newSticker,
+  }) =>
+      ReplaceStickerInSet(
+        userId: userId ?? this.userId,
+        name: name ?? this.name,
+        oldSticker: oldSticker ?? this.oldSticker,
+        newSticker: newSticker ?? this.newSticker,
+      );
+}
+
 extension SetStickerSetThumbnailExtensions on SetStickerSetThumbnail {
   SetStickerSetThumbnail copyWith({
     int? userId,
     String? name,
     InputFile? thumbnail,
+    StickerFormat? format,
   }) =>
       SetStickerSetThumbnail(
         userId: userId ?? this.userId,
         name: name ?? this.name,
         thumbnail: thumbnail ?? this.thumbnail,
+        format: format ?? this.format,
       );
 }
 
@@ -33515,6 +35010,17 @@ extension SetStickerMaskPositionExtensions on SetStickerMaskPosition {
       SetStickerMaskPosition(
         sticker: sticker ?? this.sticker,
         maskPosition: maskPosition ?? this.maskPosition,
+      );
+}
+
+extension GetOwnedStickerSetsExtensions on GetOwnedStickerSets {
+  GetOwnedStickerSets copyWith({
+    int? offsetStickerSetId,
+    int? limit,
+  }) =>
+      GetOwnedStickerSets(
+        offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
+        limit: limit ?? this.limit,
       );
 }
 
@@ -33650,6 +35156,15 @@ extension AssignGooglePlayTransactionExtensions on AssignGooglePlayTransaction {
       );
 }
 
+extension GetBusinessFeaturesExtensions on GetBusinessFeatures {
+  GetBusinessFeatures copyWith({
+    BusinessFeature? source,
+  }) =>
+      GetBusinessFeatures(
+        source: source ?? this.source,
+      );
+}
+
 extension AcceptTermsOfServiceExtensions on AcceptTermsOfService {
   AcceptTermsOfService copyWith({
     String? termsOfServiceId,
@@ -33723,6 +35238,15 @@ extension GetPhoneNumberInfoSyncExtensions on GetPhoneNumberInfoSync {
       GetPhoneNumberInfoSync(
         languageCode: languageCode ?? this.languageCode,
         phoneNumberPrefix: phoneNumberPrefix ?? this.phoneNumberPrefix,
+      );
+}
+
+extension GetCollectibleItemInfoExtensions on GetCollectibleItemInfo {
+  GetCollectibleItemInfo copyWith({
+    CollectibleItemType? type,
+  }) =>
+      GetCollectibleItemInfo(
+        type: type ?? this.type,
       );
 }
 

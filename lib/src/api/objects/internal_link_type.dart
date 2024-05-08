@@ -18,6 +18,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeBotAddToChannel]
   /// [InternalLinkTypeBotStartInGroup]
   /// [InternalLinkTypeBotStart]
+  /// [InternalLinkTypeBusinessChat]
   /// [InternalLinkTypeChangePhoneNumber]
   /// [InternalLinkTypeChatBoost]
   /// [InternalLinkTypeChatFolderInvite]
@@ -74,6 +75,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeBotStart.fromJson(json);
       case InternalLinkTypeBotStartInGroup.constructor:
         return InternalLinkTypeBotStartInGroup.fromJson(json);
+      case InternalLinkTypeBusinessChat.constructor:
+        return InternalLinkTypeBusinessChat.fromJson(json);
       case InternalLinkTypeChangePhoneNumber.constructor:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
       case InternalLinkTypeChatBoost.constructor:

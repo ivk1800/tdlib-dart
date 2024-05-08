@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of a Saved Messages topic
+/// Describes type of Saved Messages topic
 @immutable
 abstract class SavedMessagesTopicType extends TdObject {
   const SavedMessagesTopicType();

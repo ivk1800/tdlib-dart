@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents the type of a network
+/// Represents the type of network
 @immutable
 abstract class NetworkType extends TdObject {
   const NetworkType();

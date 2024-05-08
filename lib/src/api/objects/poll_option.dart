@@ -13,8 +13,9 @@ class PollOption extends TdObject {
     required this.isBeingChosen,
   });
 
-  /// [text] Option text; 1-100 characters
-  final String text;
+  /// [text] Option text; 1-100 characters. Only custom emoji entities are
+  /// allowed
+  final FormattedText text;
 
   /// [voterCount] Number of voters for this option, available only for closed
   /// or voted polls
@@ -38,7 +39,7 @@ class PollOption extends TdObject {
     }
 
     return PollOption(
-      text: json['text'] as String,
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
       voterCount: json['voter_count'] as int,
       votePercentage: json['vote_percentage'] as int,
       isChosen: json['is_chosen'] as bool,
@@ -51,7 +52,7 @@ class PollOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
+        'text': text.toJson(),
         'voter_count': voterCount,
         'vote_percentage': votePercentage,
         'is_chosen': isChosen,

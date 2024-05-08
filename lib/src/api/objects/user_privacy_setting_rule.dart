@@ -13,6 +13,7 @@ abstract class UserPrivacySettingRule extends TdObject {
   /// [UserPrivacySettingRuleAllowAll]
   /// [UserPrivacySettingRuleAllowChatMembers]
   /// [UserPrivacySettingRuleAllowContacts]
+  /// [UserPrivacySettingRuleAllowPremiumUsers]
   /// [UserPrivacySettingRuleAllowUsers]
   /// [UserPrivacySettingRuleRestrictAll]
   /// [UserPrivacySettingRuleRestrictChatMembers]
@@ -30,6 +31,8 @@ abstract class UserPrivacySettingRule extends TdObject {
         return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.constructor:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
+      case UserPrivacySettingRuleAllowPremiumUsers.constructor:
+        return UserPrivacySettingRuleAllowPremiumUsers.fromJson(json);
       case UserPrivacySettingRuleAllowUsers.constructor:
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
       case UserPrivacySettingRuleRestrictAll.constructor:

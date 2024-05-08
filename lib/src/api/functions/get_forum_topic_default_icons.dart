@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of custom emojis, which can be used as forum topic icon by
-/// all users
+/// Returns the list of custom emojis, which can be used as forum topic icon
+/// by all users
 /// Returns [Stickers]
 @immutable
 class GetForumTopicDefaultIcons extends TdFunction {

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains authentication data for a email address
+/// Contains authentication data for an email address
 @immutable
 abstract class EmailAddressAuthentication extends TdObject {
   const EmailAddressAuthentication();

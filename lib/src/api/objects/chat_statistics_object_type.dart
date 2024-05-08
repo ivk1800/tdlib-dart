@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of an object, for which statistics are provided
+/// Describes type of object, for which statistics are provided
 @immutable
 abstract class ChatStatisticsObjectType extends TdObject {
   const ChatStatisticsObjectType();

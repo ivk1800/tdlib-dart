@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Removes a sticker from the set to which it belongs; for bots only. The
-/// sticker set must have been created by the bot
+/// Removes a sticker from the set to which it belongs. The sticker set must
+/// be owned by the current user
 /// Returns [Ok]
 @immutable
 class RemoveStickerFromSet extends TdFunction {
@@ -11,7 +11,7 @@ class RemoveStickerFromSet extends TdFunction {
     required this.sticker,
   });
 
-  /// [sticker] Sticker
+  /// [sticker] Sticker to remove from the set
   final InputFile sticker;
 
   static const String constructor = 'removeStickerFromSet';

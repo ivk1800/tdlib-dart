@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Deleted a sticker set; for bots only
+/// Completely deletes a sticker set
 /// Returns [Ok]
 @immutable
 class DeleteStickerSet extends TdFunction {
@@ -10,7 +10,7 @@ class DeleteStickerSet extends TdFunction {
     required this.name,
   });
 
-  /// [name] Sticker set name
+  /// [name] Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   static const String constructor = 'deleteStickerSet';

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the exact type of a problem with a call
+/// Describes the exact type of problem with a call
 @immutable
 abstract class CallProblem extends TdObject {
   const CallProblem();

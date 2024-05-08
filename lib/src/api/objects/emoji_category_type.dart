@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes type of an emoji category
+/// Describes type of emoji category
 @immutable
 abstract class EmojiCategoryType extends TdObject {
   const EmojiCategoryType();
@@ -13,6 +13,7 @@ abstract class EmojiCategoryType extends TdObject {
   /// [EmojiCategoryTypeChatPhoto]
   /// [EmojiCategoryTypeDefault]
   /// [EmojiCategoryTypeEmojiStatus]
+  /// [EmojiCategoryTypeRegularStickers]
   static EmojiCategoryType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -25,6 +26,8 @@ abstract class EmojiCategoryType extends TdObject {
         return EmojiCategoryTypeDefault.fromJson(json);
       case EmojiCategoryTypeEmojiStatus.constructor:
         return EmojiCategoryTypeEmojiStatus.fromJson(json);
+      case EmojiCategoryTypeRegularStickers.constructor:
+        return EmojiCategoryTypeRegularStickers.fromJson(json);
       default:
         return null;
     }

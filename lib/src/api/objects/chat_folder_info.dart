@@ -24,7 +24,7 @@ class ChatFolderInfo extends TdObject {
   final ChatFolderIcon icon;
 
   /// [colorId] The identifier of the chosen color for the chat folder icon;
-  /// from -1 to 6. If -1, then color is didabled
+  /// from -1 to 6. If -1, then color is disabled
   final int colorId;
 
   /// [isShareable] True, if at least one link has been created for the folder

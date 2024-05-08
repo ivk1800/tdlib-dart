@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Sets a custom emoji sticker set thumbnail; for bots only
+/// Sets a custom emoji sticker set thumbnail
 /// Returns [Ok]
 @immutable
 class SetCustomEmojiStickerSetThumbnail extends TdFunction {
@@ -11,7 +11,7 @@ class SetCustomEmojiStickerSetThumbnail extends TdFunction {
     required this.customEmojiId,
   });
 
-  /// [name] Sticker set name
+  /// [name] Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// [customEmojiId] Identifier of the custom emoji from the sticker set, which

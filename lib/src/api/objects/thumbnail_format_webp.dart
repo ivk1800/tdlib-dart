@@ -3,6 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The thumbnail is in WEBP format. It will be used only for some stickers
+/// and sticker sets
 @immutable
 class ThumbnailFormatWebp extends ThumbnailFormat {
   const ThumbnailFormatWebp();

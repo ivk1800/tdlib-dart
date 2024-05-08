@@ -21,8 +21,10 @@ class SupergroupFullInfo extends TdObject {
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
+    required this.canGetRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
+    required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
     required this.myBoostCount,
@@ -95,6 +97,10 @@ class SupergroupFullInfo extends TdObject {
   /// available
   final bool canGetStatistics;
 
+  /// [canGetRevenueStatistics] True, if the supergroup or channel revenue
+  /// statistics are available
+  final bool canGetRevenueStatistics;
+
   /// [canToggleAggressiveAntiSpam] True, if aggressive anti-spam checks can be
   /// enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
@@ -105,6 +111,10 @@ class SupergroupFullInfo extends TdObject {
   /// non-forum supergroups without a linked chat. The value of this field is
   /// only available to chat administrators
   final bool isAllHistoryAvailable;
+
+  /// [canHaveSponsoredMessages] True, if the chat can have sponsored messages.
+  /// The value of this field is only available to the owner of the chat
+  final bool canHaveSponsoredMessages;
 
   /// [hasAggressiveAntiSpamEnabled] True, if aggressive anti-spam checks are
   /// enabled in the supergroup. The value of this field is only available to
@@ -175,9 +185,11 @@ class SupergroupFullInfo extends TdObject {
       canSetStickerSet: json['can_set_sticker_set'] as bool,
       canSetLocation: json['can_set_location'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
+      canGetRevenueStatistics: json['can_get_revenue_statistics'] as bool,
       canToggleAggressiveAntiSpam:
           json['can_toggle_aggressive_anti_spam'] as bool,
       isAllHistoryAvailable: json['is_all_history_available'] as bool,
+      canHaveSponsoredMessages: json['can_have_sponsored_messages'] as bool,
       hasAggressiveAntiSpamEnabled:
           json['has_aggressive_anti_spam_enabled'] as bool,
       hasPinnedStories: json['has_pinned_stories'] as bool,
@@ -219,8 +231,10 @@ class SupergroupFullInfo extends TdObject {
         'can_set_sticker_set': canSetStickerSet,
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,
+        'can_get_revenue_statistics': canGetRevenueStatistics,
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
+        'can_have_sponsored_messages': canHaveSponsoredMessages,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
         'has_pinned_stories': hasPinnedStories,
         'my_boost_count': myBoostCount,

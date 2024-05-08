@@ -15,7 +15,7 @@ class SendStory extends TdFunction {
     required this.privacySettings,
     required this.activePeriod,
     required this.fromStoryFullId,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.protectContent,
   });
 
@@ -30,7 +30,8 @@ class SendStory extends TdFunction {
   final InputStoryAreas? areas;
 
   /// [caption] Story caption; pass null to use an empty caption;
-  /// 0-getOption("story_caption_length_max") characters
+  /// 0-getOption("story_caption_length_max") characters; can have entities only
+  /// if getOption("can_use_text_entities_in_story_caption")
   final FormattedText? caption;
 
   /// [privacySettings] The privacy settings for the story; ignored for stories
@@ -46,8 +47,9 @@ class SendStory extends TdFunction {
   /// used to create the story
   final StoryFullId fromStoryFullId;
 
-  /// [isPinned] Pass true to keep the story accessible after expiration
-  final bool isPinned;
+  /// [isPostedToChatPage] Pass true to keep the story accessible after
+  /// expiration
+  final bool isPostedToChatPage;
 
   /// [protectContent] Pass true if the content of the story must be protected
   /// from forwarding and screenshotting
@@ -67,7 +69,7 @@ class SendStory extends TdFunction {
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
         'from_story_full_id': fromStoryFullId.toJson(),
-        'is_pinned': isPinned,
+        'is_posted_to_chat_page': isPostedToChatPage,
         'protect_content': protectContent,
         '@type': constructor,
       };

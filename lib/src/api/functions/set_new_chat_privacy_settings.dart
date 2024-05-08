@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes privacy settings for new chat creation; for Telegram Premium users
-/// only
+/// Changes privacy settings for new chat creation; can be used only if
+/// getOption("can_set_new_chat_privacy_settings")
 /// Returns [Ok]
 @immutable
 class SetNewChatPrivacySettings extends TdFunction {

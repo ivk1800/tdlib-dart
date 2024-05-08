@@ -14,6 +14,9 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     required this.restrictUserIsPremium,
     required this.userIsPremium,
     required this.maxQuantity,
+    required this.requestName,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// [id] Unique button identifier
@@ -38,6 +41,15 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// [maxQuantity] The maximum number of users to share
   final int maxQuantity;
 
+  /// [requestName] Pass true to request name of the users; bots only
+  final bool requestName;
+
+  /// [requestUsername] Pass true to request username of the users; bots only
+  final bool requestUsername;
+
+  /// [requestPhoto] Pass true to request photo of the users; bots only
+  final bool requestPhoto;
+
   static const String constructor = 'keyboardButtonTypeRequestUsers';
 
   static KeyboardButtonTypeRequestUsers? fromJson(Map<String, dynamic>? json) {
@@ -52,6 +64,9 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
       restrictUserIsPremium: json['restrict_user_is_premium'] as bool,
       userIsPremium: json['user_is_premium'] as bool,
       maxQuantity: json['max_quantity'] as int,
+      requestName: json['request_name'] as bool,
+      requestUsername: json['request_username'] as bool,
+      requestPhoto: json['request_photo'] as bool,
     );
   }
 
@@ -66,6 +81,9 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
         'restrict_user_is_premium': restrictUserIsPremium,
         'user_is_premium': userIsPremium,
         'max_quantity': maxQuantity,
+        'request_name': requestName,
+        'request_username': requestUsername,
+        'request_photo': requestPhoto,
         '@type': constructor,
       };
 

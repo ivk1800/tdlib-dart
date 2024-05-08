@@ -4,7 +4,8 @@ A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated sche
 
 | Version |                         tdlib commit                          |                                                                 td_api.tl revision |
 |---------|:-------------------------------------------------------------:|-----------------------------------------------------------------------------------:|
-| 1.8.26  |                          last commit                          |   [b1b33cf](https://github.com/tdlib/td/blob/b1b33cf/td/generate/scheme/td_api.tl) |
+| 1.8.29  |                          last commit                          |   [44b548c](https://github.com/tdlib/td/blob/44b548c/td/generate/scheme/td_api.tl) |
+| 1.8.26  | [d7a31ad](https://github.com/ivk1800/tdlib-dart/tree/d7a31ad) |   [b1b33cf](https://github.com/tdlib/td/blob/b1b33cf/td/generate/scheme/td_api.tl) |
 | 1.8.21  | [32d37d9](https://github.com/ivk1800/tdlib-dart/tree/32d37d9) |   [404761c](https://github.com/tdlib/td/blob/404761c/td/generate/scheme/td_api.tl) |
 | 1.8.19  | [1a00bae](https://github.com/ivk1800/tdlib-dart/tree/1a00bae) |   [986f1ab](https://github.com/tdlib/td/blob/986f1ab/td/generate/scheme/td_api.tl) |
 | 1.8.18  | [532fae5](https://github.com/ivk1800/tdlib-dart/tree/532fae5) |   [daf4801](https://github.com/tdlib/td/blob/daf4801/td/generate/scheme/td_api.tl) |

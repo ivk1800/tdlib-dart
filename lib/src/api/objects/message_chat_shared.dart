@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class MessageChatShared extends MessageContent {
   const MessageChatShared({
-    required this.chatId,
+    required this.chat,
     required this.buttonId,
   });
 
-  /// [chatId] Identifier of the shared chat
-  final int chatId;
+  /// [chat] The shared chat
+  final SharedChat chat;
 
   /// [buttonId] Identifier of the keyboard button with the request
   final int buttonId;
@@ -24,7 +24,7 @@ class MessageChatShared extends MessageContent {
     }
 
     return MessageChatShared(
-      chatId: json['chat_id'] as int,
+      chat: SharedChat.fromJson(json['chat'] as Map<String, dynamic>?)!,
       buttonId: json['button_id'] as int,
     );
   }
@@ -34,7 +34,7 @@ class MessageChatShared extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
+        'chat': chat.toJson(),
         'button_id': buttonId,
         '@type': constructor,
       };

@@ -2,8 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The thumbnail is in WEBM format. It will be used only for WEBM sticker
-/// sets
+/// The thumbnail is in WEBM format. It will be used only for sticker sets
 @immutable
 class ThumbnailFormatWebm extends ThumbnailFormat {
   const ThumbnailFormatWebm();

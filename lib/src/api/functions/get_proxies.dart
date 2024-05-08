@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of proxies that are currently set up. Can be called before
-/// authorization
+/// Returns the list of proxies that are currently set up. Can be called
+/// before authorization
 /// Returns [Proxies]
 @immutable
 class GetProxies extends TdFunction {

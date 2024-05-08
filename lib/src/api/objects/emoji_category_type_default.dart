@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The category must be used by default
+/// The category must be used by default (e.g., for custom emoji or animation
+/// search)
 @immutable
 class EmojiCategoryTypeDefault extends EmojiCategoryType {
   const EmojiCategoryTypeDefault();

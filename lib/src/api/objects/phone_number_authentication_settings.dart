@@ -9,6 +9,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
     required this.allowFlashCall,
     required this.allowMissedCall,
     required this.isCurrentPhoneNumber,
+    required this.hasUnknownPhoneNumber,
     required this.allowSmsRetrieverApi,
     this.firebaseAuthenticationSettings,
     required this.authenticationTokens,
@@ -25,6 +26,10 @@ class PhoneNumberAuthenticationSettings extends TdObject {
   /// [isCurrentPhoneNumber] Pass true if the authenticated phone number is used
   /// on the current device
   final bool isCurrentPhoneNumber;
+
+  /// [hasUnknownPhoneNumber] Pass true if there is a SIM card in the current
+  /// device, but it is not possible to check whether phone number matches
+  final bool hasUnknownPhoneNumber;
 
   /// [allowSmsRetrieverApi] For official applications only. True, if the
   /// application can use Android SMS Retriever API (requires Google Play
@@ -52,6 +57,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
       allowFlashCall: json['allow_flash_call'] as bool,
       allowMissedCall: json['allow_missed_call'] as bool,
       isCurrentPhoneNumber: json['is_current_phone_number'] as bool,
+      hasUnknownPhoneNumber: json['has_unknown_phone_number'] as bool,
       allowSmsRetrieverApi: json['allow_sms_retriever_api'] as bool,
       firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(
           json['firebase_authentication_settings'] as Map<String, dynamic>?),
@@ -70,6 +76,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
         'allow_flash_call': allowFlashCall,
         'allow_missed_call': allowMissedCall,
         'is_current_phone_number': isCurrentPhoneNumber,
+        'has_unknown_phone_number': hasUnknownPhoneNumber,
         'allow_sms_retriever_api': allowSmsRetrieverApi,
         'firebase_authentication_settings':
             firebaseAuthenticationSettings?.toJson(),

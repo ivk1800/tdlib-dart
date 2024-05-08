@@ -23,7 +23,8 @@ class Usernames extends TdObject {
   final List<String> disabledUsernames;
 
   /// [editableUsername] The active username, which can be changed with
-  /// setUsername or setSupergroupUsername
+  /// setUsername or setSupergroupUsername. Information about other active
+  /// usernames can be received using getCollectibleItemInfo
   final String editableUsername;
 
   static const String constructor = 'usernames';

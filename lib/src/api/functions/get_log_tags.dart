@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of available TDLib internal log tags, for example, ["actor",
-/// "binlog", "connections", "notifications", "proxy"]. Can be called
-/// synchronously
+/// Returns the list of available TDLib internal log tags, for example,
+/// ["actor", "binlog", "connections", "notifications", "proxy"]. Can be
+/// called synchronously
 /// Returns [LogTags]
 @immutable
 class GetLogTags extends TdFunction {

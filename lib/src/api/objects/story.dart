@@ -13,13 +13,13 @@ class Story extends TdObject {
     required this.isBeingSent,
     required this.isBeingEdited,
     required this.isEdited,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.isVisibleOnlyForSelf,
     required this.canBeDeleted,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
-    required this.canToggleIsPinned,
+    required this.canToggleIsPostedToChatPage,
     required this.canGetStatistics,
     required this.canGetInteractions,
     required this.hasExpiredViewers,
@@ -54,9 +54,9 @@ class Story extends TdObject {
   /// [isEdited] True, if the story was edited
   final bool isEdited;
 
-  /// [isPinned] True, if the story is saved in the sender's profile and will be
-  /// available there after expiration
-  final bool isPinned;
+  /// [isPostedToChatPage] True, if the story is saved in the sender's profile
+  /// and will be available there after expiration
+  final bool isPostedToChatPage;
 
   /// [isVisibleOnlyForSelf] True, if the story is visible only for the current
   /// user
@@ -77,8 +77,9 @@ class Story extends TdObject {
   /// story sender
   final bool canBeReplied;
 
-  /// [canToggleIsPinned] True, if the story's is_pinned value can be changed
-  final bool canToggleIsPinned;
+  /// [canToggleIsPostedToChatPage] True, if the story's is_posted_to_chat_page
+  /// value can be changed
+  final bool canToggleIsPostedToChatPage;
 
   /// [canGetStatistics] True, if the story statistics are available through
   /// getStoryStatistics
@@ -133,13 +134,14 @@ class Story extends TdObject {
       isBeingSent: json['is_being_sent'] as bool,
       isBeingEdited: json['is_being_edited'] as bool,
       isEdited: json['is_edited'] as bool,
-      isPinned: json['is_pinned'] as bool,
+      isPostedToChatPage: json['is_posted_to_chat_page'] as bool,
       isVisibleOnlyForSelf: json['is_visible_only_for_self'] as bool,
       canBeDeleted: json['can_be_deleted'] as bool,
       canBeEdited: json['can_be_edited'] as bool,
       canBeForwarded: json['can_be_forwarded'] as bool,
       canBeReplied: json['can_be_replied'] as bool,
-      canToggleIsPinned: json['can_toggle_is_pinned'] as bool,
+      canToggleIsPostedToChatPage:
+          json['can_toggle_is_posted_to_chat_page'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
       canGetInteractions: json['can_get_interactions'] as bool,
       hasExpiredViewers: json['has_expired_viewers'] as bool,
@@ -173,13 +175,13 @@ class Story extends TdObject {
         'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
         'is_edited': isEdited,
-        'is_pinned': isPinned,
+        'is_posted_to_chat_page': isPostedToChatPage,
         'is_visible_only_for_self': isVisibleOnlyForSelf,
         'can_be_deleted': canBeDeleted,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied': canBeReplied,
-        'can_toggle_is_pinned': canToggleIsPinned,
+        'can_toggle_is_posted_to_chat_page': canToggleIsPostedToChatPage,
         'can_get_statistics': canGetStatistics,
         'can_get_interactions': canGetInteractions,
         'has_expired_viewers': hasExpiredViewers,

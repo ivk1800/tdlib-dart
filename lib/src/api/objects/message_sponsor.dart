@@ -6,16 +6,16 @@ import '../tdapi.dart';
 @immutable
 class MessageSponsor extends TdObject {
   const MessageSponsor({
-    required this.type,
+    required this.url,
     this.photo,
     this.info,
   });
 
-  /// [type] Type of the sponsor
-  final MessageSponsorType type;
+  /// [url] URL of the sponsor to be opened when the message is clicked
+  final String url;
 
   /// [photo] Photo of the sponsor; may be null if must not be shown
-  final ChatPhotoInfo? photo;
+  final Photo? photo;
 
   /// [info] Additional optional information about the sponsor to be shown along
   /// with the message
@@ -29,8 +29,8 @@ class MessageSponsor extends TdObject {
     }
 
     return MessageSponsor(
-      type: MessageSponsorType.fromJson(json['type'] as Map<String, dynamic>?)!,
-      photo: ChatPhotoInfo.fromJson(json['photo'] as Map<String, dynamic>?),
+      url: json['url'] as String,
+      photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
       info: json['info'] as String?,
     );
   }
@@ -40,7 +40,7 @@ class MessageSponsor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
+        'url': url,
         'photo': photo?.toJson(),
         'info': info,
         '@type': constructor,

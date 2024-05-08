@@ -13,7 +13,6 @@ abstract class Update extends TdObject {
   /// [UpdateAccentColors]
   /// [UpdateActiveEmojiReactions]
   /// [UpdateActiveNotifications]
-  /// [UpdateAddChatMembersPrivacyForbidden]
   /// [UpdateAnimatedEmojiMessageClicked]
   /// [UpdateAnimationSearchParameters]
   /// [UpdateAttachmentMenuBots]
@@ -21,6 +20,9 @@ abstract class Update extends TdObject {
   /// [UpdateAutosaveSettings]
   /// [UpdateBasicGroupFullInfo]
   /// [UpdateBasicGroup]
+  /// [UpdateBusinessConnection]
+  /// [UpdateBusinessMessageEdited]
+  /// [UpdateBusinessMessagesDeleted]
   /// [UpdateCall]
   /// [UpdateChatAccentColors]
   /// [UpdateChatActionBar]
@@ -31,6 +33,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatBackground]
   /// [UpdateChatBlockList]
   /// [UpdateChatBoost]
+  /// [UpdateChatBusinessBotManageBar]
   /// [UpdateChatDefaultDisableNotification]
   /// [UpdateChatDraftMessage]
   /// [UpdateChatEmojiStatus]
@@ -53,6 +56,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatReadOutbox]
   /// [UpdateChatRemovedFromList]
   /// [UpdateChatReplyMarkup]
+  /// [UpdateChatRevenueAmount]
   /// [UpdateChatTheme]
   /// [UpdateChatThemes]
   /// [UpdateChatTitle]
@@ -61,6 +65,7 @@ abstract class Update extends TdObject {
   /// [UpdateChatVideoChat]
   /// [UpdateChatViewAsTopics]
   /// [UpdateConnectionState]
+  /// [UpdateContactCloseBirthdays]
   /// [UpdateDefaultBackground]
   /// [UpdateDefaultReactionType]
   /// [UpdateDeleteMessages]
@@ -92,6 +97,7 @@ abstract class Update extends TdObject {
   /// [UpdateMessageSendFailed]
   /// [UpdateMessageSendSucceeded]
   /// [UpdateMessageUnreadReactions]
+  /// [UpdateNewBusinessMessage]
   /// [UpdateNewCallSignalingData]
   /// [UpdateNewCallbackQuery]
   /// [UpdateNewChatJoinRequest]
@@ -114,6 +120,7 @@ abstract class Update extends TdObject {
   /// [UpdateQuickReplyShortcutMessages]
   /// [UpdateQuickReplyShortcut]
   /// [UpdateQuickReplyShortcuts]
+  /// [UpdateReactionNotificationSettings]
   /// [UpdateRecentStickers]
   /// [UpdateSavedAnimations]
   /// [UpdateSavedMessagesTags]
@@ -124,6 +131,7 @@ abstract class Update extends TdObject {
   /// [UpdateSecretChat]
   /// [UpdateServiceNotification]
   /// [UpdateSpeechRecognitionTrial]
+  /// [UpdateSpeedLimitNotification]
   /// [UpdateStickerSet]
   /// [UpdateStoryDeleted]
   /// [UpdateStoryListChatCount]
@@ -157,8 +165,6 @@ abstract class Update extends TdObject {
         return UpdateActiveEmojiReactions.fromJson(json);
       case UpdateActiveNotifications.constructor:
         return UpdateActiveNotifications.fromJson(json);
-      case UpdateAddChatMembersPrivacyForbidden.constructor:
-        return UpdateAddChatMembersPrivacyForbidden.fromJson(json);
       case UpdateAnimatedEmojiMessageClicked.constructor:
         return UpdateAnimatedEmojiMessageClicked.fromJson(json);
       case UpdateAnimationSearchParameters.constructor:
@@ -173,6 +179,12 @@ abstract class Update extends TdObject {
         return UpdateBasicGroup.fromJson(json);
       case UpdateBasicGroupFullInfo.constructor:
         return UpdateBasicGroupFullInfo.fromJson(json);
+      case UpdateBusinessConnection.constructor:
+        return UpdateBusinessConnection.fromJson(json);
+      case UpdateBusinessMessageEdited.constructor:
+        return UpdateBusinessMessageEdited.fromJson(json);
+      case UpdateBusinessMessagesDeleted.constructor:
+        return UpdateBusinessMessagesDeleted.fromJson(json);
       case UpdateCall.constructor:
         return UpdateCall.fromJson(json);
       case UpdateChatAccentColors.constructor:
@@ -193,6 +205,8 @@ abstract class Update extends TdObject {
         return UpdateChatBlockList.fromJson(json);
       case UpdateChatBoost.constructor:
         return UpdateChatBoost.fromJson(json);
+      case UpdateChatBusinessBotManageBar.constructor:
+        return UpdateChatBusinessBotManageBar.fromJson(json);
       case UpdateChatDefaultDisableNotification.constructor:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatDraftMessage.constructor:
@@ -237,6 +251,8 @@ abstract class Update extends TdObject {
         return UpdateChatRemovedFromList.fromJson(json);
       case UpdateChatReplyMarkup.constructor:
         return UpdateChatReplyMarkup.fromJson(json);
+      case UpdateChatRevenueAmount.constructor:
+        return UpdateChatRevenueAmount.fromJson(json);
       case UpdateChatTheme.constructor:
         return UpdateChatTheme.fromJson(json);
       case UpdateChatThemes.constructor:
@@ -253,6 +269,8 @@ abstract class Update extends TdObject {
         return UpdateChatViewAsTopics.fromJson(json);
       case UpdateConnectionState.constructor:
         return UpdateConnectionState.fromJson(json);
+      case UpdateContactCloseBirthdays.constructor:
+        return UpdateContactCloseBirthdays.fromJson(json);
       case UpdateDefaultBackground.constructor:
         return UpdateDefaultBackground.fromJson(json);
       case UpdateDefaultReactionType.constructor:
@@ -315,6 +333,8 @@ abstract class Update extends TdObject {
         return UpdateMessageSendSucceeded.fromJson(json);
       case UpdateMessageUnreadReactions.constructor:
         return UpdateMessageUnreadReactions.fromJson(json);
+      case UpdateNewBusinessMessage.constructor:
+        return UpdateNewBusinessMessage.fromJson(json);
       case UpdateNewCallSignalingData.constructor:
         return UpdateNewCallSignalingData.fromJson(json);
       case UpdateNewCallbackQuery.constructor:
@@ -359,6 +379,8 @@ abstract class Update extends TdObject {
         return UpdateQuickReplyShortcutMessages.fromJson(json);
       case UpdateQuickReplyShortcuts.constructor:
         return UpdateQuickReplyShortcuts.fromJson(json);
+      case UpdateReactionNotificationSettings.constructor:
+        return UpdateReactionNotificationSettings.fromJson(json);
       case UpdateRecentStickers.constructor:
         return UpdateRecentStickers.fromJson(json);
       case UpdateSavedAnimations.constructor:
@@ -379,6 +401,8 @@ abstract class Update extends TdObject {
         return UpdateServiceNotification.fromJson(json);
       case UpdateSpeechRecognitionTrial.constructor:
         return UpdateSpeechRecognitionTrial.fromJson(json);
+      case UpdateSpeedLimitNotification.constructor:
+        return UpdateSpeedLimitNotification.fromJson(json);
       case UpdateStickerSet.constructor:
         return UpdateStickerSet.fromJson(json);
       case UpdateStory.constructor:

@@ -2,8 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// An authentication code is delivered via an SMS message to the specified
-/// phone number; applications may not receive this type of code
+/// A digit-only authentication code is delivered via an SMS message to the
+/// specified phone number; non-official applications may not receive this
+/// type of code
 @immutable
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   const AuthenticationCodeTypeSms({

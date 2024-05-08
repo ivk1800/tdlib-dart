@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes the type of an inline keyboard button
+/// Describes the type of inline keyboard button
 @immutable
 abstract class InlineKeyboardButtonType extends TdObject {
   const InlineKeyboardButtonType();

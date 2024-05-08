@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns list of features available on the specific chat boost level; this
-/// is an offline request
+/// Returns the list of features available on the specific chat boost level;
+/// this is an offline request
 /// Returns [ChatBoostLevelFeatures]
 @immutable
 class GetChatBoostLevelFeatures extends TdFunction {
