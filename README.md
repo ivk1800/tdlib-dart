@@ -60,7 +60,7 @@ Future<void> main() async {
 ### Getting started with flutter example
 1. Obtain `api_id` and `api_hash` at https://my.telegram.org
 2. Build tdlib for your operating system following the [instruction](https://github.com/tdlib/td#building) or download ~~[prebuild](https://github.com/ivk1800/td-json-client-prebuilt/releases)~~ 
-[releases]()
+[releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.33)
  binaries. Following the instraction below for setup tdlib.
 3. Open `example/lib/main.dart` and place obtained `api_id` and `api_hash` to appropriate methods `getApiId` and `getApiHash`.
 4. Specify phone number and code in `getPhoneNumber` and `getCode` methods. Attention, the phone number must be specified from the test DC. If you don't want to use the test DC and want to authenticate with your account, change `useTestDc` to `false` in `TdlibParameters`.
