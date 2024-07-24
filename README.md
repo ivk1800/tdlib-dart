@@ -1,4 +1,4 @@
-# tdlib-dart
+# tdlib-dart fork of ivk1800/tdlib
 
 ### Table of Contents
 
@@ -55,7 +55,7 @@ dependencies:
 2. Build tdlib for your operating system following the [instruction](https://github.com/tdlib/td#building) or download ~~[prebuild](https://github.com/ivk1800/td-json-client-prebuilt/releases)~~
    for android downnload from here => [ v1.8.33 releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.33)
    binaries.
-3. place the files in the desired platforms folder [instructions](### Prebuilt binaries)
+3. place the files in the desired platforms folder instructions below
 4. import package
 
 ```dart
