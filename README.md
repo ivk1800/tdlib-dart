@@ -53,7 +53,7 @@ dependencies:
 
 1. Obtain `api_id` and `api_hash` at https://my.telegram.org
 2. Build tdlib for your operating system following the [instruction](https://github.com/tdlib/td#building) or download ~~[prebuild](https://github.com/ivk1800/td-json-client-prebuilt/releases)~~
-   for android downnload from here => [ v1.8.33 releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.33)
+   for android downnload from here => [ v1.8.31 releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.31)
    binaries.
 3. place the files in the desired platforms folder instructions below
 4. import package
@@ -121,7 +121,7 @@ for more info go [official tdlib getting started](https://core.telegram.org/tdli
 
 ### Prebuilt binaries
 
-The tdlib binaries is built automatically using github actions and published on the [releases page](https://github.com/ivk1800/td-json-client-prebuilt/releases/). For android downnload from here => [ v1.8.33 releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.33). Follow the instructions below for each platform to configure flutter project to use tdlib
+The tdlib binaries is built automatically using github actions and published on the [releases page](https://github.com/ivk1800/td-json-client-prebuilt/releases/). For android downnload from here => [ v1.8.31 releases](https://github.com/stellarNuke/tdlib-dart/releases/tag/v1.8.31). Follow the instructions below for each platform to configure flutter project to use tdlib
 
 ### Android
 
