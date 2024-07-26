@@ -80,7 +80,7 @@ class JsonBindings {
   }
 
   String _resolveFuncName(String name) =>
-      '${Platform.isAndroid ? '_' : ''}td_json_client_$name';
+      'td_json_client_$name';
 
   ffi.DynamicLibrary _openLib() {
     if (Platform.isMacOS || Platform.isIOS) {
