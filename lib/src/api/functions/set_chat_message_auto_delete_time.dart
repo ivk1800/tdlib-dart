@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Changes the message auto-delete or self-destruct (for secret chats) time
 /// in a chat. Requires change_info administrator right in basic groups,
-/// supergroups and channels Message auto-delete time can't be changed in a
+/// supergroups and channels. Message auto-delete time can't be changed in a
 /// chat with the current user (Saved Messages) and the chat 777000
 /// (Telegram).
 /// Returns [Ok]

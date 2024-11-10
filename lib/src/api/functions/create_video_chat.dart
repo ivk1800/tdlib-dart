@@ -21,7 +21,7 @@ class CreateVideoChat extends TdFunction {
   /// [title] Group call title; if empty, chat title will be used
   final String title;
 
-  /// [startDate] Point in time (Unix timestamp) when the group call is supposed
+  /// [startDate] Point in time (Unix timestamp) when the group call is expected
   /// to be started by an administrator; 0 to start the video chat immediately.
   /// The date must be at least 10 seconds and at most 8 days in the future
   final int startDate;

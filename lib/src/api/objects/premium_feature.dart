@@ -25,6 +25,7 @@ abstract class PremiumFeature extends TdObject {
   /// [PremiumFeatureIncreasedLimits]
   /// [PremiumFeatureIncreasedUploadFileSize]
   /// [PremiumFeatureLastSeenTimes]
+  /// [PremiumFeatureMessageEffects]
   /// [PremiumFeatureMessagePrivacy]
   /// [PremiumFeatureProfileBadge]
   /// [PremiumFeatureRealTimeChatTranslation]
@@ -69,6 +70,8 @@ abstract class PremiumFeature extends TdObject {
         return PremiumFeatureIncreasedUploadFileSize.fromJson(json);
       case PremiumFeatureLastSeenTimes.constructor:
         return PremiumFeatureLastSeenTimes.fromJson(json);
+      case PremiumFeatureMessageEffects.constructor:
+        return PremiumFeatureMessageEffects.fromJson(json);
       case PremiumFeatureMessagePrivacy.constructor:
         return PremiumFeatureMessagePrivacy.fromJson(json);
       case PremiumFeatureProfileBadge.constructor:

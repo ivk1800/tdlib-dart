@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to a Telegram bot, which is supposed to be added to a
+/// The link is a link to a Telegram bot, which is expected to be added to a
 /// group chat. Call searchPublicChat with the given bot username, check that
 /// the user is a bot and can be added to groups, ask the current user to
 /// select a basic group or a supergroup chat to add the bot to, taking into
@@ -17,7 +17,7 @@ import '../tdapi.dart';
 /// the chosen basic group chat to a supergroup chat. Then, if start_parameter
 /// isn't empty, call sendBotStartMessage with the given start parameter and
 /// the chosen chat; otherwise, just send /start message with bot's username
-/// added to the chat.
+/// added to the chat
 @immutable
 class InternalLinkTypeBotStartInGroup extends InternalLinkType {
   const InternalLinkTypeBotStartInGroup({

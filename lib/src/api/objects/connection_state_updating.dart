@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Downloading data supposed to be received while the application was offline
+/// Downloading data expected to be received while the application was offline
 @immutable
 class ConnectionStateUpdating extends ConnectionState {
   const ConnectionStateUpdating();

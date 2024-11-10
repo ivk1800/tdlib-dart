@@ -14,7 +14,7 @@ class GetSuggestedFileName extends TdFunction {
   /// [fileId] Identifier of the file
   final int fileId;
 
-  /// [directory] Directory in which the file is supposed to be saved
+  /// [directory] Directory in which the file is expected to be saved
   final String directory;
 
   static const String constructor = 'getSuggestedFileName';

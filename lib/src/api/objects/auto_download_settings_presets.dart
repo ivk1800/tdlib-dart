@@ -11,15 +11,15 @@ class AutoDownloadSettingsPresets extends TdObject {
     required this.high,
   });
 
-  /// [low] Preset with lowest settings; supposed to be used by default when
+  /// [low] Preset with lowest settings; expected to be used by default when
   /// roaming
   final AutoDownloadSettings low;
 
-  /// [medium] Preset with medium settings; supposed to be used by default when
+  /// [medium] Preset with medium settings; expected to be used by default when
   /// using mobile data
   final AutoDownloadSettings medium;
 
-  /// [high] Preset with highest settings; supposed to be used by default when
+  /// [high] Preset with highest settings; expected to be used by default when
   /// connected on Wi-Fi
   final AutoDownloadSettings high;
 

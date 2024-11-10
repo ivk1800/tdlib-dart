@@ -2,10 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns an HTTPS link to a message in a chat. Available only for already
-/// sent messages in supergroups and channels, or if
-/// message.can_get_media_timestamp_links and a media timestamp link is
-/// generated. This is an offline request
+/// Returns an HTTPS link to a message in a chat. Available only if
+/// messageProperties.can_get_link, or if
+/// messageProperties.can_get_media_timestamp_links and a media timestamp link
+/// is generated. This is an offline request
 /// Returns [MessageLink]
 @immutable
 class GetMessageLink extends TdFunction {
@@ -25,7 +25,7 @@ class GetMessageLink extends TdFunction {
 
   /// [mediaTimestamp] If not 0, timestamp from which the video/audio/video
   /// note/voice note/story playing must start, in seconds. The media can be in
-  /// the message content or in its web page preview
+  /// the message content or in its link preview
   final int mediaTimestamp;
 
   /// [forAlbum] Pass true to create a link for the whole media album

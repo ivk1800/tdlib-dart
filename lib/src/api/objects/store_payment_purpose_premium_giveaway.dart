@@ -12,7 +12,7 @@ class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   });
 
   /// [parameters] Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
 
   /// [currency] ISO 4217 currency code of the payment currency
   final String currency;
@@ -29,7 +29,7 @@ class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
     }
 
     return StorePaymentPurposePremiumGiveaway(
-      parameters: PremiumGiveawayParameters.fromJson(
+      parameters: GiveawayParameters.fromJson(
           json['parameters'] as Map<String, dynamic>?)!,
       currency: json['currency'] as String,
       amount: json['amount'] as int,

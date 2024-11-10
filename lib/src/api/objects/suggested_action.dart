@@ -15,6 +15,7 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionConvertToBroadcastGroup]
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
   /// [SuggestedActionExtendPremium]
+  /// [SuggestedActionExtendStarSubscriptions]
   /// [SuggestedActionGiftPremiumForChristmas]
   /// [SuggestedActionRestorePremium]
   /// [SuggestedActionSetBirthdate]
@@ -38,6 +39,8 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
       case SuggestedActionExtendPremium.constructor:
         return SuggestedActionExtendPremium.fromJson(json);
+      case SuggestedActionExtendStarSubscriptions.constructor:
+        return SuggestedActionExtendStarSubscriptions.fromJson(json);
       case SuggestedActionGiftPremiumForChristmas.constructor:
         return SuggestedActionGiftPremiumForChristmas.fromJson(json);
       case SuggestedActionRestorePremium.constructor:

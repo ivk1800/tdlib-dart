@@ -11,6 +11,7 @@ class StoryAreaPosition extends TdObject {
     required this.widthPercentage,
     required this.heightPercentage,
     required this.rotationAngle,
+    required this.cornerRadiusPercentage,
   });
 
   /// [xPercentage] The abscissa of the rectangle's center, as a percentage of
@@ -33,6 +34,10 @@ class StoryAreaPosition extends TdObject {
   /// 0-360
   final double rotationAngle;
 
+  /// [cornerRadiusPercentage] The radius of the rectangle corner rounding, as a
+  /// percentage of the media width
+  final double cornerRadiusPercentage;
+
   static const String constructor = 'storyAreaPosition';
 
   static StoryAreaPosition? fromJson(Map<String, dynamic>? json) {
@@ -46,6 +51,8 @@ class StoryAreaPosition extends TdObject {
       widthPercentage: (json['width_percentage'] as num).toDouble(),
       heightPercentage: (json['height_percentage'] as num).toDouble(),
       rotationAngle: (json['rotation_angle'] as num).toDouble(),
+      cornerRadiusPercentage:
+          (json['corner_radius_percentage'] as num).toDouble(),
     );
   }
 
@@ -59,6 +66,7 @@ class StoryAreaPosition extends TdObject {
         'width_percentage': widthPercentage,
         'height_percentage': heightPercentage,
         'rotation_angle': rotationAngle,
+        'corner_radius_percentage': cornerRadiusPercentage,
         '@type': constructor,
       };
 

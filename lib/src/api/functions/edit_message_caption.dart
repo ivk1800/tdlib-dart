@@ -12,12 +12,14 @@ class EditMessageCaption extends TdFunction {
     required this.messageId,
     this.replyMarkup,
     this.caption,
+    required this.showCaptionAboveMedia,
   });
 
   /// [chatId] The chat the message belongs to
   final int chatId;
 
-  /// [messageId] Identifier of the message
+  /// [messageId] Identifier of the message. Use messageProperties.can_be_edited
+  /// to check whether the message can be edited
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots
@@ -28,6 +30,11 @@ class EditMessageCaption extends TdFunction {
   /// 0-getOption("message_caption_length_max") characters; pass null to remove
   /// caption
   final FormattedText? caption;
+
+  /// [showCaptionAboveMedia] Pass true to show the caption above the media;
+  /// otherwise, the caption will be shown below the media. May be true only for
+  /// animation, photo, and video messages
+  final bool showCaptionAboveMedia;
 
   static const String constructor = 'editMessageCaption';
 
@@ -40,6 +47,7 @@ class EditMessageCaption extends TdFunction {
         'message_id': messageId,
         'reply_markup': replyMarkup?.toJson(),
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         '@type': constructor,
       };
 

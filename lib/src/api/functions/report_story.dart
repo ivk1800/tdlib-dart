@@ -3,13 +3,13 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Reports a story to the Telegram moderators
-/// Returns [Ok]
+/// Returns [ReportStoryResult]
 @immutable
 class ReportStory extends TdFunction {
   const ReportStory({
     required this.storySenderChatId,
     required this.storyId,
-    required this.reason,
+    required this.optionId,
     required this.text,
   });
 
@@ -19,10 +19,12 @@ class ReportStory extends TdFunction {
   /// [storyId] The identifier of the story to report
   final int storyId;
 
-  /// [reason] The reason for reporting the story
-  final ReportReason reason;
+  /// [optionId] Option identifier chosen by the user; leave empty for the
+  /// initial request
+  final String optionId;
 
-  /// [text] Additional report details; 0-1024 characters
+  /// [text] Additional report details; 0-1024 characters; leave empty for the
+  /// initial request
   final String text;
 
   static const String constructor = 'reportStory';
@@ -34,7 +36,7 @@ class ReportStory extends TdFunction {
   Map<String, dynamic> toJson() => <String, dynamic>{
         'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
-        'reason': reason.toJson(),
+        'option_id': optionId,
         'text': text,
         '@type': constructor,
       };

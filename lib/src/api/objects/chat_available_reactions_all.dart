@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// All reactions are available in the chat
+/// All reactions are available in the chat, excluding the paid reaction and
+/// custom reactions in channel chats
 @immutable
 class ChatAvailableReactionsAll extends ChatAvailableReactions {
   const ChatAvailableReactionsAll({

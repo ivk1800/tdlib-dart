@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns an HTTPS URL of a Web App to open from the side menu, a
-/// keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp
-/// button, or an internalLinkTypeSideMenuBot link
+/// keyboardButtonTypeWebApp button, or an inlineQueryResultsButtonTypeWebApp
+/// button
 /// Returns [HttpUrl]
 @immutable
 class GetWebAppUrl extends TdFunction {
@@ -19,15 +19,15 @@ class GetWebAppUrl extends TdFunction {
   final int botUserId;
 
   /// [url] The URL from a keyboardButtonTypeWebApp button,
-  /// inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot
-  /// link, or an empty when the bot is opened from the side menu
+  /// inlineQueryResultsButtonTypeWebApp button, or an empty string when the bot
+  /// is opened from the side menu
   final String url;
 
   /// [theme] Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
-  /// [applicationName] Short name of the application; 0-64 English letters,
-  /// digits, and underscores
+  /// [applicationName] Short name of the current application; 0-64 English
+  /// letters, digits, and underscores
   final String applicationName;
 
   static const String constructor = 'getWebAppUrl';

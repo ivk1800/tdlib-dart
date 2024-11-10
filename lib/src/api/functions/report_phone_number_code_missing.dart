@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Reports that authentication code wasn't delivered via SMS to the specified
-/// phone number; for official mobile apps only
+/// phone number; for official mobile applications only
 /// Returns [Ok]
 @immutable
 class ReportPhoneNumberCodeMissing extends TdFunction {

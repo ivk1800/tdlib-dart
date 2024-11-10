@@ -11,8 +11,8 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
 
   /// [mediaTimestamp] Timestamp from which a video/audio/video note/voice
   /// note/story playing must start, in seconds. The media can be in the content
-  /// or the web page preview of the current message, or in the same places in
-  /// the replied message
+  /// or the link preview of the current message, or in the same places in the
+  /// replied message
   final int mediaTimestamp;
 
   static const String constructor = 'textEntityTypeMediaTimestamp';

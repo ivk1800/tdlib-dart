@@ -12,6 +12,7 @@ abstract class ReactionType extends TdObject {
   /// Inherited by:
   /// [ReactionTypeCustomEmoji]
   /// [ReactionTypeEmoji]
+  /// [ReactionTypePaid]
   static ReactionType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -22,6 +23,8 @@ abstract class ReactionType extends TdObject {
         return ReactionTypeCustomEmoji.fromJson(json);
       case ReactionTypeEmoji.constructor:
         return ReactionTypeEmoji.fromJson(json);
+      case ReactionTypePaid.constructor:
+        return ReactionTypePaid.fromJson(json);
       default:
         return null;
     }

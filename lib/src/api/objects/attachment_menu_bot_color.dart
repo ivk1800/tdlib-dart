@@ -10,10 +10,10 @@ class AttachmentMenuBotColor extends TdObject {
     required this.darkColor,
   });
 
-  /// [lightColor] Color in the RGB24 format for light themes
+  /// [lightColor] Color in the RGB format for light themes
   final int lightColor;
 
-  /// [darkColor] Color in the RGB24 format for dark themes
+  /// [darkColor] Color in the RGB format for dark themes
   final int darkColor;
 
   static const String constructor = 'attachmentMenuBotColor';

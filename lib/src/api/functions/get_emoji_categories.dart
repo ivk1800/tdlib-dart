@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns available emojis categories
+/// Returns available emoji categories
 /// Returns [EmojiCategories]
 @immutable
 class GetEmojiCategories extends TdFunction {

@@ -15,7 +15,6 @@ abstract class ChatActionBar extends TdObject {
   /// [ChatActionBarJoinRequest]
   /// [ChatActionBarReportAddBlock]
   /// [ChatActionBarReportSpam]
-  /// [ChatActionBarReportUnrelatedLocation]
   /// [ChatActionBarSharePhoneNumber]
   static ChatActionBar? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -33,8 +32,6 @@ abstract class ChatActionBar extends TdObject {
         return ChatActionBarReportAddBlock.fromJson(json);
       case ChatActionBarReportSpam.constructor:
         return ChatActionBarReportSpam.fromJson(json);
-      case ChatActionBarReportUnrelatedLocation.constructor:
-        return ChatActionBarReportUnrelatedLocation.fromJson(json);
       case ChatActionBarSharePhoneNumber.constructor:
         return ChatActionBarSharePhoneNumber.fromJson(json);
       default:

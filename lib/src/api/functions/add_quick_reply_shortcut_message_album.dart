@@ -23,7 +23,8 @@ class AddQuickReplyShortcutMessageAlbum extends TdFunction {
   final int replyToMessageId;
 
   /// [inputMessageContents] Contents of messages to be sent. At most 10
-  /// messages can be added to an album
+  /// messages can be added to an album. All messages must have the same value
+  /// of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
 
   static const String constructor = 'addQuickReplyShortcutMessageAlbum';

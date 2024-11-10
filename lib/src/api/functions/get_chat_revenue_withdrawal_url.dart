@@ -2,10 +2,11 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns URL for chat revenue withdrawal; requires owner privileges in the
-/// chat. Currently, this method can be used only for channels if
-/// supergroupFullInfo.can_get_revenue_statistics == true and
-/// getOption("can_withdraw_chat_revenue")
+/// Returns a URL for chat revenue withdrawal; requires owner privileges in
+/// the channel chat or the bot. Currently, this method can be used only if
+/// getOption("can_withdraw_chat_revenue") for channels with
+/// supergroupFullInfo.can_get_revenue_statistics == true or bots with
+/// userFullInfo.bot_info.can_get_revenue_statistics == true
 /// Returns [HttpUrl]
 @immutable
 class GetChatRevenueWithdrawalUrl extends TdFunction {

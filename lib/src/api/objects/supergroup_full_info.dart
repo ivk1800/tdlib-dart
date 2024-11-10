@@ -15,6 +15,7 @@ class SupergroupFullInfo extends TdObject {
     required this.linkedChatId,
     required this.slowModeDelay,
     required this.slowModeDelayExpiresIn,
+    required this.canEnablePaidReaction,
     required this.canGetMembers,
     required this.hasHiddenMembers,
     required this.canHideMembers,
@@ -22,10 +23,12 @@ class SupergroupFullInfo extends TdObject {
     required this.canSetLocation,
     required this.canGetStatistics,
     required this.canGetRevenueStatistics,
+    required this.canGetStarRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
+    required this.hasPaidMediaAllowed,
     required this.hasPinnedStories,
     required this.myBoostCount,
     required this.unrestrictBoostCount,
@@ -74,6 +77,10 @@ class SupergroupFullInfo extends TdObject {
   /// are non-zero
   final double slowModeDelayExpiresIn;
 
+  /// [canEnablePaidReaction] True, if paid reaction can be enabled in the
+  /// channel chat; for channels only
+  final bool canEnablePaidReaction;
+
   /// [canGetMembers] True, if members of the chat can be retrieved via
   /// getSupergroupMembers or searchChatMembers
   final bool canGetMembers;
@@ -101,6 +108,10 @@ class SupergroupFullInfo extends TdObject {
   /// statistics are available
   final bool canGetRevenueStatistics;
 
+  /// [canGetStarRevenueStatistics] True, if the supergroup or channel Telegram
+  /// Star revenue statistics are available
+  final bool canGetStarRevenueStatistics;
+
   /// [canToggleAggressiveAntiSpam] True, if aggressive anti-spam checks can be
   /// enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
@@ -120,6 +131,10 @@ class SupergroupFullInfo extends TdObject {
   /// enabled in the supergroup. The value of this field is only available to
   /// chat administrators
   final bool hasAggressiveAntiSpamEnabled;
+
+  /// [hasPaidMediaAllowed] True, if paid media can be sent and forwarded to the
+  /// channel chat; for channels only
+  final bool hasPaidMediaAllowed;
 
   /// [hasPinnedStories] True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
@@ -179,6 +194,7 @@ class SupergroupFullInfo extends TdObject {
       slowModeDelay: json['slow_mode_delay'] as int,
       slowModeDelayExpiresIn:
           (json['slow_mode_delay_expires_in'] as num).toDouble(),
+      canEnablePaidReaction: json['can_enable_paid_reaction'] as bool,
       canGetMembers: json['can_get_members'] as bool,
       hasHiddenMembers: json['has_hidden_members'] as bool,
       canHideMembers: json['can_hide_members'] as bool,
@@ -186,12 +202,15 @@ class SupergroupFullInfo extends TdObject {
       canSetLocation: json['can_set_location'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
       canGetRevenueStatistics: json['can_get_revenue_statistics'] as bool,
+      canGetStarRevenueStatistics:
+          json['can_get_star_revenue_statistics'] as bool,
       canToggleAggressiveAntiSpam:
           json['can_toggle_aggressive_anti_spam'] as bool,
       isAllHistoryAvailable: json['is_all_history_available'] as bool,
       canHaveSponsoredMessages: json['can_have_sponsored_messages'] as bool,
       hasAggressiveAntiSpamEnabled:
           json['has_aggressive_anti_spam_enabled'] as bool,
+      hasPaidMediaAllowed: json['has_paid_media_allowed'] as bool,
       hasPinnedStories: json['has_pinned_stories'] as bool,
       myBoostCount: json['my_boost_count'] as int,
       unrestrictBoostCount: json['unrestrict_boost_count'] as int,
@@ -225,6 +244,7 @@ class SupergroupFullInfo extends TdObject {
         'linked_chat_id': linkedChatId,
         'slow_mode_delay': slowModeDelay,
         'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
+        'can_enable_paid_reaction': canEnablePaidReaction,
         'can_get_members': canGetMembers,
         'has_hidden_members': hasHiddenMembers,
         'can_hide_members': canHideMembers,
@@ -232,10 +252,12 @@ class SupergroupFullInfo extends TdObject {
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,
         'can_get_revenue_statistics': canGetRevenueStatistics,
+        'can_get_star_revenue_statistics': canGetStarRevenueStatistics,
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
         'can_have_sponsored_messages': canHaveSponsoredMessages,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+        'has_paid_media_allowed': hasPaidMediaAllowed,
         'has_pinned_stories': hasPinnedStories,
         'my_boost_count': myBoostCount,
         'unrestrict_boost_count': unrestrictBoostCount,

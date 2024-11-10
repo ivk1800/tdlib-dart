@@ -21,7 +21,8 @@ class AddMessageReaction extends TdFunction {
   /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [reactionType] Type of the reaction to add
+  /// [reactionType] Type of the reaction to add. Use
+  /// addPendingPaidMessageReaction instead to add the paid reaction
   final ReactionType reactionType;
 
   /// [isBig] Pass true if the reaction is added with a big animation

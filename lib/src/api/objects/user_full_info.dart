@@ -22,7 +22,7 @@ class UserFullInfo extends TdObject {
     this.bio,
     this.birthdate,
     required this.personalChatId,
-    required this.premiumGiftOptions,
+    required this.giftCount,
     required this.groupInCommonCount,
     this.businessInfo,
     this.botInfo,
@@ -96,9 +96,8 @@ class UserFullInfo extends TdObject {
   /// [personalChatId] Identifier of the personal chat of the user; 0 if none
   final int personalChatId;
 
-  /// [premiumGiftOptions] The list of available options for gifting Telegram
-  /// Premium to the user
-  final List<PremiumPaymentOption> premiumGiftOptions;
+  /// [giftCount] Number of gifts saved to profile by the user
+  final int giftCount;
 
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
@@ -142,10 +141,7 @@ class UserFullInfo extends TdObject {
       bio: FormattedText.fromJson(json['bio'] as Map<String, dynamic>?),
       birthdate: Birthdate.fromJson(json['birthdate'] as Map<String, dynamic>?),
       personalChatId: json['personal_chat_id'] as int,
-      premiumGiftOptions: List<PremiumPaymentOption>.from(
-          ((json['premium_gift_options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PremiumPaymentOption.fromJson(item))
-              .toList()),
+      giftCount: json['gift_count'] as int,
       groupInCommonCount: json['group_in_common_count'] as int,
       businessInfo:
           BusinessInfo.fromJson(json['business_info'] as Map<String, dynamic>?),
@@ -175,8 +171,7 @@ class UserFullInfo extends TdObject {
         'bio': bio?.toJson(),
         'birthdate': birthdate?.toJson(),
         'personal_chat_id': personalChatId,
-        'premium_gift_options':
-            premiumGiftOptions.map((item) => item.toJson()).toList(),
+        'gift_count': giftCount,
         'group_in_common_count': groupInCommonCount,
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),

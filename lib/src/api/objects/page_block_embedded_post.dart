@@ -14,7 +14,7 @@ class PageBlockEmbeddedPost extends PageBlock {
     required this.caption,
   });
 
-  /// [url] Web page URL
+  /// [url] URL of the embedded post
   final String url;
 
   /// [author] Post author

@@ -12,7 +12,6 @@ import '../tdapi.dart';
 class ChatActionBarReportAddBlock extends ChatActionBar {
   const ChatActionBarReportAddBlock({
     required this.canUnarchive,
-    required this.distance,
   });
 
   /// [canUnarchive] If true, the chat was automatically archived and can be
@@ -20,10 +19,6 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   /// setting chat notification settings to default using
   /// setChatNotificationSettings
   final bool canUnarchive;
-
-  /// [distance] If non-negative, the current user was found by the other user
-  /// through searchChatsNearby and this is the distance between the users
-  final int distance;
 
   static const String constructor = 'chatActionBarReportAddBlock';
 
@@ -34,7 +29,6 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
 
     return ChatActionBarReportAddBlock(
       canUnarchive: json['can_unarchive'] as bool,
-      distance: json['distance'] as int,
     );
   }
 
@@ -44,7 +38,6 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'can_unarchive': canUnarchive,
-        'distance': distance,
         '@type': constructor,
       };
 

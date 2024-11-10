@@ -10,6 +10,7 @@ class EditInlineMessageCaption extends TdFunction {
     required this.inlineMessageId,
     this.replyMarkup,
     this.caption,
+    required this.showCaptionAboveMedia,
   });
 
   /// [inlineMessageId] Inline message identifier
@@ -22,6 +23,11 @@ class EditInlineMessageCaption extends TdFunction {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// [showCaptionAboveMedia] Pass true to show the caption above the media;
+  /// otherwise, the caption will be shown below the media. May be true only for
+  /// animation, photo, and video messages
+  final bool showCaptionAboveMedia;
+
   static const String constructor = 'editInlineMessageCaption';
 
   @override
@@ -32,6 +38,7 @@ class EditInlineMessageCaption extends TdFunction {
         'inline_message_id': inlineMessageId,
         'reply_markup': replyMarkup?.toJson(),
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         '@type': constructor,
       };
 

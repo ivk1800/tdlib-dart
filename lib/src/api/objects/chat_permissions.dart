@@ -15,7 +15,7 @@ class ChatPermissions extends TdObject {
     required this.canSendVoiceNotes,
     required this.canSendPolls,
     required this.canSendOtherMessages,
-    required this.canAddWebPagePreviews,
+    required this.canAddLinkPreviews,
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
@@ -51,9 +51,9 @@ class ChatPermissions extends TdObject {
   /// stickers, and dice and use inline bots
   final bool canSendOtherMessages;
 
-  /// [canAddWebPagePreviews] True, if the user may add a web page preview to
-  /// their messages
-  final bool canAddWebPagePreviews;
+  /// [canAddLinkPreviews] True, if the user may add a link preview to their
+  /// messages
+  final bool canAddLinkPreviews;
 
   /// [canChangeInfo] True, if the user can change the chat title, photo, and
   /// other settings
@@ -85,7 +85,7 @@ class ChatPermissions extends TdObject {
       canSendVoiceNotes: json['can_send_voice_notes'] as bool,
       canSendPolls: json['can_send_polls'] as bool,
       canSendOtherMessages: json['can_send_other_messages'] as bool,
-      canAddWebPagePreviews: json['can_add_web_page_previews'] as bool,
+      canAddLinkPreviews: json['can_add_link_previews'] as bool,
       canChangeInfo: json['can_change_info'] as bool,
       canInviteUsers: json['can_invite_users'] as bool,
       canPinMessages: json['can_pin_messages'] as bool,
@@ -107,7 +107,7 @@ class ChatPermissions extends TdObject {
         'can_send_voice_notes': canSendVoiceNotes,
         'can_send_polls': canSendPolls,
         'can_send_other_messages': canSendOtherMessages,
-        'can_add_web_page_previews': canAddWebPagePreviews,
+        'can_add_link_previews': canAddLinkPreviews,
         'can_change_info': canChangeInfo,
         'can_invite_users': canInviteUsers,
         'can_pin_messages': canPinMessages,

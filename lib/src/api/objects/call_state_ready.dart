@@ -27,7 +27,7 @@ class CallStateReady extends CallState {
   /// [encryptionKey] Call encryption key
   final String encryptionKey;
 
-  /// [emojis] Encryption key emojis fingerprint
+  /// [emojis] Encryption key fingerprint represented as 4 emoji
   final List<String> emojis;
 
   /// [allowP2p] True, if peer-to-peer connection is allowed by users privacy

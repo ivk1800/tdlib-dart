@@ -2,8 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Edits the content of a message with an animation, an audio, a document, a
-/// photo or a video in an inline message sent via a bot; for bots only
+/// Edits the media content of a message with a text, an animation, an audio,
+/// a document, a photo or a video in an inline message sent via a bot; for
+/// bots only
 /// Returns [Ok]
 @immutable
 class EditInlineMessageMedia extends TdFunction {

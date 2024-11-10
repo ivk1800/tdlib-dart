@@ -2,14 +2,14 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a list of emoji with their keywords
+/// Represents a list of emojis with their keywords
 @immutable
 class EmojiKeywords extends TdObject {
   const EmojiKeywords({
     required this.emojiKeywords,
   });
 
-  /// [emojiKeywords] List of emoji with their keywords
+  /// [emojiKeywords] List of emojis with their keywords
   final List<EmojiKeyword> emojiKeywords;
 
   static const String constructor = 'emojiKeywords';

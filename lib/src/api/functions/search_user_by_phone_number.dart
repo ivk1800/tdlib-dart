@@ -9,10 +9,15 @@ import '../tdapi.dart';
 class SearchUserByPhoneNumber extends TdFunction {
   const SearchUserByPhoneNumber({
     required this.phoneNumber,
+    required this.onlyLocal,
   });
 
   /// [phoneNumber] Phone number to search for
   final String phoneNumber;
+
+  /// [onlyLocal] Pass true to get only locally available information without
+  /// sending network requests
+  final bool onlyLocal;
 
   static const String constructor = 'searchUserByPhoneNumber';
 
@@ -22,6 +27,7 @@ class SearchUserByPhoneNumber extends TdFunction {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'phone_number': phoneNumber,
+        'only_local': onlyLocal,
         '@type': constructor,
       };
 

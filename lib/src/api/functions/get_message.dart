@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a message
+/// Returns information about a message. Returns a 404 error if the message
+/// doesn't exist
 /// Returns [Message]
 @immutable
 class GetMessage extends TdFunction {

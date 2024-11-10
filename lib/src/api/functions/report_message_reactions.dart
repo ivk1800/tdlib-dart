@@ -3,7 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Reports reactions set on a message to the Telegram moderators. Reactions
-/// on a message can be reported only if message.can_report_reactions
+/// on a message can be reported only if
+/// messageProperties.can_report_reactions
 /// Returns [Ok]
 @immutable
 class ReportMessageReactions extends TdFunction {

@@ -16,7 +16,7 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
   });
 
   /// [customTitle] A custom title of the administrator; 0-16 characters without
-  /// emojis; applicable to supergroups only
+  /// emoji; applicable to supergroups only
   final String customTitle;
 
   /// [canBeEdited] True, if the current user can edit the administrator

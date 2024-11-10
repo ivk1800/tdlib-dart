@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns sponsored messages to be shown in a chat; for channel chats only
+/// Returns sponsored messages to be shown in a chat; for channel chats and
+/// chats with bots only
 /// Returns [SponsoredMessages]
 @immutable
 class GetChatSponsoredMessages extends TdFunction {

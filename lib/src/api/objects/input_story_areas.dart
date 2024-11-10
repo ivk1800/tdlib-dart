@@ -13,8 +13,11 @@ class InputStoryAreas extends TdObject {
   /// inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and
   /// inputStoryAreaTypePreviousVenue areas, up to
   /// getOption("story_suggested_reaction_area_count_max")
-  /// inputStoryAreaTypeSuggestedReaction areas, and up to 1
-  /// inputStoryAreaTypeMessage area
+  /// inputStoryAreaTypeSuggestedReaction areas, up to 1
+  /// inputStoryAreaTypeMessage area, up to
+  /// getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the
+  /// current user is a Telegram Premium user, and up to 3
+  /// inputStoryAreaTypeWeather areas
   final List<InputStoryArea> areas;
 
   static const String constructor = 'inputStoryAreas';

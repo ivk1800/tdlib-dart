@@ -45,22 +45,27 @@ abstract class MessageContent extends TdObject {
   /// [MessageForumTopicIsHiddenToggled]
   /// [MessageGameScore]
   /// [MessageGame]
+  /// [MessageGift]
   /// [MessageGiftedPremium]
+  /// [MessageGiftedStars]
+  /// [MessageGiveawayCompleted]
+  /// [MessageGiveawayCreated]
+  /// [MessageGiveawayPrizeStars]
+  /// [MessageGiveawayWinners]
+  /// [MessageGiveaway]
   /// [MessageInviteVideoChatParticipants]
   /// [MessageInvoice]
   /// [MessageLocation]
+  /// [MessagePaidMedia]
   /// [MessagePassportDataReceived]
   /// [MessagePassportDataSent]
+  /// [MessagePaymentRefunded]
   /// [MessagePaymentSuccessfulBot]
   /// [MessagePaymentSuccessful]
   /// [MessagePhoto]
   /// [MessagePinMessage]
   /// [MessagePoll]
   /// [MessagePremiumGiftCode]
-  /// [MessagePremiumGiveawayCompleted]
-  /// [MessagePremiumGiveawayCreated]
-  /// [MessagePremiumGiveawayWinners]
-  /// [MessagePremiumGiveaway]
   /// [MessageProximityAlertTriggered]
   /// [MessageScreenshotTaken]
   /// [MessageSticker]
@@ -155,18 +160,36 @@ abstract class MessageContent extends TdObject {
         return MessageGame.fromJson(json);
       case MessageGameScore.constructor:
         return MessageGameScore.fromJson(json);
+      case MessageGift.constructor:
+        return MessageGift.fromJson(json);
       case MessageGiftedPremium.constructor:
         return MessageGiftedPremium.fromJson(json);
+      case MessageGiftedStars.constructor:
+        return MessageGiftedStars.fromJson(json);
+      case MessageGiveaway.constructor:
+        return MessageGiveaway.fromJson(json);
+      case MessageGiveawayCompleted.constructor:
+        return MessageGiveawayCompleted.fromJson(json);
+      case MessageGiveawayCreated.constructor:
+        return MessageGiveawayCreated.fromJson(json);
+      case MessageGiveawayPrizeStars.constructor:
+        return MessageGiveawayPrizeStars.fromJson(json);
+      case MessageGiveawayWinners.constructor:
+        return MessageGiveawayWinners.fromJson(json);
       case MessageInviteVideoChatParticipants.constructor:
         return MessageInviteVideoChatParticipants.fromJson(json);
       case MessageInvoice.constructor:
         return MessageInvoice.fromJson(json);
       case MessageLocation.constructor:
         return MessageLocation.fromJson(json);
+      case MessagePaidMedia.constructor:
+        return MessagePaidMedia.fromJson(json);
       case MessagePassportDataReceived.constructor:
         return MessagePassportDataReceived.fromJson(json);
       case MessagePassportDataSent.constructor:
         return MessagePassportDataSent.fromJson(json);
+      case MessagePaymentRefunded.constructor:
+        return MessagePaymentRefunded.fromJson(json);
       case MessagePaymentSuccessful.constructor:
         return MessagePaymentSuccessful.fromJson(json);
       case MessagePaymentSuccessfulBot.constructor:
@@ -179,14 +202,6 @@ abstract class MessageContent extends TdObject {
         return MessagePoll.fromJson(json);
       case MessagePremiumGiftCode.constructor:
         return MessagePremiumGiftCode.fromJson(json);
-      case MessagePremiumGiveaway.constructor:
-        return MessagePremiumGiveaway.fromJson(json);
-      case MessagePremiumGiveawayCompleted.constructor:
-        return MessagePremiumGiveawayCompleted.fromJson(json);
-      case MessagePremiumGiveawayCreated.constructor:
-        return MessagePremiumGiveawayCreated.fromJson(json);
-      case MessagePremiumGiveawayWinners.constructor:
-        return MessagePremiumGiveawayWinners.fromJson(json);
       case MessageProximityAlertTriggered.constructor:
         return MessageProximityAlertTriggered.fromJson(json);
       case MessageScreenshotTaken.constructor:

@@ -16,7 +16,7 @@ class SearchStickers extends TdFunction {
   /// [stickerType] Type of the stickers to return
   final StickerType stickerType;
 
-  /// [emojis] Space-separated list of emoji to search for; must be non-empty
+  /// [emojis] Space-separated list of emojis to search for; must be non-empty
   final String emojis;
 
   /// [limit] The maximum number of stickers to be returned; 0-100

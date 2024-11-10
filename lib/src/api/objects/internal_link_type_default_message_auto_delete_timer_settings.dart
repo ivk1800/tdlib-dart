@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to the default message auto-delete timer settings
-/// section of the app settings
+/// section of the application settings
 @immutable
 class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
     extends InternalLinkType {

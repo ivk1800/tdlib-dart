@@ -12,8 +12,10 @@ class ChatInviteLink extends TdObject {
     required this.date,
     required this.editDate,
     required this.expirationDate,
+    this.subscriptionPricing,
     required this.memberLimit,
     required this.memberCount,
+    required this.expiredMemberCount,
     required this.pendingJoinRequestCount,
     required this.createsJoinRequest,
     required this.isPrimary,
@@ -40,6 +42,11 @@ class ChatInviteLink extends TdObject {
   /// 0 if never
   final int expirationDate;
 
+  /// [subscriptionPricing] Information about subscription plan that is applied
+  /// to the users joining the chat by the link; may be null if the link doesn't
+  /// require subscription
+  final StarSubscriptionPricing? subscriptionPricing;
+
   /// [memberLimit] The maximum number of members, which can join the chat using
   /// the link simultaneously; 0 if not limited. Always 0 if the link requires
   /// approval
@@ -47,6 +54,11 @@ class ChatInviteLink extends TdObject {
 
   /// [memberCount] Number of chat members, which joined the chat using the link
   final int memberCount;
+
+  /// [expiredMemberCount] Number of chat members, which joined the chat using
+  /// the link, but have already left because of expired subscription; for
+  /// subscription links only
+  final int expiredMemberCount;
 
   /// [pendingJoinRequestCount] Number of pending join requests created using
   /// this link
@@ -78,8 +90,11 @@ class ChatInviteLink extends TdObject {
       date: json['date'] as int,
       editDate: json['edit_date'] as int,
       expirationDate: json['expiration_date'] as int,
+      subscriptionPricing: StarSubscriptionPricing.fromJson(
+          json['subscription_pricing'] as Map<String, dynamic>?),
       memberLimit: json['member_limit'] as int,
       memberCount: json['member_count'] as int,
+      expiredMemberCount: json['expired_member_count'] as int,
       pendingJoinRequestCount: json['pending_join_request_count'] as int,
       createsJoinRequest: json['creates_join_request'] as bool,
       isPrimary: json['is_primary'] as bool,
@@ -98,8 +113,10 @@ class ChatInviteLink extends TdObject {
         'date': date,
         'edit_date': editDate,
         'expiration_date': expirationDate,
+        'subscription_pricing': subscriptionPricing?.toJson(),
         'member_limit': memberLimit,
         'member_count': memberCount,
+        'expired_member_count': expiredMemberCount,
         'pending_join_request_count': pendingJoinRequestCount,
         'creates_join_request': createsJoinRequest,
         'is_primary': isPrimary,

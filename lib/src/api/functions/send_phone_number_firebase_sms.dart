@@ -12,8 +12,9 @@ class SendPhoneNumberFirebaseSms extends TdFunction {
     required this.token,
   });
 
-  /// [token] SafetyNet Attestation API token for the Android application, or
-  /// secret from push notification for the iOS application
+  /// [token] Play Integrity API or SafetyNet Attestation API token for the
+  /// Android application, or secret from push notification for the iOS
+  /// application
   final String token;
 
   static const String constructor = 'sendPhoneNumberFirebaseSms';

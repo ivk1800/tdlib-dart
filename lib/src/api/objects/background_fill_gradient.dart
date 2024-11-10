@@ -11,10 +11,10 @@ class BackgroundFillGradient extends BackgroundFill {
     required this.rotationAngle,
   });
 
-  /// [topColor] A top color of the background in the RGB24 format
+  /// [topColor] A top color of the background in the RGB format
   final int topColor;
 
-  /// [bottomColor] A bottom color of the background in the RGB24 format
+  /// [bottomColor] A bottom color of the background in the RGB format
   final int bottomColor;
 
   /// [rotationAngle] Clockwise rotation angle of the gradient, in degrees;

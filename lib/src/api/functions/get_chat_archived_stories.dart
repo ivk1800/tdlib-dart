@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns the list of all stories posted by the given chat; requires
-/// can_edit_stories right in the chat. The stories are returned in a reverse
+/// can_edit_stories right in the chat. The stories are returned in reverse
 /// chronological order (i.e., in order of decreasing story_id). For optimal
 /// performance, the number of returned stories is chosen by TDLib
 /// Returns [Stories]
@@ -22,7 +22,7 @@ class GetChatArchivedStories extends TdFunction {
   /// returned; use 0 to get results from the last story
   final int fromStoryId;
 
-  /// [limit] The maximum number of stories to be returned For optimal
+  /// [limit] The maximum number of stories to be returned. For optimal
   /// performance, the number of returned stories is chosen by TDLib and can be
   /// smaller than the specified limit
   final int limit;

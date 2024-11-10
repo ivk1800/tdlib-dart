@@ -10,24 +10,30 @@ abstract class StorePaymentPurpose extends TdObject {
   static const String constructor = 'storePaymentPurpose';
 
   /// Inherited by:
-  /// [StorePaymentPurposeGiftedPremium]
+  /// [StorePaymentPurposeGiftedStars]
   /// [StorePaymentPurposePremiumGiftCodes]
   /// [StorePaymentPurposePremiumGiveaway]
   /// [StorePaymentPurposePremiumSubscription]
+  /// [StorePaymentPurposeStarGiveaway]
+  /// [StorePaymentPurposeStars]
   static StorePaymentPurpose? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
-      case StorePaymentPurposeGiftedPremium.constructor:
-        return StorePaymentPurposeGiftedPremium.fromJson(json);
+      case StorePaymentPurposeGiftedStars.constructor:
+        return StorePaymentPurposeGiftedStars.fromJson(json);
       case StorePaymentPurposePremiumGiftCodes.constructor:
         return StorePaymentPurposePremiumGiftCodes.fromJson(json);
       case StorePaymentPurposePremiumGiveaway.constructor:
         return StorePaymentPurposePremiumGiveaway.fromJson(json);
       case StorePaymentPurposePremiumSubscription.constructor:
         return StorePaymentPurposePremiumSubscription.fromJson(json);
+      case StorePaymentPurposeStarGiveaway.constructor:
+        return StorePaymentPurposeStarGiveaway.fromJson(json);
+      case StorePaymentPurposeStars.constructor:
+        return StorePaymentPurposeStars.fromJson(json);
       default:
         return null;
     }

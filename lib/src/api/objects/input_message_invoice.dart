@@ -17,7 +17,8 @@ class InputMessageInvoice extends InputMessageContent {
     required this.providerToken,
     required this.providerData,
     required this.startParameter,
-    required this.extendedMediaContent,
+    this.paidMedia,
+    this.paidMediaCaption,
   });
 
   /// [invoice] Invoice
@@ -44,7 +45,8 @@ class InputMessageInvoice extends InputMessageContent {
   /// [payload] The invoice payload
   final String payload;
 
-  /// [providerToken] Payment provider token
+  /// [providerToken] Payment provider token; may be empty for payments in
+  /// Telegram Stars
   final String providerToken;
 
   /// [providerData] JSON-encoded data about the invoice, which will be shared
@@ -56,10 +58,13 @@ class InputMessageInvoice extends InputMessageContent {
   /// forwards of the invoice message
   final String startParameter;
 
-  /// [extendedMediaContent] The content of extended media attached to the
-  /// invoice. The content of the message to be sent. Must be one of the
-  /// following types: inputMessagePhoto, inputMessageVideo
-  final InputMessageContent extendedMediaContent;
+  /// [paidMedia] The content of paid media attached to the invoice; pass null
+  /// if none
+  final InputPaidMedia? paidMedia;
+
+  /// [paidMediaCaption] Paid media caption; pass null to use an empty caption;
+  /// 0-getOption("message_caption_length_max") characters
+  final FormattedText? paidMediaCaption;
 
   static const String constructor = 'inputMessageInvoice';
 
@@ -80,8 +85,10 @@ class InputMessageInvoice extends InputMessageContent {
       providerToken: json['provider_token'] as String,
       providerData: json['provider_data'] as String,
       startParameter: json['start_parameter'] as String,
-      extendedMediaContent: InputMessageContent.fromJson(
-          json['extended_media_content'] as Map<String, dynamic>?)!,
+      paidMedia:
+          InputPaidMedia.fromJson(json['paid_media'] as Map<String, dynamic>?),
+      paidMediaCaption: FormattedText.fromJson(
+          json['paid_media_caption'] as Map<String, dynamic>?),
     );
   }
 
@@ -101,7 +108,8 @@ class InputMessageInvoice extends InputMessageContent {
         'provider_token': providerToken,
         'provider_data': providerData,
         'start_parameter': startParameter,
-        'extended_media_content': extendedMediaContent.toJson(),
+        'paid_media': paidMedia?.toJson(),
+        'paid_media_caption': paidMediaCaption?.toJson(),
         '@type': constructor,
       };
 

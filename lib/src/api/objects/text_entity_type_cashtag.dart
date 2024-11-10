@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A cashtag text, beginning with "$" and consisting of capital English
-/// letters (e.g., "$USD")
+/// A cashtag text, beginning with "$", consisting of capital English letters
+/// (e.g., "$USD"), and optionally containing a chat username at the end
 @immutable
 class TextEntityTypeCashtag extends TextEntityType {
   const TextEntityTypeCashtag();

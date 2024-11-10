@@ -9,7 +9,7 @@ class BackgroundFillSolid extends BackgroundFill {
     required this.color,
   });
 
-  /// [color] A color of the background in the RGB24 format
+  /// [color] A color of the background in the RGB format
   final int color;
 
   static const String constructor = 'backgroundFillSolid';

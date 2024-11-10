@@ -20,6 +20,7 @@ class Supergroup extends TdObject {
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
+    required this.showMessageSender,
     required this.joinToSendMessages,
     required this.joinByRequest,
     required this.isSlowModeEnabled,
@@ -27,6 +28,7 @@ class Supergroup extends TdObject {
     required this.isBroadcastGroup,
     required this.isForum,
     required this.isVerified,
+    required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
@@ -53,12 +55,11 @@ class Supergroup extends TdObject {
   /// unknown. Currently, it is guaranteed to be known only if the supergroup or
   /// channel was received through getChatSimilarChats, getChatsToSendStories,
   /// getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats,
-  /// getSuitableDiscussionChats, getUserPrivacySettingRules,
-  /// getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats,
-  /// or in chatFolderInviteLinkInfo.missing_chat_ids, or for public chats in
-  /// which where sent messages and posted stories from publicForwards, or for
-  /// public chats in which where sent messages from getMessagePublicForwards
-  /// response
+  /// getRecommendedChats, getSuitableDiscussionChats,
+  /// getUserPrivacySettingRules, getVideoChatAvailableParticipants,
+  /// searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or in
+  /// userFullInfo.personal_chat_id, or for chats with messages or stories from
+  /// publicForwards and foundStories
   final int memberCount;
 
   /// [boostLevel] Approximate boost level for the chat
@@ -72,9 +73,13 @@ class Supergroup extends TdObject {
   /// supergroup is a location-based supergroup
   final bool hasLocation;
 
-  /// [signMessages] True, if messages sent to the channel need to contain
-  /// information about the sender. This field is only applicable to channels
+  /// [signMessages] True, if messages sent to the channel contains name of the
+  /// sender. This field is only applicable to channels
   final bool signMessages;
+
+  /// [showMessageSender] True, if messages sent to the channel have information
+  /// about the sender user. This field is only applicable to channels
+  final bool showMessageSender;
 
   /// [joinToSendMessages] True, if users need to join the supergroup before
   /// they can send messages. Always true for channels and non-discussion
@@ -102,6 +107,10 @@ class Supergroup extends TdObject {
 
   /// [isVerified] True, if the supergroup or channel is verified
   final bool isVerified;
+
+  /// [hasSensitiveContent] True, if content of media messages in the supergroup
+  /// or channel chat must be hidden with 18+ spoiler
+  final bool hasSensitiveContent;
 
   /// [restrictionReason] If non-empty, contains a human-readable description of
   /// the reason why access to this supergroup or channel must be restricted
@@ -140,6 +149,7 @@ class Supergroup extends TdObject {
       hasLinkedChat: json['has_linked_chat'] as bool,
       hasLocation: json['has_location'] as bool,
       signMessages: json['sign_messages'] as bool,
+      showMessageSender: json['show_message_sender'] as bool,
       joinToSendMessages: json['join_to_send_messages'] as bool,
       joinByRequest: json['join_by_request'] as bool,
       isSlowModeEnabled: json['is_slow_mode_enabled'] as bool,
@@ -147,6 +157,7 @@ class Supergroup extends TdObject {
       isBroadcastGroup: json['is_broadcast_group'] as bool,
       isForum: json['is_forum'] as bool,
       isVerified: json['is_verified'] as bool,
+      hasSensitiveContent: json['has_sensitive_content'] as bool,
       restrictionReason: json['restriction_reason'] as String,
       isScam: json['is_scam'] as bool,
       isFake: json['is_fake'] as bool,
@@ -169,6 +180,7 @@ class Supergroup extends TdObject {
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,
+        'show_message_sender': showMessageSender,
         'join_to_send_messages': joinToSendMessages,
         'join_by_request': joinByRequest,
         'is_slow_mode_enabled': isSlowModeEnabled,
@@ -176,6 +188,7 @@ class Supergroup extends TdObject {
         'is_broadcast_group': isBroadcastGroup,
         'is_forum': isForum,
         'is_verified': isVerified,
+        'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,

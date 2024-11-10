@@ -2,11 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Telegram Premium was gifted to the user
+/// Telegram Premium was gifted to a user
 @immutable
 class MessageGiftedPremium extends MessageContent {
   const MessageGiftedPremium({
     required this.gifterUserId,
+    required this.receiverUserId,
+    required this.text,
     required this.currency,
     required this.amount,
     required this.cryptocurrency,
@@ -16,8 +18,15 @@ class MessageGiftedPremium extends MessageContent {
   });
 
   /// [gifterUserId] The identifier of a user that gifted Telegram Premium; 0 if
-  /// the gift was anonymous
+  /// the gift was anonymous or is outgoing
   final int gifterUserId;
+
+  /// [receiverUserId] The identifier of a user that received Telegram Premium;
+  /// 0 if the gift is incoming
+  final int receiverUserId;
+
+  /// [text] Message added to the gifted Telegram Premium by the sender
+  final FormattedText text;
 
   /// [currency] Currency for the paid amount
   final String currency;
@@ -49,6 +58,8 @@ class MessageGiftedPremium extends MessageContent {
 
     return MessageGiftedPremium(
       gifterUserId: json['gifter_user_id'] as int,
+      receiverUserId: json['receiver_user_id'] as int,
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
       currency: json['currency'] as String,
       amount: json['amount'] as int,
       cryptocurrency: json['cryptocurrency'] as String,
@@ -64,6 +75,8 @@ class MessageGiftedPremium extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'gifter_user_id': gifterUserId,
+        'receiver_user_id': receiverUserId,
+        'text': text.toJson(),
         'currency': currency,
         'amount': amount,
         'cryptocurrency': cryptocurrency,

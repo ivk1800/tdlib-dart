@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Asynchronously edits the text, media or caption of a quick reply message.
 /// Use quickReplyMessage.can_be_edited to check whether a message can be
-/// edited. Text message can be edited only to a text message. The type of
+/// edited. Media message can be edited only to a media message. The type of
 /// message content in an album can't be changed with exception of replacing a
 /// photo with a video or vice versa
 /// Returns [Ok]

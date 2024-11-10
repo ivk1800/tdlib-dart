@@ -15,6 +15,7 @@ class ChatInviteLinkInfo extends TdObject {
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
+    this.subscriptionInfo,
     required this.createsJoinRequest,
     required this.isPublic,
     required this.isVerified,
@@ -53,6 +54,11 @@ class ChatInviteLinkInfo extends TdObject {
   /// the current user
   final List<int> memberUserIds;
 
+  /// [subscriptionInfo] Information about subscription plan that must be paid
+  /// by the user to use the link; may be null if the link doesn't require
+  /// subscription
+  final ChatInviteLinkSubscriptionInfo? subscriptionInfo;
+
   /// [createsJoinRequest] True, if the link only creates join request
   final bool createsJoinRequest;
 
@@ -89,6 +95,8 @@ class ChatInviteLinkInfo extends TdObject {
           ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => item)
               .toList()),
+      subscriptionInfo: ChatInviteLinkSubscriptionInfo.fromJson(
+          json['subscription_info'] as Map<String, dynamic>?),
       createsJoinRequest: json['creates_join_request'] as bool,
       isPublic: json['is_public'] as bool,
       isVerified: json['is_verified'] as bool,
@@ -111,6 +119,7 @@ class ChatInviteLinkInfo extends TdObject {
         'description': description,
         'member_count': memberCount,
         'member_user_ids': memberUserIds.map((item) => item).toList(),
+        'subscription_info': subscriptionInfo?.toJson(),
         'creates_join_request': createsJoinRequest,
         'is_public': isPublic,
         'is_verified': isVerified,

@@ -25,7 +25,7 @@ class GetChatStoryInteractions extends TdFunction {
 
   /// [reactionType] Pass the default heart reaction or a suggested reaction
   /// type to receive only interactions with the specified reaction type; pass
-  /// null to receive all interactions
+  /// null to receive all interactions; reactionTypePaid isn't supported
   final ReactionType? reactionType;
 
   /// [preferForwards] Pass true to get forwards and reposts first, then

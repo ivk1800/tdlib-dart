@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a block of an instant view web page
+/// Describes a block of an instant view for a web page
 @immutable
 abstract class PageBlock extends TdObject {
   const PageBlock();

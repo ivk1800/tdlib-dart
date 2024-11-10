@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns an HTML code for embedding the message. Available only for
-/// messages in supergroups and channels with a username
+/// Returns an HTML code for embedding the message. Available only if
+/// messageProperties.can_get_embedding_code
 /// Returns [Text]
 @immutable
 class GetMessageEmbeddingCode extends TdFunction {

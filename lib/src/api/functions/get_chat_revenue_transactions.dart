@@ -4,7 +4,8 @@ import '../tdapi.dart';
 
 /// Returns the list of revenue transactions for a chat. Currently, this
 /// method can be used only for channels if
-/// supergroupFullInfo.can_get_revenue_statistics == true
+/// supergroupFullInfo.can_get_revenue_statistics == true or bots if
+/// userFullInfo.bot_info.can_get_revenue_statistics == true
 /// Returns [ChatRevenueTransactions]
 @immutable
 class GetChatRevenueTransactions extends TdFunction {

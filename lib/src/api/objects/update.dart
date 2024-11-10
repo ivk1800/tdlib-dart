@@ -12,12 +12,15 @@ abstract class Update extends TdObject {
   /// Inherited by:
   /// [UpdateAccentColors]
   /// [UpdateActiveEmojiReactions]
+  /// [UpdateActiveLiveLocationMessages]
   /// [UpdateActiveNotifications]
   /// [UpdateAnimatedEmojiMessageClicked]
   /// [UpdateAnimationSearchParameters]
+  /// [UpdateApplicationVerificationRequired]
   /// [UpdateAttachmentMenuBots]
   /// [UpdateAuthorizationState]
   /// [UpdateAutosaveSettings]
+  /// [UpdateAvailableMessageEffects]
   /// [UpdateBasicGroupFullInfo]
   /// [UpdateBasicGroup]
   /// [UpdateBusinessConnection]
@@ -87,6 +90,7 @@ abstract class Update extends TdObject {
   /// [UpdateMessageContentOpened]
   /// [UpdateMessageContent]
   /// [UpdateMessageEdited]
+  /// [UpdateMessageFactCheck]
   /// [UpdateMessageInteractionInfo]
   /// [UpdateMessageIsPinned]
   /// [UpdateMessageLiveLocationViewed]
@@ -97,6 +101,7 @@ abstract class Update extends TdObject {
   /// [UpdateMessageSendFailed]
   /// [UpdateMessageSendSucceeded]
   /// [UpdateMessageUnreadReactions]
+  /// [UpdateNewBusinessCallbackQuery]
   /// [UpdateNewBusinessMessage]
   /// [UpdateNewCallSignalingData]
   /// [UpdateNewCallbackQuery]
@@ -113,6 +118,8 @@ abstract class Update extends TdObject {
   /// [UpdateNotificationGroup]
   /// [UpdateNotification]
   /// [UpdateOption]
+  /// [UpdateOwnedStarCount]
+  /// [UpdatePaidMediaPurchased]
   /// [UpdatePollAnswer]
   /// [UpdatePoll]
   /// [UpdateProfileAccentColors]
@@ -132,6 +139,7 @@ abstract class Update extends TdObject {
   /// [UpdateServiceNotification]
   /// [UpdateSpeechRecognitionTrial]
   /// [UpdateSpeedLimitNotification]
+  /// [UpdateStarRevenueStatus]
   /// [UpdateStickerSet]
   /// [UpdateStoryDeleted]
   /// [UpdateStoryListChatCount]
@@ -151,7 +159,7 @@ abstract class Update extends TdObject {
   /// [UpdateUserPrivacySettingRules]
   /// [UpdateUserStatus]
   /// [UpdateUser]
-  /// [UpdateUsersNearby]
+  /// [UpdateVideoPublished]
   /// [UpdateWebAppMessageSent]
   static Update? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -163,18 +171,24 @@ abstract class Update extends TdObject {
         return UpdateAccentColors.fromJson(json);
       case UpdateActiveEmojiReactions.constructor:
         return UpdateActiveEmojiReactions.fromJson(json);
+      case UpdateActiveLiveLocationMessages.constructor:
+        return UpdateActiveLiveLocationMessages.fromJson(json);
       case UpdateActiveNotifications.constructor:
         return UpdateActiveNotifications.fromJson(json);
       case UpdateAnimatedEmojiMessageClicked.constructor:
         return UpdateAnimatedEmojiMessageClicked.fromJson(json);
       case UpdateAnimationSearchParameters.constructor:
         return UpdateAnimationSearchParameters.fromJson(json);
+      case UpdateApplicationVerificationRequired.constructor:
+        return UpdateApplicationVerificationRequired.fromJson(json);
       case UpdateAttachmentMenuBots.constructor:
         return UpdateAttachmentMenuBots.fromJson(json);
       case UpdateAuthorizationState.constructor:
         return UpdateAuthorizationState.fromJson(json);
       case UpdateAutosaveSettings.constructor:
         return UpdateAutosaveSettings.fromJson(json);
+      case UpdateAvailableMessageEffects.constructor:
+        return UpdateAvailableMessageEffects.fromJson(json);
       case UpdateBasicGroup.constructor:
         return UpdateBasicGroup.fromJson(json);
       case UpdateBasicGroupFullInfo.constructor:
@@ -313,6 +327,8 @@ abstract class Update extends TdObject {
         return UpdateMessageContentOpened.fromJson(json);
       case UpdateMessageEdited.constructor:
         return UpdateMessageEdited.fromJson(json);
+      case UpdateMessageFactCheck.constructor:
+        return UpdateMessageFactCheck.fromJson(json);
       case UpdateMessageInteractionInfo.constructor:
         return UpdateMessageInteractionInfo.fromJson(json);
       case UpdateMessageIsPinned.constructor:
@@ -333,6 +349,8 @@ abstract class Update extends TdObject {
         return UpdateMessageSendSucceeded.fromJson(json);
       case UpdateMessageUnreadReactions.constructor:
         return UpdateMessageUnreadReactions.fromJson(json);
+      case UpdateNewBusinessCallbackQuery.constructor:
+        return UpdateNewBusinessCallbackQuery.fromJson(json);
       case UpdateNewBusinessMessage.constructor:
         return UpdateNewBusinessMessage.fromJson(json);
       case UpdateNewCallSignalingData.constructor:
@@ -365,6 +383,10 @@ abstract class Update extends TdObject {
         return UpdateNotificationGroup.fromJson(json);
       case UpdateOption.constructor:
         return UpdateOption.fromJson(json);
+      case UpdateOwnedStarCount.constructor:
+        return UpdateOwnedStarCount.fromJson(json);
+      case UpdatePaidMediaPurchased.constructor:
+        return UpdatePaidMediaPurchased.fromJson(json);
       case UpdatePoll.constructor:
         return UpdatePoll.fromJson(json);
       case UpdatePollAnswer.constructor:
@@ -403,6 +425,8 @@ abstract class Update extends TdObject {
         return UpdateSpeechRecognitionTrial.fromJson(json);
       case UpdateSpeedLimitNotification.constructor:
         return UpdateSpeedLimitNotification.fromJson(json);
+      case UpdateStarRevenueStatus.constructor:
+        return UpdateStarRevenueStatus.fromJson(json);
       case UpdateStickerSet.constructor:
         return UpdateStickerSet.fromJson(json);
       case UpdateStory.constructor:
@@ -441,8 +465,8 @@ abstract class Update extends TdObject {
         return UpdateUserPrivacySettingRules.fromJson(json);
       case UpdateUserStatus.constructor:
         return UpdateUserStatus.fromJson(json);
-      case UpdateUsersNearby.constructor:
-        return UpdateUsersNearby.fromJson(json);
+      case UpdateVideoPublished.constructor:
+        return UpdateVideoPublished.fromJson(json);
       case UpdateWebAppMessageSent.constructor:
         return UpdateWebAppMessageSent.fromJson(json);
       default:

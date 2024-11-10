@@ -19,8 +19,8 @@ class GetStickers extends TdFunction {
   /// [stickerType] Type of the stickers to return
   final StickerType stickerType;
 
-  /// [query] Search query; a space-separated list of emoji or a keyword prefix.
-  /// If empty, returns all known installed stickers
+  /// [query] Search query; a space-separated list of emojis or a keyword
+  /// prefix. If empty, returns all known installed stickers
   final String query;
 
   /// [limit] The maximum number of stickers to be returned

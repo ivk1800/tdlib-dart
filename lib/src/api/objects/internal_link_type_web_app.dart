@@ -7,17 +7,18 @@ import '../tdapi.dart';
 /// received bot and the given web_app_short_name. Process received
 /// foundWebApp by showing a confirmation dialog if needed. If the bot can be
 /// added to attachment or side menu, but isn't added yet, then show a
-/// disclaimer about Mini Apps being a third-party apps instead of the dialog
-/// and ask the user to accept their Terms of service. If the user accept the
-/// terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to
-/// add the bot. Then, call getWebAppLinkUrl and open the returned URL as a
-/// Web App
+/// disclaimer about Mini Apps being third-party applications instead of the
+/// dialog and ask the user to accept their Terms of service. If the user
+/// accept the terms and confirms adding, then use
+/// toggleBotIsAddedToAttachmentMenu to add the bot. Then, call
+/// getWebAppLinkUrl and open the returned URL as a Web App
 @immutable
 class InternalLinkTypeWebApp extends InternalLinkType {
   const InternalLinkTypeWebApp({
     required this.botUsername,
     required this.webAppShortName,
     required this.startParameter,
+    required this.isCompact,
   });
 
   /// [botUsername] Username of the bot that owns the Web App
@@ -28,6 +29,10 @@ class InternalLinkTypeWebApp extends InternalLinkType {
 
   /// [startParameter] Start parameter to be passed to getWebAppLinkUrl
   final String startParameter;
+
+  /// [isCompact] True, if the Web App must be opened in the compact mode
+  /// instead of the full-size mode
+  final bool isCompact;
 
   static const String constructor = 'internalLinkTypeWebApp';
 
@@ -40,6 +45,7 @@ class InternalLinkTypeWebApp extends InternalLinkType {
       botUsername: json['bot_username'] as String,
       webAppShortName: json['web_app_short_name'] as String,
       startParameter: json['start_parameter'] as String,
+      isCompact: json['is_compact'] as bool,
     );
   }
 
@@ -51,6 +57,7 @@ class InternalLinkTypeWebApp extends InternalLinkType {
         'bot_username': botUsername,
         'web_app_short_name': webAppShortName,
         'start_parameter': startParameter,
+        'is_compact': isCompact,
         '@type': constructor,
       };
 

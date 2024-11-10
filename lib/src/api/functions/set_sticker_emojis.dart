@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Changes the list of emoji corresponding to a sticker. The sticker must
+/// Changes the list of emojis corresponding to a sticker. The sticker must
 /// belong to a regular or custom emoji sticker set that is owned by the
 /// current user
 /// Returns [Ok]

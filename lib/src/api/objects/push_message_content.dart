@@ -26,15 +26,17 @@ abstract class PushMessageContent extends TdObject {
   /// [PushMessageContentDocument]
   /// [PushMessageContentGameScore]
   /// [PushMessageContentGame]
+  /// [PushMessageContentGift]
+  /// [PushMessageContentGiveaway]
   /// [PushMessageContentHidden]
   /// [PushMessageContentInvoice]
   /// [PushMessageContentLocation]
   /// [PushMessageContentMediaAlbum]
   /// [PushMessageContentMessageForwards]
+  /// [PushMessageContentPaidMedia]
   /// [PushMessageContentPhoto]
   /// [PushMessageContentPoll]
   /// [PushMessageContentPremiumGiftCode]
-  /// [PushMessageContentPremiumGiveaway]
   /// [PushMessageContentRecurringPayment]
   /// [PushMessageContentScreenshotTaken]
   /// [PushMessageContentSticker]
@@ -82,6 +84,10 @@ abstract class PushMessageContent extends TdObject {
         return PushMessageContentGame.fromJson(json);
       case PushMessageContentGameScore.constructor:
         return PushMessageContentGameScore.fromJson(json);
+      case PushMessageContentGift.constructor:
+        return PushMessageContentGift.fromJson(json);
+      case PushMessageContentGiveaway.constructor:
+        return PushMessageContentGiveaway.fromJson(json);
       case PushMessageContentHidden.constructor:
         return PushMessageContentHidden.fromJson(json);
       case PushMessageContentInvoice.constructor:
@@ -92,14 +98,14 @@ abstract class PushMessageContent extends TdObject {
         return PushMessageContentMediaAlbum.fromJson(json);
       case PushMessageContentMessageForwards.constructor:
         return PushMessageContentMessageForwards.fromJson(json);
+      case PushMessageContentPaidMedia.constructor:
+        return PushMessageContentPaidMedia.fromJson(json);
       case PushMessageContentPhoto.constructor:
         return PushMessageContentPhoto.fromJson(json);
       case PushMessageContentPoll.constructor:
         return PushMessageContentPoll.fromJson(json);
       case PushMessageContentPremiumGiftCode.constructor:
         return PushMessageContentPremiumGiftCode.fromJson(json);
-      case PushMessageContentPremiumGiveaway.constructor:
-        return PushMessageContentPremiumGiveaway.fromJson(json);
       case PushMessageContentRecurringPayment.constructor:
         return PushMessageContentRecurringPayment.fromJson(json);
       case PushMessageContentScreenshotTaken.constructor:

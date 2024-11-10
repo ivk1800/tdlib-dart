@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A reference to a richTexts object on the same web page
+/// A reference to a richTexts object on the same page
 @immutable
 class RichTextReference extends RichText {
   const RichTextReference({

@@ -56,7 +56,7 @@ class ChatBoostStatus extends TdObject {
 
   /// [prepaidGiveaways] The list of prepaid giveaways available for the chat;
   /// only for chat administrators
-  final List<PrepaidPremiumGiveaway> prepaidGiveaways;
+  final List<PrepaidGiveaway> prepaidGiveaways;
 
   static const String constructor = 'chatBoostStatus';
 
@@ -79,9 +79,9 @@ class ChatBoostStatus extends TdObject {
       premiumMemberCount: json['premium_member_count'] as int,
       premiumMemberPercentage:
           (json['premium_member_percentage'] as num).toDouble(),
-      prepaidGiveaways: List<PrepaidPremiumGiveaway>.from(
+      prepaidGiveaways: List<PrepaidGiveaway>.from(
           ((json['prepaid_giveaways'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PrepaidPremiumGiveaway.fromJson(item))
+              .map((item) => PrepaidGiveaway.fromJson(item))
               .toList()),
     );
   }

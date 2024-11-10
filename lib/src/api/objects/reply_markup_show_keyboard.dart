@@ -17,7 +17,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   /// [rows] A list of rows of bot keyboard buttons
   final List<List<KeyboardButton>> rows;
 
-  /// [isPersistent] True, if the keyboard is supposed to always be shown when
+  /// [isPersistent] True, if the keyboard is expected to always be shown when
   /// the ordinary keyboard is hidden
   final bool isPersistent;
 

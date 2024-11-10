@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A hashtag text, beginning with "#"
+/// A hashtag text, beginning with "#" and optionally containing a chat
+/// username at the end
 @immutable
 class TextEntityTypeHashtag extends TextEntityType {
   const TextEntityTypeHashtag();

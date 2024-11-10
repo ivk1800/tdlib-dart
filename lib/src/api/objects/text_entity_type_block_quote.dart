@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Text that must be formatted as if inside a blockquote HTML tag
+/// Text that must be formatted as if inside a blockquote HTML tag; not
+/// supported in secret chats
 @immutable
 class TextEntityTypeBlockQuote extends TextEntityType {
   const TextEntityTypeBlockQuote();

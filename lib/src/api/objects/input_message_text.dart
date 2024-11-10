@@ -13,8 +13,8 @@ class InputMessageText extends InputMessageContent {
 
   /// [text] Formatted text to be sent; 0-getOption("message_text_length_max")
   /// characters. Only Bold, Italic, Underline, Strikethrough, Spoiler,
-  /// CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName
-  /// entities are allowed to be specified manually
+  /// CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl
+  /// and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
   /// [linkPreviewOptions] Options to be used for generation of a link preview;

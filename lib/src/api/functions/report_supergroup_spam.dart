@@ -15,7 +15,9 @@ class ReportSupergroupSpam extends TdFunction {
   /// [supergroupId] Supergroup identifier
   final int supergroupId;
 
-  /// [messageIds] Identifiers of messages to report
+  /// [messageIds] Identifiers of messages to report. Use
+  /// messageProperties.can_report_supergroup_spam to check whether the message
+  /// can be reported
   final List<int> messageIds;
 
   static const String constructor = 'reportSupergroupSpam';

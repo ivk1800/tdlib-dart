@@ -7,6 +7,7 @@ import '../tdapi.dart';
 class MessagePremiumGiftCode extends MessageContent {
   const MessagePremiumGiftCode({
     this.creatorId,
+    required this.text,
     required this.isFromGiveaway,
     required this.isUnclaimed,
     required this.currency,
@@ -21,6 +22,9 @@ class MessagePremiumGiftCode extends MessageContent {
   /// [creatorId] Identifier of a chat or a user that created the gift code; may
   /// be null if unknown
   final MessageSender? creatorId;
+
+  /// [text] Message added to the gift
+  final FormattedText text;
 
   /// [isFromGiveaway] True, if the gift code was created for a giveaway
   final bool isFromGiveaway;
@@ -64,6 +68,7 @@ class MessagePremiumGiftCode extends MessageContent {
     return MessagePremiumGiftCode(
       creatorId:
           MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?),
+      text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
       isFromGiveaway: json['is_from_giveaway'] as bool,
       isUnclaimed: json['is_unclaimed'] as bool,
       currency: json['currency'] as String,
@@ -82,6 +87,7 @@ class MessagePremiumGiftCode extends MessageContent {
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
         'creator_id': creatorId?.toJson(),
+        'text': text.toJson(),
         'is_from_giveaway': isFromGiveaway,
         'is_unclaimed': isUnclaimed,
         'currency': currency,

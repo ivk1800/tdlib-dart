@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to the change phone number section of the app
+/// The link is a link to the change phone number section of the application
 @immutable
 class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
   const InternalLinkTypeChangePhoneNumber();

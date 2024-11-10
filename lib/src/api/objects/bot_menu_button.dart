@@ -13,7 +13,9 @@ class BotMenuButton extends TdObject {
   /// [text] Text of the button
   final String text;
 
-  /// [url] URL to be passed to openWebApp
+  /// [url] URL of a Web App to open when the button is pressed. If the link is
+  /// of the type internalLinkTypeWebApp, then it must be processed accordingly.
+  /// Otherwise, the link must be passed to openWebApp
   final String url;
 
   static const String constructor = 'botMenuButton';

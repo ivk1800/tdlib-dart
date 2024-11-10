@@ -3,8 +3,8 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Reports that authentication code wasn't delivered via SMS; for official
-/// mobile apps only. Works only when the current authorization state is
-/// authorizationStateWaitCode
+/// mobile applications only. Works only when the current authorization state
+/// is authorizationStateWaitCode
 /// Returns [Ok]
 @immutable
 class ReportAuthenticationCodeMissing extends TdFunction {

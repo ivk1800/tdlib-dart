@@ -14,19 +14,7 @@ class Message extends TdObject {
     required this.isOutgoing,
     required this.isPinned,
     required this.isFromOffline,
-    required this.canBeEdited,
-    required this.canBeForwarded,
-    required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
-    required this.canBeDeletedOnlyForSelf,
-    required this.canBeDeletedForAllUsers,
-    required this.canGetAddedReactions,
-    required this.canGetStatistics,
-    required this.canGetMessageThread,
-    required this.canGetReadDate,
-    required this.canGetViewers,
-    required this.canGetMediaTimestampLinks,
-    required this.canReportReactions,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
     required this.isTopicMessage,
@@ -37,6 +25,7 @@ class Message extends TdObject {
     this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
+    this.factCheck,
     this.replyTo,
     required this.messageThreadId,
     required this.savedMessagesTopicId,
@@ -48,6 +37,8 @@ class Message extends TdObject {
     required this.senderBoostCount,
     this.authorSignature,
     required this.mediaAlbumId,
+    required this.effectId,
+    required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.content,
     this.replyMarkup,
@@ -81,58 +72,9 @@ class Message extends TdObject {
   /// message
   final bool isFromOffline;
 
-  /// [canBeEdited] True, if the message can be edited. For live location and
-  /// poll messages this fields shows whether editMessageLiveLocation or
-  /// stopPoll can be used with this message by the application
-  final bool canBeEdited;
-
-  /// [canBeForwarded] True, if the message can be forwarded
-  final bool canBeForwarded;
-
-  /// [canBeRepliedInAnotherChat] True, if the message can be replied in another
-  /// chat or topic
-  final bool canBeRepliedInAnotherChat;
-
   /// [canBeSaved] True, if content of the message can be saved locally or
-  /// copied
+  /// copied using inputMessageForwarded or forwardMessages with copy options
   final bool canBeSaved;
-
-  /// [canBeDeletedOnlyForSelf] True, if the message can be deleted only for the
-  /// current user while other users will continue to see it
-  final bool canBeDeletedOnlyForSelf;
-
-  /// [canBeDeletedForAllUsers] True, if the message can be deleted for all
-  /// users
-  final bool canBeDeletedForAllUsers;
-
-  /// [canGetAddedReactions] True, if the list of added reactions is available
-  /// through getMessageAddedReactions
-  final bool canGetAddedReactions;
-
-  /// [canGetStatistics] True, if the message statistics are available through
-  /// getMessageStatistics
-  final bool canGetStatistics;
-
-  /// [canGetMessageThread] True, if information about the message thread is
-  /// available through getMessageThread and getMessageThreadHistory
-  final bool canGetMessageThread;
-
-  /// [canGetReadDate] True, if read date of the message can be received through
-  /// getMessageReadDate
-  final bool canGetReadDate;
-
-  /// [canGetViewers] True, if chat members already viewed the message can be
-  /// received through getMessageViewers
-  final bool canGetViewers;
-
-  /// [canGetMediaTimestampLinks] True, if media timestamp links can be
-  /// generated for media timestamp entities in the message text, caption or web
-  /// page description through getMessageLink
-  final bool canGetMediaTimestampLinks;
-
-  /// [canReportReactions] True, if reactions on the message can be reported
-  /// through reportMessageReactions
-  final bool canReportReactions;
 
   /// [hasTimestampedMedia] True, if media timestamp entities refers to a media
   /// in this message as opposed to a media in the replied message
@@ -149,10 +91,12 @@ class Message extends TdObject {
   /// for the current user
   final bool containsUnreadMention;
 
-  /// [date] Point in time (Unix timestamp) when the message was sent
+  /// [date] Point in time (Unix timestamp) when the message was sent; 0 for
+  /// scheduled messages
   final int date;
 
-  /// [editDate] Point in time (Unix timestamp) when the message was last edited
+  /// [editDate] Point in time (Unix timestamp) when the message was last
+  /// edited; 0 for scheduled messages
   final int editDate;
 
   /// [forwardInfo] Information about the initial message sender; may be null if
@@ -169,6 +113,10 @@ class Message extends TdObject {
 
   /// [unreadReactions] Information about unread reactions added to the message
   final List<UnreadReaction> unreadReactions;
+
+  /// [factCheck] Information about fact-check added to the message; may be null
+  /// if none
+  final FactCheck? factCheck;
 
   /// [replyTo] Information about the message or the story this message is
   /// replying to; may be null if none
@@ -216,6 +164,13 @@ class Message extends TdObject {
   /// albums
   final int mediaAlbumId;
 
+  /// [effectId] Unique identifier of the effect added to the message; 0 if none
+  final int effectId;
+
+  /// [hasSensitiveContent] True, if media content of the message must be hidden
+  /// with 18+ spoiler
+  final bool hasSensitiveContent;
+
   /// [restrictionReason] If non-empty, contains a human-readable description of
   /// the reason why access to this message must be restricted
   final String restrictionReason;
@@ -245,19 +200,7 @@ class Message extends TdObject {
       isOutgoing: json['is_outgoing'] as bool,
       isPinned: json['is_pinned'] as bool,
       isFromOffline: json['is_from_offline'] as bool,
-      canBeEdited: json['can_be_edited'] as bool,
-      canBeForwarded: json['can_be_forwarded'] as bool,
-      canBeRepliedInAnotherChat: json['can_be_replied_in_another_chat'] as bool,
       canBeSaved: json['can_be_saved'] as bool,
-      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
-      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
-      canGetAddedReactions: json['can_get_added_reactions'] as bool,
-      canGetStatistics: json['can_get_statistics'] as bool,
-      canGetMessageThread: json['can_get_message_thread'] as bool,
-      canGetReadDate: json['can_get_read_date'] as bool,
-      canGetViewers: json['can_get_viewers'] as bool,
-      canGetMediaTimestampLinks: json['can_get_media_timestamp_links'] as bool,
-      canReportReactions: json['can_report_reactions'] as bool,
       hasTimestampedMedia: json['has_timestamped_media'] as bool,
       isChannelPost: json['is_channel_post'] as bool,
       isTopicMessage: json['is_topic_message'] as bool,
@@ -274,6 +217,8 @@ class Message extends TdObject {
           ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => UnreadReaction.fromJson(item))
               .toList()),
+      factCheck:
+          FactCheck.fromJson(json['fact_check'] as Map<String, dynamic>?),
       replyTo:
           MessageReplyTo.fromJson(json['reply_to'] as Map<String, dynamic>?),
       messageThreadId: json['message_thread_id'] as int,
@@ -287,6 +232,8 @@ class Message extends TdObject {
       senderBoostCount: json['sender_boost_count'] as int,
       authorSignature: json['author_signature'] as String?,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
+      effectId: int.tryParse(json['effect_id']) ?? 0,
+      hasSensitiveContent: json['has_sensitive_content'] as bool,
       restrictionReason: json['restriction_reason'] as String,
       content:
           MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
@@ -308,19 +255,7 @@ class Message extends TdObject {
         'is_outgoing': isOutgoing,
         'is_pinned': isPinned,
         'is_from_offline': isFromOffline,
-        'can_be_edited': canBeEdited,
-        'can_be_forwarded': canBeForwarded,
-        'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
         'can_be_saved': canBeSaved,
-        'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
-        'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
-        'can_get_added_reactions': canGetAddedReactions,
-        'can_get_statistics': canGetStatistics,
-        'can_get_message_thread': canGetMessageThread,
-        'can_get_read_date': canGetReadDate,
-        'can_get_viewers': canGetViewers,
-        'can_get_media_timestamp_links': canGetMediaTimestampLinks,
-        'can_report_reactions': canReportReactions,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
         'is_topic_message': isTopicMessage,
@@ -332,6 +267,7 @@ class Message extends TdObject {
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions':
             unreadReactions.map((item) => item.toJson()).toList(),
+        'fact_check': factCheck?.toJson(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
         'saved_messages_topic_id': savedMessagesTopicId,
@@ -343,6 +279,8 @@ class Message extends TdObject {
         'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
+        'effect_id': effectId.toString(),
+        'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
         'content': content.toJson(),
         'reply_markup': replyMarkup?.toJson(),

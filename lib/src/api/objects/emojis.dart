@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Represents a list of emoji
+/// Represents a list of emojis
 @immutable
 class Emojis extends TdObject {
   const Emojis({

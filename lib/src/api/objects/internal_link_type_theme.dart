@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to a theme. TDLib has no theme support yet
+/// The link is a link to a cloud theme. TDLib has no theme support yet
 @immutable
 class InternalLinkTypeTheme extends InternalLinkType {
   const InternalLinkTypeTheme({

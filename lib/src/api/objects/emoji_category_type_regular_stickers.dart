@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The category must be used by default for regular sticker selection. It may
-/// contain greeting emoji category and Premium stickers
+/// contain greeting emoji category and premium stickers
 @immutable
 class EmojiCategoryTypeRegularStickers extends EmojiCategoryType {
   const EmojiCategoryTypeRegularStickers();

@@ -11,7 +11,7 @@ class SendPaymentForm extends TdFunction {
     required this.paymentFormId,
     required this.orderInfoId,
     required this.shippingOptionId,
-    required this.credentials,
+    this.credentials,
     required this.tipAmount,
   });
 
@@ -27,8 +27,9 @@ class SendPaymentForm extends TdFunction {
   /// [shippingOptionId] Identifier of a chosen shipping option, if applicable
   final String shippingOptionId;
 
-  /// [credentials] The credentials chosen by user for payment
-  final InputCredentials credentials;
+  /// [credentials] The credentials chosen by user for payment; pass null for a
+  /// payment in Telegram Stars
+  final InputCredentials? credentials;
 
   /// [tipAmount] Chosen by the user amount of tip in the smallest units of the
   /// currency
@@ -45,7 +46,7 @@ class SendPaymentForm extends TdFunction {
         'payment_form_id': paymentFormId,
         'order_info_id': orderInfoId,
         'shipping_option_id': shippingOptionId,
-        'credentials': credentials.toJson(),
+        'credentials': credentials?.toJson(),
         'tip_amount': tipAmount,
         '@type': constructor,
       };

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The link is a link to a Telegram bot, which is supposed to be added to a
+/// The link is a link to a Telegram bot, which is expected to be added to a
 /// channel chat as an administrator. Call searchPublicChat with the given bot
 /// username and check that the user is a bot, ask the current user to select
 /// a channel chat to add the bot to as an administrator. Then, call

@@ -13,6 +13,7 @@ class SendBusinessMessage extends TdFunction {
     this.replyTo,
     required this.disableNotification,
     required this.protectContent,
+    required this.effectId,
     this.replyMarkup,
     required this.inputMessageContent,
   });
@@ -34,6 +35,9 @@ class SendBusinessMessage extends TdFunction {
   /// from forwarding and saving
   final bool protectContent;
 
+  /// [effectId] Identifier of the effect to apply to the message
+  final int effectId;
+
   /// [replyMarkup] Markup for replying to the message; pass null if none
   final ReplyMarkup? replyMarkup;
 
@@ -52,6 +56,7 @@ class SendBusinessMessage extends TdFunction {
         'reply_to': replyTo?.toJson(),
         'disable_notification': disableNotification,
         'protect_content': protectContent,
+        'effect_id': effectId,
         'reply_markup': replyMarkup?.toJson(),
         'input_message_content': inputMessageContent.toJson(),
         '@type': constructor,

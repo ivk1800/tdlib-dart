@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns available options for Telegram Premium gift code or giveaway
-/// creation
+/// Returns available options for Telegram Premium gift code or Telegram
+/// Premium giveaway creation
 /// Returns [PremiumGiftCodePaymentOptions]
 @immutable
 class GetPremiumGiftCodePaymentOptions extends TdFunction {

@@ -14,6 +14,7 @@ class StoryVideo extends TdObject {
     this.minithumbnail,
     this.thumbnail,
     required this.preloadPrefixSize,
+    required this.coverFrameTimestamp,
     required this.video,
   });
 
@@ -39,9 +40,12 @@ class StoryVideo extends TdObject {
   /// [thumbnail] Video thumbnail in JPEG or MPEG4 format; may be null
   final Thumbnail? thumbnail;
 
-  /// [preloadPrefixSize] Size of file prefix, which is supposed to be
+  /// [preloadPrefixSize] Size of file prefix, which is expected to be
   /// preloaded, in bytes
   final int preloadPrefixSize;
+
+  /// [coverFrameTimestamp] Timestamp of the frame used as video thumbnail
+  final double coverFrameTimestamp;
 
   /// [video] File containing the video
   final File video;
@@ -63,6 +67,7 @@ class StoryVideo extends TdObject {
           json['minithumbnail'] as Map<String, dynamic>?),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       preloadPrefixSize: json['preload_prefix_size'] as int,
+      coverFrameTimestamp: (json['cover_frame_timestamp'] as num).toDouble(),
       video: File.fromJson(json['video'] as Map<String, dynamic>?)!,
     );
   }
@@ -80,6 +85,7 @@ class StoryVideo extends TdObject {
         'minithumbnail': minithumbnail?.toJson(),
         'thumbnail': thumbnail?.toJson(),
         'preload_prefix_size': preloadPrefixSize,
+        'cover_frame_timestamp': coverFrameTimestamp,
         'video': video.toJson(),
         '@type': constructor,
       };

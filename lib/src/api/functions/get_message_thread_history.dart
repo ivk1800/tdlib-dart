@@ -3,9 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns messages in a message thread of a message. Can be used only if
-/// message.can_get_message_thread == true. Message thread of a channel
-/// message is in the channel's linked supergroup. The messages are returned
-/// in a reverse chronological order (i.e., in order of decreasing
+/// messageProperties.can_get_message_thread == true. Message thread of a
+/// channel message is in the channel's linked supergroup. The messages are
+/// returned in reverse chronological order (i.e., in order of decreasing
 /// message_id). For optimal performance, the number of returned messages is
 /// chosen by TDLib
 /// Returns [Messages]

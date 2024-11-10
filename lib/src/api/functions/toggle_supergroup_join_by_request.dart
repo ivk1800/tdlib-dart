@@ -13,7 +13,7 @@ class ToggleSupergroupJoinByRequest extends TdFunction {
     required this.joinByRequest,
   });
 
-  /// [supergroupId] Identifier of the channel
+  /// [supergroupId] Identifier of the supergroup that isn't a broadcast group
   final int supergroupId;
 
   /// [joinByRequest] New value of join_by_request

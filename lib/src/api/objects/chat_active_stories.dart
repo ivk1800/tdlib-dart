@@ -30,7 +30,7 @@ class ChatActiveStories extends TdObject {
   final int maxReadStoryId;
 
   /// [stories] Basic information about the stories; use getStory to get full
-  /// information about the stories. The stories are in a chronological order
+  /// information about the stories. The stories are in chronological order
   /// (i.e., in order of increasing story identifiers)
   final List<StoryInfo> stories;
 

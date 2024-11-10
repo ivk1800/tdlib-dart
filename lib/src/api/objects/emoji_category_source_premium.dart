@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The category contains Premium stickers that must be found by
+/// The category contains premium stickers that must be found by
 /// getPremiumStickers
 @immutable
 class EmojiCategorySourcePremium extends EmojiCategorySource {

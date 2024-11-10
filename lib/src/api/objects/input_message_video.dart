@@ -14,11 +14,13 @@ class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
 
-  /// [video] Video to be sent
+  /// [video] Video to be sent. The video is expected to be reencoded to MPEG4
+  /// format with H.264 codec by the sender
   final InputFile video;
 
   /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading
@@ -37,12 +39,17 @@ class InputMessageVideo extends InputMessageContent {
   /// [height] Video height
   final int height;
 
-  /// [supportsStreaming] True, if the video is supposed to be streamed
+  /// [supportsStreaming] True, if the video is expected to be streamed
   final bool supportsStreaming;
 
   /// [caption] Video caption; pass null to use an empty caption;
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
+
+  /// [showCaptionAboveMedia] True, if the caption must be shown above the
+  /// video; otherwise, the caption must be shown below the video; not supported
+  /// in secret chats
+  final bool showCaptionAboveMedia;
 
   /// [selfDestructType] Video self-destruct type; pass null if none; private
   /// chats only
@@ -72,6 +79,7 @@ class InputMessageVideo extends InputMessageContent {
       height: json['height'] as int,
       supportsStreaming: json['supports_streaming'] as bool,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
+      showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       selfDestructType: MessageSelfDestructType.fromJson(
           json['self_destruct_type'] as Map<String, dynamic>?),
       hasSpoiler: json['has_spoiler'] as bool,
@@ -92,6 +100,7 @@ class InputMessageVideo extends InputMessageContent {
         'height': height,
         'supports_streaming': supportsStreaming,
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
         '@type': constructor,

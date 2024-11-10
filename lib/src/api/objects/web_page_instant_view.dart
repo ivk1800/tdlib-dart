@@ -14,7 +14,7 @@ class WebPageInstantView extends TdObject {
     required this.feedbackLink,
   });
 
-  /// [pageBlocks] Content of the web page
+  /// [pageBlocks] Content of the instant view page
   final List<PageBlock> pageBlocks;
 
   /// [viewCount] Number of the instant view views; 0 if unknown
@@ -27,7 +27,7 @@ class WebPageInstantView extends TdObject {
   final bool isRtl;
 
   /// [isFull] True, if the instant view contains the full page. A network
-  /// request might be needed to get the full web page instant view
+  /// request might be needed to get the full instant view
   final bool isFull;
 
   /// [feedbackLink] An internal link to be opened to leave feedback about the

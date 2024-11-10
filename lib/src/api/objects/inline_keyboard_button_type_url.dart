@@ -9,7 +9,8 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
     required this.url,
   });
 
-  /// [url] HTTP or tg:// URL to open
+  /// [url] HTTP or tg:// URL to open. If the link is of the type
+  /// internalLinkTypeWebApp, then the button must be marked as a Web App button
   final String url;
 
   static const String constructor = 'inlineKeyboardButtonTypeUrl';

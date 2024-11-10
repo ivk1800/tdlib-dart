@@ -12,6 +12,7 @@ class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
@@ -39,6 +40,11 @@ class InputMessagePhoto extends InputMessageContent {
   /// 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// [showCaptionAboveMedia] True, if the caption must be shown above the
+  /// photo; otherwise, the caption must be shown below the photo; not supported
+  /// in secret chats
+  final bool showCaptionAboveMedia;
+
   /// [selfDestructType] Photo self-destruct type; pass null if none; private
   /// chats only
   final MessageSelfDestructType? selfDestructType;
@@ -65,6 +71,7 @@ class InputMessagePhoto extends InputMessageContent {
       width: json['width'] as int,
       height: json['height'] as int,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
+      showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       selfDestructType: MessageSelfDestructType.fromJson(
           json['self_destruct_type'] as Map<String, dynamic>?),
       hasSpoiler: json['has_spoiler'] as bool,
@@ -83,6 +90,7 @@ class InputMessagePhoto extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
         '@type': constructor,

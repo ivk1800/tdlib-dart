@@ -36,7 +36,7 @@ class GroupCall extends TdObject {
   final String title;
 
   /// [scheduledStartDate] Point in time (Unix timestamp) when the group call is
-  /// supposed to be started by an administrator; 0 if it is already active or
+  /// expected to be started by an administrator; 0 if it is already active or
   /// was ended
   final int scheduledStartDate;
 

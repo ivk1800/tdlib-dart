@@ -11,7 +11,7 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
     required this.isMember,
   });
 
-  /// [customTitle] A custom title of the owner; 0-16 characters without emojis;
+  /// [customTitle] A custom title of the owner; 0-16 characters without emoji;
   /// applicable to supergroups only
   final String customTitle;
 

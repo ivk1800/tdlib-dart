@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns messages in a chat. The messages are returned in a reverse
+/// Returns messages in a chat. The messages are returned in reverse
 /// chronological order (i.e., in order of decreasing message_id). For optimal
 /// performance, the number of returned messages is chosen by TDLib. This is
 /// an offline request if only_local is true

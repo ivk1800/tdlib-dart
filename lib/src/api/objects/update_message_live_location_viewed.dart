@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// A message with a live location was viewed. When the update is received,
-/// the application is supposed to update the live location
+/// the application is expected to update the live location
 @immutable
 class UpdateMessageLiveLocationViewed extends Update {
   const UpdateMessageLiveLocationViewed({

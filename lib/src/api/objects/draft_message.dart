@@ -9,6 +9,7 @@ class DraftMessage extends TdObject {
     this.replyTo,
     required this.date,
     required this.inputMessageText,
+    required this.effectId,
   });
 
   /// [replyTo] Information about the message to be replied; must be of the type
@@ -21,6 +22,10 @@ class DraftMessage extends TdObject {
   /// [inputMessageText] Content of the message draft; must be of the type
   /// inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
+
+  /// [effectId] Identifier of the effect to apply to the message when it is
+  /// sent; 0 if none
+  final int effectId;
 
   static const String constructor = 'draftMessage';
 
@@ -35,6 +40,7 @@ class DraftMessage extends TdObject {
       date: json['date'] as int,
       inputMessageText: InputMessageContent.fromJson(
           json['input_message_text'] as Map<String, dynamic>?)!,
+      effectId: int.tryParse(json['effect_id']) ?? 0,
     );
   }
 
@@ -46,6 +52,7 @@ class DraftMessage extends TdObject {
         'reply_to': replyTo?.toJson(),
         'date': date,
         'input_message_text': inputMessageText.toJson(),
+        'effect_id': effectId.toString(),
         '@type': constructor,
       };
 

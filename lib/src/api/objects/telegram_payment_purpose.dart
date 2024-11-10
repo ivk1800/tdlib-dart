@@ -10,18 +10,30 @@ abstract class TelegramPaymentPurpose extends TdObject {
   static const String constructor = 'telegramPaymentPurpose';
 
   /// Inherited by:
+  /// [TelegramPaymentPurposeGiftedStars]
+  /// [TelegramPaymentPurposeJoinChat]
   /// [TelegramPaymentPurposePremiumGiftCodes]
   /// [TelegramPaymentPurposePremiumGiveaway]
+  /// [TelegramPaymentPurposeStarGiveaway]
+  /// [TelegramPaymentPurposeStars]
   static TelegramPaymentPurpose? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
     }
 
     switch (json['@type']) {
+      case TelegramPaymentPurposeGiftedStars.constructor:
+        return TelegramPaymentPurposeGiftedStars.fromJson(json);
+      case TelegramPaymentPurposeJoinChat.constructor:
+        return TelegramPaymentPurposeJoinChat.fromJson(json);
       case TelegramPaymentPurposePremiumGiftCodes.constructor:
         return TelegramPaymentPurposePremiumGiftCodes.fromJson(json);
       case TelegramPaymentPurposePremiumGiveaway.constructor:
         return TelegramPaymentPurposePremiumGiveaway.fromJson(json);
+      case TelegramPaymentPurposeStarGiveaway.constructor:
+        return TelegramPaymentPurposeStarGiveaway.fromJson(json);
+      case TelegramPaymentPurposeStars.constructor:
+        return TelegramPaymentPurposeStars.fromJson(json);
       default:
         return null;
     }

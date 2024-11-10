@@ -18,7 +18,7 @@ class BackgroundTypePattern extends BackgroundType {
   final BackgroundFill fill;
 
   /// [intensity] Intensity of the pattern when it is shown above the filled
-  /// background; 0-100.
+  /// background; 0-100
   final int intensity;
 
   /// [isInverted] True, if the background fill must be applied only to the

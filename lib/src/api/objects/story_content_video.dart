@@ -14,7 +14,7 @@ class StoryContentVideo extends StoryContent {
   final StoryVideo video;
 
   /// [alternativeVideo] Alternative version of the video in MPEG4 format,
-  /// encoded by x264 codec; may be null
+  /// encoded with H.264 codec; may be null
   final StoryVideo? alternativeVideo;
 
   static const String constructor = 'storyContentVideo';

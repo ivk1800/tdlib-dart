@@ -16,7 +16,7 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   /// with receipt from push notification
   final String receipt;
 
-  /// [pushTimeout] Time after the next authentication method is supposed to be
+  /// [pushTimeout] Time after the next authentication method is expected to be
   /// used if verification push notification isn't received, in seconds
   final int pushTimeout;
 

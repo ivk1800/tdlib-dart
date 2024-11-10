@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A link to an anchor on the same web page
+/// A link to an anchor on the same page
 @immutable
 class RichTextAnchorLink extends RichText {
   const RichTextAnchorLink({

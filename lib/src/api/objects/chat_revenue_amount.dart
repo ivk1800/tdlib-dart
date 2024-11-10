@@ -11,6 +11,7 @@ class ChatRevenueAmount extends TdObject {
     required this.totalAmount,
     required this.balanceAmount,
     required this.availableAmount,
+    required this.withdrawalEnabled,
   });
 
   /// [cryptocurrency] Cryptocurrency in which revenue is calculated
@@ -28,6 +29,9 @@ class ChatRevenueAmount extends TdObject {
   /// in the smallest units of the cryptocurrency
   final int availableAmount;
 
+  /// [withdrawalEnabled] True, if Telegram Stars can be withdrawn now or later
+  final bool withdrawalEnabled;
+
   static const String constructor = 'chatRevenueAmount';
 
   static ChatRevenueAmount? fromJson(Map<String, dynamic>? json) {
@@ -40,6 +44,7 @@ class ChatRevenueAmount extends TdObject {
       totalAmount: int.tryParse(json['total_amount']) ?? 0,
       balanceAmount: int.tryParse(json['balance_amount']) ?? 0,
       availableAmount: int.tryParse(json['available_amount']) ?? 0,
+      withdrawalEnabled: json['withdrawal_enabled'] as bool,
     );
   }
 
@@ -52,6 +57,7 @@ class ChatRevenueAmount extends TdObject {
         'total_amount': totalAmount.toString(),
         'balance_amount': balanceAmount.toString(),
         'available_amount': availableAmount.toString(),
+        'withdrawal_enabled': withdrawalEnabled,
         '@type': constructor,
       };
 

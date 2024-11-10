@@ -12,6 +12,7 @@ abstract class MessageSchedulingState extends TdObject {
   /// Inherited by:
   /// [MessageSchedulingStateSendAtDate]
   /// [MessageSchedulingStateSendWhenOnline]
+  /// [MessageSchedulingStateSendWhenVideoProcessed]
   static MessageSchedulingState? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -22,6 +23,8 @@ abstract class MessageSchedulingState extends TdObject {
         return MessageSchedulingStateSendAtDate.fromJson(json);
       case MessageSchedulingStateSendWhenOnline.constructor:
         return MessageSchedulingStateSendWhenOnline.fromJson(json);
+      case MessageSchedulingStateSendWhenVideoProcessed.constructor:
+        return MessageSchedulingStateSendWhenVideoProcessed.fromJson(json);
       default:
         return null;
     }

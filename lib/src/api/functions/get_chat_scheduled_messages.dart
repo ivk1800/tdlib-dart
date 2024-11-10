@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns all scheduled messages in a chat. The messages are returned in a
+/// Returns all scheduled messages in a chat. The messages are returned in
 /// reverse chronological order (i.e., in order of decreasing message_id)
 /// Returns [Messages]
 @immutable

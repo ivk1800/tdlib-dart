@@ -3,9 +3,10 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Edits a non-primary invite link for a chat. Available for basic groups,
-/// supergroups, and channels. Requires administrator privileges and
-/// can_invite_users right in the chat for own links and owner privileges for
-/// other links
+/// supergroups, and channels. If the link creates a subscription, then
+/// expiration_date, member_limit and creates_join_request must not be used.
+/// Requires administrator privileges and can_invite_users right in the chat
+/// for own links and owner privileges for other links
 /// Returns [ChatInviteLink]
 @immutable
 class EditChatInviteLink extends TdFunction {

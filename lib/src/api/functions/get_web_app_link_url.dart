@@ -33,8 +33,8 @@ class GetWebAppLinkUrl extends TdFunction {
   /// [theme] Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
-  /// [applicationName] Short name of the application; 0-64 English letters,
-  /// digits, and underscores
+  /// [applicationName] Short name of the current application; 0-64 English
+  /// letters, digits, and underscores
   final String applicationName;
 
   /// [allowWriteAccess] Pass true if the current user allowed the bot to send

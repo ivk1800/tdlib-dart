@@ -11,7 +11,7 @@ class EmojiCategorySourceSearch extends EmojiCategorySource {
     required this.emojis,
   });
 
-  /// [emojis] List of emojis for search for
+  /// [emojis] List of emojis to search for
   final List<String> emojis;
 
   static const String constructor = 'emojiCategorySourceSearch';

@@ -30,8 +30,9 @@ class SponsoredMessage extends TdObject {
   /// moderators through reportChatSponsoredMessage
   final bool canBeReported;
 
-  /// [content] Content of the message. Currently, can be only of the type
-  /// messageText
+  /// [content] Content of the message. Currently, can be only of the types
+  /// messageText, messageAnimation, messagePhoto, or messageVideo. Video
+  /// messages can be viewed fullscreen
   final MessageContent content;
 
   /// [sponsor] Information about the sponsor of the message

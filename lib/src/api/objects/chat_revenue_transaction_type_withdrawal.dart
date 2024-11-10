@@ -19,7 +19,7 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
   final String provider;
 
   /// [state] State of the withdrawal
-  final ChatRevenueWithdrawalState state;
+  final RevenueWithdrawalState state;
 
   static const String constructor = 'chatRevenueTransactionTypeWithdrawal';
 
@@ -32,7 +32,7 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
     return ChatRevenueTransactionTypeWithdrawal(
       withdrawalDate: json['withdrawal_date'] as int,
       provider: json['provider'] as String,
-      state: ChatRevenueWithdrawalState.fromJson(
+      state: RevenueWithdrawalState.fromJson(
           json['state'] as Map<String, dynamic>?)!,
     );
   }

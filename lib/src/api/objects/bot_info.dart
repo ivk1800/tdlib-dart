@@ -12,8 +12,11 @@ class BotInfo extends TdObject {
     this.animation,
     this.menuButton,
     required this.commands,
+    required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    required this.canGetRevenueStatistics,
+    required this.hasMediaPreviews,
     this.editCommandsLink,
     this.editDescriptionLink,
     this.editDescriptionMediaLink,
@@ -44,6 +47,12 @@ class BotInfo extends TdObject {
   /// [commands] List of the bot commands
   final List<BotCommand> commands;
 
+  /// [privacyPolicyUrl] The HTTP link to the privacy policy of the bot. If
+  /// empty, then /privacy command must be used if supported by the bot. If the
+  /// command isn't supported, then https://telegram.org/privacy-tpa must be
+  /// opened
+  final String privacyPolicyUrl;
+
   /// [defaultGroupAdministratorRights] Default administrator rights for adding
   /// the bot to basic group and supergroup chats; may be null
   final ChatAdministratorRights? defaultGroupAdministratorRights;
@@ -51,6 +60,13 @@ class BotInfo extends TdObject {
   /// [defaultChannelAdministratorRights] Default administrator rights for
   /// adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
+
+  /// [canGetRevenueStatistics] True, if the bot's revenue statistics are
+  /// available
+  final bool canGetRevenueStatistics;
+
+  /// [hasMediaPreviews] True, if the bot has media previews
+  final bool hasMediaPreviews;
 
   /// [editCommandsLink] The internal link, which can be used to edit bot
   /// commands; may be null
@@ -87,11 +103,14 @@ class BotInfo extends TdObject {
           ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
               .map((item) => BotCommand.fromJson(item))
               .toList()),
+      privacyPolicyUrl: json['privacy_policy_url'] as String,
       defaultGroupAdministratorRights: ChatAdministratorRights.fromJson(
           json['default_group_administrator_rights'] as Map<String, dynamic>?),
       defaultChannelAdministratorRights: ChatAdministratorRights.fromJson(
           json['default_channel_administrator_rights']
               as Map<String, dynamic>?),
+      canGetRevenueStatistics: json['can_get_revenue_statistics'] as bool,
+      hasMediaPreviews: json['has_media_previews'] as bool,
       editCommandsLink: InternalLinkType.fromJson(
           json['edit_commands_link'] as Map<String, dynamic>?),
       editDescriptionLink: InternalLinkType.fromJson(
@@ -114,10 +133,13 @@ class BotInfo extends TdObject {
         'animation': animation?.toJson(),
         'menu_button': menuButton?.toJson(),
         'commands': commands.map((item) => item.toJson()).toList(),
+        'privacy_policy_url': privacyPolicyUrl,
         'default_group_administrator_rights':
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
             defaultChannelAdministratorRights?.toJson(),
+        'can_get_revenue_statistics': canGetRevenueStatistics,
+        'has_media_previews': hasMediaPreviews,
         'edit_commands_link': editCommandsLink?.toJson(),
         'edit_description_link': editDescriptionLink?.toJson(),
         'edit_description_media_link': editDescriptionMediaLink?.toJson(),

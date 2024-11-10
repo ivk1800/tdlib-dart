@@ -7,7 +7,16 @@ import '../tdapi.dart';
 /// fetch new transactions
 @immutable
 class UpdateChatRevenueAmount extends Update {
-  const UpdateChatRevenueAmount();
+  const UpdateChatRevenueAmount({
+    required this.chatId,
+    required this.revenueAmount,
+  });
+
+  /// [chatId] Identifier of the chat
+  final int chatId;
+
+  /// [revenueAmount] New amount of earned revenue
+  final ChatRevenueAmount revenueAmount;
 
   static const String constructor = 'updateChatRevenueAmount';
 
@@ -16,7 +25,11 @@ class UpdateChatRevenueAmount extends Update {
       return null;
     }
 
-    return const UpdateChatRevenueAmount();
+    return UpdateChatRevenueAmount(
+      chatId: json['chat_id'] as int,
+      revenueAmount: ChatRevenueAmount.fromJson(
+          json['revenue_amount'] as Map<String, dynamic>?)!,
+    );
   }
 
   @override
@@ -24,6 +37,8 @@ class UpdateChatRevenueAmount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
+        'chat_id': chatId,
+        'revenue_amount': revenueAmount.toJson(),
         '@type': constructor,
       };
 

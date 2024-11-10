@@ -9,11 +9,13 @@ class UserTypeBot extends UserType {
     required this.canBeEdited,
     required this.canJoinGroups,
     required this.canReadAllGroupMessages,
+    required this.hasMainWebApp,
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
     required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
+    required this.activeUserCount,
   });
 
   /// [canBeEdited] True, if the bot is owned by the current user and can be
@@ -30,6 +32,9 @@ class UserTypeBot extends UserType {
   /// group or supergroup chats and not just those addressed to the bot. In
   /// private and channel chats a bot can always read all messages
   final bool canReadAllGroupMessages;
+
+  /// [hasMainWebApp] True, if the bot has the main Web App
+  final bool hasMainWebApp;
 
   /// [isInline] True, if the bot supports inline queries
   final bool isInline;
@@ -50,6 +55,9 @@ class UserTypeBot extends UserType {
   /// or side menu
   final bool canBeAddedToAttachmentMenu;
 
+  /// [activeUserCount] The number of recently active users of the bot
+  final int activeUserCount;
+
   static const String constructor = 'userTypeBot';
 
   static UserTypeBot? fromJson(Map<String, dynamic>? json) {
@@ -61,12 +69,14 @@ class UserTypeBot extends UserType {
       canBeEdited: json['can_be_edited'] as bool,
       canJoinGroups: json['can_join_groups'] as bool,
       canReadAllGroupMessages: json['can_read_all_group_messages'] as bool,
+      hasMainWebApp: json['has_main_web_app'] as bool,
       isInline: json['is_inline'] as bool,
       inlineQueryPlaceholder: json['inline_query_placeholder'] as String,
       needLocation: json['need_location'] as bool,
       canConnectToBusiness: json['can_connect_to_business'] as bool,
       canBeAddedToAttachmentMenu:
           json['can_be_added_to_attachment_menu'] as bool,
+      activeUserCount: json['active_user_count'] as int,
     );
   }
 
@@ -78,11 +88,13 @@ class UserTypeBot extends UserType {
         'can_be_edited': canBeEdited,
         'can_join_groups': canJoinGroups,
         'can_read_all_group_messages': canReadAllGroupMessages,
+        'has_main_web_app': hasMainWebApp,
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
         'can_connect_to_business': canConnectToBusiness,
         'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
+        'active_user_count': activeUserCount,
         '@type': constructor,
       };
 

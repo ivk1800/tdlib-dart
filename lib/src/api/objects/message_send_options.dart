@@ -9,8 +9,10 @@ class MessageSendOptions extends TdObject {
     required this.disableNotification,
     required this.fromBackground,
     this.protectContent,
+    this.allowPaidBroadcast,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
+    required this.effectId,
     required this.sendingId,
     required this.onlyPreview,
   });
@@ -25,6 +27,10 @@ class MessageSendOptions extends TdObject {
   /// from forwarding and saving; for bots only
   final bool? protectContent;
 
+  /// [allowPaidBroadcast] Pass true to allow the message to ignore regular
+  /// broadcast limits for a small fee; for bots only
+  final bool? allowPaidBroadcast;
+
   /// [updateOrderOfInstalledStickerSets] Pass true if the user explicitly
   /// chosen a sticker or a custom emoji from an installed sticker set;
   /// applicable only to sendMessage and sendMessageAlbum
@@ -34,6 +40,10 @@ class MessageSendOptions extends TdObject {
   /// immediately. Messages sent to a secret chat, live location messages and
   /// self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
+
+  /// [effectId] Identifier of the effect to apply to the message; pass 0 if
+  /// none; applicable only to sendMessage and sendMessageAlbum in private chats
+  final int effectId;
 
   /// [sendingId] Non-persistent identifier, which will be returned back in
   /// messageSendingStatePending object and can be used to match sent messages
@@ -55,10 +65,12 @@ class MessageSendOptions extends TdObject {
       disableNotification: json['disable_notification'] as bool,
       fromBackground: json['from_background'] as bool,
       protectContent: json['protect_content'] as bool?,
+      allowPaidBroadcast: json['allow_paid_broadcast'] as bool?,
       updateOrderOfInstalledStickerSets:
           json['update_order_of_installed_sticker_sets'] as bool,
       schedulingState: MessageSchedulingState.fromJson(
           json['scheduling_state'] as Map<String, dynamic>?),
+      effectId: int.tryParse(json['effect_id']) ?? 0,
       sendingId: json['sending_id'] as int,
       onlyPreview: json['only_preview'] as bool,
     );
@@ -72,9 +84,11 @@ class MessageSendOptions extends TdObject {
         'disable_notification': disableNotification,
         'from_background': fromBackground,
         'protect_content': protectContent,
+        'allow_paid_broadcast': allowPaidBroadcast,
         'update_order_of_installed_sticker_sets':
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
+        'effect_id': effectId.toString(),
         'sending_id': sendingId,
         'only_preview': onlyPreview,
         '@type': constructor,

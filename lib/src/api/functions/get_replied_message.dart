@@ -7,8 +7,9 @@ import '../tdapi.dart';
 /// message, the message with a previously set same background, the giveaway
 /// message, and the topic creation message for messages of the types
 /// messagePinMessage, messageGameScore, messagePaymentSuccessful,
-/// messageChatSetBackground, messagePremiumGiveawayCompleted and topic
-/// messages without non-bundled replied message respectively
+/// messageChatSetBackground, messageGiveawayCompleted and topic messages
+/// without non-bundled replied message respectively. Returns a 404 error if
+/// the message doesn't exist
 /// Returns [Message]
 @immutable
 class GetRepliedMessage extends TdFunction {

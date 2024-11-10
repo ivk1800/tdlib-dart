@@ -74,7 +74,7 @@ class StickerSet extends TdObject {
   /// [stickers] List of stickers in this set
   final List<Sticker> stickers;
 
-  /// [emojis] A list of emoji corresponding to the stickers in the same order.
+  /// [emojis] A list of emojis corresponding to the stickers in the same order.
   /// The list is only for informational purposes, because a sticker is always
   /// sent with a fixed emoji from the corresponding Sticker object
   final List<Emojis> emojis;

@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The chat can be reported as spam using the method reportChat with the
-/// reason reportReasonSpam. If the chat is a private chat with a user with an
-/// emoji status, then a notice about emoji status usage must be shown
+/// The chat can be reported as spam using the method reportChat with an empty
+/// option_id and message_ids. If the chat is a private chat with a user with
+/// an emoji status, then a notice about emoji status usage must be shown
 @immutable
 class ChatActionBarReportSpam extends ChatActionBar {
   const ChatActionBarReportSpam({
