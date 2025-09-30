@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a boolean option
 @immutable
 class OptionValueBoolean extends OptionValue {
-  const OptionValueBoolean({
-    required this.value,
-  });
+  const OptionValueBoolean({required this.value});
 
   /// [value] The value of the option
   final bool value;
@@ -19,9 +17,7 @@ class OptionValueBoolean extends OptionValue {
       return null;
     }
 
-    return OptionValueBoolean(
-      value: json['value'] as bool,
-    );
+    return OptionValueBoolean(value: json['value'] as bool);
   }
 
   @override
@@ -29,9 +25,9 @@ class OptionValueBoolean extends OptionValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

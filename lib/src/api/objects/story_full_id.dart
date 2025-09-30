@@ -2,18 +2,16 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains identifier of a story along with identifier of its sender
+/// Contains identifier of a story along with identifier of the chat that
+/// posted it
 @immutable
 class StoryFullId extends TdObject {
-  const StoryFullId({
-    required this.senderChatId,
-    required this.storyId,
-  });
+  const StoryFullId({required this.posterChatId, required this.storyId});
 
-  /// [senderChatId] Identifier of the chat that posted the story
-  final int senderChatId;
+  /// [posterChatId] Identifier of the chat that posted the story
+  final int posterChatId;
 
-  /// [storyId] Unique story identifier among stories of the given sender
+  /// [storyId] Unique story identifier among stories of the chat
   final int storyId;
 
   static const String constructor = 'storyFullId';
@@ -24,7 +22,7 @@ class StoryFullId extends TdObject {
     }
 
     return StoryFullId(
-      senderChatId: json['sender_chat_id'] as int,
+      posterChatId: json['poster_chat_id'] as int,
       storyId: json['story_id'] as int,
     );
   }
@@ -34,10 +32,10 @@ class StoryFullId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_chat_id': senderChatId,
-        'story_id': storyId,
-        '@type': constructor,
-      };
+    'poster_chat_id': posterChatId,
+    'story_id': storyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

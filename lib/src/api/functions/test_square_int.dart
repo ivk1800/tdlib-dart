@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [TestInt]
 @immutable
 class TestSquareInt extends TdFunction {
-  const TestSquareInt({
-    required this.x,
-  });
+  const TestSquareInt({required this.x});
 
   /// [x] Number to square
   final int x;
@@ -21,9 +19,9 @@ class TestSquareInt extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x': x,
-        '@type': constructor,
-      };
+    'x': x,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

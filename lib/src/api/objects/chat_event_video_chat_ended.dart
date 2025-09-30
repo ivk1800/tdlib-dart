@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A video chat was ended
 @immutable
 class ChatEventVideoChatEnded extends ChatEventAction {
-  const ChatEventVideoChatEnded({
-    required this.groupCallId,
-  });
+  const ChatEventVideoChatEnded({required this.groupCallId});
 
   /// [groupCallId] Identifier of the video chat. The video chat can be received
   /// through the method getGroupCall
@@ -20,9 +18,7 @@ class ChatEventVideoChatEnded extends ChatEventAction {
       return null;
     }
 
-    return ChatEventVideoChatEnded(
-      groupCallId: json['group_call_id'] as int,
-    );
+    return ChatEventVideoChatEnded(groupCallId: json['group_call_id'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class ChatEventVideoChatEnded extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

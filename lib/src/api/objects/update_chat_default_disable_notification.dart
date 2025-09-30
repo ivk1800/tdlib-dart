@@ -20,7 +20,8 @@ class UpdateChatDefaultDisableNotification extends Update {
   static const String constructor = 'updateChatDefaultDisableNotification';
 
   static UpdateChatDefaultDisableNotification? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -36,10 +37,10 @@ class UpdateChatDefaultDisableNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'default_disable_notification': defaultDisableNotification,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'default_disable_notification': defaultDisableNotification,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 @immutable
 class CanTransferOwnershipResultPasswordTooFresh
     extends CanTransferOwnershipResult {
-  const CanTransferOwnershipResultPasswordTooFresh({
-    required this.retryAfter,
-  });
+  const CanTransferOwnershipResultPasswordTooFresh({required this.retryAfter});
 
   /// [retryAfter] Time left before the session can be used to transfer
   /// ownership of a chat, in seconds
@@ -18,7 +16,8 @@ class CanTransferOwnershipResultPasswordTooFresh
       'canTransferOwnershipResultPasswordTooFresh';
 
   static CanTransferOwnershipResultPasswordTooFresh? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,9 +32,9 @@ class CanTransferOwnershipResultPasswordTooFresh
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'retry_after': retryAfter,
-        '@type': constructor,
-      };
+    'retry_after': retryAfter,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

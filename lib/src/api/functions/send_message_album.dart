@@ -44,14 +44,15 @@ class SendMessageAlbum extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'reply_to': replyTo?.toJson(),
-        'options': options?.toJson(),
-        'input_message_contents':
-            inputMessageContents.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'reply_to': replyTo?.toJson(),
+    'options': options?.toJson(),
+    'input_message_contents': inputMessageContents
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

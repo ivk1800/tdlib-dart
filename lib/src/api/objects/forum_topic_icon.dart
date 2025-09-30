@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a forum topic icon
 @immutable
 class ForumTopicIcon extends TdObject {
-  const ForumTopicIcon({
-    required this.color,
-    required this.customEmojiId,
-  });
+  const ForumTopicIcon({required this.color, required this.customEmojiId});
 
   /// [color] Color of the topic icon in RGB format
   final int color;
@@ -35,10 +32,10 @@ class ForumTopicIcon extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'color': color,
-        'custom_emoji_id': customEmojiId.toString(),
-        '@type': constructor,
-      };
+    'color': color,
+    'custom_emoji_id': customEmojiId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Backgrounds]
 @immutable
 class GetInstalledBackgrounds extends TdFunction {
-  const GetInstalledBackgrounds({
-    required this.forDarkTheme,
-  });
+  const GetInstalledBackgrounds({required this.forDarkTheme});
 
   /// [forDarkTheme] Pass true to order returned backgrounds for a dark theme
   final bool forDarkTheme;
@@ -20,9 +18,9 @@ class GetInstalledBackgrounds extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'for_dark_theme': forDarkTheme,
-        '@type': constructor,
-      };
+    'for_dark_theme': forDarkTheme,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

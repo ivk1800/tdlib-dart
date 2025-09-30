@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A Telegram Passport element containing the user's phone number
 @immutable
 class PassportElementPhoneNumber extends PassportElement {
-  const PassportElementPhoneNumber({
-    required this.phoneNumber,
-  });
+  const PassportElementPhoneNumber({required this.phoneNumber});
 
   /// [phoneNumber] Phone number
   final String phoneNumber;
@@ -29,9 +27,9 @@ class PassportElementPhoneNumber extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

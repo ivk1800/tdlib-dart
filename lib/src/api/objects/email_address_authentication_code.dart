@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An authentication code delivered to a user's email address
 @immutable
 class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
-  const EmailAddressAuthenticationCode({
-    required this.code,
-  });
+  const EmailAddressAuthenticationCode({required this.code});
 
   /// [code] The code
   final String code;
@@ -19,9 +17,7 @@ class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
       return null;
     }
 
-    return EmailAddressAuthenticationCode(
-      code: json['code'] as String,
-    );
+    return EmailAddressAuthenticationCode(code: json['code'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        '@type': constructor,
-      };
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

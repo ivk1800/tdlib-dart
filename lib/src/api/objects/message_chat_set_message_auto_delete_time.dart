@@ -22,7 +22,8 @@ class MessageChatSetMessageAutoDeleteTime extends MessageContent {
   static const String constructor = 'messageChatSetMessageAutoDeleteTime';
 
   static MessageChatSetMessageAutoDeleteTime? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -38,10 +39,10 @@ class MessageChatSetMessageAutoDeleteTime extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_auto_delete_time': messageAutoDeleteTime,
-        'from_user_id': fromUserId,
-        '@type': constructor,
-      };
+    'message_auto_delete_time': messageAutoDeleteTime,
+    'from_user_id': fromUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

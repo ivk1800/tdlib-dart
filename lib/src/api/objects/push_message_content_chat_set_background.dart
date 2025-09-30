@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A chat background was edited
 @immutable
 class PushMessageContentChatSetBackground extends PushMessageContent {
-  const PushMessageContentChatSetBackground({
-    required this.isSame,
-  });
+  const PushMessageContentChatSetBackground({required this.isSame});
 
   /// [isSame] True, if the set background is the same as the background of the
   /// current user
@@ -16,14 +14,13 @@ class PushMessageContentChatSetBackground extends PushMessageContent {
   static const String constructor = 'pushMessageContentChatSetBackground';
 
   static PushMessageContentChatSetBackground? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return PushMessageContentChatSetBackground(
-      isSame: json['is_same'] as bool,
-    );
+    return PushMessageContentChatSetBackground(isSame: json['is_same'] as bool);
   }
 
   @override
@@ -31,9 +28,9 @@ class PushMessageContentChatSetBackground extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_same': isSame,
-        '@type': constructor,
-      };
+    'is_same': isSame,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

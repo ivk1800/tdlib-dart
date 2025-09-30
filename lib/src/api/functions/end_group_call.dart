@@ -2,13 +2,12 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Ends a group call. Requires groupCall.can_be_managed
+/// Ends a group call. Requires groupCall.can_be_managed right for video chats
+/// or groupCall.is_owned otherwise
 /// Returns [Ok]
 @immutable
 class EndGroupCall extends TdFunction {
-  const EndGroupCall({
-    required this.groupCallId,
-  });
+  const EndGroupCall({required this.groupCallId});
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -20,9 +19,9 @@ class EndGroupCall extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

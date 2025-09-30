@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A quick reply shortcut and all its messages were deleted
 @immutable
 class UpdateQuickReplyShortcutDeleted extends Update {
-  const UpdateQuickReplyShortcutDeleted({
-    required this.shortcutId,
-  });
+  const UpdateQuickReplyShortcutDeleted({required this.shortcutId});
 
   /// [shortcutId] The identifier of the deleted shortcut
   final int shortcutId;
@@ -29,9 +27,9 @@ class UpdateQuickReplyShortcutDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

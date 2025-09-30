@@ -44,12 +44,12 @@ class Notification extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'date': date,
-        'is_silent': isSilent,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'date': date,
+    'is_silent': isSilent,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

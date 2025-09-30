@@ -4,12 +4,10 @@ import '../tdapi.dart';
 
 /// The link is a link to the screen for gifting Telegram Premium
 /// subscriptions to friends via inputInvoiceTelegram with
-/// telegramPaymentPurposePremiumGiftCodes payments or in-store purchases
+/// telegramPaymentPurposePremiumGift payments or in-store purchases
 @immutable
 class InternalLinkTypePremiumGift extends InternalLinkType {
-  const InternalLinkTypePremiumGift({
-    required this.referrer,
-  });
+  const InternalLinkTypePremiumGift({required this.referrer});
 
   /// [referrer] Referrer specified in the link
   final String referrer;
@@ -21,9 +19,7 @@ class InternalLinkTypePremiumGift extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypePremiumGift(
-      referrer: json['referrer'] as String,
-    );
+    return InternalLinkTypePremiumGift(referrer: json['referrer'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class InternalLinkTypePremiumGift extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'referrer': referrer,
-        '@type': constructor,
-      };
+    'referrer': referrer,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

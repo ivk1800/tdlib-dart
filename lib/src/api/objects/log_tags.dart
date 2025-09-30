@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of available TDLib internal log tags
 @immutable
 class LogTags extends TdObject {
-  const LogTags({
-    required this.tags,
-  });
+  const LogTags({required this.tags});
 
   /// [tags] List of log tags
   final List<String> tags;
@@ -20,9 +18,11 @@ class LogTags extends TdObject {
     }
 
     return LogTags(
-      tags: List<String>.from(((json['tags'] as List<dynamic>?) ?? <dynamic>[])
-          .map((item) => item)
-          .toList()),
+      tags: List<String>.from(
+        ((json['tags'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -31,9 +31,9 @@ class LogTags extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tags': tags.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'tags': tags.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

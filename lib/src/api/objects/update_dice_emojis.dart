@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of supported dice emojis has changed
 @immutable
 class UpdateDiceEmojis extends Update {
-  const UpdateDiceEmojis({
-    required this.emojis,
-  });
+  const UpdateDiceEmojis({required this.emojis});
 
   /// [emojis] The new list of supported dice emojis
   final List<String> emojis;
@@ -21,9 +19,10 @@ class UpdateDiceEmojis extends Update {
 
     return UpdateDiceEmojis(
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateDiceEmojis extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emojis': emojis.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'emojis': emojis.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

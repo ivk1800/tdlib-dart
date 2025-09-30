@@ -36,11 +36,13 @@ class InlineQueryResults extends TdObject {
     return InlineQueryResults(
       inlineQueryId: int.tryParse(json['inline_query_id']) ?? 0,
       button: InlineQueryResultsButton.fromJson(
-          json['button'] as Map<String, dynamic>?),
+        json['button'] as Map<String, dynamic>?,
+      ),
       results: List<InlineQueryResult>.from(
-          ((json['results'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => InlineQueryResult.fromJson(item))
-              .toList()),
+        ((json['results'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => InlineQueryResult.fromJson(item))
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -50,12 +52,12 @@ class InlineQueryResults extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_query_id': inlineQueryId.toString(),
-        'button': button?.toJson(),
-        'results': results.map((item) => item.toJson()).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'inline_query_id': inlineQueryId.toString(),
+    'button': button?.toJson(),
+    'results': results.map((item) => item.toJson()).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -24,12 +24,14 @@ class UpdateInstalledStickerSets extends Update {
     }
 
     return UpdateInstalledStickerSets(
-      stickerType:
-          StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      stickerType: StickerType.fromJson(
+        json['sticker_type'] as Map<String, dynamic>?,
+      )!,
       stickerSetIds: List<int>.from(
-          ((json['sticker_set_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['sticker_set_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +40,10 @@ class UpdateInstalledStickerSets extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -72,16 +72,16 @@ class GiveawayInfoCompleted extends GiveawayInfo {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'creation_date': creationDate,
-        'actual_winners_selection_date': actualWinnersSelectionDate,
-        'was_refunded': wasRefunded,
-        'is_winner': isWinner,
-        'winner_count': winnerCount,
-        'activation_count': activationCount,
-        'gift_code': giftCode,
-        'won_star_count': wonStarCount,
-        '@type': constructor,
-      };
+    'creation_date': creationDate,
+    'actual_winners_selection_date': actualWinnersSelectionDate,
+    'was_refunded': wasRefunded,
+    'is_winner': isWinner,
+    'winner_count': winnerCount,
+    'activation_count': activationCount,
+    'gift_code': giftCode,
+    'won_star_count': wonStarCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

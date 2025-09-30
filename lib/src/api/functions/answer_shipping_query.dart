@@ -28,12 +28,11 @@ class AnswerShippingQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shipping_query_id': shippingQueryId,
-        'shipping_options':
-            shippingOptions.map((item) => item.toJson()).toList(),
-        'error_message': errorMessage,
-        '@type': constructor,
-      };
+    'shipping_query_id': shippingQueryId,
+    'shipping_options': shippingOptions.map((item) => item.toJson()).toList(),
+    'error_message': errorMessage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

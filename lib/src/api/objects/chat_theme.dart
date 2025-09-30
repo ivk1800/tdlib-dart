@@ -30,9 +30,11 @@ class ChatTheme extends TdObject {
     return ChatTheme(
       name: json['name'] as String,
       lightSettings: ThemeSettings.fromJson(
-          json['light_settings'] as Map<String, dynamic>?)!,
+        json['light_settings'] as Map<String, dynamic>?,
+      )!,
       darkSettings: ThemeSettings.fromJson(
-          json['dark_settings'] as Map<String, dynamic>?)!,
+        json['dark_settings'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -41,11 +43,11 @@ class ChatTheme extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'light_settings': lightSettings.toJson(),
-        'dark_settings': darkSettings.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'light_settings': lightSettings.toJson(),
+    'dark_settings': darkSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

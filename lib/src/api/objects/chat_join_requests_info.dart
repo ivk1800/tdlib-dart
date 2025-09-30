@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about pending join requests for a chat
 @immutable
 class ChatJoinRequestsInfo extends TdObject {
-  const ChatJoinRequestsInfo({
-    required this.totalCount,
-    required this.userIds,
-  });
+  const ChatJoinRequestsInfo({required this.totalCount, required this.userIds});
 
   /// [totalCount] Total number of pending join requests
   final int totalCount;
@@ -27,9 +24,10 @@ class ChatJoinRequestsInfo extends TdObject {
     return ChatJoinRequestsInfo(
       totalCount: json['total_count'] as int,
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +36,10 @@ class ChatJoinRequestsInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

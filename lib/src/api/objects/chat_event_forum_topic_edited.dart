@@ -25,9 +25,11 @@ class ChatEventForumTopicEdited extends ChatEventAction {
 
     return ChatEventForumTopicEdited(
       oldTopicInfo: ForumTopicInfo.fromJson(
-          json['old_topic_info'] as Map<String, dynamic>?)!,
+        json['old_topic_info'] as Map<String, dynamic>?,
+      )!,
       newTopicInfo: ForumTopicInfo.fromJson(
-          json['new_topic_info'] as Map<String, dynamic>?)!,
+        json['new_topic_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class ChatEventForumTopicEdited extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_topic_info': oldTopicInfo.toJson(),
-        'new_topic_info': newTopicInfo.toJson(),
-        '@type': constructor,
-      };
+    'old_topic_info': oldTopicInfo.toJson(),
+    'new_topic_info': newTopicInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

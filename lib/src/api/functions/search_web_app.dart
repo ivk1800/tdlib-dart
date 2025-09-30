@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [FoundWebApp]
 @immutable
 class SearchWebApp extends TdFunction {
-  const SearchWebApp({
-    required this.botUserId,
-    required this.webAppShortName,
-  });
+  const SearchWebApp({required this.botUserId, required this.webAppShortName});
 
   /// [botUserId] Identifier of the target bot
   final int botUserId;
@@ -25,10 +22,10 @@ class SearchWebApp extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'web_app_short_name': webAppShortName,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'web_app_short_name': webAppShortName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -48,14 +48,17 @@ class MessageThreadInfo extends TdObject {
       chatId: json['chat_id'] as int,
       messageThreadId: json['message_thread_id'] as int,
       replyInfo: MessageReplyInfo.fromJson(
-          json['reply_info'] as Map<String, dynamic>?),
+        json['reply_info'] as Map<String, dynamic>?,
+      ),
       unreadMessageCount: json['unread_message_count'] as int,
       messages: List<Message>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Message.fromJson(item))
-              .toList()),
-      draftMessage:
-          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Message.fromJson(item))
+            .toList(),
+      ),
+      draftMessage: DraftMessage.fromJson(
+        json['draft_message'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -64,14 +67,14 @@ class MessageThreadInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'reply_info': replyInfo?.toJson(),
-        'unread_message_count': unreadMessageCount,
-        'messages': messages.map((item) => item.toJson()).toList(),
-        'draft_message': draftMessage?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'reply_info': replyInfo?.toJson(),
+    'unread_message_count': unreadMessageCount,
+    'messages': messages.map((item) => item.toJson()).toList(),
+    'draft_message': draftMessage?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

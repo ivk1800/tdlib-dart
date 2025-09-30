@@ -39,11 +39,11 @@ class InlineQueryResultVenue extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'venue': venue.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'venue': venue.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

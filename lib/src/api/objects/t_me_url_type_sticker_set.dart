@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A URL linking to a sticker set
 @immutable
 class TMeUrlTypeStickerSet extends TMeUrlType {
-  const TMeUrlTypeStickerSet({
-    required this.stickerSetId,
-  });
+  const TMeUrlTypeStickerSet({required this.stickerSetId});
 
   /// [stickerSetId] Identifier of the sticker set
   final int stickerSetId;
@@ -29,9 +27,9 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_id': stickerSetId.toString(),
-        '@type': constructor,
-      };
+    'sticker_set_id': stickerSetId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

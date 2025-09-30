@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [TestVectorStringObject]
 @immutable
 class TestCallVectorStringObject extends TdFunction {
-  const TestCallVectorStringObject({
-    required this.x,
-  });
+  const TestCallVectorStringObject({required this.x});
 
   /// [x] Vector of objects to return
   final List<TestString> x;
@@ -21,9 +19,9 @@ class TestCallVectorStringObject extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x': x.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'x': x.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

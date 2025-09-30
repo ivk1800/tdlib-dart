@@ -26,9 +26,10 @@ class BusinessOpeningHours extends TdObject {
     return BusinessOpeningHours(
       timeZoneId: json['time_zone_id'] as String,
       openingHours: List<BusinessOpeningHoursInterval>.from(
-          ((json['opening_hours'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BusinessOpeningHoursInterval.fromJson(item))
-              .toList()),
+        ((json['opening_hours'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BusinessOpeningHoursInterval.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class BusinessOpeningHours extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'time_zone_id': timeZoneId,
-        'opening_hours': openingHours.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'time_zone_id': timeZoneId,
+    'opening_hours': openingHours.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetCustomLanguagePack extends TdFunction {
-  const SetCustomLanguagePack({
-    required this.info,
-    required this.strings,
-  });
+  const SetCustomLanguagePack({required this.info, required this.strings});
 
   /// [info] Information about the language pack. Language pack identifier must
   /// start with 'X', consist only of English letters, digits and hyphens, and
@@ -27,10 +24,10 @@ class SetCustomLanguagePack extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'info': info.toJson(),
-        'strings': strings.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'info': info.toJson(),
+    'strings': strings.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

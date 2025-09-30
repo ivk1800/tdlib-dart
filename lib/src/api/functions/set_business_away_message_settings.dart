@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessAwayMessageSettings extends TdFunction {
-  const SetBusinessAwayMessageSettings({
-    this.awayMessageSettings,
-  });
+  const SetBusinessAwayMessageSettings({this.awayMessageSettings});
 
   /// [awayMessageSettings] The new settings for the away message of the
   /// business; pass null to disable the away message
@@ -22,9 +20,9 @@ class SetBusinessAwayMessageSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'away_message_settings': awayMessageSettings?.toJson(),
-        '@type': constructor,
-      };
+    'away_message_settings': awayMessageSettings?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

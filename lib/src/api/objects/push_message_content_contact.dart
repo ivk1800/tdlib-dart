@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A message with a user contact
 @immutable
 class PushMessageContentContact extends PushMessageContent {
-  const PushMessageContentContact({
-    required this.name,
-    required this.isPinned,
-  });
+  const PushMessageContentContact({required this.name, required this.isPinned});
 
   /// [name] Contact's name
   final String name;
@@ -35,10 +32,10 @@ class PushMessageContentContact extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'name': name,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

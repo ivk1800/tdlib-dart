@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [MessageEffect]
 @immutable
 class GetMessageEffect extends TdFunction {
-  const GetMessageEffect({
-    required this.effectId,
-  });
+  const GetMessageEffect({required this.effectId});
 
   /// [effectId] Unique identifier of the effect
   final int effectId;
@@ -21,9 +19,9 @@ class GetMessageEffect extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'effect_id': effectId,
-        '@type': constructor,
-      };
+    'effect_id': effectId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

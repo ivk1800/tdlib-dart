@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// authorize with a code sent to the user's phone number
 @immutable
 class EmailAddressResetStateAvailable extends EmailAddressResetState {
-  const EmailAddressResetStateAvailable({
-    required this.waitPeriod,
-  });
+  const EmailAddressResetStateAvailable({required this.waitPeriod});
 
   /// [waitPeriod] Time required to wait before the email address can be reset;
   /// 0 if the user is subscribed to Telegram Premium
@@ -32,9 +30,9 @@ class EmailAddressResetStateAvailable extends EmailAddressResetState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'wait_period': waitPeriod,
-        '@type': constructor,
-      };
+    'wait_period': waitPeriod,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

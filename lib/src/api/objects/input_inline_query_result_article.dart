@@ -8,7 +8,6 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   const InputInlineQueryResultArticle({
     required this.id,
     required this.url,
-    required this.hideUrl,
     required this.title,
     required this.description,
     required this.thumbnailUrl,
@@ -23,9 +22,6 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
 
   /// [url] URL of the result, if it exists
   final String url;
-
-  /// [hideUrl] True, if the URL must be not shown
-  final bool hideUrl;
 
   /// [title] Title of the result
   final String title;
@@ -61,16 +57,17 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     return InputInlineQueryResultArticle(
       id: json['id'] as String,
       url: json['url'] as String,
-      hideUrl: json['hide_url'] as bool,
       title: json['title'] as String,
       description: json['description'] as String,
       thumbnailUrl: json['thumbnail_url'] as String,
       thumbnailWidth: json['thumbnail_width'] as int,
       thumbnailHeight: json['thumbnail_height'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -79,18 +76,17 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'url': url,
-        'hide_url': hideUrl,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'url': url,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

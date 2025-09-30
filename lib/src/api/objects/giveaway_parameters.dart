@@ -62,16 +62,18 @@ class GiveawayParameters extends TdObject {
     return GiveawayParameters(
       boostedChatId: json['boosted_chat_id'] as int,
       additionalChatIds: List<int>.from(
-          ((json['additional_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['additional_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       winnersSelectionDate: json['winners_selection_date'] as int,
       onlyNewMembers: json['only_new_members'] as bool,
       hasPublicWinners: json['has_public_winners'] as bool,
       countryCodes: List<String>.from(
-          ((json['country_codes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['country_codes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       prizeDescription: json['prize_description'] as String,
     );
   }
@@ -81,15 +83,15 @@ class GiveawayParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'boosted_chat_id': boostedChatId,
-        'additional_chat_ids': additionalChatIds.map((item) => item).toList(),
-        'winners_selection_date': winnersSelectionDate,
-        'only_new_members': onlyNewMembers,
-        'has_public_winners': hasPublicWinners,
-        'country_codes': countryCodes.map((item) => item).toList(),
-        'prize_description': prizeDescription,
-        '@type': constructor,
-      };
+    'boosted_chat_id': boostedChatId,
+    'additional_chat_ids': additionalChatIds.map((item) => item).toList(),
+    'winners_selection_date': winnersSelectionDate,
+    'only_new_members': onlyNewMembers,
+    'has_public_winners': hasPublicWinners,
+    'country_codes': countryCodes.map((item) => item).toList(),
+    'prize_description': prizeDescription,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

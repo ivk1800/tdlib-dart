@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetDatabaseEncryptionKey extends TdFunction {
-  const SetDatabaseEncryptionKey({
-    required this.newEncryptionKey,
-  });
+  const SetDatabaseEncryptionKey({required this.newEncryptionKey});
 
   /// [newEncryptionKey] New encryption key
   final String newEncryptionKey;
@@ -21,9 +19,9 @@ class SetDatabaseEncryptionKey extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'new_encryption_key': newEncryptionKey,
-        '@type': constructor,
-      };
+    'new_encryption_key': newEncryptionKey,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

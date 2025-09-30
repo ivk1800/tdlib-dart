@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [TestVectorInt]
 @immutable
 class TestCallVectorInt extends TdFunction {
-  const TestCallVectorInt({
-    required this.x,
-  });
+  const TestCallVectorInt({required this.x});
 
   /// [x] Vector of numbers to return
   final List<int> x;
@@ -21,9 +19,9 @@ class TestCallVectorInt extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x': x.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'x': x.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes an option to report an entity to Telegram
 @immutable
 class ReportOption extends TdObject {
-  const ReportOption({
-    required this.id,
-    required this.text,
-  });
+  const ReportOption({required this.id, required this.text});
 
   /// [id] Unique identifier of the option
   final String id;
@@ -23,10 +20,7 @@ class ReportOption extends TdObject {
       return null;
     }
 
-    return ReportOption(
-      id: json['id'] as String,
-      text: json['text'] as String,
-    );
+    return ReportOption(id: json['id'] as String, text: json['text'] as String);
   }
 
   @override
@@ -34,10 +28,10 @@ class ReportOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'text': text,
-        '@type': constructor,
-      };
+    'id': id,
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

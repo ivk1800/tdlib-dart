@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains read date of the message
 @immutable
 class MessageReadDateRead extends MessageReadDate {
-  const MessageReadDateRead({
-    required this.readDate,
-  });
+  const MessageReadDateRead({required this.readDate});
 
   /// [readDate] Point in time (Unix timestamp) when the message was read by the
   /// other user
@@ -20,9 +18,7 @@ class MessageReadDateRead extends MessageReadDate {
       return null;
     }
 
-    return MessageReadDateRead(
-      readDate: json['read_date'] as int,
-    );
+    return MessageReadDateRead(readDate: json['read_date'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessageReadDateRead extends MessageReadDate {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'read_date': readDate,
-        '@type': constructor,
-      };
+    'read_date': readDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An ordinary chat with a user
 @immutable
 class ChatTypePrivate extends ChatType {
-  const ChatTypePrivate({
-    required this.userId,
-  });
+  const ChatTypePrivate({required this.userId});
 
   /// [userId] User identifier
   final int userId;
@@ -19,9 +17,7 @@ class ChatTypePrivate extends ChatType {
       return null;
     }
 
-    return ChatTypePrivate(
-      userId: json['user_id'] as int,
-    );
+    return ChatTypePrivate(userId: json['user_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatTypePrivate extends ChatType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

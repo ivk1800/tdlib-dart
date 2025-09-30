@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteStickerSet extends TdFunction {
-  const DeleteStickerSet({
-    required this.name,
-  });
+  const DeleteStickerSet({required this.name});
 
   /// [name] Sticker set name. The sticker set must be owned by the current user
   final String name;
@@ -20,9 +18,9 @@ class DeleteStickerSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetCountryFlagEmoji extends TdFunction {
-  const GetCountryFlagEmoji({
-    required this.countryCode,
-  });
+  const GetCountryFlagEmoji({required this.countryCode});
 
   /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code as received
   /// from getCountries
@@ -22,9 +20,9 @@ class GetCountryFlagEmoji extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'country_code': countryCode,
-        '@type': constructor,
-      };
+    'country_code': countryCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

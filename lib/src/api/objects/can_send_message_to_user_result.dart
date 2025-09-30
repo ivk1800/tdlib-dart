@@ -11,6 +11,7 @@ abstract class CanSendMessageToUserResult extends TdObject {
 
   /// Inherited by:
   /// [CanSendMessageToUserResultOk]
+  /// [CanSendMessageToUserResultUserHasPaidMessages]
   /// [CanSendMessageToUserResultUserIsDeleted]
   /// [CanSendMessageToUserResultUserRestrictsNewChats]
   static CanSendMessageToUserResult? fromJson(Map<String, dynamic>? json) {
@@ -21,6 +22,8 @@ abstract class CanSendMessageToUserResult extends TdObject {
     switch (json['@type']) {
       case CanSendMessageToUserResultOk.constructor:
         return CanSendMessageToUserResultOk.fromJson(json);
+      case CanSendMessageToUserResultUserHasPaidMessages.constructor:
+        return CanSendMessageToUserResultUserHasPaidMessages.fromJson(json);
       case CanSendMessageToUserResultUserIsDeleted.constructor:
         return CanSendMessageToUserResultUserIsDeleted.fromJson(json);
       case CanSendMessageToUserResultUserRestrictsNewChats.constructor:

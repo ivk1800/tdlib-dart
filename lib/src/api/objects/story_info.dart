@@ -11,7 +11,7 @@ class StoryInfo extends TdObject {
     required this.isForCloseFriends,
   });
 
-  /// [storyId] Unique story identifier among stories of the given sender
+  /// [storyId] Unique story identifier among stories of the chat
   final int storyId;
 
   /// [date] Point in time (Unix timestamp) when the story was published
@@ -39,11 +39,11 @@ class StoryInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_id': storyId,
-        'date': date,
-        'is_for_close_friends': isForCloseFriends,
-        '@type': constructor,
-      };
+    'story_id': storyId,
+    'date': date,
+    'is_for_close_friends': isForCloseFriends,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

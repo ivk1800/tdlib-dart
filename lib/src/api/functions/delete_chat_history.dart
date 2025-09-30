@@ -30,11 +30,11 @@ class DeleteChatHistory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'remove_from_chat_list': removeFromChatList,
-        'revoke': revoke,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'remove_from_chat_list': removeFromChatList,
+    'revoke': revoke,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

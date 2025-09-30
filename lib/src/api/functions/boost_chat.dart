@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [ChatBoostSlots]
 @immutable
 class BoostChat extends TdFunction {
-  const BoostChat({
-    required this.chatId,
-    required this.slotIds,
-  });
+  const BoostChat({required this.chatId, required this.slotIds});
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -26,10 +23,10 @@ class BoostChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'slot_ids': slotIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'slot_ids': slotIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

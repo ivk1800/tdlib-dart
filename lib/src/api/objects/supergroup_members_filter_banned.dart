@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// administrators
 @immutable
 class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
-  const SupergroupMembersFilterBanned({
-    required this.query,
-  });
+  const SupergroupMembersFilterBanned({required this.query});
 
   /// [query] Query to search for
   final String query;
@@ -20,9 +18,7 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
       return null;
     }
 
-    return SupergroupMembersFilterBanned(
-      query: json['query'] as String,
-    );
+    return SupergroupMembersFilterBanned(query: json['query'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        '@type': constructor,
-      };
+    'query': query,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

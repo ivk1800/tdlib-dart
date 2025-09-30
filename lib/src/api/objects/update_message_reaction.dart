@@ -43,17 +43,20 @@ class UpdateMessageReaction extends Update {
     return UpdateMessageReaction(
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
-      actorId:
-          MessageSender.fromJson(json['actor_id'] as Map<String, dynamic>?)!,
+      actorId: MessageSender.fromJson(
+        json['actor_id'] as Map<String, dynamic>?,
+      )!,
       date: json['date'] as int,
       oldReactionTypes: List<ReactionType>.from(
-          ((json['old_reaction_types'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ReactionType.fromJson(item))
-              .toList()),
+        ((json['old_reaction_types'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ReactionType.fromJson(item))
+            .toList(),
+      ),
       newReactionTypes: List<ReactionType>.from(
-          ((json['new_reaction_types'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ReactionType.fromJson(item))
-              .toList()),
+        ((json['new_reaction_types'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ReactionType.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -62,16 +65,18 @@ class UpdateMessageReaction extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'actor_id': actorId.toJson(),
-        'date': date,
-        'old_reaction_types':
-            oldReactionTypes.map((item) => item.toJson()).toList(),
-        'new_reaction_types':
-            newReactionTypes.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'actor_id': actorId.toJson(),
+    'date': date,
+    'old_reaction_types': oldReactionTypes
+        .map((item) => item.toJson())
+        .toList(),
+    'new_reaction_types': newReactionTypes
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

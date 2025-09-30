@@ -7,9 +7,7 @@ import '../tdapi.dart';
 @immutable
 class InputPassportElementErrorSourceUnspecified
     extends InputPassportElementErrorSource {
-  const InputPassportElementErrorSourceUnspecified({
-    required this.elementHash,
-  });
+  const InputPassportElementErrorSourceUnspecified({required this.elementHash});
 
   /// [elementHash] Current hash of the entire element
   final String elementHash;
@@ -18,7 +16,8 @@ class InputPassportElementErrorSourceUnspecified
       'inputPassportElementErrorSourceUnspecified';
 
   static InputPassportElementErrorSourceUnspecified? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,9 +32,9 @@ class InputPassportElementErrorSourceUnspecified
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'element_hash': elementHash,
-        '@type': constructor,
-      };
+    'element_hash': elementHash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

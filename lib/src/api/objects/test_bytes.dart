@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A simple object containing a sequence of bytes; for testing only
 @immutable
 class TestBytes extends TdObject {
-  const TestBytes({
-    required this.value,
-  });
+  const TestBytes({required this.value});
 
   /// [value] Bytes
   final String value;
@@ -19,9 +17,7 @@ class TestBytes extends TdObject {
       return null;
     }
 
-    return TestBytes(
-      value: json['value'] as String,
-    );
+    return TestBytes(value: json['value'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class TestBytes extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

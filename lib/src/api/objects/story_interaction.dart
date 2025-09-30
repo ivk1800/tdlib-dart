@@ -34,13 +34,16 @@ class StoryInteraction extends TdObject {
     }
 
     return StoryInteraction(
-      actorId:
-          MessageSender.fromJson(json['actor_id'] as Map<String, dynamic>?)!,
+      actorId: MessageSender.fromJson(
+        json['actor_id'] as Map<String, dynamic>?,
+      )!,
       interactionDate: json['interaction_date'] as int,
-      blockList:
-          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
-      type:
-          StoryInteractionType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      blockList: BlockList.fromJson(
+        json['block_list'] as Map<String, dynamic>?,
+      ),
+      type: StoryInteractionType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -49,12 +52,12 @@ class StoryInteraction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'actor_id': actorId.toJson(),
-        'interaction_date': interactionDate,
-        'block_list': blockList?.toJson(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'actor_id': actorId.toJson(),
+    'interaction_date': interactionDate,
+    'block_list': blockList?.toJson(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

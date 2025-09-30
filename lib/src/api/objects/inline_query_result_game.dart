@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents information about a game
 @immutable
 class InlineQueryResultGame extends InlineQueryResult {
-  const InlineQueryResultGame({
-    required this.id,
-    required this.game,
-  });
+  const InlineQueryResultGame({required this.id, required this.game});
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -34,10 +31,10 @@ class InlineQueryResultGame extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'game': game.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'game': game.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetPinnedSavedMessagesTopics extends TdFunction {
-  const SetPinnedSavedMessagesTopics({
-    required this.savedMessagesTopicIds,
-  });
+  const SetPinnedSavedMessagesTopics({required this.savedMessagesTopicIds});
 
   /// [savedMessagesTopicIds] Identifiers of the new pinned Saved Messages
   /// topics
@@ -21,10 +19,11 @@ class SetPinnedSavedMessagesTopics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_ids':
-            savedMessagesTopicIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'saved_messages_topic_ids': savedMessagesTopicIds
+        .map((item) => item)
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

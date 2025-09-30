@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// option "language_pack_id"
 @immutable
 class InternalLinkTypeLanguagePack extends InternalLinkType {
-  const InternalLinkTypeLanguagePack({
-    required this.languagePackId,
-  });
+  const InternalLinkTypeLanguagePack({required this.languagePackId});
 
   /// [languagePackId] Language pack identifier
   final String languagePackId;
@@ -32,9 +30,9 @@ class InternalLinkTypeLanguagePack extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

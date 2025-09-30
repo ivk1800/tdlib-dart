@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The sticker is a regular sticker
 @immutable
 class StickerFullTypeRegular extends StickerFullType {
-  const StickerFullTypeRegular({
-    this.premiumAnimation,
-  });
+  const StickerFullTypeRegular({this.premiumAnimation});
 
   /// [premiumAnimation] Premium animation of the sticker; may be null. If
   /// present, only Telegram Premium users can use the sticker
@@ -21,8 +19,9 @@ class StickerFullTypeRegular extends StickerFullType {
     }
 
     return StickerFullTypeRegular(
-      premiumAnimation:
-          File.fromJson(json['premium_animation'] as Map<String, dynamic>?),
+      premiumAnimation: File.fromJson(
+        json['premium_animation'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -31,9 +30,9 @@ class StickerFullTypeRegular extends StickerFullType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'premium_animation': premiumAnimation?.toJson(),
-        '@type': constructor,
-      };
+    'premium_animation': premiumAnimation?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

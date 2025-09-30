@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A video story
 @immutable
 class StoryContentVideo extends StoryContent {
-  const StoryContentVideo({
-    required this.video,
-    this.alternativeVideo,
-  });
+  const StoryContentVideo({required this.video, this.alternativeVideo});
 
   /// [video] The video in MPEG4 format
   final StoryVideo video;
@@ -27,7 +24,8 @@ class StoryContentVideo extends StoryContent {
     return StoryContentVideo(
       video: StoryVideo.fromJson(json['video'] as Map<String, dynamic>?)!,
       alternativeVideo: StoryVideo.fromJson(
-          json['alternative_video'] as Map<String, dynamic>?),
+        json['alternative_video'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +34,10 @@ class StoryContentVideo extends StoryContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video': video.toJson(),
-        'alternative_video': alternativeVideo?.toJson(),
-        '@type': constructor,
-      };
+    'video': video.toJson(),
+    'alternative_video': alternativeVideo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

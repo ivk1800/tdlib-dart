@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A pull quote
 @immutable
 class PageBlockPullQuote extends PageBlock {
-  const PageBlockPullQuote({
-    required this.text,
-    required this.credit,
-  });
+  const PageBlockPullQuote({required this.text, required this.credit});
 
   /// [text] Quote text
   final RichText text;
@@ -34,10 +31,10 @@ class PageBlockPullQuote extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'credit': credit.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'credit': credit.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

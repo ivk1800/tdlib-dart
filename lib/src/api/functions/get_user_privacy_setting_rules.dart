@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [UserPrivacySettingRules]
 @immutable
 class GetUserPrivacySettingRules extends TdFunction {
-  const GetUserPrivacySettingRules({
-    required this.setting,
-  });
+  const GetUserPrivacySettingRules({required this.setting});
 
   /// [setting] The privacy setting
   final UserPrivacySetting setting;
@@ -20,9 +18,9 @@ class GetUserPrivacySettingRules extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'setting': setting.toJson(),
-        '@type': constructor,
-      };
+    'setting': setting.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

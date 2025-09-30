@@ -4,14 +4,11 @@ import '../tdapi.dart';
 
 /// Returns information about a message, if it is available without sending
 /// network request. Returns a 404 error if message isn't available locally.
-/// This is an offline request
+/// This is an offline method
 /// Returns [Message]
 @immutable
 class GetMessageLocally extends TdFunction {
-  const GetMessageLocally({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageLocally({required this.chatId, required this.messageId});
 
   /// [chatId] Identifier of the chat the message belongs to
   final int chatId;
@@ -26,10 +23,10 @@ class GetMessageLocally extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

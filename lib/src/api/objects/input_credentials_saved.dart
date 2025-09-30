@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// temporary password
 @immutable
 class InputCredentialsSaved extends InputCredentials {
-  const InputCredentialsSaved({
-    required this.savedCredentialsId,
-  });
+  const InputCredentialsSaved({required this.savedCredentialsId});
 
   /// [savedCredentialsId] Identifier of the saved credentials
   final String savedCredentialsId;
@@ -31,9 +29,9 @@ class InputCredentialsSaved extends InputCredentials {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_credentials_id': savedCredentialsId,
-        '@type': constructor,
-      };
+    'saved_credentials_id': savedCredentialsId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// privacy settings
 @immutable
 class MessageOriginHiddenUser extends MessageOrigin {
-  const MessageOriginHiddenUser({
-    required this.senderName,
-  });
+  const MessageOriginHiddenUser({required this.senderName});
 
   /// [senderName] Name of the sender
   final String senderName;
@@ -20,9 +18,7 @@ class MessageOriginHiddenUser extends MessageOrigin {
       return null;
     }
 
-    return MessageOriginHiddenUser(
-      senderName: json['sender_name'] as String,
-    );
+    return MessageOriginHiddenUser(senderName: json['sender_name'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessageOriginHiddenUser extends MessageOrigin {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_name': senderName,
-        '@type': constructor,
-      };
+    'sender_name': senderName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

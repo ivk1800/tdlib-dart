@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A chat photo was changed
 @immutable
 class UpdateChatPhoto extends Update {
-  const UpdateChatPhoto({
-    required this.chatId,
-    this.photo,
-  });
+  const UpdateChatPhoto({required this.chatId, this.photo});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -34,10 +31,10 @@ class UpdateChatPhoto extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

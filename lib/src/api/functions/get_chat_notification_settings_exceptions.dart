@@ -27,10 +27,10 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope?.toJson(),
-        'compare_sound': compareSound,
-        '@type': constructor,
-      };
+    'scope': scope?.toJson(),
+    'compare_sound': compareSound,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

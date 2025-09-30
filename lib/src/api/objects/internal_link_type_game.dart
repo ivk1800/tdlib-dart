@@ -36,10 +36,10 @@ class InternalLinkTypeGame extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'game_short_name': gameShortName,
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'game_short_name': gameShortName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

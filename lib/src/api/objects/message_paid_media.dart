@@ -36,11 +36,13 @@ class MessagePaidMedia extends MessageContent {
     return MessagePaidMedia(
       starCount: json['star_count'] as int,
       media: List<PaidMedia>.from(
-          ((json['media'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PaidMedia.fromJson(item))
-              .toList()),
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+        ((json['media'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PaidMedia.fromJson(item))
+            .toList(),
+      ),
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
     );
   }
@@ -50,12 +52,12 @@ class MessagePaidMedia extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'media': media.map((item) => item.toJson()).toList(),
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'media': media.map((item) => item.toJson()).toList(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

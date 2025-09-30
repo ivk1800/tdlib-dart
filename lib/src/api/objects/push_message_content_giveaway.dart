@@ -41,11 +41,11 @@ class PushMessageContentGiveaway extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'winner_count': winnerCount,
-        'prize': prize?.toJson(),
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'winner_count': winnerCount,
+    'prize': prize?.toJson(),
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

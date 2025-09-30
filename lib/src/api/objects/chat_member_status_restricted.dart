@@ -35,7 +35,8 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
       isMember: json['is_member'] as bool,
       restrictedUntilDate: json['restricted_until_date'] as int,
       permissions: ChatPermissions.fromJson(
-          json['permissions'] as Map<String, dynamic>?)!,
+        json['permissions'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -44,11 +45,11 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_member': isMember,
-        'restricted_until_date': restrictedUntilDate,
-        'permissions': permissions.toJson(),
-        '@type': constructor,
-      };
+    'is_member': isMember,
+    'restricted_until_date': restrictedUntilDate,
+    'permissions': permissions.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

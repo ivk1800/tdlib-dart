@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// New call signaling data arrived
 @immutable
 class UpdateNewCallSignalingData extends Update {
-  const UpdateNewCallSignalingData({
-    required this.callId,
-    required this.data,
-  });
+  const UpdateNewCallSignalingData({required this.callId, required this.data});
 
   /// [callId] The call identifier
   final int callId;
@@ -34,10 +31,10 @@ class UpdateNewCallSignalingData extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        'data': data,
-        '@type': constructor,
-      };
+    'call_id': callId,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

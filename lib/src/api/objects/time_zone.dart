@@ -39,11 +39,11 @@ class TimeZone extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'name': name,
-        'utc_time_offset': utcTimeOffset,
-        '@type': constructor,
-      };
+    'id': id,
+    'name': name,
+    'utc_time_offset': utcTimeOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

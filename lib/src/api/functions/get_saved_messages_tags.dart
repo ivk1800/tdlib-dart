@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [SavedMessagesTags]
 @immutable
 class GetSavedMessagesTags extends TdFunction {
-  const GetSavedMessagesTags({
-    required this.savedMessagesTopicId,
-  });
+  const GetSavedMessagesTags({required this.savedMessagesTopicId});
 
   /// [savedMessagesTopicId] Identifier of Saved Messages topic which tags will
   /// be returned; pass 0 to get all Saved Messages tags
@@ -21,9 +19,9 @@ class GetSavedMessagesTags extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

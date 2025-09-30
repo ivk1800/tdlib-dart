@@ -42,11 +42,13 @@ class MessageReaction extends TdObject {
       totalCount: json['total_count'] as int,
       isChosen: json['is_chosen'] as bool,
       usedSenderId: MessageSender.fromJson(
-          json['used_sender_id'] as Map<String, dynamic>?),
+        json['used_sender_id'] as Map<String, dynamic>?,
+      ),
       recentSenderIds: List<MessageSender>.from(
-          ((json['recent_sender_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageSender.fromJson(item))
-              .toList()),
+        ((json['recent_sender_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageSender.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -55,14 +57,13 @@ class MessageReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'total_count': totalCount,
-        'is_chosen': isChosen,
-        'used_sender_id': usedSenderId?.toJson(),
-        'recent_sender_ids':
-            recentSenderIds.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'total_count': totalCount,
+    'is_chosen': isChosen,
+    'used_sender_id': usedSenderId?.toJson(),
+    'recent_sender_ids': recentSenderIds.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

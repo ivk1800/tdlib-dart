@@ -34,7 +34,8 @@ class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
     return StoryAreaTypeSuggestedReaction(
       reactionType: ReactionType.fromJson(
-          json['reaction_type'] as Map<String, dynamic>?)!,
+        json['reaction_type'] as Map<String, dynamic>?,
+      )!,
       totalCount: json['total_count'] as int,
       isDark: json['is_dark'] as bool,
       isFlipped: json['is_flipped'] as bool,
@@ -46,12 +47,12 @@ class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction_type': reactionType.toJson(),
-        'total_count': totalCount,
-        'is_dark': isDark,
-        'is_flipped': isFlipped,
-        '@type': constructor,
-      };
+    'reaction_type': reactionType.toJson(),
+    'total_count': totalCount,
+    'is_dark': isDark,
+    'is_flipped': isFlipped,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -25,7 +25,8 @@ class GroupCallRecentSpeaker extends TdObject {
 
     return GroupCallRecentSpeaker(
       participantId: MessageSender.fromJson(
-          json['participant_id'] as Map<String, dynamic>?)!,
+        json['participant_id'] as Map<String, dynamic>?,
+      )!,
       isSpeaking: json['is_speaking'] as bool,
     );
   }
@@ -35,10 +36,10 @@ class GroupCallRecentSpeaker extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'participant_id': participantId.toJson(),
-        'is_speaking': isSpeaking,
-        '@type': constructor,
-      };
+    'participant_id': participantId.toJson(),
+    'is_speaking': isSpeaking,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

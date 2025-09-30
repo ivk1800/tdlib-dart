@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A chat member was deleted
 @immutable
 class MessageChatDeleteMember extends MessageContent {
-  const MessageChatDeleteMember({
-    required this.userId,
-  });
+  const MessageChatDeleteMember({required this.userId});
 
   /// [userId] User identifier of the deleted chat member
   final int userId;
@@ -19,9 +17,7 @@ class MessageChatDeleteMember extends MessageContent {
       return null;
     }
 
-    return MessageChatDeleteMember(
-      userId: json['user_id'] as int,
-    );
+    return MessageChatDeleteMember(userId: json['user_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageChatDeleteMember extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

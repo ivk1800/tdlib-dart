@@ -50,12 +50,12 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password_hint': passwordHint,
-        'has_recovery_email_address': hasRecoveryEmailAddress,
-        'has_passport_data': hasPassportData,
-        'recovery_email_address_pattern': recoveryEmailAddressPattern,
-        '@type': constructor,
-      };
+    'password_hint': passwordHint,
+    'has_recovery_email_address': hasRecoveryEmailAddress,
+    'has_passport_data': hasPassportData,
+    'recovery_email_address_pattern': recoveryEmailAddressPattern,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

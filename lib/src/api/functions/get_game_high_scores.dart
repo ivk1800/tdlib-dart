@@ -29,11 +29,11 @@ class GetGameHighScores extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

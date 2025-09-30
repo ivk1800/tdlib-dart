@@ -33,11 +33,11 @@ class SearchPublicMessagesByTag extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'tag': tag,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

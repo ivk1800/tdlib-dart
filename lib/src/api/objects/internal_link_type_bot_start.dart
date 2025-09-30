@@ -43,11 +43,11 @@ class InternalLinkTypeBotStart extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'autostart': autostart,
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'autostart': autostart,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

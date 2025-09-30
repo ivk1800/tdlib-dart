@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The story can be viewed by certain specified users
 @immutable
 class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
-  const StoryPrivacySettingsSelectedUsers({
-    required this.userIds,
-  });
+  const StoryPrivacySettingsSelectedUsers({required this.userIds});
 
   /// [userIds] Identifiers of the users; always unknown and empty for non-owned
   /// stories
@@ -16,16 +14,18 @@ class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   static const String constructor = 'storyPrivacySettingsSelectedUsers';
 
   static StoryPrivacySettingsSelectedUsers? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return StoryPrivacySettingsSelectedUsers(
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -34,9 +34,9 @@ class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

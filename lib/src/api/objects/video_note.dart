@@ -52,10 +52,12 @@ class VideoNote extends TdObject {
       waveform: json['waveform'] as String,
       length: json['length'] as int,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       speechRecognitionResult: SpeechRecognitionResult.fromJson(
-          json['speech_recognition_result'] as Map<String, dynamic>?),
+        json['speech_recognition_result'] as Map<String, dynamic>?,
+      ),
       video: File.fromJson(json['video'] as Map<String, dynamic>?)!,
     );
   }
@@ -65,15 +67,15 @@ class VideoNote extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'waveform': waveform,
-        'length': length,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'speech_recognition_result': speechRecognitionResult?.toJson(),
-        'video': video.toJson(),
-        '@type': constructor,
-      };
+    'duration': duration,
+    'waveform': waveform,
+    'length': length,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'speech_recognition_result': speechRecognitionResult?.toJson(),
+    'video': video.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

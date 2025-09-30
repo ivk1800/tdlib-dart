@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Number of Saved Messages topics has changed
 @immutable
 class UpdateSavedMessagesTopicCount extends Update {
-  const UpdateSavedMessagesTopicCount({
-    required this.topicCount,
-  });
+  const UpdateSavedMessagesTopicCount({required this.topicCount});
 
   /// [topicCount] Approximate total number of Saved Messages topics
   final int topicCount;
@@ -29,9 +27,9 @@ class UpdateSavedMessagesTopicCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'topic_count': topicCount,
-        '@type': constructor,
-      };
+    'topic_count': topicCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

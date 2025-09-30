@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Information about a bank card
 @immutable
 class BankCardInfo extends TdObject {
-  const BankCardInfo({
-    required this.title,
-    required this.actions,
-  });
+  const BankCardInfo({required this.title, required this.actions});
 
   /// [title] Title of the bank card description
   final String title;
@@ -26,9 +23,10 @@ class BankCardInfo extends TdObject {
     return BankCardInfo(
       title: json['title'] as String,
       actions: List<BankCardActionOpenUrl>.from(
-          ((json['actions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BankCardActionOpenUrl.fromJson(item))
-              .toList()),
+        ((json['actions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BankCardActionOpenUrl.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class BankCardInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'actions': actions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'title': title,
+    'actions': actions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

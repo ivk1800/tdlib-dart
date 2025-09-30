@@ -21,7 +21,8 @@ class AuthorizationStateWaitEmailAddress extends AuthorizationState {
   static const String constructor = 'authorizationStateWaitEmailAddress';
 
   static AuthorizationStateWaitEmailAddress? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -37,10 +38,10 @@ class AuthorizationStateWaitEmailAddress extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'allow_apple_id': allowAppleId,
-        'allow_google_id': allowGoogleId,
-        '@type': constructor,
-      };
+    'allow_apple_id': allowAppleId,
+    'allow_google_id': allowGoogleId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

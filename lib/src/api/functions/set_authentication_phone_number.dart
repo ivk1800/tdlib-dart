@@ -6,9 +6,9 @@ import '../tdapi.dart';
 /// user. Works only when the current authorization state is
 /// authorizationStateWaitPhoneNumber, or if there is no pending
 /// authentication query and the current authorization state is
-/// authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode,
-/// authorizationStateWaitCode, authorizationStateWaitRegistration, or
-/// authorizationStateWaitPassword
+/// authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress,
+/// authorizationStateWaitEmailCode, authorizationStateWaitCode,
+/// authorizationStateWaitRegistration, or authorizationStateWaitPassword
 /// Returns [Ok]
 @immutable
 class SetAuthenticationPhoneNumber extends TdFunction {
@@ -31,10 +31,10 @@ class SetAuthenticationPhoneNumber extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'settings': settings?.toJson(),
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'settings': settings?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

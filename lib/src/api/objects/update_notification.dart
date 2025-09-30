@@ -25,8 +25,9 @@ class UpdateNotification extends Update {
 
     return UpdateNotification(
       notificationGroupId: json['notification_group_id'] as int,
-      notification:
-          Notification.fromJson(json['notification'] as Map<String, dynamic>?)!,
+      notification: Notification.fromJson(
+        json['notification'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_group_id': notificationGroupId,
-        'notification': notification.toJson(),
-        '@type': constructor,
-      };
+    'notification_group_id': notificationGroupId,
+    'notification': notification.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

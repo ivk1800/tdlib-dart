@@ -34,12 +34,12 @@ class SearchStringsByPrefix extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'strings': strings.map((item) => item).toList(),
-        'query': query,
-        'limit': limit,
-        'return_none_for_empty_query': returnNoneForEmptyQuery,
-        '@type': constructor,
-      };
+    'strings': strings.map((item) => item).toList(),
+    'query': query,
+    'limit': limit,
+    'return_none_for_empty_query': returnNoneForEmptyQuery,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

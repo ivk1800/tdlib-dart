@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The call has ended with an error
 @immutable
 class CallStateError extends CallState {
-  const CallStateError({
-    required this.error,
-  });
+  const CallStateError({required this.error});
 
   /// [error] Error. An error with the code 4005000 will be returned if an
   /// outgoing call is missed because of an expired timeout
@@ -30,9 +28,9 @@ class CallStateError extends CallState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error': error.toJson(),
-        '@type': constructor,
-      };
+    'error': error.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

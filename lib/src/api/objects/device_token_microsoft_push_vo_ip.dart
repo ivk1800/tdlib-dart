@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for Microsoft Push Notification Service VoIP channel
 @immutable
 class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
-  const DeviceTokenMicrosoftPushVoIP({
-    required this.channelUri,
-  });
+  const DeviceTokenMicrosoftPushVoIP({required this.channelUri});
 
   /// [channelUri] Push notification channel URI; may be empty to deregister a
   /// device
@@ -30,9 +28,9 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'channel_uri': channelUri,
-        '@type': constructor,
-      };
+    'channel_uri': channelUri,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

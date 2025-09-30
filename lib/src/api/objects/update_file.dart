@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Information about a file was updated
 @immutable
 class UpdateFile extends Update {
-  const UpdateFile({
-    required this.file,
-  });
+  const UpdateFile({required this.file});
 
   /// [file] New data about the file
   final File file;
@@ -29,9 +27,9 @@ class UpdateFile extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file': file.toJson(),
-        '@type': constructor,
-      };
+    'file': file.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

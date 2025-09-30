@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteLanguagePack extends TdFunction {
-  const DeleteLanguagePack({
-    required this.languagePackId,
-  });
+  const DeleteLanguagePack({required this.languagePackId});
 
   /// [languagePackId] Identifier of the language pack to delete
   final String languagePackId;
@@ -23,9 +21,9 @@ class DeleteLanguagePack extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

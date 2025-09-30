@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteProfilePhoto extends TdFunction {
-  const DeleteProfilePhoto({
-    required this.profilePhotoId,
-  });
+  const DeleteProfilePhoto({required this.profilePhotoId});
 
   /// [profilePhotoId] Identifier of the profile photo to delete
   final int profilePhotoId;
@@ -20,9 +18,9 @@ class DeleteProfilePhoto extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'profile_photo_id': profilePhotoId,
-        '@type': constructor,
-      };
+    'profile_photo_id': profilePhotoId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

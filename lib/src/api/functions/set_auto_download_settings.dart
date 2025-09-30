@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetAutoDownloadSettings extends TdFunction {
-  const SetAutoDownloadSettings({
-    required this.settings,
-    required this.type,
-  });
+  const SetAutoDownloadSettings({required this.settings, required this.type});
 
   /// [settings] New user auto-download settings
   final AutoDownloadSettings settings;
@@ -24,10 +21,10 @@ class SetAutoDownloadSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'settings': settings.toJson(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'settings': settings.toJson(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -39,11 +39,11 @@ class AnimatedChatPhoto extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'length': length,
-        'file': file.toJson(),
-        'main_frame_timestamp': mainFrameTimestamp,
-        '@type': constructor,
-      };
+    'length': length,
+    'file': file.toJson(),
+    'main_frame_timestamp': mainFrameTimestamp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

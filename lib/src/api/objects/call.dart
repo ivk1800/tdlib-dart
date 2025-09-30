@@ -49,13 +49,13 @@ class Call extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'user_id': userId,
-        'is_outgoing': isOutgoing,
-        'is_video': isVideo,
-        'state': state.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'user_id': userId,
+    'is_outgoing': isOutgoing,
+    'is_video': isVideo,
+    'state': state.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

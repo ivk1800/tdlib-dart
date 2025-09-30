@@ -7,9 +7,7 @@ import '../tdapi.dart';
 @immutable
 class InlineKeyboardButtonTypeCallbackWithPassword
     extends InlineKeyboardButtonType {
-  const InlineKeyboardButtonTypeCallbackWithPassword({
-    required this.data,
-  });
+  const InlineKeyboardButtonTypeCallbackWithPassword({required this.data});
 
   /// [data] Data to be sent to the bot via a callback query
   final String data;
@@ -18,7 +16,8 @@ class InlineKeyboardButtonTypeCallbackWithPassword
       'inlineKeyboardButtonTypeCallbackWithPassword';
 
   static InlineKeyboardButtonTypeCallbackWithPassword? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,9 +32,9 @@ class InlineKeyboardButtonTypeCallbackWithPassword
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': data,
-        '@type': constructor,
-      };
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

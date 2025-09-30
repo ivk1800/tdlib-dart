@@ -11,6 +11,7 @@ abstract class PaymentFormType extends TdObject {
 
   /// Inherited by:
   /// [PaymentFormTypeRegular]
+  /// [PaymentFormTypeStarSubscription]
   /// [PaymentFormTypeStars]
   static PaymentFormType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -20,6 +21,8 @@ abstract class PaymentFormType extends TdObject {
     switch (json['@type']) {
       case PaymentFormTypeRegular.constructor:
         return PaymentFormTypeRegular.fromJson(json);
+      case PaymentFormTypeStarSubscription.constructor:
+        return PaymentFormTypeStarSubscription.fromJson(json);
       case PaymentFormTypeStars.constructor:
         return PaymentFormTypeStars.fromJson(json);
       default:

@@ -31,9 +31,10 @@ class FoundChatMessages extends TdObject {
     return FoundChatMessages(
       totalCount: json['total_count'] as int,
       messages: List<Message>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Message.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Message.fromJson(item))
+            .toList(),
+      ),
       nextFromMessageId: json['next_from_message_id'] as int,
     );
   }
@@ -43,11 +44,11 @@ class FoundChatMessages extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'messages': messages.map((item) => item.toJson()).toList(),
-        'next_from_message_id': nextFromMessageId,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'messages': messages.map((item) => item.toJson()).toList(),
+    'next_from_message_id': nextFromMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

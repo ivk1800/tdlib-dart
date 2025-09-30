@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Contains statistics about interactions with a message sent in the chat or
-/// a story sent by the chat
+/// a story posted on behalf of the chat
 @immutable
 class ChatStatisticsInteractionInfo extends TdObject {
   const ChatStatisticsInteractionInfo({
@@ -34,7 +34,8 @@ class ChatStatisticsInteractionInfo extends TdObject {
 
     return ChatStatisticsInteractionInfo(
       objectType: ChatStatisticsObjectType.fromJson(
-          json['object_type'] as Map<String, dynamic>?)!,
+        json['object_type'] as Map<String, dynamic>?,
+      )!,
       viewCount: json['view_count'] as int,
       forwardCount: json['forward_count'] as int,
       reactionCount: json['reaction_count'] as int,
@@ -46,12 +47,12 @@ class ChatStatisticsInteractionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'object_type': objectType.toJson(),
-        'view_count': viewCount,
-        'forward_count': forwardCount,
-        'reaction_count': reactionCount,
-        '@type': constructor,
-      };
+    'object_type': objectType.toJson(),
+    'view_count': viewCount,
+    'forward_count': forwardCount,
+    'reaction_count': reactionCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

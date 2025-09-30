@@ -26,10 +26,10 @@ class SearchUserByPhoneNumber extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'only_local': onlyLocal,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'only_local': onlyLocal,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

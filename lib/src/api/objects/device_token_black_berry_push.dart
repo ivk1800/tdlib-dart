@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for BlackBerry Push Service
 @immutable
 class DeviceTokenBlackBerryPush extends DeviceToken {
-  const DeviceTokenBlackBerryPush({
-    required this.token,
-  });
+  const DeviceTokenBlackBerryPush({required this.token});
 
   /// [token] Token; may be empty to deregister a device
   final String token;
@@ -19,9 +17,7 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
       return null;
     }
 
-    return DeviceTokenBlackBerryPush(
-      token: json['token'] as String,
-    );
+    return DeviceTokenBlackBerryPush(token: json['token'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

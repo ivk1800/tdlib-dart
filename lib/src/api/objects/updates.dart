@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of updates
 @immutable
 class Updates extends TdObject {
-  const Updates({
-    required this.updates,
-  });
+  const Updates({required this.updates});
 
   /// [updates] List of updates
   final List<Update> updates;
@@ -21,9 +19,10 @@ class Updates extends TdObject {
 
     return Updates(
       updates: List<Update>.from(
-          ((json['updates'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Update.fromJson(item))
-              .toList()),
+        ((json['updates'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Update.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Updates extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'updates': updates.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'updates': updates.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

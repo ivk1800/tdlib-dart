@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The subtitle of a page
 @immutable
 class PageBlockSubtitle extends PageBlock {
-  const PageBlockSubtitle({
-    required this.subtitle,
-  });
+  const PageBlockSubtitle({required this.subtitle});
 
   /// [subtitle] Subtitle
   final RichText subtitle;
@@ -29,9 +27,9 @@ class PageBlockSubtitle extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'subtitle': subtitle.toJson(),
-        '@type': constructor,
-      };
+    'subtitle': subtitle.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -42,9 +42,10 @@ class InputStoryContentVideo extends InputStoryContent {
     return InputStoryContentVideo(
       video: InputFile.fromJson(json['video'] as Map<String, dynamic>?)!,
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       duration: (json['duration'] as num).toDouble(),
       coverFrameTimestamp: (json['cover_frame_timestamp'] as num).toDouble(),
       isAnimation: json['is_animation'] as bool,
@@ -56,14 +57,13 @@ class InputStoryContentVideo extends InputStoryContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video': video.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        'duration': duration,
-        'cover_frame_timestamp': coverFrameTimestamp,
-        'is_animation': isAnimation,
-        '@type': constructor,
-      };
+    'video': video.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    'duration': duration,
+    'cover_frame_timestamp': coverFrameTimestamp,
+    'is_animation': isAnimation,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

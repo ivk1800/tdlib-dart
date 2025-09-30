@@ -34,10 +34,10 @@ class NotificationTypeNewMessage extends NotificationType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        'show_preview': showPreview,
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    'show_preview': showPreview,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

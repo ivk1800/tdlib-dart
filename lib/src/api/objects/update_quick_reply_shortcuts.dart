@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of quick reply shortcuts has changed
 @immutable
 class UpdateQuickReplyShortcuts extends Update {
-  const UpdateQuickReplyShortcuts({
-    required this.shortcutIds,
-  });
+  const UpdateQuickReplyShortcuts({required this.shortcutIds});
 
   /// [shortcutIds] The new list of identifiers of quick reply shortcuts
   final List<int> shortcutIds;
@@ -21,9 +19,10 @@ class UpdateQuickReplyShortcuts extends Update {
 
     return UpdateQuickReplyShortcuts(
       shortcutIds: List<int>.from(
-          ((json['shortcut_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['shortcut_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateQuickReplyShortcuts extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_ids': shortcutIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'shortcut_ids': shortcutIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -30,8 +30,9 @@ class UpdateMessageFactCheck extends Update {
     return UpdateMessageFactCheck(
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
-      factCheck:
-          FactCheck.fromJson(json['fact_check'] as Map<String, dynamic>?)!,
+      factCheck: FactCheck.fromJson(
+        json['fact_check'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -40,11 +41,11 @@ class UpdateMessageFactCheck extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'fact_check': factCheck.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'fact_check': factCheck.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -2,12 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Contains a list of options for creating Telegram Star giveaway
+/// Contains a list of options for creating of Telegram Star giveaway
 @immutable
 class StarGiveawayPaymentOptions extends TdObject {
-  const StarGiveawayPaymentOptions({
-    required this.options,
-  });
+  const StarGiveawayPaymentOptions({required this.options});
 
   /// [options] The list of options
   final List<StarGiveawayPaymentOption> options;
@@ -21,9 +19,10 @@ class StarGiveawayPaymentOptions extends TdObject {
 
     return StarGiveawayPaymentOptions(
       options: List<StarGiveawayPaymentOption>.from(
-          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StarGiveawayPaymentOption.fromJson(item))
-              .toList()),
+        ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StarGiveawayPaymentOption.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class StarGiveawayPaymentOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'options': options.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'options': options.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

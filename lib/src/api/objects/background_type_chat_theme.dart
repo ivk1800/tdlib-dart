@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// channels
 @immutable
 class BackgroundTypeChatTheme extends BackgroundType {
-  const BackgroundTypeChatTheme({
-    required this.themeName,
-  });
+  const BackgroundTypeChatTheme({required this.themeName});
 
   /// [themeName] Name of the chat theme
   final String themeName;
@@ -20,9 +18,7 @@ class BackgroundTypeChatTheme extends BackgroundType {
       return null;
     }
 
-    return BackgroundTypeChatTheme(
-      themeName: json['theme_name'] as String,
-    );
+    return BackgroundTypeChatTheme(themeName: json['theme_name'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class BackgroundTypeChatTheme extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'theme_name': themeName,
-        '@type': constructor,
-      };
+    'theme_name': themeName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

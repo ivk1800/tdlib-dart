@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message has been pinned
 @immutable
 class MessagePinMessage extends MessageContent {
-  const MessagePinMessage({
-    required this.messageId,
-  });
+  const MessagePinMessage({required this.messageId});
 
   /// [messageId] Identifier of the pinned message, can be an identifier of a
   /// deleted message or 0
@@ -20,9 +18,7 @@ class MessagePinMessage extends MessageContent {
       return null;
     }
 
-    return MessagePinMessage(
-      messageId: json['message_id'] as int,
-    );
+    return MessagePinMessage(messageId: json['message_id'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessagePinMessage extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

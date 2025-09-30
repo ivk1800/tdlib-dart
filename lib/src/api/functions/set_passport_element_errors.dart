@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetPassportElementErrors extends TdFunction {
-  const SetPassportElementErrors({
-    required this.userId,
-    required this.errors,
-  });
+  const SetPassportElementErrors({required this.userId, required this.errors});
 
   /// [userId] User identifier
   final int userId;
@@ -26,10 +23,10 @@ class SetPassportElementErrors extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'errors': errors.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'errors': errors.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

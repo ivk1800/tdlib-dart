@@ -44,9 +44,10 @@ class MessageReplyInfo extends TdObject {
     return MessageReplyInfo(
       replyCount: json['reply_count'] as int,
       recentReplierIds: List<MessageSender>.from(
-          ((json['recent_replier_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageSender.fromJson(item))
-              .toList()),
+        ((json['recent_replier_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageSender.fromJson(item))
+            .toList(),
+      ),
       lastReadInboxMessageId: json['last_read_inbox_message_id'] as int,
       lastReadOutboxMessageId: json['last_read_outbox_message_id'] as int,
       lastMessageId: json['last_message_id'] as int,
@@ -58,14 +59,15 @@ class MessageReplyInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reply_count': replyCount,
-        'recent_replier_ids':
-            recentReplierIds.map((item) => item.toJson()).toList(),
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'last_message_id': lastMessageId,
-        '@type': constructor,
-      };
+    'reply_count': replyCount,
+    'recent_replier_ids': recentReplierIds
+        .map((item) => item.toJson())
+        .toList(),
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'last_message_id': lastMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

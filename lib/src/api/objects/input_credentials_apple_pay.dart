@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Applies if a user enters new credentials using Apple Pay
 @immutable
 class InputCredentialsApplePay extends InputCredentials {
-  const InputCredentialsApplePay({
-    required this.data,
-  });
+  const InputCredentialsApplePay({required this.data});
 
   /// [data] JSON-encoded data with the credential identifier
   final String data;
@@ -19,9 +17,7 @@ class InputCredentialsApplePay extends InputCredentials {
       return null;
     }
 
-    return InputCredentialsApplePay(
-      data: json['data'] as String,
-    );
+    return InputCredentialsApplePay(data: json['data'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class InputCredentialsApplePay extends InputCredentials {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': data,
-        '@type': constructor,
-      };
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

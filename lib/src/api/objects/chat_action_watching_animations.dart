@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// animated emoji
 @immutable
 class ChatActionWatchingAnimations extends ChatAction {
-  const ChatActionWatchingAnimations({
-    required this.emoji,
-  });
+  const ChatActionWatchingAnimations({required this.emoji});
 
   /// [emoji] The animated emoji
   final String emoji;
@@ -20,9 +18,7 @@ class ChatActionWatchingAnimations extends ChatAction {
       return null;
     }
 
-    return ChatActionWatchingAnimations(
-      emoji: json['emoji'] as String,
-    );
+    return ChatActionWatchingAnimations(emoji: json['emoji'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class ChatActionWatchingAnimations extends ChatAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

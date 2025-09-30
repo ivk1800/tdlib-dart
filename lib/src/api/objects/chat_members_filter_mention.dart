@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Returns users which can be mentioned in the chat
 @immutable
 class ChatMembersFilterMention extends ChatMembersFilter {
-  const ChatMembersFilterMention({
-    required this.messageThreadId,
-  });
+  const ChatMembersFilterMention({required this.messageThreadId});
 
   /// [messageThreadId] If non-zero, the identifier of the current message
   /// thread
@@ -30,9 +28,9 @@ class ChatMembersFilterMention extends ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_thread_id': messageThreadId,
-        '@type': constructor,
-      };
+    'message_thread_id': messageThreadId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

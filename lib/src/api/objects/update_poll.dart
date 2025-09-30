@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A poll was updated; for bots only
 @immutable
 class UpdatePoll extends Update {
-  const UpdatePoll({
-    required this.poll,
-  });
+  const UpdatePoll({required this.poll});
 
   /// [poll] New data about the poll
   final Poll poll;
@@ -29,9 +27,9 @@ class UpdatePoll extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'poll': poll.toJson(),
-        '@type': constructor,
-      };
+    'poll': poll.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

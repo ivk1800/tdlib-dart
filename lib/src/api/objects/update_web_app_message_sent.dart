@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message was sent by an opened Web App, so the Web App needs to be closed
 @immutable
 class UpdateWebAppMessageSent extends Update {
-  const UpdateWebAppMessageSent({
-    required this.webAppLaunchId,
-  });
+  const UpdateWebAppMessageSent({required this.webAppLaunchId});
 
   /// [webAppLaunchId] Identifier of Web App launch
   final int webAppLaunchId;
@@ -29,9 +27,9 @@ class UpdateWebAppMessageSent extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'web_app_launch_id': webAppLaunchId.toString(),
-        '@type': constructor,
-      };
+    'web_app_launch_id': webAppLaunchId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

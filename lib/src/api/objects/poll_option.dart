@@ -52,13 +52,13 @@ class PollOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'voter_count': voterCount,
-        'vote_percentage': votePercentage,
-        'is_chosen': isChosen,
-        'is_being_chosen': isBeingChosen,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'voter_count': voterCount,
+    'vote_percentage': votePercentage,
+    'is_chosen': isChosen,
+    'is_being_chosen': isBeingChosen,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

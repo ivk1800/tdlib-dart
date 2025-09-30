@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// scanning a QR code with the provided link
 @immutable
 class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
-  const AuthorizationStateWaitOtherDeviceConfirmation({
-    required this.link,
-  });
+  const AuthorizationStateWaitOtherDeviceConfirmation({required this.link});
 
   /// [link] A tg:// URL for the QR code. The link will be updated frequently
   final String link;
@@ -17,7 +15,8 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
       'authorizationStateWaitOtherDeviceConfirmation';
 
   static AuthorizationStateWaitOtherDeviceConfirmation? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -32,9 +31,9 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

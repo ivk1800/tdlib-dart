@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Topic containing messages forwarded from a specific chat
 @immutable
 class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
-  const SavedMessagesTopicTypeSavedFromChat({
-    required this.chatId,
-  });
+  const SavedMessagesTopicTypeSavedFromChat({required this.chatId});
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -15,14 +13,13 @@ class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
   static const String constructor = 'savedMessagesTopicTypeSavedFromChat';
 
   static SavedMessagesTopicTypeSavedFromChat? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return SavedMessagesTopicTypeSavedFromChat(
-      chatId: json['chat_id'] as int,
-    );
+    return SavedMessagesTopicTypeSavedFromChat(chatId: json['chat_id'] as int);
   }
 
   @override
@@ -30,9 +27,9 @@ class SavedMessagesTopicTypeSavedFromChat extends SavedMessagesTopicType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -19,7 +19,8 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
   static const String constructor = 'callbackQueryPayloadDataWithPassword';
 
   static CallbackQueryPayloadDataWithPassword? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password': password,
-        'data': data,
-        '@type': constructor,
-      };
+    'password': password,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

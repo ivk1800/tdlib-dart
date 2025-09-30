@@ -19,7 +19,8 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   static const String constructor = 'deviceTokenFirebaseCloudMessaging';
 
   static DeviceTokenFirebaseCloudMessaging? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        'encrypt': encrypt,
-        '@type': constructor,
-      };
+    'token': token,
+    'encrypt': encrypt,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

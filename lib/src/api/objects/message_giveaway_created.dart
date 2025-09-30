@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// create a giveaway
 @immutable
 class MessageGiveawayCreated extends MessageContent {
-  const MessageGiveawayCreated({
-    required this.starCount,
-  });
+  const MessageGiveawayCreated({required this.starCount});
 
   /// [starCount] Number of Telegram Stars that will be shared by winners of the
   /// giveaway; 0 for Telegram Premium giveaways
@@ -23,9 +21,7 @@ class MessageGiveawayCreated extends MessageContent {
       return null;
     }
 
-    return MessageGiveawayCreated(
-      starCount: json['star_count'] as int,
-    );
+    return MessageGiveawayCreated(starCount: json['star_count'] as int);
   }
 
   @override
@@ -33,9 +29,9 @@ class MessageGiveawayCreated extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

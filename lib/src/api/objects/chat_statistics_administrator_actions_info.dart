@@ -27,7 +27,8 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   static const String constructor = 'chatStatisticsAdministratorActionsInfo';
 
   static ChatStatisticsAdministratorActionsInfo? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -45,12 +46,12 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'deleted_message_count': deletedMessageCount,
-        'banned_user_count': bannedUserCount,
-        'restricted_user_count': restrictedUserCount,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'deleted_message_count': deletedMessageCount,
+    'banned_user_count': bannedUserCount,
+    'restricted_user_count': restrictedUserCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

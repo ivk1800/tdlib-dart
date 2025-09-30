@@ -12,7 +12,8 @@ class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
   static const String constructor = 'inlineKeyboardButtonTypeCallbackGame';
 
   static InlineKeyboardButtonTypeCallbackGame? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -24,9 +25,7 @@ class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

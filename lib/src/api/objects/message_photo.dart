@@ -40,8 +40,9 @@ class MessagePhoto extends MessageContent {
 
     return MessagePhoto(
       photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?)!,
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       hasSpoiler: json['has_spoiler'] as bool,
       isSecret: json['is_secret'] as bool,
@@ -53,13 +54,13 @@ class MessagePhoto extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        'is_secret': isSecret,
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    'is_secret': isSecret,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Sticker]
 @immutable
 class GetPremiumInfoSticker extends TdFunction {
-  const GetPremiumInfoSticker({
-    required this.monthCount,
-  });
+  const GetPremiumInfoSticker({required this.monthCount});
 
   /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active
@@ -22,9 +20,9 @@ class GetPremiumInfoSticker extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'month_count': monthCount,
-        '@type': constructor,
-      };
+    'month_count': monthCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

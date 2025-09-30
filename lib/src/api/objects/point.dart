@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A point on a Cartesian plane
 @immutable
 class Point extends TdObject {
-  const Point({
-    required this.x,
-    required this.y,
-  });
+  const Point({required this.x, required this.y});
 
   /// [x] The point's first coordinate
   final double x;
@@ -34,10 +31,10 @@ class Point extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x': x,
-        'y': y,
-        '@type': constructor,
-      };
+    'x': x,
+    'y': y,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

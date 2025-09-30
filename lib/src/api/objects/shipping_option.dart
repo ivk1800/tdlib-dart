@@ -31,9 +31,10 @@ class ShippingOption extends TdObject {
       id: json['id'] as String,
       title: json['title'] as String,
       priceParts: List<LabeledPricePart>.from(
-          ((json['price_parts'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => LabeledPricePart.fromJson(item))
-              .toList()),
+        ((json['price_parts'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => LabeledPricePart.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -42,11 +43,11 @@ class ShippingOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'price_parts': priceParts.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'id': id,
+    'title': title,
+    'price_parts': priceParts.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

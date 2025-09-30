@@ -77,9 +77,10 @@ class MessageGiveawayWinners extends MessageContent {
       prizeDescription: json['prize_description'] as String,
       winnerCount: json['winner_count'] as int,
       winnerUserIds: List<int>.from(
-          ((json['winner_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['winner_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       unclaimedPrizeCount: json['unclaimed_prize_count'] as int,
     );
   }
@@ -89,19 +90,19 @@ class MessageGiveawayWinners extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'boosted_chat_id': boostedChatId,
-        'giveaway_message_id': giveawayMessageId,
-        'additional_chat_count': additionalChatCount,
-        'actual_winners_selection_date': actualWinnersSelectionDate,
-        'only_new_members': onlyNewMembers,
-        'was_refunded': wasRefunded,
-        'prize': prize.toJson(),
-        'prize_description': prizeDescription,
-        'winner_count': winnerCount,
-        'winner_user_ids': winnerUserIds.map((item) => item).toList(),
-        'unclaimed_prize_count': unclaimedPrizeCount,
-        '@type': constructor,
-      };
+    'boosted_chat_id': boostedChatId,
+    'giveaway_message_id': giveawayMessageId,
+    'additional_chat_count': additionalChatCount,
+    'actual_winners_selection_date': actualWinnersSelectionDate,
+    'only_new_members': onlyNewMembers,
+    'was_refunded': wasRefunded,
+    'prize': prize.toJson(),
+    'prize_description': prizeDescription,
+    'winner_count': winnerCount,
+    'winner_user_ids': winnerUserIds.map((item) => item).toList(),
+    'unclaimed_prize_count': unclaimedPrizeCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

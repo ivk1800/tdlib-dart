@@ -16,14 +16,16 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
   static const String constructor = 'inputPassportElementTemporaryRegistration';
 
   static InputPassportElementTemporaryRegistration? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InputPassportElementTemporaryRegistration(
       temporaryRegistration: InputPersonalDocument.fromJson(
-          json['temporary_registration'] as Map<String, dynamic>?)!,
+        json['temporary_registration'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +34,9 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'temporary_registration': temporaryRegistration.toJson(),
-        '@type': constructor,
-      };
+    'temporary_registration': temporaryRegistration.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

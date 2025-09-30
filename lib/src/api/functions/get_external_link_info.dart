@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [LoginUrlInfo]
 @immutable
 class GetExternalLinkInfo extends TdFunction {
-  const GetExternalLinkInfo({
-    required this.link,
-  });
+  const GetExternalLinkInfo({required this.link});
 
   /// [link] The link
   final String link;
@@ -22,9 +20,9 @@ class GetExternalLinkInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

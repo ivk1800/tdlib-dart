@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ClearSearchedForTags extends TdFunction {
-  const ClearSearchedForTags({
-    required this.clearCashtags,
-  });
+  const ClearSearchedForTags({required this.clearCashtags});
 
   /// [clearCashtags] Pass true to clear the list of recently searched for
   /// cashtags; otherwise, the list of recently searched for hashtags will be
@@ -22,9 +20,9 @@ class ClearSearchedForTags extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'clear_cashtags': clearCashtags,
-        '@type': constructor,
-      };
+    'clear_cashtags': clearCashtags,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -126,26 +126,26 @@ class Session extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'is_current': isCurrent,
-        'is_password_pending': isPasswordPending,
-        'is_unconfirmed': isUnconfirmed,
-        'can_accept_secret_chats': canAcceptSecretChats,
-        'can_accept_calls': canAcceptCalls,
-        'type': type.toJson(),
-        'api_id': apiId,
-        'application_name': applicationName,
-        'application_version': applicationVersion,
-        'is_official_application': isOfficialApplication,
-        'device_model': deviceModel,
-        'platform': platform,
-        'system_version': systemVersion,
-        'log_in_date': logInDate,
-        'last_active_date': lastActiveDate,
-        'ip_address': ipAddress,
-        'location': location,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'is_current': isCurrent,
+    'is_password_pending': isPasswordPending,
+    'is_unconfirmed': isUnconfirmed,
+    'can_accept_secret_chats': canAcceptSecretChats,
+    'can_accept_calls': canAcceptCalls,
+    'type': type.toJson(),
+    'api_id': apiId,
+    'application_name': applicationName,
+    'application_version': applicationVersion,
+    'is_official_application': isOfficialApplication,
+    'device_model': deviceModel,
+    'platform': platform,
+    'system_version': systemVersion,
+    'log_in_date': logInDate,
+    'last_active_date': lastActiveDate,
+    'ip_address': ipAddress,
+    'location': location,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

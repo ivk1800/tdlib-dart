@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [StorageStatistics]
 @immutable
 class GetStorageStatistics extends TdFunction {
-  const GetStorageStatistics({
-    required this.chatLimit,
-  });
+  const GetStorageStatistics({required this.chatLimit});
 
   /// [chatLimit] The maximum number of chats with the largest storage usage for
   /// which separate statistics need to be returned. All other chats will be
@@ -23,9 +21,9 @@ class GetStorageStatistics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_limit': chatLimit,
-        '@type': constructor,
-      };
+    'chat_limit': chatLimit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

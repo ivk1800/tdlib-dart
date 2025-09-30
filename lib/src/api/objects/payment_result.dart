@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains the result of a payment request
 @immutable
 class PaymentResult extends TdObject {
-  const PaymentResult({
-    required this.success,
-    required this.verificationUrl,
-  });
+  const PaymentResult({required this.success, required this.verificationUrl});
 
   /// [success] True, if the payment request was successful; otherwise, the
   /// verification_url will be non-empty
@@ -35,10 +32,10 @@ class PaymentResult extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'success': success,
-        'verification_url': verificationUrl,
-        '@type': constructor,
-      };
+    'success': success,
+    'verification_url': verificationUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

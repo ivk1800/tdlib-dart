@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A user tried to use a Premium feature
 @immutable
 class PremiumSourceFeature extends PremiumSource {
-  const PremiumSourceFeature({
-    required this.feature,
-  });
+  const PremiumSourceFeature({required this.feature});
 
   /// [feature] The used feature
   final PremiumFeature feature;
@@ -20,8 +18,9 @@ class PremiumSourceFeature extends PremiumSource {
     }
 
     return PremiumSourceFeature(
-      feature:
-          PremiumFeature.fromJson(json['feature'] as Map<String, dynamic>?)!,
+      feature: PremiumFeature.fromJson(
+        json['feature'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class PremiumSourceFeature extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'feature': feature.toJson(),
-        '@type': constructor,
-      };
+    'feature': feature.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

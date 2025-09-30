@@ -8,6 +8,7 @@ class ForumTopic extends TdObject {
   const ForumTopic({
     required this.info,
     this.lastMessage,
+    required this.order,
     required this.isPinned,
     required this.unreadCount,
     required this.lastReadInboxMessageId,
@@ -23,6 +24,10 @@ class ForumTopic extends TdObject {
 
   /// [lastMessage] Last message in the topic; may be null if unknown
   final Message? lastMessage;
+
+  /// [order] A parameter used to determine order of the topic in the topic
+  /// list. Topics must be sorted by the order in descending order
+  final int order;
 
   /// [isPinned] True, if the topic is pinned in the topic list
   final bool isPinned;
@@ -59,8 +64,10 @@ class ForumTopic extends TdObject {
 
     return ForumTopic(
       info: ForumTopicInfo.fromJson(json['info'] as Map<String, dynamic>?)!,
-      lastMessage:
-          Message.fromJson(json['last_message'] as Map<String, dynamic>?),
+      lastMessage: Message.fromJson(
+        json['last_message'] as Map<String, dynamic>?,
+      ),
+      order: int.tryParse(json['order']) ?? 0,
       isPinned: json['is_pinned'] as bool,
       unreadCount: json['unread_count'] as int,
       lastReadInboxMessageId: json['last_read_inbox_message_id'] as int,
@@ -68,9 +75,11 @@ class ForumTopic extends TdObject {
       unreadMentionCount: json['unread_mention_count'] as int,
       unreadReactionCount: json['unread_reaction_count'] as int,
       notificationSettings: ChatNotificationSettings.fromJson(
-          json['notification_settings'] as Map<String, dynamic>?)!,
-      draftMessage:
-          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
+        json['notification_settings'] as Map<String, dynamic>?,
+      )!,
+      draftMessage: DraftMessage.fromJson(
+        json['draft_message'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -79,18 +88,19 @@ class ForumTopic extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'info': info.toJson(),
-        'last_message': lastMessage?.toJson(),
-        'is_pinned': isPinned,
-        'unread_count': unreadCount,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'unread_mention_count': unreadMentionCount,
-        'unread_reaction_count': unreadReactionCount,
-        'notification_settings': notificationSettings.toJson(),
-        'draft_message': draftMessage?.toJson(),
-        '@type': constructor,
-      };
+    'info': info.toJson(),
+    'last_message': lastMessage?.toJson(),
+    'order': order.toString(),
+    'is_pinned': isPinned,
+    'unread_count': unreadCount,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'unread_mention_count': unreadMentionCount,
+    'unread_reaction_count': unreadReactionCount,
+    'notification_settings': notificationSettings.toJson(),
+    'draft_message': draftMessage?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

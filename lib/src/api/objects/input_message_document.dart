@@ -36,8 +36,9 @@ class InputMessageDocument extends InputMessageContent {
 
     return InputMessageDocument(
       document: InputFile.fromJson(json['document'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       disableContentTypeDetection:
           json['disable_content_type_detection'] as bool,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
@@ -49,12 +50,12 @@ class InputMessageDocument extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'disable_content_type_detection': disableContentTypeDetection,
-        'caption': caption?.toJson(),
-        '@type': constructor,
-      };
+    'document': document.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'disable_content_type_detection': disableContentTypeDetection,
+    'caption': caption?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

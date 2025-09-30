@@ -1,0 +1,33 @@
+import 'package:meta/meta.dart';
+import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
+
+/// The file is a self-destructing video note in a private chat
+@immutable
+class FileTypeSelfDestructingVideoNote extends FileType {
+  const FileTypeSelfDestructingVideoNote();
+
+  static const String constructor = 'fileTypeSelfDestructingVideoNote';
+
+  static FileTypeSelfDestructingVideoNote? fromJson(
+    Map<String, dynamic>? json,
+  ) {
+    if (json == null) {
+      return null;
+    }
+
+    return const FileTypeSelfDestructingVideoNote();
+  }
+
+  @override
+  String getConstructor() => constructor;
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
+}

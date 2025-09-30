@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// an emoji status, then a notice about emoji status usage must be shown
 @immutable
 class ChatActionBarReportSpam extends ChatActionBar {
-  const ChatActionBarReportSpam({
-    required this.canUnarchive,
-  });
+  const ChatActionBarReportSpam({required this.canUnarchive});
 
   /// [canUnarchive] If true, the chat was automatically archived and can be
   /// moved back to the main chat list using addChatToList simultaneously with
@@ -24,9 +22,7 @@ class ChatActionBarReportSpam extends ChatActionBar {
       return null;
     }
 
-    return ChatActionBarReportSpam(
-      canUnarchive: json['can_unarchive'] as bool,
-    );
+    return ChatActionBarReportSpam(canUnarchive: json['can_unarchive'] as bool);
   }
 
   @override
@@ -34,9 +30,9 @@ class ChatActionBarReportSpam extends ChatActionBar {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_unarchive': canUnarchive,
-        '@type': constructor,
-      };
+    'can_unarchive': canUnarchive,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

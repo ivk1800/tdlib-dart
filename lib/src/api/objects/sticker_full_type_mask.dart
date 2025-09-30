@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The sticker is a mask in WEBP format to be placed on photos or videos
 @immutable
 class StickerFullTypeMask extends StickerFullType {
-  const StickerFullTypeMask({
-    this.maskPosition,
-  });
+  const StickerFullTypeMask({this.maskPosition});
 
   /// [maskPosition] Position where the mask is placed; may be null
   final MaskPosition? maskPosition;
@@ -20,8 +18,9 @@ class StickerFullTypeMask extends StickerFullType {
     }
 
     return StickerFullTypeMask(
-      maskPosition:
-          MaskPosition.fromJson(json['mask_position'] as Map<String, dynamic>?),
+      maskPosition: MaskPosition.fromJson(
+        json['mask_position'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -30,9 +29,9 @@ class StickerFullTypeMask extends StickerFullType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'mask_position': maskPosition?.toJson(),
-        '@type': constructor,
-      };
+    'mask_position': maskPosition?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

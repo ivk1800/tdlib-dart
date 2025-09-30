@@ -11,6 +11,7 @@ class MessageSendingStateFailed extends MessageSendingState {
     required this.needAnotherSender,
     required this.needAnotherReplyQuote,
     required this.needDropReply,
+    required this.requiredPaidMessageStarCount,
     required this.retryAfter,
   });
 
@@ -34,6 +35,10 @@ class MessageSendingStateFailed extends MessageSendingState {
   /// be replied is removed. This will be done automatically by resendMessages
   final bool needDropReply;
 
+  /// [requiredPaidMessageStarCount] The number of Telegram Stars that must be
+  /// paid to send the message; 0 if the current amount is correct
+  final int requiredPaidMessageStarCount;
+
   /// [retryAfter] Time left before the message can be re-sent, in seconds. No
   /// update is sent when this field changes
   final double retryAfter;
@@ -51,6 +56,8 @@ class MessageSendingStateFailed extends MessageSendingState {
       needAnotherSender: json['need_another_sender'] as bool,
       needAnotherReplyQuote: json['need_another_reply_quote'] as bool,
       needDropReply: json['need_drop_reply'] as bool,
+      requiredPaidMessageStarCount:
+          json['required_paid_message_star_count'] as int,
       retryAfter: (json['retry_after'] as num).toDouble(),
     );
   }
@@ -60,14 +67,15 @@ class MessageSendingStateFailed extends MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error': error.toJson(),
-        'can_retry': canRetry,
-        'need_another_sender': needAnotherSender,
-        'need_another_reply_quote': needAnotherReplyQuote,
-        'need_drop_reply': needDropReply,
-        'retry_after': retryAfter,
-        '@type': constructor,
-      };
+    'error': error.toJson(),
+    'can_retry': canRetry,
+    'need_another_sender': needAnotherSender,
+    'need_another_reply_quote': needAnotherReplyQuote,
+    'need_drop_reply': needDropReply,
+    'required_paid_message_star_count': requiredPaidMessageStarCount,
+    'retry_after': retryAfter,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

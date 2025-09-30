@@ -17,7 +17,7 @@ class MessageCopyOptions extends TdObject {
 
   /// [sendCopy] True, if content of the message needs to be copied without
   /// reference to the original sender. Always true if the message is forwarded
-  /// to a secret chat or is local. Use messageProperties.can_be_saved and
+  /// to a secret chat or is local. Use messageProperties.can_be_copied and
   /// messageProperties.can_be_copied_to_secret_chat to check whether the
   /// message is suitable
   final bool sendCopy;
@@ -45,8 +45,9 @@ class MessageCopyOptions extends TdObject {
     return MessageCopyOptions(
       sendCopy: json['send_copy'] as bool,
       replaceCaption: json['replace_caption'] as bool,
-      newCaption:
-          FormattedText.fromJson(json['new_caption'] as Map<String, dynamic>?),
+      newCaption: FormattedText.fromJson(
+        json['new_caption'] as Map<String, dynamic>?,
+      ),
       newShowCaptionAboveMedia: json['new_show_caption_above_media'] as bool,
     );
   }
@@ -56,12 +57,12 @@ class MessageCopyOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'send_copy': sendCopy,
-        'replace_caption': replaceCaption,
-        'new_caption': newCaption?.toJson(),
-        'new_show_caption_above_media': newShowCaptionAboveMedia,
-        '@type': constructor,
-      };
+    'send_copy': sendCopy,
+    'replace_caption': replaceCaption,
+    'new_caption': newCaption?.toJson(),
+    'new_show_caption_above_media': newShowCaptionAboveMedia,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

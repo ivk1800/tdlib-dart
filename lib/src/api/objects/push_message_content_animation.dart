@@ -40,11 +40,11 @@ class PushMessageContentAnimation extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation?.toJson(),
-        'caption': caption,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'animation': animation?.toJson(),
+    'caption': caption,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

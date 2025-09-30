@@ -6,22 +6,22 @@ import '../tdapi.dart';
 @immutable
 class StarRevenueStatus extends TdObject {
   const StarRevenueStatus({
-    required this.totalCount,
-    required this.currentCount,
-    required this.availableCount,
+    required this.totalAmount,
+    required this.currentAmount,
+    required this.availableAmount,
     required this.withdrawalEnabled,
     required this.nextWithdrawalIn,
   });
 
-  /// [totalCount] Total number of Telegram Stars earned
-  final int totalCount;
+  /// [totalAmount] Total amount of Telegram Stars earned
+  final StarAmount totalAmount;
 
-  /// [currentCount] The number of Telegram Stars that aren't withdrawn yet
-  final int currentCount;
+  /// [currentAmount] The amount of Telegram Stars that aren't withdrawn yet
+  final StarAmount currentAmount;
 
-  /// [availableCount] The number of Telegram Stars that are available for
+  /// [availableAmount] The amount of Telegram Stars that are available for
   /// withdrawal
-  final int availableCount;
+  final StarAmount availableAmount;
 
   /// [withdrawalEnabled] True, if Telegram Stars can be withdrawn now or later
   final bool withdrawalEnabled;
@@ -38,9 +38,15 @@ class StarRevenueStatus extends TdObject {
     }
 
     return StarRevenueStatus(
-      totalCount: json['total_count'] as int,
-      currentCount: json['current_count'] as int,
-      availableCount: json['available_count'] as int,
+      totalAmount: StarAmount.fromJson(
+        json['total_amount'] as Map<String, dynamic>?,
+      )!,
+      currentAmount: StarAmount.fromJson(
+        json['current_amount'] as Map<String, dynamic>?,
+      )!,
+      availableAmount: StarAmount.fromJson(
+        json['available_amount'] as Map<String, dynamic>?,
+      )!,
       withdrawalEnabled: json['withdrawal_enabled'] as bool,
       nextWithdrawalIn: json['next_withdrawal_in'] as int,
     );
@@ -51,13 +57,13 @@ class StarRevenueStatus extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'current_count': currentCount,
-        'available_count': availableCount,
-        'withdrawal_enabled': withdrawalEnabled,
-        'next_withdrawal_in': nextWithdrawalIn,
-        '@type': constructor,
-      };
+    'total_amount': totalAmount.toJson(),
+    'current_amount': currentAmount.toJson(),
+    'available_amount': availableAmount.toJson(),
+    'withdrawal_enabled': withdrawalEnabled,
+    'next_withdrawal_in': nextWithdrawalIn,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

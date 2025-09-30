@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The first unconfirmed session has changed
 @immutable
 class UpdateUnconfirmedSession extends Update {
-  const UpdateUnconfirmedSession({
-    this.session,
-  });
+  const UpdateUnconfirmedSession({this.session});
 
   /// [session] The unconfirmed session; may be null if none
   final UnconfirmedSession? session;
@@ -20,8 +18,9 @@ class UpdateUnconfirmedSession extends Update {
     }
 
     return UpdateUnconfirmedSession(
-      session:
-          UnconfirmedSession.fromJson(json['session'] as Map<String, dynamic>?),
+      session: UnconfirmedSession.fromJson(
+        json['session'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -30,9 +29,9 @@ class UpdateUnconfirmedSession extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'session': session?.toJson(),
-        '@type': constructor,
-      };
+    'session': session?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddNetworkStatistics extends TdFunction {
-  const AddNetworkStatistics({
-    required this.entry,
-  });
+  const AddNetworkStatistics({required this.entry});
 
   /// [entry] The network statistics entry with the data to be added to
   /// statistics
@@ -22,9 +20,9 @@ class AddNetworkStatistics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'entry': entry.toJson(),
-        '@type': constructor,
-      };
+    'entry': entry.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

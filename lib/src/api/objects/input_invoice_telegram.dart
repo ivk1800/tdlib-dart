@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// apps
 @immutable
 class InputInvoiceTelegram extends InputInvoice {
-  const InputInvoiceTelegram({
-    required this.purpose,
-  });
+  const InputInvoiceTelegram({required this.purpose});
 
   /// [purpose] Transaction purpose
   final TelegramPaymentPurpose purpose;
@@ -22,7 +20,8 @@ class InputInvoiceTelegram extends InputInvoice {
 
     return InputInvoiceTelegram(
       purpose: TelegramPaymentPurpose.fromJson(
-          json['purpose'] as Map<String, dynamic>?)!,
+        json['purpose'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +30,9 @@ class InputInvoiceTelegram extends InputInvoice {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'purpose': purpose.toJson(),
-        '@type': constructor,
-      };
+    'purpose': purpose.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

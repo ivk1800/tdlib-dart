@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The graph data to be asynchronously loaded through getStatisticalGraph
 @immutable
 class StatisticalGraphAsync extends StatisticalGraph {
-  const StatisticalGraphAsync({
-    required this.token,
-  });
+  const StatisticalGraphAsync({required this.token});
 
   /// [token] The token to use for data loading
   final String token;
@@ -19,9 +17,7 @@ class StatisticalGraphAsync extends StatisticalGraph {
       return null;
     }
 
-    return StatisticalGraphAsync(
-      token: json['token'] as String,
-    );
+    return StatisticalGraphAsync(token: json['token'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class StatisticalGraphAsync extends StatisticalGraph {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

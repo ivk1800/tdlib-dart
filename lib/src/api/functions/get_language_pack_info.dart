@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [LanguagePackInfo]
 @immutable
 class GetLanguagePackInfo extends TdFunction {
-  const GetLanguagePackInfo({
-    required this.languagePackId,
-  });
+  const GetLanguagePackInfo({required this.languagePackId});
 
   /// [languagePackId] Language pack identifier
   final String languagePackId;
@@ -22,9 +20,9 @@ class GetLanguagePackInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

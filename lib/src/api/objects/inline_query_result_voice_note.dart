@@ -29,8 +29,9 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
 
     return InlineQueryResultVoiceNote(
       id: json['id'] as String,
-      voiceNote:
-          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?)!,
+      voiceNote: VoiceNote.fromJson(
+        json['voice_note'] as Map<String, dynamic>?,
+      )!,
       title: json['title'] as String,
     );
   }
@@ -40,11 +41,11 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'voice_note': voiceNote.toJson(),
-        'title': title,
-        '@type': constructor,
-      };
+    'id': id,
+    'voice_note': voiceNote.toJson(),
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

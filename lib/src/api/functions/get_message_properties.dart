@@ -2,14 +2,11 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns properties of a message; this is an offline request
+/// Returns properties of a message. This is an offline method
 /// Returns [MessageProperties]
 @immutable
 class GetMessageProperties extends TdFunction {
-  const GetMessageProperties({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageProperties({required this.chatId, required this.messageId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -24,10 +21,10 @@ class GetMessageProperties extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

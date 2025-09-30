@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with information about a venue
 @immutable
 class InputMessageVenue extends InputMessageContent {
-  const InputMessageVenue({
-    required this.venue,
-  });
+  const InputMessageVenue({required this.venue});
 
   /// [venue] Venue to send
   final Venue venue;
@@ -29,9 +27,9 @@ class InputMessageVenue extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'venue': venue.toJson(),
-        '@type': constructor,
-      };
+    'venue': venue.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

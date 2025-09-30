@@ -31,15 +31,18 @@ class PremiumFeatures extends TdObject {
 
     return PremiumFeatures(
       features: List<PremiumFeature>.from(
-          ((json['features'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PremiumFeature.fromJson(item))
-              .toList()),
+        ((json['features'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PremiumFeature.fromJson(item))
+            .toList(),
+      ),
       limits: List<PremiumLimit>.from(
-          ((json['limits'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PremiumLimit.fromJson(item))
-              .toList()),
+        ((json['limits'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PremiumLimit.fromJson(item))
+            .toList(),
+      ),
       paymentLink: InternalLinkType.fromJson(
-          json['payment_link'] as Map<String, dynamic>?),
+        json['payment_link'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -48,11 +51,11 @@ class PremiumFeatures extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'features': features.map((item) => item.toJson()).toList(),
-        'limits': limits.map((item) => item.toJson()).toList(),
-        'payment_link': paymentLink?.toJson(),
-        '@type': constructor,
-      };
+    'features': features.map((item) => item.toJson()).toList(),
+    'limits': limits.map((item) => item.toJson()).toList(),
+    'payment_link': paymentLink?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

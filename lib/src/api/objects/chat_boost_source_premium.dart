@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// boosted the chat
 @immutable
 class ChatBoostSourcePremium extends ChatBoostSource {
-  const ChatBoostSourcePremium({
-    required this.userId,
-  });
+  const ChatBoostSourcePremium({required this.userId});
 
   /// [userId] Identifier of the user
   final int userId;
@@ -20,9 +18,7 @@ class ChatBoostSourcePremium extends ChatBoostSource {
       return null;
     }
 
-    return ChatBoostSourcePremium(
-      userId: json['user_id'] as int,
-    );
+    return ChatBoostSourcePremium(userId: json['user_id'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class ChatBoostSourcePremium extends ChatBoostSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -15,6 +15,7 @@ abstract class CallDiscardReason extends TdObject {
   /// [CallDiscardReasonEmpty]
   /// [CallDiscardReasonHungUp]
   /// [CallDiscardReasonMissed]
+  /// [CallDiscardReasonUpgradeToGroupCall]
   static CallDiscardReason? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -31,6 +32,8 @@ abstract class CallDiscardReason extends TdObject {
         return CallDiscardReasonHungUp.fromJson(json);
       case CallDiscardReasonMissed.constructor:
         return CallDiscardReasonMissed.fromJson(json);
+      case CallDiscardReasonUpgradeToGroupCall.constructor:
+        return CallDiscardReasonUpgradeToGroupCall.fromJson(json);
       default:
         return null;
     }

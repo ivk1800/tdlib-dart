@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetArchiveChatListSettings extends TdFunction {
-  const SetArchiveChatListSettings({
-    required this.settings,
-  });
+  const SetArchiveChatListSettings({required this.settings});
 
   /// [settings] New settings
   final ArchiveChatListSettings settings;
@@ -21,9 +19,9 @@ class SetArchiveChatListSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'settings': settings.toJson(),
-        '@type': constructor,
-      };
+    'settings': settings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

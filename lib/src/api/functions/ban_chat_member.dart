@@ -39,12 +39,12 @@ class BanChatMember extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'member_id': memberId.toJson(),
-        'banned_until_date': bannedUntilDate,
-        'revoke_messages': revokeMessages,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'member_id': memberId.toJson(),
+    'banned_until_date': bannedUntilDate,
+    'revoke_messages': revokeMessages,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

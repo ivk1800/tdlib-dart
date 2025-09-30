@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// before the secret chat identifier is returned to the application
 @immutable
 class UpdateSecretChat extends Update {
-  const UpdateSecretChat({
-    required this.secretChat,
-  });
+  const UpdateSecretChat({required this.secretChat});
 
   /// [secretChat] New data about the secret chat
   final SecretChat secretChat;
@@ -21,8 +19,9 @@ class UpdateSecretChat extends Update {
     }
 
     return UpdateSecretChat(
-      secretChat:
-          SecretChat.fromJson(json['secret_chat'] as Map<String, dynamic>?)!,
+      secretChat: SecretChat.fromJson(
+        json['secret_chat'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +30,9 @@ class UpdateSecretChat extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'secret_chat': secretChat.toJson(),
-        '@type': constructor,
-      };
+    'secret_chat': secretChat.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

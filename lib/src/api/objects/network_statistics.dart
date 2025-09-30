@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A full list of available network statistic entries
 @immutable
 class NetworkStatistics extends TdObject {
-  const NetworkStatistics({
-    required this.sinceDate,
-    required this.entries,
-  });
+  const NetworkStatistics({required this.sinceDate, required this.entries});
 
   /// [sinceDate] Point in time (Unix timestamp) from which the statistics are
   /// collected
@@ -27,9 +24,10 @@ class NetworkStatistics extends TdObject {
     return NetworkStatistics(
       sinceDate: json['since_date'] as int,
       entries: List<NetworkStatisticsEntry>.from(
-          ((json['entries'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => NetworkStatisticsEntry.fromJson(item))
-              .toList()),
+        ((json['entries'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => NetworkStatisticsEntry.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +36,10 @@ class NetworkStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'since_date': sinceDate,
-        'entries': entries.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'since_date': sinceDate,
+    'entries': entries.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -24,10 +24,10 @@ class RefundStarPayment extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

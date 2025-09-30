@@ -10,10 +10,7 @@ import '../tdapi.dart';
 /// Returns [Stickers]
 @immutable
 class AddRecentSticker extends TdFunction {
-  const AddRecentSticker({
-    required this.isAttached,
-    required this.sticker,
-  });
+  const AddRecentSticker({required this.isAttached, required this.sticker});
 
   /// [isAttached] Pass true to add the sticker to the list of stickers recently
   /// attached to photo or video files; pass false to add the sticker to the
@@ -30,10 +27,10 @@ class AddRecentSticker extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_attached': isAttached,
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'is_attached': isAttached,
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -15,7 +15,8 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   static const String constructor = 'chatEventIsAllHistoryAvailableToggled';
 
   static ChatEventIsAllHistoryAvailableToggled? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -30,9 +31,9 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_all_history_available': isAllHistoryAvailable,
-        '@type': constructor,
-      };
+    'is_all_history_available': isAllHistoryAvailable,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

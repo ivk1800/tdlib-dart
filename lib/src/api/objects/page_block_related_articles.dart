@@ -26,9 +26,10 @@ class PageBlockRelatedArticles extends PageBlock {
     return PageBlockRelatedArticles(
       header: RichText.fromJson(json['header'] as Map<String, dynamic>?)!,
       articles: List<PageBlockRelatedArticle>.from(
-          ((json['articles'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlockRelatedArticle.fromJson(item))
-              .toList()),
+        ((json['articles'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlockRelatedArticle.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class PageBlockRelatedArticles extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'header': header.toJson(),
-        'articles': articles.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'header': header.toJson(),
+    'articles': articles.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

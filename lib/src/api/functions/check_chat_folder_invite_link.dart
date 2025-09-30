@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [ChatFolderInviteLinkInfo]
 @immutable
 class CheckChatFolderInviteLink extends TdFunction {
-  const CheckChatFolderInviteLink({
-    required this.inviteLink,
-  });
+  const CheckChatFolderInviteLink({required this.inviteLink});
 
   /// [inviteLink] Invite link to be checked
   final String inviteLink;
@@ -21,9 +19,9 @@ class CheckChatFolderInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

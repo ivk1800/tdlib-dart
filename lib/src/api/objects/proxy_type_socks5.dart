@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A SOCKS5 proxy server
 @immutable
 class ProxyTypeSocks5 extends ProxyType {
-  const ProxyTypeSocks5({
-    required this.username,
-    required this.password,
-  });
+  const ProxyTypeSocks5({required this.username, required this.password});
 
   /// [username] Username for logging in; may be empty
   final String username;
@@ -34,10 +31,10 @@ class ProxyTypeSocks5 extends ProxyType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        'password': password,
-        '@type': constructor,
-      };
+    'username': username,
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

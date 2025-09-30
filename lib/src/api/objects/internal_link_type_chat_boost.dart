@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// boost the chat and the chat can be boosted, then call boostChat
 @immutable
 class InternalLinkTypeChatBoost extends InternalLinkType {
-  const InternalLinkTypeChatBoost({
-    required this.url,
-  });
+  const InternalLinkTypeChatBoost({required this.url});
 
   /// [url] URL to be passed to getChatBoostLinkInfo
   final String url;
@@ -23,9 +21,7 @@ class InternalLinkTypeChatBoost extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypeChatBoost(
-      url: json['url'] as String,
-    );
+    return InternalLinkTypeChatBoost(url: json['url'] as String);
   }
 
   @override
@@ -33,9 +29,9 @@ class InternalLinkTypeChatBoost extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

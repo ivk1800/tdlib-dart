@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [User]
 @immutable
 class SearchUserByToken extends TdFunction {
-  const SearchUserByToken({
-    required this.token,
-  });
+  const SearchUserByToken({required this.token});
 
   /// [token] Token to search for
   final String token;
@@ -20,9 +18,9 @@ class SearchUserByToken extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

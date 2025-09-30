@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Describes a freeform gradient fill of a background
 @immutable
 class BackgroundFillFreeformGradient extends BackgroundFill {
-  const BackgroundFillFreeformGradient({
-    required this.colors,
-  });
+  const BackgroundFillFreeformGradient({required this.colors});
 
   /// [colors] A list of 3 or 4 colors of the freeform gradient in the RGB
   /// format
@@ -21,9 +19,11 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
     }
 
     return BackgroundFillFreeformGradient(
-      colors: List<int>.from(((json['colors'] as List<dynamic>?) ?? <dynamic>[])
-          .map((item) => item)
-          .toList()),
+      colors: List<int>.from(
+        ((json['colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +32,9 @@ class BackgroundFillFreeformGradient extends BackgroundFill {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'colors': colors.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'colors': colors.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -47,7 +47,8 @@ class InternalLinkTypeBotStartInGroup extends InternalLinkType {
       botUsername: json['bot_username'] as String,
       startParameter: json['start_parameter'] as String,
       administratorRights: ChatAdministratorRights.fromJson(
-          json['administrator_rights'] as Map<String, dynamic>?),
+        json['administrator_rights'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -56,11 +57,11 @@ class InternalLinkTypeBotStartInGroup extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'administrator_rights': administratorRights?.toJson(),
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'administrator_rights': administratorRights?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

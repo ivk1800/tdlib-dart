@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The story can be viewed by everyone
 @immutable
 class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
-  const StoryPrivacySettingsEveryone({
-    required this.exceptUserIds,
-  });
+  const StoryPrivacySettingsEveryone({required this.exceptUserIds});
 
   /// [exceptUserIds] Identifiers of the users that can't see the story; always
   /// unknown and empty for non-owned stories
@@ -22,9 +20,10 @@ class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
 
     return StoryPrivacySettingsEveryone(
       exceptUserIds: List<int>.from(
-          ((json['except_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['except_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -33,9 +32,9 @@ class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'except_user_ids': exceptUserIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'except_user_ids': exceptUserIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -34,12 +34,12 @@ class EditChatFolderInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_id': chatFolderId,
-        'invite_link': inviteLink,
-        'name': name,
-        'chat_ids': chatIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'chat_folder_id': chatFolderId,
+    'invite_link': inviteLink,
+    'name': name,
+    'chat_ids': chatIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

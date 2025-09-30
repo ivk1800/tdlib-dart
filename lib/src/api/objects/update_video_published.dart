@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// after conversion
 @immutable
 class UpdateVideoPublished extends Update {
-  const UpdateVideoPublished({
-    required this.chatId,
-    required this.messageId,
-  });
+  const UpdateVideoPublished({required this.chatId, required this.messageId});
 
   /// [chatId] Identifier of the chat with the message
   final int chatId;
@@ -35,10 +32,10 @@ class UpdateVideoPublished extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

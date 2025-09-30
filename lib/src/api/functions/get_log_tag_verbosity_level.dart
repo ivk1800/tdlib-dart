@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [LogVerbosityLevel]
 @immutable
 class GetLogTagVerbosityLevel extends TdFunction {
-  const GetLogTagVerbosityLevel({
-    required this.tag,
-  });
+  const GetLogTagVerbosityLevel({required this.tag});
 
   /// [tag] Logging tag to change verbosity level
   final String tag;
@@ -21,9 +19,9 @@ class GetLogTagVerbosityLevel extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag,
-        '@type': constructor,
-      };
+    'tag': tag,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

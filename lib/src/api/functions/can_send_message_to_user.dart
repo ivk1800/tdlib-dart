@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [CanSendMessageToUserResult]
 @immutable
 class CanSendMessageToUser extends TdFunction {
-  const CanSendMessageToUser({
-    required this.userId,
-    required this.onlyLocal,
-  });
+  const CanSendMessageToUser({required this.userId, required this.onlyLocal});
 
   /// [userId] Identifier of the other user
   final int userId;
@@ -26,10 +23,10 @@ class CanSendMessageToUser extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'only_local': onlyLocal,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'only_local': onlyLocal,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

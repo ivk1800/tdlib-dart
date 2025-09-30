@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user joins a chat and subscribes to regular payments in Telegram Stars
 @immutable
 class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
-  const TelegramPaymentPurposeJoinChat({
-    required this.inviteLink,
-  });
+  const TelegramPaymentPurposeJoinChat({required this.inviteLink});
 
   /// [inviteLink] Invite link to use
   final String inviteLink;
@@ -29,9 +27,9 @@ class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

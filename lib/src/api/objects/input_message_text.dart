@@ -34,7 +34,8 @@ class InputMessageText extends InputMessageContent {
     return InputMessageText(
       text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
       linkPreviewOptions: LinkPreviewOptions.fromJson(
-          json['link_preview_options'] as Map<String, dynamic>?),
+        json['link_preview_options'] as Map<String, dynamic>?,
+      ),
       clearDraft: json['clear_draft'] as bool,
     );
   }
@@ -44,11 +45,11 @@ class InputMessageText extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'link_preview_options': linkPreviewOptions?.toJson(),
-        'clear_draft': clearDraft,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'link_preview_options': linkPreviewOptions?.toJson(),
+    'clear_draft': clearDraft,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

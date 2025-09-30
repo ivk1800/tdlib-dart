@@ -37,7 +37,8 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
       customTitle: json['custom_title'] as String,
       canBeEdited: json['can_be_edited'] as bool,
       rights: ChatAdministratorRights.fromJson(
-          json['rights'] as Map<String, dynamic>?)!,
+        json['rights'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -46,11 +47,11 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_title': customTitle,
-        'can_be_edited': canBeEdited,
-        'rights': rights.toJson(),
-        '@type': constructor,
-      };
+    'custom_title': customTitle,
+    'can_be_edited': canBeEdited,
+    'rights': rights.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

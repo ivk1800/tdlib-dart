@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ToggleChatFolderTags extends TdFunction {
-  const ToggleChatFolderTags({
-    required this.areTagsEnabled,
-  });
+  const ToggleChatFolderTags({required this.areTagsEnabled});
 
   /// [areTagsEnabled] Pass true to enable folder tags; pass false to disable
   /// them
@@ -21,9 +19,9 @@ class ToggleChatFolderTags extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'are_tags_enabled': areTagsEnabled,
-        '@type': constructor,
-      };
+    'are_tags_enabled': areTagsEnabled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

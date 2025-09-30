@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of notification sounds
 @immutable
 class NotificationSounds extends TdObject {
-  const NotificationSounds({
-    required this.notificationSounds,
-  });
+  const NotificationSounds({required this.notificationSounds});
 
   /// [notificationSounds] A list of notification sounds
   final List<NotificationSound> notificationSounds;
@@ -21,9 +19,10 @@ class NotificationSounds extends TdObject {
 
     return NotificationSounds(
       notificationSounds: List<NotificationSound>.from(
-          ((json['notification_sounds'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => NotificationSound.fromJson(item))
-              .toList()),
+        ((json['notification_sounds'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => NotificationSound.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,10 +31,11 @@ class NotificationSounds extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_sounds':
-            notificationSounds.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'notification_sounds': notificationSounds
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

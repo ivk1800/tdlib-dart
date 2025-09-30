@@ -58,14 +58,14 @@ class Venue extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'title': title,
-        'address': address,
-        'provider': provider,
-        'id': id,
-        'type': type,
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'title': title,
+    'address': address,
+    'provider': provider,
+    'id': id,
+    'type': type,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

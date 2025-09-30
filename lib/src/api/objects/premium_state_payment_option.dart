@@ -36,7 +36,8 @@ class PremiumStatePaymentOption extends TdObject {
 
     return PremiumStatePaymentOption(
       paymentOption: PremiumPaymentOption.fromJson(
-          json['payment_option'] as Map<String, dynamic>?)!,
+        json['payment_option'] as Map<String, dynamic>?,
+      )!,
       isCurrent: json['is_current'] as bool,
       isUpgrade: json['is_upgrade'] as bool,
       lastTransactionId: json['last_transaction_id'] as String,
@@ -48,12 +49,12 @@ class PremiumStatePaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'payment_option': paymentOption.toJson(),
-        'is_current': isCurrent,
-        'is_upgrade': isUpgrade,
-        'last_transaction_id': lastTransactionId,
-        '@type': constructor,
-      };
+    'payment_option': paymentOption.toJson(),
+    'is_current': isCurrent,
+    'is_upgrade': isUpgrade,
+    'last_transaction_id': lastTransactionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -45,12 +45,12 @@ class PushMessageContentPhoto extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        'caption': caption,
-        'is_secret': isSecret,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    'caption': caption,
+    'is_secret': isSecret,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

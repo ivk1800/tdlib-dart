@@ -43,7 +43,8 @@ class UpdateNewInlineCallbackQuery extends Update {
       inlineMessageId: json['inline_message_id'] as String,
       chatInstance: int.tryParse(json['chat_instance']) ?? 0,
       payload: CallbackQueryPayload.fromJson(
-          json['payload'] as Map<String, dynamic>?)!,
+        json['payload'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -52,13 +53,13 @@ class UpdateNewInlineCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'inline_message_id': inlineMessageId,
-        'chat_instance': chatInstance.toString(),
-        'payload': payload.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'inline_message_id': inlineMessageId,
+    'chat_instance': chatInstance.toString(),
+    'payload': payload.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [TestBytes]
 @immutable
 class TestCallBytes extends TdFunction {
-  const TestCallBytes({
-    required this.x,
-  });
+  const TestCallBytes({required this.x});
 
   /// [x] Bytes to return
   final String x;
@@ -21,9 +19,9 @@ class TestCallBytes extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x': x,
-        '@type': constructor,
-      };
+    'x': x,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

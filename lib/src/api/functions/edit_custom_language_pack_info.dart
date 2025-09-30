@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class EditCustomLanguagePackInfo extends TdFunction {
-  const EditCustomLanguagePackInfo({
-    required this.info,
-  });
+  const EditCustomLanguagePackInfo({required this.info});
 
   /// [info] New information about the custom local language pack
   final LanguagePackInfo info;
@@ -21,9 +19,9 @@ class EditCustomLanguagePackInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'info': info.toJson(),
-        '@type': constructor,
-      };
+    'info': info.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

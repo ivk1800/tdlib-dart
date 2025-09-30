@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// current user regardless of this setting
 @immutable
 class ReadDatePrivacySettings extends TdObject {
-  const ReadDatePrivacySettings({
-    required this.showReadDate,
-  });
+  const ReadDatePrivacySettings({required this.showReadDate});
 
   /// [showReadDate] True, if message read date is shown to other users in
   /// private chats. If false and the current user isn't a Telegram Premium
@@ -33,9 +31,9 @@ class ReadDatePrivacySettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'show_read_date': showReadDate,
-        '@type': constructor,
-      };
+    'show_read_date': showReadDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

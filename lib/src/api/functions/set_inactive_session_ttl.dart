@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetInactiveSessionTtl extends TdFunction {
-  const SetInactiveSessionTtl({
-    required this.inactiveSessionTtlDays,
-  });
+  const SetInactiveSessionTtl({required this.inactiveSessionTtlDays});
 
   /// [inactiveSessionTtlDays] New number of days of inactivity before sessions
   /// will be automatically terminated; 1-366 days
@@ -22,9 +20,9 @@ class SetInactiveSessionTtl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inactive_session_ttl_days': inactiveSessionTtlDays,
-        '@type': constructor,
-      };
+    'inactive_session_ttl_days': inactiveSessionTtlDays,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

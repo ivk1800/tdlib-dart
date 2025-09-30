@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Chat]
 @immutable
 class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
-  const UpgradeBasicGroupChatToSupergroupChat({
-    required this.chatId,
-  });
+  const UpgradeBasicGroupChatToSupergroupChat({required this.chatId});
 
   /// [chatId] Identifier of the chat to upgrade
   final int chatId;
@@ -22,9 +20,9 @@ class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

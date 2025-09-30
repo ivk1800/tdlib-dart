@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns the list of features available on the specific chat boost level;
-/// this is an offline request
+/// Returns the list of features available on the specific chat boost level.
+/// This is an offline method
 /// Returns [ChatBoostLevelFeatures]
 @immutable
 class GetChatBoostLevelFeatures extends TdFunction {
@@ -26,10 +26,10 @@ class GetChatBoostLevelFeatures extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_channel': isChannel,
-        'level': level,
-        '@type': constructor,
-      };
+    'is_channel': isChannel,
+    'level': level,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

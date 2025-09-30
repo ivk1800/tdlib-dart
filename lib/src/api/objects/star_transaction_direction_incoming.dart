@@ -11,7 +11,8 @@ class StarTransactionDirectionIncoming extends StarTransactionDirection {
   static const String constructor = 'starTransactionDirectionIncoming';
 
   static StarTransactionDirectionIncoming? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -23,9 +24,7 @@ class StarTransactionDirectionIncoming extends StarTransactionDirection {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -33,12 +33,12 @@ class LaunchPrepaidGiveaway extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'giveaway_id': giveawayId,
-        'parameters': parameters.toJson(),
-        'winner_count': winnerCount,
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'giveaway_id': giveawayId,
+    'parameters': parameters.toJson(),
+    'winner_count': winnerCount,
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

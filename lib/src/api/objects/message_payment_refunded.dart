@@ -42,8 +42,9 @@ class MessagePaymentRefunded extends MessageContent {
     }
 
     return MessagePaymentRefunded(
-      ownerId:
-          MessageSender.fromJson(json['owner_id'] as Map<String, dynamic>?)!,
+      ownerId: MessageSender.fromJson(
+        json['owner_id'] as Map<String, dynamic>?,
+      )!,
       currency: json['currency'] as String,
       totalAmount: json['total_amount'] as int,
       invoicePayload: json['invoice_payload'] as String,
@@ -57,14 +58,14 @@ class MessagePaymentRefunded extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'owner_id': ownerId.toJson(),
-        'currency': currency,
-        'total_amount': totalAmount,
-        'invoice_payload': invoicePayload,
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        'provider_payment_charge_id': providerPaymentChargeId,
-        '@type': constructor,
-      };
+    'owner_id': ownerId.toJson(),
+    'currency': currency,
+    'total_amount': totalAmount,
+    'invoice_payload': invoicePayload,
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    'provider_payment_charge_id': providerPaymentChargeId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

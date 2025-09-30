@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [InternalLinkType]
 @immutable
 class GetInternalLinkType extends TdFunction {
-  const GetInternalLinkType({
-    required this.link,
-  });
+  const GetInternalLinkType({required this.link});
 
   /// [link] The link
   final String link;
@@ -21,9 +19,9 @@ class GetInternalLinkType extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

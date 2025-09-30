@@ -34,10 +34,10 @@ class RevenueWithdrawalStateSucceeded extends RevenueWithdrawalState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'date': date,
-        'url': url,
-        '@type': constructor,
-      };
+    'date': date,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

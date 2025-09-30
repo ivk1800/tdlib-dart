@@ -48,12 +48,12 @@ class UpdateSpeechRecognitionTrial extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'max_media_duration': maxMediaDuration,
-        'weekly_count': weeklyCount,
-        'left_count': leftCount,
-        'next_reset_date': nextResetDate,
-        '@type': constructor,
-      };
+    'max_media_duration': maxMediaDuration,
+    'weekly_count': weeklyCount,
+    'left_count': leftCount,
+    'next_reset_date': nextResetDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,10 +26,10 @@ class SetChatSlowModeDelay extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'slow_mode_delay': slowModeDelay,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'slow_mode_delay': slowModeDelay,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

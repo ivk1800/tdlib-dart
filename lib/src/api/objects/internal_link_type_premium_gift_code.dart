@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// is valid and the user wants to apply it, then call applyPremiumGiftCode
 @immutable
 class InternalLinkTypePremiumGiftCode extends InternalLinkType {
-  const InternalLinkTypePremiumGiftCode({
-    required this.code,
-  });
+  const InternalLinkTypePremiumGiftCode({required this.code});
 
   /// [code] The Telegram Premium gift code
   final String code;
@@ -21,9 +19,7 @@ class InternalLinkTypePremiumGiftCode extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypePremiumGiftCode(
-      code: json['code'] as String,
-    );
+    return InternalLinkTypePremiumGiftCode(code: json['code'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class InternalLinkTypePremiumGiftCode extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        '@type': constructor,
-      };
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

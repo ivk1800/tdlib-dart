@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// New call was created or information about a call was updated
 @immutable
 class UpdateCall extends Update {
-  const UpdateCall({
-    required this.call,
-  });
+  const UpdateCall({required this.call});
 
   /// [call] New data about a call
   final Call call;
@@ -29,9 +27,9 @@ class UpdateCall extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call': call.toJson(),
-        '@type': constructor,
-      };
+    'call': call.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

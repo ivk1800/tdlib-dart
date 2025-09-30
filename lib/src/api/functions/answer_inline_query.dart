@@ -43,14 +43,14 @@ class AnswerInlineQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_query_id': inlineQueryId,
-        'is_personal': isPersonal,
-        'button': button?.toJson(),
-        'results': results.map((item) => item.toJson()).toList(),
-        'cache_time': cacheTime,
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'inline_query_id': inlineQueryId,
+    'is_personal': isPersonal,
+    'button': button?.toJson(),
+    'results': results.map((item) => item.toJson()).toList(),
+    'cache_time': cacheTime,
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

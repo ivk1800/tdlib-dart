@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A payment has been completed
+/// A payment has been sent to a bot or a business account
 @immutable
 class MessagePaymentSuccessful extends MessageContent {
   const MessagePaymentSuccessful({
@@ -10,6 +10,7 @@ class MessagePaymentSuccessful extends MessageContent {
     required this.invoiceMessageId,
     required this.currency,
     required this.totalAmount,
+    required this.subscriptionUntilDate,
     required this.isRecurring,
     required this.isFirstRecurring,
     required this.invoiceName,
@@ -29,6 +30,10 @@ class MessagePaymentSuccessful extends MessageContent {
   /// [totalAmount] Total price for the product, in the smallest units of the
   /// currency
   final int totalAmount;
+
+  /// [subscriptionUntilDate] Point in time (Unix timestamp) when the
+  /// subscription will expire; 0 if unknown or the payment isn't recurring
+  final int subscriptionUntilDate;
 
   /// [isRecurring] True, if this is a recurring payment
   final bool isRecurring;
@@ -51,6 +56,7 @@ class MessagePaymentSuccessful extends MessageContent {
       invoiceMessageId: json['invoice_message_id'] as int,
       currency: json['currency'] as String,
       totalAmount: json['total_amount'] as int,
+      subscriptionUntilDate: json['subscription_until_date'] as int,
       isRecurring: json['is_recurring'] as bool,
       isFirstRecurring: json['is_first_recurring'] as bool,
       invoiceName: json['invoice_name'] as String,
@@ -62,15 +68,16 @@ class MessagePaymentSuccessful extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invoice_chat_id': invoiceChatId,
-        'invoice_message_id': invoiceMessageId,
-        'currency': currency,
-        'total_amount': totalAmount,
-        'is_recurring': isRecurring,
-        'is_first_recurring': isFirstRecurring,
-        'invoice_name': invoiceName,
-        '@type': constructor,
-      };
+    'invoice_chat_id': invoiceChatId,
+    'invoice_message_id': invoiceMessageId,
+    'currency': currency,
+    'total_amount': totalAmount,
+    'subscription_until_date': subscriptionUntilDate,
+    'is_recurring': isRecurring,
+    'is_first_recurring': isFirstRecurring,
+    'invoice_name': invoiceName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

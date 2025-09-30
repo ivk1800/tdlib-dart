@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of proxy servers
 @immutable
 class Proxies extends TdObject {
-  const Proxies({
-    required this.proxies,
-  });
+  const Proxies({required this.proxies});
 
   /// [proxies] List of proxy servers
   final List<Proxy> proxies;
@@ -21,9 +19,10 @@ class Proxies extends TdObject {
 
     return Proxies(
       proxies: List<Proxy>.from(
-          ((json['proxies'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Proxy.fromJson(item))
-              .toList()),
+        ((json['proxies'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Proxy.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Proxies extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'proxies': proxies.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'proxies': proxies.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

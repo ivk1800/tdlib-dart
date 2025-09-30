@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of bot commands
 @immutable
 class BotCommands extends TdObject {
-  const BotCommands({
-    required this.botUserId,
-    required this.commands,
-  });
+  const BotCommands({required this.botUserId, required this.commands});
 
   /// [botUserId] Bot's user identifier
   final int botUserId;
@@ -26,9 +23,10 @@ class BotCommands extends TdObject {
     return BotCommands(
       botUserId: json['bot_user_id'] as int,
       commands: List<BotCommand>.from(
-          ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BotCommand.fromJson(item))
-              .toList()),
+        ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BotCommand.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class BotCommands extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'commands': commands.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

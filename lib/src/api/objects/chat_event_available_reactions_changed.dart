@@ -19,16 +19,19 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
   static const String constructor = 'chatEventAvailableReactionsChanged';
 
   static ChatEventAvailableReactionsChanged? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return ChatEventAvailableReactionsChanged(
       oldAvailableReactions: ChatAvailableReactions.fromJson(
-          json['old_available_reactions'] as Map<String, dynamic>?)!,
+        json['old_available_reactions'] as Map<String, dynamic>?,
+      )!,
       newAvailableReactions: ChatAvailableReactions.fromJson(
-          json['new_available_reactions'] as Map<String, dynamic>?)!,
+        json['new_available_reactions'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +40,10 @@ class ChatEventAvailableReactionsChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_available_reactions': oldAvailableReactions.toJson(),
-        'new_available_reactions': newAvailableReactions.toJson(),
-        '@type': constructor,
-      };
+    'old_available_reactions': oldAvailableReactions.toJson(),
+    'new_available_reactions': newAvailableReactions.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

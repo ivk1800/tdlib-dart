@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [BusinessConnection]
 @immutable
 class GetBusinessConnection extends TdFunction {
-  const GetBusinessConnection({
-    required this.connectionId,
-  });
+  const GetBusinessConnection({required this.connectionId});
 
   /// [connectionId] Identifier of the business connection to return
   final String connectionId;
@@ -21,9 +19,9 @@ class GetBusinessConnection extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'connection_id': connectionId,
-        '@type': constructor,
-      };
+    'connection_id': connectionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

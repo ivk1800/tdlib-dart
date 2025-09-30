@@ -5,7 +5,7 @@ import '../tdapi.dart';
 /// Returns messages in a chat. The messages are returned in reverse
 /// chronological order (i.e., in order of decreasing message_id). For optimal
 /// performance, the number of returned messages is chosen by TDLib. This is
-/// an offline request if only_local is true
+/// an offline method if only_local is true
 /// Returns [Messages]
 @immutable
 class GetChatHistory extends TdFunction {
@@ -46,13 +46,13 @@ class GetChatHistory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        'only_local': onlyLocal,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    'only_local': onlyLocal,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

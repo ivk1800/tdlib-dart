@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Autosave settings for some type of chats were updated
 @immutable
 class UpdateAutosaveSettings extends Update {
-  const UpdateAutosaveSettings({
-    required this.scope,
-    this.settings,
-  });
+  const UpdateAutosaveSettings({required this.scope, this.settings});
 
   /// [scope] Type of chats for which autosave settings were updated
   final AutosaveSettingsScope scope;
@@ -26,9 +23,11 @@ class UpdateAutosaveSettings extends Update {
 
     return UpdateAutosaveSettings(
       scope: AutosaveSettingsScope.fromJson(
-          json['scope'] as Map<String, dynamic>?)!,
+        json['scope'] as Map<String, dynamic>?,
+      )!,
       settings: ScopeAutosaveSettings.fromJson(
-          json['settings'] as Map<String, dynamic>?),
+        json['settings'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -37,10 +36,10 @@ class UpdateAutosaveSettings extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope.toJson(),
-        'settings': settings?.toJson(),
-        '@type': constructor,
-      };
+    'scope': scope.toJson(),
+    'settings': settings?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

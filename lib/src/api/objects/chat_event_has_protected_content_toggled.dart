@@ -15,7 +15,8 @@ class ChatEventHasProtectedContentToggled extends ChatEventAction {
   static const String constructor = 'chatEventHasProtectedContentToggled';
 
   static ChatEventHasProtectedContentToggled? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -30,9 +31,9 @@ class ChatEventHasProtectedContentToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'has_protected_content': hasProtectedContent,
-        '@type': constructor,
-      };
+    'has_protected_content': hasProtectedContent,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

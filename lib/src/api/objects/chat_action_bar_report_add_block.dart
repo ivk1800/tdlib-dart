@@ -12,6 +12,7 @@ import '../tdapi.dart';
 class ChatActionBarReportAddBlock extends ChatActionBar {
   const ChatActionBarReportAddBlock({
     required this.canUnarchive,
+    this.accountInfo,
   });
 
   /// [canUnarchive] If true, the chat was automatically archived and can be
@@ -19,6 +20,10 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   /// setting chat notification settings to default using
   /// setChatNotificationSettings
   final bool canUnarchive;
+
+  /// [accountInfo] Basic information about the other user in the chat; may be
+  /// null if unknown
+  final AccountInfo? accountInfo;
 
   static const String constructor = 'chatActionBarReportAddBlock';
 
@@ -29,6 +34,9 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
 
     return ChatActionBarReportAddBlock(
       canUnarchive: json['can_unarchive'] as bool,
+      accountInfo: AccountInfo.fromJson(
+        json['account_info'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -37,9 +45,10 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_unarchive': canUnarchive,
-        '@type': constructor,
-      };
+    'can_unarchive': canUnarchive,
+    'account_info': accountInfo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

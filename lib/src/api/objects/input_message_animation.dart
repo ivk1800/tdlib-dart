@@ -57,14 +57,17 @@ class InputMessageAnimation extends InputMessageContent {
     }
 
     return InputMessageAnimation(
-      animation:
-          InputFile.fromJson(json['animation'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      animation: InputFile.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       duration: json['duration'] as int,
       width: json['width'] as int,
       height: json['height'] as int,
@@ -79,18 +82,17 @@ class InputMessageAnimation extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

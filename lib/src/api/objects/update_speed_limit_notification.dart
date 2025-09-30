@@ -10,9 +10,7 @@ import '../tdapi.dart';
 /// subscription to Telegram Premium
 @immutable
 class UpdateSpeedLimitNotification extends Update {
-  const UpdateSpeedLimitNotification({
-    required this.isUpload,
-  });
+  const UpdateSpeedLimitNotification({required this.isUpload});
 
   /// [isUpload] True, if upload speed was limited; false, if download speed was
   /// limited
@@ -25,9 +23,7 @@ class UpdateSpeedLimitNotification extends Update {
       return null;
     }
 
-    return UpdateSpeedLimitNotification(
-      isUpload: json['is_upload'] as bool,
-    );
+    return UpdateSpeedLimitNotification(isUpload: json['is_upload'] as bool);
   }
 
   @override
@@ -35,9 +31,9 @@ class UpdateSpeedLimitNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_upload': isUpload,
-        '@type': constructor,
-      };
+    'is_upload': isUpload,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

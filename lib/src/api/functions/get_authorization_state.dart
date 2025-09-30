@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns the current authorization state; this is an offline request. For
+/// Returns the current authorization state. This is an offline method. For
 /// informational purposes only. Use updateAuthorizationState instead to
 /// maintain the current authorization state. Can be called before
 /// initialization
@@ -17,9 +17,7 @@ class GetAuthorizationState extends TdFunction {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

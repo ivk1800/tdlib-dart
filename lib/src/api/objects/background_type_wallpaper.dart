@@ -36,10 +36,10 @@ class BackgroundTypeWallpaper extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_blurred': isBlurred,
-        'is_moving': isMoving,
-        '@type': constructor,
-      };
+    'is_blurred': isBlurred,
+    'is_moving': isMoving,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [TMeUrls]
 @immutable
 class GetRecentlyVisitedTMeUrls extends TdFunction {
-  const GetRecentlyVisitedTMeUrls({
-    required this.referrer,
-  });
+  const GetRecentlyVisitedTMeUrls({required this.referrer});
 
   /// [referrer] Google Play referrer to identify the user
   final String referrer;
@@ -20,9 +18,9 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'referrer': referrer,
-        '@type': constructor,
-      };
+    'referrer': referrer,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

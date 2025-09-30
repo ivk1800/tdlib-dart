@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A story was changed
 @immutable
 class UpdateStory extends Update {
-  const UpdateStory({
-    required this.story,
-  });
+  const UpdateStory({required this.story});
 
   /// [story] The new information about the story
   final Story story;
@@ -29,9 +27,9 @@ class UpdateStory extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story': story.toJson(),
-        '@type': constructor,
-      };
+    'story': story.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

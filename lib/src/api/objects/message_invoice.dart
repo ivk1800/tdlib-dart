@@ -55,18 +55,21 @@ class MessageInvoice extends MessageContent {
     }
 
     return MessageInvoice(
-      productInfo:
-          ProductInfo.fromJson(json['product_info'] as Map<String, dynamic>?)!,
+      productInfo: ProductInfo.fromJson(
+        json['product_info'] as Map<String, dynamic>?,
+      )!,
       currency: json['currency'] as String,
       totalAmount: json['total_amount'] as int,
       startParameter: json['start_parameter'] as String,
       isTest: json['is_test'] as bool,
       needShippingAddress: json['need_shipping_address'] as bool,
       receiptMessageId: json['receipt_message_id'] as int,
-      paidMedia:
-          PaidMedia.fromJson(json['paid_media'] as Map<String, dynamic>?),
+      paidMedia: PaidMedia.fromJson(
+        json['paid_media'] as Map<String, dynamic>?,
+      ),
       paidMediaCaption: FormattedText.fromJson(
-          json['paid_media_caption'] as Map<String, dynamic>?),
+        json['paid_media_caption'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -75,17 +78,17 @@ class MessageInvoice extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'product_info': productInfo.toJson(),
-        'currency': currency,
-        'total_amount': totalAmount,
-        'start_parameter': startParameter,
-        'is_test': isTest,
-        'need_shipping_address': needShippingAddress,
-        'receipt_message_id': receiptMessageId,
-        'paid_media': paidMedia?.toJson(),
-        'paid_media_caption': paidMediaCaption?.toJson(),
-        '@type': constructor,
-      };
+    'product_info': productInfo.toJson(),
+    'currency': currency,
+    'total_amount': totalAmount,
+    'start_parameter': startParameter,
+    'is_test': isTest,
+    'need_shipping_address': needShippingAddress,
+    'receipt_message_id': receiptMessageId,
+    'paid_media': paidMedia?.toJson(),
+    'paid_media_caption': paidMediaCaption?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

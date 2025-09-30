@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// the user identifier is returned to the application
 @immutable
 class UpdateUser extends Update {
-  const UpdateUser({
-    required this.user,
-  });
+  const UpdateUser({required this.user});
 
   /// [user] New data about the user
   final User user;
@@ -30,9 +28,9 @@ class UpdateUser extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user': user.toJson(),
-        '@type': constructor,
-      };
+    'user': user.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

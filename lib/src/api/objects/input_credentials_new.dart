@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Applies if a user enters new credentials on a payment provider website
 @immutable
 class InputCredentialsNew extends InputCredentials {
-  const InputCredentialsNew({
-    required this.data,
-    required this.allowSave,
-  });
+  const InputCredentialsNew({required this.data, required this.allowSave});
 
   /// [data] JSON-encoded data with the credential identifier from the payment
   /// provider
@@ -36,10 +33,10 @@ class InputCredentialsNew extends InputCredentials {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': data,
-        'allow_save': allowSave,
-        '@type': constructor,
-      };
+    'data': data,
+    'allow_save': allowSave,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

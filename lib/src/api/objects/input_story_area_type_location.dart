@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// An area pointing to a location
 @immutable
 class InputStoryAreaTypeLocation extends InputStoryAreaType {
-  const InputStoryAreaTypeLocation({
-    required this.location,
-    this.address,
-  });
+  const InputStoryAreaTypeLocation({required this.location, this.address});
 
   /// [location] The location
   final Location location;
@@ -25,8 +22,9 @@ class InputStoryAreaTypeLocation extends InputStoryAreaType {
 
     return InputStoryAreaTypeLocation(
       location: Location.fromJson(json['location'] as Map<String, dynamic>?)!,
-      address:
-          LocationAddress.fromJson(json['address'] as Map<String, dynamic>?),
+      address: LocationAddress.fromJson(
+        json['address'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -35,10 +33,10 @@ class InputStoryAreaTypeLocation extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'address': address?.toJson(),
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'address': address?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -42,9 +42,10 @@ class PhotoSize extends TdObject {
       width: json['width'] as int,
       height: json['height'] as int,
       progressiveSizes: List<int>.from(
-          ((json['progressive_sizes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['progressive_sizes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -53,13 +54,13 @@ class PhotoSize extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'photo': photo.toJson(),
-        'width': width,
-        'height': height,
-        'progressive_sizes': progressiveSizes.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'type': type,
+    'photo': photo.toJson(),
+    'width': width,
+    'height': height,
+    'progressive_sizes': progressiveSizes.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

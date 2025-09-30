@@ -39,13 +39,13 @@ class EditBusinessMessageText extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

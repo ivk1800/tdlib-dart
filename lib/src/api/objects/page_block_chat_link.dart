@@ -46,12 +46,12 @@ class PageBlockChatLink extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'photo': photo?.toJson(),
-        'accent_color_id': accentColorId,
-        'username': username,
-        '@type': constructor,
-      };
+    'title': title,
+    'photo': photo?.toJson(),
+    'accent_color_id': accentColorId,
+    'username': username,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

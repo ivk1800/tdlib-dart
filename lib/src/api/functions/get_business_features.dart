@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [BusinessFeatures]
 @immutable
 class GetBusinessFeatures extends TdFunction {
-  const GetBusinessFeatures({
-    this.source,
-  });
+  const GetBusinessFeatures({this.source});
 
   /// [source] Source of the request; pass null if the method is called from
   /// settings or some non-standard source
@@ -21,9 +19,9 @@ class GetBusinessFeatures extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'source': source?.toJson(),
-        '@type': constructor,
-      };
+    'source': source?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

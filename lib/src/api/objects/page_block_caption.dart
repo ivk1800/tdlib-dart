@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains a caption of another block
 @immutable
 class PageBlockCaption extends TdObject {
-  const PageBlockCaption({
-    required this.text,
-    required this.credit,
-  });
+  const PageBlockCaption({required this.text, required this.credit});
 
   /// [text] Content of the caption
   final RichText text;
@@ -34,10 +31,10 @@ class PageBlockCaption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'credit': credit.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'credit': credit.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

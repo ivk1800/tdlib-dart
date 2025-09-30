@@ -97,21 +97,21 @@ class LanguagePackInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'base_language_pack_id': baseLanguagePackId,
-        'name': name,
-        'native_name': nativeName,
-        'plural_code': pluralCode,
-        'is_official': isOfficial,
-        'is_rtl': isRtl,
-        'is_beta': isBeta,
-        'is_installed': isInstalled,
-        'total_string_count': totalStringCount,
-        'translated_string_count': translatedStringCount,
-        'local_string_count': localStringCount,
-        'translation_url': translationUrl,
-        '@type': constructor,
-      };
+    'id': id,
+    'base_language_pack_id': baseLanguagePackId,
+    'name': name,
+    'native_name': nativeName,
+    'plural_code': pluralCode,
+    'is_official': isOfficial,
+    'is_rtl': isRtl,
+    'is_beta': isBeta,
+    'is_installed': isInstalled,
+    'total_string_count': totalStringCount,
+    'translated_string_count': translatedStringCount,
+    'local_string_count': localStringCount,
+    'translation_url': translationUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

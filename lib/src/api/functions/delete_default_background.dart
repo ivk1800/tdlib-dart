@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteDefaultBackground extends TdFunction {
-  const DeleteDefaultBackground({
-    required this.forDarkTheme,
-  });
+  const DeleteDefaultBackground({required this.forDarkTheme});
 
   /// [forDarkTheme] Pass true if the background is deleted for a dark theme
   final bool forDarkTheme;
@@ -20,9 +18,9 @@ class DeleteDefaultBackground extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'for_dark_theme': forDarkTheme,
-        '@type': constructor,
-      };
+    'for_dark_theme': forDarkTheme,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

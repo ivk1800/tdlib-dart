@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [PushReceiverId]
 @immutable
 class GetPushReceiverId extends TdFunction {
-  const GetPushReceiverId({
-    required this.payload,
-  });
+  const GetPushReceiverId({required this.payload});
 
   /// [payload] JSON-encoded push notification payload
   final String payload;
@@ -22,9 +20,9 @@ class GetPushReceiverId extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'payload': payload,
-        '@type': constructor,
-      };
+    'payload': payload,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A list of chats added to a chat folder
 @immutable
 class ChatListFolder extends ChatList {
-  const ChatListFolder({
-    required this.chatFolderId,
-  });
+  const ChatListFolder({required this.chatFolderId});
 
   /// [chatFolderId] Chat folder identifier
   final int chatFolderId;
@@ -19,9 +17,7 @@ class ChatListFolder extends ChatList {
       return null;
     }
 
-    return ChatListFolder(
-      chatFolderId: json['chat_folder_id'] as int,
-    );
+    return ChatListFolder(chatFolderId: json['chat_folder_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatListFolder extends ChatList {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_id': chatFolderId,
-        '@type': constructor,
-      };
+    'chat_folder_id': chatFolderId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

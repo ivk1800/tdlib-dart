@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteAllCallMessages extends TdFunction {
-  const DeleteAllCallMessages({
-    required this.revoke,
-  });
+  const DeleteAllCallMessages({required this.revoke});
 
   /// [revoke] Pass true to delete the messages for all users
   final bool revoke;
@@ -20,9 +18,9 @@ class DeleteAllCallMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'revoke': revoke,
-        '@type': constructor,
-      };
+    'revoke': revoke,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// photo
 @immutable
 class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
-  const ChatPhotoStickerTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const ChatPhotoStickerTypeCustomEmoji({required this.customEmojiId});
 
   /// [customEmojiId] Identifier of the custom emoji
   final int customEmojiId;
@@ -30,9 +28,9 @@ class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_id': customEmojiId.toString(),
-        '@type': constructor,
-      };
+    'custom_emoji_id': customEmojiId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

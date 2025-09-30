@@ -27,9 +27,10 @@ class SponsoredMessages extends TdObject {
 
     return SponsoredMessages(
       messages: List<SponsoredMessage>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => SponsoredMessage.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => SponsoredMessage.fromJson(item))
+            .toList(),
+      ),
       messagesBetween: json['messages_between'] as int,
     );
   }
@@ -39,10 +40,10 @@ class SponsoredMessages extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'messages': messages.map((item) => item.toJson()).toList(),
-        'messages_between': messagesBetween,
-        '@type': constructor,
-      };
+    'messages': messages.map((item) => item.toJson()).toList(),
+    'messages_between': messagesBetween,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

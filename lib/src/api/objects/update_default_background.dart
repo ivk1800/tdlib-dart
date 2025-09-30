@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The default background has changed
 @immutable
 class UpdateDefaultBackground extends Update {
-  const UpdateDefaultBackground({
-    required this.forDarkTheme,
-    this.background,
-  });
+  const UpdateDefaultBackground({required this.forDarkTheme, this.background});
 
   /// [forDarkTheme] True, if default background for dark theme has changed
   final bool forDarkTheme;
@@ -25,8 +22,9 @@ class UpdateDefaultBackground extends Update {
 
     return UpdateDefaultBackground(
       forDarkTheme: json['for_dark_theme'] as bool,
-      background:
-          Background.fromJson(json['background'] as Map<String, dynamic>?),
+      background: Background.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -35,10 +33,10 @@ class UpdateDefaultBackground extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'for_dark_theme': forDarkTheme,
-        'background': background?.toJson(),
-        '@type': constructor,
-      };
+    'for_dark_theme': forDarkTheme,
+    'background': background?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

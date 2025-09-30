@@ -34,10 +34,10 @@ class MessageChatUpgradeFrom extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'basic_group_id': basicGroupId,
-        '@type': constructor,
-      };
+    'title': title,
+    'basic_group_id': basicGroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

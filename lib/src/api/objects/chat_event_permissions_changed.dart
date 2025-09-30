@@ -25,9 +25,11 @@ class ChatEventPermissionsChanged extends ChatEventAction {
 
     return ChatEventPermissionsChanged(
       oldPermissions: ChatPermissions.fromJson(
-          json['old_permissions'] as Map<String, dynamic>?)!,
+        json['old_permissions'] as Map<String, dynamic>?,
+      )!,
       newPermissions: ChatPermissions.fromJson(
-          json['new_permissions'] as Map<String, dynamic>?)!,
+        json['new_permissions'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class ChatEventPermissionsChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_permissions': oldPermissions.toJson(),
-        'new_permissions': newPermissions.toJson(),
-        '@type': constructor,
-      };
+    'old_permissions': oldPermissions.toJson(),
+    'new_permissions': newPermissions.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

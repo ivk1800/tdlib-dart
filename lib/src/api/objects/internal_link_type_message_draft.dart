@@ -38,10 +38,10 @@ class InternalLinkTypeMessageDraft extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'contains_link': containsLink,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'contains_link': containsLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

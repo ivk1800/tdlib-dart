@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents an emoji with its keyword
 @immutable
 class EmojiKeyword extends TdObject {
-  const EmojiKeyword({
-    required this.emoji,
-    required this.keyword,
-  });
+  const EmojiKeyword({required this.emoji, required this.keyword});
 
   /// [emoji] The emoji
   final String emoji;
@@ -34,10 +31,10 @@ class EmojiKeyword extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        'keyword': keyword,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    'keyword': keyword,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

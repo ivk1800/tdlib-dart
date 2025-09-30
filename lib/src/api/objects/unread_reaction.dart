@@ -29,8 +29,9 @@ class UnreadReaction extends TdObject {
 
     return UnreadReaction(
       type: ReactionType.fromJson(json['type'] as Map<String, dynamic>?)!,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      )!,
       isBig: json['is_big'] as bool,
     );
   }
@@ -40,11 +41,11 @@ class UnreadReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'sender_id': senderId.toJson(),
-        'is_big': isBig,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'sender_id': senderId.toJson(),
+    'is_big': isBig,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// authorizationStateWaitCode
 @immutable
 class InternalLinkTypeAuthenticationCode extends InternalLinkType {
-  const InternalLinkTypeAuthenticationCode({
-    required this.code,
-  });
+  const InternalLinkTypeAuthenticationCode({required this.code});
 
   /// [code] The authentication code
   final String code;
@@ -17,14 +15,13 @@ class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   static const String constructor = 'internalLinkTypeAuthenticationCode';
 
   static InternalLinkTypeAuthenticationCode? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return InternalLinkTypeAuthenticationCode(
-      code: json['code'] as String,
-    );
+    return InternalLinkTypeAuthenticationCode(code: json['code'] as String);
   }
 
   @override
@@ -32,9 +29,9 @@ class InternalLinkTypeAuthenticationCode extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        '@type': constructor,
-      };
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

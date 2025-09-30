@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Information about the message sent by answerWebAppQuery
 @immutable
 class SentWebAppMessage extends TdObject {
-  const SentWebAppMessage({
-    required this.inlineMessageId,
-  });
+  const SentWebAppMessage({required this.inlineMessageId});
 
   /// [inlineMessageId] Identifier of the sent inline message, if known
   final String inlineMessageId;
@@ -29,9 +27,9 @@ class SentWebAppMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

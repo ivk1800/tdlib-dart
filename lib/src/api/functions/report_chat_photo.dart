@@ -34,12 +34,12 @@ class ReportChatPhoto extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'file_id': fileId,
-        'reason': reason.toJson(),
-        'text': text,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'file_id': fileId,
+    'reason': reason.toJson(),
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

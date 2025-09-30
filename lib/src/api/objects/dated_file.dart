@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// File with the date it was uploaded
 @immutable
 class DatedFile extends TdObject {
-  const DatedFile({
-    required this.file,
-    required this.date,
-  });
+  const DatedFile({required this.file, required this.date});
 
   /// [file] The file
   final File file;
@@ -34,10 +31,10 @@ class DatedFile extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file': file.toJson(),
-        'date': date,
-        '@type': constructor,
-      };
+    'file': file.toJson(),
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -34,10 +34,10 @@ class StarSubscriptionPricing extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'period': period,
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'period': period,
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,10 +26,10 @@ class GetLanguagePackStrings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        'keys': keys.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    'keys': keys.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

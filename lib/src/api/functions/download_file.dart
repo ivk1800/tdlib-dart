@@ -45,13 +45,13 @@ class DownloadFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'priority': priority,
-        'offset': offset,
-        'limit': limit,
-        'synchronous': synchronous,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'priority': priority,
+    'offset': offset,
+    'limit': limit,
+    'synchronous': synchronous,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

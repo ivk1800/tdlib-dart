@@ -34,10 +34,10 @@ class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'venue_provider': venueProvider,
-        'venue_id': venueId,
-        '@type': constructor,
-      };
+    'venue_provider': venueProvider,
+    'venue_id': venueId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

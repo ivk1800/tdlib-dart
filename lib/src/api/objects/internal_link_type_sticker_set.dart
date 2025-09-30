@@ -38,10 +38,10 @@ class InternalLinkTypeStickerSet extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_name': stickerSetName,
-        'expect_custom_emoji': expectCustomEmoji,
-        '@type': constructor,
-      };
+    'sticker_set_name': stickerSetName,
+    'expect_custom_emoji': expectCustomEmoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The messages were exported from a private chat
 @immutable
 class MessageFileTypePrivate extends MessageFileType {
-  const MessageFileTypePrivate({
-    required this.name,
-  });
+  const MessageFileTypePrivate({required this.name});
 
   /// [name] Name of the other party; may be empty if unrecognized
   final String name;
@@ -19,9 +17,7 @@ class MessageFileTypePrivate extends MessageFileType {
       return null;
     }
 
-    return MessageFileTypePrivate(
-      name: json['name'] as String,
-    );
+    return MessageFileTypePrivate(name: json['name'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageFileTypePrivate extends MessageFileType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Stickers]
 @immutable
 class GetCustomEmojiStickers extends TdFunction {
-  const GetCustomEmojiStickers({
-    required this.customEmojiIds,
-  });
+  const GetCustomEmojiStickers({required this.customEmojiIds});
 
   /// [customEmojiIds] Identifiers of custom emoji stickers. At most 200 custom
   /// emoji stickers can be received simultaneously
@@ -22,9 +20,9 @@ class GetCustomEmojiStickers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_ids': customEmojiIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'custom_emoji_ids': customEmojiIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

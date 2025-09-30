@@ -37,8 +37,9 @@ class InputMessageSticker extends InputMessageContent {
 
     return InputMessageSticker(
       sticker: InputFile.fromJson(json['sticker'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       width: json['width'] as int,
       height: json['height'] as int,
       emoji: json['emoji'] as String,
@@ -50,13 +51,13 @@ class InputMessageSticker extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'width': width,
-        'height': height,
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'width': width,
+    'height': height,
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

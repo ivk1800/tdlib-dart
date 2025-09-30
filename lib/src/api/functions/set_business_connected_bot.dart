@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessConnectedBot extends TdFunction {
-  const SetBusinessConnectedBot({
-    required this.bot,
-  });
+  const SetBusinessConnectedBot({required this.bot});
 
   /// [bot] Connection settings for the bot
   final BusinessConnectedBot bot;
@@ -20,9 +18,9 @@ class SetBusinessConnectedBot extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot': bot.toJson(),
-        '@type': constructor,
-      };
+    'bot': bot.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

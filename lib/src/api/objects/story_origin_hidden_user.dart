@@ -2,15 +2,13 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The original story was sent by an unknown user
+/// The original story was posted by an unknown user
 @immutable
 class StoryOriginHiddenUser extends StoryOrigin {
-  const StoryOriginHiddenUser({
-    required this.senderName,
-  });
+  const StoryOriginHiddenUser({required this.posterName});
 
-  /// [senderName] Name of the story sender
-  final String senderName;
+  /// [posterName] Name of the user or the chat that posted the story
+  final String posterName;
 
   static const String constructor = 'storyOriginHiddenUser';
 
@@ -19,9 +17,7 @@ class StoryOriginHiddenUser extends StoryOrigin {
       return null;
     }
 
-    return StoryOriginHiddenUser(
-      senderName: json['sender_name'] as String,
-    );
+    return StoryOriginHiddenUser(posterName: json['poster_name'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class StoryOriginHiddenUser extends StoryOrigin {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_name': senderName,
-        '@type': constructor,
-      };
+    'poster_name': posterName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

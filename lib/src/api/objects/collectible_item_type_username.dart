@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A username
 @immutable
 class CollectibleItemTypeUsername extends CollectibleItemType {
-  const CollectibleItemTypeUsername({
-    required this.username,
-  });
+  const CollectibleItemTypeUsername({required this.username});
 
   /// [username] The username
   final String username;
@@ -19,9 +17,7 @@ class CollectibleItemTypeUsername extends CollectibleItemType {
       return null;
     }
 
-    return CollectibleItemTypeUsername(
-      username: json['username'] as String,
-    );
+    return CollectibleItemTypeUsername(username: json['username'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class CollectibleItemTypeUsername extends CollectibleItemType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        '@type': constructor,
-      };
+    'username': username,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

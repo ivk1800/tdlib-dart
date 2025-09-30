@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// possible
 @immutable
 class EmailAddressResetStatePending extends EmailAddressResetState {
-  const EmailAddressResetStatePending({
-    required this.resetIn,
-  });
+  const EmailAddressResetStatePending({required this.resetIn});
 
   /// [resetIn] Left time before the email address will be reset, in seconds.
   /// updateAuthorizationState is not sent when this field changes
@@ -22,9 +20,7 @@ class EmailAddressResetStatePending extends EmailAddressResetState {
       return null;
     }
 
-    return EmailAddressResetStatePending(
-      resetIn: json['reset_in'] as int,
-    );
+    return EmailAddressResetStatePending(resetIn: json['reset_in'] as int);
   }
 
   @override
@@ -32,9 +28,9 @@ class EmailAddressResetStatePending extends EmailAddressResetState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reset_in': resetIn,
-        '@type': constructor,
-      };
+    'reset_in': resetIn,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

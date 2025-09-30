@@ -28,10 +28,10 @@ class SendPassportAuthorizationForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'authorization_form_id': authorizationFormId,
-        'types': types.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'authorization_form_id': authorizationFormId,
+    'types': types.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

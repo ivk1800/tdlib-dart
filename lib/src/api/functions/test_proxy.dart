@@ -37,13 +37,13 @@ class TestProxy extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'server': server,
-        'port': port,
-        'type': type.toJson(),
-        'dc_id': dcId,
-        'timeout': timeout,
-        '@type': constructor,
-      };
+    'server': server,
+    'port': port,
+    'type': type.toJson(),
+    'dc_id': dcId,
+    'timeout': timeout,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

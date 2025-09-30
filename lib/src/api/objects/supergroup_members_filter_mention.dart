@@ -35,10 +35,10 @@ class SupergroupMembersFilterMention extends SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        'message_thread_id': messageThreadId,
-        '@type': constructor,
-      };
+    'query': query,
+    'message_thread_id': messageThreadId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

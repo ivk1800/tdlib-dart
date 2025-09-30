@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of message viewers
 @immutable
 class MessageViewers extends TdObject {
-  const MessageViewers({
-    required this.viewers,
-  });
+  const MessageViewers({required this.viewers});
 
   /// [viewers] List of message viewers
   final List<MessageViewer> viewers;
@@ -21,9 +19,10 @@ class MessageViewers extends TdObject {
 
     return MessageViewers(
       viewers: List<MessageViewer>.from(
-          ((json['viewers'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageViewer.fromJson(item))
-              .toList()),
+        ((json['viewers'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageViewer.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class MessageViewers extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'viewers': viewers.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'viewers': viewers.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

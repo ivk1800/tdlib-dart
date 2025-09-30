@@ -32,9 +32,10 @@ class PublicForwards extends TdObject {
     return PublicForwards(
       totalCount: json['total_count'] as int,
       forwards: List<PublicForward>.from(
-          ((json['forwards'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PublicForward.fromJson(item))
-              .toList()),
+        ((json['forwards'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PublicForward.fromJson(item))
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -44,11 +45,11 @@ class PublicForwards extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'forwards': forwards.map((item) => item.toJson()).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'forwards': forwards.map((item) => item.toJson()).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class RemoveSearchedForTag extends TdFunction {
-  const RemoveSearchedForTag({
-    required this.tag,
-  });
+  const RemoveSearchedForTag({required this.tag});
 
   /// [tag] Hashtag or cashtag to delete
   final String tag;
@@ -21,9 +19,9 @@ class RemoveSearchedForTag extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag,
-        '@type': constructor,
-      };
+    'tag': tag,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

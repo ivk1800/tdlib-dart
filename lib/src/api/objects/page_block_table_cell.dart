@@ -46,9 +46,11 @@ class PageBlockTableCell extends TdObject {
       colspan: json['colspan'] as int,
       rowspan: json['rowspan'] as int,
       align: PageBlockHorizontalAlignment.fromJson(
-          json['align'] as Map<String, dynamic>?)!,
+        json['align'] as Map<String, dynamic>?,
+      )!,
       valign: PageBlockVerticalAlignment.fromJson(
-          json['valign'] as Map<String, dynamic>?)!,
+        json['valign'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -57,14 +59,14 @@ class PageBlockTableCell extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text?.toJson(),
-        'is_header': isHeader,
-        'colspan': colspan,
-        'rowspan': rowspan,
-        'align': align.toJson(),
-        'valign': valign.toJson(),
-        '@type': constructor,
-      };
+    'text': text?.toJson(),
+    'is_header': isHeader,
+    'colspan': colspan,
+    'rowspan': rowspan,
+    'align': align.toJson(),
+    'valign': valign.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

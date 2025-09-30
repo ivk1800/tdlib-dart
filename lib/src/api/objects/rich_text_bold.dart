@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A bold rich text
 @immutable
 class RichTextBold extends RichText {
-  const RichTextBold({
-    required this.text,
-  });
+  const RichTextBold({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextBold extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

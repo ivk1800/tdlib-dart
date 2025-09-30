@@ -13,6 +13,7 @@ abstract class TelegramPaymentPurpose extends TdObject {
   /// [TelegramPaymentPurposeGiftedStars]
   /// [TelegramPaymentPurposeJoinChat]
   /// [TelegramPaymentPurposePremiumGiftCodes]
+  /// [TelegramPaymentPurposePremiumGift]
   /// [TelegramPaymentPurposePremiumGiveaway]
   /// [TelegramPaymentPurposeStarGiveaway]
   /// [TelegramPaymentPurposeStars]
@@ -26,6 +27,8 @@ abstract class TelegramPaymentPurpose extends TdObject {
         return TelegramPaymentPurposeGiftedStars.fromJson(json);
       case TelegramPaymentPurposeJoinChat.constructor:
         return TelegramPaymentPurposeJoinChat.fromJson(json);
+      case TelegramPaymentPurposePremiumGift.constructor:
+        return TelegramPaymentPurposePremiumGift.fromJson(json);
       case TelegramPaymentPurposePremiumGiftCodes.constructor:
         return TelegramPaymentPurposePremiumGiftCodes.fromJson(json);
       case TelegramPaymentPurposePremiumGiveaway.constructor:

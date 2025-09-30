@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with information about an ended video chat
 @immutable
 class MessageVideoChatEnded extends MessageContent {
-  const MessageVideoChatEnded({
-    required this.duration,
-  });
+  const MessageVideoChatEnded({required this.duration});
 
   /// [duration] Call duration, in seconds
   final int duration;
@@ -19,9 +17,7 @@ class MessageVideoChatEnded extends MessageContent {
       return null;
     }
 
-    return MessageVideoChatEnded(
-      duration: json['duration'] as int,
-    );
+    return MessageVideoChatEnded(duration: json['duration'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageVideoChatEnded extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        '@type': constructor,
-      };
+    'duration': duration,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

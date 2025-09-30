@@ -12,11 +12,11 @@ import '../tdapi.dart';
 class SearchMessages extends TdFunction {
   const SearchMessages({
     this.chatList,
-    required this.onlyInChannels,
     required this.query,
     required this.offset,
     required this.limit,
     this.filter,
+    this.chatTypeFilter,
     required this.minDate,
     required this.maxDate,
   });
@@ -25,9 +25,6 @@ class SearchMessages extends TdFunction {
   /// all chats regardless of their chat list. Only Main and Archive chat lists
   /// are supported
   final ChatList? chatList;
-
-  /// [onlyInChannels] Pass true to search only for messages in channels
-  final bool onlyInChannels;
 
   /// [query] Query to search for
   final String query;
@@ -48,6 +45,10 @@ class SearchMessages extends TdFunction {
   /// unsupported in this function
   final SearchMessagesFilter? filter;
 
+  /// [chatTypeFilter] Additional filter for type of the chat of the searched
+  /// messages; pass null to search for messages in all chats
+  final SearchMessagesChatTypeFilter? chatTypeFilter;
+
   /// [minDate] If not 0, the minimum date of the messages to return
   final int minDate;
 
@@ -61,16 +62,16 @@ class SearchMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_list': chatList?.toJson(),
-        'only_in_channels': onlyInChannels,
-        'query': query,
-        'offset': offset,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        'min_date': minDate,
-        'max_date': maxDate,
-        '@type': constructor,
-      };
+    'chat_list': chatList?.toJson(),
+    'query': query,
+    'offset': offset,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    'chat_type_filter': chatTypeFilter?.toJson(),
+    'min_date': minDate,
+    'max_date': maxDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

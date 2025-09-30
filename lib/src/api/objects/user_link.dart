@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains an HTTPS URL, which can be used to get information about a user
 @immutable
 class UserLink extends TdObject {
-  const UserLink({
-    required this.url,
-    required this.expiresIn,
-  });
+  const UserLink({required this.url, required this.expiresIn});
 
   /// [url] The URL
   final String url;
@@ -35,10 +32,10 @@ class UserLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'expires_in': expiresIn,
-        '@type': constructor,
-      };
+    'url': url,
+    'expires_in': expiresIn,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

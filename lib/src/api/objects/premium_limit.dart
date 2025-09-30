@@ -39,11 +39,11 @@ class PremiumLimit extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'default_value': defaultValue,
-        'premium_value': premiumValue,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'default_value': defaultValue,
+    'premium_value': premiumValue,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

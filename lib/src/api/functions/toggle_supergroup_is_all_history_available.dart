@@ -25,10 +25,10 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'is_all_history_available': isAllHistoryAvailable,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'is_all_history_available': isAllHistoryAvailable,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

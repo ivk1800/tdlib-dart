@@ -34,10 +34,10 @@ class ChatEventDescriptionChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_description': oldDescription,
-        'new_description': newDescription,
-        '@type': constructor,
-      };
+    'old_description': oldDescription,
+    'new_description': newDescription,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

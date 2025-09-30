@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to boost a channel chat
 @immutable
 class LinkPreviewTypeChannelBoost extends LinkPreviewType {
-  const LinkPreviewTypeChannelBoost({
-    this.photo,
-  });
+  const LinkPreviewTypeChannelBoost({this.photo});
 
   /// [photo] Photo of the chat; may be null
   final ChatPhoto? photo;
@@ -29,9 +27,9 @@ class LinkPreviewTypeChannelBoost extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -86,22 +86,22 @@ class SetTdlibParameters extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'use_test_dc': useTestDc,
-        'database_directory': databaseDirectory,
-        'files_directory': filesDirectory,
-        'database_encryption_key': databaseEncryptionKey,
-        'use_file_database': useFileDatabase,
-        'use_chat_info_database': useChatInfoDatabase,
-        'use_message_database': useMessageDatabase,
-        'use_secret_chats': useSecretChats,
-        'api_id': apiId,
-        'api_hash': apiHash,
-        'system_language_code': systemLanguageCode,
-        'device_model': deviceModel,
-        'system_version': systemVersion,
-        'application_version': applicationVersion,
-        '@type': constructor,
-      };
+    'use_test_dc': useTestDc,
+    'database_directory': databaseDirectory,
+    'files_directory': filesDirectory,
+    'database_encryption_key': databaseEncryptionKey,
+    'use_file_database': useFileDatabase,
+    'use_chat_info_database': useChatInfoDatabase,
+    'use_message_database': useMessageDatabase,
+    'use_secret_chats': useSecretChats,
+    'api_id': apiId,
+    'api_hash': apiHash,
+    'system_language_code': systemLanguageCode,
+    'device_model': deviceModel,
+    'system_version': systemVersion,
+    'application_version': applicationVersion,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

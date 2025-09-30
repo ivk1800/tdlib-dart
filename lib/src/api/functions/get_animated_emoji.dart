@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [AnimatedEmoji]
 @immutable
 class GetAnimatedEmoji extends TdFunction {
-  const GetAnimatedEmoji({
-    required this.emoji,
-  });
+  const GetAnimatedEmoji({required this.emoji});
 
   /// [emoji] The emoji
   final String emoji;
@@ -21,9 +19,9 @@ class GetAnimatedEmoji extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

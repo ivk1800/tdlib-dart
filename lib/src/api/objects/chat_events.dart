@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of chat events
 @immutable
 class ChatEvents extends TdObject {
-  const ChatEvents({
-    required this.events,
-  });
+  const ChatEvents({required this.events});
 
   /// [events] List of events
   final List<ChatEvent> events;
@@ -21,9 +19,10 @@ class ChatEvents extends TdObject {
 
     return ChatEvents(
       events: List<ChatEvent>.from(
-          ((json['events'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatEvent.fromJson(item))
-              .toList()),
+        ((json['events'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatEvent.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class ChatEvents extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'events': events.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'events': events.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

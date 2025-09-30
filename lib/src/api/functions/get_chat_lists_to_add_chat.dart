@@ -3,13 +3,11 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns chat lists to which the chat can be added. This is an offline
-/// request
+/// method
 /// Returns [ChatLists]
 @immutable
 class GetChatListsToAddChat extends TdFunction {
-  const GetChatListsToAddChat({
-    required this.chatId,
-  });
+  const GetChatListsToAddChat({required this.chatId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -21,9 +19,9 @@ class GetChatListsToAddChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

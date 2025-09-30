@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A chat theme was edited
 @immutable
 class PushMessageContentChatSetTheme extends PushMessageContent {
-  const PushMessageContentChatSetTheme({
-    required this.themeName,
-  });
+  const PushMessageContentChatSetTheme({required this.themeName});
 
   /// [themeName] If non-empty, name of a new theme, set for the chat.
   /// Otherwise, the chat theme was reset to the default one
@@ -30,9 +28,9 @@ class PushMessageContentChatSetTheme extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'theme_name': themeName,
-        '@type': constructor,
-      };
+    'theme_name': themeName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

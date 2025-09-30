@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// of it
 @immutable
 class ChatPhotoSticker extends TdObject {
-  const ChatPhotoSticker({
-    required this.type,
-    required this.backgroundFill,
-  });
+  const ChatPhotoSticker({required this.type, required this.backgroundFill});
 
   /// [type] Type of the sticker
   final ChatPhotoStickerType type;
@@ -27,10 +24,12 @@ class ChatPhotoSticker extends TdObject {
     }
 
     return ChatPhotoSticker(
-      type:
-          ChatPhotoStickerType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      type: ChatPhotoStickerType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
       backgroundFill: BackgroundFill.fromJson(
-          json['background_fill'] as Map<String, dynamic>?)!,
+        json['background_fill'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -39,10 +38,10 @@ class ChatPhotoSticker extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'background_fill': backgroundFill.toJson(),
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'background_fill': backgroundFill.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

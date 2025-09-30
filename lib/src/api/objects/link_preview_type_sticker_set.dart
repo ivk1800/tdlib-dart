@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a sticker set
 @immutable
 class LinkPreviewTypeStickerSet extends LinkPreviewType {
-  const LinkPreviewTypeStickerSet({
-    required this.stickers,
-  });
+  const LinkPreviewTypeStickerSet({required this.stickers});
 
   /// [stickers] Up to 4 stickers from the sticker set
   final List<Sticker> stickers;
@@ -21,9 +19,10 @@ class LinkPreviewTypeStickerSet extends LinkPreviewType {
 
     return LinkPreviewTypeStickerSet(
       stickers: List<Sticker>.from(
-          ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Sticker.fromJson(item))
-              .toList()),
+        ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Sticker.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class LinkPreviewTypeStickerSet extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'stickers': stickers.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'stickers': stickers.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

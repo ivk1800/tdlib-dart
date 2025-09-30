@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat action bar was changed
 @immutable
 class UpdateChatActionBar extends Update {
-  const UpdateChatActionBar({
-    required this.chatId,
-    this.actionBar,
-  });
+  const UpdateChatActionBar({required this.chatId, this.actionBar});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -25,8 +22,9 @@ class UpdateChatActionBar extends Update {
 
     return UpdateChatActionBar(
       chatId: json['chat_id'] as int,
-      actionBar:
-          ChatActionBar.fromJson(json['action_bar'] as Map<String, dynamic>?),
+      actionBar: ChatActionBar.fromJson(
+        json['action_bar'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -35,10 +33,10 @@ class UpdateChatActionBar extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'action_bar': actionBar?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'action_bar': actionBar?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

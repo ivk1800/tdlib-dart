@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SynchronizeLanguagePack extends TdFunction {
-  const SynchronizeLanguagePack({
-    required this.languagePackId,
-  });
+  const SynchronizeLanguagePack({required this.languagePackId});
 
   /// [languagePackId] Language pack identifier
   final String languagePackId;
@@ -23,9 +21,9 @@ class SynchronizeLanguagePack extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

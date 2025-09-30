@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A graph data
 @immutable
 class StatisticalGraphData extends StatisticalGraph {
-  const StatisticalGraphData({
-    required this.jsonData,
-    required this.zoomToken,
-  });
+  const StatisticalGraphData({required this.jsonData, required this.zoomToken});
 
   /// [jsonData] Graph data in JSON format
   final String jsonData;
@@ -35,10 +32,10 @@ class StatisticalGraphData extends StatisticalGraph {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'json_data': jsonData,
-        'zoom_token': zoomToken,
-        '@type': constructor,
-      };
+    'json_data': jsonData,
+    'zoom_token': zoomToken,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

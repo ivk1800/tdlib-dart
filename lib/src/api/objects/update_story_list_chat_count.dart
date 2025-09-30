@@ -25,8 +25,9 @@ class UpdateStoryListChatCount extends Update {
     }
 
     return UpdateStoryListChatCount(
-      storyList:
-          StoryList.fromJson(json['story_list'] as Map<String, dynamic>?)!,
+      storyList: StoryList.fromJson(
+        json['story_list'] as Map<String, dynamic>?,
+      )!,
       chatCount: json['chat_count'] as int,
     );
   }
@@ -36,10 +37,10 @@ class UpdateStoryListChatCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_list': storyList.toJson(),
-        'chat_count': chatCount,
-        '@type': constructor,
-      };
+    'story_list': storyList.toJson(),
+    'chat_count': chatCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

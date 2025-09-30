@@ -12,10 +12,10 @@ class UpdateGroupCallParticipant extends Update {
     required this.participant,
   });
 
-  /// [groupCallId] Identifier of group call
+  /// [groupCallId] Identifier of the group call
   final int groupCallId;
 
-  /// [participant] New data about a participant
+  /// [participant] New data about the participant
   final GroupCallParticipant participant;
 
   static const String constructor = 'updateGroupCallParticipant';
@@ -28,7 +28,8 @@ class UpdateGroupCallParticipant extends Update {
     return UpdateGroupCallParticipant(
       groupCallId: json['group_call_id'] as int,
       participant: GroupCallParticipant.fromJson(
-          json['participant'] as Map<String, dynamic>?)!,
+        json['participant'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +38,10 @@ class UpdateGroupCallParticipant extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'participant': participant.toJson(),
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'participant': participant.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

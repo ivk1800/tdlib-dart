@@ -32,7 +32,8 @@ class ChatEventProfileAccentColorChanged extends ChatEventAction {
   static const String constructor = 'chatEventProfileAccentColorChanged';
 
   static ChatEventProfileAccentColorChanged? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -52,14 +53,14 @@ class ChatEventProfileAccentColorChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_profile_accent_color_id': oldProfileAccentColorId,
-        'old_profile_background_custom_emoji_id':
-            oldProfileBackgroundCustomEmojiId.toString(),
-        'new_profile_accent_color_id': newProfileAccentColorId,
-        'new_profile_background_custom_emoji_id':
-            newProfileBackgroundCustomEmojiId.toString(),
-        '@type': constructor,
-      };
+    'old_profile_accent_color_id': oldProfileAccentColorId,
+    'old_profile_background_custom_emoji_id': oldProfileBackgroundCustomEmojiId
+        .toString(),
+    'new_profile_accent_color_id': newProfileAccentColorId,
+    'new_profile_background_custom_emoji_id': newProfileBackgroundCustomEmojiId
+        .toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// updateNotificationGroup update
 @immutable
 class UpdateActiveNotifications extends Update {
-  const UpdateActiveNotifications({
-    required this.groups,
-  });
+  const UpdateActiveNotifications({required this.groups});
 
   /// [groups] Lists of active notification groups
   final List<NotificationGroup> groups;
@@ -24,9 +22,10 @@ class UpdateActiveNotifications extends Update {
 
     return UpdateActiveNotifications(
       groups: List<NotificationGroup>.from(
-          ((json['groups'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => NotificationGroup.fromJson(item))
-              .toList()),
+        ((json['groups'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => NotificationGroup.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -35,9 +34,9 @@ class UpdateActiveNotifications extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'groups': groups.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'groups': groups.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

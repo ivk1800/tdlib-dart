@@ -27,10 +27,10 @@ class GetSavedMessagesTopicMessageByDate extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'date': date,
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

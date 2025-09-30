@@ -32,15 +32,18 @@ class ChatFolderInviteLinkInfo extends TdObject {
 
     return ChatFolderInviteLinkInfo(
       chatFolderInfo: ChatFolderInfo.fromJson(
-          json['chat_folder_info'] as Map<String, dynamic>?)!,
+        json['chat_folder_info'] as Map<String, dynamic>?,
+      )!,
       missingChatIds: List<int>.from(
-          ((json['missing_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['missing_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       addedChatIds: List<int>.from(
-          ((json['added_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -49,11 +52,11 @@ class ChatFolderInviteLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_info': chatFolderInfo.toJson(),
-        'missing_chat_ids': missingChatIds.map((item) => item).toList(),
-        'added_chat_ids': addedChatIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'chat_folder_info': chatFolderInfo.toJson(),
+    'missing_chat_ids': missingChatIds.map((item) => item).toList(),
+    'added_chat_ids': addedChatIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// received private chat and replace chat draft with the provided text
 @immutable
 class InternalLinkTypeBusinessChat extends InternalLinkType {
-  const InternalLinkTypeBusinessChat({
-    required this.linkName,
-  });
+  const InternalLinkTypeBusinessChat({required this.linkName});
 
   /// [linkName] Name of the link
   final String linkName;
@@ -21,9 +19,7 @@ class InternalLinkTypeBusinessChat extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypeBusinessChat(
-      linkName: json['link_name'] as String,
-    );
+    return InternalLinkTypeBusinessChat(linkName: json['link_name'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class InternalLinkTypeBusinessChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link_name': linkName,
-        '@type': constructor,
-      };
+    'link_name': linkName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

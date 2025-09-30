@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes the current weather
 @immutable
 class CurrentWeather extends TdObject {
-  const CurrentWeather({
-    required this.temperature,
-    required this.emoji,
-  });
+  const CurrentWeather({required this.temperature, required this.emoji});
 
   /// [temperature] Temperature, in degree Celsius
   final double temperature;
@@ -34,10 +31,10 @@ class CurrentWeather extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'temperature': temperature,
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'temperature': temperature,
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetLogVerbosityLevel extends TdFunction {
-  const SetLogVerbosityLevel({
-    required this.newVerbosityLevel,
-  });
+  const SetLogVerbosityLevel({required this.newVerbosityLevel});
 
   /// [newVerbosityLevel] New value of the verbosity level for logging. Value 0
   /// corresponds to fatal errors, value 1 corresponds to errors, value 2
@@ -26,9 +24,9 @@ class SetLogVerbosityLevel extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'new_verbosity_level': newVerbosityLevel,
-        '@type': constructor,
-      };
+    'new_verbosity_level': newVerbosityLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

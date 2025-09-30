@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// message, which can be viewed from another active session
 @immutable
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
-  const AuthenticationCodeTypeTelegramMessage({
-    required this.length,
-  });
+  const AuthenticationCodeTypeTelegramMessage({required this.length});
 
   /// [length] Length of the code
   final int length;
@@ -16,14 +14,13 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   static const String constructor = 'authenticationCodeTypeTelegramMessage';
 
   static AuthenticationCodeTypeTelegramMessage? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return AuthenticationCodeTypeTelegramMessage(
-      length: json['length'] as int,
-    );
+    return AuthenticationCodeTypeTelegramMessage(length: json['length'] as int);
   }
 
   @override
@@ -31,9 +28,9 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'length': length,
-        '@type': constructor,
-      };
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

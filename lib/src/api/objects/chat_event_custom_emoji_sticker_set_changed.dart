@@ -19,7 +19,8 @@ class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
   static const String constructor = 'chatEventCustomEmojiStickerSetChanged';
 
   static ChatEventCustomEmojiStickerSetChanged? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class ChatEventCustomEmojiStickerSetChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_sticker_set_id': oldStickerSetId.toString(),
-        'new_sticker_set_id': newStickerSetId.toString(),
-        '@type': constructor,
-      };
+    'old_sticker_set_id': oldStickerSetId.toString(),
+    'new_sticker_set_id': newStickerSetId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

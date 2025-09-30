@@ -41,11 +41,11 @@ class UpdateMessageSendFailed extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        'old_message_id': oldMessageId,
-        'error': error.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    'old_message_id': oldMessageId,
+    'error': error.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

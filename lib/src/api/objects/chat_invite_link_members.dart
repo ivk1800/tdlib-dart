@@ -26,9 +26,10 @@ class ChatInviteLinkMembers extends TdObject {
     return ChatInviteLinkMembers(
       totalCount: json['total_count'] as int,
       members: List<ChatInviteLinkMember>.from(
-          ((json['members'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatInviteLinkMember.fromJson(item))
-              .toList()),
+        ((json['members'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatInviteLinkMember.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class ChatInviteLinkMembers extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'members': members.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'members': members.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBirthdate extends TdFunction {
-  const SetBirthdate({
-    this.birthdate,
-  });
+  const SetBirthdate({this.birthdate});
 
   /// [birthdate] The new value of the current user's birthdate; pass null to
   /// remove the birthdate
@@ -21,9 +19,9 @@ class SetBirthdate extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'birthdate': birthdate?.toJson(),
-        '@type': constructor,
-      };
+    'birthdate': birthdate?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

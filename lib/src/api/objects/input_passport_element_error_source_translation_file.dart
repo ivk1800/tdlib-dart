@@ -19,7 +19,8 @@ class InputPassportElementErrorSourceTranslationFile
       'inputPassportElementErrorSourceTranslationFile';
 
   static InputPassportElementErrorSourceTranslationFile? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -34,9 +35,9 @@ class InputPassportElementErrorSourceTranslationFile
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_hash': fileHash,
-        '@type': constructor,
-      };
+    'file_hash': fileHash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

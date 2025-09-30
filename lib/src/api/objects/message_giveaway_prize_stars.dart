@@ -57,14 +57,14 @@ class MessageGiveawayPrizeStars extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'transaction_id': transactionId,
-        'boosted_chat_id': boostedChatId,
-        'giveaway_message_id': giveawayMessageId,
-        'is_unclaimed': isUnclaimed,
-        'sticker': sticker?.toJson(),
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'transaction_id': transactionId,
+    'boosted_chat_id': boostedChatId,
+    'giveaway_message_id': giveawayMessageId,
+    'is_unclaimed': isUnclaimed,
+    'sticker': sticker?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

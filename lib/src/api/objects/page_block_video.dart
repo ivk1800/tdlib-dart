@@ -33,8 +33,9 @@ class PageBlockVideo extends PageBlock {
 
     return PageBlockVideo(
       video: Video.fromJson(json['video'] as Map<String, dynamic>?),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       needAutoplay: json['need_autoplay'] as bool,
       isLooped: json['is_looped'] as bool,
     );
@@ -45,12 +46,12 @@ class PageBlockVideo extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video': video?.toJson(),
-        'caption': caption.toJson(),
-        'need_autoplay': needAutoplay,
-        'is_looped': isLooped,
-        '@type': constructor,
-      };
+    'video': video?.toJson(),
+    'caption': caption.toJson(),
+    'need_autoplay': needAutoplay,
+    'is_looped': isLooped,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessStartPage extends TdFunction {
-  const SetBusinessStartPage({
-    this.startPage,
-  });
+  const SetBusinessStartPage({this.startPage});
 
   /// [startPage] The new start page of the business; pass null to remove custom
   /// start page
@@ -22,9 +20,9 @@ class SetBusinessStartPage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'start_page': startPage?.toJson(),
-        '@type': constructor,
-      };
+    'start_page': startPage?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

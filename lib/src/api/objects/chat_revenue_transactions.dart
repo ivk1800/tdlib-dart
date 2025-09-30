@@ -26,9 +26,10 @@ class ChatRevenueTransactions extends TdObject {
     return ChatRevenueTransactions(
       totalCount: json['total_count'] as int,
       transactions: List<ChatRevenueTransaction>.from(
-          ((json['transactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatRevenueTransaction.fromJson(item))
-              .toList()),
+        ((json['transactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatRevenueTransaction.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class ChatRevenueTransactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'transactions': transactions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'transactions': transactions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

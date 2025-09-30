@@ -24,10 +24,10 @@ class SendCallDebugInformation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        'debug_information': debugInformation,
-        '@type': constructor,
-      };
+    'call_id': callId,
+    'debug_information': debugInformation,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

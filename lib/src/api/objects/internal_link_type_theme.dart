@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a cloud theme. TDLib has no theme support yet
 @immutable
 class InternalLinkTypeTheme extends InternalLinkType {
-  const InternalLinkTypeTheme({
-    required this.themeName,
-  });
+  const InternalLinkTypeTheme({required this.themeName});
 
   /// [themeName] Name of the theme
   final String themeName;
@@ -19,9 +17,7 @@ class InternalLinkTypeTheme extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypeTheme(
-      themeName: json['theme_name'] as String,
-    );
+    return InternalLinkTypeTheme(themeName: json['theme_name'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class InternalLinkTypeTheme extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'theme_name': themeName,
-        '@type': constructor,
-      };
+    'theme_name': themeName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

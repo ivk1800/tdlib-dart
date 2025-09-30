@@ -37,10 +37,10 @@ class ReplyMarkupForceReply extends ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_personal': isPersonal,
-        'input_field_placeholder': inputFieldPlaceholder,
-        '@type': constructor,
-      };
+    'is_personal': isPersonal,
+    'input_field_placeholder': inputFieldPlaceholder,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

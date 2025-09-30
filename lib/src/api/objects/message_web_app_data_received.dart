@@ -35,10 +35,10 @@ class MessageWebAppDataReceived extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'button_text': buttonText,
-        'data': data,
-        '@type': constructor,
-      };
+    'button_text': buttonText,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

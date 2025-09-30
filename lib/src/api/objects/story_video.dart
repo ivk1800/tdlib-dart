@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a video file sent in a story
+/// Describes a video file posted as a story
 @immutable
 class StoryVideo extends TdObject {
   const StoryVideo({
@@ -64,7 +64,8 @@ class StoryVideo extends TdObject {
       hasStickers: json['has_stickers'] as bool,
       isAnimation: json['is_animation'] as bool,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       preloadPrefixSize: json['preload_prefix_size'] as int,
       coverFrameTimestamp: (json['cover_frame_timestamp'] as num).toDouble(),
@@ -77,18 +78,18 @@ class StoryVideo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'has_stickers': hasStickers,
-        'is_animation': isAnimation,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'preload_prefix_size': preloadPrefixSize,
-        'cover_frame_timestamp': coverFrameTimestamp,
-        'video': video.toJson(),
-        '@type': constructor,
-      };
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'has_stickers': hasStickers,
+    'is_animation': isAnimation,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'preload_prefix_size': preloadPrefixSize,
+    'cover_frame_timestamp': coverFrameTimestamp,
+    'video': video.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

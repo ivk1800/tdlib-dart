@@ -43,15 +43,18 @@ class PageBlockEmbeddedPost extends PageBlock {
     return PageBlockEmbeddedPost(
       url: json['url'] as String,
       author: json['author'] as String,
-      authorPhoto:
-          Photo.fromJson(json['author_photo'] as Map<String, dynamic>?),
+      authorPhoto: Photo.fromJson(
+        json['author_photo'] as Map<String, dynamic>?,
+      ),
       date: json['date'] as int,
       pageBlocks: List<PageBlock>.from(
-          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlock.fromJson(item))
-              .toList()),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+        ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlock.fromJson(item))
+            .toList(),
+      ),
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -60,14 +63,14 @@ class PageBlockEmbeddedPost extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'author': author,
-        'author_photo': authorPhoto?.toJson(),
-        'date': date,
-        'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'url': url,
+    'author': author,
+    'author_photo': authorPhoto?.toJson(),
+    'date': date,
+    'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

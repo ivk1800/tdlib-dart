@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Data from a Web App has been sent to a bot
 @immutable
 class MessageWebAppDataSent extends MessageContent {
-  const MessageWebAppDataSent({
-    required this.buttonText,
-  });
+  const MessageWebAppDataSent({required this.buttonText});
 
   /// [buttonText] Text of the keyboardButtonTypeWebApp button, which opened the
   /// Web App
@@ -20,9 +18,7 @@ class MessageWebAppDataSent extends MessageContent {
       return null;
     }
 
-    return MessageWebAppDataSent(
-      buttonText: json['button_text'] as String,
-    );
+    return MessageWebAppDataSent(buttonText: json['button_text'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessageWebAppDataSent extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'button_text': buttonText,
-        '@type': constructor,
-      };
+    'button_text': buttonText,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

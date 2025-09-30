@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [DeepLinkInfo]
 @immutable
 class GetDeepLinkInfo extends TdFunction {
-  const GetDeepLinkInfo({
-    required this.link,
-  });
+  const GetDeepLinkInfo({required this.link});
 
   /// [link] The link
   final String link;
@@ -23,9 +21,9 @@ class GetDeepLinkInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

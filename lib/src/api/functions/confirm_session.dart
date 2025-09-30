@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ConfirmSession extends TdFunction {
-  const ConfirmSession({
-    required this.sessionId,
-  });
+  const ConfirmSession({required this.sessionId});
 
   /// [sessionId] Session identifier
   final int sessionId;
@@ -20,9 +18,9 @@ class ConfirmSession extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'session_id': sessionId,
-        '@type': constructor,
-      };
+    'session_id': sessionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

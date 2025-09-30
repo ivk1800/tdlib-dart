@@ -10,7 +10,8 @@ class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
   static const String constructor = 'pageBlockVerticalAlignmentBottom';
 
   static PageBlockVerticalAlignmentBottom? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -22,9 +23,7 @@ class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

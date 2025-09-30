@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// application
 @immutable
 class UpdateQuickReplyShortcut extends Update {
-  const UpdateQuickReplyShortcut({
-    required this.shortcut,
-  });
+  const UpdateQuickReplyShortcut({required this.shortcut});
 
   /// [shortcut] New data about the shortcut
   final QuickReplyShortcut shortcut;
@@ -23,7 +21,8 @@ class UpdateQuickReplyShortcut extends Update {
 
     return UpdateQuickReplyShortcut(
       shortcut: QuickReplyShortcut.fromJson(
-          json['shortcut'] as Map<String, dynamic>?)!,
+        json['shortcut'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateQuickReplyShortcut extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut': shortcut.toJson(),
-        '@type': constructor,
-      };
+    'shortcut': shortcut.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

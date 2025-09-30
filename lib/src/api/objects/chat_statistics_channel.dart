@@ -48,16 +48,16 @@ class ChatStatisticsChannel extends ChatStatistics {
   /// the recently sent messages
   final StatisticalValue meanMessageReactionCount;
 
-  /// [meanStoryViewCount] Mean number of times the recently sent stories were
+  /// [meanStoryViewCount] Mean number of times the recently posted stories were
   /// viewed
   final StatisticalValue meanStoryViewCount;
 
-  /// [meanStoryShareCount] Mean number of times the recently sent stories were
-  /// shared
+  /// [meanStoryShareCount] Mean number of times the recently posted stories
+  /// were shared
   final StatisticalValue meanStoryShareCount;
 
   /// [meanStoryReactionCount] Mean number of times reactions were added to the
-  /// recently sent stories
+  /// recently posted stories
   final StatisticalValue meanStoryReactionCount;
 
   /// [enabledNotificationsPercentage] A percentage of users with enabled
@@ -109,7 +109,7 @@ class ChatStatisticsChannel extends ChatStatistics {
   final StatisticalGraph instantViewInteractionGraph;
 
   /// [recentInteractions] Detailed statistics about number of views and shares
-  /// of recently sent messages and stories
+  /// of recently sent messages and posted stories
   final List<ChatStatisticsInteractionInfo> recentInteractions;
 
   static const String constructor = 'chatStatisticsChannel';
@@ -122,49 +122,69 @@ class ChatStatisticsChannel extends ChatStatistics {
     return ChatStatisticsChannel(
       period: DateRange.fromJson(json['period'] as Map<String, dynamic>?)!,
       memberCount: StatisticalValue.fromJson(
-          json['member_count'] as Map<String, dynamic>?)!,
+        json['member_count'] as Map<String, dynamic>?,
+      )!,
       meanMessageViewCount: StatisticalValue.fromJson(
-          json['mean_message_view_count'] as Map<String, dynamic>?)!,
+        json['mean_message_view_count'] as Map<String, dynamic>?,
+      )!,
       meanMessageShareCount: StatisticalValue.fromJson(
-          json['mean_message_share_count'] as Map<String, dynamic>?)!,
+        json['mean_message_share_count'] as Map<String, dynamic>?,
+      )!,
       meanMessageReactionCount: StatisticalValue.fromJson(
-          json['mean_message_reaction_count'] as Map<String, dynamic>?)!,
+        json['mean_message_reaction_count'] as Map<String, dynamic>?,
+      )!,
       meanStoryViewCount: StatisticalValue.fromJson(
-          json['mean_story_view_count'] as Map<String, dynamic>?)!,
+        json['mean_story_view_count'] as Map<String, dynamic>?,
+      )!,
       meanStoryShareCount: StatisticalValue.fromJson(
-          json['mean_story_share_count'] as Map<String, dynamic>?)!,
+        json['mean_story_share_count'] as Map<String, dynamic>?,
+      )!,
       meanStoryReactionCount: StatisticalValue.fromJson(
-          json['mean_story_reaction_count'] as Map<String, dynamic>?)!,
+        json['mean_story_reaction_count'] as Map<String, dynamic>?,
+      )!,
       enabledNotificationsPercentage:
           (json['enabled_notifications_percentage'] as num).toDouble(),
       memberCountGraph: StatisticalGraph.fromJson(
-          json['member_count_graph'] as Map<String, dynamic>?)!,
+        json['member_count_graph'] as Map<String, dynamic>?,
+      )!,
       joinGraph: StatisticalGraph.fromJson(
-          json['join_graph'] as Map<String, dynamic>?)!,
+        json['join_graph'] as Map<String, dynamic>?,
+      )!,
       muteGraph: StatisticalGraph.fromJson(
-          json['mute_graph'] as Map<String, dynamic>?)!,
+        json['mute_graph'] as Map<String, dynamic>?,
+      )!,
       viewCountByHourGraph: StatisticalGraph.fromJson(
-          json['view_count_by_hour_graph'] as Map<String, dynamic>?)!,
+        json['view_count_by_hour_graph'] as Map<String, dynamic>?,
+      )!,
       viewCountBySourceGraph: StatisticalGraph.fromJson(
-          json['view_count_by_source_graph'] as Map<String, dynamic>?)!,
+        json['view_count_by_source_graph'] as Map<String, dynamic>?,
+      )!,
       joinBySourceGraph: StatisticalGraph.fromJson(
-          json['join_by_source_graph'] as Map<String, dynamic>?)!,
+        json['join_by_source_graph'] as Map<String, dynamic>?,
+      )!,
       languageGraph: StatisticalGraph.fromJson(
-          json['language_graph'] as Map<String, dynamic>?)!,
+        json['language_graph'] as Map<String, dynamic>?,
+      )!,
       messageInteractionGraph: StatisticalGraph.fromJson(
-          json['message_interaction_graph'] as Map<String, dynamic>?)!,
+        json['message_interaction_graph'] as Map<String, dynamic>?,
+      )!,
       messageReactionGraph: StatisticalGraph.fromJson(
-          json['message_reaction_graph'] as Map<String, dynamic>?)!,
+        json['message_reaction_graph'] as Map<String, dynamic>?,
+      )!,
       storyInteractionGraph: StatisticalGraph.fromJson(
-          json['story_interaction_graph'] as Map<String, dynamic>?)!,
+        json['story_interaction_graph'] as Map<String, dynamic>?,
+      )!,
       storyReactionGraph: StatisticalGraph.fromJson(
-          json['story_reaction_graph'] as Map<String, dynamic>?)!,
+        json['story_reaction_graph'] as Map<String, dynamic>?,
+      )!,
       instantViewInteractionGraph: StatisticalGraph.fromJson(
-          json['instant_view_interaction_graph'] as Map<String, dynamic>?)!,
+        json['instant_view_interaction_graph'] as Map<String, dynamic>?,
+      )!,
       recentInteractions: List<ChatStatisticsInteractionInfo>.from(
-          ((json['recent_interactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatStatisticsInteractionInfo.fromJson(item))
-              .toList()),
+        ((json['recent_interactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatStatisticsInteractionInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -173,31 +193,32 @@ class ChatStatisticsChannel extends ChatStatistics {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'period': period.toJson(),
-        'member_count': memberCount.toJson(),
-        'mean_message_view_count': meanMessageViewCount.toJson(),
-        'mean_message_share_count': meanMessageShareCount.toJson(),
-        'mean_message_reaction_count': meanMessageReactionCount.toJson(),
-        'mean_story_view_count': meanStoryViewCount.toJson(),
-        'mean_story_share_count': meanStoryShareCount.toJson(),
-        'mean_story_reaction_count': meanStoryReactionCount.toJson(),
-        'enabled_notifications_percentage': enabledNotificationsPercentage,
-        'member_count_graph': memberCountGraph.toJson(),
-        'join_graph': joinGraph.toJson(),
-        'mute_graph': muteGraph.toJson(),
-        'view_count_by_hour_graph': viewCountByHourGraph.toJson(),
-        'view_count_by_source_graph': viewCountBySourceGraph.toJson(),
-        'join_by_source_graph': joinBySourceGraph.toJson(),
-        'language_graph': languageGraph.toJson(),
-        'message_interaction_graph': messageInteractionGraph.toJson(),
-        'message_reaction_graph': messageReactionGraph.toJson(),
-        'story_interaction_graph': storyInteractionGraph.toJson(),
-        'story_reaction_graph': storyReactionGraph.toJson(),
-        'instant_view_interaction_graph': instantViewInteractionGraph.toJson(),
-        'recent_interactions':
-            recentInteractions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'period': period.toJson(),
+    'member_count': memberCount.toJson(),
+    'mean_message_view_count': meanMessageViewCount.toJson(),
+    'mean_message_share_count': meanMessageShareCount.toJson(),
+    'mean_message_reaction_count': meanMessageReactionCount.toJson(),
+    'mean_story_view_count': meanStoryViewCount.toJson(),
+    'mean_story_share_count': meanStoryShareCount.toJson(),
+    'mean_story_reaction_count': meanStoryReactionCount.toJson(),
+    'enabled_notifications_percentage': enabledNotificationsPercentage,
+    'member_count_graph': memberCountGraph.toJson(),
+    'join_graph': joinGraph.toJson(),
+    'mute_graph': muteGraph.toJson(),
+    'view_count_by_hour_graph': viewCountByHourGraph.toJson(),
+    'view_count_by_source_graph': viewCountBySourceGraph.toJson(),
+    'join_by_source_graph': joinBySourceGraph.toJson(),
+    'language_graph': languageGraph.toJson(),
+    'message_interaction_graph': messageInteractionGraph.toJson(),
+    'message_reaction_graph': messageReactionGraph.toJson(),
+    'story_interaction_graph': storyInteractionGraph.toJson(),
+    'story_reaction_graph': storyReactionGraph.toJson(),
+    'instant_view_interaction_graph': instantViewInteractionGraph.toJson(),
+    'recent_interactions': recentInteractions
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

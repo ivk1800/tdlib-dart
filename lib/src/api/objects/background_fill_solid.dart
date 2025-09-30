@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Describes a solid fill of a background
 @immutable
 class BackgroundFillSolid extends BackgroundFill {
-  const BackgroundFillSolid({
-    required this.color,
-  });
+  const BackgroundFillSolid({required this.color});
 
   /// [color] A color of the background in the RGB format
   final int color;
@@ -19,9 +17,7 @@ class BackgroundFillSolid extends BackgroundFill {
       return null;
     }
 
-    return BackgroundFillSolid(
-      color: json['color'] as int,
-    );
+    return BackgroundFillSolid(color: json['color'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class BackgroundFillSolid extends BackgroundFill {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'color': color,
-        '@type': constructor,
-      };
+    'color': color,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

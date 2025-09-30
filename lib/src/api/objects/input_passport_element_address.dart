@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A Telegram Passport element to be saved containing the user's address
 @immutable
 class InputPassportElementAddress extends InputPassportElement {
-  const InputPassportElementAddress({
-    required this.address,
-  });
+  const InputPassportElementAddress({required this.address});
 
   /// [address] The address to be saved
   final Address address;
@@ -29,9 +27,9 @@ class InputPassportElementAddress extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'address': address.toJson(),
-        '@type': constructor,
-      };
+    'address': address.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

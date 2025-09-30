@@ -3,8 +3,9 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a Web App. Call searchPublicChat with the given bot
-/// username, check that the user is a bot, then call searchWebApp with the
-/// received bot and the given web_app_short_name. Process received
+/// username, check that the user is a bot. If the bot is restricted for the
+/// current user, then show an error message. Otherwise, call searchWebApp
+/// with the received bot and the given web_app_short_name. Process received
 /// foundWebApp by showing a confirmation dialog if needed. If the bot can be
 /// added to attachment or side menu, but isn't added yet, then show a
 /// disclaimer about Mini Apps being third-party applications instead of the
@@ -18,7 +19,7 @@ class InternalLinkTypeWebApp extends InternalLinkType {
     required this.botUsername,
     required this.webAppShortName,
     required this.startParameter,
-    required this.isCompact,
+    required this.mode,
   });
 
   /// [botUsername] Username of the bot that owns the Web App
@@ -30,9 +31,8 @@ class InternalLinkTypeWebApp extends InternalLinkType {
   /// [startParameter] Start parameter to be passed to getWebAppLinkUrl
   final String startParameter;
 
-  /// [isCompact] True, if the Web App must be opened in the compact mode
-  /// instead of the full-size mode
-  final bool isCompact;
+  /// [mode] The mode in which the Web App must be opened
+  final WebAppOpenMode mode;
 
   static const String constructor = 'internalLinkTypeWebApp';
 
@@ -45,7 +45,7 @@ class InternalLinkTypeWebApp extends InternalLinkType {
       botUsername: json['bot_username'] as String,
       webAppShortName: json['web_app_short_name'] as String,
       startParameter: json['start_parameter'] as String,
-      isCompact: json['is_compact'] as bool,
+      mode: WebAppOpenMode.fromJson(json['mode'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -54,12 +54,12 @@ class InternalLinkTypeWebApp extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'web_app_short_name': webAppShortName,
-        'start_parameter': startParameter,
-        'is_compact': isCompact,
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'web_app_short_name': webAppShortName,
+    'start_parameter': startParameter,
+    'mode': mode.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

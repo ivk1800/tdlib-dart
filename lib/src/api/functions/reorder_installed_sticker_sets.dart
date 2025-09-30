@@ -25,10 +25,10 @@ class ReorderInstalledStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

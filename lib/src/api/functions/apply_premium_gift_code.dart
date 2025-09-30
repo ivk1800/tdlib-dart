@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ApplyPremiumGiftCode extends TdFunction {
-  const ApplyPremiumGiftCode({
-    required this.code,
-  });
+  const ApplyPremiumGiftCode({required this.code});
 
   /// [code] The code to apply
   final String code;
@@ -20,9 +18,9 @@ class ApplyPremiumGiftCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        '@type': constructor,
-      };
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [Chats]
 @immutable
 class GetChats extends TdFunction {
-  const GetChats({
-    this.chatList,
-    required this.limit,
-  });
+  const GetChats({this.chatList, required this.limit});
 
   /// [chatList] The chat list in which to return chats; pass null to get chats
   /// from the main chat list
@@ -27,10 +24,10 @@ class GetChats extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_list': chatList?.toJson(),
-        'limit': limit,
-        '@type': constructor,
-      };
+    'chat_list': chatList?.toJson(),
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

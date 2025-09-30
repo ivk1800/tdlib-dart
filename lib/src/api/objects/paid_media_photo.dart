@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The media is a photo
 @immutable
 class PaidMediaPhoto extends PaidMedia {
-  const PaidMediaPhoto({
-    required this.photo,
-  });
+  const PaidMediaPhoto({required this.photo});
 
   /// [photo] The photo
   final Photo photo;
@@ -29,9 +27,9 @@ class PaidMediaPhoto extends PaidMedia {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

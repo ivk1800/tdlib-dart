@@ -34,9 +34,11 @@ class AuthenticationCodeInfo extends TdObject {
     return AuthenticationCodeInfo(
       phoneNumber: json['phone_number'] as String,
       type: AuthenticationCodeType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
       nextType: AuthenticationCodeType.fromJson(
-          json['next_type'] as Map<String, dynamic>?),
+        json['next_type'] as Map<String, dynamic>?,
+      ),
       timeout: json['timeout'] as int,
     );
   }
@@ -46,12 +48,12 @@ class AuthenticationCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'type': type.toJson(),
-        'next_type': nextType?.toJson(),
-        'timeout': timeout,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'type': type.toJson(),
+    'next_type': nextType?.toJson(),
+    'timeout': timeout,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

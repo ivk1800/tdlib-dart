@@ -19,7 +19,7 @@ class UpdateAccentColors extends Update {
 
   /// [availableAccentColorIds] The list of accent color identifiers, which can
   /// be set through setAccentColor and setChatAccentColor. The colors must be
-  /// shown in the specififed order
+  /// shown in the specified order
   final List<int> availableAccentColorIds;
 
   static const String constructor = 'updateAccentColors';
@@ -31,14 +31,15 @@ class UpdateAccentColors extends Update {
 
     return UpdateAccentColors(
       colors: List<AccentColor>.from(
-          ((json['colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AccentColor.fromJson(item))
-              .toList()),
+        ((json['colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AccentColor.fromJson(item))
+            .toList(),
+      ),
       availableAccentColorIds: List<int>.from(
-          ((json['available_accent_color_ids'] as List<dynamic>?) ??
-                  <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['available_accent_color_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -47,11 +48,12 @@ class UpdateAccentColors extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'colors': colors.map((item) => item.toJson()).toList(),
-        'available_accent_color_ids':
-            availableAccentColorIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'colors': colors.map((item) => item.toJson()).toList(),
+    'available_accent_color_ids': availableAccentColorIds
+        .map((item) => item)
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

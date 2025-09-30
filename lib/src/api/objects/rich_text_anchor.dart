@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An anchor
 @immutable
 class RichTextAnchor extends RichText {
-  const RichTextAnchor({
-    required this.name,
-  });
+  const RichTextAnchor({required this.name});
 
   /// [name] Anchor name
   final String name;
@@ -19,9 +17,7 @@ class RichTextAnchor extends RichText {
       return null;
     }
 
-    return RichTextAnchor(
-      name: json['name'] as String,
-    );
+    return RichTextAnchor(name: json['name'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class RichTextAnchor extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

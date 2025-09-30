@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents an audio file
 @immutable
 class InlineQueryResultAudio extends InlineQueryResult {
-  const InlineQueryResultAudio({
-    required this.id,
-    required this.audio,
-  });
+  const InlineQueryResultAudio({required this.id, required this.audio});
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -34,10 +31,10 @@ class InlineQueryResultAudio extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'audio': audio.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'audio': audio.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

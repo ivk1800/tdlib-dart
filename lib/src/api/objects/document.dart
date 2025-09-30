@@ -40,7 +40,8 @@ class Document extends TdObject {
       fileName: json['file_name'] as String,
       mimeType: json['mime_type'] as String,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       document: File.fromJson(json['document'] as Map<String, dynamic>?)!,
     );
@@ -51,13 +52,13 @@ class Document extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'document': document.toJson(),
-        '@type': constructor,
-      };
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'document': document.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

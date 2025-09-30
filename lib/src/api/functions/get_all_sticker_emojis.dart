@@ -34,12 +34,12 @@ class GetAllStickerEmojis extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'chat_id': chatId,
-        'return_only_main_emoji': returnOnlyMainEmoji,
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'chat_id': chatId,
+    'return_only_main_emoji': returnOnlyMainEmoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

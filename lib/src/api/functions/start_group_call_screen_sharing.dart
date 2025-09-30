@@ -30,11 +30,11 @@ class StartGroupCallScreenSharing extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'audio_source_id': audioSourceId,
-        'payload': payload,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'audio_source_id': audioSourceId,
+    'payload': payload,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

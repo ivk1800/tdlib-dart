@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Starts recording of an active group call. Requires
-/// groupCall.can_be_managed group call flag
+/// Starts recording of an active group call; for video chats only. Requires
+/// groupCall.can_be_managed right
 /// Returns [Ok]
 @immutable
 class StartGroupCallRecording extends TdFunction {
@@ -34,12 +34,12 @@ class StartGroupCallRecording extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'title': title,
-        'record_video': recordVideo,
-        'use_portrait_orientation': usePortraitOrientation,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'title': title,
+    'record_video': recordVideo,
+    'use_portrait_orientation': usePortraitOrientation,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetStickerEmojis extends TdFunction {
-  const SetStickerEmojis({
-    required this.sticker,
-    required this.emojis,
-  });
+  const SetStickerEmojis({required this.sticker, required this.emojis});
 
   /// [sticker] Sticker
   final InputFile sticker;
@@ -26,10 +23,10 @@ class SetStickerEmojis extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        'emojis': emojis,
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    'emojis': emojis,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

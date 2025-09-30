@@ -39,11 +39,11 @@ class InputStoryAreaTypeWeather extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'temperature': temperature,
-        'emoji': emoji,
-        'background_color': backgroundColor,
-        '@type': constructor,
-      };
+    'temperature': temperature,
+    'emoji': emoji,
+    'background_color': backgroundColor,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

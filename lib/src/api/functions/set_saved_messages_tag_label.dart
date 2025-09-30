@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetSavedMessagesTagLabel extends TdFunction {
-  const SetSavedMessagesTagLabel({
-    required this.tag,
-    required this.label,
-  });
+  const SetSavedMessagesTagLabel({required this.tag, required this.label});
 
   /// [tag] The tag which label will be changed
   final ReactionType tag;
@@ -24,10 +21,10 @@ class SetSavedMessagesTagLabel extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag.toJson(),
-        'label': label,
-        '@type': constructor,
-      };
+    'tag': tag.toJson(),
+    'label': label,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

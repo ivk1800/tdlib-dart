@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Hashtags]
 @immutable
 class SearchHashtags extends TdFunction {
-  const SearchHashtags({
-    required this.prefix,
-    required this.limit,
-  });
+  const SearchHashtags({required this.prefix, required this.limit});
 
   /// [prefix] Hashtag prefix to search for
   final String prefix;
@@ -24,10 +21,10 @@ class SearchHashtags extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'prefix': prefix,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'prefix': prefix,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

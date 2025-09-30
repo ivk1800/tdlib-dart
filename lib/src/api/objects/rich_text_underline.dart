@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An underlined rich text
 @immutable
 class RichTextUnderline extends RichText {
-  const RichTextUnderline({
-    required this.text,
-  });
+  const RichTextUnderline({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextUnderline extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

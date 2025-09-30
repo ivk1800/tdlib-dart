@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [UserFullInfo]
 @immutable
 class GetUserFullInfo extends TdFunction {
-  const GetUserFullInfo({
-    required this.userId,
-  });
+  const GetUserFullInfo({required this.userId});
 
   /// [userId] User identifier
   final int userId;
@@ -20,9 +18,9 @@ class GetUserFullInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

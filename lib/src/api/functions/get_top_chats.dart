@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Chats]
 @immutable
 class GetTopChats extends TdFunction {
-  const GetTopChats({
-    required this.category,
-    required this.limit,
-  });
+  const GetTopChats({required this.category, required this.limit});
 
   /// [category] Category of chats to be returned
   final TopChatCategory category;
@@ -24,10 +21,10 @@ class GetTopChats extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'category': category.toJson(),
-        'limit': limit,
-        '@type': constructor,
-      };
+    'category': category.toJson(),
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

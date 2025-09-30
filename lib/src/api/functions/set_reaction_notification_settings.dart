@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetReactionNotificationSettings extends TdFunction {
-  const SetReactionNotificationSettings({
-    required this.notificationSettings,
-  });
+  const SetReactionNotificationSettings({required this.notificationSettings});
 
   /// [notificationSettings] The new notification settings for reactions
   final ReactionNotificationSettings notificationSettings;
@@ -20,9 +18,9 @@ class SetReactionNotificationSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_settings': notificationSettings.toJson(),
-        '@type': constructor,
-      };
+    'notification_settings': notificationSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

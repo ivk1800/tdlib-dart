@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Chat]
 @immutable
 class CreateSupergroupChat extends TdFunction {
-  const CreateSupergroupChat({
-    required this.supergroupId,
-    required this.force,
-  });
+  const CreateSupergroupChat({required this.supergroupId, required this.force});
 
   /// [supergroupId] Supergroup or channel identifier
   final int supergroupId;
@@ -26,10 +23,10 @@ class CreateSupergroupChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'force': force,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'force': force,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,9 +26,10 @@ class GroupCallVideoSourceGroup extends TdObject {
     return GroupCallVideoSourceGroup(
       semantics: json['semantics'] as String,
       sourceIds: List<int>.from(
-          ((json['source_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['source_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class GroupCallVideoSourceGroup extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'semantics': semantics,
-        'source_ids': sourceIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'semantics': semantics,
+    'source_ids': sourceIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

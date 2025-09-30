@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A media timestamp
 @immutable
 class TextEntityTypeMediaTimestamp extends TextEntityType {
-  const TextEntityTypeMediaTimestamp({
-    required this.mediaTimestamp,
-  });
+  const TextEntityTypeMediaTimestamp({required this.mediaTimestamp});
 
   /// [mediaTimestamp] Timestamp from which a video/audio/video note/voice
   /// note/story playing must start, in seconds. The media can be in the content
@@ -32,9 +30,9 @@ class TextEntityTypeMediaTimestamp extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'media_timestamp': mediaTimestamp,
-        '@type': constructor,
-      };
+    'media_timestamp': mediaTimestamp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -27,10 +27,10 @@ class GetBotMediaPreviewInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

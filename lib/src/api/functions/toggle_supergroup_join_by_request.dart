@@ -26,10 +26,10 @@ class ToggleSupergroupJoinByRequest extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'join_by_request': joinByRequest,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'join_by_request': joinByRequest,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

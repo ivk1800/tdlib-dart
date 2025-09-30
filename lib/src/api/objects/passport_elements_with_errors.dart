@@ -26,13 +26,15 @@ class PassportElementsWithErrors extends TdObject {
 
     return PassportElementsWithErrors(
       elements: List<PassportElement>.from(
-          ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportElement.fromJson(item))
-              .toList()),
+        ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportElement.fromJson(item))
+            .toList(),
+      ),
       errors: List<PassportElementError>.from(
-          ((json['errors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportElementError.fromJson(item))
-              .toList()),
+        ((json['errors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportElementError.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -41,10 +43,10 @@ class PassportElementsWithErrors extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'elements': elements.map((item) => item.toJson()).toList(),
-        'errors': errors.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'elements': elements.map((item) => item.toJson()).toList(),
+    'errors': errors.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

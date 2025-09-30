@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with a game
 @immutable
 class MessageGame extends MessageContent {
-  const MessageGame({
-    required this.game,
-  });
+  const MessageGame({required this.game});
 
   /// [game] The game description
   final Game game;
@@ -29,9 +27,9 @@ class MessageGame extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'game': game.toJson(),
-        '@type': constructor,
-      };
+    'game': game.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

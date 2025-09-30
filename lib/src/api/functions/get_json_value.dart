@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [JsonValue]
 @immutable
 class GetJsonValue extends TdFunction {
-  const GetJsonValue({
-    required this.json,
-  });
+  const GetJsonValue({required this.json});
 
   /// [json] The JSON-serialized string
   final String json;
@@ -21,9 +19,9 @@ class GetJsonValue extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'json': json,
-        '@type': constructor,
-      };
+    'json': json,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

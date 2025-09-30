@@ -11,7 +11,8 @@ class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   static const String constructor = 'searchMessagesFilterFailedToSend';
 
   static SearchMessagesFilterFailedToSend? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -23,9 +24,7 @@ class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

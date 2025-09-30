@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [StarPaymentOptions]
 @immutable
 class GetStarGiftPaymentOptions extends TdFunction {
-  const GetStarGiftPaymentOptions({
-    required this.userId,
-  });
+  const GetStarGiftPaymentOptions({required this.userId});
 
   /// [userId] Identifier of the user that will receive Telegram Stars; pass 0
   /// to get options for an unspecified user
@@ -21,9 +19,9 @@ class GetStarGiftPaymentOptions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

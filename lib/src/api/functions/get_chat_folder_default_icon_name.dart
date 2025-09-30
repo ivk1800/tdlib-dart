@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [ChatFolderIcon]
 @immutable
 class GetChatFolderDefaultIconName extends TdFunction {
-  const GetChatFolderDefaultIconName({
-    required this.folder,
-  });
+  const GetChatFolderDefaultIconName({required this.folder});
 
   /// [folder] Chat folder
   final ChatFolder folder;
@@ -20,9 +18,9 @@ class GetChatFolderDefaultIconName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'folder': folder.toJson(),
-        '@type': constructor,
-      };
+    'folder': folder.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

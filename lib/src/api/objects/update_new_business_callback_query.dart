@@ -45,11 +45,13 @@ class UpdateNewBusinessCallbackQuery extends Update {
       id: int.tryParse(json['id']) ?? 0,
       senderUserId: json['sender_user_id'] as int,
       connectionId: json['connection_id'] as String,
-      message:
-          BusinessMessage.fromJson(json['message'] as Map<String, dynamic>?)!,
+      message: BusinessMessage.fromJson(
+        json['message'] as Map<String, dynamic>?,
+      )!,
       chatInstance: int.tryParse(json['chat_instance']) ?? 0,
       payload: CallbackQueryPayload.fromJson(
-          json['payload'] as Map<String, dynamic>?)!,
+        json['payload'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -58,14 +60,14 @@ class UpdateNewBusinessCallbackQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'connection_id': connectionId,
-        'message': message.toJson(),
-        'chat_instance': chatInstance.toString(),
-        'payload': payload.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'connection_id': connectionId,
+    'message': message.toJson(),
+    'chat_instance': chatInstance.toString(),
+    'payload': payload.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

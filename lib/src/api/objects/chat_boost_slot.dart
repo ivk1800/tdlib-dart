@@ -52,13 +52,13 @@ class ChatBoostSlot extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'slot_id': slotId,
-        'currently_boosted_chat_id': currentlyBoostedChatId,
-        'start_date': startDate,
-        'expiration_date': expirationDate,
-        'cooldown_until_date': cooldownUntilDate,
-        '@type': constructor,
-      };
+    'slot_id': slotId,
+    'currently_boosted_chat_id': currentlyBoostedChatId,
+    'start_date': startDate,
+    'expiration_date': expirationDate,
+    'cooldown_until_date': cooldownUntilDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

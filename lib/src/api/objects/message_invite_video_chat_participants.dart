@@ -20,7 +20,8 @@ class MessageInviteVideoChatParticipants extends MessageContent {
   static const String constructor = 'messageInviteVideoChatParticipants';
 
   static MessageInviteVideoChatParticipants? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -28,9 +29,10 @@ class MessageInviteVideoChatParticipants extends MessageContent {
     return MessageInviteVideoChatParticipants(
       groupCallId: json['group_call_id'] as int,
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -39,10 +41,10 @@ class MessageInviteVideoChatParticipants extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

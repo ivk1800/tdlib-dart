@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ToggleAllDownloadsArePaused extends TdFunction {
-  const ToggleAllDownloadsArePaused({
-    required this.arePaused,
-  });
+  const ToggleAllDownloadsArePaused({required this.arePaused});
 
   /// [arePaused] Pass true to pause all downloads; pass false to unpause them
   final bool arePaused;
@@ -20,9 +18,9 @@ class ToggleAllDownloadsArePaused extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'are_paused': arePaused,
-        '@type': constructor,
-      };
+    'are_paused': arePaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

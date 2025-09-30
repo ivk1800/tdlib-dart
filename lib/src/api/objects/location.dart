@@ -41,11 +41,11 @@ class Location extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'latitude': latitude,
-        'longitude': longitude,
-        'horizontal_accuracy': horizontalAccuracy,
-        '@type': constructor,
-      };
+    'latitude': latitude,
+    'longitude': longitude,
+    'horizontal_accuracy': horizontalAccuracy,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

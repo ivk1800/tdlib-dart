@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [AuthenticationCodeInfo]
 @immutable
 class ResendPhoneNumberCode extends TdFunction {
-  const ResendPhoneNumberCode({
-    this.reason,
-  });
+  const ResendPhoneNumberCode({this.reason});
 
   /// [reason] Reason of code resending; pass null if unknown
   final ResendCodeReason? reason;
@@ -22,9 +20,9 @@ class ResendPhoneNumberCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reason': reason?.toJson(),
-        '@type': constructor,
-      };
+    'reason': reason?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

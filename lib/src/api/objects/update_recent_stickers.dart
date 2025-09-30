@@ -27,9 +27,10 @@ class UpdateRecentStickers extends Update {
     return UpdateRecentStickers(
       isAttached: json['is_attached'] as bool,
       stickerIds: List<int>.from(
-          ((json['sticker_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['sticker_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +39,10 @@ class UpdateRecentStickers extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_attached': isAttached,
-        'sticker_ids': stickerIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'is_attached': isAttached,
+    'sticker_ids': stickerIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

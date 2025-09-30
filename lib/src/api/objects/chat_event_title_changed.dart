@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat title was changed
 @immutable
 class ChatEventTitleChanged extends ChatEventAction {
-  const ChatEventTitleChanged({
-    required this.oldTitle,
-    required this.newTitle,
-  });
+  const ChatEventTitleChanged({required this.oldTitle, required this.newTitle});
 
   /// [oldTitle] Previous chat title
   final String oldTitle;
@@ -34,10 +31,10 @@ class ChatEventTitleChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_title': oldTitle,
-        'new_title': newTitle,
-        '@type': constructor,
-      };
+    'old_title': oldTitle,
+    'new_title': newTitle,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

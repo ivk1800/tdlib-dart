@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A subscript rich text
 @immutable
 class RichTextSubscript extends RichText {
-  const RichTextSubscript({
-    required this.text,
-  });
+  const RichTextSubscript({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextSubscript extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

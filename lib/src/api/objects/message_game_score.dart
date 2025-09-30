@@ -41,11 +41,11 @@ class MessageGameScore extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'game_message_id': gameMessageId,
-        'game_id': gameId.toString(),
-        'score': score,
-        '@type': constructor,
-      };
+    'game_message_id': gameMessageId,
+    'game_id': gameId.toString(),
+    'score': score,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

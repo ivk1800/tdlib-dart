@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Error]
 @immutable
 class TestReturnError extends TdFunction {
-  const TestReturnError({
-    required this.error,
-  });
+  const TestReturnError({required this.error});
 
   /// [error] The error to be returned
   final TdError error;
@@ -21,9 +19,9 @@ class TestReturnError extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error': error.toJson(),
-        '@type': constructor,
-      };
+    'error': error.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

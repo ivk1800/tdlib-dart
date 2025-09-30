@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of recommended chat folders
 @immutable
 class RecommendedChatFolders extends TdObject {
-  const RecommendedChatFolders({
-    required this.chatFolders,
-  });
+  const RecommendedChatFolders({required this.chatFolders});
 
   /// [chatFolders] List of recommended chat folders
   final List<RecommendedChatFolder> chatFolders;
@@ -21,9 +19,10 @@ class RecommendedChatFolders extends TdObject {
 
     return RecommendedChatFolders(
       chatFolders: List<RecommendedChatFolder>.from(
-          ((json['chat_folders'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => RecommendedChatFolder.fromJson(item))
-              .toList()),
+        ((json['chat_folders'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => RecommendedChatFolder.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class RecommendedChatFolders extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folders': chatFolders.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_folders': chatFolders.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

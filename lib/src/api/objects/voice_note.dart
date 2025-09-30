@@ -44,7 +44,8 @@ class VoiceNote extends TdObject {
       waveform: json['waveform'] as String,
       mimeType: json['mime_type'] as String,
       speechRecognitionResult: SpeechRecognitionResult.fromJson(
-          json['speech_recognition_result'] as Map<String, dynamic>?),
+        json['speech_recognition_result'] as Map<String, dynamic>?,
+      ),
       voice: File.fromJson(json['voice'] as Map<String, dynamic>?)!,
     );
   }
@@ -54,13 +55,13 @@ class VoiceNote extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'waveform': waveform,
-        'mime_type': mimeType,
-        'speech_recognition_result': speechRecognitionResult?.toJson(),
-        'voice': voice.toJson(),
-        '@type': constructor,
-      };
+    'duration': duration,
+    'waveform': waveform,
+    'mime_type': mimeType,
+    'speech_recognition_result': speechRecognitionResult?.toJson(),
+    'voice': voice.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

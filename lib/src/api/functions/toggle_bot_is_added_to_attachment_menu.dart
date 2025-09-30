@@ -31,11 +31,11 @@ class ToggleBotIsAddedToAttachmentMenu extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'is_added': isAdded,
-        'allow_write_access': allowWriteAccess,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'is_added': isAdded,
+    'allow_write_access': allowWriteAccess,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,10 +26,10 @@ class ToggleChatHasProtectedContent extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'has_protected_content': hasProtectedContent,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'has_protected_content': hasProtectedContent,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

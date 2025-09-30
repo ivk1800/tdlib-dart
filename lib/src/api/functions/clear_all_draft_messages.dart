@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ClearAllDraftMessages extends TdFunction {
-  const ClearAllDraftMessages({
-    required this.excludeSecretChats,
-  });
+  const ClearAllDraftMessages({required this.excludeSecretChats});
 
   /// [excludeSecretChats] Pass true to keep local message drafts in secret
   /// chats
@@ -21,9 +19,9 @@ class ClearAllDraftMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'exclude_secret_chats': excludeSecretChats,
-        '@type': constructor,
-      };
+    'exclude_secret_chats': excludeSecretChats,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,6 +6,8 @@ import '../tdapi.dart';
 @immutable
 class ForumTopicInfo extends TdObject {
   const ForumTopicInfo({
+    required this.chatId,
+    required this.forumTopicId,
     required this.messageThreadId,
     required this.name,
     required this.icon,
@@ -16,6 +18,12 @@ class ForumTopicInfo extends TdObject {
     required this.isClosed,
     required this.isHidden,
   });
+
+  /// [chatId] Identifier of the forum chat to which the topic belongs
+  final int chatId;
+
+  /// [forumTopicId] Forum topic identifier of the topic
+  final int forumTopicId;
 
   /// [messageThreadId] Message thread identifier of the topic
   final int messageThreadId;
@@ -53,12 +61,15 @@ class ForumTopicInfo extends TdObject {
     }
 
     return ForumTopicInfo(
+      chatId: json['chat_id'] as int,
+      forumTopicId: json['forum_topic_id'] as int,
       messageThreadId: json['message_thread_id'] as int,
       name: json['name'] as String,
       icon: ForumTopicIcon.fromJson(json['icon'] as Map<String, dynamic>?)!,
       creationDate: json['creation_date'] as int,
-      creatorId:
-          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?)!,
+      creatorId: MessageSender.fromJson(
+        json['creator_id'] as Map<String, dynamic>?,
+      )!,
       isGeneral: json['is_general'] as bool,
       isOutgoing: json['is_outgoing'] as bool,
       isClosed: json['is_closed'] as bool,
@@ -71,17 +82,19 @@ class ForumTopicInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_thread_id': messageThreadId,
-        'name': name,
-        'icon': icon.toJson(),
-        'creation_date': creationDate,
-        'creator_id': creatorId.toJson(),
-        'is_general': isGeneral,
-        'is_outgoing': isOutgoing,
-        'is_closed': isClosed,
-        'is_hidden': isHidden,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'forum_topic_id': forumTopicId,
+    'message_thread_id': messageThreadId,
+    'name': name,
+    'icon': icon.toJson(),
+    'creation_date': creationDate,
+    'creator_id': creatorId.toJson(),
+    'is_general': isGeneral,
+    'is_outgoing': isOutgoing,
+    'is_closed': isClosed,
+    'is_hidden': isHidden,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

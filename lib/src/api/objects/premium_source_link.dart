@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A user opened an internal link of the type internalLinkTypePremiumFeatures
 @immutable
 class PremiumSourceLink extends PremiumSource {
-  const PremiumSourceLink({
-    required this.referrer,
-  });
+  const PremiumSourceLink({required this.referrer});
 
   /// [referrer] The referrer from the link
   final String referrer;
@@ -19,9 +17,7 @@ class PremiumSourceLink extends PremiumSource {
       return null;
     }
 
-    return PremiumSourceLink(
-      referrer: json['referrer'] as String,
-    );
+    return PremiumSourceLink(referrer: json['referrer'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class PremiumSourceLink extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'referrer': referrer,
-        '@type': constructor,
-      };
+    'referrer': referrer,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class RemoveStickerFromSet extends TdFunction {
-  const RemoveStickerFromSet({
-    required this.sticker,
-  });
+  const RemoveStickerFromSet({required this.sticker});
 
   /// [sticker] Sticker to remove from the set
   final InputFile sticker;
@@ -21,9 +19,9 @@ class RemoveStickerFromSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -35,8 +35,9 @@ class OrderInfo extends TdObject {
       name: json['name'] as String,
       phoneNumber: json['phone_number'] as String,
       emailAddress: json['email_address'] as String,
-      shippingAddress:
-          Address.fromJson(json['shipping_address'] as Map<String, dynamic>?),
+      shippingAddress: Address.fromJson(
+        json['shipping_address'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -45,12 +46,12 @@ class OrderInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'phone_number': phoneNumber,
-        'email_address': emailAddress,
-        'shipping_address': shippingAddress?.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'phone_number': phoneNumber,
+    'email_address': emailAddress,
+    'shipping_address': shippingAddress?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -25,13 +25,15 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
     return ChatEventActiveUsernamesChanged(
       oldUsernames: List<String>.from(
-          ((json['old_usernames'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['old_usernames'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       newUsernames: List<String>.from(
-          ((json['new_usernames'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['new_usernames'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -40,10 +42,10 @@ class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_usernames': oldUsernames.map((item) => item).toList(),
-        'new_usernames': newUsernames.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'old_usernames': oldUsernames.map((item) => item).toList(),
+    'new_usernames': newUsernames.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

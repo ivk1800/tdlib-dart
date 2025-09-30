@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A forum topic was deleted
 @immutable
 class ChatEventForumTopicDeleted extends ChatEventAction {
-  const ChatEventForumTopicDeleted({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicDeleted({required this.topicInfo});
 
   /// [topicInfo] Information about the topic
   final ForumTopicInfo topicInfo;
@@ -20,8 +18,9 @@ class ChatEventForumTopicDeleted extends ChatEventAction {
     }
 
     return ChatEventForumTopicDeleted(
-      topicInfo:
-          ForumTopicInfo.fromJson(json['topic_info'] as Map<String, dynamic>?)!,
+      topicInfo: ForumTopicInfo.fromJson(
+        json['topic_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class ChatEventForumTopicDeleted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'topic_info': topicInfo.toJson(),
-        '@type': constructor,
-      };
+    'topic_info': topicInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

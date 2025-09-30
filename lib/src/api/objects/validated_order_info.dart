@@ -27,9 +27,10 @@ class ValidatedOrderInfo extends TdObject {
     return ValidatedOrderInfo(
       orderInfoId: json['order_info_id'] as String,
       shippingOptions: List<ShippingOption>.from(
-          ((json['shipping_options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ShippingOption.fromJson(item))
-              .toList()),
+        ((json['shipping_options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ShippingOption.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -38,11 +39,10 @@ class ValidatedOrderInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'order_info_id': orderInfoId,
-        'shipping_options':
-            shippingOptions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'order_info_id': orderInfoId,
+    'shipping_options': shippingOptions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

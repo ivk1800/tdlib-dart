@@ -25,9 +25,11 @@ class UpdateScopeNotificationSettings extends Update {
 
     return UpdateScopeNotificationSettings(
       scope: NotificationSettingsScope.fromJson(
-          json['scope'] as Map<String, dynamic>?)!,
+        json['scope'] as Map<String, dynamic>?,
+      )!,
       notificationSettings: ScopeNotificationSettings.fromJson(
-          json['notification_settings'] as Map<String, dynamic>?)!,
+        json['notification_settings'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class UpdateScopeNotificationSettings extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope.toJson(),
-        'notification_settings': notificationSettings.toJson(),
-        '@type': constructor,
-      };
+    'scope': scope.toJson(),
+    'notification_settings': notificationSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -2,13 +2,12 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns RTMP URL for streaming to the chat; requires owner privileges
+/// Returns RTMP URL for streaming to the video chat of a chat; requires
+/// can_manage_video_chats administrator right
 /// Returns [RtmpUrl]
 @immutable
 class GetVideoChatRtmpUrl extends TdFunction {
-  const GetVideoChatRtmpUrl({
-    required this.chatId,
-  });
+  const GetVideoChatRtmpUrl({required this.chatId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -20,9 +19,9 @@ class GetVideoChatRtmpUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

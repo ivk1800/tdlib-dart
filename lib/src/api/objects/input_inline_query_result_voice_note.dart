@@ -49,10 +49,12 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
       title: json['title'] as String,
       voiceNoteUrl: json['voice_note_url'] as String,
       voiceNoteDuration: json['voice_note_duration'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -61,14 +63,14 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'voice_note_url': voiceNoteUrl,
-        'voice_note_duration': voiceNoteDuration,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'title': title,
+    'voice_note_url': voiceNoteUrl,
+    'voice_note_duration': voiceNoteDuration,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

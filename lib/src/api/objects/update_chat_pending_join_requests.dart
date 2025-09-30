@@ -27,7 +27,8 @@ class UpdateChatPendingJoinRequests extends Update {
     return UpdateChatPendingJoinRequests(
       chatId: json['chat_id'] as int,
       pendingJoinRequests: ChatJoinRequestsInfo.fromJson(
-          json['pending_join_requests'] as Map<String, dynamic>?),
+        json['pending_join_requests'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +37,10 @@ class UpdateChatPendingJoinRequests extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'pending_join_requests': pendingJoinRequests?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'pending_join_requests': pendingJoinRequests?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

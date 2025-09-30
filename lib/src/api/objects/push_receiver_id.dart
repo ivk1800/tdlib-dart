@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// identify which account has received a push notification
 @immutable
 class PushReceiverId extends TdObject {
-  const PushReceiverId({
-    required this.id,
-  });
+  const PushReceiverId({required this.id});
 
   /// [id] The globally unique identifier of push notification subscription
   final int id;
@@ -20,9 +18,7 @@ class PushReceiverId extends TdObject {
       return null;
     }
 
-    return PushReceiverId(
-      id: int.tryParse(json['id']) ?? 0,
-    );
+    return PushReceiverId(id: int.tryParse(json['id']) ?? 0);
   }
 
   @override
@@ -30,9 +26,9 @@ class PushReceiverId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

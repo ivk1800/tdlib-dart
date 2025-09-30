@@ -33,14 +33,16 @@ class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
   static const String constructor = 'telegramPaymentPurposePremiumGiveaway';
 
   static TelegramPaymentPurposePremiumGiveaway? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return TelegramPaymentPurposePremiumGiveaway(
       parameters: GiveawayParameters.fromJson(
-          json['parameters'] as Map<String, dynamic>?)!,
+        json['parameters'] as Map<String, dynamic>?,
+      )!,
       currency: json['currency'] as String,
       amount: json['amount'] as int,
       winnerCount: json['winner_count'] as int,
@@ -53,13 +55,13 @@ class TelegramPaymentPurposePremiumGiveaway extends TelegramPaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'month_count': monthCount,
-        '@type': constructor,
-      };
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'month_count': monthCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

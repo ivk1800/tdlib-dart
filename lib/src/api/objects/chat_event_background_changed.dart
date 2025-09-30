@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat background was changed
 @immutable
 class ChatEventBackgroundChanged extends ChatEventAction {
-  const ChatEventBackgroundChanged({
-    this.oldBackground,
-    this.newBackground,
-  });
+  const ChatEventBackgroundChanged({this.oldBackground, this.newBackground});
 
   /// [oldBackground] Previous background; may be null if none
   final ChatBackground? oldBackground;
@@ -25,9 +22,11 @@ class ChatEventBackgroundChanged extends ChatEventAction {
 
     return ChatEventBackgroundChanged(
       oldBackground: ChatBackground.fromJson(
-          json['old_background'] as Map<String, dynamic>?),
+        json['old_background'] as Map<String, dynamic>?,
+      ),
       newBackground: ChatBackground.fromJson(
-          json['new_background'] as Map<String, dynamic>?),
+        json['new_background'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +35,10 @@ class ChatEventBackgroundChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_background': oldBackground?.toJson(),
-        'new_background': newBackground?.toJson(),
-        '@type': constructor,
-      };
+    'old_background': oldBackground?.toJson(),
+    'new_background': newBackground?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

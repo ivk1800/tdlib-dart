@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// An HTTP URL needs to be open
 @immutable
 class LoginUrlInfoOpen extends LoginUrlInfo {
-  const LoginUrlInfoOpen({
-    required this.url,
-    required this.skipConfirmation,
-  });
+  const LoginUrlInfoOpen({required this.url, required this.skipConfirmation});
 
   /// [url] The URL to open
   final String url;
@@ -35,10 +32,10 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'skip_confirmation': skipConfirmation,
-        '@type': constructor,
-      };
+    'url': url,
+    'skip_confirmation': skipConfirmation,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

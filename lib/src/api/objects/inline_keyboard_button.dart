@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a single button in an inline keyboard
 @immutable
 class InlineKeyboardButton extends TdObject {
-  const InlineKeyboardButton({
-    required this.text,
-    required this.type,
-  });
+  const InlineKeyboardButton({required this.text, required this.type});
 
   /// [text] Text of the button
   final String text;
@@ -26,7 +23,8 @@ class InlineKeyboardButton extends TdObject {
     return InlineKeyboardButton(
       text: json['text'] as String,
       type: InlineKeyboardButtonType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class InlineKeyboardButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'text': text,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

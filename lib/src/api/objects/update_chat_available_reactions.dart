@@ -26,7 +26,8 @@ class UpdateChatAvailableReactions extends Update {
     return UpdateChatAvailableReactions(
       chatId: json['chat_id'] as int,
       availableReactions: ChatAvailableReactions.fromJson(
-          json['available_reactions'] as Map<String, dynamic>?)!,
+        json['available_reactions'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateChatAvailableReactions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'available_reactions': availableReactions.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'available_reactions': availableReactions.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

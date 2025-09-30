@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ProcessPushNotification extends TdFunction {
-  const ProcessPushNotification({
-    required this.payload,
-  });
+  const ProcessPushNotification({required this.payload});
 
   /// [payload] JSON-encoded push notification payload with all fields sent by
   /// the server, and "google.sent_time" and "google.notification.sound" fields
@@ -24,9 +22,9 @@ class ProcessPushNotification extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'payload': payload,
-        '@type': constructor,
-      };
+    'payload': payload,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

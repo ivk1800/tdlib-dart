@@ -6,9 +6,7 @@ import '../tdapi.dart';
 @immutable
 class FirebaseDeviceVerificationParametersSafetyNet
     extends FirebaseDeviceVerificationParameters {
-  const FirebaseDeviceVerificationParametersSafetyNet({
-    required this.nonce,
-  });
+  const FirebaseDeviceVerificationParametersSafetyNet({required this.nonce});
 
   /// [nonce] Nonce to pass to the SafetyNet Attestation API
   final String nonce;
@@ -17,7 +15,8 @@ class FirebaseDeviceVerificationParametersSafetyNet
       'firebaseDeviceVerificationParametersSafetyNet';
 
   static FirebaseDeviceVerificationParametersSafetyNet? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -32,9 +31,9 @@ class FirebaseDeviceVerificationParametersSafetyNet
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'nonce': nonce,
-        '@type': constructor,
-      };
+    'nonce': nonce,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

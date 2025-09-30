@@ -28,11 +28,11 @@ class SendWebAppCustomRequest extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'method': method,
-        'parameters': parameters,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'method': method,
+    'parameters': parameters,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

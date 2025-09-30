@@ -12,6 +12,7 @@ abstract class InputMessageContent extends TdObject {
   /// Inherited by:
   /// [InputMessageAnimation]
   /// [InputMessageAudio]
+  /// [InputMessageChecklist]
   /// [InputMessageContact]
   /// [InputMessageDice]
   /// [InputMessageDocument]
@@ -39,6 +40,8 @@ abstract class InputMessageContent extends TdObject {
         return InputMessageAnimation.fromJson(json);
       case InputMessageAudio.constructor:
         return InputMessageAudio.fromJson(json);
+      case InputMessageChecklist.constructor:
+        return InputMessageChecklist.fromJson(json);
       case InputMessageContact.constructor:
         return InputMessageContact.fromJson(json);
       case InputMessageDice.constructor:

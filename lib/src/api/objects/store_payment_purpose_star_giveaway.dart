@@ -38,7 +38,8 @@ class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
 
     return StorePaymentPurposeStarGiveaway(
       parameters: GiveawayParameters.fromJson(
-          json['parameters'] as Map<String, dynamic>?)!,
+        json['parameters'] as Map<String, dynamic>?,
+      )!,
       currency: json['currency'] as String,
       amount: json['amount'] as int,
       winnerCount: json['winner_count'] as int,
@@ -51,13 +52,13 @@ class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'winner_count': winnerCount,
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'winner_count': winnerCount,
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [PaymentForm]
 @immutable
 class GetPaymentForm extends TdFunction {
-  const GetPaymentForm({
-    required this.inputInvoice,
-    this.theme,
-  });
+  const GetPaymentForm({required this.inputInvoice, this.theme});
 
   /// [inputInvoice] The invoice
   final InputInvoice inputInvoice;
@@ -26,10 +23,10 @@ class GetPaymentForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'input_invoice': inputInvoice.toJson(),
-        'theme': theme?.toJson(),
-        '@type': constructor,
-      };
+    'input_invoice': inputInvoice.toJson(),
+    'theme': theme?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

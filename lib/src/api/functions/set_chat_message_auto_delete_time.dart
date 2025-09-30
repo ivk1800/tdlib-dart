@@ -30,10 +30,10 @@ class SetChatMessageAutoDeleteTime extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_auto_delete_time': messageAutoDeleteTime,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_auto_delete_time': messageAutoDeleteTime,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

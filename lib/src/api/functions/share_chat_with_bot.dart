@@ -45,13 +45,13 @@ class ShareChatWithBot extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'button_id': buttonId,
-        'shared_chat_id': sharedChatId,
-        'only_check': onlyCheck,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'button_id': buttonId,
+    'shared_chat_id': sharedChatId,
+    'only_check': onlyCheck,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

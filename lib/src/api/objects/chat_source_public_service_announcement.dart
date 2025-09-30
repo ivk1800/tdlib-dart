@@ -19,7 +19,8 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
   static const String constructor = 'chatSourcePublicServiceAnnouncement';
 
   static ChatSourcePublicServiceAnnouncement? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'text': text,
-        '@type': constructor,
-      };
+    'type': type,
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

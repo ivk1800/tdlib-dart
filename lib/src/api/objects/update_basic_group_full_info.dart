@@ -26,7 +26,8 @@ class UpdateBasicGroupFullInfo extends Update {
     return UpdateBasicGroupFullInfo(
       basicGroupId: json['basic_group_id'] as int,
       basicGroupFullInfo: BasicGroupFullInfo.fromJson(
-          json['basic_group_full_info'] as Map<String, dynamic>?)!,
+        json['basic_group_full_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateBasicGroupFullInfo extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'basic_group_id': basicGroupId,
-        'basic_group_full_info': basicGroupFullInfo.toJson(),
-        '@type': constructor,
-      };
+    'basic_group_id': basicGroupId,
+    'basic_group_full_info': basicGroupFullInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

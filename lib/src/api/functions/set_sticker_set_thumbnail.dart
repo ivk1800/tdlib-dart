@@ -33,12 +33,12 @@ class SetStickerSetThumbnail extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'name': name,
-        'thumbnail': thumbnail?.toJson(),
-        'format': format?.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'name': name,
+    'thumbnail': thumbnail?.toJson(),
+    'format': format?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

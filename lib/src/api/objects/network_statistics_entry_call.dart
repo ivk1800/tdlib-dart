@@ -34,8 +34,9 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
     }
 
     return NetworkStatisticsEntryCall(
-      networkType:
-          NetworkType.fromJson(json['network_type'] as Map<String, dynamic>?)!,
+      networkType: NetworkType.fromJson(
+        json['network_type'] as Map<String, dynamic>?,
+      )!,
       sentBytes: json['sent_bytes'] as int,
       receivedBytes: json['received_bytes'] as int,
       duration: (json['duration'] as num).toDouble(),
@@ -47,12 +48,12 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'network_type': networkType.toJson(),
-        'sent_bytes': sentBytes,
-        'received_bytes': receivedBytes,
-        'duration': duration,
-        '@type': constructor,
-      };
+    'network_type': networkType.toJson(),
+    'sent_bytes': sentBytes,
+    'received_bytes': receivedBytes,
+    'duration': duration,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

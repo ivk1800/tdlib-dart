@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a public forward as a message
 @immutable
 class PublicForwardMessage extends PublicForward {
-  const PublicForwardMessage({
-    required this.message,
-  });
+  const PublicForwardMessage({required this.message});
 
   /// [message] Information about the message
   final Message message;
@@ -29,9 +27,9 @@ class PublicForwardMessage extends PublicForward {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

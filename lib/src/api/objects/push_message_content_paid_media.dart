@@ -36,10 +36,10 @@ class PushMessageContentPaidMedia extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

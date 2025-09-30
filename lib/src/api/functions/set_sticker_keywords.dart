@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetStickerKeywords extends TdFunction {
-  const SetStickerKeywords({
-    required this.sticker,
-    required this.keywords,
-  });
+  const SetStickerKeywords({required this.sticker, required this.keywords});
 
   /// [sticker] Sticker
   final InputFile sticker;
@@ -26,10 +23,10 @@ class SetStickerKeywords extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        'keywords': keywords.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    'keywords': keywords.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

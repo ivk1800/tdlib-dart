@@ -37,10 +37,10 @@ class UpdateMessageSendSucceeded extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        'old_message_id': oldMessageId,
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    'old_message_id': oldMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

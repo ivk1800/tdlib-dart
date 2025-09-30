@@ -37,9 +37,11 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
       allowAppleId: json['allow_apple_id'] as bool,
       allowGoogleId: json['allow_google_id'] as bool,
       codeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
-          json['code_info'] as Map<String, dynamic>?)!,
+        json['code_info'] as Map<String, dynamic>?,
+      )!,
       emailAddressResetState: EmailAddressResetState.fromJson(
-          json['email_address_reset_state'] as Map<String, dynamic>?),
+        json['email_address_reset_state'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -48,12 +50,12 @@ class AuthorizationStateWaitEmailCode extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'allow_apple_id': allowAppleId,
-        'allow_google_id': allowGoogleId,
-        'code_info': codeInfo.toJson(),
-        'email_address_reset_state': emailAddressResetState?.toJson(),
-        '@type': constructor,
-      };
+    'allow_apple_id': allowAppleId,
+    'allow_google_id': allowGoogleId,
+    'code_info': codeInfo.toJson(),
+    'email_address_reset_state': emailAddressResetState?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

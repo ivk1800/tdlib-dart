@@ -30,11 +30,13 @@ class FoundFileDownloads extends TdObject {
 
     return FoundFileDownloads(
       totalCounts: DownloadedFileCounts.fromJson(
-          json['total_counts'] as Map<String, dynamic>?)!,
+        json['total_counts'] as Map<String, dynamic>?,
+      )!,
       files: List<FileDownload>.from(
-          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => FileDownload.fromJson(item))
-              .toList()),
+        ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => FileDownload.fromJson(item))
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -44,11 +46,11 @@ class FoundFileDownloads extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_counts': totalCounts.toJson(),
-        'files': files.map((item) => item.toJson()).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'total_counts': totalCounts.toJson(),
+    'files': files.map((item) => item.toJson()).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

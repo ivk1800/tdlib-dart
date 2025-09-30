@@ -35,11 +35,11 @@ class PreliminaryUploadFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file': file.toJson(),
-        'file_type': fileType?.toJson(),
-        'priority': priority,
-        '@type': constructor,
-      };
+    'file': file.toJson(),
+    'file_type': fileType?.toJson(),
+    'priority': priority,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

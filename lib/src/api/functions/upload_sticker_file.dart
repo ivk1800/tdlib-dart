@@ -32,11 +32,11 @@ class UploadStickerFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'sticker_format': stickerFormat.toJson(),
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'sticker_format': stickerFormat.toJson(),
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

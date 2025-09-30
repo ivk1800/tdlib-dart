@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [BotCommands]
 @immutable
 class GetCommands extends TdFunction {
-  const GetCommands({
-    this.scope,
-    required this.languageCode,
-  });
+  const GetCommands({this.scope, required this.languageCode});
 
   /// [scope] The scope to which the commands are relevant; pass null to get
   /// commands in the default bot command scope
@@ -26,10 +23,10 @@ class GetCommands extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope?.toJson(),
-        'language_code': languageCode,
-        '@type': constructor,
-      };
+    'scope': scope?.toJson(),
+    'language_code': languageCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

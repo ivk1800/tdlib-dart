@@ -38,7 +38,8 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   static const String constructor = 'languagePackStringValuePluralized';
 
   static LanguagePackStringValuePluralized? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -58,14 +59,14 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'zero_value': zeroValue,
-        'one_value': oneValue,
-        'two_value': twoValue,
-        'few_value': fewValue,
-        'many_value': manyValue,
-        'other_value': otherValue,
-        '@type': constructor,
-      };
+    'zero_value': zeroValue,
+    'one_value': oneValue,
+    'two_value': twoValue,
+    'few_value': fewValue,
+    'many_value': manyValue,
+    'other_value': otherValue,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -20,7 +20,8 @@ class UpdateQuickReplyShortcutMessages extends Update {
   static const String constructor = 'updateQuickReplyShortcutMessages';
 
   static UpdateQuickReplyShortcutMessages? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -28,9 +29,10 @@ class UpdateQuickReplyShortcutMessages extends Update {
     return UpdateQuickReplyShortcutMessages(
       shortcutId: json['shortcut_id'] as int,
       messages: List<QuickReplyMessage>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => QuickReplyMessage.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => QuickReplyMessage.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -39,10 +41,10 @@ class UpdateQuickReplyShortcutMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        'messages': messages.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    'messages': messages.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

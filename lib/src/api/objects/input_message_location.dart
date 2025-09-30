@@ -49,12 +49,12 @@ class InputMessageLocation extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'live_period': livePeriod,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'live_period': livePeriod,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

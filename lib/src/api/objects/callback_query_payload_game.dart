@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The payload for a game callback button
 @immutable
 class CallbackQueryPayloadGame extends CallbackQueryPayload {
-  const CallbackQueryPayloadGame({
-    required this.gameShortName,
-  });
+  const CallbackQueryPayloadGame({required this.gameShortName});
 
   /// [gameShortName] A short name of the game that was attached to the callback
   /// button
@@ -30,9 +28,9 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'game_short_name': gameShortName,
-        '@type': constructor,
-      };
+    'game_short_name': gameShortName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

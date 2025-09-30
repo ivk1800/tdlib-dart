@@ -51,15 +51,15 @@ class SendInlineQueryResultMessage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'reply_to': replyTo?.toJson(),
-        'options': options?.toJson(),
-        'query_id': queryId,
-        'result_id': resultId,
-        'hide_via_bot': hideViaBot,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'reply_to': replyTo?.toJson(),
+    'options': options?.toJson(),
+    'query_id': queryId,
+    'result_id': resultId,
+    'hide_via_bot': hideViaBot,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

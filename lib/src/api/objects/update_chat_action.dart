@@ -35,8 +35,9 @@ class UpdateChatAction extends Update {
     return UpdateChatAction(
       chatId: json['chat_id'] as int,
       messageThreadId: json['message_thread_id'] as int,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      )!,
       action: ChatAction.fromJson(json['action'] as Map<String, dynamic>?)!,
     );
   }
@@ -46,12 +47,12 @@ class UpdateChatAction extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'sender_id': senderId.toJson(),
-        'action': action.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'sender_id': senderId.toJson(),
+    'action': action.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

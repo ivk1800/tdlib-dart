@@ -44,21 +44,25 @@ class AvailableReactions extends TdObject {
 
     return AvailableReactions(
       topReactions: List<AvailableReaction>.from(
-          ((json['top_reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AvailableReaction.fromJson(item))
-              .toList()),
+        ((json['top_reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AvailableReaction.fromJson(item))
+            .toList(),
+      ),
       recentReactions: List<AvailableReaction>.from(
-          ((json['recent_reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AvailableReaction.fromJson(item))
-              .toList()),
+        ((json['recent_reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AvailableReaction.fromJson(item))
+            .toList(),
+      ),
       popularReactions: List<AvailableReaction>.from(
-          ((json['popular_reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AvailableReaction.fromJson(item))
-              .toList()),
+        ((json['popular_reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AvailableReaction.fromJson(item))
+            .toList(),
+      ),
       allowCustomEmoji: json['allow_custom_emoji'] as bool,
       areTags: json['are_tags'] as bool,
       unavailabilityReason: ReactionUnavailabilityReason.fromJson(
-          json['unavailability_reason'] as Map<String, dynamic>?),
+        json['unavailability_reason'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -67,16 +71,14 @@ class AvailableReactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'top_reactions': topReactions.map((item) => item.toJson()).toList(),
-        'recent_reactions':
-            recentReactions.map((item) => item.toJson()).toList(),
-        'popular_reactions':
-            popularReactions.map((item) => item.toJson()).toList(),
-        'allow_custom_emoji': allowCustomEmoji,
-        'are_tags': areTags,
-        'unavailability_reason': unavailabilityReason?.toJson(),
-        '@type': constructor,
-      };
+    'top_reactions': topReactions.map((item) => item.toJson()).toList(),
+    'recent_reactions': recentReactions.map((item) => item.toJson()).toList(),
+    'popular_reactions': popularReactions.map((item) => item.toJson()).toList(),
+    'allow_custom_emoji': allowCustomEmoji,
+    'are_tags': areTags,
+    'unavailability_reason': unavailabilityReason?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

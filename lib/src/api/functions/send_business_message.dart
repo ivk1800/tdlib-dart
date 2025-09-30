@@ -51,16 +51,16 @@ class SendBusinessMessage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'reply_to': replyTo?.toJson(),
-        'disable_notification': disableNotification,
-        'protect_content': protectContent,
-        'effect_id': effectId,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'reply_to': replyTo?.toJson(),
+    'disable_notification': disableNotification,
+    'protect_content': protectContent,
+    'effect_id': effectId,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

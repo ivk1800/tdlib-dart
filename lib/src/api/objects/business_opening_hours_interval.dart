@@ -38,10 +38,10 @@ class BusinessOpeningHoursInterval extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'start_minute': startMinute,
-        'end_minute': endMinute,
-        '@type': constructor,
-      };
+    'start_minute': startMinute,
+    'end_minute': endMinute,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

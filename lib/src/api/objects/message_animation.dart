@@ -39,10 +39,12 @@ class MessageAnimation extends MessageContent {
     }
 
     return MessageAnimation(
-      animation:
-          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      animation: Animation.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       hasSpoiler: json['has_spoiler'] as bool,
       isSecret: json['is_secret'] as bool,
@@ -54,13 +56,13 @@ class MessageAnimation extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        'caption': caption.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'has_spoiler': hasSpoiler,
-        'is_secret': isSecret,
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    'caption': caption.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'has_spoiler': hasSpoiler,
+    'is_secret': isSecret,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

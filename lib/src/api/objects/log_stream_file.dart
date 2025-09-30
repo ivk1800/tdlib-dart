@@ -41,11 +41,11 @@ class LogStreamFile extends LogStream {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'path': path,
-        'max_file_size': maxFileSize,
-        'redirect_stderr': redirectStderr,
-        '@type': constructor,
-      };
+    'path': path,
+    'max_file_size': maxFileSize,
+    'redirect_stderr': redirectStderr,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

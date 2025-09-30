@@ -44,12 +44,12 @@ class BusinessChatLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        'text': text.toJson(),
-        'title': title,
-        'view_count': viewCount,
-        '@type': constructor,
-      };
+    'link': link,
+    'text': text.toJson(),
+    'title': title,
+    'view_count': viewCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

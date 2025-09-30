@@ -31,12 +31,14 @@ class UpdateChatLastMessage extends Update {
 
     return UpdateChatLastMessage(
       chatId: json['chat_id'] as int,
-      lastMessage:
-          Message.fromJson(json['last_message'] as Map<String, dynamic>?),
+      lastMessage: Message.fromJson(
+        json['last_message'] as Map<String, dynamic>?,
+      ),
       positions: List<ChatPosition>.from(
-          ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatPosition.fromJson(item))
-              .toList()),
+        ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatPosition.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -45,11 +47,11 @@ class UpdateChatLastMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'last_message': lastMessage?.toJson(),
-        'positions': positions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'last_message': lastMessage?.toJson(),
+    'positions': positions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

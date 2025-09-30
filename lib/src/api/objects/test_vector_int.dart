@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A simple object containing a vector of numbers; for testing only
 @immutable
 class TestVectorInt extends TdObject {
-  const TestVectorInt({
-    required this.value,
-  });
+  const TestVectorInt({required this.value});
 
   /// [value] Vector of numbers
   final List<int> value;
@@ -20,9 +18,11 @@ class TestVectorInt extends TdObject {
     }
 
     return TestVectorInt(
-      value: List<int>.from(((json['value'] as List<dynamic>?) ?? <dynamic>[])
-          .map((item) => item)
-          .toList()),
+      value: List<int>.from(
+        ((json['value'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -31,9 +31,9 @@ class TestVectorInt extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'value': value.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

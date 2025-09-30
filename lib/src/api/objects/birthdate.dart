@@ -5,11 +5,7 @@ import '../tdapi.dart';
 /// Represents a birthdate of a user
 @immutable
 class Birthdate extends TdObject {
-  const Birthdate({
-    required this.day,
-    required this.month,
-    required this.year,
-  });
+  const Birthdate({required this.day, required this.month, required this.year});
 
   /// [day] Day of the month; 1-31
   final int day;
@@ -39,11 +35,11 @@ class Birthdate extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'day': day,
-        'month': month,
-        'year': year,
-        '@type': constructor,
-      };
+    'day': day,
+    'month': month,
+    'year': year,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

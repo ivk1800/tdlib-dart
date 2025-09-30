@@ -31,11 +31,11 @@ class GetChatRevenueTransactions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -29,11 +29,11 @@ class GetUserProfilePhotos extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

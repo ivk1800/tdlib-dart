@@ -7,10 +7,19 @@ import '../tdapi.dart';
 class LinkPreviewTypeVideo extends LinkPreviewType {
   const LinkPreviewTypeVideo({
     required this.video,
+    this.cover,
+    required this.startTimestamp,
   });
 
   /// [video] The video description
   final Video video;
+
+  /// [cover] Cover of the video; may be null if none
+  final Photo? cover;
+
+  /// [startTimestamp] Timestamp from which the video playing must start, in
+  /// seconds
+  final int startTimestamp;
 
   static const String constructor = 'linkPreviewTypeVideo';
 
@@ -21,6 +30,8 @@ class LinkPreviewTypeVideo extends LinkPreviewType {
 
     return LinkPreviewTypeVideo(
       video: Video.fromJson(json['video'] as Map<String, dynamic>?)!,
+      cover: Photo.fromJson(json['cover'] as Map<String, dynamic>?),
+      startTimestamp: json['start_timestamp'] as int,
     );
   }
 
@@ -29,9 +40,11 @@ class LinkPreviewTypeVideo extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video': video.toJson(),
-        '@type': constructor,
-      };
+    'video': video.toJson(),
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

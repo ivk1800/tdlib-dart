@@ -24,10 +24,10 @@ class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'is_paused': isPaused,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'is_paused': isPaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

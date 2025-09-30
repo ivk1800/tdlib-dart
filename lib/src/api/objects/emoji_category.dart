@@ -36,7 +36,8 @@ class EmojiCategory extends TdObject {
       name: json['name'] as String,
       icon: Sticker.fromJson(json['icon'] as Map<String, dynamic>?)!,
       source: EmojiCategorySource.fromJson(
-          json['source'] as Map<String, dynamic>?)!,
+        json['source'] as Map<String, dynamic>?,
+      )!,
       isGreeting: json['is_greeting'] as bool,
     );
   }
@@ -46,12 +47,12 @@ class EmojiCategory extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'icon': icon.toJson(),
-        'source': source.toJson(),
-        'is_greeting': isGreeting,
-        '@type': constructor,
-      };
+    'name': name,
+    'icon': icon.toJson(),
+    'source': source.toJson(),
+    'is_greeting': isGreeting,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

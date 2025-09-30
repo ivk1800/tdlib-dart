@@ -30,11 +30,11 @@ class ValidateOrderInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'input_invoice': inputInvoice.toJson(),
-        'order_info': orderInfo?.toJson(),
-        'allow_save': allowSave,
-        '@type': constructor,
-      };
+    'input_invoice': inputInvoice.toJson(),
+    'order_info': orderInfo?.toJson(),
+    'allow_save': allowSave,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

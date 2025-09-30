@@ -35,10 +35,10 @@ class PushMessageContentInvoice extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'price': price,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'price': price,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

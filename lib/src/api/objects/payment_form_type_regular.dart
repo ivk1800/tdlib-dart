@@ -52,18 +52,21 @@ class PaymentFormTypeRegular extends PaymentFormType {
       invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
       paymentProviderUserId: json['payment_provider_user_id'] as int,
       paymentProvider: PaymentProvider.fromJson(
-          json['payment_provider'] as Map<String, dynamic>?)!,
+        json['payment_provider'] as Map<String, dynamic>?,
+      )!,
       additionalPaymentOptions: List<PaymentOption>.from(
-          ((json['additional_payment_options'] as List<dynamic>?) ??
-                  <dynamic>[])
-              .map((item) => PaymentOption.fromJson(item))
-              .toList()),
-      savedOrderInfo:
-          OrderInfo.fromJson(json['saved_order_info'] as Map<String, dynamic>?),
+        ((json['additional_payment_options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PaymentOption.fromJson(item))
+            .toList(),
+      ),
+      savedOrderInfo: OrderInfo.fromJson(
+        json['saved_order_info'] as Map<String, dynamic>?,
+      ),
       savedCredentials: List<SavedCredentials>.from(
-          ((json['saved_credentials'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => SavedCredentials.fromJson(item))
-              .toList()),
+        ((json['saved_credentials'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => SavedCredentials.fromJson(item))
+            .toList(),
+      ),
       canSaveCredentials: json['can_save_credentials'] as bool,
       needPassword: json['need_password'] as bool,
     );
@@ -74,18 +77,18 @@ class PaymentFormTypeRegular extends PaymentFormType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invoice': invoice.toJson(),
-        'payment_provider_user_id': paymentProviderUserId,
-        'payment_provider': paymentProvider.toJson(),
-        'additional_payment_options':
-            additionalPaymentOptions.map((item) => item.toJson()).toList(),
-        'saved_order_info': savedOrderInfo?.toJson(),
-        'saved_credentials':
-            savedCredentials.map((item) => item.toJson()).toList(),
-        'can_save_credentials': canSaveCredentials,
-        'need_password': needPassword,
-        '@type': constructor,
-      };
+    'invoice': invoice.toJson(),
+    'payment_provider_user_id': paymentProviderUserId,
+    'payment_provider': paymentProvider.toJson(),
+    'additional_payment_options': additionalPaymentOptions
+        .map((item) => item.toJson())
+        .toList(),
+    'saved_order_info': savedOrderInfo?.toJson(),
+    'saved_credentials': savedCredentials.map((item) => item.toJson()).toList(),
+    'can_save_credentials': canSaveCredentials,
+    'need_password': needPassword,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

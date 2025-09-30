@@ -26,10 +26,10 @@ class SetSupergroupStickerSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'sticker_set_id': stickerSetId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'sticker_set_id': stickerSetId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

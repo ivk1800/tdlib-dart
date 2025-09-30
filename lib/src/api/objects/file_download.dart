@@ -51,13 +51,13 @@ class FileDownload extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'message': message.toJson(),
-        'add_date': addDate,
-        'complete_date': completeDate,
-        'is_paused': isPaused,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'message': message.toJson(),
+    'add_date': addDate,
+    'complete_date': completeDate,
+    'is_paused': isPaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

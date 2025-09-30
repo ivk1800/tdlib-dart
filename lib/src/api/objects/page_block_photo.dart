@@ -5,11 +5,7 @@ import '../tdapi.dart';
 /// A photo
 @immutable
 class PageBlockPhoto extends PageBlock {
-  const PageBlockPhoto({
-    this.photo,
-    required this.caption,
-    required this.url,
-  });
+  const PageBlockPhoto({this.photo, required this.caption, required this.url});
 
   /// [photo] Photo file; may be null
   final Photo? photo;
@@ -29,8 +25,9 @@ class PageBlockPhoto extends PageBlock {
 
     return PageBlockPhoto(
       photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       url: json['url'] as String,
     );
   }
@@ -40,11 +37,11 @@ class PageBlockPhoto extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        'caption': caption.toJson(),
-        'url': url,
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    'caption': caption.toJson(),
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Some other payment provider, for which a web payment form must be shown
 @immutable
 class PaymentProviderOther extends PaymentProvider {
-  const PaymentProviderOther({
-    required this.url,
-  });
+  const PaymentProviderOther({required this.url});
 
   /// [url] Payment form URL
   final String url;
@@ -19,9 +17,7 @@ class PaymentProviderOther extends PaymentProvider {
       return null;
     }
 
-    return PaymentProviderOther(
-      url: json['url'] as String,
-    );
+    return PaymentProviderOther(url: json['url'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class PaymentProviderOther extends PaymentProvider {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

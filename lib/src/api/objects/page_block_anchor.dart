@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// from the specified anchor
 @immutable
 class PageBlockAnchor extends PageBlock {
-  const PageBlockAnchor({
-    required this.name,
-  });
+  const PageBlockAnchor({required this.name});
 
   /// [name] Name of the anchor
   final String name;
@@ -20,9 +18,7 @@ class PageBlockAnchor extends PageBlock {
       return null;
     }
 
-    return PageBlockAnchor(
-      name: json['name'] as String,
-    );
+    return PageBlockAnchor(name: json['name'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class PageBlockAnchor extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

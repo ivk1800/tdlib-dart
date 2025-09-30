@@ -19,7 +19,8 @@ class GiveawayParticipantStatusDisallowedCountry
       'giveawayParticipantStatusDisallowedCountry';
 
   static GiveawayParticipantStatusDisallowedCountry? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -34,9 +35,9 @@ class GiveawayParticipantStatusDisallowedCountry
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_country_code': userCountryCode,
-        '@type': constructor,
-      };
+    'user_country_code': userCountryCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

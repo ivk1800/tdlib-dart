@@ -2,12 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a story sent by the chat
+/// Describes a story posted on behalf of the chat
 @immutable
 class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
-  const ChatStatisticsObjectTypeStory({
-    required this.storyId,
-  });
+  const ChatStatisticsObjectTypeStory({required this.storyId});
 
   /// [storyId] Story identifier
   final int storyId;
@@ -19,9 +17,7 @@ class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
       return null;
     }
 
-    return ChatStatisticsObjectTypeStory(
-      storyId: json['story_id'] as int,
-    );
+    return ChatStatisticsObjectTypeStory(storyId: json['story_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_id': storyId,
-        '@type': constructor,
-      };
+    'story_id': storyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

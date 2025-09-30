@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A revoked chat invite link was deleted
 @immutable
 class ChatEventInviteLinkDeleted extends ChatEventAction {
-  const ChatEventInviteLinkDeleted({
-    required this.inviteLink,
-  });
+  const ChatEventInviteLinkDeleted({required this.inviteLink});
 
   /// [inviteLink] The invite link
   final ChatInviteLink inviteLink;
@@ -21,7 +19,8 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
 
     return ChatEventInviteLinkDeleted(
       inviteLink: ChatInviteLink.fromJson(
-          json['invite_link'] as Map<String, dynamic>?)!,
+        json['invite_link'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class ChatEventInviteLinkDeleted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink.toJson(),
-        '@type': constructor,
-      };
+    'invite_link': inviteLink.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

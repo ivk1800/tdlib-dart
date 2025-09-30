@@ -32,8 +32,9 @@ class PaymentReceipt extends TdObject {
     }
 
     return PaymentReceipt(
-      productInfo:
-          ProductInfo.fromJson(json['product_info'] as Map<String, dynamic>?)!,
+      productInfo: ProductInfo.fromJson(
+        json['product_info'] as Map<String, dynamic>?,
+      )!,
       date: json['date'] as int,
       sellerBotUserId: json['seller_bot_user_id'] as int,
       type: PaymentReceiptType.fromJson(json['type'] as Map<String, dynamic>?)!,
@@ -45,12 +46,12 @@ class PaymentReceipt extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'product_info': productInfo.toJson(),
-        'date': date,
-        'seller_bot_user_id': sellerBotUserId,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'product_info': productInfo.toJson(),
+    'date': date,
+    'seller_bot_user_id': sellerBotUserId,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -24,10 +24,10 @@ class SetScopeNotificationSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope.toJson(),
-        'notification_settings': notificationSettings.toJson(),
-        '@type': constructor,
-      };
+    'scope': scope.toJson(),
+    'notification_settings': notificationSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

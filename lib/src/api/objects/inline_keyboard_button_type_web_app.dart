@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A button that opens a Web App by calling openWebApp
 @immutable
 class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
-  const InlineKeyboardButtonTypeWebApp({
-    required this.url,
-  });
+  const InlineKeyboardButtonTypeWebApp({required this.url});
 
   /// [url] An HTTP URL to pass to openWebApp
   final String url;
@@ -19,9 +17,7 @@ class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
       return null;
     }
 
-    return InlineKeyboardButtonTypeWebApp(
-      url: json['url'] as String,
-    );
+    return InlineKeyboardButtonTypeWebApp(url: json['url'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

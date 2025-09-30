@@ -60,18 +60,21 @@ class BasicGroupFullInfo extends TdObject {
       description: json['description'] as String,
       creatorUserId: json['creator_user_id'] as int,
       members: List<ChatMember>.from(
-          ((json['members'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatMember.fromJson(item))
-              .toList()),
+        ((json['members'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatMember.fromJson(item))
+            .toList(),
+      ),
       canHideMembers: json['can_hide_members'] as bool,
       canToggleAggressiveAntiSpam:
           json['can_toggle_aggressive_anti_spam'] as bool,
-      inviteLink:
-          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      inviteLink: ChatInviteLink.fromJson(
+        json['invite_link'] as Map<String, dynamic>?,
+      ),
       botCommands: List<BotCommands>.from(
-          ((json['bot_commands'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BotCommands.fromJson(item))
-              .toList()),
+        ((json['bot_commands'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BotCommands.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -80,16 +83,16 @@ class BasicGroupFullInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        'description': description,
-        'creator_user_id': creatorUserId,
-        'members': members.map((item) => item.toJson()).toList(),
-        'can_hide_members': canHideMembers,
-        'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
-        'invite_link': inviteLink?.toJson(),
-        'bot_commands': botCommands.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    'description': description,
+    'creator_user_id': creatorUserId,
+    'members': members.map((item) => item.toJson()).toList(),
+    'can_hide_members': canHideMembers,
+    'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
+    'invite_link': inviteLink?.toJson(),
+    'bot_commands': botCommands.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

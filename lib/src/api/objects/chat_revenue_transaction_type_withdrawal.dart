@@ -24,7 +24,8 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
   static const String constructor = 'chatRevenueTransactionTypeWithdrawal';
 
   static ChatRevenueTransactionTypeWithdrawal? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,7 +34,8 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
       withdrawalDate: json['withdrawal_date'] as int,
       provider: json['provider'] as String,
       state: RevenueWithdrawalState.fromJson(
-          json['state'] as Map<String, dynamic>?)!,
+        json['state'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -42,11 +44,11 @@ class ChatRevenueTransactionTypeWithdrawal extends ChatRevenueTransactionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'withdrawal_date': withdrawalDate,
-        'provider': provider,
-        'state': state.toJson(),
-        '@type': constructor,
-      };
+    'withdrawal_date': withdrawalDate,
+    'provider': provider,
+    'state': state.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -24,10 +24,12 @@ class ChatEventMessageEdited extends ChatEventAction {
     }
 
     return ChatEventMessageEdited(
-      oldMessage:
-          Message.fromJson(json['old_message'] as Map<String, dynamic>?)!,
-      newMessage:
-          Message.fromJson(json['new_message'] as Map<String, dynamic>?)!,
+      oldMessage: Message.fromJson(
+        json['old_message'] as Map<String, dynamic>?,
+      )!,
+      newMessage: Message.fromJson(
+        json['new_message'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class ChatEventMessageEdited extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_message': oldMessage.toJson(),
-        'new_message': newMessage.toJson(),
-        '@type': constructor,
-      };
+    'old_message': oldMessage.toJson(),
+    'new_message': newMessage.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

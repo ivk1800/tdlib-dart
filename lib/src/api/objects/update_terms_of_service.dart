@@ -28,7 +28,8 @@ class UpdateTermsOfService extends Update {
     return UpdateTermsOfService(
       termsOfServiceId: json['terms_of_service_id'] as String,
       termsOfService: TermsOfService.fromJson(
-          json['terms_of_service'] as Map<String, dynamic>?)!,
+        json['terms_of_service'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +38,10 @@ class UpdateTermsOfService extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'terms_of_service_id': termsOfServiceId,
-        'terms_of_service': termsOfService.toJson(),
-        '@type': constructor,
-      };
+    'terms_of_service_id': termsOfServiceId,
+    'terms_of_service': termsOfService.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

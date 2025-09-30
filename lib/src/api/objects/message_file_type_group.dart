@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The messages were exported from a group chat
 @immutable
 class MessageFileTypeGroup extends MessageFileType {
-  const MessageFileTypeGroup({
-    required this.title,
-  });
+  const MessageFileTypeGroup({required this.title});
 
   /// [title] Title of the group chat; may be empty if unrecognized
   final String title;
@@ -19,9 +17,7 @@ class MessageFileTypeGroup extends MessageFileType {
       return null;
     }
 
-    return MessageFileTypeGroup(
-      title: json['title'] as String,
-    );
+    return MessageFileTypeGroup(title: json['title'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageFileTypeGroup extends MessageFileType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        '@type': constructor,
-      };
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -30,11 +30,11 @@ class DeleteSavedMessagesTopicMessagesByDate extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'min_date': minDate,
-        'max_date': maxDate,
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'min_date': minDate,
+    'max_date': maxDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

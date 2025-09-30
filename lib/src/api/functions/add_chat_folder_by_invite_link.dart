@@ -25,10 +25,10 @@ class AddChatFolderByInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        'chat_ids': chatIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    'chat_ids': chatIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

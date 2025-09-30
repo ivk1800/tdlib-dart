@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The password reset request is pending
 @immutable
 class ResetPasswordResultPending extends ResetPasswordResult {
-  const ResetPasswordResultPending({
-    required this.pendingResetDate,
-  });
+  const ResetPasswordResultPending({required this.pendingResetDate});
 
   /// [pendingResetDate] Point in time (Unix timestamp) after which the password
   /// can be reset immediately using resetPassword
@@ -30,9 +28,9 @@ class ResetPasswordResultPending extends ResetPasswordResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'pending_reset_date': pendingResetDate,
-        '@type': constructor,
-      };
+    'pending_reset_date': pendingResetDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

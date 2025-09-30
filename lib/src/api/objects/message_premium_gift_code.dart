@@ -66,8 +66,9 @@ class MessagePremiumGiftCode extends MessageContent {
     }
 
     return MessagePremiumGiftCode(
-      creatorId:
-          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?),
+      creatorId: MessageSender.fromJson(
+        json['creator_id'] as Map<String, dynamic>?,
+      ),
       text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
       isFromGiveaway: json['is_from_giveaway'] as bool,
       isUnclaimed: json['is_unclaimed'] as bool,
@@ -86,19 +87,19 @@ class MessagePremiumGiftCode extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'creator_id': creatorId?.toJson(),
-        'text': text.toJson(),
-        'is_from_giveaway': isFromGiveaway,
-        'is_unclaimed': isUnclaimed,
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'month_count': monthCount,
-        'sticker': sticker?.toJson(),
-        'code': code,
-        '@type': constructor,
-      };
+    'creator_id': creatorId?.toJson(),
+    'text': text.toJson(),
+    'is_from_giveaway': isFromGiveaway,
+    'is_unclaimed': isUnclaimed,
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'month_count': monthCount,
+    'sticker': sticker?.toJson(),
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

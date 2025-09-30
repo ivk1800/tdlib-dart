@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about found messages sent on a specific day
 @immutable
 class MessageCalendarDay extends TdObject {
-  const MessageCalendarDay({
-    required this.totalCount,
-    required this.message,
-  });
+  const MessageCalendarDay({required this.totalCount, required this.message});
 
   /// [totalCount] Total number of found messages sent on the day
   final int totalCount;
@@ -34,10 +31,10 @@ class MessageCalendarDay extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// available only for filled backgrounds
 @immutable
 class LinkPreviewTypeBackground extends LinkPreviewType {
-  const LinkPreviewTypeBackground({
-    this.document,
-    this.backgroundType,
-  });
+  const LinkPreviewTypeBackground({this.document, this.backgroundType});
 
   /// [document] Document with the background; may be null for filled
   /// backgrounds
@@ -28,7 +25,8 @@ class LinkPreviewTypeBackground extends LinkPreviewType {
     return LinkPreviewTypeBackground(
       document: Document.fromJson(json['document'] as Map<String, dynamic>?),
       backgroundType: BackgroundType.fromJson(
-          json['background_type'] as Map<String, dynamic>?),
+        json['background_type'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class LinkPreviewTypeBackground extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document?.toJson(),
-        'background_type': backgroundType?.toJson(),
-        '@type': constructor,
-      };
+    'document': document?.toJson(),
+    'background_type': backgroundType?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -46,14 +46,14 @@ class GetChatEventLog extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'query': query,
-        'from_event_id': fromEventId,
-        'limit': limit,
-        'filters': filters?.toJson(),
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'query': query,
+    'from_event_id': fromEventId,
+    'limit': limit,
+    'filters': filters?.toJson(),
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

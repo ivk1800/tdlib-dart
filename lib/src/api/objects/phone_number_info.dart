@@ -50,12 +50,12 @@ class PhoneNumberInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'country': country?.toJson(),
-        'country_calling_code': countryCallingCode,
-        'formatted_phone_number': formattedPhoneNumber,
-        'is_anonymous': isAnonymous,
-        '@type': constructor,
-      };
+    'country': country?.toJson(),
+    'country_calling_code': countryCallingCode,
+    'formatted_phone_number': formattedPhoneNumber,
+    'is_anonymous': isAnonymous,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

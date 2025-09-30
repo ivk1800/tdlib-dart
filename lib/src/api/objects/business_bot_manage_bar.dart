@@ -45,12 +45,12 @@ class BusinessBotManageBar extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'manage_url': manageUrl,
-        'is_bot_paused': isBotPaused,
-        'can_bot_reply': canBotReply,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'manage_url': manageUrl,
+    'is_bot_paused': isBotPaused,
+    'can_bot_reply': canBotReply,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

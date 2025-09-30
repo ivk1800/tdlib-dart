@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A filled background
 @immutable
 class BackgroundTypeFill extends BackgroundType {
-  const BackgroundTypeFill({
-    required this.fill,
-  });
+  const BackgroundTypeFill({required this.fill});
 
   /// [fill] The background fill
   final BackgroundFill fill;
@@ -29,9 +27,9 @@ class BackgroundTypeFill extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'fill': fill.toJson(),
-        '@type': constructor,
-      };
+    'fill': fill.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

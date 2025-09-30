@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// an error
 @immutable
 class TdError extends TdObject {
-  const TdError({
-    required this.code,
-    required this.message,
-  });
+  const TdError({required this.code, required this.message});
 
   /// [code] Error code; subject to future changes. If the error code is 406,
   /// the error message must not be processed in any way and must not be
@@ -37,10 +34,10 @@ class TdError extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        'message': message,
-        '@type': constructor,
-      };
+    'code': code,
+    'message': message,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

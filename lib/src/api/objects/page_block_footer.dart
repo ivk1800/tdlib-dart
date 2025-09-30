@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The footer of a page
 @immutable
 class PageBlockFooter extends PageBlock {
-  const PageBlockFooter({
-    required this.footer,
-  });
+  const PageBlockFooter({required this.footer});
 
   /// [footer] Footer
   final RichText footer;
@@ -29,9 +27,9 @@ class PageBlockFooter extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'footer': footer.toJson(),
-        '@type': constructor,
-      };
+    'footer': footer.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

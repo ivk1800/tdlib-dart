@@ -34,10 +34,10 @@ class PaymentProviderSmartGlocal extends PaymentProvider {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'public_token': publicToken,
-        'tokenize_url': tokenizeUrl,
-        '@type': constructor,
-      };
+    'public_token': publicToken,
+    'tokenize_url': tokenizeUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

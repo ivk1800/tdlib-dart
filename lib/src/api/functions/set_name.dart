@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetName extends TdFunction {
-  const SetName({
-    required this.firstName,
-    this.lastName,
-  });
+  const SetName({required this.firstName, this.lastName});
 
   /// [firstName] The new value of the first name for the current user; 1-64
   /// characters
@@ -26,10 +23,10 @@ class SetName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'first_name': firstName,
-        'last_name': lastName,
-        '@type': constructor,
-      };
+    'first_name': firstName,
+    'last_name': lastName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

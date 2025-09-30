@@ -27,7 +27,8 @@ class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
   static const String constructor = 'telegramPaymentPurposeGiftedStars';
 
   static TelegramPaymentPurposeGiftedStars? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -45,12 +46,12 @@ class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

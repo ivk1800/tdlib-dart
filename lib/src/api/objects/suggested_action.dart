@@ -13,6 +13,7 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionCheckPassword]
   /// [SuggestedActionCheckPhoneNumber]
   /// [SuggestedActionConvertToBroadcastGroup]
+  /// [SuggestedActionCustom]
   /// [SuggestedActionEnableArchiveAndMuteNewChats]
   /// [SuggestedActionExtendPremium]
   /// [SuggestedActionExtendStarSubscriptions]
@@ -20,6 +21,7 @@ abstract class SuggestedAction extends TdObject {
   /// [SuggestedActionRestorePremium]
   /// [SuggestedActionSetBirthdate]
   /// [SuggestedActionSetPassword]
+  /// [SuggestedActionSetProfilePhoto]
   /// [SuggestedActionSubscribeToAnnualPremium]
   /// [SuggestedActionUpgradePremium]
   /// [SuggestedActionViewChecksHint]
@@ -35,6 +37,8 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionCheckPhoneNumber.fromJson(json);
       case SuggestedActionConvertToBroadcastGroup.constructor:
         return SuggestedActionConvertToBroadcastGroup.fromJson(json);
+      case SuggestedActionCustom.constructor:
+        return SuggestedActionCustom.fromJson(json);
       case SuggestedActionEnableArchiveAndMuteNewChats.constructor:
         return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json);
       case SuggestedActionExtendPremium.constructor:
@@ -49,6 +53,8 @@ abstract class SuggestedAction extends TdObject {
         return SuggestedActionSetBirthdate.fromJson(json);
       case SuggestedActionSetPassword.constructor:
         return SuggestedActionSetPassword.fromJson(json);
+      case SuggestedActionSetProfilePhoto.constructor:
+        return SuggestedActionSetProfilePhoto.fromJson(json);
       case SuggestedActionSubscribeToAnnualPremium.constructor:
         return SuggestedActionSubscribeToAnnualPremium.fromJson(json);
       case SuggestedActionUpgradePremium.constructor:

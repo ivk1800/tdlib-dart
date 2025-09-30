@@ -32,7 +32,8 @@ class UpdateMessageInteractionInfo extends Update {
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
       interactionInfo: MessageInteractionInfo.fromJson(
-          json['interaction_info'] as Map<String, dynamic>?),
+        json['interaction_info'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -41,11 +42,11 @@ class UpdateMessageInteractionInfo extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'interaction_info': interactionInfo?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'interaction_info': interactionInfo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

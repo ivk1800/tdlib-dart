@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns default emoji statuses for self status
-/// Returns [EmojiStatuses]
+/// Returns [EmojiStatusCustomEmojis]
 @immutable
 class GetDefaultEmojiStatuses extends TdFunction {
   const GetDefaultEmojiStatuses();
@@ -14,9 +14,7 @@ class GetDefaultEmojiStatuses extends TdFunction {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A URL linking to a public supergroup or channel
 @immutable
 class TMeUrlTypeSupergroup extends TMeUrlType {
-  const TMeUrlTypeSupergroup({
-    required this.supergroupId,
-  });
+  const TMeUrlTypeSupergroup({required this.supergroupId});
 
   /// [supergroupId] Identifier of the supergroup or channel
   final int supergroupId;
@@ -19,9 +17,7 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
       return null;
     }
 
-    return TMeUrlTypeSupergroup(
-      supergroupId: json['supergroup_id'] as int,
-    );
+    return TMeUrlTypeSupergroup(supergroupId: json['supergroup_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -49,13 +49,13 @@ class LinkPreviewTypeExternalVideo extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'mime_type': mimeType,
-        'width': width,
-        'height': height,
-        'duration': duration,
-        '@type': constructor,
-      };
+    'url': url,
+    'mime_type': mimeType,
+    'width': width,
+    'height': height,
+    'duration': duration,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

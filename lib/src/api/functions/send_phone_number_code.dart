@@ -31,11 +31,11 @@ class SendPhoneNumberCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'settings': settings?.toJson(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'settings': settings?.toJson(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

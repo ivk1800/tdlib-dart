@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for Windows Push Notification Services
 @immutable
 class DeviceTokenWindowsPush extends DeviceToken {
-  const DeviceTokenWindowsPush({
-    required this.accessToken,
-  });
+  const DeviceTokenWindowsPush({required this.accessToken});
 
   /// [accessToken] The access token that will be used to send notifications;
   /// may be empty to deregister a device
@@ -20,9 +18,7 @@ class DeviceTokenWindowsPush extends DeviceToken {
       return null;
     }
 
-    return DeviceTokenWindowsPush(
-      accessToken: json['access_token'] as String,
-    );
+    return DeviceTokenWindowsPush(accessToken: json['access_token'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class DeviceTokenWindowsPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'access_token': accessToken,
-        '@type': constructor,
-      };
+    'access_token': accessToken,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

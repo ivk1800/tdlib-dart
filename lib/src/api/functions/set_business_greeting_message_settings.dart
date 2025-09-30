@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessGreetingMessageSettings extends TdFunction {
-  const SetBusinessGreetingMessageSettings({
-    this.greetingMessageSettings,
-  });
+  const SetBusinessGreetingMessageSettings({this.greetingMessageSettings});
 
   /// [greetingMessageSettings] The new settings for the greeting message of the
   /// business; pass null to disable the greeting message
@@ -22,9 +20,9 @@ class SetBusinessGreetingMessageSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'greeting_message_settings': greetingMessageSettings?.toJson(),
-        '@type': constructor,
-      };
+    'greeting_message_settings': greetingMessageSettings?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

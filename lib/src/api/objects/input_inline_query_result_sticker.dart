@@ -54,10 +54,12 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
       stickerUrl: json['sticker_url'] as String,
       stickerWidth: json['sticker_width'] as int,
       stickerHeight: json['sticker_height'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -66,15 +68,15 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'thumbnail_url': thumbnailUrl,
-        'sticker_url': stickerUrl,
-        'sticker_width': stickerWidth,
-        'sticker_height': stickerHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'thumbnail_url': thumbnailUrl,
+    'sticker_url': stickerUrl,
+    'sticker_width': stickerWidth,
+    'sticker_height': stickerHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

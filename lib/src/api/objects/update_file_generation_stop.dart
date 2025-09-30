@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// File generation is no longer needed
 @immutable
 class UpdateFileGenerationStop extends Update {
-  const UpdateFileGenerationStop({
-    required this.generationId,
-  });
+  const UpdateFileGenerationStop({required this.generationId});
 
   /// [generationId] Unique identifier for the generation process
   final int generationId;
@@ -29,9 +27,9 @@ class UpdateFileGenerationStop extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId.toString(),
-        '@type': constructor,
-      };
+    'generation_id': generationId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

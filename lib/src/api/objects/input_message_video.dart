@@ -8,6 +8,8 @@ class InputMessageVideo extends InputMessageContent {
   const InputMessageVideo({
     required this.video,
     this.thumbnail,
+    this.cover,
+    required this.startTimestamp,
     required this.addedStickerFileIds,
     required this.duration,
     required this.width,
@@ -19,12 +21,20 @@ class InputMessageVideo extends InputMessageContent {
     required this.hasSpoiler,
   });
 
-  /// [video] Video to be sent. The video is expected to be reencoded to MPEG4
+  /// [video] Video to be sent. The video is expected to be re-encoded to MPEG4
   /// format with H.264 codec by the sender
   final InputFile video;
 
   /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
+
+  /// [cover] Cover of the video; pass null to skip cover uploading; not
+  /// supported in secret chats and for self-destructing messages
+  final InputFile? cover;
+
+  /// [startTimestamp] Timestamp from which the video playing must start, in
+  /// seconds
+  final int startTimestamp;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the video,
   /// if applicable
@@ -68,12 +78,16 @@ class InputMessageVideo extends InputMessageContent {
 
     return InputMessageVideo(
       video: InputFile.fromJson(json['video'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
+      cover: InputFile.fromJson(json['cover'] as Map<String, dynamic>?),
+      startTimestamp: json['start_timestamp'] as int,
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       duration: json['duration'] as int,
       width: json['width'] as int,
       height: json['height'] as int,
@@ -81,7 +95,8 @@ class InputMessageVideo extends InputMessageContent {
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       selfDestructType: MessageSelfDestructType.fromJson(
-          json['self_destruct_type'] as Map<String, dynamic>?),
+        json['self_destruct_type'] as Map<String, dynamic>?,
+      ),
       hasSpoiler: json['has_spoiler'] as bool,
     );
   }
@@ -91,20 +106,21 @@ class InputMessageVideo extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video': video.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'supports_streaming': supportsStreaming,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'self_destruct_type': selfDestructType?.toJson(),
-        'has_spoiler': hasSpoiler,
-        '@type': constructor,
-      };
+    'video': video.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'supports_streaming': supportsStreaming,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'self_destruct_type': selfDestructType?.toJson(),
+    'has_spoiler': hasSpoiler,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

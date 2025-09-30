@@ -25,10 +25,10 @@ class ToggleSessionCanAcceptSecretChats extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'session_id': sessionId,
-        'can_accept_secret_chats': canAcceptSecretChats,
-        '@type': constructor,
-      };
+    'session_id': sessionId,
+    'can_accept_secret_chats': canAcceptSecretChats,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

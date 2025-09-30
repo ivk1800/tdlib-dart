@@ -44,12 +44,12 @@ class SharedChat extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'title': title,
-        'username': username,
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'title': title,
+    'username': username,
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of sticker sets
 @immutable
 class StickerSets extends TdObject {
-  const StickerSets({
-    required this.totalCount,
-    required this.sets,
-  });
+  const StickerSets({required this.totalCount, required this.sets});
 
   /// [totalCount] Approximate total number of sticker sets found
   final int totalCount;
@@ -26,9 +23,10 @@ class StickerSets extends TdObject {
     return StickerSets(
       totalCount: json['total_count'] as int,
       sets: List<StickerSetInfo>.from(
-          ((json['sets'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StickerSetInfo.fromJson(item))
-              .toList()),
+        ((json['sets'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StickerSetInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class StickerSets extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'sets': sets.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'sets': sets.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -29,11 +29,11 @@ class ReorderBotMediaPreviews extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        'file_ids': fileIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    'file_ids': fileIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -36,10 +36,10 @@ class UpdateStoryStealthMode extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'active_until_date': activeUntilDate,
-        'cooldown_until_date': cooldownUntilDate,
-        '@type': constructor,
-      };
+    'active_until_date': activeUntilDate,
+    'cooldown_until_date': cooldownUntilDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -16,7 +16,8 @@ class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction {
       'chatEventVideoChatMuteNewParticipantsToggled';
 
   static ChatEventVideoChatMuteNewParticipantsToggled? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +32,9 @@ class ChatEventVideoChatMuteNewParticipantsToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'mute_new_participants': muteNewParticipants,
-        '@type': constructor,
-      };
+    'mute_new_participants': muteNewParticipants,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

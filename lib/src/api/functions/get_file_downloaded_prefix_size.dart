@@ -24,10 +24,10 @@ class GetFileDownloadedPrefixSize extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'offset': offset,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'offset': offset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// license
 @immutable
 class InputPassportElementDriverLicense extends InputPassportElement {
-  const InputPassportElementDriverLicense({
-    required this.driverLicense,
-  });
+  const InputPassportElementDriverLicense({required this.driverLicense});
 
   /// [driverLicense] The driver license to be saved
   final InputIdentityDocument driverLicense;
@@ -16,14 +14,16 @@ class InputPassportElementDriverLicense extends InputPassportElement {
   static const String constructor = 'inputPassportElementDriverLicense';
 
   static InputPassportElementDriverLicense? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InputPassportElementDriverLicense(
       driverLicense: InputIdentityDocument.fromJson(
-          json['driver_license'] as Map<String, dynamic>?)!,
+        json['driver_license'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +32,9 @@ class InputPassportElementDriverLicense extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'driver_license': driverLicense.toJson(),
-        '@type': constructor,
-      };
+    'driver_license': driverLicense.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

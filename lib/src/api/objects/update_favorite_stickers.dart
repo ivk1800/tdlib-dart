@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of favorite stickers was updated
 @immutable
 class UpdateFavoriteStickers extends Update {
-  const UpdateFavoriteStickers({
-    required this.stickerIds,
-  });
+  const UpdateFavoriteStickers({required this.stickerIds});
 
   /// [stickerIds] The new list of file identifiers of favorite stickers
   final List<int> stickerIds;
@@ -21,9 +19,10 @@ class UpdateFavoriteStickers extends Update {
 
     return UpdateFavoriteStickers(
       stickerIds: List<int>.from(
-          ((json['sticker_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['sticker_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateFavoriteStickers extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_ids': stickerIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker_ids': stickerIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

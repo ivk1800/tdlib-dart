@@ -8,13 +8,13 @@ import '../tdapi.dart';
 @immutable
 class ToggleStoryIsPostedToChatPage extends TdFunction {
   const ToggleStoryIsPostedToChatPage({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.isPostedToChatPage,
   });
 
-  /// [storySenderChatId] Identifier of the chat that posted the story
-  final int storySenderChatId;
+  /// [storyPosterChatId] Identifier of the chat that posted the story
+  final int storyPosterChatId;
 
   /// [storyId] Identifier of the story
   final int storyId;
@@ -30,11 +30,11 @@ class ToggleStoryIsPostedToChatPage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_sender_chat_id': storySenderChatId,
-        'story_id': storyId,
-        'is_posted_to_chat_page': isPostedToChatPage,
-        '@type': constructor,
-      };
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'is_posted_to_chat_page': isPostedToChatPage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

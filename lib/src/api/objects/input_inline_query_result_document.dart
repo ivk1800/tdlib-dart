@@ -69,10 +69,12 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
       thumbnailUrl: json['thumbnail_url'] as String,
       thumbnailWidth: json['thumbnail_width'] as int,
       thumbnailHeight: json['thumbnail_height'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -81,18 +83,18 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'description': description,
-        'document_url': documentUrl,
-        'mime_type': mimeType,
-        'thumbnail_url': thumbnailUrl,
-        'thumbnail_width': thumbnailWidth,
-        'thumbnail_height': thumbnailHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'title': title,
+    'description': description,
+    'document_url': documentUrl,
+    'mime_type': mimeType,
+    'thumbnail_url': thumbnailUrl,
+    'thumbnail_width': thumbnailWidth,
+    'thumbnail_height': thumbnailHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

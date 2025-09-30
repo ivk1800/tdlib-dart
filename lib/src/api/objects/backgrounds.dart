@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of backgrounds
 @immutable
 class Backgrounds extends TdObject {
-  const Backgrounds({
-    required this.backgrounds,
-  });
+  const Backgrounds({required this.backgrounds});
 
   /// [backgrounds] A list of backgrounds
   final List<Background> backgrounds;
@@ -21,9 +19,10 @@ class Backgrounds extends TdObject {
 
     return Backgrounds(
       backgrounds: List<Background>.from(
-          ((json['backgrounds'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Background.fromJson(item))
-              .toList()),
+        ((json['backgrounds'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Background.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Backgrounds extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'backgrounds': backgrounds.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'backgrounds': backgrounds.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

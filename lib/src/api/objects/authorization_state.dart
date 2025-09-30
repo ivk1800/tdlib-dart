@@ -20,6 +20,7 @@ abstract class AuthorizationState extends TdObject {
   /// [AuthorizationStateWaitOtherDeviceConfirmation]
   /// [AuthorizationStateWaitPassword]
   /// [AuthorizationStateWaitPhoneNumber]
+  /// [AuthorizationStateWaitPremiumPurchase]
   /// [AuthorizationStateWaitRegistration]
   /// [AuthorizationStateWaitTdlibParameters]
   static AuthorizationState? fromJson(Map<String, dynamic>? json) {
@@ -48,6 +49,8 @@ abstract class AuthorizationState extends TdObject {
         return AuthorizationStateWaitPassword.fromJson(json);
       case AuthorizationStateWaitPhoneNumber.constructor:
         return AuthorizationStateWaitPhoneNumber.fromJson(json);
+      case AuthorizationStateWaitPremiumPurchase.constructor:
+        return AuthorizationStateWaitPremiumPurchase.fromJson(json);
       case AuthorizationStateWaitRegistration.constructor:
         return AuthorizationStateWaitRegistration.fromJson(json);
       case AuthorizationStateWaitTdlibParameters.constructor:

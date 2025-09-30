@@ -32,10 +32,10 @@ class SetChatDiscussionGroup extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'discussion_chat_id': discussionChatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'discussion_chat_id': discussionChatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

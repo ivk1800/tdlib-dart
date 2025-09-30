@@ -7,9 +7,7 @@ import '../tdapi.dart';
 @immutable
 class BotWriteAccessAllowReasonConnectedWebsite
     extends BotWriteAccessAllowReason {
-  const BotWriteAccessAllowReasonConnectedWebsite({
-    required this.domainName,
-  });
+  const BotWriteAccessAllowReasonConnectedWebsite({required this.domainName});
 
   /// [domainName] Domain name of the connected website
   final String domainName;
@@ -17,7 +15,8 @@ class BotWriteAccessAllowReasonConnectedWebsite
   static const String constructor = 'botWriteAccessAllowReasonConnectedWebsite';
 
   static BotWriteAccessAllowReasonConnectedWebsite? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -32,9 +31,9 @@ class BotWriteAccessAllowReasonConnectedWebsite
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'domain_name': domainName,
-        '@type': constructor,
-      };
+    'domain_name': domainName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// rule matches, the action is not allowed
 @immutable
 class UserPrivacySettingRules extends TdObject {
-  const UserPrivacySettingRules({
-    required this.rules,
-  });
+  const UserPrivacySettingRules({required this.rules});
 
   /// [rules] A list of rules
   final List<UserPrivacySettingRule> rules;
@@ -23,9 +21,10 @@ class UserPrivacySettingRules extends TdObject {
 
     return UserPrivacySettingRules(
       rules: List<UserPrivacySettingRule>.from(
-          ((json['rules'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => UserPrivacySettingRule.fromJson(item))
-              .toList()),
+        ((json['rules'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => UserPrivacySettingRule.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -34,9 +33,9 @@ class UserPrivacySettingRules extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'rules': rules.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'rules': rules.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

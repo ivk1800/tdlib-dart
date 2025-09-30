@@ -27,10 +27,10 @@ class DeleteAllRevokedChatInviteLinks extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'creator_user_id': creatorUserId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'creator_user_id': creatorUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

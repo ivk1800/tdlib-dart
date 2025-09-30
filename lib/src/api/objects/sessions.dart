@@ -26,9 +26,10 @@ class Sessions extends TdObject {
 
     return Sessions(
       sessions: List<Session>.from(
-          ((json['sessions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Session.fromJson(item))
-              .toList()),
+        ((json['sessions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Session.fromJson(item))
+            .toList(),
+      ),
       inactiveSessionTtlDays: json['inactive_session_ttl_days'] as int,
     );
   }
@@ -38,10 +39,10 @@ class Sessions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sessions': sessions.map((item) => item.toJson()).toList(),
-        'inactive_session_ttl_days': inactiveSessionTtlDays,
-        '@type': constructor,
-      };
+    'sessions': sessions.map((item) => item.toJson()).toList(),
+    'inactive_session_ttl_days': inactiveSessionTtlDays,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

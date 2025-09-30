@@ -44,12 +44,12 @@ class CallServerTypeWebrtc extends CallServerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        'password': password,
-        'supports_turn': supportsTurn,
-        'supports_stun': supportsStun,
-        '@type': constructor,
-      };
+    'username': username,
+    'password': password,
+    'supports_turn': supportsTurn,
+    'supports_stun': supportsStun,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

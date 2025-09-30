@@ -39,9 +39,11 @@ class MessageInteractionInfo extends TdObject {
       viewCount: json['view_count'] as int,
       forwardCount: json['forward_count'] as int,
       replyInfo: MessageReplyInfo.fromJson(
-          json['reply_info'] as Map<String, dynamic>?),
-      reactions:
-          MessageReactions.fromJson(json['reactions'] as Map<String, dynamic>?),
+        json['reply_info'] as Map<String, dynamic>?,
+      ),
+      reactions: MessageReactions.fromJson(
+        json['reactions'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -50,12 +52,12 @@ class MessageInteractionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'view_count': viewCount,
-        'forward_count': forwardCount,
-        'reply_info': replyInfo?.toJson(),
-        'reactions': reactions?.toJson(),
-        '@type': constructor,
-      };
+    'view_count': viewCount,
+    'forward_count': forwardCount,
+    'reply_info': replyInfo?.toJson(),
+    'reactions': reactions?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

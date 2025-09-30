@@ -34,10 +34,12 @@ class ChatEvent extends TdObject {
     return ChatEvent(
       id: int.tryParse(json['id']) ?? 0,
       date: json['date'] as int,
-      memberId:
-          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
-      action:
-          ChatEventAction.fromJson(json['action'] as Map<String, dynamic>?)!,
+      memberId: MessageSender.fromJson(
+        json['member_id'] as Map<String, dynamic>?,
+      )!,
+      action: ChatEventAction.fromJson(
+        json['action'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -46,12 +48,12 @@ class ChatEvent extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'date': date,
-        'member_id': memberId.toJson(),
-        'action': action.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'date': date,
+    'member_id': memberId.toJson(),
+    'action': action.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

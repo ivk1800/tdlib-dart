@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a message sender, which can be used to send messages in a chat
 @immutable
 class ChatMessageSender extends TdObject {
-  const ChatMessageSender({
-    required this.sender,
-    required this.needsPremium,
-  });
+  const ChatMessageSender({required this.sender, required this.needsPremium});
 
   /// [sender] The message sender
   final MessageSender sender;
@@ -35,10 +32,10 @@ class ChatMessageSender extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender': sender.toJson(),
-        'needs_premium': needsPremium,
-        '@type': constructor,
-      };
+    'sender': sender.toJson(),
+    'needs_premium': needsPremium,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

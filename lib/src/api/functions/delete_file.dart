@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteFile extends TdFunction {
-  const DeleteFile({
-    required this.fileId,
-  });
+  const DeleteFile({required this.fileId});
 
   /// [fileId] Identifier of the file to delete
   final int fileId;
@@ -20,9 +18,9 @@ class DeleteFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

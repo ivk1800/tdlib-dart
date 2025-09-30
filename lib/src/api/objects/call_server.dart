@@ -49,13 +49,13 @@ class CallServer extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'ip_address': ipAddress,
-        'ipv6_address': ipv6Address,
-        'port': port,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'ip_address': ipAddress,
+    'ipv6_address': ipv6Address,
+    'port': port,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of requests to join a chat
 @immutable
 class ChatJoinRequests extends TdObject {
-  const ChatJoinRequests({
-    required this.totalCount,
-    required this.requests,
-  });
+  const ChatJoinRequests({required this.totalCount, required this.requests});
 
   /// [totalCount] Approximate total number of requests found
   final int totalCount;
@@ -26,9 +23,10 @@ class ChatJoinRequests extends TdObject {
     return ChatJoinRequests(
       totalCount: json['total_count'] as int,
       requests: List<ChatJoinRequest>.from(
-          ((json['requests'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatJoinRequest.fromJson(item))
-              .toList()),
+        ((json['requests'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatJoinRequest.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class ChatJoinRequests extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'requests': requests.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'requests': requests.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

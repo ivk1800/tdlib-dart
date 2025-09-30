@@ -35,7 +35,8 @@ class QuickReplyShortcut extends TdObject {
       id: json['id'] as int,
       name: json['name'] as String,
       firstMessage: QuickReplyMessage.fromJson(
-          json['first_message'] as Map<String, dynamic>?)!,
+        json['first_message'] as Map<String, dynamic>?,
+      )!,
       messageCount: json['message_count'] as int,
     );
   }
@@ -45,12 +46,12 @@ class QuickReplyShortcut extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'name': name,
-        'first_message': firstMessage.toJson(),
-        'message_count': messageCount,
-        '@type': constructor,
-      };
+    'id': id,
+    'name': name,
+    'first_message': firstMessage.toJson(),
+    'message_count': messageCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

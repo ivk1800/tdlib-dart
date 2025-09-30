@@ -67,17 +67,17 @@ class OptimizeStorage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'size': size,
-        'ttl': ttl,
-        'count': count,
-        'immunity_delay': immunityDelay,
-        'file_types': fileTypes.map((item) => item.toJson()).toList(),
-        'chat_ids': chatIds.map((item) => item).toList(),
-        'exclude_chat_ids': excludeChatIds.map((item) => item).toList(),
-        'return_deleted_file_statistics': returnDeletedFileStatistics,
-        'chat_limit': chatLimit,
-        '@type': constructor,
-      };
+    'size': size,
+    'ttl': ttl,
+    'count': count,
+    'immunity_delay': immunityDelay,
+    'file_types': fileTypes.map((item) => item.toJson()).toList(),
+    'chat_ids': chatIds.map((item) => item).toList(),
+    'exclude_chat_ids': excludeChatIds.map((item) => item).toList(),
+    'return_deleted_file_statistics': returnDeletedFileStatistics,
+    'chat_limit': chatLimit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

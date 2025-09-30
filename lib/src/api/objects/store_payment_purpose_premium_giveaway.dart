@@ -23,14 +23,16 @@ class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   static const String constructor = 'storePaymentPurposePremiumGiveaway';
 
   static StorePaymentPurposePremiumGiveaway? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return StorePaymentPurposePremiumGiveaway(
       parameters: GiveawayParameters.fromJson(
-          json['parameters'] as Map<String, dynamic>?)!,
+        json['parameters'] as Map<String, dynamic>?,
+      )!,
       currency: json['currency'] as String,
       amount: json['amount'] as int,
     );
@@ -41,11 +43,11 @@ class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'parameters': parameters.toJson(),
-        'currency': currency,
-        'amount': amount,
-        '@type': constructor,
-      };
+    'parameters': parameters.toJson(),
+    'currency': currency,
+    'amount': amount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

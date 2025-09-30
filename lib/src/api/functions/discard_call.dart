@@ -9,6 +9,7 @@ class DiscardCall extends TdFunction {
   const DiscardCall({
     required this.callId,
     required this.isDisconnected,
+    required this.inviteLink,
     required this.duration,
     required this.isVideo,
     required this.connectionId,
@@ -19,6 +20,10 @@ class DiscardCall extends TdFunction {
 
   /// [isDisconnected] Pass true if the user was disconnected
   final bool isDisconnected;
+
+  /// [inviteLink] If the call was upgraded to a group call, pass invite link to
+  /// the group call
+  final String inviteLink;
 
   /// [duration] The call duration, in seconds
   final int duration;
@@ -36,13 +41,14 @@ class DiscardCall extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        'is_disconnected': isDisconnected,
-        'duration': duration,
-        'is_video': isVideo,
-        'connection_id': connectionId,
-        '@type': constructor,
-      };
+    'call_id': callId,
+    'is_disconnected': isDisconnected,
+    'invite_link': inviteLink,
+    'duration': duration,
+    'is_video': isVideo,
+    'connection_id': connectionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

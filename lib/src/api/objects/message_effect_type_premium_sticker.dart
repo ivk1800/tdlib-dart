@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An effect from a premium sticker
 @immutable
 class MessageEffectTypePremiumSticker extends MessageEffectType {
-  const MessageEffectTypePremiumSticker({
-    required this.sticker,
-  });
+  const MessageEffectTypePremiumSticker({required this.sticker});
 
   /// [sticker] The premium sticker. The effect can be found at
   /// sticker.full_type.premium_animation
@@ -30,9 +28,9 @@ class MessageEffectTypePremiumSticker extends MessageEffectType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

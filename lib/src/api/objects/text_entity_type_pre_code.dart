@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Text that must be formatted as if inside pre, and code HTML tags
 @immutable
 class TextEntityTypePreCode extends TextEntityType {
-  const TextEntityTypePreCode({
-    required this.language,
-  });
+  const TextEntityTypePreCode({required this.language});
 
   /// [language] Programming language of the code; as defined by the sender
   final String language;
@@ -19,9 +17,7 @@ class TextEntityTypePreCode extends TextEntityType {
       return null;
     }
 
-    return TextEntityTypePreCode(
-      language: json['language'] as String,
-    );
+    return TextEntityTypePreCode(language: json['language'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class TextEntityTypePreCode extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language': language,
-        '@type': constructor,
-      };
+    'language': language,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -53,7 +53,8 @@ class PremiumPaymentOption extends TdObject {
       monthCount: json['month_count'] as int,
       storeProductId: json['store_product_id'] as String,
       paymentLink: InternalLinkType.fromJson(
-          json['payment_link'] as Map<String, dynamic>?),
+        json['payment_link'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -62,14 +63,14 @@ class PremiumPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'currency': currency,
-        'amount': amount,
-        'discount_percentage': discountPercentage,
-        'month_count': monthCount,
-        'store_product_id': storeProductId,
-        'payment_link': paymentLink?.toJson(),
-        '@type': constructor,
-      };
+    'currency': currency,
+    'amount': amount,
+    'discount_percentage': discountPercentage,
+    'month_count': monthCount,
+    'store_product_id': storeProductId,
+    'payment_link': paymentLink?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

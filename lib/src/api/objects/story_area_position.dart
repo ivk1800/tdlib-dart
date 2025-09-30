@@ -51,8 +51,8 @@ class StoryAreaPosition extends TdObject {
       widthPercentage: (json['width_percentage'] as num).toDouble(),
       heightPercentage: (json['height_percentage'] as num).toDouble(),
       rotationAngle: (json['rotation_angle'] as num).toDouble(),
-      cornerRadiusPercentage:
-          (json['corner_radius_percentage'] as num).toDouble(),
+      cornerRadiusPercentage: (json['corner_radius_percentage'] as num)
+          .toDouble(),
     );
   }
 
@@ -61,14 +61,14 @@ class StoryAreaPosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'x_percentage': xPercentage,
-        'y_percentage': yPercentage,
-        'width_percentage': widthPercentage,
-        'height_percentage': heightPercentage,
-        'rotation_angle': rotationAngle,
-        'corner_radius_percentage': cornerRadiusPercentage,
-        '@type': constructor,
-      };
+    'x_percentage': xPercentage,
+    'y_percentage': yPercentage,
+    'width_percentage': widthPercentage,
+    'height_percentage': heightPercentage,
+    'rotation_angle': rotationAngle,
+    'corner_radius_percentage': cornerRadiusPercentage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -27,10 +27,10 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'authorization_form_id': authorizationFormId,
-        'password': password,
-        '@type': constructor,
-      };
+    'authorization_form_id': authorizationFormId,
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

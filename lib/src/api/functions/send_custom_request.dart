@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [CustomRequestResult]
 @immutable
 class SendCustomRequest extends TdFunction {
-  const SendCustomRequest({
-    required this.method,
-    required this.parameters,
-  });
+  const SendCustomRequest({required this.method, required this.parameters});
 
   /// [method] The method name
   final String method;
@@ -24,10 +21,10 @@ class SendCustomRequest extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'method': method,
-        'parameters': parameters,
-        '@type': constructor,
-      };
+    'method': method,
+    'parameters': parameters,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

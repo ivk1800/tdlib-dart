@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with information about a venue
 @immutable
 class MessageVenue extends MessageContent {
-  const MessageVenue({
-    required this.venue,
-  });
+  const MessageVenue({required this.venue});
 
   /// [venue] The venue description
   final Venue venue;
@@ -29,9 +27,9 @@ class MessageVenue extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'venue': venue.toJson(),
-        '@type': constructor,
-      };
+    'venue': venue.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

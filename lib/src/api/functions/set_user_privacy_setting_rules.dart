@@ -24,10 +24,10 @@ class SetUserPrivacySettingRules extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'setting': setting.toJson(),
-        'rules': rules.toJson(),
-        '@type': constructor,
-      };
+    'setting': setting.toJson(),
+    'rules': rules.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

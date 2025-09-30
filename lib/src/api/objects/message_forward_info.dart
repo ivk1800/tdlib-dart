@@ -49,12 +49,12 @@ class MessageForwardInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'origin': origin.toJson(),
-        'date': date,
-        'source': source?.toJson(),
-        'public_service_announcement_type': publicServiceAnnouncementType,
-        '@type': constructor,
-      };
+    'origin': origin.toJson(),
+    'date': date,
+    'source': source?.toJson(),
+    'public_service_announcement_type': publicServiceAnnouncementType,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -12,6 +12,7 @@ class CallStateReady extends CallState {
     required this.encryptionKey,
     required this.emojis,
     required this.allowP2p,
+    required this.isGroupCallSupported,
     required this.customParameters,
   });
 
@@ -34,6 +35,10 @@ class CallStateReady extends CallState {
   /// settings
   final bool allowP2p;
 
+  /// [isGroupCallSupported] True, if the other party supports upgrading of the
+  /// call to a group call
+  final bool isGroupCallSupported;
+
   /// [customParameters] Custom JSON-encoded call parameters to be passed to
   /// tgcalls
   final String customParameters;
@@ -46,19 +51,23 @@ class CallStateReady extends CallState {
     }
 
     return CallStateReady(
-      protocol:
-          CallProtocol.fromJson(json['protocol'] as Map<String, dynamic>?)!,
+      protocol: CallProtocol.fromJson(
+        json['protocol'] as Map<String, dynamic>?,
+      )!,
       servers: List<CallServer>.from(
-          ((json['servers'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => CallServer.fromJson(item))
-              .toList()),
+        ((json['servers'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => CallServer.fromJson(item))
+            .toList(),
+      ),
       config: json['config'] as String,
       encryptionKey: json['encryption_key'] as String,
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       allowP2p: json['allow_p2p'] as bool,
+      isGroupCallSupported: json['is_group_call_supported'] as bool,
       customParameters: json['custom_parameters'] as String,
     );
   }
@@ -68,15 +77,16 @@ class CallStateReady extends CallState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'protocol': protocol.toJson(),
-        'servers': servers.map((item) => item.toJson()).toList(),
-        'config': config,
-        'encryption_key': encryptionKey,
-        'emojis': emojis.map((item) => item).toList(),
-        'allow_p2p': allowP2p,
-        'custom_parameters': customParameters,
-        '@type': constructor,
-      };
+    'protocol': protocol.toJson(),
+    'servers': servers.map((item) => item.toJson()).toList(),
+    'config': config,
+    'encryption_key': encryptionKey,
+    'emojis': emojis.map((item) => item).toList(),
+    'allow_p2p': allowP2p,
+    'is_group_call_supported': isGroupCallSupported,
+    'custom_parameters': customParameters,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

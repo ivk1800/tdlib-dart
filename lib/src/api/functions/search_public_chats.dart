@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [Chats]
 @immutable
 class SearchPublicChats extends TdFunction {
-  const SearchPublicChats({
-    required this.query,
-  });
+  const SearchPublicChats({required this.query});
 
   /// [query] Query to search for
   final String query;
@@ -23,9 +21,9 @@ class SearchPublicChats extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        '@type': constructor,
-      };
+    'query': query,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

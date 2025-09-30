@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetDefaultReactionType extends TdFunction {
-  const SetDefaultReactionType({
-    required this.reactionType,
-  });
+  const SetDefaultReactionType({required this.reactionType});
 
   /// [reactionType] New type of the default reaction. The paid reaction can't
   /// be set as default
@@ -21,9 +19,9 @@ class SetDefaultReactionType extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction_type': reactionType.toJson(),
-        '@type': constructor,
-      };
+    'reaction_type': reactionType.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

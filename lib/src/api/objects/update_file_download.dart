@@ -39,7 +39,8 @@ class UpdateFileDownload extends Update {
       completeDate: json['complete_date'] as int,
       isPaused: json['is_paused'] as bool,
       counts: DownloadedFileCounts.fromJson(
-          json['counts'] as Map<String, dynamic>?)!,
+        json['counts'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -48,12 +49,12 @@ class UpdateFileDownload extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'complete_date': completeDate,
-        'is_paused': isPaused,
-        'counts': counts.toJson(),
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'complete_date': completeDate,
+    'is_paused': isPaused,
+    'counts': counts.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

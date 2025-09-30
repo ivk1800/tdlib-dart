@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The call is pending, waiting to be accepted by a user
 @immutable
 class CallStatePending extends CallState {
-  const CallStatePending({
-    required this.isCreated,
-    required this.isReceived,
-  });
+  const CallStatePending({required this.isCreated, required this.isReceived});
 
   /// [isCreated] True, if the call has already been created by the server
   final bool isCreated;
@@ -35,10 +32,10 @@ class CallStatePending extends CallState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_created': isCreated,
-        'is_received': isReceived,
-        '@type': constructor,
-      };
+    'is_created': isCreated,
+    'is_received': isReceived,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

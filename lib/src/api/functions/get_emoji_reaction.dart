@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [EmojiReaction]
 @immutable
 class GetEmojiReaction extends TdFunction {
-  const GetEmojiReaction({
-    required this.emoji,
-  });
+  const GetEmojiReaction({required this.emoji});
 
   /// [emoji] Text representation of the reaction
   final String emoji;
@@ -21,9 +19,9 @@ class GetEmojiReaction extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains the result of a custom request
 @immutable
 class CustomRequestResult extends TdObject {
-  const CustomRequestResult({
-    required this.result,
-  });
+  const CustomRequestResult({required this.result});
 
   /// [result] A JSON-serialized result
   final String result;
@@ -19,9 +17,7 @@ class CustomRequestResult extends TdObject {
       return null;
     }
 
-    return CustomRequestResult(
-      result: json['result'] as String,
-    );
+    return CustomRequestResult(result: json['result'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class CustomRequestResult extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'result': result,
-        '@type': constructor,
-      };
+    'result': result,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

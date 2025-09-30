@@ -22,7 +22,8 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   static const String constructor = 'authenticationCodeTypeMissedCall';
 
   static AuthenticationCodeTypeMissedCall? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -38,10 +39,10 @@ class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number_prefix': phoneNumberPrefix,
-        'length': length,
-        '@type': constructor,
-      };
+    'phone_number_prefix': phoneNumberPrefix,
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

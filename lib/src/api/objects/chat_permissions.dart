@@ -44,7 +44,7 @@ class ChatPermissions extends TdObject {
   /// [canSendVoiceNotes] True, if the user can send voice notes
   final bool canSendVoiceNotes;
 
-  /// [canSendPolls] True, if the user can send polls
+  /// [canSendPolls] True, if the user can send polls and checklists
   final bool canSendPolls;
 
   /// [canSendOtherMessages] True, if the user can send animations, games,
@@ -98,22 +98,22 @@ class ChatPermissions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_send_basic_messages': canSendBasicMessages,
-        'can_send_audios': canSendAudios,
-        'can_send_documents': canSendDocuments,
-        'can_send_photos': canSendPhotos,
-        'can_send_videos': canSendVideos,
-        'can_send_video_notes': canSendVideoNotes,
-        'can_send_voice_notes': canSendVoiceNotes,
-        'can_send_polls': canSendPolls,
-        'can_send_other_messages': canSendOtherMessages,
-        'can_add_link_previews': canAddLinkPreviews,
-        'can_change_info': canChangeInfo,
-        'can_invite_users': canInviteUsers,
-        'can_pin_messages': canPinMessages,
-        'can_create_topics': canCreateTopics,
-        '@type': constructor,
-      };
+    'can_send_basic_messages': canSendBasicMessages,
+    'can_send_audios': canSendAudios,
+    'can_send_documents': canSendDocuments,
+    'can_send_photos': canSendPhotos,
+    'can_send_videos': canSendVideos,
+    'can_send_video_notes': canSendVideoNotes,
+    'can_send_voice_notes': canSendVoiceNotes,
+    'can_send_polls': canSendPolls,
+    'can_send_other_messages': canSendOtherMessages,
+    'can_add_link_previews': canAddLinkPreviews,
+    'can_change_info': canChangeInfo,
+    'can_invite_users': canInviteUsers,
+    'can_pin_messages': canPinMessages,
+    'can_create_topics': canCreateTopics,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

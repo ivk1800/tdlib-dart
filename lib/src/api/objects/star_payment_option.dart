@@ -52,13 +52,13 @@ class StarPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'store_product_id': storeProductId,
-        'is_additional': isAdditional,
-        '@type': constructor,
-      };
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'store_product_id': storeProductId,
+    'is_additional': isAdditional,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

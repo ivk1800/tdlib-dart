@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AcceptTermsOfService extends TdFunction {
-  const AcceptTermsOfService({
-    required this.termsOfServiceId,
-  });
+  const AcceptTermsOfService({required this.termsOfServiceId});
 
   /// [termsOfServiceId] Terms of service identifier
   final String termsOfServiceId;
@@ -20,9 +18,9 @@ class AcceptTermsOfService extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'terms_of_service_id': termsOfServiceId,
-        '@type': constructor,
-      };
+    'terms_of_service_id': termsOfServiceId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

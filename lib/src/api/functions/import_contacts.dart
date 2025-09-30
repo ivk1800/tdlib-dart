@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [ImportedContacts]
 @immutable
 class ImportContacts extends TdFunction {
-  const ImportContacts({
-    required this.contacts,
-  });
+  const ImportContacts({required this.contacts});
 
   /// [contacts] The list of contacts to import or edit; contacts' vCard are
   /// ignored and are not imported
@@ -22,9 +20,9 @@ class ImportContacts extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'contacts': contacts.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'contacts': contacts.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

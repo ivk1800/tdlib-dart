@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// in a chat
 @immutable
 class ChatMessageSenders extends TdObject {
-  const ChatMessageSenders({
-    required this.senders,
-  });
+  const ChatMessageSenders({required this.senders});
 
   /// [senders] List of available message senders
   final List<ChatMessageSender> senders;
@@ -22,9 +20,10 @@ class ChatMessageSenders extends TdObject {
 
     return ChatMessageSenders(
       senders: List<ChatMessageSender>.from(
-          ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatMessageSender.fromJson(item))
-              .toList()),
+        ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatMessageSender.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -33,9 +32,9 @@ class ChatMessageSenders extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'senders': senders.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'senders': senders.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

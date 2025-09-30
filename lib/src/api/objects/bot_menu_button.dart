@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a button to be shown instead of bot commands menu button
 @immutable
 class BotMenuButton extends TdObject {
-  const BotMenuButton({
-    required this.text,
-    required this.url,
-  });
+  const BotMenuButton({required this.text, required this.url});
 
   /// [text] Text of the button
   final String text;
@@ -36,10 +33,10 @@ class BotMenuButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'url': url,
-        '@type': constructor,
-      };
+    'text': text,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

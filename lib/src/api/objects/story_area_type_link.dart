@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An area pointing to a HTTP or tg:// link
 @immutable
 class StoryAreaTypeLink extends StoryAreaType {
-  const StoryAreaTypeLink({
-    required this.url,
-  });
+  const StoryAreaTypeLink({required this.url});
 
   /// [url] HTTP or tg:// URL to be opened when the area is clicked
   final String url;
@@ -19,9 +17,7 @@ class StoryAreaTypeLink extends StoryAreaType {
       return null;
     }
 
-    return StoryAreaTypeLink(
-      url: json['url'] as String,
-    );
+    return StoryAreaTypeLink(url: json['url'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class StoryAreaTypeLink extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

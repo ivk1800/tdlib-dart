@@ -42,13 +42,14 @@ class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// [authenticationTokens] List of up to 20 authentication tokens, recently
   /// received in updateOption("authentication_token") in previously logged out
-  /// sessions
+  /// sessions; for setAuthenticationPhoneNumber only
   final List<String> authenticationTokens;
 
   static const String constructor = 'phoneNumberAuthenticationSettings';
 
   static PhoneNumberAuthenticationSettings? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -60,11 +61,13 @@ class PhoneNumberAuthenticationSettings extends TdObject {
       hasUnknownPhoneNumber: json['has_unknown_phone_number'] as bool,
       allowSmsRetrieverApi: json['allow_sms_retriever_api'] as bool,
       firebaseAuthenticationSettings: FirebaseAuthenticationSettings.fromJson(
-          json['firebase_authentication_settings'] as Map<String, dynamic>?),
+        json['firebase_authentication_settings'] as Map<String, dynamic>?,
+      ),
       authenticationTokens: List<String>.from(
-          ((json['authentication_tokens'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['authentication_tokens'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -73,17 +76,16 @@ class PhoneNumberAuthenticationSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'allow_flash_call': allowFlashCall,
-        'allow_missed_call': allowMissedCall,
-        'is_current_phone_number': isCurrentPhoneNumber,
-        'has_unknown_phone_number': hasUnknownPhoneNumber,
-        'allow_sms_retriever_api': allowSmsRetrieverApi,
-        'firebase_authentication_settings':
-            firebaseAuthenticationSettings?.toJson(),
-        'authentication_tokens':
-            authenticationTokens.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'allow_flash_call': allowFlashCall,
+    'allow_missed_call': allowMissedCall,
+    'is_current_phone_number': isCurrentPhoneNumber,
+    'has_unknown_phone_number': hasUnknownPhoneNumber,
+    'allow_sms_retriever_api': allowSmsRetrieverApi,
+    'firebase_authentication_settings': firebaseAuthenticationSettings
+        ?.toJson(),
+    'authentication_tokens': authenticationTokens.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

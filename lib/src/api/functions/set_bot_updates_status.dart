@@ -25,10 +25,10 @@ class SetBotUpdatesStatus extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'pending_update_count': pendingUpdateCount,
-        'error_message': errorMessage,
-        '@type': constructor,
-      };
+    'pending_update_count': pendingUpdateCount,
+    'error_message': errorMessage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

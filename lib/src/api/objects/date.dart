@@ -5,11 +5,7 @@ import '../tdapi.dart';
 /// Represents a date according to the Gregorian calendar
 @immutable
 class Date extends TdObject {
-  const Date({
-    required this.day,
-    required this.month,
-    required this.year,
-  });
+  const Date({required this.day, required this.month, required this.year});
 
   /// [day] Day of the month; 1-31
   final int day;
@@ -39,11 +35,11 @@ class Date extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'day': day,
-        'month': month,
-        'year': year,
-        '@type': constructor,
-      };
+    'day': day,
+    'month': month,
+    'year': year,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

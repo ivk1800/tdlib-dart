@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A sticker set has changed
 @immutable
 class UpdateStickerSet extends Update {
-  const UpdateStickerSet({
-    required this.stickerSet,
-  });
+  const UpdateStickerSet({required this.stickerSet});
 
   /// [stickerSet] The sticker set
   final StickerSet stickerSet;
@@ -20,8 +18,9 @@ class UpdateStickerSet extends Update {
     }
 
     return UpdateStickerSet(
-      stickerSet:
-          StickerSet.fromJson(json['sticker_set'] as Map<String, dynamic>?)!,
+      stickerSet: StickerSet.fromJson(
+        json['sticker_set'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class UpdateStickerSet extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set': stickerSet.toJson(),
-        '@type': constructor,
-      };
+    'sticker_set': stickerSet.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

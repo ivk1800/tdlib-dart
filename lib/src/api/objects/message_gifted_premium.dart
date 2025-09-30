@@ -74,17 +74,17 @@ class MessageGiftedPremium extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'gifter_user_id': gifterUserId,
-        'receiver_user_id': receiverUserId,
-        'text': text.toJson(),
-        'currency': currency,
-        'amount': amount,
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'month_count': monthCount,
-        'sticker': sticker?.toJson(),
-        '@type': constructor,
-      };
+    'gifter_user_id': gifterUserId,
+    'receiver_user_id': receiverUserId,
+    'text': text.toJson(),
+    'currency': currency,
+    'amount': amount,
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'month_count': monthCount,
+    'sticker': sticker?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

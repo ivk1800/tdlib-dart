@@ -40,11 +40,11 @@ class BackgroundFillGradient extends BackgroundFill {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'top_color': topColor,
-        'bottom_color': bottomColor,
-        'rotation_angle': rotationAngle,
-        '@type': constructor,
-      };
+    'top_color': topColor,
+    'bottom_color': bottomColor,
+    'rotation_angle': rotationAngle,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

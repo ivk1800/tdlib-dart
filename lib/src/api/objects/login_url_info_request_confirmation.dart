@@ -45,12 +45,12 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'domain': domain,
-        'bot_user_id': botUserId,
-        'request_write_access': requestWriteAccess,
-        '@type': constructor,
-      };
+    'url': url,
+    'domain': domain,
+    'bot_user_id': botUserId,
+    'request_write_access': requestWriteAccess,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

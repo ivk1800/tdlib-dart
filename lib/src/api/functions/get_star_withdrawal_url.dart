@@ -13,7 +13,7 @@ class GetStarWithdrawalUrl extends TdFunction {
   });
 
   /// [ownerId] Identifier of the owner of the Telegram Stars; can be identifier
-  /// of an owned bot, or identifier of an owned channel chat
+  /// of the current user, an owned bot, or an owned supergroup or channel chat
   final MessageSender ownerId;
 
   /// [starCount] The number of Telegram Stars to withdraw. Must be at least
@@ -30,11 +30,11 @@ class GetStarWithdrawalUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'owner_id': ownerId.toJson(),
-        'star_count': starCount,
-        'password': password,
-        '@type': constructor,
-      };
+    'owner_id': ownerId.toJson(),
+    'star_count': starCount,
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

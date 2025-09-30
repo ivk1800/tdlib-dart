@@ -31,11 +31,13 @@ class Photo extends TdObject {
     return Photo(
       hasStickers: json['has_stickers'] as bool,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       sizes: List<PhotoSize>.from(
-          ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PhotoSize.fromJson(item))
-              .toList()),
+        ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PhotoSize.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -44,11 +46,11 @@ class Photo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'has_stickers': hasStickers,
-        'minithumbnail': minithumbnail?.toJson(),
-        'sizes': sizes.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'has_stickers': hasStickers,
+    'minithumbnail': minithumbnail?.toJson(),
+    'sizes': sizes.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

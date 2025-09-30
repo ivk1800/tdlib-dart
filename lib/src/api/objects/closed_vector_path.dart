@@ -3,12 +3,10 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Represents a closed vector path. The path begins at the end point of the
-/// last command
+/// last command. The coordinate system origin is in the upper-left corner
 @immutable
 class ClosedVectorPath extends TdObject {
-  const ClosedVectorPath({
-    required this.commands,
-  });
+  const ClosedVectorPath({required this.commands});
 
   /// [commands] List of vector path commands
   final List<VectorPathCommand> commands;
@@ -22,9 +20,10 @@ class ClosedVectorPath extends TdObject {
 
     return ClosedVectorPath(
       commands: List<VectorPathCommand>.from(
-          ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => VectorPathCommand.fromJson(item))
-              .toList()),
+        ((json['commands'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => VectorPathCommand.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -33,9 +32,9 @@ class ClosedVectorPath extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'commands': commands.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

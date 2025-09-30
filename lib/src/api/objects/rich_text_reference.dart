@@ -40,11 +40,11 @@ class RichTextReference extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'anchor_name': anchorName,
-        'url': url,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'anchor_name': anchorName,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

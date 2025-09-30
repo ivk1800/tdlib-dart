@@ -29,11 +29,11 @@ class ToggleSupergroupSignMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'sign_messages': signMessages,
-        'show_message_sender': showMessageSender,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'sign_messages': signMessages,
+    'show_message_sender': showMessageSender,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

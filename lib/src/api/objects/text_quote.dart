@@ -41,11 +41,11 @@ class TextQuote extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'position': position,
-        'is_manual': isManual,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'position': position,
+    'is_manual': isManual,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

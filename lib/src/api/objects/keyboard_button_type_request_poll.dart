@@ -35,10 +35,10 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'force_regular': forceRegular,
-        'force_quiz': forceQuiz,
-        '@type': constructor,
-      };
+    'force_regular': forceRegular,
+    'force_quiz': forceQuiz,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

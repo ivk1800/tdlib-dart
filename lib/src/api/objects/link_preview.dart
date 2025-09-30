@@ -80,8 +80,9 @@ class LinkPreview extends TdObject {
       displayUrl: json['display_url'] as String,
       siteName: json['site_name'] as String,
       title: json['title'] as String,
-      description:
-          FormattedText.fromJson(json['description'] as Map<String, dynamic>?)!,
+      description: FormattedText.fromJson(
+        json['description'] as Map<String, dynamic>?,
+      )!,
       author: json['author'] as String,
       type: LinkPreviewType.fromJson(json['type'] as Map<String, dynamic>?)!,
       hasLargeMedia: json['has_large_media'] as bool,
@@ -98,21 +99,21 @@ class LinkPreview extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'display_url': displayUrl,
-        'site_name': siteName,
-        'title': title,
-        'description': description.toJson(),
-        'author': author,
-        'type': type.toJson(),
-        'has_large_media': hasLargeMedia,
-        'show_large_media': showLargeMedia,
-        'show_media_above_description': showMediaAboveDescription,
-        'skip_confirmation': skipConfirmation,
-        'show_above_text': showAboveText,
-        'instant_view_version': instantViewVersion,
-        '@type': constructor,
-      };
+    'url': url,
+    'display_url': displayUrl,
+    'site_name': siteName,
+    'title': title,
+    'description': description.toJson(),
+    'author': author,
+    'type': type.toJson(),
+    'has_large_media': hasLargeMedia,
+    'show_large_media': showLargeMedia,
+    'show_media_above_description': showMediaAboveDescription,
+    'skip_confirmation': skipConfirmation,
+    'show_above_text': showAboveText,
+    'instant_view_version': instantViewVersion,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

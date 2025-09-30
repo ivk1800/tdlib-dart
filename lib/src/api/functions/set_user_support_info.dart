@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [UserSupportInfo]
 @immutable
 class SetUserSupportInfo extends TdFunction {
-  const SetUserSupportInfo({
-    required this.userId,
-    required this.message,
-  });
+  const SetUserSupportInfo({required this.userId, required this.message});
 
   /// [userId] User identifier
   final int userId;
@@ -24,10 +21,10 @@ class SetUserSupportInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

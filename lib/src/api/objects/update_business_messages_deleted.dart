@@ -32,9 +32,10 @@ class UpdateBusinessMessagesDeleted extends Update {
       connectionId: json['connection_id'] as String,
       chatId: json['chat_id'] as int,
       messageIds: List<int>.from(
-          ((json['message_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['message_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -43,11 +44,11 @@ class UpdateBusinessMessagesDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'connection_id': connectionId,
-        'chat_id': chatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'connection_id': connectionId,
+    'chat_id': chatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

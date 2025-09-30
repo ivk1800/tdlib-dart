@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// application
 @immutable
 class UpdateSupergroup extends Update {
-  const UpdateSupergroup({
-    required this.supergroup,
-  });
+  const UpdateSupergroup({required this.supergroup});
 
   /// [supergroup] New data about the supergroup
   final Supergroup supergroup;
@@ -22,8 +20,9 @@ class UpdateSupergroup extends Update {
     }
 
     return UpdateSupergroup(
-      supergroup:
-          Supergroup.fromJson(json['supergroup'] as Map<String, dynamic>?)!,
+      supergroup: Supergroup.fromJson(
+        json['supergroup'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateSupergroup extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup': supergroup.toJson(),
-        '@type': constructor,
-      };
+    'supergroup': supergroup.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

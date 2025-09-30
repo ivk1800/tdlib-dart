@@ -56,14 +56,14 @@ class Background extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'is_default': isDefault,
-        'is_dark': isDark,
-        'name': name,
-        'document': document?.toJson(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'is_default': isDefault,
+    'is_dark': isDark,
+    'name': name,
+    'document': document?.toJson(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

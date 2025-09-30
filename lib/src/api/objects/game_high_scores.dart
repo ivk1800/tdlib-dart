@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of game high scores
 @immutable
 class GameHighScores extends TdObject {
-  const GameHighScores({
-    required this.scores,
-  });
+  const GameHighScores({required this.scores});
 
   /// [scores] A list of game high scores
   final List<GameHighScore> scores;
@@ -21,9 +19,10 @@ class GameHighScores extends TdObject {
 
     return GameHighScores(
       scores: List<GameHighScore>.from(
-          ((json['scores'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => GameHighScore.fromJson(item))
-              .toList()),
+        ((json['scores'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => GameHighScore.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class GameHighScores extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scores': scores.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'scores': scores.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

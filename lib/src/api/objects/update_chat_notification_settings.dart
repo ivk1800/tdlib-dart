@@ -26,7 +26,8 @@ class UpdateChatNotificationSettings extends Update {
     return UpdateChatNotificationSettings(
       chatId: json['chat_id'] as int,
       notificationSettings: ChatNotificationSettings.fromJson(
-          json['notification_settings'] as Map<String, dynamic>?)!,
+        json['notification_settings'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateChatNotificationSettings extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'notification_settings': notificationSettings.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'notification_settings': notificationSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

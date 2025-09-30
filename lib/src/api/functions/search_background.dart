@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Background]
 @immutable
 class SearchBackground extends TdFunction {
-  const SearchBackground({
-    required this.name,
-  });
+  const SearchBackground({required this.name});
 
   /// [name] The name of the background
   final String name;
@@ -20,9 +18,9 @@ class SearchBackground extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

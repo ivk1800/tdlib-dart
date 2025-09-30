@@ -34,7 +34,8 @@ class MessageGiveaway extends MessageContent {
 
     return MessageGiveaway(
       parameters: GiveawayParameters.fromJson(
-          json['parameters'] as Map<String, dynamic>?)!,
+        json['parameters'] as Map<String, dynamic>?,
+      )!,
       winnerCount: json['winner_count'] as int,
       prize: GiveawayPrize.fromJson(json['prize'] as Map<String, dynamic>?)!,
       sticker: Sticker.fromJson(json['sticker'] as Map<String, dynamic>?),
@@ -46,12 +47,12 @@ class MessageGiveaway extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'parameters': parameters.toJson(),
-        'winner_count': winnerCount,
-        'prize': prize.toJson(),
-        'sticker': sticker?.toJson(),
-        '@type': constructor,
-      };
+    'parameters': parameters.toJson(),
+    'winner_count': winnerCount,
+    'prize': prize.toJson(),
+    'sticker': sticker?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

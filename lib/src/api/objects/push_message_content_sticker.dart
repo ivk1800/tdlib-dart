@@ -40,11 +40,11 @@ class PushMessageContentSticker extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker?.toJson(),
-        'emoji': emoji,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'sticker': sticker?.toJson(),
+    'emoji': emoji,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

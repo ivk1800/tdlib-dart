@@ -48,12 +48,12 @@ class MaskPosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'point': point.toJson(),
-        'x_shift': xShift,
-        'y_shift': yShift,
-        'scale': scale,
-        '@type': constructor,
-      };
+    'point': point.toJson(),
+    'x_shift': xShift,
+    'y_shift': yShift,
+    'scale': scale,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

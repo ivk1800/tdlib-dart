@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes an option for creating Telegram Star giveaway. Use
+/// Describes an option for creating of Telegram Star giveaway. Use
 /// telegramPaymentPurposeStarGiveaway for out-of-store payments
 @immutable
 class StarGiveawayPaymentOption extends TdObject {
@@ -59,9 +59,10 @@ class StarGiveawayPaymentOption extends TdObject {
       storeProductId: json['store_product_id'] as String,
       yearlyBoostCount: json['yearly_boost_count'] as int,
       winnerOptions: List<StarGiveawayWinnerOption>.from(
-          ((json['winner_options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StarGiveawayWinnerOption.fromJson(item))
-              .toList()),
+        ((json['winner_options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StarGiveawayWinnerOption.fromJson(item))
+            .toList(),
+      ),
       isDefault: json['is_default'] as bool,
       isAdditional: json['is_additional'] as bool,
     );
@@ -72,16 +73,16 @@ class StarGiveawayPaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        'store_product_id': storeProductId,
-        'yearly_boost_count': yearlyBoostCount,
-        'winner_options': winnerOptions.map((item) => item.toJson()).toList(),
-        'is_default': isDefault,
-        'is_additional': isAdditional,
-        '@type': constructor,
-      };
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    'store_product_id': storeProductId,
+    'yearly_boost_count': yearlyBoostCount,
+    'winner_options': winnerOptions.map((item) => item.toJson()).toList(),
+    'is_default': isDefault,
+    'is_additional': isAdditional,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AnswerCustomQuery extends TdFunction {
-  const AnswerCustomQuery({
-    required this.customQueryId,
-    required this.data,
-  });
+  const AnswerCustomQuery({required this.customQueryId, required this.data});
 
   /// [customQueryId] Identifier of a custom query
   final int customQueryId;
@@ -24,10 +21,10 @@ class AnswerCustomQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_query_id': customQueryId,
-        'data': data,
-        '@type': constructor,
-      };
+    'custom_query_id': customQueryId,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

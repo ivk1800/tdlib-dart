@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a media album consisting of photos and videos
 @immutable
 class LinkPreviewTypeAlbum extends LinkPreviewType {
-  const LinkPreviewTypeAlbum({
-    required this.media,
-    required this.caption,
-  });
+  const LinkPreviewTypeAlbum({required this.media, required this.caption});
 
   /// [media] The list of album media
   final List<LinkPreviewAlbumMedia> media;
@@ -25,9 +22,10 @@ class LinkPreviewTypeAlbum extends LinkPreviewType {
 
     return LinkPreviewTypeAlbum(
       media: List<LinkPreviewAlbumMedia>.from(
-          ((json['media'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => LinkPreviewAlbumMedia.fromJson(item))
-              .toList()),
+        ((json['media'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => LinkPreviewAlbumMedia.fromJson(item))
+            .toList(),
+      ),
       caption: json['caption'] as String,
     );
   }
@@ -37,10 +35,10 @@ class LinkPreviewTypeAlbum extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'media': media.map((item) => item.toJson()).toList(),
-        'caption': caption,
-        '@type': constructor,
-      };
+    'media': media.map((item) => item.toJson()).toList(),
+    'caption': caption,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

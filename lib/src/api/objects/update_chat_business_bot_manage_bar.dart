@@ -27,7 +27,8 @@ class UpdateChatBusinessBotManageBar extends Update {
     return UpdateChatBusinessBotManageBar(
       chatId: json['chat_id'] as int,
       businessBotManageBar: BusinessBotManageBar.fromJson(
-          json['business_bot_manage_bar'] as Map<String, dynamic>?),
+        json['business_bot_manage_bar'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +37,10 @@ class UpdateChatBusinessBotManageBar extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'business_bot_manage_bar': businessBotManageBar?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'business_bot_manage_bar': businessBotManageBar?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

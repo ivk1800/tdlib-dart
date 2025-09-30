@@ -25,10 +25,10 @@ class SetLogTagVerbosityLevel extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag,
-        'new_verbosity_level': newVerbosityLevel,
-        '@type': constructor,
-      };
+    'tag': tag,
+    'new_verbosity_level': newVerbosityLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

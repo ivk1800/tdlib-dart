@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a command supported by a bot
 @immutable
 class BotCommand extends TdObject {
-  const BotCommand({
-    required this.command,
-    required this.description,
-  });
+  const BotCommand({required this.command, required this.description});
 
   /// [command] Text of the bot command
   final String command;
@@ -34,10 +31,10 @@ class BotCommand extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'command': command,
-        'description': description,
-        '@type': constructor,
-      };
+    'command': command,
+    'description': description,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

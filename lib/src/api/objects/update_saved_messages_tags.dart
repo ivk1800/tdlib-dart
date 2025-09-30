@@ -35,10 +35,10 @@ class UpdateSavedMessagesTags extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'tags': tags.toJson(),
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'tags': tags.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

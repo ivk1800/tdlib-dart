@@ -39,11 +39,11 @@ class ChatAdministrator extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'custom_title': customTitle,
-        'is_owner': isOwner,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'custom_title': customTitle,
+    'is_owner': isOwner,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

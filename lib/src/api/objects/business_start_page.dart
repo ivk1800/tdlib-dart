@@ -39,11 +39,11 @@ class BusinessStartPage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'message': message,
-        'sticker': sticker?.toJson(),
-        '@type': constructor,
-      };
+    'title': title,
+    'message': message,
+    'sticker': sticker?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

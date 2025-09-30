@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A text description shown instead of a raw URL
 @immutable
 class TextEntityTypeTextUrl extends TextEntityType {
-  const TextEntityTypeTextUrl({
-    required this.url,
-  });
+  const TextEntityTypeTextUrl({required this.url});
 
   /// [url] HTTP or tg:// URL to be opened when the link is clicked
   final String url;
@@ -19,9 +17,7 @@ class TextEntityTypeTextUrl extends TextEntityType {
       return null;
     }
 
-    return TextEntityTypeTextUrl(
-      url: json['url'] as String,
-    );
+    return TextEntityTypeTextUrl(url: json['url'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class TextEntityTypeTextUrl extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

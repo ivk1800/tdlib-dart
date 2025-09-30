@@ -91,7 +91,8 @@ class ChatInviteLink extends TdObject {
       editDate: json['edit_date'] as int,
       expirationDate: json['expiration_date'] as int,
       subscriptionPricing: StarSubscriptionPricing.fromJson(
-          json['subscription_pricing'] as Map<String, dynamic>?),
+        json['subscription_pricing'] as Map<String, dynamic>?,
+      ),
       memberLimit: json['member_limit'] as int,
       memberCount: json['member_count'] as int,
       expiredMemberCount: json['expired_member_count'] as int,
@@ -107,22 +108,22 @@ class ChatInviteLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        'name': name,
-        'creator_user_id': creatorUserId,
-        'date': date,
-        'edit_date': editDate,
-        'expiration_date': expirationDate,
-        'subscription_pricing': subscriptionPricing?.toJson(),
-        'member_limit': memberLimit,
-        'member_count': memberCount,
-        'expired_member_count': expiredMemberCount,
-        'pending_join_request_count': pendingJoinRequestCount,
-        'creates_join_request': createsJoinRequest,
-        'is_primary': isPrimary,
-        'is_revoked': isRevoked,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    'name': name,
+    'creator_user_id': creatorUserId,
+    'date': date,
+    'edit_date': editDate,
+    'expiration_date': expirationDate,
+    'subscription_pricing': subscriptionPricing?.toJson(),
+    'member_limit': memberLimit,
+    'member_count': memberCount,
+    'expired_member_count': expiredMemberCount,
+    'pending_join_request_count': pendingJoinRequestCount,
+    'creates_join_request': createsJoinRequest,
+    'is_primary': isPrimary,
+    'is_revoked': isRevoked,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

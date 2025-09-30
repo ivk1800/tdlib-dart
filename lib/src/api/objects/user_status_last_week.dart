@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user is offline, but was online last week
 @immutable
 class UserStatusLastWeek extends UserStatus {
-  const UserStatusLastWeek({
-    required this.byMyPrivacySettings,
-  });
+  const UserStatusLastWeek({required this.byMyPrivacySettings});
 
   /// [byMyPrivacySettings] Exact user's status is hidden because the current
   /// user enabled userPrivacySettingShowStatus privacy setting for the user and
@@ -31,9 +29,9 @@ class UserStatusLastWeek extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'by_my_privacy_settings': byMyPrivacySettings,
-        '@type': constructor,
-      };
+    'by_my_privacy_settings': byMyPrivacySettings,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

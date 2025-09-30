@@ -50,13 +50,13 @@ class WebApp extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'short_name': shortName,
-        'title': title,
-        'description': description,
-        'photo': photo.toJson(),
-        'animation': animation?.toJson(),
-        '@type': constructor,
-      };
+    'short_name': shortName,
+    'title': title,
+    'description': description,
+    'photo': photo.toJson(),
+    'animation': animation?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

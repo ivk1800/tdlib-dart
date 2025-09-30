@@ -54,14 +54,17 @@ class UpdateChatMember extends Update {
       chatId: json['chat_id'] as int,
       actorUserId: json['actor_user_id'] as int,
       date: json['date'] as int,
-      inviteLink:
-          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      inviteLink: ChatInviteLink.fromJson(
+        json['invite_link'] as Map<String, dynamic>?,
+      ),
       viaJoinRequest: json['via_join_request'] as bool,
       viaChatFolderInviteLink: json['via_chat_folder_invite_link'] as bool,
       oldChatMember: ChatMember.fromJson(
-          json['old_chat_member'] as Map<String, dynamic>?)!,
+        json['old_chat_member'] as Map<String, dynamic>?,
+      )!,
       newChatMember: ChatMember.fromJson(
-          json['new_chat_member'] as Map<String, dynamic>?)!,
+        json['new_chat_member'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -70,16 +73,16 @@ class UpdateChatMember extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'actor_user_id': actorUserId,
-        'date': date,
-        'invite_link': inviteLink?.toJson(),
-        'via_join_request': viaJoinRequest,
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-        'old_chat_member': oldChatMember.toJson(),
-        'new_chat_member': newChatMember.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'actor_user_id': actorUserId,
+    'date': date,
+    'invite_link': inviteLink?.toJson(),
+    'via_join_request': viaJoinRequest,
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+    'old_chat_member': oldChatMember.toJson(),
+    'new_chat_member': newChatMember.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

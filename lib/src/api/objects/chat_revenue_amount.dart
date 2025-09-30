@@ -53,13 +53,13 @@ class ChatRevenueAmount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'cryptocurrency': cryptocurrency,
-        'total_amount': totalAmount.toString(),
-        'balance_amount': balanceAmount.toString(),
-        'available_amount': availableAmount.toString(),
-        'withdrawal_enabled': withdrawalEnabled,
-        '@type': constructor,
-      };
+    'cryptocurrency': cryptocurrency,
+    'total_amount': totalAmount.toString(),
+    'balance_amount': balanceAmount.toString(),
+    'available_amount': availableAmount.toString(),
+    'withdrawal_enabled': withdrawalEnabled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

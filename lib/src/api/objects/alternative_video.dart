@@ -2,16 +2,21 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes an alternative reencoded quality of a video file
+/// Describes an alternative re-encoded quality of a video file
 @immutable
 class AlternativeVideo extends TdObject {
   const AlternativeVideo({
+    required this.id,
     required this.width,
     required this.height,
     required this.codec,
     required this.hlsFile,
     required this.video,
   });
+
+  /// [id] Unique identifier of the alternative video, which is used in the HLS
+  /// file
+  final int id;
 
   /// [width] Video width
   final int width;
@@ -37,6 +42,7 @@ class AlternativeVideo extends TdObject {
     }
 
     return AlternativeVideo(
+      id: int.tryParse(json['id']) ?? 0,
       width: json['width'] as int,
       height: json['height'] as int,
       codec: json['codec'] as String,
@@ -50,13 +56,14 @@ class AlternativeVideo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'width': width,
-        'height': height,
-        'codec': codec,
-        'hls_file': hlsFile.toJson(),
-        'video': video.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'width': width,
+    'height': height,
+    'codec': codec,
+    'hls_file': hlsFile.toJson(),
+    'video': video.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -34,11 +34,13 @@ class UpdateNewChatJoinRequest extends Update {
 
     return UpdateNewChatJoinRequest(
       chatId: json['chat_id'] as int,
-      request:
-          ChatJoinRequest.fromJson(json['request'] as Map<String, dynamic>?)!,
+      request: ChatJoinRequest.fromJson(
+        json['request'] as Map<String, dynamic>?,
+      )!,
       userChatId: json['user_chat_id'] as int,
-      inviteLink:
-          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      inviteLink: ChatInviteLink.fromJson(
+        json['invite_link'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -47,12 +49,12 @@ class UpdateNewChatJoinRequest extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'request': request.toJson(),
-        'user_chat_id': userChatId,
-        'invite_link': inviteLink?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'request': request.toJson(),
+    'user_chat_id': userChatId,
+    'invite_link': inviteLink?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

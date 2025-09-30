@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// no username)
 @immutable
 class TextEntityTypeMentionName extends TextEntityType {
-  const TextEntityTypeMentionName({
-    required this.userId,
-  });
+  const TextEntityTypeMentionName({required this.userId});
 
   /// [userId] Identifier of the mentioned user
   final int userId;
@@ -20,9 +18,7 @@ class TextEntityTypeMentionName extends TextEntityType {
       return null;
     }
 
-    return TextEntityTypeMentionName(
-      userId: json['user_id'] as int,
-    );
+    return TextEntityTypeMentionName(userId: json['user_id'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class TextEntityTypeMentionName extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

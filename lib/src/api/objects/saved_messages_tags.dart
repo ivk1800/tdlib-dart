@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of tags used in Saved Messages
 @immutable
 class SavedMessagesTags extends TdObject {
-  const SavedMessagesTags({
-    required this.tags,
-  });
+  const SavedMessagesTags({required this.tags});
 
   /// [tags] List of tags
   final List<SavedMessagesTag> tags;
@@ -21,9 +19,10 @@ class SavedMessagesTags extends TdObject {
 
     return SavedMessagesTags(
       tags: List<SavedMessagesTag>.from(
-          ((json['tags'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => SavedMessagesTag.fromJson(item))
-              .toList()),
+        ((json['tags'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => SavedMessagesTag.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class SavedMessagesTags extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tags': tags.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'tags': tags.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

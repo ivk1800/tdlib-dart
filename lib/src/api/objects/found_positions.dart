@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains 0-based positions of matched objects
 @immutable
 class FoundPositions extends TdObject {
-  const FoundPositions({
-    required this.totalCount,
-    required this.positions,
-  });
+  const FoundPositions({required this.totalCount, required this.positions});
 
   /// [totalCount] Total number of matched objects
   final int totalCount;
@@ -26,9 +23,10 @@ class FoundPositions extends TdObject {
     return FoundPositions(
       totalCount: json['total_count'] as int,
       positions: List<int>.from(
-          ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class FoundPositions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'positions': positions.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'positions': positions.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A new forum topic was created
 @immutable
 class ChatEventForumTopicCreated extends ChatEventAction {
-  const ChatEventForumTopicCreated({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicCreated({required this.topicInfo});
 
   /// [topicInfo] Information about the topic
   final ForumTopicInfo topicInfo;
@@ -20,8 +18,9 @@ class ChatEventForumTopicCreated extends ChatEventAction {
     }
 
     return ChatEventForumTopicCreated(
-      topicInfo:
-          ForumTopicInfo.fromJson(json['topic_info'] as Map<String, dynamic>?)!,
+      topicInfo: ForumTopicInfo.fromJson(
+        json['topic_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class ChatEventForumTopicCreated extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'topic_info': topicInfo.toJson(),
-        '@type': constructor,
-      };
+    'topic_info': topicInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

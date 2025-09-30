@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a message to be replied in the same chat and forum topic
 @immutable
 class InputMessageReplyToMessage extends InputMessageReplyTo {
-  const InputMessageReplyToMessage({
-    required this.messageId,
-    this.quote,
-  });
+  const InputMessageReplyToMessage({required this.messageId, this.quote});
 
   /// [messageId] The identifier of the message to be replied in the same chat
   /// and forum topic. A message can be replied in the same chat and forum topic
@@ -37,10 +34,10 @@ class InputMessageReplyToMessage extends InputMessageReplyTo {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        'quote': quote?.toJson(),
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    'quote': quote?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -73,17 +73,17 @@ class ConnectedWebsite extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'domain_name': domainName,
-        'bot_user_id': botUserId,
-        'browser': browser,
-        'platform': platform,
-        'log_in_date': logInDate,
-        'last_active_date': lastActiveDate,
-        'ip_address': ipAddress,
-        'location': location,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'domain_name': domainName,
+    'bot_user_id': botUserId,
+    'browser': browser,
+    'platform': platform,
+    'log_in_date': logInDate,
+    'last_active_date': lastActiveDate,
+    'ip_address': ipAddress,
+    'location': location,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

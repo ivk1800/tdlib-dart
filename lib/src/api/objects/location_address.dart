@@ -44,12 +44,12 @@ class LocationAddress extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'country_code': countryCode,
-        'state': state,
-        'city': city,
-        'street': street,
-        '@type': constructor,
-      };
+    'country_code': countryCode,
+    'state': state,
+    'city': city,
+    'street': street,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

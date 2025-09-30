@@ -37,12 +37,12 @@ class GetStickers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'limit': limit,
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'limit': limit,
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

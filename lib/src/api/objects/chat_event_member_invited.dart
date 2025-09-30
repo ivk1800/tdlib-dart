@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A new chat member was invited
 @immutable
 class ChatEventMemberInvited extends ChatEventAction {
-  const ChatEventMemberInvited({
-    required this.userId,
-    required this.status,
-  });
+  const ChatEventMemberInvited({required this.userId, required this.status});
 
   /// [userId] New member user identifier
   final int userId;
@@ -25,8 +22,9 @@ class ChatEventMemberInvited extends ChatEventAction {
 
     return ChatEventMemberInvited(
       userId: json['user_id'] as int,
-      status:
-          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      status: ChatMemberStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class ChatEventMemberInvited extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'status': status.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'status': status.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

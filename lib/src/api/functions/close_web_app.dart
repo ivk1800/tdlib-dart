@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CloseWebApp extends TdFunction {
-  const CloseWebApp({
-    required this.webAppLaunchId,
-  });
+  const CloseWebApp({required this.webAppLaunchId});
 
   /// [webAppLaunchId] Identifier of Web App launch, received from openWebApp
   final int webAppLaunchId;
@@ -20,9 +18,9 @@ class CloseWebApp extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'web_app_launch_id': webAppLaunchId,
-        '@type': constructor,
-      };
+    'web_app_launch_id': webAppLaunchId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

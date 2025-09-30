@@ -26,10 +26,10 @@ class GetKeywordEmojis extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'input_language_codes': inputLanguageCodes.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'text': text,
+    'input_language_codes': inputLanguageCodes.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

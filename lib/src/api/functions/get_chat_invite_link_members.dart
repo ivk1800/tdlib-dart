@@ -40,13 +40,13 @@ class GetChatInviteLinkMembers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        'only_with_expired_subscription': onlyWithExpiredSubscription,
-        'offset_member': offsetMember?.toJson(),
-        'limit': limit,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    'only_with_expired_subscription': onlyWithExpiredSubscription,
+    'offset_member': offsetMember?.toJson(),
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

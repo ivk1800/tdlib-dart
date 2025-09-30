@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetCloseFriends extends TdFunction {
-  const SetCloseFriends({
-    required this.userIds,
-  });
+  const SetCloseFriends({required this.userIds});
 
   /// [userIds] User identifiers of close friends; the users must be contacts of
   /// the current user
@@ -21,9 +19,9 @@ class SetCloseFriends extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

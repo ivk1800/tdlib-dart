@@ -12,9 +12,8 @@ class GetWebAppLinkUrl extends TdFunction {
     required this.botUserId,
     required this.webAppShortName,
     required this.startParameter,
-    this.theme,
-    required this.applicationName,
     required this.allowWriteAccess,
+    required this.parameters,
   });
 
   /// [chatId] Identifier of the chat in which the link was clicked; pass 0 if
@@ -30,16 +29,12 @@ class GetWebAppLinkUrl extends TdFunction {
   /// [startParameter] Start parameter from internalLinkTypeWebApp
   final String startParameter;
 
-  /// [theme] Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// [applicationName] Short name of the current application; 0-64 English
-  /// letters, digits, and underscores
-  final String applicationName;
-
   /// [allowWriteAccess] Pass true if the current user allowed the bot to send
   /// them messages
   final bool allowWriteAccess;
+
+  /// [parameters] Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   static const String constructor = 'getWebAppLinkUrl';
 
@@ -48,15 +43,14 @@ class GetWebAppLinkUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'web_app_short_name': webAppShortName,
-        'start_parameter': startParameter,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
-        'allow_write_access': allowWriteAccess,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'web_app_short_name': webAppShortName,
+    'start_parameter': startParameter,
+    'allow_write_access': allowWriteAccess,
+    'parameters': parameters.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

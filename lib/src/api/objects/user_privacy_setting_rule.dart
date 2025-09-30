@@ -11,11 +11,13 @@ abstract class UserPrivacySettingRule extends TdObject {
 
   /// Inherited by:
   /// [UserPrivacySettingRuleAllowAll]
+  /// [UserPrivacySettingRuleAllowBots]
   /// [UserPrivacySettingRuleAllowChatMembers]
   /// [UserPrivacySettingRuleAllowContacts]
   /// [UserPrivacySettingRuleAllowPremiumUsers]
   /// [UserPrivacySettingRuleAllowUsers]
   /// [UserPrivacySettingRuleRestrictAll]
+  /// [UserPrivacySettingRuleRestrictBots]
   /// [UserPrivacySettingRuleRestrictChatMembers]
   /// [UserPrivacySettingRuleRestrictContacts]
   /// [UserPrivacySettingRuleRestrictUsers]
@@ -27,6 +29,8 @@ abstract class UserPrivacySettingRule extends TdObject {
     switch (json['@type']) {
       case UserPrivacySettingRuleAllowAll.constructor:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
+      case UserPrivacySettingRuleAllowBots.constructor:
+        return UserPrivacySettingRuleAllowBots.fromJson(json);
       case UserPrivacySettingRuleAllowChatMembers.constructor:
         return UserPrivacySettingRuleAllowChatMembers.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.constructor:
@@ -37,6 +41,8 @@ abstract class UserPrivacySettingRule extends TdObject {
         return UserPrivacySettingRuleAllowUsers.fromJson(json);
       case UserPrivacySettingRuleRestrictAll.constructor:
         return UserPrivacySettingRuleRestrictAll.fromJson(json);
+      case UserPrivacySettingRuleRestrictBots.constructor:
+        return UserPrivacySettingRuleRestrictBots.fromJson(json);
       case UserPrivacySettingRuleRestrictChatMembers.constructor:
         return UserPrivacySettingRuleRestrictChatMembers.fromJson(json);
       case UserPrivacySettingRuleRestrictContacts.constructor:

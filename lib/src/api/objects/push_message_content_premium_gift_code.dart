@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with a Telegram Premium gift code created for the user
 @immutable
 class PushMessageContentPremiumGiftCode extends PushMessageContent {
-  const PushMessageContentPremiumGiftCode({
-    required this.monthCount,
-  });
+  const PushMessageContentPremiumGiftCode({required this.monthCount});
 
   /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active after code activation
@@ -16,7 +14,8 @@ class PushMessageContentPremiumGiftCode extends PushMessageContent {
   static const String constructor = 'pushMessageContentPremiumGiftCode';
 
   static PushMessageContentPremiumGiftCode? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +30,9 @@ class PushMessageContentPremiumGiftCode extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'month_count': monthCount,
-        '@type': constructor,
-      };
+    'month_count': monthCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains information about saved Telegram Passport elements
 @immutable
 class PassportElements extends TdObject {
-  const PassportElements({
-    required this.elements,
-  });
+  const PassportElements({required this.elements});
 
   /// [elements] Telegram Passport elements
   final List<PassportElement> elements;
@@ -21,9 +19,10 @@ class PassportElements extends TdObject {
 
     return PassportElements(
       elements: List<PassportElement>.from(
-          ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportElement.fromJson(item))
-              .toList()),
+        ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportElement.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class PassportElements extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'elements': elements.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'elements': elements.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

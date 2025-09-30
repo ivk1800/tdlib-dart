@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The media is a photo
 @immutable
 class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
-  const LinkPreviewAlbumMediaPhoto({
-    required this.photo,
-  });
+  const LinkPreviewAlbumMediaPhoto({required this.photo});
 
   /// [photo] Photo description
   final Photo photo;
@@ -29,9 +27,9 @@ class LinkPreviewAlbumMediaPhoto extends LinkPreviewAlbumMedia {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

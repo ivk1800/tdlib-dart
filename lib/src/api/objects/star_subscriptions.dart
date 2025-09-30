@@ -6,14 +6,14 @@ import '../tdapi.dart';
 @immutable
 class StarSubscriptions extends TdObject {
   const StarSubscriptions({
-    required this.starCount,
+    required this.starAmount,
     required this.subscriptions,
     required this.requiredStarCount,
     required this.nextOffset,
   });
 
-  /// [starCount] The amount of owned Telegram Stars
-  final int starCount;
+  /// [starAmount] The amount of owned Telegram Stars
+  final StarAmount starAmount;
 
   /// [subscriptions] List of subscriptions for Telegram Stars
   final List<StarSubscription> subscriptions;
@@ -34,11 +34,14 @@ class StarSubscriptions extends TdObject {
     }
 
     return StarSubscriptions(
-      starCount: json['star_count'] as int,
+      starAmount: StarAmount.fromJson(
+        json['star_amount'] as Map<String, dynamic>?,
+      )!,
       subscriptions: List<StarSubscription>.from(
-          ((json['subscriptions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StarSubscription.fromJson(item))
-              .toList()),
+        ((json['subscriptions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StarSubscription.fromJson(item))
+            .toList(),
+      ),
       requiredStarCount: json['required_star_count'] as int,
       nextOffset: json['next_offset'] as String,
     );
@@ -49,12 +52,12 @@ class StarSubscriptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'subscriptions': subscriptions.map((item) => item.toJson()).toList(),
-        'required_star_count': requiredStarCount,
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'star_amount': starAmount.toJson(),
+    'subscriptions': subscriptions.map((item) => item.toJson()).toList(),
+    'required_star_count': requiredStarCount,
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

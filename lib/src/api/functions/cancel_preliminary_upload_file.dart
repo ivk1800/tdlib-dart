@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CancelPreliminaryUploadFile extends TdFunction {
-  const CancelPreliminaryUploadFile({
-    required this.fileId,
-  });
+  const CancelPreliminaryUploadFile({required this.fileId});
 
   /// [fileId] Identifier of the file to stop uploading
   final int fileId;
@@ -21,9 +19,9 @@ class CancelPreliminaryUploadFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

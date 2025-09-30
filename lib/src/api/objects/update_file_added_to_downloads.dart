@@ -27,9 +27,11 @@ class UpdateFileAddedToDownloads extends Update {
 
     return UpdateFileAddedToDownloads(
       fileDownload: FileDownload.fromJson(
-          json['file_download'] as Map<String, dynamic>?)!,
+        json['file_download'] as Map<String, dynamic>?,
+      )!,
       counts: DownloadedFileCounts.fromJson(
-          json['counts'] as Map<String, dynamic>?)!,
+        json['counts'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +40,10 @@ class UpdateFileAddedToDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_download': fileDownload.toJson(),
-        'counts': counts.toJson(),
-        '@type': constructor,
-      };
+    'file_download': fileDownload.toJson(),
+    'counts': counts.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

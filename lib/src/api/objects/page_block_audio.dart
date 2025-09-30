@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// An audio file
 @immutable
 class PageBlockAudio extends PageBlock {
-  const PageBlockAudio({
-    this.audio,
-    required this.caption,
-  });
+  const PageBlockAudio({this.audio, required this.caption});
 
   /// [audio] Audio file; may be null
   final Audio? audio;
@@ -25,8 +22,9 @@ class PageBlockAudio extends PageBlock {
 
     return PageBlockAudio(
       audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class PageBlockAudio extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'audio': audio?.toJson(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'audio': audio?.toJson(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

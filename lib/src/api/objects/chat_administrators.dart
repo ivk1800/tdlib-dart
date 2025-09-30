@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of chat administrators
 @immutable
 class ChatAdministrators extends TdObject {
-  const ChatAdministrators({
-    required this.administrators,
-  });
+  const ChatAdministrators({required this.administrators});
 
   /// [administrators] A list of chat administrators
   final List<ChatAdministrator> administrators;
@@ -21,9 +19,10 @@ class ChatAdministrators extends TdObject {
 
     return ChatAdministrators(
       administrators: List<ChatAdministrator>.from(
-          ((json['administrators'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatAdministrator.fromJson(item))
-              .toList()),
+        ((json['administrators'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatAdministrator.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class ChatAdministrators extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'administrators': administrators.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'administrators': administrators.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

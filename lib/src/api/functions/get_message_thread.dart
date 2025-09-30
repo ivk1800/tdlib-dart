@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [MessageThreadInfo]
 @immutable
 class GetMessageThread extends TdFunction {
-  const GetMessageThread({
-    required this.chatId,
-    required this.messageId,
-  });
+  const GetMessageThread({required this.chatId, required this.messageId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -25,10 +22,10 @@ class GetMessageThread extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

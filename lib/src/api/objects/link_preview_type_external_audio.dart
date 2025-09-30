@@ -39,11 +39,11 @@ class LinkPreviewTypeExternalAudio extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'mime_type': mimeType,
-        'duration': duration,
-        '@type': constructor,
-      };
+    'url': url,
+    'mime_type': mimeType,
+    'duration': duration,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

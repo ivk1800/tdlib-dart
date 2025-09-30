@@ -20,14 +20,16 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
       'chatEventVideoChatParticipantVolumeLevelChanged';
 
   static ChatEventVideoChatParticipantVolumeLevelChanged? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return ChatEventVideoChatParticipantVolumeLevelChanged(
       participantId: MessageSender.fromJson(
-          json['participant_id'] as Map<String, dynamic>?)!,
+        json['participant_id'] as Map<String, dynamic>?,
+      )!,
       volumeLevel: json['volume_level'] as int,
     );
   }
@@ -37,10 +39,10 @@ class ChatEventVideoChatParticipantVolumeLevelChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'participant_id': participantId.toJson(),
-        'volume_level': volumeLevel,
-        '@type': constructor,
-      };
+    'participant_id': participantId.toJson(),
+    'volume_level': volumeLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

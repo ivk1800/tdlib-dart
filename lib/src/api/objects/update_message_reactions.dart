@@ -37,9 +37,10 @@ class UpdateMessageReactions extends Update {
       messageId: json['message_id'] as int,
       date: json['date'] as int,
       reactions: List<MessageReaction>.from(
-          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageReaction.fromJson(item))
-              .toList()),
+        ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageReaction.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -48,12 +49,12 @@ class UpdateMessageReactions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'date': date,
-        'reactions': reactions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'date': date,
+    'reactions': reactions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

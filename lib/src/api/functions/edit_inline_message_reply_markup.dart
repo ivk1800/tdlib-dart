@@ -24,10 +24,10 @@ class EditInlineMessageReplyMarkup extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

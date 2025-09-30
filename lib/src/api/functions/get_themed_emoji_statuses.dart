@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Returns up to 8 emoji statuses, which must be shown right after the
 /// default Premium Badge in the emoji status list for self status
-/// Returns [EmojiStatuses]
+/// Returns [EmojiStatusCustomEmojis]
 @immutable
 class GetThemedEmojiStatuses extends TdFunction {
   const GetThemedEmojiStatuses();
@@ -15,9 +15,7 @@ class GetThemedEmojiStatuses extends TdFunction {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

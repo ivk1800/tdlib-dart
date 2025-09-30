@@ -6,8 +6,12 @@ import '../tdapi.dart';
 @immutable
 class PushMessageContentStory extends PushMessageContent {
   const PushMessageContentStory({
+    required this.isMention,
     required this.isPinned,
   });
+
+  /// [isMention] True, if the user was mentioned in the story
+  final bool isMention;
 
   /// [isPinned] True, if the message is a pinned message with the specified
   /// content
@@ -21,6 +25,7 @@ class PushMessageContentStory extends PushMessageContent {
     }
 
     return PushMessageContentStory(
+      isMention: json['is_mention'] as bool,
       isPinned: json['is_pinned'] as bool,
     );
   }
@@ -30,9 +35,10 @@ class PushMessageContentStory extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'is_mention': isMention,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

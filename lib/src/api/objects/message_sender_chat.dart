@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The message was sent on behalf of a chat
 @immutable
 class MessageSenderChat extends MessageSender {
-  const MessageSenderChat({
-    required this.chatId,
-  });
+  const MessageSenderChat({required this.chatId});
 
   /// [chatId] Identifier of the chat that sent the message
   final int chatId;
@@ -19,9 +17,7 @@ class MessageSenderChat extends MessageSender {
       return null;
     }
 
-    return MessageSenderChat(
-      chatId: json['chat_id'] as int,
-    );
+    return MessageSenderChat(chatId: json['chat_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageSenderChat extends MessageSender {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

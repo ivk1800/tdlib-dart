@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AcceptCall extends TdFunction {
-  const AcceptCall({
-    required this.callId,
-    required this.protocol,
-  });
+  const AcceptCall({required this.callId, required this.protocol});
 
   /// [callId] Call identifier
   final int callId;
@@ -24,10 +21,10 @@ class AcceptCall extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        'protocol': protocol.toJson(),
-        '@type': constructor,
-      };
+    'call_id': callId,
+    'protocol': protocol.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

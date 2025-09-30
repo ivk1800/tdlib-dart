@@ -31,10 +31,10 @@ class ReaddQuickReplyShortcutMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_name': shortcutName,
-        'message_ids': messageIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'shortcut_name': shortcutName,
+    'message_ids': messageIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

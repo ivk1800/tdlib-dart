@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a sticker
 @immutable
 class InlineQueryResultSticker extends InlineQueryResult {
-  const InlineQueryResultSticker({
-    required this.id,
-    required this.sticker,
-  });
+  const InlineQueryResultSticker({required this.id, required this.sticker});
 
   /// [id] Unique identifier of the query result
   final String id;
@@ -34,10 +31,10 @@ class InlineQueryResultSticker extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,8 +26,9 @@ class ChatEventMemberJoinedByRequest extends ChatEventAction {
 
     return ChatEventMemberJoinedByRequest(
       approverUserId: json['approver_user_id'] as int,
-      inviteLink:
-          ChatInviteLink.fromJson(json['invite_link'] as Map<String, dynamic>?),
+      inviteLink: ChatInviteLink.fromJson(
+        json['invite_link'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +37,10 @@ class ChatEventMemberJoinedByRequest extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'approver_user_id': approverUserId,
-        'invite_link': inviteLink?.toJson(),
-        '@type': constructor,
-      };
+    'approver_user_id': approverUserId,
+    'invite_link': inviteLink?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -104,23 +104,23 @@ class ThemeParameters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background_color': backgroundColor,
-        'secondary_background_color': secondaryBackgroundColor,
-        'header_background_color': headerBackgroundColor,
-        'bottom_bar_background_color': bottomBarBackgroundColor,
-        'section_background_color': sectionBackgroundColor,
-        'section_separator_color': sectionSeparatorColor,
-        'text_color': textColor,
-        'accent_text_color': accentTextColor,
-        'section_header_text_color': sectionHeaderTextColor,
-        'subtitle_text_color': subtitleTextColor,
-        'destructive_text_color': destructiveTextColor,
-        'hint_color': hintColor,
-        'link_color': linkColor,
-        'button_color': buttonColor,
-        'button_text_color': buttonTextColor,
-        '@type': constructor,
-      };
+    'background_color': backgroundColor,
+    'secondary_background_color': secondaryBackgroundColor,
+    'header_background_color': headerBackgroundColor,
+    'bottom_bar_background_color': bottomBarBackgroundColor,
+    'section_background_color': sectionBackgroundColor,
+    'section_separator_color': sectionSeparatorColor,
+    'text_color': textColor,
+    'accent_text_color': accentTextColor,
+    'section_header_text_color': sectionHeaderTextColor,
+    'subtitle_text_color': subtitleTextColor,
+    'destructive_text_color': destructiveTextColor,
+    'hint_color': hintColor,
+    'link_color': linkColor,
+    'button_color': buttonColor,
+    'button_text_color': buttonTextColor,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

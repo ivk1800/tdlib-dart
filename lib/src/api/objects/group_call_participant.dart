@@ -103,13 +103,16 @@ class GroupCallParticipant extends TdObject {
 
     return GroupCallParticipant(
       participantId: MessageSender.fromJson(
-          json['participant_id'] as Map<String, dynamic>?)!,
+        json['participant_id'] as Map<String, dynamic>?,
+      )!,
       audioSourceId: json['audio_source_id'] as int,
       screenSharingAudioSourceId: json['screen_sharing_audio_source_id'] as int,
       videoInfo: GroupCallParticipantVideoInfo.fromJson(
-          json['video_info'] as Map<String, dynamic>?),
+        json['video_info'] as Map<String, dynamic>?,
+      ),
       screenSharingVideoInfo: GroupCallParticipantVideoInfo.fromJson(
-          json['screen_sharing_video_info'] as Map<String, dynamic>?),
+        json['screen_sharing_video_info'] as Map<String, dynamic>?,
+      ),
       bio: json['bio'] as String,
       isCurrentUser: json['is_current_user'] as bool,
       isSpeaking: json['is_speaking'] as bool,
@@ -132,26 +135,26 @@ class GroupCallParticipant extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'participant_id': participantId.toJson(),
-        'audio_source_id': audioSourceId,
-        'screen_sharing_audio_source_id': screenSharingAudioSourceId,
-        'video_info': videoInfo?.toJson(),
-        'screen_sharing_video_info': screenSharingVideoInfo?.toJson(),
-        'bio': bio,
-        'is_current_user': isCurrentUser,
-        'is_speaking': isSpeaking,
-        'is_hand_raised': isHandRaised,
-        'can_be_muted_for_all_users': canBeMutedForAllUsers,
-        'can_be_unmuted_for_all_users': canBeUnmutedForAllUsers,
-        'can_be_muted_for_current_user': canBeMutedForCurrentUser,
-        'can_be_unmuted_for_current_user': canBeUnmutedForCurrentUser,
-        'is_muted_for_all_users': isMutedForAllUsers,
-        'is_muted_for_current_user': isMutedForCurrentUser,
-        'can_unmute_self': canUnmuteSelf,
-        'volume_level': volumeLevel,
-        'order': order,
-        '@type': constructor,
-      };
+    'participant_id': participantId.toJson(),
+    'audio_source_id': audioSourceId,
+    'screen_sharing_audio_source_id': screenSharingAudioSourceId,
+    'video_info': videoInfo?.toJson(),
+    'screen_sharing_video_info': screenSharingVideoInfo?.toJson(),
+    'bio': bio,
+    'is_current_user': isCurrentUser,
+    'is_speaking': isSpeaking,
+    'is_hand_raised': isHandRaised,
+    'can_be_muted_for_all_users': canBeMutedForAllUsers,
+    'can_be_unmuted_for_all_users': canBeUnmutedForAllUsers,
+    'can_be_muted_for_current_user': canBeMutedForCurrentUser,
+    'can_be_unmuted_for_current_user': canBeUnmutedForCurrentUser,
+    'is_muted_for_all_users': isMutedForAllUsers,
+    'is_muted_for_current_user': isMutedForCurrentUser,
+    'can_unmute_self': canUnmuteSelf,
+    'volume_level': volumeLevel,
+    'order': order,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

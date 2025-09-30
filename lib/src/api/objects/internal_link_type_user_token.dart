@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// createPrivateChat and open the chat
 @immutable
 class InternalLinkTypeUserToken extends InternalLinkType {
-  const InternalLinkTypeUserToken({
-    required this.token,
-  });
+  const InternalLinkTypeUserToken({required this.token});
 
   /// [token] The token
   final String token;
@@ -21,9 +19,7 @@ class InternalLinkTypeUserToken extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypeUserToken(
-      token: json['token'] as String,
-    );
+    return InternalLinkTypeUserToken(token: json['token'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class InternalLinkTypeUserToken extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

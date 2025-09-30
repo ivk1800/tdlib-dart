@@ -23,14 +23,16 @@ class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
   static const String constructor = 'inputStoryAreaTypeSuggestedReaction';
 
   static InputStoryAreaTypeSuggestedReaction? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InputStoryAreaTypeSuggestedReaction(
       reactionType: ReactionType.fromJson(
-          json['reaction_type'] as Map<String, dynamic>?)!,
+        json['reaction_type'] as Map<String, dynamic>?,
+      )!,
       isDark: json['is_dark'] as bool,
       isFlipped: json['is_flipped'] as bool,
     );
@@ -41,11 +43,11 @@ class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reaction_type': reactionType.toJson(),
-        'is_dark': isDark,
-        'is_flipped': isFlipped,
-        '@type': constructor,
-      };
+    'reaction_type': reactionType.toJson(),
+    'is_dark': isDark,
+    'is_flipped': isFlipped,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

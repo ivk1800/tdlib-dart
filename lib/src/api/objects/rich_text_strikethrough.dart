@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A strikethrough rich text
 @immutable
 class RichTextStrikethrough extends RichText {
-  const RichTextStrikethrough({
-    required this.text,
-  });
+  const RichTextStrikethrough({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextStrikethrough extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

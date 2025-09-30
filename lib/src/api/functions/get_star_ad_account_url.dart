@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [HttpUrl]
 @immutable
 class GetStarAdAccountUrl extends TdFunction {
-  const GetStarAdAccountUrl({
-    required this.ownerId,
-  });
+  const GetStarAdAccountUrl({required this.ownerId});
 
   /// [ownerId] Identifier of the owner of the Telegram Stars; can be identifier
   /// of an owned bot, or identifier of an owned channel chat
@@ -22,9 +20,9 @@ class GetStarAdAccountUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'owner_id': ownerId.toJson(),
-        '@type': constructor,
-      };
+    'owner_id': ownerId.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

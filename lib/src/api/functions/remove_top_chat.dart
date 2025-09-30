@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class RemoveTopChat extends TdFunction {
-  const RemoveTopChat({
-    required this.category,
-    required this.chatId,
-  });
+  const RemoveTopChat({required this.category, required this.chatId});
 
   /// [category] Category of frequently used chats
   final TopChatCategory category;
@@ -25,10 +22,10 @@ class RemoveTopChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'category': category.toJson(),
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'category': category.toJson(),
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

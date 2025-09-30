@@ -50,13 +50,13 @@ class StorageStatisticsFast extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'files_size': filesSize,
-        'file_count': fileCount,
-        'database_size': databaseSize,
-        'language_pack_database_size': languagePackDatabaseSize,
-        'log_size': logSize,
-        '@type': constructor,
-      };
+    'files_size': filesSize,
+    'file_count': fileCount,
+    'database_size': databaseSize,
+    'language_pack_database_size': languagePackDatabaseSize,
+    'log_size': logSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [StickerSets]
 @immutable
 class SearchStickerSets extends TdFunction {
-  const SearchStickerSets({
-    required this.stickerType,
-    required this.query,
-  });
+  const SearchStickerSets({required this.stickerType, required this.query});
 
   /// [stickerType] Type of the sticker sets to return
   final StickerType stickerType;
@@ -25,10 +22,10 @@ class SearchStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

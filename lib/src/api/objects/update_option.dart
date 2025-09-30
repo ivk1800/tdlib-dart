@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// An option changed its value
 @immutable
 class UpdateOption extends Update {
-  const UpdateOption({
-    required this.name,
-    required this.value,
-  });
+  const UpdateOption({required this.name, required this.value});
 
   /// [name] The option name
   final String name;
@@ -34,10 +31,10 @@ class UpdateOption extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'value': value.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'value': value.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

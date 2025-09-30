@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Chat]
 @immutable
 class SearchPublicChat extends TdFunction {
-  const SearchPublicChat({
-    required this.username,
-  });
+  const SearchPublicChat({required this.username});
 
   /// [username] Username to be resolved
   final String username;
@@ -22,9 +20,9 @@ class SearchPublicChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        '@type': constructor,
-      };
+    'username': username,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

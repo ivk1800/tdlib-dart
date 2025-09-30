@@ -7,8 +7,13 @@ import '../tdapi.dart';
 @immutable
 class CreateInvoiceLink extends TdFunction {
   const CreateInvoiceLink({
+    required this.businessConnectionId,
     required this.invoice,
   });
+
+  /// [businessConnectionId] Unique identifier of business connection on behalf
+  /// of which to send the request
+  final String businessConnectionId;
 
   /// [invoice] Information about the invoice of the type inputMessageInvoice
   final InputMessageContent invoice;
@@ -20,9 +25,10 @@ class CreateInvoiceLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invoice': invoice.toJson(),
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'invoice': invoice.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

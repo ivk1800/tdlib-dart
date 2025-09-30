@@ -25,10 +25,10 @@ class DeleteChatFolder extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_id': chatFolderId,
-        'leave_chat_ids': leaveChatIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'chat_folder_id': chatFolderId,
+    'leave_chat_ids': leaveChatIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

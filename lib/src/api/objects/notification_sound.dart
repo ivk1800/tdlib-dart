@@ -54,14 +54,14 @@ class NotificationSound extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'duration': duration,
-        'date': date,
-        'title': title,
-        'data': data,
-        'sound': sound.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'duration': duration,
+    'date': date,
+    'title': title,
+    'data': data,
+    'sound': sound.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

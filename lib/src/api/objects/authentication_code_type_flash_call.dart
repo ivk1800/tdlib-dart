@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// be entered automatically
 @immutable
 class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
-  const AuthenticationCodeTypeFlashCall({
-    required this.pattern,
-  });
+  const AuthenticationCodeTypeFlashCall({required this.pattern});
 
   /// [pattern] Pattern of the phone number from which the call will be made
   final String pattern;
@@ -21,9 +19,7 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
       return null;
     }
 
-    return AuthenticationCodeTypeFlashCall(
-      pattern: json['pattern'] as String,
-    );
+    return AuthenticationCodeTypeFlashCall(pattern: json['pattern'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'pattern': pattern,
-        '@type': constructor,
-      };
+    'pattern': pattern,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -44,12 +44,12 @@ class StorePaymentPurposeGiftedStars extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'currency': currency,
-        'amount': amount,
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'currency': currency,
+    'amount': amount,
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,18 +7,18 @@ import '../tdapi.dart';
 class StarTransaction extends TdObject {
   const StarTransaction({
     required this.id,
-    required this.starCount,
+    required this.starAmount,
     required this.isRefund,
     required this.date,
-    required this.partner,
+    required this.type,
   });
 
   /// [id] Unique identifier of the transaction
   final String id;
 
-  /// [starCount] The amount of added owned Telegram Stars; negative for
+  /// [starAmount] The amount of added owned Telegram Stars; negative for
   /// outgoing transactions
-  final int starCount;
+  final StarAmount starAmount;
 
   /// [isRefund] True, if the transaction is a refund of a previous transaction
   final bool isRefund;
@@ -26,9 +26,8 @@ class StarTransaction extends TdObject {
   /// [date] Point in time (Unix timestamp) when the transaction was completed
   final int date;
 
-  /// [partner] Source of the incoming transaction, or its recipient for
-  /// outgoing transactions
-  final StarTransactionPartner partner;
+  /// [type] Type of the transaction
+  final StarTransactionType type;
 
   static const String constructor = 'starTransaction';
 
@@ -39,11 +38,14 @@ class StarTransaction extends TdObject {
 
     return StarTransaction(
       id: json['id'] as String,
-      starCount: json['star_count'] as int,
+      starAmount: StarAmount.fromJson(
+        json['star_amount'] as Map<String, dynamic>?,
+      )!,
       isRefund: json['is_refund'] as bool,
       date: json['date'] as int,
-      partner: StarTransactionPartner.fromJson(
-          json['partner'] as Map<String, dynamic>?)!,
+      type: StarTransactionType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -52,13 +54,13 @@ class StarTransaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'star_count': starCount,
-        'is_refund': isRefund,
-        'date': date,
-        'partner': partner.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'star_amount': starAmount.toJson(),
+    'is_refund': isRefund,
+    'date': date,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

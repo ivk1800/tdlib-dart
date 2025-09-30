@@ -29,8 +29,9 @@ class PollTypeQuiz extends PollType {
 
     return PollTypeQuiz(
       correctOptionId: json['correct_option_id'] as int,
-      explanation:
-          FormattedText.fromJson(json['explanation'] as Map<String, dynamic>?)!,
+      explanation: FormattedText.fromJson(
+        json['explanation'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -39,10 +40,10 @@ class PollTypeQuiz extends PollType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'correct_option_id': correctOptionId,
-        'explanation': explanation.toJson(),
-        '@type': constructor,
-      };
+    'correct_option_id': correctOptionId,
+    'explanation': explanation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

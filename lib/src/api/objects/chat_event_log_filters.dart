@@ -97,22 +97,22 @@ class ChatEventLogFilters extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_edits': messageEdits,
-        'message_deletions': messageDeletions,
-        'message_pins': messagePins,
-        'member_joins': memberJoins,
-        'member_leaves': memberLeaves,
-        'member_invites': memberInvites,
-        'member_promotions': memberPromotions,
-        'member_restrictions': memberRestrictions,
-        'info_changes': infoChanges,
-        'setting_changes': settingChanges,
-        'invite_link_changes': inviteLinkChanges,
-        'video_chat_changes': videoChatChanges,
-        'forum_changes': forumChanges,
-        'subscription_extensions': subscriptionExtensions,
-        '@type': constructor,
-      };
+    'message_edits': messageEdits,
+    'message_deletions': messageDeletions,
+    'message_pins': messagePins,
+    'member_joins': memberJoins,
+    'member_leaves': memberLeaves,
+    'member_invites': memberInvites,
+    'member_promotions': memberPromotions,
+    'member_restrictions': memberRestrictions,
+    'info_changes': infoChanges,
+    'setting_changes': settingChanges,
+    'invite_link_changes': inviteLinkChanges,
+    'video_chat_changes': videoChatChanges,
+    'forum_changes': forumChanges,
+    'subscription_extensions': subscriptionExtensions,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

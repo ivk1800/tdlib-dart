@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to boost a supergroup chat
 @immutable
 class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
-  const LinkPreviewTypeSupergroupBoost({
-    this.photo,
-  });
+  const LinkPreviewTypeSupergroupBoost({this.photo});
 
   /// [photo] Photo of the chat; may be null
   final ChatPhoto? photo;
@@ -29,9 +27,9 @@ class LinkPreviewTypeSupergroupBoost extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

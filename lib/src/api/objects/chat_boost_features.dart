@@ -13,6 +13,7 @@ class ChatBoostFeatures extends TdObject {
     required this.minChatThemeBackgroundBoostLevel,
     required this.minCustomBackgroundBoostLevel,
     required this.minCustomEmojiStickerSetBoostLevel,
+    required this.minAutomaticTranslationBoostLevel,
     required this.minSpeechRecognitionBoostLevel,
     required this.minSponsoredMessageDisableBoostLevel,
   });
@@ -45,6 +46,11 @@ class ChatBoostFeatures extends TdObject {
   /// set custom emoji sticker set for the chat; for supergroup chats only
   final int minCustomEmojiStickerSetBoostLevel;
 
+  /// [minAutomaticTranslationBoostLevel] The minimum boost level allowing to
+  /// enable automatic translation of messages for non-Premium users; for
+  /// channel chats only
+  final int minAutomaticTranslationBoostLevel;
+
   /// [minSpeechRecognitionBoostLevel] The minimum boost level allowing to
   /// recognize speech in video note and voice note messages for non-Premium
   /// users; for supergroup chats only
@@ -63,9 +69,10 @@ class ChatBoostFeatures extends TdObject {
 
     return ChatBoostFeatures(
       features: List<ChatBoostLevelFeatures>.from(
-          ((json['features'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatBoostLevelFeatures.fromJson(item))
-              .toList()),
+        ((json['features'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatBoostLevelFeatures.fromJson(item))
+            .toList(),
+      ),
       minProfileBackgroundCustomEmojiBoostLevel:
           json['min_profile_background_custom_emoji_boost_level'] as int,
       minBackgroundCustomEmojiBoostLevel:
@@ -77,6 +84,8 @@ class ChatBoostFeatures extends TdObject {
           json['min_custom_background_boost_level'] as int,
       minCustomEmojiStickerSetBoostLevel:
           json['min_custom_emoji_sticker_set_boost_level'] as int,
+      minAutomaticTranslationBoostLevel:
+          json['min_automatic_translation_boost_level'] as int,
       minSpeechRecognitionBoostLevel:
           json['min_speech_recognition_boost_level'] as int,
       minSponsoredMessageDisableBoostLevel:
@@ -89,22 +98,22 @@ class ChatBoostFeatures extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'features': features.map((item) => item.toJson()).toList(),
-        'min_profile_background_custom_emoji_boost_level':
-            minProfileBackgroundCustomEmojiBoostLevel,
-        'min_background_custom_emoji_boost_level':
-            minBackgroundCustomEmojiBoostLevel,
-        'min_emoji_status_boost_level': minEmojiStatusBoostLevel,
-        'min_chat_theme_background_boost_level':
-            minChatThemeBackgroundBoostLevel,
-        'min_custom_background_boost_level': minCustomBackgroundBoostLevel,
-        'min_custom_emoji_sticker_set_boost_level':
-            minCustomEmojiStickerSetBoostLevel,
-        'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
-        'min_sponsored_message_disable_boost_level':
-            minSponsoredMessageDisableBoostLevel,
-        '@type': constructor,
-      };
+    'features': features.map((item) => item.toJson()).toList(),
+    'min_profile_background_custom_emoji_boost_level':
+        minProfileBackgroundCustomEmojiBoostLevel,
+    'min_background_custom_emoji_boost_level':
+        minBackgroundCustomEmojiBoostLevel,
+    'min_emoji_status_boost_level': minEmojiStatusBoostLevel,
+    'min_chat_theme_background_boost_level': minChatThemeBackgroundBoostLevel,
+    'min_custom_background_boost_level': minCustomBackgroundBoostLevel,
+    'min_custom_emoji_sticker_set_boost_level':
+        minCustomEmojiStickerSetBoostLevel,
+    'min_automatic_translation_boost_level': minAutomaticTranslationBoostLevel,
+    'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
+    'min_sponsored_message_disable_boost_level':
+        minSponsoredMessageDisableBoostLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

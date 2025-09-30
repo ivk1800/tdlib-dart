@@ -35,10 +35,10 @@ class UpdateChatUnreadMentionCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'unread_mention_count': unreadMentionCount,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'unread_mention_count': unreadMentionCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

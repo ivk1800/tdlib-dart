@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of t.me URLs
 @immutable
 class TMeUrls extends TdObject {
-  const TMeUrls({
-    required this.urls,
-  });
+  const TMeUrls({required this.urls});
 
   /// [urls] List of URLs
   final List<TMeUrl> urls;
@@ -20,9 +18,11 @@ class TMeUrls extends TdObject {
     }
 
     return TMeUrls(
-      urls: List<TMeUrl>.from(((json['urls'] as List<dynamic>?) ?? <dynamic>[])
-          .map((item) => TMeUrl.fromJson(item))
-          .toList()),
+      urls: List<TMeUrl>.from(
+        ((json['urls'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => TMeUrl.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -31,9 +31,9 @@ class TMeUrls extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'urls': urls.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'urls': urls.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

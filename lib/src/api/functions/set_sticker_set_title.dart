@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetStickerSetTitle extends TdFunction {
-  const SetStickerSetTitle({
-    required this.name,
-    required this.title,
-  });
+  const SetStickerSetTitle({required this.name, required this.title});
 
   /// [name] Sticker set name. The sticker set must be owned by the current user
   ///
@@ -25,10 +22,10 @@ class SetStickerSetTitle extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'title': title,
-        '@type': constructor,
-      };
+    'name': name,
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// getOption("animation_search_bot_username") for animations
 @immutable
 class EmojiCategorySourceSearch extends EmojiCategorySource {
-  const EmojiCategorySourceSearch({
-    required this.emojis,
-  });
+  const EmojiCategorySourceSearch({required this.emojis});
 
   /// [emojis] List of emojis to search for
   final List<String> emojis;
@@ -23,9 +21,10 @@ class EmojiCategorySourceSearch extends EmojiCategorySource {
 
     return EmojiCategorySourceSearch(
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -34,9 +33,9 @@ class EmojiCategorySourceSearch extends EmojiCategorySource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emojis': emojis.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'emojis': emojis.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

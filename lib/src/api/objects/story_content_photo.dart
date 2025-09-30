@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A photo story
 @immutable
 class StoryContentPhoto extends StoryContent {
-  const StoryContentPhoto({
-    required this.photo,
-  });
+  const StoryContentPhoto({required this.photo});
 
   /// [photo] The photo
   final Photo photo;
@@ -29,9 +27,9 @@ class StoryContentPhoto extends StoryContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

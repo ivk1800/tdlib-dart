@@ -34,12 +34,12 @@ class SetBusinessMessageIsPinned extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

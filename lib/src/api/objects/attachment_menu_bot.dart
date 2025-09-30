@@ -141,24 +141,32 @@ class AttachmentMenuBot extends TdObject {
       showDisclaimerInSideMenu: json['show_disclaimer_in_side_menu'] as bool,
       name: json['name'] as String,
       nameColor: AttachmentMenuBotColor.fromJson(
-          json['name_color'] as Map<String, dynamic>?),
+        json['name_color'] as Map<String, dynamic>?,
+      ),
       defaultIcon: File.fromJson(json['default_icon'] as Map<String, dynamic>?),
-      iosStaticIcon:
-          File.fromJson(json['ios_static_icon'] as Map<String, dynamic>?),
-      iosAnimatedIcon:
-          File.fromJson(json['ios_animated_icon'] as Map<String, dynamic>?),
-      iosSideMenuIcon:
-          File.fromJson(json['ios_side_menu_icon'] as Map<String, dynamic>?),
+      iosStaticIcon: File.fromJson(
+        json['ios_static_icon'] as Map<String, dynamic>?,
+      ),
+      iosAnimatedIcon: File.fromJson(
+        json['ios_animated_icon'] as Map<String, dynamic>?,
+      ),
+      iosSideMenuIcon: File.fromJson(
+        json['ios_side_menu_icon'] as Map<String, dynamic>?,
+      ),
       androidIcon: File.fromJson(json['android_icon'] as Map<String, dynamic>?),
       androidSideMenuIcon: File.fromJson(
-          json['android_side_menu_icon'] as Map<String, dynamic>?),
+        json['android_side_menu_icon'] as Map<String, dynamic>?,
+      ),
       macosIcon: File.fromJson(json['macos_icon'] as Map<String, dynamic>?),
-      macosSideMenuIcon:
-          File.fromJson(json['macos_side_menu_icon'] as Map<String, dynamic>?),
+      macosSideMenuIcon: File.fromJson(
+        json['macos_side_menu_icon'] as Map<String, dynamic>?,
+      ),
       iconColor: AttachmentMenuBotColor.fromJson(
-          json['icon_color'] as Map<String, dynamic>?),
-      webAppPlaceholder:
-          File.fromJson(json['web_app_placeholder'] as Map<String, dynamic>?),
+        json['icon_color'] as Map<String, dynamic>?,
+      ),
+      webAppPlaceholder: File.fromJson(
+        json['web_app_placeholder'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -167,31 +175,31 @@ class AttachmentMenuBot extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'supports_self_chat': supportsSelfChat,
-        'supports_user_chats': supportsUserChats,
-        'supports_bot_chats': supportsBotChats,
-        'supports_group_chats': supportsGroupChats,
-        'supports_channel_chats': supportsChannelChats,
-        'request_write_access': requestWriteAccess,
-        'is_added': isAdded,
-        'show_in_attachment_menu': showInAttachmentMenu,
-        'show_in_side_menu': showInSideMenu,
-        'show_disclaimer_in_side_menu': showDisclaimerInSideMenu,
-        'name': name,
-        'name_color': nameColor?.toJson(),
-        'default_icon': defaultIcon?.toJson(),
-        'ios_static_icon': iosStaticIcon?.toJson(),
-        'ios_animated_icon': iosAnimatedIcon?.toJson(),
-        'ios_side_menu_icon': iosSideMenuIcon?.toJson(),
-        'android_icon': androidIcon?.toJson(),
-        'android_side_menu_icon': androidSideMenuIcon?.toJson(),
-        'macos_icon': macosIcon?.toJson(),
-        'macos_side_menu_icon': macosSideMenuIcon?.toJson(),
-        'icon_color': iconColor?.toJson(),
-        'web_app_placeholder': webAppPlaceholder?.toJson(),
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'supports_self_chat': supportsSelfChat,
+    'supports_user_chats': supportsUserChats,
+    'supports_bot_chats': supportsBotChats,
+    'supports_group_chats': supportsGroupChats,
+    'supports_channel_chats': supportsChannelChats,
+    'request_write_access': requestWriteAccess,
+    'is_added': isAdded,
+    'show_in_attachment_menu': showInAttachmentMenu,
+    'show_in_side_menu': showInSideMenu,
+    'show_disclaimer_in_side_menu': showDisclaimerInSideMenu,
+    'name': name,
+    'name_color': nameColor?.toJson(),
+    'default_icon': defaultIcon?.toJson(),
+    'ios_static_icon': iosStaticIcon?.toJson(),
+    'ios_animated_icon': iosAnimatedIcon?.toJson(),
+    'ios_side_menu_icon': iosSideMenuIcon?.toJson(),
+    'android_icon': androidIcon?.toJson(),
+    'android_side_menu_icon': androidSideMenuIcon?.toJson(),
+    'macos_icon': macosIcon?.toJson(),
+    'macos_side_menu_icon': macosSideMenuIcon?.toJson(),
+    'icon_color': iconColor?.toJson(),
+    'web_app_placeholder': webAppPlaceholder?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

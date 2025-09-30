@@ -6,16 +6,13 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetProfilePhoto extends TdFunction {
-  const SetProfilePhoto({
-    required this.photo,
-    required this.isPublic,
-  });
+  const SetProfilePhoto({required this.photo, required this.isPublic});
 
   /// [photo] Profile photo to set
   final InputChatPhoto photo;
 
-  /// [isPublic] Pass true to set a public photo, which will be visible even the
-  /// main photo is hidden by privacy settings
+  /// [isPublic] Pass true to set the public photo, which will be visible even
+  /// if the main photo is hidden by privacy settings
   final bool isPublic;
 
   static const String constructor = 'setProfilePhoto';
@@ -25,10 +22,10 @@ class SetProfilePhoto extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        'is_public': isPublic,
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    'is_public': isPublic,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -24,7 +24,8 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   static const String constructor = 'inlineKeyboardButtonTypeLoginUrl';
 
   static InlineKeyboardButtonTypeLoginUrl? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -41,11 +42,11 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'id': id,
-        'forward_text': forwardText,
-        '@type': constructor,
-      };
+    'url': url,
+    'id': id,
+    'forward_text': forwardText,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

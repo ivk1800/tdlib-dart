@@ -25,11 +25,13 @@ class MessagePassportDataReceived extends MessageContent {
 
     return MessagePassportDataReceived(
       elements: List<EncryptedPassportElement>.from(
-          ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => EncryptedPassportElement.fromJson(item))
-              .toList()),
+        ((json['elements'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => EncryptedPassportElement.fromJson(item))
+            .toList(),
+      ),
       credentials: EncryptedCredentials.fromJson(
-          json['credentials'] as Map<String, dynamic>?)!,
+        json['credentials'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +40,10 @@ class MessagePassportDataReceived extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'elements': elements.map((item) => item.toJson()).toList(),
-        'credentials': credentials.toJson(),
-        '@type': constructor,
-      };
+    'elements': elements.map((item) => item.toJson()).toList(),
+    'credentials': credentials.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

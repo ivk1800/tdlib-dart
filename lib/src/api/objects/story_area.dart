@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a clickable rectangle area on a story media
 @immutable
 class StoryArea extends TdObject {
-  const StoryArea({
-    required this.position,
-    required this.type,
-  });
+  const StoryArea({required this.position, required this.type});
 
   /// [position] Position of the area
   final StoryAreaPosition position;
@@ -25,7 +22,8 @@ class StoryArea extends TdObject {
 
     return StoryArea(
       position: StoryAreaPosition.fromJson(
-          json['position'] as Map<String, dynamic>?)!,
+        json['position'] as Map<String, dynamic>?,
+      )!,
       type: StoryAreaType.fromJson(json['type'] as Map<String, dynamic>?)!,
     );
   }
@@ -35,10 +33,10 @@ class StoryArea extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'position': position.toJson(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'position': position.toJson(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

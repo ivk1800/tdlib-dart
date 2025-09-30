@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A voice note message
 @immutable
 class PushMessageContentVoiceNote extends PushMessageContent {
-  const PushMessageContentVoiceNote({
-    this.voiceNote,
-    required this.isPinned,
-  });
+  const PushMessageContentVoiceNote({this.voiceNote, required this.isPinned});
 
   /// [voiceNote] Message content; may be null
   final VoiceNote? voiceNote;
@@ -25,8 +22,9 @@ class PushMessageContentVoiceNote extends PushMessageContent {
     }
 
     return PushMessageContentVoiceNote(
-      voiceNote:
-          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
+      voiceNote: VoiceNote.fromJson(
+        json['voice_note'] as Map<String, dynamic>?,
+      ),
       isPinned: json['is_pinned'] as bool,
     );
   }
@@ -36,10 +34,10 @@ class PushMessageContentVoiceNote extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'voice_note': voiceNote?.toJson(),
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'voice_note': voiceNote?.toJson(),
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -40,13 +40,13 @@ class GetInlineQueryResults extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'chat_id': chatId,
-        'user_location': userLocation?.toJson(),
-        'query': query,
-        'offset': offset,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'chat_id': chatId,
+    'user_location': userLocation?.toJson(),
+    'query': query,
+    'offset': offset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

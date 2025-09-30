@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A token for HUAWEI Push Service
 @immutable
 class DeviceTokenHuaweiPush extends DeviceToken {
-  const DeviceTokenHuaweiPush({
-    required this.token,
-    required this.encrypt,
-  });
+  const DeviceTokenHuaweiPush({required this.token, required this.encrypt});
 
   /// [token] Device registration token; may be empty to deregister a device
   final String token;
@@ -34,10 +31,10 @@ class DeviceTokenHuaweiPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        'encrypt': encrypt,
-        '@type': constructor,
-      };
+    'token': token,
+    'encrypt': encrypt,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

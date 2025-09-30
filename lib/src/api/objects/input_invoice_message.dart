@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// purchase from messagePaidMedia
 @immutable
 class InputInvoiceMessage extends InputInvoice {
-  const InputInvoiceMessage({
-    required this.chatId,
-    required this.messageId,
-  });
+  const InputInvoiceMessage({required this.chatId, required this.messageId});
 
   /// [chatId] Chat identifier of the message
   final int chatId;
@@ -36,10 +33,10 @@ class InputInvoiceMessage extends InputInvoice {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

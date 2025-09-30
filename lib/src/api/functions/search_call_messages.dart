@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Searches for call messages. Returns the results in reverse chronological
-/// order (i.e., in order of decreasing message_id). For optimal performance,
-/// the number of returned messages is chosen by TDLib
+/// Searches for call and group call messages. Returns the results in reverse
+/// chronological order (i.e., in order of decreasing message_id). For optimal
+/// performance, the number of returned messages is chosen by TDLib
 /// Returns [FoundMessages]
 @immutable
 class SearchCallMessages extends TdFunction {
@@ -34,11 +34,11 @@ class SearchCallMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'offset': offset,
-        'limit': limit,
-        'only_missed': onlyMissed,
-        '@type': constructor,
-      };
+    'offset': offset,
+    'limit': limit,
+    'only_missed': onlyMissed,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -43,10 +43,12 @@ class MessageDice extends MessageContent {
     }
 
     return MessageDice(
-      initialState:
-          DiceStickers.fromJson(json['initial_state'] as Map<String, dynamic>?),
-      finalState:
-          DiceStickers.fromJson(json['final_state'] as Map<String, dynamic>?),
+      initialState: DiceStickers.fromJson(
+        json['initial_state'] as Map<String, dynamic>?,
+      ),
+      finalState: DiceStickers.fromJson(
+        json['final_state'] as Map<String, dynamic>?,
+      ),
       emoji: json['emoji'] as String,
       value: json['value'] as int,
       successAnimationFrameNumber:
@@ -59,13 +61,13 @@ class MessageDice extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'initial_state': initialState?.toJson(),
-        'final_state': finalState?.toJson(),
-        'emoji': emoji,
-        'value': value,
-        'success_animation_frame_number': successAnimationFrameNumber,
-        '@type': constructor,
-      };
+    'initial_state': initialState?.toJson(),
+    'final_state': finalState?.toJson(),
+    'emoji': emoji,
+    'value': value,
+    'success_animation_frame_number': successAnimationFrameNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

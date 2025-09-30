@@ -38,13 +38,13 @@ class ShareUsersWithBot extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'button_id': buttonId,
-        'shared_user_ids': sharedUserIds.map((item) => item).toList(),
-        'only_check': onlyCheck,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'button_id': buttonId,
+    'shared_user_ids': sharedUserIds.map((item) => item).toList(),
+    'only_check': onlyCheck,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

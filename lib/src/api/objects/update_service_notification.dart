@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// the application must show a popup with the content of the notification
 @immutable
 class UpdateServiceNotification extends Update {
-  const UpdateServiceNotification({
-    required this.type,
-    required this.content,
-  });
+  const UpdateServiceNotification({required this.type, required this.content});
 
   /// [type] Notification type. If type begins with "AUTH_KEY_DROP_", then two
   /// buttons "Cancel" and "Log out" must be shown under notification; if user
@@ -28,8 +25,9 @@ class UpdateServiceNotification extends Update {
 
     return UpdateServiceNotification(
       type: json['type'] as String,
-      content:
-          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
+      content: MessageContent.fromJson(
+        json['content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +36,10 @@ class UpdateServiceNotification extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'content': content.toJson(),
-        '@type': constructor,
-      };
+    'type': type,
+    'content': content.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

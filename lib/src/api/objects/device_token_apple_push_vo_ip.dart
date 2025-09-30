@@ -39,11 +39,11 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'device_token': deviceToken,
-        'is_app_sandbox': isAppSandbox,
-        'encrypt': encrypt,
-        '@type': constructor,
-      };
+    'device_token': deviceToken,
+    'is_app_sandbox': isAppSandbox,
+    'encrypt': encrypt,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

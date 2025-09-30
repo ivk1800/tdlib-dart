@@ -60,15 +60,15 @@ class Game extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'short_name': shortName,
-        'title': title,
-        'text': text.toJson(),
-        'description': description,
-        'photo': photo.toJson(),
-        'animation': animation?.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'short_name': shortName,
+    'title': title,
+    'text': text.toJson(),
+    'description': description,
+    'photo': photo.toJson(),
+    'animation': animation?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

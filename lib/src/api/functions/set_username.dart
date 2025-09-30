@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetUsername extends TdFunction {
-  const SetUsername({
-    required this.username,
-  });
+  const SetUsername({required this.username});
 
   /// [username] The new value of the username. Use an empty string to remove
   /// the username. The username can't be completely removed if there is another
@@ -22,9 +20,9 @@ class SetUsername extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        '@type': constructor,
-      };
+    'username': username,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

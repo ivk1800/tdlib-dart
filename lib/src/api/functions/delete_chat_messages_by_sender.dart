@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Deletes all messages sent by the specified message sender in a chat.
 /// Supported only for supergroups; requires can_delete_messages administrator
-/// privileges
+/// right
 /// Returns [Ok]
 @immutable
 class DeleteChatMessagesBySender extends TdFunction {
@@ -26,10 +26,10 @@ class DeleteChatMessagesBySender extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'sender_id': senderId.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'sender_id': senderId.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

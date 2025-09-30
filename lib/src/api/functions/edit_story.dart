@@ -8,15 +8,15 @@ import '../tdapi.dart';
 @immutable
 class EditStory extends TdFunction {
   const EditStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     this.content,
     this.areas,
     this.caption,
   });
 
-  /// [storySenderChatId] Identifier of the chat that posted the story
-  final int storySenderChatId;
+  /// [storyPosterChatId] Identifier of the chat that posted the story
+  final int storyPosterChatId;
 
   /// [storyId] Identifier of the story to edit
   final int storyId;
@@ -39,13 +39,13 @@ class EditStory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_sender_chat_id': storySenderChatId,
-        'story_id': storyId,
-        'content': content?.toJson(),
-        'areas': areas?.toJson(),
-        'caption': caption?.toJson(),
-        '@type': constructor,
-      };
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    'content': content?.toJson(),
+    'areas': areas?.toJson(),
+    'caption': caption?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

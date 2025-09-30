@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// soon has changed
 @immutable
 class UpdateContactCloseBirthdays extends Update {
-  const UpdateContactCloseBirthdays({
-    required this.closeBirthdayUsers,
-  });
+  const UpdateContactCloseBirthdays({required this.closeBirthdayUsers});
 
   /// [closeBirthdayUsers] List of contact users with close birthday
   final List<CloseBirthdayUser> closeBirthdayUsers;
@@ -22,9 +20,10 @@ class UpdateContactCloseBirthdays extends Update {
 
     return UpdateContactCloseBirthdays(
       closeBirthdayUsers: List<CloseBirthdayUser>.from(
-          ((json['close_birthday_users'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => CloseBirthdayUser.fromJson(item))
-              .toList()),
+        ((json['close_birthday_users'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => CloseBirthdayUser.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -33,10 +32,11 @@ class UpdateContactCloseBirthdays extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'close_birthday_users':
-            closeBirthdayUsers.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'close_birthday_users': closeBirthdayUsers
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

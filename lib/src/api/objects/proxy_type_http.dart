@@ -40,11 +40,11 @@ class ProxyTypeHttp extends ProxyType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        'password': password,
-        'http_only': httpOnly,
-        '@type': constructor,
-      };
+    'username': username,
+    'password': password,
+    'http_only': httpOnly,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

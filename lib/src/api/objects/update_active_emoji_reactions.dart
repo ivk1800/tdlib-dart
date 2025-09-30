@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of active emoji reactions has changed
 @immutable
 class UpdateActiveEmojiReactions extends Update {
-  const UpdateActiveEmojiReactions({
-    required this.emojis,
-  });
+  const UpdateActiveEmojiReactions({required this.emojis});
 
   /// [emojis] The new list of active emoji reactions
   final List<String> emojis;
@@ -21,9 +19,10 @@ class UpdateActiveEmojiReactions extends Update {
 
     return UpdateActiveEmojiReactions(
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateActiveEmojiReactions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emojis': emojis.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'emojis': emojis.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

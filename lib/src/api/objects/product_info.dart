@@ -29,8 +29,9 @@ class ProductInfo extends TdObject {
 
     return ProductInfo(
       title: json['title'] as String,
-      description:
-          FormattedText.fromJson(json['description'] as Map<String, dynamic>?)!,
+      description: FormattedText.fromJson(
+        json['description'] as Map<String, dynamic>?,
+      )!,
       photo: Photo.fromJson(json['photo'] as Map<String, dynamic>?),
     );
   }
@@ -40,11 +41,11 @@ class ProductInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'description': description.toJson(),
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'title': title,
+    'description': description.toJson(),
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

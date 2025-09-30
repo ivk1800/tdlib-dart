@@ -27,8 +27,9 @@ class InputChatPhotoAnimation extends InputChatPhoto {
     }
 
     return InputChatPhotoAnimation(
-      animation:
-          InputFile.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      animation: InputFile.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
       mainFrameTimestamp: (json['main_frame_timestamp'] as num).toDouble(),
     );
   }
@@ -38,10 +39,10 @@ class InputChatPhotoAnimation extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        'main_frame_timestamp': mainFrameTimestamp,
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    'main_frame_timestamp': mainFrameTimestamp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

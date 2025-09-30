@@ -39,10 +39,10 @@ class UpdateHavePendingNotifications extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'have_delayed_notifications': haveDelayedNotifications,
-        'have_unreceived_notifications': haveUnreceivedNotifications,
-        '@type': constructor,
-      };
+    'have_delayed_notifications': haveDelayedNotifications,
+    'have_unreceived_notifications': haveUnreceivedNotifications,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

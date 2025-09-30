@@ -35,12 +35,12 @@ class SearchChatMembers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'query': query,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'query': query,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

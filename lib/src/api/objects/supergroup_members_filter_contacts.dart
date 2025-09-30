@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// channel
 @immutable
 class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
-  const SupergroupMembersFilterContacts({
-    required this.query,
-  });
+  const SupergroupMembersFilterContacts({required this.query});
 
   /// [query] Query to search for
   final String query;
@@ -20,9 +18,7 @@ class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
       return null;
     }
 
-    return SupergroupMembersFilterContacts(
-      query: json['query'] as String,
-    );
+    return SupergroupMembersFilterContacts(query: json['query'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        '@type': constructor,
-      };
+    'query': query,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

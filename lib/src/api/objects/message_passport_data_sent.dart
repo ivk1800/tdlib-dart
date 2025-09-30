@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Telegram Passport data has been sent to a bot
 @immutable
 class MessagePassportDataSent extends MessageContent {
-  const MessagePassportDataSent({
-    required this.types,
-  });
+  const MessagePassportDataSent({required this.types});
 
   /// [types] List of Telegram Passport element types sent
   final List<PassportElementType> types;
@@ -21,9 +19,10 @@ class MessagePassportDataSent extends MessageContent {
 
     return MessagePassportDataSent(
       types: List<PassportElementType>.from(
-          ((json['types'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportElementType.fromJson(item))
-              .toList()),
+        ((json['types'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportElementType.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class MessagePassportDataSent extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'types': types.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'types': types.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

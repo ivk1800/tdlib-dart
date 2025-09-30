@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// checkAuthenticationCode to check the code
 @immutable
 class AuthorizationStateWaitCode extends AuthorizationState {
-  const AuthorizationStateWaitCode({
-    required this.codeInfo,
-  });
+  const AuthorizationStateWaitCode({required this.codeInfo});
 
   /// [codeInfo] Information about the authorization code that was sent
   final AuthenticationCodeInfo codeInfo;
@@ -22,7 +20,8 @@ class AuthorizationStateWaitCode extends AuthorizationState {
 
     return AuthorizationStateWaitCode(
       codeInfo: AuthenticationCodeInfo.fromJson(
-          json['code_info'] as Map<String, dynamic>?)!,
+        json['code_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +30,9 @@ class AuthorizationStateWaitCode extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code_info': codeInfo.toJson(),
-        '@type': constructor,
-      };
+    'code_info': codeInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

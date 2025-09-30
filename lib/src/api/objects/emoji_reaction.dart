@@ -60,20 +60,27 @@ class EmojiReaction extends TdObject {
       emoji: json['emoji'] as String,
       title: json['title'] as String,
       isActive: json['is_active'] as bool,
-      staticIcon:
-          Sticker.fromJson(json['static_icon'] as Map<String, dynamic>?)!,
-      appearAnimation:
-          Sticker.fromJson(json['appear_animation'] as Map<String, dynamic>?)!,
-      selectAnimation:
-          Sticker.fromJson(json['select_animation'] as Map<String, dynamic>?)!,
+      staticIcon: Sticker.fromJson(
+        json['static_icon'] as Map<String, dynamic>?,
+      )!,
+      appearAnimation: Sticker.fromJson(
+        json['appear_animation'] as Map<String, dynamic>?,
+      )!,
+      selectAnimation: Sticker.fromJson(
+        json['select_animation'] as Map<String, dynamic>?,
+      )!,
       activateAnimation: Sticker.fromJson(
-          json['activate_animation'] as Map<String, dynamic>?)!,
-      effectAnimation:
-          Sticker.fromJson(json['effect_animation'] as Map<String, dynamic>?)!,
-      aroundAnimation:
-          Sticker.fromJson(json['around_animation'] as Map<String, dynamic>?),
-      centerAnimation:
-          Sticker.fromJson(json['center_animation'] as Map<String, dynamic>?),
+        json['activate_animation'] as Map<String, dynamic>?,
+      )!,
+      effectAnimation: Sticker.fromJson(
+        json['effect_animation'] as Map<String, dynamic>?,
+      )!,
+      aroundAnimation: Sticker.fromJson(
+        json['around_animation'] as Map<String, dynamic>?,
+      ),
+      centerAnimation: Sticker.fromJson(
+        json['center_animation'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -82,18 +89,18 @@ class EmojiReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        'title': title,
-        'is_active': isActive,
-        'static_icon': staticIcon.toJson(),
-        'appear_animation': appearAnimation.toJson(),
-        'select_animation': selectAnimation.toJson(),
-        'activate_animation': activateAnimation.toJson(),
-        'effect_animation': effectAnimation.toJson(),
-        'around_animation': aroundAnimation?.toJson(),
-        'center_animation': centerAnimation?.toJson(),
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    'title': title,
+    'is_active': isActive,
+    'static_icon': staticIcon.toJson(),
+    'appear_animation': appearAnimation.toJson(),
+    'select_animation': selectAnimation.toJson(),
+    'activate_animation': activateAnimation.toJson(),
+    'effect_animation': effectAnimation.toJson(),
+    'around_animation': aroundAnimation?.toJson(),
+    'center_animation': centerAnimation?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

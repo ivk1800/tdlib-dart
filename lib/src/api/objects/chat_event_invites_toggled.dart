@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The can_invite_users permission of a supergroup chat was toggled
 @immutable
 class ChatEventInvitesToggled extends ChatEventAction {
-  const ChatEventInvitesToggled({
-    required this.canInviteUsers,
-  });
+  const ChatEventInvitesToggled({required this.canInviteUsers});
 
   /// [canInviteUsers] New value of can_invite_users permission
   final bool canInviteUsers;
@@ -29,9 +27,9 @@ class ChatEventInvitesToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_invite_users': canInviteUsers,
-        '@type': constructor,
-      };
+    'can_invite_users': canInviteUsers,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

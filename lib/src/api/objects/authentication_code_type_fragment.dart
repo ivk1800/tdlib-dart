@@ -35,10 +35,10 @@ class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'length': length,
-        '@type': constructor,
-      };
+    'url': url,
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

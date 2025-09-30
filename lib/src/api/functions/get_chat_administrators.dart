@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [ChatAdministrators]
 @immutable
 class GetChatAdministrators extends TdFunction {
-  const GetChatAdministrators({
-    required this.chatId,
-  });
+  const GetChatAdministrators({required this.chatId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -20,9 +18,9 @@ class GetChatAdministrators extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

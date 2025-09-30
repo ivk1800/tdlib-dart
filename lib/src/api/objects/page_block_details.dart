@@ -30,9 +30,10 @@ class PageBlockDetails extends PageBlock {
     return PageBlockDetails(
       header: RichText.fromJson(json['header'] as Map<String, dynamic>?)!,
       pageBlocks: List<PageBlock>.from(
-          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlock.fromJson(item))
-              .toList()),
+        ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlock.fromJson(item))
+            .toList(),
+      ),
       isOpen: json['is_open'] as bool,
     );
   }
@@ -42,11 +43,11 @@ class PageBlockDetails extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'header': header.toJson(),
-        'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'is_open': isOpen,
-        '@type': constructor,
-      };
+    'header': header.toJson(),
+    'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
+    'is_open': isOpen,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

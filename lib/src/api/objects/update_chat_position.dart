@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// instead of the update
 @immutable
 class UpdateChatPosition extends Update {
-  const UpdateChatPosition({
-    required this.chatId,
-    required this.position,
-  });
+  const UpdateChatPosition({required this.chatId, required this.position});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -28,8 +25,9 @@ class UpdateChatPosition extends Update {
 
     return UpdateChatPosition(
       chatId: json['chat_id'] as int,
-      position:
-          ChatPosition.fromJson(json['position'] as Map<String, dynamic>?)!,
+      position: ChatPosition.fromJson(
+        json['position'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +36,10 @@ class UpdateChatPosition extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'position': position.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'position': position.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

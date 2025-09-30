@@ -30,7 +30,8 @@ class MessageCall extends MessageContent {
     return MessageCall(
       isVideo: json['is_video'] as bool,
       discardReason: CallDiscardReason.fromJson(
-          json['discard_reason'] as Map<String, dynamic>?)!,
+        json['discard_reason'] as Map<String, dynamic>?,
+      )!,
       duration: json['duration'] as int,
     );
   }
@@ -40,11 +41,11 @@ class MessageCall extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_video': isVideo,
-        'discard_reason': discardReason.toJson(),
-        'duration': duration,
-        '@type': constructor,
-      };
+    'is_video': isVideo,
+    'discard_reason': discardReason.toJson(),
+    'duration': duration,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

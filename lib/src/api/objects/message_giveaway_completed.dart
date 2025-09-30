@@ -46,12 +46,12 @@ class MessageGiveawayCompleted extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'giveaway_message_id': giveawayMessageId,
-        'winner_count': winnerCount,
-        'is_star_giveaway': isStarGiveaway,
-        'unclaimed_prize_count': unclaimedPrizeCount,
-        '@type': constructor,
-      };
+    'giveaway_message_id': giveawayMessageId,
+    'winner_count': winnerCount,
+    'is_star_giveaway': isStarGiveaway,
+    'unclaimed_prize_count': unclaimedPrizeCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

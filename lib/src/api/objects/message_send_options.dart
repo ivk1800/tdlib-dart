@@ -6,16 +6,23 @@ import '../tdapi.dart';
 @immutable
 class MessageSendOptions extends TdObject {
   const MessageSendOptions({
+    required this.directMessagesChatTopicId,
     required this.disableNotification,
     required this.fromBackground,
     this.protectContent,
     this.allowPaidBroadcast,
+    required this.paidMessageStarCount,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.effectId,
     required this.sendingId,
     required this.onlyPreview,
   });
+
+  /// [directMessagesChatTopicId] Unique identifier of the topic in a channel
+  /// direct messages chat administered by the current user; pass 0 if the chat
+  /// isn't a channel direct messages chat administered by the current user
+  final int directMessagesChatTopicId;
 
   /// [disableNotification] Pass true to disable notification for the message
   final bool disableNotification;
@@ -31,13 +38,18 @@ class MessageSendOptions extends TdObject {
   /// broadcast limits for a small fee; for bots only
   final bool? allowPaidBroadcast;
 
+  /// [paidMessageStarCount] The number of Telegram Stars the user agreed to pay
+  /// to send the messages
+  final int paidMessageStarCount;
+
   /// [updateOrderOfInstalledStickerSets] Pass true if the user explicitly
   /// chosen a sticker or a custom emoji from an installed sticker set;
   /// applicable only to sendMessage and sendMessageAlbum
   final bool updateOrderOfInstalledStickerSets;
 
   /// [schedulingState] Message scheduling state; pass null to send message
-  /// immediately. Messages sent to a secret chat, live location messages and
+  /// immediately. Messages sent to a secret chat, to a chat with paid messages,
+  /// to a channel direct messages chat, live location messages and
   /// self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
@@ -62,14 +74,17 @@ class MessageSendOptions extends TdObject {
     }
 
     return MessageSendOptions(
+      directMessagesChatTopicId: json['direct_messages_chat_topic_id'] as int,
       disableNotification: json['disable_notification'] as bool,
       fromBackground: json['from_background'] as bool,
       protectContent: json['protect_content'] as bool?,
       allowPaidBroadcast: json['allow_paid_broadcast'] as bool?,
+      paidMessageStarCount: json['paid_message_star_count'] as int,
       updateOrderOfInstalledStickerSets:
           json['update_order_of_installed_sticker_sets'] as bool,
       schedulingState: MessageSchedulingState.fromJson(
-          json['scheduling_state'] as Map<String, dynamic>?),
+        json['scheduling_state'] as Map<String, dynamic>?,
+      ),
       effectId: int.tryParse(json['effect_id']) ?? 0,
       sendingId: json['sending_id'] as int,
       onlyPreview: json['only_preview'] as bool,
@@ -81,18 +96,19 @@ class MessageSendOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'disable_notification': disableNotification,
-        'from_background': fromBackground,
-        'protect_content': protectContent,
-        'allow_paid_broadcast': allowPaidBroadcast,
-        'update_order_of_installed_sticker_sets':
-            updateOrderOfInstalledStickerSets,
-        'scheduling_state': schedulingState?.toJson(),
-        'effect_id': effectId.toString(),
-        'sending_id': sendingId,
-        'only_preview': onlyPreview,
-        '@type': constructor,
-      };
+    'direct_messages_chat_topic_id': directMessagesChatTopicId,
+    'disable_notification': disableNotification,
+    'from_background': fromBackground,
+    'protect_content': protectContent,
+    'allow_paid_broadcast': allowPaidBroadcast,
+    'paid_message_star_count': paidMessageStarCount,
+    'update_order_of_installed_sticker_sets': updateOrderOfInstalledStickerSets,
+    'scheduling_state': schedulingState?.toJson(),
+    'effect_id': effectId.toString(),
+    'sending_id': sendingId,
+    'only_preview': onlyPreview,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

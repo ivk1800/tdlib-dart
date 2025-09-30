@@ -21,7 +21,8 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
   static const String constructor = 'authenticationCodeTypeFirebaseAndroid';
 
   static AuthenticationCodeTypeFirebaseAndroid? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -29,7 +30,8 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
     return AuthenticationCodeTypeFirebaseAndroid(
       deviceVerificationParameters:
           FirebaseDeviceVerificationParameters.fromJson(
-              json['device_verification_parameters'] as Map<String, dynamic>?)!,
+            json['device_verification_parameters'] as Map<String, dynamic>?,
+          )!,
       length: json['length'] as int,
     );
   }
@@ -39,10 +41,10 @@ class AuthenticationCodeTypeFirebaseAndroid extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'device_verification_parameters': deviceVerificationParameters.toJson(),
-        'length': length,
-        '@type': constructor,
-      };
+    'device_verification_parameters': deviceVerificationParameters.toJson(),
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

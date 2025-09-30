@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about a Web App
 @immutable
 class WebAppInfo extends TdObject {
-  const WebAppInfo({
-    required this.launchId,
-    required this.url,
-  });
+  const WebAppInfo({required this.launchId, required this.url});
 
   /// [launchId] Unique identifier for the Web App launch
   final int launchId;
@@ -34,10 +31,10 @@ class WebAppInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'launch_id': launchId.toString(),
-        'url': url,
-        '@type': constructor,
-      };
+    'launch_id': launchId.toString(),
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

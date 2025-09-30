@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// first time
 @immutable
 class UpdateSavedNotificationSounds extends Update {
-  const UpdateSavedNotificationSounds({
-    required this.notificationSoundIds,
-  });
+  const UpdateSavedNotificationSounds({required this.notificationSoundIds});
 
   /// [notificationSoundIds] The new list of identifiers of saved notification
   /// sounds
@@ -24,9 +22,10 @@ class UpdateSavedNotificationSounds extends Update {
 
     return UpdateSavedNotificationSounds(
       notificationSoundIds: List<int>.from(
-          ((json['notification_sound_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['notification_sound_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -35,10 +34,9 @@ class UpdateSavedNotificationSounds extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_sound_ids':
-            notificationSoundIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'notification_sound_ids': notificationSoundIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

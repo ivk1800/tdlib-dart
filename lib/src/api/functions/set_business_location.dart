@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessLocation extends TdFunction {
-  const SetBusinessLocation({
-    this.location,
-  });
+  const SetBusinessLocation({this.location});
 
   /// [location] The new location of the business; pass null to remove the
   /// location
@@ -22,9 +20,9 @@ class SetBusinessLocation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location?.toJson(),
-        '@type': constructor,
-      };
+    'location': location?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

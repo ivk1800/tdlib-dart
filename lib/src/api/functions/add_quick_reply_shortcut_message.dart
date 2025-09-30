@@ -24,7 +24,7 @@ class AddQuickReplyShortcutMessage extends TdFunction {
   final int replyToMessageId;
 
   /// [inputMessageContent] The content of the message to be added;
-  /// inputMessagePoll, inputMessageForwarded and inputMessageLocation with
+  /// inputMessagePaidMedia, inputMessageForwarded and inputMessageLocation with
   /// live_period aren't supported
   final InputMessageContent inputMessageContent;
 
@@ -35,11 +35,11 @@ class AddQuickReplyShortcutMessage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_name': shortcutName,
-        'reply_to_message_id': replyToMessageId,
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'shortcut_name': shortcutName,
+    'reply_to_message_id': replyToMessageId,
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

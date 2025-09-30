@@ -30,11 +30,11 @@ class AddStickerToSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'name': name,
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'name': name,
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

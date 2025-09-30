@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [SupergroupFullInfo]
 @immutable
 class GetSupergroupFullInfo extends TdFunction {
-  const GetSupergroupFullInfo({
-    required this.supergroupId,
-  });
+  const GetSupergroupFullInfo({required this.supergroupId});
 
   /// [supergroupId] Supergroup or channel identifier
   final int supergroupId;
@@ -21,9 +19,9 @@ class GetSupergroupFullInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

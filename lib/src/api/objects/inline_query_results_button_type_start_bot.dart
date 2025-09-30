@@ -7,9 +7,7 @@ import '../tdapi.dart';
 @immutable
 class InlineQueryResultsButtonTypeStartBot
     extends InlineQueryResultsButtonType {
-  const InlineQueryResultsButtonTypeStartBot({
-    required this.parameter,
-  });
+  const InlineQueryResultsButtonTypeStartBot({required this.parameter});
 
   /// [parameter] The parameter for the bot start message
   final String parameter;
@@ -17,7 +15,8 @@ class InlineQueryResultsButtonTypeStartBot
   static const String constructor = 'inlineQueryResultsButtonTypeStartBot';
 
   static InlineQueryResultsButtonTypeStartBot? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -32,9 +31,9 @@ class InlineQueryResultsButtonTypeStartBot
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'parameter': parameter,
-        '@type': constructor,
-      };
+    'parameter': parameter,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

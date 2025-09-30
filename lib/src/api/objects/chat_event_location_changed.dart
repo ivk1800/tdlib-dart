@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The supergroup location was changed
 @immutable
 class ChatEventLocationChanged extends ChatEventAction {
-  const ChatEventLocationChanged({
-    this.oldLocation,
-    this.newLocation,
-  });
+  const ChatEventLocationChanged({this.oldLocation, this.newLocation});
 
   /// [oldLocation] Previous location; may be null
   final ChatLocation? oldLocation;
@@ -24,10 +21,12 @@ class ChatEventLocationChanged extends ChatEventAction {
     }
 
     return ChatEventLocationChanged(
-      oldLocation:
-          ChatLocation.fromJson(json['old_location'] as Map<String, dynamic>?),
-      newLocation:
-          ChatLocation.fromJson(json['new_location'] as Map<String, dynamic>?),
+      oldLocation: ChatLocation.fromJson(
+        json['old_location'] as Map<String, dynamic>?,
+      ),
+      newLocation: ChatLocation.fromJson(
+        json['new_location'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +35,10 @@ class ChatEventLocationChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_location': oldLocation?.toJson(),
-        'new_location': newLocation?.toJson(),
-        '@type': constructor,
-      };
+    'old_location': oldLocation?.toJson(),
+    'new_location': newLocation?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

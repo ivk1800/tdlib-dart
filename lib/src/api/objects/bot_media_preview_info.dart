@@ -27,13 +27,15 @@ class BotMediaPreviewInfo extends TdObject {
 
     return BotMediaPreviewInfo(
       previews: List<BotMediaPreview>.from(
-          ((json['previews'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BotMediaPreview.fromJson(item))
-              .toList()),
+        ((json['previews'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BotMediaPreview.fromJson(item))
+            .toList(),
+      ),
       languageCodes: List<String>.from(
-          ((json['language_codes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['language_codes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -42,10 +44,10 @@ class BotMediaPreviewInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'previews': previews.map((item) => item.toJson()).toList(),
-        'language_codes': languageCodes.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'previews': previews.map((item) => item.toJson()).toList(),
+    'language_codes': languageCodes.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

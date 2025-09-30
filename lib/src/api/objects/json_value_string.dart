@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a string JSON value
 @immutable
 class JsonValueString extends JsonValue {
-  const JsonValueString({
-    required this.value,
-  });
+  const JsonValueString({required this.value});
 
   /// [value] The value
   final String value;
@@ -19,9 +17,7 @@ class JsonValueString extends JsonValue {
       return null;
     }
 
-    return JsonValueString(
-      value: json['value'] as String,
-    );
+    return JsonValueString(value: json['value'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class JsonValueString extends JsonValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

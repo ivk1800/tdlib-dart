@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes an item of a list page block
 @immutable
 class PageBlockListItem extends TdObject {
-  const PageBlockListItem({
-    required this.label,
-    required this.pageBlocks,
-  });
+  const PageBlockListItem({required this.label, required this.pageBlocks});
 
   /// [label] Item label
   final String label;
@@ -26,9 +23,10 @@ class PageBlockListItem extends TdObject {
     return PageBlockListItem(
       label: json['label'] as String,
       pageBlocks: List<PageBlock>.from(
-          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlock.fromJson(item))
-              .toList()),
+        ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlock.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class PageBlockListItem extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'label': label,
-        'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'label': label,
+    'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

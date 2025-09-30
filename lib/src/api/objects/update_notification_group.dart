@@ -56,19 +56,22 @@ class UpdateNotificationGroup extends Update {
     return UpdateNotificationGroup(
       notificationGroupId: json['notification_group_id'] as int,
       type: NotificationGroupType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
       chatId: json['chat_id'] as int,
       notificationSettingsChatId: json['notification_settings_chat_id'] as int,
       notificationSoundId: int.tryParse(json['notification_sound_id']) ?? 0,
       totalCount: json['total_count'] as int,
       addedNotifications: List<Notification>.from(
-          ((json['added_notifications'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Notification.fromJson(item))
-              .toList()),
+        ((json['added_notifications'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Notification.fromJson(item))
+            .toList(),
+      ),
       removedNotificationIds: List<int>.from(
-          ((json['removed_notification_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['removed_notification_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -77,18 +80,20 @@ class UpdateNotificationGroup extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_group_id': notificationGroupId,
-        'type': type.toJson(),
-        'chat_id': chatId,
-        'notification_settings_chat_id': notificationSettingsChatId,
-        'notification_sound_id': notificationSoundId.toString(),
-        'total_count': totalCount,
-        'added_notifications':
-            addedNotifications.map((item) => item.toJson()).toList(),
-        'removed_notification_ids':
-            removedNotificationIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'notification_group_id': notificationGroupId,
+    'type': type.toJson(),
+    'chat_id': chatId,
+    'notification_settings_chat_id': notificationSettingsChatId,
+    'notification_sound_id': notificationSoundId.toString(),
+    'total_count': totalCount,
+    'added_notifications': addedNotifications
+        .map((item) => item.toJson())
+        .toList(),
+    'removed_notification_ids': removedNotificationIds
+        .map((item) => item)
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

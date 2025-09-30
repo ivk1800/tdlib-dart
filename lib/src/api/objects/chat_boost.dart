@@ -38,8 +38,9 @@ class ChatBoost extends TdObject {
     return ChatBoost(
       id: json['id'] as String,
       count: json['count'] as int,
-      source:
-          ChatBoostSource.fromJson(json['source'] as Map<String, dynamic>?)!,
+      source: ChatBoostSource.fromJson(
+        json['source'] as Map<String, dynamic>?,
+      )!,
       startDate: json['start_date'] as int,
       expirationDate: json['expiration_date'] as int,
     );
@@ -50,13 +51,13 @@ class ChatBoost extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'count': count,
-        'source': source.toJson(),
-        'start_date': startDate,
-        'expiration_date': expirationDate,
-        '@type': constructor,
-      };
+    'id': id,
+    'count': count,
+    'source': source.toJson(),
+    'start_date': startDate,
+    'expiration_date': expirationDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

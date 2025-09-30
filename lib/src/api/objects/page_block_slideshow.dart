@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A slideshow
 @immutable
 class PageBlockSlideshow extends PageBlock {
-  const PageBlockSlideshow({
-    required this.pageBlocks,
-    required this.caption,
-  });
+  const PageBlockSlideshow({required this.pageBlocks, required this.caption});
 
   /// [pageBlocks] Slideshow item contents
   final List<PageBlock> pageBlocks;
@@ -25,11 +22,13 @@ class PageBlockSlideshow extends PageBlock {
 
     return PageBlockSlideshow(
       pageBlocks: List<PageBlock>.from(
-          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlock.fromJson(item))
-              .toList()),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+        ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlock.fromJson(item))
+            .toList(),
+      ),
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +37,10 @@ class PageBlockSlideshow extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

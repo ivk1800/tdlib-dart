@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A forwarded messages
 @immutable
 class PushMessageContentMessageForwards extends PushMessageContent {
-  const PushMessageContentMessageForwards({
-    required this.totalCount,
-  });
+  const PushMessageContentMessageForwards({required this.totalCount});
 
   /// [totalCount] Number of forwarded messages
   final int totalCount;
@@ -15,7 +13,8 @@ class PushMessageContentMessageForwards extends PushMessageContent {
   static const String constructor = 'pushMessageContentMessageForwards';
 
   static PushMessageContentMessageForwards? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -30,9 +29,9 @@ class PushMessageContentMessageForwards extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

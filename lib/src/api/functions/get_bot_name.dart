@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetBotName extends TdFunction {
-  const GetBotName({
-    required this.botUserId,
-    required this.languageCode,
-  });
+  const GetBotName({required this.botUserId, required this.languageCode});
 
   /// [botUserId] Identifier of the target bot
   final int botUserId;
@@ -25,10 +22,10 @@ class GetBotName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'language_code': languageCode,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'language_code': languageCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

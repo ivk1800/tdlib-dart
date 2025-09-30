@@ -34,12 +34,13 @@ class AddQuickReplyShortcutMessageAlbum extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_name': shortcutName,
-        'reply_to_message_id': replyToMessageId,
-        'input_message_contents':
-            inputMessageContents.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'shortcut_name': shortcutName,
+    'reply_to_message_id': replyToMessageId,
+    'input_message_contents': inputMessageContents
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

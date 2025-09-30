@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// custom reactions in channel chats
 @immutable
 class ChatAvailableReactionsAll extends ChatAvailableReactions {
-  const ChatAvailableReactionsAll({
-    required this.maxReactionCount,
-  });
+  const ChatAvailableReactionsAll({required this.maxReactionCount});
 
   /// [maxReactionCount] The maximum allowed number of reactions per message;
   /// 1-11
@@ -31,9 +29,9 @@ class ChatAvailableReactionsAll extends ChatAvailableReactions {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'max_reaction_count': maxReactionCount,
-        '@type': constructor,
-      };
+    'max_reaction_count': maxReactionCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

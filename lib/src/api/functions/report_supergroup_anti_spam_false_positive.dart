@@ -28,10 +28,10 @@ class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

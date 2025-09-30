@@ -26,10 +26,10 @@ class GetStarSubscriptions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'only_expiring': onlyExpiring,
-        'offset': offset,
-        '@type': constructor,
-      };
+    'only_expiring': onlyExpiring,
+    'offset': offset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

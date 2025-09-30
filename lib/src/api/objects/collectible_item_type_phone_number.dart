@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A phone number
 @immutable
 class CollectibleItemTypePhoneNumber extends CollectibleItemType {
-  const CollectibleItemTypePhoneNumber({
-    required this.phoneNumber,
-  });
+  const CollectibleItemTypePhoneNumber({required this.phoneNumber});
 
   /// [phoneNumber] The phone number
   final String phoneNumber;
@@ -29,9 +27,9 @@ class CollectibleItemTypePhoneNumber extends CollectibleItemType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

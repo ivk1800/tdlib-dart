@@ -86,42 +86,58 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     return ChatStatisticsSupergroup(
       period: DateRange.fromJson(json['period'] as Map<String, dynamic>?)!,
       memberCount: StatisticalValue.fromJson(
-          json['member_count'] as Map<String, dynamic>?)!,
+        json['member_count'] as Map<String, dynamic>?,
+      )!,
       messageCount: StatisticalValue.fromJson(
-          json['message_count'] as Map<String, dynamic>?)!,
+        json['message_count'] as Map<String, dynamic>?,
+      )!,
       viewerCount: StatisticalValue.fromJson(
-          json['viewer_count'] as Map<String, dynamic>?)!,
+        json['viewer_count'] as Map<String, dynamic>?,
+      )!,
       senderCount: StatisticalValue.fromJson(
-          json['sender_count'] as Map<String, dynamic>?)!,
+        json['sender_count'] as Map<String, dynamic>?,
+      )!,
       memberCountGraph: StatisticalGraph.fromJson(
-          json['member_count_graph'] as Map<String, dynamic>?)!,
+        json['member_count_graph'] as Map<String, dynamic>?,
+      )!,
       joinGraph: StatisticalGraph.fromJson(
-          json['join_graph'] as Map<String, dynamic>?)!,
+        json['join_graph'] as Map<String, dynamic>?,
+      )!,
       joinBySourceGraph: StatisticalGraph.fromJson(
-          json['join_by_source_graph'] as Map<String, dynamic>?)!,
+        json['join_by_source_graph'] as Map<String, dynamic>?,
+      )!,
       languageGraph: StatisticalGraph.fromJson(
-          json['language_graph'] as Map<String, dynamic>?)!,
+        json['language_graph'] as Map<String, dynamic>?,
+      )!,
       messageContentGraph: StatisticalGraph.fromJson(
-          json['message_content_graph'] as Map<String, dynamic>?)!,
+        json['message_content_graph'] as Map<String, dynamic>?,
+      )!,
       actionGraph: StatisticalGraph.fromJson(
-          json['action_graph'] as Map<String, dynamic>?)!,
+        json['action_graph'] as Map<String, dynamic>?,
+      )!,
       dayGraph: StatisticalGraph.fromJson(
-          json['day_graph'] as Map<String, dynamic>?)!,
+        json['day_graph'] as Map<String, dynamic>?,
+      )!,
       weekGraph: StatisticalGraph.fromJson(
-          json['week_graph'] as Map<String, dynamic>?)!,
+        json['week_graph'] as Map<String, dynamic>?,
+      )!,
       topSenders: List<ChatStatisticsMessageSenderInfo>.from(
-          ((json['top_senders'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatStatisticsMessageSenderInfo.fromJson(item))
-              .toList()),
+        ((json['top_senders'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatStatisticsMessageSenderInfo.fromJson(item))
+            .toList(),
+      ),
       topAdministrators: List<ChatStatisticsAdministratorActionsInfo>.from(
-          ((json['top_administrators'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) =>
-                  ChatStatisticsAdministratorActionsInfo.fromJson(item))
-              .toList()),
+        ((json['top_administrators'] as List<dynamic>?) ?? <dynamic>[])
+            .map(
+              (item) => ChatStatisticsAdministratorActionsInfo.fromJson(item),
+            )
+            .toList(),
+      ),
       topInviters: List<ChatStatisticsInviterInfo>.from(
-          ((json['top_inviters'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatStatisticsInviterInfo.fromJson(item))
-              .toList()),
+        ((json['top_inviters'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatStatisticsInviterInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -130,25 +146,26 @@ class ChatStatisticsSupergroup extends ChatStatistics {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'period': period.toJson(),
-        'member_count': memberCount.toJson(),
-        'message_count': messageCount.toJson(),
-        'viewer_count': viewerCount.toJson(),
-        'sender_count': senderCount.toJson(),
-        'member_count_graph': memberCountGraph.toJson(),
-        'join_graph': joinGraph.toJson(),
-        'join_by_source_graph': joinBySourceGraph.toJson(),
-        'language_graph': languageGraph.toJson(),
-        'message_content_graph': messageContentGraph.toJson(),
-        'action_graph': actionGraph.toJson(),
-        'day_graph': dayGraph.toJson(),
-        'week_graph': weekGraph.toJson(),
-        'top_senders': topSenders.map((item) => item.toJson()).toList(),
-        'top_administrators':
-            topAdministrators.map((item) => item.toJson()).toList(),
-        'top_inviters': topInviters.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'period': period.toJson(),
+    'member_count': memberCount.toJson(),
+    'message_count': messageCount.toJson(),
+    'viewer_count': viewerCount.toJson(),
+    'sender_count': senderCount.toJson(),
+    'member_count_graph': memberCountGraph.toJson(),
+    'join_graph': joinGraph.toJson(),
+    'join_by_source_graph': joinBySourceGraph.toJson(),
+    'language_graph': languageGraph.toJson(),
+    'message_content_graph': messageContentGraph.toJson(),
+    'action_graph': actionGraph.toJson(),
+    'day_graph': dayGraph.toJson(),
+    'week_graph': weekGraph.toJson(),
+    'top_senders': topSenders.map((item) => item.toJson()).toList(),
+    'top_administrators': topAdministrators
+        .map((item) => item.toJson())
+        .toList(),
+    'top_inviters': topInviters.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

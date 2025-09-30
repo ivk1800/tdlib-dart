@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a button to be shown above inline query results
 @immutable
 class InlineQueryResultsButton extends TdObject {
-  const InlineQueryResultsButton({
-    required this.text,
-    required this.type,
-  });
+  const InlineQueryResultsButton({required this.text, required this.type});
 
   /// [text] The text of the button
   final String text;
@@ -26,7 +23,8 @@ class InlineQueryResultsButton extends TdObject {
     return InlineQueryResultsButton(
       text: json['text'] as String,
       type: InlineQueryResultsButtonType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class InlineQueryResultsButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'text': text,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -46,13 +46,13 @@ class AddQuickReplyShortcutInlineQueryResultMessage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_name': shortcutName,
-        'reply_to_message_id': replyToMessageId,
-        'query_id': queryId,
-        'result_id': resultId,
-        'hide_via_bot': hideViaBot,
-        '@type': constructor,
-      };
+    'shortcut_name': shortcutName,
+    'reply_to_message_id': replyToMessageId,
+    'query_id': queryId,
+    'result_id': resultId,
+    'hide_via_bot': hideViaBot,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

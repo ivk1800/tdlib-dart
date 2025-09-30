@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The message is from a forum topic history
+/// The message is from history of a forum topic
 @immutable
 class MessageSourceForumTopicHistory extends MessageSource {
   const MessageSourceForumTopicHistory();
@@ -21,9 +21,7 @@ class MessageSourceForumTopicHistory extends MessageSource {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

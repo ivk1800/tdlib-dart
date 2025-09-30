@@ -38,13 +38,13 @@ class SetInlineGameScore extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        'edit_message': editMessage,
-        'user_id': userId,
-        'score': score,
-        'force': force,
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    'edit_message': editMessage,
+    'user_id': userId,
+    'score': score,
+    'force': force,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

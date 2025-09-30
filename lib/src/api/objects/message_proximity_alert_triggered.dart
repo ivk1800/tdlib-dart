@@ -30,10 +30,12 @@ class MessageProximityAlertTriggered extends MessageContent {
     }
 
     return MessageProximityAlertTriggered(
-      travelerId:
-          MessageSender.fromJson(json['traveler_id'] as Map<String, dynamic>?)!,
-      watcherId:
-          MessageSender.fromJson(json['watcher_id'] as Map<String, dynamic>?)!,
+      travelerId: MessageSender.fromJson(
+        json['traveler_id'] as Map<String, dynamic>?,
+      )!,
+      watcherId: MessageSender.fromJson(
+        json['watcher_id'] as Map<String, dynamic>?,
+      )!,
       distance: json['distance'] as int,
     );
   }
@@ -43,11 +45,11 @@ class MessageProximityAlertTriggered extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'traveler_id': travelerId.toJson(),
-        'watcher_id': watcherId.toJson(),
-        'distance': distance,
-        '@type': constructor,
-      };
+    'traveler_id': travelerId.toJson(),
+    'watcher_id': watcherId.toJson(),
+    'distance': distance,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A regular animated sticker
 @immutable
 class DiceStickersRegular extends DiceStickers {
-  const DiceStickersRegular({
-    required this.sticker,
-  });
+  const DiceStickersRegular({required this.sticker});
 
   /// [sticker] The animated sticker with the dice animation
   final Sticker sticker;
@@ -29,9 +27,9 @@ class DiceStickersRegular extends DiceStickers {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

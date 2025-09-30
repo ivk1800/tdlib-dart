@@ -35,10 +35,10 @@ class PushMessageContentLocation extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_live': isLive,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'is_live': isLive,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

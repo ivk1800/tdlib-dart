@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class CleanFileName extends TdFunction {
-  const CleanFileName({
-    required this.fileName,
-  });
+  const CleanFileName({required this.fileName});
 
   /// [fileName] File name or path to the file
   final String fileName;
@@ -21,9 +19,9 @@ class CleanFileName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_name': fileName,
-        '@type': constructor,
-      };
+    'file_name': fileName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

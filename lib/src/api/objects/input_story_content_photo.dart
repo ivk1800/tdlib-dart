@@ -28,9 +28,10 @@ class InputStoryContentPhoto extends InputStoryContent {
     return InputStoryContentPhoto(
       photo: InputFile.fromJson(json['photo'] as Map<String, dynamic>?)!,
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -39,11 +40,10 @@ class InputStoryContentPhoto extends InputStoryContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [AttachmentMenuBot]
 @immutable
 class GetAttachmentMenuBot extends TdFunction {
-  const GetAttachmentMenuBot({
-    required this.botUserId,
-  });
+  const GetAttachmentMenuBot({required this.botUserId});
 
   /// [botUserId] Bot's user identifier
   final int botUserId;
@@ -21,9 +19,9 @@ class GetAttachmentMenuBot extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

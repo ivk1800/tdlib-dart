@@ -36,10 +36,10 @@ class MessageVideoChatScheduled extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'start_date': startDate,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'start_date': startDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

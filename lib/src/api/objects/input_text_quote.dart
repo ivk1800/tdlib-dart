@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes manually chosen quote from another message
 @immutable
 class InputTextQuote extends TdObject {
-  const InputTextQuote({
-    required this.text,
-    required this.position,
-  });
+  const InputTextQuote({required this.text, required this.position});
 
   /// [text] Text of the quote; 0-getOption("message_reply_quote_length_max")
   /// characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and
@@ -36,10 +33,10 @@ class InputTextQuote extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'position': position,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'position': position,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

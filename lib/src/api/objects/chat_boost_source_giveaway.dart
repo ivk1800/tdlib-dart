@@ -54,13 +54,13 @@ class ChatBoostSourceGiveaway extends ChatBoostSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'gift_code': giftCode,
-        'star_count': starCount,
-        'giveaway_message_id': giveawayMessageId,
-        'is_unclaimed': isUnclaimed,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'gift_code': giftCode,
+    'star_count': starCount,
+    'giveaway_message_id': giveawayMessageId,
+    'is_unclaimed': isUnclaimed,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

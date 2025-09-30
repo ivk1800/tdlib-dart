@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A chat boost has changed; for bots only
 @immutable
 class UpdateChatBoost extends Update {
-  const UpdateChatBoost({
-    required this.chatId,
-    required this.boost,
-  });
+  const UpdateChatBoost({required this.chatId, required this.boost});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -34,10 +31,10 @@ class UpdateChatBoost extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'boost': boost.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'boost': boost.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

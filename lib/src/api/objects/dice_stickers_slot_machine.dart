@@ -38,12 +38,14 @@ class DiceStickersSlotMachine extends DiceStickers {
     }
 
     return DiceStickersSlotMachine(
-      background:
-          Sticker.fromJson(json['background'] as Map<String, dynamic>?)!,
+      background: Sticker.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      )!,
       lever: Sticker.fromJson(json['lever'] as Map<String, dynamic>?)!,
       leftReel: Sticker.fromJson(json['left_reel'] as Map<String, dynamic>?)!,
-      centerReel:
-          Sticker.fromJson(json['center_reel'] as Map<String, dynamic>?)!,
+      centerReel: Sticker.fromJson(
+        json['center_reel'] as Map<String, dynamic>?,
+      )!,
       rightReel: Sticker.fromJson(json['right_reel'] as Map<String, dynamic>?)!,
     );
   }
@@ -53,13 +55,13 @@ class DiceStickersSlotMachine extends DiceStickers {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background': background.toJson(),
-        'lever': lever.toJson(),
-        'left_reel': leftReel.toJson(),
-        'center_reel': centerReel.toJson(),
-        'right_reel': rightReel.toJson(),
-        '@type': constructor,
-      };
+    'background': background.toJson(),
+    'lever': lever.toJson(),
+    'left_reel': leftReel.toJson(),
+    'center_reel': centerReel.toJson(),
+    'right_reel': rightReel.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

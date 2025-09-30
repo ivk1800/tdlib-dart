@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A sticker message
 @immutable
 class MessageSticker extends MessageContent {
-  const MessageSticker({
-    required this.sticker,
-    required this.isPremium,
-  });
+  const MessageSticker({required this.sticker, required this.isPremium});
 
   /// [sticker] The sticker description
   final Sticker sticker;
@@ -34,10 +31,10 @@ class MessageSticker extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        'is_premium': isPremium,
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    'is_premium': isPremium,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

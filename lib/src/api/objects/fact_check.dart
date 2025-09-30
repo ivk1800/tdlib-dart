@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a fact-check added to the message by an independent checker
 @immutable
 class FactCheck extends TdObject {
-  const FactCheck({
-    required this.text,
-    required this.countryCode,
-  });
+  const FactCheck({required this.text, required this.countryCode});
 
   /// [text] Text of the fact-check
   final FormattedText text;
@@ -35,10 +32,10 @@ class FactCheck extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'country_code': countryCode,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'country_code': countryCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

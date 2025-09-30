@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A dice message
 @immutable
 class InputMessageDice extends InputMessageContent {
-  const InputMessageDice({
-    required this.emoji,
-    required this.clearDraft,
-  });
+  const InputMessageDice({required this.emoji, required this.clearDraft});
 
   /// [emoji] Emoji on which the dice throw animation is based
   final String emoji;
@@ -34,10 +31,10 @@ class InputMessageDice extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        'clear_draft': clearDraft,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    'clear_draft': clearDraft,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

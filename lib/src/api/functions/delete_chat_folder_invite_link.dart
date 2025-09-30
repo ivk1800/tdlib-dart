@@ -24,10 +24,10 @@ class DeleteChatFolderInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_id': chatFolderId,
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'chat_folder_id': chatFolderId,
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

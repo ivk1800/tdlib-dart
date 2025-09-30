@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetStickerSetName extends TdFunction {
-  const GetStickerSetName({
-    required this.setId,
-  });
+  const GetStickerSetName({required this.setId});
 
   /// [setId] Identifier of the sticker set
   final int setId;
@@ -20,9 +18,9 @@ class GetStickerSetName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'set_id': setId,
-        '@type': constructor,
-      };
+    'set_id': setId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

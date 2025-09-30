@@ -40,11 +40,11 @@ class EncryptedCredentials extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': data,
-        'hash': hash,
-        'secret': secret,
-        '@type': constructor,
-      };
+    'data': data,
+    'hash': hash,
+    'secret': secret,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

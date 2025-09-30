@@ -40,12 +40,12 @@ class AddFileToDownloads extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'priority': priority,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'priority': priority,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

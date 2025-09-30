@@ -41,9 +41,11 @@ class ProfileAccentColor extends TdObject {
     return ProfileAccentColor(
       id: json['id'] as int,
       lightThemeColors: ProfileAccentColors.fromJson(
-          json['light_theme_colors'] as Map<String, dynamic>?)!,
+        json['light_theme_colors'] as Map<String, dynamic>?,
+      )!,
       darkThemeColors: ProfileAccentColors.fromJson(
-          json['dark_theme_colors'] as Map<String, dynamic>?)!,
+        json['dark_theme_colors'] as Map<String, dynamic>?,
+      )!,
       minSupergroupChatBoostLevel:
           json['min_supergroup_chat_boost_level'] as int,
       minChannelChatBoostLevel: json['min_channel_chat_boost_level'] as int,
@@ -55,13 +57,13 @@ class ProfileAccentColor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'light_theme_colors': lightThemeColors.toJson(),
-        'dark_theme_colors': darkThemeColors.toJson(),
-        'min_supergroup_chat_boost_level': minSupergroupChatBoostLevel,
-        'min_channel_chat_boost_level': minChannelChatBoostLevel,
-        '@type': constructor,
-      };
+    'id': id,
+    'light_theme_colors': lightThemeColors.toJson(),
+    'dark_theme_colors': darkThemeColors.toJson(),
+    'min_supergroup_chat_boost_level': minSupergroupChatBoostLevel,
+    'min_channel_chat_boost_level': minChannelChatBoostLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

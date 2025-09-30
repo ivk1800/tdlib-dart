@@ -38,17 +38,20 @@ class PremiumState extends TdObject {
     return PremiumState(
       state: FormattedText.fromJson(json['state'] as Map<String, dynamic>?)!,
       paymentOptions: List<PremiumStatePaymentOption>.from(
-          ((json['payment_options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PremiumStatePaymentOption.fromJson(item))
-              .toList()),
+        ((json['payment_options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PremiumStatePaymentOption.fromJson(item))
+            .toList(),
+      ),
       animations: List<PremiumFeaturePromotionAnimation>.from(
-          ((json['animations'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
-              .toList()),
+        ((json['animations'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PremiumFeaturePromotionAnimation.fromJson(item))
+            .toList(),
+      ),
       businessAnimations: List<BusinessFeaturePromotionAnimation>.from(
-          ((json['business_animations'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BusinessFeaturePromotionAnimation.fromJson(item))
-              .toList()),
+        ((json['business_animations'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BusinessFeaturePromotionAnimation.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -57,13 +60,14 @@ class PremiumState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'state': state.toJson(),
-        'payment_options': paymentOptions.map((item) => item.toJson()).toList(),
-        'animations': animations.map((item) => item.toJson()).toList(),
-        'business_animations':
-            businessAnimations.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'state': state.toJson(),
+    'payment_options': paymentOptions.map((item) => item.toJson()).toList(),
+    'animations': animations.map((item) => item.toJson()).toList(),
+    'business_animations': businessAnimations
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,9 +26,11 @@ class StoryStatistics extends TdObject {
 
     return StoryStatistics(
       storyInteractionGraph: StatisticalGraph.fromJson(
-          json['story_interaction_graph'] as Map<String, dynamic>?)!,
+        json['story_interaction_graph'] as Map<String, dynamic>?,
+      )!,
       storyReactionGraph: StatisticalGraph.fromJson(
-          json['story_reaction_graph'] as Map<String, dynamic>?)!,
+        json['story_reaction_graph'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +39,10 @@ class StoryStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_interaction_graph': storyInteractionGraph.toJson(),
-        'story_reaction_graph': storyReactionGraph.toJson(),
-        '@type': constructor,
-      };
+    'story_interaction_graph': storyInteractionGraph.toJson(),
+    'story_reaction_graph': storyReactionGraph.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

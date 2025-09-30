@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A marked rich text
 @immutable
 class RichTextMarked extends RichText {
-  const RichTextMarked({
-    required this.text,
-  });
+  const RichTextMarked({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextMarked extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

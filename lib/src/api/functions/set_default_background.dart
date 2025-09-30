@@ -31,11 +31,11 @@ class SetDefaultBackground extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background': background?.toJson(),
-        'type': type?.toJson(),
-        'for_dark_theme': forDarkTheme,
-        '@type': constructor,
-      };
+    'background': background?.toJson(),
+    'type': type?.toJson(),
+    'for_dark_theme': forDarkTheme,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

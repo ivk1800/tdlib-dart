@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The author and publishing date of a page
 @immutable
 class PageBlockAuthorDate extends PageBlock {
-  const PageBlockAuthorDate({
-    required this.author,
-    required this.publishDate,
-  });
+  const PageBlockAuthorDate({required this.author, required this.publishDate});
 
   /// [author] Author
   final RichText author;
@@ -35,10 +32,10 @@ class PageBlockAuthorDate extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'author': author.toJson(),
-        'publish_date': publishDate,
-        '@type': constructor,
-      };
+    'author': author.toJson(),
+    'publish_date': publishDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

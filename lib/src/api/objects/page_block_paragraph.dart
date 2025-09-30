@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A text paragraph
 @immutable
 class PageBlockParagraph extends PageBlock {
-  const PageBlockParagraph({
-    required this.text,
-  });
+  const PageBlockParagraph({required this.text});
 
   /// [text] Paragraph text
   final RichText text;
@@ -29,9 +27,9 @@ class PageBlockParagraph extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

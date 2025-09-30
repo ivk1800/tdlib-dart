@@ -26,7 +26,8 @@ class UpdateSupergroupFullInfo extends Update {
     return UpdateSupergroupFullInfo(
       supergroupId: json['supergroup_id'] as int,
       supergroupFullInfo: SupergroupFullInfo.fromJson(
-          json['supergroup_full_info'] as Map<String, dynamic>?)!,
+        json['supergroup_full_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateSupergroupFullInfo extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'supergroup_full_info': supergroupFullInfo.toJson(),
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'supergroup_full_info': supergroupFullInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

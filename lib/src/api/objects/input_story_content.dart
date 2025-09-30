@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The content of a story to send
+/// The content of a story to post
 @immutable
 abstract class InputStoryContent extends TdObject {
   const InputStoryContent();

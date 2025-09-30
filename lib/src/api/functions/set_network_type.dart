@@ -11,9 +11,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetNetworkType extends TdFunction {
-  const SetNetworkType({
-    this.type,
-  });
+  const SetNetworkType({this.type});
 
   /// [type] The new network type; pass null to set network type to
   /// networkTypeOther
@@ -26,9 +24,9 @@ class SetNetworkType extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type?.toJson(),
-        '@type': constructor,
-      };
+    'type': type?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -34,15 +34,19 @@ class AutosaveSettings extends TdObject {
 
     return AutosaveSettings(
       privateChatSettings: ScopeAutosaveSettings.fromJson(
-          json['private_chat_settings'] as Map<String, dynamic>?)!,
+        json['private_chat_settings'] as Map<String, dynamic>?,
+      )!,
       groupSettings: ScopeAutosaveSettings.fromJson(
-          json['group_settings'] as Map<String, dynamic>?)!,
+        json['group_settings'] as Map<String, dynamic>?,
+      )!,
       channelSettings: ScopeAutosaveSettings.fromJson(
-          json['channel_settings'] as Map<String, dynamic>?)!,
+        json['channel_settings'] as Map<String, dynamic>?,
+      )!,
       exceptions: List<AutosaveSettingsException>.from(
-          ((json['exceptions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AutosaveSettingsException.fromJson(item))
-              .toList()),
+        ((json['exceptions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AutosaveSettingsException.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -51,12 +55,12 @@ class AutosaveSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'private_chat_settings': privateChatSettings.toJson(),
-        'group_settings': groupSettings.toJson(),
-        'channel_settings': channelSettings.toJson(),
-        'exceptions': exceptions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'private_chat_settings': privateChatSettings.toJson(),
+    'group_settings': groupSettings.toJson(),
+    'channel_settings': channelSettings.toJson(),
+    'exceptions': exceptions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

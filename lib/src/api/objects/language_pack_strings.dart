@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of language pack strings
 @immutable
 class LanguagePackStrings extends TdObject {
-  const LanguagePackStrings({
-    required this.strings,
-  });
+  const LanguagePackStrings({required this.strings});
 
   /// [strings] A list of language pack strings
   final List<LanguagePackString> strings;
@@ -21,9 +19,10 @@ class LanguagePackStrings extends TdObject {
 
     return LanguagePackStrings(
       strings: List<LanguagePackString>.from(
-          ((json['strings'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => LanguagePackString.fromJson(item))
-              .toList()),
+        ((json['strings'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => LanguagePackString.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class LanguagePackStrings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'strings': strings.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'strings': strings.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents an available reaction
 @immutable
 class AvailableReaction extends TdObject {
-  const AvailableReaction({
-    required this.type,
-    required this.needsPremium,
-  });
+  const AvailableReaction({required this.type, required this.needsPremium});
 
   /// [type] Type of the reaction
   final ReactionType type;
@@ -34,10 +31,10 @@ class AvailableReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'needs_premium': needsPremium,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'needs_premium': needsPremium,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

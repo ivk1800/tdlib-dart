@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a boolean JSON value
 @immutable
 class JsonValueBoolean extends JsonValue {
-  const JsonValueBoolean({
-    required this.value,
-  });
+  const JsonValueBoolean({required this.value});
 
   /// [value] The value
   final bool value;
@@ -19,9 +17,7 @@ class JsonValueBoolean extends JsonValue {
       return null;
     }
 
-    return JsonValueBoolean(
-      value: json['value'] as bool,
-    );
+    return JsonValueBoolean(value: json['value'] as bool);
   }
 
   @override
@@ -29,9 +25,9 @@ class JsonValueBoolean extends JsonValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

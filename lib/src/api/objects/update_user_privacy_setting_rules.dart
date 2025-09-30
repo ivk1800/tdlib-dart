@@ -25,9 +25,11 @@ class UpdateUserPrivacySettingRules extends Update {
 
     return UpdateUserPrivacySettingRules(
       setting: UserPrivacySetting.fromJson(
-          json['setting'] as Map<String, dynamic>?)!,
+        json['setting'] as Map<String, dynamic>?,
+      )!,
       rules: UserPrivacySettingRules.fromJson(
-          json['rules'] as Map<String, dynamic>?)!,
+        json['rules'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class UpdateUserPrivacySettingRules extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'setting': setting.toJson(),
-        'rules': rules.toJson(),
-        '@type': constructor,
-      };
+    'setting': setting.toJson(),
+    'rules': rules.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -36,10 +36,10 @@ class InternalLinkTypeInstantView extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'fallback_url': fallbackUrl,
-        '@type': constructor,
-      };
+    'url': url,
+    'fallback_url': fallbackUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

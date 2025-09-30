@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [ChatInviteLink]
 @immutable
 class ReplacePrimaryChatInviteLink extends TdFunction {
-  const ReplacePrimaryChatInviteLink({
-    required this.chatId,
-  });
+  const ReplacePrimaryChatInviteLink({required this.chatId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -22,9 +20,9 @@ class ReplacePrimaryChatInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

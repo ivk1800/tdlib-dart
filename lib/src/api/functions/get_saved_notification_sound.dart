@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [NotificationSounds]
 @immutable
 class GetSavedNotificationSound extends TdFunction {
-  const GetSavedNotificationSound({
-    required this.notificationSoundId,
-  });
+  const GetSavedNotificationSound({required this.notificationSoundId});
 
   /// [notificationSoundId] Identifier of the notification sound
   final int notificationSoundId;
@@ -21,9 +19,9 @@ class GetSavedNotificationSound extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_sound_id': notificationSoundId,
-        '@type': constructor,
-      };
+    'notification_sound_id': notificationSoundId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

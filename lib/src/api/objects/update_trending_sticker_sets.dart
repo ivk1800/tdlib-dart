@@ -25,10 +25,12 @@ class UpdateTrendingStickerSets extends Update {
     }
 
     return UpdateTrendingStickerSets(
-      stickerType:
-          StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      stickerType: StickerType.fromJson(
+        json['sticker_type'] as Map<String, dynamic>?,
+      )!,
       stickerSets: TrendingStickerSets.fromJson(
-          json['sticker_sets'] as Map<String, dynamic>?)!,
+        json['sticker_sets'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +39,10 @@ class UpdateTrendingStickerSets extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'sticker_sets': stickerSets.toJson(),
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'sticker_sets': stickerSets.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

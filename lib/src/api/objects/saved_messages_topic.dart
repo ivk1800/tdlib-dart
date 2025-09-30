@@ -43,13 +43,16 @@ class SavedMessagesTopic extends TdObject {
     return SavedMessagesTopic(
       id: json['id'] as int,
       type: SavedMessagesTopicType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
       isPinned: json['is_pinned'] as bool,
       order: int.tryParse(json['order']) ?? 0,
-      lastMessage:
-          Message.fromJson(json['last_message'] as Map<String, dynamic>?),
-      draftMessage:
-          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
+      lastMessage: Message.fromJson(
+        json['last_message'] as Map<String, dynamic>?,
+      ),
+      draftMessage: DraftMessage.fromJson(
+        json['draft_message'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -58,14 +61,14 @@ class SavedMessagesTopic extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'type': type.toJson(),
-        'is_pinned': isPinned,
-        'order': order.toString(),
-        'last_message': lastMessage?.toJson(),
-        'draft_message': draftMessage?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'type': type.toJson(),
+    'is_pinned': isPinned,
+    'order': order.toString(),
+    'last_message': lastMessage?.toJson(),
+    'draft_message': draftMessage?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

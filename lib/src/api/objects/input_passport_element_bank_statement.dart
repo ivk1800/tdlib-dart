@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// statement
 @immutable
 class InputPassportElementBankStatement extends InputPassportElement {
-  const InputPassportElementBankStatement({
-    required this.bankStatement,
-  });
+  const InputPassportElementBankStatement({required this.bankStatement});
 
   /// [bankStatement] The bank statement to be saved
   final InputPersonalDocument bankStatement;
@@ -16,14 +14,16 @@ class InputPassportElementBankStatement extends InputPassportElement {
   static const String constructor = 'inputPassportElementBankStatement';
 
   static InputPassportElementBankStatement? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InputPassportElementBankStatement(
       bankStatement: InputPersonalDocument.fromJson(
-          json['bank_statement'] as Map<String, dynamic>?)!,
+        json['bank_statement'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +32,9 @@ class InputPassportElementBankStatement extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bank_statement': bankStatement.toJson(),
-        '@type': constructor,
-      };
+    'bank_statement': bankStatement.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

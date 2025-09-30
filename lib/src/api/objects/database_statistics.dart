@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains database statistics
 @immutable
 class DatabaseStatistics extends TdObject {
-  const DatabaseStatistics({
-    required this.statistics,
-  });
+  const DatabaseStatistics({required this.statistics});
 
   /// [statistics] Database statistics in an unspecified human-readable format
   final String statistics;
@@ -19,9 +17,7 @@ class DatabaseStatistics extends TdObject {
       return null;
     }
 
-    return DatabaseStatistics(
-      statistics: json['statistics'] as String,
-    );
+    return DatabaseStatistics(statistics: json['statistics'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class DatabaseStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'statistics': statistics,
-        '@type': constructor,
-      };
+    'statistics': statistics,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

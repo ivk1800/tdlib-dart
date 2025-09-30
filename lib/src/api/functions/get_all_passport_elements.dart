@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [PassportElements]
 @immutable
 class GetAllPassportElements extends TdFunction {
-  const GetAllPassportElements({
-    required this.password,
-  });
+  const GetAllPassportElements({required this.password});
 
   /// [password] The 2-step verification password of the current user
   final String password;
@@ -20,9 +18,9 @@ class GetAllPassportElements extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password': password,
-        '@type': constructor,
-      };
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

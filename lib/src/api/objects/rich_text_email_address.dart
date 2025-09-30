@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A rich text email link
 @immutable
 class RichTextEmailAddress extends RichText {
-  const RichTextEmailAddress({
-    required this.text,
-    required this.emailAddress,
-  });
+  const RichTextEmailAddress({required this.text, required this.emailAddress});
 
   /// [text] Text
   final RichText text;
@@ -34,10 +31,10 @@ class RichTextEmailAddress extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'email_address': emailAddress,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'email_address': emailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

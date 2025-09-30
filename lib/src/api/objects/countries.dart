@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains information about countries
 @immutable
 class Countries extends TdObject {
-  const Countries({
-    required this.countries,
-  });
+  const Countries({required this.countries});
 
   /// [countries] The list of countries
   final List<CountryInfo> countries;
@@ -21,9 +19,10 @@ class Countries extends TdObject {
 
     return Countries(
       countries: List<CountryInfo>.from(
-          ((json['countries'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => CountryInfo.fromJson(item))
-              .toList()),
+        ((json['countries'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => CountryInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Countries extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'countries': countries.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'countries': countries.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

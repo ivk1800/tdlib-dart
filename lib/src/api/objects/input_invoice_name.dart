@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An invoice from a link of the type internalLinkTypeInvoice
 @immutable
 class InputInvoiceName extends InputInvoice {
-  const InputInvoiceName({
-    required this.name,
-  });
+  const InputInvoiceName({required this.name});
 
   /// [name] Name of the invoice
   final String name;
@@ -19,9 +17,7 @@ class InputInvoiceName extends InputInvoice {
       return null;
     }
 
-    return InputInvoiceName(
-      name: json['name'] as String,
-    );
+    return InputInvoiceName(name: json['name'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class InputInvoiceName extends InputInvoice {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

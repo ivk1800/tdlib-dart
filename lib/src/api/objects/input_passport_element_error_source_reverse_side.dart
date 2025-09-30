@@ -8,9 +8,7 @@ import '../tdapi.dart';
 @immutable
 class InputPassportElementErrorSourceReverseSide
     extends InputPassportElementErrorSource {
-  const InputPassportElementErrorSourceReverseSide({
-    required this.fileHash,
-  });
+  const InputPassportElementErrorSourceReverseSide({required this.fileHash});
 
   /// [fileHash] Current hash of the file containing the reverse side
   final String fileHash;
@@ -19,7 +17,8 @@ class InputPassportElementErrorSourceReverseSide
       'inputPassportElementErrorSourceReverseSide';
 
   static InputPassportElementErrorSourceReverseSide? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -34,9 +33,9 @@ class InputPassportElementErrorSourceReverseSide
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_hash': fileHash,
-        '@type': constructor,
-      };
+    'file_hash': fileHash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

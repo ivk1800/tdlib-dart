@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// restarts only if the message database is used
 @immutable
 class UpdateActiveLiveLocationMessages extends Update {
-  const UpdateActiveLiveLocationMessages({
-    required this.messages,
-  });
+  const UpdateActiveLiveLocationMessages({required this.messages});
 
   /// [messages] The list of messages with active live locations
   final List<Message> messages;
@@ -17,16 +15,18 @@ class UpdateActiveLiveLocationMessages extends Update {
   static const String constructor = 'updateActiveLiveLocationMessages';
 
   static UpdateActiveLiveLocationMessages? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return UpdateActiveLiveLocationMessages(
       messages: List<Message>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Message.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Message.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -35,9 +35,9 @@ class UpdateActiveLiveLocationMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'messages': messages.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'messages': messages.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

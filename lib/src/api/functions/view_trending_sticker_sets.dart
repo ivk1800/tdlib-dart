@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ViewTrendingStickerSets extends TdFunction {
-  const ViewTrendingStickerSets({
-    required this.stickerSetIds,
-  });
+  const ViewTrendingStickerSets({required this.stickerSetIds});
 
   /// [stickerSetIds] Identifiers of viewed trending sticker sets
   final List<int> stickerSetIds;
@@ -21,9 +19,9 @@ class ViewTrendingStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker_set_ids': stickerSetIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

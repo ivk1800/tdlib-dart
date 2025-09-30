@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class FinishFileGeneration extends TdFunction {
-  const FinishFileGeneration({
-    required this.generationId,
-    this.error,
-  });
+  const FinishFileGeneration({required this.generationId, this.error});
 
   /// [generationId] The identifier of the generation process
   final int generationId;
@@ -25,10 +22,10 @@ class FinishFileGeneration extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId,
-        'error': error?.toJson(),
-        '@type': constructor,
-      };
+    'generation_id': generationId,
+    'error': error?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

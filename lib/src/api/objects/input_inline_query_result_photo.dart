@@ -63,10 +63,12 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
       photoUrl: json['photo_url'] as String,
       photoWidth: json['photo_width'] as int,
       photoHeight: json['photo_height'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -75,17 +77,17 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'photo_url': photoUrl,
-        'photo_width': photoWidth,
-        'photo_height': photoHeight,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'photo_url': photoUrl,
+    'photo_width': photoWidth,
+    'photo_height': photoHeight,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

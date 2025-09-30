@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// type of code
 @immutable
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
-  const AuthenticationCodeTypeSms({
-    required this.length,
-  });
+  const AuthenticationCodeTypeSms({required this.length});
 
   /// [length] Length of the code
   final int length;
@@ -21,9 +19,7 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
       return null;
     }
 
-    return AuthenticationCodeTypeSms(
-      length: json['length'] as int,
-    );
+    return AuthenticationCodeTypeSms(length: json['length'] as int);
   }
 
   @override
@@ -31,9 +27,9 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'length': length,
-        '@type': constructor,
-      };
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

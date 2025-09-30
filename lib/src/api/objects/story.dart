@@ -7,10 +7,10 @@ import '../tdapi.dart';
 class Story extends TdObject {
   const Story({
     required this.id,
-    required this.senderChatId,
-    this.senderId,
+    required this.posterChatId,
+    this.posterId,
     required this.date,
-    required this.isBeingSent,
+    required this.isBeingPosted,
     required this.isBeingEdited,
     required this.isEdited,
     required this.isPostedToChatPage,
@@ -32,21 +32,21 @@ class Story extends TdObject {
     required this.caption,
   });
 
-  /// [id] Unique story identifier among stories of the given sender
+  /// [id] Unique story identifier among stories posted by the given chat
   final int id;
 
-  /// [senderChatId] Identifier of the chat that posted the story
-  final int senderChatId;
+  /// [posterChatId] Identifier of the chat that posted the story
+  final int posterChatId;
 
-  /// [senderId] Identifier of the sender of the story; may be null if the story
-  /// is posted on behalf of the sender_chat_id
-  final MessageSender? senderId;
+  /// [posterId] Identifier of the user or chat that posted the story; may be
+  /// null if the story is posted on behalf of the poster_chat_id
+  final MessageSender? posterId;
 
   /// [date] Point in time (Unix timestamp) when the story was published
   final int date;
 
-  /// [isBeingSent] True, if the story is being sent by the current user
-  final bool isBeingSent;
+  /// [isBeingPosted] True, if the story is being posted by the current user
+  final bool isBeingPosted;
 
   /// [isBeingEdited] True, if the story is being edited by the current user
   final bool isBeingEdited;
@@ -54,8 +54,8 @@ class Story extends TdObject {
   /// [isEdited] True, if the story was edited
   final bool isEdited;
 
-  /// [isPostedToChatPage] True, if the story is saved in the sender's profile
-  /// and will be available there after expiration
+  /// [isPostedToChatPage] True, if the story is saved in the profile of the
+  /// chat that posted it and will be available there after expiration
   final bool isPostedToChatPage;
 
   /// [isVisibleOnlyForSelf] True, if the story is visible only for the current
@@ -73,8 +73,8 @@ class Story extends TdObject {
   /// forbidden
   final bool canBeForwarded;
 
-  /// [canBeReplied] True, if the story can be replied in the chat with the
-  /// story sender
+  /// [canBeReplied] True, if the story can be replied in the chat with the user
+  /// that posted the story
   final bool canBeReplied;
 
   /// [canToggleIsPostedToChatPage] True, if the story's is_posted_to_chat_page
@@ -127,11 +127,12 @@ class Story extends TdObject {
 
     return Story(
       id: json['id'] as int,
-      senderChatId: json['sender_chat_id'] as int,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?),
+      posterChatId: json['poster_chat_id'] as int,
+      posterId: MessageSender.fromJson(
+        json['poster_id'] as Map<String, dynamic>?,
+      ),
       date: json['date'] as int,
-      isBeingSent: json['is_being_sent'] as bool,
+      isBeingPosted: json['is_being_posted'] as bool,
       isBeingEdited: json['is_being_edited'] as bool,
       isEdited: json['is_edited'] as bool,
       isPostedToChatPage: json['is_posted_to_chat_page'] as bool,
@@ -146,20 +147,26 @@ class Story extends TdObject {
       canGetInteractions: json['can_get_interactions'] as bool,
       hasExpiredViewers: json['has_expired_viewers'] as bool,
       repostInfo: StoryRepostInfo.fromJson(
-          json['repost_info'] as Map<String, dynamic>?),
+        json['repost_info'] as Map<String, dynamic>?,
+      ),
       interactionInfo: StoryInteractionInfo.fromJson(
-          json['interaction_info'] as Map<String, dynamic>?),
+        json['interaction_info'] as Map<String, dynamic>?,
+      ),
       chosenReactionType: ReactionType.fromJson(
-          json['chosen_reaction_type'] as Map<String, dynamic>?),
+        json['chosen_reaction_type'] as Map<String, dynamic>?,
+      ),
       privacySettings: StoryPrivacySettings.fromJson(
-          json['privacy_settings'] as Map<String, dynamic>?)!,
+        json['privacy_settings'] as Map<String, dynamic>?,
+      )!,
       content: StoryContent.fromJson(json['content'] as Map<String, dynamic>?)!,
       areas: List<StoryArea>.from(
-          ((json['areas'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StoryArea.fromJson(item))
-              .toList()),
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+        ((json['areas'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StoryArea.fromJson(item))
+            .toList(),
+      ),
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -168,32 +175,32 @@ class Story extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'sender_chat_id': senderChatId,
-        'sender_id': senderId?.toJson(),
-        'date': date,
-        'is_being_sent': isBeingSent,
-        'is_being_edited': isBeingEdited,
-        'is_edited': isEdited,
-        'is_posted_to_chat_page': isPostedToChatPage,
-        'is_visible_only_for_self': isVisibleOnlyForSelf,
-        'can_be_deleted': canBeDeleted,
-        'can_be_edited': canBeEdited,
-        'can_be_forwarded': canBeForwarded,
-        'can_be_replied': canBeReplied,
-        'can_toggle_is_posted_to_chat_page': canToggleIsPostedToChatPage,
-        'can_get_statistics': canGetStatistics,
-        'can_get_interactions': canGetInteractions,
-        'has_expired_viewers': hasExpiredViewers,
-        'repost_info': repostInfo?.toJson(),
-        'interaction_info': interactionInfo?.toJson(),
-        'chosen_reaction_type': chosenReactionType?.toJson(),
-        'privacy_settings': privacySettings.toJson(),
-        'content': content.toJson(),
-        'areas': areas.map((item) => item.toJson()).toList(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'poster_chat_id': posterChatId,
+    'poster_id': posterId?.toJson(),
+    'date': date,
+    'is_being_posted': isBeingPosted,
+    'is_being_edited': isBeingEdited,
+    'is_edited': isEdited,
+    'is_posted_to_chat_page': isPostedToChatPage,
+    'is_visible_only_for_self': isVisibleOnlyForSelf,
+    'can_be_deleted': canBeDeleted,
+    'can_be_edited': canBeEdited,
+    'can_be_forwarded': canBeForwarded,
+    'can_be_replied': canBeReplied,
+    'can_toggle_is_posted_to_chat_page': canToggleIsPostedToChatPage,
+    'can_get_statistics': canGetStatistics,
+    'can_get_interactions': canGetInteractions,
+    'has_expired_viewers': hasExpiredViewers,
+    'repost_info': repostInfo?.toJson(),
+    'interaction_info': interactionInfo?.toJson(),
+    'chosen_reaction_type': chosenReactionType?.toJson(),
+    'privacy_settings': privacySettings.toJson(),
+    'content': content.toJson(),
+    'areas': areas.map((item) => item.toJson()).toList(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

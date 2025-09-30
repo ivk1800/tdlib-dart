@@ -40,14 +40,17 @@ class InputMessageVideoNote extends InputMessageContent {
     }
 
     return InputMessageVideoNote(
-      videoNote:
-          InputFile.fromJson(json['video_note'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      videoNote: InputFile.fromJson(
+        json['video_note'] as Map<String, dynamic>?,
+      )!,
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       duration: json['duration'] as int,
       length: json['length'] as int,
       selfDestructType: MessageSelfDestructType.fromJson(
-          json['self_destruct_type'] as Map<String, dynamic>?),
+        json['self_destruct_type'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -56,13 +59,13 @@ class InputMessageVideoNote extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video_note': videoNote.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'length': length,
-        'self_destruct_type': selfDestructType?.toJson(),
-        '@type': constructor,
-      };
+    'video_note': videoNote.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'length': length,
+    'self_destruct_type': selfDestructType?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

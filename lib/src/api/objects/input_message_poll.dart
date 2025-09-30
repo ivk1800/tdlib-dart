@@ -2,8 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A message with a poll. Polls can't be sent to secret chats. Polls can be
-/// sent only to a private chat with a bot
+/// A message with a poll. Polls can't be sent to secret chats and channel
+/// direct messages chats. Polls can be sent to a private chat only if the
+/// chat is a chat with a bot or the Saved Messages chat
 @immutable
 class InputMessagePoll extends InputMessageContent {
   const InputMessagePoll({
@@ -21,9 +22,9 @@ class InputMessagePoll extends InputMessageContent {
   /// Premium users
   final FormattedText question;
 
-  /// [options] List of poll answer options, 2-10 strings 1-100 characters each.
-  /// Only custom emoji entities are allowed to be added and only by Premium
-  /// users
+  /// [options] List of poll answer options,
+  /// 2-getOption("poll_answer_count_max") strings 1-100 characters each. Only
+  /// custom emoji entities are allowed to be added and only by Premium users
   final List<FormattedText> options;
 
   /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls
@@ -53,12 +54,14 @@ class InputMessagePoll extends InputMessageContent {
     }
 
     return InputMessagePoll(
-      question:
-          FormattedText.fromJson(json['question'] as Map<String, dynamic>?)!,
+      question: FormattedText.fromJson(
+        json['question'] as Map<String, dynamic>?,
+      )!,
       options: List<FormattedText>.from(
-          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => FormattedText.fromJson(item))
-              .toList()),
+        ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => FormattedText.fromJson(item))
+            .toList(),
+      ),
       isAnonymous: json['is_anonymous'] as bool,
       type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
       openPeriod: json['open_period'] as int?,
@@ -72,15 +75,15 @@ class InputMessagePoll extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'question': question.toJson(),
-        'options': options.map((item) => item.toJson()).toList(),
-        'is_anonymous': isAnonymous,
-        'type': type.toJson(),
-        'open_period': openPeriod,
-        'close_date': closeDate,
-        'is_closed': isClosed,
-        '@type': constructor,
-      };
+    'question': question.toJson(),
+    'options': options.map((item) => item.toJson()).toList(),
+    'is_anonymous': isAnonymous,
+    'type': type.toJson(),
+    'open_period': openPeriod,
+    'close_date': closeDate,
+    'is_closed': isClosed,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

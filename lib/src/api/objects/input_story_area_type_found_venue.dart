@@ -35,10 +35,10 @@ class InputStoryAreaTypeFoundVenue extends InputStoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query_id': queryId.toString(),
-        'result_id': resultId,
-        '@type': constructor,
-      };
+    'query_id': queryId.toString(),
+    'result_id': resultId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

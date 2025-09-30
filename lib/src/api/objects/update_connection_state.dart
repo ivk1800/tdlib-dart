@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// human-readable description of the connection state
 @immutable
 class UpdateConnectionState extends Update {
-  const UpdateConnectionState({
-    required this.state,
-  });
+  const UpdateConnectionState({required this.state});
 
   /// [state] The new connection state
   final ConnectionState state;
@@ -30,9 +28,9 @@ class UpdateConnectionState extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'state': state.toJson(),
-        '@type': constructor,
-      };
+    'state': state.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

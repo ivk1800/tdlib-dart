@@ -30,11 +30,11 @@ class RegisterUser extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'first_name': firstName,
-        'last_name': lastName,
-        'disable_notification': disableNotification,
-        '@type': constructor,
-      };
+    'first_name': firstName,
+    'last_name': lastName,
+    'disable_notification': disableNotification,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

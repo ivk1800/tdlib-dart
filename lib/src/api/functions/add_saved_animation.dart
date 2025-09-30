@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddSavedAnimation extends TdFunction {
-  const AddSavedAnimation({
-    required this.animation,
-  });
+  const AddSavedAnimation({required this.animation});
 
   /// [animation] The animation file to be added. Only animations known to the
   /// server (i.e., successfully sent via a message) can be added to the list
@@ -24,9 +22,9 @@ class AddSavedAnimation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

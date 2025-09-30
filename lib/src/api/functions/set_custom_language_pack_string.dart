@@ -26,10 +26,10 @@ class SetCustomLanguagePackString extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        'new_string': newString.toJson(),
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    'new_string': newString.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

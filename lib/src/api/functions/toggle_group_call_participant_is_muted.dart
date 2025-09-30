@@ -29,11 +29,11 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'participant_id': participantId.toJson(),
-        'is_muted': isMuted,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'participant_id': participantId.toJson(),
+    'is_muted': isMuted,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

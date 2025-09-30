@@ -30,11 +30,11 @@ class RecoverPassword extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'recovery_code': recoveryCode,
-        'new_password': newPassword,
-        'new_hint': newHint,
-        '@type': constructor,
-      };
+    'recovery_code': recoveryCode,
+    'new_password': newPassword,
+    'new_hint': newHint,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

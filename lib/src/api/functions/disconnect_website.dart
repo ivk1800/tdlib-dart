@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DisconnectWebsite extends TdFunction {
-  const DisconnectWebsite({
-    required this.websiteId,
-  });
+  const DisconnectWebsite({required this.websiteId});
 
   /// [websiteId] Website identifier
   final int websiteId;
@@ -20,9 +18,9 @@ class DisconnectWebsite extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'website_id': websiteId,
-        '@type': constructor,
-      };
+    'website_id': websiteId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

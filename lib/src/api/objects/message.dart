@@ -17,7 +17,6 @@ class Message extends TdObject {
     required this.canBeSaved,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
-    required this.isTopicMessage,
     required this.containsUnreadMention,
     required this.date,
     required this.editDate,
@@ -28,13 +27,14 @@ class Message extends TdObject {
     this.factCheck,
     this.replyTo,
     required this.messageThreadId,
-    required this.savedMessagesTopicId,
+    this.topicId,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
     required this.senderBusinessBotUserId,
     required this.senderBoostCount,
+    required this.paidMessageStarCount,
     this.authorSignature,
     required this.mediaAlbumId,
     required this.effectId,
@@ -72,8 +72,7 @@ class Message extends TdObject {
   /// message
   final bool isFromOffline;
 
-  /// [canBeSaved] True, if content of the message can be saved locally or
-  /// copied using inputMessageForwarded or forwardMessages with copy options
+  /// [canBeSaved] True, if content of the message can be saved locally
   final bool canBeSaved;
 
   /// [hasTimestampedMedia] True, if media timestamp entities refers to a media
@@ -83,9 +82,6 @@ class Message extends TdObject {
   /// [isChannelPost] True, if the message is a channel post. All messages to
   /// channels are channel posts, all other messages are not channel posts
   final bool isChannelPost;
-
-  /// [isTopicMessage] True, if the message is a forum topic message
-  final bool isTopicMessage;
 
   /// [containsUnreadMention] True, if the message contains an unread mention
   /// for the current user
@@ -126,9 +122,9 @@ class Message extends TdObject {
   /// message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// [savedMessagesTopicId] Identifier of the Saved Messages topic for the
-  /// message; 0 for messages not from Saved Messages
-  final int savedMessagesTopicId;
+  /// [topicId] Identifier of the topic within the chat to which the message
+  /// belongs; may be null if none
+  final MessageTopic? topicId;
 
   /// [selfDestructType] The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
@@ -154,6 +150,10 @@ class Message extends TdObject {
   /// messages sent by the current user, supergroupFullInfo.my_boost_count must
   /// be used instead
   final int senderBoostCount;
+
+  /// [paidMessageStarCount] The number of Telegram Stars the sender paid to
+  /// send the message
+  final int paidMessageStarCount;
 
   /// [authorSignature] For channel posts and anonymous group messages, optional
   /// author signature
@@ -190,55 +190,67 @@ class Message extends TdObject {
 
     return Message(
       id: json['id'] as int,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      )!,
       chatId: json['chat_id'] as int,
       sendingState: MessageSendingState.fromJson(
-          json['sending_state'] as Map<String, dynamic>?),
+        json['sending_state'] as Map<String, dynamic>?,
+      ),
       schedulingState: MessageSchedulingState.fromJson(
-          json['scheduling_state'] as Map<String, dynamic>?),
+        json['scheduling_state'] as Map<String, dynamic>?,
+      ),
       isOutgoing: json['is_outgoing'] as bool,
       isPinned: json['is_pinned'] as bool,
       isFromOffline: json['is_from_offline'] as bool,
       canBeSaved: json['can_be_saved'] as bool,
       hasTimestampedMedia: json['has_timestamped_media'] as bool,
       isChannelPost: json['is_channel_post'] as bool,
-      isTopicMessage: json['is_topic_message'] as bool,
       containsUnreadMention: json['contains_unread_mention'] as bool,
       date: json['date'] as int,
       editDate: json['edit_date'] as int,
       forwardInfo: MessageForwardInfo.fromJson(
-          json['forward_info'] as Map<String, dynamic>?),
+        json['forward_info'] as Map<String, dynamic>?,
+      ),
       importInfo: MessageImportInfo.fromJson(
-          json['import_info'] as Map<String, dynamic>?),
+        json['import_info'] as Map<String, dynamic>?,
+      ),
       interactionInfo: MessageInteractionInfo.fromJson(
-          json['interaction_info'] as Map<String, dynamic>?),
+        json['interaction_info'] as Map<String, dynamic>?,
+      ),
       unreadReactions: List<UnreadReaction>.from(
-          ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => UnreadReaction.fromJson(item))
-              .toList()),
-      factCheck:
-          FactCheck.fromJson(json['fact_check'] as Map<String, dynamic>?),
-      replyTo:
-          MessageReplyTo.fromJson(json['reply_to'] as Map<String, dynamic>?),
+        ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => UnreadReaction.fromJson(item))
+            .toList(),
+      ),
+      factCheck: FactCheck.fromJson(
+        json['fact_check'] as Map<String, dynamic>?,
+      ),
+      replyTo: MessageReplyTo.fromJson(
+        json['reply_to'] as Map<String, dynamic>?,
+      ),
       messageThreadId: json['message_thread_id'] as int,
-      savedMessagesTopicId: json['saved_messages_topic_id'] as int,
+      topicId: MessageTopic.fromJson(json['topic_id'] as Map<String, dynamic>?),
       selfDestructType: MessageSelfDestructType.fromJson(
-          json['self_destruct_type'] as Map<String, dynamic>?),
+        json['self_destruct_type'] as Map<String, dynamic>?,
+      ),
       selfDestructIn: (json['self_destruct_in'] as num).toDouble(),
       autoDeleteIn: (json['auto_delete_in'] as num).toDouble(),
       viaBotUserId: json['via_bot_user_id'] as int,
       senderBusinessBotUserId: json['sender_business_bot_user_id'] as int,
       senderBoostCount: json['sender_boost_count'] as int,
+      paidMessageStarCount: json['paid_message_star_count'] as int,
       authorSignature: json['author_signature'] as String?,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
       effectId: int.tryParse(json['effect_id']) ?? 0,
       hasSensitiveContent: json['has_sensitive_content'] as bool,
       restrictionReason: json['restriction_reason'] as String,
-      content:
-          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      content: MessageContent.fromJson(
+        json['content'] as Map<String, dynamic>?,
+      )!,
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -247,45 +259,44 @@ class Message extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'sender_id': senderId.toJson(),
-        'chat_id': chatId,
-        'sending_state': sendingState?.toJson(),
-        'scheduling_state': schedulingState?.toJson(),
-        'is_outgoing': isOutgoing,
-        'is_pinned': isPinned,
-        'is_from_offline': isFromOffline,
-        'can_be_saved': canBeSaved,
-        'has_timestamped_media': hasTimestampedMedia,
-        'is_channel_post': isChannelPost,
-        'is_topic_message': isTopicMessage,
-        'contains_unread_mention': containsUnreadMention,
-        'date': date,
-        'edit_date': editDate,
-        'forward_info': forwardInfo?.toJson(),
-        'import_info': importInfo?.toJson(),
-        'interaction_info': interactionInfo?.toJson(),
-        'unread_reactions':
-            unreadReactions.map((item) => item.toJson()).toList(),
-        'fact_check': factCheck?.toJson(),
-        'reply_to': replyTo?.toJson(),
-        'message_thread_id': messageThreadId,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'self_destruct_type': selfDestructType?.toJson(),
-        'self_destruct_in': selfDestructIn,
-        'auto_delete_in': autoDeleteIn,
-        'via_bot_user_id': viaBotUserId,
-        'sender_business_bot_user_id': senderBusinessBotUserId,
-        'sender_boost_count': senderBoostCount,
-        'author_signature': authorSignature,
-        'media_album_id': mediaAlbumId.toString(),
-        'effect_id': effectId.toString(),
-        'has_sensitive_content': hasSensitiveContent,
-        'restriction_reason': restrictionReason,
-        'content': content.toJson(),
-        'reply_markup': replyMarkup?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'sender_id': senderId.toJson(),
+    'chat_id': chatId,
+    'sending_state': sendingState?.toJson(),
+    'scheduling_state': schedulingState?.toJson(),
+    'is_outgoing': isOutgoing,
+    'is_pinned': isPinned,
+    'is_from_offline': isFromOffline,
+    'can_be_saved': canBeSaved,
+    'has_timestamped_media': hasTimestampedMedia,
+    'is_channel_post': isChannelPost,
+    'contains_unread_mention': containsUnreadMention,
+    'date': date,
+    'edit_date': editDate,
+    'forward_info': forwardInfo?.toJson(),
+    'import_info': importInfo?.toJson(),
+    'interaction_info': interactionInfo?.toJson(),
+    'unread_reactions': unreadReactions.map((item) => item.toJson()).toList(),
+    'fact_check': factCheck?.toJson(),
+    'reply_to': replyTo?.toJson(),
+    'message_thread_id': messageThreadId,
+    'topic_id': topicId?.toJson(),
+    'self_destruct_type': selfDestructType?.toJson(),
+    'self_destruct_in': selfDestructIn,
+    'auto_delete_in': autoDeleteIn,
+    'via_bot_user_id': viaBotUserId,
+    'sender_business_bot_user_id': senderBusinessBotUserId,
+    'sender_boost_count': senderBoostCount,
+    'paid_message_star_count': paidMessageStarCount,
+    'author_signature': authorSignature,
+    'media_album_id': mediaAlbumId.toString(),
+    'effect_id': effectId.toString(),
+    'has_sensitive_content': hasSensitiveContent,
+    'restriction_reason': restrictionReason,
+    'content': content.toJson(),
+    'reply_markup': replyMarkup?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

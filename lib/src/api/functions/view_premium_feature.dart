@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ViewPremiumFeature extends TdFunction {
-  const ViewPremiumFeature({
-    required this.feature,
-  });
+  const ViewPremiumFeature({required this.feature});
 
   /// [feature] The viewed premium feature
   final PremiumFeature feature;
@@ -21,9 +19,9 @@ class ViewPremiumFeature extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'feature': feature.toJson(),
-        '@type': constructor,
-      };
+    'feature': feature.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

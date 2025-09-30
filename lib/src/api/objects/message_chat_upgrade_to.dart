@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// result
 @immutable
 class MessageChatUpgradeTo extends MessageContent {
-  const MessageChatUpgradeTo({
-    required this.supergroupId,
-  });
+  const MessageChatUpgradeTo({required this.supergroupId});
 
   /// [supergroupId] Identifier of the supergroup to which the basic group was
   /// upgraded
@@ -21,9 +19,7 @@ class MessageChatUpgradeTo extends MessageContent {
       return null;
     }
 
-    return MessageChatUpgradeTo(
-      supergroupId: json['supergroup_id'] as int,
-    );
+    return MessageChatUpgradeTo(supergroupId: json['supergroup_id'] as int);
   }
 
   @override
@@ -31,9 +27,9 @@ class MessageChatUpgradeTo extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

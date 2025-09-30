@@ -32,9 +32,10 @@ class PassportAuthorizationForm extends TdObject {
     return PassportAuthorizationForm(
       id: json['id'] as int,
       requiredElements: List<PassportRequiredElement>.from(
-          ((json['required_elements'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportRequiredElement.fromJson(item))
-              .toList()),
+        ((json['required_elements'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportRequiredElement.fromJson(item))
+            .toList(),
+      ),
       privacyPolicyUrl: json['privacy_policy_url'] as String,
     );
   }
@@ -44,12 +45,11 @@ class PassportAuthorizationForm extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'required_elements':
-            requiredElements.map((item) => item.toJson()).toList(),
-        'privacy_policy_url': privacyPolicyUrl,
-        '@type': constructor,
-      };
+    'id': id,
+    'required_elements': requiredElements.map((item) => item.toJson()).toList(),
+    'privacy_policy_url': privacyPolicyUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

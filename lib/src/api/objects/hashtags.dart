@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of hashtags
 @immutable
 class Hashtags extends TdObject {
-  const Hashtags({
-    required this.hashtags,
-  });
+  const Hashtags({required this.hashtags});
 
   /// [hashtags] A list of hashtags
   final List<String> hashtags;
@@ -21,9 +19,10 @@ class Hashtags extends TdObject {
 
     return Hashtags(
       hashtags: List<String>.from(
-          ((json['hashtags'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['hashtags'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Hashtags extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'hashtags': hashtags.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'hashtags': hashtags.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

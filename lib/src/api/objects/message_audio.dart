@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// An audio message
 @immutable
 class MessageAudio extends MessageContent {
-  const MessageAudio({
-    required this.audio,
-    required this.caption,
-  });
+  const MessageAudio({required this.audio, required this.caption});
 
   /// [audio] The audio description
   final Audio audio;
@@ -25,8 +22,9 @@ class MessageAudio extends MessageContent {
 
     return MessageAudio(
       audio: Audio.fromJson(json['audio'] as Map<String, dynamic>?)!,
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class MessageAudio extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'audio': audio.toJson(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'audio': audio.toJson(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

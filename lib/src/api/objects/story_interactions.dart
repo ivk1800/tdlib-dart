@@ -43,9 +43,10 @@ class StoryInteractions extends TdObject {
       totalForwardCount: json['total_forward_count'] as int,
       totalReactionCount: json['total_reaction_count'] as int,
       interactions: List<StoryInteraction>.from(
-          ((json['interactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StoryInteraction.fromJson(item))
-              .toList()),
+        ((json['interactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StoryInteraction.fromJson(item))
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -55,13 +56,13 @@ class StoryInteractions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'total_forward_count': totalForwardCount,
-        'total_reaction_count': totalReactionCount,
-        'interactions': interactions.map((item) => item.toJson()).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'total_forward_count': totalForwardCount,
+    'total_reaction_count': totalReactionCount,
+    'interactions': interactions.map((item) => item.toJson()).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

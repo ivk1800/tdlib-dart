@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a location of a business
 @immutable
 class BusinessLocation extends TdObject {
-  const BusinessLocation({
-    this.location,
-    required this.address,
-  });
+  const BusinessLocation({this.location, required this.address});
 
   /// [location] The location; may be null if not specified
   final Location? location;
@@ -34,10 +31,10 @@ class BusinessLocation extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location?.toJson(),
-        'address': address,
-        '@type': constructor,
-      };
+    'location': location?.toJson(),
+    'address': address,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A forum topic has been created
 @immutable
 class MessageForumTopicCreated extends MessageContent {
-  const MessageForumTopicCreated({
-    required this.name,
-    required this.icon,
-  });
+  const MessageForumTopicCreated({required this.name, required this.icon});
 
   /// [name] Name of the topic
   final String name;
@@ -34,10 +31,10 @@ class MessageForumTopicCreated extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'icon': icon.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'icon': icon.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// current user's account will automatically be deleted
 @immutable
 class AccountTtl extends TdObject {
-  const AccountTtl({
-    required this.days,
-  });
+  const AccountTtl({required this.days});
 
   /// [days] Number of days of inactivity before the account will be flagged for
   /// deletion; 30-730 days
@@ -21,9 +19,7 @@ class AccountTtl extends TdObject {
       return null;
     }
 
-    return AccountTtl(
-      days: json['days'] as int,
-    );
+    return AccountTtl(days: json['days'] as int);
   }
 
   @override
@@ -31,9 +27,9 @@ class AccountTtl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'days': days,
-        '@type': constructor,
-      };
+    'days': days,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

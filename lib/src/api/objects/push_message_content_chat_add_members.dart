@@ -23,7 +23,8 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
   static const String constructor = 'pushMessageContentChatAddMembers';
 
   static PushMessageContentChatAddMembers? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -40,11 +41,11 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'member_name': memberName,
-        'is_current_user': isCurrentUser,
-        'is_returned': isReturned,
-        '@type': constructor,
-      };
+    'member_name': memberName,
+    'is_current_user': isCurrentUser,
+    'is_returned': isReturned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -29,9 +29,11 @@ class StarRevenueStatistics extends TdObject {
 
     return StarRevenueStatistics(
       revenueByDayGraph: StatisticalGraph.fromJson(
-          json['revenue_by_day_graph'] as Map<String, dynamic>?)!,
-      status:
-          StarRevenueStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+        json['revenue_by_day_graph'] as Map<String, dynamic>?,
+      )!,
+      status: StarRevenueStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
       usdRate: (json['usd_rate'] as num).toDouble(),
     );
   }
@@ -41,11 +43,11 @@ class StarRevenueStatistics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'revenue_by_day_graph': revenueByDayGraph.toJson(),
-        'status': status.toJson(),
-        'usd_rate': usdRate,
-        '@type': constructor,
-      };
+    'revenue_by_day_graph': revenueByDayGraph.toJson(),
+    'status': status.toJson(),
+    'usd_rate': usdRate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

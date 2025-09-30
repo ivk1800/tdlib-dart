@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetAutosaveSettings extends TdFunction {
-  const SetAutosaveSettings({
-    required this.scope,
-    this.settings,
-  });
+  const SetAutosaveSettings({required this.scope, this.settings});
 
   /// [scope] Autosave settings scope
   final AutosaveSettingsScope scope;
@@ -26,10 +23,10 @@ class SetAutosaveSettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope.toJson(),
-        'settings': settings?.toJson(),
-        '@type': constructor,
-      };
+    'scope': scope.toJson(),
+    'settings': settings?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

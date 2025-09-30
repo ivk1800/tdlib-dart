@@ -39,11 +39,11 @@ class DownloadedFileCounts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'active_count': activeCount,
-        'paused_count': pausedCount,
-        'completed_count': completedCount,
-        '@type': constructor,
-      };
+    'active_count': activeCount,
+    'paused_count': pausedCount,
+    'completed_count': completedCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

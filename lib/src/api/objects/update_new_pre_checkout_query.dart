@@ -53,8 +53,9 @@ class UpdateNewPreCheckoutQuery extends Update {
       totalAmount: json['total_amount'] as int,
       invoicePayload: json['invoice_payload'] as String,
       shippingOptionId: json['shipping_option_id'] as String,
-      orderInfo:
-          OrderInfo.fromJson(json['order_info'] as Map<String, dynamic>?),
+      orderInfo: OrderInfo.fromJson(
+        json['order_info'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -63,15 +64,15 @@ class UpdateNewPreCheckoutQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'currency': currency,
-        'total_amount': totalAmount,
-        'invoice_payload': invoicePayload,
-        'shipping_option_id': shippingOptionId,
-        'order_info': orderInfo?.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'currency': currency,
+    'total_amount': totalAmount,
+    'invoice_payload': invoicePayload,
+    'shipping_option_id': shippingOptionId,
+    'order_info': orderInfo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

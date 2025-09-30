@@ -31,7 +31,8 @@ class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   static const String constructor = 'linkPreviewTypeEmbeddedVideoPlayer';
 
   static LinkPreviewTypeEmbeddedVideoPlayer? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -50,13 +51,13 @@ class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'thumbnail': thumbnail?.toJson(),
-        'duration': duration,
-        'width': width,
-        'height': height,
-        '@type': constructor,
-      };
+    'url': url,
+    'thumbnail': thumbnail?.toJson(),
+    'duration': duration,
+    'width': width,
+    'height': height,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

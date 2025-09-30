@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of chat members
 @immutable
 class ChatMembers extends TdObject {
-  const ChatMembers({
-    required this.totalCount,
-    required this.members,
-  });
+  const ChatMembers({required this.totalCount, required this.members});
 
   /// [totalCount] Approximate total number of chat members found
   final int totalCount;
@@ -26,9 +23,10 @@ class ChatMembers extends TdObject {
     return ChatMembers(
       totalCount: json['total_count'] as int,
       members: List<ChatMember>.from(
-          ((json['members'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatMember.fromJson(item))
-              .toList()),
+        ((json['members'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatMember.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class ChatMembers extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'members': members.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'members': members.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

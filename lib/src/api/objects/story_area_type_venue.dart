@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An area pointing to a venue
 @immutable
 class StoryAreaTypeVenue extends StoryAreaType {
-  const StoryAreaTypeVenue({
-    required this.venue,
-  });
+  const StoryAreaTypeVenue({required this.venue});
 
   /// [venue] Information about the venue
   final Venue venue;
@@ -29,9 +27,9 @@ class StoryAreaTypeVenue extends StoryAreaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'venue': venue.toJson(),
-        '@type': constructor,
-      };
+    'venue': venue.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

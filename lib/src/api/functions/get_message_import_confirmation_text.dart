@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetMessageImportConfirmationText extends TdFunction {
-  const GetMessageImportConfirmationText({
-    required this.chatId,
-  });
+  const GetMessageImportConfirmationText({required this.chatId});
 
   /// [chatId] Identifier of a chat to which the messages will be imported. It
   /// must be an identifier of a private chat with a mutual contact or an
@@ -23,9 +21,9 @@ class GetMessageImportConfirmationText extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

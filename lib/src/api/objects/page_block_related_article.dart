@@ -55,14 +55,14 @@ class PageBlockRelatedArticle extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'title': title,
-        'description': description,
-        'photo': photo?.toJson(),
-        'author': author,
-        'publish_date': publishDate,
-        '@type': constructor,
-      };
+    'url': url,
+    'title': title,
+    'description': description,
+    'photo': photo?.toJson(),
+    'author': author,
+    'publish_date': publishDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

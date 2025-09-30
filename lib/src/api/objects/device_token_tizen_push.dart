@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for Tizen Push Service
 @immutable
 class DeviceTokenTizenPush extends DeviceToken {
-  const DeviceTokenTizenPush({
-    required this.regId,
-  });
+  const DeviceTokenTizenPush({required this.regId});
 
   /// [regId] Push service registration identifier; may be empty to deregister a
   /// device
@@ -20,9 +18,7 @@ class DeviceTokenTizenPush extends DeviceToken {
       return null;
     }
 
-    return DeviceTokenTizenPush(
-      regId: json['reg_id'] as String,
-    );
+    return DeviceTokenTizenPush(regId: json['reg_id'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class DeviceTokenTizenPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reg_id': regId,
-        '@type': constructor,
-      };
+    'reg_id': regId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

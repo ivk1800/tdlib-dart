@@ -33,7 +33,8 @@ class ChatInviteLinkSubscriptionInfo extends TdObject {
 
     return ChatInviteLinkSubscriptionInfo(
       pricing: StarSubscriptionPricing.fromJson(
-          json['pricing'] as Map<String, dynamic>?)!,
+        json['pricing'] as Map<String, dynamic>?,
+      )!,
       canReuse: json['can_reuse'] as bool,
       formId: int.tryParse(json['form_id']) ?? 0,
     );
@@ -44,11 +45,11 @@ class ChatInviteLinkSubscriptionInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'pricing': pricing.toJson(),
-        'can_reuse': canReuse,
-        'form_id': formId.toString(),
-        '@type': constructor,
-      };
+    'pricing': pricing.toJson(),
+    'can_reuse': canReuse,
+    'form_id': formId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

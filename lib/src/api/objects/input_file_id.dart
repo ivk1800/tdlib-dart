@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A file defined by its unique identifier
 @immutable
 class InputFileId extends InputFile {
-  const InputFileId({
-    required this.id,
-  });
+  const InputFileId({required this.id});
 
   /// [id] Unique file identifier
   final int id;
@@ -19,9 +17,7 @@ class InputFileId extends InputFile {
       return null;
     }
 
-    return InputFileId(
-      id: json['id'] as int,
-    );
+    return InputFileId(id: json['id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class InputFileId extends InputFile {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        '@type': constructor,
-      };
+    'id': id,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

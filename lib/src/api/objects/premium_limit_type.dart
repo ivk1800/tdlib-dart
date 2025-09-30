@@ -18,7 +18,7 @@ abstract class PremiumLimitType extends TdObject {
   /// [PremiumLimitTypeChatFolderInviteLinkCount]
   /// [PremiumLimitTypeCreatedPublicChatCount]
   /// [PremiumLimitTypeFavoriteStickerCount]
-  /// [PremiumLimitTypeMonthlySentStoryCount]
+  /// [PremiumLimitTypeMonthlyPostedStoryCount]
   /// [PremiumLimitTypePinnedArchivedChatCount]
   /// [PremiumLimitTypePinnedChatCount]
   /// [PremiumLimitTypePinnedSavedMessagesTopicCount]
@@ -28,7 +28,7 @@ abstract class PremiumLimitType extends TdObject {
   /// [PremiumLimitTypeStoryCaptionLength]
   /// [PremiumLimitTypeStorySuggestedReactionAreaCount]
   /// [PremiumLimitTypeSupergroupCount]
-  /// [PremiumLimitTypeWeeklySentStoryCount]
+  /// [PremiumLimitTypeWeeklyPostedStoryCount]
   static PremiumLimitType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
       return null;
@@ -51,8 +51,8 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeCreatedPublicChatCount.fromJson(json);
       case PremiumLimitTypeFavoriteStickerCount.constructor:
         return PremiumLimitTypeFavoriteStickerCount.fromJson(json);
-      case PremiumLimitTypeMonthlySentStoryCount.constructor:
-        return PremiumLimitTypeMonthlySentStoryCount.fromJson(json);
+      case PremiumLimitTypeMonthlyPostedStoryCount.constructor:
+        return PremiumLimitTypeMonthlyPostedStoryCount.fromJson(json);
       case PremiumLimitTypePinnedArchivedChatCount.constructor:
         return PremiumLimitTypePinnedArchivedChatCount.fromJson(json);
       case PremiumLimitTypePinnedChatCount.constructor:
@@ -71,8 +71,8 @@ abstract class PremiumLimitType extends TdObject {
         return PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(json);
       case PremiumLimitTypeSupergroupCount.constructor:
         return PremiumLimitTypeSupergroupCount.fromJson(json);
-      case PremiumLimitTypeWeeklySentStoryCount.constructor:
-        return PremiumLimitTypeWeeklySentStoryCount.fromJson(json);
+      case PremiumLimitTypeWeeklyPostedStoryCount.constructor:
+        return PremiumLimitTypeWeeklyPostedStoryCount.fromJson(json);
       default:
         return null;
     }

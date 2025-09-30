@@ -33,9 +33,11 @@ class AutoDownloadSettingsPresets extends TdObject {
     return AutoDownloadSettingsPresets(
       low: AutoDownloadSettings.fromJson(json['low'] as Map<String, dynamic>?)!,
       medium: AutoDownloadSettings.fromJson(
-          json['medium'] as Map<String, dynamic>?)!,
-      high:
-          AutoDownloadSettings.fromJson(json['high'] as Map<String, dynamic>?)!,
+        json['medium'] as Map<String, dynamic>?,
+      )!,
+      high: AutoDownloadSettings.fromJson(
+        json['high'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -44,11 +46,11 @@ class AutoDownloadSettingsPresets extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'low': low.toJson(),
-        'medium': medium.toJson(),
-        'high': high.toJson(),
-        '@type': constructor,
-      };
+    'low': low.toJson(),
+    'medium': medium.toJson(),
+    'high': high.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

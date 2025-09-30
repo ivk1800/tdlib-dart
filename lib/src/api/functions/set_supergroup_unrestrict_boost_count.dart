@@ -27,10 +27,10 @@ class SetSupergroupUnrestrictBoostCount extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'unrestrict_boost_count': unrestrictBoostCount,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'unrestrict_boost_count': unrestrictBoostCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

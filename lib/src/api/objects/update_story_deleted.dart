@@ -6,12 +6,12 @@ import '../tdapi.dart';
 @immutable
 class UpdateStoryDeleted extends Update {
   const UpdateStoryDeleted({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
   });
 
-  /// [storySenderChatId] Identifier of the chat that posted the story
-  final int storySenderChatId;
+  /// [storyPosterChatId] Identifier of the chat that posted the story
+  final int storyPosterChatId;
 
   /// [storyId] Story identifier
   final int storyId;
@@ -24,7 +24,7 @@ class UpdateStoryDeleted extends Update {
     }
 
     return UpdateStoryDeleted(
-      storySenderChatId: json['story_sender_chat_id'] as int,
+      storyPosterChatId: json['story_poster_chat_id'] as int,
       storyId: json['story_id'] as int,
     );
   }
@@ -34,10 +34,10 @@ class UpdateStoryDeleted extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_sender_chat_id': storySenderChatId,
-        'story_id': storyId,
-        '@type': constructor,
-      };
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

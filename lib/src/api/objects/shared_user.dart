@@ -49,13 +49,13 @@ class SharedUser extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'first_name': firstName,
-        'last_name': lastName,
-        'username': username,
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'first_name': firstName,
+    'last_name': lastName,
+    'username': username,
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

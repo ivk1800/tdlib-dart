@@ -11,13 +11,14 @@ import '../tdapi.dart';
 /// and confirm adding the bot to side and attachment menu, then if the user
 /// accepts the terms and confirms adding, use
 /// toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp
-/// with the given start parameter and open the returned URL as a Web App
+/// with the given start parameter and mode and open the returned URL as a Web
+/// App
 @immutable
 class InternalLinkTypeMainWebApp extends InternalLinkType {
   const InternalLinkTypeMainWebApp({
     required this.botUsername,
     required this.startParameter,
-    required this.isCompact,
+    required this.mode,
   });
 
   /// [botUsername] Username of the bot
@@ -26,9 +27,8 @@ class InternalLinkTypeMainWebApp extends InternalLinkType {
   /// [startParameter] Start parameter to be passed to getMainWebApp
   final String startParameter;
 
-  /// [isCompact] True, if the Web App must be opened in the compact mode
-  /// instead of the full-size mode
-  final bool isCompact;
+  /// [mode] The mode to be passed to getMainWebApp
+  final WebAppOpenMode mode;
 
   static const String constructor = 'internalLinkTypeMainWebApp';
 
@@ -40,7 +40,7 @@ class InternalLinkTypeMainWebApp extends InternalLinkType {
     return InternalLinkTypeMainWebApp(
       botUsername: json['bot_username'] as String,
       startParameter: json['start_parameter'] as String,
-      isCompact: json['is_compact'] as bool,
+      mode: WebAppOpenMode.fromJson(json['mode'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -49,11 +49,11 @@ class InternalLinkTypeMainWebApp extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'start_parameter': startParameter,
-        'is_compact': isCompact,
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'start_parameter': startParameter,
+    'mode': mode.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

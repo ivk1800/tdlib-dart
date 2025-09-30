@@ -29,11 +29,11 @@ class SaveApplicationLogEvent extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'chat_id': chatId,
-        'data': data.toJson(),
-        '@type': constructor,
-      };
+    'type': type,
+    'chat_id': chatId,
+    'data': data.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [CheckChatUsernameResult]
 @immutable
 class CheckChatUsername extends TdFunction {
-  const CheckChatUsername({
-    required this.chatId,
-    required this.username,
-  });
+  const CheckChatUsername({required this.chatId, required this.username});
 
   /// [chatId] Chat identifier; must be identifier of a supergroup chat, or a
   /// channel chat, or a private chat with self, or 0 if the chat is being
@@ -26,10 +23,10 @@ class CheckChatUsername extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'username': username,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'username': username,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

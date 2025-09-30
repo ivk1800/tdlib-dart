@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An updated chat photo
 @immutable
 class MessageChatChangePhoto extends MessageContent {
-  const MessageChatChangePhoto({
-    required this.photo,
-  });
+  const MessageChatChangePhoto({required this.photo});
 
   /// [photo] New chat photo
   final ChatPhoto photo;
@@ -29,9 +27,9 @@ class MessageChatChangePhoto extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

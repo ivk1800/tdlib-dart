@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A preformatted text paragraph
 @immutable
 class PageBlockPreformatted extends PageBlock {
-  const PageBlockPreformatted({
-    required this.text,
-    required this.language,
-  });
+  const PageBlockPreformatted({required this.text, required this.language});
 
   /// [text] Paragraph text
   final RichText text;
@@ -34,10 +31,10 @@ class PageBlockPreformatted extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'language': language,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'language': language,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

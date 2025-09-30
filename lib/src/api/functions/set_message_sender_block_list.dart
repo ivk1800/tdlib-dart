@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetMessageSenderBlockList extends TdFunction {
-  const SetMessageSenderBlockList({
-    required this.senderId,
-    this.blockList,
-  });
+  const SetMessageSenderBlockList({required this.senderId, this.blockList});
 
   /// [senderId] Identifier of a message sender to block/unblock
   final MessageSender senderId;
@@ -26,10 +23,10 @@ class SetMessageSenderBlockList extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_id': senderId.toJson(),
-        'block_list': blockList?.toJson(),
-        '@type': constructor,
-      };
+    'sender_id': senderId.toJson(),
+    'block_list': blockList?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

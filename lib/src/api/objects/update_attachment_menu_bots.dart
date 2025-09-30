@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of bots added to attachment or side menu has changed
 @immutable
 class UpdateAttachmentMenuBots extends Update {
-  const UpdateAttachmentMenuBots({
-    required this.bots,
-  });
+  const UpdateAttachmentMenuBots({required this.bots});
 
   /// [bots] The new list of bots. The bots must not be shown on scheduled
   /// messages screen
@@ -22,9 +20,10 @@ class UpdateAttachmentMenuBots extends Update {
 
     return UpdateAttachmentMenuBots(
       bots: List<AttachmentMenuBot>.from(
-          ((json['bots'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AttachmentMenuBot.fromJson(item))
-              .toList()),
+        ((json['bots'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AttachmentMenuBot.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -33,9 +32,9 @@ class UpdateAttachmentMenuBots extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bots': bots.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'bots': bots.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A General forum topic has been hidden or unhidden
 @immutable
 class MessageForumTopicIsHiddenToggled extends MessageContent {
-  const MessageForumTopicIsHiddenToggled({
-    required this.isHidden,
-  });
+  const MessageForumTopicIsHiddenToggled({required this.isHidden});
 
   /// [isHidden] True, if the topic was hidden; otherwise, the topic was
   /// unhidden
@@ -16,7 +14,8 @@ class MessageForumTopicIsHiddenToggled extends MessageContent {
   static const String constructor = 'messageForumTopicIsHiddenToggled';
 
   static MessageForumTopicIsHiddenToggled? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +30,9 @@ class MessageForumTopicIsHiddenToggled extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_hidden': isHidden,
-        '@type': constructor,
-      };
+    'is_hidden': isHidden,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

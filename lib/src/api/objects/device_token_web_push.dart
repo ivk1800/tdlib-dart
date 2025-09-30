@@ -41,11 +41,11 @@ class DeviceTokenWebPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'endpoint': endpoint,
-        'p256dh_base64url': p256dhBase64url,
-        'auth_base64url': authBase64url,
-        '@type': constructor,
-      };
+    'endpoint': endpoint,
+    'p256dh_base64url': p256dhBase64url,
+    'auth_base64url': authBase64url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -35,10 +35,10 @@ class PaymentReceiptTypeStars extends PaymentReceiptType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'transaction_id': transactionId,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'transaction_id': transactionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -31,11 +31,11 @@ class ToggleChatIsPinned extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_list': chatList.toJson(),
-        'chat_id': chatId,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'chat_list': chatList.toJson(),
+    'chat_id': chatId,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

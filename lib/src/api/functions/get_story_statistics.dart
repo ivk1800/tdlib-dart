@@ -29,11 +29,11 @@ class GetStoryStatistics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'story_id': storyId,
-        'is_dark': isDark,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'story_id': storyId,
+    'is_dark': isDark,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

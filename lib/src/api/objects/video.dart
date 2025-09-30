@@ -66,7 +66,8 @@ class Video extends TdObject {
       hasStickers: json['has_stickers'] as bool,
       supportsStreaming: json['supports_streaming'] as bool,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
       video: File.fromJson(json['video'] as Map<String, dynamic>?)!,
     );
@@ -77,18 +78,18 @@ class Video extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'width': width,
-        'height': height,
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'has_stickers': hasStickers,
-        'supports_streaming': supportsStreaming,
-        'minithumbnail': minithumbnail?.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'video': video.toJson(),
-        '@type': constructor,
-      };
+    'duration': duration,
+    'width': width,
+    'height': height,
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'has_stickers': hasStickers,
+    'supports_streaming': supportsStreaming,
+    'minithumbnail': minithumbnail?.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'video': video.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

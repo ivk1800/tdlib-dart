@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CheckAuthenticationEmailCode extends TdFunction {
-  const CheckAuthenticationEmailCode({
-    required this.code,
-  });
+  const CheckAuthenticationEmailCode({required this.code});
 
   /// [code] Email address authentication to check
   final EmailAddressAuthentication code;
@@ -21,9 +19,9 @@ class CheckAuthenticationEmailCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code.toJson(),
-        '@type': constructor,
-      };
+    'code': code.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

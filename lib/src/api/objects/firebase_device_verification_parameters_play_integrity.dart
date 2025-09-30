@@ -23,7 +23,8 @@ class FirebaseDeviceVerificationParametersPlayIntegrity
       'firebaseDeviceVerificationParametersPlayIntegrity';
 
   static FirebaseDeviceVerificationParametersPlayIntegrity? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -39,10 +40,10 @@ class FirebaseDeviceVerificationParametersPlayIntegrity
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'nonce': nonce,
-        'cloud_project_number': cloudProjectNumber.toString(),
-        '@type': constructor,
-      };
+    'nonce': nonce,
+    'cloud_project_number': cloudProjectNumber.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

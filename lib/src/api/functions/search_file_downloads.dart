@@ -39,13 +39,13 @@ class SearchFileDownloads extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        'only_active': onlyActive,
-        'only_completed': onlyCompleted,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'query': query,
+    'only_active': onlyActive,
+    'only_completed': onlyCompleted,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

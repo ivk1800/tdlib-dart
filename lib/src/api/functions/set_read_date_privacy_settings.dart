@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetReadDatePrivacySettings extends TdFunction {
-  const SetReadDatePrivacySettings({
-    required this.settings,
-  });
+  const SetReadDatePrivacySettings({required this.settings});
 
   /// [settings] New settings
   final ReadDatePrivacySettings settings;
@@ -20,9 +18,9 @@ class SetReadDatePrivacySettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'settings': settings.toJson(),
-        '@type': constructor,
-      };
+    'settings': settings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

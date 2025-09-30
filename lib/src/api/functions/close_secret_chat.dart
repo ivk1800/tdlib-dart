@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CloseSecretChat extends TdFunction {
-  const CloseSecretChat({
-    required this.secretChatId,
-  });
+  const CloseSecretChat({required this.secretChatId});
 
   /// [secretChatId] Secret chat identifier
   final int secretChatId;
@@ -21,9 +19,9 @@ class CloseSecretChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'secret_chat_id': secretChatId,
-        '@type': constructor,
-      };
+    'secret_chat_id': secretChatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

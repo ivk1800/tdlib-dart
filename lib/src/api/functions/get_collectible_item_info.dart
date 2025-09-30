@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [CollectibleItemInfo]
 @immutable
 class GetCollectibleItemInfo extends TdFunction {
-  const GetCollectibleItemInfo({
-    required this.type,
-  });
+  const GetCollectibleItemInfo({required this.type});
 
   /// [type] Type of the collectible item. The item must be used by a user and
   /// must be visible to the current user
@@ -22,9 +20,9 @@ class GetCollectibleItemInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

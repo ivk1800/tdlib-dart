@@ -54,22 +54,27 @@ class EncryptedPassportElement extends TdObject {
     }
 
     return EncryptedPassportElement(
-      type:
-          PassportElementType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      type: PassportElementType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
       data: json['data'] as String,
-      frontSide:
-          DatedFile.fromJson(json['front_side'] as Map<String, dynamic>?)!,
-      reverseSide:
-          DatedFile.fromJson(json['reverse_side'] as Map<String, dynamic>?),
+      frontSide: DatedFile.fromJson(
+        json['front_side'] as Map<String, dynamic>?,
+      )!,
+      reverseSide: DatedFile.fromJson(
+        json['reverse_side'] as Map<String, dynamic>?,
+      ),
       selfie: DatedFile.fromJson(json['selfie'] as Map<String, dynamic>?),
       translation: List<DatedFile>.from(
-          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => DatedFile.fromJson(item))
-              .toList()),
+        ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => DatedFile.fromJson(item))
+            .toList(),
+      ),
       files: List<DatedFile>.from(
-          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => DatedFile.fromJson(item))
-              .toList()),
+        ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => DatedFile.fromJson(item))
+            .toList(),
+      ),
       value: json['value'] as String,
       hash: json['hash'] as String,
     );
@@ -80,17 +85,17 @@ class EncryptedPassportElement extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'data': data,
-        'front_side': frontSide.toJson(),
-        'reverse_side': reverseSide?.toJson(),
-        'selfie': selfie?.toJson(),
-        'translation': translation.map((item) => item.toJson()).toList(),
-        'files': files.map((item) => item.toJson()).toList(),
-        'value': value,
-        'hash': hash,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'data': data,
+    'front_side': frontSide.toJson(),
+    'reverse_side': reverseSide?.toJson(),
+    'selfie': selfie?.toJson(),
+    'translation': translation.map((item) => item.toJson()).toList(),
+    'files': files.map((item) => item.toJson()).toList(),
+    'value': value,
+    'hash': hash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

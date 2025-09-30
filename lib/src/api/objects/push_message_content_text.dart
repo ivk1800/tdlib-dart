@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A text message
 @immutable
 class PushMessageContentText extends PushMessageContent {
-  const PushMessageContentText({
-    required this.text,
-    required this.isPinned,
-  });
+  const PushMessageContentText({required this.text, required this.isPinned});
 
   /// [text] Message text
   final String text;
@@ -35,10 +32,10 @@ class PushMessageContentText extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'text': text,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

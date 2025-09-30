@@ -44,13 +44,15 @@ class AccentColor extends TdObject {
       id: json['id'] as int,
       builtInAccentColorId: json['built_in_accent_color_id'] as int,
       lightThemeColors: List<int>.from(
-          ((json['light_theme_colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['light_theme_colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       darkThemeColors: List<int>.from(
-          ((json['dark_theme_colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['dark_theme_colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       minChannelChatBoostLevel: json['min_channel_chat_boost_level'] as int,
     );
   }
@@ -60,13 +62,13 @@ class AccentColor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'built_in_accent_color_id': builtInAccentColorId,
-        'light_theme_colors': lightThemeColors.map((item) => item).toList(),
-        'dark_theme_colors': darkThemeColors.map((item) => item).toList(),
-        'min_channel_chat_boost_level': minChannelChatBoostLevel,
-        '@type': constructor,
-      };
+    'id': id,
+    'built_in_accent_color_id': builtInAccentColorId,
+    'light_theme_colors': lightThemeColors.map((item) => item).toList(),
+    'dark_theme_colors': darkThemeColors.map((item) => item).toList(),
+    'min_channel_chat_boost_level': minChannelChatBoostLevel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

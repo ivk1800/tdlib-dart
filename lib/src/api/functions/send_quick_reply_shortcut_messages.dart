@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Sends messages from a quick reply shortcut. Requires Telegram Business
-/// subscription
+/// subscription. Can't be used to send paid messages
 /// Returns [Messages]
 @immutable
 class SendQuickReplyShortcutMessages extends TdFunction {
@@ -32,11 +32,11 @@ class SendQuickReplyShortcutMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'shortcut_id': shortcutId,
-        'sending_id': sendingId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'shortcut_id': shortcutId,
+    'sending_id': sendingId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

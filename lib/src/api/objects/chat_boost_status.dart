@@ -68,21 +68,23 @@ class ChatBoostStatus extends TdObject {
     return ChatBoostStatus(
       boostUrl: json['boost_url'] as String,
       appliedSlotIds: List<int>.from(
-          ((json['applied_slot_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['applied_slot_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       level: json['level'] as int,
       giftCodeBoostCount: json['gift_code_boost_count'] as int,
       boostCount: json['boost_count'] as int,
       currentLevelBoostCount: json['current_level_boost_count'] as int,
       nextLevelBoostCount: json['next_level_boost_count'] as int,
       premiumMemberCount: json['premium_member_count'] as int,
-      premiumMemberPercentage:
-          (json['premium_member_percentage'] as num).toDouble(),
+      premiumMemberPercentage: (json['premium_member_percentage'] as num)
+          .toDouble(),
       prepaidGiveaways: List<PrepaidGiveaway>.from(
-          ((json['prepaid_giveaways'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PrepaidGiveaway.fromJson(item))
-              .toList()),
+        ((json['prepaid_giveaways'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PrepaidGiveaway.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -91,19 +93,18 @@ class ChatBoostStatus extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'boost_url': boostUrl,
-        'applied_slot_ids': appliedSlotIds.map((item) => item).toList(),
-        'level': level,
-        'gift_code_boost_count': giftCodeBoostCount,
-        'boost_count': boostCount,
-        'current_level_boost_count': currentLevelBoostCount,
-        'next_level_boost_count': nextLevelBoostCount,
-        'premium_member_count': premiumMemberCount,
-        'premium_member_percentage': premiumMemberPercentage,
-        'prepaid_giveaways':
-            prepaidGiveaways.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'boost_url': boostUrl,
+    'applied_slot_ids': appliedSlotIds.map((item) => item).toList(),
+    'level': level,
+    'gift_code_boost_count': giftCodeBoostCount,
+    'boost_count': boostCount,
+    'current_level_boost_count': currentLevelBoostCount,
+    'next_level_boost_count': nextLevelBoostCount,
+    'premium_member_count': premiumMemberCount,
+    'premium_member_percentage': premiumMemberPercentage,
+    'prepaid_giveaways': prepaidGiveaways.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

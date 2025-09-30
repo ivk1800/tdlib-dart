@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of found users
 @immutable
 class FoundUsers extends TdObject {
-  const FoundUsers({
-    required this.userIds,
-    required this.nextOffset,
-  });
+  const FoundUsers({required this.userIds, required this.nextOffset});
 
   /// [userIds] Identifiers of the found users
   final List<int> userIds;
@@ -26,9 +23,10 @@ class FoundUsers extends TdObject {
 
     return FoundUsers(
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -38,10 +36,10 @@ class FoundUsers extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [RecoveryEmailAddress]
 @immutable
 class GetRecoveryEmailAddress extends TdFunction {
-  const GetRecoveryEmailAddress({
-    required this.password,
-  });
+  const GetRecoveryEmailAddress({required this.password});
 
   /// [password] The 2-step verification password for the current user
   final String password;
@@ -21,9 +19,9 @@ class GetRecoveryEmailAddress extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password': password,
-        '@type': constructor,
-      };
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

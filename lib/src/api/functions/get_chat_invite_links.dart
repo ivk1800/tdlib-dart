@@ -46,14 +46,14 @@ class GetChatInviteLinks extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'creator_user_id': creatorUserId,
-        'is_revoked': isRevoked,
-        'offset_date': offsetDate,
-        'offset_invite_link': offsetInviteLink,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'creator_user_id': creatorUserId,
+    'is_revoked': isRevoked,
+    'offset_date': offsetDate,
+    'offset_invite_link': offsetInviteLink,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

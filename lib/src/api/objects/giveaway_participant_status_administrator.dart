@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// administrator in one of the chats that created the giveaway
 @immutable
 class GiveawayParticipantStatusAdministrator extends GiveawayParticipantStatus {
-  const GiveawayParticipantStatusAdministrator({
-    required this.chatId,
-  });
+  const GiveawayParticipantStatusAdministrator({required this.chatId});
 
   /// [chatId] Identifier of the chat administered by the user
   final int chatId;
@@ -16,7 +14,8 @@ class GiveawayParticipantStatusAdministrator extends GiveawayParticipantStatus {
   static const String constructor = 'giveawayParticipantStatusAdministrator';
 
   static GiveawayParticipantStatusAdministrator? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +30,9 @@ class GiveawayParticipantStatusAdministrator extends GiveawayParticipantStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A header
 @immutable
 class PageBlockHeader extends PageBlock {
-  const PageBlockHeader({
-    required this.header,
-  });
+  const PageBlockHeader({required this.header});
 
   /// [header] Header
   final RichText header;
@@ -29,9 +27,9 @@ class PageBlockHeader extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'header': header.toJson(),
-        '@type': constructor,
-      };
+    'header': header.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

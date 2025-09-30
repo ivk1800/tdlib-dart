@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The payload for a general callback button
 @immutable
 class CallbackQueryPayloadData extends CallbackQueryPayload {
-  const CallbackQueryPayloadData({
-    required this.data,
-  });
+  const CallbackQueryPayloadData({required this.data});
 
   /// [data] Data that was attached to the callback button
   final String data;
@@ -19,9 +17,7 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
       return null;
     }
 
-    return CallbackQueryPayloadData(
-      data: json['data'] as String,
-    );
+    return CallbackQueryPayloadData(data: json['data'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'data': data,
-        '@type': constructor,
-      };
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

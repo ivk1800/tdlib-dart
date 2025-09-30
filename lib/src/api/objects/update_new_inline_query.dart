@@ -43,8 +43,9 @@ class UpdateNewInlineQuery extends Update {
     return UpdateNewInlineQuery(
       id: int.tryParse(json['id']) ?? 0,
       senderUserId: json['sender_user_id'] as int,
-      userLocation:
-          Location.fromJson(json['user_location'] as Map<String, dynamic>?),
+      userLocation: Location.fromJson(
+        json['user_location'] as Map<String, dynamic>?,
+      ),
       chatType: ChatType.fromJson(json['chat_type'] as Map<String, dynamic>?),
       query: json['query'] as String,
       offset: json['offset'] as String,
@@ -56,14 +57,14 @@ class UpdateNewInlineQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'user_location': userLocation?.toJson(),
-        'chat_type': chatType?.toJson(),
-        'query': query,
-        'offset': offset,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'user_location': userLocation?.toJson(),
+    'chat_type': chatType?.toJson(),
+    'query': query,
+    'offset': offset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents an integer option
 @immutable
 class OptionValueInteger extends OptionValue {
-  const OptionValueInteger({
-    required this.value,
-  });
+  const OptionValueInteger({required this.value});
 
   /// [value] The value of the option
   final int value;
@@ -19,9 +17,7 @@ class OptionValueInteger extends OptionValue {
       return null;
     }
 
-    return OptionValueInteger(
-      value: int.tryParse(json['value']) ?? 0,
-    );
+    return OptionValueInteger(value: int.tryParse(json['value']) ?? 0);
   }
 
   @override
@@ -29,9 +25,9 @@ class OptionValueInteger extends OptionValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value.toString(),
-        '@type': constructor,
-      };
+    'value': value.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

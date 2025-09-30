@@ -54,13 +54,13 @@ class AnimatedEmoji extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker?.toJson(),
-        'sticker_width': stickerWidth,
-        'sticker_height': stickerHeight,
-        'fitzpatrick_type': fitzpatrickType,
-        'sound': sound?.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker?.toJson(),
+    'sticker_width': stickerWidth,
+    'sticker_height': stickerHeight,
+    'fitzpatrick_type': fitzpatrickType,
+    'sound': sound?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

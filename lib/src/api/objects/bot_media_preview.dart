@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes media previews of a bot
 @immutable
 class BotMediaPreview extends TdObject {
-  const BotMediaPreview({
-    required this.date,
-    required this.content,
-  });
+  const BotMediaPreview({required this.date, required this.content});
 
   /// [date] Point in time (Unix timestamp) when the preview was added or
   /// changed last time
@@ -35,10 +32,10 @@ class BotMediaPreview extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'date': date,
-        'content': content.toJson(),
-        '@type': constructor,
-      };
+    'date': date,
+    'content': content.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -43,17 +43,21 @@ class IdentityDocument extends TdObject {
 
     return IdentityDocument(
       number: json['number'] as String,
-      expirationDate:
-          Date.fromJson(json['expiration_date'] as Map<String, dynamic>?),
-      frontSide:
-          DatedFile.fromJson(json['front_side'] as Map<String, dynamic>?)!,
-      reverseSide:
-          DatedFile.fromJson(json['reverse_side'] as Map<String, dynamic>?),
+      expirationDate: Date.fromJson(
+        json['expiration_date'] as Map<String, dynamic>?,
+      ),
+      frontSide: DatedFile.fromJson(
+        json['front_side'] as Map<String, dynamic>?,
+      )!,
+      reverseSide: DatedFile.fromJson(
+        json['reverse_side'] as Map<String, dynamic>?,
+      ),
       selfie: DatedFile.fromJson(json['selfie'] as Map<String, dynamic>?),
       translation: List<DatedFile>.from(
-          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => DatedFile.fromJson(item))
-              .toList()),
+        ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => DatedFile.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -62,14 +66,14 @@ class IdentityDocument extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'number': number,
-        'expiration_date': expirationDate?.toJson(),
-        'front_side': frontSide.toJson(),
-        'reverse_side': reverseSide?.toJson(),
-        'selfie': selfie?.toJson(),
-        'translation': translation.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'number': number,
+    'expiration_date': expirationDate?.toJson(),
+    'front_side': frontSide.toJson(),
+    'reverse_side': reverseSide?.toJson(),
+    'selfie': selfie?.toJson(),
+    'translation': translation.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

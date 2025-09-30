@@ -44,12 +44,12 @@ class InlineQueryResultVideo extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'video': video.toJson(),
-        'title': title,
-        'description': description,
-        '@type': constructor,
-      };
+    'id': id,
+    'video': video.toJson(),
+    'title': title,
+    'description': description,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

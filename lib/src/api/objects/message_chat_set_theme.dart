@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A theme in the chat has been changed
 @immutable
 class MessageChatSetTheme extends MessageContent {
-  const MessageChatSetTheme({
-    required this.themeName,
-  });
+  const MessageChatSetTheme({required this.themeName});
 
   /// [themeName] If non-empty, name of a new theme, set for the chat.
   /// Otherwise, chat theme was reset to the default one
@@ -20,9 +18,7 @@ class MessageChatSetTheme extends MessageContent {
       return null;
     }
 
-    return MessageChatSetTheme(
-      themeName: json['theme_name'] as String,
-    );
+    return MessageChatSetTheme(themeName: json['theme_name'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessageChatSetTheme extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'theme_name': themeName,
-        '@type': constructor,
-      };
+    'theme_name': themeName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

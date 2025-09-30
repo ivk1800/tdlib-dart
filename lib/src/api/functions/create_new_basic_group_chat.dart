@@ -33,11 +33,11 @@ class CreateNewBasicGroupChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        'title': title,
-        'message_auto_delete_time': messageAutoDeleteTime,
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    'title': title,
+    'message_auto_delete_time': messageAutoDeleteTime,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

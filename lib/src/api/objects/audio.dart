@@ -63,13 +63,16 @@ class Audio extends TdObject {
       fileName: json['file_name'] as String,
       mimeType: json['mime_type'] as String,
       albumCoverMinithumbnail: Minithumbnail.fromJson(
-          json['album_cover_minithumbnail'] as Map<String, dynamic>?),
+        json['album_cover_minithumbnail'] as Map<String, dynamic>?,
+      ),
       albumCoverThumbnail: Thumbnail.fromJson(
-          json['album_cover_thumbnail'] as Map<String, dynamic>?),
+        json['album_cover_thumbnail'] as Map<String, dynamic>?,
+      ),
       externalAlbumCovers: List<Thumbnail>.from(
-          ((json['external_album_covers'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Thumbnail.fromJson(item))
-              .toList()),
+        ((json['external_album_covers'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Thumbnail.fromJson(item))
+            .toList(),
+      ),
       audio: File.fromJson(json['audio'] as Map<String, dynamic>?)!,
     );
   }
@@ -79,18 +82,19 @@ class Audio extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'title': title,
-        'performer': performer,
-        'file_name': fileName,
-        'mime_type': mimeType,
-        'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
-        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
-        'external_album_covers':
-            externalAlbumCovers.map((item) => item.toJson()).toList(),
-        'audio': audio.toJson(),
-        '@type': constructor,
-      };
+    'duration': duration,
+    'title': title,
+    'performer': performer,
+    'file_name': fileName,
+    'mime_type': mimeType,
+    'album_cover_minithumbnail': albumCoverMinithumbnail?.toJson(),
+    'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+    'external_album_covers': externalAlbumCovers
+        .map((item) => item.toJson())
+        .toList(),
+    'audio': audio.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

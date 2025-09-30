@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat theme was changed
 @immutable
 class UpdateChatTheme extends Update {
-  const UpdateChatTheme({
-    required this.chatId,
-    required this.themeName,
-  });
+  const UpdateChatTheme({required this.chatId, required this.themeName});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -35,10 +32,10 @@ class UpdateChatTheme extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'theme_name': themeName,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'theme_name': themeName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

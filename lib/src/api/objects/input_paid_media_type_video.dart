@@ -6,9 +6,18 @@ import '../tdapi.dart';
 @immutable
 class InputPaidMediaTypeVideo extends InputPaidMediaType {
   const InputPaidMediaTypeVideo({
+    this.cover,
+    required this.startTimestamp,
     required this.duration,
     required this.supportsStreaming,
   });
+
+  /// [cover] Cover of the video; pass null to skip cover uploading
+  final InputFile? cover;
+
+  /// [startTimestamp] Timestamp from which the video playing must start, in
+  /// seconds
+  final int startTimestamp;
 
   /// [duration] Duration of the video, in seconds
   final int duration;
@@ -24,6 +33,8 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
     }
 
     return InputPaidMediaTypeVideo(
+      cover: InputFile.fromJson(json['cover'] as Map<String, dynamic>?),
+      startTimestamp: json['start_timestamp'] as int,
       duration: json['duration'] as int,
       supportsStreaming: json['supports_streaming'] as bool,
     );
@@ -34,10 +45,12 @@ class InputPaidMediaTypeVideo extends InputPaidMediaType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'duration': duration,
-        'supports_streaming': supportsStreaming,
-        '@type': constructor,
-      };
+    'cover': cover?.toJson(),
+    'start_timestamp': startTimestamp,
+    'duration': duration,
+    'supports_streaming': supportsStreaming,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

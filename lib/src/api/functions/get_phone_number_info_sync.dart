@@ -28,10 +28,10 @@ class GetPhoneNumberInfoSync extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_code': languageCode,
-        'phone_number_prefix': phoneNumberPrefix,
-        '@type': constructor,
-      };
+    'language_code': languageCode,
+    'phone_number_prefix': phoneNumberPrefix,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

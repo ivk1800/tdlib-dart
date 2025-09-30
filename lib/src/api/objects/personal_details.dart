@@ -76,18 +76,18 @@ class PersonalDetails extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'first_name': firstName,
-        'middle_name': middleName,
-        'last_name': lastName,
-        'native_first_name': nativeFirstName,
-        'native_middle_name': nativeMiddleName,
-        'native_last_name': nativeLastName,
-        'birthdate': birthdate.toJson(),
-        'gender': gender,
-        'country_code': countryCode,
-        'residence_country_code': residenceCountryCode,
-        '@type': constructor,
-      };
+    'first_name': firstName,
+    'middle_name': middleName,
+    'last_name': lastName,
+    'native_first_name': nativeFirstName,
+    'native_middle_name': nativeMiddleName,
+    'native_last_name': nativeLastName,
+    'birthdate': birthdate.toJson(),
+    'gender': gender,
+    'country_code': countryCode,
+    'residence_country_code': residenceCountryCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

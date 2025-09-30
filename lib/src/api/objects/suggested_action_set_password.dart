@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// in again
 @immutable
 class SuggestedActionSetPassword extends SuggestedAction {
-  const SuggestedActionSetPassword({
-    required this.authorizationDelay,
-  });
+  const SuggestedActionSetPassword({required this.authorizationDelay});
 
   /// [authorizationDelay] The number of days to pass between consecutive
   /// authorizations if the user declines to set password; if 0, then the user
@@ -32,9 +30,9 @@ class SuggestedActionSetPassword extends SuggestedAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'authorization_delay': authorizationDelay,
-        '@type': constructor,
-      };
+    'authorization_delay': authorizationDelay,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about a message created with importMessages
 @immutable
 class MessageImportInfo extends TdObject {
-  const MessageImportInfo({
-    required this.senderName,
-    required this.date,
-  });
+  const MessageImportInfo({required this.senderName, required this.date});
 
   /// [senderName] Name of the original sender
   final String senderName;
@@ -34,10 +31,10 @@ class MessageImportInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_name': senderName,
-        'date': date,
-        '@type': constructor,
-      };
+    'sender_name': senderName,
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

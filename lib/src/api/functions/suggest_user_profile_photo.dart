@@ -2,14 +2,12 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Suggests a profile photo to another regular user with common messages
+/// Suggests a profile photo to another regular user with common messages and
+/// allowing non-paid messages
 /// Returns [Ok]
 @immutable
 class SuggestUserProfilePhoto extends TdFunction {
-  const SuggestUserProfilePhoto({
-    required this.userId,
-    required this.photo,
-  });
+  const SuggestUserProfilePhoto({required this.userId, required this.photo});
 
   /// [userId] User identifier
   final int userId;
@@ -25,10 +23,10 @@ class SuggestUserProfilePhoto extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

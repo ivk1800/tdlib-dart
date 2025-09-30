@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Users]
 @immutable
 class SearchContacts extends TdFunction {
-  const SearchContacts({
-    required this.query,
-    required this.limit,
-  });
+  const SearchContacts({required this.query, required this.limit});
 
   /// [query] Query to search for; may be empty to return all contacts
   final String query;
@@ -25,10 +22,10 @@ class SearchContacts extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'query': query,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

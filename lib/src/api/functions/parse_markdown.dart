@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [FormattedText]
 @immutable
 class ParseMarkdown extends TdFunction {
-  const ParseMarkdown({
-    required this.text,
-  });
+  const ParseMarkdown({required this.text});
 
   /// [text] The text to parse. For example, "__italic__ ~~strikethrough~~
   /// ||spoiler|| **bold** `code` ```pre``` __[italic__ text_url](telegram.org)
@@ -23,9 +21,9 @@ class ParseMarkdown extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

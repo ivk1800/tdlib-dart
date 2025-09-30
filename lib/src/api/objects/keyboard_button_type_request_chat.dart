@@ -88,9 +88,11 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
       chatHasUsername: json['chat_has_username'] as bool,
       chatIsCreated: json['chat_is_created'] as bool,
       userAdministratorRights: ChatAdministratorRights.fromJson(
-          json['user_administrator_rights'] as Map<String, dynamic>?),
+        json['user_administrator_rights'] as Map<String, dynamic>?,
+      ),
       botAdministratorRights: ChatAdministratorRights.fromJson(
-          json['bot_administrator_rights'] as Map<String, dynamic>?),
+        json['bot_administrator_rights'] as Map<String, dynamic>?,
+      ),
       botIsMember: json['bot_is_member'] as bool,
       requestTitle: json['request_title'] as bool,
       requestUsername: json['request_username'] as bool,
@@ -103,21 +105,21 @@ class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'chat_is_channel': chatIsChannel,
-        'restrict_chat_is_forum': restrictChatIsForum,
-        'chat_is_forum': chatIsForum,
-        'restrict_chat_has_username': restrictChatHasUsername,
-        'chat_has_username': chatHasUsername,
-        'chat_is_created': chatIsCreated,
-        'user_administrator_rights': userAdministratorRights?.toJson(),
-        'bot_administrator_rights': botAdministratorRights?.toJson(),
-        'bot_is_member': botIsMember,
-        'request_title': requestTitle,
-        'request_username': requestUsername,
-        'request_photo': requestPhoto,
-        '@type': constructor,
-      };
+    'id': id,
+    'chat_is_channel': chatIsChannel,
+    'restrict_chat_is_forum': restrictChatIsForum,
+    'chat_is_forum': chatIsForum,
+    'restrict_chat_has_username': restrictChatHasUsername,
+    'chat_has_username': chatHasUsername,
+    'chat_is_created': chatIsCreated,
+    'user_administrator_rights': userAdministratorRights?.toJson(),
+    'bot_administrator_rights': botAdministratorRights?.toJson(),
+    'bot_is_member': botIsMember,
+    'request_title': requestTitle,
+    'request_username': requestUsername,
+    'request_photo': requestPhoto,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

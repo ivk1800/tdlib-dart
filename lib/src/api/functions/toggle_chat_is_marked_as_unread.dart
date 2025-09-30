@@ -24,10 +24,10 @@ class ToggleChatIsMarkedAsUnread extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'is_marked_as_unread': isMarkedAsUnread,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'is_marked_as_unread': isMarkedAsUnread,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

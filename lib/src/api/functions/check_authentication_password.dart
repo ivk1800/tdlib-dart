@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CheckAuthenticationPassword extends TdFunction {
-  const CheckAuthenticationPassword({
-    required this.password,
-  });
+  const CheckAuthenticationPassword({required this.password});
 
   /// [password] The 2-step verification password to check
   final String password;
@@ -21,9 +19,9 @@ class CheckAuthenticationPassword extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password': password,
-        '@type': constructor,
-      };
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

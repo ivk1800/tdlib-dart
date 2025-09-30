@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The speech recognition successfully finished
 @immutable
 class SpeechRecognitionResultText extends SpeechRecognitionResult {
-  const SpeechRecognitionResultText({
-    required this.text,
-  });
+  const SpeechRecognitionResultText({required this.text});
 
   /// [text] Recognized text
   final String text;
@@ -19,9 +17,7 @@ class SpeechRecognitionResultText extends SpeechRecognitionResult {
       return null;
     }
 
-    return SpeechRecognitionResultText(
-      text: json['text'] as String,
-    );
+    return SpeechRecognitionResultText(text: json['text'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class SpeechRecognitionResultText extends SpeechRecognitionResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        '@type': constructor,
-      };
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -75,17 +75,17 @@ class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'restrict_user_is_bot': restrictUserIsBot,
-        'user_is_bot': userIsBot,
-        'restrict_user_is_premium': restrictUserIsPremium,
-        'user_is_premium': userIsPremium,
-        'max_quantity': maxQuantity,
-        'request_name': requestName,
-        'request_username': requestUsername,
-        'request_photo': requestPhoto,
-        '@type': constructor,
-      };
+    'id': id,
+    'restrict_user_is_bot': restrictUserIsBot,
+    'user_is_bot': userIsBot,
+    'restrict_user_is_premium': restrictUserIsPremium,
+    'user_is_premium': userIsPremium,
+    'max_quantity': maxQuantity,
+    'request_name': requestName,
+    'request_username': requestUsername,
+    'request_photo': requestPhoto,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

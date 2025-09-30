@@ -3,7 +3,7 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// The link is a link to a video chat. Call searchPublicChat with the given
-/// chat username, and then joinGroupCall with the given invite hash to
+/// chat username, and then joinVideoChat with the given invite hash to
 /// process the link
 @immutable
 class InternalLinkTypeVideoChat extends InternalLinkType {
@@ -43,11 +43,11 @@ class InternalLinkTypeVideoChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_username': chatUsername,
-        'invite_hash': inviteHash,
-        'is_live_stream': isLiveStream,
-        '@type': constructor,
-      };
+    'chat_username': chatUsername,
+    'invite_hash': inviteHash,
+    'is_live_stream': isLiveStream,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [SentWebAppMessage]
 @immutable
 class AnswerWebAppQuery extends TdFunction {
-  const AnswerWebAppQuery({
-    required this.webAppQueryId,
-    required this.result,
-  });
+  const AnswerWebAppQuery({required this.webAppQueryId, required this.result});
 
   /// [webAppQueryId] Identifier of the Web App query
   final String webAppQueryId;
@@ -26,10 +23,10 @@ class AnswerWebAppQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'web_app_query_id': webAppQueryId,
-        'result': result.toJson(),
-        '@type': constructor,
-      };
+    'web_app_query_id': webAppQueryId,
+    'result': result.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

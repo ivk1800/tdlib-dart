@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// content was opened
 @immutable
 class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
-  const MessageSelfDestructTypeTimer({
-    required this.selfDestructTime,
-  });
+  const MessageSelfDestructTypeTimer({required this.selfDestructTime});
 
   /// [selfDestructTime] The message's self-destruct time, in seconds; must be
   /// between 0 and 60 in private chats
@@ -31,9 +29,9 @@ class MessageSelfDestructTypeTimer extends MessageSelfDestructType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'self_destruct_time': selfDestructTime,
-        '@type': constructor,
-      };
+    'self_destruct_time': selfDestructTime,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -17,8 +17,8 @@ class ChatNotificationSettings extends TdObject {
     required this.muteStories,
     required this.useDefaultStorySound,
     required this.storySoundId,
-    required this.useDefaultShowStorySender,
-    required this.showStorySender,
+    required this.useDefaultShowStoryPoster,
+    required this.showStoryPoster,
     required this.useDefaultDisablePinnedMessageNotifications,
     required this.disablePinnedMessageNotifications,
     required this.useDefaultDisableMentionNotifications,
@@ -62,13 +62,13 @@ class ChatNotificationSettings extends TdObject {
   /// stories; 0 if sound is disabled
   final int storySoundId;
 
-  /// [useDefaultShowStorySender] If true, the value for the relevant type of
-  /// chat is used instead of show_story_sender
-  final bool useDefaultShowStorySender;
+  /// [useDefaultShowStoryPoster] If true, the value for the relevant type of
+  /// chat is used instead of show_story_poster
+  final bool useDefaultShowStoryPoster;
 
-  /// [showStorySender] True, if the sender of stories must be displayed in
-  /// notifications
-  final bool showStorySender;
+  /// [showStoryPoster] True, if the chat that posted a story must be displayed
+  /// in notifications
+  final bool showStoryPoster;
 
   /// [useDefaultDisablePinnedMessageNotifications] If true, the value for the
   /// relevant type of chat or the forum chat is used instead of
@@ -106,8 +106,8 @@ class ChatNotificationSettings extends TdObject {
       muteStories: json['mute_stories'] as bool,
       useDefaultStorySound: json['use_default_story_sound'] as bool,
       storySoundId: int.tryParse(json['story_sound_id']) ?? 0,
-      useDefaultShowStorySender: json['use_default_show_story_sender'] as bool,
-      showStorySender: json['show_story_sender'] as bool,
+      useDefaultShowStoryPoster: json['use_default_show_story_poster'] as bool,
+      showStoryPoster: json['show_story_poster'] as bool,
       useDefaultDisablePinnedMessageNotifications:
           json['use_default_disable_pinned_message_notifications'] as bool,
       disablePinnedMessageNotifications:
@@ -124,27 +124,26 @@ class ChatNotificationSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'use_default_mute_for': useDefaultMuteFor,
-        'mute_for': muteFor,
-        'use_default_sound': useDefaultSound,
-        'sound_id': soundId.toString(),
-        'use_default_show_preview': useDefaultShowPreview,
-        'show_preview': showPreview,
-        'use_default_mute_stories': useDefaultMuteStories,
-        'mute_stories': muteStories,
-        'use_default_story_sound': useDefaultStorySound,
-        'story_sound_id': storySoundId.toString(),
-        'use_default_show_story_sender': useDefaultShowStorySender,
-        'show_story_sender': showStorySender,
-        'use_default_disable_pinned_message_notifications':
-            useDefaultDisablePinnedMessageNotifications,
-        'disable_pinned_message_notifications':
-            disablePinnedMessageNotifications,
-        'use_default_disable_mention_notifications':
-            useDefaultDisableMentionNotifications,
-        'disable_mention_notifications': disableMentionNotifications,
-        '@type': constructor,
-      };
+    'use_default_mute_for': useDefaultMuteFor,
+    'mute_for': muteFor,
+    'use_default_sound': useDefaultSound,
+    'sound_id': soundId.toString(),
+    'use_default_show_preview': useDefaultShowPreview,
+    'show_preview': showPreview,
+    'use_default_mute_stories': useDefaultMuteStories,
+    'mute_stories': muteStories,
+    'use_default_story_sound': useDefaultStorySound,
+    'story_sound_id': storySoundId.toString(),
+    'use_default_show_story_poster': useDefaultShowStoryPoster,
+    'show_story_poster': showStoryPoster,
+    'use_default_disable_pinned_message_notifications':
+        useDefaultDisablePinnedMessageNotifications,
+    'disable_pinned_message_notifications': disablePinnedMessageNotifications,
+    'use_default_disable_mention_notifications':
+        useDefaultDisableMentionNotifications,
+    'disable_mention_notifications': disableMentionNotifications,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

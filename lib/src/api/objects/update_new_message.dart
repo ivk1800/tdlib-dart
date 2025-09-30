@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A new message was received; can also be an outgoing message
 @immutable
 class UpdateNewMessage extends Update {
-  const UpdateNewMessage({
-    required this.message,
-  });
+  const UpdateNewMessage({required this.message});
 
   /// [message] The new message
   final Message message;
@@ -29,9 +27,9 @@ class UpdateNewMessage extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

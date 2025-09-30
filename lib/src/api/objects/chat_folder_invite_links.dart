@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of chat folder invite links
 @immutable
 class ChatFolderInviteLinks extends TdObject {
-  const ChatFolderInviteLinks({
-    required this.inviteLinks,
-  });
+  const ChatFolderInviteLinks({required this.inviteLinks});
 
   /// [inviteLinks] List of the invite links
   final List<ChatFolderInviteLink> inviteLinks;
@@ -21,9 +19,10 @@ class ChatFolderInviteLinks extends TdObject {
 
     return ChatFolderInviteLinks(
       inviteLinks: List<ChatFolderInviteLink>.from(
-          ((json['invite_links'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatFolderInviteLink.fromJson(item))
-              .toList()),
+        ((json['invite_links'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatFolderInviteLink.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class ChatFolderInviteLinks extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_links': inviteLinks.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'invite_links': inviteLinks.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

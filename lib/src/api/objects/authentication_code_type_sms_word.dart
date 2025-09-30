@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// type of code
 @immutable
 class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
-  const AuthenticationCodeTypeSmsWord({
-    required this.firstLetter,
-  });
+  const AuthenticationCodeTypeSmsWord({required this.firstLetter});
 
   /// [firstLetter] The first letters of the word if known
   final String firstLetter;
@@ -31,9 +29,9 @@ class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'first_letter': firstLetter,
-        '@type': constructor,
-      };
+    'first_letter': firstLetter,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

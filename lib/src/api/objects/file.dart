@@ -50,13 +50,13 @@ class File extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'size': size,
-        'expected_size': expectedSize,
-        'local': local.toJson(),
-        'remote': remote.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'size': size,
+    'expected_size': expectedSize,
+    'local': local.toJson(),
+    'remote': remote.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

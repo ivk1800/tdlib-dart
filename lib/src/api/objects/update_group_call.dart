@@ -5,11 +5,9 @@ import '../tdapi.dart';
 /// Information about a group call was updated
 @immutable
 class UpdateGroupCall extends Update {
-  const UpdateGroupCall({
-    required this.groupCall,
-  });
+  const UpdateGroupCall({required this.groupCall});
 
-  /// [groupCall] New data about a group call
+  /// [groupCall] New data about the group call
   final GroupCall groupCall;
 
   static const String constructor = 'updateGroupCall';
@@ -20,8 +18,9 @@ class UpdateGroupCall extends Update {
     }
 
     return UpdateGroupCall(
-      groupCall:
-          GroupCall.fromJson(json['group_call'] as Map<String, dynamic>?)!,
+      groupCall: GroupCall.fromJson(
+        json['group_call'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class UpdateGroupCall extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call': groupCall.toJson(),
-        '@type': constructor,
-      };
+    'group_call': groupCall.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

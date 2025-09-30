@@ -31,9 +31,9 @@ class SuggestedActionExtendPremium extends SuggestedAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'manage_premium_subscription_url': managePremiumSubscriptionUrl,
-        '@type': constructor,
-      };
+    'manage_premium_subscription_url': managePremiumSubscriptionUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

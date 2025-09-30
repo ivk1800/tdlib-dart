@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Used to search for supergroup or channel members via a (string) query
 @immutable
 class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
-  const SupergroupMembersFilterSearch({
-    required this.query,
-  });
+  const SupergroupMembersFilterSearch({required this.query});
 
   /// [query] Query to search for
   final String query;
@@ -19,9 +17,7 @@ class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
       return null;
     }
 
-    return SupergroupMembersFilterSearch(
-      query: json['query'] as String,
-    );
+    return SupergroupMembersFilterSearch(query: json['query'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        '@type': constructor,
-      };
+    'query': query,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

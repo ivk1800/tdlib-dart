@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Chat]
 @immutable
 class CreateBasicGroupChat extends TdFunction {
-  const CreateBasicGroupChat({
-    required this.basicGroupId,
-    required this.force,
-  });
+  const CreateBasicGroupChat({required this.basicGroupId, required this.force});
 
   /// [basicGroupId] Basic group identifier
   final int basicGroupId;
@@ -26,10 +23,10 @@ class CreateBasicGroupChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'basic_group_id': basicGroupId,
-        'force': force,
-        '@type': constructor,
-      };
+    'basic_group_id': basicGroupId,
+    'force': force,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

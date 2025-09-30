@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// to accept the terms of service and provide the data
 @immutable
 class AuthorizationStateWaitRegistration extends AuthorizationState {
-  const AuthorizationStateWaitRegistration({
-    required this.termsOfService,
-  });
+  const AuthorizationStateWaitRegistration({required this.termsOfService});
 
   /// [termsOfService] Telegram terms of service
   final TermsOfService termsOfService;
@@ -17,14 +15,16 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
   static const String constructor = 'authorizationStateWaitRegistration';
 
   static AuthorizationStateWaitRegistration? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return AuthorizationStateWaitRegistration(
       termsOfService: TermsOfService.fromJson(
-          json['terms_of_service'] as Map<String, dynamic>?)!,
+        json['terms_of_service'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -33,9 +33,9 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'terms_of_service': termsOfService.toJson(),
-        '@type': constructor,
-      };
+    'terms_of_service': termsOfService.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

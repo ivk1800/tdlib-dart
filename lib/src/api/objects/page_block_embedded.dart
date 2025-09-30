@@ -50,12 +50,14 @@ class PageBlockEmbedded extends PageBlock {
     return PageBlockEmbedded(
       url: json['url'] as String,
       html: json['html'] as String,
-      posterPhoto:
-          Photo.fromJson(json['poster_photo'] as Map<String, dynamic>?),
+      posterPhoto: Photo.fromJson(
+        json['poster_photo'] as Map<String, dynamic>?,
+      ),
       width: json['width'] as int,
       height: json['height'] as int,
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       isFullWidth: json['is_full_width'] as bool,
       allowScrolling: json['allow_scrolling'] as bool,
     );
@@ -66,16 +68,16 @@ class PageBlockEmbedded extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'html': html,
-        'poster_photo': posterPhoto?.toJson(),
-        'width': width,
-        'height': height,
-        'caption': caption.toJson(),
-        'is_full_width': isFullWidth,
-        'allow_scrolling': allowScrolling,
-        '@type': constructor,
-      };
+    'url': url,
+    'html': html,
+    'poster_photo': posterPhoto?.toJson(),
+    'width': width,
+    'height': height,
+    'caption': caption.toJson(),
+    'is_full_width': isFullWidth,
+    'allow_scrolling': allowScrolling,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

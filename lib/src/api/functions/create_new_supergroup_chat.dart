@@ -50,15 +50,15 @@ class CreateNewSupergroupChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'is_forum': isForum,
-        'is_channel': isChannel,
-        'description': description,
-        'location': location?.toJson(),
-        'message_auto_delete_time': messageAutoDeleteTime,
-        'for_import': forImport,
-        '@type': constructor,
-      };
+    'title': title,
+    'is_forum': isForum,
+    'is_channel': isChannel,
+    'description': description,
+    'location': location?.toJson(),
+    'message_auto_delete_time': messageAutoDeleteTime,
+    'for_import': forImport,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

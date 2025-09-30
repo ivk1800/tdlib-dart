@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a value representing a number of seconds
 @immutable
 class Seconds extends TdObject {
-  const Seconds({
-    required this.seconds,
-  });
+  const Seconds({required this.seconds});
 
   /// [seconds] Number of seconds
   final double seconds;
@@ -19,9 +17,7 @@ class Seconds extends TdObject {
       return null;
     }
 
-    return Seconds(
-      seconds: (json['seconds'] as num).toDouble(),
-    );
+    return Seconds(seconds: (json['seconds'] as num).toDouble());
   }
 
   @override
@@ -29,9 +25,9 @@ class Seconds extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'seconds': seconds,
-        '@type': constructor,
-      };
+    'seconds': seconds,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

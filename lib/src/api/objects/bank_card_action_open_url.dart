@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes an action associated with a bank card number
 @immutable
 class BankCardActionOpenUrl extends TdObject {
-  const BankCardActionOpenUrl({
-    required this.text,
-    required this.url,
-  });
+  const BankCardActionOpenUrl({required this.text, required this.url});
 
   /// [text] Action text
   final String text;
@@ -34,10 +31,10 @@ class BankCardActionOpenUrl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'url': url,
-        '@type': constructor,
-      };
+    'text': text,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

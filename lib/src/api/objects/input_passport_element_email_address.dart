@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// address
 @immutable
 class InputPassportElementEmailAddress extends InputPassportElement {
-  const InputPassportElementEmailAddress({
-    required this.emailAddress,
-  });
+  const InputPassportElementEmailAddress({required this.emailAddress});
 
   /// [emailAddress] The email address to be saved
   final String emailAddress;
@@ -16,7 +14,8 @@ class InputPassportElementEmailAddress extends InputPassportElement {
   static const String constructor = 'inputPassportElementEmailAddress';
 
   static InputPassportElementEmailAddress? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +30,9 @@ class InputPassportElementEmailAddress extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'email_address': emailAddress,
-        '@type': constructor,
-      };
+    'email_address': emailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

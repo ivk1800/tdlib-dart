@@ -27,7 +27,7 @@ class CreateVideoChat extends TdFunction {
   final int startDate;
 
   /// [isRtmpStream] Pass true to create an RTMP stream instead of an ordinary
-  /// video chat; requires owner privileges
+  /// video chat
   final bool isRtmpStream;
 
   static const String constructor = 'createVideoChat';
@@ -37,12 +37,12 @@ class CreateVideoChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'title': title,
-        'start_date': startDate,
-        'is_rtmp_stream': isRtmpStream,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'title': title,
+    'start_date': startDate,
+    'is_rtmp_stream': isRtmpStream,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

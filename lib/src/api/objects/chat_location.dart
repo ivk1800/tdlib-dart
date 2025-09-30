@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a location to which a chat is connected
 @immutable
 class ChatLocation extends TdObject {
-  const ChatLocation({
-    required this.location,
-    required this.address,
-  });
+  const ChatLocation({required this.location, required this.address});
 
   /// [location] The location
   final Location location;
@@ -34,10 +31,10 @@ class ChatLocation extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'address': address,
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'address': address,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The maximum length of captions of sent stories
+/// The maximum length of captions of posted stories
 @immutable
 class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
   const PremiumLimitTypeStoryCaptionLength();
@@ -10,7 +10,8 @@ class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
   static const String constructor = 'premiumLimitTypeStoryCaptionLength';
 
   static PremiumLimitTypeStoryCaptionLength? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -22,9 +23,7 @@ class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

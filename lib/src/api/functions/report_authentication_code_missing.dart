@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ReportAuthenticationCodeMissing extends TdFunction {
-  const ReportAuthenticationCodeMissing({
-    required this.mobileNetworkCode,
-  });
+  const ReportAuthenticationCodeMissing({required this.mobileNetworkCode});
 
   /// [mobileNetworkCode] Current mobile network code
   final String mobileNetworkCode;
@@ -22,9 +20,9 @@ class ReportAuthenticationCodeMissing extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'mobile_network_code': mobileNetworkCode,
-        '@type': constructor,
-      };
+    'mobile_network_code': mobileNetworkCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

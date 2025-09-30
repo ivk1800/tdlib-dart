@@ -25,10 +25,10 @@ class ToggleSessionCanAcceptCalls extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'session_id': sessionId,
-        'can_accept_calls': canAcceptCalls,
-        '@type': constructor,
-      };
+    'session_id': sessionId,
+    'can_accept_calls': canAcceptCalls,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

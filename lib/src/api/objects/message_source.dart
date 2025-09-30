@@ -13,6 +13,7 @@ abstract class MessageSource extends TdObject {
   /// [MessageSourceChatEventLog]
   /// [MessageSourceChatHistory]
   /// [MessageSourceChatList]
+  /// [MessageSourceDirectMessagesChatTopicHistory]
   /// [MessageSourceForumTopicHistory]
   /// [MessageSourceHistoryPreview]
   /// [MessageSourceMessageThreadHistory]
@@ -32,6 +33,8 @@ abstract class MessageSource extends TdObject {
         return MessageSourceChatHistory.fromJson(json);
       case MessageSourceChatList.constructor:
         return MessageSourceChatList.fromJson(json);
+      case MessageSourceDirectMessagesChatTopicHistory.constructor:
+        return MessageSourceDirectMessagesChatTopicHistory.fromJson(json);
       case MessageSourceForumTopicHistory.constructor:
         return MessageSourceForumTopicHistory.fromJson(json);
       case MessageSourceHistoryPreview.constructor:

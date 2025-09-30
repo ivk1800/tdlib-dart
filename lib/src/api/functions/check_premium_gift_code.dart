@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [PremiumGiftCodeInfo]
 @immutable
 class CheckPremiumGiftCode extends TdFunction {
-  const CheckPremiumGiftCode({
-    required this.code,
-  });
+  const CheckPremiumGiftCode({required this.code});
 
   /// [code] The code to check
   final String code;
@@ -20,9 +18,9 @@ class CheckPremiumGiftCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'code': code,
-        '@type': constructor,
-      };
+    'code': code,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

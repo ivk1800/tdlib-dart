@@ -49,15 +49,15 @@ class CreateNewStickerSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'title': title,
-        'name': name,
-        'sticker_type': stickerType.toJson(),
-        'needs_repainting': needsRepainting,
-        'stickers': stickers.map((item) => item.toJson()).toList(),
-        'source': source,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'title': title,
+    'name': name,
+    'sticker_type': stickerType.toJson(),
+    'needs_repainting': needsRepainting,
+    'stickers': stickers.map((item) => item.toJson()).toList(),
+    'source': source,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

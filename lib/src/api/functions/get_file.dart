@@ -2,13 +2,11 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a file; this is an offline request
+/// Returns information about a file. This is an offline method
 /// Returns [File]
 @immutable
 class GetFile extends TdFunction {
-  const GetFile({
-    required this.fileId,
-  });
+  const GetFile({required this.fileId});
 
   /// [fileId] Identifier of the file to get
   final int fileId;
@@ -20,9 +18,9 @@ class GetFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

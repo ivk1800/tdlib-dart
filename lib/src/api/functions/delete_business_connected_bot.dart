@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteBusinessConnectedBot extends TdFunction {
-  const DeleteBusinessConnectedBot({
-    required this.botUserId,
-  });
+  const DeleteBusinessConnectedBot({required this.botUserId});
 
   /// [botUserId] Unique user identifier for the bot
   final int botUserId;
@@ -20,9 +18,9 @@ class DeleteBusinessConnectedBot extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

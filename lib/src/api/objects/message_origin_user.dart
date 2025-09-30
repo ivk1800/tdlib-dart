@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The message was originally sent by a known user
 @immutable
 class MessageOriginUser extends MessageOrigin {
-  const MessageOriginUser({
-    required this.senderUserId,
-  });
+  const MessageOriginUser({required this.senderUserId});
 
   /// [senderUserId] Identifier of the user that originally sent the message
   final int senderUserId;
@@ -19,9 +17,7 @@ class MessageOriginUser extends MessageOrigin {
       return null;
     }
 
-    return MessageOriginUser(
-      senderUserId: json['sender_user_id'] as int,
-    );
+    return MessageOriginUser(senderUserId: json['sender_user_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageOriginUser extends MessageOrigin {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_user_id': senderUserId,
-        '@type': constructor,
-      };
+    'sender_user_id': senderUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

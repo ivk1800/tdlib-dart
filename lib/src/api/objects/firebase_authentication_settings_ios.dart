@@ -19,7 +19,8 @@ class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSettings {
   static const String constructor = 'firebaseAuthenticationSettingsIos';
 
   static FirebaseAuthenticationSettingsIos? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class FirebaseAuthenticationSettingsIos extends FirebaseAuthenticationSettings {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'device_token': deviceToken,
-        'is_app_sandbox': isAppSandbox,
-        '@type': constructor,
-      };
+    'device_token': deviceToken,
+    'is_app_sandbox': isAppSandbox,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

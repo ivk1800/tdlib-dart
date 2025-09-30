@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SendPhoneNumberFirebaseSms extends TdFunction {
-  const SendPhoneNumberFirebaseSms({
-    required this.token,
-  });
+  const SendPhoneNumberFirebaseSms({required this.token});
 
   /// [token] Play Integrity API or SafetyNet Attestation API token for the
   /// Android application, or secret from push notification for the iOS
@@ -24,9 +22,9 @@ class SendPhoneNumberFirebaseSms extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -31,13 +31,15 @@ class Stories extends TdObject {
     return Stories(
       totalCount: json['total_count'] as int,
       stories: List<Story>.from(
-          ((json['stories'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Story.fromJson(item))
-              .toList()),
+        ((json['stories'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Story.fromJson(item))
+            .toList(),
+      ),
       pinnedStoryIds: List<int>.from(
-          ((json['pinned_story_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['pinned_story_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -46,11 +48,11 @@ class Stories extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'stories': stories.map((item) => item.toJson()).toList(),
-        'pinned_story_ids': pinnedStoryIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'stories': stories.map((item) => item.toJson()).toList(),
+    'pinned_story_ids': pinnedStoryIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

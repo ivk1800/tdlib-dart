@@ -34,10 +34,10 @@ class UpdateChatReadOutbox extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

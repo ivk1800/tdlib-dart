@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A simple object containing a number; for testing only
 @immutable
 class TestInt extends TdObject {
-  const TestInt({
-    required this.value,
-  });
+  const TestInt({required this.value});
 
   /// [value] Number
   final int value;
@@ -19,9 +17,7 @@ class TestInt extends TdObject {
       return null;
     }
 
-    return TestInt(
-      value: json['value'] as int,
-    );
+    return TestInt(value: json['value'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class TestInt extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

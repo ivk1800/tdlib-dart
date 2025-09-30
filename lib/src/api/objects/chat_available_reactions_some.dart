@@ -26,9 +26,10 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
 
     return ChatAvailableReactionsSome(
       reactions: List<ReactionType>.from(
-          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ReactionType.fromJson(item))
-              .toList()),
+        ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ReactionType.fromJson(item))
+            .toList(),
+      ),
       maxReactionCount: json['max_reaction_count'] as int,
     );
   }
@@ -38,10 +39,10 @@ class ChatAvailableReactionsSome extends ChatAvailableReactions {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reactions': reactions.map((item) => item.toJson()).toList(),
-        'max_reaction_count': maxReactionCount,
-        '@type': constructor,
-      };
+    'reactions': reactions.map((item) => item.toJson()).toList(),
+    'max_reaction_count': maxReactionCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

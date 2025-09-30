@@ -36,12 +36,14 @@ class ChatMember extends TdObject {
     }
 
     return ChatMember(
-      memberId:
-          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
+      memberId: MessageSender.fromJson(
+        json['member_id'] as Map<String, dynamic>?,
+      )!,
       inviterUserId: json['inviter_user_id'] as int,
       joinedChatDate: json['joined_chat_date'] as int,
-      status:
-          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      status: ChatMemberStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -50,12 +52,12 @@ class ChatMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'member_id': memberId.toJson(),
-        'inviter_user_id': inviterUserId,
-        'joined_chat_date': joinedChatDate,
-        'status': status.toJson(),
-        '@type': constructor,
-      };
+    'member_id': memberId.toJson(),
+    'inviter_user_id': inviterUserId,
+    'joined_chat_date': joinedChatDate,
+    'status': status.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

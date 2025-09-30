@@ -36,9 +36,10 @@ class UpdateMessageUnreadReactions extends Update {
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
       unreadReactions: List<UnreadReaction>.from(
-          ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => UnreadReaction.fromJson(item))
-              .toList()),
+        ((json['unread_reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => UnreadReaction.fromJson(item))
+            .toList(),
+      ),
       unreadReactionCount: json['unread_reaction_count'] as int,
     );
   }
@@ -48,13 +49,12 @@ class UpdateMessageUnreadReactions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'unread_reactions':
-            unreadReactions.map((item) => item.toJson()).toList(),
-        'unread_reaction_count': unreadReactionCount,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'unread_reactions': unreadReactions.map((item) => item.toJson()).toList(),
+    'unread_reaction_count': unreadReactionCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

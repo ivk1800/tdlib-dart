@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// file changes
 @immutable
 class PassportElementErrorSourceFile extends PassportElementErrorSource {
-  const PassportElementErrorSourceFile({
-    required this.fileIndex,
-  });
+  const PassportElementErrorSourceFile({required this.fileIndex});
 
   /// [fileIndex] Index of a file with the error
   final int fileIndex;
@@ -20,9 +18,7 @@ class PassportElementErrorSourceFile extends PassportElementErrorSource {
       return null;
     }
 
-    return PassportElementErrorSourceFile(
-      fileIndex: json['file_index'] as int,
-    );
+    return PassportElementErrorSourceFile(fileIndex: json['file_index'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class PassportElementErrorSourceFile extends PassportElementErrorSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_index': fileIndex,
-        '@type': constructor,
-      };
+    'file_index': fileIndex,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

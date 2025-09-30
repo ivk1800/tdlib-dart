@@ -40,11 +40,11 @@ class UpdateFileDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_size': totalSize,
-        'total_count': totalCount,
-        'downloaded_size': downloadedSize,
-        '@type': constructor,
-      };
+    'total_size': totalSize,
+    'total_count': totalCount,
+    'downloaded_size': downloadedSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

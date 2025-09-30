@@ -28,11 +28,11 @@ class CreateCall extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'protocol': protocol.toJson(),
-        'is_video': isVideo,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'protocol': protocol.toJson(),
+    'is_video': isVideo,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

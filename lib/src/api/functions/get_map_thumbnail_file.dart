@@ -42,14 +42,14 @@ class GetMapThumbnailFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'zoom': zoom,
-        'width': width,
-        'height': height,
-        'scale': scale,
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'zoom': zoom,
+    'width': width,
+    'height': height,
+    'scale': scale,
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

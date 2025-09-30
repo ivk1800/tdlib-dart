@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A URL linking to a user
 @immutable
 class TMeUrlTypeUser extends TMeUrlType {
-  const TMeUrlTypeUser({
-    required this.userId,
-  });
+  const TMeUrlTypeUser({required this.userId});
 
   /// [userId] Identifier of the user
   final int userId;
@@ -19,9 +17,7 @@ class TMeUrlTypeUser extends TMeUrlType {
       return null;
     }
 
-    return TMeUrlTypeUser(
-      userId: json['user_id'] as int,
-    );
+    return TMeUrlTypeUser(userId: json['user_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class TMeUrlTypeUser extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

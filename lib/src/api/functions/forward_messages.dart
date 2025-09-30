@@ -40,7 +40,7 @@ class ForwardMessages extends TdFunction {
 
   /// [sendCopy] Pass true to copy content of the messages without reference to
   /// the original sender. Always true if the messages are forwarded to a secret
-  /// chat or are local. Use messageProperties.can_be_saved and
+  /// chat or are local. Use messageProperties.can_be_copied and
   /// messageProperties.can_be_copied_to_secret_chat to check whether the
   /// message is suitable
   final bool sendCopy;
@@ -56,15 +56,15 @@ class ForwardMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'from_chat_id': fromChatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'options': options?.toJson(),
-        'send_copy': sendCopy,
-        'remove_caption': removeCaption,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'from_chat_id': fromChatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'options': options?.toJson(),
+    'send_copy': sendCopy,
+    'remove_caption': removeCaption,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

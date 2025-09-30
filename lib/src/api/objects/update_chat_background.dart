@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat background was changed
 @immutable
 class UpdateChatBackground extends Update {
-  const UpdateChatBackground({
-    required this.chatId,
-    this.background,
-  });
+  const UpdateChatBackground({required this.chatId, this.background});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -26,8 +23,9 @@ class UpdateChatBackground extends Update {
 
     return UpdateChatBackground(
       chatId: json['chat_id'] as int,
-      background:
-          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?),
+      background: ChatBackground.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +34,10 @@ class UpdateChatBackground extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'background': background?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'background': background?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

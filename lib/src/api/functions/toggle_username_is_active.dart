@@ -27,10 +27,10 @@ class ToggleUsernameIsActive extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'username': username,
-        'is_active': isActive,
-        '@type': constructor,
-      };
+    'username': username,
+    'is_active': isActive,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

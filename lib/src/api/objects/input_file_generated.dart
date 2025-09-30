@@ -46,11 +46,11 @@ class InputFileGenerated extends InputFile {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'original_path': originalPath,
-        'conversion': conversion,
-        'expected_size': expectedSize,
-        '@type': constructor,
-      };
+    'original_path': originalPath,
+    'conversion': conversion,
+    'expected_size': expectedSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

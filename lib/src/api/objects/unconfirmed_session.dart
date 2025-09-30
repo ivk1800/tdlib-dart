@@ -46,12 +46,12 @@ class UnconfirmedSession extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'log_in_date': logInDate,
-        'device_model': deviceModel,
-        'location': location,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'log_in_date': logInDate,
+    'device_model': deviceModel,
+    'location': location,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

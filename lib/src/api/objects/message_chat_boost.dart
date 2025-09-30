@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The chat was boosted by the sender of the message
 @immutable
 class MessageChatBoost extends MessageContent {
-  const MessageChatBoost({
-    required this.boostCount,
-  });
+  const MessageChatBoost({required this.boostCount});
 
   /// [boostCount] Number of times the chat was boosted
   final int boostCount;
@@ -19,9 +17,7 @@ class MessageChatBoost extends MessageContent {
       return null;
     }
 
-    return MessageChatBoost(
-      boostCount: json['boost_count'] as int,
-    );
+    return MessageChatBoost(boostCount: json['boost_count'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageChatBoost extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'boost_count': boostCount,
-        '@type': constructor,
-      };
+    'boost_count': boostCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

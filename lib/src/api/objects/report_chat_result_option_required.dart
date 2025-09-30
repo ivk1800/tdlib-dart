@@ -27,9 +27,10 @@ class ReportChatResultOptionRequired extends ReportChatResult {
     return ReportChatResultOptionRequired(
       title: json['title'] as String,
       options: List<ReportOption>.from(
-          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ReportOption.fromJson(item))
-              .toList()),
+        ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ReportOption.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +39,10 @@ class ReportChatResultOptionRequired extends ReportChatResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'options': options.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'title': title,
+    'options': options.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// to join the chat, then call joinChatByInviteLink
 @immutable
 class InternalLinkTypeChatInvite extends InternalLinkType {
-  const InternalLinkTypeChatInvite({
-    required this.inviteLink,
-  });
+  const InternalLinkTypeChatInvite({required this.inviteLink});
 
   /// [inviteLink] Internal representation of the invite link
   final String inviteLink;
@@ -31,9 +29,9 @@ class InternalLinkTypeChatInvite extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

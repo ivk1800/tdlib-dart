@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A profile photo was suggested to a user in a private chat
 @immutable
 class MessageSuggestProfilePhoto extends MessageContent {
-  const MessageSuggestProfilePhoto({
-    required this.photo,
-  });
+  const MessageSuggestProfilePhoto({required this.photo});
 
   /// [photo] The suggested chat photo. Use the method setProfilePhoto with
   /// inputChatPhotoPrevious to apply the photo
@@ -30,9 +28,9 @@ class MessageSuggestProfilePhoto extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

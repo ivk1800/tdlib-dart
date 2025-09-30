@@ -36,10 +36,10 @@ class ChatEventMessageDeleted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An MTProto proxy server
 @immutable
 class ProxyTypeMtproto extends ProxyType {
-  const ProxyTypeMtproto({
-    required this.secret,
-  });
+  const ProxyTypeMtproto({required this.secret});
 
   /// [secret] The proxy's secret in hexadecimal encoding
   final String secret;
@@ -19,9 +17,7 @@ class ProxyTypeMtproto extends ProxyType {
       return null;
     }
 
-    return ProxyTypeMtproto(
-      secret: json['secret'] as String,
-    );
+    return ProxyTypeMtproto(secret: json['secret'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class ProxyTypeMtproto extends ProxyType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'secret': secret,
-        '@type': constructor,
-      };
+    'secret': secret,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -19,16 +19,19 @@ class PremiumFeaturePromotionAnimation extends TdObject {
   static const String constructor = 'premiumFeaturePromotionAnimation';
 
   static PremiumFeaturePromotionAnimation? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return PremiumFeaturePromotionAnimation(
-      feature:
-          PremiumFeature.fromJson(json['feature'] as Map<String, dynamic>?)!,
-      animation:
-          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      feature: PremiumFeature.fromJson(
+        json['feature'] as Map<String, dynamic>?,
+      )!,
+      animation: Animation.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +40,10 @@ class PremiumFeaturePromotionAnimation extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'feature': feature.toJson(),
-        'animation': animation.toJson(),
-        '@type': constructor,
-      };
+    'feature': feature.toJson(),
+    'animation': animation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

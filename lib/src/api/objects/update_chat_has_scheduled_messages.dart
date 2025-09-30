@@ -34,10 +34,10 @@ class UpdateChatHasScheduledMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'has_scheduled_messages': hasScheduledMessages,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'has_scheduled_messages': hasScheduledMessages,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A document message (a general file)
 @immutable
 class PushMessageContentDocument extends PushMessageContent {
-  const PushMessageContentDocument({
-    this.document,
-    required this.isPinned,
-  });
+  const PushMessageContentDocument({this.document, required this.isPinned});
 
   /// [document] Message content; may be null
   final Document? document;
@@ -35,10 +32,10 @@ class PushMessageContentDocument extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document?.toJson(),
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'document': document?.toJson(),
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

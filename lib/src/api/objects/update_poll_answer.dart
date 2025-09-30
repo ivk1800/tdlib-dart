@@ -30,12 +30,14 @@ class UpdatePollAnswer extends Update {
 
     return UpdatePollAnswer(
       pollId: int.tryParse(json['poll_id']) ?? 0,
-      voterId:
-          MessageSender.fromJson(json['voter_id'] as Map<String, dynamic>?)!,
+      voterId: MessageSender.fromJson(
+        json['voter_id'] as Map<String, dynamic>?,
+      )!,
       optionIds: List<int>.from(
-          ((json['option_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['option_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -44,11 +46,11 @@ class UpdatePollAnswer extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'poll_id': pollId.toString(),
-        'voter_id': voterId.toJson(),
-        'option_ids': optionIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'poll_id': pollId.toString(),
+    'voter_id': voterId.toJson(),
+    'option_ids': optionIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

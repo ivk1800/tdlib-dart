@@ -25,10 +25,10 @@ class DeleteQuickReplyShortcutMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

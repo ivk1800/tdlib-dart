@@ -32,7 +32,8 @@ class ChatRevenueTransaction extends TdObject {
       cryptocurrency: json['cryptocurrency'] as String,
       cryptocurrencyAmount: int.tryParse(json['cryptocurrency_amount']) ?? 0,
       type: ChatRevenueTransactionType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -41,11 +42,11 @@ class ChatRevenueTransaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'cryptocurrency': cryptocurrency,
+    'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

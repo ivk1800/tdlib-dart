@@ -42,11 +42,11 @@ class FoundWebApp extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'web_app': webApp.toJson(),
-        'request_write_access': requestWriteAccess,
-        'skip_confirmation': skipConfirmation,
-        '@type': constructor,
-      };
+    'web_app': webApp.toJson(),
+    'request_write_access': requestWriteAccess,
+    'skip_confirmation': skipConfirmation,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

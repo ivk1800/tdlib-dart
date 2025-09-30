@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A background previously set in the chat; for chat backgrounds only
 @immutable
 class InputBackgroundPrevious extends InputBackground {
-  const InputBackgroundPrevious({
-    required this.messageId,
-  });
+  const InputBackgroundPrevious({required this.messageId});
 
   /// [messageId] Identifier of the message with the background
   final int messageId;
@@ -19,9 +17,7 @@ class InputBackgroundPrevious extends InputBackground {
       return null;
     }
 
-    return InputBackgroundPrevious(
-      messageId: json['message_id'] as int,
-    );
+    return InputBackgroundPrevious(messageId: json['message_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class InputBackgroundPrevious extends InputBackground {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

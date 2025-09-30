@@ -48,12 +48,12 @@ class ArchiveChatListSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'archive_and_mute_new_chats_from_unknown_users':
-            archiveAndMuteNewChatsFromUnknownUsers,
-        'keep_unmuted_chats_archived': keepUnmutedChatsArchived,
-        'keep_chats_from_folders_archived': keepChatsFromFoldersArchived,
-        '@type': constructor,
-      };
+    'archive_and_mute_new_chats_from_unknown_users':
+        archiveAndMuteNewChatsFromUnknownUsers,
+    'keep_unmuted_chats_archived': keepUnmutedChatsArchived,
+    'keep_chats_from_folders_archived': keepChatsFromFoldersArchived,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

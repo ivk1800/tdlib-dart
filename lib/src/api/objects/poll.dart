@@ -61,17 +61,20 @@ class Poll extends TdObject {
 
     return Poll(
       id: int.tryParse(json['id']) ?? 0,
-      question:
-          FormattedText.fromJson(json['question'] as Map<String, dynamic>?)!,
+      question: FormattedText.fromJson(
+        json['question'] as Map<String, dynamic>?,
+      )!,
       options: List<PollOption>.from(
-          ((json['options'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PollOption.fromJson(item))
-              .toList()),
+        ((json['options'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PollOption.fromJson(item))
+            .toList(),
+      ),
       totalVoterCount: json['total_voter_count'] as int,
       recentVoterIds: List<MessageSender>.from(
-          ((json['recent_voter_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageSender.fromJson(item))
-              .toList()),
+        ((json['recent_voter_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageSender.fromJson(item))
+            .toList(),
+      ),
       isAnonymous: json['is_anonymous'] as bool,
       type: PollType.fromJson(json['type'] as Map<String, dynamic>?)!,
       openPeriod: json['open_period'] as int,
@@ -85,19 +88,18 @@ class Poll extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'question': question.toJson(),
-        'options': options.map((item) => item.toJson()).toList(),
-        'total_voter_count': totalVoterCount,
-        'recent_voter_ids':
-            recentVoterIds.map((item) => item.toJson()).toList(),
-        'is_anonymous': isAnonymous,
-        'type': type.toJson(),
-        'open_period': openPeriod,
-        'close_date': closeDate,
-        'is_closed': isClosed,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'question': question.toJson(),
+    'options': options.map((item) => item.toJson()).toList(),
+    'total_voter_count': totalVoterCount,
+    'recent_voter_ids': recentVoterIds.map((item) => item.toJson()).toList(),
+    'is_anonymous': isAnonymous,
+    'type': type.toJson(),
+    'open_period': openPeriod,
+    'close_date': closeDate,
+    'is_closed': isClosed,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

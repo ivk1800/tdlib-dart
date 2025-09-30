@@ -50,13 +50,13 @@ class Contact extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'first_name': firstName,
-        'last_name': lastName,
-        'vcard': vcard,
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'first_name': firstName,
+    'last_name': lastName,
+    'vcard': vcard,
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

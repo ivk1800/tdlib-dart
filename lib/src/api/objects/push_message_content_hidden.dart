@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A general message with hidden content
 @immutable
 class PushMessageContentHidden extends PushMessageContent {
-  const PushMessageContentHidden({
-    required this.isPinned,
-  });
+  const PushMessageContentHidden({required this.isPinned});
 
   /// [isPinned] True, if the message is a pinned message with the specified
   /// content
@@ -20,9 +18,7 @@ class PushMessageContentHidden extends PushMessageContent {
       return null;
     }
 
-    return PushMessageContentHidden(
-      isPinned: json['is_pinned'] as bool,
-    );
+    return PushMessageContentHidden(isPinned: json['is_pinned'] as bool);
   }
 
   @override
@@ -30,9 +26,9 @@ class PushMessageContentHidden extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

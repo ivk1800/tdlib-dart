@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetLogStream extends TdFunction {
-  const SetLogStream({
-    required this.logStream,
-  });
+  const SetLogStream({required this.logStream});
 
   /// [logStream] New log stream
   final LogStream logStream;
@@ -21,9 +19,9 @@ class SetLogStream extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'log_stream': logStream.toJson(),
-        '@type': constructor,
-      };
+    'log_stream': logStream.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

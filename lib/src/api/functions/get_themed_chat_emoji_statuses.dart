@@ -4,7 +4,7 @@ import '../tdapi.dart';
 
 /// Returns up to 8 emoji statuses, which must be shown in the emoji status
 /// list for chats
-/// Returns [EmojiStatuses]
+/// Returns [EmojiStatusCustomEmojis]
 @immutable
 class GetThemedChatEmojiStatuses extends TdFunction {
   const GetThemedChatEmojiStatuses();
@@ -15,9 +15,7 @@ class GetThemedChatEmojiStatuses extends TdFunction {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

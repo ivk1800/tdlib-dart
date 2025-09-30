@@ -23,9 +23,9 @@ class ToggleHasSponsoredMessagesEnabled extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
-        '@type': constructor,
-      };
+    'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

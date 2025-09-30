@@ -40,12 +40,14 @@ class NotificationTypeNewPushMessage extends NotificationType {
 
     return NotificationTypeNewPushMessage(
       messageId: json['message_id'] as int,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      )!,
       senderName: json['sender_name'] as String,
       isOutgoing: json['is_outgoing'] as bool,
       content: PushMessageContent.fromJson(
-          json['content'] as Map<String, dynamic>?)!,
+        json['content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -54,13 +56,13 @@ class NotificationTypeNewPushMessage extends NotificationType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        'sender_id': senderId.toJson(),
-        'sender_name': senderName,
-        'is_outgoing': isOutgoing,
-        'content': content.toJson(),
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    'sender_id': senderId.toJson(),
+    'sender_name': senderName,
+    'is_outgoing': isOutgoing,
+    'content': content.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

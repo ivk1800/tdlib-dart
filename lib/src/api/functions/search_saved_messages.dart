@@ -50,14 +50,14 @@ class SearchSavedMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'tag': tag?.toJson(),
-        'query': query,
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'tag': tag?.toJson(),
+    'query': query,
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

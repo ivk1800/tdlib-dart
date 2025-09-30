@@ -89,8 +89,9 @@ class Chat extends TdObject {
   final List<ChatPosition> positions;
 
   /// [chatLists] Chat lists to which the chat belongs. A chat can have a
-  /// non-zero position in a chat list even it doesn't belong to the chat list
-  /// and have no position in a chat list even it belongs to the chat list
+  /// non-zero position in a chat list even if it doesn't belong to the chat
+  /// list and have no position in a chat list even if it belongs to the chat
+  /// list
   final List<ChatList> chatLists;
 
   /// [messageSenderId] Identifier of a user or chat that is selected to send
@@ -218,21 +219,27 @@ class Chat extends TdObject {
       profileBackgroundCustomEmojiId:
           int.tryParse(json['profile_background_custom_emoji_id']) ?? 0,
       permissions: ChatPermissions.fromJson(
-          json['permissions'] as Map<String, dynamic>?)!,
-      lastMessage:
-          Message.fromJson(json['last_message'] as Map<String, dynamic>?),
+        json['permissions'] as Map<String, dynamic>?,
+      )!,
+      lastMessage: Message.fromJson(
+        json['last_message'] as Map<String, dynamic>?,
+      ),
       positions: List<ChatPosition>.from(
-          ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatPosition.fromJson(item))
-              .toList()),
+        ((json['positions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatPosition.fromJson(item))
+            .toList(),
+      ),
       chatLists: List<ChatList>.from(
-          ((json['chat_lists'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatList.fromJson(item))
-              .toList()),
+        ((json['chat_lists'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatList.fromJson(item))
+            .toList(),
+      ),
       messageSenderId: MessageSender.fromJson(
-          json['message_sender_id'] as Map<String, dynamic>?),
-      blockList:
-          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
+        json['message_sender_id'] as Map<String, dynamic>?,
+      ),
+      blockList: BlockList.fromJson(
+        json['block_list'] as Map<String, dynamic>?,
+      ),
       hasProtectedContent: json['has_protected_content'] as bool,
       isTranslatable: json['is_translatable'] as bool,
       isMarkedAsUnread: json['is_marked_as_unread'] as bool,
@@ -248,26 +255,35 @@ class Chat extends TdObject {
       unreadMentionCount: json['unread_mention_count'] as int,
       unreadReactionCount: json['unread_reaction_count'] as int,
       notificationSettings: ChatNotificationSettings.fromJson(
-          json['notification_settings'] as Map<String, dynamic>?)!,
+        json['notification_settings'] as Map<String, dynamic>?,
+      )!,
       availableReactions: ChatAvailableReactions.fromJson(
-          json['available_reactions'] as Map<String, dynamic>?)!,
+        json['available_reactions'] as Map<String, dynamic>?,
+      )!,
       messageAutoDeleteTime: json['message_auto_delete_time'] as int,
-      emojiStatus:
-          EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
-      background:
-          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?),
+      emojiStatus: EmojiStatus.fromJson(
+        json['emoji_status'] as Map<String, dynamic>?,
+      ),
+      background: ChatBackground.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      ),
       themeName: json['theme_name'] as String,
-      actionBar:
-          ChatActionBar.fromJson(json['action_bar'] as Map<String, dynamic>?),
+      actionBar: ChatActionBar.fromJson(
+        json['action_bar'] as Map<String, dynamic>?,
+      ),
       businessBotManageBar: BusinessBotManageBar.fromJson(
-          json['business_bot_manage_bar'] as Map<String, dynamic>?),
-      videoChat:
-          VideoChat.fromJson(json['video_chat'] as Map<String, dynamic>?)!,
+        json['business_bot_manage_bar'] as Map<String, dynamic>?,
+      ),
+      videoChat: VideoChat.fromJson(
+        json['video_chat'] as Map<String, dynamic>?,
+      )!,
       pendingJoinRequests: ChatJoinRequestsInfo.fromJson(
-          json['pending_join_requests'] as Map<String, dynamic>?),
+        json['pending_join_requests'] as Map<String, dynamic>?,
+      ),
       replyMarkupMessageId: json['reply_markup_message_id'] as int,
-      draftMessage:
-          DraftMessage.fromJson(json['draft_message'] as Map<String, dynamic>?),
+      draftMessage: DraftMessage.fromJson(
+        json['draft_message'] as Map<String, dynamic>?,
+      ),
       clientData: json['client_data'] as String,
     );
   }
@@ -277,50 +293,50 @@ class Chat extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'type': type.toJson(),
-        'title': title,
-        'photo': photo?.toJson(),
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        'profile_accent_color_id': profileAccentColorId,
-        'profile_background_custom_emoji_id':
-            profileBackgroundCustomEmojiId.toString(),
-        'permissions': permissions.toJson(),
-        'last_message': lastMessage?.toJson(),
-        'positions': positions.map((item) => item.toJson()).toList(),
-        'chat_lists': chatLists.map((item) => item.toJson()).toList(),
-        'message_sender_id': messageSenderId?.toJson(),
-        'block_list': blockList?.toJson(),
-        'has_protected_content': hasProtectedContent,
-        'is_translatable': isTranslatable,
-        'is_marked_as_unread': isMarkedAsUnread,
-        'view_as_topics': viewAsTopics,
-        'has_scheduled_messages': hasScheduledMessages,
-        'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
-        'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
-        'can_be_reported': canBeReported,
-        'default_disable_notification': defaultDisableNotification,
-        'unread_count': unreadCount,
-        'last_read_inbox_message_id': lastReadInboxMessageId,
-        'last_read_outbox_message_id': lastReadOutboxMessageId,
-        'unread_mention_count': unreadMentionCount,
-        'unread_reaction_count': unreadReactionCount,
-        'notification_settings': notificationSettings.toJson(),
-        'available_reactions': availableReactions.toJson(),
-        'message_auto_delete_time': messageAutoDeleteTime,
-        'emoji_status': emojiStatus?.toJson(),
-        'background': background?.toJson(),
-        'theme_name': themeName,
-        'action_bar': actionBar?.toJson(),
-        'business_bot_manage_bar': businessBotManageBar?.toJson(),
-        'video_chat': videoChat.toJson(),
-        'pending_join_requests': pendingJoinRequests?.toJson(),
-        'reply_markup_message_id': replyMarkupMessageId,
-        'draft_message': draftMessage?.toJson(),
-        'client_data': clientData,
-        '@type': constructor,
-      };
+    'id': id,
+    'type': type.toJson(),
+    'title': title,
+    'photo': photo?.toJson(),
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    'profile_accent_color_id': profileAccentColorId,
+    'profile_background_custom_emoji_id': profileBackgroundCustomEmojiId
+        .toString(),
+    'permissions': permissions.toJson(),
+    'last_message': lastMessage?.toJson(),
+    'positions': positions.map((item) => item.toJson()).toList(),
+    'chat_lists': chatLists.map((item) => item.toJson()).toList(),
+    'message_sender_id': messageSenderId?.toJson(),
+    'block_list': blockList?.toJson(),
+    'has_protected_content': hasProtectedContent,
+    'is_translatable': isTranslatable,
+    'is_marked_as_unread': isMarkedAsUnread,
+    'view_as_topics': viewAsTopics,
+    'has_scheduled_messages': hasScheduledMessages,
+    'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
+    'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
+    'can_be_reported': canBeReported,
+    'default_disable_notification': defaultDisableNotification,
+    'unread_count': unreadCount,
+    'last_read_inbox_message_id': lastReadInboxMessageId,
+    'last_read_outbox_message_id': lastReadOutboxMessageId,
+    'unread_mention_count': unreadMentionCount,
+    'unread_reaction_count': unreadReactionCount,
+    'notification_settings': notificationSettings.toJson(),
+    'available_reactions': availableReactions.toJson(),
+    'message_auto_delete_time': messageAutoDeleteTime,
+    'emoji_status': emojiStatus?.toJson(),
+    'background': background?.toJson(),
+    'theme_name': themeName,
+    'action_bar': actionBar?.toJson(),
+    'business_bot_manage_bar': businessBotManageBar?.toJson(),
+    'video_chat': videoChat.toJson(),
+    'pending_join_requests': pendingJoinRequests?.toJson(),
+    'reply_markup_message_id': replyMarkupMessageId,
+    'draft_message': draftMessage?.toJson(),
+    'client_data': clientData,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

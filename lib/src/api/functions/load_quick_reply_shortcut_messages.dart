@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class LoadQuickReplyShortcutMessages extends TdFunction {
-  const LoadQuickReplyShortcutMessages({
-    required this.shortcutId,
-  });
+  const LoadQuickReplyShortcutMessages({required this.shortcutId});
 
   /// [shortcutId] Unique identifier of the quick reply shortcut
   final int shortcutId;
@@ -22,9 +20,9 @@ class LoadQuickReplyShortcutMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

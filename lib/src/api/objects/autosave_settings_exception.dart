@@ -27,7 +27,8 @@ class AutosaveSettingsException extends TdObject {
     return AutosaveSettingsException(
       chatId: json['chat_id'] as int,
       settings: ScopeAutosaveSettings.fromJson(
-          json['settings'] as Map<String, dynamic>?)!,
+        json['settings'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +37,10 @@ class AutosaveSettingsException extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'settings': settings.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'settings': settings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

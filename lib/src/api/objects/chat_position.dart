@@ -45,12 +45,12 @@ class ChatPosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'list': list.toJson(),
-        'order': order.toString(),
-        'is_pinned': isPinned,
-        'source': source?.toJson(),
-        '@type': constructor,
-      };
+    'list': list.toJson(),
+    'order': order.toString(),
+    'is_pinned': isPinned,
+    'source': source?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

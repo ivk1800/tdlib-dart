@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetEmojiStatus extends TdFunction {
-  const SetEmojiStatus({
-    this.emojiStatus,
-  });
+  const SetEmojiStatus({this.emojiStatus});
 
   /// [emojiStatus] New emoji status; pass null to switch to the default badge
   final EmojiStatus? emojiStatus;
@@ -21,9 +19,9 @@ class SetEmojiStatus extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji_status': emojiStatus?.toJson(),
-        '@type': constructor,
-      };
+    'emoji_status': emojiStatus?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

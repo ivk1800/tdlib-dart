@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A plain text
 @immutable
 class RichTextPlain extends RichText {
-  const RichTextPlain({
-    required this.text,
-  });
+  const RichTextPlain({required this.text});
 
   /// [text] Text
   final String text;
@@ -19,9 +17,7 @@ class RichTextPlain extends RichText {
       return null;
     }
 
-    return RichTextPlain(
-      text: json['text'] as String,
-    );
+    return RichTextPlain(text: json['text'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class RichTextPlain extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        '@type': constructor,
-      };
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

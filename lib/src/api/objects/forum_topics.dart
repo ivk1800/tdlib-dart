@@ -40,9 +40,10 @@ class ForumTopics extends TdObject {
     return ForumTopics(
       totalCount: json['total_count'] as int,
       topics: List<ForumTopic>.from(
-          ((json['topics'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ForumTopic.fromJson(item))
-              .toList()),
+        ((json['topics'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ForumTopic.fromJson(item))
+            .toList(),
+      ),
       nextOffsetDate: json['next_offset_date'] as int,
       nextOffsetMessageId: json['next_offset_message_id'] as int,
       nextOffsetMessageThreadId: json['next_offset_message_thread_id'] as int,
@@ -54,13 +55,13 @@ class ForumTopics extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'topics': topics.map((item) => item.toJson()).toList(),
-        'next_offset_date': nextOffsetDate,
-        'next_offset_message_id': nextOffsetMessageId,
-        'next_offset_message_thread_id': nextOffsetMessageThreadId,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'topics': topics.map((item) => item.toJson()).toList(),
+    'next_offset_date': nextOffsetDate,
+    'next_offset_message_id': nextOffsetMessageId,
+    'next_offset_message_thread_id': nextOffsetMessageThreadId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

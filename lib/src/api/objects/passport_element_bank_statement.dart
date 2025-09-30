@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A Telegram Passport element containing the user's bank statement
 @immutable
 class PassportElementBankStatement extends PassportElement {
-  const PassportElementBankStatement({
-    required this.bankStatement,
-  });
+  const PassportElementBankStatement({required this.bankStatement});
 
   /// [bankStatement] Bank statement
   final PersonalDocument bankStatement;
@@ -21,7 +19,8 @@ class PassportElementBankStatement extends PassportElement {
 
     return PassportElementBankStatement(
       bankStatement: PersonalDocument.fromJson(
-          json['bank_statement'] as Map<String, dynamic>?)!,
+        json['bank_statement'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class PassportElementBankStatement extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bank_statement': bankStatement.toJson(),
-        '@type': constructor,
-      };
+    'bank_statement': bankStatement.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

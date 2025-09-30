@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// topic
 @immutable
 class MessageLink extends TdObject {
-  const MessageLink({
-    required this.link,
-    required this.isPublic,
-  });
+  const MessageLink({required this.link, required this.isPublic});
 
   /// [link] The link
   final String link;
@@ -35,10 +32,10 @@ class MessageLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        'is_public': isPublic,
-        '@type': constructor,
-      };
+    'link': link,
+    'is_public': isPublic,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

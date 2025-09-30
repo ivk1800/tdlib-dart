@@ -20,15 +20,17 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   static const String constructor = 'inlineKeyboardButtonTypeSwitchInline';
 
   static InlineKeyboardButtonTypeSwitchInline? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InlineKeyboardButtonTypeSwitchInline(
       query: json['query'] as String,
-      targetChat:
-          TargetChat.fromJson(json['target_chat'] as Map<String, dynamic>?)!,
+      targetChat: TargetChat.fromJson(
+        json['target_chat'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +39,10 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'query': query,
-        'target_chat': targetChat.toJson(),
-        '@type': constructor,
-      };
+    'query': query,
+    'target_chat': targetChat.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

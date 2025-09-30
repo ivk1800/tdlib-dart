@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// New call was received
 @immutable
 class NotificationTypeNewCall extends NotificationType {
-  const NotificationTypeNewCall({
-    required this.callId,
-  });
+  const NotificationTypeNewCall({required this.callId});
 
   /// [callId] Call identifier
   final int callId;
@@ -19,9 +17,7 @@ class NotificationTypeNewCall extends NotificationType {
       return null;
     }
 
-    return NotificationTypeNewCall(
-      callId: json['call_id'] as int,
-    );
+    return NotificationTypeNewCall(callId: json['call_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class NotificationTypeNewCall extends NotificationType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        '@type': constructor,
-      };
+    'call_id': callId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

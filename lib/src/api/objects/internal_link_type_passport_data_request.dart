@@ -40,7 +40,8 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
   static const String constructor = 'internalLinkTypePassportDataRequest';
 
   static InternalLinkTypePassportDataRequest? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -59,13 +60,13 @@ class InternalLinkTypePassportDataRequest extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'scope': scope,
-        'public_key': publicKey,
-        'nonce': nonce,
-        'callback_url': callbackUrl,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'scope': scope,
+    'public_key': publicKey,
+    'nonce': nonce,
+    'callback_url': callbackUrl,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

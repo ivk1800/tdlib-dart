@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The user went online or offline
 @immutable
 class UpdateUserStatus extends Update {
-  const UpdateUserStatus({
-    required this.userId,
-    required this.status,
-  });
+  const UpdateUserStatus({required this.userId, required this.status});
 
   /// [userId] User identifier
   final int userId;
@@ -34,10 +31,10 @@ class UpdateUserStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'status': status.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'status': status.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

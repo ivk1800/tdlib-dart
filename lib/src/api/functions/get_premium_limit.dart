@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [PremiumLimit]
 @immutable
 class GetPremiumLimit extends TdFunction {
-  const GetPremiumLimit({
-    required this.limitType,
-  });
+  const GetPremiumLimit({required this.limitType});
 
   /// [limitType] Type of the limit
   final PremiumLimitType limitType;
@@ -21,9 +19,9 @@ class GetPremiumLimit extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'limit_type': limitType.toJson(),
-        '@type': constructor,
-      };
+    'limit_type': limitType.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

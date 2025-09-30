@@ -32,7 +32,7 @@ class ChatPhoto extends TdObject {
   final AnimatedChatPhoto? animation;
 
   /// [smallAnimation] A small (160x160) animated variant of the photo in MPEG4
-  /// format; may be null even the big animation is available
+  /// format; may be null even if the big animation is available
   final AnimatedChatPhoto? smallAnimation;
 
   /// [sticker] Sticker-based version of the chat photo; may be null
@@ -49,17 +49,22 @@ class ChatPhoto extends TdObject {
       id: int.tryParse(json['id']) ?? 0,
       addedDate: json['added_date'] as int,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       sizes: List<PhotoSize>.from(
-          ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PhotoSize.fromJson(item))
-              .toList()),
+        ((json['sizes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PhotoSize.fromJson(item))
+            .toList(),
+      ),
       animation: AnimatedChatPhoto.fromJson(
-          json['animation'] as Map<String, dynamic>?),
+        json['animation'] as Map<String, dynamic>?,
+      ),
       smallAnimation: AnimatedChatPhoto.fromJson(
-          json['small_animation'] as Map<String, dynamic>?),
-      sticker:
-          ChatPhotoSticker.fromJson(json['sticker'] as Map<String, dynamic>?),
+        json['small_animation'] as Map<String, dynamic>?,
+      ),
+      sticker: ChatPhotoSticker.fromJson(
+        json['sticker'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -68,15 +73,15 @@ class ChatPhoto extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'added_date': addedDate,
-        'minithumbnail': minithumbnail?.toJson(),
-        'sizes': sizes.map((item) => item.toJson()).toList(),
-        'animation': animation?.toJson(),
-        'small_animation': smallAnimation?.toJson(),
-        'sticker': sticker?.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'added_date': addedDate,
+    'minithumbnail': minithumbnail?.toJson(),
+    'sizes': sizes.map((item) => item.toJson()).toList(),
+    'animation': animation?.toJson(),
+    'small_animation': smallAnimation?.toJson(),
+    'sticker': sticker?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

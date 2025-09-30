@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a JSON array
 @immutable
 class JsonValueArray extends JsonValue {
-  const JsonValueArray({
-    required this.values,
-  });
+  const JsonValueArray({required this.values});
 
   /// [values] The list of array elements
   final List<JsonValue> values;
@@ -21,9 +19,10 @@ class JsonValueArray extends JsonValue {
 
     return JsonValueArray(
       values: List<JsonValue>.from(
-          ((json['values'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => JsonValue.fromJson(item))
-              .toList()),
+        ((json['values'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => JsonValue.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class JsonValueArray extends JsonValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'values': values.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'values': values.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

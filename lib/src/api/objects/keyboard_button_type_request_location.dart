@@ -11,7 +11,8 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   static const String constructor = 'keyboardButtonTypeRequestLocation';
 
   static KeyboardButtonTypeRequestLocation? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -23,9 +24,7 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

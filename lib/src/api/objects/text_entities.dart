@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of text entities
 @immutable
 class TextEntities extends TdObject {
-  const TextEntities({
-    required this.entities,
-  });
+  const TextEntities({required this.entities});
 
   /// [entities] List of text entities
   final List<TextEntity> entities;
@@ -21,9 +19,10 @@ class TextEntities extends TdObject {
 
     return TextEntities(
       entities: List<TextEntity>.from(
-          ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => TextEntity.fromJson(item))
-              .toList()),
+        ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => TextEntity.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class TextEntities extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'entities': entities.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'entities': entities.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

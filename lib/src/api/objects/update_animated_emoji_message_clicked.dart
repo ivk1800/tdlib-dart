@@ -26,7 +26,8 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
   static const String constructor = 'updateAnimatedEmojiMessageClicked';
 
   static UpdateAnimatedEmojiMessageClicked? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -43,11 +44,11 @@ class UpdateAnimatedEmojiMessageClicked extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

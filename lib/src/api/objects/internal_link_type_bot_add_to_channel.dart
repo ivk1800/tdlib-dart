@@ -34,7 +34,8 @@ class InternalLinkTypeBotAddToChannel extends InternalLinkType {
     return InternalLinkTypeBotAddToChannel(
       botUsername: json['bot_username'] as String,
       administratorRights: ChatAdministratorRights.fromJson(
-          json['administrator_rights'] as Map<String, dynamic>?)!,
+        json['administrator_rights'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -43,10 +44,10 @@ class InternalLinkTypeBotAddToChannel extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_username': botUsername,
-        'administrator_rights': administratorRights.toJson(),
-        '@type': constructor,
-      };
+    'bot_username': botUsername,
+    'administrator_rights': administratorRights.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

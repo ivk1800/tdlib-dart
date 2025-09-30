@@ -34,10 +34,10 @@ class ChatEventUsernameChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_username': oldUsername,
-        'new_username': newUsername,
-        '@type': constructor,
-      };
+    'old_username': oldUsername,
+    'new_username': newUsername,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

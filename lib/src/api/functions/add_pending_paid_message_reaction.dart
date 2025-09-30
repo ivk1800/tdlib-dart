@@ -12,8 +12,7 @@ class AddPendingPaidMessageReaction extends TdFunction {
     required this.chatId,
     required this.messageId,
     required this.starCount,
-    required this.useDefaultIsAnonymous,
-    required this.isAnonymous,
+    this.type,
   });
 
   /// [chatId] Identifier of the chat to which the message belongs
@@ -27,14 +26,10 @@ class AddPendingPaidMessageReaction extends TdFunction {
   /// getOption("paid_reaction_star_count_max")
   final int starCount;
 
-  /// [useDefaultIsAnonymous] Pass true if the user didn't choose anonymity
-  /// explicitly, for example, the reaction is set from the message bubble
-  final bool useDefaultIsAnonymous;
-
-  /// [isAnonymous] Pass true to make paid reaction of the user on the message
-  /// anonymous; pass false to make the user's profile visible among top
-  /// reactors. Ignored if use_default_is_anonymous == true
-  final bool isAnonymous;
+  /// [type] Type of the paid reaction; pass null if the user didn't choose
+  /// reaction type explicitly, for example, the reaction is set from the
+  /// message bubble
+  final PaidReactionType? type;
 
   static const String constructor = 'addPendingPaidMessageReaction';
 
@@ -43,13 +38,12 @@ class AddPendingPaidMessageReaction extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'star_count': starCount,
-        'use_default_is_anonymous': useDefaultIsAnonymous,
-        'is_anonymous': isAnonymous,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'star_count': starCount,
+    'type': type?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

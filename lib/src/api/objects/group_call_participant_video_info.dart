@@ -30,9 +30,10 @@ class GroupCallParticipantVideoInfo extends TdObject {
 
     return GroupCallParticipantVideoInfo(
       sourceGroups: List<GroupCallVideoSourceGroup>.from(
-          ((json['source_groups'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => GroupCallVideoSourceGroup.fromJson(item))
-              .toList()),
+        ((json['source_groups'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => GroupCallVideoSourceGroup.fromJson(item))
+            .toList(),
+      ),
       endpointId: json['endpoint_id'] as String,
       isPaused: json['is_paused'] as bool,
     );
@@ -43,11 +44,11 @@ class GroupCallParticipantVideoInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'source_groups': sourceGroups.map((item) => item.toJson()).toList(),
-        'endpoint_id': endpointId,
-        'is_paused': isPaused,
-        '@type': constructor,
-      };
+    'source_groups': sourceGroups.map((item) => item.toJson()).toList(),
+    'endpoint_id': endpointId,
+    'is_paused': isPaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CheckAuthenticationBotToken extends TdFunction {
-  const CheckAuthenticationBotToken({
-    required this.token,
-  });
+  const CheckAuthenticationBotToken({required this.token});
 
   /// [token] The bot token
   final String token;
@@ -23,9 +21,9 @@ class CheckAuthenticationBotToken extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

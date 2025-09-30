@@ -16,6 +16,7 @@ class ResendMessages extends TdFunction {
     required this.chatId,
     required this.messageIds,
     this.quote,
+    required this.paidMessageStarCount,
   });
 
   /// [chatId] Identifier of the chat to send messages
@@ -30,6 +31,11 @@ class ResendMessages extends TdFunction {
   /// messageSendingStateFailed.need_another_reply_quote == false
   final InputTextQuote? quote;
 
+  /// [paidMessageStarCount] The number of Telegram Stars the user agreed to pay
+  /// to send the messages. Ignored if
+  /// messageSendingStateFailed.required_paid_message_star_count == 0
+  final int paidMessageStarCount;
+
   static const String constructor = 'resendMessages';
 
   @override
@@ -37,11 +43,12 @@ class ResendMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'quote': quote?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'quote': quote?.toJson(),
+    'paid_message_star_count': paidMessageStarCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

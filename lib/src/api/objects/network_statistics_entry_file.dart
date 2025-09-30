@@ -36,8 +36,9 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
     return NetworkStatisticsEntryFile(
       fileType: FileType.fromJson(json['file_type'] as Map<String, dynamic>?),
-      networkType:
-          NetworkType.fromJson(json['network_type'] as Map<String, dynamic>?)!,
+      networkType: NetworkType.fromJson(
+        json['network_type'] as Map<String, dynamic>?,
+      )!,
       sentBytes: json['sent_bytes'] as int,
       receivedBytes: json['received_bytes'] as int,
     );
@@ -48,12 +49,12 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_type': fileType?.toJson(),
-        'network_type': networkType.toJson(),
-        'sent_bytes': sentBytes,
-        'received_bytes': receivedBytes,
-        '@type': constructor,
-      };
+    'file_type': fileType?.toJson(),
+    'network_type': networkType.toJson(),
+    'sent_bytes': sentBytes,
+    'received_bytes': receivedBytes,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

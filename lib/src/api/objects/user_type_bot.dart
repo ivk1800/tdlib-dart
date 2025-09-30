@@ -85,18 +85,18 @@ class UserTypeBot extends UserType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_be_edited': canBeEdited,
-        'can_join_groups': canJoinGroups,
-        'can_read_all_group_messages': canReadAllGroupMessages,
-        'has_main_web_app': hasMainWebApp,
-        'is_inline': isInline,
-        'inline_query_placeholder': inlineQueryPlaceholder,
-        'need_location': needLocation,
-        'can_connect_to_business': canConnectToBusiness,
-        'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
-        'active_user_count': activeUserCount,
-        '@type': constructor,
-      };
+    'can_be_edited': canBeEdited,
+    'can_join_groups': canJoinGroups,
+    'can_read_all_group_messages': canReadAllGroupMessages,
+    'has_main_web_app': hasMainWebApp,
+    'is_inline': isInline,
+    'inline_query_placeholder': inlineQueryPlaceholder,
+    'need_location': needLocation,
+    'can_connect_to_business': canConnectToBusiness,
+    'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
+    'active_user_count': activeUserCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

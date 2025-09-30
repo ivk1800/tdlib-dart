@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains information about the current recovery email address
 @immutable
 class RecoveryEmailAddress extends TdObject {
-  const RecoveryEmailAddress({
-    required this.recoveryEmailAddress,
-  });
+  const RecoveryEmailAddress({required this.recoveryEmailAddress});
 
   /// [recoveryEmailAddress] Recovery email address
   final String recoveryEmailAddress;
@@ -29,9 +27,9 @@ class RecoveryEmailAddress extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'recovery_email_address': recoveryEmailAddress,
-        '@type': constructor,
-      };
+    'recovery_email_address': recoveryEmailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

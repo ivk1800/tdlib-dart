@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A previously used profile photo of the current user
 @immutable
 class InputChatPhotoPrevious extends InputChatPhoto {
-  const InputChatPhotoPrevious({
-    required this.chatPhotoId,
-  });
+  const InputChatPhotoPrevious({required this.chatPhotoId});
 
   /// [chatPhotoId] Identifier of the current user's profile photo to reuse
   final int chatPhotoId;
@@ -29,9 +27,9 @@ class InputChatPhotoPrevious extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_photo_id': chatPhotoId.toString(),
-        '@type': constructor,
-      };
+    'chat_photo_id': chatPhotoId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

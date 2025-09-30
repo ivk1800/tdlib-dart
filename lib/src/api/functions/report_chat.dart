@@ -37,12 +37,12 @@ class ReportChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'option_id': optionId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'text': text,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'option_id': optionId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [HttpUrl]
 @immutable
 class GetBackgroundUrl extends TdFunction {
-  const GetBackgroundUrl({
-    required this.name,
-    required this.type,
-  });
+  const GetBackgroundUrl({required this.name, required this.type});
 
   /// [name] Background name
   final String name;
@@ -24,10 +21,10 @@ class GetBackgroundUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

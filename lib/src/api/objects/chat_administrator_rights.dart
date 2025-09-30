@@ -25,16 +25,18 @@ class ChatAdministratorRights extends TdObject {
 
   /// [canManageChat] True, if the administrator can access the chat event log,
   /// get boost list, see hidden supergroup and channel members, report
-  /// supergroup spam messages and ignore slow mode. Implied by any other
-  /// privilege; applicable to supergroups and channels only
+  /// supergroup spam messages, ignore slow mode, and send messages to the chat
+  /// without paying Telegram Stars. Implied by any other privilege; applicable
+  /// to supergroups and channels only
   final bool canManageChat;
 
   /// [canChangeInfo] True, if the administrator can change the chat title,
   /// photo, and other settings
   final bool canChangeInfo;
 
-  /// [canPostMessages] True, if the administrator can create channel posts or
-  /// view channel statistics; applicable to channels only
+  /// [canPostMessages] True, if the administrator can create channel posts,
+  /// answer to channel direct messages, or view channel statistics; applicable
+  /// to channels only
   final bool canPostMessages;
 
   /// [canEditMessages] True, if the administrator can edit messages of other
@@ -119,23 +121,23 @@ class ChatAdministratorRights extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_manage_chat': canManageChat,
-        'can_change_info': canChangeInfo,
-        'can_post_messages': canPostMessages,
-        'can_edit_messages': canEditMessages,
-        'can_delete_messages': canDeleteMessages,
-        'can_invite_users': canInviteUsers,
-        'can_restrict_members': canRestrictMembers,
-        'can_pin_messages': canPinMessages,
-        'can_manage_topics': canManageTopics,
-        'can_promote_members': canPromoteMembers,
-        'can_manage_video_chats': canManageVideoChats,
-        'can_post_stories': canPostStories,
-        'can_edit_stories': canEditStories,
-        'can_delete_stories': canDeleteStories,
-        'is_anonymous': isAnonymous,
-        '@type': constructor,
-      };
+    'can_manage_chat': canManageChat,
+    'can_change_info': canChangeInfo,
+    'can_post_messages': canPostMessages,
+    'can_edit_messages': canEditMessages,
+    'can_delete_messages': canDeleteMessages,
+    'can_invite_users': canInviteUsers,
+    'can_restrict_members': canRestrictMembers,
+    'can_pin_messages': canPinMessages,
+    'can_manage_topics': canManageTopics,
+    'can_promote_members': canPromoteMembers,
+    'can_manage_video_chats': canManageVideoChats,
+    'can_post_stories': canPostStories,
+    'can_edit_stories': canEditStories,
+    'can_delete_stories': canDeleteStories,
+    'is_anonymous': isAnonymous,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

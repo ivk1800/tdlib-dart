@@ -6,15 +6,13 @@ import '../tdapi.dart';
 /// device. Works only when the current authorization state is
 /// authorizationStateWaitPhoneNumber, or if there is no pending
 /// authentication query and the current authorization state is
-/// authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode,
-/// authorizationStateWaitCode, authorizationStateWaitRegistration, or
-/// authorizationStateWaitPassword
+/// authorizationStateWaitPremiumPurchase, authorizationStateWaitEmailAddress,
+/// authorizationStateWaitEmailCode, authorizationStateWaitCode,
+/// authorizationStateWaitRegistration, or authorizationStateWaitPassword
 /// Returns [Ok]
 @immutable
 class RequestQrCodeAuthentication extends TdFunction {
-  const RequestQrCodeAuthentication({
-    required this.otherUserIds,
-  });
+  const RequestQrCodeAuthentication({required this.otherUserIds});
 
   /// [otherUserIds] List of user identifiers of other users currently using the
   /// application
@@ -27,9 +25,9 @@ class RequestQrCodeAuthentication extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'other_user_ids': otherUserIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'other_user_ids': otherUserIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

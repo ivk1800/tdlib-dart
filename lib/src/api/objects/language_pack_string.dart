@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents one language pack string
 @immutable
 class LanguagePackString extends TdObject {
-  const LanguagePackString({
-    required this.key,
-    this.value,
-  });
+  const LanguagePackString({required this.key, this.value});
 
   /// [key] String key
   final String key;
@@ -27,7 +24,8 @@ class LanguagePackString extends TdObject {
     return LanguagePackString(
       key: json['key'] as String,
       value: LanguagePackStringValue.fromJson(
-          json['value'] as Map<String, dynamic>?),
+        json['value'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +34,10 @@ class LanguagePackString extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'key': key,
-        'value': value?.toJson(),
-        '@type': constructor,
-      };
+    'key': key,
+    'value': value?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

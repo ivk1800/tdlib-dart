@@ -40,8 +40,9 @@ class PageBlockMap extends PageBlock {
       zoom: json['zoom'] as int,
       width: json['width'] as int,
       height: json['height'] as int,
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -50,13 +51,13 @@ class PageBlockMap extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        'zoom': zoom,
-        'width': width,
-        'height': height,
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    'zoom': zoom,
+    'width': width,
+    'height': height,
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

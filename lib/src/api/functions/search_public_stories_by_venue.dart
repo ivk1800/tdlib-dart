@@ -37,12 +37,12 @@ class SearchPublicStoriesByVenue extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'venue_provider': venueProvider,
-        'venue_id': venueId,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'venue_provider': venueProvider,
+    'venue_id': venueId,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

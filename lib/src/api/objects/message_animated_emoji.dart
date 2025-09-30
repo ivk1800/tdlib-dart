@@ -25,7 +25,8 @@ class MessageAnimatedEmoji extends MessageContent {
 
     return MessageAnimatedEmoji(
       animatedEmoji: AnimatedEmoji.fromJson(
-          json['animated_emoji'] as Map<String, dynamic>?)!,
+        json['animated_emoji'] as Map<String, dynamic>?,
+      )!,
       emoji: json['emoji'] as String,
     );
   }
@@ -35,10 +36,10 @@ class MessageAnimatedEmoji extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animated_emoji': animatedEmoji.toJson(),
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'animated_emoji': animatedEmoji.toJson(),
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

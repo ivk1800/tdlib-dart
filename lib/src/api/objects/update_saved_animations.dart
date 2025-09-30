@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of saved animations was updated
 @immutable
 class UpdateSavedAnimations extends Update {
-  const UpdateSavedAnimations({
-    required this.animationIds,
-  });
+  const UpdateSavedAnimations({required this.animationIds});
 
   /// [animationIds] The new list of file identifiers of saved animations
   final List<int> animationIds;
@@ -21,9 +19,10 @@ class UpdateSavedAnimations extends Update {
 
     return UpdateSavedAnimations(
       animationIds: List<int>.from(
-          ((json['animation_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['animation_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateSavedAnimations extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation_ids': animationIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'animation_ids': animationIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

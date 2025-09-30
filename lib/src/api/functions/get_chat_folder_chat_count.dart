@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Count]
 @immutable
 class GetChatFolderChatCount extends TdFunction {
-  const GetChatFolderChatCount({
-    required this.folder,
-  });
+  const GetChatFolderChatCount({required this.folder});
 
   /// [folder] The new chat folder
   final ChatFolder folder;
@@ -22,9 +20,9 @@ class GetChatFolderChatCount extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'folder': folder.toJson(),
-        '@type': constructor,
-      };
+    'folder': folder.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

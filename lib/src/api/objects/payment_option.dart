@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes an additional payment option
 @immutable
 class PaymentOption extends TdObject {
-  const PaymentOption({
-    required this.title,
-    required this.url,
-  });
+  const PaymentOption({required this.title, required this.url});
 
   /// [title] Title for the payment option
   final String title;
@@ -34,10 +31,10 @@ class PaymentOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'url': url,
-        '@type': constructor,
-      };
+    'title': title,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

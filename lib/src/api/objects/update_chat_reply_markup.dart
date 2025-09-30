@@ -37,10 +37,10 @@ class UpdateChatReplyMarkup extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'reply_markup_message_id': replyMarkupMessageId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'reply_markup_message_id': replyMarkupMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

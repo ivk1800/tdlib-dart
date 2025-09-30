@@ -45,14 +45,14 @@ class EditBusinessMessageCaption extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

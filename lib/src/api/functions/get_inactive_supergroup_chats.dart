@@ -4,8 +4,8 @@ import '../tdapi.dart';
 
 /// Returns a list of recently inactive supergroups and channels. Can be used
 /// when user reaches limit on the number of joined supergroups and channels
-/// and receives CHANNELS_TOO_MUCH error. Also, the limit can be increased
-/// with Telegram Premium
+/// and receives the error "CHANNELS_TOO_MUCH". Also, the limit can be
+/// increased with Telegram Premium
 /// Returns [Chats]
 @immutable
 class GetInactiveSupergroupChats extends TdFunction {
@@ -17,9 +17,7 @@ class GetInactiveSupergroupChats extends TdFunction {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

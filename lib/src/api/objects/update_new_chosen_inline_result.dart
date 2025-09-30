@@ -37,8 +37,9 @@ class UpdateNewChosenInlineResult extends Update {
 
     return UpdateNewChosenInlineResult(
       senderUserId: json['sender_user_id'] as int,
-      userLocation:
-          Location.fromJson(json['user_location'] as Map<String, dynamic>?),
+      userLocation: Location.fromJson(
+        json['user_location'] as Map<String, dynamic>?,
+      ),
       query: json['query'] as String,
       resultId: json['result_id'] as String,
       inlineMessageId: json['inline_message_id'] as String,
@@ -50,13 +51,13 @@ class UpdateNewChosenInlineResult extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_user_id': senderUserId,
-        'user_location': userLocation?.toJson(),
-        'query': query,
-        'result_id': resultId,
-        'inline_message_id': inlineMessageId,
-        '@type': constructor,
-      };
+    'sender_user_id': senderUserId,
+    'user_location': userLocation?.toJson(),
+    'query': query,
+    'result_id': resultId,
+    'inline_message_id': inlineMessageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

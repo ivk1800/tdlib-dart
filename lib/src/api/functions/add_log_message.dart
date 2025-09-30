@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddLogMessage extends TdFunction {
-  const AddLogMessage({
-    required this.verbosityLevel,
-    required this.text,
-  });
+  const AddLogMessage({required this.verbosityLevel, required this.text});
 
   /// [verbosityLevel] The minimum verbosity level needed for the message to be
   /// logged; 0-1023
@@ -25,10 +22,10 @@ class AddLogMessage extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'verbosity_level': verbosityLevel,
-        'text': text,
-        '@type': constructor,
-      };
+    'verbosity_level': verbosityLevel,
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

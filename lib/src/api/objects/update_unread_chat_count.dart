@@ -56,14 +56,14 @@ class UpdateUnreadChatCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_list': chatList.toJson(),
-        'total_count': totalCount,
-        'unread_count': unreadCount,
-        'unread_unmuted_count': unreadUnmutedCount,
-        'marked_as_unread_count': markedAsUnreadCount,
-        'marked_as_unread_unmuted_count': markedAsUnreadUnmutedCount,
-        '@type': constructor,
-      };
+    'chat_list': chatList.toJson(),
+    'total_count': totalCount,
+    'unread_count': unreadCount,
+    'unread_unmuted_count': unreadUnmutedCount,
+    'marked_as_unread_count': markedAsUnreadCount,
+    'marked_as_unread_unmuted_count': markedAsUnreadUnmutedCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

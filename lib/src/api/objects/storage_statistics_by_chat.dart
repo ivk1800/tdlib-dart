@@ -36,9 +36,10 @@ class StorageStatisticsByChat extends TdObject {
       size: json['size'] as int,
       count: json['count'] as int,
       byFileType: List<StorageStatisticsByFileType>.from(
-          ((json['by_file_type'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StorageStatisticsByFileType.fromJson(item))
-              .toList()),
+        ((json['by_file_type'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StorageStatisticsByFileType.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -47,12 +48,12 @@ class StorageStatisticsByChat extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'size': size,
-        'count': count,
-        'by_file_type': byFileType.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'size': size,
+    'count': count,
+    'by_file_type': byFileType.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

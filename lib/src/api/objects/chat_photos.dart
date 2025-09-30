@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of chat or user profile photos
 @immutable
 class ChatPhotos extends TdObject {
-  const ChatPhotos({
-    required this.totalCount,
-    required this.photos,
-  });
+  const ChatPhotos({required this.totalCount, required this.photos});
 
   /// [totalCount] Total number of photos
   final int totalCount;
@@ -26,9 +23,10 @@ class ChatPhotos extends TdObject {
     return ChatPhotos(
       totalCount: json['total_count'] as int,
       photos: List<ChatPhoto>.from(
-          ((json['photos'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatPhoto.fromJson(item))
-              .toList()),
+        ((json['photos'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatPhoto.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class ChatPhotos extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'photos': photos.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'photos': photos.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

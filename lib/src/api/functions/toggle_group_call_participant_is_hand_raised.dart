@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Toggles whether a group call participant hand is rased
+/// Toggles whether a group call participant hand is rased; for video chats
+/// only
 /// Returns [Ok]
 @immutable
 class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
@@ -19,8 +20,8 @@ class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
   final MessageSender participantId;
 
   /// [isHandRaised] Pass true if the user's hand needs to be raised. Only self
-  /// hand can be raised. Requires groupCall.can_be_managed group call flag to
-  /// lower other's hand
+  /// hand can be raised. Requires groupCall.can_be_managed right to lower
+  /// other's hand
   final bool isHandRaised;
 
   static const String constructor = 'toggleGroupCallParticipantIsHandRaised';
@@ -30,11 +31,11 @@ class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'participant_id': participantId.toJson(),
-        'is_hand_raised': isHandRaised,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'participant_id': participantId.toJson(),
+    'is_hand_raised': isHandRaised,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

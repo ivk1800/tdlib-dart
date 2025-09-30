@@ -51,12 +51,12 @@ class UpdateFileGenerationStart extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId.toString(),
-        'original_path': originalPath,
-        'destination_path': destinationPath,
-        'conversion': conversion,
-        '@type': constructor,
-      };
+    'generation_id': generationId.toString(),
+    'original_path': originalPath,
+    'destination_path': destinationPath,
+    'conversion': conversion,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

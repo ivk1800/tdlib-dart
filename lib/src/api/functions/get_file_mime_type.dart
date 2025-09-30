@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetFileMimeType extends TdFunction {
-  const GetFileMimeType({
-    required this.fileName,
-  });
+  const GetFileMimeType({required this.fileName});
 
   /// [fileName] The name of the file or path to the file
   final String fileName;
@@ -21,9 +19,9 @@ class GetFileMimeType extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_name': fileName,
-        '@type': constructor,
-      };
+    'file_name': fileName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

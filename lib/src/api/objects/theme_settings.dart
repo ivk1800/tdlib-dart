@@ -40,10 +40,12 @@ class ThemeSettings extends TdObject {
 
     return ThemeSettings(
       accentColor: json['accent_color'] as int,
-      background:
-          Background.fromJson(json['background'] as Map<String, dynamic>?),
+      background: Background.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      ),
       outgoingMessageFill: BackgroundFill.fromJson(
-          json['outgoing_message_fill'] as Map<String, dynamic>?)!,
+        json['outgoing_message_fill'] as Map<String, dynamic>?,
+      )!,
       animateOutgoingMessageFill: json['animate_outgoing_message_fill'] as bool,
       outgoingMessageAccentColor: json['outgoing_message_accent_color'] as int,
     );
@@ -54,13 +56,13 @@ class ThemeSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'accent_color': accentColor,
-        'background': background?.toJson(),
-        'outgoing_message_fill': outgoingMessageFill.toJson(),
-        'animate_outgoing_message_fill': animateOutgoingMessageFill,
-        'outgoing_message_accent_color': outgoingMessageAccentColor,
-        '@type': constructor,
-      };
+    'accent_color': accentColor,
+    'background': background?.toJson(),
+    'outgoing_message_fill': outgoingMessageFill.toJson(),
+    'animate_outgoing_message_fill': animateOutgoingMessageFill,
+    'outgoing_message_accent_color': outgoingMessageAccentColor,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

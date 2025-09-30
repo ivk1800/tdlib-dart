@@ -16,6 +16,7 @@ abstract class InputStoryAreaType extends TdObject {
   /// [InputStoryAreaTypeMessage]
   /// [InputStoryAreaTypePreviousVenue]
   /// [InputStoryAreaTypeSuggestedReaction]
+  /// [InputStoryAreaTypeUpgradedGift]
   /// [InputStoryAreaTypeWeather]
   static InputStoryAreaType? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,6 +36,8 @@ abstract class InputStoryAreaType extends TdObject {
         return InputStoryAreaTypePreviousVenue.fromJson(json);
       case InputStoryAreaTypeSuggestedReaction.constructor:
         return InputStoryAreaTypeSuggestedReaction.fromJson(json);
+      case InputStoryAreaTypeUpgradedGift.constructor:
+        return InputStoryAreaTypeUpgradedGift.fromJson(json);
       case InputStoryAreaTypeWeather.constructor:
         return InputStoryAreaTypeWeather.fromJson(json);
       default:

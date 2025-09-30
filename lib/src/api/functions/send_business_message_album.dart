@@ -52,16 +52,17 @@ class SendBusinessMessageAlbum extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'business_connection_id': businessConnectionId,
-        'chat_id': chatId,
-        'reply_to': replyTo?.toJson(),
-        'disable_notification': disableNotification,
-        'protect_content': protectContent,
-        'effect_id': effectId,
-        'input_message_contents':
-            inputMessageContents.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'business_connection_id': businessConnectionId,
+    'chat_id': chatId,
+    'reply_to': replyTo?.toJson(),
+    'disable_notification': disableNotification,
+    'protect_content': protectContent,
+    'effect_id': effectId,
+    'input_message_contents': inputMessageContents
+        .map((item) => item.toJson())
+        .toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

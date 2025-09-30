@@ -33,8 +33,9 @@ class AddedReaction extends TdObject {
 
     return AddedReaction(
       type: ReactionType.fromJson(json['type'] as Map<String, dynamic>?)!,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?)!,
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      )!,
       isOutgoing: json['is_outgoing'] as bool,
       date: json['date'] as int,
     );
@@ -45,12 +46,12 @@ class AddedReaction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'sender_id': senderId.toJson(),
-        'is_outgoing': isOutgoing,
-        'date': date,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'sender_id': senderId.toJson(),
+    'is_outgoing': isOutgoing,
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

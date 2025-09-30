@@ -2,13 +2,10 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The original story was a public story with known sender
+/// The original story was a public story that was posted by a known chat
 @immutable
 class StoryOriginPublicStory extends StoryOrigin {
-  const StoryOriginPublicStory({
-    required this.chatId,
-    required this.storyId,
-  });
+  const StoryOriginPublicStory({required this.chatId, required this.storyId});
 
   /// [chatId] Identifier of the chat that posted original story
   final int chatId;
@@ -34,10 +31,10 @@ class StoryOriginPublicStory extends StoryOrigin {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'story_id': storyId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'story_id': storyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

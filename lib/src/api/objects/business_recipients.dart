@@ -48,13 +48,15 @@ class BusinessRecipients extends TdObject {
 
     return BusinessRecipients(
       chatIds: List<int>.from(
-          ((json['chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       excludedChatIds: List<int>.from(
-          ((json['excluded_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['excluded_chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       selectExistingChats: json['select_existing_chats'] as bool,
       selectNewChats: json['select_new_chats'] as bool,
       selectContacts: json['select_contacts'] as bool,
@@ -68,15 +70,15 @@ class BusinessRecipients extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_ids': chatIds.map((item) => item).toList(),
-        'excluded_chat_ids': excludedChatIds.map((item) => item).toList(),
-        'select_existing_chats': selectExistingChats,
-        'select_new_chats': selectNewChats,
-        'select_contacts': selectContacts,
-        'select_non_contacts': selectNonContacts,
-        'exclude_selected': excludeSelected,
-        '@type': constructor,
-      };
+    'chat_ids': chatIds.map((item) => item).toList(),
+    'excluded_chat_ids': excludedChatIds.map((item) => item).toList(),
+    'select_existing_chats': selectExistingChats,
+    'select_new_chats': selectNewChats,
+    'select_contacts': selectContacts,
+    'select_non_contacts': selectNonContacts,
+    'exclude_selected': excludeSelected,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

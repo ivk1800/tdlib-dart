@@ -38,13 +38,13 @@ class AnswerCallbackQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'callback_query_id': callbackQueryId,
-        'text': text,
-        'show_alert': showAlert,
-        'url': url,
-        'cache_time': cacheTime,
-        '@type': constructor,
-      };
+    'callback_query_id': callbackQueryId,
+    'text': text,
+    'show_alert': showAlert,
+    'url': url,
+    'cache_time': cacheTime,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

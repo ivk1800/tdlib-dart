@@ -48,8 +48,9 @@ class ForwardSource extends TdObject {
     return ForwardSource(
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?),
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      ),
       senderName: json['sender_name'] as String,
       date: json['date'] as int,
       isOutgoing: json['is_outgoing'] as bool,
@@ -61,14 +62,14 @@ class ForwardSource extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'sender_id': senderId?.toJson(),
-        'sender_name': senderName,
-        'date': date,
-        'is_outgoing': isOutgoing,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'sender_id': senderId?.toJson(),
+    'sender_name': senderName,
+    'date': date,
+    'is_outgoing': isOutgoing,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

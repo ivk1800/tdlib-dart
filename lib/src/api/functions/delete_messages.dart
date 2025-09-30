@@ -31,11 +31,11 @@ class DeleteMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'revoke': revoke,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'revoke': revoke,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

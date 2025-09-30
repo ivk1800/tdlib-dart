@@ -32,11 +32,11 @@ class SetCommands extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'scope': scope?.toJson(),
-        'language_code': languageCode,
-        'commands': commands.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'scope': scope?.toJson(),
+    'language_code': languageCode,
+    'commands': commands.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

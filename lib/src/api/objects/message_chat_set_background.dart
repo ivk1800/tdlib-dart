@@ -30,8 +30,9 @@ class MessageChatSetBackground extends MessageContent {
 
     return MessageChatSetBackground(
       oldBackgroundMessageId: json['old_background_message_id'] as int,
-      background:
-          ChatBackground.fromJson(json['background'] as Map<String, dynamic>?)!,
+      background: ChatBackground.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      )!,
       onlyForSelf: json['only_for_self'] as bool,
     );
   }
@@ -41,11 +42,11 @@ class MessageChatSetBackground extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_background_message_id': oldBackgroundMessageId,
-        'background': background.toJson(),
-        'only_for_self': onlyForSelf,
-        '@type': constructor,
-      };
+    'old_background_message_id': oldBackgroundMessageId,
+    'background': background.toJson(),
+    'only_for_self': onlyForSelf,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

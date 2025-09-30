@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The speech recognition failed
 @immutable
 class SpeechRecognitionResultError extends SpeechRecognitionResult {
-  const SpeechRecognitionResultError({
-    required this.error,
-  });
+  const SpeechRecognitionResultError({required this.error});
 
   /// [error] Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is
   /// returned when media duration is too big to be recognized
@@ -30,9 +28,9 @@ class SpeechRecognitionResultError extends SpeechRecognitionResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error': error.toJson(),
-        '@type': constructor,
-      };
+    'error': error.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

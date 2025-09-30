@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An authentication token received through Apple ID
 @immutable
 class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication {
-  const EmailAddressAuthenticationAppleId({
-    required this.token,
-  });
+  const EmailAddressAuthenticationAppleId({required this.token});
 
   /// [token] The token
   final String token;
@@ -15,14 +13,13 @@ class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication {
   static const String constructor = 'emailAddressAuthenticationAppleId';
 
   static EmailAddressAuthenticationAppleId? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return EmailAddressAuthenticationAppleId(
-      token: json['token'] as String,
-    );
+    return EmailAddressAuthenticationAppleId(token: json['token'] as String);
   }
 
   @override
@@ -30,9 +27,9 @@ class EmailAddressAuthenticationAppleId extends EmailAddressAuthentication {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ToggleSupergroupIsBroadcastGroup extends TdFunction {
-  const ToggleSupergroupIsBroadcastGroup({
-    required this.supergroupId,
-  });
+  const ToggleSupergroupIsBroadcastGroup({required this.supergroupId});
 
   /// [supergroupId] Identifier of the supergroup
   final int supergroupId;
@@ -21,9 +19,9 @@ class ToggleSupergroupIsBroadcastGroup extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

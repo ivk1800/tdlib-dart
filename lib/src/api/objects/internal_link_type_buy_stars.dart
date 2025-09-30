@@ -37,10 +37,10 @@ class InternalLinkTypeBuyStars extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'purpose': purpose,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'purpose': purpose,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

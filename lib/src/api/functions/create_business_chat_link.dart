@@ -9,9 +9,7 @@ import '../tdapi.dart';
 /// Returns [BusinessChatLink]
 @immutable
 class CreateBusinessChatLink extends TdFunction {
-  const CreateBusinessChatLink({
-    required this.linkInfo,
-  });
+  const CreateBusinessChatLink({required this.linkInfo});
 
   /// [linkInfo] Information about the link to create
   final InputBusinessChatLink linkInfo;
@@ -23,9 +21,9 @@ class CreateBusinessChatLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link_info': linkInfo.toJson(),
-        '@type': constructor,
-      };
+    'link_info': linkInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

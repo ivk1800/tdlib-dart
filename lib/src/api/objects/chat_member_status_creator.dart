@@ -41,11 +41,11 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_title': customTitle,
-        'is_anonymous': isAnonymous,
-        'is_member': isMember,
-        '@type': constructor,
-      };
+    'custom_title': customTitle,
+    'is_anonymous': isAnonymous,
+    'is_member': isMember,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

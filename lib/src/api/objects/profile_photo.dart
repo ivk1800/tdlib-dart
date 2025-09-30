@@ -47,7 +47,8 @@ class ProfilePhoto extends TdObject {
       small: File.fromJson(json['small'] as Map<String, dynamic>?)!,
       big: File.fromJson(json['big'] as Map<String, dynamic>?)!,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
       hasAnimation: json['has_animation'] as bool,
       isPersonal: json['is_personal'] as bool,
     );
@@ -58,14 +59,14 @@ class ProfilePhoto extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'small': small.toJson(),
-        'big': big.toJson(),
-        'minithumbnail': minithumbnail?.toJson(),
-        'has_animation': hasAnimation,
-        'is_personal': isPersonal,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'small': small.toJson(),
+    'big': big.toJson(),
+    'minithumbnail': minithumbnail?.toJson(),
+    'has_animation': hasAnimation,
+    'is_personal': isPersonal,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

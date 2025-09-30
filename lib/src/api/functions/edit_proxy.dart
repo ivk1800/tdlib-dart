@@ -37,13 +37,13 @@ class EditProxy extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'proxy_id': proxyId,
-        'server': server,
-        'port': port,
-        'enable': enable,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'proxy_id': proxyId,
+    'server': server,
+    'port': port,
+    'enable': enable,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

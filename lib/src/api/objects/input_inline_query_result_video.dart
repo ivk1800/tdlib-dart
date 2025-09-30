@@ -75,10 +75,12 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
       videoWidth: json['video_width'] as int,
       videoHeight: json['video_height'] as int,
       videoDuration: json['video_duration'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
       inputMessageContent: InputMessageContent.fromJson(
-          json['input_message_content'] as Map<String, dynamic>?)!,
+        json['input_message_content'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -87,19 +89,19 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'description': description,
-        'thumbnail_url': thumbnailUrl,
-        'video_url': videoUrl,
-        'mime_type': mimeType,
-        'video_width': videoWidth,
-        'video_height': videoHeight,
-        'video_duration': videoDuration,
-        'reply_markup': replyMarkup?.toJson(),
-        'input_message_content': inputMessageContent.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'title': title,
+    'description': description,
+    'thumbnail_url': thumbnailUrl,
+    'video_url': videoUrl,
+    'mime_type': mimeType,
+    'video_width': videoWidth,
+    'video_height': videoHeight,
+    'video_duration': videoDuration,
+    'reply_markup': replyMarkup?.toJson(),
+    'input_message_content': inputMessageContent.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

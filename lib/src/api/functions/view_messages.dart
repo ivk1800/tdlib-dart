@@ -28,8 +28,8 @@ class ViewMessages extends TdFunction {
   /// on chat open state
   final MessageSource? source;
 
-  /// [forceRead] Pass true to mark as read the specified messages even the chat
-  /// is closed
+  /// [forceRead] Pass true to mark as read the specified messages even if the
+  /// chat is closed
   final bool forceRead;
 
   static const String constructor = 'viewMessages';
@@ -39,12 +39,12 @@ class ViewMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'source': source?.toJson(),
-        'force_read': forceRead,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'source': source?.toJson(),
+    'force_read': forceRead,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

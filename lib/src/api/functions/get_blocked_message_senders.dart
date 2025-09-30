@@ -29,11 +29,11 @@ class GetBlockedMessageSenders extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'block_list': blockList.toJson(),
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'block_list': blockList.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

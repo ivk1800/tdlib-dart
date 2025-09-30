@@ -5,11 +5,12 @@ I am no longer interested in **Dart** and don’t have time to continue developm
 
 # tdlib-dart
 
-A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated([generator](https://github.com/ivk1800/tdlib-generator?tab=readme-ov-file)) schema classes of [td_api.tl](https://github.com/tdlib/td/blob/master/td/generate/scheme/td_api.tl) and a client that interacts with lib through [ffi](https://dart.dev/guides/libraries/c-interop). 
+A Dart wrapper for [tdlib](https://github.com/tdlib/td). Contains generated([generator](https://github.com/ivk1800/tdlib-generator?tab=readme-ov-file)) schema classes of [td_api.tl](https://github.com/tdlib/td/blob/master/td/generate/scheme/td_api.tl) and a client that interacts with lib through [ffi](https://dart.dev/guides/libraries/c-interop).
 
 | Version |                         tdlib commit                          |                                                                 td_api.tl revision |
 |---------|:-------------------------------------------------------------:|-----------------------------------------------------------------------------------:|
-| 1.8.39  |                          last commit                          |   [18618ca](https://github.com/tdlib/td/blob/18618ca/td/generate/scheme/td_api.tl) |
+| 1.8.51  |                  latest commit                                |   [b67a02e](https://github.com/tdlib/td/blob/b67a02e/td/generate/scheme/td_api.tl) |
+| 1.8.39  | [b855b744](https://github.com/ivk1800/tdlib-dart/tree/b855b74)|   [18618ca](https://github.com/tdlib/td/blob/18618ca/td/generate/scheme/td_api.tl) |
 | 1.8.29  | [6760ab3](https://github.com/ivk1800/tdlib-dart/tree/6760ab3) |   [44b548c](https://github.com/tdlib/td/blob/44b548c/td/generate/scheme/td_api.tl) |
 | 1.8.26  | [d7a31ad](https://github.com/ivk1800/tdlib-dart/tree/d7a31ad) |   [b1b33cf](https://github.com/tdlib/td/blob/b1b33cf/td/generate/scheme/td_api.tl) |
 | 1.8.21  | [32d37d9](https://github.com/ivk1800/tdlib-dart/tree/32d37d9) |   [404761c](https://github.com/tdlib/td/blob/404761c/td/generate/scheme/td_api.tl) |
@@ -76,11 +77,11 @@ The tdlib binaries is built automatically using github actions and published on 
 ### Android
 Copy `.so` files from archive to `example/android/app/main/jniLibs`:
 ```
-└── example 
-    └── android 
-        └── app 
-            └── main 
-                └── jniLibs 
+└── example
+    └── android
+        └── app
+            └── main
+                └── jniLibs
                     └── arm64-v8a
                     │   └── libtdjsonandroid.so
                     └── armeabi-v7a
@@ -98,7 +99,7 @@ sourceSets {
   main.java.srcDirs += 'src/main/kotlin'
 }
 ```
-by 
+by
 ```groovy
 sourceSets {
   main {
@@ -112,8 +113,8 @@ sourceSets {
 1. Copy `libtdjson.dylib` from archive to `example/ios`
 2. Copy `libtdjson.dylib` from archive to `example/macos`
 ```
-└── example 
-    └── ios 
+└── example
+    └── ios
     │   └── libtdjson.dylib
     └── macos
         └── libtdjson.dylib
@@ -128,9 +129,9 @@ sourceSets {
 ### Windows
 1. Copy files from archive to `example/windows/tdlib`
 ```
-└── example 
-    └── windows 
-        └── tdlib 
+└── example
+    └── windows
+        └── tdlib
             └── libcrypto-1_1.dll
             └── libssl-1_1.dll
             └── tdjson.dll
@@ -151,9 +152,9 @@ install(FILES "${dll_path}/zlib1.dll" DESTINATION "${INSTALL_BUNDLE_LIB_DIR}" CO
 ### Linux
 1. Copy file from archive to `example/linux/tdlib`
 ```
-└── example 
-    └── linux 
-        └── tdlib 
+└── example
+    └── linux
+        └── tdlib
             └── libtdjson.so
 ```
 2. Open `example/linux/CMakeLists.txt`.

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains size of downloaded prefix of a file
 @immutable
 class FileDownloadedPrefixSize extends TdObject {
-  const FileDownloadedPrefixSize({
-    required this.size,
-  });
+  const FileDownloadedPrefixSize({required this.size});
 
   /// [size] The prefix size, in bytes
   final int size;
@@ -19,9 +17,7 @@ class FileDownloadedPrefixSize extends TdObject {
       return null;
     }
 
-    return FileDownloadedPrefixSize(
-      size: json['size'] as int,
-    );
+    return FileDownloadedPrefixSize(size: json['size'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class FileDownloadedPrefixSize extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'size': size,
-        '@type': constructor,
-      };
+    'size': size,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

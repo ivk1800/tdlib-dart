@@ -17,6 +17,7 @@ class Supergroup extends TdObject {
     required this.status,
     required this.memberCount,
     required this.boostLevel,
+    required this.hasAutomaticTranslation,
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
@@ -27,11 +28,14 @@ class Supergroup extends TdObject {
     required this.isChannel,
     required this.isBroadcastGroup,
     required this.isForum,
-    required this.isVerified,
+    required this.isDirectMessagesGroup,
+    required this.isAdministeredDirectMessagesGroup,
+    this.verificationStatus,
+    required this.hasDirectMessagesGroup,
+    required this.hasForumTabs,
     required this.hasSensitiveContent,
     required this.restrictionReason,
-    required this.isScam,
-    required this.isFake,
+    required this.paidMessageStarCount,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
   });
@@ -53,7 +57,7 @@ class Supergroup extends TdObject {
 
   /// [memberCount] Number of members in the supergroup or channel; 0 if
   /// unknown. Currently, it is guaranteed to be known only if the supergroup or
-  /// channel was received through getChatSimilarChats, getChatsToSendStories,
+  /// channel was received through getChatSimilarChats, getChatsToPostStories,
   /// getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats,
   /// getRecommendedChats, getSuitableDiscussionChats,
   /// getUserPrivacySettingRules, getVideoChatAvailableParticipants,
@@ -64,6 +68,10 @@ class Supergroup extends TdObject {
 
   /// [boostLevel] Approximate boost level for the chat
   final int boostLevel;
+
+  /// [hasAutomaticTranslation] True, if automatic translation of messages is
+  /// enabled in the channel
+  final bool hasAutomaticTranslation;
 
   /// [hasLinkedChat] True, if the channel has a discussion group, or the
   /// supergroup is the designated discussion group for a channel
@@ -105,8 +113,24 @@ class Supergroup extends TdObject {
   /// [isForum] True, if the supergroup is a forum with topics
   final bool isForum;
 
-  /// [isVerified] True, if the supergroup or channel is verified
-  final bool isVerified;
+  /// [isDirectMessagesGroup] True, if the supergroup is a direct message group
+  /// for a channel chat
+  final bool isDirectMessagesGroup;
+
+  /// [isAdministeredDirectMessagesGroup] True, if the supergroup is a direct
+  /// messages group for a channel chat that is administered by the current user
+  final bool isAdministeredDirectMessagesGroup;
+
+  /// [verificationStatus] Information about verification status of the
+  /// supergroup or channel; may be null if none
+  final VerificationStatus? verificationStatus;
+
+  /// [hasDirectMessagesGroup] True, if the channel has direct messages group
+  final bool hasDirectMessagesGroup;
+
+  /// [hasForumTabs] True, if the supergroup is a forum, which topics are shown
+  /// in the same way as in channel direct messages groups
+  final bool hasForumTabs;
 
   /// [hasSensitiveContent] True, if content of media messages in the supergroup
   /// or channel chat must be hidden with 18+ spoiler
@@ -116,12 +140,9 @@ class Supergroup extends TdObject {
   /// the reason why access to this supergroup or channel must be restricted
   final String restrictionReason;
 
-  /// [isScam] True, if many users reported this supergroup or channel as a scam
-  final bool isScam;
-
-  /// [isFake] True, if many users reported this supergroup or channel as a fake
-  /// account
-  final bool isFake;
+  /// [paidMessageStarCount] Number of Telegram Stars that must be paid by
+  /// non-administrator users of the supergroup chat for each sent message
+  final int paidMessageStarCount;
 
   /// [hasActiveStories] True, if the supergroup or channel has non-expired
   /// stories available to the current user
@@ -142,10 +163,12 @@ class Supergroup extends TdObject {
       id: json['id'] as int,
       usernames: Usernames.fromJson(json['usernames'] as Map<String, dynamic>?),
       date: json['date'] as int,
-      status:
-          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      status: ChatMemberStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
       memberCount: json['member_count'] as int,
       boostLevel: json['boost_level'] as int,
+      hasAutomaticTranslation: json['has_automatic_translation'] as bool,
       hasLinkedChat: json['has_linked_chat'] as bool,
       hasLocation: json['has_location'] as bool,
       signMessages: json['sign_messages'] as bool,
@@ -156,11 +179,17 @@ class Supergroup extends TdObject {
       isChannel: json['is_channel'] as bool,
       isBroadcastGroup: json['is_broadcast_group'] as bool,
       isForum: json['is_forum'] as bool,
-      isVerified: json['is_verified'] as bool,
+      isDirectMessagesGroup: json['is_direct_messages_group'] as bool,
+      isAdministeredDirectMessagesGroup:
+          json['is_administered_direct_messages_group'] as bool,
+      verificationStatus: VerificationStatus.fromJson(
+        json['verification_status'] as Map<String, dynamic>?,
+      ),
+      hasDirectMessagesGroup: json['has_direct_messages_group'] as bool,
+      hasForumTabs: json['has_forum_tabs'] as bool,
       hasSensitiveContent: json['has_sensitive_content'] as bool,
       restrictionReason: json['restriction_reason'] as String,
-      isScam: json['is_scam'] as bool,
-      isFake: json['is_fake'] as bool,
+      paidMessageStarCount: json['paid_message_star_count'] as int,
       hasActiveStories: json['has_active_stories'] as bool,
       hasUnreadActiveStories: json['has_unread_active_stories'] as bool,
     );
@@ -171,31 +200,35 @@ class Supergroup extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'usernames': usernames?.toJson(),
-        'date': date,
-        'status': status.toJson(),
-        'member_count': memberCount,
-        'boost_level': boostLevel,
-        'has_linked_chat': hasLinkedChat,
-        'has_location': hasLocation,
-        'sign_messages': signMessages,
-        'show_message_sender': showMessageSender,
-        'join_to_send_messages': joinToSendMessages,
-        'join_by_request': joinByRequest,
-        'is_slow_mode_enabled': isSlowModeEnabled,
-        'is_channel': isChannel,
-        'is_broadcast_group': isBroadcastGroup,
-        'is_forum': isForum,
-        'is_verified': isVerified,
-        'has_sensitive_content': hasSensitiveContent,
-        'restriction_reason': restrictionReason,
-        'is_scam': isScam,
-        'is_fake': isFake,
-        'has_active_stories': hasActiveStories,
-        'has_unread_active_stories': hasUnreadActiveStories,
-        '@type': constructor,
-      };
+    'id': id,
+    'usernames': usernames?.toJson(),
+    'date': date,
+    'status': status.toJson(),
+    'member_count': memberCount,
+    'boost_level': boostLevel,
+    'has_automatic_translation': hasAutomaticTranslation,
+    'has_linked_chat': hasLinkedChat,
+    'has_location': hasLocation,
+    'sign_messages': signMessages,
+    'show_message_sender': showMessageSender,
+    'join_to_send_messages': joinToSendMessages,
+    'join_by_request': joinByRequest,
+    'is_slow_mode_enabled': isSlowModeEnabled,
+    'is_channel': isChannel,
+    'is_broadcast_group': isBroadcastGroup,
+    'is_forum': isForum,
+    'is_direct_messages_group': isDirectMessagesGroup,
+    'is_administered_direct_messages_group': isAdministeredDirectMessagesGroup,
+    'verification_status': verificationStatus?.toJson(),
+    'has_direct_messages_group': hasDirectMessagesGroup,
+    'has_forum_tabs': hasForumTabs,
+    'has_sensitive_content': hasSensitiveContent,
+    'restriction_reason': restrictionReason,
+    'paid_message_star_count': paidMessageStarCount,
+    'has_active_stories': hasActiveStories,
+    'has_unread_active_stories': hasUnreadActiveStories,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

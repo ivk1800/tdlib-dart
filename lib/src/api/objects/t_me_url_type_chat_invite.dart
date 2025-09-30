@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A chat invite link
 @immutable
 class TMeUrlTypeChatInvite extends TMeUrlType {
-  const TMeUrlTypeChatInvite({
-    required this.info,
-  });
+  const TMeUrlTypeChatInvite({required this.info});
 
   /// [info] Information about the chat invite link
   final ChatInviteLinkInfo info;
@@ -29,9 +27,9 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'info': info.toJson(),
-        '@type': constructor,
-      };
+    'info': info.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

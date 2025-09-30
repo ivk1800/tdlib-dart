@@ -39,11 +39,11 @@ class MessagePosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'position': position,
-        'message_id': messageId,
-        'date': date,
-        '@type': constructor,
-      };
+    'position': position,
+    'message_id': messageId,
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

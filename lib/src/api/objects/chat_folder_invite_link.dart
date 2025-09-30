@@ -31,9 +31,10 @@ class ChatFolderInviteLink extends TdObject {
       inviteLink: json['invite_link'] as String,
       name: json['name'] as String,
       chatIds: List<int>.from(
-          ((json['chat_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['chat_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -42,11 +43,11 @@ class ChatFolderInviteLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        'name': name,
-        'chat_ids': chatIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    'name': name,
+    'chat_ids': chatIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

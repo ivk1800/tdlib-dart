@@ -9,15 +9,15 @@ import '../tdapi.dart';
 @immutable
 class SearchPublicStoriesByTag extends TdFunction {
   const SearchPublicStoriesByTag({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.tag,
     required this.offset,
     required this.limit,
   });
 
-  /// [storySenderChatId] Identifier of the chat that posted the stories to
+  /// [storyPosterChatId] Identifier of the chat that posted the stories to
   /// search for; pass 0 to search stories in all chats
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// [tag] Hashtag or cashtag to search for
   final String tag;
@@ -38,12 +38,12 @@ class SearchPublicStoriesByTag extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_sender_chat_id': storySenderChatId,
-        'tag': tag,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'story_poster_chat_id': storyPosterChatId,
+    'tag': tag,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

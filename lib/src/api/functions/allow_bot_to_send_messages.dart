@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AllowBotToSendMessages extends TdFunction {
-  const AllowBotToSendMessages({
-    required this.botUserId,
-  });
+  const AllowBotToSendMessages({required this.botUserId});
 
   /// [botUserId] Identifier of the target bot
   final int botUserId;
@@ -20,9 +18,9 @@ class AllowBotToSendMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

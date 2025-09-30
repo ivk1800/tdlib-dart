@@ -15,14 +15,16 @@ class UpdateReactionNotificationSettings extends Update {
   static const String constructor = 'updateReactionNotificationSettings';
 
   static UpdateReactionNotificationSettings? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return UpdateReactionNotificationSettings(
       notificationSettings: ReactionNotificationSettings.fromJson(
-          json['notification_settings'] as Map<String, dynamic>?)!,
+        json['notification_settings'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +33,9 @@ class UpdateReactionNotificationSettings extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_settings': notificationSettings.toJson(),
-        '@type': constructor,
-      };
+    'notification_settings': notificationSettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

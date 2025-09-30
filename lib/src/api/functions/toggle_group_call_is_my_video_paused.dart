@@ -24,10 +24,10 @@ class ToggleGroupCallIsMyVideoPaused extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'is_my_video_paused': isMyVideoPaused,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'is_my_video_paused': isMyVideoPaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

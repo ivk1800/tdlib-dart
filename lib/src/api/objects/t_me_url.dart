@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a URL linking to an internal Telegram entity
 @immutable
 class TMeUrl extends TdObject {
-  const TMeUrl({
-    required this.url,
-    required this.type,
-  });
+  const TMeUrl({required this.url, required this.type});
 
   /// [url] URL
   final String url;
@@ -34,10 +31,10 @@ class TMeUrl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'url': url,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

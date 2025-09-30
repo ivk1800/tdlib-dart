@@ -40,11 +40,11 @@ class ChatInviteLinkCount extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'invite_link_count': inviteLinkCount,
-        'revoked_invite_link_count': revokedInviteLinkCount,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'invite_link_count': inviteLinkCount,
+    'revoked_invite_link_count': revokedInviteLinkCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

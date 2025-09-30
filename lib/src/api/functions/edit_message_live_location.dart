@@ -55,15 +55,15 @@ class EditMessageLiveLocation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'location': location?.toJson(),
-        'live_period': livePeriod,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'location': location?.toJson(),
+    'live_period': livePeriod,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -23,7 +23,8 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
   static const String constructor = 'internalLinkTypePhoneNumberConfirmation';
 
   static InternalLinkTypePhoneNumberConfirmation? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -39,10 +40,10 @@ class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'hash': hash,
-        'phone_number': phoneNumber,
-        '@type': constructor,
-      };
+    'hash': hash,
+    'phone_number': phoneNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

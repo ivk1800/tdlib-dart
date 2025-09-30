@@ -29,10 +29,12 @@ class MessageVoiceNote extends MessageContent {
     }
 
     return MessageVoiceNote(
-      voiceNote:
-          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?)!,
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      voiceNote: VoiceNote.fromJson(
+        json['voice_note'] as Map<String, dynamic>?,
+      )!,
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
       isListened: json['is_listened'] as bool,
     );
   }
@@ -42,11 +44,11 @@ class MessageVoiceNote extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'voice_note': voiceNote.toJson(),
-        'caption': caption.toJson(),
-        'is_listened': isListened,
-        '@type': constructor,
-      };
+    'voice_note': voiceNote.toJson(),
+    'caption': caption.toJson(),
+    'is_listened': isListened,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

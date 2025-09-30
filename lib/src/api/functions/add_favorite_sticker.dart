@@ -10,9 +10,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddFavoriteSticker extends TdFunction {
-  const AddFavoriteSticker({
-    required this.sticker,
-  });
+  const AddFavoriteSticker({required this.sticker});
 
   /// [sticker] Sticker file to add
   final InputFile sticker;
@@ -24,9 +22,9 @@ class AddFavoriteSticker extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

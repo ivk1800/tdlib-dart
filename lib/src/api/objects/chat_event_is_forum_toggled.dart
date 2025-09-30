@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The is_forum setting of a channel was toggled
 @immutable
 class ChatEventIsForumToggled extends ChatEventAction {
-  const ChatEventIsForumToggled({
-    required this.isForum,
-  });
+  const ChatEventIsForumToggled({required this.isForum});
 
   /// [isForum] New value of is_forum
   final bool isForum;
@@ -19,9 +17,7 @@ class ChatEventIsForumToggled extends ChatEventAction {
       return null;
     }
 
-    return ChatEventIsForumToggled(
-      isForum: json['is_forum'] as bool,
-    );
+    return ChatEventIsForumToggled(isForum: json['is_forum'] as bool);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatEventIsForumToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_forum': isForum,
-        '@type': constructor,
-      };
+    'is_forum': isForum,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -2,16 +2,17 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// A payment has been completed; for bots only
+/// A payment has been received by the bot or the business account
 @immutable
 class MessagePaymentSuccessfulBot extends MessageContent {
   const MessagePaymentSuccessfulBot({
     required this.currency,
     required this.totalAmount,
+    required this.subscriptionUntilDate,
     required this.isRecurring,
     required this.isFirstRecurring,
     required this.invoicePayload,
-    required this.shippingOptionId,
+    this.shippingOptionId,
     this.orderInfo,
     required this.telegramPaymentChargeId,
     required this.providerPaymentChargeId,
@@ -24,6 +25,10 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// currency
   final int totalAmount;
 
+  /// [subscriptionUntilDate] Point in time (Unix timestamp) when the
+  /// subscription will expire; 0 if unknown or the payment isn't recurring
+  final int subscriptionUntilDate;
+
   /// [isRecurring] True, if this is a recurring payment
   final bool isRecurring;
 
@@ -34,10 +39,10 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   final String invoicePayload;
 
   /// [shippingOptionId] Identifier of the shipping option chosen by the user;
-  /// may be empty if not applicable
-  final String shippingOptionId;
+  /// may be empty if not applicable; for bots only
+  final String? shippingOptionId;
 
-  /// [orderInfo] Information about the order; may be null
+  /// [orderInfo] Information about the order; may be null; for bots only
   final OrderInfo? orderInfo;
 
   /// [telegramPaymentChargeId] Telegram payment identifier
@@ -56,12 +61,14 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     return MessagePaymentSuccessfulBot(
       currency: json['currency'] as String,
       totalAmount: json['total_amount'] as int,
+      subscriptionUntilDate: json['subscription_until_date'] as int,
       isRecurring: json['is_recurring'] as bool,
       isFirstRecurring: json['is_first_recurring'] as bool,
       invoicePayload: json['invoice_payload'] as String,
-      shippingOptionId: json['shipping_option_id'] as String,
-      orderInfo:
-          OrderInfo.fromJson(json['order_info'] as Map<String, dynamic>?),
+      shippingOptionId: json['shipping_option_id'] as String?,
+      orderInfo: OrderInfo.fromJson(
+        json['order_info'] as Map<String, dynamic>?,
+      ),
       telegramPaymentChargeId: json['telegram_payment_charge_id'] as String,
       providerPaymentChargeId: json['provider_payment_charge_id'] as String,
     );
@@ -72,17 +79,18 @@ class MessagePaymentSuccessfulBot extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'currency': currency,
-        'total_amount': totalAmount,
-        'is_recurring': isRecurring,
-        'is_first_recurring': isFirstRecurring,
-        'invoice_payload': invoicePayload,
-        'shipping_option_id': shippingOptionId,
-        'order_info': orderInfo?.toJson(),
-        'telegram_payment_charge_id': telegramPaymentChargeId,
-        'provider_payment_charge_id': providerPaymentChargeId,
-        '@type': constructor,
-      };
+    'currency': currency,
+    'total_amount': totalAmount,
+    'subscription_until_date': subscriptionUntilDate,
+    'is_recurring': isRecurring,
+    'is_first_recurring': isFirstRecurring,
+    'invoice_payload': invoicePayload,
+    'shipping_option_id': shippingOptionId,
+    'order_info': orderInfo?.toJson(),
+    'telegram_payment_charge_id': telegramPaymentChargeId,
+    'provider_payment_charge_id': providerPaymentChargeId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

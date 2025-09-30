@@ -40,8 +40,9 @@ class MessageEffect extends TdObject {
 
     return MessageEffect(
       id: int.tryParse(json['id']) ?? 0,
-      staticIcon:
-          Sticker.fromJson(json['static_icon'] as Map<String, dynamic>?),
+      staticIcon: Sticker.fromJson(
+        json['static_icon'] as Map<String, dynamic>?,
+      ),
       emoji: json['emoji'] as String,
       isPremium: json['is_premium'] as bool,
       type: MessageEffectType.fromJson(json['type'] as Map<String, dynamic>?)!,
@@ -53,13 +54,13 @@ class MessageEffect extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'static_icon': staticIcon?.toJson(),
-        'emoji': emoji,
-        'is_premium': isPremium,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'static_icon': staticIcon?.toJson(),
+    'emoji': emoji,
+    'is_premium': isPremium,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

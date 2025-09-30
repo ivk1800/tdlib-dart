@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetAccountTtl extends TdFunction {
-  const SetAccountTtl({
-    required this.ttl,
-  });
+  const SetAccountTtl({required this.ttl});
 
   /// [ttl] New account TTL
   final AccountTtl ttl;
@@ -21,9 +19,9 @@ class SetAccountTtl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'ttl': ttl.toJson(),
-        '@type': constructor,
-      };
+    'ttl': ttl.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

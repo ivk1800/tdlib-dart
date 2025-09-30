@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// premium users can use premium custom emoji
 @immutable
 class TextEntityTypeCustomEmoji extends TextEntityType {
-  const TextEntityTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const TextEntityTypeCustomEmoji({required this.customEmojiId});
 
   /// [customEmojiId] Unique identifier of the custom emoji
   final int customEmojiId;
@@ -30,9 +28,9 @@ class TextEntityTypeCustomEmoji extends TextEntityType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_id': customEmojiId.toString(),
-        '@type': constructor,
-      };
+    'custom_emoji_id': customEmojiId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

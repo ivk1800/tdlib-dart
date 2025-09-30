@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A text with some entities
 @immutable
 class FormattedText extends TdObject {
-  const FormattedText({
-    required this.text,
-    required this.entities,
-  });
+  const FormattedText({required this.text, required this.entities});
 
   /// [text] The text
   final String text;
@@ -31,9 +28,10 @@ class FormattedText extends TdObject {
     return FormattedText(
       text: json['text'] as String,
       entities: List<TextEntity>.from(
-          ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => TextEntity.fromJson(item))
-              .toList()),
+        ((json['entities'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => TextEntity.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -42,10 +40,10 @@ class FormattedText extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'entities': entities.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'text': text,
+    'entities': entities.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

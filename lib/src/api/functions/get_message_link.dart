@@ -5,7 +5,7 @@ import '../tdapi.dart';
 /// Returns an HTTPS link to a message in a chat. Available only if
 /// messageProperties.can_get_link, or if
 /// messageProperties.can_get_media_timestamp_links and a media timestamp link
-/// is generated. This is an offline request
+/// is generated. This is an offline method
 /// Returns [MessageLink]
 @immutable
 class GetMessageLink extends TdFunction {
@@ -42,13 +42,13 @@ class GetMessageLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'media_timestamp': mediaTimestamp,
-        'for_album': forAlbum,
-        'in_message_thread': inMessageThread,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'media_timestamp': mediaTimestamp,
+    'for_album': forAlbum,
+    'in_message_thread': inMessageThread,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

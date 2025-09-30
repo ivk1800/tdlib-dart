@@ -35,12 +35,12 @@ class GetSupergroupMembers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'filter': filter?.toJson(),
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'filter': filter?.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

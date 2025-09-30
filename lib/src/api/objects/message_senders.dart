@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of message senders
 @immutable
 class MessageSenders extends TdObject {
-  const MessageSenders({
-    required this.totalCount,
-    required this.senders,
-  });
+  const MessageSenders({required this.totalCount, required this.senders});
 
   /// [totalCount] Approximate total number of messages senders found
   final int totalCount;
@@ -26,9 +23,10 @@ class MessageSenders extends TdObject {
     return MessageSenders(
       totalCount: json['total_count'] as int,
       senders: List<MessageSender>.from(
-          ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageSender.fromJson(item))
-              .toList()),
+        ((json['senders'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageSender.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +35,10 @@ class MessageSenders extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'senders': senders.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'senders': senders.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

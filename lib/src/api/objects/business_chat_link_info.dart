@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about a business chat link
 @immutable
 class BusinessChatLinkInfo extends TdObject {
-  const BusinessChatLinkInfo({
-    required this.chatId,
-    required this.text,
-  });
+  const BusinessChatLinkInfo({required this.chatId, required this.text});
 
   /// [chatId] Identifier of the private chat that created the link
   final int chatId;
@@ -34,10 +31,10 @@ class BusinessChatLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

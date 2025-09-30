@@ -40,13 +40,15 @@ class InputMessageVoiceNote extends InputMessageContent {
     }
 
     return InputMessageVoiceNote(
-      voiceNote:
-          InputFile.fromJson(json['voice_note'] as Map<String, dynamic>?)!,
+      voiceNote: InputFile.fromJson(
+        json['voice_note'] as Map<String, dynamic>?,
+      )!,
       duration: json['duration'] as int,
       waveform: json['waveform'] as String,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
       selfDestructType: MessageSelfDestructType.fromJson(
-          json['self_destruct_type'] as Map<String, dynamic>?),
+        json['self_destruct_type'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -55,13 +57,13 @@ class InputMessageVoiceNote extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'voice_note': voiceNote.toJson(),
-        'duration': duration,
-        'waveform': waveform,
-        'caption': caption?.toJson(),
-        'self_destruct_type': selfDestructType?.toJson(),
-        '@type': constructor,
-      };
+    'voice_note': voiceNote.toJson(),
+    'duration': duration,
+    'waveform': waveform,
+    'caption': caption?.toJson(),
+    'self_destruct_type': selfDestructType?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

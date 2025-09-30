@@ -26,9 +26,10 @@ class MessageBasicGroupChatCreate extends MessageContent {
     return MessageBasicGroupChatCreate(
       title: json['title'] as String,
       memberUserIds: List<int>.from(
-          ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -37,10 +38,10 @@ class MessageBasicGroupChatCreate extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'member_user_ids': memberUserIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'title': title,
+    'member_user_ids': memberUserIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

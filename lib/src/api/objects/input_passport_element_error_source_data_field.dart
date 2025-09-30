@@ -21,7 +21,8 @@ class InputPassportElementErrorSourceDataField
   static const String constructor = 'inputPassportElementErrorSourceDataField';
 
   static InputPassportElementErrorSourceDataField? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -37,10 +38,10 @@ class InputPassportElementErrorSourceDataField
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'field_name': fieldName,
-        'data_hash': dataHash,
-        '@type': constructor,
-      };
+    'field_name': fieldName,
+    'data_hash': dataHash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

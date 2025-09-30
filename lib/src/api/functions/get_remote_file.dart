@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Returns information about a file by its remote identifier; this is an
-/// offline request. Can be used to register a URL as a file for further
+/// Returns information about a file by its remote identifier. This is an
+/// offline method. Can be used to register a URL as a file for further
 /// uploading, or sending as a message. Even the request succeeds, the file
 /// can be used only if it is still accessible to the user. For example, if
 /// the file is from a message, then the message must be not deleted and
@@ -12,10 +12,7 @@ import '../tdapi.dart';
 /// Returns [File]
 @immutable
 class GetRemoteFile extends TdFunction {
-  const GetRemoteFile({
-    required this.remoteFileId,
-    this.fileType,
-  });
+  const GetRemoteFile({required this.remoteFileId, this.fileType});
 
   /// [remoteFileId] Remote identifier of the file to get
   final String remoteFileId;
@@ -30,10 +27,10 @@ class GetRemoteFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'remote_file_id': remoteFileId,
-        'file_type': fileType?.toJson(),
-        '@type': constructor,
-      };
+    'remote_file_id': remoteFileId,
+    'file_type': fileType?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -30,8 +30,9 @@ class MessageVideoNote extends MessageContent {
     }
 
     return MessageVideoNote(
-      videoNote:
-          VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?)!,
+      videoNote: VideoNote.fromJson(
+        json['video_note'] as Map<String, dynamic>?,
+      )!,
       isViewed: json['is_viewed'] as bool,
       isSecret: json['is_secret'] as bool,
     );
@@ -42,11 +43,11 @@ class MessageVideoNote extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video_note': videoNote.toJson(),
-        'is_viewed': isViewed,
-        'is_secret': isSecret,
-        '@type': constructor,
-      };
+    'video_note': videoNote.toJson(),
+    'is_viewed': isViewed,
+    'is_secret': isSecret,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

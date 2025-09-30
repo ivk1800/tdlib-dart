@@ -48,13 +48,13 @@ class GetChatSparseMessagePositions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'filter': filter.toJson(),
-        'from_message_id': fromMessageId,
-        'limit': limit,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'filter': filter.toJson(),
+    'from_message_id': fromMessageId,
+    'limit': limit,
+    'saved_messages_topic_id': savedMessagesTopicId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

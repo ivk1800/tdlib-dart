@@ -44,11 +44,11 @@ class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number': phoneNumber,
-        'draft_text': draftText,
-        'open_profile': openProfile,
-        '@type': constructor,
-      };
+    'phone_number': phoneNumber,
+    'draft_text': draftText,
+    'open_profile': openProfile,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

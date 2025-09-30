@@ -21,6 +21,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeBusinessChat]
   /// [InternalLinkTypeBuyStars]
   /// [InternalLinkTypeChangePhoneNumber]
+  /// [InternalLinkTypeChatAffiliateProgram]
   /// [InternalLinkTypeChatBoost]
   /// [InternalLinkTypeChatFolderInvite]
   /// [InternalLinkTypeChatFolderSettings]
@@ -28,6 +29,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings]
   /// [InternalLinkTypeEditProfileSettings]
   /// [InternalLinkTypeGame]
+  /// [InternalLinkTypeGroupCall]
   /// [InternalLinkTypeInstantView]
   /// [InternalLinkTypeInvoice]
   /// [InternalLinkTypeLanguagePack]
@@ -35,6 +37,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeMainWebApp]
   /// [InternalLinkTypeMessageDraft]
   /// [InternalLinkTypeMessage]
+  /// [InternalLinkTypeMyStars]
   /// [InternalLinkTypePassportDataRequest]
   /// [InternalLinkTypePhoneNumberConfirmation]
   /// [InternalLinkTypePremiumFeatures]
@@ -52,6 +55,7 @@ abstract class InternalLinkType extends TdObject {
   /// [InternalLinkTypeTheme]
   /// [InternalLinkTypeUnknownDeepLink]
   /// [InternalLinkTypeUnsupportedProxy]
+  /// [InternalLinkTypeUpgradedGift]
   /// [InternalLinkTypeUserPhoneNumber]
   /// [InternalLinkTypeUserToken]
   /// [InternalLinkTypeVideoChat]
@@ -82,6 +86,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeBuyStars.fromJson(json);
       case InternalLinkTypeChangePhoneNumber.constructor:
         return InternalLinkTypeChangePhoneNumber.fromJson(json);
+      case InternalLinkTypeChatAffiliateProgram.constructor:
+        return InternalLinkTypeChatAffiliateProgram.fromJson(json);
       case InternalLinkTypeChatBoost.constructor:
         return InternalLinkTypeChatBoost.fromJson(json);
       case InternalLinkTypeChatFolderInvite.constructor:
@@ -92,11 +98,14 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeChatInvite.fromJson(json);
       case InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.constructor:
         return InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(
-            json);
+          json,
+        );
       case InternalLinkTypeEditProfileSettings.constructor:
         return InternalLinkTypeEditProfileSettings.fromJson(json);
       case InternalLinkTypeGame.constructor:
         return InternalLinkTypeGame.fromJson(json);
+      case InternalLinkTypeGroupCall.constructor:
+        return InternalLinkTypeGroupCall.fromJson(json);
       case InternalLinkTypeInstantView.constructor:
         return InternalLinkTypeInstantView.fromJson(json);
       case InternalLinkTypeInvoice.constructor:
@@ -111,6 +120,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeMessage.fromJson(json);
       case InternalLinkTypeMessageDraft.constructor:
         return InternalLinkTypeMessageDraft.fromJson(json);
+      case InternalLinkTypeMyStars.constructor:
+        return InternalLinkTypeMyStars.fromJson(json);
       case InternalLinkTypePassportDataRequest.constructor:
         return InternalLinkTypePassportDataRequest.fromJson(json);
       case InternalLinkTypePhoneNumberConfirmation.constructor:
@@ -145,6 +156,8 @@ abstract class InternalLinkType extends TdObject {
         return InternalLinkTypeUnknownDeepLink.fromJson(json);
       case InternalLinkTypeUnsupportedProxy.constructor:
         return InternalLinkTypeUnsupportedProxy.fromJson(json);
+      case InternalLinkTypeUpgradedGift.constructor:
+        return InternalLinkTypeUpgradedGift.fromJson(json);
       case InternalLinkTypeUserPhoneNumber.constructor:
         return InternalLinkTypeUserPhoneNumber.fromJson(json);
       case InternalLinkTypeUserToken.constructor:

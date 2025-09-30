@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A forward of the story as a message
 @immutable
 class StoryInteractionTypeForward extends StoryInteractionType {
-  const StoryInteractionTypeForward({
-    required this.message,
-  });
+  const StoryInteractionTypeForward({required this.message});
 
   /// [message] The message with story forward
   final Message message;
@@ -29,9 +27,9 @@ class StoryInteractionTypeForward extends StoryInteractionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

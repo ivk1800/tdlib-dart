@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A newly created supergroup or channel
 @immutable
 class MessageSupergroupChatCreate extends MessageContent {
-  const MessageSupergroupChatCreate({
-    required this.title,
-  });
+  const MessageSupergroupChatCreate({required this.title});
 
   /// [title] Title of the supergroup or channel
   final String title;
@@ -19,9 +17,7 @@ class MessageSupergroupChatCreate extends MessageContent {
       return null;
     }
 
-    return MessageSupergroupChatCreate(
-      title: json['title'] as String,
-    );
+    return MessageSupergroupChatCreate(title: json['title'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageSupergroupChatCreate extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        '@type': constructor,
-      };
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

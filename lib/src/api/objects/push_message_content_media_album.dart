@@ -49,13 +49,13 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'has_photos': hasPhotos,
-        'has_videos': hasVideos,
-        'has_audios': hasAudios,
-        'has_documents': hasDocuments,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'has_photos': hasPhotos,
+    'has_videos': hasVideos,
+    'has_audios': hasAudios,
+    'has_documents': hasDocuments,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

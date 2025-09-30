@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An ordinary language pack string
 @immutable
 class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
-  const LanguagePackStringValueOrdinary({
-    required this.value,
-  });
+  const LanguagePackStringValueOrdinary({required this.value});
 
   /// [value] String value
   final String value;
@@ -19,9 +17,7 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
       return null;
     }
 
-    return LanguagePackStringValueOrdinary(
-      value: json['value'] as String,
-    );
+    return LanguagePackStringValueOrdinary(value: json['value'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        '@type': constructor,
-      };
+    'value': value,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

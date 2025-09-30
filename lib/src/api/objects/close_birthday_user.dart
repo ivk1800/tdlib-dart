@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a user that had or will have a birthday soon
 @immutable
 class CloseBirthdayUser extends TdObject {
-  const CloseBirthdayUser({
-    required this.userId,
-    required this.birthdate,
-  });
+  const CloseBirthdayUser({required this.userId, required this.birthdate});
 
   /// [userId] User identifier
   final int userId;
@@ -25,8 +22,9 @@ class CloseBirthdayUser extends TdObject {
 
     return CloseBirthdayUser(
       userId: json['user_id'] as int,
-      birthdate:
-          Birthdate.fromJson(json['birthdate'] as Map<String, dynamic>?)!,
+      birthdate: Birthdate.fromJson(
+        json['birthdate'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class CloseBirthdayUser extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'birthdate': birthdate.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'birthdate': birthdate.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

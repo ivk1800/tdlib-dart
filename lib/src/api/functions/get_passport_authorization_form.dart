@@ -33,12 +33,12 @@ class GetPassportAuthorizationForm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'scope': scope,
-        'public_key': publicKey,
-        'nonce': nonce,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'scope': scope,
+    'public_key': publicKey,
+    'nonce': nonce,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

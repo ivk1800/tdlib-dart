@@ -19,7 +19,8 @@ class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   static const String constructor = 'chatPhotoStickerTypeRegularOrMask';
 
   static ChatPhotoStickerTypeRegularOrMask? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_set_id': stickerSetId.toString(),
-        'sticker_id': stickerId.toString(),
-        '@type': constructor,
-      };
+    'sticker_set_id': stickerSetId.toString(),
+    'sticker_id': stickerId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

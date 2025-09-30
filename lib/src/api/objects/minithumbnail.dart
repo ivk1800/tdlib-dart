@@ -39,11 +39,11 @@ class Minithumbnail extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'width': width,
-        'height': height,
-        'data': data,
-        '@type': constructor,
-      };
+    'width': width,
+    'height': height,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

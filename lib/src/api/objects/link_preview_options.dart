@@ -54,13 +54,13 @@ class LinkPreviewOptions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_disabled': isDisabled,
-        'url': url,
-        'force_small_media': forceSmallMedia,
-        'force_large_media': forceLargeMedia,
-        'show_above_text': showAboveText,
-        '@type': constructor,
-      };
+    'is_disabled': isDisabled,
+    'url': url,
+    'force_small_media': forceSmallMedia,
+    'force_large_media': forceLargeMedia,
+    'show_above_text': showAboveText,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

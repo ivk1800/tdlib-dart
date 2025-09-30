@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for Ubuntu Push Client service
 @immutable
 class DeviceTokenUbuntuPush extends DeviceToken {
-  const DeviceTokenUbuntuPush({
-    required this.token,
-  });
+  const DeviceTokenUbuntuPush({required this.token});
 
   /// [token] Token; may be empty to deregister a device
   final String token;
@@ -19,9 +17,7 @@ class DeviceTokenUbuntuPush extends DeviceToken {
       return null;
     }
 
-    return DeviceTokenUbuntuPush(
-      token: json['token'] as String,
-    );
+    return DeviceTokenUbuntuPush(token: json['token'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class DeviceTokenUbuntuPush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'token': token,
-        '@type': constructor,
-      };
+    'token': token,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

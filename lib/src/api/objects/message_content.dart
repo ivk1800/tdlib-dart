@@ -30,10 +30,14 @@ abstract class MessageContent extends TdObject {
   /// [MessageChatShared]
   /// [MessageChatUpgradeFrom]
   /// [MessageChatUpgradeTo]
+  /// [MessageChecklistTasksAdded]
+  /// [MessageChecklistTasksDone]
+  /// [MessageChecklist]
   /// [MessageContactRegistered]
   /// [MessageContact]
   /// [MessageCustomServiceAction]
   /// [MessageDice]
+  /// [MessageDirectMessagePriceChanged]
   /// [MessageDocument]
   /// [MessageExpiredPhoto]
   /// [MessageExpiredVideoNote]
@@ -53,10 +57,13 @@ abstract class MessageContent extends TdObject {
   /// [MessageGiveawayPrizeStars]
   /// [MessageGiveawayWinners]
   /// [MessageGiveaway]
+  /// [MessageGroupCall]
   /// [MessageInviteVideoChatParticipants]
   /// [MessageInvoice]
   /// [MessageLocation]
   /// [MessagePaidMedia]
+  /// [MessagePaidMessagePriceChanged]
+  /// [MessagePaidMessagesRefunded]
   /// [MessagePassportDataReceived]
   /// [MessagePassportDataSent]
   /// [MessagePaymentRefunded]
@@ -67,6 +74,7 @@ abstract class MessageContent extends TdObject {
   /// [MessagePoll]
   /// [MessagePremiumGiftCode]
   /// [MessageProximityAlertTriggered]
+  /// [MessageRefundedUpgradedGift]
   /// [MessageScreenshotTaken]
   /// [MessageSticker]
   /// [MessageStory]
@@ -74,6 +82,7 @@ abstract class MessageContent extends TdObject {
   /// [MessageSupergroupChatCreate]
   /// [MessageText]
   /// [MessageUnsupported]
+  /// [MessageUpgradedGift]
   /// [MessageUsersShared]
   /// [MessageVenue]
   /// [MessageVideoChatEnded]
@@ -130,6 +139,12 @@ abstract class MessageContent extends TdObject {
         return MessageChatUpgradeFrom.fromJson(json);
       case MessageChatUpgradeTo.constructor:
         return MessageChatUpgradeTo.fromJson(json);
+      case MessageChecklist.constructor:
+        return MessageChecklist.fromJson(json);
+      case MessageChecklistTasksAdded.constructor:
+        return MessageChecklistTasksAdded.fromJson(json);
+      case MessageChecklistTasksDone.constructor:
+        return MessageChecklistTasksDone.fromJson(json);
       case MessageContact.constructor:
         return MessageContact.fromJson(json);
       case MessageContactRegistered.constructor:
@@ -138,6 +153,8 @@ abstract class MessageContent extends TdObject {
         return MessageCustomServiceAction.fromJson(json);
       case MessageDice.constructor:
         return MessageDice.fromJson(json);
+      case MessageDirectMessagePriceChanged.constructor:
+        return MessageDirectMessagePriceChanged.fromJson(json);
       case MessageDocument.constructor:
         return MessageDocument.fromJson(json);
       case MessageExpiredPhoto.constructor:
@@ -176,6 +193,8 @@ abstract class MessageContent extends TdObject {
         return MessageGiveawayPrizeStars.fromJson(json);
       case MessageGiveawayWinners.constructor:
         return MessageGiveawayWinners.fromJson(json);
+      case MessageGroupCall.constructor:
+        return MessageGroupCall.fromJson(json);
       case MessageInviteVideoChatParticipants.constructor:
         return MessageInviteVideoChatParticipants.fromJson(json);
       case MessageInvoice.constructor:
@@ -184,6 +203,10 @@ abstract class MessageContent extends TdObject {
         return MessageLocation.fromJson(json);
       case MessagePaidMedia.constructor:
         return MessagePaidMedia.fromJson(json);
+      case MessagePaidMessagePriceChanged.constructor:
+        return MessagePaidMessagePriceChanged.fromJson(json);
+      case MessagePaidMessagesRefunded.constructor:
+        return MessagePaidMessagesRefunded.fromJson(json);
       case MessagePassportDataReceived.constructor:
         return MessagePassportDataReceived.fromJson(json);
       case MessagePassportDataSent.constructor:
@@ -204,6 +227,8 @@ abstract class MessageContent extends TdObject {
         return MessagePremiumGiftCode.fromJson(json);
       case MessageProximityAlertTriggered.constructor:
         return MessageProximityAlertTriggered.fromJson(json);
+      case MessageRefundedUpgradedGift.constructor:
+        return MessageRefundedUpgradedGift.fromJson(json);
       case MessageScreenshotTaken.constructor:
         return MessageScreenshotTaken.fromJson(json);
       case MessageSticker.constructor:
@@ -218,6 +243,8 @@ abstract class MessageContent extends TdObject {
         return MessageText.fromJson(json);
       case MessageUnsupported.constructor:
         return MessageUnsupported.fromJson(json);
+      case MessageUpgradedGift.constructor:
+        return MessageUpgradedGift.fromJson(json);
       case MessageUsersShared.constructor:
         return MessageUsersShared.fromJson(json);
       case MessageVenue.constructor:

@@ -8,7 +8,6 @@ class InlineQueryResultArticle extends InlineQueryResult {
   const InlineQueryResultArticle({
     required this.id,
     required this.url,
-    required this.hideUrl,
     required this.title,
     required this.description,
     this.thumbnail,
@@ -19,9 +18,6 @@ class InlineQueryResultArticle extends InlineQueryResult {
 
   /// [url] URL of the result, if it exists
   final String url;
-
-  /// [hideUrl] True, if the URL must be not shown
-  final bool hideUrl;
 
   /// [title] Title of the result
   final String title;
@@ -42,7 +38,6 @@ class InlineQueryResultArticle extends InlineQueryResult {
     return InlineQueryResultArticle(
       id: json['id'] as String,
       url: json['url'] as String,
-      hideUrl: json['hide_url'] as bool,
       title: json['title'] as String,
       description: json['description'] as String,
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
@@ -54,14 +49,13 @@ class InlineQueryResultArticle extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'url': url,
-        'hide_url': hideUrl,
-        'title': title,
-        'description': description,
-        'thumbnail': thumbnail?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'url': url,
+    'title': title,
+    'description': description,
+    'thumbnail': thumbnail?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

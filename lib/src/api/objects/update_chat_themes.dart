@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The list of available chat themes has changed
 @immutable
 class UpdateChatThemes extends Update {
-  const UpdateChatThemes({
-    required this.chatThemes,
-  });
+  const UpdateChatThemes({required this.chatThemes});
 
   /// [chatThemes] The new list of chat themes
   final List<ChatTheme> chatThemes;
@@ -21,9 +19,10 @@ class UpdateChatThemes extends Update {
 
     return UpdateChatThemes(
       chatThemes: List<ChatTheme>.from(
-          ((json['chat_themes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatTheme.fromJson(item))
-              .toList()),
+        ((json['chat_themes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatTheme.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateChatThemes extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_themes': chatThemes.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_themes': chatThemes.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

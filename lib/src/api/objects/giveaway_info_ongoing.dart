@@ -31,7 +31,8 @@ class GiveawayInfoOngoing extends GiveawayInfo {
     return GiveawayInfoOngoing(
       creationDate: json['creation_date'] as int,
       status: GiveawayParticipantStatus.fromJson(
-          json['status'] as Map<String, dynamic>?)!,
+        json['status'] as Map<String, dynamic>?,
+      )!,
       isEnded: json['is_ended'] as bool,
     );
   }
@@ -41,11 +42,11 @@ class GiveawayInfoOngoing extends GiveawayInfo {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'creation_date': creationDate,
-        'status': status.toJson(),
-        'is_ended': isEnded,
-        '@type': constructor,
-      };
+    'creation_date': creationDate,
+    'status': status.toJson(),
+    'is_ended': isEnded,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

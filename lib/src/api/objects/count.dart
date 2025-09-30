@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a counter
 @immutable
 class Count extends TdObject {
-  const Count({
-    required this.count,
-  });
+  const Count({required this.count});
 
   /// [count] Count
   final int count;
@@ -19,9 +17,7 @@ class Count extends TdObject {
       return null;
     }
 
-    return Count(
-      count: json['count'] as int,
-    );
+    return Count(count: json['count'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class Count extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'count': count,
-        '@type': constructor,
-      };
+    'count': count,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message was unpinned
 @immutable
 class ChatEventMessageUnpinned extends ChatEventAction {
-  const ChatEventMessageUnpinned({
-    required this.message,
-  });
+  const ChatEventMessageUnpinned({required this.message});
 
   /// [message] Unpinned message
   final Message message;
@@ -29,9 +27,9 @@ class ChatEventMessageUnpinned extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -22,7 +22,7 @@ class ChatActiveStories extends TdObject {
 
   /// [order] A parameter used to determine order of the stories in the story
   /// list; 0 if the stories doesn't need to be shown in the story list. Stories
-  /// must be sorted by the pair (order, story_sender_chat_id) in descending
+  /// must be sorted by the pair (order, story_poster_chat_id) in descending
   /// order
   final int order;
 
@@ -47,9 +47,10 @@ class ChatActiveStories extends TdObject {
       order: json['order'] as int,
       maxReadStoryId: json['max_read_story_id'] as int,
       stories: List<StoryInfo>.from(
-          ((json['stories'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StoryInfo.fromJson(item))
-              .toList()),
+        ((json['stories'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StoryInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -58,13 +59,13 @@ class ChatActiveStories extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'list': list?.toJson(),
-        'order': order,
-        'max_read_story_id': maxReadStoryId,
-        'stories': stories.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'list': list?.toJson(),
+    'order': order,
+    'max_read_story_id': maxReadStoryId,
+    'stories': stories.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

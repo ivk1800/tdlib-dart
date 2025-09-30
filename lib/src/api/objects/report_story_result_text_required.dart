@@ -34,10 +34,10 @@ class ReportStoryResultTextRequired extends ReportStoryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'option_id': optionId,
-        'is_optional': isOptional,
-        '@type': constructor,
-      };
+    'option_id': optionId,
+    'is_optional': isOptional,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -43,13 +43,13 @@ class EditForumTopic extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'name': name,
-        'edit_icon_custom_emoji': editIconCustomEmoji,
-        'icon_custom_emoji_id': iconCustomEmojiId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'name': name,
+    'edit_icon_custom_emoji': editIconCustomEmoji,
+    'icon_custom_emoji_id': iconCustomEmojiId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBio extends TdFunction {
-  const SetBio({
-    required this.bio,
-  });
+  const SetBio({required this.bio});
 
   /// [bio] The new value of the user bio; 0-getOption("bio_length_max")
   /// characters without line feeds
@@ -21,9 +19,9 @@ class SetBio extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bio': bio,
-        '@type': constructor,
-      };
+    'bio': bio,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

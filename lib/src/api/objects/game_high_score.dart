@@ -39,11 +39,11 @@ class GameHighScore extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'position': position,
-        'user_id': userId,
-        'score': score,
-        '@type': constructor,
-      };
+    'position': position,
+    'user_id': userId,
+    'score': score,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

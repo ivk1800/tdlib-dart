@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [PushReceiverId]
 @immutable
 class RegisterDevice extends TdFunction {
-  const RegisterDevice({
-    required this.deviceToken,
-    required this.otherUserIds,
-  });
+  const RegisterDevice({required this.deviceToken, required this.otherUserIds});
 
   /// [deviceToken] Device token
   final DeviceToken deviceToken;
@@ -26,10 +23,10 @@ class RegisterDevice extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'device_token': deviceToken.toJson(),
-        'other_user_ids': otherUserIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'device_token': deviceToken.toJson(),
+    'other_user_ids': otherUserIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

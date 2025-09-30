@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a public repost to a story
 @immutable
 class PublicForwardStory extends PublicForward {
-  const PublicForwardStory({
-    required this.story,
-  });
+  const PublicForwardStory({required this.story});
 
   /// [story] Information about the story
   final Story story;
@@ -29,9 +27,9 @@ class PublicForwardStory extends PublicForward {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story': story.toJson(),
-        '@type': constructor,
-      };
+    'story': story.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

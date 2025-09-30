@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Chat emoji status has changed
 @immutable
 class UpdateChatEmojiStatus extends Update {
-  const UpdateChatEmojiStatus({
-    required this.chatId,
-    this.emojiStatus,
-  });
+  const UpdateChatEmojiStatus({required this.chatId, this.emojiStatus});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -25,8 +22,9 @@ class UpdateChatEmojiStatus extends Update {
 
     return UpdateChatEmojiStatus(
       chatId: json['chat_id'] as int,
-      emojiStatus:
-          EmojiStatus.fromJson(json['emoji_status'] as Map<String, dynamic>?),
+      emojiStatus: EmojiStatus.fromJson(
+        json['emoji_status'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -35,10 +33,10 @@ class UpdateChatEmojiStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'emoji_status': emojiStatus?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'emoji_status': emojiStatus?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

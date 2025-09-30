@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A pinned forum topic was changed
 @immutable
 class ChatEventForumTopicPinned extends ChatEventAction {
-  const ChatEventForumTopicPinned({
-    this.oldTopicInfo,
-    this.newTopicInfo,
-  });
+  const ChatEventForumTopicPinned({this.oldTopicInfo, this.newTopicInfo});
 
   /// [oldTopicInfo] Information about the old pinned topic; may be null
   final ForumTopicInfo? oldTopicInfo;
@@ -25,9 +22,11 @@ class ChatEventForumTopicPinned extends ChatEventAction {
 
     return ChatEventForumTopicPinned(
       oldTopicInfo: ForumTopicInfo.fromJson(
-          json['old_topic_info'] as Map<String, dynamic>?),
+        json['old_topic_info'] as Map<String, dynamic>?,
+      ),
       newTopicInfo: ForumTopicInfo.fromJson(
-          json['new_topic_info'] as Map<String, dynamic>?),
+        json['new_topic_info'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -36,10 +35,10 @@ class ChatEventForumTopicPinned extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_topic_info': oldTopicInfo?.toJson(),
-        'new_topic_info': newTopicInfo?.toJson(),
-        '@type': constructor,
-      };
+    'old_topic_info': oldTopicInfo?.toJson(),
+    'new_topic_info': newTopicInfo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

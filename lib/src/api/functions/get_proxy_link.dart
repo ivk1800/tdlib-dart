@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [HttpUrl]
 @immutable
 class GetProxyLink extends TdFunction {
-  const GetProxyLink({
-    required this.proxyId,
-  });
+  const GetProxyLink({required this.proxyId});
 
   /// [proxyId] Proxy identifier
   final int proxyId;
@@ -21,9 +19,9 @@ class GetProxyLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'proxy_id': proxyId,
-        '@type': constructor,
-      };
+    'proxy_id': proxyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

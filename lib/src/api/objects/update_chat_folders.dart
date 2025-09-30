@@ -30,9 +30,10 @@ class UpdateChatFolders extends Update {
 
     return UpdateChatFolders(
       chatFolders: List<ChatFolderInfo>.from(
-          ((json['chat_folders'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatFolderInfo.fromJson(item))
-              .toList()),
+        ((json['chat_folders'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatFolderInfo.fromJson(item))
+            .toList(),
+      ),
       mainChatListPosition: json['main_chat_list_position'] as int,
       areTagsEnabled: json['are_tags_enabled'] as bool,
     );
@@ -43,11 +44,11 @@ class UpdateChatFolders extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folders': chatFolders.map((item) => item.toJson()).toList(),
-        'main_chat_list_position': mainChatListPosition,
-        'are_tags_enabled': areTagsEnabled,
-        '@type': constructor,
-      };
+    'chat_folders': chatFolders.map((item) => item.toJson()).toList(),
+    'main_chat_list_position': mainChatListPosition,
+    'are_tags_enabled': areTagsEnabled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

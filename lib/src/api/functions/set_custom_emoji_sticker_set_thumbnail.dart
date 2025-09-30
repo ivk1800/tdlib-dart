@@ -26,10 +26,10 @@ class SetCustomEmojiStickerSetThumbnail extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'custom_emoji_id': customEmojiId,
-        '@type': constructor,
-      };
+    'name': name,
+    'custom_emoji_id': customEmojiId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

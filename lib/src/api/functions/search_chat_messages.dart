@@ -8,26 +8,29 @@ import '../tdapi.dart';
 /// (searchSecretMessages must be used instead), or without an enabled message
 /// database. For optimal performance, the number of returned messages is
 /// chosen by TDLib and can be smaller than the specified limit. A combination
-/// of query, sender_id, filter and message_thread_id search criteria is
-/// expected to be supported, only if it is required for Telegram official
-/// application implementation
+/// of query, sender_id, filter and topic_id search criteria is expected to be
+/// supported, only if it is required for Telegram official application
+/// implementation
 /// Returns [FoundChatMessages]
 @immutable
 class SearchChatMessages extends TdFunction {
   const SearchChatMessages({
     required this.chatId,
+    this.topicId,
     required this.query,
     this.senderId,
     required this.fromMessageId,
     required this.offset,
     required this.limit,
     this.filter,
-    required this.messageThreadId,
-    required this.savedMessagesTopicId,
   });
 
   /// [chatId] Identifier of the chat in which to search messages
   final int chatId;
+
+  /// [topicId] Pass topic identifier to search messages only in specific topic;
+  /// pass null to search for messages in all topics
+  final MessageTopic? topicId;
 
   /// [query] Query to search for
   final String query;
@@ -54,15 +57,6 @@ class SearchChatMessages extends TdFunction {
   /// all messages
   final SearchMessagesFilter? filter;
 
-  /// [messageThreadId] If not 0, only messages in the specified thread will be
-  /// returned; supergroups only
-  final int messageThreadId;
-
-  /// [savedMessagesTopicId] If not 0, only messages in the specified Saved
-  /// Messages topic will be returned; pass 0 to return all messages, or for
-  /// chats other than Saved Messages
-  final int savedMessagesTopicId;
-
   static const String constructor = 'searchChatMessages';
 
   @override
@@ -70,17 +64,16 @@ class SearchChatMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'query': query,
-        'sender_id': senderId?.toJson(),
-        'from_message_id': fromMessageId,
-        'offset': offset,
-        'limit': limit,
-        'filter': filter?.toJson(),
-        'message_thread_id': messageThreadId,
-        'saved_messages_topic_id': savedMessagesTopicId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'topic_id': topicId?.toJson(),
+    'query': query,
+    'sender_id': senderId?.toJson(),
+    'from_message_id': fromMessageId,
+    'offset': offset,
+    'limit': limit,
+    'filter': filter?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

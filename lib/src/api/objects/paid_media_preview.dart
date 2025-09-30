@@ -36,7 +36,8 @@ class PaidMediaPreview extends PaidMedia {
       height: json['height'] as int,
       duration: json['duration'] as int,
       minithumbnail: Minithumbnail.fromJson(
-          json['minithumbnail'] as Map<String, dynamic>?),
+        json['minithumbnail'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -45,12 +46,12 @@ class PaidMediaPreview extends PaidMedia {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'width': width,
-        'height': height,
-        'duration': duration,
-        'minithumbnail': minithumbnail?.toJson(),
-        '@type': constructor,
-      };
+    'width': width,
+    'height': height,
+    'duration': duration,
+    'minithumbnail': minithumbnail?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

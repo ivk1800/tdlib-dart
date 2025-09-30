@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A token for Simple Push API for Firefox OS
 @immutable
 class DeviceTokenSimplePush extends DeviceToken {
-  const DeviceTokenSimplePush({
-    required this.endpoint,
-  });
+  const DeviceTokenSimplePush({required this.endpoint});
 
   /// [endpoint] Absolute URL exposed by the push service where the application
   /// server can send push messages; may be empty to deregister a device
@@ -20,9 +18,7 @@ class DeviceTokenSimplePush extends DeviceToken {
       return null;
     }
 
-    return DeviceTokenSimplePush(
-      endpoint: json['endpoint'] as String,
-    );
+    return DeviceTokenSimplePush(endpoint: json['endpoint'] as String);
   }
 
   @override
@@ -30,9 +26,9 @@ class DeviceTokenSimplePush extends DeviceToken {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'endpoint': endpoint,
-        '@type': constructor,
-      };
+    'endpoint': endpoint,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -42,11 +42,11 @@ class RichTextIcon extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document.toJson(),
-        'width': width,
-        'height': height,
-        '@type': constructor,
-      };
+    'document': document.toJson(),
+    'width': width,
+    'height': height,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

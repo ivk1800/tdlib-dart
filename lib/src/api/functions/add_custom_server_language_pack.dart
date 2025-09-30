@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddCustomServerLanguagePack extends TdFunction {
-  const AddCustomServerLanguagePack({
-    required this.languagePackId,
-  });
+  const AddCustomServerLanguagePack({required this.languagePackId});
 
   /// [languagePackId] Identifier of a language pack to be added
   final String languagePackId;
@@ -21,9 +19,9 @@ class AddCustomServerLanguagePack extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_id': languagePackId,
-        '@type': constructor,
-      };
+    'language_pack_id': languagePackId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

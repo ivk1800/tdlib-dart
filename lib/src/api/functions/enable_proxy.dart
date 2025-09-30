@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class EnableProxy extends TdFunction {
-  const EnableProxy({
-    required this.proxyId,
-  });
+  const EnableProxy({required this.proxyId});
 
   /// [proxyId] Proxy identifier
   final int proxyId;
@@ -21,9 +19,9 @@ class EnableProxy extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'proxy_id': proxyId,
-        '@type': constructor,
-      };
+    'proxy_id': proxyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

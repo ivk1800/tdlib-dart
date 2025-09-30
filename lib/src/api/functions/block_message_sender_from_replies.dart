@@ -32,12 +32,12 @@ class BlockMessageSenderFromReplies extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        'delete_message': deleteMessage,
-        'delete_all_messages': deleteAllMessages,
-        'report_spam': reportSpam,
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    'delete_message': deleteMessage,
+    'delete_all_messages': deleteAllMessages,
+    'report_spam': reportSpam,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

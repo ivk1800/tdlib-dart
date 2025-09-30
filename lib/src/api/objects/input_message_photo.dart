@@ -62,18 +62,21 @@ class InputMessagePhoto extends InputMessageContent {
 
     return InputMessagePhoto(
       photo: InputFile.fromJson(json['photo'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       width: json['width'] as int,
       height: json['height'] as int,
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       selfDestructType: MessageSelfDestructType.fromJson(
-          json['self_destruct_type'] as Map<String, dynamic>?),
+        json['self_destruct_type'] as Map<String, dynamic>?,
+      ),
       hasSpoiler: json['has_spoiler'] as bool,
     );
   }
@@ -83,18 +86,17 @@ class InputMessagePhoto extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        'width': width,
-        'height': height,
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'self_destruct_type': selfDestructType?.toJson(),
-        'has_spoiler': hasSpoiler,
-        '@type': constructor,
-      };
+    'photo': photo.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    'width': width,
+    'height': height,
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'self_destruct_type': selfDestructType?.toJson(),
+    'has_spoiler': hasSpoiler,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

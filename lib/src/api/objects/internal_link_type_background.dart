@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// wants to apply it, then call setDefaultBackground
 @immutable
 class InternalLinkTypeBackground extends InternalLinkType {
-  const InternalLinkTypeBackground({
-    required this.backgroundName,
-  });
+  const InternalLinkTypeBackground({required this.backgroundName});
 
   /// [backgroundName] Name of the background
   final String backgroundName;
@@ -31,9 +29,9 @@ class InternalLinkTypeBackground extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background_name': backgroundName,
-        '@type': constructor,
-      };
+    'background_name': backgroundName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

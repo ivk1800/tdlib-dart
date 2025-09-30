@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Chat]
 @immutable
 class JoinChatByInviteLink extends TdFunction {
-  const JoinChatByInviteLink({
-    required this.inviteLink,
-  });
+  const JoinChatByInviteLink({required this.inviteLink});
 
   /// [inviteLink] Invite link to use
   final String inviteLink;
@@ -22,9 +20,9 @@ class JoinChatByInviteLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

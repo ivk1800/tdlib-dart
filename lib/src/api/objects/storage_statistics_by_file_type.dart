@@ -39,11 +39,11 @@ class StorageStatisticsByFileType extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_type': fileType.toJson(),
-        'size': size,
-        'count': count,
-        '@type': constructor,
-      };
+    'file_type': fileType.toJson(),
+    'size': size,
+    'count': count,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

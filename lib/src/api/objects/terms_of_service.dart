@@ -41,11 +41,11 @@ class TermsOfService extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'min_user_age': minUserAge,
-        'show_popup': showPopup,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'min_user_age': minUserAge,
+    'show_popup': showPopup,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

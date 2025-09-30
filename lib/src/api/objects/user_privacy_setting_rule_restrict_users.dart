@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A rule to restrict all specified users from doing something
 @immutable
 class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
-  const UserPrivacySettingRuleRestrictUsers({
-    required this.userIds,
-  });
+  const UserPrivacySettingRuleRestrictUsers({required this.userIds});
 
   /// [userIds] The user identifiers, total number of users in all rules must
   /// not exceed 1000
@@ -16,16 +14,18 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   static const String constructor = 'userPrivacySettingRuleRestrictUsers';
 
   static UserPrivacySettingRuleRestrictUsers? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return UserPrivacySettingRuleRestrictUsers(
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -34,9 +34,9 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

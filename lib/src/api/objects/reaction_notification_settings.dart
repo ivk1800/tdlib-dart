@@ -37,9 +37,11 @@ class ReactionNotificationSettings extends TdObject {
 
     return ReactionNotificationSettings(
       messageReactionSource: ReactionNotificationSource.fromJson(
-          json['message_reaction_source'] as Map<String, dynamic>?)!,
+        json['message_reaction_source'] as Map<String, dynamic>?,
+      )!,
       storyReactionSource: ReactionNotificationSource.fromJson(
-          json['story_reaction_source'] as Map<String, dynamic>?)!,
+        json['story_reaction_source'] as Map<String, dynamic>?,
+      )!,
       soundId: int.tryParse(json['sound_id']) ?? 0,
       showPreview: json['show_preview'] as bool,
     );
@@ -50,12 +52,12 @@ class ReactionNotificationSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_reaction_source': messageReactionSource.toJson(),
-        'story_reaction_source': storyReactionSource.toJson(),
-        'sound_id': soundId.toString(),
-        'show_preview': showPreview,
-        '@type': constructor,
-      };
+    'message_reaction_source': messageReactionSource.toJson(),
+    'story_reaction_source': storyReactionSource.toJson(),
+    'sound_id': soundId.toString(),
+    'show_preview': showPreview,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

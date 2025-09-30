@@ -33,11 +33,11 @@ class SearchPublicStoriesByLocation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'address': address.toJson(),
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'address': address.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

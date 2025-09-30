@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains information about the current localization target
 @immutable
 class LocalizationTargetInfo extends TdObject {
-  const LocalizationTargetInfo({
-    required this.languagePacks,
-  });
+  const LocalizationTargetInfo({required this.languagePacks});
 
   /// [languagePacks] List of available language packs for this application
   final List<LanguagePackInfo> languagePacks;
@@ -21,9 +19,10 @@ class LocalizationTargetInfo extends TdObject {
 
     return LocalizationTargetInfo(
       languagePacks: List<LanguagePackInfo>.from(
-          ((json['language_packs'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => LanguagePackInfo.fromJson(item))
-              .toList()),
+        ((json['language_packs'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => LanguagePackInfo.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class LocalizationTargetInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_packs': languagePacks.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'language_packs': languagePacks.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

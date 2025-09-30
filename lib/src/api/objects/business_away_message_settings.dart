@@ -36,9 +36,11 @@ class BusinessAwayMessageSettings extends TdObject {
     return BusinessAwayMessageSettings(
       shortcutId: json['shortcut_id'] as int,
       recipients: BusinessRecipients.fromJson(
-          json['recipients'] as Map<String, dynamic>?)!,
+        json['recipients'] as Map<String, dynamic>?,
+      )!,
       schedule: BusinessAwayMessageSchedule.fromJson(
-          json['schedule'] as Map<String, dynamic>?)!,
+        json['schedule'] as Map<String, dynamic>?,
+      )!,
       offlineOnly: json['offline_only'] as bool,
     );
   }
@@ -48,12 +50,12 @@ class BusinessAwayMessageSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        'recipients': recipients.toJson(),
-        'schedule': schedule.toJson(),
-        'offline_only': offlineOnly,
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    'recipients': recipients.toJson(),
+    'schedule': schedule.toJson(),
+    'offline_only': offlineOnly,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

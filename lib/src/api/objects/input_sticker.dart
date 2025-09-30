@@ -45,12 +45,14 @@ class InputSticker extends TdObject {
       sticker: InputFile.fromJson(json['sticker'] as Map<String, dynamic>?)!,
       format: StickerFormat.fromJson(json['format'] as Map<String, dynamic>?)!,
       emojis: json['emojis'] as String,
-      maskPosition:
-          MaskPosition.fromJson(json['mask_position'] as Map<String, dynamic>?),
+      maskPosition: MaskPosition.fromJson(
+        json['mask_position'] as Map<String, dynamic>?,
+      ),
       keywords: List<String>.from(
-          ((json['keywords'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['keywords'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -59,13 +61,13 @@ class InputSticker extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        'format': format.toJson(),
-        'emojis': emojis,
-        'mask_position': maskPosition?.toJson(),
-        'keywords': keywords.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    'format': format.toJson(),
+    'emojis': emojis,
+    'mask_position': maskPosition?.toJson(),
+    'keywords': keywords.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

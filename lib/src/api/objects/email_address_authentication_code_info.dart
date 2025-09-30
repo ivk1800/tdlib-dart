@@ -20,7 +20,8 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   static const String constructor = 'emailAddressAuthenticationCodeInfo';
 
   static EmailAddressAuthenticationCodeInfo? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -36,10 +37,10 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'email_address_pattern': emailAddressPattern,
-        'length': length,
-        '@type': constructor,
-      };
+    'email_address_pattern': emailAddressPattern,
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

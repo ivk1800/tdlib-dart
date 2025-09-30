@@ -21,7 +21,8 @@ abstract class ReactionUnavailabilityReason extends TdObject {
     switch (json['@type']) {
       case ReactionUnavailabilityReasonAnonymousAdministrator.constructor:
         return ReactionUnavailabilityReasonAnonymousAdministrator.fromJson(
-            json);
+          json,
+        );
       case ReactionUnavailabilityReasonGuest.constructor:
         return ReactionUnavailabilityReasonGuest.fromJson(json);
       default:

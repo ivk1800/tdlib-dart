@@ -40,11 +40,11 @@ class PushMessageContentPoll extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'question': question,
-        'is_regular': isRegular,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'question': question,
+    'is_regular': isRegular,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -10,26 +10,22 @@ class GetMainWebApp extends TdFunction {
     required this.chatId,
     required this.botUserId,
     required this.startParameter,
-    this.theme,
-    required this.applicationName,
+    required this.parameters,
   });
 
   /// [chatId] Identifier of the chat in which the Web App is opened; pass 0 if
   /// none
   final int chatId;
 
-  /// [botUserId] Identifier of the target bot
+  /// [botUserId] Identifier of the target bot. If the bot is restricted for the
+  /// current user, then show an error instead of calling the method
   final int botUserId;
 
   /// [startParameter] Start parameter from internalLinkTypeMainWebApp
   final String startParameter;
 
-  /// [theme] Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// [applicationName] Short name of the current application; 0-64 English
-  /// letters, digits, and underscores
-  final String applicationName;
+  /// [parameters] Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   static const String constructor = 'getMainWebApp';
 
@@ -38,13 +34,12 @@ class GetMainWebApp extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'start_parameter': startParameter,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'start_parameter': startParameter,
+    'parameters': parameters.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

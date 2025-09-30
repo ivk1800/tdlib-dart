@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class AddContact extends TdFunction {
-  const AddContact({
-    required this.contact,
-    required this.sharePhoneNumber,
-  });
+  const AddContact({required this.contact, required this.sharePhoneNumber});
 
   /// [contact] The contact to add or edit; phone number may be empty and needs
   /// to be specified only if known, vCard is ignored
@@ -30,10 +27,10 @@ class AddContact extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'contact': contact.toJson(),
-        'share_phone_number': sharePhoneNumber,
-        '@type': constructor,
-      };
+    'contact': contact.toJson(),
+    'share_phone_number': sharePhoneNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

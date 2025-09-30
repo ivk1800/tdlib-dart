@@ -70,16 +70,16 @@ class LocalFile extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'path': path,
-        'can_be_downloaded': canBeDownloaded,
-        'can_be_deleted': canBeDeleted,
-        'is_downloading_active': isDownloadingActive,
-        'is_downloading_completed': isDownloadingCompleted,
-        'download_offset': downloadOffset,
-        'downloaded_prefix_size': downloadedPrefixSize,
-        'downloaded_size': downloadedSize,
-        '@type': constructor,
-      };
+    'path': path,
+    'can_be_downloaded': canBeDownloaded,
+    'can_be_deleted': canBeDeleted,
+    'is_downloading_active': isDownloadingActive,
+    'is_downloading_completed': isDownloadingCompleted,
+    'download_offset': downloadOffset,
+    'downloaded_prefix_size': downloadedPrefixSize,
+    'downloaded_size': downloadedSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

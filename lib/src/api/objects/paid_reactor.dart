@@ -38,8 +38,9 @@ class PaidReactor extends TdObject {
     }
 
     return PaidReactor(
-      senderId:
-          MessageSender.fromJson(json['sender_id'] as Map<String, dynamic>?),
+      senderId: MessageSender.fromJson(
+        json['sender_id'] as Map<String, dynamic>?,
+      ),
       starCount: json['star_count'] as int,
       isTop: json['is_top'] as bool,
       isMe: json['is_me'] as bool,
@@ -52,13 +53,13 @@ class PaidReactor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_id': senderId?.toJson(),
-        'star_count': starCount,
-        'is_top': isTop,
-        'is_me': isMe,
-        'is_anonymous': isAnonymous,
-        '@type': constructor,
-      };
+    'sender_id': senderId?.toJson(),
+    'star_count': starCount,
+    'is_top': isTop,
+    'is_me': isMe,
+    'is_anonymous': isAnonymous,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Cancels or reenables Telegram Star subscription to a channel
+/// Cancels or re-enables Telegram Star subscription
 /// Returns [Ok]
 @immutable
 class EditStarSubscription extends TdFunction {
@@ -24,10 +24,10 @@ class EditStarSubscription extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'subscription_id': subscriptionId,
-        'is_canceled': isCanceled,
-        '@type': constructor,
-      };
+    'subscription_id': subscriptionId,
+    'is_canceled': isCanceled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

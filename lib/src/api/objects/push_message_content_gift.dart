@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with a gift
 @immutable
 class PushMessageContentGift extends PushMessageContent {
-  const PushMessageContentGift({
-    required this.starCount,
-  });
+  const PushMessageContentGift({required this.starCount});
 
   /// [starCount] Number of Telegram Stars that sender paid for the gift
   final int starCount;
@@ -19,9 +17,7 @@ class PushMessageContentGift extends PushMessageContent {
       return null;
     }
 
-    return PushMessageContentGift(
-      starCount: json['star_count'] as int,
-    );
+    return PushMessageContentGift(starCount: json['star_count'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class PushMessageContentGift extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

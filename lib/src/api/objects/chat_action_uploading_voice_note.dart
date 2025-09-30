@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user is uploading a voice note
 @immutable
 class ChatActionUploadingVoiceNote extends ChatAction {
-  const ChatActionUploadingVoiceNote({
-    required this.progress,
-  });
+  const ChatActionUploadingVoiceNote({required this.progress});
 
   /// [progress] Upload progress, as a percentage
   final int progress;
@@ -19,9 +17,7 @@ class ChatActionUploadingVoiceNote extends ChatAction {
       return null;
     }
 
-    return ChatActionUploadingVoiceNote(
-      progress: json['progress'] as int,
-    );
+    return ChatActionUploadingVoiceNote(progress: json['progress'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatActionUploadingVoiceNote extends ChatAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'progress': progress,
-        '@type': constructor,
-      };
+    'progress': progress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

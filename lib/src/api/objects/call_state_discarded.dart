@@ -33,8 +33,9 @@ class CallStateDiscarded extends CallState {
     }
 
     return CallStateDiscarded(
-      reason:
-          CallDiscardReason.fromJson(json['reason'] as Map<String, dynamic>?)!,
+      reason: CallDiscardReason.fromJson(
+        json['reason'] as Map<String, dynamic>?,
+      )!,
       needRating: json['need_rating'] as bool,
       needDebugInformation: json['need_debug_information'] as bool,
       needLog: json['need_log'] as bool,
@@ -46,12 +47,12 @@ class CallStateDiscarded extends CallState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reason': reason.toJson(),
-        'need_rating': needRating,
-        'need_debug_information': needDebugInformation,
-        'need_log': needLog,
-        '@type': constructor,
-      };
+    'reason': reason.toJson(),
+    'need_rating': needRating,
+    'need_debug_information': needDebugInformation,
+    'need_log': needLog,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

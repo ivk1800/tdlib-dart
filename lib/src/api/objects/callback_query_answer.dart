@@ -40,11 +40,11 @@ class CallbackQueryAnswer extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'show_alert': showAlert,
-        'url': url,
-        '@type': constructor,
-      };
+    'text': text,
+    'show_alert': showAlert,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

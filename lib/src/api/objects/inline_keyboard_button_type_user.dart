@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// textEntityTypeMentionName entities
 @immutable
 class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
-  const InlineKeyboardButtonTypeUser({
-    required this.userId,
-  });
+  const InlineKeyboardButtonTypeUser({required this.userId});
 
   /// [userId] User identifier
   final int userId;
@@ -20,9 +18,7 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
       return null;
     }
 
-    return InlineKeyboardButtonTypeUser(
-      userId: json['user_id'] as int,
-    );
+    return InlineKeyboardButtonTypeUser(userId: json['user_id'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

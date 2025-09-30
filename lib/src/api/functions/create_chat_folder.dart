@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [ChatFolderInfo]
 @immutable
 class CreateChatFolder extends TdFunction {
-  const CreateChatFolder({
-    required this.folder,
-  });
+  const CreateChatFolder({required this.folder});
 
   /// [folder] The new chat folder
   final ChatFolder folder;
@@ -22,9 +20,9 @@ class CreateChatFolder extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'folder': folder.toJson(),
-        '@type': constructor,
-      };
+    'folder': folder.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,10 +26,10 @@ class ReorderSupergroupActiveUsernames extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'usernames': usernames.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'usernames': usernames.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A scope covering all members of a chat
 @immutable
 class BotCommandScopeChat extends BotCommandScope {
-  const BotCommandScopeChat({
-    required this.chatId,
-  });
+  const BotCommandScopeChat({required this.chatId});
 
   /// [chatId] Chat identifier
   final int chatId;
@@ -19,9 +17,7 @@ class BotCommandScopeChat extends BotCommandScope {
       return null;
     }
 
-    return BotCommandScopeChat(
-      chatId: json['chat_id'] as int,
-    );
+    return BotCommandScopeChat(chatId: json['chat_id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class BotCommandScopeChat extends BotCommandScope {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

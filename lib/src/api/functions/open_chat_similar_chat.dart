@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class OpenChatSimilarChat extends TdFunction {
-  const OpenChatSimilarChat({
-    required this.chatId,
-    required this.openedChatId,
-  });
+  const OpenChatSimilarChat({required this.chatId, required this.openedChatId});
 
   /// [chatId] Identifier of the original chat, which similar chats were
   /// requested
@@ -26,10 +23,10 @@ class OpenChatSimilarChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'opened_chat_id': openedChatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'opened_chat_id': openedChatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

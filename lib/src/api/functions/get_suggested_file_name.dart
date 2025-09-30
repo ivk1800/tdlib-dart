@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Text]
 @immutable
 class GetSuggestedFileName extends TdFunction {
-  const GetSuggestedFileName({
-    required this.fileId,
-    required this.directory,
-  });
+  const GetSuggestedFileName({required this.fileId, required this.directory});
 
   /// [fileId] Identifier of the file
   final int fileId;
@@ -24,10 +21,10 @@ class GetSuggestedFileName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'directory': directory,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'directory': directory,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

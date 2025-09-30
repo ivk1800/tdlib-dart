@@ -53,7 +53,8 @@ class PasswordState extends TdObject {
       hasRecoveryEmailAddress: json['has_recovery_email_address'] as bool,
       hasPassportData: json['has_passport_data'] as bool,
       recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
-          json['recovery_email_address_code_info'] as Map<String, dynamic>?),
+        json['recovery_email_address_code_info'] as Map<String, dynamic>?,
+      ),
       loginEmailAddressPattern: json['login_email_address_pattern'] as String,
       pendingResetDate: json['pending_reset_date'] as int,
     );
@@ -64,16 +65,15 @@ class PasswordState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'has_password': hasPassword,
-        'password_hint': passwordHint,
-        'has_recovery_email_address': hasRecoveryEmailAddress,
-        'has_passport_data': hasPassportData,
-        'recovery_email_address_code_info':
-            recoveryEmailAddressCodeInfo?.toJson(),
-        'login_email_address_pattern': loginEmailAddressPattern,
-        'pending_reset_date': pendingResetDate,
-        '@type': constructor,
-      };
+    'has_password': hasPassword,
+    'password_hint': passwordHint,
+    'has_recovery_email_address': hasRecoveryEmailAddress,
+    'has_passport_data': hasPassportData,
+    'recovery_email_address_code_info': recoveryEmailAddressCodeInfo?.toJson(),
+    'login_email_address_pattern': loginEmailAddressPattern,
+    'pending_reset_date': pendingResetDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

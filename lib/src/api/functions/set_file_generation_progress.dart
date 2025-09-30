@@ -28,11 +28,11 @@ class SetFileGenerationProgress extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId,
-        'expected_size': expectedSize,
-        'local_prefix_size': localPrefixSize,
-        '@type': constructor,
-      };
+    'generation_id': generationId,
+    'expected_size': expectedSize,
+    'local_prefix_size': localPrefixSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

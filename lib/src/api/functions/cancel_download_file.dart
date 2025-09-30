@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CancelDownloadFile extends TdFunction {
-  const CancelDownloadFile({
-    required this.fileId,
-    required this.onlyIfPending,
-  });
+  const CancelDownloadFile({required this.fileId, required this.onlyIfPending});
 
   /// [fileId] Identifier of a file to stop downloading
   final int fileId;
@@ -26,10 +23,10 @@ class CancelDownloadFile extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'only_if_pending': onlyIfPending,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'only_if_pending': onlyIfPending,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -23,10 +23,10 @@ class SetDefaultGroupAdministratorRights extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'default_group_administrator_rights':
-            defaultGroupAdministratorRights?.toJson(),
-        '@type': constructor,
-      };
+    'default_group_administrator_rights': defaultGroupAdministratorRights
+        ?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

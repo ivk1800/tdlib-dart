@@ -26,10 +26,10 @@ class ToggleSavedMessagesTopicIsPinned extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'saved_messages_topic_id': savedMessagesTopicId,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'saved_messages_topic_id': savedMessagesTopicId,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

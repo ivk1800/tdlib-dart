@@ -47,12 +47,12 @@ class ChatEventAccentColorChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_accent_color_id': oldAccentColorId,
-        'old_background_custom_emoji_id': oldBackgroundCustomEmojiId.toString(),
-        'new_accent_color_id': newAccentColorId,
-        'new_background_custom_emoji_id': newBackgroundCustomEmojiId.toString(),
-        '@type': constructor,
-      };
+    'old_accent_color_id': oldAccentColorId,
+    'old_background_custom_emoji_id': oldBackgroundCustomEmojiId.toString(),
+    'new_accent_color_id': newAccentColorId,
+    'new_background_custom_emoji_id': newBackgroundCustomEmojiId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

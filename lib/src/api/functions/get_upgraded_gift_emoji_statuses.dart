@@ -1,0 +1,24 @@
+import 'package:meta/meta.dart';
+import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
+
+/// Returns available upgraded gift emoji statuses for self status
+/// Returns [EmojiStatuses]
+@immutable
+class GetUpgradedGiftEmojiStatuses extends TdFunction {
+  const GetUpgradedGiftEmojiStatuses();
+
+  static const String constructor = 'getUpgradedGiftEmojiStatuses';
+
+  @override
+  String getConstructor() => constructor;
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
+}

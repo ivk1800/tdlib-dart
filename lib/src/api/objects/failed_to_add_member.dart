@@ -42,11 +42,11 @@ class FailedToAddMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'premium_would_allow_invite': premiumWouldAllowInvite,
-        'premium_required_to_send_messages': premiumRequiredToSendMessages,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'premium_would_allow_invite': premiumWouldAllowInvite,
+    'premium_required_to_send_messages': premiumRequiredToSendMessages,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

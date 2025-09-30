@@ -50,12 +50,12 @@ class BackgroundTypePattern extends BackgroundType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'fill': fill.toJson(),
-        'intensity': intensity,
-        'is_inverted': isInverted,
-        'is_moving': isMoving,
-        '@type': constructor,
-      };
+    'fill': fill.toJson(),
+    'intensity': intensity,
+    'is_inverted': isInverted,
+    'is_moving': isMoving,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

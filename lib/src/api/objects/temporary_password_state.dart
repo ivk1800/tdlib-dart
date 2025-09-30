@@ -35,10 +35,10 @@ class TemporaryPasswordState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'has_password': hasPassword,
-        'valid_for': validFor,
-        '@type': constructor,
-      };
+    'has_password': hasPassword,
+    'valid_for': validFor,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

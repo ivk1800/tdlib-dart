@@ -47,12 +47,12 @@ class ChatInviteLinkMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'joined_chat_date': joinedChatDate,
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-        'approver_user_id': approverUserId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'joined_chat_date': joinedChatDate,
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+    'approver_user_id': approverUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

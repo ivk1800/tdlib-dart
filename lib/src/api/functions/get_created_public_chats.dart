@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Chats]
 @immutable
 class GetCreatedPublicChats extends TdFunction {
-  const GetCreatedPublicChats({
-    required this.type,
-  });
+  const GetCreatedPublicChats({required this.type});
 
   /// [type] Type of the public chats to return
   final PublicChatType type;
@@ -20,9 +18,9 @@ class GetCreatedPublicChats extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

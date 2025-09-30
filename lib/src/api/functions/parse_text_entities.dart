@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [FormattedText]
 @immutable
 class ParseTextEntities extends TdFunction {
-  const ParseTextEntities({
-    required this.text,
-    required this.parseMode,
-  });
+  const ParseTextEntities({required this.text, required this.parseMode});
 
   /// [text] The text to parse
   final String text;
@@ -26,10 +23,10 @@ class ParseTextEntities extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'parse_mode': parseMode.toJson(),
-        '@type': constructor,
-      };
+    'text': text,
+    'parse_mode': parseMode.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

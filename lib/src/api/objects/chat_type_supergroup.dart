@@ -34,10 +34,10 @@ class ChatTypeSupergroup extends ChatType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'is_channel': isChannel,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'is_channel': isChannel,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

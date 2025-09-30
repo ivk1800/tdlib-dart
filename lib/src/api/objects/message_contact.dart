@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with a user contact
 @immutable
 class MessageContact extends MessageContent {
-  const MessageContact({
-    required this.contact,
-  });
+  const MessageContact({required this.contact});
 
   /// [contact] The contact description
   final Contact contact;
@@ -29,9 +27,9 @@ class MessageContact extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'contact': contact.toJson(),
-        '@type': constructor,
-      };
+    'contact': contact.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

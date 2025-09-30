@@ -52,15 +52,15 @@ class GetStoryInteractions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_id': storyId,
-        'query': query,
-        'only_contacts': onlyContacts,
-        'prefer_forwards': preferForwards,
-        'prefer_with_reaction': preferWithReaction,
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'story_id': storyId,
+    'query': query,
+    'only_contacts': onlyContacts,
+    'prefer_forwards': preferForwards,
+    'prefer_with_reaction': preferWithReaction,
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

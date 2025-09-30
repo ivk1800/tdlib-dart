@@ -29,11 +29,11 @@ class ChangeStickerSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'set_id': setId,
-        'is_installed': isInstalled,
-        'is_archived': isArchived,
-        '@type': constructor,
-      };
+    'set_id': setId,
+    'is_installed': isInstalled,
+    'is_archived': isArchived,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

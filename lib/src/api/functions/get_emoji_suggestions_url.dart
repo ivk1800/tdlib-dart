@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [HttpUrl]
 @immutable
 class GetEmojiSuggestionsUrl extends TdFunction {
-  const GetEmojiSuggestionsUrl({
-    required this.languageCode,
-  });
+  const GetEmojiSuggestionsUrl({required this.languageCode});
 
   /// [languageCode] Language code for which the emoji replacements will be
   /// suggested
@@ -23,9 +21,9 @@ class GetEmojiSuggestionsUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_code': languageCode,
-        '@type': constructor,
-      };
+    'language_code': languageCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

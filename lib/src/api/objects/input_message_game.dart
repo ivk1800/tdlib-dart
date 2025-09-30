@@ -34,10 +34,10 @@ class InputMessageGame extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'game_short_name': gameShortName,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'game_short_name': gameShortName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

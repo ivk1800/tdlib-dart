@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// changes will be reported through separate updates
 @immutable
 class UpdateNewChat extends Update {
-  const UpdateNewChat({
-    required this.chat,
-  });
+  const UpdateNewChat({required this.chat});
 
   /// [chat] The chat
   final Chat chat;
@@ -31,9 +29,9 @@ class UpdateNewChat extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat': chat.toJson(),
-        '@type': constructor,
-      };
+    'chat': chat.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

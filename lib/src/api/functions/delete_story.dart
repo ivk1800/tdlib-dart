@@ -2,18 +2,15 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Deletes a previously sent story. Can be called only if
+/// Deletes a previously posted story. Can be called only if
 /// story.can_be_deleted == true
 /// Returns [Ok]
 @immutable
 class DeleteStory extends TdFunction {
-  const DeleteStory({
-    required this.storySenderChatId,
-    required this.storyId,
-  });
+  const DeleteStory({required this.storyPosterChatId, required this.storyId});
 
-  /// [storySenderChatId] Identifier of the chat that posted the story
-  final int storySenderChatId;
+  /// [storyPosterChatId] Identifier of the chat that posted the story
+  final int storyPosterChatId;
 
   /// [storyId] Identifier of the story to delete
   final int storyId;
@@ -25,10 +22,10 @@ class DeleteStory extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_sender_chat_id': storySenderChatId,
-        'story_id': storyId,
-        '@type': constructor,
-      };
+    'story_poster_chat_id': storyPosterChatId,
+    'story_id': storyId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

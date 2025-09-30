@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBusinessOpeningHours extends TdFunction {
-  const SetBusinessOpeningHours({
-    this.openingHours,
-  });
+  const SetBusinessOpeningHours({this.openingHours});
 
   /// [openingHours] The new opening hours of the business; pass null to remove
   /// the opening hours; up to 28 time intervals can be specified
@@ -22,9 +20,9 @@ class SetBusinessOpeningHours extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'opening_hours': openingHours?.toJson(),
-        '@type': constructor,
-      };
+    'opening_hours': openingHours?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

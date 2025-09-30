@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A personal document, containing some information about a user
 @immutable
 class PersonalDocument extends TdObject {
-  const PersonalDocument({
-    required this.files,
-    required this.translation,
-  });
+  const PersonalDocument({required this.files, required this.translation});
 
   /// [files] List of files containing the pages of the document
   final List<DatedFile> files;
@@ -26,13 +23,15 @@ class PersonalDocument extends TdObject {
 
     return PersonalDocument(
       files: List<DatedFile>.from(
-          ((json['files'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => DatedFile.fromJson(item))
-              .toList()),
+        ((json['files'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => DatedFile.fromJson(item))
+            .toList(),
+      ),
       translation: List<DatedFile>.from(
-          ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => DatedFile.fromJson(item))
-              .toList()),
+        ((json['translation'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => DatedFile.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -41,10 +40,10 @@ class PersonalDocument extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'files': files.map((item) => item.toJson()).toList(),
-        'translation': translation.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'files': files.map((item) => item.toJson()).toList(),
+    'translation': translation.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

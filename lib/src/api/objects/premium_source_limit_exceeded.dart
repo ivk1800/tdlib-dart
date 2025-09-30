@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A limit was exceeded
 @immutable
 class PremiumSourceLimitExceeded extends PremiumSource {
-  const PremiumSourceLimitExceeded({
-    required this.limitType,
-  });
+  const PremiumSourceLimitExceeded({required this.limitType});
 
   /// [limitType] Type of the exceeded limit
   final PremiumLimitType limitType;
@@ -21,7 +19,8 @@ class PremiumSourceLimitExceeded extends PremiumSource {
 
     return PremiumSourceLimitExceeded(
       limitType: PremiumLimitType.fromJson(
-          json['limit_type'] as Map<String, dynamic>?)!,
+        json['limit_type'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class PremiumSourceLimitExceeded extends PremiumSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'limit_type': limitType.toJson(),
-        '@type': constructor,
-      };
+    'limit_type': limitType.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

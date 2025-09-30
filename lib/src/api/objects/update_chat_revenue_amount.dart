@@ -28,7 +28,8 @@ class UpdateChatRevenueAmount extends Update {
     return UpdateChatRevenueAmount(
       chatId: json['chat_id'] as int,
       revenueAmount: ChatRevenueAmount.fromJson(
-          json['revenue_amount'] as Map<String, dynamic>?)!,
+        json['revenue_amount'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +38,10 @@ class UpdateChatRevenueAmount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'revenue_amount': revenueAmount.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'revenue_amount': revenueAmount.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

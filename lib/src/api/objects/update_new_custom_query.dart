@@ -39,11 +39,11 @@ class UpdateNewCustomQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'data': data,
-        'timeout': timeout,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'data': data,
+    'timeout': timeout,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains default auto-delete timer setting for new chats
 @immutable
 class MessageAutoDeleteTime extends TdObject {
-  const MessageAutoDeleteTime({
-    required this.time,
-  });
+  const MessageAutoDeleteTime({required this.time});
 
   /// [time] Message auto-delete time, in seconds. If 0, then messages aren't
   /// deleted automatically
@@ -20,9 +18,7 @@ class MessageAutoDeleteTime extends TdObject {
       return null;
     }
 
-    return MessageAutoDeleteTime(
-      time: json['time'] as int,
-    );
+    return MessageAutoDeleteTime(time: json['time'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class MessageAutoDeleteTime extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'time': time,
-        '@type': constructor,
-      };
+    'time': time,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

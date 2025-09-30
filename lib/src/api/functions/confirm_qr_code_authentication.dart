@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Session]
 @immutable
 class ConfirmQrCodeAuthentication extends TdFunction {
-  const ConfirmQrCodeAuthentication({
-    required this.link,
-  });
+  const ConfirmQrCodeAuthentication({required this.link});
 
   /// [link] A link from a QR code. The link must be scanned by the in-app
   /// camera
@@ -22,9 +20,9 @@ class ConfirmQrCodeAuthentication extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -39,11 +39,11 @@ class StatisticalValue extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'value': value,
-        'previous_value': previousValue,
-        'growth_rate_percentage': growthRatePercentage,
-        '@type': constructor,
-      };
+    'value': value,
+    'previous_value': previousValue,
+    'growth_rate_percentage': growthRatePercentage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

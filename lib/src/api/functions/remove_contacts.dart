@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class RemoveContacts extends TdFunction {
-  const RemoveContacts({
-    required this.userIds,
-  });
+  const RemoveContacts({required this.userIds});
 
   /// [userIds] Identifiers of users to be deleted
   final List<int> userIds;
@@ -20,9 +18,9 @@ class RemoveContacts extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

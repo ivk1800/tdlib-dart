@@ -30,11 +30,11 @@ class WriteGeneratedFilePart extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'generation_id': generationId,
-        'offset': offset,
-        'data': data,
-        '@type': constructor,
-      };
+    'generation_id': generationId,
+    'offset': offset,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

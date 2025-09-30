@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The speech recognition is ongoing
 @immutable
 class SpeechRecognitionResultPending extends SpeechRecognitionResult {
-  const SpeechRecognitionResultPending({
-    required this.partialText,
-  });
+  const SpeechRecognitionResultPending({required this.partialText});
 
   /// [partialText] Partially recognized text
   final String partialText;
@@ -29,9 +27,9 @@ class SpeechRecognitionResultPending extends SpeechRecognitionResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'partial_text': partialText,
-        '@type': constructor,
-      };
+    'partial_text': partialText,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

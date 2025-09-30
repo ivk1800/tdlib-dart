@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A reaction with an emoji
 @immutable
 class ReactionTypeEmoji extends ReactionType {
-  const ReactionTypeEmoji({
-    required this.emoji,
-  });
+  const ReactionTypeEmoji({required this.emoji});
 
   /// [emoji] Text representation of the reaction
   final String emoji;
@@ -19,9 +17,7 @@ class ReactionTypeEmoji extends ReactionType {
       return null;
     }
 
-    return ReactionTypeEmoji(
-      emoji: json['emoji'] as String,
-    );
+    return ReactionTypeEmoji(emoji: json['emoji'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class ReactionTypeEmoji extends ReactionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emoji': emoji,
-        '@type': constructor,
-      };
+    'emoji': emoji,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

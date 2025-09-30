@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class CheckQuickReplyShortcutName extends TdFunction {
-  const CheckQuickReplyShortcutName({
-    required this.name,
-  });
+  const CheckQuickReplyShortcutName({required this.name});
 
   /// [name] The name of the shortcut; 1-32 characters
   final String name;
@@ -21,9 +19,9 @@ class CheckQuickReplyShortcutName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

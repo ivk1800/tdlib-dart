@@ -34,10 +34,10 @@ class CallServerTypeTelegramReflector extends CallServerType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'peer_tag': peerTag,
-        'is_tcp': isTcp,
-        '@type': constructor,
-      };
+    'peer_tag': peerTag,
+    'is_tcp': isTcp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

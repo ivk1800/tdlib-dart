@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A reaction with a custom emoji
 @immutable
 class ReactionTypeCustomEmoji extends ReactionType {
-  const ReactionTypeCustomEmoji({
-    required this.customEmojiId,
-  });
+  const ReactionTypeCustomEmoji({required this.customEmojiId});
 
   /// [customEmojiId] Unique identifier of the custom emoji
   final int customEmojiId;
@@ -29,9 +27,9 @@ class ReactionTypeCustomEmoji extends ReactionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'custom_emoji_id': customEmojiId.toString(),
-        '@type': constructor,
-      };
+    'custom_emoji_id': customEmojiId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

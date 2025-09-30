@@ -36,13 +36,15 @@ class Usernames extends TdObject {
 
     return Usernames(
       activeUsernames: List<String>.from(
-          ((json['active_usernames'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['active_usernames'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       disabledUsernames: List<String>.from(
-          ((json['disabled_usernames'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['disabled_usernames'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       editableUsername: json['editable_username'] as String,
     );
   }
@@ -52,11 +54,11 @@ class Usernames extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'active_usernames': activeUsernames.map((item) => item).toList(),
-        'disabled_usernames': disabledUsernames.map((item) => item).toList(),
-        'editable_username': editableUsername,
-        '@type': constructor,
-      };
+    'active_usernames': activeUsernames.map((item) => item).toList(),
+    'disabled_usernames': disabledUsernames.map((item) => item).toList(),
+    'editable_username': editableUsername,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

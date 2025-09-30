@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents the result of an importContacts request
 @immutable
 class ImportedContacts extends TdObject {
-  const ImportedContacts({
-    required this.userIds,
-    required this.importerCount,
-  });
+  const ImportedContacts({required this.userIds, required this.importerCount});
 
   /// [userIds] User identifiers of the imported contacts in the same order as
   /// they were specified in the request; 0 if the contact is not yet a
@@ -28,13 +25,15 @@ class ImportedContacts extends TdObject {
 
     return ImportedContacts(
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       importerCount: List<int>.from(
-          ((json['importer_count'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['importer_count'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -43,10 +42,10 @@ class ImportedContacts extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_ids': userIds.map((item) => item).toList(),
-        'importer_count': importerCount.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'user_ids': userIds.map((item) => item).toList(),
+    'importer_count': importerCount.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

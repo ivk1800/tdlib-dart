@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Describes a message sent in the chat
 @immutable
 class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
-  const ChatStatisticsObjectTypeMessage({
-    required this.messageId,
-  });
+  const ChatStatisticsObjectTypeMessage({required this.messageId});
 
   /// [messageId] Message identifier
   final int messageId;
@@ -29,9 +27,9 @@ class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

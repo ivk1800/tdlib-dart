@@ -34,10 +34,10 @@ class RecommendedChatFolder extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'folder': folder.toJson(),
-        'description': description,
-        '@type': constructor,
-      };
+    'folder': folder.toJson(),
+    'description': description,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -27,9 +27,10 @@ class UpdateAnimationSearchParameters extends Update {
     return UpdateAnimationSearchParameters(
       provider: json['provider'] as String,
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +39,10 @@ class UpdateAnimationSearchParameters extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'provider': provider,
-        'emojis': emojis.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'provider': provider,
+    'emojis': emojis.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

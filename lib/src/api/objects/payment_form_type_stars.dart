@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The payment form is for a payment in Telegram Stars
 @immutable
 class PaymentFormTypeStars extends PaymentFormType {
-  const PaymentFormTypeStars({
-    required this.starCount,
-  });
+  const PaymentFormTypeStars({required this.starCount});
 
   /// [starCount] Number of Telegram Stars that will be paid
   final int starCount;
@@ -19,9 +17,7 @@ class PaymentFormTypeStars extends PaymentFormType {
       return null;
     }
 
-    return PaymentFormTypeStars(
-      starCount: json['star_count'] as int,
-    );
+    return PaymentFormTypeStars(starCount: json['star_count'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class PaymentFormTypeStars extends PaymentFormType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

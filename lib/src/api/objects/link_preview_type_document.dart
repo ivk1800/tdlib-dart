@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a general file
 @immutable
 class LinkPreviewTypeDocument extends LinkPreviewType {
-  const LinkPreviewTypeDocument({
-    required this.document,
-  });
+  const LinkPreviewTypeDocument({required this.document});
 
   /// [document] The document description
   final Document document;
@@ -29,9 +27,9 @@ class LinkPreviewTypeDocument extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document.toJson(),
-        '@type': constructor,
-      };
+    'document': document.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

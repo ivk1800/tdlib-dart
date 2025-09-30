@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user authorization state has changed
 @immutable
 class UpdateAuthorizationState extends Update {
-  const UpdateAuthorizationState({
-    required this.authorizationState,
-  });
+  const UpdateAuthorizationState({required this.authorizationState});
 
   /// [authorizationState] New authorization state
   final AuthorizationState authorizationState;
@@ -21,7 +19,8 @@ class UpdateAuthorizationState extends Update {
 
     return UpdateAuthorizationState(
       authorizationState: AuthorizationState.fromJson(
-          json['authorization_state'] as Map<String, dynamic>?)!,
+        json['authorization_state'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class UpdateAuthorizationState extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'authorization_state': authorizationState.toJson(),
-        '@type': constructor,
-      };
+    'authorization_state': authorizationState.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

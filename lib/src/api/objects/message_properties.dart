@@ -7,6 +7,8 @@ import '../tdapi.dart';
 @immutable
 class MessageProperties extends TdObject {
   const MessageProperties({
+    required this.canAddTasks,
+    required this.canBeCopied,
     required this.canBeCopiedToSecretChat,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -20,13 +22,16 @@ class MessageProperties extends TdObject {
     required this.canBeSharedInStory,
     required this.canEditMedia,
     required this.canEditSchedulingState,
+    required this.canGetAuthor,
     required this.canGetEmbeddingCode,
     required this.canGetLink,
     required this.canGetMediaTimestampLinks,
     required this.canGetMessageThread,
     required this.canGetReadDate,
     required this.canGetStatistics,
+    required this.canGetVideoAdvertisements,
     required this.canGetViewers,
+    required this.canMarkTasksAsDone,
     required this.canRecognizeSpeech,
     required this.canReportChat,
     required this.canReportReactions,
@@ -34,6 +39,14 @@ class MessageProperties extends TdObject {
     required this.canSetFactCheck,
     required this.needShowStatistics,
   });
+
+  /// [canAddTasks] True, if tasks can be added to the message's checklist using
+  /// addChecklistTasks if the current user has Telegram Premium subscription
+  final bool canAddTasks;
+
+  /// [canBeCopied] True, if content of the message can be copied using
+  /// inputMessageForwarded or forwardMessages with copy options
+  final bool canBeCopied;
 
   /// [canBeCopiedToSecretChat] True, if content of the message can be copied to
   /// a secret chat using inputMessageForwarded or forwardMessages with copy
@@ -51,12 +64,13 @@ class MessageProperties extends TdObject {
 
   /// [canBeEdited] True, if the message can be edited using the methods
   /// editMessageText, editMessageCaption, or editMessageReplyMarkup. For live
-  /// location and poll messages this fields shows whether
-  /// editMessageLiveLocation or stopPoll can be used with this message
+  /// location, poll, and checklist messages this fields shows whether
+  /// editMessageLiveLocation, stopPoll, or editMessageChecklist respectively
+  /// can be used with this message
   final bool canBeEdited;
 
   /// [canBeForwarded] True, if the message can be forwarded using
-  /// inputMessageForwarded or forwardMessages
+  /// inputMessageForwarded or forwardMessages without copy options
   final bool canBeForwarded;
 
   /// [canBePaid] True, if the message can be paid using inputInvoiceMessage
@@ -74,8 +88,7 @@ class MessageProperties extends TdObject {
   /// chat or forum topic using inputMessageReplyToExternalMessage
   final bool canBeRepliedInAnotherChat;
 
-  /// [canBeSaved] True, if content of the message can be saved locally or
-  /// copied using inputMessageForwarded or forwardMessages with copy options
+  /// [canBeSaved] True, if content of the message can be saved locally
   final bool canBeSaved;
 
   /// [canBeSharedInStory] True, if the message can be shared in a story using
@@ -89,6 +102,10 @@ class MessageProperties extends TdObject {
   /// [canEditSchedulingState] True, if scheduling state of the message can be
   /// edited
   final bool canEditSchedulingState;
+
+  /// [canGetAuthor] True, if author of the message sent on behalf of a chat can
+  /// be received through getMessageAuthor
+  final bool canGetAuthor;
 
   /// [canGetEmbeddingCode] True, if code for message embedding can be received
   /// using getMessageEmbeddingCode
@@ -116,9 +133,18 @@ class MessageProperties extends TdObject {
   /// getMessagePublicForwards
   final bool canGetStatistics;
 
+  /// [canGetVideoAdvertisements] True, if advertisements for video of the
+  /// message can be received though getVideoMessageAdvertisements
+  final bool canGetVideoAdvertisements;
+
   /// [canGetViewers] True, if chat members already viewed the message can be
   /// received through getMessageViewers
   final bool canGetViewers;
+
+  /// [canMarkTasksAsDone] True, if tasks can be marked as done or not done in
+  /// the message's checklist using markChecklistTasksAsDone if the current user
+  /// has Telegram Premium subscription
+  final bool canMarkTasksAsDone;
 
   /// [canRecognizeSpeech] True, if speech can be recognized for the message
   /// through recognizeSpeech
@@ -151,6 +177,8 @@ class MessageProperties extends TdObject {
     }
 
     return MessageProperties(
+      canAddTasks: json['can_add_tasks'] as bool,
+      canBeCopied: json['can_be_copied'] as bool,
       canBeCopiedToSecretChat: json['can_be_copied_to_secret_chat'] as bool,
       canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] as bool,
       canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] as bool,
@@ -164,13 +192,16 @@ class MessageProperties extends TdObject {
       canBeSharedInStory: json['can_be_shared_in_story'] as bool,
       canEditMedia: json['can_edit_media'] as bool,
       canEditSchedulingState: json['can_edit_scheduling_state'] as bool,
+      canGetAuthor: json['can_get_author'] as bool,
       canGetEmbeddingCode: json['can_get_embedding_code'] as bool,
       canGetLink: json['can_get_link'] as bool,
       canGetMediaTimestampLinks: json['can_get_media_timestamp_links'] as bool,
       canGetMessageThread: json['can_get_message_thread'] as bool,
       canGetReadDate: json['can_get_read_date'] as bool,
       canGetStatistics: json['can_get_statistics'] as bool,
+      canGetVideoAdvertisements: json['can_get_video_advertisements'] as bool,
       canGetViewers: json['can_get_viewers'] as bool,
+      canMarkTasksAsDone: json['can_mark_tasks_as_done'] as bool,
       canRecognizeSpeech: json['can_recognize_speech'] as bool,
       canReportChat: json['can_report_chat'] as bool,
       canReportReactions: json['can_report_reactions'] as bool,
@@ -185,34 +216,39 @@ class MessageProperties extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
-        'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
-        'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
-        'can_be_edited': canBeEdited,
-        'can_be_forwarded': canBeForwarded,
-        'can_be_paid': canBePaid,
-        'can_be_pinned': canBePinned,
-        'can_be_replied': canBeReplied,
-        'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
-        'can_be_saved': canBeSaved,
-        'can_be_shared_in_story': canBeSharedInStory,
-        'can_edit_media': canEditMedia,
-        'can_edit_scheduling_state': canEditSchedulingState,
-        'can_get_embedding_code': canGetEmbeddingCode,
-        'can_get_link': canGetLink,
-        'can_get_media_timestamp_links': canGetMediaTimestampLinks,
-        'can_get_message_thread': canGetMessageThread,
-        'can_get_read_date': canGetReadDate,
-        'can_get_statistics': canGetStatistics,
-        'can_get_viewers': canGetViewers,
-        'can_recognize_speech': canRecognizeSpeech,
-        'can_report_chat': canReportChat,
-        'can_report_reactions': canReportReactions,
-        'can_report_supergroup_spam': canReportSupergroupSpam,
-        'can_set_fact_check': canSetFactCheck,
-        'need_show_statistics': needShowStatistics,
-        '@type': constructor,
-      };
+    'can_add_tasks': canAddTasks,
+    'can_be_copied': canBeCopied,
+    'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
+    'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
+    'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
+    'can_be_edited': canBeEdited,
+    'can_be_forwarded': canBeForwarded,
+    'can_be_paid': canBePaid,
+    'can_be_pinned': canBePinned,
+    'can_be_replied': canBeReplied,
+    'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
+    'can_be_saved': canBeSaved,
+    'can_be_shared_in_story': canBeSharedInStory,
+    'can_edit_media': canEditMedia,
+    'can_edit_scheduling_state': canEditSchedulingState,
+    'can_get_author': canGetAuthor,
+    'can_get_embedding_code': canGetEmbeddingCode,
+    'can_get_link': canGetLink,
+    'can_get_media_timestamp_links': canGetMediaTimestampLinks,
+    'can_get_message_thread': canGetMessageThread,
+    'can_get_read_date': canGetReadDate,
+    'can_get_statistics': canGetStatistics,
+    'can_get_video_advertisements': canGetVideoAdvertisements,
+    'can_get_viewers': canGetViewers,
+    'can_mark_tasks_as_done': canMarkTasksAsDone,
+    'can_recognize_speech': canRecognizeSpeech,
+    'can_report_chat': canReportChat,
+    'can_report_reactions': canReportReactions,
+    'can_report_supergroup_spam': canReportSupergroupSpam,
+    'can_set_fact_check': canSetFactCheck,
+    'need_show_statistics': needShowStatistics,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

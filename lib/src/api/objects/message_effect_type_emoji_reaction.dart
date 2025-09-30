@@ -24,10 +24,12 @@ class MessageEffectTypeEmojiReaction extends MessageEffectType {
     }
 
     return MessageEffectTypeEmojiReaction(
-      selectAnimation:
-          Sticker.fromJson(json['select_animation'] as Map<String, dynamic>?)!,
-      effectAnimation:
-          Sticker.fromJson(json['effect_animation'] as Map<String, dynamic>?)!,
+      selectAnimation: Sticker.fromJson(
+        json['select_animation'] as Map<String, dynamic>?,
+      )!,
+      effectAnimation: Sticker.fromJson(
+        json['effect_animation'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +38,10 @@ class MessageEffectTypeEmojiReaction extends MessageEffectType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'select_animation': selectAnimation.toJson(),
-        'effect_animation': effectAnimation.toJson(),
-        '@type': constructor,
-      };
+    'select_animation': selectAnimation.toJson(),
+    'effect_animation': effectAnimation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

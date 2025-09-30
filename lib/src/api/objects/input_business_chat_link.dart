@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Describes a business chat link to create or edit
 @immutable
 class InputBusinessChatLink extends TdObject {
-  const InputBusinessChatLink({
-    required this.text,
-    required this.title,
-  });
+  const InputBusinessChatLink({required this.text, required this.title});
 
   /// [text] Message draft text that will be added to the input field
   final FormattedText text;
@@ -34,10 +31,10 @@ class InputBusinessChatLink extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'title': title,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

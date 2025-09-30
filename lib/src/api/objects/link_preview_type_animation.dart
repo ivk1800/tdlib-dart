@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to an animation
 @immutable
 class LinkPreviewTypeAnimation extends LinkPreviewType {
-  const LinkPreviewTypeAnimation({
-    required this.animation,
-  });
+  const LinkPreviewTypeAnimation({required this.animation});
 
   /// [animation] The animation
   final Animation animation;
@@ -20,8 +18,9 @@ class LinkPreviewTypeAnimation extends LinkPreviewType {
     }
 
     return LinkPreviewTypeAnimation(
-      animation:
-          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      animation: Animation.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class LinkPreviewTypeAnimation extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

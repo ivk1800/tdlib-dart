@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A rich text phone number
 @immutable
 class RichTextPhoneNumber extends RichText {
-  const RichTextPhoneNumber({
-    required this.text,
-    required this.phoneNumber,
-  });
+  const RichTextPhoneNumber({required this.text, required this.phoneNumber});
 
   /// [text] Text
   final RichText text;
@@ -34,10 +31,10 @@ class RichTextPhoneNumber extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'phone_number': phoneNumber,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'phone_number': phoneNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

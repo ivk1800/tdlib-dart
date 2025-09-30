@@ -60,14 +60,14 @@ class MessageLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_public': isPublic,
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        'message': message?.toJson(),
-        'media_timestamp': mediaTimestamp,
-        'for_album': forAlbum,
-        '@type': constructor,
-      };
+    'is_public': isPublic,
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    'message': message?.toJson(),
+    'media_timestamp': mediaTimestamp,
+    'for_album': forAlbum,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

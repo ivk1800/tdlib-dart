@@ -25,10 +25,10 @@ class RemoveNotificationGroup extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'notification_group_id': notificationGroupId,
-        'max_notification_id': maxNotificationId,
-        '@type': constructor,
-      };
+    'notification_group_id': notificationGroupId,
+    'max_notification_id': maxNotificationId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

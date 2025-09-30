@@ -35,10 +35,10 @@ class MessageOriginChat extends MessageOrigin {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sender_chat_id': senderChatId,
-        'author_signature': authorSignature,
-        '@type': constructor,
-      };
+    'sender_chat_id': senderChatId,
+    'author_signature': authorSignature,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

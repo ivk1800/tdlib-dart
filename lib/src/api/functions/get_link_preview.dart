@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [LinkPreview]
 @immutable
 class GetLinkPreview extends TdFunction {
-  const GetLinkPreview({
-    required this.text,
-    this.linkPreviewOptions,
-  });
+  const GetLinkPreview({required this.text, this.linkPreviewOptions});
 
   /// [text] Message text with formatting
   final FormattedText text;
@@ -26,10 +23,10 @@ class GetLinkPreview extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'link_preview_options': linkPreviewOptions?.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'link_preview_options': linkPreviewOptions?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

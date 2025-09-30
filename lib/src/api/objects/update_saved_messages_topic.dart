@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// application
 @immutable
 class UpdateSavedMessagesTopic extends Update {
-  const UpdateSavedMessagesTopic({
-    required this.topic,
-  });
+  const UpdateSavedMessagesTopic({required this.topic});
 
   /// [topic] New data about the topic
   final SavedMessagesTopic topic;
@@ -22,8 +20,9 @@ class UpdateSavedMessagesTopic extends Update {
     }
 
     return UpdateSavedMessagesTopic(
-      topic:
-          SavedMessagesTopic.fromJson(json['topic'] as Map<String, dynamic>?)!,
+      topic: SavedMessagesTopic.fromJson(
+        json['topic'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +31,9 @@ class UpdateSavedMessagesTopic extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'topic': topic.toJson(),
-        '@type': constructor,
-      };
+    'topic': topic.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

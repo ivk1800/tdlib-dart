@@ -41,11 +41,11 @@ class ChatActionBarJoinRequest extends ChatActionBar {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'is_channel': isChannel,
-        'request_date': requestDate,
-        '@type': constructor,
-      };
+    'title': title,
+    'is_channel': isChannel,
+    'request_date': requestDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

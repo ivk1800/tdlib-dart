@@ -36,8 +36,9 @@ class UpdateNewShippingQuery extends Update {
       id: int.tryParse(json['id']) ?? 0,
       senderUserId: json['sender_user_id'] as int,
       invoicePayload: json['invoice_payload'] as String,
-      shippingAddress:
-          Address.fromJson(json['shipping_address'] as Map<String, dynamic>?)!,
+      shippingAddress: Address.fromJson(
+        json['shipping_address'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -46,12 +47,12 @@ class UpdateNewShippingQuery extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'sender_user_id': senderUserId,
-        'invoice_payload': invoicePayload,
-        'shipping_address': shippingAddress.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'sender_user_id': senderUserId,
+    'invoice_payload': invoicePayload,
+    'shipping_address': shippingAddress.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

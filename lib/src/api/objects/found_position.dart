@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains 0-based match position
 @immutable
 class FoundPosition extends TdObject {
-  const FoundPosition({
-    required this.position,
-  });
+  const FoundPosition({required this.position});
 
   /// [position] The position of the match
   final int position;
@@ -19,9 +17,7 @@ class FoundPosition extends TdObject {
       return null;
     }
 
-    return FoundPosition(
-      position: json['position'] as int,
-    );
+    return FoundPosition(position: json['position'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class FoundPosition extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'position': position,
-        '@type': constructor,
-      };
+    'position': position,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

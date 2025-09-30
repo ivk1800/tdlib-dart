@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// handling links of the type internalLinkTypePhoneNumberConfirmation
 @immutable
 class PhoneNumberCodeTypeConfirmOwnership extends PhoneNumberCodeType {
-  const PhoneNumberCodeTypeConfirmOwnership({
-    required this.hash,
-  });
+  const PhoneNumberCodeTypeConfirmOwnership({required this.hash});
 
   /// [hash] Hash value from the link
   final String hash;
@@ -16,14 +14,13 @@ class PhoneNumberCodeTypeConfirmOwnership extends PhoneNumberCodeType {
   static const String constructor = 'phoneNumberCodeTypeConfirmOwnership';
 
   static PhoneNumberCodeTypeConfirmOwnership? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return PhoneNumberCodeTypeConfirmOwnership(
-      hash: json['hash'] as String,
-    );
+    return PhoneNumberCodeTypeConfirmOwnership(hash: json['hash'] as String);
   }
 
   @override
@@ -31,9 +28,9 @@ class PhoneNumberCodeTypeConfirmOwnership extends PhoneNumberCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'hash': hash,
-        '@type': constructor,
-      };
+    'hash': hash,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

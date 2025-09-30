@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents an RTMP URL
 @immutable
 class RtmpUrl extends TdObject {
-  const RtmpUrl({
-    required this.url,
-    required this.streamKey,
-  });
+  const RtmpUrl({required this.url, required this.streamKey});
 
   /// [url] The URL
   final String url;
@@ -34,10 +31,10 @@ class RtmpUrl extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        'stream_key': streamKey,
-        '@type': constructor,
-      };
+    'url': url,
+    'stream_key': streamKey,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

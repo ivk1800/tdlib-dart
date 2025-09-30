@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The current user shared a chat, which was requested by the bot
 @immutable
 class MessageChatShared extends MessageContent {
-  const MessageChatShared({
-    required this.chat,
-    required this.buttonId,
-  });
+  const MessageChatShared({required this.chat, required this.buttonId});
 
   /// [chat] The shared chat
   final SharedChat chat;
@@ -34,10 +31,10 @@ class MessageChatShared extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat': chat.toJson(),
-        'button_id': buttonId,
-        '@type': constructor,
-      };
+    'chat': chat.toJson(),
+    'button_id': buttonId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

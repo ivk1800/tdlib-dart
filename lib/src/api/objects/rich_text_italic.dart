@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An italicized rich text
 @immutable
 class RichTextItalic extends RichText {
-  const RichTextItalic({
-    required this.text,
-  });
+  const RichTextItalic({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextItalic extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

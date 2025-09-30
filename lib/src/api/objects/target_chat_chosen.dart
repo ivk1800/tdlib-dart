@@ -5,24 +5,10 @@ import '../tdapi.dart';
 /// The chat needs to be chosen by the user among chats of the specified types
 @immutable
 class TargetChatChosen extends TargetChat {
-  const TargetChatChosen({
-    required this.allowUserChats,
-    required this.allowBotChats,
-    required this.allowGroupChats,
-    required this.allowChannelChats,
-  });
+  const TargetChatChosen({required this.types});
 
-  /// [allowUserChats] True, if private chats with ordinary users are allowed
-  final bool allowUserChats;
-
-  /// [allowBotChats] True, if private chats with other bots are allowed
-  final bool allowBotChats;
-
-  /// [allowGroupChats] True, if basic group and supergroup chats are allowed
-  final bool allowGroupChats;
-
-  /// [allowChannelChats] True, if channel chats are allowed
-  final bool allowChannelChats;
+  /// [types] Allowed types for the chat
+  final TargetChatTypes types;
 
   static const String constructor = 'targetChatChosen';
 
@@ -32,10 +18,7 @@ class TargetChatChosen extends TargetChat {
     }
 
     return TargetChatChosen(
-      allowUserChats: json['allow_user_chats'] as bool,
-      allowBotChats: json['allow_bot_chats'] as bool,
-      allowGroupChats: json['allow_group_chats'] as bool,
-      allowChannelChats: json['allow_channel_chats'] as bool,
+      types: TargetChatTypes.fromJson(json['types'] as Map<String, dynamic>?)!,
     );
   }
 
@@ -44,12 +27,9 @@ class TargetChatChosen extends TargetChat {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'allow_user_chats': allowUserChats,
-        'allow_bot_chats': allowBotChats,
-        'allow_group_chats': allowGroupChats,
-        'allow_channel_chats': allowChannelChats,
-        '@type': constructor,
-      };
+    'types': types.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

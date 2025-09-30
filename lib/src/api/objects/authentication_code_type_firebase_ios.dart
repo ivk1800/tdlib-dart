@@ -26,7 +26,8 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   static const String constructor = 'authenticationCodeTypeFirebaseIos';
 
   static AuthenticationCodeTypeFirebaseIos? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -43,11 +44,11 @@ class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'receipt': receipt,
-        'push_timeout': pushTimeout,
-        'length': length,
-        '@type': constructor,
-      };
+    'receipt': receipt,
+    'push_timeout': pushTimeout,
+    'length': length,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

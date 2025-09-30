@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of media previews of a bot
 @immutable
 class BotMediaPreviews extends TdObject {
-  const BotMediaPreviews({
-    required this.previews,
-  });
+  const BotMediaPreviews({required this.previews});
 
   /// [previews] List of media previews
   final List<BotMediaPreview> previews;
@@ -21,9 +19,10 @@ class BotMediaPreviews extends TdObject {
 
     return BotMediaPreviews(
       previews: List<BotMediaPreview>.from(
-          ((json['previews'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BotMediaPreview.fromJson(item))
-              .toList()),
+        ((json['previews'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BotMediaPreview.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class BotMediaPreviews extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'previews': previews.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'previews': previews.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

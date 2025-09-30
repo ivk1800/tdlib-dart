@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [BotMediaPreviews]
 @immutable
 class GetBotMediaPreviews extends TdFunction {
-  const GetBotMediaPreviews({
-    required this.botUserId,
-  });
+  const GetBotMediaPreviews({required this.botUserId});
 
   /// [botUserId] Identifier of the target bot. The bot must have the main Web
   /// App
@@ -21,9 +19,9 @@ class GetBotMediaPreviews extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

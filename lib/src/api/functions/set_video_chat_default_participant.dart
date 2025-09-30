@@ -26,10 +26,10 @@ class SetVideoChatDefaultParticipant extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'default_participant_id': defaultParticipantId.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'default_participant_id': defaultParticipantId.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

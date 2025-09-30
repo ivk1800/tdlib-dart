@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ReorderActiveUsernames extends TdFunction {
-  const ReorderActiveUsernames({
-    required this.usernames,
-  });
+  const ReorderActiveUsernames({required this.usernames});
 
   /// [usernames] The new order of active usernames. All currently active
   /// usernames must be specified
@@ -21,9 +19,9 @@ class ReorderActiveUsernames extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'usernames': usernames.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'usernames': usernames.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

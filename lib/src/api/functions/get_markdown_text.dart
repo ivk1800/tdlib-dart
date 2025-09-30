@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [FormattedText]
 @immutable
 class GetMarkdownText extends TdFunction {
-  const GetMarkdownText({
-    required this.text,
-  });
+  const GetMarkdownText({required this.text});
 
   /// [text] The text
   final FormattedText text;
@@ -22,9 +20,9 @@ class GetMarkdownText extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [StickerSets]
 @immutable
 class GetAttachedStickerSets extends TdFunction {
-  const GetAttachedStickerSets({
-    required this.fileId,
-  });
+  const GetAttachedStickerSets({required this.fileId});
 
   /// [fileId] File identifier
   final int fileId;
@@ -22,9 +20,9 @@ class GetAttachedStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

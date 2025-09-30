@@ -35,12 +35,12 @@ class EditInlineMessageCaption extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

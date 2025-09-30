@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// with the given referrer to process the link
 @immutable
 class InternalLinkTypePremiumFeatures extends InternalLinkType {
-  const InternalLinkTypePremiumFeatures({
-    required this.referrer,
-  });
+  const InternalLinkTypePremiumFeatures({required this.referrer});
 
   /// [referrer] Referrer specified in the link
   final String referrer;
@@ -31,9 +29,9 @@ class InternalLinkTypePremiumFeatures extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'referrer': referrer,
-        '@type': constructor,
-      };
+    'referrer': referrer,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

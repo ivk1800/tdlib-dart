@@ -43,9 +43,10 @@ class InputMessagePaidMedia extends InputMessageContent {
     return InputMessagePaidMedia(
       starCount: json['star_count'] as int,
       paidMedia: List<InputPaidMedia>.from(
-          ((json['paid_media'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => InputPaidMedia.fromJson(item))
-              .toList()),
+        ((json['paid_media'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => InputPaidMedia.fromJson(item))
+            .toList(),
+      ),
       caption: FormattedText.fromJson(json['caption'] as Map<String, dynamic>?),
       showCaptionAboveMedia: json['show_caption_above_media'] as bool,
       payload: json['payload'] as String,
@@ -57,13 +58,13 @@ class InputMessagePaidMedia extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'star_count': starCount,
-        'paid_media': paidMedia.map((item) => item.toJson()).toList(),
-        'caption': caption?.toJson(),
-        'show_caption_above_media': showCaptionAboveMedia,
-        'payload': payload,
-        '@type': constructor,
-      };
+    'star_count': starCount,
+    'paid_media': paidMedia.map((item) => item.toJson()).toList(),
+    'caption': caption?.toJson(),
+    'show_caption_above_media': showCaptionAboveMedia,
+    'payload': payload,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

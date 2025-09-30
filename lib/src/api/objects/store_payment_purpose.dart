@@ -12,6 +12,7 @@ abstract class StorePaymentPurpose extends TdObject {
   /// Inherited by:
   /// [StorePaymentPurposeGiftedStars]
   /// [StorePaymentPurposePremiumGiftCodes]
+  /// [StorePaymentPurposePremiumGift]
   /// [StorePaymentPurposePremiumGiveaway]
   /// [StorePaymentPurposePremiumSubscription]
   /// [StorePaymentPurposeStarGiveaway]
@@ -24,6 +25,8 @@ abstract class StorePaymentPurpose extends TdObject {
     switch (json['@type']) {
       case StorePaymentPurposeGiftedStars.constructor:
         return StorePaymentPurposeGiftedStars.fromJson(json);
+      case StorePaymentPurposePremiumGift.constructor:
+        return StorePaymentPurposePremiumGift.fromJson(json);
       case StorePaymentPurposePremiumGiftCodes.constructor:
         return StorePaymentPurposePremiumGiftCodes.fromJson(json);
       case StorePaymentPurposePremiumGiveaway.constructor:

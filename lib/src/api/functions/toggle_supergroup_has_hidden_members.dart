@@ -26,10 +26,10 @@ class ToggleSupergroupHasHiddenMembers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'has_hidden_members': hasHiddenMembers,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'has_hidden_members': hasHiddenMembers,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

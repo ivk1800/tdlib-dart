@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// before the basic group identifier is returned to the application
 @immutable
 class UpdateBasicGroup extends Update {
-  const UpdateBasicGroup({
-    required this.basicGroup,
-  });
+  const UpdateBasicGroup({required this.basicGroup});
 
   /// [basicGroup] New data about the group
   final BasicGroup basicGroup;
@@ -21,8 +19,9 @@ class UpdateBasicGroup extends Update {
     }
 
     return UpdateBasicGroup(
-      basicGroup:
-          BasicGroup.fromJson(json['basic_group'] as Map<String, dynamic>?)!,
+      basicGroup: BasicGroup.fromJson(
+        json['basic_group'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +30,9 @@ class UpdateBasicGroup extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'basic_group': basicGroup.toJson(),
-        '@type': constructor,
-      };
+    'basic_group': basicGroup.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

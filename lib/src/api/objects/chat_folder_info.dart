@@ -7,7 +7,7 @@ import '../tdapi.dart';
 class ChatFolderInfo extends TdObject {
   const ChatFolderInfo({
     required this.id,
-    required this.title,
+    required this.name,
     required this.icon,
     required this.colorId,
     required this.isShareable,
@@ -17,8 +17,8 @@ class ChatFolderInfo extends TdObject {
   /// [id] Unique chat folder identifier
   final int id;
 
-  /// [title] The title of the folder; 1-12 characters without line feeds
-  final String title;
+  /// [name] The name of the folder
+  final ChatFolderName name;
 
   /// [icon] The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
@@ -43,7 +43,7 @@ class ChatFolderInfo extends TdObject {
 
     return ChatFolderInfo(
       id: json['id'] as int,
-      title: json['title'] as String,
+      name: ChatFolderName.fromJson(json['name'] as Map<String, dynamic>?)!,
       icon: ChatFolderIcon.fromJson(json['icon'] as Map<String, dynamic>?)!,
       colorId: json['color_id'] as int,
       isShareable: json['is_shareable'] as bool,
@@ -56,14 +56,14 @@ class ChatFolderInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'title': title,
-        'icon': icon.toJson(),
-        'color_id': colorId,
-        'is_shareable': isShareable,
-        'has_my_invite_links': hasMyInviteLinks,
-        '@type': constructor,
-      };
+    'id': id,
+    'name': name.toJson(),
+    'icon': icon.toJson(),
+    'color_id': colorId,
+    'is_shareable': isShareable,
+    'has_my_invite_links': hasMyInviteLinks,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

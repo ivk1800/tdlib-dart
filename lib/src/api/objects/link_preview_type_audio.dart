@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to an audio
 @immutable
 class LinkPreviewTypeAudio extends LinkPreviewType {
-  const LinkPreviewTypeAudio({
-    required this.audio,
-  });
+  const LinkPreviewTypeAudio({required this.audio});
 
   /// [audio] The audio description
   final Audio audio;
@@ -29,9 +27,9 @@ class LinkPreviewTypeAudio extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'audio': audio.toJson(),
-        '@type': constructor,
-      };
+    'audio': audio.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

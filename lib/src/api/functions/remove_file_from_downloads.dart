@@ -24,10 +24,10 @@ class RemoveFileFromDownloads extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'delete_from_cache': deleteFromCache,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'delete_from_cache': deleteFromCache,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

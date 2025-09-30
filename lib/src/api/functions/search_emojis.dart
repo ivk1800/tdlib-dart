@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [EmojiKeywords]
 @immutable
 class SearchEmojis extends TdFunction {
-  const SearchEmojis({
-    required this.text,
-    required this.inputLanguageCodes,
-  });
+  const SearchEmojis({required this.text, required this.inputLanguageCodes});
 
   /// [text] Text to search for
   final String text;
@@ -26,10 +23,10 @@ class SearchEmojis extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'input_language_codes': inputLanguageCodes.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'text': text,
+    'input_language_codes': inputLanguageCodes.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

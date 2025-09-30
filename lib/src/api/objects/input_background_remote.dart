@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A background from the server
 @immutable
 class InputBackgroundRemote extends InputBackground {
-  const InputBackgroundRemote({
-    required this.backgroundId,
-  });
+  const InputBackgroundRemote({required this.backgroundId});
 
   /// [backgroundId] The background identifier
   final int backgroundId;
@@ -29,9 +27,9 @@ class InputBackgroundRemote extends InputBackground {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background_id': backgroundId.toString(),
-        '@type': constructor,
-      };
+    'background_id': backgroundId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

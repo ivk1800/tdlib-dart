@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetBotProfilePhoto extends TdFunction {
-  const SetBotProfilePhoto({
-    required this.botUserId,
-    this.photo,
-  });
+  const SetBotProfilePhoto({required this.botUserId, this.photo});
 
   /// [botUserId] Identifier of the target bot
   final int botUserId;
@@ -24,10 +21,10 @@ class SetBotProfilePhoto extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a video note message
 @immutable
 class LinkPreviewTypeVideoNote extends LinkPreviewType {
-  const LinkPreviewTypeVideoNote({
-    required this.videoNote,
-  });
+  const LinkPreviewTypeVideoNote({required this.videoNote});
 
   /// [videoNote] The video note
   final VideoNote videoNote;
@@ -20,8 +18,9 @@ class LinkPreviewTypeVideoNote extends LinkPreviewType {
     }
 
     return LinkPreviewTypeVideoNote(
-      videoNote:
-          VideoNote.fromJson(json['video_note'] as Map<String, dynamic>?)!,
+      videoNote: VideoNote.fromJson(
+        json['video_note'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class LinkPreviewTypeVideoNote extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'video_note': videoNote.toJson(),
-        '@type': constructor,
-      };
+    'video_note': videoNote.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

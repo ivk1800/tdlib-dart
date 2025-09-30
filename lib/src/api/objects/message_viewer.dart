@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a viewer of a message
 @immutable
 class MessageViewer extends TdObject {
-  const MessageViewer({
-    required this.userId,
-    required this.viewDate,
-  });
+  const MessageViewer({required this.userId, required this.viewDate});
 
   /// [userId] User identifier of the viewer
   final int userId;
@@ -35,10 +32,10 @@ class MessageViewer extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'view_date': viewDate,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'view_date': viewDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

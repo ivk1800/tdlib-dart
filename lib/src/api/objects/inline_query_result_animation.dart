@@ -29,8 +29,9 @@ class InlineQueryResultAnimation extends InlineQueryResult {
 
     return InlineQueryResultAnimation(
       id: json['id'] as String,
-      animation:
-          Animation.fromJson(json['animation'] as Map<String, dynamic>?)!,
+      animation: Animation.fromJson(
+        json['animation'] as Map<String, dynamic>?,
+      )!,
       title: json['title'] as String,
     );
   }
@@ -40,11 +41,11 @@ class InlineQueryResultAnimation extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'animation': animation.toJson(),
-        'title': title,
-        '@type': constructor,
-      };
+    'id': id,
+    'animation': animation.toJson(),
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

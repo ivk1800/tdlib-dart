@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents a single button in a bot keyboard
 @immutable
 class KeyboardButton extends TdObject {
-  const KeyboardButton({
-    required this.text,
-    required this.type,
-  });
+  const KeyboardButton({required this.text, required this.type});
 
   /// [text] Text of the button
   final String text;
@@ -34,10 +31,10 @@ class KeyboardButton extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'text': text,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

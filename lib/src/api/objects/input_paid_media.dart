@@ -43,12 +43,14 @@ class InputPaidMedia extends TdObject {
     return InputPaidMedia(
       type: InputPaidMediaType.fromJson(json['type'] as Map<String, dynamic>?)!,
       media: InputFile.fromJson(json['media'] as Map<String, dynamic>?)!,
-      thumbnail:
-          InputThumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
+      thumbnail: InputThumbnail.fromJson(
+        json['thumbnail'] as Map<String, dynamic>?,
+      ),
       addedStickerFileIds: List<int>.from(
-          ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['added_sticker_file_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       width: json['width'] as int,
       height: json['height'] as int,
     );
@@ -59,15 +61,14 @@ class InputPaidMedia extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'media': media.toJson(),
-        'thumbnail': thumbnail?.toJson(),
-        'added_sticker_file_ids':
-            addedStickerFileIds.map((item) => item).toList(),
-        'width': width,
-        'height': height,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'media': media.toJson(),
+    'thumbnail': thumbnail?.toJson(),
+    'added_sticker_file_ids': addedStickerFileIds.map((item) => item).toList(),
+    'width': width,
+    'height': height,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

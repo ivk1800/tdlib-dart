@@ -85,10 +85,12 @@ class InputMessageInvoice extends InputMessageContent {
       providerToken: json['provider_token'] as String,
       providerData: json['provider_data'] as String,
       startParameter: json['start_parameter'] as String,
-      paidMedia:
-          InputPaidMedia.fromJson(json['paid_media'] as Map<String, dynamic>?),
+      paidMedia: InputPaidMedia.fromJson(
+        json['paid_media'] as Map<String, dynamic>?,
+      ),
       paidMediaCaption: FormattedText.fromJson(
-          json['paid_media_caption'] as Map<String, dynamic>?),
+        json['paid_media_caption'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -97,21 +99,21 @@ class InputMessageInvoice extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invoice': invoice.toJson(),
-        'title': title,
-        'description': description,
-        'photo_url': photoUrl,
-        'photo_size': photoSize,
-        'photo_width': photoWidth,
-        'photo_height': photoHeight,
-        'payload': payload,
-        'provider_token': providerToken,
-        'provider_data': providerData,
-        'start_parameter': startParameter,
-        'paid_media': paidMedia?.toJson(),
-        'paid_media_caption': paidMediaCaption?.toJson(),
-        '@type': constructor,
-      };
+    'invoice': invoice.toJson(),
+    'title': title,
+    'description': description,
+    'photo_url': photoUrl,
+    'photo_size': photoSize,
+    'photo_width': photoWidth,
+    'photo_height': photoHeight,
+    'payload': payload,
+    'provider_token': providerToken,
+    'provider_data': providerData,
+    'start_parameter': startParameter,
+    'paid_media': paidMedia?.toJson(),
+    'paid_media_caption': paidMediaCaption?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

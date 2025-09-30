@@ -32,8 +32,9 @@ class Thumbnail extends TdObject {
     }
 
     return Thumbnail(
-      format:
-          ThumbnailFormat.fromJson(json['format'] as Map<String, dynamic>?)!,
+      format: ThumbnailFormat.fromJson(
+        json['format'] as Map<String, dynamic>?,
+      )!,
       width: json['width'] as int,
       height: json['height'] as int,
       file: File.fromJson(json['file'] as Map<String, dynamic>?)!,
@@ -45,12 +46,12 @@ class Thumbnail extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'format': format.toJson(),
-        'width': width,
-        'height': height,
-        'file': file.toJson(),
-        '@type': constructor,
-      };
+    'format': format.toJson(),
+    'width': width,
+    'height': height,
+    'file': file.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// participant identifier to join a video chat of the chat
 @immutable
 class ChatMemberStatusBanned extends ChatMemberStatus {
-  const ChatMemberStatusBanned({
-    required this.bannedUntilDate,
-  });
+  const ChatMemberStatusBanned({required this.bannedUntilDate});
 
   /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be
   /// unbanned; 0 if never. If the user is banned for more than 366 days or for
@@ -34,9 +32,9 @@ class ChatMemberStatusBanned extends ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'banned_until_date': bannedUntilDate,
-        '@type': constructor,
-      };
+    'banned_until_date': bannedUntilDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

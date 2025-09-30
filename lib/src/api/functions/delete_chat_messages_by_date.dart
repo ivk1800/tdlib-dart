@@ -35,12 +35,12 @@ class DeleteChatMessagesByDate extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'min_date': minDate,
-        'max_date': maxDate,
-        'revoke': revoke,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'min_date': minDate,
+    'max_date': maxDate,
+    'revoke': revoke,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

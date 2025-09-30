@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// addChatFolderByInviteLink
 @immutable
 class InternalLinkTypeChatFolderInvite extends InternalLinkType {
-  const InternalLinkTypeChatFolderInvite({
-    required this.inviteLink,
-  });
+  const InternalLinkTypeChatFolderInvite({required this.inviteLink});
 
   /// [inviteLink] Internal representation of the invite link
   final String inviteLink;
@@ -18,7 +16,8 @@ class InternalLinkTypeChatFolderInvite extends InternalLinkType {
   static const String constructor = 'internalLinkTypeChatFolderInvite';
 
   static InternalLinkTypeChatFolderInvite? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,9 +32,9 @@ class InternalLinkTypeChatFolderInvite extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

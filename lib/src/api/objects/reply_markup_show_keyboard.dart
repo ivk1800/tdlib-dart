@@ -45,13 +45,18 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
     }
 
     return ReplyMarkupShowKeyboard(
-      rows: List<List<KeyboardButton>>.from(((json['rows'] as List<dynamic>?) ??
-              <dynamic>[])
-          .map((item) => List<KeyboardButton>.from(
-              ((json['List<KeyboardButton>'] as List<dynamic>?) ?? <dynamic>[])
-                  .map((item) => KeyboardButton.fromJson(item))
-                  .toList()))
-          .toList()),
+      rows: List<List<KeyboardButton>>.from(
+        ((json['rows'] as List<dynamic>?) ?? <dynamic>[])
+            .map(
+              (item) => List<KeyboardButton>.from(
+                ((json['List<KeyboardButton>'] as List<dynamic>?) ??
+                        <dynamic>[])
+                    .map((item) => KeyboardButton.fromJson(item))
+                    .toList(),
+              ),
+            )
+            .toList(),
+      ),
       isPersistent: json['is_persistent'] as bool,
       resizeKeyboard: json['resize_keyboard'] as bool,
       oneTime: json['one_time'] as bool,
@@ -65,16 +70,16 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'rows': rows
-            .map((item) => item.map((item) => item.toJson()).toList())
-            .toList(),
-        'is_persistent': isPersistent,
-        'resize_keyboard': resizeKeyboard,
-        'one_time': oneTime,
-        'is_personal': isPersonal,
-        'input_field_placeholder': inputFieldPlaceholder,
-        '@type': constructor,
-      };
+    'rows': rows
+        .map((item) => item.map((item) => item.toJson()).toList())
+        .toList(),
+    'is_persistent': isPersistent,
+    'resize_keyboard': resizeKeyboard,
+    'one_time': oneTime,
+    'is_personal': isPersonal,
+    'input_field_placeholder': inputFieldPlaceholder,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

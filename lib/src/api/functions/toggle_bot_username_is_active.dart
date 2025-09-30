@@ -31,11 +31,11 @@ class ToggleBotUsernameIsActive extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'username': username,
-        'is_active': isActive,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'username': username,
+    'is_active': isActive,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

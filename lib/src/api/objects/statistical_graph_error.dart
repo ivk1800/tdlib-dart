@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// An error message to be shown to the user instead of the graph
 @immutable
 class StatisticalGraphError extends StatisticalGraph {
-  const StatisticalGraphError({
-    required this.errorMessage,
-  });
+  const StatisticalGraphError({required this.errorMessage});
 
   /// [errorMessage] The error message
   final String errorMessage;
@@ -19,9 +17,7 @@ class StatisticalGraphError extends StatisticalGraph {
       return null;
     }
 
-    return StatisticalGraphError(
-      errorMessage: json['error_message'] as String,
-    );
+    return StatisticalGraphError(errorMessage: json['error_message'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class StatisticalGraphError extends StatisticalGraph {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'error_message': errorMessage,
-        '@type': constructor,
-      };
+    'error_message': errorMessage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

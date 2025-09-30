@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A message with a poll
 @immutable
 class MessagePoll extends MessageContent {
-  const MessagePoll({
-    required this.poll,
-  });
+  const MessagePoll({required this.poll});
 
   /// [poll] The poll description
   final Poll poll;
@@ -29,9 +27,9 @@ class MessagePoll extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'poll': poll.toJson(),
-        '@type': constructor,
-      };
+    'poll': poll.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

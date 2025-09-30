@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user is offline
 @immutable
 class UserStatusOffline extends UserStatus {
-  const UserStatusOffline({
-    required this.wasOnline,
-  });
+  const UserStatusOffline({required this.wasOnline});
 
   /// [wasOnline] Point in time (Unix timestamp) when the user was last online
   final int wasOnline;
@@ -19,9 +17,7 @@ class UserStatusOffline extends UserStatus {
       return null;
     }
 
-    return UserStatusOffline(
-      wasOnline: json['was_online'] as int,
-    );
+    return UserStatusOffline(wasOnline: json['was_online'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class UserStatusOffline extends UserStatus {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'was_online': wasOnline,
-        '@type': constructor,
-      };
+    'was_online': wasOnline,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

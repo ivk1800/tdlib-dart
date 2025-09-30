@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about a tg: deep link
 @immutable
 class DeepLinkInfo extends TdObject {
-  const DeepLinkInfo({
-    required this.text,
-    required this.needUpdateApplication,
-  });
+  const DeepLinkInfo({required this.text, required this.needUpdateApplication});
 
   /// [text] Text to be shown to the user
   final FormattedText text;
@@ -35,10 +32,10 @@ class DeepLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'need_update_application': needUpdateApplication,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'need_update_application': needUpdateApplication,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

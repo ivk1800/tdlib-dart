@@ -29,12 +29,15 @@ class ChatEventMemberRestricted extends ChatEventAction {
     }
 
     return ChatEventMemberRestricted(
-      memberId:
-          MessageSender.fromJson(json['member_id'] as Map<String, dynamic>?)!,
+      memberId: MessageSender.fromJson(
+        json['member_id'] as Map<String, dynamic>?,
+      )!,
       oldStatus: ChatMemberStatus.fromJson(
-          json['old_status'] as Map<String, dynamic>?)!,
+        json['old_status'] as Map<String, dynamic>?,
+      )!,
       newStatus: ChatMemberStatus.fromJson(
-          json['new_status'] as Map<String, dynamic>?)!,
+        json['new_status'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -43,11 +46,11 @@ class ChatEventMemberRestricted extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'member_id': memberId.toJson(),
-        'old_status': oldStatus.toJson(),
-        'new_status': newStatus.toJson(),
-        '@type': constructor,
-      };
+    'member_id': memberId.toJson(),
+    'old_status': oldStatus.toJson(),
+    'new_status': newStatus.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

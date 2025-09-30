@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteBusinessChatLink extends TdFunction {
-  const DeleteBusinessChatLink({
-    required this.link,
-  });
+  const DeleteBusinessChatLink({required this.link});
 
   /// [link] The link to delete
   final String link;
@@ -20,9 +18,9 @@ class DeleteBusinessChatLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'link': link,
-        '@type': constructor,
-      };
+    'link': link,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

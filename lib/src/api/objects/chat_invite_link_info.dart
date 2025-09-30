@@ -18,9 +18,7 @@ class ChatInviteLinkInfo extends TdObject {
     this.subscriptionInfo,
     required this.createsJoinRequest,
     required this.isPublic,
-    required this.isVerified,
-    required this.isScam,
-    required this.isFake,
+    this.verificationStatus,
   });
 
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access
@@ -66,14 +64,9 @@ class ChatInviteLinkInfo extends TdObject {
   /// has a username or it is a location-based supergroup
   final bool isPublic;
 
-  /// [isVerified] True, if the chat is verified
-  final bool isVerified;
-
-  /// [isScam] True, if many users reported this chat as a scam
-  final bool isScam;
-
-  /// [isFake] True, if many users reported this chat as a fake account
-  final bool isFake;
+  /// [verificationStatus] Information about verification status of the chat;
+  /// may be null if none
+  final VerificationStatus? verificationStatus;
 
   static const String constructor = 'chatInviteLinkInfo';
 
@@ -92,16 +85,18 @@ class ChatInviteLinkInfo extends TdObject {
       description: json['description'] as String,
       memberCount: json['member_count'] as int,
       memberUserIds: List<int>.from(
-          ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['member_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       subscriptionInfo: ChatInviteLinkSubscriptionInfo.fromJson(
-          json['subscription_info'] as Map<String, dynamic>?),
+        json['subscription_info'] as Map<String, dynamic>?,
+      ),
       createsJoinRequest: json['creates_join_request'] as bool,
       isPublic: json['is_public'] as bool,
-      isVerified: json['is_verified'] as bool,
-      isScam: json['is_scam'] as bool,
-      isFake: json['is_fake'] as bool,
+      verificationStatus: VerificationStatus.fromJson(
+        json['verification_status'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -110,23 +105,21 @@ class ChatInviteLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'accessible_for': accessibleFor,
-        'type': type.toJson(),
-        'title': title,
-        'photo': photo?.toJson(),
-        'accent_color_id': accentColorId,
-        'description': description,
-        'member_count': memberCount,
-        'member_user_ids': memberUserIds.map((item) => item).toList(),
-        'subscription_info': subscriptionInfo?.toJson(),
-        'creates_join_request': createsJoinRequest,
-        'is_public': isPublic,
-        'is_verified': isVerified,
-        'is_scam': isScam,
-        'is_fake': isFake,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'accessible_for': accessibleFor,
+    'type': type.toJson(),
+    'title': title,
+    'photo': photo?.toJson(),
+    'accent_color_id': accentColorId,
+    'description': description,
+    'member_count': memberCount,
+    'member_user_ids': memberUserIds.map((item) => item).toList(),
+    'subscription_info': subscriptionInfo?.toJson(),
+    'creates_join_request': createsJoinRequest,
+    'is_public': isPublic,
+    'verification_status': verificationStatus?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

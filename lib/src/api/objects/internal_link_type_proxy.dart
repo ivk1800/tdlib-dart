@@ -40,11 +40,11 @@ class InternalLinkTypeProxy extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'server': server,
-        'port': port,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'server': server,
+    'port': port,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

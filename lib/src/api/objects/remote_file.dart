@@ -63,13 +63,13 @@ class RemoteFile extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'unique_id': uniqueId,
-        'is_uploading_active': isUploadingActive,
-        'is_uploading_completed': isUploadingCompleted,
-        'uploaded_size': uploadedSize,
-        '@type': constructor,
-      };
+    'id': id,
+    'unique_id': uniqueId,
+    'is_uploading_active': isUploadingActive,
+    'is_uploading_completed': isUploadingCompleted,
+    'uploaded_size': uploadedSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

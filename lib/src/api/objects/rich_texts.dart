@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A concatenation of rich texts
 @immutable
 class RichTexts extends RichText {
-  const RichTexts({
-    required this.texts,
-  });
+  const RichTexts({required this.texts});
 
   /// [texts] Texts
   final List<RichText> texts;
@@ -21,9 +19,10 @@ class RichTexts extends RichText {
 
     return RichTexts(
       texts: List<RichText>.from(
-          ((json['texts'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => RichText.fromJson(item))
-              .toList()),
+        ((json['texts'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => RichText.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class RichTexts extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'texts': texts.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'texts': texts.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

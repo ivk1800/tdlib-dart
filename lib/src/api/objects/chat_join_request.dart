@@ -40,11 +40,11 @@ class ChatJoinRequest extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'date': date,
-        'bio': bio,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'date': date,
+    'bio': bio,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A regular poll
 @immutable
 class PollTypeRegular extends PollType {
-  const PollTypeRegular({
-    required this.allowMultipleAnswers,
-  });
+  const PollTypeRegular({required this.allowMultipleAnswers});
 
   /// [allowMultipleAnswers] True, if multiple answer options can be chosen
   /// simultaneously
@@ -30,9 +28,9 @@ class PollTypeRegular extends PollType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'allow_multiple_answers': allowMultipleAnswers,
-        '@type': constructor,
-      };
+    'allow_multiple_answers': allowMultipleAnswers,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

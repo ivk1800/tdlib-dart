@@ -36,7 +36,7 @@ class SponsoredMessage extends TdObject {
   final MessageContent content;
 
   /// [sponsor] Information about the sponsor of the message
-  final MessageSponsor sponsor;
+  final AdvertisementSponsor sponsor;
 
   /// [title] Title of the sponsored message
   final String title;
@@ -67,10 +67,12 @@ class SponsoredMessage extends TdObject {
       messageId: json['message_id'] as int,
       isRecommended: json['is_recommended'] as bool,
       canBeReported: json['can_be_reported'] as bool,
-      content:
-          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
-      sponsor:
-          MessageSponsor.fromJson(json['sponsor'] as Map<String, dynamic>?)!,
+      content: MessageContent.fromJson(
+        json['content'] as Map<String, dynamic>?,
+      )!,
+      sponsor: AdvertisementSponsor.fromJson(
+        json['sponsor'] as Map<String, dynamic>?,
+      )!,
       title: json['title'] as String,
       buttonText: json['button_text'] as String,
       accentColorId: json['accent_color_id'] as int,
@@ -85,18 +87,18 @@ class SponsoredMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_id': messageId,
-        'is_recommended': isRecommended,
-        'can_be_reported': canBeReported,
-        'content': content.toJson(),
-        'sponsor': sponsor.toJson(),
-        'title': title,
-        'button_text': buttonText,
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-        'additional_info': additionalInfo,
-        '@type': constructor,
-      };
+    'message_id': messageId,
+    'is_recommended': isRecommended,
+    'can_be_reported': canBeReported,
+    'content': content.toJson(),
+    'sponsor': sponsor.toJson(),
+    'title': title,
+    'button_text': buttonText,
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+    'additional_info': additionalInfo,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

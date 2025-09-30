@@ -40,11 +40,11 @@ class TextEntity extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'offset': offset,
-        'length': length,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'offset': offset,
+    'length': length,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

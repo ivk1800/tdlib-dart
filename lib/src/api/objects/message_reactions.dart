@@ -35,14 +35,16 @@ class MessageReactions extends TdObject {
 
     return MessageReactions(
       reactions: List<MessageReaction>.from(
-          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageReaction.fromJson(item))
-              .toList()),
+        ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageReaction.fromJson(item))
+            .toList(),
+      ),
       areTags: json['are_tags'] as bool,
       paidReactors: List<PaidReactor>.from(
-          ((json['paid_reactors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PaidReactor.fromJson(item))
-              .toList()),
+        ((json['paid_reactors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PaidReactor.fromJson(item))
+            .toList(),
+      ),
       canGetAddedReactions: json['can_get_added_reactions'] as bool,
     );
   }
@@ -52,12 +54,12 @@ class MessageReactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reactions': reactions.map((item) => item.toJson()).toList(),
-        'are_tags': areTags,
-        'paid_reactors': paidReactors.map((item) => item.toJson()).toList(),
-        'can_get_added_reactions': canGetAddedReactions,
-        '@type': constructor,
-      };
+    'reactions': reactions.map((item) => item.toJson()).toList(),
+    'are_tags': areTags,
+    'paid_reactors': paidReactors.map((item) => item.toJson()).toList(),
+    'can_get_added_reactions': canGetAddedReactions,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

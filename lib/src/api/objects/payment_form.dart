@@ -35,8 +35,9 @@ class PaymentForm extends TdObject {
       id: int.tryParse(json['id']) ?? 0,
       type: PaymentFormType.fromJson(json['type'] as Map<String, dynamic>?)!,
       sellerBotUserId: json['seller_bot_user_id'] as int,
-      productInfo:
-          ProductInfo.fromJson(json['product_info'] as Map<String, dynamic>?)!,
+      productInfo: ProductInfo.fromJson(
+        json['product_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -45,12 +46,12 @@ class PaymentForm extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'type': type.toJson(),
-        'seller_bot_user_id': sellerBotUserId,
-        'product_info': productInfo.toJson(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'type': type.toJson(),
+    'seller_bot_user_id': sellerBotUserId,
+    'product_info': productInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

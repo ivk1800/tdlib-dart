@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A sticker on a custom background
 @immutable
 class InputChatPhotoSticker extends InputChatPhoto {
-  const InputChatPhotoSticker({
-    required this.sticker,
-  });
+  const InputChatPhotoSticker({required this.sticker});
 
   /// [sticker] Information about the sticker
   final ChatPhotoSticker sticker;
@@ -20,8 +18,9 @@ class InputChatPhotoSticker extends InputChatPhoto {
     }
 
     return InputChatPhotoSticker(
-      sticker:
-          ChatPhotoSticker.fromJson(json['sticker'] as Map<String, dynamic>?)!,
+      sticker: ChatPhotoSticker.fromJson(
+        json['sticker'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class InputChatPhotoSticker extends InputChatPhoto {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker': sticker.toJson(),
-        '@type': constructor,
-      };
+    'sticker': sticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

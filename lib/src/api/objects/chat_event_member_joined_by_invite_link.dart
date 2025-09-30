@@ -20,14 +20,16 @@ class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
   static const String constructor = 'chatEventMemberJoinedByInviteLink';
 
   static ChatEventMemberJoinedByInviteLink? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return ChatEventMemberJoinedByInviteLink(
       inviteLink: ChatInviteLink.fromJson(
-          json['invite_link'] as Map<String, dynamic>?)!,
+        json['invite_link'] as Map<String, dynamic>?,
+      )!,
       viaChatFolderInviteLink: json['via_chat_folder_invite_link'] as bool,
     );
   }
@@ -37,10 +39,10 @@ class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'invite_link': inviteLink.toJson(),
-        'via_chat_folder_invite_link': viaChatFolderInviteLink,
-        '@type': constructor,
-      };
+    'invite_link': inviteLink.toJson(),
+    'via_chat_folder_invite_link': viaChatFolderInviteLink,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

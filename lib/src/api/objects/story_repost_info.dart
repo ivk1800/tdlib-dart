@@ -35,10 +35,10 @@ class StoryRepostInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'origin': origin.toJson(),
-        'is_content_modified': isContentModified,
-        '@type': constructor,
-      };
+    'origin': origin.toJson(),
+    'is_content_modified': isContentModified,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

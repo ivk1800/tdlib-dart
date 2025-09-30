@@ -44,11 +44,11 @@ class InternalLinkTypePublicChat extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_username': chatUsername,
-        'draft_text': draftText,
-        'open_profile': openProfile,
-        '@type': constructor,
-      };
+    'chat_username': chatUsername,
+    'draft_text': draftText,
+    'open_profile': openProfile,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

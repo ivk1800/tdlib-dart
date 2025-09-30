@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A business connection has changed; for bots only
 @immutable
 class UpdateBusinessConnection extends Update {
-  const UpdateBusinessConnection({
-    required this.connection,
-  });
+  const UpdateBusinessConnection({required this.connection});
 
   /// [connection] New data about the connection
   final BusinessConnection connection;
@@ -21,7 +19,8 @@ class UpdateBusinessConnection extends Update {
 
     return UpdateBusinessConnection(
       connection: BusinessConnection.fromJson(
-          json['connection'] as Map<String, dynamic>?)!,
+        json['connection'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class UpdateBusinessConnection extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'connection': connection.toJson(),
-        '@type': constructor,
-      };
+    'connection': connection.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

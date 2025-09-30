@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [AvailableReactions]
 @immutable
 class GetStoryAvailableReactions extends TdFunction {
-  const GetStoryAvailableReactions({
-    required this.rowSize,
-  });
+  const GetStoryAvailableReactions({required this.rowSize});
 
   /// [rowSize] Number of reaction per row, 5-25
   final int rowSize;
@@ -20,9 +18,9 @@ class GetStoryAvailableReactions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'row_size': rowSize,
-        '@type': constructor,
-      };
+    'row_size': rowSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

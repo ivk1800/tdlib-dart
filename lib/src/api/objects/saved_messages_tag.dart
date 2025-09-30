@@ -41,11 +41,11 @@ class SavedMessagesTag extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'tag': tag.toJson(),
-        'label': label,
-        'count': count,
-        '@type': constructor,
-      };
+    'tag': tag.toJson(),
+    'label': label,
+    'count': count,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

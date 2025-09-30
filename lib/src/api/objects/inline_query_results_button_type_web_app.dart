@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Describes the button that opens a Web App by calling getWebAppUrl
 @immutable
 class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonType {
-  const InlineQueryResultsButtonTypeWebApp({
-    required this.url,
-  });
+  const InlineQueryResultsButtonTypeWebApp({required this.url});
 
   /// [url] An HTTP URL to pass to getWebAppUrl
   final String url;
@@ -15,14 +13,13 @@ class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonType {
   static const String constructor = 'inlineQueryResultsButtonTypeWebApp';
 
   static InlineQueryResultsButtonTypeWebApp? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return InlineQueryResultsButtonTypeWebApp(
-      url: json['url'] as String,
-    );
+    return InlineQueryResultsButtonTypeWebApp(url: json['url'] as String);
   }
 
   @override
@@ -30,9 +27,9 @@ class InlineQueryResultsButtonTypeWebApp extends InlineQueryResultsButtonType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

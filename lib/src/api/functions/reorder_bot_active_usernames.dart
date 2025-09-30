@@ -26,10 +26,10 @@ class ReorderBotActiveUsernames extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'usernames': usernames.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'usernames': usernames.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

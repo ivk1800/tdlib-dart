@@ -24,6 +24,10 @@ class UserFullInfo extends TdObject {
     required this.personalChatId,
     required this.giftCount,
     required this.groupInCommonCount,
+    required this.incomingPaidMessageStarCount,
+    required this.outgoingPaidMessageStarCount,
+    required this.giftSettings,
+    this.botVerification,
     this.businessInfo,
     this.botInfo,
   });
@@ -96,12 +100,28 @@ class UserFullInfo extends TdObject {
   /// [personalChatId] Identifier of the personal chat of the user; 0 if none
   final int personalChatId;
 
-  /// [giftCount] Number of gifts saved to profile by the user
+  /// [giftCount] Number of saved to profile gifts for other users or the total
+  /// number of received gifts for the current user
   final int giftCount;
 
   /// [groupInCommonCount] Number of group chats where both the other user and
   /// the current user are a member; 0 for the current user
   final int groupInCommonCount;
+
+  /// [incomingPaidMessageStarCount] Number of Telegram Stars that must be paid
+  /// by the user for each sent message to the current user
+  final int incomingPaidMessageStarCount;
+
+  /// [outgoingPaidMessageStarCount] Number of Telegram Stars that must be paid
+  /// by the current user for each sent message to the user
+  final int outgoingPaidMessageStarCount;
+
+  /// [giftSettings] Settings for gift receiving for the user
+  final GiftSettings giftSettings;
+
+  /// [botVerification] Information about verification status of the user
+  /// provided by a bot; may be null if none or unknown
+  final BotVerification? botVerification;
 
   /// [businessInfo] Information about business settings for Telegram Business
   /// accounts; may be null if none
@@ -119,13 +139,16 @@ class UserFullInfo extends TdObject {
     }
 
     return UserFullInfo(
-      personalPhoto:
-          ChatPhoto.fromJson(json['personal_photo'] as Map<String, dynamic>?),
+      personalPhoto: ChatPhoto.fromJson(
+        json['personal_photo'] as Map<String, dynamic>?,
+      ),
       photo: ChatPhoto.fromJson(json['photo'] as Map<String, dynamic>?),
-      publicPhoto:
-          ChatPhoto.fromJson(json['public_photo'] as Map<String, dynamic>?),
-      blockList:
-          BlockList.fromJson(json['block_list'] as Map<String, dynamic>?),
+      publicPhoto: ChatPhoto.fromJson(
+        json['public_photo'] as Map<String, dynamic>?,
+      ),
+      blockList: BlockList.fromJson(
+        json['block_list'] as Map<String, dynamic>?,
+      ),
       canBeCalled: json['can_be_called'] as bool,
       supportsVideoCalls: json['supports_video_calls'] as bool,
       hasPrivateCalls: json['has_private_calls'] as bool,
@@ -143,8 +166,19 @@ class UserFullInfo extends TdObject {
       personalChatId: json['personal_chat_id'] as int,
       giftCount: json['gift_count'] as int,
       groupInCommonCount: json['group_in_common_count'] as int,
-      businessInfo:
-          BusinessInfo.fromJson(json['business_info'] as Map<String, dynamic>?),
+      incomingPaidMessageStarCount:
+          json['incoming_paid_message_star_count'] as int,
+      outgoingPaidMessageStarCount:
+          json['outgoing_paid_message_star_count'] as int,
+      giftSettings: GiftSettings.fromJson(
+        json['gift_settings'] as Map<String, dynamic>?,
+      )!,
+      botVerification: BotVerification.fromJson(
+        json['bot_verification'] as Map<String, dynamic>?,
+      ),
+      businessInfo: BusinessInfo.fromJson(
+        json['business_info'] as Map<String, dynamic>?,
+      ),
       botInfo: BotInfo.fromJson(json['bot_info'] as Map<String, dynamic>?),
     );
   }
@@ -154,29 +188,33 @@ class UserFullInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'personal_photo': personalPhoto?.toJson(),
-        'photo': photo?.toJson(),
-        'public_photo': publicPhoto?.toJson(),
-        'block_list': blockList?.toJson(),
-        'can_be_called': canBeCalled,
-        'supports_video_calls': supportsVideoCalls,
-        'has_private_calls': hasPrivateCalls,
-        'has_private_forwards': hasPrivateForwards,
-        'has_restricted_voice_and_video_note_messages':
-            hasRestrictedVoiceAndVideoNoteMessages,
-        'has_posted_to_profile_stories': hasPostedToProfileStories,
-        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
-        'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
-        'set_chat_background': setChatBackground,
-        'bio': bio?.toJson(),
-        'birthdate': birthdate?.toJson(),
-        'personal_chat_id': personalChatId,
-        'gift_count': giftCount,
-        'group_in_common_count': groupInCommonCount,
-        'business_info': businessInfo?.toJson(),
-        'bot_info': botInfo?.toJson(),
-        '@type': constructor,
-      };
+    'personal_photo': personalPhoto?.toJson(),
+    'photo': photo?.toJson(),
+    'public_photo': publicPhoto?.toJson(),
+    'block_list': blockList?.toJson(),
+    'can_be_called': canBeCalled,
+    'supports_video_calls': supportsVideoCalls,
+    'has_private_calls': hasPrivateCalls,
+    'has_private_forwards': hasPrivateForwards,
+    'has_restricted_voice_and_video_note_messages':
+        hasRestrictedVoiceAndVideoNoteMessages,
+    'has_posted_to_profile_stories': hasPostedToProfileStories,
+    'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
+    'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
+    'set_chat_background': setChatBackground,
+    'bio': bio?.toJson(),
+    'birthdate': birthdate?.toJson(),
+    'personal_chat_id': personalChatId,
+    'gift_count': giftCount,
+    'group_in_common_count': groupInCommonCount,
+    'incoming_paid_message_star_count': incomingPaidMessageStarCount,
+    'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+    'gift_settings': giftSettings.toJson(),
+    'bot_verification': botVerification?.toJson(),
+    'business_info': businessInfo?.toJson(),
+    'bot_info': botInfo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

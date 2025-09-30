@@ -34,14 +34,16 @@ class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
   static const String constructor = 'internalLinkTypeAttachmentMenuBot';
 
   static InternalLinkTypeAttachmentMenuBot? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InternalLinkTypeAttachmentMenuBot(
-      targetChat:
-          TargetChat.fromJson(json['target_chat'] as Map<String, dynamic>?)!,
+      targetChat: TargetChat.fromJson(
+        json['target_chat'] as Map<String, dynamic>?,
+      )!,
       botUsername: json['bot_username'] as String,
       url: json['url'] as String,
     );
@@ -52,11 +54,11 @@ class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'target_chat': targetChat.toJson(),
-        'bot_username': botUsername,
-        'url': url,
-        '@type': constructor,
-      };
+    'target_chat': targetChat.toJson(),
+    'bot_username': botUsername,
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

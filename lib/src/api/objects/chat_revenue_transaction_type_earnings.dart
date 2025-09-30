@@ -19,7 +19,8 @@ class ChatRevenueTransactionTypeEarnings extends ChatRevenueTransactionType {
   static const String constructor = 'chatRevenueTransactionTypeEarnings';
 
   static ChatRevenueTransactionTypeEarnings? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class ChatRevenueTransactionTypeEarnings extends ChatRevenueTransactionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'start_date': startDate,
-        'end_date': endDate,
-        '@type': constructor,
-      };
+    'start_date': startDate,
+    'end_date': endDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

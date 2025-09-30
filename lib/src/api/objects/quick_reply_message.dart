@@ -56,15 +56,18 @@ class QuickReplyMessage extends TdObject {
     return QuickReplyMessage(
       id: json['id'] as int,
       sendingState: MessageSendingState.fromJson(
-          json['sending_state'] as Map<String, dynamic>?),
+        json['sending_state'] as Map<String, dynamic>?,
+      ),
       canBeEdited: json['can_be_edited'] as bool,
       replyToMessageId: json['reply_to_message_id'] as int,
       viaBotUserId: json['via_bot_user_id'] as int,
       mediaAlbumId: int.tryParse(json['media_album_id']) ?? 0,
-      content:
-          MessageContent.fromJson(json['content'] as Map<String, dynamic>?)!,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      content: MessageContent.fromJson(
+        json['content'] as Map<String, dynamic>?,
+      )!,
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -73,16 +76,16 @@ class QuickReplyMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'sending_state': sendingState?.toJson(),
-        'can_be_edited': canBeEdited,
-        'reply_to_message_id': replyToMessageId,
-        'via_bot_user_id': viaBotUserId,
-        'media_album_id': mediaAlbumId.toString(),
-        'content': content.toJson(),
-        'reply_markup': replyMarkup?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'sending_state': sendingState?.toJson(),
+    'can_be_edited': canBeEdited,
+    'reply_to_message_id': replyToMessageId,
+    'via_bot_user_id': viaBotUserId,
+    'media_album_id': mediaAlbumId.toString(),
+    'content': content.toJson(),
+    'reply_markup': replyMarkup?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

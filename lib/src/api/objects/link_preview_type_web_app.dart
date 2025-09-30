@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The link is a link to a Web App
 @immutable
 class LinkPreviewTypeWebApp extends LinkPreviewType {
-  const LinkPreviewTypeWebApp({
-    this.photo,
-  });
+  const LinkPreviewTypeWebApp({this.photo});
 
   /// [photo] Web App photo; may be null if none
   final Photo? photo;
@@ -29,9 +27,9 @@ class LinkPreviewTypeWebApp extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'photo': photo?.toJson(),
-        '@type': constructor,
-      };
+    'photo': photo?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

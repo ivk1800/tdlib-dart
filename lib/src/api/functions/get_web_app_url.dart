@@ -11,11 +11,11 @@ class GetWebAppUrl extends TdFunction {
   const GetWebAppUrl({
     required this.botUserId,
     required this.url,
-    this.theme,
-    required this.applicationName,
+    required this.parameters,
   });
 
-  /// [botUserId] Identifier of the target bot
+  /// [botUserId] Identifier of the target bot. If the bot is restricted for the
+  /// current user, then show an error instead of calling the method
   final int botUserId;
 
   /// [url] The URL from a keyboardButtonTypeWebApp button,
@@ -23,12 +23,8 @@ class GetWebAppUrl extends TdFunction {
   /// is opened from the side menu
   final String url;
 
-  /// [theme] Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// [applicationName] Short name of the current application; 0-64 English
-  /// letters, digits, and underscores
-  final String applicationName;
+  /// [parameters] Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   static const String constructor = 'getWebAppUrl';
 
@@ -37,12 +33,11 @@ class GetWebAppUrl extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'url': url,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'url': url,
+    'parameters': parameters.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -25,8 +25,9 @@ class UpdateBusinessMessageEdited extends Update {
 
     return UpdateBusinessMessageEdited(
       connectionId: json['connection_id'] as String,
-      message:
-          BusinessMessage.fromJson(json['message'] as Map<String, dynamic>?)!,
+      message: BusinessMessage.fromJson(
+        json['message'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateBusinessMessageEdited extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'connection_id': connectionId,
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'connection_id': connectionId,
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -25,13 +25,15 @@ class UpdateSuggestedActions extends Update {
 
     return UpdateSuggestedActions(
       addedActions: List<SuggestedAction>.from(
-          ((json['added_actions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => SuggestedAction.fromJson(item))
-              .toList()),
+        ((json['added_actions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => SuggestedAction.fromJson(item))
+            .toList(),
+      ),
       removedActions: List<SuggestedAction>.from(
-          ((json['removed_actions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => SuggestedAction.fromJson(item))
-              .toList()),
+        ((json['removed_actions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => SuggestedAction.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -40,10 +42,10 @@ class UpdateSuggestedActions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'added_actions': addedActions.map((item) => item.toJson()).toList(),
-        'removed_actions': removedActions.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'added_actions': addedActions.map((item) => item.toJson()).toList(),
+    'removed_actions': removedActions.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

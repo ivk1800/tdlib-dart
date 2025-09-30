@@ -28,8 +28,9 @@ class UserSupportInfo extends TdObject {
     }
 
     return UserSupportInfo(
-      message:
-          FormattedText.fromJson(json['message'] as Map<String, dynamic>?)!,
+      message: FormattedText.fromJson(
+        json['message'] as Map<String, dynamic>?,
+      )!,
       author: json['author'] as String,
       date: json['date'] as int,
     );
@@ -40,11 +41,11 @@ class UserSupportInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        'author': author,
-        'date': date,
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    'author': author,
+    'date': date,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

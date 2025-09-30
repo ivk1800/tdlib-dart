@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A poll in a message was stopped
 @immutable
 class ChatEventPollStopped extends ChatEventAction {
-  const ChatEventPollStopped({
-    required this.message,
-  });
+  const ChatEventPollStopped({required this.message});
 
   /// [message] The message with the poll
   final Message message;
@@ -29,9 +27,9 @@ class ChatEventPollStopped extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message': message.toJson(),
-        '@type': constructor,
-      };
+    'message': message.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

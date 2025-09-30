@@ -33,12 +33,12 @@ class SendCallRating extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'call_id': callId,
-        'rating': rating,
-        'comment': comment,
-        'problems': problems.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'call_id': callId,
+    'rating': rating,
+    'comment': comment,
+    'problems': problems.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

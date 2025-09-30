@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ReorderQuickReplyShortcuts extends TdFunction {
-  const ReorderQuickReplyShortcuts({
-    required this.shortcutIds,
-  });
+  const ReorderQuickReplyShortcuts({required this.shortcutIds});
 
   /// [shortcutIds] The new order of quick reply shortcuts
   final List<int> shortcutIds;
@@ -20,9 +18,9 @@ class ReorderQuickReplyShortcuts extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_ids': shortcutIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'shortcut_ids': shortcutIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -48,14 +48,14 @@ class EditInlineMessageLiveLocation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        'reply_markup': replyMarkup?.toJson(),
-        'location': location?.toJson(),
-        'live_period': livePeriod,
-        'heading': heading,
-        'proximity_alert_radius': proximityAlertRadius,
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    'reply_markup': replyMarkup?.toJson(),
+    'location': location?.toJson(),
+    'live_period': livePeriod,
+    'heading': heading,
+    'proximity_alert_radius': proximityAlertRadius,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

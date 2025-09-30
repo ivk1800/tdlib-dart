@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// details
 @immutable
 class InputPassportElementPersonalDetails extends InputPassportElement {
-  const InputPassportElementPersonalDetails({
-    required this.personalDetails,
-  });
+  const InputPassportElementPersonalDetails({required this.personalDetails});
 
   /// [personalDetails] Personal details of the user
   final PersonalDetails personalDetails;
@@ -16,14 +14,16 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
   static const String constructor = 'inputPassportElementPersonalDetails';
 
   static InputPassportElementPersonalDetails? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return InputPassportElementPersonalDetails(
       personalDetails: PersonalDetails.fromJson(
-          json['personal_details'] as Map<String, dynamic>?)!,
+        json['personal_details'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +32,9 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'personal_details': personalDetails.toJson(),
-        '@type': constructor,
-      };
+    'personal_details': personalDetails.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

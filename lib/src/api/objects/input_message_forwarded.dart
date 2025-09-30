@@ -9,6 +9,8 @@ class InputMessageForwarded extends InputMessageContent {
     required this.fromChatId,
     required this.messageId,
     required this.inGameShare,
+    required this.replaceVideoStartTimestamp,
+    required this.newVideoStartTimestamp,
     this.copyOptions,
   });
 
@@ -19,9 +21,17 @@ class InputMessageForwarded extends InputMessageContent {
   /// forwarded only if messageProperties.can_be_forwarded
   final int messageId;
 
-  /// [inGameShare] True, if a game message is being shared from a launched
+  /// [inGameShare] Pass true if a game message is being shared from a launched
   /// game; applies only to game messages
   final bool inGameShare;
+
+  /// [replaceVideoStartTimestamp] Pass true to replace video start timestamp in
+  /// the forwarded message
+  final bool replaceVideoStartTimestamp;
+
+  /// [newVideoStartTimestamp] The new video start timestamp; ignored if
+  /// replace_video_start_timestamp == false
+  final int newVideoStartTimestamp;
 
   /// [copyOptions] Options to be used to copy content of the message without
   /// reference to the original sender; pass null to forward the message as
@@ -39,8 +49,11 @@ class InputMessageForwarded extends InputMessageContent {
       fromChatId: json['from_chat_id'] as int,
       messageId: json['message_id'] as int,
       inGameShare: json['in_game_share'] as bool,
+      replaceVideoStartTimestamp: json['replace_video_start_timestamp'] as bool,
+      newVideoStartTimestamp: json['new_video_start_timestamp'] as int,
       copyOptions: MessageCopyOptions.fromJson(
-          json['copy_options'] as Map<String, dynamic>?),
+        json['copy_options'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -49,12 +62,14 @@ class InputMessageForwarded extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'from_chat_id': fromChatId,
-        'message_id': messageId,
-        'in_game_share': inGameShare,
-        'copy_options': copyOptions?.toJson(),
-        '@type': constructor,
-      };
+    'from_chat_id': fromChatId,
+    'message_id': messageId,
+    'in_game_share': inGameShare,
+    'replace_video_start_timestamp': replaceVideoStartTimestamp,
+    'new_video_start_timestamp': newVideoStartTimestamp,
+    'copy_options': copyOptions?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

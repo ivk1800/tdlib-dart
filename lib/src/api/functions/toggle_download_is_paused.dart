@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class ToggleDownloadIsPaused extends TdFunction {
-  const ToggleDownloadIsPaused({
-    required this.fileId,
-    required this.isPaused,
-  });
+  const ToggleDownloadIsPaused({required this.fileId, required this.isPaused});
 
   /// [fileId] Identifier of the downloaded file
   final int fileId;
@@ -24,10 +21,10 @@ class ToggleDownloadIsPaused extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'is_paused': isPaused,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'is_paused': isPaused,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

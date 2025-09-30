@@ -50,13 +50,13 @@ class PrepaidGiveaway extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'winner_count': winnerCount,
-        'prize': prize.toJson(),
-        'boost_count': boostCount,
-        'payment_date': paymentDate,
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'winner_count': winnerCount,
+    'prize': prize.toJson(),
+    'boost_count': boostCount,
+    'payment_date': paymentDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

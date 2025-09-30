@@ -40,8 +40,9 @@ class BasicGroup extends TdObject {
     return BasicGroup(
       id: json['id'] as int,
       memberCount: json['member_count'] as int,
-      status:
-          ChatMemberStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      status: ChatMemberStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
       isActive: json['is_active'] as bool,
       upgradedToSupergroupId: json['upgraded_to_supergroup_id'] as int,
     );
@@ -52,13 +53,13 @@ class BasicGroup extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'member_count': memberCount,
-        'status': status.toJson(),
-        'is_active': isActive,
-        'upgraded_to_supergroup_id': upgradedToSupergroupId,
-        '@type': constructor,
-      };
+    'id': id,
+    'member_count': memberCount,
+    'status': status.toJson(),
+    'is_active': isActive,
+    'upgraded_to_supergroup_id': upgradedToSupergroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

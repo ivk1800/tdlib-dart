@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// instead, updateChatReplyMarkup with message_id == 0 will be sent
 @immutable
 class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
-  const ReplyMarkupRemoveKeyboard({
-    required this.isPersonal,
-  });
+  const ReplyMarkupRemoveKeyboard({required this.isPersonal});
 
   /// [isPersonal] True, if the keyboard is removed only for the mentioned users
   /// or the target user of a reply
@@ -22,9 +20,7 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
       return null;
     }
 
-    return ReplyMarkupRemoveKeyboard(
-      isPersonal: json['is_personal'] as bool,
-    );
+    return ReplyMarkupRemoveKeyboard(isPersonal: json['is_personal'] as bool);
   }
 
   @override
@@ -32,9 +28,9 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_personal': isPersonal,
-        '@type': constructor,
-      };
+    'is_personal': isPersonal,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

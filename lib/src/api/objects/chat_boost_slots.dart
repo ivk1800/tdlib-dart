@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of chat boost slots
 @immutable
 class ChatBoostSlots extends TdObject {
-  const ChatBoostSlots({
-    required this.slots,
-  });
+  const ChatBoostSlots({required this.slots});
 
   /// [slots] List of boost slots
   final List<ChatBoostSlot> slots;
@@ -21,9 +19,10 @@ class ChatBoostSlots extends TdObject {
 
     return ChatBoostSlots(
       slots: List<ChatBoostSlot>.from(
-          ((json['slots'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ChatBoostSlot.fromJson(item))
-              .toList()),
+        ((json['slots'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ChatBoostSlot.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class ChatBoostSlots extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'slots': slots.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'slots': slots.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -26,7 +26,8 @@ class UpdateChatPermissions extends Update {
     return UpdateChatPermissions(
       chatId: json['chat_id'] as int,
       permissions: ChatPermissions.fromJson(
-          json['permissions'] as Map<String, dynamic>?)!,
+        json['permissions'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +36,10 @@ class UpdateChatPermissions extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'permissions': permissions.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'permissions': permissions.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

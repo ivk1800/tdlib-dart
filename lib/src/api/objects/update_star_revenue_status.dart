@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// getStarTransactions may be called to fetch new transactions
 @immutable
 class UpdateStarRevenueStatus extends Update {
-  const UpdateStarRevenueStatus({
-    required this.ownerId,
-    required this.status,
-  });
+  const UpdateStarRevenueStatus({required this.ownerId, required this.status});
 
   /// [ownerId] Identifier of the owner of the Telegram Stars
   final MessageSender ownerId;
@@ -26,10 +23,12 @@ class UpdateStarRevenueStatus extends Update {
     }
 
     return UpdateStarRevenueStatus(
-      ownerId:
-          MessageSender.fromJson(json['owner_id'] as Map<String, dynamic>?)!,
-      status:
-          StarRevenueStatus.fromJson(json['status'] as Map<String, dynamic>?)!,
+      ownerId: MessageSender.fromJson(
+        json['owner_id'] as Map<String, dynamic>?,
+      )!,
+      status: StarRevenueStatus.fromJson(
+        json['status'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -38,10 +37,10 @@ class UpdateStarRevenueStatus extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'owner_id': ownerId.toJson(),
-        'status': status.toJson(),
-        '@type': constructor,
-      };
+    'owner_id': ownerId.toJson(),
+    'status': status.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

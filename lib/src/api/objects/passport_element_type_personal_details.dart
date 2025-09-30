@@ -10,7 +10,8 @@ class PassportElementTypePersonalDetails extends PassportElementType {
   static const String constructor = 'passportElementTypePersonalDetails';
 
   static PassportElementTypePersonalDetails? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -22,9 +23,7 @@ class PassportElementTypePersonalDetails extends PassportElementType {
   String getConstructor() => constructor;
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        '@type': constructor,
-      };
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

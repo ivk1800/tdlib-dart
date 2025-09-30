@@ -9,10 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteAccount extends TdFunction {
-  const DeleteAccount({
-    this.reason,
-    required this.password,
-  });
+  const DeleteAccount({this.reason, required this.password});
 
   /// [reason] The reason why the account was deleted; optional
   final String? reason;
@@ -29,10 +26,10 @@ class DeleteAccount extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reason': reason,
-        'password': password,
-        '@type': constructor,
-      };
+    'reason': reason,
+    'password': password,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

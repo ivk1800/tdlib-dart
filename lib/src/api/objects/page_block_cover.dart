@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A page cover
 @immutable
 class PageBlockCover extends PageBlock {
-  const PageBlockCover({
-    required this.cover,
-  });
+  const PageBlockCover({required this.cover});
 
   /// [cover] Cover
   final PageBlock cover;
@@ -29,9 +27,9 @@ class PageBlockCover extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'cover': cover.toJson(),
-        '@type': constructor,
-      };
+    'cover': cover.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

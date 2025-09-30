@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [PhoneNumberInfo]
 @immutable
 class GetPhoneNumberInfo extends TdFunction {
-  const GetPhoneNumberInfo({
-    required this.phoneNumberPrefix,
-  });
+  const GetPhoneNumberInfo({required this.phoneNumberPrefix});
 
   /// [phoneNumberPrefix] The phone number prefix
   final String phoneNumberPrefix;
@@ -21,9 +19,9 @@ class GetPhoneNumberInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'phone_number_prefix': phoneNumberPrefix,
-        '@type': constructor,
-      };
+    'phone_number_prefix': phoneNumberPrefix,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

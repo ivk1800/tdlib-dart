@@ -31,9 +31,10 @@ class AddedReactions extends TdObject {
     return AddedReactions(
       totalCount: json['total_count'] as int,
       reactions: List<AddedReaction>.from(
-          ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => AddedReaction.fromJson(item))
-              .toList()),
+        ((json['reactions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => AddedReaction.fromJson(item))
+            .toList(),
+      ),
       nextOffset: json['next_offset'] as String,
     );
   }
@@ -43,11 +44,11 @@ class AddedReactions extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'reactions': reactions.map((item) => item.toJson()).toList(),
-        'next_offset': nextOffset,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'reactions': reactions.map((item) => item.toJson()).toList(),
+    'next_offset': nextOffset,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

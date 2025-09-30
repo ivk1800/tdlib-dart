@@ -55,14 +55,14 @@ class Proxy extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'server': server,
-        'port': port,
-        'last_used_date': lastUsedDate,
-        'is_enabled': isEnabled,
-        'type': type.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'server': server,
+    'port': port,
+    'last_used_date': lastUsedDate,
+    'is_enabled': isEnabled,
+    'type': type.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

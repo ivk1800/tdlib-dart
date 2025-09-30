@@ -28,7 +28,8 @@ class UpdateFileRemovedFromDownloads extends Update {
     return UpdateFileRemovedFromDownloads(
       fileId: json['file_id'] as int,
       counts: DownloadedFileCounts.fromJson(
-          json['counts'] as Map<String, dynamic>?)!,
+        json['counts'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -37,10 +38,10 @@ class UpdateFileRemovedFromDownloads extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'counts': counts.toJson(),
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'counts': counts.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

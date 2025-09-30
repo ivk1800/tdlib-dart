@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class LoadSavedMessagesTopics extends TdFunction {
-  const LoadSavedMessagesTopics({
-    required this.limit,
-  });
+  const LoadSavedMessagesTopics({required this.limit});
 
   /// [limit] The maximum number of topics to be loaded. For optimal
   /// performance, the number of loaded topics is chosen by TDLib and can be
@@ -25,9 +23,9 @@ class LoadSavedMessagesTopics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'limit': limit,
-        '@type': constructor,
-      };
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

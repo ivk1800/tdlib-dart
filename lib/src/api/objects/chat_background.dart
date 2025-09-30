@@ -25,8 +25,9 @@ class ChatBackground extends TdObject {
     }
 
     return ChatBackground(
-      background:
-          Background.fromJson(json['background'] as Map<String, dynamic>?)!,
+      background: Background.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      )!,
       darkThemeDimming: json['dark_theme_dimming'] as int,
     );
   }
@@ -36,10 +37,10 @@ class ChatBackground extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background': background.toJson(),
-        'dark_theme_dimming': darkThemeDimming,
-        '@type': constructor,
-      };
+    'background': background.toJson(),
+    'dark_theme_dimming': darkThemeDimming,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

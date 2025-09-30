@@ -36,8 +36,9 @@ class UpdateMessageEdited extends Update {
       chatId: json['chat_id'] as int,
       messageId: json['message_id'] as int,
       editDate: json['edit_date'] as int,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -46,12 +47,12 @@ class UpdateMessageEdited extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'edit_date': editDate,
-        'reply_markup': replyMarkup?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'edit_date': editDate,
+    'reply_markup': replyMarkup?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

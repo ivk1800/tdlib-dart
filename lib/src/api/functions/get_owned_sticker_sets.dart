@@ -28,10 +28,10 @@ class GetOwnedStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'offset_sticker_set_id': offsetStickerSetId,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'offset_sticker_set_id': offsetStickerSetId,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

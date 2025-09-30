@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// The chat photo was changed
 @immutable
 class ChatEventPhotoChanged extends ChatEventAction {
-  const ChatEventPhotoChanged({
-    this.oldPhoto,
-    this.newPhoto,
-  });
+  const ChatEventPhotoChanged({this.oldPhoto, this.newPhoto});
 
   /// [oldPhoto] Previous chat photo value; may be null
   final ChatPhoto? oldPhoto;
@@ -34,10 +31,10 @@ class ChatEventPhotoChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_photo': oldPhoto?.toJson(),
-        'new_photo': newPhoto?.toJson(),
-        '@type': constructor,
-      };
+    'old_photo': oldPhoto?.toJson(),
+    'new_photo': newPhoto?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

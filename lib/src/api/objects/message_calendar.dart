@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// option "utc_time_offset"
 @immutable
 class MessageCalendar extends TdObject {
-  const MessageCalendar({
-    required this.totalCount,
-    required this.days,
-  });
+  const MessageCalendar({required this.totalCount, required this.days});
 
   /// [totalCount] Total number of found messages
   final int totalCount;
@@ -27,9 +24,10 @@ class MessageCalendar extends TdObject {
     return MessageCalendar(
       totalCount: json['total_count'] as int,
       days: List<MessageCalendarDay>.from(
-          ((json['days'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => MessageCalendarDay.fromJson(item))
-              .toList()),
+        ((json['days'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => MessageCalendarDay.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -38,10 +36,10 @@ class MessageCalendar extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'days': days.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'days': days.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

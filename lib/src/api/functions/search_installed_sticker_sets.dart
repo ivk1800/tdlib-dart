@@ -29,11 +29,11 @@ class SearchInstalledStickerSets extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sticker_type': stickerType.toJson(),
-        'query': query,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'sticker_type': stickerType.toJson(),
+    'query': query,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

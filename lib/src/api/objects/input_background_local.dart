@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A background from a local file
 @immutable
 class InputBackgroundLocal extends InputBackground {
-  const InputBackgroundLocal({
-    required this.background,
-  });
+  const InputBackgroundLocal({required this.background});
 
   /// [background] Background file to use. Only inputFileLocal and
   /// inputFileGenerated are supported. The file must be in JPEG format for
@@ -22,8 +20,9 @@ class InputBackgroundLocal extends InputBackground {
     }
 
     return InputBackgroundLocal(
-      background:
-          InputFile.fromJson(json['background'] as Map<String, dynamic>?)!,
+      background: InputFile.fromJson(
+        json['background'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -32,9 +31,9 @@ class InputBackgroundLocal extends InputBackground {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'background': background.toJson(),
-        '@type': constructor,
-      };
+    'background': background.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

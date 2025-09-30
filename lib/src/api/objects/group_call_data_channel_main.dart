@@ -1,0 +1,31 @@
+import 'package:meta/meta.dart';
+import '../extensions/data_class_extensions.dart';
+import '../tdapi.dart';
+
+/// The main data channel for audio and video data
+@immutable
+class GroupCallDataChannelMain extends GroupCallDataChannel {
+  const GroupCallDataChannelMain();
+
+  static const String constructor = 'groupCallDataChannelMain';
+
+  static GroupCallDataChannelMain? fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      return null;
+    }
+
+    return const GroupCallDataChannelMain();
+  }
+
+  @override
+  String getConstructor() => constructor;
+
+  @override
+  Map<String, dynamic> toJson() => <String, dynamic>{'@type': constructor};
+
+  @override
+  bool operator ==(Object other) => overriddenEquality(other);
+
+  @override
+  int get hashCode => overriddenHashCode;
+}

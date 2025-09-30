@@ -40,11 +40,11 @@ class StarGiveawayWinnerOption extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'winner_count': winnerCount,
-        'won_star_count': wonStarCount,
-        'is_default': isDefault,
-        '@type': constructor,
-      };
+    'winner_count': winnerCount,
+    'won_star_count': wonStarCount,
+    'is_default': isDefault,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -43,15 +43,17 @@ class WebPageInstantView extends TdObject {
 
     return WebPageInstantView(
       pageBlocks: List<PageBlock>.from(
-          ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PageBlock.fromJson(item))
-              .toList()),
+        ((json['page_blocks'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PageBlock.fromJson(item))
+            .toList(),
+      ),
       viewCount: json['view_count'] as int,
       version: json['version'] as int,
       isRtl: json['is_rtl'] as bool,
       isFull: json['is_full'] as bool,
       feedbackLink: InternalLinkType.fromJson(
-          json['feedback_link'] as Map<String, dynamic>?)!,
+        json['feedback_link'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -60,14 +62,14 @@ class WebPageInstantView extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
-        'view_count': viewCount,
-        'version': version,
-        'is_rtl': isRtl,
-        'is_full': isFull,
-        'feedback_link': feedbackLink.toJson(),
-        '@type': constructor,
-      };
+    'page_blocks': pageBlocks.map((item) => item.toJson()).toList(),
+    'view_count': viewCount,
+    'version': version,
+    'is_rtl': isRtl,
+    'is_full': isFull,
+    'feedback_link': feedbackLink.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// resolved when the value of the field changes
 @immutable
 class PassportElementErrorSourceDataField extends PassportElementErrorSource {
-  const PassportElementErrorSourceDataField({
-    required this.fieldName,
-  });
+  const PassportElementErrorSourceDataField({required this.fieldName});
 
   /// [fieldName] Field name
   final String fieldName;
@@ -16,7 +14,8 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
   static const String constructor = 'passportElementErrorSourceDataField';
 
   static PassportElementErrorSourceDataField? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -31,9 +30,9 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'field_name': fieldName,
-        '@type': constructor,
-      };
+    'field_name': fieldName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

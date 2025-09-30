@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Describes a video chat
+/// Describes a video chat, i.e. a group call bound to a chat
 @immutable
 class VideoChat extends TdObject {
   const VideoChat({
@@ -34,7 +34,8 @@ class VideoChat extends TdObject {
       groupCallId: json['group_call_id'] as int,
       hasParticipants: json['has_participants'] as bool,
       defaultParticipantId: MessageSender.fromJson(
-          json['default_participant_id'] as Map<String, dynamic>?),
+        json['default_participant_id'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -43,11 +44,11 @@ class VideoChat extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'has_participants': hasParticipants,
-        'default_participant_id': defaultParticipantId?.toJson(),
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'has_participants': hasParticipants,
+    'default_participant_id': defaultParticipantId?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

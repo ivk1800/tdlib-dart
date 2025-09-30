@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Represents one member of a JSON object
 @immutable
 class JsonObjectMember extends TdObject {
-  const JsonObjectMember({
-    required this.key,
-    required this.value,
-  });
+  const JsonObjectMember({required this.key, required this.value});
 
   /// [key] Member's key
   final String key;
@@ -34,10 +31,10 @@ class JsonObjectMember extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'key': key,
-        'value': value.toJson(),
-        '@type': constructor,
-      };
+    'key': key,
+    'value': value.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

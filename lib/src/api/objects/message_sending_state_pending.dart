@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// server
 @immutable
 class MessageSendingStatePending extends MessageSendingState {
-  const MessageSendingStatePending({
-    required this.sendingId,
-  });
+  const MessageSendingStatePending({required this.sendingId});
 
   /// [sendingId] Non-persistent message sending identifier, specified by the
   /// application
@@ -21,9 +19,7 @@ class MessageSendingStatePending extends MessageSendingState {
       return null;
     }
 
-    return MessageSendingStatePending(
-      sendingId: json['sending_id'] as int,
-    );
+    return MessageSendingStatePending(sendingId: json['sending_id'] as int);
   }
 
   @override
@@ -31,9 +27,9 @@ class MessageSendingStatePending extends MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'sending_id': sendingId,
-        '@type': constructor,
-      };
+    'sending_id': sendingId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

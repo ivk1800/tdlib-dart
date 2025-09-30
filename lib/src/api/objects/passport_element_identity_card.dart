@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A Telegram Passport element containing the user's identity card
 @immutable
 class PassportElementIdentityCard extends PassportElement {
-  const PassportElementIdentityCard({
-    required this.identityCard,
-  });
+  const PassportElementIdentityCard({required this.identityCard});
 
   /// [identityCard] Identity card
   final IdentityDocument identityCard;
@@ -21,7 +19,8 @@ class PassportElementIdentityCard extends PassportElement {
 
     return PassportElementIdentityCard(
       identityCard: IdentityDocument.fromJson(
-          json['identity_card'] as Map<String, dynamic>?)!,
+        json['identity_card'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -30,9 +29,9 @@ class PassportElementIdentityCard extends PassportElement {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'identity_card': identityCard.toJson(),
-        '@type': constructor,
-      };
+    'identity_card': identityCard.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

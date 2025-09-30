@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains the call identifier
 @immutable
 class CallId extends TdObject {
-  const CallId({
-    required this.id,
-  });
+  const CallId({required this.id});
 
   /// [id] Call identifier
   final int id;
@@ -19,9 +17,7 @@ class CallId extends TdObject {
       return null;
     }
 
-    return CallId(
-      id: json['id'] as int,
-    );
+    return CallId(id: json['id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class CallId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        '@type': constructor,
-      };
+    'id': id,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

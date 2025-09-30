@@ -34,10 +34,10 @@ class AttachmentMenuBotColor extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'light_color': lightColor,
-        'dark_color': darkColor,
-        '@type': constructor,
-      };
+    'light_color': lightColor,
+    'dark_color': darkColor,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

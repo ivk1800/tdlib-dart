@@ -10,7 +10,7 @@ class StickerSet extends TdObject {
     required this.title,
     required this.name,
     this.thumbnail,
-    required this.thumbnailOutline,
+    this.thumbnailOutline,
     required this.isOwned,
     required this.isInstalled,
     required this.isArchived,
@@ -37,10 +37,8 @@ class StickerSet extends TdObject {
   /// thumbnail is changed
   final Thumbnail? thumbnail;
 
-  /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list
-  /// of closed vector paths; may be empty. The coordinate system origin is in
-  /// the upper-left corner
-  final List<ClosedVectorPath> thumbnailOutline;
+  /// [thumbnailOutline] Sticker set thumbnail's outline; may be null if unknown
+  final Outline? thumbnailOutline;
 
   /// [isOwned] True, if the sticker set is owned by the current user
   final bool isOwned;
@@ -91,28 +89,30 @@ class StickerSet extends TdObject {
       title: json['title'] as String,
       name: json['name'] as String,
       thumbnail: Thumbnail.fromJson(json['thumbnail'] as Map<String, dynamic>?),
-      thumbnailOutline: List<ClosedVectorPath>.from(
-          ((json['thumbnail_outline'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ClosedVectorPath.fromJson(item))
-              .toList()),
+      thumbnailOutline: Outline.fromJson(
+        json['thumbnail_outline'] as Map<String, dynamic>?,
+      ),
       isOwned: json['is_owned'] as bool,
       isInstalled: json['is_installed'] as bool,
       isArchived: json['is_archived'] as bool,
       isOfficial: json['is_official'] as bool,
-      stickerType:
-          StickerType.fromJson(json['sticker_type'] as Map<String, dynamic>?)!,
+      stickerType: StickerType.fromJson(
+        json['sticker_type'] as Map<String, dynamic>?,
+      )!,
       needsRepainting: json['needs_repainting'] as bool,
       isAllowedAsChatEmojiStatus:
           json['is_allowed_as_chat_emoji_status'] as bool,
       isViewed: json['is_viewed'] as bool,
       stickers: List<Sticker>.from(
-          ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Sticker.fromJson(item))
-              .toList()),
+        ((json['stickers'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Sticker.fromJson(item))
+            .toList(),
+      ),
       emojis: List<Emojis>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Emojis.fromJson(item))
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Emojis.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -121,24 +121,23 @@ class StickerSet extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id.toString(),
-        'title': title,
-        'name': name,
-        'thumbnail': thumbnail?.toJson(),
-        'thumbnail_outline':
-            thumbnailOutline.map((item) => item.toJson()).toList(),
-        'is_owned': isOwned,
-        'is_installed': isInstalled,
-        'is_archived': isArchived,
-        'is_official': isOfficial,
-        'sticker_type': stickerType.toJson(),
-        'needs_repainting': needsRepainting,
-        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
-        'is_viewed': isViewed,
-        'stickers': stickers.map((item) => item.toJson()).toList(),
-        'emojis': emojis.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'id': id.toString(),
+    'title': title,
+    'name': name,
+    'thumbnail': thumbnail?.toJson(),
+    'thumbnail_outline': thumbnailOutline?.toJson(),
+    'is_owned': isOwned,
+    'is_installed': isInstalled,
+    'is_archived': isArchived,
+    'is_official': isOfficial,
+    'sticker_type': stickerType.toJson(),
+    'needs_repainting': needsRepainting,
+    'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
+    'is_viewed': isViewed,
+    'stickers': stickers.map((item) => item.toJson()).toList(),
+    'emojis': emojis.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

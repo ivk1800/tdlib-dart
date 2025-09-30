@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetPersonalChat extends TdFunction {
-  const SetPersonalChat({
-    required this.chatId,
-  });
+  const SetPersonalChat({required this.chatId});
 
   /// [chatId] Identifier of the new personal chat; pass 0 to remove the chat.
   /// Use getSuitablePersonalChats to get suitable chats
@@ -21,9 +19,9 @@ class SetPersonalChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

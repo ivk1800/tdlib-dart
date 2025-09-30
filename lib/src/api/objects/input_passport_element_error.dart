@@ -29,11 +29,13 @@ class InputPassportElementError extends TdObject {
     }
 
     return InputPassportElementError(
-      type:
-          PassportElementType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      type: PassportElementType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
       message: json['message'] as String,
       source: InputPassportElementErrorSource.fromJson(
-          json['source'] as Map<String, dynamic>?)!,
+        json['source'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -42,11 +44,11 @@ class InputPassportElementError extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'message': message,
-        'source': source.toJson(),
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'message': message,
+    'source': source.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

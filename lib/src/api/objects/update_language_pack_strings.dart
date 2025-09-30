@@ -33,9 +33,10 @@ class UpdateLanguagePackStrings extends Update {
       localizationTarget: json['localization_target'] as String,
       languagePackId: json['language_pack_id'] as String,
       strings: List<LanguagePackString>.from(
-          ((json['strings'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => LanguagePackString.fromJson(item))
-              .toList()),
+        ((json['strings'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => LanguagePackString.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -44,11 +45,11 @@ class UpdateLanguagePackStrings extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'localization_target': localizationTarget,
-        'language_pack_id': languagePackId,
-        'strings': strings.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'localization_target': localizationTarget,
+    'language_pack_id': languagePackId,
+    'strings': strings.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

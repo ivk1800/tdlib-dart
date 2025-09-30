@@ -60,20 +60,26 @@ class BusinessInfo extends TdObject {
     }
 
     return BusinessInfo(
-      location:
-          BusinessLocation.fromJson(json['location'] as Map<String, dynamic>?),
+      location: BusinessLocation.fromJson(
+        json['location'] as Map<String, dynamic>?,
+      ),
       openingHours: BusinessOpeningHours.fromJson(
-          json['opening_hours'] as Map<String, dynamic>?),
+        json['opening_hours'] as Map<String, dynamic>?,
+      ),
       localOpeningHours: BusinessOpeningHours.fromJson(
-          json['local_opening_hours'] as Map<String, dynamic>?),
+        json['local_opening_hours'] as Map<String, dynamic>?,
+      ),
       nextOpenIn: json['next_open_in'] as int,
       nextCloseIn: json['next_close_in'] as int,
       greetingMessageSettings: BusinessGreetingMessageSettings.fromJson(
-          json['greeting_message_settings'] as Map<String, dynamic>?),
+        json['greeting_message_settings'] as Map<String, dynamic>?,
+      ),
       awayMessageSettings: BusinessAwayMessageSettings.fromJson(
-          json['away_message_settings'] as Map<String, dynamic>?),
+        json['away_message_settings'] as Map<String, dynamic>?,
+      ),
       startPage: BusinessStartPage.fromJson(
-          json['start_page'] as Map<String, dynamic>?),
+        json['start_page'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -82,16 +88,16 @@ class BusinessInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location?.toJson(),
-        'opening_hours': openingHours?.toJson(),
-        'local_opening_hours': localOpeningHours?.toJson(),
-        'next_open_in': nextOpenIn,
-        'next_close_in': nextCloseIn,
-        'greeting_message_settings': greetingMessageSettings?.toJson(),
-        'away_message_settings': awayMessageSettings?.toJson(),
-        'start_page': startPage?.toJson(),
-        '@type': constructor,
-      };
+    'location': location?.toJson(),
+    'opening_hours': openingHours?.toJson(),
+    'local_opening_hours': localOpeningHours?.toJson(),
+    'next_open_in': nextOpenIn,
+    'next_close_in': nextCloseIn,
+    'greeting_message_settings': greetingMessageSettings?.toJson(),
+    'away_message_settings': awayMessageSettings?.toJson(),
+    'start_page': startPage?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

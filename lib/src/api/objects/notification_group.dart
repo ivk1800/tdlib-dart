@@ -40,13 +40,15 @@ class NotificationGroup extends TdObject {
     return NotificationGroup(
       id: json['id'] as int,
       type: NotificationGroupType.fromJson(
-          json['type'] as Map<String, dynamic>?)!,
+        json['type'] as Map<String, dynamic>?,
+      )!,
       chatId: json['chat_id'] as int,
       totalCount: json['total_count'] as int,
       notifications: List<Notification>.from(
-          ((json['notifications'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => Notification.fromJson(item))
-              .toList()),
+        ((json['notifications'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => Notification.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -55,13 +57,13 @@ class NotificationGroup extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'type': type.toJson(),
-        'chat_id': chatId,
-        'total_count': totalCount,
-        'notifications': notifications.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'id': id,
+    'type': type.toJson(),
+    'chat_id': chatId,
+    'total_count': totalCount,
+    'notifications': notifications.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

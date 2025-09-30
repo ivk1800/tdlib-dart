@@ -21,7 +21,8 @@ class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   static const String constructor = 'storePaymentPurposePremiumSubscription';
 
   static StorePaymentPurposePremiumSubscription? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -37,10 +38,10 @@ class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_restore': isRestore,
-        'is_upgrade': isUpgrade,
-        '@type': constructor,
-      };
+    'is_restore': isRestore,
+    'is_upgrade': isUpgrade,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

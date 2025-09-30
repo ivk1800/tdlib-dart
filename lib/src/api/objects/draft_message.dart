@@ -36,10 +36,12 @@ class DraftMessage extends TdObject {
 
     return DraftMessage(
       replyTo: InputMessageReplyTo.fromJson(
-          json['reply_to'] as Map<String, dynamic>?),
+        json['reply_to'] as Map<String, dynamic>?,
+      ),
       date: json['date'] as int,
       inputMessageText: InputMessageContent.fromJson(
-          json['input_message_text'] as Map<String, dynamic>?)!,
+        json['input_message_text'] as Map<String, dynamic>?,
+      )!,
       effectId: int.tryParse(json['effect_id']) ?? 0,
     );
   }
@@ -49,12 +51,12 @@ class DraftMessage extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'reply_to': replyTo?.toJson(),
-        'date': date,
-        'input_message_text': inputMessageText.toJson(),
-        'effect_id': effectId.toString(),
-        '@type': constructor,
-      };
+    'reply_to': replyTo?.toJson(),
+    'date': date,
+    'input_message_text': inputMessageText.toJson(),
+    'effect_id': effectId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

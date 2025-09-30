@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [NetworkStatistics]
 @immutable
 class GetNetworkStatistics extends TdFunction {
-  const GetNetworkStatistics({
-    required this.onlyCurrent,
-  });
+  const GetNetworkStatistics({required this.onlyCurrent});
 
   /// [onlyCurrent] Pass true to get statistics only for the current library
   /// launch
@@ -21,9 +19,9 @@ class GetNetworkStatistics extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'only_current': onlyCurrent,
-        '@type': constructor,
-      };
+    'only_current': onlyCurrent,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

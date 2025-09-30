@@ -44,12 +44,12 @@ class InlineQueryResultDocument extends InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'document': document.toJson(),
-        'title': title,
-        'description': description,
-        '@type': constructor,
-      };
+    'id': id,
+    'document': document.toJson(),
+    'title': title,
+    'description': description,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

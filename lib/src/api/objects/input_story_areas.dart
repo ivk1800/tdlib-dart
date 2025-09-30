@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of story areas to be added
 @immutable
 class InputStoryAreas extends TdObject {
-  const InputStoryAreas({
-    required this.areas,
-  });
+  const InputStoryAreas({required this.areas});
 
   /// [areas] List of input story areas. Currently, a story can have up to 10
   /// inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and
@@ -16,8 +14,8 @@ class InputStoryAreas extends TdObject {
   /// inputStoryAreaTypeSuggestedReaction areas, up to 1
   /// inputStoryAreaTypeMessage area, up to
   /// getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the
-  /// current user is a Telegram Premium user, and up to 3
-  /// inputStoryAreaTypeWeather areas
+  /// current user is a Telegram Premium user, up to 3 inputStoryAreaTypeWeather
+  /// areas, and up to 1 inputStoryAreaTypeUpgradedGift area
   final List<InputStoryArea> areas;
 
   static const String constructor = 'inputStoryAreas';
@@ -29,9 +27,10 @@ class InputStoryAreas extends TdObject {
 
     return InputStoryAreas(
       areas: List<InputStoryArea>.from(
-          ((json['areas'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => InputStoryArea.fromJson(item))
-              .toList()),
+        ((json['areas'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => InputStoryArea.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -40,9 +39,9 @@ class InputStoryAreas extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'areas': areas.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'areas': areas.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

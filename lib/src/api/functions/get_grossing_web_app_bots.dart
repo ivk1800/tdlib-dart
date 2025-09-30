@@ -6,10 +6,7 @@ import '../tdapi.dart';
 /// Returns [FoundUsers]
 @immutable
 class GetGrossingWebAppBots extends TdFunction {
-  const GetGrossingWebAppBots({
-    required this.offset,
-    required this.limit,
-  });
+  const GetGrossingWebAppBots({required this.offset, required this.limit});
 
   /// [offset] Offset of the first entry to return as received from the previous
   /// request; use empty string to get the first chunk of results
@@ -25,10 +22,10 @@ class GetGrossingWebAppBots extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

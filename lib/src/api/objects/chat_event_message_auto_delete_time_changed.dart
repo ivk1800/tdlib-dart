@@ -19,7 +19,8 @@ class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   static const String constructor = 'chatEventMessageAutoDeleteTimeChanged';
 
   static ChatEventMessageAutoDeleteTimeChanged? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -35,10 +36,10 @@ class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_message_auto_delete_time': oldMessageAutoDeleteTime,
-        'new_message_auto_delete_time': newMessageAutoDeleteTime,
-        '@type': constructor,
-      };
+    'old_message_auto_delete_time': oldMessageAutoDeleteTime,
+    'new_message_auto_delete_time': newMessageAutoDeleteTime,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetDefaultMessageAutoDeleteTime extends TdFunction {
-  const SetDefaultMessageAutoDeleteTime({
-    required this.messageAutoDeleteTime,
-  });
+  const SetDefaultMessageAutoDeleteTime({required this.messageAutoDeleteTime});
 
   /// [messageAutoDeleteTime] New default message auto-delete time; must be from
   /// 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't
@@ -22,9 +20,9 @@ class SetDefaultMessageAutoDeleteTime extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'message_auto_delete_time': messageAutoDeleteTime.toJson(),
-        '@type': constructor,
-      };
+    'message_auto_delete_time': messageAutoDeleteTime.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

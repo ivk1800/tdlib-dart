@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [CheckStickerSetNameResult]
 @immutable
 class CheckStickerSetName extends TdFunction {
-  const CheckStickerSetName({
-    required this.name,
-  });
+  const CheckStickerSetName({required this.name});
 
   /// [name] Name to be checked
   final String name;
@@ -20,9 +18,9 @@ class CheckStickerSetName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        '@type': constructor,
-      };
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

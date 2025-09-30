@@ -13,7 +13,8 @@ abstract class FirebaseDeviceVerificationParameters extends TdObject {
   /// [FirebaseDeviceVerificationParametersPlayIntegrity]
   /// [FirebaseDeviceVerificationParametersSafetyNet]
   static FirebaseDeviceVerificationParameters? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }

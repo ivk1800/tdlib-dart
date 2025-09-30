@@ -26,10 +26,10 @@ class SetAccentColor extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'accent_color_id': accentColorId,
-        'background_custom_emoji_id': backgroundCustomEmojiId,
-        '@type': constructor,
-      };
+    'accent_color_id': accentColorId,
+    'background_custom_emoji_id': backgroundCustomEmojiId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

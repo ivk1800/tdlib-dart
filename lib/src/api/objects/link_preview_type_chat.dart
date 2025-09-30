@@ -39,11 +39,11 @@ class LinkPreviewTypeChat extends LinkPreviewType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'photo': photo?.toJson(),
-        'creates_join_request': createsJoinRequest,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'photo': photo?.toJson(),
+    'creates_join_request': createsJoinRequest,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

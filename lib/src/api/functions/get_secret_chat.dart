@@ -3,13 +3,11 @@ import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
 /// Returns information about a secret chat by its identifier. This is an
-/// offline request
+/// offline method
 /// Returns [SecretChat]
 @immutable
 class GetSecretChat extends TdFunction {
-  const GetSecretChat({
-    required this.secretChatId,
-  });
+  const GetSecretChat({required this.secretChatId});
 
   /// [secretChatId] Secret chat identifier
   final int secretChatId;
@@ -21,9 +19,9 @@ class GetSecretChat extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'secret_chat_id': secretChatId,
-        '@type': constructor,
-      };
+    'secret_chat_id': secretChatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

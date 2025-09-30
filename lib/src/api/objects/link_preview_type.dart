@@ -24,6 +24,7 @@ abstract class LinkPreviewType extends TdObject {
   /// [LinkPreviewTypeEmbeddedVideoPlayer]
   /// [LinkPreviewTypeExternalAudio]
   /// [LinkPreviewTypeExternalVideo]
+  /// [LinkPreviewTypeGroupCall]
   /// [LinkPreviewTypeInvoice]
   /// [LinkPreviewTypeMessage]
   /// [LinkPreviewTypePhoto]
@@ -35,6 +36,7 @@ abstract class LinkPreviewType extends TdObject {
   /// [LinkPreviewTypeSupergroupBoost]
   /// [LinkPreviewTypeTheme]
   /// [LinkPreviewTypeUnsupported]
+  /// [LinkPreviewTypeUpgradedGift]
   /// [LinkPreviewTypeUser]
   /// [LinkPreviewTypeVideoChat]
   /// [LinkPreviewTypeVideoNote]
@@ -75,6 +77,8 @@ abstract class LinkPreviewType extends TdObject {
         return LinkPreviewTypeExternalAudio.fromJson(json);
       case LinkPreviewTypeExternalVideo.constructor:
         return LinkPreviewTypeExternalVideo.fromJson(json);
+      case LinkPreviewTypeGroupCall.constructor:
+        return LinkPreviewTypeGroupCall.fromJson(json);
       case LinkPreviewTypeInvoice.constructor:
         return LinkPreviewTypeInvoice.fromJson(json);
       case LinkPreviewTypeMessage.constructor:
@@ -97,6 +101,8 @@ abstract class LinkPreviewType extends TdObject {
         return LinkPreviewTypeTheme.fromJson(json);
       case LinkPreviewTypeUnsupported.constructor:
         return LinkPreviewTypeUnsupported.fromJson(json);
+      case LinkPreviewTypeUpgradedGift.constructor:
+        return LinkPreviewTypeUpgradedGift.fromJson(json);
       case LinkPreviewTypeUser.constructor:
         return LinkPreviewTypeUser.fromJson(json);
       case LinkPreviewTypeVideo.constructor:

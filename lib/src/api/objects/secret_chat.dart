@@ -64,14 +64,14 @@ class SecretChat extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'user_id': userId,
-        'state': state.toJson(),
-        'is_outbound': isOutbound,
-        'key_hash': keyHash,
-        'layer': layer,
-        '@type': constructor,
-      };
+    'id': id,
+    'user_id': userId,
+    'state': state.toJson(),
+    'is_outbound': isOutbound,
+    'key_hash': keyHash,
+    'layer': layer,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

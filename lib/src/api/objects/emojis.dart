@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Represents a list of emojis
 @immutable
 class Emojis extends TdObject {
-  const Emojis({
-    required this.emojis,
-  });
+  const Emojis({required this.emojis});
 
   /// [emojis] List of emojis
   final List<String> emojis;
@@ -21,9 +19,10 @@ class Emojis extends TdObject {
 
     return Emojis(
       emojis: List<String>.from(
-          ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['emojis'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class Emojis extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'emojis': emojis.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'emojis': emojis.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

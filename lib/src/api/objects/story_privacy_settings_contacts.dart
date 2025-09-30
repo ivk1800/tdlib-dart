@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The story can be viewed by all contacts except chosen users
 @immutable
 class StoryPrivacySettingsContacts extends StoryPrivacySettings {
-  const StoryPrivacySettingsContacts({
-    required this.exceptUserIds,
-  });
+  const StoryPrivacySettingsContacts({required this.exceptUserIds});
 
   /// [exceptUserIds] User identifiers of the contacts that can't see the story;
   /// always unknown and empty for non-owned stories
@@ -22,9 +20,10 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
 
     return StoryPrivacySettingsContacts(
       exceptUserIds: List<int>.from(
-          ((json['except_user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['except_user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -33,9 +32,9 @@ class StoryPrivacySettingsContacts extends StoryPrivacySettings {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'except_user_ids': exceptUserIds.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'except_user_ids': exceptUserIds.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

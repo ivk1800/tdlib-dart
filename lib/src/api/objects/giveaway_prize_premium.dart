@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The giveaway sends Telegram Premium subscriptions to the winners
 @immutable
 class GiveawayPrizePremium extends GiveawayPrize {
-  const GiveawayPrizePremium({
-    required this.monthCount,
-  });
+  const GiveawayPrizePremium({required this.monthCount});
 
   /// [monthCount] Number of months the Telegram Premium subscription will be
   /// active after code activation
@@ -20,9 +18,7 @@ class GiveawayPrizePremium extends GiveawayPrize {
       return null;
     }
 
-    return GiveawayPrizePremium(
-      monthCount: json['month_count'] as int,
-    );
+    return GiveawayPrizePremium(monthCount: json['month_count'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class GiveawayPrizePremium extends GiveawayPrize {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'month_count': monthCount,
-        '@type': constructor,
-      };
+    'month_count': monthCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

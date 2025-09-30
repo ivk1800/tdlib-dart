@@ -31,11 +31,11 @@ class ProcessChatJoinRequests extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'invite_link': inviteLink,
-        'approve': approve,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'invite_link': inviteLink,
+    'approve': approve,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

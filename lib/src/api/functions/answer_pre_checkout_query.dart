@@ -24,10 +24,10 @@ class AnswerPreCheckoutQuery extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'pre_checkout_query_id': preCheckoutQueryId,
-        'error_message': errorMessage,
-        '@type': constructor,
-      };
+    'pre_checkout_query_id': preCheckoutQueryId,
+    'error_message': errorMessage,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

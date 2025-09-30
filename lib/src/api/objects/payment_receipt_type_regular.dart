@@ -43,10 +43,12 @@ class PaymentReceiptTypeRegular extends PaymentReceiptType {
     return PaymentReceiptTypeRegular(
       paymentProviderUserId: json['payment_provider_user_id'] as int,
       invoice: Invoice.fromJson(json['invoice'] as Map<String, dynamic>?)!,
-      orderInfo:
-          OrderInfo.fromJson(json['order_info'] as Map<String, dynamic>?),
+      orderInfo: OrderInfo.fromJson(
+        json['order_info'] as Map<String, dynamic>?,
+      ),
       shippingOption: ShippingOption.fromJson(
-          json['shipping_option'] as Map<String, dynamic>?),
+        json['shipping_option'] as Map<String, dynamic>?,
+      ),
       credentialsTitle: json['credentials_title'] as String,
       tipAmount: json['tip_amount'] as int,
     );
@@ -57,14 +59,14 @@ class PaymentReceiptTypeRegular extends PaymentReceiptType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'payment_provider_user_id': paymentProviderUserId,
-        'invoice': invoice.toJson(),
-        'order_info': orderInfo?.toJson(),
-        'shipping_option': shippingOption?.toJson(),
-        'credentials_title': credentialsTitle,
-        'tip_amount': tipAmount,
-        '@type': constructor,
-      };
+    'payment_provider_user_id': paymentProviderUserId,
+    'invoice': invoice.toJson(),
+    'order_info': orderInfo?.toJson(),
+    'shipping_option': shippingOption?.toJson(),
+    'credentials_title': credentialsTitle,
+    'tip_amount': tipAmount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

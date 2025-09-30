@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A repost of the story as a story
 @immutable
 class StoryInteractionTypeRepost extends StoryInteractionType {
-  const StoryInteractionTypeRepost({
-    required this.story,
-  });
+  const StoryInteractionTypeRepost({required this.story});
 
   /// [story] The reposted story
   final Story story;
@@ -29,9 +27,9 @@ class StoryInteractionTypeRepost extends StoryInteractionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story': story.toJson(),
-        '@type': constructor,
-      };
+    'story': story.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

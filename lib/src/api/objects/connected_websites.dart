@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of websites the current user is logged in with Telegram
 @immutable
 class ConnectedWebsites extends TdObject {
-  const ConnectedWebsites({
-    required this.websites,
-  });
+  const ConnectedWebsites({required this.websites});
 
   /// [websites] List of connected websites
   final List<ConnectedWebsite> websites;
@@ -21,9 +19,10 @@ class ConnectedWebsites extends TdObject {
 
     return ConnectedWebsites(
       websites: List<ConnectedWebsite>.from(
-          ((json['websites'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => ConnectedWebsite.fromJson(item))
-              .toList()),
+        ((json['websites'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => ConnectedWebsite.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class ConnectedWebsites extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'websites': websites.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'websites': websites.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

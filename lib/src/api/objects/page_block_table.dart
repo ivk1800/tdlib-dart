@@ -34,13 +34,17 @@ class PageBlockTable extends PageBlock {
     return PageBlockTable(
       caption: RichText.fromJson(json['caption'] as Map<String, dynamic>?)!,
       cells: List<List<PageBlockTableCell>>.from(
-          ((json['cells'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => List<PageBlockTableCell>.from(
-                  ((json['List<PageBlockTableCell>'] as List<dynamic>?) ??
-                          <dynamic>[])
-                      .map((item) => PageBlockTableCell.fromJson(item))
-                      .toList()))
-              .toList()),
+        ((json['cells'] as List<dynamic>?) ?? <dynamic>[])
+            .map(
+              (item) => List<PageBlockTableCell>.from(
+                ((json['List<PageBlockTableCell>'] as List<dynamic>?) ??
+                        <dynamic>[])
+                    .map((item) => PageBlockTableCell.fromJson(item))
+                    .toList(),
+              ),
+            )
+            .toList(),
+      ),
       isBordered: json['is_bordered'] as bool,
       isStriped: json['is_striped'] as bool,
     );
@@ -51,14 +55,14 @@ class PageBlockTable extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'caption': caption.toJson(),
-        'cells': cells
-            .map((item) => item.map((item) => item.toJson()).toList())
-            .toList(),
-        'is_bordered': isBordered,
-        'is_striped': isStriped,
-        '@type': constructor,
-      };
+    'caption': caption.toJson(),
+    'cells': cells
+        .map((item) => item.map((item) => item.toJson()).toList())
+        .toList(),
+    'is_bordered': isBordered,
+    'is_striped': isStriped,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

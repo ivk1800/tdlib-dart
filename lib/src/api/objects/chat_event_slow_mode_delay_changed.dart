@@ -34,10 +34,10 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_slow_mode_delay': oldSlowModeDelay,
-        'new_slow_mode_delay': newSlowModeDelay,
-        '@type': constructor,
-      };
+    'old_slow_mode_delay': oldSlowModeDelay,
+    'new_slow_mode_delay': newSlowModeDelay,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

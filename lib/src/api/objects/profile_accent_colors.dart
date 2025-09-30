@@ -34,17 +34,20 @@ class ProfileAccentColors extends TdObject {
 
     return ProfileAccentColors(
       paletteColors: List<int>.from(
-          ((json['palette_colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['palette_colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       backgroundColors: List<int>.from(
-          ((json['background_colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['background_colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       storyColors: List<int>.from(
-          ((json['story_colors'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['story_colors'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -53,11 +56,11 @@ class ProfileAccentColors extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'palette_colors': paletteColors.map((item) => item).toList(),
-        'background_colors': backgroundColors.map((item) => item).toList(),
-        'story_colors': storyColors.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'palette_colors': paletteColors.map((item) => item).toList(),
+    'background_colors': backgroundColors.map((item) => item).toList(),
+    'story_colors': storyColors.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

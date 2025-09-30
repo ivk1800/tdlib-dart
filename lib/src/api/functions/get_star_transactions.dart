@@ -16,8 +16,8 @@ class GetStarTransactions extends TdFunction {
 
   /// [ownerId] Identifier of the owner of the Telegram Stars; can be the
   /// identifier of the current user, identifier of an owned bot, or identifier
-  /// of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics
-  /// == true
+  /// of a supergroup or a channel chat with
+  /// supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
 
   /// [subscriptionId] If non-empty, only transactions related to the Star
@@ -42,13 +42,13 @@ class GetStarTransactions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'owner_id': ownerId.toJson(),
-        'subscription_id': subscriptionId,
-        'direction': direction?.toJson(),
-        'offset': offset,
-        'limit': limit,
-        '@type': constructor,
-      };
+    'owner_id': ownerId.toJson(),
+    'subscription_id': subscriptionId,
+    'direction': direction?.toJson(),
+    'offset': offset,
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

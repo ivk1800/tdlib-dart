@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of messages from a business account as received by a bot
 @immutable
 class BusinessMessages extends TdObject {
-  const BusinessMessages({
-    required this.messages,
-  });
+  const BusinessMessages({required this.messages});
 
   /// [messages] List of business messages
   final List<BusinessMessage> messages;
@@ -21,9 +19,10 @@ class BusinessMessages extends TdObject {
 
     return BusinessMessages(
       messages: List<BusinessMessage>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BusinessMessage.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BusinessMessage.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class BusinessMessages extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'messages': messages.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'messages': messages.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

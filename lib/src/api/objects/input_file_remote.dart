@@ -10,9 +10,7 @@ import '../tdapi.dart';
 /// file must be preloaded by the application
 @immutable
 class InputFileRemote extends InputFile {
-  const InputFileRemote({
-    required this.id,
-  });
+  const InputFileRemote({required this.id});
 
   /// [id] Remote file identifier
   final String id;
@@ -24,9 +22,7 @@ class InputFileRemote extends InputFile {
       return null;
     }
 
-    return InputFileRemote(
-      id: json['id'] as String,
-    );
+    return InputFileRemote(id: json['id'] as String);
   }
 
   @override
@@ -34,9 +30,9 @@ class InputFileRemote extends InputFile {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        '@type': constructor,
-      };
+    'id': id,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -16,7 +16,7 @@ class SetStoryPrivacySettings extends TdFunction {
   /// [storyId] Identifier of the story
   final int storyId;
 
-  /// [privacySettings] The new privacy settigs for the story
+  /// [privacySettings] The new privacy settings for the story
   final StoryPrivacySettings privacySettings;
 
   static const String constructor = 'setStoryPrivacySettings';
@@ -26,10 +26,10 @@ class SetStoryPrivacySettings extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'story_id': storyId,
-        'privacy_settings': privacySettings.toJson(),
-        '@type': constructor,
-      };
+    'story_id': storyId,
+    'privacy_settings': privacySettings.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

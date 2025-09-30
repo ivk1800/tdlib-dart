@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A superscript rich text
 @immutable
 class RichTextSuperscript extends RichText {
-  const RichTextSuperscript({
-    required this.text,
-  });
+  const RichTextSuperscript({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextSuperscript extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A forum topic was closed or reopened
 @immutable
 class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
-  const ChatEventForumTopicToggleIsClosed({
-    required this.topicInfo,
-  });
+  const ChatEventForumTopicToggleIsClosed({required this.topicInfo});
 
   /// [topicInfo] New information about the topic
   final ForumTopicInfo topicInfo;
@@ -15,14 +13,16 @@ class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
   static const String constructor = 'chatEventForumTopicToggleIsClosed';
 
   static ChatEventForumTopicToggleIsClosed? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
     return ChatEventForumTopicToggleIsClosed(
-      topicInfo:
-          ForumTopicInfo.fromJson(json['topic_info'] as Map<String, dynamic>?)!,
+      topicInfo: ForumTopicInfo.fromJson(
+        json['topic_info'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -31,9 +31,9 @@ class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'topic_info': topicInfo.toJson(),
-        '@type': constructor,
-      };
+    'topic_info': topicInfo.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -11,9 +11,7 @@ import '../tdapi.dart';
 /// Returns [EmailAddressAuthenticationCodeInfo]
 @immutable
 class SetLoginEmailAddress extends TdFunction {
-  const SetLoginEmailAddress({
-    required this.newLoginEmailAddress,
-  });
+  const SetLoginEmailAddress({required this.newLoginEmailAddress});
 
   /// [newLoginEmailAddress] New login email address
   final String newLoginEmailAddress;
@@ -25,9 +23,9 @@ class SetLoginEmailAddress extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'new_login_email_address': newLoginEmailAddress,
-        '@type': constructor,
-      };
+    'new_login_email_address': newLoginEmailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -33,12 +33,12 @@ class SetMessageReactions extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_id': messageId,
-        'reaction_types': reactionTypes.map((item) => item.toJson()).toList(),
-        'is_big': isBig,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_id': messageId,
+    'reaction_types': reactionTypes.map((item) => item.toJson()).toList(),
+    'is_big': isBig,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

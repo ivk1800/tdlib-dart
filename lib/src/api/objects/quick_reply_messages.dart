@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains a list of quick reply messages
 @immutable
 class QuickReplyMessages extends TdObject {
-  const QuickReplyMessages({
-    this.messages,
-  });
+  const QuickReplyMessages({this.messages});
 
   /// [messages] List of quick reply messages; messages may be null
   final List<QuickReplyMessage>? messages;
@@ -21,9 +19,10 @@ class QuickReplyMessages extends TdObject {
 
     return QuickReplyMessages(
       messages: List<QuickReplyMessage>.from(
-          ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => QuickReplyMessage.fromJson(item))
-              .toList()),
+        ((json['messages'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => QuickReplyMessage.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class QuickReplyMessages extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'messages': messages?.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'messages': messages?.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

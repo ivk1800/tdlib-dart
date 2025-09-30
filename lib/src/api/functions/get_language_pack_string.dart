@@ -36,12 +36,12 @@ class GetLanguagePackString extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'language_pack_database_path': languagePackDatabasePath,
-        'localization_target': localizationTarget,
-        'language_pack_id': languagePackId,
-        'key': key,
-        '@type': constructor,
-      };
+    'language_pack_database_path': languagePackDatabasePath,
+    'localization_target': localizationTarget,
+    'language_pack_id': languagePackId,
+    'key': key,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

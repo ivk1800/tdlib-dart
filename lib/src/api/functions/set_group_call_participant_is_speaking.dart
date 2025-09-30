@@ -2,9 +2,9 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// Informs TDLib that speaking state of a participant of an active group has
-/// changed
-/// Returns [Ok]
+/// Informs TDLib that speaking state of a participant of an active group call
+/// has changed. Returns identifier of the participant if it is found
+/// Returns [MessageSender]
 @immutable
 class SetGroupCallParticipantIsSpeaking extends TdFunction {
   const SetGroupCallParticipantIsSpeaking({
@@ -30,11 +30,11 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        'audio_source': audioSource,
-        'is_speaking': isSpeaking,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    'audio_source': audioSource,
+    'is_speaking': isSpeaking,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

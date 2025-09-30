@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SharePhoneNumber extends TdFunction {
-  const SharePhoneNumber({
-    required this.userId,
-  });
+  const SharePhoneNumber({required this.userId});
 
   /// [userId] Identifier of the user with whom to share the phone number. The
   /// user must be a mutual contact
@@ -23,9 +21,9 @@ class SharePhoneNumber extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

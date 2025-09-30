@@ -44,12 +44,12 @@ class PaymentProviderStripe extends PaymentProvider {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'publishable_key': publishableKey,
-        'need_country': needCountry,
-        'need_postal_code': needPostalCode,
-        'need_cardholder_name': needCardholderName,
-        '@type': constructor,
-      };
+    'publishable_key': publishableKey,
+    'need_country': needCountry,
+    'need_postal_code': needPostalCode,
+    'need_cardholder_name': needCardholderName,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

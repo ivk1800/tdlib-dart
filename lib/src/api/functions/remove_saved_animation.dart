@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class RemoveSavedAnimation extends TdFunction {
-  const RemoveSavedAnimation({
-    required this.animation,
-  });
+  const RemoveSavedAnimation({required this.animation});
 
   /// [animation] Animation file to be removed
   final InputFile animation;
@@ -20,9 +18,9 @@ class RemoveSavedAnimation extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'animation': animation.toJson(),
-        '@type': constructor,
-      };
+    'animation': animation.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

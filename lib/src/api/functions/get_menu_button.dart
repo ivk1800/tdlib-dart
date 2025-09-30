@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [BotMenuButton]
 @immutable
 class GetMenuButton extends TdFunction {
-  const GetMenuButton({
-    required this.userId,
-  });
+  const GetMenuButton({required this.userId});
 
   /// [userId] Identifier of the user or 0 to get the default menu button
   final int userId;
@@ -20,9 +18,9 @@ class GetMenuButton extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

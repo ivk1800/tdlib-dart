@@ -2,7 +2,8 @@ import 'package:meta/meta.dart';
 import '../extensions/data_class_extensions.dart';
 import '../tdapi.dart';
 
-/// The user creating Telegram Premium gift codes for other users
+/// The user boosting a chat by creating Telegram Premium gift codes for other
+/// users
 @immutable
 class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   const StorePaymentPurposePremiumGiftCodes({
@@ -15,7 +16,7 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
 
   /// [boostedChatId] Identifier of the supergroup or channel chat, which will
   /// be automatically boosted by the users for duration of the Premium
-  /// subscription and which is administered by the user; 0 if none
+  /// subscription and which is administered by the user
   final int boostedChatId;
 
   /// [currency] ISO 4217 currency code of the payment currency
@@ -35,7 +36,8 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   static const String constructor = 'storePaymentPurposePremiumGiftCodes';
 
   static StorePaymentPurposePremiumGiftCodes? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -45,9 +47,10 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
       currency: json['currency'] as String,
       amount: json['amount'] as int,
       userIds: List<int>.from(
-          ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['user_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       text: FormattedText.fromJson(json['text'] as Map<String, dynamic>?)!,
     );
   }
@@ -57,13 +60,13 @@ class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'boosted_chat_id': boostedChatId,
-        'currency': currency,
-        'amount': amount,
-        'user_ids': userIds.map((item) => item).toList(),
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'boosted_chat_id': boostedChatId,
+    'currency': currency,
+    'amount': amount,
+    'user_ids': userIds.map((item) => item).toList(),
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

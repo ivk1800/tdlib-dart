@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class TerminateSession extends TdFunction {
-  const TerminateSession({
-    required this.sessionId,
-  });
+  const TerminateSession({required this.sessionId});
 
   /// [sessionId] Session identifier
   final int sessionId;
@@ -20,9 +18,9 @@ class TerminateSession extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'session_id': sessionId,
-        '@type': constructor,
-      };
+    'session_id': sessionId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

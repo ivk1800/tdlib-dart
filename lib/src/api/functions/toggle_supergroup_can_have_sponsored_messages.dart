@@ -27,10 +27,10 @@ class ToggleSupergroupCanHaveSponsoredMessages extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'can_have_sponsored_messages': canHaveSponsoredMessages,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'can_have_sponsored_messages': canHaveSponsoredMessages,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

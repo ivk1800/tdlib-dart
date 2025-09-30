@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A kicker
 @immutable
 class PageBlockKicker extends PageBlock {
-  const PageBlockKicker({
-    required this.kicker,
-  });
+  const PageBlockKicker({required this.kicker});
 
   /// [kicker] Kicker
   final RichText kicker;
@@ -29,9 +27,9 @@ class PageBlockKicker extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'kicker': kicker.toJson(),
-        '@type': constructor,
-      };
+    'kicker': kicker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

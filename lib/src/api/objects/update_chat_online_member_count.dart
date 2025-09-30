@@ -38,10 +38,10 @@ class UpdateChatOnlineMemberCount extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'online_member_count': onlineMemberCount,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'online_member_count': onlineMemberCount,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

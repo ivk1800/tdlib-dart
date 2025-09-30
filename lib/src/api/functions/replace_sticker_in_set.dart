@@ -33,12 +33,12 @@ class ReplaceStickerInSet extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'user_id': userId,
-        'name': name,
-        'old_sticker': oldSticker.toJson(),
-        'new_sticker': newSticker.toJson(),
-        '@type': constructor,
-      };
+    'user_id': userId,
+    'name': name,
+    'old_sticker': oldSticker.toJson(),
+    'new_sticker': newSticker.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

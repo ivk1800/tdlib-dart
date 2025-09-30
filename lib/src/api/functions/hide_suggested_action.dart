@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class HideSuggestedAction extends TdFunction {
-  const HideSuggestedAction({
-    required this.action,
-  });
+  const HideSuggestedAction({required this.action});
 
   /// [action] Suggested action to hide
   final SuggestedAction action;
@@ -20,9 +18,9 @@ class HideSuggestedAction extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'action': action.toJson(),
-        '@type': constructor,
-      };
+    'action': action.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

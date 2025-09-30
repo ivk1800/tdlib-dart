@@ -29,10 +29,10 @@ class ToggleSupergroupHasAggressiveAntiSpamEnabled extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'supergroup_id': supergroupId,
-        'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
-        '@type': constructor,
-      };
+    'supergroup_id': supergroupId,
+    'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

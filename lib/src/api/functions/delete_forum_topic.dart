@@ -9,10 +9,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class DeleteForumTopic extends TdFunction {
-  const DeleteForumTopic({
-    required this.chatId,
-    required this.messageThreadId,
-  });
+  const DeleteForumTopic({required this.chatId, required this.messageThreadId});
 
   /// [chatId] Identifier of the chat
   final int chatId;
@@ -27,10 +24,10 @@ class DeleteForumTopic extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_thread_id': messageThreadId,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_thread_id': messageThreadId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

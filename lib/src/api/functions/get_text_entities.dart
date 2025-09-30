@@ -8,9 +8,7 @@ import '../tdapi.dart';
 /// Returns [TextEntities]
 @immutable
 class GetTextEntities extends TdFunction {
-  const GetTextEntities({
-    required this.text,
-  });
+  const GetTextEntities({required this.text});
 
   /// [text] The text in which to look for entities
   final String text;
@@ -22,9 +20,9 @@ class GetTextEntities extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        '@type': constructor,
-      };
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

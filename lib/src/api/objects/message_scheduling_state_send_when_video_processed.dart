@@ -7,9 +7,7 @@ import '../tdapi.dart';
 @immutable
 class MessageSchedulingStateSendWhenVideoProcessed
     extends MessageSchedulingState {
-  const MessageSchedulingStateSendWhenVideoProcessed({
-    required this.sendDate,
-  });
+  const MessageSchedulingStateSendWhenVideoProcessed({required this.sendDate});
 
   /// [sendDate] Approximate point in time (Unix timestamp) when the message is
   /// expected to be sent
@@ -19,7 +17,8 @@ class MessageSchedulingStateSendWhenVideoProcessed
       'messageSchedulingStateSendWhenVideoProcessed';
 
   static MessageSchedulingStateSendWhenVideoProcessed? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -34,9 +33,9 @@ class MessageSchedulingStateSendWhenVideoProcessed
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'send_date': sendDate,
-        '@type': constructor,
-      };
+    'send_date': sendDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

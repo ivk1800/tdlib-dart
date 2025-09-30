@@ -8,7 +8,7 @@ class BusinessConnectedBot extends TdObject {
   const BusinessConnectedBot({
     required this.botUserId,
     required this.recipients,
-    required this.canReply,
+    required this.rights,
   });
 
   /// [botUserId] User identifier of the bot
@@ -17,9 +17,8 @@ class BusinessConnectedBot extends TdObject {
   /// [recipients] Private chats that will be accessible to the bot
   final BusinessRecipients recipients;
 
-  /// [canReply] True, if the bot can send messages to the private chats; false
-  /// otherwise
-  final bool canReply;
+  /// [rights] Rights of the bot
+  final BusinessBotRights rights;
 
   static const String constructor = 'businessConnectedBot';
 
@@ -31,8 +30,11 @@ class BusinessConnectedBot extends TdObject {
     return BusinessConnectedBot(
       botUserId: json['bot_user_id'] as int,
       recipients: BusinessRecipients.fromJson(
-          json['recipients'] as Map<String, dynamic>?)!,
-      canReply: json['can_reply'] as bool,
+        json['recipients'] as Map<String, dynamic>?,
+      )!,
+      rights: BusinessBotRights.fromJson(
+        json['rights'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -41,11 +43,11 @@ class BusinessConnectedBot extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'recipients': recipients.toJson(),
-        'can_reply': canReply,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'recipients': recipients.toJson(),
+    'rights': rights.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

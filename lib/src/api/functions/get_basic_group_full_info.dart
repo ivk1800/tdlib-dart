@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [BasicGroupFullInfo]
 @immutable
 class GetBasicGroupFullInfo extends TdFunction {
-  const GetBasicGroupFullInfo({
-    required this.basicGroupId,
-  });
+  const GetBasicGroupFullInfo({required this.basicGroupId});
 
   /// [basicGroupId] Basic group identifier
   final int basicGroupId;
@@ -20,9 +18,9 @@ class GetBasicGroupFullInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'basic_group_id': basicGroupId,
-        '@type': constructor,
-      };
+    'basic_group_id': basicGroupId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

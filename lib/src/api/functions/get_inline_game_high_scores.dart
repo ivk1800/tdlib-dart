@@ -25,10 +25,10 @@ class GetInlineGameHighScores extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'inline_message_id': inlineMessageId,
-        'user_id': userId,
-        '@type': constructor,
-      };
+    'inline_message_id': inlineMessageId,
+    'user_id': userId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

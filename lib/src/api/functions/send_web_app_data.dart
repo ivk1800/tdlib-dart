@@ -29,11 +29,11 @@ class SendWebAppData extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bot_user_id': botUserId,
-        'button_text': buttonText,
-        'data': data,
-        '@type': constructor,
-      };
+    'bot_user_id': botUserId,
+    'button_text': buttonText,
+    'data': data,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

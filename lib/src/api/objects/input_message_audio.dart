@@ -46,7 +46,8 @@ class InputMessageAudio extends InputMessageContent {
     return InputMessageAudio(
       audio: InputFile.fromJson(json['audio'] as Map<String, dynamic>?)!,
       albumCoverThumbnail: InputThumbnail.fromJson(
-          json['album_cover_thumbnail'] as Map<String, dynamic>?),
+        json['album_cover_thumbnail'] as Map<String, dynamic>?,
+      ),
       duration: json['duration'] as int,
       title: json['title'] as String,
       performer: json['performer'] as String,
@@ -59,14 +60,14 @@ class InputMessageAudio extends InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'audio': audio.toJson(),
-        'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
-        'duration': duration,
-        'title': title,
-        'performer': performer,
-        'caption': caption?.toJson(),
-        '@type': constructor,
-      };
+    'audio': audio.toJson(),
+    'album_cover_thumbnail': albumCoverThumbnail?.toJson(),
+    'duration': duration,
+    'title': title,
+    'performer': performer,
+    'caption': caption?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -41,9 +41,10 @@ class CallProtocol extends TdObject {
       minLayer: json['min_layer'] as int,
       maxLayer: json['max_layer'] as int,
       libraryVersions: List<String>.from(
-          ((json['library_versions'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['library_versions'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -52,13 +53,13 @@ class CallProtocol extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'udp_p2p': udpP2p,
-        'udp_reflector': udpReflector,
-        'min_layer': minLayer,
-        'max_layer': maxLayer,
-        'library_versions': libraryVersions.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'udp_p2p': udpP2p,
+    'udp_reflector': udpReflector,
+    'min_layer': minLayer,
+    'max_layer': maxLayer,
+    'library_versions': libraryVersions.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

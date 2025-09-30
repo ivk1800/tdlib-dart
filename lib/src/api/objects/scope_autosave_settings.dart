@@ -40,11 +40,11 @@ class ScopeAutosaveSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'autosave_photos': autosavePhotos,
-        'autosave_videos': autosaveVideos,
-        'max_video_file_size': maxVideoFileSize,
-        '@type': constructor,
-      };
+    'autosave_photos': autosavePhotos,
+    'autosave_videos': autosaveVideos,
+    'max_video_file_size': maxVideoFileSize,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

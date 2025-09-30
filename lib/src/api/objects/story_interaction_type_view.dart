@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A view of the story
 @immutable
 class StoryInteractionTypeView extends StoryInteractionType {
-  const StoryInteractionTypeView({
-    this.chosenReactionType,
-  });
+  const StoryInteractionTypeView({this.chosenReactionType});
 
   /// [chosenReactionType] Type of the reaction that was chosen by the viewer;
   /// may be null if none
@@ -22,7 +20,8 @@ class StoryInteractionTypeView extends StoryInteractionType {
 
     return StoryInteractionTypeView(
       chosenReactionType: ReactionType.fromJson(
-          json['chosen_reaction_type'] as Map<String, dynamic>?),
+        json['chosen_reaction_type'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -31,9 +30,9 @@ class StoryInteractionTypeView extends StoryInteractionType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chosen_reaction_type': chosenReactionType?.toJson(),
-        '@type': constructor,
-      };
+    'chosen_reaction_type': chosenReactionType?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -8,10 +8,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetOption extends TdFunction {
-  const SetOption({
-    required this.name,
-    this.value,
-  });
+  const SetOption({required this.name, this.value});
 
   /// [name] The name of the option
   final String name;
@@ -27,10 +24,10 @@ class SetOption extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'name': name,
-        'value': value?.toJson(),
-        '@type': constructor,
-      };
+    'name': name,
+    'value': value?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// Contains information about a link to boost a chat
 @immutable
 class ChatBoostLinkInfo extends TdObject {
-  const ChatBoostLinkInfo({
-    required this.isPublic,
-    required this.chatId,
-  });
+  const ChatBoostLinkInfo({required this.isPublic, required this.chatId});
 
   /// [isPublic] True, if the link will work for non-members of the chat
   final bool isPublic;
@@ -35,10 +32,10 @@ class ChatBoostLinkInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_public': isPublic,
-        'chat_id': chatId,
-        '@type': constructor,
-      };
+    'is_public': isPublic,
+    'chat_id': chatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

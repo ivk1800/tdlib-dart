@@ -40,11 +40,11 @@ class PushMessageContentGameScore extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'score': score,
-        'is_pinned': isPinned,
-        '@type': constructor,
-      };
+    'title': title,
+    'score': score,
+    'is_pinned': isPinned,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

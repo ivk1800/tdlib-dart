@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class EndGroupCallScreenSharing extends TdFunction {
-  const EndGroupCallScreenSharing({
-    required this.groupCallId,
-  });
+  const EndGroupCallScreenSharing({required this.groupCallId});
 
   /// [groupCallId] Group call identifier
   final int groupCallId;
@@ -20,9 +18,9 @@ class EndGroupCallScreenSharing extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'group_call_id': groupCallId,
-        '@type': constructor,
-      };
+    'group_call_id': groupCallId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

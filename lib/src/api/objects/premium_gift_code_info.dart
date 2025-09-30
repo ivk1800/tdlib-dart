@@ -49,8 +49,9 @@ class PremiumGiftCodeInfo extends TdObject {
     }
 
     return PremiumGiftCodeInfo(
-      creatorId:
-          MessageSender.fromJson(json['creator_id'] as Map<String, dynamic>?),
+      creatorId: MessageSender.fromJson(
+        json['creator_id'] as Map<String, dynamic>?,
+      ),
       creationDate: json['creation_date'] as int,
       isFromGiveaway: json['is_from_giveaway'] as bool,
       giveawayMessageId: json['giveaway_message_id'] as int,
@@ -65,15 +66,15 @@ class PremiumGiftCodeInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'creator_id': creatorId?.toJson(),
-        'creation_date': creationDate,
-        'is_from_giveaway': isFromGiveaway,
-        'giveaway_message_id': giveawayMessageId,
-        'month_count': monthCount,
-        'user_id': userId,
-        'use_date': useDate,
-        '@type': constructor,
-      };
+    'creator_id': creatorId?.toJson(),
+    'creation_date': creationDate,
+    'is_from_giveaway': isFromGiveaway,
+    'giveaway_message_id': giveawayMessageId,
+    'month_count': monthCount,
+    'user_id': userId,
+    'use_date': useDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -25,10 +25,10 @@ class ReorderChatFolders extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_folder_ids': chatFolderIds.map((item) => item).toList(),
-        'main_chat_list_position': mainChatListPosition,
-        '@type': constructor,
-      };
+    'chat_folder_ids': chatFolderIds.map((item) => item).toList(),
+    'main_chat_list_position': mainChatListPosition,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

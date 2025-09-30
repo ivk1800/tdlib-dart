@@ -34,10 +34,10 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_linked_chat_id': oldLinkedChatId,
-        'new_linked_chat_id': newLinkedChatId,
-        '@type': constructor,
-      };
+    'old_linked_chat_id': oldLinkedChatId,
+    'new_linked_chat_id': newLinkedChatId,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

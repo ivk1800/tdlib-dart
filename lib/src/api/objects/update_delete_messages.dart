@@ -36,9 +36,10 @@ class UpdateDeleteMessages extends Update {
     return UpdateDeleteMessages(
       chatId: json['chat_id'] as int,
       messageIds: List<int>.from(
-          ((json['message_ids'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['message_ids'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
       isPermanent: json['is_permanent'] as bool,
       fromCache: json['from_cache'] as bool,
     );
@@ -49,12 +50,12 @@ class UpdateDeleteMessages extends Update {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'message_ids': messageIds.map((item) => item).toList(),
-        'is_permanent': isPermanent,
-        'from_cache': fromCache,
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'message_ids': messageIds.map((item) => item).toList(),
+    'is_permanent': isPermanent,
+    'from_cache': fromCache,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

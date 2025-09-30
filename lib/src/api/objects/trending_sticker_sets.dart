@@ -30,9 +30,10 @@ class TrendingStickerSets extends TdObject {
     return TrendingStickerSets(
       totalCount: json['total_count'] as int,
       sets: List<StickerSetInfo>.from(
-          ((json['sets'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => StickerSetInfo.fromJson(item))
-              .toList()),
+        ((json['sets'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => StickerSetInfo.fromJson(item))
+            .toList(),
+      ),
       isPremium: json['is_premium'] as bool,
     );
   }
@@ -42,11 +43,11 @@ class TrendingStickerSets extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'total_count': totalCount,
-        'sets': sets.map((item) => item.toJson()).toList(),
-        'is_premium': isPremium,
-        '@type': constructor,
-      };
+    'total_count': totalCount,
+    'sets': sets.map((item) => item.toJson()).toList(),
+    'is_premium': isPremium,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

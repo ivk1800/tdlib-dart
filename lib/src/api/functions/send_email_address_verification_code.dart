@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [EmailAddressAuthenticationCodeInfo]
 @immutable
 class SendEmailAddressVerificationCode extends TdFunction {
-  const SendEmailAddressVerificationCode({
-    required this.emailAddress,
-  });
+  const SendEmailAddressVerificationCode({required this.emailAddress});
 
   /// [emailAddress] Email address
   final String emailAddress;
@@ -21,9 +19,9 @@ class SendEmailAddressVerificationCode extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'email_address': emailAddress,
-        '@type': constructor,
-      };
+    'email_address': emailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

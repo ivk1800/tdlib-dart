@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [Stickers]
 @immutable
 class GetPremiumStickers extends TdFunction {
-  const GetPremiumStickers({
-    required this.limit,
-  });
+  const GetPremiumStickers({required this.limit});
 
   /// [limit] The maximum number of stickers to be returned; 0-100
   final int limit;
@@ -20,9 +18,9 @@ class GetPremiumStickers extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'limit': limit,
-        '@type': constructor,
-      };
+    'limit': limit,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

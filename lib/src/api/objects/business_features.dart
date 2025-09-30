@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains information about features, available to Business user accounts
 @immutable
 class BusinessFeatures extends TdObject {
-  const BusinessFeatures({
-    required this.features,
-  });
+  const BusinessFeatures({required this.features});
 
   /// [features] The list of available business features
   final List<BusinessFeature> features;
@@ -21,9 +19,10 @@ class BusinessFeatures extends TdObject {
 
     return BusinessFeatures(
       features: List<BusinessFeature>.from(
-          ((json['features'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => BusinessFeature.fromJson(item))
-              .toList()),
+        ((json['features'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => BusinessFeature.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -32,9 +31,9 @@ class BusinessFeatures extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'features': features.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'features': features.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

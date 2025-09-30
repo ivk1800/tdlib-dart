@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// Returns [Ok]
 @immutable
 class SetAlarm extends TdFunction {
-  const SetAlarm({
-    required this.seconds,
-  });
+  const SetAlarm({required this.seconds});
 
   /// [seconds] Number of seconds before the function returns
   final double seconds;
@@ -21,9 +19,9 @@ class SetAlarm extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'seconds': seconds,
-        '@type': constructor,
-      };
+    'seconds': seconds,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

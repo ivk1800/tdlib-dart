@@ -25,10 +25,10 @@ class SetQuickReplyShortcutName extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'shortcut_id': shortcutId,
-        'name': name,
-        '@type': constructor,
-      };
+    'shortcut_id': shortcutId,
+    'name': name,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

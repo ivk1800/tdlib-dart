@@ -21,7 +21,8 @@ class BusinessAwayMessageScheduleCustom extends BusinessAwayMessageSchedule {
   static const String constructor = 'businessAwayMessageScheduleCustom';
 
   static BusinessAwayMessageScheduleCustom? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -37,10 +38,10 @@ class BusinessAwayMessageScheduleCustom extends BusinessAwayMessageSchedule {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'start_date': startDate,
-        'end_date': endDate,
-        '@type': constructor,
-      };
+    'start_date': startDate,
+    'end_date': endDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

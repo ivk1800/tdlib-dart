@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A voice note
 @immutable
 class PageBlockVoiceNote extends PageBlock {
-  const PageBlockVoiceNote({
-    this.voiceNote,
-    required this.caption,
-  });
+  const PageBlockVoiceNote({this.voiceNote, required this.caption});
 
   /// [voiceNote] Voice note; may be null
   final VoiceNote? voiceNote;
@@ -24,10 +21,12 @@ class PageBlockVoiceNote extends PageBlock {
     }
 
     return PageBlockVoiceNote(
-      voiceNote:
-          VoiceNote.fromJson(json['voice_note'] as Map<String, dynamic>?),
-      caption:
-          PageBlockCaption.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      voiceNote: VoiceNote.fromJson(
+        json['voice_note'] as Map<String, dynamic>?,
+      ),
+      caption: PageBlockCaption.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -36,10 +35,10 @@ class PageBlockVoiceNote extends PageBlock {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'voice_note': voiceNote?.toJson(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'voice_note': voiceNote?.toJson(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

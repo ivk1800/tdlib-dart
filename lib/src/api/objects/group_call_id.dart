@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// Contains the group call identifier
 @immutable
 class GroupCallId extends TdObject {
-  const GroupCallId({
-    required this.id,
-  });
+  const GroupCallId({required this.id});
 
   /// [id] Group call identifier
   final int id;
@@ -19,9 +17,7 @@ class GroupCallId extends TdObject {
       return null;
     }
 
-    return GroupCallId(
-      id: json['id'] as int,
-    );
+    return GroupCallId(id: json['id'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class GroupCallId extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        '@type': constructor,
-      };
+    'id': id,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

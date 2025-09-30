@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The text uses Markdown-style formatting
 @immutable
 class TextParseModeMarkdown extends TextParseMode {
-  const TextParseModeMarkdown({
-    required this.version,
-  });
+  const TextParseModeMarkdown({required this.version});
 
   /// [version] Version of the parser: 0 or 1 - Telegram Bot API "Markdown"
   /// parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode
@@ -20,9 +18,7 @@ class TextParseModeMarkdown extends TextParseMode {
       return null;
     }
 
-    return TextParseModeMarkdown(
-      version: json['version'] as int,
-    );
+    return TextParseModeMarkdown(version: json['version'] as int);
   }
 
   @override
@@ -30,9 +26,9 @@ class TextParseModeMarkdown extends TextParseMode {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'version': version,
-        '@type': constructor,
-      };
+    'version': version,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

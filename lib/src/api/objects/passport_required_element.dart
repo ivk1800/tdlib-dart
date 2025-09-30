@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// requested by a service
 @immutable
 class PassportRequiredElement extends TdObject {
-  const PassportRequiredElement({
-    required this.suitableElements,
-  });
+  const PassportRequiredElement({required this.suitableElements});
 
   /// [suitableElements] List of Telegram Passport elements any of which is
   /// enough to provide
@@ -23,9 +21,10 @@ class PassportRequiredElement extends TdObject {
 
     return PassportRequiredElement(
       suitableElements: List<PassportSuitableElement>.from(
-          ((json['suitable_elements'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => PassportSuitableElement.fromJson(item))
-              .toList()),
+        ((json['suitable_elements'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => PassportSuitableElement.fromJson(item))
+            .toList(),
+      ),
     );
   }
 
@@ -34,10 +33,9 @@ class PassportRequiredElement extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'suitable_elements':
-            suitableElements.map((item) => item.toJson()).toList(),
-        '@type': constructor,
-      };
+    'suitable_elements': suitableElements.map((item) => item.toJson()).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

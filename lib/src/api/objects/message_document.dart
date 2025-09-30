@@ -5,10 +5,7 @@ import '../tdapi.dart';
 /// A document message (general file)
 @immutable
 class MessageDocument extends MessageContent {
-  const MessageDocument({
-    required this.document,
-    required this.caption,
-  });
+  const MessageDocument({required this.document, required this.caption});
 
   /// [document] The document description
   final Document document;
@@ -25,8 +22,9 @@ class MessageDocument extends MessageContent {
 
     return MessageDocument(
       document: Document.fromJson(json['document'] as Map<String, dynamic>?)!,
-      caption:
-          FormattedText.fromJson(json['caption'] as Map<String, dynamic>?)!,
+      caption: FormattedText.fromJson(
+        json['caption'] as Map<String, dynamic>?,
+      )!,
     );
   }
 
@@ -35,10 +33,10 @@ class MessageDocument extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'document': document.toJson(),
-        'caption': caption.toJson(),
-        '@type': constructor,
-      };
+    'document': document.toJson(),
+    'caption': caption.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [FormattedText]
 @immutable
 class TranslateText extends TdFunction {
-  const TranslateText({
-    required this.text,
-    required this.toLanguageCode,
-  });
+  const TranslateText({required this.text, required this.toLanguageCode});
 
   /// [text] Text to translate
   final FormattedText text;
@@ -36,10 +33,10 @@ class TranslateText extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'to_language_code': toLanguageCode,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'to_language_code': toLanguageCode,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

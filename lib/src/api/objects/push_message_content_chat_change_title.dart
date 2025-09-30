@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A chat title was edited
 @immutable
 class PushMessageContentChatChangeTitle extends PushMessageContent {
-  const PushMessageContentChatChangeTitle({
-    required this.title,
-  });
+  const PushMessageContentChatChangeTitle({required this.title});
 
   /// [title] New chat title
   final String title;
@@ -15,14 +13,13 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
   static const String constructor = 'pushMessageContentChatChangeTitle';
 
   static PushMessageContentChatChangeTitle? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
 
-    return PushMessageContentChatChangeTitle(
-      title: json['title'] as String,
-    );
+    return PushMessageContentChatChangeTitle(title: json['title'] as String);
   }
 
   @override
@@ -30,9 +27,9 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        '@type': constructor,
-      };
+    'title': title,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

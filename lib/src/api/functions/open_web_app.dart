@@ -13,17 +13,19 @@ class OpenWebApp extends TdFunction {
     required this.chatId,
     required this.botUserId,
     required this.url,
-    this.theme,
-    required this.applicationName,
     required this.messageThreadId,
+    required this.directMessagesChatTopicId,
     this.replyTo,
+    required this.parameters,
   });
 
   /// [chatId] Identifier of the chat in which the Web App is opened. The Web
   /// App can't be opened in secret chats
   final int chatId;
 
-  /// [botUserId] Identifier of the bot, providing the Web App
+  /// [botUserId] Identifier of the bot, providing the Web App. If the bot is
+  /// restricted for the current user, then show an error instead of calling the
+  /// method
   final int botUserId;
 
   /// [url] The URL from an inlineKeyboardButtonTypeWebApp button, a
@@ -31,20 +33,20 @@ class OpenWebApp extends TdFunction {
   /// empty string otherwise
   final String url;
 
-  /// [theme] Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// [applicationName] Short name of the current application; 0-64 English
-  /// letters, digits, and underscores
-  final String applicationName;
-
-  /// [messageThreadId] If not 0, the message thread identifier in which the
+  /// [messageThreadId] If not 0, the message thread identifier to which the
   /// message will be sent
   final int messageThreadId;
+
+  /// [directMessagesChatTopicId] If not 0, unique identifier of the topic of
+  /// channel direct messages chat to which the message will be sent
+  final int directMessagesChatTopicId;
 
   /// [replyTo] Information about the message or story to be replied in the
   /// message sent by the Web App; pass null if none
   final InputMessageReplyTo? replyTo;
+
+  /// [parameters] Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   static const String constructor = 'openWebApp';
 
@@ -53,15 +55,15 @@ class OpenWebApp extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'chat_id': chatId,
-        'bot_user_id': botUserId,
-        'url': url,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
-        'message_thread_id': messageThreadId,
-        'reply_to': replyTo?.toJson(),
-        '@type': constructor,
-      };
+    'chat_id': chatId,
+    'bot_user_id': botUserId,
+    'url': url,
+    'message_thread_id': messageThreadId,
+    'direct_messages_chat_topic_id': directMessagesChatTopicId,
+    'reply_to': replyTo?.toJson(),
+    'parameters': parameters.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

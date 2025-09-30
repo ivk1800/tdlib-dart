@@ -12,7 +12,7 @@ class ScopeNotificationSettings extends TdObject {
     required this.useDefaultMuteStories,
     required this.muteStories,
     required this.storySoundId,
-    required this.showStorySender,
+    required this.showStoryPoster,
     required this.disablePinnedMessageNotifications,
     required this.disableMentionNotifications,
   });
@@ -39,9 +39,9 @@ class ScopeNotificationSettings extends TdObject {
   /// stories; 0 if sound is disabled
   final int storySoundId;
 
-  /// [showStorySender] True, if the sender of stories must be displayed in
-  /// notifications
-  final bool showStorySender;
+  /// [showStoryPoster] True, if the chat that posted a story must be displayed
+  /// in notifications
+  final bool showStoryPoster;
 
   /// [disablePinnedMessageNotifications] True, if notifications for incoming
   /// pinned messages will be created as for an ordinary unread message
@@ -65,7 +65,7 @@ class ScopeNotificationSettings extends TdObject {
       useDefaultMuteStories: json['use_default_mute_stories'] as bool,
       muteStories: json['mute_stories'] as bool,
       storySoundId: int.tryParse(json['story_sound_id']) ?? 0,
-      showStorySender: json['show_story_sender'] as bool,
+      showStoryPoster: json['show_story_poster'] as bool,
       disablePinnedMessageNotifications:
           json['disable_pinned_message_notifications'] as bool,
       disableMentionNotifications:
@@ -78,18 +78,17 @@ class ScopeNotificationSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'mute_for': muteFor,
-        'sound_id': soundId.toString(),
-        'show_preview': showPreview,
-        'use_default_mute_stories': useDefaultMuteStories,
-        'mute_stories': muteStories,
-        'story_sound_id': storySoundId.toString(),
-        'show_story_sender': showStorySender,
-        'disable_pinned_message_notifications':
-            disablePinnedMessageNotifications,
-        'disable_mention_notifications': disableMentionNotifications,
-        '@type': constructor,
-      };
+    'mute_for': muteFor,
+    'sound_id': soundId.toString(),
+    'show_preview': showPreview,
+    'use_default_mute_stories': useDefaultMuteStories,
+    'mute_stories': muteStories,
+    'story_sound_id': storySoundId.toString(),
+    'show_story_poster': showStoryPoster,
+    'disable_pinned_message_notifications': disablePinnedMessageNotifications,
+    'disable_mention_notifications': disableMentionNotifications,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

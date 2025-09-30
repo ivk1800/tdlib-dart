@@ -6,7 +6,7 @@ import '../tdapi.dart';
 /// This method is intended to be used only if the application has no direct
 /// access to TDLib's file system, because it is usually slower than a direct
 /// read from the file
-/// Returns [FilePart]
+/// Returns [Data]
 @immutable
 class ReadFilePart extends TdFunction {
   const ReadFilePart({
@@ -34,11 +34,11 @@ class ReadFilePart extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'file_id': fileId,
-        'offset': offset,
-        'count': count,
-        '@type': constructor,
-      };
+    'file_id': fileId,
+    'offset': offset,
+    'count': count,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

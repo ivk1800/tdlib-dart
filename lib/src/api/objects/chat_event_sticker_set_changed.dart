@@ -34,10 +34,10 @@ class ChatEventStickerSetChanged extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'old_sticker_set_id': oldStickerSetId.toString(),
-        'new_sticker_set_id': newStickerSetId.toString(),
-        '@type': constructor,
-      };
+    'old_sticker_set_id': oldStickerSetId.toString(),
+    'new_sticker_set_id': newStickerSetId.toString(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

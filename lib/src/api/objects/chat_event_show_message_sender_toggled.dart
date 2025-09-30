@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The show_message_sender setting of a channel was toggled
 @immutable
 class ChatEventShowMessageSenderToggled extends ChatEventAction {
-  const ChatEventShowMessageSenderToggled({
-    required this.showMessageSender,
-  });
+  const ChatEventShowMessageSenderToggled({required this.showMessageSender});
 
   /// [showMessageSender] New value of show_message_sender
   final bool showMessageSender;
@@ -15,7 +13,8 @@ class ChatEventShowMessageSenderToggled extends ChatEventAction {
   static const String constructor = 'chatEventShowMessageSenderToggled';
 
   static ChatEventShowMessageSenderToggled? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -30,9 +29,9 @@ class ChatEventShowMessageSenderToggled extends ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'show_message_sender': showMessageSender,
-        '@type': constructor,
-      };
+    'show_message_sender': showMessageSender,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

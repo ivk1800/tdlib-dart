@@ -42,9 +42,10 @@ class CountryInfo extends TdObject {
       englishName: json['english_name'] as String,
       isHidden: json['is_hidden'] as bool,
       callingCodes: List<String>.from(
-          ((json['calling_codes'] as List<dynamic>?) ?? <dynamic>[])
-              .map((item) => item)
-              .toList()),
+        ((json['calling_codes'] as List<dynamic>?) ?? <dynamic>[])
+            .map((item) => item)
+            .toList(),
+      ),
     );
   }
 
@@ -53,13 +54,13 @@ class CountryInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'country_code': countryCode,
-        'name': name,
-        'english_name': englishName,
-        'is_hidden': isHidden,
-        'calling_codes': callingCodes.map((item) => item).toList(),
-        '@type': constructor,
-      };
+    'country_code': countryCode,
+    'name': name,
+    'english_name': englishName,
+    'is_hidden': isHidden,
+    'calling_codes': callingCodes.map((item) => item).toList(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

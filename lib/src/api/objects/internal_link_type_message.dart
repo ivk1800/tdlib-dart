@@ -7,9 +7,7 @@ import '../tdapi.dart';
 /// received forum topic or chat and show the message there
 @immutable
 class InternalLinkTypeMessage extends InternalLinkType {
-  const InternalLinkTypeMessage({
-    required this.url,
-  });
+  const InternalLinkTypeMessage({required this.url});
 
   /// [url] URL to be passed to getMessageLinkInfo
   final String url;
@@ -21,9 +19,7 @@ class InternalLinkTypeMessage extends InternalLinkType {
       return null;
     }
 
-    return InternalLinkTypeMessage(
-      url: json['url'] as String,
-    );
+    return InternalLinkTypeMessage(url: json['url'] as String);
   }
 
   @override
@@ -31,9 +27,9 @@ class InternalLinkTypeMessage extends InternalLinkType {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'url': url,
-        '@type': constructor,
-      };
+    'url': url,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -30,11 +30,11 @@ class SearchQuote extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'quote': quote.toJson(),
-        'quote_position': quotePosition,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'quote': quote.toJson(),
+    'quote_position': quotePosition,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

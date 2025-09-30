@@ -39,11 +39,11 @@ class RichTextUrl extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        'url': url,
-        'is_cached': isCached,
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    'url': url,
+    'is_cached': isCached,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

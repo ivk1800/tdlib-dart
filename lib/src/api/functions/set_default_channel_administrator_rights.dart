@@ -22,10 +22,10 @@ class SetDefaultChannelAdministratorRights extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'default_channel_administrator_rights':
-            defaultChannelAdministratorRights?.toJson(),
-        '@type': constructor,
-      };
+    'default_channel_administrator_rights': defaultChannelAdministratorRights
+        ?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

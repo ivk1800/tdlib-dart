@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [CurrentWeather]
 @immutable
 class GetCurrentWeather extends TdFunction {
-  const GetCurrentWeather({
-    required this.location,
-  });
+  const GetCurrentWeather({required this.location});
 
   /// [location] The location
   final Location location;
@@ -20,9 +18,9 @@ class GetCurrentWeather extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'location': location.toJson(),
-        '@type': constructor,
-      };
+    'location': location.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -6,9 +6,7 @@ import '../tdapi.dart';
 /// Returns [BankCardInfo]
 @immutable
 class GetBankCardInfo extends TdFunction {
-  const GetBankCardInfo({
-    required this.bankCardNumber,
-  });
+  const GetBankCardInfo({required this.bankCardNumber});
 
   /// [bankCardNumber] The bank card number
   final String bankCardNumber;
@@ -20,9 +18,9 @@ class GetBankCardInfo extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'bank_card_number': bankCardNumber,
-        '@type': constructor,
-      };
+    'bank_card_number': bankCardNumber,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

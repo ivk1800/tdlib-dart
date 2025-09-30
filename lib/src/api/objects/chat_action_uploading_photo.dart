@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// The user is uploading a photo
 @immutable
 class ChatActionUploadingPhoto extends ChatAction {
-  const ChatActionUploadingPhoto({
-    required this.progress,
-  });
+  const ChatActionUploadingPhoto({required this.progress});
 
   /// [progress] Upload progress, as a percentage
   final int progress;
@@ -19,9 +17,7 @@ class ChatActionUploadingPhoto extends ChatAction {
       return null;
     }
 
-    return ChatActionUploadingPhoto(
-      progress: json['progress'] as int,
-    );
+    return ChatActionUploadingPhoto(progress: json['progress'] as int);
   }
 
   @override
@@ -29,9 +25,9 @@ class ChatActionUploadingPhoto extends ChatAction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'progress': progress,
-        '@type': constructor,
-      };
+    'progress': progress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

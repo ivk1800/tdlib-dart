@@ -18,7 +18,8 @@ class GiveawayParticipantStatusAlreadyWasMember
   static const String constructor = 'giveawayParticipantStatusAlreadyWasMember';
 
   static GiveawayParticipantStatusAlreadyWasMember? fromJson(
-      Map<String, dynamic>? json) {
+    Map<String, dynamic>? json,
+  ) {
     if (json == null) {
       return null;
     }
@@ -33,9 +34,9 @@ class GiveawayParticipantStatusAlreadyWasMember
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'joined_chat_date': joinedChatDate,
-        '@type': constructor,
-      };
+    'joined_chat_date': joinedChatDate,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

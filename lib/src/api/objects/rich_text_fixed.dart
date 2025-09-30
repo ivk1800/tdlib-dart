@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A fixed-width rich text
 @immutable
 class RichTextFixed extends RichText {
-  const RichTextFixed({
-    required this.text,
-  });
+  const RichTextFixed({required this.text});
 
   /// [text] Text
   final RichText text;
@@ -29,9 +27,9 @@ class RichTextFixed extends RichText {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text.toJson(),
-        '@type': constructor,
-      };
+    'text': text.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

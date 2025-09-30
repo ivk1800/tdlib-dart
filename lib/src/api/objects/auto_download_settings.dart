@@ -76,17 +76,17 @@ class AutoDownloadSettings extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'is_auto_download_enabled': isAutoDownloadEnabled,
-        'max_photo_file_size': maxPhotoFileSize,
-        'max_video_file_size': maxVideoFileSize,
-        'max_other_file_size': maxOtherFileSize,
-        'video_upload_bitrate': videoUploadBitrate,
-        'preload_large_videos': preloadLargeVideos,
-        'preload_next_audio': preloadNextAudio,
-        'preload_stories': preloadStories,
-        'use_less_data_for_calls': useLessDataForCalls,
-        '@type': constructor,
-      };
+    'is_auto_download_enabled': isAutoDownloadEnabled,
+    'max_photo_file_size': maxPhotoFileSize,
+    'max_video_file_size': maxVideoFileSize,
+    'max_other_file_size': maxOtherFileSize,
+    'video_upload_bitrate': videoUploadBitrate,
+    'preload_large_videos': preloadLargeVideos,
+    'preload_next_audio': preloadNextAudio,
+    'preload_stories': preloadStories,
+    'use_less_data_for_calls': useLessDataForCalls,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

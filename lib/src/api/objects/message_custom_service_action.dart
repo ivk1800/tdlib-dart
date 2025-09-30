@@ -5,9 +5,7 @@ import '../tdapi.dart';
 /// A non-standard action has happened in the chat
 @immutable
 class MessageCustomServiceAction extends MessageContent {
-  const MessageCustomServiceAction({
-    required this.text,
-  });
+  const MessageCustomServiceAction({required this.text});
 
   /// [text] Message text to be shown in the chat
   final String text;
@@ -19,9 +17,7 @@ class MessageCustomServiceAction extends MessageContent {
       return null;
     }
 
-    return MessageCustomServiceAction(
-      text: json['text'] as String,
-    );
+    return MessageCustomServiceAction(text: json['text'] as String);
   }
 
   @override
@@ -29,9 +25,9 @@ class MessageCustomServiceAction extends MessageContent {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
-        '@type': constructor,
-      };
+    'text': text,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

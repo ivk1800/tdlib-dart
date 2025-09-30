@@ -29,10 +29,10 @@ class SetRecoveryEmailAddress extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'password': password,
-        'new_recovery_email_address': newRecoveryEmailAddress,
-        '@type': constructor,
-      };
+    'password': password,
+    'new_recovery_email_address': newRecoveryEmailAddress,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

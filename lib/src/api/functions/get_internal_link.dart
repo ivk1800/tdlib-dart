@@ -7,10 +7,7 @@ import '../tdapi.dart';
 /// Returns [HttpUrl]
 @immutable
 class GetInternalLink extends TdFunction {
-  const GetInternalLink({
-    required this.type,
-    required this.isHttp,
-  });
+  const GetInternalLink({required this.type, required this.isHttp});
 
   /// [type] Expected type of the link
   final InternalLinkType type;
@@ -26,10 +23,10 @@ class GetInternalLink extends TdFunction {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'is_http': isHttp,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'is_http': isHttp,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

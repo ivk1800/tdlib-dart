@@ -36,8 +36,9 @@ class PassportSuitableElement extends TdObject {
     }
 
     return PassportSuitableElement(
-      type:
-          PassportElementType.fromJson(json['type'] as Map<String, dynamic>?)!,
+      type: PassportElementType.fromJson(
+        json['type'] as Map<String, dynamic>?,
+      )!,
       isSelfieRequired: json['is_selfie_required'] as bool,
       isTranslationRequired: json['is_translation_required'] as bool,
       isNativeNameRequired: json['is_native_name_required'] as bool,
@@ -49,12 +50,12 @@ class PassportSuitableElement extends TdObject {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type.toJson(),
-        'is_selfie_required': isSelfieRequired,
-        'is_translation_required': isTranslationRequired,
-        'is_native_name_required': isNativeNameRequired,
-        '@type': constructor,
-      };
+    'type': type.toJson(),
+    'is_selfie_required': isSelfieRequired,
+    'is_translation_required': isTranslationRequired,
+    'is_native_name_required': isNativeNameRequired,
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);

@@ -31,8 +31,9 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
     return InputInlineQueryResultGame(
       id: json['id'] as String,
       gameShortName: json['game_short_name'] as String,
-      replyMarkup:
-          ReplyMarkup.fromJson(json['reply_markup'] as Map<String, dynamic>?),
+      replyMarkup: ReplyMarkup.fromJson(
+        json['reply_markup'] as Map<String, dynamic>?,
+      ),
     );
   }
 
@@ -41,11 +42,11 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'id': id,
-        'game_short_name': gameShortName,
-        'reply_markup': replyMarkup?.toJson(),
-        '@type': constructor,
-      };
+    'id': id,
+    'game_short_name': gameShortName,
+    'reply_markup': replyMarkup?.toJson(),
+    '@type': constructor,
+  };
 
   @override
   bool operator ==(Object other) => overriddenEquality(other);
